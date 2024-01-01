@@ -126,6 +126,8 @@ class _RegisterState extends State<Register> {
                 ),
               ),
             ),
+            SizedBox(height: 20,
+            child: Column(),)
           ],
         ),
       ),
