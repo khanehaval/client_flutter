@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/register/register.dart';
+import 'package:flutter_application_1/pages/register/register.dart';
+
 import 'package:get/get.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 
