@@ -16,28 +16,37 @@ class IntroScreen extends StatelessWidget {
         PageViewModel(
           titleWidget: Column(
             children: [
-              Image.asset(
-                'assets/images/Page 1.png',
+              Stack(
+                children:[ Image.asset(
+                  'assets/images/Page 1.png',
+                ),
+                ],
               ),
+            
               SizedBox(
-                height: 20,
+                height: 10,
               ),
               Column(
                 children: [
                   Text(
                     'اینجا کلی امکانات جدید و جذاب داریم، آگهی، مشاور، آژانس همه روی نقشه منتظر شما هستند',
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22),
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 21.5),
                     textAlign: TextAlign.center,
                   ),
                 ],
-              )
+              ),
             ],
+            
           ),
+          
           body: "",
-          image: Image.asset(
-            'assets/images/Vector.png',
-            height: 500,
-            width: 500,
+          image: SizedBox(
+            height: 305,
+            child: Image.asset(
+              'assets/images/Vector.png',
+              height: 400,
+              width: 400,
+            ),
           ),
         ),
         PageViewModel(
@@ -61,8 +70,8 @@ class IntroScreen extends StatelessWidget {
               ),
               Image.asset(
                 'assets/images/Group 2.png',
-                height: 210,
-                width: 350,
+                height: 193,
+                width: 300,
               ),
             ],
           ),

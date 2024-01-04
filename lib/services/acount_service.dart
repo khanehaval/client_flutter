@@ -1,8 +1,9 @@
 import 'package:dio/dio.dart';
 
-class AcountService {
-  Dio _dio = Dio();
+class AccountService {
+  final Dio _dio = Dio();
   void login(String phoneNumber) async {
+    return;
     try {
       var result =
           await _dio.post("https://server.khanehaval.com/new_address", data: {
