@@ -29,7 +29,38 @@ class Consultants extends StatelessWidget {
                   fontFamily: 'Iran Sans Bold'),
             ),
             SizedBox(
-              height: 10,
+              height: 20,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Expanded(
+                  child: Container(
+                    width: (0.10),
+                    child: TextField(
+                      decoration: InputDecoration(
+                        hintText: 'نام خانوادگی *',
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10))),
+                      style: TextStyle(fontSize: 15),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  width: 20,
+                ),
+                Expanded(
+                  child: TextField(
+                    decoration: InputDecoration(hintText: 'نام *',
+                        border: OutlineInputBorder(
+                        
+                            borderRadius: BorderRadius.circular(10),)),style: TextStyle(fontSize: 15),
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(
+              height: 30,
             ),
           ],
         ),
