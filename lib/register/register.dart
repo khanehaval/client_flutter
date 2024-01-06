@@ -2,8 +2,8 @@ import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_application_1/db/models/login_model/boxes.dart';
-import 'package:flutter_application_1/db/models/login_model/login_model.dart';
+
+import 'package:flutter_application_1/db/login_model.dart';
 import 'package:flutter_application_1/repo/acount_repo.dart';
 import 'package:get/get.dart';
 import 'dart:math';
@@ -110,9 +110,11 @@ class _RegisterState extends State<Register> {
                 ),
                 child: ElevatedButton(
                   onPressed: () {
-                    setState(() {
-                      boxLoginModel.put('key_${_textController.text}', LoginModel(phoneNumber: _textController.text),);
-                    });
+
+                    //todo userRepo.save(
+                    // setState(() {
+                    //   boxLoginModel.put('key_${_textController.text}', LoginModel(phoneNumber: _textController.text),);
+                    // });
                     sended.value = true;
                     startTimer();
                     AccountRepo().login(_textController.text);

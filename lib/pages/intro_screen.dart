@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/db/dao/user_dao.dart';
 import 'package:flutter_application_1/pages/register/register.dart';
 
 import 'package:get/get.dart';
+import 'package:get_it/get_it.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 
 class IntroScreen extends StatelessWidget {
-  const IntroScreen({super.key});
+  IntroScreen({super.key});
+
+  var userDao = GetIt.I.get<UserDao>();
+  // userDao.save(user);
 
   @override
   Widget build(BuildContext context) {
@@ -18,12 +23,12 @@ class IntroScreen extends StatelessWidget {
           titleWidget: Column(
             children: [
               Stack(
-                children:[ Image.asset(
-                  'assets/images/Page 1.png',
-                ),
+                children: [
+                  Image.asset(
+                    'assets/images/Page 1.png',
+                  ),
                 ],
               ),
-            
               SizedBox(
                 height: 10,
               ),
@@ -31,15 +36,14 @@ class IntroScreen extends StatelessWidget {
                 children: [
                   Text(
                     'اینجا کلی امکانات جدید و جذاب داریم، آگهی، مشاور، آژانس همه روی نقشه منتظر شما هستند',
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 21.5),
+                    style:
+                        TextStyle(fontWeight: FontWeight.bold, fontSize: 21.5),
                     textAlign: TextAlign.center,
                   ),
                 ],
               ),
             ],
-            
           ),
-          
           body: "",
           image: SizedBox(
             height: 305,
