@@ -19,7 +19,7 @@ class Consultants extends StatelessWidget {
               'assets/images/Rectangle 1.png',
             ),
             SizedBox(
-              height: 11,
+              height: 11,width: 10,
             ),
             Text(
               "پنل مشاوران",
@@ -29,35 +29,37 @@ class Consultants extends StatelessWidget {
                   fontFamily: 'Iran Sans Bold'),
             ),
             SizedBox(
-              height: 20,
+              height: 10,width: 400,
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Expanded(
-                  child: Container(
-                    width: (0.10),
-                    child: TextField(
-                      decoration: InputDecoration(
+            Padding(
+              padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: Container(
+                      width: (0.7),
+                      child: TextField(
+                        decoration: InputDecoration(
                         hintText: 'نام خانوادگی *',
-                          border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10))),
-                      style: TextStyle(fontSize: 15),
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10))),
+                        style: TextStyle(fontSize: 15),
+                      ),
                     ),
                   ),
-                ),
-                SizedBox(
-                  width: 20,
-                ),
-                Expanded(
-                  child: TextField(
-                    decoration: InputDecoration(hintText: 'نام *',
-                        border: OutlineInputBorder(
-                        
-                            borderRadius: BorderRadius.circular(10),)),style: TextStyle(fontSize: 15),
+                  SizedBox(
+                    width: 20,
                   ),
-                ),
-              ],
+                  Expanded(
+                    child: TextField(
+                      decoration: InputDecoration(hintText: 'نام *',
+                          border: OutlineInputBorder(
+
+                              borderRadius: BorderRadius.circular(10),)),style: TextStyle(fontSize: 15),
+                    ),
+                  ),
+                ],
+              ),
             ),
             SizedBox(
               height: 30,
