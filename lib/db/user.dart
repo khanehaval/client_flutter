@@ -5,7 +5,6 @@ part 'user.g.dart';
 class User  {
   @HiveField(1)
   String name;
-
   @HiveField(2)
   String lastname;
 

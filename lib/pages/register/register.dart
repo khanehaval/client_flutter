@@ -80,7 +80,7 @@ class _RegisterState extends State<Register> {
               decoration: InputDecoration(
                 hintText: "09121234567",
                 border:
-                    OutlineInputBorder(borderRadius: BorderRadius.circular(30)),
+                    OutlineInputBorder(borderRadius: BorderRadius.circular(15)),
                 suffix: Icon(Icons.edit),
               ),
             ),

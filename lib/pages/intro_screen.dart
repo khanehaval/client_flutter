@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/db/dao/user_dao.dart';
 import 'package:flutter_application_1/pages/register/register.dart';
-
 import 'package:get/get.dart';
 import 'package:get_it/get_it.dart';
 import 'package:introduction_screen/introduction_screen.dart';

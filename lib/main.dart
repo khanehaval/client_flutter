@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/db/dao/user_dao.dart';
-
-import 'package:flutter_application_1/db/login_model.dart';
 import 'package:flutter_application_1/db/user.dart';
 import 'package:flutter_application_1/pages/intro_screen.dart';
 import 'package:flutter_application_1/repo/acount_repo.dart';
