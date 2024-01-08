@@ -6,7 +6,7 @@ class UserDao {
 
   Future<void> saveUser(User user) async {
     var box = await _open();
-    box.put(user.name, user);
+    box.put(user.phoneNumber, user);
   }
 
   Future<User?> getUser(String name) async {

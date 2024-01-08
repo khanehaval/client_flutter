@@ -1,14 +1,20 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class Consultants extends StatelessWidget {
-  const Consultants({super.key});
+enum AcountType{
+  Private,Constraints,Realestateagency,
+  
+}
+
+class Private extends StatelessWidget {
+  const Private({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
+        title: Text(''),
       ),
       body: Column(
         children: [
@@ -28,7 +34,7 @@ class Consultants extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(20),
             child: Text(
-              "پنل مشاوران",
+              "پنل شخصی",
               style: TextStyle(
                   fontSize: 30,
                   fontWeight: FontWeight.bold,
@@ -130,56 +136,7 @@ class Consultants extends StatelessWidget {
               ],
             ),
           ),
-          SizedBox(
-              height: 30), // فاصله بین عکس و تکست فیلدها // بخش تکست فیلدها
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 15),
-            child: Row(
-              children: [
-                Expanded(
-                  child: Container(
-                    height: 41,
-                    width: 178,
-                    child: TextField(
-                      textAlign: TextAlign.right,
-                      decoration: InputDecoration(
-                        hintText: 'محدوده فعالیت *',prefixIcon: Icon(CupertinoIcons.map_pin_ellipse),
-                        hintStyle: TextStyle(
-                          color: Color(0xFFA6A6A6),
-                        ),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-                SizedBox(width: 10),
-                Expanded(
-                  child: Container(
-                    height: 41,
-                    width: 178,
-                    child: TextField(
-                      textAlign: TextAlign.right,
-                      decoration: InputDecoration(
-                        hintText: 'تهران',prefixIcon: Icon(Icons.location_on_sharp),
-                        hintStyle: TextStyle(
-                            fontSize: 17,
-                            fontWeight: FontWeight.bold,color: Colors.black,
-                            fontFamily: 'Iran Sans Bold'),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-          SizedBox(
-            height: 30,
-          ),
+        SizedBox(height: 30,),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 15),
             child: Row(
@@ -204,7 +161,7 @@ class Consultants extends StatelessWidget {
             ),
           ),
           SizedBox(
-            height: 80,
+            height: 150,
             width: 50,
           ),
           Padding(

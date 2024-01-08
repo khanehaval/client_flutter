@@ -58,7 +58,7 @@ class _RegisterState extends State<Register> {
           children: [
             Image.asset(
               'assets/images/Rectangle 1.png',
-              width: MediaQuery.of(context).size.width - 100,
+              width: MediaQuery.of(context).size.width - 200,
             ),
             SizedBox(
               height: 20,
@@ -71,6 +71,7 @@ class _RegisterState extends State<Register> {
               height: 20,
             ),
             TextFormField(
+              textAlign: TextAlign.center,
               keyboardType: TextInputType.number,
               controller: _textController,
               maxLength: 11,
@@ -118,7 +119,7 @@ class _RegisterState extends State<Register> {
                             },
                           ),
                   )
-                : SizedBox()),
+                : SizedBox(height: 150,)),
             Padding(
               padding: const EdgeInsets.only(top: 70),
               child: Container(

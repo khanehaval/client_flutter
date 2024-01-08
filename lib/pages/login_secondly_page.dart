@@ -5,6 +5,7 @@ import 'package:flutter_application_1/pages/educational_tour.dart';
 import 'package:flutter_application_1/pages/home.dart';
 import 'package:flutter_application_1/pages/profile.dart';
 import 'package:flutter_application_1/pages/real_estate_agency.dart';
+import 'package:flutter_application_1/pages/private.dart';
 import 'package:get/get.dart';
 
 class LoginSecondlyPage extends StatelessWidget {
@@ -65,7 +66,34 @@ class LoginSecondlyPage extends StatelessWidget {
                   style: TextStyle(fontSize: 15, fontFamily: 'Iran Sans Bold'),
                 )
               ],
+            ), SizedBox(
+              height: 30,
             ),
+            GestureDetector(
+                onTap: () {
+                  Get.to(() => const Private());
+                },
+                child: Container(
+                  width: MediaQuery.of(context).size.width * (0.7),
+                  decoration: BoxDecoration(
+                      border: Border.all(
+                          color: Colors.black,
+                          width: 1.0,
+                          style: BorderStyle.solid),
+                      borderRadius: BorderRadius.circular(10)),
+                  child: const Padding(
+                    padding: EdgeInsets.all(15.0),
+                    child: Center(
+                      child: Text(
+                        'شخصی',
+                        style: TextStyle(
+                            fontSize: 20,
+                            fontFamily: 'Iran Sans Bold',
+                            color: Colors.black),
+                      ),
+                    ),
+                  ),
+                )),
             SizedBox(
               height: 30,
             ),
@@ -122,7 +150,7 @@ class LoginSecondlyPage extends StatelessWidget {
                     ),
                   ),
                 )),
-            const Padding(padding: EdgeInsets.fromLTRB(1, 110, 50, 0)),
+            const Padding(padding: EdgeInsets.fromLTRB(1, 60, 50, 0)),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
