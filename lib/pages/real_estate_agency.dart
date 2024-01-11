@@ -75,16 +75,14 @@ class Realestateagency extends StatelessWidget {
               ],
             ),
           ),
-          SizedBox(
-              height: 15), // فاصله بین عکس و تکست فیلدها // بخش تکست فیلدها
+          SizedBox( ), // فاصله بین عکس و تکست فیلدها // بخش تکست فیلدها
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 15),
+            padding:EdgeInsets.all(16.0),
             child: Row(
               children: [
                 Expanded(
-                  child: Container(
-                    height: 41,
-                    width: 178,
+                  child: Container(height: 41,
+                    width: 150,
                     child: TextField(
                       textAlign: TextAlign.right,
                       decoration: InputDecoration(
@@ -99,7 +97,7 @@ class Realestateagency extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(width: 10),
+                SizedBox(width: 70),
                 Expanded(
                   child: Container(
                     height: 41,
@@ -122,7 +120,7 @@ class Realestateagency extends StatelessWidget {
             ),
           ),
           SizedBox(
-              height: 15), // فاصله بین عکس و تکست فیلدها // بخش تکست فیلدها
+              height: 0), // فاصله بین عکس و تکست فیلدها // بخش تکست فیلدها
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 15),
             child: Row(
@@ -181,7 +179,6 @@ class Realestateagency extends StatelessWidget {
               fontWeight: FontWeight.bold,
               fontFamily: 'Iran Sans Bold',
             ),
-            textAlign: TextAlign.right,
           ),
           SizedBox(
               height: 0), // فاصله بین عکس و تکست فیلدها // بخش تکست فیلدها

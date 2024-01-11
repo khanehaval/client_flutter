@@ -1,105 +1,88 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/pages/Messages.dart';
-import 'package:flutter_application_1/pages/advertisement_registration.dart';
-import 'package:flutter_application_1/pages/grouping.dart';
 import 'package:flutter_application_1/pages/home.dart';
-import 'package:flutter_application_1/pages/real_estate.dart';
 import 'package:get/get.dart';
 
-/// Flutter code sample for [NavigationBar].
-
-void main() => runApp(const NavigationBarApp());
-
-class NavigationBarApp extends StatelessWidget {
-  const NavigationBarApp({super.key});
+class EducationalTour extends StatelessWidget {
+  const EducationalTour({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(useMaterial3: true),
-      home: const NavigationExample(),
-    );
-  }
-}
-
-class NavigationExample extends StatefulWidget {
-  const NavigationExample({super.key});
-
-  @override
-  State<NavigationExample> createState() => _NavigationExampleState();
-}
-
-class _NavigationExampleState extends State<NavigationExample> {
-  var currentPageIndex = 0.obs;
-
-  var page = [
-    Home(),
-    Messages(),
-    AdvertisementRegistration(),
-    Grouping(),
-    RealEstate()
-  ];
-
-  @override
-  Widget build(BuildContext context) {
-    final ThemeData theme = Theme.of(context);
     return Scaffold(
-            bottomNavigationBar: Obx(() => NavigationBar(
-            onDestinationSelected: (int index) {
-              currentPageIndex.update((val) {
-                currentPageIndex.value = index;
-              },
-              );
-              
-            },
-            
-            indicatorColor: Colors.blueAccent,
-            selectedIndex: currentPageIndex.value,
-            destinations: const <Widget>[
-              NavigationDestination(
-                selectedIcon: Icon(CupertinoIcons.home),
-                icon: Icon(
-                  Icons.home_rounded,
-                  size: 40,
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        actions: [
+          GestureDetector(
+            onTap: () {},
+            child: Container(
+              decoration: BoxDecoration(
+                  color: Colors.black12,
+                  borderRadius: BorderRadius.circular(60)),
+              child: const Padding(
+                padding: EdgeInsets.all(5.0),
+                child: Icon(
+                  Icons.person_2_rounded,
+                  size: 30,
                 ),
-                label: '',
               ),
-              NavigationDestination(
-                selectedIcon: Icon(Icons.messenger),
-                icon: Icon(
-                  Icons.message_rounded,
-                  size: 40,
+            ),
+          ),
+        ],
+      ),
+      body: Container(
+        color: Colors.white60,
+        child: Padding(
+          padding: const EdgeInsets.all(15),
+          child: Column(
+            children: [
+              GestureDetector(
+                onTap: () {
+                  Get.to(() => ());
+                },
+                child: GestureDetector(
+                  onTap: () {
+                    Get.to(() => ());
+                  },
+                  child: Image.asset(
+                    'assets/images/Personal user panel.png',
+                    width: 392,
+                    height: 195,
+                    fit: BoxFit.fitHeight,
+                  ),
                 ),
-                label: '',
               ),
-              NavigationDestination(
-                selectedIcon: Icon(Icons.add_circle_outline_rounded),
-                icon: Icon(
-                  Icons.add_circle_outline_rounded,
-                  size: 40,
-                ),
-                label: '',
+              SizedBox(
+                height: 20,
               ),
-              NavigationDestination(
-                selectedIcon: Icon(Icons.widgets),
-                icon: Icon(
-                  Icons.widgets,
-                  size: 40,
+              GestureDetector(
+                onTap: () {
+                  Get.to(() => ());
+                },
+                child: Image.asset(
+                  "assets/images/Consultants user panel.png",
+                  width: 392,
+                  height: 195,
+                  fit: BoxFit.fitHeight,
                 ),
-                label: '',
               ),
-              NavigationDestination(
-                selectedIcon: Icon(Icons.location_on_outlined),
-                icon: Icon(
-                  Icons.location_on_outlined,
-                  size: 40,
+              SizedBox(
+                height: 20,
+              ),
+              GestureDetector(
+                onTap: () {
+                  Get.to(() => ());
+                },
+                child: Image.asset(
+                  "assets/images/Real estate agency user panel.png",
+                  width: 392,
+                  height: 195,
+                  fit: BoxFit.fitHeight,
                 ),
-                label: '',
               ),
             ],
-          )),
-      body: Obx(() => page[currentPageIndex.value]),
+          ),
+        ),
+      ),
     );
   }
 }

@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/db/dao/user_dao.dart';
+import 'package:flutter_application_1/db/dao/advisor_dao.dart';
 import 'package:flutter_application_1/pages/register/register.dart';
 import 'package:get/get.dart';
 import 'package:get_it/get_it.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 
 class IntroScreen extends StatelessWidget {
-  IntroScreen({super.key});
+  const IntroScreen({super.key});
 
-  var userDao = GetIt.I.get<UserDao>();
-  // userDao.save(user);
+
 
   @override
   Widget build(BuildContext context) {

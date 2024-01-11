@@ -2,8 +2,6 @@ import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
-import 'package:flutter_application_1/db/login_model.dart';
 import 'package:flutter_application_1/repo/acount_repo.dart';
 import 'package:get/get.dart';
 import 'dart:math';

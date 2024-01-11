@@ -1,9 +1,10 @@
+import 'package:flutter_application_1/db/constance.dart';
 import 'package:hive/hive.dart';
 
-part 'user.g.dart';
+part 'estate.g.dart';
 
-@HiveType(typeId: 1)
-class User {
+@HiveType(typeId: ESTATE_HIVE_ID)
+class Estate {
   @HiveField(1)
   final String? agencyName;
   @HiveField(2)
@@ -13,25 +14,31 @@ class User {
   @HiveField(4)
   final String? agencyActivitPermissionImgUrl;
   @HiveField(5)
-  final String? firstName;
+  final String? firstname;
   @HiveField(6)
-  final String? lastName;
+  final String? lastname;
+  @HiveField(7)
+  final String? username;
+  @HiveField(8)
+  final String? password;
   @HiveField(9)
   final String? advisorArea;
   @HiveField(10)
   final String? phoneNumber;
 
-  User(
+  @HiveField(11)
+  final String landlineNumber;
+
+  Estate(
       {required this.agencyName,
+      required this.landlineNumber,
       required this.agencyPhone,
       required this.agencyActivityPermissionNumber,
       required this.agencyActivitPermissionImgUrl,
-      required this.firstName,
-      required this.lastName,
+      required this.firstname,
+      required this.lastname,
+      required this.username,
+      required this.password,
       required this.advisorArea,
       required this.phoneNumber});
-}
-enum AcountType{
-  Private,Constraints,Realestateagency,
-  
 }
