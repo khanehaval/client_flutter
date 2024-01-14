@@ -1,10 +1,20 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/pages/Advertisements.dart';
+import 'package:flutter_application_1/pages/Messages.dart';
+import 'package:flutter_application_1/pages/advertisement_registration.dart';
+import 'package:flutter_application_1/pages/category.dart';
 import 'package:flutter_application_1/pages/home.dart';
 import 'package:get/get.dart';
 
 class EducationalTour extends StatelessWidget {
-  const EducationalTour({super.key});
+  var currentPageIndex = 0.obs;
+
+  var page = [
+    Home(),Messages(),AdvertisementRegistration(),Category(),Advertisements()
+  ];
+
+  EducationalTour({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +42,7 @@ class EducationalTour extends StatelessWidget {
       body: Container(
         color: Colors.white60,
         child: Padding(
-          padding: const EdgeInsets.all(15),
+          padding: const EdgeInsets.all(10),
           child: Column(
             children: [
               GestureDetector(
@@ -83,6 +93,46 @@ class EducationalTour extends StatelessWidget {
           ),
         ),
       ),
+      bottomNavigationBar: Obx(
+        () => NavigationBar(
+          backgroundColor: Colors.white,
+          onDestinationSelected: (int index) {
+            currentPageIndex.update((val) {
+              currentPageIndex.value = index;
+            });
+          },
+          indicatorColor: Color(0x36D859),
+          selectedIndex: currentPageIndex.value,
+          destinations: const <Widget>[
+            NavigationDestination(
+              selectedIcon: Icon(CupertinoIcons.home),
+              icon: Icon(Icons.home_filled),
+              label: '',
+            ),
+            NavigationDestination(
+              selectedIcon: Icon(Icons.messenger),
+              icon: Icon(Icons.message_rounded),
+              label: '',
+            ),
+            NavigationDestination(
+              selectedIcon: Icon(Icons.add_circle_outline_rounded),
+              icon: Icon(Icons.add_circle_outline_rounded),
+              label: '',
+            ),
+            NavigationDestination(
+              selectedIcon: Icon(Icons.widgets),
+              icon: Icon(Icons.widgets),
+              label: '',
+            ),
+            NavigationDestination(
+              selectedIcon: Icon(Icons.location_on_outlined),
+              icon: Icon(Icons.location_on_outlined),
+              label: '',
+            ),
+          ],
+        ),
+      ),
+      bottomSheet: Obx(() => page[currentPageIndex.value]),
     );
   }
 }

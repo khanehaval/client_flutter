@@ -53,8 +53,8 @@ class LoginSecondlyPage extends StatelessWidget {
               children: [
                 Image.asset(
                   'assets/images/Rectangle 1.png',
-                  width: 100,
-                  height: 100,
+                  width: 262,
+                  height: 226,
                 ),
                 const SizedBox(
                   height: 10,
@@ -63,7 +63,7 @@ class LoginSecondlyPage extends StatelessWidget {
                   "نوع کاربری خود را انتخاب کنید",
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
-                      fontSize: 19,
+                      fontSize: 25,
                       fontFamily: 'Iran Sans Bold'),
                 ),
                 const Text(
@@ -105,7 +105,7 @@ class LoginSecondlyPage extends StatelessWidget {
             ),
             GestureDetector(
                 onTap: () {
-                  Get.to(() => const Consultants());
+                  Get.to(() => Consultants());
                 },
                 child: Container(
                   width: MediaQuery.of(context).size.width * (0.7),
@@ -133,7 +133,7 @@ class LoginSecondlyPage extends StatelessWidget {
             ),
             GestureDetector(
                 onTap: () {
-                  Get.to(() => const Realestateagency());
+                  Get.to(() =>  Realestateagency());
                 },
                 child: Container(
                   width: MediaQuery.of(context).size.width * (0.7),
@@ -194,7 +194,7 @@ class LoginSecondlyPage extends StatelessWidget {
                     ),
                     child: ElevatedButton(
                       onPressed: () {
-                        Get.to(() => const EducationalTour());
+                        Get.to(() =>  EducationalTour());
                       },
                       style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.transparent,
