@@ -2,8 +2,17 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/home.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 
 class Realestateagency extends StatelessWidget {
+  Future<void> pickImage() async {
+  final ImagePicker _picker = ImagePicker();
+  final XFile? pickedFile = await _picker.pickImage(source: ImageSource.gallery);
+
+  if (pickedFile != null) {
+    print("Picked Image Path: ${pickedFile.path}");
+  }
+}
   const Realestateagency({super.key});
 
   @override
@@ -20,7 +29,7 @@ class Realestateagency extends StatelessWidget {
         children: [
           Container(
             width: 200,
-            height: 131, 
+            height: 131,
             decoration: BoxDecoration(
               image: DecorationImage(
                 image: AssetImage('assets/images/Rectangle 1.png'),
@@ -147,7 +156,9 @@ class Realestateagency extends StatelessWidget {
                           icon: Icon(
                             CupertinoIcons.add_circled,
                           ),
-                          onPressed: () {},
+                          onPressed: () {
+                            pickImage();
+                          },
                         ),
                         hintStyle: TextStyle(
                           fontSize: 13,
@@ -249,7 +260,7 @@ class Realestateagency extends StatelessWidget {
             ),
           ),
           SizedBox(
-              height: 15), // فاصله بین عکس و تکست فیلدها // بخش تکست فیلدها
+              height: 15), 
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 15),
             child: Row(
@@ -261,11 +272,14 @@ class Realestateagency extends StatelessWidget {
                     child: TextField(
                       textAlign: TextAlign.right,
                       decoration: InputDecoration(
-                        hintText: 'بارگذاری تصویر کارت ملی*',
-                        prefixIcon: Icon(CupertinoIcons.add_circled),
-                        hintStyle: TextStyle(
-                          fontSize: 13,
-                          color: Color(0xFFA6A6A6),
+                        hintText: 'بارگذاری تصویر کارت ملی*',hintStyle: TextStyle(fontSize: 11.5),
+                        prefixIcon: IconButton(
+                          icon: Icon(
+                            CupertinoIcons.add_circled,
+                          ),
+                          onPressed: () {
+                            pickImage();
+                          },
                         ),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),

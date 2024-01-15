@@ -2,10 +2,18 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/home.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 
 class Private extends StatelessWidget {
   Private({super.key});
+ Future<void> pickImage() async {
+  final ImagePicker _picker = ImagePicker();
+  final XFile? pickedFile = await _picker.pickImage(source: ImageSource.gallery);
 
+  if (pickedFile != null) {
+    print("Picked Image Path: ${pickedFile.path}");
+  }
+}
   var show = true.obs;
 
   @override
@@ -93,7 +101,7 @@ class Private extends StatelessWidget {
                           prefixIcon: IconButton(
                             icon: const Icon(CupertinoIcons.add_circled),
                             onPressed: () {
-                              //todo need  to  call image picker
+                              pickImage();
                             },
                           ),
                           hintStyle: const TextStyle(

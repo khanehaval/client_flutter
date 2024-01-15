@@ -1,12 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/pages/home.dart';
 import 'package:flutter_application_1/pages/profile.dart';
 import 'package:get/get.dart';
-import 'package:permission_handler/permission_handler.dart';
 
 class RealEstate extends StatelessWidget {
-  const RealEstate({super.key});
+  var show = true.obs;
+
+  RealEstate({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +14,7 @@ class RealEstate extends StatelessWidget {
       appBar: AppBar(
           leading: IconButton(
             onPressed: () {},
-            icon: Icon(Icons.arrow_back_ios_new_rounded),
+            icon: Icon(Icons.arrow_back),
           ),
           actions: [
             GestureDetector(
@@ -53,7 +53,7 @@ class RealEstate extends StatelessWidget {
                         borderRadius: BorderRadius.circular(10),
                         boxShadow: [
                           BoxShadow(
-                            color: Colors.grey.withOpacity(0.8),
+                            color: Colors.grey.withOpacity(0.2),
                             spreadRadius: 1,
                             blurRadius: 8,
                           ),
@@ -70,7 +70,7 @@ class RealEstate extends StatelessWidget {
                         borderRadius: BorderRadius.circular(10),
                         boxShadow: [
                           BoxShadow(
-                            color: Colors.grey.withOpacity(0.8),
+                            color: Colors.grey.withOpacity(0.2),
                             spreadRadius: 1,
                             blurRadius: 8,
                           ),
@@ -87,7 +87,7 @@ class RealEstate extends StatelessWidget {
                         borderRadius: BorderRadius.circular(10),
                         boxShadow: [
                           BoxShadow(
-                            color: Colors.grey.withOpacity(0.8),
+                            color: Colors.grey.withOpacity(0.2),
                             spreadRadius: 1,
                             blurRadius: 8,
                           ),
@@ -104,7 +104,7 @@ class RealEstate extends StatelessWidget {
                         borderRadius: BorderRadius.circular(10),
                         boxShadow: [
                           BoxShadow(
-                            color: Colors.grey.withOpacity(0.8),
+                            color: Colors.grey.withOpacity(0.2),
                             spreadRadius: 1,
                             blurRadius: 8,
                           ),
@@ -121,7 +121,7 @@ class RealEstate extends StatelessWidget {
                         borderRadius: BorderRadius.circular(10),
                         boxShadow: [
                           BoxShadow(
-                            color: Colors.grey.withOpacity(0.8),
+                            color: Colors.grey.withOpacity(0.2),
                             spreadRadius: 1,
                             blurRadius: 8,
                           ),
@@ -138,7 +138,7 @@ class RealEstate extends StatelessWidget {
                         borderRadius: BorderRadius.circular(10),
                         boxShadow: [
                           BoxShadow(
-                            color: Colors.grey.withOpacity(0.8),
+                            color: Colors.grey.withOpacity(0.2),
                             spreadRadius: 1,
                             blurRadius: 8,
                           ),
@@ -155,12 +155,16 @@ class RealEstate extends StatelessWidget {
                         borderRadius: BorderRadius.circular(10),
                         boxShadow: [
                           BoxShadow(
-                            color: Colors.grey.withOpacity(0.8),
+                            color: Colors.grey.withOpacity(0.2),
                             spreadRadius: 1,
                             blurRadius: 8,
                           ),
                         ]),
-                    child: Image.asset('assets/images/Frame 31.png'),
+                    child: GestureDetector(
+                      onTap: () {
+                        Get.to(()=>RealEstate());
+                      },
+                      child: Image.asset('assets/images/Frame 31.png')),
                   ),
                 ],
               ),
@@ -181,7 +185,7 @@ class RealEstate extends StatelessWidget {
                       borderRadius: BorderRadius.circular(10),
                       boxShadow: [
                         BoxShadow(
-                          color: Colors.grey.withOpacity(0.0),
+                          color: Colors.grey.withOpacity(0.2),
                           spreadRadius: 1,
                           blurRadius: 1,
                         ),
@@ -265,39 +269,46 @@ class RealEstate extends StatelessWidget {
               endIndent: 20,
               indent: 20,
             ),
-            SizedBox(height: 10,),
-            Column(
-              children: [
-                SizedBox(
-                  height: 45,
-                  width: 372,
-                  child: TextField(
-                    textAlign: TextAlign.right,
-                    readOnly: true,
-                    decoration: InputDecoration(
-                      hintText: 'فروش ویژه',
-                      
-                      prefixIcon: IconButton(
-                        icon: const Icon(CupertinoIcons.chevron_left_2),     
-                        onPressed: () {},
-                      ),
-                      hintStyle: const TextStyle(
-                          fontSize: 20,
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
-                          fontFamily: 'Iran Sans Bold,'),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      
-                    ),
-                    
-                  ),
-                  
-                ),
-                
-              ],
+            SizedBox(
+              height: 10,
             ),
+            Obx(() => show.isTrue
+                ? Padding(
+                    padding: const EdgeInsets.only(left: 10),
+                    child: Row(
+                      children: [
+                        SizedBox(
+                          height: 45,
+                          width: 372,
+                          child: GestureDetector(
+                            onTap: () {},
+                            child: TextField(
+                              textAlign: TextAlign.right,
+                              readOnly: true,
+                              decoration: InputDecoration(
+                                hintText: 'فروش ویژه',
+                                prefixIcon: IconButton(
+                                  icon:
+                                      const Icon(CupertinoIcons.chevron_left_2),
+                                  onPressed: () {},
+                                ),
+                                hintStyle: const TextStyle(
+                                    fontSize: 20,
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.bold,
+                                    fontFamily: 'Iran Sans Bold,'),
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                  
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  )
+                : const SizedBox.shrink())
           ],
         ),
       ]),

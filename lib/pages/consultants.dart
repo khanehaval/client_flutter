@@ -2,8 +2,21 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/home.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 
 class Consultants extends StatelessWidget {
+  Future<void> pickImage() async {
+    final ImagePicker _picker = ImagePicker();
+    final XFile? pickedFile =
+        await _picker.pickImage(source: ImageSource.gallery);
+
+    if (pickedFile != null) {
+      // Handle the picked image file
+      // You can display the image or perform further processing
+      // For now, let's print the image path
+      print("Picked Image Path: ${pickedFile.path}");
+    }
+  }
 
   var show = true.obs;
 
@@ -28,7 +41,9 @@ class Consultants extends StatelessWidget {
                   height: 131,
                   decoration: const BoxDecoration(
                     image: DecorationImage(
-                      image: AssetImage('assets/images/Rectangle 1.png',),
+                      image: AssetImage(
+                        'assets/images/Rectangle 1.png',
+                      ),
                     ),
                   ),
                 ),
@@ -96,7 +111,7 @@ class Consultants extends StatelessWidget {
                           prefixIcon: IconButton(
                             icon: const Icon(CupertinoIcons.add_circled),
                             onPressed: () {
-                              //todo need  to  call image picker
+                              pickImage();
                             },
                           ),
                           hintStyle: const TextStyle(
@@ -141,9 +156,7 @@ class Consultants extends StatelessWidget {
                           hintText: 'بارگذاری تصویر کارت ملی*',
                           prefixIcon: IconButton(
                             icon: const Icon(Icons.location_searching_sharp),
-                            onPressed: () {
-                              //todo need  to  call image picker
-                            },
+                            onPressed: () {},
                           ),
                           hintStyle: const TextStyle(
                             fontSize: 13,
@@ -164,11 +177,11 @@ class Consultants extends StatelessWidget {
                           hintText: 'تهران*',
                           prefixIcon: Icon(Icons.location_on_outlined),
                           hintStyle: const TextStyle(
-                        color: Colors.black,fontWeight: FontWeight.bold,fontFamily: 'Iran Sans Bold'
-                          ),
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold,
+                              fontFamily: 'Iran Sans Bold'),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10),
-                            
                           ),
                         ),
                       ),
@@ -230,8 +243,7 @@ class Consultants extends StatelessWidget {
                     ),
                   ),
                 )
-              : const SizedBox.shrink()
-              ),
+              : const SizedBox.shrink()),
         ],
       ),
     );
