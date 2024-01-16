@@ -171,7 +171,9 @@ class Private extends StatelessWidget {
                         gradient: getGradient(),
                       ),
                       child: ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Get.to(()=> Home());
+                        },
                         style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.transparent,
                             shadowColor: Colors.transparent),

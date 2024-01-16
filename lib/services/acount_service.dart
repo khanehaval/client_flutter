@@ -1,4 +1,6 @@
 import 'package:dio/dio.dart';
+import 'package:flutter_application_1/services/models/advisor_req.dart';
+import 'package:flutter_application_1/services/models/advisor_res.dart';
 import 'package:flutter_application_1/services/models/login_res.dart';
 import 'package:flutter_application_1/services/models/send_verification_req.dart';
 import 'package:flutter_application_1/services/models/send_verification_res.dart';
@@ -35,4 +37,20 @@ class AccountService {
       return null;
     }
   }
+  
+  Future<AdvisorRes?> advisorReq(
+      {required String code, required String cellphone}) async {
+    try {
+      final result = await _dio.post("",
+          data: SendVerificationReq(
+                  address: "2188", cellphone: cellphone, code: int.parse(code))
+              .toJson());
+      return AdvisorRes.fromJson(result.data);
+    } catch (e) {
+      _logger.e(e);
+      return null;
+    }
+}
+
+  sendInformationAccount({required String firstName, required String lastName, required String userName, required String imgUrl, required String advisorArea, required String address}) {}
 }

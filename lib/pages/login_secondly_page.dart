@@ -24,7 +24,7 @@ class LoginSecondlyPage extends StatelessWidget {
           GestureDetector(
             onTap: () {
               Get.to(
-                () => const Profile(),
+                () =>  Profile(),
               );
             },
             child: Container(

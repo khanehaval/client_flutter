@@ -20,7 +20,7 @@ class UserAdapter extends TypeAdapter<User> {
       phoneNumber: fields[0] as String,
       userToken: fields[1] as String,
       userId: fields[2] as String,
-      userType: fields[3] as UserType,
+      userType: fields[3] as UserType, imgUrl: '', advisorArea: '', address: '',
     );
   }
 

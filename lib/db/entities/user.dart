@@ -22,5 +22,5 @@ class User {
       {required this.phoneNumber,
       required this.userToken,
       this.userId = "",
-      this.userType = UserType.advisor});
+      this.userType = UserType.advisor, required String imgUrl, required String advisorArea, required String address});
 }
