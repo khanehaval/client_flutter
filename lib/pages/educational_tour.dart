@@ -3,18 +3,38 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/Advertisements.dart';
 import 'package:flutter_application_1/pages/Messages.dart';
 import 'package:flutter_application_1/pages/advertisement_registration.dart';
-import 'package:flutter_application_1/pages/category.dart';
+import 'package:flutter_application_1/pages/category/category.dart';
 import 'package:flutter_application_1/pages/home.dart';
 import 'package:get/get.dart';
 
-class EducationalTour extends StatelessWidget {
+class EducationalTour extends StatefulWidget {
+  int index;
+  bool showEducation;
+
+  EducationalTour({super.key, this.index = 0, this.showEducation = true});
+
+  @override
+  State<EducationalTour> createState() => _EducationalTourState();
+}
+
+class _EducationalTourState extends State<EducationalTour> {
   var currentPageIndex = 0.obs;
+  var showEducation = false.obs;
 
-  var page = [
-    Home(),Messages(),AdvertisementRegistration(),Category(),Advertisements()
+  @override
+  void initState() {
+    showEducation.value = widget.showEducation;
+    currentPageIndex.value = widget.index;
+    super.initState();
+  }
+
+  var pages = [
+    Home(),
+    const Messages(),
+    const AdvertisementRegistration(),
+    Category(),
+    const Advertisements()
   ];
-
-  EducationalTour({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -39,69 +59,70 @@ class EducationalTour extends StatelessWidget {
           ),
         ],
       ),
-      body: Container(
-        color: Colors.white60,
-        child: Padding(
-          padding: const EdgeInsets.all(10),
-          child: Column(
-            children: [
-              GestureDetector(
-                onTap: () {
-                  Get.to(() => ());
-                },
-                child: GestureDetector(
-                  onTap: () {
-                    Get.to(() => ());
-                  },
-                  child: Image.asset(
-                    'assets/images/Personal user panel.png',
-                    width: 392,
-                    height: 195,
-                    fit: BoxFit.fitHeight,
-                  ),
+      body: Obx(() => showEducation.value
+          ? Container(
+              color: Colors.white60,
+              child: Padding(
+                padding: const EdgeInsets.all(10),
+                child: Column(
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        Get.to(() => ());
+                      },
+                      child: GestureDetector(
+                        onTap: () {
+                          Get.to(() => ());
+                        },
+                        child: Image.asset(
+                          'assets/images/Personal user panel.png',
+                          width: 392,
+                          height: 195,
+                          fit: BoxFit.fitHeight,
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        Get.to(() => ());
+                      },
+                      child: Image.asset(
+                        "assets/images/Consultants user panel.png",
+                        width: 392,
+                        height: 195,
+                        fit: BoxFit.fitHeight,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        Get.to(() => ());
+                      },
+                      child: Image.asset(
+                        "assets/images/Real estate agency user panel.png",
+                        width: 392,
+                        height: 195,
+                        fit: BoxFit.fitHeight,
+                      ),
+                    ),
+                  ],
                 ),
               ),
-              SizedBox(
-                height: 20,
-              ),
-              GestureDetector(
-                onTap: () {
-                  Get.to(() => ());
-                },
-                child: Image.asset(
-                  "assets/images/Consultants user panel.png",
-                  width: 392,
-                  height: 195,
-                  fit: BoxFit.fitHeight,
-                ),
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              GestureDetector(
-                onTap: () {
-                  Get.to(() => ());
-                },
-                child: Image.asset(
-                  "assets/images/Real estate agency user panel.png",
-                  width: 392,
-                  height: 195,
-                  fit: BoxFit.fitHeight,
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
+            )
+          : pages[currentPageIndex.value]),
       bottomNavigationBar: Obx(
         () => NavigationBar(
           backgroundColor: Colors.white,
           onDestinationSelected: (int index) {
-            currentPageIndex.update((val) {
-              currentPageIndex.value = index;
-            });
+            currentPageIndex.value = index;
+            showEducation.value = false;
           },
-          indicatorColor: Color(0x36D859),
+          indicatorColor: const Color(0x0036d859),
           selectedIndex: currentPageIndex.value,
           destinations: const <Widget>[
             NavigationDestination(
@@ -132,7 +153,6 @@ class EducationalTour extends StatelessWidget {
           ],
         ),
       ),
-      bottomSheet: Obx(() => page[currentPageIndex.value]),
     );
   }
 }

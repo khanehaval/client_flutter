@@ -53,7 +53,7 @@ dependencies:
   hive: 2.2.3
   logger: ^2.0.2+1
   hive_flutter: 1.1.0
-
+  scrollable_positioned_list: ^0.3.8
   path_provider: 2.1.1
   json_serializable: 6.7.1
   curved_navigation_bar: 1.0.3
