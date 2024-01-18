@@ -29,28 +29,16 @@ class AccountService {
     try {
       final result = await _dio.post("",
           data: SendVerificationReq(
-                  address: "2185", cellphone: cellphone, code: int.parse(code))
-              .toJson());
+            address: "2185",
+            cellphone: cellphone,
+            code: int.parse(code), token: '', userId: '',
+          ).toJson());
       return SendVerificationRes.fromJson(result.data);
     } catch (e) {
       _logger.e(e);
       return null;
     }
   }
-  
-  Future<AdvisorRes?> advisorReq(
-      {required String code, required String cellphone}) async {
-    try {
-      final result = await _dio.post("",
-          data: SendVerificationReq(
-                  address: "2188", cellphone: cellphone, code: int.parse(code))
-              .toJson());
-      return AdvisorRes.fromJson(result.data);
-    } catch (e) {
-      _logger.e(e);
-      return null;
-    }
-}
 
   sendInformationAccount({required String firstName, required String lastName, required String userName, required String imgUrl, required String advisorArea, required String address}) {}
 }

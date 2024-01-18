@@ -10,7 +10,7 @@ SendVerificationReq _$SendVerificationReqFromJson(Map<String, dynamic> json) =>
     SendVerificationReq(
       address: json['address'] as String,
       cellphone: json['cellphone'] as String,
-      code: json['code'] as int,
+      code: json['code'] as int, token: '', userId: '',
     );
 
 Map<String, dynamic> _$SendVerificationReqToJson(
