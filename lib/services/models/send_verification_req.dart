@@ -9,7 +9,8 @@ class SendVerificationReq {
   int code;
 
   SendVerificationReq(
-      {required this.address, required this.cellphone, required this.code, required String token, required String userId});
+      {required this.address
+      ,required this.cellphone,required this.code, required String userId, required String token,  });
 
   Map<String, dynamic> toJson() => _$SendVerificationReqToJson(this);
   

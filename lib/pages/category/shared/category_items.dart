@@ -43,7 +43,7 @@ class _CategoryItemsState extends State<CategoryItems> {
                   _controller.scrollTo(
                       index: i,
                       duration: const Duration(microseconds: 100),
-                      opacityAnimationWeights: [10,30,10],
+                      opacityAnimationWeights: [10, 30, 10],
                       alignment: 0.5);
                   _currentIndex.value = i;
                 },
@@ -56,7 +56,7 @@ class _CategoryItemsState extends State<CategoryItems> {
                         borderRadius: BorderRadius.circular(10),
                         border: Border.all(
                           color: _currentIndex.value == i
-                              ? Colors.purple
+                              ? Color.fromARGB(255, 9, 63, 157)
                               : Colors.black38,
                         ),
                       ),
@@ -83,12 +83,11 @@ class _CategoryItemsState extends State<CategoryItems> {
 
   final _pages = [
     AmlakPage(),
+    EjaraMaskoni(),
     ForoshMaskoni(),
-     EjaraMaskoni(),
-    ForoshMaskoni(),
-    AmlakPage(),
     ForoshMaskoni(),
     AmlakPage(),
-
+    ForoshMaskoni(),
+    AmlakPage(),
   ];
 }

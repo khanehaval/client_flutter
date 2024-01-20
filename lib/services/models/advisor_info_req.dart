@@ -10,5 +10,3 @@ class AdvisorInfoReq{
   AdvisorInfoReq(this.address,this.userId,this.token,this.group, );
   Map<String, dynamic> toJson() => _$AdvisorInfoReqToJson(this);
 }
-_$AdvisorInfoReqToJson(AdvisorInfoReq advisorInfoReq) {
-}

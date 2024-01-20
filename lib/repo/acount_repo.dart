@@ -5,6 +5,7 @@ import 'package:flutter_application_1/db/entities/user.dart';
 import 'package:flutter_application_1/db/entities/user_type.dart';
 import 'package:flutter_application_1/services/acount_service.dart';
 import 'package:flutter_application_1/services/models/login_res.dart';
+import 'package:flutter_osm_plugin/flutter_osm_plugin.dart';
 import 'package:get_it/get_it.dart';
 
 class AccountRepo {
@@ -41,8 +42,7 @@ class AccountRepo {
   Future<bool> Advisor(
       {required String firstName, required String lastName,required String userName, required String imgUrl,required String advisorArea, required String address,}) async {
     var result = await _accountService.sendInformationAccount(
-      firstName: firstName,lastName: lastName,userName: userName,imgUrl: imgUrl,advisorArea: advisorArea,address: address,
-      );
+      firstName: firstName,lastName: lastName,userName: userName,imgUrl: imgUrl,advisorArea: advisorArea,address: address,);
     if (result?.status == 1) {
       _userDao.saveUser(User(
           phoneNumber: "",

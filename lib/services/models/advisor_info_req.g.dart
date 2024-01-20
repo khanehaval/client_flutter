@@ -14,3 +14,10 @@ AdvisorInfoReq _$AdvisorInfoReqFromJson(Map<String, dynamic> json) =>
       json['group'] as int,
     );
 
+Map<String, dynamic> _$AdvisorInfoReqToJson(AdvisorInfoReq instance) =>
+    <String, dynamic>{
+      'address': instance.address,
+      'userId': instance.userId,
+      'token': instance.token,
+      'group': instance.group,
+    };

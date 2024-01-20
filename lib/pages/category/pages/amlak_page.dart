@@ -191,7 +191,8 @@ class AmlakPage extends StatelessWidget {
             ),
           ),
         ),
-        _buildItem2(),
+        _buildItem2
+        (),
         const SizedBox(
           height: 20,
         )
@@ -279,8 +280,7 @@ class AmlakPage extends StatelessWidget {
             )
           : const SizedBox.shrink(),
     );
-  }
-
+  }  
   Obx _buildItem2() {
     return Obx(
       () => _show_item_2.isTrue
@@ -363,5 +363,4 @@ class AmlakPage extends StatelessWidget {
             )
           : const SizedBox.shrink(),
     );
-  }
-}
+  }}
