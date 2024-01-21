@@ -95,40 +95,44 @@ class EjaraMaskoni extends StatelessWidget {
           child: Container(
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10), border: Border.all()),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            child: Column(
               children: [
-                Obx(
-                  () => IconButton(
-                    icon: _show_item_1.value
-                        ? const Icon(
-                            Icons.keyboard_double_arrow_down_outlined,
-                            size: 25,
-                          )
-                        : const Icon(CupertinoIcons.chevron_left_2),
-                    onPressed: () {
-                      _show_item_1.value = !_show_item_1.value;
-                    },
-                  ),
-                ),
-                Divider(
-                  endIndent: 20,
-                  indent: 20,
-                ),
-                const Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: Column(
-                    children: [
-                      Text(
-                        'اجاره آپارتمان بر اساس متراژ',
-                        style: TextStyle(
-                            fontSize: 20,
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold,
-                            fontFamily: 'Iran Sans Bold,'),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Obx(
+                      () => IconButton(
+                        icon: _show_item_1.value
+                            ? const Icon(
+                                Icons.keyboard_double_arrow_down_outlined,
+                                size: 25,
+                              )
+                            : const Icon(CupertinoIcons.chevron_left_2),
+                        onPressed: () {
+                          _show_item_1.value = !_show_item_1.value;
+                        },
                       ),
-                    ],
-                  ),
+                    ),
+                    Divider(
+                      endIndent: 20,
+                      indent: 20,
+                    ),
+                    const Padding(
+                      padding: EdgeInsets.all(8.0),
+                      child: Column(
+                        children: [
+                          Text(
+                            'اجاره آپارتمان بر اساس متراژ',
+                            style: TextStyle(
+                                fontSize: 20,
+                                color: Colors.black,
+                                fontWeight: FontWeight.bold,
+                                fontFamily: 'Iran Sans Bold,'),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),
@@ -151,78 +155,72 @@ class EjaraMaskoni extends StatelessWidget {
                 children: [
                   GestureDetector(
                     onTap: () {},
-                    child: Column(
+                    child: Row(
                       children: [
-                        Row(
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.all(5),
-                              child: Container(
-                                height: 57,
-                                width: 176,
-                                decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.circular(10),
-                                    boxShadow: [
-                                      BoxShadow(
-                                        color: Colors.grey.withOpacity(0.1),
-                                        spreadRadius: 1,
-                                        blurRadius: 5,
-                                      )
-                                    ],
-                                    border: Border.all(
-                                      color: Colors.black45,
-                                      // Initial border color
-                                      width: 0.3,
-                                    )),
-                                child: Text(
-                                  'تا 60 متر مربع',
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                    color: Color(0xFF303030),
-                                    fontSize: 14,
-                                    fontFamily: 'Iran Sans Bold',
-                                    fontWeight: FontWeight.w300,
-                                    height: 4,
-                                  ),
-                                ),
+                        Padding(
+                          padding: const EdgeInsets.all(5),
+                          child: Container(
+                            height: 57,
+                            width: 176,
+                            decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(10),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.grey.withOpacity(0.1),
+                                    spreadRadius: 1,
+                                    blurRadius: 5,
+                                  )
+                                ],
+                                border: Border.all(
+                                  color: Colors.black45,
+                                  width: 0.3,
+                                )),
+                            child: Text(
+                              'تا 60 متر مربع',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                color: Color(0xFF303030),
+                                fontSize: 14,
+                                fontFamily: 'Iran Sans Bold',
+                                fontWeight: FontWeight.w300,
+                                height: 4,
                               ),
                             ),
-                            Padding(
-                              padding: const EdgeInsets.all(0),
-                              child: Container(
-                                height: 57,
-                                width: 176,
-                                decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.circular(10),
-                                    boxShadow: [
-                                      BoxShadow(
-                                        color: Colors.grey.withOpacity(0.1),
-                                        spreadRadius: 1,
-                                        blurRadius: 10,
-                                      )
-                                    ],
-                                    border: Border.all(
-                                      color: Colors.black45,
-                                      // Initial border color
-                                      width: 0.3,
-                                    )),
-                                child: Text(
-                                  'تا 50 متر مربع',
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                    color: Color(0xFF303030),
-                                    fontSize: 14,
-                                    fontFamily: 'Iran Sans Bold',
-                                    fontWeight: FontWeight.w300,
-                                    height: 4,
-                                  ),
-                                ),
-                              ),
-                            )
-                          ],
+                          ),
                         ),
+                        Padding(
+                          padding: const EdgeInsets.all(0),
+                          child: Container(
+                            height: 57,
+                            width: 176,
+                            decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(10),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.grey.withOpacity(0.1),
+                                    spreadRadius: 1,
+                                    blurRadius: 10,
+                                  )
+                                ],
+                                border: Border.all(
+                                  color: Colors.black45,
+                                  width: 0.3,
+                                )),
+                            child: Text(
+                              'تا 50 متر مربع',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                color: Color(0xFF303030),
+                                fontSize: 14,
+                                fontFamily: 'Iran Sans Bold',
+                                fontWeight: FontWeight.w300,
+                                height: 4,
+                              ),
+                            ),
+                          ),
+                        )
                       ],
                     ),
                   ),
@@ -245,7 +243,6 @@ class EjaraMaskoni extends StatelessWidget {
                               ],
                               border: Border.all(
                                 color: Colors.black45,
-                                // Initial border color
                                 width: 0.3,
                               )),
                           child: Text(
@@ -278,7 +275,6 @@ class EjaraMaskoni extends StatelessWidget {
                               ],
                               border: Border.all(
                                 color: Colors.black45,
-                                // Initial border color
                                 width: 0.3,
                               )),
                           child: Text(
@@ -317,7 +313,6 @@ class EjaraMaskoni extends StatelessWidget {
                                   ],
                                   border: Border.all(
                                     color: Colors.black45,
-                                    // Initial border color
                                     width: 0.3,
                                   )),
                               child: Text(
@@ -350,7 +345,6 @@ class EjaraMaskoni extends StatelessWidget {
                                   ],
                                   border: Border.all(
                                     color: Colors.black45,
-                                    // Initial border color
                                     width: 0.3,
                                   )),
                               child: Text(
@@ -363,26 +357,86 @@ class EjaraMaskoni extends StatelessWidget {
                                   fontWeight: FontWeight.w300,
                                   height: 4,
                                 ),
-                                
                               ),
-                              
                             ),
-                            
                           ),
-                          
                         ],
-                        
                       ),
-                      
                     ],
-                    
                   ),
                 ],
               ),
             
             )
-          : const SizedBox.shrink(),
-        
+           
+          : SingleChildScrollView(
+              reverse: true,
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(15),
+                    child: Container(
+                      height: 90,
+                      width: 147,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(10),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withOpacity(0.3),
+                            blurRadius: 5,
+                          )
+                        ],
+                      ),
+                      child: Image.asset(
+                        'assets/images/Group 651.png',
+                        fit: BoxFit.fill,
+                      ),
+                    ),
+                  ),
+                  Container(
+                    height: 90,
+                    width: 147,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(10),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.3),
+                          blurRadius: 5,
+                        )
+                      ],
+                    ),
+                    child: Image.asset(
+                      'assets/images/Group 655.png',
+                      fit: BoxFit.fill,
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Container(
+                      height: 90,
+                      width: 147,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(10),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withOpacity(0.3),
+                            blurRadius: 5,
+                          )
+                        ],
+                      ),
+                      child: Image.asset(
+                        'assets/images/Group 655.png',
+                        fit: BoxFit.fill,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
     );
   }
 }

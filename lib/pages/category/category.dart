@@ -93,18 +93,22 @@ class Category extends StatelessWidget {
                   )
                 ],
                 border: Border.all(
-                  color: Colors.blue, // Initial border color
+                  color: Colors.blue,
                   width: 0.7,
                 ),
               ),
-              child: Image.asset('assets/images/forosh_maskoni.png'),
+              child: GestureDetector(
+                  onTap: () {
+                    Get.to(() => MainCategory(2));
+                  },
+                  child: Image.asset('assets/images/forosh_maskoni.png')),
             ),
           ),
           Column(
             children: [
               GestureDetector(
                 onTap: () {
-                  Get.to(() => MainCategory(1));
+                  Get.to(() => MainCategory(2));
                 },
                 child: Row(
                   children: [
@@ -129,8 +133,13 @@ class Category extends StatelessWidget {
                                   color: Colors.blue, // Initial border color
                                   width: 0.7,
                                 )),
-                            child: Image.asset(
-                                'assets/images/ejara_tajari_edari.png'),
+                            child: GestureDetector(
+                              onTap: () {
+                                Get.to(() => MainCategory(3));
+                              },
+                              child: Image.asset(
+                                  'assets/images/ejara_tajari_edari.png'),
+                            ),
                           ),
                         ),
                       ],
@@ -147,8 +156,13 @@ class Category extends StatelessWidget {
                               color: Colors.blue, // Initial border color
                               width: 0.7,
                             )),
-                        child: Image.asset(
-                            'assets/images/forosh_tagari_edari.png'),
+                        child: GestureDetector(
+                          onTap: () {
+                            Get.to(() => MainCategory(3));
+                          },
+                          child: Image.asset(
+                              'assets/images/forosh_tagari_edari.png'),
+                        ),
                       ),
                     ),
                   ],
@@ -183,8 +197,13 @@ class Category extends StatelessWidget {
                                   color: Colors.blue, // Initial border color
                                   width: 0.7,
                                 )),
-                            child: Image.asset(
-                                'assets/images/ejara_kota_modat.png'),
+                            child: GestureDetector(
+                              onTap: () {
+                                Get.to(() => MainCategory(5));
+                              },
+                              child: Image.asset(
+                                  'assets/images/ejara_kota_modat.png'),
+                            ),
                           ),
                         ),
                       ],
@@ -208,7 +227,11 @@ class Category extends StatelessWidget {
                               color: Colors.blue, // Initial border color
                               width: 0.7,
                             )),
-                        child: Image.asset('assets/images/sacht_saz.png'),
+                        child: GestureDetector(
+                            onTap: () {
+                              Get.to(() => MainCategory(6));
+                            },
+                            child: Image.asset('assets/images/sacht_saz.png')),
                       ),
                     ),
                   ],

@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/db/dao/user_dao.dart';
-import 'package:flutter_application_1/db/entities/advisor.dart';
 import 'package:flutter_application_1/db/entities/user.dart';
 import 'package:flutter_application_1/db/entities/user_type.dart';
 import 'package:flutter_application_1/services/acount_service.dart';
 import 'package:flutter_application_1/services/models/login_res.dart';
-import 'package:flutter_osm_plugin/flutter_osm_plugin.dart';
 import 'package:get_it/get_it.dart';
 
 class AccountRepo {
@@ -34,24 +32,7 @@ class AccountRepo {
           phoneNumber: cellphone,
           userToken: "",
           userId: "",
-          userType: UserType.advisor, imgUrl: '', advisorArea: '', address: ''));
-      return true;
-    }
-    return false;
-  }
-  Future<bool> Advisor(
-      {required String firstName, required String lastName,required String userName, required String imgUrl,required String advisorArea, required String address,}) async {
-    var result = await _accountService.sendInformationAccount(
-      firstName: firstName,lastName: lastName,userName: userName,imgUrl: imgUrl,advisorArea: advisorArea,address: address,);
-    if (result?.status == 1) {
-      _userDao.saveUser(User(
-          phoneNumber: "",
-          userToken: "",
-          userId: "",
-          imgUrl: "",
-          advisorArea: "",
-          address:"",
-          userType: UserType.advisor));
+          userType: UserType.advisor, ));
       return true;
     }
     return false;

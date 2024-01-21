@@ -1,13 +1,9 @@
 import 'package:dio/dio.dart';
-import 'package:flutter_application_1/services/models/advisor_req.dart';
-import 'package:flutter_application_1/services/models/advisor_res.dart';
 import 'package:flutter_application_1/services/models/login_res.dart';
 import 'package:flutter_application_1/services/models/send_verification_req.dart';
 import 'package:flutter_application_1/services/models/send_verification_res.dart';
-import 'package:flutter_osm_plugin/flutter_osm_plugin.dart';
 import 'package:logger/logger.dart';
 
-import 'models/advisor_info_req.dart';
 import 'models/login_req.dart';
 
 class AccountService {
@@ -31,10 +27,8 @@ class AccountService {
     try {
       final result = await _dio.post("",
           data: SendVerificationReq(
-            address: "2185",
-            cellphone: cellphone,
-            code: int.parse(code), userId: '', token: '',
-          ).toJson());
+                  address: "2185", cellphone: cellphone, code: int.parse(code))
+              .toJson());
       return SendVerificationRes.fromJson(result.data);
     } catch (e) {
       _logger.e(e);
@@ -42,33 +36,5 @@ class AccountService {
     }
   }
 
-  sendInformationAccount({
-    required String firstName,
-    required String lastName,
-    required String userName,
-    required String imgUrl,
-    required String advisorArea,
-    required String address,
-  }) {}
-  
-  Future<AdvisorInfoReq> advisorInfoReq(
-      {required String address, required String userId,required String group, required String token,}) async {
-    try {
-      final result = await _dio.post("",
-          data: AdvisorInfoReq(
-            address: "2188",
-            userId: "3965",
-            token:"9915930318416998",
-           group:"52",
-          ).toJson());
-   
-    } catch (e) {
-      return null;
-    }
-  }
-    AdvisorInfoReq({
-  
-    required String address, required String userId, required String token,required String group
-  }) {}
+  sendInformationAccount({required String firstName, required String lastName, required String userName, required String imgUrl, required String advisorArea, required String address}) {}
 }
-

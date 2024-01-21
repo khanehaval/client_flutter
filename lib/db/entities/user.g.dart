@@ -20,13 +20,9 @@ class UserAdapter extends TypeAdapter<User> {
       phoneNumber: fields[0] as String,
       userToken: fields[1] as String,
       userId: fields[2] as String,
-      userType: fields[3] as  UserType, 
-      imgUrl: fields[4] as String,
-       advisorArea: fields[5] as String,
-       address: fields[6] as String,
-       );
+      userType: fields[3] as UserType,
+    );
   }
-
 
   @override
   void write(BinaryWriter writer, User obj) {
