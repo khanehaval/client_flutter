@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 
 class EjaraMaskoni extends StatelessWidget {
   final _show_item_1 = false.obs;
-  final _show_item_2 = false.obs;
+  
 
   EjaraMaskoni({super.key});
 
@@ -109,7 +109,7 @@ class EjaraMaskoni extends StatelessWidget {
                               )
                             : const Icon(CupertinoIcons.chevron_left_2),
                         onPressed: () {
-                          _show_item_1.value = !_show_item_1.value;
+                          _show_item_1.value = !_show_item_1.isTrue;
                         },
                       ),
                     ),
@@ -145,7 +145,6 @@ class EjaraMaskoni extends StatelessWidget {
       ],
     );
   }
-
   Obx buildItem1() {
     return Obx(
       () => _show_item_1.isTrue
@@ -437,6 +436,8 @@ class EjaraMaskoni extends StatelessWidget {
                 ],
               ),
             ),
+          
     );
   }
+  
 }

@@ -236,9 +236,9 @@ class AmlakPage extends StatelessWidget {
                                           )
                                         ],
                                         border: Border.all(
-                                          color: Colors.blue,
+                                            color: Colors.black,
                                           // Initial border color
-                                          width: 0.7,
+                                          width: 0.1,
                                         )),
                                     child: Image.asset(
                                         'assets/images/ejara_tajari_edari.png'),
@@ -262,9 +262,9 @@ class AmlakPage extends StatelessWidget {
                                       )
                                     ],
                                     border: Border.all(
-                                      color: Colors.blue,
-                                      // Initial border color
-                                      width: 0.7,
+                                        color: Colors.black,
+                                          // Initial border color
+                                          width: 0.1,
                                     )),
                                 child: Image.asset(
                                     'assets/images/forosh_tagari_edari.png'),
@@ -317,9 +317,9 @@ class AmlakPage extends StatelessWidget {
                                           )
                                         ],
                                         border: Border.all(
-                                          color: Colors.blue,
+                                          color: Colors.black,
                                           // Initial border color
-                                          width: 0.7,
+                                          width: 0.1,
                                         )),
                                     child: Image.asset(
                                         'assets/images/Group 655.png',
@@ -345,8 +345,8 @@ class AmlakPage extends StatelessWidget {
                                     ],
                                     border: Border.all(
                                       color: Colors.blue,
-                                      // Initial border color
-                                      width: 0.7,
+                                      
+                                      width: 0.1,
                                     )),
                                 child: Image.asset(
                                     'assets/images/Group 654.png',

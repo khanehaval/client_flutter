@@ -1,4 +1,8 @@
+import 'dart:js_interop';
+
+import 'package:country_code_picker/country_code_picker.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter_application_1/services/models/advisor_info_req.dart';
 import 'package:flutter_application_1/services/models/login_res.dart';
 import 'package:flutter_application_1/services/models/send_verification_req.dart';
 import 'package:flutter_application_1/services/models/send_verification_res.dart';
@@ -36,5 +40,18 @@ class AccountService {
     }
   }
 
-  sendInformationAccount({required String firstName, required String lastName, required String userName, required String imgUrl, required String advisorArea, required String address}) {}
+  sendInformationAccount({
+    required String firstName,
+    required String lastName,
+    required String userName,
+    required String imgUrl,
+    required String advisorArea,
+    required String address,
+  }) {}
+
+  advisorInfoReq(
+      {required String address,
+      required String userId,
+      required String token,
+      required String group}) {}
 }
