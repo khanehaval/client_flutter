@@ -26,12 +26,26 @@ class _SplashPageOneState extends State<Messages> {
               ),
               Image.asset(
                 'assets/images/Page 1.png',
-              ),SizedBox(height: 10,),
+              ),
+              SizedBox(
+                height: 10,
+              ),
               Column(
                 children: [
-                  Text(
-                      "اینجا کلی امکانات جدید و جذاب داریم، آگهی، مشاور، آژانس همه روی نقشه منتظر شما هستند ! ! !",style: TextStyle(fontSize: 22,fontFamily: "Iran Sans Bold"),),
-                      
+                  SizedBox(
+                    width: 283,
+                    child: Text(
+                      'اینجا کلی امکانات جدید و جذاب داریم، آگهی، مشاور، آژانس همه روی نقشه منتظر شما هستند ...',
+                      textAlign: TextAlign.justify,
+                      style: TextStyle(
+                        color: Color(0xFF0E203B),
+                        fontSize: 22,
+                        fontWeight: FontWeight.w400,
+                        height: 0,
+                        letterSpacing: -0.50,
+                      ),
+                    ),
+                  )
                 ],
               )
             ],

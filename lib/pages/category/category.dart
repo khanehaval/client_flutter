@@ -150,10 +150,9 @@ class Category extends StatelessWidget {
                         height: 130,
                         width: 167,
                         decoration: BoxDecoration(
-                            // color: Colors.white,
                             borderRadius: BorderRadius.circular(10),
                             border: Border.all(
-                              color: Colors.blue, // Initial border color
+                              color: Colors.blue,
                               width: 0.7,
                             )),
                         child: GestureDetector(
@@ -176,37 +175,33 @@ class Category extends StatelessWidget {
                 onTap: () {},
                 child: Row(
                   children: [
-                    Row(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.all(15),
-                          child: Container(
-                            height: 130,
-                            width: 167,
-                            decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(10),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.grey.withOpacity(0.5),
-                                    spreadRadius: 1,
-                                    blurRadius: 10,
-                                  )
-                                ],
-                                border: Border.all(
-                                  color: Colors.blue, // Initial border color
-                                  width: 0.7,
-                                )),
-                            child: GestureDetector(
-                              onTap: () {
-                                Get.to(() => MainCategory(5));
-                              },
-                              child: Image.asset(
-                                  'assets/images/ejara_kota_modat.png'),
-                            ),
-                          ),
+                    Padding(
+                      padding: const EdgeInsets.all(15),
+                      child: Container(
+                        height: 130,
+                        width: 167,
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(10),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey.withOpacity(0.5),
+                                spreadRadius: 1,
+                                blurRadius: 10,
+                              )
+                            ],
+                            border: Border.all(
+                              color: Colors.blue, // Initial border color
+                              width: 0.7,
+                            )),
+                        child: GestureDetector(
+                          onTap: () {
+                            Get.to(() => MainCategory(5));
+                          },
+                          child:
+                              Image.asset('assets/images/ejara_kota_modat.png'),
                         ),
-                      ],
+                      ),
                     ),
                     Padding(
                       padding: const EdgeInsets.all(10),
