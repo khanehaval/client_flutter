@@ -13,6 +13,5 @@ class SendVerificationReq {
       ,required this.cellphone,required this.code, });
 
   Map<String, dynamic> toJson() => _$SendVerificationReqToJson(this);
-  
-  _$SendVerificationReqToJson(SendVerificationReq sendVerificationReq) {}
+
 }
