@@ -15,7 +15,7 @@ class IntroScreen extends StatelessWidget {
     return Scaffold(
         body: IntroductionScreen(
       globalBackgroundColor: Colors.white,
-      // scrollPhysics: BouncingScrollPhysics(),
+     
       pages: [
         PageViewModel(
           titleWidget: Column(

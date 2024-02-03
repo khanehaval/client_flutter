@@ -59,7 +59,7 @@ class ForoshMaskoni extends StatelessWidget {
                     ],
                   ),
                   child: Image.asset(
-                    'assets/images/Group 759.png',
+                    'assets/images/kolang.png',
                     fit: BoxFit.fill,
                   ),
                 ),
@@ -78,7 +78,7 @@ class ForoshMaskoni extends StatelessWidget {
                   ],
                 ),
                 child: Image.asset(
-                  'assets/images/Group 758.png',
+                  'assets/images/vila.png',
                   fit: BoxFit.fill,
                 ),
               ),
@@ -676,7 +676,7 @@ class ForoshMaskoni extends StatelessWidget {
               ),
             ]),
           )
-        : SizedBox.shrink());
+        : const SizedBox.shrink());
   }
 
   Obx _buildItem3() {
@@ -840,7 +840,7 @@ class ForoshMaskoni extends StatelessWidget {
                             ],
                           ),
                         ]))
-                    : SizedBox.shrink())
+                    : const SizedBox.shrink())
               ],
             ),
     );

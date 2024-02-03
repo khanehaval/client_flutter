@@ -3,7 +3,6 @@ import 'package:flutter_application_1/db/dao/user_dao.dart';
 import 'package:flutter_application_1/db/entities/user.dart';
 import 'package:flutter_application_1/db/entities/user_type.dart';
 import 'package:flutter_application_1/services/acount_service.dart';
-import 'package:flutter_application_1/services/models/advisor_info_req.dart';
 import 'package:flutter_application_1/services/models/login_res.dart';
 import 'package:get_it/get_it.dart';
 
@@ -30,26 +29,13 @@ class AccountRepo {
         cellphone: cellphone, code: cellphone);
     if (result?.status == 1) {
       _userDao.saveUser(User(
-          phoneNumber: cellphone,
-          userToken: "",
-          userId: "",
-          userType: UserType.advisor, ));
+        phoneNumber: cellphone,
+        userToken: "",
+        userId: "",
+        userType: UserType.advisor,
+      ));
       return true;
     }
     return false;
   }
-  Future<bool> AdvisorInfoReq(
-      {required String address, required String userId,required String token,required String group}) async {
-    var result = await _accountService.advisorInfoReq(
-        address: address, userId: userId,token: token,group: group);
-    if (result?.status == 1) {
-      _userDao.saveUser(User(
-          phoneNumber: "",
-          userToken: "",
-          userId: "",
-          userType: UserType.advisor,));
-      return true;
-    }
-    return false;
-}
 }

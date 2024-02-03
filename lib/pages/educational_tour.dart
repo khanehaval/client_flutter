@@ -2,9 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/Advertisements.dart';
 import 'package:flutter_application_1/pages/Messages.dart';
-import 'package:flutter_application_1/pages/advertisement_registration.dart';
+import 'package:flutter_application_1/pages/advertisement_registration/advertisement_registration.dart';
 import 'package:flutter_application_1/pages/category/category.dart';
 import 'package:flutter_application_1/pages/home.dart';
+import 'package:flutter_application_1/pages/profile.dart';
 import 'package:get/get.dart';
 
 class EducationalTour extends StatefulWidget {
@@ -43,7 +44,9 @@ class _EducationalTourState extends State<EducationalTour> {
       appBar: AppBar(
         actions: [
           GestureDetector(
-            onTap: () {},
+            onTap: () {
+              Get.to(()=> Profile());
+            },
             child: Container(
               decoration: BoxDecoration(
                   color: Colors.black12,

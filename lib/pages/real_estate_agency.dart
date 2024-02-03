@@ -340,7 +340,7 @@ class Realestateagency extends StatelessWidget {
             ),
           ),
           SizedBox(
-            height: 20,
+            height: 80,
             width: 50,
           ),
           Padding(

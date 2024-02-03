@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 
 class EjaraMaskoni extends StatelessWidget {
   final _show_item_1 = false.obs;
-  
+  final _show_item_2 = false.obs;
 
   EjaraMaskoni({super.key});
 
@@ -145,6 +145,7 @@ class EjaraMaskoni extends StatelessWidget {
       ],
     );
   }
+
   Obx buildItem1() {
     return Obx(
       () => _show_item_1.isTrue
@@ -359,15 +360,15 @@ class EjaraMaskoni extends StatelessWidget {
                               ),
                             ),
                           ),
+
                         ],
                       ),
                     ],
                   ),
                 ],
               ),
-            
             )
-           
+                   
           : SingleChildScrollView(
               reverse: true,
               scrollDirection: Axis.horizontal,
@@ -432,12 +433,10 @@ class EjaraMaskoni extends StatelessWidget {
                         fit: BoxFit.fill,
                       ),
                     ),
-                  ),
+                  )
                 ],
               ),
             ),
-          
     );
   }
-  
 }

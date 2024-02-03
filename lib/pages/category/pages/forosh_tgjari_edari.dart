@@ -97,7 +97,7 @@ class ForoshTagariEdari extends StatelessWidget {
                     ],
                   ),
                   child: Image.asset(
-                    'assets/images/Group 760.png',
+                    'assets/images/kar.png',
                     fit: BoxFit.fill,
                   ),
                 ),

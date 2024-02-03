@@ -58,7 +58,7 @@ class EjaraTagariEdari extends StatelessWidget {
                     ],
                   ),
                   child: Image.asset(
-                    'assets/images/daftar_762.png',
+                    'assets/images/sanati.png',
                     fit: BoxFit.fill,
                   ),
                 ),
@@ -77,7 +77,7 @@ class EjaraTagariEdari extends StatelessWidget {
                   ],
                 ),
                 child: Image.asset(
-                  'assets/images/ejara_761.png',
+                  'assets/images/maqazeh.png',
                   fit: BoxFit.fill,
                 ),
               ),

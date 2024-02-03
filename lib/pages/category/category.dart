@@ -45,7 +45,7 @@ class Category extends StatelessWidget {
               Obx(
                 () => show.value
                     ? Padding(
-                        padding: const EdgeInsets.all(10),
+                        padding: const EdgeInsets.all(15),
                         child: Container(
                           height: 200,
                           width: 132,
@@ -78,7 +78,7 @@ class Category extends StatelessWidget {
             ],
           ),
           Padding(
-            padding: const EdgeInsets.only(right: 15, left: 10),
+            padding: const EdgeInsets.only(right: 17,),
             child: Container(
               height: 119,
               width: 364,
@@ -145,7 +145,7 @@ class Category extends StatelessWidget {
                       ],
                     ),
                     Padding(
-                      padding: const EdgeInsets.all(10),
+                      padding: const EdgeInsets.all(15),
                       child: Container(
                         height: 130,
                         width: 167,
@@ -204,7 +204,7 @@ class Category extends StatelessWidget {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.all(10),
+                      padding: const EdgeInsets.all(15),
                       child: Container(
                         height: 130,
                         width: 167,
