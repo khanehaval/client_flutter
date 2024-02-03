@@ -1,13 +1,10 @@
 import 'dart:async';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_application_1/pages/login_secondly_page.dart';
 import 'package:flutter_application_1/repo/acount_repo.dart';
-
 import 'package:get/get.dart';
 import 'dart:math';
-
-import 'package:get_it/get_it.dart';
 
 class Register extends StatefulWidget {
   const Register({super.key});
@@ -20,14 +17,11 @@ class _RegisterState extends State<Register> {
   Timer? timer;
   var time = 30.obs;
   var sended = false.obs;
-
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
   }
-
-  final _accountRepo = GetIt.I.get<AccountRepo>();
 
   @override
   void dispose() {
@@ -36,9 +30,6 @@ class _RegisterState extends State<Register> {
   }
 
   void startTimer() {
-    time.update((val) {
-      time.value = 30;
-    });
     Timer.periodic(Duration(seconds: 1), (i) {
       time.update((val) {
         time.value = max(0, (val ?? 30) - 1);
@@ -46,7 +37,7 @@ class _RegisterState extends State<Register> {
     });
   }
 
-  final _textController = TextEditingController();
+  var _textController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -61,11 +52,11 @@ class _RegisterState extends State<Register> {
               width: MediaQuery.of(context).size.width - 100,
             ),
             SizedBox(
-              height: 20,
+              height: 100,
             ),
             Text(
               'شماره تلفن همراه خود را وارد کنید',
-              style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+              style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
             ),
             SizedBox(
               height: 20,
@@ -74,57 +65,42 @@ class _RegisterState extends State<Register> {
               keyboardType: TextInputType.number,
               controller: _textController,
               maxLength: 11,
-              onFieldSubmitted: (_) => sendPhoneNumber(),
               style: TextStyle(fontSize: 20),
               inputFormatters: [FilteringTextInputFormatter.digitsOnly],
               decoration: InputDecoration(
                 hintText: "09121234567",
                 border:
-                    OutlineInputBorder(borderRadius: BorderRadius.circular(30)),
+                    OutlineInputBorder(borderRadius: BorderRadius.circular(15)),
                 suffix: Icon(Icons.edit),
               ),
             ),
-            const SizedBox(
+            SizedBox(
+              height: 50,
+            ),
+            SizedBox(
               height: 10,
             ),
-            Obx(() => sended.value
-                ? TextField(
-                    textAlign: TextAlign.center,
-                    keyboardType: TextInputType.number,
-                    onSubmitted: (s) {},
-                    maxLength: 6,
-                    decoration: InputDecoration(
-                      hintText: "-- -- --",
-                      hintStyle: const TextStyle(fontSize: 22),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(30),
-                      ),
-                    ),
-                  )
-                : SizedBox()),
-            SizedBox(
-              height: 1,
+            TextField(
+              decoration: InputDecoration(),
             ),
             Obx(() => sended.value
-                ? Obx(
-                    () => time.value > 0
-                        ? Text(time.value < 60
-                            ? "00:${time.value}"
-                            : time.value.toString())
-                        : GestureDetector(
-                            child: Text("00:00 ارسال مجدد کد "),
-                            onTap: () {
-                              sendPhoneNumber();
-                            },
-                          ),
-                  )
+                ? Obx(() => time.value > 0
+                    ? Text(time.value < 60
+                        ? "00:${time.value}"
+                        : time.value.toString())
+                    : GestureDetector(
+                        child: Text("00:00 ارسال مجدد کد "),
+                        onTap: () {
+                          //todo resend sms
+                        },
+                      ))
                 : SizedBox()),
             Padding(
-              padding: const EdgeInsets.only(top: 70),
+              padding: const EdgeInsets.only(top: 24),
               child: Container(
-                width: 110,
+                width: 100,
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(13),
+                  borderRadius: BorderRadius.circular(30),
                   gradient: LinearGradient(colors: [
                     Color.fromARGB(700, 55, 250, 100),
                     Colors.blue,
@@ -132,20 +108,23 @@ class _RegisterState extends State<Register> {
                 ),
                 child: ElevatedButton(
                   onPressed: () {
-                    if (sended.value) {
-                      Get.to(() => const LoginSecondlyPage());
-                    } else {
-                      sendPhoneNumber();
-                    }
+
+                    //todo userRepo.save(
+                    // setState(() {
+                    //   boxLoginModel.put('key_${_textController.text}', LoginModel(phoneNumber: _textController.text),);
+                    // });
+                    sended.value = true;
+                    startTimer();
+                    AccountRepo().login(_textController.text);
                   },
                   style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.transparent,
                       shadowColor: Colors.transparent),
-                  child: const Text(
+                  child: Text(
                     'تایید',
                     style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 20,
+                        color: const Color.fromARGB(255, 144, 71, 71),
+                        fontSize: 19,
                         fontWeight: FontWeight.bold),
                   ),
                 ),
@@ -155,11 +134,5 @@ class _RegisterState extends State<Register> {
         ),
       ),
     );
-  }
-
-  Future<void> sendPhoneNumber() async {
-    await _accountRepo.login(_textController.text);
-    sended.value = true;
-    startTimer();
   }
 }

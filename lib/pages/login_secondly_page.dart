@@ -1,10 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/pages/Consultants.dart';
+import 'package:flutter_application_1/pages/consultants.dart';
 import 'package:flutter_application_1/pages/educational_tour.dart';
 import 'package:flutter_application_1/pages/home.dart';
 import 'package:flutter_application_1/pages/profile.dart';
 import 'package:flutter_application_1/pages/real_estate_agency.dart';
+import 'package:flutter_application_1/pages/private.dart';
 import 'package:get/get.dart';
 
 class LoginSecondlyPage extends StatelessWidget {
@@ -13,91 +14,135 @@ class LoginSecondlyPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
+        leading: IconButton(
+          icon: const Icon(Icons.close),
+          onPressed: () => Get.to(() => Home()),
+        ),
         actions: [
           GestureDetector(
-            onTap: () {},
+            onTap: () {
+              Get.to(
+                () =>  Profile(),
+              );
+            },
             child: Container(
-              width: 35,height: 35,
                 decoration: BoxDecoration(
                     color: Colors.black12,
-                    borderRadius: BorderRadius.circular(50)),
+                    borderRadius: BorderRadius.circular(60)),
                 child: const Padding(
-                  padding: EdgeInsets.all(2.0),
-                  child: Icon(Icons.person,size: 30,),
+                  padding: EdgeInsets.all(3.0),
+                  child: Icon(
+                    Icons.person_2_rounded,
+                    size: 30,
+                  ),
                 )),
           ),
-          SizedBox(width: 10,)
+          const SizedBox(
+            width: 10,
+          )
         ],
       ),
-      resizeToAvoidBottomInset: false,
-      backgroundColor: Colors.indigo.shade50,
       body: Container(
+        color: Colors.white60,
         margin: const EdgeInsets.only(top: 18, left: 24, right: 24),
         child: Column(
           children: [
             Column(
               children: [
-                Image.asset('assets/images/Rectangle 1.png'),
-                SizedBox(
+                Image.asset(
+                  'assets/images/Rectangle 1.png',
+                  width: 262,
+                  height: 226,
+                ),
+                const SizedBox(
                   height: 10,
                 ),
-                Text(
+                const Text(
                   "نوع کاربری خود را انتخاب کنید",
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 25,
                       fontFamily: 'Iran Sans Bold'),
                 ),
-                Text(
+                const Text(
                   "هر کاربری امکانات مخصوص به خود را دارد",
                   style: TextStyle(fontSize: 15, fontFamily: 'Iran Sans Bold'),
                 )
               ],
-            ),
-            SizedBox(
-              height: 30,
-            ),
-            ElevatedButton(
-              style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.resolveWith<Color?>(
-                  (Set<MaterialState> states) {
-                    if (states.contains(MaterialState.pressed)) {
-                      return Theme.of(context)
-                          .colorScheme
-                          .primary
-                          .withOpacity(0.5);
-                    }
-                    return null;
-                  },
-                ),
-              ),
-              child: const Text(
-                'مشاوران',
-                style: TextStyle(
-                    fontSize: 20,
-                    fontFamily: 'Iran Sans Bold',
-                    color: Colors.black),
-              ),
-              onPressed: () {
-                Get.to(() => const Consultants());
-              },
             ),
             const SizedBox(
               height: 30,
             ),
             GestureDetector(
                 onTap: () {
-                  Get.to(() => const Realestateagency());
+                  Get.to(() => Private());
                 },
                 child: Container(
-                  width: MediaQuery.of(context).size.width * (0.6),
+                  width: MediaQuery.of(context).size.width * (0.7),
                   decoration: BoxDecoration(
                       border: Border.all(
                           color: Colors.black,
                           width: 1.0,
                           style: BorderStyle.solid),
-                      borderRadius: BorderRadius.circular(5)),
+                      borderRadius: BorderRadius.circular(10)),
+                  child: const Padding(
+                    padding: EdgeInsets.all(15.0),
+                    child: Center(
+                      child: Text(
+                        'شخصی',
+                        style: TextStyle(
+                            fontSize: 20,
+                            fontFamily: 'Iran Sans Bold',
+                            color: Colors.black),
+                      ),
+                    ),
+                  ),
+                )),
+            const SizedBox(
+              height: 30,
+            ),
+            GestureDetector(
+                onTap: () {
+                  Get.to(() => Consultants());
+                },
+                child: Container(
+                  width: MediaQuery.of(context).size.width * (0.7),
+                  decoration: BoxDecoration(
+                      border: Border.all(
+                          color: Colors.black,
+                          width: 1.0,
+                          style: BorderStyle.solid),
+                      borderRadius: BorderRadius.circular(10)),
+                  child: const Padding(
+                    padding: EdgeInsets.all(15.0),
+                    child: Center(
+                      child: Text(
+                        'مشاوران ',
+                        style: TextStyle(
+                            fontSize: 20,
+                            fontFamily: 'Iran Sans Bold',
+                            color: Colors.black),
+                      ),
+                    ),
+                  ),
+                )),
+            const SizedBox(
+              height: 30,
+            ),
+            GestureDetector(
+                onTap: () {
+                  Get.to(() =>  Realestateagency());
+                },
+                child: Container(
+                  width: MediaQuery.of(context).size.width * (0.7),
+                  decoration: BoxDecoration(
+                      border: Border.all(
+                          color: Colors.black,
+                          width: 1.0,
+                          style: BorderStyle.solid),
+                      borderRadius: BorderRadius.circular(10)),
                   child: const Padding(
                     padding: EdgeInsets.all(15.0),
                     child: Center(
@@ -111,7 +156,7 @@ class LoginSecondlyPage extends StatelessWidget {
                     ),
                   ),
                 )),
-            const Padding(padding: EdgeInsets.fromLTRB(1, 100, 50, 0)),
+            const Padding(padding: EdgeInsets.fromLTRB(1, 60, 50, 0)),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -124,16 +169,16 @@ class LoginSecondlyPage extends StatelessWidget {
                     ),
                     child: ElevatedButton(
                       onPressed: () {
-                        Get.to(() => const Home());
+                        Get.to(() => Home());
                       },
                       style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.transparent,
                           shadowColor: Colors.transparent),
-                      child: Text(
+                      child: const Text(
                         'بعدا یادآوری کن',
                         style: TextStyle(
                             color: Colors.black,
-                            fontSize: 11.5,
+                            fontSize: 11.90,
                             fontWeight: FontWeight.bold,
                             fontFamily: 'Iran Sans Bold'),
                       ),
@@ -141,7 +186,7 @@ class LoginSecondlyPage extends StatelessWidget {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.all(5.0),
                   child: Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(30),
@@ -149,12 +194,12 @@ class LoginSecondlyPage extends StatelessWidget {
                     ),
                     child: ElevatedButton(
                       onPressed: () {
-                        Get.to(() => const NavigationBarApp());
+                        Get.to(() =>  EducationalTour());
                       },
                       style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.transparent,
                           shadowColor: Colors.transparent),
-                      child: Text(
+                      child: const Text(
                         'مشاهده تور آموزشی',
                         style: TextStyle(
                             color: Colors.black,
