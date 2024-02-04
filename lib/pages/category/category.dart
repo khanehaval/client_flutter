@@ -43,45 +43,45 @@ class Category extends StatelessWidget {
                 ),
               ),
               Obx(
-                () => show.value
+                    () => show.value
                     ? Padding(
-                        padding: const EdgeInsets.all(15),
-                        child: Container(
-                          height: 200,
-                          width: 132,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(10),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.grey.withOpacity(0.5),
-                                spreadRadius: 1,
-                                blurRadius: 10,
-                              )
-                            ],
-                            border: Border.all(
-                              color: Colors.blue,
-                              width: 0.7,
-                            ),
-                          ),
-                          child: GestureDetector(
-                            onTap: () {
-                              Get.to(() => MainCategory(1));
-                            },
-                            child:
-                                Image.asset('assets/images/ejara_maskoni.png'),
-                          ),
-                        ),
-                      )
+                  padding: const EdgeInsets.all(10),
+                  child: Container(
+                    height: 200,
+                    width: 132,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(10),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.5),
+                          spreadRadius: 1,
+                          blurRadius: 10,
+                        )
+                      ],
+                      border: Border.all(
+                        color: Colors.blue,
+                        width: 0.7,
+                      ),
+                    ),
+                    child: GestureDetector(
+                      onTap: () {
+                        Get.to(() => MainCategory(1));
+                      },
+                      child:
+                      Image.asset('assets/images/ejara_maskoni.png'),
+                    ),
+                  ),
+                )
                     : const SizedBox.shrink(),
               )
             ],
           ),
           Padding(
-            padding: const EdgeInsets.only(right: 17,),
+            padding: const EdgeInsets.only(right: 20,left: 10),
             child: Container(
               height: 119,
-              width: 364,
+              width: 360,
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(10),
@@ -115,7 +115,7 @@ class Category extends StatelessWidget {
                     Row(
                       children: [
                         Padding(
-                          padding: const EdgeInsets.all(15),
+                          padding: const EdgeInsets.only(left: 10,right: 15),
                           child: Container(
                             height: 130,
                             width: 167,
@@ -145,7 +145,7 @@ class Category extends StatelessWidget {
                       ],
                     ),
                     Padding(
-                      padding: const EdgeInsets.all(15),
+                      padding: const EdgeInsets.all(10),
                       child: Container(
                         height: 130,
                         width: 167,
@@ -176,7 +176,7 @@ class Category extends StatelessWidget {
                 child: Row(
                   children: [
                     Padding(
-                      padding: const EdgeInsets.all(15),
+                      padding: const EdgeInsets.only(left: 10,right: 15),
                       child: Container(
                         height: 130,
                         width: 167,
@@ -199,12 +199,12 @@ class Category extends StatelessWidget {
                             Get.to(() => MainCategory(5));
                           },
                           child:
-                              Image.asset('assets/images/ejara_kota_modat.png'),
+                          Image.asset('assets/images/ejara_kota_modat.png'),
                         ),
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.all(15),
+                      padding: const EdgeInsets.all(10),
                       child: Container(
                         height: 130,
                         width: 167,

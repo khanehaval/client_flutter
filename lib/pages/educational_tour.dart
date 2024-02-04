@@ -2,9 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/Advertisements.dart';
 import 'package:flutter_application_1/pages/Messages.dart';
-import 'package:flutter_application_1/pages/advertisement_registration/advertisement_registration.dart';
 import 'package:flutter_application_1/pages/category/category.dart';
 import 'package:flutter_application_1/pages/home.dart';
+import 'package:flutter_application_1/pages/category/pages/page_advertisement/advertisement_registration.dart';
 import 'package:flutter_application_1/pages/profile.dart';
 import 'package:get/get.dart';
 
@@ -32,7 +32,7 @@ class _EducationalTourState extends State<EducationalTour> {
   var pages = [
     Home(),
     const Messages(),
-    const AdvertisementRegistration(),
+     AdvertisementRegistration(index: 0, showEducation: true,),
     Category(),
     const Advertisements()
   ];
