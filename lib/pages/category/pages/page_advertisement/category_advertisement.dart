@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/pages/category/pages/page_advertisement/under_category.dart';
+import 'package:flutter_application_1/pages/educational_tour.dart';
 import 'package:flutter_application_1/pages/profile.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
@@ -43,9 +45,9 @@ class CategoryAdvertisement extends StatelessWidget {
         ),
         body: Column(children: [
           Padding(
-            padding: const EdgeInsets.only(left: 50, bottom: 10),
+            padding: const EdgeInsets.only(left: 40, bottom: 2),
             child: Text(
-              "انتخاب نوع ملک",
+              "انتخاب دسته بندی",
               style: TextStyle(
                   color: Color.fromRGBO(
                     99,
@@ -61,7 +63,7 @@ class CategoryAdvertisement extends StatelessWidget {
             height: 10,
           ),
           Padding(
-              padding: const EdgeInsets.only(left: 50),
+              padding: const EdgeInsets.only(left: 40),
               child: SvgPicture.asset(
                 'assets/images/key and home1.svg',
               )),
@@ -113,7 +115,11 @@ class CategoryAdvertisement extends StatelessWidget {
                               color: Colors.black45,
                               width: 0.3,
                             )),
-                        child: Image.asset('assets/images/Sale home.png'),
+                        child: GestureDetector(
+                        onTap: () {
+                          Get.to(()=>UnderForosh());
+                        },
+                          child: Image.asset('assets/images/Sale home.png')),
                       ),
                     )
                   ],
@@ -222,9 +228,6 @@ class CategoryAdvertisement extends StatelessWidget {
               ),
             ]),
           ),
-          SizedBox(
-            height: 10,
-          ),
           Padding(
             padding: const EdgeInsets.only(left: 130),
             child: Row(
@@ -240,7 +243,47 @@ class CategoryAdvertisement extends StatelessWidget {
                 ),
               ],
             ),
-          )
-        ]));
+          ),
+        ],
+        ),
+         bottomNavigationBar: NavigationBar(
+        backgroundColor: Colors.white,
+        onDestinationSelected: (int index) {
+          Get.to(() => EducationalTour(
+                index: index,
+                showEducation: false,
+              ));
+        },
+        indicatorColor: const Color(0x36D859),
+        // selectedIndex: currentPageIndex.value,
+        destinations: const <Widget>[
+          NavigationDestination(
+            selectedIcon: Icon(CupertinoIcons.home),
+            icon: Icon(Icons.home_filled),
+            label: '',
+          ),
+          NavigationDestination(
+            selectedIcon: Icon(Icons.messenger),
+            icon: Icon(Icons.message_rounded),
+            label: '',
+          ),
+          NavigationDestination(
+            selectedIcon: Icon(Icons.add_circle_outline_rounded),
+            icon: Icon(Icons.add_circle_outline_rounded),
+            label: '',
+          ),
+          NavigationDestination(
+            selectedIcon: Icon(Icons.widgets),
+            icon: Icon(Icons.widgets),
+            label: '',
+          ),
+          NavigationDestination(
+            selectedIcon: Icon(Icons.location_on_outlined),
+            icon: Icon(Icons.location_on_outlined),
+            label: '',
+          ),
+        ],
+      ),
+        );
   }
 }
