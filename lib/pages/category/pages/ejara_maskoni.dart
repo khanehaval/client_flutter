@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/pages/category/shared/contant.dart';
 import 'package:get/get.dart';
 
 class EjaraMaskoni extends StatelessWidget {
   final _show_item_1 = false.obs;
-  final _show_item_2 = false.obs;
 
   EjaraMaskoni({super.key});
 
@@ -182,7 +182,7 @@ class EjaraMaskoni extends StatelessWidget {
                               style: TextStyle(
                                 color: Color(0xFF303030),
                                 fontSize: 14,
-                                fontFamily: 'Iran Sans Bold',
+                                fontFamily: MAIN_FONT_FAMILY,
                                 fontWeight: FontWeight.w300,
                                 height: 4,
                               ),
@@ -214,7 +214,7 @@ class EjaraMaskoni extends StatelessWidget {
                               style: TextStyle(
                                 color: Color(0xFF303030),
                                 fontSize: 14,
-                                fontFamily: 'Iran Sans Bold',
+                                fontFamily: MAIN_FONT_FAMILY,
                                 fontWeight: FontWeight.w300,
                                 height: 4,
                               ),
@@ -251,7 +251,7 @@ class EjaraMaskoni extends StatelessWidget {
                             style: TextStyle(
                               color: Color(0xFF303030),
                               fontSize: 14,
-                              fontFamily: 'Iran Sans Bold',
+                              fontFamily: MAIN_FONT_FAMILY,
                               fontWeight: FontWeight.w300,
                               height: 4,
                             ),
@@ -283,7 +283,7 @@ class EjaraMaskoni extends StatelessWidget {
                             style: TextStyle(
                               color: Color(0xFF303030),
                               fontSize: 14,
-                              fontFamily: 'Iran Sans Bold',
+                              fontFamily: MAIN_FONT_FAMILY,
                               fontWeight: FontWeight.w300,
                               height: 4,
                             ),
@@ -321,7 +321,7 @@ class EjaraMaskoni extends StatelessWidget {
                                 style: TextStyle(
                                   color: Color(0xFF303030),
                                   fontSize: 14,
-                                  fontFamily: 'Iran Sans Bold',
+                                  fontFamily: MAIN_FONT_FAMILY,
                                   fontWeight: FontWeight.w300,
                                   height: 4,
                                 ),
@@ -353,7 +353,7 @@ class EjaraMaskoni extends StatelessWidget {
                                 style: TextStyle(
                                   color: Color(0xFF303030),
                                   fontSize: 14,
-                                  fontFamily: 'Iran Sans Bold',
+                                  fontFamily: MAIN_FONT_FAMILY,
                                   fontWeight: FontWeight.w300,
                                   height: 4,
                                 ),

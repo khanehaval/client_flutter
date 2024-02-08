@@ -5,9 +5,13 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
 class AdvertisementRegistration extends StatelessWidget {
-    var show = true.obs;
+  var show = true.obs;
 
-  AdvertisementRegistration({super.key, required int index, required bool showEducation,});
+  AdvertisementRegistration({
+    super.key,
+    required int index,
+    required bool showEducation,
+  });
 
   @override
   Widget build(BuildContext context) {

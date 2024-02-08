@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/pages/category/shared/contant.dart';
 import 'package:get/get.dart';
 
 class EjaraKotaModat extends StatelessWidget {
   final _show_item_1 = false.obs;
-  final _show_item_2 = false.obs;
 
   EjaraKotaModat({super.key});
 
@@ -141,22 +141,229 @@ class EjaraKotaModat extends StatelessWidget {
         buildItem1(),
         const SizedBox(
           height: 10,
-        )
+        ),
+        SingleChildScrollView(
+          reverse: true,
+          scrollDirection: Axis.horizontal,
+          child: Row(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(15),
+                child: Container(
+                  height: 90,
+                  width: 147,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.3),
+                        blurRadius: 5,
+                      )
+                    ],
+                  ),
+                  child: Image.asset(
+                    'assets/images/Group 650.png',
+                    fit: BoxFit.fill,
+                  ),
+                ),
+              ),
+              Container(
+                height: 90,
+                width: 147,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(10),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.3),
+                      blurRadius: 5,
+                    )
+                  ],
+                ),
+                child: Image.asset(
+                  'assets/images/Group 655.png',
+                  fit: BoxFit.fill,
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
+                  height: 90,
+                  width: 147,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.3),
+                        blurRadius: 5,
+                      )
+                    ],
+                  ),
+                  child: Image.asset(
+                    'assets/images/Group 654.png',
+                    fit: BoxFit.fill,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
       ],
     );
   }
 
   Obx buildItem1() {
-    return Obx(
-      () => _show_item_1.isTrue
-          ? Padding(
-              padding: const EdgeInsets.all(10),
-              child: Column(
-                children: [
-                  Image.asset('assets/images/Group 628.png'),
-                  GestureDetector(
-                    onTap: () {},
-                    child: Row(
+    return Obx(() => _show_item_1.isTrue
+        ? Padding(
+            padding: const EdgeInsets.all(10),
+            child: Column(
+              children: [
+                Image.asset('assets/images/Group 628.png'),
+                GestureDetector(
+                  onTap: () {},
+                  child: Row(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(5),
+                        child: Container(
+                          height: 57,
+                          width: 176,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(10),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey.withOpacity(0.1),
+                                spreadRadius: 1,
+                                blurRadius: 5,
+                              )
+                            ],
+                            border: Border.all(
+                              color: Colors.black45,
+                              width: 0.3,
+                            ),
+                          ),
+                          child: const Text(
+                            'نوشهر',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              color: Color(0xFF303030),
+                              fontSize: 14,
+                              fontFamily: MAIN_FONT_FAMILY,
+                              fontWeight: FontWeight.w300,
+                              height: 4,
+                            ),
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(0),
+                        child: Container(
+                          height: 57,
+                          width: 176,
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(10),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.grey.withOpacity(0.1),
+                                  spreadRadius: 1,
+                                  blurRadius: 10,
+                                )
+                              ],
+                              border: Border.all(
+                                color: Colors.black45,
+                                width: 0.3,
+                              )),
+                          child: const Text(
+                            'رامسر',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              color: Color(0xFF303030),
+                              fontSize: 14,
+                              fontFamily: MAIN_FONT_FAMILY,
+                              fontWeight: FontWeight.w300,
+                              height: 4,
+                            ),
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+                Row(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(5),
+                      child: Container(
+                        height: 57,
+                        width: 176,
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(10),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey.withOpacity(0.1),
+                                spreadRadius: 1,
+                                blurRadius: 5,
+                              )
+                            ],
+                            border: Border.all(
+                              color: Colors.black45,
+                              width: 0.3,
+                            )),
+                        child: const Text(
+                          'کلاردشت',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            color: Color(0xFF303030),
+                            fontSize: 14,
+                            fontFamily: MAIN_FONT_FAMILY,
+                            fontWeight: FontWeight.w300,
+                            height: 4,
+                          ),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(0),
+                      child: Container(
+                        height: 57,
+                        width: 176,
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(10),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey.withOpacity(0.1),
+                                spreadRadius: 1,
+                                blurRadius: 10,
+                              )
+                            ],
+                            border: Border.all(
+                              color: Colors.black45,
+                              width: 0.3,
+                            )),
+                        child: const Text(
+                          'گیلان',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            color: Color(0xFF303030),
+                            fontSize: 14,
+                            fontFamily: MAIN_FONT_FAMILY,
+                            fontWeight: FontWeight.w300,
+                            height: 4,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                Column(
+                  children: [
+                    Row(
                       children: [
                         Padding(
                           padding: const EdgeInsets.all(5),
@@ -164,27 +371,26 @@ class EjaraKotaModat extends StatelessWidget {
                             height: 57,
                             width: 176,
                             decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(10),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.grey.withOpacity(0.1),
-                                  spreadRadius: 1,
-                                  blurRadius: 5,
-                                )
-                              ],
-                              border: Border.all(
-                                color: Colors.black45,
-                                width: 0.3,
-                              ),
-                            ),
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(10),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.grey.withOpacity(0.1),
+                                    spreadRadius: 1,
+                                    blurRadius: 5,
+                                  )
+                                ],
+                                border: Border.all(
+                                  color: Colors.black45,
+                                  width: 0.3,
+                                )),
                             child: Text(
-                              'نوشهر',
+                              'چالوس',
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                 color: Color(0xFF303030),
                                 fontSize: 14,
-                                fontFamily: 'Iran Sans Bold',
+                                fontFamily: MAIN_FONT_FAMILY,
                                 fontWeight: FontWeight.w300,
                                 height: 4,
                               ),
@@ -211,232 +417,25 @@ class EjaraKotaModat extends StatelessWidget {
                                   width: 0.3,
                                 )),
                             child: Text(
-                              'رامسر',
+                              'رشت',
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                 color: Color(0xFF303030),
                                 fontSize: 14,
-                                fontFamily: 'Iran Sans Bold',
+                                fontFamily: MAIN_FONT_FAMILY,
                                 fontWeight: FontWeight.w300,
                                 height: 4,
                               ),
                             ),
                           ),
-                        )
+                        ),
                       ],
                     ),
-                  ),
-                  Row(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(5),
-                        child: Container(
-                          height: 57,
-                          width: 176,
-                          decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(10),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.grey.withOpacity(0.1),
-                                  spreadRadius: 1,
-                                  blurRadius: 5,
-                                )
-                              ],
-                              border: Border.all(
-                                color: Colors.black45,
-                                width: 0.3,
-                              )),
-                          child: Text(
-                            'کلاردشت',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              color: Color(0xFF303030),
-                              fontSize: 14,
-                              fontFamily: 'Iran Sans Bold',
-                              fontWeight: FontWeight.w300,
-                              height: 4,
-                            ),
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(0),
-                        child: Container(
-                          height: 57,
-                          width: 176,
-                          decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(10),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.grey.withOpacity(0.1),
-                                  spreadRadius: 1,
-                                  blurRadius: 10,
-                                )
-                              ],
-                              border: Border.all(
-                                color: Colors.black45,
-                                width: 0.3,
-                              )),
-                          child: Text(
-                            'گیلان',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              color: Color(0xFF303030),
-                              fontSize: 14,
-                              fontFamily: 'Iran Sans Bold',
-                              fontWeight: FontWeight.w300,
-                              height: 4,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  Column(
-                    children: [
-                      Row(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.all(5),
-                            child: Container(
-                              height: 57,
-                              width: 176,
-                              decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(10),
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Colors.grey.withOpacity(0.1),
-                                      spreadRadius: 1,
-                                      blurRadius: 5,
-                                    )
-                                  ],
-                                  border: Border.all(
-                                    color: Colors.black45,
-                                    width: 0.3,
-                                  )),
-                              child: Text(
-                                'چالوس',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  color: Color(0xFF303030),
-                                  fontSize: 14,
-                                  fontFamily: 'Iran Sans Bold',
-                                  fontWeight: FontWeight.w300,
-                                  height: 4,
-                                ),
-                              ),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(0),
-                            child: Container(
-                              height: 57,
-                              width: 176,
-                              decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(10),
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Colors.grey.withOpacity(0.1),
-                                      spreadRadius: 1,
-                                      blurRadius: 10,
-                                    )
-                                  ],
-                                  border: Border.all(
-                                    color: Colors.black45,
-                                    width: 0.3,
-                                  )),
-                              child: Text(
-                                'رشت',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  color: Color(0xFF303030),
-                                  fontSize: 14,
-                                  fontFamily: 'Iran Sans Bold',
-                                  fontWeight: FontWeight.w300,
-                                  height: 4,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            )
-          : SingleChildScrollView(
-              reverse: true,
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(15),
-                    child: Container(
-                      height: 90,
-                      width: 147,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(10),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withOpacity(0.3),
-                            blurRadius: 5,
-                          )
-                        ],
-                      ),
-                      child: Image.asset(
-                        'assets/images/Group 650.png',
-                        fit: BoxFit.fill,
-                      ),
-                    ),
-                  ),
-                  Container(
-                    height: 90,
-                    width: 147,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(10),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey.withOpacity(0.3),
-                          blurRadius: 5,
-                        )
-                      ],
-                    ),
-                    child: Image.asset(
-                      'assets/images/Group 655.png',
-                      fit: BoxFit.fill,
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Container(
-                      height: 90,
-                      width: 147,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(10),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withOpacity(0.3),
-                            blurRadius: 5,
-                          )
-                        ],
-                      ),
-                      child: Image.asset(
-                        'assets/images/Group 654.png',
-                        fit: BoxFit.fill,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
+                  ],
+                ),
+              ],
             ),
-    );
+          )
+        : SizedBox.shrink());
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/pages/category/shared/contant.dart';
 import 'package:flutter_application_1/pages/home.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
@@ -44,7 +45,7 @@ class Private extends StatelessWidget {
                     style: TextStyle(
                         fontSize: 30,
                         fontWeight: FontWeight.bold,
-                        fontFamily: 'Iran Sans Bold'),
+                        fontFamily: MAIN_FONT_FAMILY),
                   ),
                 ),
                 const SizedBox(height: 10),
@@ -183,7 +184,7 @@ class Private extends StatelessWidget {
                               color: Colors.black,
                               fontSize: 18,
                               fontWeight: FontWeight.bold,
-                              fontFamily: 'Iran Sans Bold'),
+                              fontFamily: MAIN_FONT_FAMILY),
                         ),
                       ),
                     ),

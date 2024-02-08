@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/pages/category/shared/contant.dart';
 import 'package:flutter_application_1/pages/home.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
@@ -44,7 +45,7 @@ class Realestateagency extends StatelessWidget {
               style: TextStyle(
                   fontSize: 30,
                   fontWeight: FontWeight.bold,
-                  fontFamily: 'Iran Sans Bold'),
+                  fontFamily: MAIN_FONT_FAMILY),
             ),
           ),
           SizedBox(
@@ -60,7 +61,7 @@ class Realestateagency extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
-                    fontFamily: 'Iran Sans Bold',
+                    fontFamily: MAIN_FONT_FAMILY,
                   ),
                   textAlign: TextAlign.right,
                 ),
@@ -208,7 +209,7 @@ class Realestateagency extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 15,
                     fontWeight: FontWeight.bold,
-                    fontFamily: 'Iran Sans Bold',
+                    fontFamily: MAIN_FONT_FAMILY,
                   ),
                 ),
               ),
@@ -302,7 +303,7 @@ class Realestateagency extends StatelessWidget {
                             fontSize: 17,
                             fontWeight: FontWeight.bold,
                             color: Colors.black,
-                            fontFamily: 'Iran Sans Bold'),
+                            fontFamily: MAIN_FONT_FAMILY),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
@@ -366,7 +367,7 @@ class Realestateagency extends StatelessWidget {
                       color: Colors.black,
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
-                      fontFamily: 'Iran Sans Bold'),
+                      fontFamily: MAIN_FONT_FAMILY),
                 ),
               ),
             ),

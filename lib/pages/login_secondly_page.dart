@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/pages/category/shared/contant.dart';
 import 'package:flutter_application_1/pages/consultants.dart';
 import 'package:flutter_application_1/pages/educational_tour.dart';
 import 'package:flutter_application_1/pages/home.dart';
@@ -64,11 +65,11 @@ class LoginSecondlyPage extends StatelessWidget {
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 25,
-                      fontFamily: 'Iran Sans Bold'),
+                      fontFamily: MAIN_FONT_FAMILY),
                 ),
                 const Text(
                   "هر کاربری امکانات مخصوص به خود را دارد",
-                  style: TextStyle(fontSize: 15, fontFamily: 'Iran Sans Bold'),
+                  style: TextStyle(fontSize: 15, fontFamily: MAIN_FONT_FAMILY),
                 )
               ],
             ),
@@ -94,7 +95,7 @@ class LoginSecondlyPage extends StatelessWidget {
                         'شخصی',
                         style: TextStyle(
                             fontSize: 20,
-                            fontFamily: 'Iran Sans Bold',
+                            fontFamily: MAIN_FONT_FAMILY,
                             color: Colors.black),
                       ),
                     ),
@@ -122,7 +123,7 @@ class LoginSecondlyPage extends StatelessWidget {
                         'مشاوران ',
                         style: TextStyle(
                             fontSize: 20,
-                            fontFamily: 'Iran Sans Bold',
+                            fontFamily: MAIN_FONT_FAMILY,
                             color: Colors.black),
                       ),
                     ),
@@ -150,7 +151,7 @@ class LoginSecondlyPage extends StatelessWidget {
                         'آژانس املاک ',
                         style: TextStyle(
                             fontSize: 20,
-                            fontFamily: 'Iran Sans Bold',
+                            fontFamily: MAIN_FONT_FAMILY,
                             color: Colors.black),
                       ),
                     ),
@@ -180,7 +181,7 @@ class LoginSecondlyPage extends StatelessWidget {
                             color: Colors.black,
                             fontSize: 11.90,
                             fontWeight: FontWeight.bold,
-                            fontFamily: 'Iran Sans Bold'),
+                            fontFamily: MAIN_FONT_FAMILY),
                       ),
                     ),
                   ),
@@ -205,7 +206,7 @@ class LoginSecondlyPage extends StatelessWidget {
                             color: Colors.black,
                             fontSize: 11.5,
                             fontWeight: FontWeight.bold,
-                            fontFamily: 'Iran Sans Bold'),
+                            fontFamily: MAIN_FONT_FAMILY),
                       ),
                     ),
                   ),

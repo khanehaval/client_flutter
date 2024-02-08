@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/pages/category/shared/contant.dart';
 import 'package:get/get.dart';
 
 class ForoshMaskoni extends StatelessWidget {
@@ -271,7 +272,7 @@ class ForoshMaskoni extends StatelessWidget {
                               style: TextStyle(
                                 color: Color(0xFF303030),
                                 fontSize: 14,
-                                fontFamily: 'Iran Sans Bold',
+                                fontFamily: MAIN_FONT_FAMILY,
                                 fontWeight: FontWeight.w300,
                                 height: 4,
                               ),
@@ -302,7 +303,7 @@ class ForoshMaskoni extends StatelessWidget {
                             style: TextStyle(
                               color: Color(0xFF303030),
                               fontSize: 14,
-                              fontFamily: 'Iran Sans Bold',
+                              fontFamily: MAIN_FONT_FAMILY,
                               fontWeight: FontWeight.w300,
                               height: 4,
                             ),
@@ -339,7 +340,7 @@ class ForoshMaskoni extends StatelessWidget {
                           style: TextStyle(
                             color: Color(0xFF303030),
                             fontSize: 14,
-                            fontFamily: 'Iran Sans Bold',
+                            fontFamily: MAIN_FONT_FAMILY,
                             fontWeight: FontWeight.w300,
                             height: 4,
                           ),
@@ -371,7 +372,7 @@ class ForoshMaskoni extends StatelessWidget {
                           style: TextStyle(
                             color: Color(0xFF303030),
                             fontSize: 14,
-                            fontFamily: 'Iran Sans Bold',
+                            fontFamily: MAIN_FONT_FAMILY,
                             fontWeight: FontWeight.w300,
                             height: 4,
                           ),
@@ -407,7 +408,7 @@ class ForoshMaskoni extends StatelessWidget {
                           style: TextStyle(
                             color: Color(0xFF303030),
                             fontSize: 14,
-                            fontFamily: 'Iran Sans Bold',
+                            fontFamily: MAIN_FONT_FAMILY,
                             fontWeight: FontWeight.w300,
                             height: 4,
                           ),
@@ -439,7 +440,7 @@ class ForoshMaskoni extends StatelessWidget {
                           style: TextStyle(
                             color: Color(0xFF303030),
                             fontSize: 14,
-                            fontFamily: 'Iran Sans Bold',
+                            fontFamily: MAIN_FONT_FAMILY,
                             fontWeight: FontWeight.w300,
                             height: 4,
                           ),
@@ -493,7 +494,7 @@ class ForoshMaskoni extends StatelessWidget {
                                     style: TextStyle(
                                       color: Color(0xFF303030),
                                       fontSize: 14,
-                                      fontFamily: 'Iran Sans Bold',
+                                      fontFamily: MAIN_FONT_FAMILY,
                                       fontWeight: FontWeight.w300,
                                       height: 4,
                                     ),
@@ -524,7 +525,7 @@ class ForoshMaskoni extends StatelessWidget {
                                   style: TextStyle(
                                     color: Color(0xFF303030),
                                     fontSize: 14,
-                                    fontFamily: 'Iran Sans Bold',
+                                    fontFamily: MAIN_FONT_FAMILY,
                                     fontWeight: FontWeight.w300,
                                     height: 4,
                                   ),
@@ -561,7 +562,7 @@ class ForoshMaskoni extends StatelessWidget {
                                 style: TextStyle(
                                   color: Color(0xFF303030),
                                   fontSize: 14,
-                                  fontFamily: 'Iran Sans Bold',
+                                  fontFamily: MAIN_FONT_FAMILY,
                                   fontWeight: FontWeight.w300,
                                   height: 4,
                                 ),
@@ -593,7 +594,7 @@ class ForoshMaskoni extends StatelessWidget {
                                 style: TextStyle(
                                   color: Color(0xFF303030),
                                   fontSize: 14,
-                                  fontFamily: 'Iran Sans Bold',
+                                  fontFamily: MAIN_FONT_FAMILY,
                                   fontWeight: FontWeight.w300,
                                   height: 4,
                                 ),
@@ -629,7 +630,7 @@ class ForoshMaskoni extends StatelessWidget {
                                 style: TextStyle(
                                   color: Color(0xFF303030),
                                   fontSize: 14,
-                                  fontFamily: 'Iran Sans Bold',
+                                  fontFamily: MAIN_FONT_FAMILY,
                                   fontWeight: FontWeight.w300,
                                   height: 4,
                                 ),
@@ -661,7 +662,7 @@ class ForoshMaskoni extends StatelessWidget {
                                 style: TextStyle(
                                   color: Color(0xFF303030),
                                   fontSize: 14,
-                                  fontFamily: 'Iran Sans Bold',
+                                  fontFamily: MAIN_FONT_FAMILY,
                                   fontWeight: FontWeight.w300,
                                   height: 4,
                                 ),

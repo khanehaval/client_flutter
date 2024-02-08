@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/pages/category/shared/contant.dart';
 import 'package:flutter_application_1/pages/home.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
@@ -54,7 +55,7 @@ class Consultants extends StatelessWidget {
                     style: TextStyle(
                         fontSize: 30,
                         fontWeight: FontWeight.bold,
-                        fontFamily: 'Iran Sans Bold'),
+                        fontFamily: MAIN_FONT_FAMILY),
                   ),
                 ),
                 const SizedBox(height: 10),
@@ -179,7 +180,7 @@ class Consultants extends StatelessWidget {
                           hintStyle: const TextStyle(
                               color: Colors.black,
                               fontWeight: FontWeight.bold,
-                              fontFamily: 'Iran Sans Bold'),
+                              fontFamily: MAIN_FONT_FAMILY),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10),
                           ),
@@ -237,7 +238,7 @@ class Consultants extends StatelessWidget {
                               color: Colors.black,
                               fontSize: 18,
                               fontWeight: FontWeight.bold,
-                              fontFamily: 'Iran Sans Bold'),
+                              fontFamily: MAIN_FONT_FAMILY),
                         ),
                       ),
                     ),
