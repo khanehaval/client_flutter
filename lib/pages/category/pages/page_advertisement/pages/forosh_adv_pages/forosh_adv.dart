@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/select_location_on_map.dart';
+import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/forosh_adv_pages/select_location_on_map.dart';
 import 'package:flutter_application_1/pages/category/shared/contant.dart';
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
 import 'package:flutter_svg/svg.dart';
@@ -62,12 +62,12 @@ class UnderForosh extends StatelessWidget {
                 onTap: () {
                   if (_selected.value > 0) {
                     int index = _selected.value;
-                    Widget finalWidget =   const SizedBox.shrink();
+                    Widget finalWidget = const SizedBox.shrink();
                     if (index == 1) {
-                      finalWidget =  const SelectLocationOnMap();
+                      finalWidget = const SelectLocationOnMap();
                     } else if (index == 2) {
                     } else if (index == 3) {}
-                      Get.to(()=>const SelectLocationOnMap());
+                    Get.to(() => const SelectLocationOnMap());
                   }
                 },
                 child: Obx(
@@ -77,7 +77,7 @@ class UnderForosh extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          "تائید و ادامه ...",
+                          "...تایید و ادامه",
                           style: _selected.value == 0
                               ? const TextStyle(
                                   fontSize: 20,
@@ -105,6 +105,7 @@ class UnderForosh extends StatelessWidget {
       ]),
     );
   }
+
   Widget _buildItem(
     String assetPath,
     int index,

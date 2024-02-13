@@ -64,44 +64,42 @@ class CategoryAdvertisement extends StatelessWidget {
               ),
             ]),
           ),
-          Center(
-            child: GestureDetector(
-              onTap: () {
-                if (_selected.value > 0) {
-                  int index = _selected.value;
-                  Widget finalWidget = const SizedBox.shrink();
-                  if (index == 2) {
-                    finalWidget = UnderForosh();
-                  } else if (index == 2) {
-                  } else if (index == 3) {}
-
-                  Get.to(() => finalWidget);
-                }
-              },
-              child: Obx(() => Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        "تائید و ادامه ...",
-                        style: _selected.value == 0
-                            ? const TextStyle(
-                                fontSize: 20,
-                                fontFamily: MAIN_FONT_FAMILY,
-                                color: Colors.black38,
-                              )
-                            : const TextStyle(
-                                fontSize: 20, fontFamily: MAIN_FONT_FAMILY),
-                      ),
-                      Icon(
-                        Icons.double_arrow,
-                        color: _selected.value == 0
-                            ? Colors.black54
-                            : const Color.fromRGBO(76, 140, 237, 1),
-                        size: 35,
-                      ),
-                    ],
-                  )),
-            ),
+          GestureDetector(
+            onTap: () {
+              if (_selected.value > 0) {
+                int index = _selected.value;
+                Widget finalWidget = const SizedBox.shrink();
+                if (index == 2) {
+                  finalWidget = UnderForosh();
+                } else if (index == 2) {
+                } else if (index == 3) {}
+          
+                Get.to(() => finalWidget);
+              }
+            },
+            child: Obx(() => Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "...تایید و ادامه",
+                      style: _selected.value == 0
+                          ? const TextStyle(
+                              fontSize: 20,
+                              fontFamily: MAIN_FONT_FAMILY,
+                              color: Colors.black38,
+                            )
+                          : const TextStyle(
+                              fontSize: 20, fontFamily: MAIN_FONT_FAMILY),
+                    ),
+                    Icon(
+                      Icons.double_arrow,
+                      color: _selected.value == 0
+                          ? Colors.black54
+                          : const Color.fromRGBO(76, 140, 237, 1),
+                      size: 35,
+                    ),
+                  ],
+                )),
           ),
         ],
       ),

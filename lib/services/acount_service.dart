@@ -11,7 +11,6 @@ class AccountService {
   final Logger _logger = Logger();
   final Dio _dio =
       Dio(BaseOptions(baseUrl: "https://app.khanehaval.com/new_address"));
-
   Future<LoginRes?> login(String phoneNumber) async {
     try {
       var result =
