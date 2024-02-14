@@ -141,141 +141,139 @@ class SachtSaz extends StatelessWidget {
         buildItem1(),
         const SizedBox(
           height: 10,
-        )
+        ),
+        SingleChildScrollView(
+          reverse: true,
+          scrollDirection: Axis.horizontal,
+          child: Row(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(15),
+                child: Container(
+                  height: 90,
+                  width: 147,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.3),
+                        blurRadius: 5,
+                      )
+                    ],
+                  ),
+                  child: Image.asset(
+                    'assets/images/Group 650.png',
+                    fit: BoxFit.fill,
+                  ),
+                ),
+              ),
+              Container(
+                height: 90,
+                width: 147,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(10),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.3),
+                      blurRadius: 5,
+                    )
+                  ],
+                ),
+                child: Image.asset(
+                  'assets/images/Group 655.png',
+                  fit: BoxFit.fill,
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
+                  height: 90,
+                  width: 147,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.3),
+                        blurRadius: 5,
+                      )
+                    ],
+                  ),
+                  child: Image.asset(
+                    'assets/images/Group 654.png',
+                    fit: BoxFit.fill,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
       ],
     );
-    
   }
 
   Obx buildItem1() {
-    return Obx(
-      () => _show_item_1.isTrue
-          ? Padding(
-              padding: const EdgeInsets.all(10),
-              child: Column(
-                children: [
-                  Image.asset('assets/images/Group 778.png'),
-                  GestureDetector(
-                    onTap: () {},
-                    child: Row(children: [
-                      Padding(
-                        padding: const EdgeInsets.all(5),
-                        child: Container(
-                          height: 98,
-                          width: 180,
-                          decoration: BoxDecoration(
+    return Obx(() => _show_item_1.isTrue
+        ? Padding(
+            padding: const EdgeInsets.all(10),
+            child: Column(
+              children: [
+                Image.asset('assets/images/Group 778.png'),
+                GestureDetector(
+                  onTap: () {},
+                  child: Row(children: [
+                    Padding(
+                      padding: const EdgeInsets.all(5),
+                      child: Container(
+                        height: 98,
+                        width: 180,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(10),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.1),
+                              spreadRadius: 1,
+                              blurRadius: 5,
+                            )
+                          ],
+                          border: Border.all(
+                            color: Colors.black45,
+                            width: 0.3,
+                          ),
+                        ),
+                        child: Image.asset('assets/images/Group 768.png'),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(0),
+                      child: Container(
+                        height: 98,
+                        width: 180,
+                        decoration: BoxDecoration(
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(10),
                             boxShadow: [
                               BoxShadow(
                                 color: Colors.grey.withOpacity(0.1),
                                 spreadRadius: 1,
-                                blurRadius: 5,
+                                blurRadius: 10,
                               )
                             ],
                             border: Border.all(
                               color: Colors.black45,
                               width: 0.3,
-                            ),
-                          ),
-                          child: Image.asset('assets/images/Group 768.png'),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(0),
-                        child: Container(
-                          height: 98,
-                          width: 180,
-                          decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(10),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.grey.withOpacity(0.1),
-                                  spreadRadius: 1,
-                                  blurRadius: 10,
-                                )
-                              ],
-                              border: Border.all(
-                                color: Colors.black45,
-                                width: 0.3,
-                              )),
-                          child: Image.asset('assets/images/Group 767.png'),
-                        ),
-                      ),
-                    ]),
-                  )
-                ],
-              ),
-            )
-          : SingleChildScrollView(
-              reverse: true,
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(15),
-                    child: Container(
-                      height: 90,
-                      width: 147,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(10),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withOpacity(0.3),
-                            blurRadius: 5,
-                          )
-                        ],
-                      ),
-                      child: Image.asset(
-                        'assets/images/Group 650.png',
-                        fit: BoxFit.fill,
+                            )),
+                        child: Image.asset('assets/images/Group 767.png'),
                       ),
                     ),
-                  ),
-                  Container(
-                    height: 90,
-                    width: 147,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(10),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey.withOpacity(0.3),
-                          blurRadius: 5,
-                        )
-                      ],
-                    ),
-                    child: Image.asset(
-                      'assets/images/Group 655.png',
-                      fit: BoxFit.fill,
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Container(
-                      height: 90,
-                      width: 147,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(10),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withOpacity(0.3),
-                            blurRadius: 5,
-                          )
-                        ],
-                      ),
-                      child: Image.asset(
-                        'assets/images/Group 654.png',
-                        fit: BoxFit.fill,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
+                  ]),
+                )
+              ],
             ),
-    );
+          )
+        : SizedBox.shrink());
   }
 }

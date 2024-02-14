@@ -141,7 +141,75 @@ class EjaraMaskoni extends StatelessWidget {
         buildItem1(),
         const SizedBox(
           height: 10,
-        )
+        ),
+        SingleChildScrollView(
+          reverse: true,
+          scrollDirection: Axis.horizontal,
+          child: Row(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(15),
+                child: Container(
+                  height: 90,
+                  width: 147,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.3),
+                        blurRadius: 5,
+                      )
+                    ],
+                  ),
+                  child: Image.asset(
+                    'assets/images/Group 651.png',
+                    fit: BoxFit.fill,
+                  ),
+                ),
+              ),
+              Container(
+                height: 90,
+                width: 147,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(10),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.3),
+                      blurRadius: 5,
+                    )
+                  ],
+                ),
+                child: Image.asset(
+                  'assets/images/Group 655.png',
+                  fit: BoxFit.fill,
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
+                  height: 90,
+                  width: 147,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.3),
+                        blurRadius: 5,
+                      )
+                    ],
+                  ),
+                  child: Image.asset(
+                    'assets/images/Group 655.png',
+                    fit: BoxFit.fill,
+                  ),
+                ),
+              )
+            ],
+          ),
+        ),
       ],
     );
   }
@@ -360,7 +428,6 @@ class EjaraMaskoni extends StatelessWidget {
                               ),
                             ),
                           ),
-
                         ],
                       ),
                     ],
@@ -368,75 +435,7 @@ class EjaraMaskoni extends StatelessWidget {
                 ],
               ),
             )
-                   
-          : SingleChildScrollView(
-              reverse: true,
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(15),
-                    child: Container(
-                      height: 90,
-                      width: 147,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(10),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withOpacity(0.3),
-                            blurRadius: 5,
-                          )
-                        ],
-                      ),
-                      child: Image.asset(
-                        'assets/images/Group 651.png',
-                        fit: BoxFit.fill,
-                      ),
-                    ),
-                  ),
-                  Container(
-                    height: 90,
-                    width: 147,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(10),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey.withOpacity(0.3),
-                          blurRadius: 5,
-                        )
-                      ],
-                    ),
-                    child: Image.asset(
-                      'assets/images/Group 655.png',
-                      fit: BoxFit.fill,
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Container(
-                      height: 90,
-                      width: 147,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(10),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withOpacity(0.3),
-                            blurRadius: 5,
-                          )
-                        ],
-                      ),
-                      child: Image.asset(
-                        'assets/images/Group 655.png',
-                        fit: BoxFit.fill,
-                      ),
-                    ),
-                  )
-                ],
-              ),
-            ),
+          : SizedBox.shrink(),
     );
   }
 }
