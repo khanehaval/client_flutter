@@ -62,12 +62,10 @@ class UnderForosh extends StatelessWidget {
                 onTap: () {
                   if (_selected.value > 0) {
                     int index = _selected.value;
-                    Widget finalWidget = const SizedBox.shrink();
                     if (index == 1) {
-                      finalWidget = const SelectLocationOnMap();
+                      Get.to(() => const SelectLocationOnMap());
                     } else if (index == 2) {
                     } else if (index == 3) {}
-                    Get.to(() => const SelectLocationOnMap());
                   }
                 },
                 child: Obx(

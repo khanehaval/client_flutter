@@ -59,10 +59,10 @@ class _CategoryItemsState extends State<CategoryItems> {
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
                         border: Border.all(
-                          color: _currentIndex.value == i
-                              ? Color.fromARGB(255, 9, 63, 157)
-                              : Colors.black38,
-                        ),
+                            color: _currentIndex.value == i
+                                ? const Color.fromARGB(255, 9, 63, 157)
+                                : Colors.black38,
+                            width: _currentIndex.value == i ? 3 : 1),
                       ),
                       child: items[i],
                     )),
