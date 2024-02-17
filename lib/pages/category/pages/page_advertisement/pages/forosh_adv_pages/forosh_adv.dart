@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/forosh_adv_pages/sale_vila.dart';
+import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/forosh_adv_pages/select_location_kolangi.dart';
 import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/forosh_adv_pages/select_location_on_map.dart';
+import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/forosh_adv_pages/select_location_vila.dart';
 import 'package:flutter_application_1/pages/category/shared/contant.dart';
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
 import 'package:flutter_svg/svg.dart';
@@ -65,7 +68,10 @@ class UnderForosh extends StatelessWidget {
                     if (index == 1) {
                       Get.to(() => const SelectLocationOnMap());
                     } else if (index == 2) {
-                    } else if (index == 3) {}
+                      Get.to(() => const SelectLocationVila());
+                    } else if (index == 3) {
+                      Get.to(() =>  SelectLocationKolangi());
+                    }
                   }
                 },
                 child: Obx(
