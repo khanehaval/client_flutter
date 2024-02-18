@@ -148,9 +148,10 @@ class _SelectLocationOnMapState extends State<SelectLocationOnMap> {
                   ),
                 ),
               ),
-              SwitchItem(type: type, items: const ["سوئیت", "برج", "پنت هاوس"]),
+              SwitchItem(
+                  type: type, items: const ["سوئیت", "برج", "پنت هاوس"]),
               SizedBox(
-                height: 70,
+                height: 160,
               ),
               GestureDetector(
                 onTap: () {

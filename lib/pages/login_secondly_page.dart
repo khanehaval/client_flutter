@@ -25,7 +25,7 @@ class LoginSecondlyPage extends StatelessWidget {
           GestureDetector(
             onTap: () {
               Get.to(
-                () =>  Profile(),
+                () => const Profile(),
               );
             },
             child: Container(
@@ -47,18 +47,15 @@ class LoginSecondlyPage extends StatelessWidget {
       ),
       body: Container(
         color: Colors.white60,
-        margin: const EdgeInsets.only(top: 18, left: 24, right: 24),
         child: Column(
           children: [
             Column(
               children: [
                 Image.asset(
                   'assets/images/Rectangle 1.png',
-                  width: 262,
-                  height: 226,
                 ),
                 const SizedBox(
-                  height: 10,
+                  height: 5,
                 ),
                 const Text(
                   "نوع کاربری خود را انتخاب کنید",
@@ -94,7 +91,7 @@ class LoginSecondlyPage extends StatelessWidget {
                       child: Text(
                         'شخصی',
                         style: TextStyle(
-                            fontSize: 20,
+                            fontSize: 16,
                             fontFamily: MAIN_FONT_FAMILY,
                             color: Colors.black),
                       ),
@@ -102,7 +99,7 @@ class LoginSecondlyPage extends StatelessWidget {
                   ),
                 )),
             const SizedBox(
-              height: 30,
+              height: 20,
             ),
             GestureDetector(
                 onTap: () {
@@ -122,7 +119,7 @@ class LoginSecondlyPage extends StatelessWidget {
                       child: Text(
                         'مشاوران ',
                         style: TextStyle(
-                            fontSize: 20,
+                            fontSize: 16,
                             fontFamily: MAIN_FONT_FAMILY,
                             color: Colors.black),
                       ),
@@ -130,11 +127,11 @@ class LoginSecondlyPage extends StatelessWidget {
                   ),
                 )),
             const SizedBox(
-              height: 30,
+              height: 20,
             ),
             GestureDetector(
                 onTap: () {
-                  Get.to(() =>  Realestateagency());
+                  Get.to(() => Realestateagency());
                 },
                 child: Container(
                   width: MediaQuery.of(context).size.width * (0.7),
@@ -195,7 +192,7 @@ class LoginSecondlyPage extends StatelessWidget {
                     ),
                     child: ElevatedButton(
                       onPressed: () {
-                        Get.to(() =>  EducationalTour());
+                        Get.to(() => EducationalTour());
                       },
                       style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.transparent,

@@ -184,47 +184,6 @@ class SaleOldHouse extends StatelessWidget {
               SizedBox(
                 height: 20,
               ),
-              TwoItemInRow(
-                label1: "عرض زمین",
-                label2: "طول زمین",
-                w1: Obx(
-                  () => Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      border: Border.all(
-                          width: 1, //
-                          color: Theme.of(context)
-                              .hintColor //  <--- border width here
-                          ),
-                    ),
-                    height: 41,
-                    width: getPageWidth_2(context),
-                  ),
-                ),
-                w2: SizedBox(
-                  height: 41,
-                  width: getPageWidth_2(context),
-                  child: TextField(
-                    textAlign: TextAlign.right,
-                    keyboardType: TextInputType.number,
-                    controller: _allPriceTextController,
-                    onChanged: (_) {
-                      _onePrice.value = _.isNotEmpty
-                          ? int.parse(_) / int.parse(_metragTextController.text)
-                          : 0;
-                    },
-                    decoration: InputDecoration(
-                      hintText: "0",
-                      hintStyle: const TextStyle(
-                        color: Color(0xFFA6A6A6),
-                      ),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
               const SizedBox(
                 height: 20,
               ),
@@ -235,15 +194,6 @@ class SaleOldHouse extends StatelessWidget {
               const SizedBox(
                 height: 20,
               ),
-              aghsatiForoshWidget(context),
-              const Divider(
-                endIndent: 20,
-                indent: 20,
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              
             ],
           ),
         ),

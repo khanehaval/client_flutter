@@ -18,7 +18,7 @@ class SwitchItem extends StatelessWidget{
 
   }
   Widget buildMelkTypeItem() => Row(
-      mainAxisAlignment: MainAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.end,
       children: items.map((e) => item(e)).toList());
 
   Widget item(String text) {
