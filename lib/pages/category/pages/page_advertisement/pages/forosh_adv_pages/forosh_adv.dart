@@ -70,7 +70,7 @@ class UnderForosh extends StatelessWidget {
                     } else if (index == 2) {
                       Get.to(() => const SelectLocationVila());
                     } else if (index == 3) {
-                      Get.to(() =>  SelectLocationKolangi());
+                      Get.to(() => SelectLocationKolangi());
                     }
                   }
                 },

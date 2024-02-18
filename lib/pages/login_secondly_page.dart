@@ -40,179 +40,175 @@ class LoginSecondlyPage extends StatelessWidget {
                   ),
                 )),
           ),
-          const SizedBox(
-            width: 10,
-          )
         ],
       ),
-      body: Container(
-        color: Colors.white60,
-        child: Column(
-          children: [
-            Column(
+      body: Stack(children: [
+        Container(
+          color: Colors.white60,
+          child: SingleChildScrollView(
+            child: Column(
               children: [
                 Image.asset(
                   'assets/images/Rectangle 1.png',
                 ),
                 const SizedBox(
-                  height: 5,
+                  height: 40,
                 ),
                 const Text(
                   "نوع کاربری خود را انتخاب کنید",
                   style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 25,
-                      fontFamily: MAIN_FONT_FAMILY),
+                    fontWeight: FontWeight.bold,
+                    fontSize: 25,
+                    fontFamily: MAIN_FONT_FAMILY,
+                  ),
                 ),
                 const Text(
                   "هر کاربری امکانات مخصوص به خود را دارد",
                   style: TextStyle(fontSize: 15, fontFamily: MAIN_FONT_FAMILY),
+                ),
+                const SizedBox(
+                  height: 40,
+                ),
+                GestureDetector(
+                    onTap: () {
+                      Get.to(() => Private());
+                    },
+                    child: Container(
+                      width: MediaQuery.of(context).size.width * (0.6),
+                      decoration: BoxDecoration(
+                          border: Border.all(
+                              color: Colors.black,
+                              width: 1.0,
+                              style: BorderStyle.solid),
+                          borderRadius: BorderRadius.circular(10)),
+                      child: const Padding(
+                        padding: EdgeInsets.all(15.0),
+                        child: Center(
+                          child: Text(
+                            'شخصی',
+                            style: TextStyle(
+                                fontSize: 16,
+                                fontFamily: MAIN_FONT_FAMILY,
+                                color: Colors.black),
+                          ),
+                        ),
+                      ),
+                    )),
+                const SizedBox(
+                  height: 20,
+                ),
+                GestureDetector(
+                    onTap: () {
+                      Get.to(() => Consultants());
+                    },
+                    child: Container(
+                      width: MediaQuery.of(context).size.width * (0.6),
+                      decoration: BoxDecoration(
+                          border: Border.all(
+                              color: Colors.black,
+                              width: 1.0,
+                              style: BorderStyle.solid),
+                          borderRadius: BorderRadius.circular(10)),
+                      child: const Padding(
+                        padding: EdgeInsets.all(15.0),
+                        child: Center(
+                          child: Text(
+                            'مشاوران ',
+                            style: TextStyle(
+                                fontSize: 16,
+                                fontFamily: MAIN_FONT_FAMILY,
+                                color: Colors.black),
+                          ),
+                        ),
+                      ),
+                    )),
+                const SizedBox(
+                  height: 20,
+                ),
+                GestureDetector(
+                    onTap: () {
+                      Get.to(() => const Realestateagency());
+                    },
+                    child: Container(
+                      width: MediaQuery.of(context).size.width * (0.6),
+                      decoration: BoxDecoration(
+                          border: Border.all(
+                              color: Colors.black,
+                              width: 1.0,
+                              style: BorderStyle.solid),
+                          borderRadius: BorderRadius.circular(10)),
+                      child: const Padding(
+                        padding: EdgeInsets.all(15.0),
+                        child: Center(
+                          child: Text(
+                            'آژانس املاک ',
+                            style: TextStyle(
+                                fontSize: 16,
+                                fontFamily: MAIN_FONT_FAMILY,
+                                color: Colors.black),
+                          ),
+                        ),
+                      ),
+                    )),
+                Padding(
+                  padding: const EdgeInsets.only(top: 140),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Container(
+                        width: MediaQuery.of(context).size.width * (0.4),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(30),
+                          gradient: getGradient(),
+                        ),
+                        child: ElevatedButton(
+                          onPressed: () {
+                            Get.to(() => Home());
+                          },
+                          style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.transparent,
+                              shadowColor: Colors.transparent),
+                          child: const Text(
+                            'بعدا یادآوری کن',
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 14,
+                                fontWeight: FontWeight.bold,
+                                fontFamily: MAIN_FONT_FAMILY),
+                          ),
+                        ),
+                      ),
+                      Container(
+                        width: MediaQuery.of(context).size.width * (0.4),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(30),
+                          gradient: getGradient(),
+                        ),
+                        child: ElevatedButton(
+                          onPressed: () {
+                            Get.to(() => EducationalTour());
+                          },
+                          style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.transparent,
+                              shadowColor: Colors.transparent),
+                          child: const Text(
+                            'مشاهده تور آموزشی',
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 14,
+                                fontWeight: FontWeight.bold,
+                                fontFamily: MAIN_FONT_FAMILY),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 )
               ],
             ),
-            const SizedBox(
-              height: 30,
-            ),
-            GestureDetector(
-                onTap: () {
-                  Get.to(() => Private());
-                },
-                child: Container(
-                  width: MediaQuery.of(context).size.width * (0.7),
-                  decoration: BoxDecoration(
-                      border: Border.all(
-                          color: Colors.black,
-                          width: 1.0,
-                          style: BorderStyle.solid),
-                      borderRadius: BorderRadius.circular(10)),
-                  child: const Padding(
-                    padding: EdgeInsets.all(15.0),
-                    child: Center(
-                      child: Text(
-                        'شخصی',
-                        style: TextStyle(
-                            fontSize: 16,
-                            fontFamily: MAIN_FONT_FAMILY,
-                            color: Colors.black),
-                      ),
-                    ),
-                  ),
-                )),
-            const SizedBox(
-              height: 20,
-            ),
-            GestureDetector(
-                onTap: () {
-                  Get.to(() => Consultants());
-                },
-                child: Container(
-                  width: MediaQuery.of(context).size.width * (0.7),
-                  decoration: BoxDecoration(
-                      border: Border.all(
-                          color: Colors.black,
-                          width: 1.0,
-                          style: BorderStyle.solid),
-                      borderRadius: BorderRadius.circular(10)),
-                  child: const Padding(
-                    padding: EdgeInsets.all(15.0),
-                    child: Center(
-                      child: Text(
-                        'مشاوران ',
-                        style: TextStyle(
-                            fontSize: 16,
-                            fontFamily: MAIN_FONT_FAMILY,
-                            color: Colors.black),
-                      ),
-                    ),
-                  ),
-                )),
-            const SizedBox(
-              height: 20,
-            ),
-            GestureDetector(
-                onTap: () {
-                  Get.to(() => Realestateagency());
-                },
-                child: Container(
-                  width: MediaQuery.of(context).size.width * (0.7),
-                  decoration: BoxDecoration(
-                      border: Border.all(
-                          color: Colors.black,
-                          width: 1.0,
-                          style: BorderStyle.solid),
-                      borderRadius: BorderRadius.circular(10)),
-                  child: const Padding(
-                    padding: EdgeInsets.all(15.0),
-                    child: Center(
-                      child: Text(
-                        'آژانس املاک ',
-                        style: TextStyle(
-                            fontSize: 20,
-                            fontFamily: MAIN_FONT_FAMILY,
-                            color: Colors.black),
-                      ),
-                    ),
-                  ),
-                )),
-            const Padding(padding: EdgeInsets.fromLTRB(1, 60, 50, 0)),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(30),
-                      gradient: getGradient(),
-                    ),
-                    child: ElevatedButton(
-                      onPressed: () {
-                        Get.to(() => Home());
-                      },
-                      style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.transparent,
-                          shadowColor: Colors.transparent),
-                      child: const Text(
-                        'بعدا یادآوری کن',
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 11.90,
-                            fontWeight: FontWeight.bold,
-                            fontFamily: MAIN_FONT_FAMILY),
-                      ),
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(5.0),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(30),
-                      gradient: getGradient(),
-                    ),
-                    child: ElevatedButton(
-                      onPressed: () {
-                        Get.to(() => EducationalTour());
-                      },
-                      style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.transparent,
-                          shadowColor: Colors.transparent),
-                      child: const Text(
-                        'مشاهده تور آموزشی',
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 11.5,
-                            fontWeight: FontWeight.bold,
-                            fontFamily: MAIN_FONT_FAMILY),
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            )
-          ],
+          ),
         ),
-      ),
+      ]),
     );
   }
 
