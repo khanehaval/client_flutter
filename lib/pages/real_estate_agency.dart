@@ -33,7 +33,7 @@ class Realestateagency extends StatelessWidget {
             height: 131,
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: AssetImage('assets/images/Rectangle 1.png'),
+                image: AssetImage('assets/images/intro_screen_2.png'),
               ),
             ),
           ),

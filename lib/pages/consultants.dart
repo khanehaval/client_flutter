@@ -43,7 +43,7 @@ class Consultants extends StatelessWidget {
                   decoration: const BoxDecoration(
                     image: DecorationImage(
                       image: AssetImage(
-                        'assets/images/Rectangle 1.png',
+                        'assets/images/intro_screen_2.png',
                       ),
                     ),
                   ),

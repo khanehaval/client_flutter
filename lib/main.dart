@@ -46,14 +46,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) => MaterialApp(
       debugShowCheckedModeBanner: false,
+      debugShowMaterialGrid: false,
       home: FutureBuilder(
           future: _userRepo.isLogin(),
           builder: (c, s) {
-            if(s.connectionState == ConnectionState.waiting){
+            if (s.connectionState == ConnectionState.waiting) {
               return Container();
             }
             return (s.data ?? false)
                 ? const LoginSecondlyPage()
-                : const IntroScreen();
+                : IntroScreen();
           }));
 }

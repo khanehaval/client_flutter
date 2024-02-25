@@ -48,7 +48,7 @@ class _RegisterState extends State<Register> {
         child: Column(
           children: [
             Image.asset(
-              'assets/images/Rectangle 1.png',
+              'assets/images/Rectangle intro_screen_2.png',
               width: MediaQuery.of(context).size.width - 100,
             ),
             SizedBox(

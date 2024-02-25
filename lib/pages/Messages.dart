@@ -25,7 +25,7 @@ class _SplashPageOneState extends State<Messages> {
                 width: width * 10,
               ),
               Image.asset(
-                'assets/images/Page 1.png',
+                'assets/images/intro_screen_2.png',
               ),
               SizedBox(
                 height: 10,

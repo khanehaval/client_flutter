@@ -49,7 +49,7 @@ class LoginSecondlyPage extends StatelessWidget {
             child: Column(
               children: [
                 Image.asset(
-                  'assets/images/Rectangle 1.png',
+                  'assets/images/intro_screen_2.png',
                 ),
                 const SizedBox(
                   height: 40,

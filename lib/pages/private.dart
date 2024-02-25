@@ -34,7 +34,7 @@ class Private extends StatelessWidget {
                   height: 131,
                   decoration: const BoxDecoration(
                     image: DecorationImage(
-                      image: AssetImage('assets/images/Rectangle 1.png'),
+                      image: AssetImage('assets/images/Rectangle intro_screen_2.png'),
                     ),
                   ),
                 ),
