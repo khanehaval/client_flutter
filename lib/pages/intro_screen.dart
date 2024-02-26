@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/db/dao/advisor_dao.dart';
 import 'package:flutter_application_1/pages/register/register.dart';
 import 'package:get/get.dart';
-import 'package:get_it/get_it.dart';
 
 class IntroScreen extends StatelessWidget {
   IntroScreen({super.key});
