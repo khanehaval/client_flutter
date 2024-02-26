@@ -69,7 +69,7 @@ class _RegisterState extends State<Register> {
                   height: 40,
                 ),
                 Image.asset(
-                  'assets/images/Rectangle 1.png',
+                  'assets/images/intro_screen_2.png',
                   width: MediaQuery.of(context).size.width - 200,
                 ),
                 const SizedBox(

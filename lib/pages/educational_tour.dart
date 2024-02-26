@@ -2,9 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/Advertisements.dart';
 import 'package:flutter_application_1/pages/Messages.dart';
-import 'package:flutter_application_1/pages/advertisement_registration.dart';
 import 'package:flutter_application_1/pages/category/category.dart';
 import 'package:flutter_application_1/pages/home.dart';
+import 'package:flutter_application_1/pages/category/pages/page_advertisement/advertisement_registration.dart';
+import 'package:flutter_application_1/pages/profile.dart';
 import 'package:get/get.dart';
 
 class EducationalTour extends StatefulWidget {
@@ -31,7 +32,7 @@ class _EducationalTourState extends State<EducationalTour> {
   var pages = [
     Home(),
     const Messages(),
-    const AdvertisementRegistration(),
+     AdvertisementRegistration(index: 0, showEducation: true,),
     Category(),
     const Advertisements()
   ];
@@ -43,7 +44,9 @@ class _EducationalTourState extends State<EducationalTour> {
       appBar: AppBar(
         actions: [
           GestureDetector(
-            onTap: () {},
+            onTap: () {
+              Get.to(()=> Profile());
+            },
             child: Container(
               decoration: BoxDecoration(
                   color: Colors.black12,
@@ -76,8 +79,8 @@ class _EducationalTourState extends State<EducationalTour> {
                         },
                         child: Image.asset(
                           'assets/images/Personal user panel.png',
-                          width: 392,
-                          height: 195,
+                          width: MediaQuery.of(context).size.width * 3,
+                          height: 190,
                           fit: BoxFit.fitHeight,
                         ),
                       ),
@@ -91,8 +94,8 @@ class _EducationalTourState extends State<EducationalTour> {
                       },
                       child: Image.asset(
                         "assets/images/Consultants user panel.png",
-                        width: 392,
-                        height: 195,
+                        width: MediaQuery.of(context).size.width * 3,
+                        height: 190,
                         fit: BoxFit.fitHeight,
                       ),
                     ),
@@ -105,8 +108,8 @@ class _EducationalTourState extends State<EducationalTour> {
                       },
                       child: Image.asset(
                         "assets/images/Real estate agency user panel.png",
-                        width: 392,
-                        height: 195,
+                        width: MediaQuery.of(context).size.width * 3,
+                        height: 190,
                         fit: BoxFit.fitHeight,
                       ),
                     ),

@@ -10,7 +10,7 @@ AdvisorInfoReq _$AdvisorInfoReqFromJson(Map<String, dynamic> json) =>
     AdvisorInfoReq(
       json['address'] as String,
       json['userId'] as int,
-      json['token'] as String?,
+      json['token'] as String,
       json['group'] as int,
     );
 

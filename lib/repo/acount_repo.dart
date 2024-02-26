@@ -29,10 +29,11 @@ class AccountRepo {
         cellphone: cellphone, code: cellphone);
     if (result?.status == 1) {
       _userDao.saveUser(User(
-          phoneNumber: cellphone,
-          userToken: "",
-          userId: "",
-          userType: UserType.advisor, ));
+        phoneNumber: cellphone,
+        userToken: "",
+        userId: "",
+        userType: UserType.advisor,
+      ));
       return true;
     }
     return false;

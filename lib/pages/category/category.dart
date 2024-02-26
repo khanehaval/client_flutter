@@ -4,233 +4,211 @@ import 'package:flutter_application_1/pages/category/pages/main_category.dart';
 import 'package:get/get.dart';
 
 class Category extends StatelessWidget {
-  var show = true.obs;
-
-  Category({super.key});
+  const Category({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Column(children: [
+      body: Padding(
+        padding: const EdgeInsets.all(10.0),
+        child: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
           Row(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Padding(
-                padding: const EdgeInsets.all(15),
-                child: Container(
-                  height: 200,
-                  width: 200,
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(10),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey.withOpacity(0.5),
-                          spreadRadius: 1,
-                          blurRadius: 10,
-                        )
-                      ],
-                      border: Border.all(
-                        color: Colors.blue, // Initial border color
-                        width: 0.7,
-                      )),
-                  child: GestureDetector(
-                    onTap: () {
-                      Get.to(() => MainCategory(0));
-                    },
-                    child: Image.asset('assets/images/amlak.png'),
+              Container(
+                height: 180,
+                width: MediaQuery.of(context).size.width * 1 / 2,
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.5),
+                        spreadRadius: 1,
+                        blurRadius: 10,
+                      )
+                    ],
+                    border: Border.all(
+                      color: Colors.blue, // Initial border color
+                      width: 0.6,
+                    )),
+                child: GestureDetector(
+                  onTap: () {
+                    Get.to(() => MainCategory(index: 0));
+                  },
+                  child: SizedBox(child: Image.asset('assets/images/amlak.png')),
+                ),
+              ),
+              const SizedBox(
+                width: 30,
+              ),
+              Container(
+                height: 180,
+                width: MediaQuery.of(context).size.width * 1 / 3,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(10),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.5),
+                      spreadRadius: 1,
+                      blurRadius: 10,
+                    )
+                  ],
+                  border: Border.all(
+                    color: Colors.blue,
+                    width: 0.7,
                   ),
                 ),
-              ),
-              Obx(
-                () => show.value
-                    ? Padding(
-                        padding: const EdgeInsets.all(10),
-                        child: Container(
-                          height: 200,
-                          width: 132,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(10),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.grey.withOpacity(0.5),
-                                spreadRadius: 1,
-                                blurRadius: 10,
-                              )
-                            ],
-                            border: Border.all(
-                              color: Colors.blue,
-                              width: 0.7,
-                            ),
-                          ),
-                          child: GestureDetector(
-                            onTap: () {
-                              Get.to(() => MainCategory(1));
-                            },
-                            child:
-                                Image.asset('assets/images/ejara_maskoni.png'),
-                          ),
-                        ),
-                      )
-                    : const SizedBox.shrink(),
-              )
-            ],
-          ),
-          Padding(
-            padding: const EdgeInsets.only(right: 15, left: 10),
-            child: Container(
-              height: 119,
-              width: 364,
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(10),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey.withOpacity(0.5),
-                    spreadRadius: 1,
-                    blurRadius: 10,
-                  )
-                ],
-                border: Border.all(
-                  color: Colors.blue,
-                  width: 0.7,
-                ),
-              ),
-              child: GestureDetector(
+                child: GestureDetector(
                   onTap: () {
-                    Get.to(() => MainCategory(2));
+                    Get.to(() => MainCategory(index: 1));
                   },
-                  child: Image.asset('assets/images/forosh_maskoni.png')),
-            ),
-          ),
-          Column(
-            children: [
-              GestureDetector(
-                onTap: () {
-                  Get.to(() => MainCategory(2));
-                },
-                child: Row(
-                  children: [
-                    Row(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.all(15),
-                          child: Container(
-                            height: 130,
-                            width: 167,
-                            decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(10),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.grey.withOpacity(0.5),
-                                    spreadRadius: 1,
-                                    blurRadius: 10,
-                                  )
-                                ],
-                                border: Border.all(
-                                  color: Colors.blue, // Initial border color
-                                  width: 0.7,
-                                )),
-                            child: GestureDetector(
-                              onTap: () {
-                                Get.to(() => MainCategory(3));
-                              },
-                              child: Image.asset(
-                                  'assets/images/ejara_tajari_edari.png'),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(10),
-                      child: Container(
-                        height: 130,
-                        width: 167,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            border: Border.all(
-                              color: Colors.blue,
-                              width: 0.7,
-                            )),
-                        child: GestureDetector(
-                          onTap: () {
-                            Get.to(() => MainCategory(3));
-                          },
-                          child: Image.asset(
-                              'assets/images/forosh_tagari_edari.png'),
-                        ),
-                      ),
-                    ),
-                  ],
+                  child: Image.asset('assets/images/ejara_maskoni.png'),
                 ),
               ),
             ],
           ),
-          Column(
+          const SizedBox(
+            height: 10,
+          ),
+          Container(
+            height: 115,
+            width: MediaQuery.of(context).size.width * 1 / 1.090,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(10),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey.withOpacity(0.5),
+                  spreadRadius: 1,
+                  blurRadius: 10,
+                )
+              ],
+              border: Border.all(
+                color: Colors.blue,
+                width: 0.7,
+              ),
+            ),
+            child: GestureDetector(
+                onTap: () {
+                  Get.to(() => MainCategory(index: 2));
+                },
+                child: Image.asset('assets/images/forosh_maskoni.png')),
+          ),
+          const SizedBox(
+            height: 15,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              GestureDetector(
-                onTap: () {},
-                child: Row(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(15),
-                      child: Container(
-                        height: 130,
-                        width: 167,
-                        decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(10),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.grey.withOpacity(0.5),
-                                spreadRadius: 1,
-                                blurRadius: 10,
-                              )
-                            ],
-                            border: Border.all(
-                              color: Colors.blue, // Initial border color
-                              width: 0.7,
-                            )),
-                        child: GestureDetector(
-                          onTap: () {
-                            Get.to(() => MainCategory(5));
-                          },
-                          child:
-                              Image.asset('assets/images/ejara_kota_modat.png'),
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(10),
-                      child: Container(
-                        height: 130,
-                        width: 167,
-                        decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(10),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.grey.withOpacity(0.5),
-                                spreadRadius: 1,
-                                blurRadius: 10,
-                              )
-                            ],
-                            border: Border.all(
-                              color: Colors.blue, // Initial border color
-                              width: 0.7,
-                            )),
-                        child: GestureDetector(
-                            onTap: () {
-                              Get.to(() => MainCategory(6));
-                            },
-                            child: Image.asset('assets/images/sacht_saz.png')),
-                      ),
-                    ),
-                  ],
+              Container(
+                width: MediaQuery.of(context).size.width * 1 / 2.35,
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.5),
+                        spreadRadius: 1,
+                        blurRadius: 10,
+                      )
+                    ],
+                    border: Border.all(
+                      color: Colors.blue, // Initial border color
+                      width: 0.7,
+                    )),
+                child: GestureDetector(
+                  onTap: () {
+                    Get.to(() => MainCategory(index: 4));
+                  },
+                  child: Image.asset('assets/images/ejara_tajari_edari.png'),
                 ),
+              ),
+              const SizedBox(
+                width: 25,
+              ),
+              Container(
+                height: 145,
+                width: MediaQuery.of(context).size.width * 1 / 2.35,
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.5),
+                        spreadRadius: 1,
+                        blurRadius: 10,
+                      )
+                    ],
+                    border: Border.all(
+                      color: Colors.blue, // Initial border color
+                      width: 0.7,
+                    )),
+                child: GestureDetector(
+                  onTap: () {
+                    Get.to(() => MainCategory(index: 3));
+                  },
+                  child: Image.asset('assets/images/forosh_tagari_edari.png'),
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(
+            height: 15,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                height: 135,
+                width: MediaQuery.of(context).size.width * 1 / 2.35,
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.5),
+                        spreadRadius: 1,
+                        blurRadius: 10,
+                      )
+                    ],
+                    border: Border.all(
+                      color: Colors.blue, // Initial border color
+                      width: 0.7,
+                    )),
+                child: GestureDetector(
+                  onTap: () {
+                    Get.to(() => MainCategory(index: 5));
+                  },
+                  child: Image.asset('assets/images/ejara_kota_modat.png'),
+                ),
+              ),
+              const SizedBox(
+                width: 25,
+              ),
+              Container(
+                height: 135,
+                width: MediaQuery.of(context).size.width * 1 / 2.35,
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.5),
+                        spreadRadius: 1,
+                        blurRadius: 10,
+                      )
+                    ],
+                    border: Border.all(
+                      color: Colors.blue, // Initial border color
+                      width: 0.7,
+                    )),
+                child: GestureDetector(
+                    onTap: () {
+                      Get.to(() => MainCategory(index: 6));
+                    },
+                    child: Image.asset('assets/images/sacht_saz.png')),
               ),
             ],
           ),

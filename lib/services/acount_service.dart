@@ -1,3 +1,4 @@
+import 'package:country_code_picker/country_code_picker.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_application_1/services/models/login_res.dart';
 import 'package:flutter_application_1/services/models/send_verification_req.dart';
@@ -10,7 +11,6 @@ class AccountService {
   final Logger _logger = Logger();
   final Dio _dio =
       Dio(BaseOptions(baseUrl: "https://app.khanehaval.com/new_address"));
-
   Future<LoginRes?> login(String phoneNumber) async {
     try {
       var result =
@@ -35,6 +35,4 @@ class AccountService {
       return null;
     }
   }
-
-  sendInformationAccount({required String firstName, required String lastName, required String userName, required String imgUrl, required String advisorArea, required String address}) {}
 }

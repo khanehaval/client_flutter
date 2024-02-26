@@ -1,0 +1,1 @@
+const MAIN_FONT_FAMILY ='Iran Sans Bold';

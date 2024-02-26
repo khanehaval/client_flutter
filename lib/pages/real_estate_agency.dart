@@ -1,18 +1,21 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/pages/category/shared/contant.dart';
 import 'package:flutter_application_1/pages/home.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 
 class Realestateagency extends StatelessWidget {
   Future<void> pickImage() async {
-  final ImagePicker _picker = ImagePicker();
-  final XFile? pickedFile = await _picker.pickImage(source: ImageSource.gallery);
+    final ImagePicker _picker = ImagePicker();
+    final XFile? pickedFile =
+        await _picker.pickImage(source: ImageSource.gallery);
 
-  if (pickedFile != null) {
-    print("Picked Image Path: ${pickedFile.path}");
+    if (pickedFile != null) {
+      print("Picked Image Path: ${pickedFile.path}");
+    }
   }
-}
+
   const Realestateagency({super.key});
 
   @override
@@ -22,54 +25,53 @@ class Realestateagency extends StatelessWidget {
       appBar: AppBar(
         leading: IconButton(
           onPressed: () => Get.to(() => Home()),
-          icon: Icon(Icons.close),
+          icon: const Icon(Icons.close),
         ),
       ),
       body: Column(
         children: [
           Container(
-            width: 200,
+            width: MediaQuery.of(context).size.width * 1 / 1,
             height: 131,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               image: DecorationImage(
-                image: AssetImage('assets/images/Rectangle 1.png'),
+                image: AssetImage('assets/images/intro_screen_2.png'),
               ),
             ),
           ),
-
-          Padding(
-            padding: const EdgeInsets.all(13),
-            child: Text(
-              "پنل آژانس املاک",
-              style: TextStyle(
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold,
-                  fontFamily: 'Iran Sans Bold'),
-            ),
+          const SizedBox(
+            height: 20,
           ),
-          SizedBox(
-            height: 1,
+          const Text(
+            "پنل آژانس املاک",
+            style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+                fontFamily: MAIN_FONT_FAMILY),
+          ),
+          const SizedBox(
+            height: 20,
           ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              Padding(
-                padding: const EdgeInsets.only(right: 13),
+              const Padding(
+                padding: EdgeInsets.only(right: 13),
                 child: Text(
                   "اطلاعات آژانس املاک",
                   style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
-                    fontFamily: 'Iran Sans Bold',
+                    fontFamily: MAIN_FONT_FAMILY,
                   ),
                   textAlign: TextAlign.right,
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 0,
               ),
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 15),
+                padding: const EdgeInsets.symmetric(horizontal: 15),
                 child: Row(
                   children: [
                     Expanded(
@@ -80,7 +82,7 @@ class Realestateagency extends StatelessWidget {
                         textAlign: TextAlign.right,
                         decoration: InputDecoration(
                             hintText: 'نام آژانس *',
-                            hintStyle: TextStyle(
+                            hintStyle: const TextStyle(
                               color: Color(0xFFA6A6A6),
                             ),
                             border: OutlineInputBorder(
@@ -93,21 +95,19 @@ class Realestateagency extends StatelessWidget {
               ),
             ],
           ),
-
-          SizedBox(), // فاصله بین عکس و تکست فیلدها // بخش تکست فیلدها
           Padding(
-            padding: EdgeInsets.all(16.0),
+            padding: const EdgeInsets.all(16.0),
             child: Row(
               children: [
                 Expanded(
-                  child: Container(
+                  child: SizedBox(
                     height: 41,
-                    width: 150,
+                    width: MediaQuery.of(context).size.width * 1 / 1,
                     child: TextField(
                       textAlign: TextAlign.right,
                       decoration: InputDecoration(
                         hintText: 'کد شهر *',
-                        hintStyle: TextStyle(
+                        hintStyle: const TextStyle(
                           color: Color(0xFFA6A6A6),
                         ),
                         border: OutlineInputBorder(
@@ -117,21 +117,19 @@ class Realestateagency extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(width: 70),
-                Expanded(
-                  child: Container(
-                    height: 41,
-                    width: 178,
-                    child: TextField(
-                      textAlign: TextAlign.right,
-                      decoration: InputDecoration(
-                        hintText: 'تلفن ثابت * ',
-                        hintStyle: TextStyle(
-                          color: Color(0xFFA6A6A6),
-                        ),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
+                const SizedBox(width: 60),
+                Container(
+                  height: 41,
+                  width: 178,
+                  child: TextField(
+                    textAlign: TextAlign.right,
+                    decoration: InputDecoration(
+                      hintText: 'تلفن ثابت * ',
+                      hintStyle: const TextStyle(
+                        color: Color(0xFFA6A6A6),
+                      ),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
                       ),
                     ),
                   ),
@@ -139,9 +137,8 @@ class Realestateagency extends StatelessWidget {
               ],
             ),
           ),
-          SizedBox(height: 0), // فاصله بین عکس و تکست فیلدها // بخش تکست فیلدها
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 15),
+            padding: const EdgeInsets.symmetric(horizontal: 14),
             child: Row(
               children: [
                 Expanded(
@@ -153,14 +150,14 @@ class Realestateagency extends StatelessWidget {
                       decoration: InputDecoration(
                         hintText: 'بارگذاری تصویر جواز*',
                         prefixIcon: IconButton(
-                          icon: Icon(
+                          icon: const Icon(
                             CupertinoIcons.add_circled,
                           ),
                           onPressed: () {
                             pickImage();
                           },
                         ),
-                        hintStyle: TextStyle(
+                        hintStyle: const TextStyle(
                           fontSize: 13,
                           color: Color(0xFFA6A6A6),
                         ),
@@ -171,7 +168,7 @@ class Realestateagency extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 10,
                 ),
                 Expanded(
@@ -182,9 +179,8 @@ class Realestateagency extends StatelessWidget {
                       textAlign: TextAlign.right,
                       decoration: InputDecoration(
                         hintText: 'شماره جواز *',
-                        hintStyle: TextStyle(
-                          color: Color(0xFFA6A6A6),
-                        ),
+                        hintStyle: const TextStyle(
+                            color: Color(0xFFA6A6A6), fontSize: 13.5),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
@@ -195,26 +191,26 @@ class Realestateagency extends StatelessWidget {
               ],
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 15,
           ),
-          Column(
+          const Column(
+            mainAxisAlignment: MainAxisAlignment.end,
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               Padding(
-                padding: const EdgeInsets.only(left: 245),
+                padding: EdgeInsets.only(left: 205),
                 child: Text(
                   "اطلاعات صاحب جواز",
                   style: TextStyle(
-                    fontSize: 15,
+                    fontSize: 14,
                     fontWeight: FontWeight.bold,
-                    fontFamily: 'Iran Sans Bold',
+                    fontFamily: MAIN_FONT_FAMILY,
                   ),
                 ),
               ),
             ],
           ),
-          SizedBox(height: 0), // فاصله بین عکس و تکست فیلدها // بخش تکست فیلدها
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 15),
             child: Row(
@@ -222,14 +218,13 @@ class Realestateagency extends StatelessWidget {
                 Expanded(
                   child: Container(
                     height: 41,
-                    width: 178,
+                    width: MediaQuery.of(context).size.width * 1 / 1.06,
                     child: TextField(
                       textAlign: TextAlign.right,
                       decoration: InputDecoration(
                         hintText: 'نام خانوادگی *',
-                        hintStyle: TextStyle(
-                          color: Color(0xFFA6A6A6),
-                        ),
+                        hintStyle: const TextStyle(
+                            color: Color(0xFFA6A6A6), fontSize: 14),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
@@ -237,16 +232,16 @@ class Realestateagency extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(width: 10),
+                const SizedBox(width: 10),
                 Expanded(
                   child: Container(
                     height: 41,
-                    width: 178,
+                    width: MediaQuery.of(context).size.width * 1 / 1.06,
                     child: TextField(
                       textAlign: TextAlign.right,
                       decoration: InputDecoration(
                         hintText: 'نام *',
-                        hintStyle: TextStyle(
+                        hintStyle: const TextStyle(
                           color: Color(0xFFA6A6A6),
                         ),
                         border: OutlineInputBorder(
@@ -259,10 +254,9 @@ class Realestateagency extends StatelessWidget {
               ],
             ),
           ),
-          SizedBox(
-              height: 15), 
+          const SizedBox(height: 15),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 15),
+            padding: const EdgeInsets.symmetric(horizontal: 14),
             child: Row(
               children: [
                 Expanded(
@@ -272,9 +266,10 @@ class Realestateagency extends StatelessWidget {
                     child: TextField(
                       textAlign: TextAlign.right,
                       decoration: InputDecoration(
-                        hintText: 'بارگذاری تصویر کارت ملی*',hintStyle: TextStyle(fontSize: 11.5),
+                        hintText: 'بارگذاری تصویر کارت ملی*',
+                        hintStyle: const TextStyle(fontSize: 8.7),
                         prefixIcon: IconButton(
-                          icon: Icon(
+                          icon: const Icon(
                             CupertinoIcons.add_circled,
                           ),
                           onPressed: () {
@@ -288,7 +283,7 @@ class Realestateagency extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(width: 10),
+                const SizedBox(width: 10),
                 Expanded(
                   child: Container(
                     height: 41,
@@ -297,12 +292,12 @@ class Realestateagency extends StatelessWidget {
                       textAlign: TextAlign.right,
                       decoration: InputDecoration(
                         hintText: 'تهران',
-                        prefixIcon: Icon(Icons.location_on_sharp),
-                        hintStyle: TextStyle(
-                            fontSize: 17,
+                        prefixIcon: const Icon(Icons.location_on_sharp),
+                        hintStyle: const TextStyle(
+                            fontSize: 14,
                             fontWeight: FontWeight.bold,
                             color: Colors.black,
-                            fontFamily: 'Iran Sans Bold'),
+                            fontFamily: MAIN_FONT_FAMILY),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
@@ -313,11 +308,11 @@ class Realestateagency extends StatelessWidget {
               ],
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 15,
           ),
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 15),
+            padding: const EdgeInsets.symmetric(horizontal: 14),
             child: Row(
               children: [
                 Expanded(
@@ -328,9 +323,8 @@ class Realestateagency extends StatelessWidget {
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
                         hintText: 'نام کاربری ( به انگلیسی) *',
-                        hintStyle: TextStyle(
-                          color: Color(0xFFA6A6A6),
-                        ),
+                        hintStyle: const TextStyle(
+                            color: Color(0xFFA6A6A6), fontSize: 14),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                         )),
@@ -339,18 +333,17 @@ class Realestateagency extends StatelessWidget {
               ],
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 20,
-            width: 50,
           ),
           Padding(
-            padding: const EdgeInsets.only(top: 70),
+            padding: const EdgeInsets.symmetric(vertical: 25),
             child: Container(
-              width: 160,
+              width: MediaQuery.of(context).size.width * 1 / 3,
               height: 50,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(30),
-                gradient: LinearGradient(colors: [
+                gradient: const LinearGradient(colors: [
                   Color.fromARGB(700, 55, 250, 100),
                   Colors.blue,
                 ]),
@@ -360,13 +353,13 @@ class Realestateagency extends StatelessWidget {
                 style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.transparent,
                     shadowColor: Colors.transparent),
-                child: Text(
+                child: const Text(
                   'تایید',
                   style: TextStyle(
                       color: Colors.black,
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
-                      fontFamily: 'Iran Sans Bold'),
+                      fontFamily: MAIN_FONT_FAMILY),
                 ),
               ),
             ),
