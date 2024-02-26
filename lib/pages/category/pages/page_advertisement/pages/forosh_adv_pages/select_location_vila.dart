@@ -27,7 +27,7 @@ class _SelectLocationOnMapState extends State<SelectLocationVila> {
       appBar: buildaAppBar(),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15),
+          padding: const EdgeInsets.symmetric(horizontal: 15,vertical: 10),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
@@ -38,6 +38,7 @@ class _SelectLocationOnMapState extends State<SelectLocationVila> {
                     fontSize: 16,
                     fontFamily: MAIN_FONT_FAMILY),
               ),
+              const SizedBox(height: 15,),
               Container(
                 decoration: ShapeDecoration(
                   shape: RoundedRectangleBorder(
@@ -145,18 +146,19 @@ class _SelectLocationOnMapState extends State<SelectLocationVila> {
                       166,
                       1,
                     ),
-                    fontSize: 16,
+                    fontSize: 13,
                     fontFamily: MAIN_FONT_FAMILY,
                   ),
                 ),
               ),
-              SwitchItemVila(type: type, items: const ["باغ ویلا", "باغ", "خانه ویلایی"]),
-              SizedBox(
-                height: 160,
+              SwitchItemVila(
+                  type: type, items: const ["باغ ویلا", "باغ", "خانه ویلایی"]),
+              const SizedBox(
+                height: 75,
               ),
               GestureDetector(
                 onTap: () {
-                  Get.to(() =>  SaleVila());
+                  Get.to(() => SaleVila());
                 },
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,

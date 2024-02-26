@@ -26,7 +26,7 @@ class _SelectLocationOnMapState extends State<SelectLocationKolangi> {
       appBar: buildaAppBar(),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15),
+          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
@@ -36,6 +36,9 @@ class _SelectLocationOnMapState extends State<SelectLocationKolangi> {
                     color: Colors.black,
                     fontSize: 16,
                     fontFamily: MAIN_FONT_FAMILY),
+              ),
+              const SizedBox(
+                height: 15,
               ),
               Container(
                 decoration: ShapeDecoration(
@@ -63,7 +66,7 @@ class _SelectLocationOnMapState extends State<SelectLocationKolangi> {
                         ),
                       ),
                       SizedBox(
-                        width: MediaQuery.of(context).size.width * 0.4,
+                        width: MediaQuery.of(context).size.width * 1 / 2.3,
                         height: 40,
                         child: TextField(
                           textAlign: TextAlign.right,
@@ -92,7 +95,7 @@ class _SelectLocationOnMapState extends State<SelectLocationKolangi> {
                       ),
                       SizedBox(
                         height: 40,
-                        width: MediaQuery.of(context).size.width * 0.4,
+                        width: MediaQuery.of(context).size.width * 1 / 2.3,
                         child: TextField(
                           textAlign: TextAlign.right,
                           readOnly: true,
@@ -114,20 +117,23 @@ class _SelectLocationOnMapState extends State<SelectLocationKolangi> {
               const SizedBox(
                 height: 15,
               ),
-              Directionality(
-                textDirection: TextDirection.rtl,
-                child: TextField(
-                  maxLines: 2,
-                  decoration: InputDecoration(
-                      label: const Text(
-                        "آدرس",
-                        style: TextStyle(
-                            fontFamily: MAIN_FONT_FAMILY,
-                            color: Color.fromRGBO(166, 166, 166, 1)),
-                        textAlign: TextAlign.right,
-                      ),
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10))),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Directionality(
+                  textDirection: TextDirection.rtl,
+                  child: TextField(
+                    maxLines: 2,
+                    decoration: InputDecoration(
+                        label: const Text(
+                          "آدرس",
+                          style: TextStyle(
+                              fontFamily: MAIN_FONT_FAMILY,
+                              color: Color.fromRGBO(166, 166, 166, 1)),
+                          textAlign: TextAlign.right,
+                        ),
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10))),
+                  ),
                 ),
               ),
               const SizedBox(
@@ -135,17 +141,20 @@ class _SelectLocationOnMapState extends State<SelectLocationKolangi> {
               ),
               const Align(
                 alignment: Alignment.centerRight,
-                child: Text(
-                  "نوع ملک شما",
-                  style: TextStyle(
-                    color: Color.fromRGBO(
-                      166,
-                      166,
-                      166,
-                      1,
+                child: Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: Text(
+                    "نوع ملک شما",
+                    style: TextStyle(
+                      color: Color.fromRGBO(
+                        166,
+                        166,
+                        166,
+                        1,
+                      ),
+                      fontSize: 14,
+                      fontFamily: MAIN_FONT_FAMILY,
                     ),
-                    fontSize: 16,
-                    fontFamily: MAIN_FONT_FAMILY,
                   ),
                 ),
               ),
@@ -154,12 +163,12 @@ class _SelectLocationOnMapState extends State<SelectLocationKolangi> {
                 child: SwitchItem(
                     type: type, items: const ["زمین مسکونی", "خانه کلنگی"]),
               ),
-              SizedBox(
-                height: 160,
+              const SizedBox(
+                height: 30,
               ),
               GestureDetector(
                 onTap: () {
-                  Get.to(() =>  SaleOldHouse());
+                  Get.to(() => SaleOldHouse());
                 },
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,

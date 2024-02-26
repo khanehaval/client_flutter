@@ -20,15 +20,13 @@ class EjaraMaskoni extends StatelessWidget {
           margin: const EdgeInsets.all(10),
           padding: const EdgeInsets.all(5),
           height: 153,
-          width: 372,
+          width: MediaQuery.of(context).size.width * 1 / 1,
           decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(10),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.grey.withOpacity(0.2),
-                  spreadRadius: 1,
-                  blurRadius: 1,
+                  color: Colors.grey.withOpacity(.01),
                 ),
               ]),
           child: Image.asset('assets/images/Group_699.png'),
@@ -43,14 +41,13 @@ class EjaraMaskoni extends StatelessWidget {
               padding: const EdgeInsets.all(10),
               child: Container(
                 height: 90,
-                width: 181,
+                width: 171,
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(10),
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.grey.withOpacity(0.3),
-                      blurRadius: 5,
+                      color: Colors.grey.withOpacity(.01),
                     )
                   ],
                 ),
@@ -60,25 +57,21 @@ class EjaraMaskoni extends StatelessWidget {
                 ),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.all(5.0),
-              child: Container(
-                height: 90,
-                width: 181,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(10),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.3),
-                      blurRadius: 5,
-                    )
-                  ],
-                ),
-                child: Image.asset(
-                  'assets/images/Group 649.png',
-                  fit: BoxFit.fill,
-                ),
+            Container(
+              height: 90,
+              width: 181,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(10),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(.01),
+                  )
+                ],
+              ),
+              child: Image.asset(
+                'assets/images/Group 649.png',
+                fit: BoxFit.fill,
               ),
             ),
           ],
@@ -90,52 +83,49 @@ class EjaraMaskoni extends StatelessWidget {
         SizedBox(
           height: 10,
         ),
-        Padding(
-          padding: const EdgeInsets.only(left: 8, right: 8),
-          child: Container(
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10), border: Border.all()),
-            child: Column(
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Obx(
-                      () => IconButton(
-                        icon: _show_item_1.value
-                            ? const Icon(
-                                Icons.keyboard_double_arrow_down_outlined,
-                                size: 25,
-                              )
-                            : const Icon(CupertinoIcons.chevron_left_2),
-                        onPressed: () {
-                          _show_item_1.value = !_show_item_1.isTrue;
-                        },
+        Container(
+          margin: const EdgeInsets.only(left: 10, right: 10),
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10), border: Border.all()),
+          child: Column(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Obx(
+                    () => IconButton(
+                      icon: _show_item_1.value
+                          ? const Icon(
+                              Icons.keyboard_double_arrow_down_outlined,
+                              size: 25,
+                            )
+                          : const Icon(CupertinoIcons.chevron_left_2),
+                      onPressed: () {
+                        _show_item_1.value = !_show_item_1.isTrue;
+                      },
+                    ),
+                  ),
+                  Divider(
+                    endIndent: 20,
+                    indent: 20,
+                  ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Text(
+                        'اجاره آپارتمان بر اساس متراژ',
+                        style: TextStyle(
+                            fontSize: 18,
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                            fontFamily: 'Iran Sans Bold,'),
                       ),
-                    ),
-                    Divider(
-                      endIndent: 20,
-                      indent: 20,
-                    ),
-                    const Padding(
-                      padding: EdgeInsets.all(8.0),
-                      child: Column(
-                        children: [
-                          Text(
-                            'اجاره آپارتمان بر اساس متراژ',
-                            style: TextStyle(
-                                fontSize: 20,
-                                color: Colors.black,
-                                fontWeight: FontWeight.bold,
-                                fontFamily: 'Iran Sans Bold,'),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
+                    ],
+                  ),
+                ],
+              ),
+            ],
           ),
         ),
         buildItem1(),
@@ -202,7 +192,7 @@ class EjaraMaskoni extends StatelessWidget {
                     ],
                   ),
                   child: Image.asset(
-                    'assets/images/Group 655.png',
+                    'assets/images/Group 654.png',
                     fit: BoxFit.fill,
                   ),
                 ),
@@ -220,83 +210,14 @@ class EjaraMaskoni extends StatelessWidget {
           ? Padding(
               padding: const EdgeInsets.all(10),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   GestureDetector(
                     onTap: () {},
                     child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        Padding(
-                          padding: const EdgeInsets.all(5),
-                          child: Container(
-                            height: 57,
-                            width: 176,
-                            decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(10),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.grey.withOpacity(0.1),
-                                    spreadRadius: 1,
-                                    blurRadius: 5,
-                                  )
-                                ],
-                                border: Border.all(
-                                  color: Colors.black45,
-                                  width: 0.3,
-                                )),
-                            child: Text(
-                              'تا 60 متر مربع',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                color: Color(0xFF303030),
-                                fontSize: 14,
-                                fontFamily: MAIN_FONT_FAMILY,
-                                fontWeight: FontWeight.w300,
-                                height: 4,
-                              ),
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(0),
-                          child: Container(
-                            height: 57,
-                            width: 176,
-                            decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(10),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.grey.withOpacity(0.1),
-                                    spreadRadius: 1,
-                                    blurRadius: 10,
-                                  )
-                                ],
-                                border: Border.all(
-                                  color: Colors.black45,
-                                  width: 0.3,
-                                )),
-                            child: Text(
-                              'تا 50 متر مربع',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                color: Color(0xFF303030),
-                                fontSize: 14,
-                                fontFamily: MAIN_FONT_FAMILY,
-                                fontWeight: FontWeight.w300,
-                                height: 4,
-                              ),
-                            ),
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                  Row(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(5),
-                        child: Container(
+                        Container(
                           height: 57,
                           width: 176,
                           decoration: BoxDecoration(
@@ -314,7 +235,7 @@ class EjaraMaskoni extends StatelessWidget {
                                 width: 0.3,
                               )),
                           child: Text(
-                            'تا 80 متر مربع',
+                            'تا 60 متر مربع',
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               color: Color(0xFF303030),
@@ -325,10 +246,7 @@ class EjaraMaskoni extends StatelessWidget {
                             ),
                           ),
                         ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(0),
-                        child: Container(
+                        Container(
                           height: 57,
                           width: 176,
                           decoration: BoxDecoration(
@@ -345,8 +263,8 @@ class EjaraMaskoni extends StatelessWidget {
                                 color: Colors.black45,
                                 width: 0.3,
                               )),
-                          child: Text(
-                            'تا 70 متر مربع',
+                          child: const Text(
+                            'تا 50 متر مربع',
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               color: Color(0xFF303030),
@@ -356,75 +274,138 @@ class EjaraMaskoni extends StatelessWidget {
                               height: 4,
                             ),
                           ),
+                        )
+                      ],
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Container(
+                        height: 57,
+                        width: 176,
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(10),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey.withOpacity(.01),
+                                spreadRadius: 1,
+                                blurRadius: 5,
+                              )
+                            ],
+                            border: Border.all(
+                              color: Colors.black45,
+                              width: 0.3,
+                            )),
+                        child: const Text(
+                          'تا 80 متر مربع',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            color: Color(0xFF303030),
+                            fontSize: 14,
+                            fontFamily: MAIN_FONT_FAMILY,
+                            fontWeight: FontWeight.w300,
+                            height: 4,
+                          ),
+                        ),
+                      ),
+                      Container(
+                        height: 57,
+                        width: 176,
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(10),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey.withOpacity(.01),
+                                spreadRadius: 1,
+                                blurRadius: 10,
+                              )
+                            ],
+                            border: Border.all(
+                              color: Colors.black45,
+                              width: 0.3,
+                            )),
+                        child: const Text(
+                          'تا 70 متر مربع',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            color: Color(0xFF303030),
+                            fontSize: 14,
+                            fontFamily: MAIN_FONT_FAMILY,
+                            fontWeight: FontWeight.w300,
+                            height: 4,
+                          ),
                         ),
                       ),
                     ],
                   ),
                   Column(
                     children: [
+                      const SizedBox(
+                        height: 10,
+                      ),
                       Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Padding(
-                            padding: const EdgeInsets.all(5),
-                            child: Container(
-                              height: 57,
-                              width: 176,
-                              decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(10),
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Colors.grey.withOpacity(0.1),
-                                      spreadRadius: 1,
-                                      blurRadius: 5,
-                                    )
-                                  ],
-                                  border: Border.all(
-                                    color: Colors.black45,
-                                    width: 0.3,
-                                  )),
-                              child: Text(
-                                'تا 100 متر مربع',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  color: Color(0xFF303030),
-                                  fontSize: 14,
-                                  fontFamily: MAIN_FONT_FAMILY,
-                                  fontWeight: FontWeight.w300,
-                                  height: 4,
-                                ),
+                          Container(
+                            height: 57,
+                            width: 176,
+                            decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(10),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.grey.withOpacity(.01),
+                                  )
+                                ],
+                                border: Border.all(
+                                  color: Colors.black45,
+                                  width: 0.3,
+                                )),
+                            child: Text(
+                              'تا 100 متر مربع',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                color: Color(0xFF303030),
+                                fontSize: 14,
+                                fontFamily: MAIN_FONT_FAMILY,
+                                fontWeight: FontWeight.w300,
+                                height: 4,
                               ),
                             ),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.all(0),
-                            child: Container(
-                              height: 57,
-                              width: 176,
-                              decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(10),
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Colors.grey.withOpacity(0.1),
-                                      spreadRadius: 1,
-                                      blurRadius: 10,
-                                    )
-                                  ],
-                                  border: Border.all(
-                                    color: Colors.black45,
-                                    width: 0.3,
-                                  )),
-                              child: Text(
-                                'تا 90 متر مربع',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  color: Color(0xFF303030),
-                                  fontSize: 14,
-                                  fontFamily: MAIN_FONT_FAMILY,
-                                  fontWeight: FontWeight.w300,
-                                  height: 4,
-                                ),
+                          Container(
+                            height: 57,
+                            width: 176,
+                            decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(10),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.grey.withOpacity(.01),
+                                    spreadRadius: 1,
+                                    blurRadius: 10,
+                                  )
+                                ],
+                                border: Border.all(
+                                  color: Colors.black45,
+                                  width: 0.3,
+                                )),
+                            child: const Text(
+                              'تا 90 متر مربع',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                color: Color(0xFF303030),
+                                fontSize: 14,
+                                fontFamily: MAIN_FONT_FAMILY,
+                                fontWeight: FontWeight.w300,
+                                height: 4,
                               ),
                             ),
                           ),
@@ -435,7 +416,7 @@ class EjaraMaskoni extends StatelessWidget {
                 ],
               ),
             )
-          : SizedBox.shrink(),
+          : const SizedBox.shrink(),
     );
   }
 }

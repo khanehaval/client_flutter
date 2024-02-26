@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/pages/category/shared/contant.dart';
 import 'package:get/get.dart';
 
 class SachtSaz extends StatelessWidget {
@@ -33,61 +34,60 @@ class SachtSaz extends StatelessWidget {
               ]),
           child: Image.asset('assets/images/Group 722.png'),
         ),
-        Divider(
+        const Divider(
           endIndent: 20,
           indent: 20,
         ),
+        const SizedBox(
+          height: 10,
+        ),
         Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            Padding(
-              padding: const EdgeInsets.all(10),
-              child: Container(
-                height: 90,
-                width: 181,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(10),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.3),
-                      blurRadius: 5,
-                    )
-                  ],
-                ),
-                child: Image.asset(
-                  'assets/images/Group 74.png',
-                  fit: BoxFit.fill,
-                ),
+            Container(
+              height: 90,
+              width: 180,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(10),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(.01),
+                  )
+                ],
+              ),
+              child: Image.asset(
+                'assets/images/Group 74.png',
+                fit: BoxFit.fill,
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.all(5.0),
-              child: Container(
-                height: 90,
-                width: 181,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(10),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.3),
-                      blurRadius: 5,
-                    )
-                  ],
-                ),
-                child: Image.asset(
-                  'assets/images/Group 75.png',
-                  fit: BoxFit.fill,
-                ),
+            Container(
+              height: 90,
+              width: 180,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(10),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(.01),
+                  )
+                ],
+              ),
+              child: Image.asset(
+                'assets/images/Group 75.png',
+                fit: BoxFit.fill,
               ),
             ),
           ],
         ),
-        Divider(
+        const SizedBox(
+          height: 10,
+        ),
+        const Divider(
           endIndent: 20,
           indent: 20,
         ),
-        SizedBox(
+        const SizedBox(
           height: 10,
         ),
         Padding(
@@ -113,7 +113,7 @@ class SachtSaz extends StatelessWidget {
                         },
                       ),
                     ),
-                    Divider(
+                    const Divider(
                       endIndent: 20,
                       indent: 20,
                     ),
@@ -124,10 +124,9 @@ class SachtSaz extends StatelessWidget {
                           Text(
                             'فروش ویژه',
                             style: TextStyle(
-                                fontSize: 20,
+                                fontSize: 16,
                                 color: Colors.black,
-                                fontWeight: FontWeight.bold,
-                                fontFamily: 'Iran Sans Bold,'),
+                                fontFamily: MAIN_FONT_FAMILY),
                           ),
                         ],
                       ),
@@ -147,25 +146,22 @@ class SachtSaz extends StatelessWidget {
           scrollDirection: Axis.horizontal,
           child: Row(
             children: [
-              Padding(
-                padding: const EdgeInsets.all(15),
-                child: Container(
-                  height: 90,
-                  width: 147,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(10),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.3),
-                        blurRadius: 5,
-                      )
-                    ],
-                  ),
-                  child: Image.asset(
-                    'assets/images/Group 650.png',
-                    fit: BoxFit.fill,
-                  ),
+              Container(
+                margin: EdgeInsets.all(10),
+                height: 90,
+                width: 147,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(10),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(.01),
+                    )
+                  ],
+                ),
+                child: Image.asset(
+                  'assets/images/Group 650.png',
+                  fit: BoxFit.fill,
                 ),
               ),
               Container(
@@ -176,8 +172,7 @@ class SachtSaz extends StatelessWidget {
                   borderRadius: BorderRadius.circular(10),
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.grey.withOpacity(0.3),
-                      blurRadius: 5,
+                      color: Colors.grey.withOpacity(.01),
                     )
                   ],
                 ),
@@ -186,25 +181,22 @@ class SachtSaz extends StatelessWidget {
                   fit: BoxFit.fill,
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Container(
-                  height: 90,
-                  width: 147,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(10),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.3),
-                        blurRadius: 5,
-                      )
-                    ],
-                  ),
-                  child: Image.asset(
-                    'assets/images/Group 654.png',
-                    fit: BoxFit.fill,
-                  ),
+              Container(
+                margin: EdgeInsets.all(10),
+                height: 90,
+                width: 147,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(10),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(.01),
+                    )
+                  ],
+                ),
+                child: Image.asset(
+                  'assets/images/Group 654.png',
+                  fit: BoxFit.fill,
                 ),
               ),
             ],
@@ -216,64 +208,53 @@ class SachtSaz extends StatelessWidget {
 
   Obx buildItem1() {
     return Obx(() => _show_item_1.isTrue
-        ? Padding(
-            padding: const EdgeInsets.all(10),
-            child: Column(
-              children: [
-                Image.asset('assets/images/Group 778.png'),
-                GestureDetector(
-                  onTap: () {},
-                  child: Row(children: [
-                    Padding(
-                      padding: const EdgeInsets.all(5),
-                      child: Container(
-                        height: 98,
-                        width: 180,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(10),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(0.1),
-                              spreadRadius: 1,
-                              blurRadius: 5,
-                            )
-                          ],
-                          border: Border.all(
-                            color: Colors.black45,
-                            width: 0.3,
-                          ),
-                        ),
-                        child: Image.asset('assets/images/Group 768.png'),
-                      ),
+        ? Column(
+            children: [
+              Image.asset('assets/images/Group 778.png'),
+              const SizedBox(
+                height: 10,
+              ),
+              Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
+                Container(
+                  height: 98,
+                  width: 180,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(.01),
+                      )
+                    ],
+                    border: Border.all(
+                      color: Colors.black45,
+                      width: 0.1,
                     ),
-                    Padding(
-                      padding: const EdgeInsets.all(0),
-                      child: Container(
-                        height: 98,
-                        width: 180,
-                        decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(10),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.grey.withOpacity(0.1),
-                                spreadRadius: 1,
-                                blurRadius: 10,
-                              )
-                            ],
-                            border: Border.all(
-                              color: Colors.black45,
-                              width: 0.3,
-                            )),
-                        child: Image.asset('assets/images/Group 767.png'),
-                      ),
-                    ),
-                  ]),
-                )
-              ],
-            ),
+                  ),
+                  child: Image.asset('assets/images/Group 768.png'),
+                ),
+                Container(
+                  height: 98,
+                  width: 180,
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(10),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(.01),
+                          spreadRadius: 1,
+                          blurRadius: 10,
+                        )
+                      ],
+                      border: Border.all(
+                        color: Colors.black45,
+                        width: 0.1,
+                      )),
+                  child: Image.asset('assets/images/Group 767.png'),
+                ),
+              ])
+            ],
           )
-        : SizedBox.shrink());
+        : const SizedBox.shrink());
   }
 }

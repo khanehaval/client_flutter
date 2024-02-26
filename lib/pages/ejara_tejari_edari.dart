@@ -230,7 +230,7 @@ class EjaraTajariEdari extends StatelessWidget {
                                   color: Colors.black45,
                                   width: 0.3,
                                 )),
-                            child: Text(
+                            child: const Text(
                               'تا 500 میلیون تومان',
                               textAlign: TextAlign.center,
                               style: TextStyle(

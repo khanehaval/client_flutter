@@ -19,30 +19,33 @@ class TwoItemInRow extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
-             Text(
-             label1,
+            Text(
+              label1,
               style: const TextStyle(
                   color: Color.fromRGBO(99, 99, 99, 1),
+                  fontSize: 11,
                   fontFamily: MAIN_FONT_FAMILY),
             ),
             w1
           ],
         ),
         Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             Text(
               label2,
               style: const TextStyle(
                   color: Color.fromRGBO(99, 99, 99, 1),
+                  fontSize: 12,
                   fontFamily: MAIN_FONT_FAMILY),
             ),
             w2
-
           ],
         )
       ],

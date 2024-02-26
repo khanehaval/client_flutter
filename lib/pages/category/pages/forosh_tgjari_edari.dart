@@ -71,16 +71,12 @@ class ForoshTagariEdari extends StatelessWidget {
                         _show_item_1.value = !_show_item_1.value;
                       },
                     )),
-                const Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: Text(
-                    ' فروش بر اساس قیمت',
-                    style: TextStyle(
-                        fontSize: 20,
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
-                        fontFamily: 'Iran Sans Bold,'),
-                  ),
+                const Text(
+                  ' فروش بر اساس قیمت',
+                  style: TextStyle(
+                      fontSize: 16,
+                      color: Color.fromRGBO(48, 48, 48, 1),
+                      fontFamily: MAIN_FONT_FAMILY),
                 ),
               ],
             ),
@@ -116,16 +112,12 @@ class ForoshTagariEdari extends StatelessWidget {
                         _show_item_2.value = !_show_item_2.value;
                       },
                     )),
-                const Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: Text(
-                    'فروش بر اساس متراژ',
-                    style: TextStyle(
-                        fontSize: 20,
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
-                        fontFamily: MAIN_FONT_FAMILY),
-                  ),
+                Text(
+                  'فروش بر اساس متراژ',
+                  style: TextStyle(
+                      fontSize: 16,
+                      color: Color.fromRGBO(48, 48, 48, 1),
+                      fontFamily: MAIN_FONT_FAMILY),
                 ),
               ],
             ),
@@ -184,8 +176,8 @@ class ForoshTagariEdari extends StatelessWidget {
                       _buidText('تا 50 میلیون تومان')
                     ],
                   ),
-                  SizedBox(
-                    height: 20,
+                  const SizedBox(
+                    height: 10,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -194,8 +186,8 @@ class ForoshTagariEdari extends StatelessWidget {
                       _buidText('تا 150 میلیون تومان'),
                     ],
                   ),
-                  SizedBox(
-                    height: 20,
+                  const SizedBox(
+                    height: 10,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -212,35 +204,32 @@ class ForoshTagariEdari extends StatelessWidget {
   }
 
   Widget _buidText(String text) {
-    return Padding(
-      padding: const EdgeInsets.all(0),
-      child: Container(
-        height: 57,
-        width: 176,
-        decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(10),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.grey.withOpacity(0.1),
-                spreadRadius: 1,
-                blurRadius: 10,
-              )
-            ],
-            border: Border.all(
-              color: Colors.black45,
-              width: 0.3,
-            )),
-        child: Text(
-          text,
-          textAlign: TextAlign.center,
-          style: const TextStyle(
-            color: Color(0xFF303030),
-            fontSize: 14,
-            fontFamily: MAIN_FONT_FAMILY,
-            fontWeight: FontWeight.w300,
-            height: 4,
-          ),
+    return Container(
+      height: 57,
+      width: 176,
+      decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(10),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.1),
+              spreadRadius: 1,
+              blurRadius: 10,
+            )
+          ],
+          border: Border.all(
+            color: Colors.black45,
+            width: 0.3,
+          )),
+      child: Text(
+        text,
+        textAlign: TextAlign.center,
+        style: const TextStyle(
+          color: Color(0xFF303030),
+          fontSize: 14,
+          fontFamily: MAIN_FONT_FAMILY,
+          fontWeight: FontWeight.w300,
+          height: 4,
         ),
       ),
     );
@@ -248,39 +237,42 @@ class ForoshTagariEdari extends StatelessWidget {
 
   Obx _buildItem2() {
     return Obx(() => _show_item_2.isTrue
-        ? Column(
-            children: [
-              SizedBox(
-                height: 17,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  _buidText('تا 60 متر مربع'),
-                  _buidText('تا 50 متر مربع'),
-                ],
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  _buidText('تا 80 متر مربع'),
-                  _buidText('تا 70 متر مربع'),
-                ],
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  _buidText('تا 100 متر مربع'),
-                  _buidText('تا 90 متر مربع'),
-                ],
-              )
-            ],
+        ? Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Column(
+              children: [
+                const SizedBox(
+                  height: 17,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    _buidText('تا 60 متر مربع'),
+                    _buidText('تا 50 متر مربع'),
+                  ],
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    _buidText('تا 80 متر مربع'),
+                    _buidText('تا 70 متر مربع'),
+                  ],
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    _buidText('تا 100 متر مربع'),
+                    _buidText('تا 90 متر مربع'),
+                  ],
+                )
+              ],
+            ),
           )
         : const SizedBox.shrink());
   }

@@ -137,10 +137,9 @@ class EjaraTagariEdari extends StatelessWidget {
                   child: Text(
                     ' فروش بر اساس قیمت',
                     style: TextStyle(
-                        fontSize: 20,
+                        fontSize: 16,
                         color: Colors.black,
-                        fontWeight: FontWeight.bold,
-                        fontFamily: 'Iran Sans Bold,'),
+                        fontFamily: MAIN_FONT_FAMILY),
                   ),
                 ),
               ],
@@ -182,10 +181,9 @@ class EjaraTagariEdari extends StatelessWidget {
                   child: Text(
                     'فروش بر اساس متراژ',
                     style: TextStyle(
-                        fontSize: 20,
+                        fontSize: 16,
                         color: Colors.black,
-                        fontWeight: FontWeight.bold,
-                        fontFamily: 'Iran Sans Bold,'),
+                        fontFamily: MAIN_FONT_FAMILY),
                   ),
                 ),
               ],
@@ -274,226 +272,205 @@ class EjaraTagariEdari extends StatelessWidget {
           ? Padding(
               padding: const EdgeInsets.all(10),
               child: Column(children: [
-                Column(children: [
-                  GestureDetector(
-                    onTap: () {},
-                    child: Column(
+                Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        GestureDetector(
-                          onTap: () {},
-                          child: Row(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.all(5),
-                                child: Container(
-                                  height: 57,
-                                  width: 176,
-                                  decoration: BoxDecoration(
-                                      color: Colors.white,
-                                      borderRadius: BorderRadius.circular(10),
-                                      boxShadow: [
-                                        BoxShadow(
-                                          color: Colors.grey.withOpacity(0.1),
-                                          spreadRadius: 1,
-                                          blurRadius: 5,
-                                        )
-                                      ],
-                                      border: Border.all(
-                                        color: Colors.black45,
-                                        width: 0.3,
-                                      )),
-                                  child: Text(
-                                    'تا 100 میلیون تومان',
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                      color: Color(0xFF303030),
-                                      fontSize: 14,
-                                      fontFamily: MAIN_FONT_FAMILY,
-                                      fontWeight: FontWeight.w300,
-                                      height: 4,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.all(0),
-                                child: Container(
-                                  height: 57,
-                                  width: 176,
-                                  decoration: BoxDecoration(
-                                      color: Colors.white,
-                                      borderRadius: BorderRadius.circular(10),
-                                      boxShadow: [
-                                        BoxShadow(
-                                          color: Colors.grey.withOpacity(0.1),
-                                          spreadRadius: 1,
-                                          blurRadius: 10,
-                                        )
-                                      ],
-                                      border: Border.all(
-                                        color: Colors.black45,
-                                        width: 0.3,
-                                      )),
-                                  child: Text(
-                                    'تا 50 میلیون تومان',
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                      color: Color(0xFF303030),
-                                      fontSize: 14,
-                                      fontFamily: MAIN_FONT_FAMILY,
-                                      fontWeight: FontWeight.w300,
-                                      height: 4,
-                                    ),
-                                  ),
-                                ),
-                              )
-                            ],
+                        Container(
+                          height: 57,
+                          width: 176,
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(10),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.grey.withOpacity(0.1),
+                                  spreadRadius: 1,
+                                  blurRadius: 5,
+                                )
+                              ],
+                              border: Border.all(
+                                color: Colors.black45,
+                                width: 0.3,
+                              )),
+                          child: const Text(
+                            'تا 100 میلیون تومان',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              color: Color(0xFF303030),
+                              fontSize: 14,
+                              fontFamily: MAIN_FONT_FAMILY,
+                              fontWeight: FontWeight.w300,
+                              height: 4,
+                            ),
                           ),
                         ),
-                        Row(
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.all(5),
-                              child: Container(
-                                height: 57,
-                                width: 176,
-                                decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.circular(10),
-                                    boxShadow: [
-                                      BoxShadow(
-                                        color: Colors.grey.withOpacity(0.1),
-                                        spreadRadius: 1,
-                                        blurRadius: 5,
-                                      )
-                                    ],
-                                    border: Border.all(
-                                      color: Colors.black45,
-                                      width: 0.3,
-                                    )),
-                                child: Text(
-                                  'تا 200 میلیون تومان',
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                    color: Color(0xFF303030),
-                                    fontSize: 14,
-                                    fontFamily: MAIN_FONT_FAMILY,
-                                    fontWeight: FontWeight.w300,
-                                    height: 4,
-                                  ),
-                                ),
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.all(0),
-                              child: Container(
-                                height: 57,
-                                width: 176,
-                                decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.circular(10),
-                                    boxShadow: [
-                                      BoxShadow(
-                                        color: Colors.grey.withOpacity(0.1),
-                                        spreadRadius: 1,
-                                        blurRadius: 10,
-                                      )
-                                    ],
-                                    border: Border.all(
-                                      color: Colors.black45,
-                                      width: 0.3,
-                                    )),
-                                child: Text(
-                                  'تا 150 میلیون تومان',
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                    color: Color(0xFF303030),
-                                    fontSize: 14,
-                                    fontFamily: MAIN_FONT_FAMILY,
-                                    fontWeight: FontWeight.w300,
-                                    height: 4,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                        Column(
-                          children: [
-                            Row(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.all(5),
-                                  child: Container(
-                                    height: 57,
-                                    width: 176,
-                                    decoration: BoxDecoration(
-                                        color: Colors.white,
-                                        borderRadius: BorderRadius.circular(10),
-                                        boxShadow: [
-                                          BoxShadow(
-                                            color: Colors.grey.withOpacity(0.1),
-                                            spreadRadius: 1,
-                                            blurRadius: 5,
-                                          )
-                                        ],
-                                        border: Border.all(
-                                          color: Colors.black45,
-                                          width: 0.3,
-                                        )),
-                                    child: Text(
-                                      'تا 250 میلیون تومان',
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                        color: Color(0xFF303030),
-                                        fontSize: 14,
-                                        fontFamily: MAIN_FONT_FAMILY,
-                                        fontWeight: FontWeight.w300,
-                                        height: 4,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.all(0),
-                                  child: Container(
-                                    height: 57,
-                                    width: 176,
-                                    decoration: BoxDecoration(
-                                        color: Colors.white,
-                                        borderRadius: BorderRadius.circular(10),
-                                        boxShadow: [
-                                          BoxShadow(
-                                            color: Colors.grey.withOpacity(0.1),
-                                            spreadRadius: 1,
-                                            blurRadius: 10,
-                                          )
-                                        ],
-                                        border: Border.all(
-                                          color: Colors.black45,
-                                          width: 0.3,
-                                        )),
-                                    child: Text(
-                                      'تا 200 میلیون تومان',
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                        color: Color(0xFF303030),
-                                        fontSize: 14,
-                                        fontFamily: MAIN_FONT_FAMILY,
-                                        fontWeight: FontWeight.w300,
-                                        height: 4,
-                                      ),
-                                    ),
-                                  ),
-                                ),
+                        Container(
+                          height: 57,
+                          width: 176,
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(10),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.grey.withOpacity(0.1),
+                                  spreadRadius: 1,
+                                  blurRadius: 10,
+                                )
                               ],
+                              border: Border.all(
+                                color: Colors.black45,
+                                width: 0.3,
+                              )),
+                          child: const Text(
+                            'تا 50 میلیون تومان',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              color: Color(0xFF303030),
+                              fontSize: 14,
+                              fontFamily: MAIN_FONT_FAMILY,
+                              fontWeight: FontWeight.w300,
+                              height: 4,
                             ),
-                          ],
+                          ),
+                        )
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Container(
+                          height: 57,
+                          width: 176,
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(10),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.grey.withOpacity(0.1),
+                                  spreadRadius: 1,
+                                  blurRadius: 5,
+                                )
+                              ],
+                              border: Border.all(
+                                color: Colors.black45,
+                                width: 0.3,
+                              )),
+                          child: const Text(
+                            'تا 200 میلیون تومان',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              color: Color(0xFF303030),
+                              fontSize: 14,
+                              fontFamily: MAIN_FONT_FAMILY,
+                              fontWeight: FontWeight.w300,
+                              height: 4,
+                            ),
+                          ),
+                        ),
+                        Container(
+                          height: 57,
+                          width: 176,
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(10),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.grey.withOpacity(0.1),
+                                  spreadRadius: 1,
+                                  blurRadius: 10,
+                                )
+                              ],
+                              border: Border.all(
+                                color: Colors.black45,
+                                width: 0.3,
+                              )),
+                          child: const Text(
+                            'تا 150 میلیون تومان',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              color: Color(0xFF303030),
+                              fontSize: 14,
+                              fontFamily: MAIN_FONT_FAMILY,
+                              fontWeight: FontWeight.w300,
+                              height: 4,
+                            ),
+                          ),
                         ),
                       ],
                     ),
-                  ),
-                ])
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Container(
+                          height: 57,
+                          width: 176,
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(10),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.grey.withOpacity(0.1),
+                                  spreadRadius: 1,
+                                  blurRadius: 5,
+                                )
+                              ],
+                              border: Border.all(
+                                color: Colors.black45,
+                                width: 0.3,
+                              )),
+                          child: const Text(
+                            'تا 250 میلیون تومان',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              color: Color(0xFF303030),
+                              fontSize: 14,
+                              fontFamily: MAIN_FONT_FAMILY,
+                              fontWeight: FontWeight.w300,
+                              height: 4,
+                            ),
+                          ),
+                        ),
+                        Container(
+                          height: 57,
+                          width: 176,
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(10),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.grey.withOpacity(0.1),
+                                  spreadRadius: 1,
+                                  blurRadius: 10,
+                                )
+                              ],
+                              border: Border.all(
+                                color: Colors.black45,
+                                width: 0.3,
+                              )),
+                          child: const Text(
+                            'تا 200 میلیون تومان',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              color: Color(0xFF303030),
+                              fontSize: 14,
+                              fontFamily: MAIN_FONT_FAMILY,
+                              fontWeight: FontWeight.w300,
+                              height: 4,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                )
               ]),
             )
           : const SizedBox.shrink(),
@@ -501,231 +478,206 @@ class EjaraTagariEdari extends StatelessWidget {
   }
 
   Obx _buildItem2() {
-    return Obx(
-      () => _show_item_2.isTrue
-          ? Padding(
-              padding: const EdgeInsets.all(10),
-              child: Column(children: [
-                GestureDetector(
-                  onTap: () {},
-                  child: Column(
-                    children: [
-                      GestureDetector(
-                        onTap: () {},
-                        child: Row(
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.all(5),
-                              child: Container(
-                                height: 57,
-                                width: 176,
-                                decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.circular(10),
-                                    boxShadow: [
-                                      BoxShadow(
-                                        color: Colors.grey.withOpacity(0.1),
-                                        spreadRadius: 1,
-                                        blurRadius: 5,
-                                      )
-                                    ],
-                                    border: Border.all(
-                                      color: Colors.black45,
-                                      width: 0.3,
-                                    )),
-                                child: Text(
-                                  'تا 60 متر مربع',
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                    color: Color(0xFF303030),
-                                    fontSize: 14,
-                                    fontFamily: MAIN_FONT_FAMILY,
-                                    fontWeight: FontWeight.w300,
-                                    height: 4,
-                                  ),
-                                ),
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.all(0),
-                              child: Container(
-                                height: 57,
-                                width: 176,
-                                decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.circular(10),
-                                    boxShadow: [
-                                      BoxShadow(
-                                        color: Colors.grey.withOpacity(0.1),
-                                        spreadRadius: 1,
-                                        blurRadius: 10,
-                                      )
-                                    ],
-                                    border: Border.all(
-                                      color: Colors.black45,
-                                      width: 0.3,
-                                    )),
-                                child: Text(
-                                  'تا 50 متر مربع',
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                    color: Color(0xFF303030),
-                                    fontSize: 14,
-                                    fontFamily: MAIN_FONT_FAMILY,
-                                    fontWeight: FontWeight.w300,
-                                    height: 4,
-                                  ),
-                                ),
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                      Row(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.all(5),
-                            child: Container(
-                              height: 57,
-                              width: 176,
-                              decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(10),
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Colors.grey.withOpacity(0.1),
-                                      spreadRadius: 1,
-                                      blurRadius: 5,
-                                    )
-                                  ],
-                                  border: Border.all(
-                                    color: Colors.black45,
-                                    width: 0.3,
-                                  )),
-                              child: Text(
-                                'تا 80 متر مربع',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  color: Color(0xFF303030),
-                                  fontSize: 14,
-                                  fontFamily: MAIN_FONT_FAMILY,
-                                  fontWeight: FontWeight.w300,
-                                  height: 4,
-                                ),
-                              ),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(0),
-                            child: Container(
-                              height: 57,
-                              width: 176,
-                              decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(10),
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Colors.grey.withOpacity(0.1),
-                                      spreadRadius: 1,
-                                      blurRadius: 10,
-                                    )
-                                  ],
-                                  border: Border.all(
-                                    color: Colors.black45,
-                                    width: 0.3,
-                                  )),
-                              child: Text(
-                                'تا 70 متر مربع',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  color: Color(0xFF303030),
-                                  fontSize: 14,
-                                  fontFamily: MAIN_FONT_FAMILY,
-                                  fontWeight: FontWeight.w300,
-                                  height: 4,
-                                ),
-                              ),
-                            ),
-                          ),
+    return Obx(() => _show_item_2.isTrue
+        ? Padding(
+            padding: const EdgeInsets.all(10),
+            child: Column(children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Container(
+                    height: 57,
+                    width: 176,
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(10),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withOpacity(0.1),
+                            spreadRadius: 1,
+                            blurRadius: 5,
+                          )
                         ],
+                        border: Border.all(
+                          color: Colors.black45,
+                          width: 0.3,
+                        )),
+                    child: const Text(
+                      'تا 60 متر مربع',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Color(0xFF303030),
+                        fontSize: 14,
+                        fontFamily: MAIN_FONT_FAMILY,
+                        fontWeight: FontWeight.w300,
+                        height: 4,
                       ),
-                      Column(
-                        children: [
-                          Row(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.all(5),
-                                child: Container(
-                                  height: 57,
-                                  width: 176,
-                                  decoration: BoxDecoration(
-                                      color: Colors.white,
-                                      borderRadius: BorderRadius.circular(10),
-                                      boxShadow: [
-                                        BoxShadow(
-                                          color: Colors.grey.withOpacity(0.1),
-                                          spreadRadius: 1,
-                                          blurRadius: 5,
-                                        )
-                                      ],
-                                      border: Border.all(
-                                        color: Colors.black45,
-                                        width: 0.3,
-                                      )),
-                                  child: Text(
-                                    'تا 100 متر مربع',
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                      color: Color(0xFF303030),
-                                      fontSize: 14,
-                                      fontFamily: MAIN_FONT_FAMILY,
-                                      fontWeight: FontWeight.w300,
-                                      height: 4,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.all(0),
-                                child: Container(
-                                  height: 57,
-                                  width: 176,
-                                  decoration: BoxDecoration(
-                                      color: Colors.white,
-                                      borderRadius: BorderRadius.circular(10),
-                                      boxShadow: [
-                                        BoxShadow(
-                                          color: Colors.grey.withOpacity(0.1),
-                                          spreadRadius: 1,
-                                          blurRadius: 10,
-                                        )
-                                      ],
-                                      border: Border.all(
-                                        color: Colors.black45,
-                                        width: 0.3,
-                                      )),
-                                  child: Text(
-                                    'تا 90 متر مربع',
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                      color: Color(0xFF303030),
-                                      fontSize: 14,
-                                      fontFamily: MAIN_FONT_FAMILY,
-                                      fontWeight: FontWeight.w300,
-                                      height: 4,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ],
+                    ),
                   ),
-                )
-              ]))
-          :SizedBox.shrink()
-    );
+                  Container(
+                    height: 57,
+                    width: 176,
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(10),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withOpacity(0.1),
+                            spreadRadius: 1,
+                            blurRadius: 10,
+                          )
+                        ],
+                        border: Border.all(
+                          color: Colors.black45,
+                          width: 0.3,
+                        )),
+                    child: const Text(
+                      'تا 50 متر مربع',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Color(0xFF303030),
+                        fontSize: 14,
+                        fontFamily: MAIN_FONT_FAMILY,
+                        fontWeight: FontWeight.w300,
+                        height: 4,
+                      ),
+                    ),
+                  )
+                ],
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Container(
+                    height: 57,
+                    width: 176,
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(10),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withOpacity(0.1),
+                            spreadRadius: 1,
+                            blurRadius: 5,
+                          )
+                        ],
+                        border: Border.all(
+                          color: Colors.black45,
+                          width: 0.3,
+                        )),
+                    child: const Text(
+                      'تا 80 متر مربع',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Color(0xFF303030),
+                        fontSize: 14,
+                        fontFamily: MAIN_FONT_FAMILY,
+                        fontWeight: FontWeight.w300,
+                        height: 4,
+                      ),
+                    ),
+                  ),
+                  Container(
+                    height: 57,
+                    width: 176,
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(10),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withOpacity(0.1),
+                            spreadRadius: 1,
+                            blurRadius: 10,
+                          )
+                        ],
+                        border: Border.all(
+                          color: Colors.black45,
+                          width: 0.3,
+                        )),
+                    child: const Text(
+                      'تا 70 متر مربع',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Color(0xFF303030),
+                        fontSize: 14,
+                        fontFamily: MAIN_FONT_FAMILY,
+                        fontWeight: FontWeight.w300,
+                        height: 4,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Container(
+                    height: 57,
+                    width: 176,
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(10),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withOpacity(0.1),
+                            spreadRadius: 1,
+                            blurRadius: 5,
+                          )
+                        ],
+                        border: Border.all(
+                          color: Colors.black45,
+                          width: 0.3,
+                        )),
+                    child: const Text(
+                      'تا 100 متر مربع',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Color(0xFF303030),
+                        fontSize: 14,
+                        fontFamily: MAIN_FONT_FAMILY,
+                        fontWeight: FontWeight.w300,
+                        height: 4,
+                      ),
+                    ),
+                  ),
+                  Container(
+                    height: 57,
+                    width: 176,
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(10),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withOpacity(0.1),
+                            spreadRadius: 1,
+                            blurRadius: 10,
+                          )
+                        ],
+                        border: Border.all(
+                          color: Colors.black45,
+                          width: 0.3,
+                        )),
+                    child: const Text(
+                      'تا 90 متر مربع',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Color(0xFF303030),
+                        fontSize: 14,
+                        fontFamily: MAIN_FONT_FAMILY,
+                        fontWeight: FontWeight.w300,
+                        height: 4,
+                      ),
+                    ),
+                  ),
+                ],
+              )
+            ]))
+        : const SizedBox.shrink());
   }
 }

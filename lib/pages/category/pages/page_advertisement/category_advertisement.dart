@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/ejara_adv_pages/ejara_adv.dart';
 import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/forosh_adv_pages/forosh_adv.dart';
 import 'package:flutter_application_1/pages/category/shared/contant.dart';
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
 import 'package:flutter_application_1/pages/educational_tour.dart';
-import 'package:flutter_application_1/pages/profile.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
@@ -18,7 +18,8 @@ class CategoryAdvertisement extends StatelessWidget {
     return Scaffold(
       appBar: buildaAppBar(),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           const Text(
             "انتخاب دسته بندی",
@@ -29,40 +30,37 @@ class CategoryAdvertisement extends StatelessWidget {
                   99,
                   1,
                 ),
-                fontSize: 30,
+                fontSize: 20,
                 fontFamily: MAIN_FONT_FAMILY),
-          ),
-          const SizedBox(
-            height: 10,
           ),
           SvgPicture.asset(
             'assets/images/key and home1.svg',
+            width: 210,
+            height: 190,
           ),
-          Padding(
-            padding: const EdgeInsets.all(15.0),
-            child: Column(children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  _buildItem('assets/images/Category.png', 1),
-                  _buildItem('assets/images/Sale home.png', 2),
-                ],
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              _buildItem(
+                'assets/images/Category.png',
+                1,
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  _buildItem('assets/images/Rent store.png', 3),
-                  _buildItem('assets/images/Sale store.png', 4),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  _buildItem('assets/images/Daily.png', 5),
-                  _buildItem('assets/images/Construction.png', 6),
-                ],
-              ),
-            ]),
+              _buildItem('assets/images/Sale home.png', 2),
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              _buildItem('assets/images/Rent store.png', 3),
+              _buildItem('assets/images/Sale store.png', 4),
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              _buildItem('assets/images/Daily.png', 5),
+              _buildItem('assets/images/Construction.png', 6),
+            ],
           ),
           GestureDetector(
             onTap: () {
@@ -71,9 +69,11 @@ class CategoryAdvertisement extends StatelessWidget {
                 Widget finalWidget = const SizedBox.shrink();
                 if (index == 2) {
                   finalWidget = UnderForosh();
-                } else if (index == 2) {
+                } else if (index == 1) {
+                  finalWidget = finalWidget = EjaraAdv();
+                  ();
                 } else if (index == 3) {}
-          
+
                 Get.to(() => finalWidget);
               }
             },
@@ -84,12 +84,12 @@ class CategoryAdvertisement extends StatelessWidget {
                       "...تایید و ادامه",
                       style: _selected.value == 0
                           ? const TextStyle(
-                              fontSize: 20,
+                              fontSize: 15,
                               fontFamily: MAIN_FONT_FAMILY,
                               color: Colors.black38,
                             )
                           : const TextStyle(
-                              fontSize: 20, fontFamily: MAIN_FONT_FAMILY),
+                              fontSize: 15, fontFamily: MAIN_FONT_FAMILY),
                     ),
                     Icon(
                       Icons.double_arrow,
@@ -150,18 +150,15 @@ class CategoryAdvertisement extends StatelessWidget {
         _selected.value = index;
       },
       child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+        padding: const EdgeInsets.symmetric(vertical: 3, horizontal: 8),
         child: Obx(() => Container(
-              // height: 96,
-              // width: 144,
+              width: 125,
               decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(10),
                   boxShadow: [
                     BoxShadow(
                       color: Colors.grey.withOpacity(0.1),
-                      spreadRadius: 1,
-                      blurRadius: 5,
                     )
                   ],
                   border: Border.all(
@@ -170,7 +167,9 @@ class CategoryAdvertisement extends StatelessWidget {
                         : Colors.black38,
                     width: _selected.value == index ? 2.5 : 1.5,
                   )),
-              child: Image.asset(assetPath),
+              child: Image.asset(
+                assetPath,
+              ),
             )),
       ),
     );
