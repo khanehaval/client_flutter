@@ -23,7 +23,7 @@ class SwitchItem extends StatelessWidget{
 
   Widget item(String text) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 10),
+      padding: const EdgeInsets.symmetric(horizontal: 2),
       child: Row(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.center,

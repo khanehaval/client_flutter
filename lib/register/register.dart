@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_application_1/repo/acount_repo.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'dart:math';
 
@@ -30,7 +31,7 @@ class _RegisterState extends State<Register> {
   }
 
   void startTimer() {
-    Timer.periodic(Duration(seconds: 1), (i) {
+    Timer.periodic(const Duration(seconds: 1), (i) {
       time.update((val) {
         time.value = max(0, (val ?? 30) - 1);
       });
@@ -44,34 +45,31 @@ class _RegisterState extends State<Register> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: Padding(
-        padding: EdgeInsets.symmetric(vertical: 100, horizontal: 90),
+        padding: const EdgeInsets.symmetric(vertical: 100, horizontal: 100),
         child: Column(
           children: [
-            Image.asset(
-              'assets/images/Rectangle intro_screen_2.png',
+            SvgPicture.asset(
+              'assets/images/logo-farsi.svg',
               width: MediaQuery.of(context).size.width - 100,
             ),
-            SizedBox(
+            const SizedBox(
               height: 100,
             ),
-            Text(
+            const Text(
               'شماره تلفن همراه خود را وارد کنید',
               style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
-            ),
-            SizedBox(
-              height: 20,
             ),
             TextFormField(
               keyboardType: TextInputType.number,
               controller: _textController,
               maxLength: 11,
-              style: TextStyle(fontSize: 20),
+              style: const TextStyle(fontSize: 20),
               inputFormatters: [FilteringTextInputFormatter.digitsOnly],
               decoration: InputDecoration(
                 hintText: "09121234567",
                 border:
                     OutlineInputBorder(borderRadius: BorderRadius.circular(15)),
-                suffix: Icon(Icons.edit),
+                suffix: const Icon(Icons.edit),
               ),
             ),
             SizedBox(
@@ -108,7 +106,6 @@ class _RegisterState extends State<Register> {
                 ),
                 child: ElevatedButton(
                   onPressed: () {
-
                     //todo userRepo.save(
                     // setState(() {
                     //   boxLoginModel.put('key_${_textController.text}', LoginModel(phoneNumber: _textController.text),);

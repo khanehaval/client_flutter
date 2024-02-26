@@ -25,7 +25,7 @@ class _SelectLocationOnMapState extends State<SelectLocationOnMap> {
       appBar: buildaAppBar(),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15),
+          padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
@@ -36,6 +36,7 @@ class _SelectLocationOnMapState extends State<SelectLocationOnMap> {
                     fontSize: 16,
                     fontFamily: MAIN_FONT_FAMILY),
               ),
+              const SizedBox(height: 15,),
               Container(
                 decoration: ShapeDecoration(
                   shape: RoundedRectangleBorder(
@@ -143,15 +144,15 @@ class _SelectLocationOnMapState extends State<SelectLocationOnMap> {
                       166,
                       1,
                     ),
-                    fontSize: 16,
+                    fontSize: 12,
                     fontFamily: MAIN_FONT_FAMILY,
                   ),
                 ),
               ),
               SwitchItem(
                   type: type, items: const ["سوئیت", "برج", "پنت هاوس"]),
-              SizedBox(
-                height: 160,
+              const SizedBox(
+                height: 80,
               ),
               GestureDetector(
                 onTap: () {

@@ -20,13 +20,13 @@ class AmlakPage extends StatelessWidget {
           margin: const EdgeInsets.all(10),
           padding: const EdgeInsets.all(5),
           height: 153,
-          width: 372,
+          width: MediaQuery.of(context).size.width * 1 / 1,
           decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(10),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.grey.withOpacity(0.2),
+                  color: Colors.grey.withOpacity(.01),
                   spreadRadius: 1,
                   blurRadius: 1,
                 ),
@@ -43,7 +43,7 @@ class AmlakPage extends StatelessWidget {
           child: Row(
             children: [
               Padding(
-                padding: const EdgeInsets.all(15),
+                padding: const EdgeInsets.all(10),
                 child: Container(
                   height: 90,
                   width: 147,
@@ -52,7 +52,7 @@ class AmlakPage extends StatelessWidget {
                     borderRadius: BorderRadius.circular(10),
                     boxShadow: [
                       BoxShadow(
-                        color: Colors.grey.withOpacity(0.3),
+                        color: Colors.grey.withOpacity(.01),
                         blurRadius: 5,
                       )
                     ],
@@ -65,13 +65,13 @@ class AmlakPage extends StatelessWidget {
               ),
               Container(
                 height: 90,
-                width: 147,
+                width: MediaQuery.of(context).size.width * 0.4,
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(10),
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.grey.withOpacity(0.3),
+                      color: Colors.grey.withOpacity(.01),
                       blurRadius: 5,
                     )
                   ],
@@ -81,25 +81,23 @@ class AmlakPage extends StatelessWidget {
                   fit: BoxFit.fill,
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Container(
-                  height: 90,
-                  width: 147,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(10),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.3),
-                        blurRadius: 5,
-                      )
-                    ],
-                  ),
-                  child: Image.asset(
-                    'assets/images/Group 648.png',
-                    fit: BoxFit.fill,
-                  ),
+              Container(
+                margin: const EdgeInsetsDirectional.all(10),
+                height: 90,
+                width: MediaQuery.of(context).size.width * 0.4,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(10),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(.01),
+                      blurRadius: 5,
+                    )
+                  ],
+                ),
+                child: Image.asset(
+                  'assets/images/Group 648.png',
+                  fit: BoxFit.fill,
                 ),
               ),
             ],
@@ -112,38 +110,36 @@ class AmlakPage extends StatelessWidget {
         const SizedBox(
           height: 10,
         ),
-        Padding(
-          padding: const EdgeInsets.only(left: 8, right: 8),
-          child: Container(
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10), border: Border.all()),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Obx(() => IconButton(
-                      icon: _show_item_1.value
-                          ? const Icon(
-                              Icons.keyboard_double_arrow_down_outlined,
-                              size: 25,
-                            )
-                          : const Icon(CupertinoIcons.chevron_left_2),
-                      onPressed: () {
-                        _show_item_1.value = !_show_item_1.value;
-                      },
-                    )),
-                const Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: Text(
-                    'فروش ویژه',
-                    style: TextStyle(
-                        fontSize: 20,
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
-                        fontFamily: 'Iran Sans Bold,'),
-                  ),
+        Container(
+          margin: const EdgeInsets.only(left: 10, right: 10),
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10), border: Border.all()),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Obx(() => IconButton(
+                    icon: _show_item_1.value
+                        ? const Icon(
+                            Icons.keyboard_double_arrow_down_outlined,
+                            size: 25,
+                          )
+                        : const Icon(CupertinoIcons.chevron_left_2),
+                    onPressed: () {
+                      _show_item_1.value = !_show_item_1.value;
+                    },
+                  )),
+              const Padding(
+                padding: EdgeInsets.all(8.0),
+                child: Text(
+                  'فروش ویژه',
+                  style: TextStyle(
+                      fontSize: 20,
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: 'Iran Sans Bold,'),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
         buildItem1(),
@@ -157,42 +153,39 @@ class AmlakPage extends StatelessWidget {
         const SizedBox(
           height: 10,
         ),
-        Padding(
-          padding: const EdgeInsets.only(left: 8, right: 8),
-          child: Container(
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10), border: Border.all()),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Obx(() => IconButton(
-                      icon: _show_item_2.value
-                          ? const Icon(
-                              Icons.keyboard_double_arrow_down_outlined,
-                              size: 25,
-                            )
-                          : const Icon(CupertinoIcons.chevron_left_2),
-                      onPressed: () {
-                        _show_item_2.value = !_show_item_2.value;
-                      },
-                    )),
-                const Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: Text(
-                    'خانه اول',
-                    style: TextStyle(
-                        fontSize: 20,
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
-                        fontFamily: 'Iran Sans Bold,'),
-                  ),
-                ),
-              ],
-            ),
+        Container(
+          margin: const EdgeInsets.only(left: 10, right: 10),
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10), border: Border.all()),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Obx(() => IconButton(
+                    icon: _show_item_2.value
+                        ? const Icon(
+                            Icons.keyboard_double_arrow_down_outlined,
+                            size: 25,
+                          )
+                        : const Icon(
+                            CupertinoIcons.chevron_left_2,
+                          ),
+                    style: const ButtonStyle(),
+                    onPressed: () {
+                      _show_item_2.value = !_show_item_2.value;
+                    },
+                  )),
+              const Text(
+                'خانه اول',
+                style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'Iran Sans Bold,'),
+              ),
+            ],
           ),
         ),
-        _buildItem2
-        (),
+        _buildItem2(),
         const SizedBox(
           height: 20,
         )
@@ -203,164 +196,138 @@ class AmlakPage extends StatelessWidget {
   Obx buildItem1() {
     return Obx(
       () => _show_item_1.isTrue
-          ? Padding(
-              padding: const EdgeInsets.all(10),
-              child: Column(
-                children: [
-                  Image.asset(
-                    'assets/images/Group 778.png',
-                    width: 372,
-                    height: 150,
-                  ),
-                  Column(
-                    children: [
-                      GestureDetector(
-                        onTap: () {},
-                        child: Row(
-                          children: [
-                            Row(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.all(5),
-                                  child: Container(
-                                    height: 98,
-                                    width: 180,
-                                    decoration: BoxDecoration(
-                                        color: Colors.white,
-                                        borderRadius: BorderRadius.circular(10),
-                                        boxShadow: [
-                                          BoxShadow(
-                                            color: Colors.grey.withOpacity(0.1),
-                                            spreadRadius: 1,
-                                            blurRadius: 10,
-                                          )
-                                        ],
-                                        border: Border.all(
-                                            color: Colors.black,
-                                          // Initial border color
-                                          width: 0.1,
-                                        )),
-                                    child: Image.asset(
-                                        'assets/images/ejara_tajari_edari.png'),
-                                  ),
-                                ),
-                              ],
+          ? Column(
+              children: [
+                Image.asset(
+                  'assets/images/Group 778.png',
+                  width: 360,
+                  height: 150,
+                ),
+                Column(
+                  children: [
+                    GestureDetector(
+                      onTap: () {},
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Container(
+                            height: 98,
+                            width: 182,
+                            decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(10),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.grey.withOpacity(0.1),
+                                  )
+                                ],
+                                border: Border.all(
+                                  color: Colors.black,
+                                  // Initial border color
+                                  width: 0.1,
+                                )),
+                            child: Image.asset(
+                              'assets/images/Group 768.png',
+                              fit: BoxFit.fill,
                             ),
-                            Padding(
-                              padding: const EdgeInsets.all(0),
-                              child: Container(
-                                height: 98,
-                                width: 180,
-                                decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.circular(10),
-                                    boxShadow: [
-                                      BoxShadow(
-                                        color: Colors.grey.withOpacity(0.1),
-                                        spreadRadius: 1,
-                                        blurRadius: 10,
-                                      )
-                                    ],
-                                    border: Border.all(
-                                        color: Colors.black,
-                                          // Initial border color
-                                          width: 0.1,
-                                    )),
-                                child: Image.asset(
-                                    'assets/images/forosh_tagari_edari.png'),
-                              ),
+                          ),
+                          Container(
+                            height: 98,
+                            width: 182,
+                            decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(10),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.grey.withOpacity(0.1),
+                                    spreadRadius: 1,
+                                    blurRadius: 10,
+                                  )
+                                ],
+                                border: Border.all(
+                                  color: Colors.black,
+                                  // Initial border color
+                                  width: 0.1,
+                                )),
+                            child: Image.asset(
+                              'assets/images/Group 767.png',
+                              fit: BoxFit.fill,
                             ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
-                ],
-              ),
+                    ),
+                  ],
+                ),
+              ],
             )
           : const SizedBox.shrink(),
     );
-  }  
+  }
+
   Obx _buildItem2() {
     return Obx(
       () => _show_item_2.isTrue
-          ? Padding(
-              padding: const EdgeInsets.all(10),
-              child: Column(
-                children: [
-                  Image.asset(
-                    'assets/images/Group 631.png',
-                    width: 372,
-                    height: 150,
-                  ),
-                  Column(
-                    children: [
-                      GestureDetector(
-                        onTap: () {},
-                        child: Row(
-                          children: [
-                            Row(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.all(5),
-                                  child: Container(
-                                    height: 98,
-                                    width: 180,
-                                    decoration: BoxDecoration(
-                                        color: Colors.white,
-                                        borderRadius: BorderRadius.circular(10),
-                                        boxShadow: [
-                                          BoxShadow(
-                                            color: Colors.grey.withOpacity(0.1),
-                                            spreadRadius: 1,
-                                            blurRadius: 10,
-                                          )
-                                        ],
-                                        border: Border.all(
-                                          color: Colors.black,
-                                          // Initial border color
-                                          width: 0.1,
-                                        )),
-                                    child: Image.asset(
-                                        'assets/images/Group 655.png',
-                                        fit: BoxFit.fill),
-                                  ),
-                                ),
-                              ],
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.all(0),
-                              child: Container(
-                                height: 98,
-                                width: 180,
-                                decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.circular(10),
-                                    boxShadow: [
-                                      BoxShadow(
-                                        color: Colors.grey.withOpacity(0.1),
-                                        spreadRadius: 1,
-                                        blurRadius: 10,
-                                      )
-                                    ],
-                                    border: Border.all(
-                                      color: Colors.blue,
-                                      
-                                      width: 0.1,
-                                    )),
-                                child: Image.asset(
-                                    'assets/images/Group 654.png',
-                                    fit: BoxFit.fill),
-                              ),
-                            ),
-                          ],
-                        ),
+          ? Column(
+              children: [
+                Image.asset(
+                  'assets/images/Group 631.png',
+                  width: 360,
+                  height: 150,
+                ),
+                Column(
+                  children: [
+                    GestureDetector(
+                      onTap: () {},
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          Container(
+                            height: 97,
+                            width: 180,
+                            decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(10),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.grey.withOpacity(.01),
+                                  )
+                                ],
+                                border: Border.all(
+                                  color: Colors.black,
+                                  // Initial border color
+                                  width: 0.1,
+                                )),
+                            child: Image.asset('assets/images/Group 655.png',
+                                fit: BoxFit.fill),
+                          ),
+                          Container(
+                            height: 98,
+                            width: 180,
+                            decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(10),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.grey.withOpacity(.01),
+                                  )
+                                ],
+                                border: Border.all(
+                                  color: Colors.blue,
+                                  width: 0.1,
+                                )),
+                            child: Image.asset('assets/images/Group 654.png',
+                                fit: BoxFit.fill),
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
-                ],
-              ),
+                    ),
+                  ],
+                ),
+              ],
             )
           : const SizedBox.shrink(),
     );
-  }}
+  }
+}

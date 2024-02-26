@@ -79,8 +79,8 @@ class _EducationalTourState extends State<EducationalTour> {
                         },
                         child: Image.asset(
                           'assets/images/Personal user panel.png',
-                          width: 392,
-                          height: 195,
+                          width: MediaQuery.of(context).size.width * 3,
+                          height: 190,
                           fit: BoxFit.fitHeight,
                         ),
                       ),
@@ -94,8 +94,8 @@ class _EducationalTourState extends State<EducationalTour> {
                       },
                       child: Image.asset(
                         "assets/images/Consultants user panel.png",
-                        width: 392,
-                        height: 195,
+                        width: MediaQuery.of(context).size.width * 3,
+                        height: 190,
                         fit: BoxFit.fitHeight,
                       ),
                     ),
@@ -108,8 +108,8 @@ class _EducationalTourState extends State<EducationalTour> {
                       },
                       child: Image.asset(
                         "assets/images/Real estate agency user panel.png",
-                        width: 392,
-                        height: 195,
+                        width: MediaQuery.of(context).size.width * 3,
+                        height: 190,
                         fit: BoxFit.fitHeight,
                       ),
                     ),

@@ -17,35 +17,31 @@ class AdvertisementRegistration extends StatelessWidget {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Padding(
-            padding: const EdgeInsets.only(left: 6),
-            child: GestureDetector(
-                onTap: () {
-                  Get.to(()=> CategoryAdvertisement());
-                },
-                child: Image.asset(
-                  "assets/images/economy.png",
-                  height: 300,
-                  width: 399,
-                )),
-          ),
+          GestureDetector(
+              onTap: () {
+                Get.to(() => CategoryAdvertisement());
+              },
+              child: Image.asset(
+                "assets/images/economy.png",
+                height: 300,
+                width: MediaQuery.of(context).size.width * 1 / 1.1,
+              )),
           Stack(
             children: [
-              Padding(
-                padding: const EdgeInsets.only(left: 4),
-                child: Image.asset(
-                  "assets/images/plus.png",
-                  height: 390,
-                  width: 378,
-                ),
+              Image.asset(
+                "assets/images/plus.png",
+                height: 350,
+                width: MediaQuery.of(context).size.width * 1 / 1,
               ),
               Positioned(
-                  top: 315,
-                  left: 230,
-                  child: SvgPicture.asset(
-                    "assets/images/cost.svg",
-                  ))
+                top: 285,
+                left: 210,
+                child: SvgPicture.asset("assets/images/cost.svg",
+                    width: MediaQuery.of(context).size.width * 1 / 2.5),
+              ),
             ],
           ),
         ],

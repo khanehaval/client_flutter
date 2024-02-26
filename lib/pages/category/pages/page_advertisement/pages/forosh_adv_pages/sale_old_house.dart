@@ -24,45 +24,45 @@ class SaleOldHouse extends StatelessWidget {
         appBar: buildaAppBar(),
         body: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
+            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
             child: Column(children: [
               const Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Icon(
                     Icons.arrow_back,
                     color: Colors.green,
-                    size: 20,
+                    size: 15,
                   ),
                   Text(
                     "خرید و فروش خانه کلنگی",
                     style: TextStyle(
-                      fontSize: 12,
+                      fontSize: 9.5,
                       fontFamily: MAIN_FONT_FAMILY,
                     ),
                   ),
                   Icon(
                     Icons.arrow_back,
                     color: Colors.green,
-                    size: 20,
+                    size: 15,
                   ),
                   Text(
                     "فروش مسکونی",
                     style: TextStyle(
-                      fontSize: 12,
+                      fontSize: 9.5,
                       fontFamily: MAIN_FONT_FAMILY,
                     ),
                   ),
                   Icon(
                     Icons.arrow_back,
                     color: Colors.green,
-                    size: 20,
+                    size: 15,
                   ),
                   Text(
                     "  ثبت آگهی اکونومی",
                     style: TextStyle(
-                      fontSize: 12,
+                      fontSize: 9.5,
                       fontFamily: MAIN_FONT_FAMILY,
                     ),
                   ),
@@ -123,7 +123,7 @@ class SaleOldHouse extends StatelessWidget {
                 child: Text(
                   ":قیمت به حروف ",
                   style: TextStyle(
-                      fontSize: 16,
+                      fontSize: 14,
                       fontFamily: MAIN_FONT_FAMILY,
                       color: Color.fromRGBO(166, 166, 166, 1)),
                 ),
@@ -264,8 +264,7 @@ class SaleOldHouse extends StatelessWidget {
                     decoration: InputDecoration(
                       hintText: 'انتخاب نشده',
                       hintStyle: const TextStyle(
-                        color: Color(0xFFA6A6A6),
-                      ),
+                          color: Color(0xFFA6A6A6), fontSize: 13),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
@@ -300,8 +299,7 @@ class SaleOldHouse extends StatelessWidget {
                     decoration: InputDecoration(
                       hintText: 'انتخاب نشده',
                       hintStyle: const TextStyle(
-                        color: Color(0xFFA6A6A6),
-                      ),
+                          color: Color(0xFFA6A6A6), fontSize: 13),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
@@ -328,9 +326,8 @@ class SaleOldHouse extends StatelessWidget {
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
                       hintText: 'تایپ کنید',
-                      hintStyle: TextStyle(
-                        color: Color(0xFFA6A6A6),
-                      ),
+                      hintStyle:
+                          TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
@@ -344,9 +341,8 @@ class SaleOldHouse extends StatelessWidget {
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
                       hintText: 'انتخاب نشده',
-                      hintStyle: TextStyle(
-                        color: Color(0xFFA6A6A6),
-                      ),
+                      hintStyle:
+                          TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
@@ -373,9 +369,8 @@ class SaleOldHouse extends StatelessWidget {
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
                         hintText: 'انتخاب نشده',
-                        hintStyle: TextStyle(
-                          color: Color(0xFFA6A6A6),
-                        ),
+                        hintStyle:
+                            TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
@@ -394,9 +389,8 @@ class SaleOldHouse extends StatelessWidget {
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
                       hintText: 'انتخاب نشده',
-                      hintStyle: TextStyle(
-                        color: Color(0xFFA6A6A6),
-                      ),
+                      hintStyle:
+                          TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
@@ -410,18 +404,18 @@ class SaleOldHouse extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               const Divider(
                 endIndent: 20,
                 indent: 20,
               ),
-              Text(
+              const Text(
                 "امکانات",
                 style: TextStyle(fontFamily: MAIN_FONT_FAMILY, fontSize: 16),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 15,
               ),
               TwoItemInRow(
@@ -434,9 +428,8 @@ class SaleOldHouse extends StatelessWidget {
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
                         hintText: 'انتخاب نشده',
-                        hintStyle: TextStyle(
-                          color: Color(0xFFA6A6A6),
-                        ),
+                        hintStyle:
+                            TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
@@ -455,9 +448,8 @@ class SaleOldHouse extends StatelessWidget {
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
                       hintText: 'انتخاب نشده',
-                      hintStyle: TextStyle(
-                        color: Color(0xFFA6A6A6),
-                      ),
+                      hintStyle:
+                          TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
@@ -484,9 +476,8 @@ class SaleOldHouse extends StatelessWidget {
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
                       hintText: 'انتخاب نشده',
-                      hintStyle: TextStyle(
-                        color: Color(0xFFA6A6A6),
-                      ),
+                      hintStyle:
+                          TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
@@ -506,9 +497,8 @@ class SaleOldHouse extends StatelessWidget {
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
                       hintText: 'انتخاب نشده',
-                      hintStyle: TextStyle(
-                        color: Color(0xFFA6A6A6),
-                      ),
+                      hintStyle:
+                          TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
@@ -535,9 +525,8 @@ class SaleOldHouse extends StatelessWidget {
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
                         hintText: 'انتخاب نشده',
-                        hintStyle: TextStyle(
-                          color: Color(0xFFA6A6A6),
-                        ),
+                        hintStyle:
+                            TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
@@ -556,9 +545,8 @@ class SaleOldHouse extends StatelessWidget {
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
                       hintText: 'انتخاب نشده',
-                      hintStyle: TextStyle(
-                        color: Color(0xFFA6A6A6),
-                      ),
+                      hintStyle:
+                          TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
@@ -708,28 +696,28 @@ class SaleOldHouse extends StatelessWidget {
                   )
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               const Divider(
                 endIndent: 20,
                 indent: 20,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
-              Text(
+              const Text(
                 "عنوان و توضیحات آگهی",
                 style: TextStyle(fontFamily: MAIN_FONT_FAMILY, fontSize: 16),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               onvanWidget(context),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
-              Row(
+              const Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
@@ -754,15 +742,15 @@ class SaleOldHouse extends StatelessWidget {
                 children: [
                   Container(
                     height: 41,
-                    width: 369,
+                    width: MediaQuery.of(context).size.width * 1 / 1.06,
                     child: TextField(
                       textAlign: TextAlign.right,
                       decoration: InputDecoration(
                         hintText: 'تایپ کنید',
-                        hintStyle: TextStyle(
+                        hintStyle: const TextStyle(
                             color: Color(0xFFA6A6A6),
                             fontFamily: MAIN_FONT_FAMILY,
-                            fontSize: 16),
+                            fontSize: 13),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
@@ -771,10 +759,10 @@ class SaleOldHouse extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
-              Row(
+              const Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   Text(
@@ -791,7 +779,7 @@ class SaleOldHouse extends StatelessWidget {
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   SizedBox(
-                    width: 369,
+                    width: MediaQuery.of(context).size.width * 1 / 1.06,
                     height: 218,
                     child: TextField(
                       maxLines: 5,
@@ -801,7 +789,7 @@ class SaleOldHouse extends StatelessWidget {
                         hintStyle: const TextStyle(
                             color: Color(0xFFA6A6A6),
                             fontFamily: MAIN_FONT_FAMILY,
-                            fontSize: 16),
+                            fontSize: 13),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
@@ -810,9 +798,9 @@ class SaleOldHouse extends StatelessWidget {
                   ),
                 ],
               ),
-              Padding(
-                padding: const EdgeInsets.only(bottom: 30, top: 10),
-                child: const Row(
+              const Padding(
+                padding: EdgeInsets.only(bottom: 30, top: 10),
+                child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
@@ -877,7 +865,7 @@ Widget onvanWidget(BuildContext context) {
               children: [
                 SizedBox(
                   height: 41,
-                  width: 369,
+                  width: MediaQuery.of(context).size.width * 1 / 1.06,
                   child: TextField(
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
@@ -910,7 +898,7 @@ Widget aghsatiForoshWidget(BuildContext context) {
             "فروش به صورت اقساطی",
             style: TextStyle(
                 fontFamily: MAIN_FONT_FAMILY,
-                fontSize: 14,
+                fontSize: 13,
                 color: Color.fromRGBO(99, 99, 99, 1)),
           ),
           Transform.scale(
@@ -935,7 +923,7 @@ Widget aghsatiForoshWidget(BuildContext context) {
                 ),
                 const Text(
                   "در صورت وارد نکردن آیتم ها، آگهی فقط با عنوان اقساطی منتشر میگردد",
-                  style: TextStyle(fontFamily: MAIN_FONT_FAMILY, fontSize: 12),
+                  style: TextStyle(fontFamily: MAIN_FONT_FAMILY, fontSize: 9.6),
                 ),
                 const SizedBox(
                   height: 20,
@@ -951,8 +939,7 @@ Widget aghsatiForoshWidget(BuildContext context) {
                       decoration: InputDecoration(
                         hintText: ' را وارد کنید', //todo
                         hintStyle: const TextStyle(
-                          color: Color(0xFFA6A6A6),
-                        ),
+                            color: Color(0xFFA6A6A6), fontSize: 13),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
@@ -967,8 +954,7 @@ Widget aghsatiForoshWidget(BuildContext context) {
                       decoration: InputDecoration(
                         hintText: 'مبلغ را وارد کنید', //todo
                         hintStyle: const TextStyle(
-                          color: Color(0xFFA6A6A6),
-                        ),
+                            color: Color(0xFFA6A6A6), fontSize: 13),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
@@ -992,8 +978,7 @@ Widget aghsatiForoshWidget(BuildContext context) {
                         decoration: InputDecoration(
                             hintText: 'انتخاب نشده',
                             hintStyle: const TextStyle(
-                              color: Color(0xFFA6A6A6),
-                            ),
+                                color: Color(0xFFA6A6A6), fontSize: 13),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10),
                             ),
@@ -1013,8 +998,7 @@ Widget aghsatiForoshWidget(BuildContext context) {
                         decoration: InputDecoration(
                           hintText: 'انتخاب نشده',
                           hintStyle: const TextStyle(
-                            color: Color(0xFFA6A6A6),
-                          ),
+                              color: Color(0xFFA6A6A6), fontSize: 13),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10),
                           ),
@@ -1027,13 +1011,13 @@ Widget aghsatiForoshWidget(BuildContext context) {
                     )),
                 const SizedBox(width: 25),
                 const SizedBox(
-                  height: 10,
+                  height: 20,
                 ),
                 const Text(
                   "قیمت نهایی ملک (پیش پرداخت + اقساط ) : 13.200.000.000 تومان",
                   style: TextStyle(
                     fontFamily: MAIN_FONT_FAMILY,
-                    fontSize: 12,
+                    fontSize: 9.5,
                   ),
                 ),
                 const SizedBox(
@@ -1057,7 +1041,7 @@ Widget melkByVamBanki(BuildContext context) {
             "خانه کلنگی",
             style: TextStyle(
                 fontFamily: MAIN_FONT_FAMILY,
-                fontSize: 14,
+                fontSize: 13,
                 color: Color.fromRGBO(99, 99, 99, 1)),
           ),
           Transform.scale(
@@ -1091,8 +1075,7 @@ Widget melkByVamBanki(BuildContext context) {
                       decoration: InputDecoration(
                         hintText: 'تایپ کنید', //todo
                         hintStyle: const TextStyle(
-                          color: Color(0xFFA6A6A6),
-                        ),
+                            color: Color(0xFFA6A6A6), fontSize: 13),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
@@ -1107,8 +1090,7 @@ Widget melkByVamBanki(BuildContext context) {
                       decoration: InputDecoration(
                         hintText: 'تایپ کنید', //todo
                         hintStyle: const TextStyle(
-                          color: Color(0xFFA6A6A6),
-                        ),
+                            color: Color(0xFFA6A6A6), fontSize: 13),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
@@ -1116,7 +1098,7 @@ Widget melkByVamBanki(BuildContext context) {
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 15,
                 ),
                 const Align(
@@ -1124,7 +1106,7 @@ Widget melkByVamBanki(BuildContext context) {
                   child: Text(
                     "تعداد اتاق ",
                     style: TextStyle(
-                        color: Color.fromRGBO(166, 166, 166, 1),
+                        color: Color.fromRGBO(99, 99, 99, 1),
                         fontFamily: MAIN_FONT_FAMILY),
                     textAlign: TextAlign.start,
                   ),
@@ -1136,8 +1118,7 @@ Widget melkByVamBanki(BuildContext context) {
                     decoration: InputDecoration(
                       hintText: 'انتخاب نشده',
                       hintStyle: const TextStyle(
-                        color: Color(0xFFA6A6A6),
-                      ),
+                          color: Color(0xFFA6A6A6), fontSize: 13),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
@@ -1151,7 +1132,7 @@ Widget melkByVamBanki(BuildContext context) {
                   ),
                 ),
                 const SizedBox(
-                  height: 30,
+                  height: 20,
                 ),
               ],
             )
