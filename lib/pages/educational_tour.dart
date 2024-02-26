@@ -33,7 +33,7 @@ class _EducationalTourState extends State<EducationalTour> {
     Home(),
     const Messages(),
      AdvertisementRegistration(index: 0, showEducation: true,),
-    Category(),
+    const Category(),
     const Advertisements()
   ];
 

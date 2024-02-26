@@ -4,26 +4,32 @@ import 'package:get/get.dart';
 
 class IntroScreen extends StatelessWidget {
   IntroScreen({super.key});
-
   final _sliderIndex = 0.obs;
 
   List<Widget> _sliders() => [
         Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Image.asset(
-              'assets/images/Vector.png',
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 31),
+              child: Image.asset(
+                'assets/images/Vector.png',
+              ),
             ),
-            Image.asset(
-              'assets/images/slider_1.png',
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 23),
+              child: Image.asset(
+                'assets/images/slider_1.png',
+              ),
             ),
             const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 40),
+              padding: EdgeInsets.symmetric(horizontal: 30, vertical: 30),
               child: Text(
                 'اینجا کلی امکانات جدید و جذاب داریم، آگهی، مشاور، آژانس همه روی نقشه منتظر شما هستند...',
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
-                  fontSize: 19,
+                  fontSize: 17,
                 ),
                 textDirection: TextDirection.rtl,
                 textAlign: TextAlign.justify,
@@ -36,16 +42,17 @@ class IntroScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             const SizedBox(
-              height: 80,
+              height: 50,
             ),
             Image.asset(
               'assets/images/Group 2.png',
+              height: 200,
             ),
             const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 40),
+              padding: EdgeInsets.symmetric(horizontal: 20),
               child: Text(
                 'دیگه لازم نیست از این بنگاه به اون بنگاه بری و ملکتون رو فایل کنین، ما تمامی ابزارهای خدمات ملک رو اینجا جمع کردیم ',
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 19),
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17),
                 textDirection: TextDirection.rtl,
                 textAlign: TextAlign.justify,
               ),
@@ -62,26 +69,28 @@ class IntroScreen extends StatelessWidget {
           ],
         ),
         Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Column(
               children: [
-                Image.asset(
-                  'assets/images/3.png',
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                    vertical: 31,
+                  ),
+                  child: Image.asset(
+                    'assets/images/3.png',
+                  ),
                 ),
                 Image.asset(
                   'assets/images/4.png',
+                  height: 277,
                 ),
               ],
             ),
-            const SizedBox(
-              height: 30,
-            ),
             const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 40),
+              padding: EdgeInsets.symmetric(horizontal: 40, vertical: 27),
               child: Text(
                 'دیگه لازم نیست ساعت ها تو ترافیک دنبال مشاور خوب و بنگاه بگردی، ما همه رو اینجا جمع کردیم... ',
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 19),
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
                 textDirection: TextDirection.rtl,
                 textAlign: TextAlign.justify,
               ),
@@ -93,7 +102,7 @@ class IntroScreen extends StatelessWidget {
 
   Widget _nextButton(int index) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 20),
+      padding: const EdgeInsets.only(bottom: 23),
       child: IconButton(
           onPressed: () {
             if (index == 2) {
@@ -103,8 +112,8 @@ class IntroScreen extends StatelessWidget {
             }
           },
           icon: const Icon(
-            Icons.navigate_next,
-            size: 43,
+            Icons.arrow_forward_ios_sharp,
+            size: 35,
           )),
     );
   }
@@ -245,3 +254,6 @@ class IntroScreen extends StatelessWidget {
         );
   }
 }
+
+double getPageWidth_2(BuildContext context) =>
+    MediaQuery.of(context).size.width * 0.4;

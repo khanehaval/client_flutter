@@ -29,7 +29,7 @@ class Consultants extends StatelessWidget {
       appBar: AppBar(
         leading: IconButton(
           onPressed: () => Get.to(() => Home()),
-          icon: Icon(Icons.close),
+          icon: const Icon(Icons.close),
         ),
       ),
       body: Stack(

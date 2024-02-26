@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_application_1/pages/login_secondly_page.dart';
 import 'package:flutter_application_1/repo/acount_repo.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 import 'package:get/get.dart';
@@ -66,14 +67,14 @@ class _RegisterState extends State<Register> {
             Column(
               children: [
                 const SizedBox(
-                  height: 40,
+                  height: 80,
                 ),
-                Image.asset(
-                  'assets/images/intro_screen_2.png',
+                SvgPicture.asset(
+                  'assets/images/logo-farsi.svg',
                   width: MediaQuery.of(context).size.width - 200,
                 ),
                 const SizedBox(
-                  height: 20,
+                  height: 80,
                 ),
                 const Text(
                   'شماره تلفن همراه خود را وارد کنید',
@@ -117,8 +118,9 @@ class _RegisterState extends State<Register> {
                 ),
                 Obx(() => phoneNumberSended.value
                     ? Padding(
-                      padding: const EdgeInsets.only(left: 80,right: 80,top: 120),
-                      child: SizedBox(
+                        padding: const EdgeInsets.only(
+                            left: 80, right: 80, top: 120),
+                        child: SizedBox(
                           height: 75,
                           child: TextField(
                             textAlign: TextAlign.center,
@@ -135,7 +137,7 @@ class _RegisterState extends State<Register> {
                             ),
                           ),
                         ),
-                    )
+                      )
                     : const SizedBox()),
                 const SizedBox(
                   height: 1,
@@ -171,11 +173,10 @@ class _RegisterState extends State<Register> {
                   width: 110,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(30),
-                    gradient: const LinearGradient(colors: [
-                      Color.fromARGB(700, 55, 250, 100),
-                      Colors.blue,
-                    ]),
-                  ),
+                                            gradient: getGradient(),
+
+        ),
+                  
                   child: ElevatedButton(
                     onPressed: () {
                       if (phoneNumberSended.value) {
@@ -190,17 +191,15 @@ class _RegisterState extends State<Register> {
                     child: const Text(
                       'تایید',
                       style: TextStyle(
-                          color: Colors.black,
                           fontSize: 20,
                           fontWeight: FontWeight.bold),
                     ),
                   ),
                 ),
               ),
-            ),
-          ],
+       ) ]),
         ),
-      ),
+      
     );
   }
 
@@ -232,3 +231,8 @@ class _RegisterState extends State<Register> {
         fontSize: 16.0);
   }
 }
+  LinearGradient getGradient() => const LinearGradient(colors: [
+     Color.fromARGB(255, 95, 173, 237),
+        Color.fromARGB(126, 118, 238, 146),
+
+      ]);
