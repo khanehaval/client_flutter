@@ -7,23 +7,31 @@ class IntroScreen extends StatelessWidget {
 
   final _sliderIndex = 0.obs;
 
-  List<Widget> _sliders() => [
+  List<Widget> _sliders(BuildContext context) => [
         Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Image.asset(
-              'assets/images/Vector.png',
+            Padding(
+              padding: EdgeInsets.symmetric(
+                  vertical: MediaQuery.of(context).padding.top),
+              child: Image.asset(
+                'assets/images/Vector.png',
+              ),
             ),
-            Image.asset(
-              'assets/images/slider_1.png',
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 23),
+              child: Image.asset(
+                'assets/images/slider_1.png',
+              ),
             ),
             const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 40),
+              padding: EdgeInsets.symmetric(horizontal: 30, vertical: 30),
               child: Text(
                 'اینجا کلی امکانات جدید و جذاب داریم، آگهی، مشاور، آژانس همه روی نقشه منتظر شما هستند...',
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
-                  fontSize: 19,
+                  fontSize: 17,
                 ),
                 textDirection: TextDirection.rtl,
                 textAlign: TextAlign.justify,
@@ -36,16 +44,17 @@ class IntroScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             const SizedBox(
-              height: 80,
+              height: 50,
             ),
             Image.asset(
               'assets/images/Group 2.png',
+              height: 200,
             ),
             const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 40),
+              padding: EdgeInsets.symmetric(horizontal: 20),
               child: Text(
                 'دیگه لازم نیست از این بنگاه به اون بنگاه بری و ملکتون رو فایل کنین، ما تمامی ابزارهای خدمات ملک رو اینجا جمع کردیم ',
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 19),
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17),
                 textDirection: TextDirection.rtl,
                 textAlign: TextAlign.justify,
               ),
@@ -66,22 +75,23 @@ class IntroScreen extends StatelessWidget {
           children: [
             Column(
               children: [
-                Image.asset(
-                  'assets/images/3.png',
+                Padding(
+                  padding: EdgeInsets.symmetric(
+                      vertical: MediaQuery.of(context).padding.top),
+                  child: Image.asset(
+                    'assets/images/3.png',
+                  ),
                 ),
                 Image.asset(
                   'assets/images/4.png',
                 ),
               ],
             ),
-            const SizedBox(
-              height: 30,
-            ),
             const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 40),
+              padding: EdgeInsets.symmetric(horizontal: 27),
               child: Text(
                 'دیگه لازم نیست ساعت ها تو ترافیک دنبال مشاور خوب و بنگاه بگردی، ما همه رو اینجا جمع کردیم... ',
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 19),
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
                 textDirection: TextDirection.rtl,
                 textAlign: TextAlign.justify,
               ),
@@ -93,7 +103,7 @@ class IntroScreen extends StatelessWidget {
 
   Widget _nextButton(int index) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 20),
+      padding: const EdgeInsets.only(bottom: 23),
       child: IconButton(
           onPressed: () {
             if (index == 2) {
@@ -103,8 +113,8 @@ class IntroScreen extends StatelessWidget {
             }
           },
           icon: const Icon(
-            Icons.navigate_next,
-            size: 43,
+            Icons.arrow_forward_ios_sharp,
+            size: 35,
           )),
     );
   }
@@ -115,7 +125,7 @@ class IntroScreen extends StatelessWidget {
         body: Stack(
       alignment: Alignment.topRight,
       children: [
-        Obx(() => _sliders()[_sliderIndex.value]),
+        Obx(() => _sliders(context)[_sliderIndex.value]),
         Padding(
           padding: const EdgeInsets.only(right: 8, top: 22),
           child: IconButton(
@@ -128,120 +138,9 @@ class IntroScreen extends StatelessWidget {
               )),
         ),
       ],
-    )
-
-        //     IntroductionScreen(
-        //   globalBackgroundColor: Colors.white,
-        //   showBackButton: false,
-        //   showDoneButton: false,
-        //   overrideNext: const Center(
-        //     child: Icon(Icons.navigate_next),
-        //   ),
-        //   pages: [
-        //     PageViewModel(
-        //       titleWidget: Column(
-        //         children: [],
-        //       ),
-        //       body: "",
-        //       image: SizedBox(
-        //         height: 305,
-        //         child: Image.asset(
-        //           'assets/images/Vector.png',
-        //           height: 400,
-        //           width: 400,
-        //         ),
-        //       ),
-        //     ),
-        //     PageViewModel(
-        //       titleWidget: Column(
-        //         children: [
-        //           Image.asset(
-        //             'assets/images/Group 2.png',
-        //             height: 193,
-        //             width: 300,
-        //           ),
-        //           Text(
-        //             'دیگه لازم نیست از این بنگاه به اون بنگاه بری و ملکتون رو فایل کنین، ما تمامی ابزارهای خدمات ملک رو اینجا جمع کردیم ',
-        //             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22),
-        //             textAlign: TextAlign.center,
-        //           ),
-        //         ],
-        //       ),
-        //       body: "",
-        //       image: Image.asset(
-        //         'assets/images/intro_screen_2',
-        //         height: 193,
-        //         width: 300,
-        //       ),
-        //     ),
-        //     PageViewModel(
-        //       titleWidget: Column(
-        //         children: [
-        //           Image.asset(
-        //             'assets/images/4.png',
-        //             height: 290,
-        //             width: 400,
-        //           ),
-        //           SizedBox(
-        //             height: 30,
-        //             width: 100,
-        //           ),
-        //           Text(
-        //             'دیگه لازم نیست ساعت ها تو ترافیک دنبال مشاور خوب و بنگاه بگردی، ما همه رو اینجا جمع کردیم ',
-        //             style: TextStyle(
-        //               fontWeight: FontWeight.bold,
-        //               fontSize: 22,
-        //             ),
-        //             textAlign: TextAlign.center,
-        //           ),
-        //         ],
-        //       ),
-        //       body: "",
-        //       image: Image.asset(
-        //         'assets/images/3.png',
-        //         fit: BoxFit.cover,
-        //         height: double.maxFinite,
-        //         width: 600,
-        //       ),
-        //     ),
-        //   ],
-        //   onDone: () {
-        //     Get.to(() => Register());
-        //   },
-        //   onSkip: () {
-        //     Get.to(() => Register());
-        //   },
-        //   showSkipButton: true,
-        //   skip: Text(
-        //     "skip",
-        //     style: TextStyle(
-        //       fontWeight: FontWeight.bold,
-        //       fontSize: 18,
-        //       color: Color(0xFF6C63FF),
-        //     ),
-        //   ),
-        //   // next: Icon(
-        //   //   Icons.arrow_forward,
-        //   //   color: Color(0xFF6C63FF),
-        //   // ),
-        //   // done: Text(
-        //   //   "Done",
-        //   //   style: TextStyle(
-        //   //     fontWeight: FontWeight.bold,
-        //   //     fontSize: 18,
-        //   //     color: Color(0xFF6C63FF),
-        //   //   ),
-        //   // ),
-        //   dotsDecorator: DotsDecorator(
-        //     activeSize: Size(20.0, 10.0),
-        //     color: Colors.black26,
-        //     activeColor: Color(0xFF65EDC2),
-        //     spacing: EdgeInsets.symmetric(horizontal: 3.0),
-        //     activeShape: RoundedRectangleBorder(
-        //       borderRadius: BorderRadius.circular(25.0),
-        //     ),
-        //   ),
-        // )
-        );
+    ));
   }
 }
+
+double getPageWidth_2(BuildContext context) =>
+    MediaQuery.of(context).size.width * 0.4;

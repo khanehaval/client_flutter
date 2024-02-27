@@ -6,6 +6,7 @@ import 'package:flutter_application_1/pages/category/category.dart';
 import 'package:flutter_application_1/pages/home.dart';
 import 'package:flutter_application_1/pages/category/pages/page_advertisement/advertisement_registration.dart';
 import 'package:flutter_application_1/pages/profile.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
 class EducationalTour extends StatefulWidget {
@@ -32,8 +33,11 @@ class _EducationalTourState extends State<EducationalTour> {
   var pages = [
     Home(),
     const Messages(),
-     AdvertisementRegistration(index: 0, showEducation: true,),
-    Category(),
+    AdvertisementRegistration(
+      index: 0,
+      showEducation: true,
+    ),
+    const Category(),
     const Advertisements()
   ];
 
@@ -45,7 +49,7 @@ class _EducationalTourState extends State<EducationalTour> {
         actions: [
           GestureDetector(
             onTap: () {
-              Get.to(()=> Profile());
+              Get.to(() => Profile());
             },
             child: Container(
               decoration: BoxDecoration(
@@ -66,54 +70,47 @@ class _EducationalTourState extends State<EducationalTour> {
           ? Container(
               color: Colors.white60,
               child: Padding(
-                padding: const EdgeInsets.all(10),
-                child: Column(
-                  children: [
-                    GestureDetector(
-                      onTap: () {
-                        Get.to(() => ());
-                      },
-                      child: GestureDetector(
-                        onTap: () {
-                          Get.to(() => ());
-                        },
-                        child: Image.asset(
-                          'assets/images/Personal user panel.png',
-                          width: MediaQuery.of(context).size.width * 3,
-                          height: 190,
-                          fit: BoxFit.fitHeight,
+                padding: EdgeInsets.all(10),
+                child: SingleChildScrollView(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: GestureDetector(
+                          onTap: () {
+                            Get.to(() => ());
+                          },
+                          child: Image.asset(
+                            'assets/images/Personal user panel.png',
+                          ),
                         ),
                       ),
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        Get.to(() => ());
-                      },
-                      child: Image.asset(
-                        "assets/images/Consultants user panel.png",
-                        width: MediaQuery.of(context).size.width * 3,
-                        height: 190,
-                        fit: BoxFit.fitHeight,
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: GestureDetector(
+                          onTap: () {
+                            Get.to(() => ());
+                          },
+                          child: Image.asset(
+                            "assets/images/Consultants user panel.png",
+                          ),
+                        ),
                       ),
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        Get.to(() => ());
-                      },
-                      child: Image.asset(
-                        "assets/images/Real estate agency user panel.png",
-                        width: MediaQuery.of(context).size.width * 3,
-                        height: 190,
-                        fit: BoxFit.fitHeight,
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: GestureDetector(
+                          onTap: () {
+                            Get.to(() => ());
+                          },
+                          child: Image.asset(
+                            "assets/images/Real estate agency user panel.png",
+                          ),
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             )
@@ -125,20 +122,20 @@ class _EducationalTourState extends State<EducationalTour> {
             currentPageIndex.value = index;
             showEducation.value = false;
           },
-          indicatorColor: const Color(0x0036d859),
+          indicatorColor: Color(0x0036d859),
           selectedIndex: currentPageIndex.value,
-          destinations: const <Widget>[
-            NavigationDestination(
+          destinations: <Widget>[
+            const NavigationDestination(
               selectedIcon: Icon(CupertinoIcons.home),
               icon: Icon(Icons.home_filled),
               label: '',
             ),
-            NavigationDestination(
+            const NavigationDestination(
               selectedIcon: Icon(Icons.messenger),
               icon: Icon(Icons.message_rounded),
               label: '',
             ),
-            NavigationDestination(
+            const NavigationDestination(
               selectedIcon: Icon(Icons.add_circle_outline_rounded),
               icon: Icon(Icons.add_circle_outline_rounded),
               label: '',
@@ -148,7 +145,7 @@ class _EducationalTourState extends State<EducationalTour> {
               icon: Icon(Icons.widgets),
               label: '',
             ),
-            NavigationDestination(
+            const NavigationDestination(
               selectedIcon: Icon(Icons.location_on_outlined),
               icon: Icon(Icons.location_on_outlined),
               label: '',

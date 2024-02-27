@@ -11,7 +11,7 @@ import 'package:get/get.dart';
 class CategoryAdvertisement extends StatelessWidget {
   final _selected = 0.obs;
 
-  CategoryAdvertisement({super.key});
+  CategoryAdvertisement({super.key, });
 
   @override
   Widget build(BuildContext context) {
