@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/ejara_adv_pages/ejara_adv.dart';
+import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/ejara_tejari/ejara_tejari_adv.dart';
 import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/forosh_adv_pages/forosh_adv.dart';
+import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/forosh_tejari_pages/forosh_tejari_adv.dart';
 import 'package:flutter_application_1/pages/category/shared/contant.dart';
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
 import 'package:flutter_application_1/pages/educational_tour.dart';
@@ -11,7 +13,9 @@ import 'package:get/get.dart';
 class CategoryAdvertisement extends StatelessWidget {
   final _selected = 0.obs;
 
-  CategoryAdvertisement({super.key, });
+  CategoryAdvertisement({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -72,7 +76,11 @@ class CategoryAdvertisement extends StatelessWidget {
                 } else if (index == 1) {
                   finalWidget = finalWidget = EjaraAdv();
                   ();
-                } else if (index == 3) {}
+                } else if (index == 4) {
+                  finalWidget = finalWidget = ForoshTejariAdv();
+                } else if (index == 3) {
+                  finalWidget = finalWidget = EjaraTejariAdv();
+                } else if (index == 5) {}
 
                 Get.to(() => finalWidget);
               }

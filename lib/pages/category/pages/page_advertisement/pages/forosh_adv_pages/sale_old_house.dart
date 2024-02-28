@@ -895,7 +895,7 @@ Widget aghsatiForoshWidget(BuildContext context) {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           const Text(
-            "فروش به صورت اقساطی",
+          "عنوان پیشنهادی خانه اول",
             style: TextStyle(
                 fontFamily: MAIN_FONT_FAMILY,
                 fontSize: 13,
