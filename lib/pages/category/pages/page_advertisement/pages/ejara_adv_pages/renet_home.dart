@@ -20,6 +20,7 @@ class RenetHome extends StatelessWidget {
   final _metragTextController = TextEditingController();
 
   RenetHome({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -992,6 +993,7 @@ Widget aghsatiForoshWidget(BuildContext context) {
                 width: MediaQuery.of(context).size.width * 0.43,
                 child: TextField(
                   textAlign: TextAlign.right,
+                  keyboardType: TextInputType.number,
                   decoration: InputDecoration(
                     hintText: 'مبلغ را وارد کنید', //todo
                     hintStyle:
@@ -1007,6 +1009,7 @@ Widget aghsatiForoshWidget(BuildContext context) {
                 width: MediaQuery.of(context).size.width * 0.43,
                 child: TextField(
                   textAlign: TextAlign.right,
+                  keyboardType: TextInputType.number,
                   decoration: InputDecoration(
                     hintText: 'مبلغ را وارد کنید', //todo
                     hintStyle:
