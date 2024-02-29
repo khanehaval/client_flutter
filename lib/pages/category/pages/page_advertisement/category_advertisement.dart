@@ -77,9 +77,9 @@ class CategoryAdvertisement extends StatelessWidget {
                   finalWidget = finalWidget = EjaraAdv();
                   ();
                 } else if (index == 4) {
-                  finalWidget = finalWidget = ForoshTejariAdv();
+                  finalWidget = ForoshTejariAdv();
                 } else if (index == 3) {
-                  finalWidget = finalWidget = EjaraTejariAdv();
+                  finalWidget =  EjaraTejariAdv();
                 } else if (index == 5) {}
 
                 Get.to(() => finalWidget);
