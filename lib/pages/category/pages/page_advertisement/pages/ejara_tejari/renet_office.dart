@@ -1,53 +1,40 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/forosh_adv_pages/sale_old_house.dart';
 import 'package:flutter_application_1/pages/category/shared/contant.dart';
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
-import 'package:flutter_application_1/pages/category/shared/switchItem.dart';
 import 'package:flutter_application_1/pages/category/shared/twoItemInRow.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:get/get_connect/http/src/utils/utils.dart';
-import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 
-class SaleHome2 extends StatelessWidget {
+class RentOffice extends StatelessWidget {
   final aghsatType = "".obs;
   final onvan = "".obs;
-  final _selected = 0.obs;
-  final _currentIndex = 0.obs;
-  ItemScrollController scrollController = ItemScrollController();
-  final ItemScrollController itemScrollController = ItemScrollController();
 
   final hasAnbari = false.obs;
   final hasAsansor = false.obs;
   final hasParking = false.obs;
 
   final _onePrice = 0.0.obs;
-
   final _allPriceTextController = TextEditingController();
   final _metragTextController = TextEditingController();
-  final _index = 6.obs;
 
+  RentOffice({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: buildaAppBar(),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
           child: Column(
             children: [
               const Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Icon(
-                    Icons.arrow_back,
-                    color: Colors.green,
-                    size: 20,
-                  ),
                   Text(
-                    " خرید و فروش آپارتمان",
+                    "  اجاره آپارتمان",
                     style: TextStyle(
                       fontSize: 10,
                       fontFamily: MAIN_FONT_FAMILY,
@@ -59,7 +46,7 @@ class SaleHome2 extends StatelessWidget {
                     size: 18,
                   ),
                   Text(
-                    "فروش مسکونی",
+                    "اجاره تجاری و اداری",
                     style: TextStyle(
                       fontSize: 10,
                       fontFamily: MAIN_FONT_FAMILY,
@@ -83,22 +70,22 @@ class SaleHome2 extends StatelessWidget {
                 height: 30,
               ),
               TwoItemInRow(
-                label1: "قیمت هر متر مربع (تومان)",
-                label2: "قیمت کل (تومان)",
-                w1: Obx(
-                  () => Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      border: Border.all(
-                          width: 1, //
-                          color: Theme.of(context)
-                              .hintColor //  <--- border width here
-                          ),
-                    ),
-                    height: 41,
-                    width: getPageWidth_2(context),
-                    child: Center(
-                      child: Text(_onePrice.string),
+                label1: "میزان اجاره (تومان)",
+                label2: "میزان رهن (تومان) ",
+                w1: SizedBox(
+                  height: 41,
+                  width: getPageWidth_2(context),
+                  child: TextField(
+                    textAlign: TextAlign.right,
+                    keyboardType: TextInputType.number,
+                    decoration: InputDecoration(
+                      hintText: "0",
+                      hintStyle: const TextStyle(
+                        color: Color(0xFFA6A6A6),
+                      ),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
                     ),
                   ),
                 ),
@@ -108,12 +95,6 @@ class SaleHome2 extends StatelessWidget {
                   child: TextField(
                     textAlign: TextAlign.right,
                     keyboardType: TextInputType.number,
-                    controller: _allPriceTextController,
-                    onChanged: (_) {
-                      _onePrice.value = _.isNotEmpty
-                          ? int.parse(_) / int.parse(_metragTextController.text)
-                          : 0;
-                    },
                     decoration: InputDecoration(
                       hintText: "0",
                       hintStyle: const TextStyle(
@@ -129,26 +110,17 @@ class SaleHome2 extends StatelessWidget {
               const SizedBox(
                 height: 20,
               ),
-              const Align(
-                alignment: Alignment.centerRight,
-                child: Text(
-                  ":قیمت به حروف ",
-                  style: TextStyle(
-                      fontSize: 14,
-                      fontFamily: MAIN_FONT_FAMILY,
-                      color: Color.fromRGBO(166, 166, 166, 1)),
+              const Text(
+                "برای ثبت آگهی با عنوان رهن کامل، اجاره را وارد نکنید",
+                style: TextStyle(
+                  fontSize: 12,
+                  fontFamily: MAIN_FONT_FAMILY,
                 ),
               ),
               const SizedBox(
                 height: 20,
               ),
-              const Divider(
-                endIndent: 20,
-                indent: 20,
-              ),
-              const SizedBox(
-                height: 20,
-              ),
+              aghsatiForoshWidget(context),
               const Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
@@ -191,18 +163,15 @@ class SaleHome2 extends StatelessWidget {
                   ),
                 ),
               ),
-              aghsatiForoshWidget(context),
-              const Divider(
-                endIndent: 20,
-                indent: 20,
-              ),
-              melkByVamBanki(context),
               const SizedBox(
                 height: 20,
               ),
               const Divider(
                 endIndent: 20,
                 indent: 20,
+              ),
+              const SizedBox(
+                height: 20,
               ),
               TwoItemInRow(
                 label1: "تعداد اتاق ",
@@ -211,8 +180,6 @@ class SaleHome2 extends StatelessWidget {
                   height: 41,
                   width: getPageWidth_2(context),
                   child: TextField(
-                    readOnly: true,
-                    focusNode: FocusNode(canRequestFocus: false),
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
                         hintText: 'انتخاب نشده',
@@ -233,8 +200,6 @@ class SaleHome2 extends StatelessWidget {
                   height: 41,
                   width: getPageWidth_2(context),
                   child: TextField(
-                    readOnly: true,
-                    focusNode: FocusNode(canRequestFocus: false),
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
                       hintText: 'انتخاب نشده',
@@ -279,8 +244,6 @@ class SaleHome2 extends StatelessWidget {
                 height: 41,
                 width: 372,
                 child: TextField(
-                  readOnly: true,
-                  focusNode: FocusNode(canRequestFocus: false),
                   textAlign: TextAlign.right,
                   decoration: InputDecoration(
                     hintText: 'انتخاب نشده',
@@ -329,7 +292,7 @@ class SaleHome2 extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Text(
+                      Text(
                         "آسانسور",
                         style: TextStyle(
                             fontFamily: MAIN_FONT_FAMILY,
@@ -345,18 +308,18 @@ class SaleHome2 extends StatelessWidget {
                                 value: hasAsansor.value,
                                 activeColor: Colors.white,
                                 activeTrackColor:
-                                    const Color.fromRGBO(54, 216, 89, 1),
+                                    Color.fromRGBO(54, 216, 89, 1),
                                 inactiveThumbColor:
-                                    const Color.fromRGBO(11, 8, 8, 0.2),
+                                    Color.fromRGBO(11, 8, 8, 0.2),
                                 inactiveTrackColor:
-                                    const Color.fromRGBO(255, 255, 255, 1)),
+                                    Color.fromRGBO(255, 255, 255, 1)),
                           ),
                         ),
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          const Text(
+                          Text(
                             "پارکینگ",
                             style: TextStyle(
                                 fontFamily: MAIN_FONT_FAMILY,
@@ -403,114 +366,37 @@ class SaleHome2 extends StatelessWidget {
               const SizedBox(
                 height: 15,
               ),
-              TwoItemInRow(
-                label1: "تعداد کل طبقات",
-                label2: "نوع سند",
-                w1: SizedBox(
-                  height: 41,
-                  width: getPageWidth_2(context),
-                  child: TextField(
-                    readOnly: true,
-                    focusNode: FocusNode(canRequestFocus: false),
-                    textAlign: TextAlign.right,
-                    decoration: InputDecoration(
-                        hintText: 'انتخاب نشده',
-                        hintStyle: const TextStyle(
-                            color: Color(0xFFA6A6A6), fontSize: 13),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        prefixIcon: IconButton(
-                          icon: const Icon(CupertinoIcons.chevron_left_2),
-                          onPressed: () {
-                            Get.bottomSheet(
-                              Center(
-                                child: Container(
-                                    decoration: const BoxDecoration(
-                                        color: Colors.white,
-                                        borderRadius: BorderRadius.only(
-                                            topLeft: Radius.circular(20),
-                                            topRight: Radius.circular(20))),
-                                    child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceEvenly,
-                                        children: [
-                                          GestureDetector(
-                                              onTap: () {
-                                                if (_index.value > 0) {
-                                                  _index.value =
-                                                      _index.value - 1;
-                                                       itemScrollController.scrollTo(
-                                                    index: _index.value,
-                                                    duration: const Duration(
-                                                        seconds: 1));
-                                                }
-                                              },
-                                              child: const Icon(
-                                                  Icons.arrow_upward)),
-                                          SizedBox(
-                                            width: 90,
-                                            child: ScrollablePositionedList
-                                                .builder(
-                                                    itemScrollController:
-                                                        itemScrollController,
-                                                    shrinkWrap: true,
-                                                    itemCount: 20,
-                                                    itemBuilder: (c, i) {
-                                                      return Obx(() => Padding(
-                                                            padding:
-                                                                const EdgeInsets
-                                                                    .all(8.0),
-                                                            child: Text(
-                                                                (i).toString(),
-                                                                style: TextStyle(
-                                                                    fontSize: i ==
-                                                                            _index.value
-                                                                        ? 30
-                                                                        : 10)),
-                                                          ));
-                                                    }),
-                                          ),
-                                          GestureDetector(
-                                            onTap: () {
-                                              if (_index.value < 20) {
-                                                _index.value = _index.value + 1;
-                                                itemScrollController.scrollTo(
-                                                    index: _index.value,
-                                                    duration: const Duration(
-                                                        seconds: 1));
-                                              }
-                                            },
-                                            child: const Icon(
-                                                Icons.arrow_downward),
-                                          ),
-                                        ])),
-                              ),
-                            );
-                          },
-                        )),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Container(
+                    child: Text(
+                      "تعداد کل طبقات ",
+                      style: TextStyle(
+                          color: Color.fromRGBO(99, 99, 99, 1),
+                          fontFamily: MAIN_FONT_FAMILY),
+                      textAlign: TextAlign.start,
+                    ),
                   ),
-                ),
-                w2: SizedBox(
-                  height: 41,
-                  width: getPageWidth_2(context),
-                  child: TextField(
-                    readOnly: true,
-                    focusNode: FocusNode(canRequestFocus: false),
-                    textAlign: TextAlign.right,
-                    decoration: InputDecoration(
-                      hintText: 'انتخاب نشده',
-                      hintStyle: const TextStyle(
-                          color: Color(0xFFA6A6A6), fontSize: 13),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      prefixIcon: IconButton(
-                        icon: const Icon(CupertinoIcons.chevron_left_2),
-                        onPressed: () {
-                          // _show_item_1.value = !_show_item_1.isTrue;
-                        },
-                      ),
+                ],
+              ),
+              Container(
+                height: 41,
+                width: 372,
+                child: TextField(
+                  textAlign: TextAlign.right,
+                  decoration: InputDecoration(
+                    hintText: 'انتخاب نشده',
+                    hintStyle:
+                        TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    prefixIcon: IconButton(
+                      icon: const Icon(CupertinoIcons.chevron_left_2),
+                      onPressed: () {
+                        // _show_item_1.value = !_show_item_1.isTrue;
+                      },
                     ),
                   ),
                 ),
@@ -525,12 +411,11 @@ class SaleHome2 extends StatelessWidget {
                   height: 41,
                   width: getPageWidth_2(context),
                   child: TextField(
-                    keyboardType: TextInputType.number,
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
                       hintText: 'تایپ کنید',
-                      hintStyle: const TextStyle(
-                          color: Color(0xFFA6A6A6), fontSize: 13),
+                      hintStyle:
+                          TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
@@ -541,8 +426,6 @@ class SaleHome2 extends StatelessWidget {
                   height: 41,
                   width: getPageWidth_2(context),
                   child: TextField(
-                    readOnly: true,
-                    focusNode: FocusNode(canRequestFocus: false),
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
                       hintText: 'انتخاب نشده',
@@ -571,8 +454,6 @@ class SaleHome2 extends StatelessWidget {
                   height: 41,
                   width: getPageWidth_2(context),
                   child: TextField(
-                    readOnly: true,
-                    focusNode: FocusNode(canRequestFocus: false),
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
                         hintText: 'انتخاب نشده',
@@ -593,8 +474,6 @@ class SaleHome2 extends StatelessWidget {
                   height: 41,
                   width: getPageWidth_2(context),
                   child: TextField(
-                    readOnly: true,
-                    focusNode: FocusNode(canRequestFocus: false),
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
                       hintText: 'انتخاب نشده',
@@ -638,8 +517,6 @@ class SaleHome2 extends StatelessWidget {
                   height: 41,
                   width: getPageWidth_2(context),
                   child: TextField(
-                    readOnly: true,
-                    focusNode: FocusNode(canRequestFocus: false),
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
                         hintText: 'انتخاب نشده',
@@ -660,8 +537,6 @@ class SaleHome2 extends StatelessWidget {
                   height: 41,
                   width: getPageWidth_2(context),
                   child: TextField(
-                    readOnly: true,
-                    focusNode: FocusNode(canRequestFocus: false),
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
                       hintText: 'انتخاب نشده',
@@ -690,8 +565,6 @@ class SaleHome2 extends StatelessWidget {
                   height: 41,
                   width: getPageWidth_2(context),
                   child: TextField(
-                    readOnly: true,
-                    focusNode: FocusNode(canRequestFocus: false),
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
                       hintText: 'انتخاب نشده',
@@ -713,8 +586,6 @@ class SaleHome2 extends StatelessWidget {
                   height: 41,
                   width: getPageWidth_2(context),
                   child: TextField(
-                    readOnly: true,
-                    focusNode: FocusNode(canRequestFocus: false),
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
                       hintText: 'انتخاب نشده',
@@ -743,8 +614,6 @@ class SaleHome2 extends StatelessWidget {
                   height: 41,
                   width: getPageWidth_2(context),
                   child: TextField(
-                    readOnly: true,
-                    focusNode: FocusNode(canRequestFocus: false),
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
                         hintText: 'انتخاب نشده',
@@ -765,8 +634,6 @@ class SaleHome2 extends StatelessWidget {
                   height: 41,
                   width: 176,
                   child: TextField(
-                    readOnly: true,
-                    focusNode: FocusNode(canRequestFocus: false),
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
                       hintText: 'انتخاب نشده',
@@ -967,7 +834,7 @@ class SaleHome2 extends StatelessWidget {
                 children: [
                   Container(
                     height: 41,
-                    width: MediaQuery.of(context).size.width * 1 / 1.06,
+                    width: MediaQuery.of(context).size.width * 1 / 1.119,
                     child: TextField(
                       textAlign: TextAlign.right,
                       decoration: InputDecoration(
@@ -1004,7 +871,7 @@ class SaleHome2 extends StatelessWidget {
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   SizedBox(
-                    width: MediaQuery.of(context).size.width * 1 / 1.06,
+                    width: MediaQuery.of(context).size.width * 1 / 1.119,
                     height: 218,
                     child: TextField(
                       maxLines: 5,
@@ -1054,387 +921,134 @@ class SaleHome2 extends StatelessWidget {
       ),
     );
   }
+}
 
-  double getPageWidth_2(BuildContext context) =>
-      MediaQuery.of(context).size.width * 0.43;
-
-  Widget onvanWidget(BuildContext context) {
-    final isSwitched = true.obs;
-    return Column(
-      children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            const Text(
-              "فروش به صورت اقساطی",
-              style: TextStyle(
-                  fontFamily: MAIN_FONT_FAMILY,
-                  fontSize: 14,
-                  color: Color.fromRGBO(99, 99, 99, 1)),
+Widget onvanWidget(BuildContext context) {
+  final isSwitched = true.obs;
+  return Column(
+    children: [
+      Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const Text(
+            "عنوان پیشنهادی خانه اول",
+            style: TextStyle(
+                fontFamily: MAIN_FONT_FAMILY,
+                fontSize: 14,
+                color: Color.fromRGBO(99, 99, 99, 1)),
+          ),
+          Transform.scale(
+            scale: 0.80,
+            child: Obx(
+              () => Switch(
+                  onChanged: (_) => isSwitched.value = _,
+                  value: isSwitched.value,
+                  activeColor: Colors.white,
+                  activeTrackColor: const Color.fromRGBO(54, 216, 89, 1),
+                  inactiveThumbColor: const Color.fromRGBO(11, 8, 8, 0.2),
+                  inactiveTrackColor: const Color.fromRGBO(255, 255, 255, 1)),
             ),
-            Transform.scale(
-              scale: 0.80,
-              child: Obx(
-                () => Switch(
-                    onChanged: (_) => isSwitched.value = _,
-                    value: isSwitched.value,
-                    activeColor: Colors.white,
-                    activeTrackColor: const Color.fromRGBO(54, 216, 89, 1),
-                    inactiveThumbColor: const Color.fromRGBO(11, 8, 8, 0.2),
-                    inactiveTrackColor: const Color.fromRGBO(255, 255, 255, 1)),
+          ),
+        ],
+      ),
+      Obx(() => isSwitched.isTrue
+          ? Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SizedBox(
+                  height: 41,
+                  width: MediaQuery.of(context).size.width * 1 / 1.119,
+                  child: TextField(
+                    textAlign: TextAlign.right,
+                    decoration: InputDecoration(
+                      hintText: 'آپارتمان 120 متری به صورت اقساطی',
+                      hintStyle: TextStyle(
+                          color: Color(0xFFA6A6A6),
+                          fontFamily: MAIN_FONT_FAMILY,
+                          fontSize: 16),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            )
+          : const SizedBox.shrink()),
+    ],
+  );
+}
+
+Widget aghsatiForoshWidget(BuildContext context) {
+  final isSwitched = true.obs;
+  return Column(children: [
+    Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        const Text(
+          "قابلیت تبدیل",
+          style: TextStyle(
+              fontFamily: MAIN_FONT_FAMILY,
+              fontSize: 13,
+              color: Color.fromRGBO(99, 99, 99, 1)),
+        ),
+        Transform.scale(
+          scale: 0.80,
+          child: Obx(
+            () => Switch(
+                onChanged: (_) => isSwitched.value = _,
+                value: isSwitched.value,
+                activeColor: Colors.white,
+                activeTrackColor: const Color.fromRGBO(54, 216, 89, 1),
+                inactiveThumbColor: const Color.fromRGBO(11, 8, 8, 0.2),
+                inactiveTrackColor: const Color.fromRGBO(255, 255, 255, 1)),
+          ),
+        ),
+      ],
+    ),
+    Obx(() => isSwitched.isTrue
+        ? Column(children: [
+            const SizedBox(
+              height: 20,
+            ),
+            TwoItemInRow(
+              label1: "میزان اجاره (تومان)",
+              label2: "میزان رهن (تومان) ",
+              w1: SizedBox(
+                height: 41,
+                width: MediaQuery.of(context).size.width * 0.43,
+                child: TextField(
+                  textAlign: TextAlign.right,
+                  decoration: InputDecoration(
+                    hintText: 'مبلغ را وارد کنید', //todo
+                    hintStyle:
+                        const TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                  ),
+                ),
+              ),
+              w2: SizedBox(
+                height: 41,
+                width: MediaQuery.of(context).size.width * 0.43,
+                child: TextField(
+                  textAlign: TextAlign.right,
+                  decoration: InputDecoration(
+                    hintText: 'مبلغ را وارد کنید', //todo
+                    hintStyle:
+                        const TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                  ),
+                ),
               ),
             ),
-          ],
-        ),
-        Obx(() => isSwitched.isTrue
-            ? Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  SizedBox(
-                    height: 41,
-                    width: MediaQuery.of(context).size.width * 1 / 1.06,
-                    child: TextField(
-                      textAlign: TextAlign.right,
-                      decoration: InputDecoration(
-                        hintText: 'آپارتمان 120 متری به صورت اقساطی',
-                        hintStyle: const TextStyle(
-                            color: Color(0xFFA6A6A6),
-                            fontFamily: MAIN_FONT_FAMILY,
-                            fontSize: 13),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              )
-            : const SizedBox.shrink()),
-      ],
-    );
-  }
-
-  Widget aghsatiForoshWidget(BuildContext context) {
-    final isSwitched = true.obs;
-    return Column(
-      children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Text(
-              "فروش به صورت اقساطی",
-              style: TextStyle(
-                  fontFamily: MAIN_FONT_FAMILY,
-                  fontSize: 12,
-                  color: Color.fromRGBO(99, 99, 99, 1)),
-            ),
-            Transform.scale(
-              scale: 0.80,
-              child: Obx(
-                () => Switch(
-                    onChanged: (_) => isSwitched.value = _,
-                    value: isSwitched.value,
-                    activeColor: Colors.white,
-                    activeTrackColor: const Color.fromRGBO(54, 216, 89, 1),
-                    inactiveThumbColor: const Color.fromRGBO(11, 8, 8, 0.2),
-                    inactiveTrackColor: const Color.fromRGBO(255, 255, 255, 1)),
-              ),
-            ),
-          ],
-        ),
-        Obx(() => isSwitched.isTrue
-            ? Column(
-                children: [
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  const Text(
-                    "در صورت وارد نکردن آیتم ها، آگهی فقط با عنوان اقساطی منتشر میگردد",
-                    style:
-                        TextStyle(fontFamily: MAIN_FONT_FAMILY, fontSize: 9.5),
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  TwoItemInRow(
-                    label1: "مبلغ قسط (تومان)",
-                    label2: "پیش پرداخت (تومان)",
-                    w1: SizedBox(
-                      height: 41,
-                      width: MediaQuery.of(context).size.width * 0.4,
-                      child: TextField(
-                        keyboardType: TextInputType.number,
-                        textAlign: TextAlign.right,
-                        decoration: InputDecoration(
-                          hintText: 'مبلغ را وارد کنید', //todo
-                          hintStyle: const TextStyle(
-                              color: Color(0xFFA6A6A6), fontSize: 13),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                        ),
-                      ),
-                    ),
-                    w2: SizedBox(
-                      height: 41,
-                      width: MediaQuery.of(context).size.width * 0.4,
-                      child: TextField(
-                        keyboardType: TextInputType.number,
-                        textAlign: TextAlign.right,
-                        decoration: InputDecoration(
-                          hintText: 'مبلغ را وارد کنید', //todo
-                          hintStyle: const TextStyle(
-                              color: Color(0xFFA6A6A6), fontSize: 13),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 17,
-                  ),
-                  TwoItemInRow(
-                      label1: "زمان دریافت اقساط",
-                      label2: "تعداد اقساط",
-                      w1: SizedBox(
-                        height: 41,
-                        width: MediaQuery.of(context).size.width * 0.4,
-                        child: TextField(
-                          textAlign: TextAlign.right,
-                          readOnly: true,
-                          focusNode: FocusNode(canRequestFocus: false),
-                          decoration: InputDecoration(
-                              hintText: 'انتخاب نشده',
-                              hintStyle: const TextStyle(
-                                  color: Color(0xFFA6A6A6), fontSize: 13),
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              prefixIcon: IconButton(
-                                icon: const Icon(CupertinoIcons.chevron_left_2),
-                                onPressed: () {},
-                              )),
-                        ),
-                      ),
-                      w2: SizedBox(
-                        height: 41,
-                        width: MediaQuery.of(context).size.width * 0.4,
-                        child: TextField(
-                          textAlign: TextAlign.right,
-                          readOnly: true,
-                          focusNode: FocusNode(canRequestFocus: false),
-                          decoration: InputDecoration(
-                            hintText: 'انتخاب نشده',
-                            hintStyle: const TextStyle(
-                                color: Color(0xFFA6A6A6), fontSize: 13),
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            prefixIcon: IconButton(
-                              icon: const Icon(CupertinoIcons.chevron_left_2),
-                              onPressed: () {},
-                            ),
-                          ),
-                        ),
-                      )),
-                  const SizedBox(
-                    width: 25,
-                    height: 10,
-                  ),
-                  SwitchItem(
-                      type: aghsatType, items: const ["ضامن", "سفته", "چک"]),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  const Text(
-                    "قیمت نهایی ملک (پیش پرداخت + اقساط ) : 13.200.000.000 تومان",
-                    style: TextStyle(
-                      fontFamily: MAIN_FONT_FAMILY,
-                      fontSize: 9.5,
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 30,
-                  ),
-                ],
-              )
-            : const SizedBox.shrink()),
-      ],
-    );
-  }
-
-  Widget melkByVamBanki(BuildContext context) {
-    final isSwitched = true.obs;
-    return Column(
-      children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Text(
-              "ملک با وام بانکی",
-              style: TextStyle(
-                  fontFamily: MAIN_FONT_FAMILY,
-                  fontSize: 14,
-                  color: Color.fromRGBO(99, 99, 99, 1)),
-            ),
-            Transform.scale(
-              scale: 0.80,
-              child: Obx(
-                () => Switch(
-                    onChanged: (_) => isSwitched.value = _,
-                    value: isSwitched.value,
-                    activeColor: Colors.white,
-                    activeTrackColor: const Color.fromRGBO(54, 216, 89, 1),
-                    inactiveThumbColor: const Color.fromRGBO(11, 8, 8, 0.2),
-                    inactiveTrackColor: const Color.fromRGBO(255, 255, 255, 1)),
-              ),
-            ),
-          ],
-        ),
-        const SizedBox(
-          height: 10,
-        ),
-        Obx(() => isSwitched.isTrue
-            ? Column(
-                children: [
-                  const Text(
-                    "در صورت وارد نکردن آیتم ها، آگهی فقط با عنوان دارای وام منتشر میگردد",
-                    style: TextStyle(
-                        fontFamily: MAIN_FONT_FAMILY,
-                        fontSize: 9.5,
-                        overflow: TextOverflow.clip),
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  TwoItemInRow(
-                    label1: "مبلغ اقساط",
-                    label2: "میزان وام (تومان)",
-                    w1: SizedBox(
-                      height: 41,
-                      width: MediaQuery.of(context).size.width * 0.4,
-                      child: TextField(
-                        keyboardType: TextInputType.number,
-                        textAlign: TextAlign.right,
-                        decoration: InputDecoration(
-                          hintText: '3,6000000', //todo
-                          hintStyle: const TextStyle(
-                              color: Color(0xFFA6A6A6), fontSize: 13),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                        ),
-                      ),
-                    ),
-                    w2: SizedBox(
-                      height: 41,
-                      width: MediaQuery.of(context).size.width * 0.4,
-                      child: TextField(
-                        keyboardType: TextInputType.number,
-                        textAlign: TextAlign.right,
-                        decoration: InputDecoration(
-                          hintText: '400000000', //todo
-                          hintStyle: const TextStyle(
-                              color: Color(0xFFA6A6A6), fontSize: 13),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 17,
-                  ),
-                  TwoItemInRow(
-                      label1: "زمان دریافت اقساط",
-                      label2: "تعداد اقساط",
-                      w1: SizedBox(
-                        height: 41,
-                        width: MediaQuery.of(context).size.width * 0.4,
-                        child: TextField(
-                          textAlign: TextAlign.right,
-                          readOnly: true,
-                          focusNode: FocusNode(canRequestFocus: false),
-                          decoration: InputDecoration(
-                              hintText: 'انتخاب نشده',
-                              hintStyle: const TextStyle(
-                                  color: Color(0xFFA6A6A6), fontSize: 13),
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              prefixIcon: IconButton(
-                                icon: const Icon(CupertinoIcons.chevron_left_2),
-                                onPressed: () {},
-                              )),
-                        ),
-                      ),
-                      w2: SizedBox(
-                        height: 41,
-                        width: MediaQuery.of(context).size.width * 0.4,
-                        child: TextField(
-                          textAlign: TextAlign.right,
-                          readOnly: true,
-                          focusNode: FocusNode(canRequestFocus: false),
-                          decoration: InputDecoration(
-                            hintText: 'انتخاب نشده',
-                            hintStyle: const TextStyle(
-                                color: Color(0xFFA6A6A6), fontSize: 13),
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            prefixIcon: IconButton(
-                              icon: const Icon(CupertinoIcons.chevron_left_2),
-                              onPressed: () {},
-                            ),
-                          ),
-                        ),
-                      )),
-                  const SizedBox(height: 25),
-                  const Align(
-                    alignment: Alignment.centerRight,
-                    child: Text(
-                      "تعداد اقساط (هر ماه)  ",
-                      style: TextStyle(
-                          color: Color.fromRGBO(166, 166, 166, 1),
-                          fontSize: 13,
-                          fontFamily: MAIN_FONT_FAMILY),
-                      textAlign: TextAlign.start,
-                    ),
-                  ),
-                  SizedBox(
-                    height: 41,
-                    child: TextField(
-                      readOnly: true,
-                      focusNode: FocusNode(canRequestFocus: false),
-                      textAlign: TextAlign.right,
-                      decoration: InputDecoration(
-                        hintText: 'انتخاب نشده',
-                        hintStyle: const TextStyle(
-                            color: Color(0xFFA6A6A6), fontSize: 13),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        prefixIcon: IconButton(
-                          icon: const Icon(CupertinoIcons.chevron_left_2),
-                          onPressed: () {
-                            // _show_item_1.value = !_show_item_1.isTrue;
-                          },
-                        ),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 30,
-                  ),
-                ],
-              )
-            : const SizedBox.shrink()),
-      ],
-    );
-  }
+          ])
+        : const SizedBox.shrink()),
+    const SizedBox(
+      height: 20,
+    ),
+  ]);
 }

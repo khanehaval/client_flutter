@@ -30,7 +30,7 @@ class SwitchItemVila extends StatelessWidget {
           Text(
             text,
             style: const TextStyle(
-              fontSize: 15,
+              fontSize: 13,
               fontFamily: MAIN_FONT_FAMILY,
             ),
           ),

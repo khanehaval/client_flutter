@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/ejara_adv_pages/ejara_aparteman.dart';
+import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/ejara_adv_pages/ejara_vila.dart';
 import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/forosh_adv_pages/sale_vila.dart';
 import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/forosh_adv_pages/select_location_kolangi.dart';
 import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/forosh_adv_pages/select_location_on_map.dart';
@@ -64,7 +66,10 @@ class EjaraAdv extends StatelessWidget {
                         if (_selected.value > 0) {
                           int index = _selected.value;
                           if (index == 1) {
+                            Get.to(
+                                () => const SelectLocationOnEjaraAparteman());
                           } else if (index == 2) {
+                            Get.to(() => const SelectLocationOnEjaraVila());
                           } else if (index == 3) {}
                         }
                       },
