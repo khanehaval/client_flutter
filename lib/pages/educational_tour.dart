@@ -46,10 +46,14 @@ class _EducationalTourState extends State<EducationalTour> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
+        leading: IconButton(
+          icon: Icon(CupertinoIcons.back),
+          onPressed: () => Get.back(),
+        ),
         actions: [
           GestureDetector(
             onTap: () {
-              Get.to(() => Profile());
+              Get.to(() => const Profile());
             },
             child: Container(
               decoration: BoxDecoration(
