@@ -57,7 +57,7 @@ class _SelectLocationOnMapState extends State<SelectLocationRentOffice> {
                 height: 10,
               ),
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.end,
@@ -69,7 +69,7 @@ class _SelectLocationOnMapState extends State<SelectLocationRentOffice> {
                         ),
                       ),
                       SizedBox(
-                        width: MediaQuery.of(context).size.width * 0.4,
+                        width: MediaQuery.of(context).size.width * 0.43,
                         height: 40,
                         child: TextField(
                           textAlign: TextAlign.right,
@@ -98,7 +98,7 @@ class _SelectLocationOnMapState extends State<SelectLocationRentOffice> {
                       ),
                       SizedBox(
                         height: 40,
-                        width: MediaQuery.of(context).size.width * 0.4,
+                        width: MediaQuery.of(context).size.width * 0.43,
                         child: TextField(
                           textAlign: TextAlign.right,
                           readOnly: true,
@@ -123,7 +123,7 @@ class _SelectLocationOnMapState extends State<SelectLocationRentOffice> {
               Directionality(
                 textDirection: TextDirection.rtl,
                 child: TextField(
-                  maxLines: 2,
+                  maxLines: 3,
                   decoration: InputDecoration(
                       label: const Text(
                         "آدرس",

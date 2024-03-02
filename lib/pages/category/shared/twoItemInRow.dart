@@ -5,9 +5,9 @@ import 'contant.dart';
 class TwoItemInRow extends StatelessWidget {
   String label1;
   String label2;
-  Widget w1;
-  Widget w2;
 
+  Widget w2;
+  Widget w1;
   TwoItemInRow(
       {super.key,
       required this.label1,
