@@ -57,7 +57,7 @@ class _SelectLocationOnMapState extends State<SelectLocationRentShop> {
                 height: 10,
               ),
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.end,
@@ -69,7 +69,7 @@ class _SelectLocationOnMapState extends State<SelectLocationRentShop> {
                         ),
                       ),
                       SizedBox(
-                        width: MediaQuery.of(context).size.width * 1 / 2.3,
+                        width: MediaQuery.of(context).size.width * 0.45,
                         height: 40,
                         child: TextField(
                           textAlign: TextAlign.right,
@@ -98,7 +98,7 @@ class _SelectLocationOnMapState extends State<SelectLocationRentShop> {
                       ),
                       SizedBox(
                         height: 40,
-                        width: MediaQuery.of(context).size.width * 1 / 2.3,
+                        width: MediaQuery.of(context).size.width * 0.45,
                         child: TextField(
                           textAlign: TextAlign.right,
                           readOnly: true,
@@ -118,25 +118,22 @@ class _SelectLocationOnMapState extends State<SelectLocationRentShop> {
                 ],
               ),
               const SizedBox(
-                height: 15,
+                height: 25,
               ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Directionality(
-                  textDirection: TextDirection.rtl,
-                  child: TextField(
-                    maxLines: 2,
-                    decoration: InputDecoration(
-                        label: const Text(
-                          "آدرس",
-                          style: TextStyle(
-                              fontFamily: MAIN_FONT_FAMILY,
-                              color: Color.fromRGBO(166, 166, 166, 1)),
-                          textAlign: TextAlign.right,
-                        ),
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10))),
-                  ),
+              Directionality(
+                textDirection: TextDirection.rtl,
+                child: TextField(
+                  maxLines: 3,
+                  decoration: InputDecoration(
+                      label: const Text(
+                        "آدرس",
+                        style: TextStyle(
+                            fontFamily: MAIN_FONT_FAMILY,
+                            color: Color.fromRGBO(166, 166, 166, 1)),
+                        textAlign: TextAlign.right,
+                      ),
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10))),
                 ),
               ),
               const SizedBox(

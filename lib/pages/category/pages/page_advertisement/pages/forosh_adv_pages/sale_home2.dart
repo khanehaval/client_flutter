@@ -424,68 +424,63 @@ class SaleHome2 extends StatelessWidget {
                           icon: const Icon(CupertinoIcons.chevron_left_2),
                           onPressed: () {
                             Get.bottomSheet(
-                              Center(
-                                child: Container(
-                                    decoration: const BoxDecoration(
-                                        color: Colors.white,
-                                        borderRadius: BorderRadius.only(
-                                            topLeft: Radius.circular(20),
-                                            topRight: Radius.circular(20))),
-                                    child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceEvenly,
-                                        children: [
-                                          GestureDetector(
-                                              onTap: () {
-                                                if (_index.value > 0) {
-                                                  _index.value =
-                                                      _index.value - 1;
-                                                       itemScrollController.scrollTo(
-                                                    index: _index.value,
-                                                    duration: const Duration(
-                                                        seconds: 1));
-                                                }
-                                              },
-                                              child: const Icon(
-                                                  Icons.arrow_upward)),
-                                          SizedBox(
-                                            width: 90,
-                                            child: ScrollablePositionedList
-                                                .builder(
-                                                    itemScrollController:
-                                                        itemScrollController,
-                                                    shrinkWrap: true,
-                                                    itemCount: 20,
-                                                    itemBuilder: (c, i) {
-                                                      return Obx(() => Padding(
-                                                            padding:
-                                                                const EdgeInsets
-                                                                    .all(8.0),
-                                                            child: Text(
-                                                                (i).toString(),
-                                                                style: TextStyle(
-                                                                    fontSize: i ==
-                                                                            _index.value
-                                                                        ? 30
-                                                                        : 10)),
-                                                          ));
-                                                    }),
-                                          ),
-                                          GestureDetector(
+                              Container(
+                                  decoration: const BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.only(
+                                          topLeft: Radius.circular(20),
+                                          topRight: Radius.circular(20))),
+                                  child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceAround,
+                                      children: [
+                                        GestureDetector(
                                             onTap: () {
-                                              if (_index.value < 20) {
-                                                _index.value = _index.value + 1;
+                                              if (_index.value > 0) {
+                                                _index.value = _index.value - 1;
                                                 itemScrollController.scrollTo(
                                                     index: _index.value,
                                                     duration: const Duration(
                                                         seconds: 1));
                                               }
                                             },
-                                            child: const Icon(
-                                                Icons.arrow_downward),
-                                          ),
-                                        ])),
-                              ),
+                                            child:
+                                                const Icon(Icons.arrow_upward)),
+                                        SizedBox(
+                                          width: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              0.100,
+                                          child:
+                                              ScrollablePositionedList.builder(
+                                                  itemScrollController:
+                                                      itemScrollController,
+                                                  shrinkWrap: true,
+                                                  itemCount: 20,
+                                                  itemBuilder: (c, i) {
+                                                    return Obx(() => Text(
+                                                        (i).toString(),
+                                                        style: TextStyle(
+                                                            fontSize: i ==
+                                                                    _index.value
+                                                                ? 30
+                                                                : 15)));
+                                                  }),
+                                        ),
+                                        GestureDetector(
+                                          onTap: () {
+                                            if (_index.value < 20) {
+                                              _index.value = _index.value + 1;
+                                              itemScrollController.scrollTo(
+                                                  index: _index.value,
+                                                  duration: const Duration(
+                                                      seconds: 1));
+                                            }
+                                          },
+                                          child:
+                                              const Icon(Icons.arrow_downward),
+                                        ),
+                                      ])),
                             );
                           },
                         )),
