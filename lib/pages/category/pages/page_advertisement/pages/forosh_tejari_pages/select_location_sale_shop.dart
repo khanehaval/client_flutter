@@ -165,7 +165,7 @@ class _SelectLocationOnMapState extends State<SelectLocationShop> {
                 child: SwitchItem(type: type, items: const [" غرفه"]),
               ),
               const SizedBox(
-                height: 30,
+                height: 25,
               ),
               GestureDetector(
                 onTap: () {

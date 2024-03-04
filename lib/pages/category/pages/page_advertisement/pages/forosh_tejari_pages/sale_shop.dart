@@ -30,17 +30,12 @@ class SaleShop extends StatelessWidget {
         appBar: buildaAppBar(),
         body: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
             child: Column(children: [
               const Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Icon(
-                    Icons.arrow_back,
-                    color: Colors.green,
-                    size: 20,
-                  ),
                   Text(
                     "خرید و فروش مغازه  ",
                     style: TextStyle(
@@ -208,6 +203,7 @@ class SaleShop extends StatelessWidget {
                   height: 41,
                   width: getPageWidth_2(context),
                   child: TextField(
+                    readOnly: true,
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
                         hintText: 'انتخاب نشده',
@@ -228,6 +224,7 @@ class SaleShop extends StatelessWidget {
                   height: 41,
                   width: getPageWidth_2(context),
                   child: TextField(
+                    readOnly: true,
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
                       hintText: 'انتخاب نشده',
@@ -256,6 +253,7 @@ class SaleShop extends StatelessWidget {
                   height: 41,
                   width: getPageWidth_2(context),
                   child: TextField(
+                    readOnly: true,
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
                         hintText: 'انتخاب نشده',
@@ -276,6 +274,7 @@ class SaleShop extends StatelessWidget {
                   height: 41,
                   width: getPageWidth_2(context),
                   child: TextField(
+                    readOnly: true,
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
                       hintText: 'انتخاب نشده',
@@ -417,6 +416,7 @@ class SaleShop extends StatelessWidget {
                 height: 41,
                 width: 372,
                 child: TextField(
+                  readOnly: true,
                   textAlign: TextAlign.right,
                   decoration: InputDecoration(
                     hintText: 'انتخاب نشده',
@@ -482,45 +482,45 @@ class SaleShop extends StatelessWidget {
                   const SizedBox(
                     height: 15,
                   ),
-
                   const SizedBox(
                     height: 15,
                   ),
                   Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Container(
+                        child: const Text(
+                          "جنس کف ",
+                          style: TextStyle(
+                              color: Color.fromRGBO(99, 99, 99, 1),
+                              fontFamily: MAIN_FONT_FAMILY),
+                          textAlign: TextAlign.start,
+                        ),
+                      ),
+                    ],
+                  ),
                   Container(
-                    child: const Text(
-                      "جنس کف ",
-                      style: TextStyle(
-                          color: Color.fromRGBO(99, 99, 99, 1),
-                          fontFamily: MAIN_FONT_FAMILY),
-                      textAlign: TextAlign.start,
+                    height: 41,
+                    width: 372,
+                    child: TextField(
+                      readOnly: true,
+                      textAlign: TextAlign.right,
+                      decoration: InputDecoration(
+                        hintText: 'انتخاب نشده',
+                        hintStyle:
+                            TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        prefixIcon: IconButton(
+                          icon: const Icon(CupertinoIcons.chevron_left_2),
+                          onPressed: () {
+                            // _show_item_1.value = !_show_item_1.isTrue;
+                          },
+                        ),
+                      ),
                     ),
                   ),
-                ],
-              ),
-              Container(
-                height: 41,
-                width: 372,
-                child: TextField(
-                  textAlign: TextAlign.right,
-                  decoration: InputDecoration(
-                    hintText: 'انتخاب نشده',
-                    hintStyle:
-                        TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    prefixIcon: IconButton(
-                      icon: const Icon(CupertinoIcons.chevron_left_2),
-                      onPressed: () {
-                        // _show_item_1.value = !_show_item_1.isTrue;
-                      },
-                    ),
-                  ),
-                ),
-              ),
                   const SizedBox(
                     height: 15,
                   ),
@@ -531,6 +531,7 @@ class SaleShop extends StatelessWidget {
                       height: 41,
                       width: getPageWidth_2(context),
                       child: TextField(
+                        readOnly: true,
                         textAlign: TextAlign.right,
                         decoration: InputDecoration(
                             hintText: 'انتخاب نشده',
@@ -549,8 +550,9 @@ class SaleShop extends StatelessWidget {
                     ),
                     w2: Container(
                       height: 41,
-                      width: 176,
+                      width: getPageWidth_2(context),
                       child: TextField(
+                        readOnly: true,
                         textAlign: TextAlign.right,
                         decoration: InputDecoration(
                           hintText: 'انتخاب نشده',
@@ -754,7 +756,7 @@ class SaleShop extends StatelessWidget {
                     children: [
                       Container(
                         height: 41,
-                        width: MediaQuery.of(context).size.width * 1 / 1.06,
+                        width: MediaQuery.of(context).size.width * 1 / 1.117,
                         child: TextField(
                           textAlign: TextAlign.right,
                           decoration: InputDecoration(
@@ -791,7 +793,7 @@ class SaleShop extends StatelessWidget {
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       SizedBox(
-                        width: MediaQuery.of(context).size.width * 1 / 1.06,
+                        width: MediaQuery.of(context).size.width * 1 / 1.117,
                         height: 218,
                         child: TextField(
                           maxLines: 5,
@@ -880,7 +882,7 @@ class SaleShop extends StatelessWidget {
                 children: [
                   SizedBox(
                     height: 41,
-                    width: MediaQuery.of(context).size.width * 1 / 1.06,
+                    width: MediaQuery.of(context).size.width * 1 / 1.117,
                     child: TextField(
                       textAlign: TextAlign.right,
                       decoration: InputDecoration(
@@ -938,8 +940,7 @@ class SaleShop extends StatelessWidget {
                   ),
                   const Text(
                     "در صورت وارد نکردن آیتم ها، آگهی فقط با عنوان اقساطی منتشر میگردد",
-                    style:
-                        TextStyle(fontFamily: MAIN_FONT_FAMILY, fontSize: 9.5),
+                    style: TextStyle(fontFamily: MAIN_FONT_FAMILY, fontSize: 9),
                   ),
                   const SizedBox(
                     height: 20,
@@ -951,6 +952,7 @@ class SaleShop extends StatelessWidget {
                       height: 41,
                       width: MediaQuery.of(context).size.width * 0.4,
                       child: TextField(
+                        keyboardType: TextInputType.number,
                         textAlign: TextAlign.right,
                         decoration: InputDecoration(
                           hintText: 'مبلغ را وارد کنید', //todo
@@ -966,6 +968,7 @@ class SaleShop extends StatelessWidget {
                       height: 41,
                       width: MediaQuery.of(context).size.width * 0.4,
                       child: TextField(
+                        keyboardType: TextInputType.number,
                         textAlign: TextAlign.right,
                         decoration: InputDecoration(
                           hintText: 'مبلغ را وارد کنید', //todo
@@ -988,6 +991,7 @@ class SaleShop extends StatelessWidget {
                         height: 41,
                         width: MediaQuery.of(context).size.width * 0.4,
                         child: TextField(
+                          keyboardType: TextInputType.number,
                           textAlign: TextAlign.right,
                           readOnly: true,
                           focusNode: FocusNode(canRequestFocus: false),
@@ -1038,7 +1042,7 @@ class SaleShop extends StatelessWidget {
                     "قیمت نهایی ملک (پیش پرداخت + اقساط ) : 13.200.000.000 تومان",
                     style: TextStyle(
                       fontFamily: MAIN_FONT_FAMILY,
-                      fontSize: 9.5,
+                      fontSize: 9,
                     ),
                   ),
                   const SizedBox(
