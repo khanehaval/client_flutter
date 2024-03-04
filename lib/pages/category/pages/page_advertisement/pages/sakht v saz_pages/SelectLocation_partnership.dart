@@ -1,24 +1,25 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/ejara_tejari/renet_office.dart';
-import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/ejara_tejari/rent_store.dart';
 import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/forosh_adv_pages/sale_home2.dart';
 import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/forosh_adv_pages/sale_vila.dart';
 import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/forosh_tejari_pages/sale_store.dart';
+import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/sakht%20v%20saz_pages/partnership.dart';
+import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/sakht%20v%20saz_pages/presell.dart';
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
 import 'package:flutter_application_1/pages/category/shared/switchItem.dart';
 import 'package:flutter_application_1/pages/category/shared/switchitem_vila.dart';
 import 'package:get/get.dart';
 import '../../../../shared/contant.dart';
 
-class SelectLocationRentStore extends StatefulWidget {
-  const SelectLocationRentStore({super.key});
+class SelectLocationPartbership extends StatefulWidget {
+  const SelectLocationPartbership({super.key});
 
   @override
-  State<SelectLocationRentStore> createState() => _SelectLocationOnMapState();
+  State<SelectLocationPartbership> createState() => _SelectLocationOnMapState();
 }
 
-class _SelectLocationOnMapState extends State<SelectLocationRentStore> {
+class _SelectLocationOnMapState extends State<SelectLocationPartbership> {
   bool isChecked = false;
   final _selected = 0.obs;
 
@@ -70,7 +71,7 @@ class _SelectLocationOnMapState extends State<SelectLocationRentStore> {
                         ),
                       ),
                       SizedBox(
-                        width: MediaQuery.of(context).size.width * 0.45,
+                        width: MediaQuery.of(context).size.width * 1 / 2.3,
                         height: 40,
                         child: TextField(
                           textAlign: TextAlign.right,
@@ -99,7 +100,7 @@ class _SelectLocationOnMapState extends State<SelectLocationRentStore> {
                       ),
                       SizedBox(
                         height: 40,
-                        width: MediaQuery.of(context).size.width * 0.45,
+                        width: MediaQuery.of(context).size.width * 1 / 2.3,
                         child: TextField(
                           textAlign: TextAlign.right,
                           readOnly: true,
@@ -119,7 +120,7 @@ class _SelectLocationOnMapState extends State<SelectLocationRentStore> {
                 ],
               ),
               const SizedBox(
-                height: 25,
+                height: 30,
               ),
               Directionality(
                 textDirection: TextDirection.rtl,
@@ -140,30 +141,12 @@ class _SelectLocationOnMapState extends State<SelectLocationRentStore> {
               const SizedBox(
                 height: 10,
               ),
-              const Align(
-                alignment: Alignment.centerRight,
-                child: Text(
-                  "نوع ملک شما",
-                  style: TextStyle(
-                    color: Color.fromRGBO(
-                      166,
-                      166,
-                      166,
-                      1,
-                    ),
-                    fontSize: 13,
-                    fontFamily: MAIN_FONT_FAMILY,
-                  ),
-                ),
-              ),
-              SwitchItemVila(
-                  type: type, items: const ["اتاق اداری", "مطب", "ملک اداری"]),
               const SizedBox(
-                height: 30,
+                height: 80,
               ),
               GestureDetector(
                 onTap: () {
-                  Get.to(() => RentStore());
+                  Get.to(() => PartnerShip());
                 },
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,

@@ -4,7 +4,7 @@ import 'package:flutter_application_1/pages/category/pages/page_advertisement/pa
 import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/forosh_adv_pages/sale_home2.dart';
 import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/forosh_adv_pages/sale_vila.dart';
 import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/forosh_tejari_pages/sale_store.dart';
-import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/kota_modat_adv/daily%20aparteman.dart';
+import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/kota_modat_pages/daily%20aparteman.dart';
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
 import 'package:flutter_application_1/pages/category/shared/switchItem.dart';
 import 'package:flutter_application_1/pages/category/shared/switchitem_vila.dart';
@@ -125,7 +125,7 @@ class _SelectLocationOnMapState extends State<SelectLocationEjaraKotaModat> {
               Directionality(
                 textDirection: TextDirection.rtl,
                 child: TextField(
-                  maxLines: 2,
+                  maxLines: 3,
                   decoration: InputDecoration(
                       label: const Text(
                         "آدرس",
@@ -152,16 +152,16 @@ class _SelectLocationOnMapState extends State<SelectLocationEjaraKotaModat> {
                       166,
                       1,
                     ),
-                    fontSize: 13,
+                    fontSize: 10,
                     fontFamily: MAIN_FONT_FAMILY,
                   ),
                 ),
               ),
               SwitchItemVila(
                   type: type,
-                  items: const ["اتاق", "سوئیت", "برج", "پنت هاوس "]),
+                  items: const ["اتاق", "سوئیت", "برج", "پنت هاوس"]),
               const SizedBox(
-                height: 70,
+                height: 40,
               ),
               GestureDetector(
                 onTap: () {

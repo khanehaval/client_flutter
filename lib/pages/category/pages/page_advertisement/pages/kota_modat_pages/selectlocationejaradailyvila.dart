@@ -1,24 +1,26 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/ejara_tejari/renet_office.dart';
-import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/ejara_tejari/rent_store.dart';
 import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/forosh_adv_pages/sale_home2.dart';
 import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/forosh_adv_pages/sale_vila.dart';
 import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/forosh_tejari_pages/sale_store.dart';
+import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/kota_modat_pages/daily%20aparteman.dart';
+import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/kota_modat_pages/daily_vila.dart';
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
 import 'package:flutter_application_1/pages/category/shared/switchItem.dart';
 import 'package:flutter_application_1/pages/category/shared/switchitem_vila.dart';
 import 'package:get/get.dart';
 import '../../../../shared/contant.dart';
 
-class SelectLocationRentStore extends StatefulWidget {
-  const SelectLocationRentStore({super.key});
+class SelectLocationEjaraDailyVila extends StatefulWidget {
+  const SelectLocationEjaraDailyVila({super.key});
 
   @override
-  State<SelectLocationRentStore> createState() => _SelectLocationOnMapState();
+  State<SelectLocationEjaraDailyVila> createState() =>
+      _SelectLocationOnMapState();
 }
 
-class _SelectLocationOnMapState extends State<SelectLocationRentStore> {
+class _SelectLocationOnMapState extends State<SelectLocationEjaraDailyVila> {
   bool isChecked = false;
   final _selected = 0.obs;
 
@@ -70,7 +72,7 @@ class _SelectLocationOnMapState extends State<SelectLocationRentStore> {
                         ),
                       ),
                       SizedBox(
-                        width: MediaQuery.of(context).size.width * 0.45,
+                        width: MediaQuery.of(context).size.width * 1 / 2.3,
                         height: 40,
                         child: TextField(
                           textAlign: TextAlign.right,
@@ -99,7 +101,7 @@ class _SelectLocationOnMapState extends State<SelectLocationRentStore> {
                       ),
                       SizedBox(
                         height: 40,
-                        width: MediaQuery.of(context).size.width * 0.45,
+                        width: MediaQuery.of(context).size.width * 1 / 2.3,
                         child: TextField(
                           textAlign: TextAlign.right,
                           readOnly: true,
@@ -119,7 +121,7 @@ class _SelectLocationOnMapState extends State<SelectLocationRentStore> {
                 ],
               ),
               const SizedBox(
-                height: 25,
+                height: 15,
               ),
               Directionality(
                 textDirection: TextDirection.rtl,
@@ -151,19 +153,20 @@ class _SelectLocationOnMapState extends State<SelectLocationRentStore> {
                       166,
                       1,
                     ),
-                    fontSize: 13,
+                    fontSize: 10,
                     fontFamily: MAIN_FONT_FAMILY,
                   ),
                 ),
               ),
               SwitchItemVila(
-                  type: type, items: const ["اتاق اداری", "مطب", "ملک اداری"]),
+                  type: type,
+                  items: const ["اتاق", "سوئیت", "برج", "پنت هاوس"]),
               const SizedBox(
-                height: 30,
+                height: 40,
               ),
               GestureDetector(
                 onTap: () {
-                  Get.to(() => RentStore());
+                  Get.to(() => DailyVila());
                 },
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,

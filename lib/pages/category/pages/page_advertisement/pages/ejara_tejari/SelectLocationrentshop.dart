@@ -118,7 +118,7 @@ class _SelectLocationOnMapState extends State<SelectLocationRentShop> {
                 ],
               ),
               const SizedBox(
-                height: 25,
+                height: 15,
               ),
               Directionality(
                 textDirection: TextDirection.rtl,
@@ -163,7 +163,7 @@ class _SelectLocationOnMapState extends State<SelectLocationRentShop> {
                 child: SwitchItem(type: type, items: const [" غرفه"]),
               ),
               const SizedBox(
-                height: 30,
+                height: 20,
               ),
               GestureDetector(
                 onTap: () {

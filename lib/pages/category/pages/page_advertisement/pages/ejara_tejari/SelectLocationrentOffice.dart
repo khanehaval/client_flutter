@@ -158,7 +158,7 @@ class _SelectLocationOnMapState extends State<SelectLocationRentOffice> {
               SwitchItemVila(
                   type: type, items: const ["اتاق اداری", "مطب", "ملک اداری"]),
               const SizedBox(
-                height: 70,
+                height: 45,
               ),
               GestureDetector(
                 onTap: () {

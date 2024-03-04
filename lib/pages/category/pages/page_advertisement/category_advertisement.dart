@@ -4,7 +4,8 @@ import 'package:flutter_application_1/pages/category/pages/page_advertisement/pa
 import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/ejara_tejari/ejara_tejari_adv.dart';
 import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/forosh_adv_pages/forosh_adv.dart';
 import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/forosh_tejari_pages/forosh_tejari_adv.dart';
-import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/kota_modat_adv/kota_modat.dart';
+import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/kota_modat_pages/kota_modat_adv.dart';
+import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/sakht%20v%20saz_pages/sakht%20v%20saz_adv.dart';
 import 'package:flutter_application_1/pages/category/shared/contant.dart';
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
 import 'package:flutter_application_1/pages/educational_tour.dart';
@@ -83,7 +84,9 @@ class CategoryAdvertisement extends StatelessWidget {
                   finalWidget = finalWidget = EjaraTejariAdv();
                 } else if (index == 5) {
                   finalWidget = finalWidget = KotaModat();
-                } else if (index == 5) {}
+                } else if (index == 6) {
+                  finalWidget = finalWidget = SakhVaSaz();
+                }
 
                 Get.to(() => finalWidget);
               }

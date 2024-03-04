@@ -5,7 +5,8 @@ import 'package:flutter_application_1/pages/category/pages/page_advertisement/pa
 import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/forosh_adv_pages/select_location_kolangi.dart';
 import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/forosh_adv_pages/select_location_on_map.dart';
 import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/forosh_adv_pages/select_location_vila.dart';
-import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/kota_modat_adv/SelectLocationejarakota.dart';
+import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/kota_modat_pages/selectlocationejaradailyvila.dart';
+import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/kota_modat_pages/selectlocationejarakotamodat.dart';
 import 'package:flutter_application_1/pages/category/shared/contant.dart';
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
 import 'package:flutter_svg/svg.dart';
@@ -57,7 +58,7 @@ class KotaModat extends StatelessWidget {
               child: Column(
                 children: [
                   _buildItem('assets/images/kota_apartman.png', 1),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   _buildItem(
@@ -73,14 +74,15 @@ class KotaModat extends StatelessWidget {
                             int index = _selected.value;
                             if (index == 1) {
                               Get.to(
-                                      () => const SelectLocationEjaraKotaModat());
+                                  () => const SelectLocationEjaraKotaModat());
                             } else if (index == 2) {
-                              Get.to(() => const SelectLocationOnEjaraVila());
+                              Get.to(
+                                  () => const SelectLocationEjaraDailyVila());
                             } else if (index == 3) {}
                           }
                         },
                         child: Obx(
-                              () => Row(
+                          () => Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
@@ -88,13 +90,13 @@ class KotaModat extends StatelessWidget {
                                 "...تایید و ادامه",
                                 style: _selected.value == 0
                                     ? const TextStyle(
-                                  fontSize: 15,
-                                  fontFamily: MAIN_FONT_FAMILY,
-                                  color: Colors.black38,
-                                )
+                                        fontSize: 15,
+                                        fontFamily: MAIN_FONT_FAMILY,
+                                        color: Colors.black38,
+                                      )
                                     : const TextStyle(
-                                    fontSize: 15,
-                                    fontFamily: MAIN_FONT_FAMILY),
+                                        fontSize: 15,
+                                        fontFamily: MAIN_FONT_FAMILY),
                               ),
                               Icon(
                                 Icons.double_arrow,
@@ -117,9 +119,9 @@ class KotaModat extends StatelessWidget {
   }
 
   Widget _buildItem(
-      String assetPath,
-      int index,
-      ) {
+    String assetPath,
+    int index,
+  ) {
     return GestureDetector(
       onTap: () {
         _selected.value = index;
@@ -127,22 +129,22 @@ class KotaModat extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 3, horizontal: 3),
         child: Obx(() => Container(
-          decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(10),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.grey.withOpacity(0.1),
-                )
-              ],
-              border: Border.all(
-                color: _selected.value == index
-                    ? Colors.greenAccent
-                    : Colors.black38,
-                width: _selected.value == index ? 1.5 : 1.5,
-              )),
-          child: Image.asset(assetPath),
-        )),
+              decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(10),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.1),
+                    )
+                  ],
+                  border: Border.all(
+                    color: _selected.value == index
+                        ? Colors.greenAccent
+                        : Colors.black38,
+                    width: _selected.value == index ? 1.5 : 1.5,
+                  )),
+              child: Image.asset(assetPath),
+            )),
       ),
     );
   }
