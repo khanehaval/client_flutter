@@ -24,17 +24,12 @@ class SaleOldHouse extends StatelessWidget {
         appBar: buildaAppBar(),
         body: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
             child: Column(children: [
               const Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Icon(
-                    Icons.arrow_back,
-                    color: Colors.green,
-                    size: 15,
-                  ),
                   Text(
                     "خرید و فروش خانه کلنگی",
                     style: TextStyle(
@@ -260,6 +255,7 @@ class SaleOldHouse extends StatelessWidget {
                   height: 41,
                   width: getPageWidth_2(context),
                   child: TextField(
+                    readOnly: true,
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
                       hintText: 'انتخاب نشده',
@@ -295,6 +291,7 @@ class SaleOldHouse extends StatelessWidget {
                   height: 41,
                   width: getPageWidth_2(context),
                   child: TextField(
+                    readOnly: true,
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
                       hintText: 'انتخاب نشده',
@@ -323,6 +320,7 @@ class SaleOldHouse extends StatelessWidget {
                   height: 41,
                   width: getPageWidth_2(context),
                   child: TextField(
+                    keyboardType: TextInputType.number,
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
                       hintText: 'تایپ کنید',
@@ -338,6 +336,7 @@ class SaleOldHouse extends StatelessWidget {
                   height: 41,
                   width: getPageWidth_2(context),
                   child: TextField(
+                    readOnly: true,
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
                       hintText: 'انتخاب نشده',
@@ -366,6 +365,7 @@ class SaleOldHouse extends StatelessWidget {
                   height: 41,
                   width: getPageWidth_2(context),
                   child: TextField(
+                    readOnly: true,
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
                         hintText: 'انتخاب نشده',
@@ -386,6 +386,7 @@ class SaleOldHouse extends StatelessWidget {
                   height: 41,
                   width: getPageWidth_2(context),
                   child: TextField(
+                    readOnly: true,
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
                       hintText: 'انتخاب نشده',
@@ -425,6 +426,7 @@ class SaleOldHouse extends StatelessWidget {
                   height: 41,
                   width: getPageWidth_2(context),
                   child: TextField(
+                    readOnly: true,
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
                         hintText: 'انتخاب نشده',
@@ -445,6 +447,7 @@ class SaleOldHouse extends StatelessWidget {
                   height: 41,
                   width: getPageWidth_2(context),
                   child: TextField(
+                    readOnly: true,
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
                       hintText: 'انتخاب نشده',
@@ -473,6 +476,7 @@ class SaleOldHouse extends StatelessWidget {
                   height: 41,
                   width: getPageWidth_2(context),
                   child: TextField(
+                    readOnly: true,
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
                       hintText: 'انتخاب نشده',
@@ -494,6 +498,7 @@ class SaleOldHouse extends StatelessWidget {
                   height: 41,
                   width: getPageWidth_2(context),
                   child: TextField(
+                    readOnly: true,
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
                       hintText: 'انتخاب نشده',
@@ -522,6 +527,7 @@ class SaleOldHouse extends StatelessWidget {
                   height: 41,
                   width: getPageWidth_2(context),
                   child: TextField(
+                    readOnly: true,
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
                         hintText: 'انتخاب نشده',
@@ -540,8 +546,9 @@ class SaleOldHouse extends StatelessWidget {
                 ),
                 w2: Container(
                   height: 41,
-                  width: 176,
+                  width: getPageWidth_2(context),
                   child: TextField(
+                    readOnly: true,
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
                       hintText: 'انتخاب نشده',
@@ -742,7 +749,7 @@ class SaleOldHouse extends StatelessWidget {
                 children: [
                   Container(
                     height: 41,
-                    width: MediaQuery.of(context).size.width * 1 / 1.06,
+                    width: MediaQuery.of(context).size.width * 1 / 1.117,
                     child: TextField(
                       textAlign: TextAlign.right,
                       decoration: InputDecoration(
@@ -779,7 +786,7 @@ class SaleOldHouse extends StatelessWidget {
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   SizedBox(
-                    width: MediaQuery.of(context).size.width * 1 / 1.06,
+                    width: MediaQuery.of(context).size.width * 1 / 1.117,
                     height: 218,
                     child: TextField(
                       maxLines: 5,
@@ -865,12 +872,12 @@ Widget onvanWidget(BuildContext context) {
               children: [
                 SizedBox(
                   height: 41,
-                  width: MediaQuery.of(context).size.width * 1 / 1.06,
+                  width: MediaQuery.of(context).size.width * 1 / 1.117,
                   child: TextField(
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
                       hintText: 'آپارتمان 120 متری به صورت اقساطی',
-                      hintStyle: TextStyle(
+                      hintStyle: const TextStyle(
                           color: Color(0xFFA6A6A6),
                           fontFamily: MAIN_FONT_FAMILY,
                           fontSize: 16),
@@ -895,7 +902,7 @@ Widget aghsatiForoshWidget(BuildContext context) {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           const Text(
-          "عنوان پیشنهادی خانه اول",
+            "عنوان پیشنهادی خانه اول",
             style: TextStyle(
                 fontFamily: MAIN_FONT_FAMILY,
                 fontSize: 13,
@@ -935,6 +942,7 @@ Widget aghsatiForoshWidget(BuildContext context) {
                     height: 41,
                     width: MediaQuery.of(context).size.width * 0.4,
                     child: TextField(
+                      keyboardType: TextInputType.number,
                       textAlign: TextAlign.right,
                       decoration: InputDecoration(
                         hintText: ' را وارد کنید', //todo
@@ -950,6 +958,7 @@ Widget aghsatiForoshWidget(BuildContext context) {
                     height: 41,
                     width: MediaQuery.of(context).size.width * 0.4,
                     child: TextField(
+                      keyboardType: TextInputType.number,
                       textAlign: TextAlign.right,
                       decoration: InputDecoration(
                         hintText: 'مبلغ را وارد کنید', //todo
@@ -972,6 +981,7 @@ Widget aghsatiForoshWidget(BuildContext context) {
                       height: 41,
                       width: MediaQuery.of(context).size.width * 0.4,
                       child: TextField(
+                        keyboardType: TextInputType.number,
                         textAlign: TextAlign.right,
                         readOnly: true,
                         focusNode: FocusNode(canRequestFocus: false),
@@ -1071,6 +1081,7 @@ Widget melkByVamBanki(BuildContext context) {
                     height: 41,
                     width: MediaQuery.of(context).size.width * 0.4,
                     child: TextField(
+                      keyboardType: TextInputType.number,
                       textAlign: TextAlign.right,
                       decoration: InputDecoration(
                         hintText: 'تایپ کنید', //todo
@@ -1086,6 +1097,7 @@ Widget melkByVamBanki(BuildContext context) {
                     height: 41,
                     width: MediaQuery.of(context).size.width * 0.4,
                     child: TextField(
+                      keyboardType: TextInputType.number,
                       textAlign: TextAlign.right,
                       decoration: InputDecoration(
                         hintText: 'تایپ کنید', //todo
@@ -1114,6 +1126,7 @@ Widget melkByVamBanki(BuildContext context) {
                 SizedBox(
                   height: 41,
                   child: TextField(
+                    readOnly: true,
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
                       hintText: 'انتخاب نشده',

@@ -21,7 +21,7 @@ class SwitchItemVila extends StatelessWidget {
 
   Widget item(String text) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 5),
+      padding: const EdgeInsets.symmetric(horizontal: 2),
       child: Row(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -30,7 +30,7 @@ class SwitchItemVila extends StatelessWidget {
           Text(
             text,
             style: const TextStyle(
-              fontSize: 13,
+              fontSize: 10,
               fontFamily: MAIN_FONT_FAMILY,
             ),
           ),
