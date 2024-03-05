@@ -31,11 +31,11 @@ class Realestateagency extends StatelessWidget {
       body: Column(
         children: [
           Container(
-            width: MediaQuery.of(context).size.width * 1 / 1,
+            width: MediaQuery.of(context).size.width * 1 / 1.2,
             height: 131,
             decoration: const BoxDecoration(
               image: DecorationImage(
-                image: AssetImage('assets/images/intro_screen_2.png'),
+                image: AssetImage('assets/images/Rectangle 1.png'),
               ),
             ),
           ),
@@ -45,7 +45,7 @@ class Realestateagency extends StatelessWidget {
           const Text(
             "پنل آژانس املاک",
             style: TextStyle(
-                fontSize: 24,
+                fontSize: 22,
                 fontWeight: FontWeight.bold,
                 fontFamily: MAIN_FONT_FAMILY),
           ),

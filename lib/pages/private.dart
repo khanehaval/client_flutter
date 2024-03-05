@@ -7,14 +7,16 @@ import 'package:image_picker/image_picker.dart';
 
 class Private extends StatelessWidget {
   Private({super.key});
- Future<void> pickImage() async {
-  final ImagePicker _picker = ImagePicker();
-  final XFile? pickedFile = await _picker.pickImage(source: ImageSource.gallery);
+  Future<void> pickImage() async {
+    final ImagePicker _picker = ImagePicker();
+    final XFile? pickedFile =
+        await _picker.pickImage(source: ImageSource.gallery);
 
-  if (pickedFile != null) {
-    print("Picked Image Path: ${pickedFile.path}");
+    if (pickedFile != null) {
+      print("Picked Image Path: ${pickedFile.path}");
+    }
   }
-}
+
   var show = true.obs;
 
   @override
@@ -22,7 +24,8 @@ class Private extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-            onPressed: () => Get.to(() => Home()), icon: Icon(Icons.close)),
+            onPressed: () => Get.to(() => Home()),
+            icon: const Icon(Icons.close)),
       ),
       body: Stack(
         children: [
@@ -34,7 +37,7 @@ class Private extends StatelessWidget {
                   height: 131,
                   decoration: const BoxDecoration(
                     image: DecorationImage(
-                      image: AssetImage('assets/images/Rectangle intro_screen_2.png'),
+                      image: AssetImage('assets/images/Rectangle 1.png'),
                     ),
                   ),
                 ),
@@ -43,7 +46,7 @@ class Private extends StatelessWidget {
                   child: Text(
                     "پنل شخصی",
                     style: TextStyle(
-                        fontSize: 30,
+                        fontSize: 25,
                         fontWeight: FontWeight.bold,
                         fontFamily: MAIN_FONT_FAMILY),
                   ),
@@ -173,7 +176,7 @@ class Private extends StatelessWidget {
                       ),
                       child: ElevatedButton(
                         onPressed: () {
-                          Get.to(()=> Home());
+                          Get.to(() => Home());
                         },
                         style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.transparent,
