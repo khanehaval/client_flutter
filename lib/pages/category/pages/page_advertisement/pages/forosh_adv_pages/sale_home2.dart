@@ -11,6 +11,8 @@ import 'package:flutter_application_1/pages/category/shared/twoItemInRow.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:get/get_connect/http/src/utils/utils.dart';
+import 'package:persian_datetime_picker/persian_datetime_picker.dart';
+import 'package:persian_datetime_picker/persian_datetime_picker.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 
 class SaleHome2 extends StatelessWidget {
@@ -20,13 +22,11 @@ class SaleHome2 extends StatelessWidget {
   final _currentIndex = 0.obs;
   ItemScrollController scrollController = ItemScrollController();
   final ItemScrollController itemScrollController = ItemScrollController();
-
+  int selectedIndex = 0;
   final hasAnbari = false.obs;
   final hasAsansor = false.obs;
   final hasParking = false.obs;
-
   final _onePrice = 0.0.obs;
-
   final _allPriceTextController = TextEditingController();
   final _metragTextController = TextEditingController();
   final _index = 6.obs;
@@ -290,7 +290,108 @@ class SaleHome2 extends StatelessWidget {
                     prefixIcon: IconButton(
                       icon: const Icon(CupertinoIcons.chevron_left_2),
                       onPressed: () {
-                        // _show_item_1.value = !_show_item_1.isTrue;
+                        Get.bottomSheet(
+                            Container(
+                              child: Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(vertical: 20),
+                                child: Column(children: [
+                                  const Text(
+                                      "بیش از یک مورد می توانید انتخاب کنید",
+                                      style: TextStyle(
+                                          fontSize: 15,
+                                          fontFamily: MAIN_FONT_FAMILY)),
+                                  SizedBox(
+                                    height: 20,
+                                  ),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      _buildItem(
+                                        'assets/images/Category.png',
+                                        1,
+                                      ),
+                                      _buildItem(
+                                          'assets/images/Sale home.png', 2),
+                                    ],
+                                  ),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      _buildItem(
+                                          'assets/images/Rent store.png', 3),
+                                      _buildItem(
+                                          'assets/images/Sale store.png', 4),
+                                    ],
+                                  ),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      _buildItem('assets/images/Daily.png', 5),
+                                      _buildItem(
+                                          'assets/images/Construction.png', 6),
+                                    ],
+                                  ),
+                                  SizedBox(
+                                    height: 30,
+                                  ),
+                                  GestureDetector(
+                                    onTap: () {
+                                      if (_selected.value > 0) {
+                                        int index = _selected.value;
+                                        Widget finalWidget =
+                                            const SizedBox.shrink();
+                                        if (index == 2) {
+                                        } else if (index == 1) {
+                                          ();
+                                        } else if (index == 4) {
+                                        } else if (index == 3) {
+                                        } else if (index == 5) {
+                                        } else if (index == 6) {}
+
+                                        Get.to(() => finalWidget);
+                                      }
+                                    },
+                                    child: Obx(() => Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            Text(
+                                              "...تایید و ادامه",
+                                              style: _selected.value == 0
+                                                  ? const TextStyle(
+                                                      fontSize: 15,
+                                                      fontFamily:
+                                                          MAIN_FONT_FAMILY,
+                                                      color: Colors.black38,
+                                                    )
+                                                  : const TextStyle(
+                                                      fontSize: 15,
+                                                      fontFamily:
+                                                          MAIN_FONT_FAMILY),
+                                            ),
+                                            Icon(
+                                              Icons.double_arrow,
+                                              color: _selected.value == 0
+                                                  ? Colors.black54
+                                                  : const Color.fromRGBO(
+                                                      76, 140, 237, 1),
+                                              size: 35,
+                                            ),
+                                          ],
+                                        )),
+                                  ),
+                                ]),
+                              ),
+                            ),
+                            elevation: 20.0,
+                            backgroundColor: Colors.white,
+                            enableDrag: true,
+                            shape: const RoundedRectangleBorder(
+                              borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(30.0),
+                                  topRight: Radius.circular(30.0)),
+                            ));
                       },
                     ),
                   ),
@@ -464,6 +565,7 @@ class SaleHome2 extends StatelessWidget {
                                       onTap: () {
                                         if (_index.value < 15) {
                                           _index.value = _index.value + 1;
+                                          selectedIndex = 1;
                                           itemScrollController.scrollTo(
                                               index: _index.value,
                                               duration:
@@ -496,7 +598,9 @@ class SaleHome2 extends StatelessWidget {
                       ),
                       prefixIcon: IconButton(
                         icon: const Icon(CupertinoIcons.chevron_left_2),
-                        onPressed: () {},
+                        onPressed: () {
+                          _openDatePicker(context);
+                        },
                       ),
                     ),
                   ),
@@ -1435,8 +1539,115 @@ void _openDatePicker(BuildContext context) {
       fontWeight: FontWeight.bold,
       fontSize: 18,
     ),
-    titleStyle: TextStyle(
+    titleStyle: const TextStyle(
         fontWeight: FontWeight.bold, fontSize: 18, color: Colors.blue),
+    onChange: (index) {
+      print(index);
+    },
     bottomPickerTheme: BottomPickerTheme.plumPlate,
+  ).show(context);
+}
+
+Future<void> _openPersianDatePicker(BuildContext context) async {
+  Jalali? picked = await showPersianDatePicker(
+    context: context,
+    initialDate: Jalali.now(),
+    firstDate: Jalali(1385, 8),
+    lastDate: Jalali(1450, 9),
+  );
+  var label = picked?.formatFullDate();
+  Jalali? pickedDate = await showModalBottomSheet<Jalali>(
+    context: context,
+    builder: (context) {
+      Jalali tempPickedDate;
+      return Container(
+        height: 250,
+        child: Column(
+          children: <Widget>[
+            Container(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  CupertinoButton(
+                    child: const Text(
+                      'لغو',
+                      style: TextStyle(
+                        fontFamily: 'Dana',
+                      ),
+                    ),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                  ),
+                  CupertinoButton(
+                    child: const Text(
+                      'تایید',
+                      style: TextStyle(
+                        fontFamily: 'Dana',
+                      ),
+                    ),
+                    onPressed: () {},
+                  ),
+                ],
+              ),
+            ),
+            const Divider(
+              height: 0,
+              thickness: 1,
+            ),
+            Expanded(
+              child: Container(
+                child: CupertinoTheme(
+                  data: const CupertinoThemeData(
+                    textTheme: CupertinoTextThemeData(
+                      dateTimePickerTextStyle: TextStyle(fontFamily: "Dana"),
+                    ),
+                  ),
+                  child: PCupertinoDatePicker(
+                    mode: PCupertinoDatePickerMode.dateAndTime,
+                    onDateTimeChanged: (Jalali dateTime) {
+                      tempPickedDate = dateTime;
+                    },
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      );
+    },
+  );
+}
+
+Widget _buildItem(String assetPath, int index) {
+  final _selected = 0.obs;
+
+  return GestureDetector(
+    onTap: () {
+      _selected.value = index;
+    },
+    child: Padding(
+      padding: const EdgeInsets.symmetric(vertical: 3, horizontal: 8),
+      child: Obx(() => Container(
+            width: 125,
+            decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(10),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.1),
+                  )
+                ],
+                border: Border.all(
+                  color: _selected.value == index
+                      ? Colors.greenAccent
+                      : Colors.black38,
+                  width: _selected.value == index ? 2.5 : 1.5,
+                )),
+            child: Image.asset(
+              assetPath,
+            ),
+          )),
+    ),
   );
 }
