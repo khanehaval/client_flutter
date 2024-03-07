@@ -15,10 +15,9 @@ Widget bottomNavigation() {
     },
     indicatorColor: const Color(0x36D859),
     // selectedIndex: currentPageIndex.value,
-    destinations: const <Widget>[
+    destinations:  <Widget>[
       NavigationDestination(
-        selectedIcon: Icon(CupertinoIcons.home),
-        icon: Icon(Icons.home_filled),
+        icon: Image.asset('assets/images/home navigator.png',width: 24,height: 24,),
         label: '',
       ),
       NavigationDestination(

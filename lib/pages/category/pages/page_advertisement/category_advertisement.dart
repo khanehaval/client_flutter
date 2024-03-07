@@ -127,28 +127,31 @@ class CategoryAdvertisement extends StatelessWidget {
         },
         indicatorColor: const Color(0x36D859),
         // selectedIndex: currentPageIndex.value,
-        destinations: const <Widget>[
+        destinations: <Widget>[
           NavigationDestination(
-            selectedIcon: Icon(CupertinoIcons.home),
-            icon: Icon(Icons.home_filled),
+            icon: Image.asset(
+              'assets/images/home navigator.png',
+              width: 24,
+              height: 24,
+            ),
             label: '',
           ),
-          NavigationDestination(
+          const NavigationDestination(
             selectedIcon: Icon(Icons.messenger),
             icon: Icon(Icons.message_rounded),
             label: '',
           ),
-          NavigationDestination(
+          const NavigationDestination(
             selectedIcon: Icon(Icons.add_circle_outline_rounded),
             icon: Icon(Icons.add_circle_outline_rounded),
             label: '',
           ),
-          NavigationDestination(
+          const NavigationDestination(
             selectedIcon: Icon(Icons.widgets),
             icon: Icon(Icons.widgets),
             label: '',
           ),
-          NavigationDestination(
+          const NavigationDestination(
             selectedIcon: Icon(Icons.location_on_outlined),
             icon: Icon(Icons.location_on_outlined),
             label: '',
