@@ -58,7 +58,7 @@ class _SelectLocationOnMapState extends State<SelectLocationRentStore> {
                 height: 10,
               ),
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.end,
@@ -70,7 +70,7 @@ class _SelectLocationOnMapState extends State<SelectLocationRentStore> {
                         ),
                       ),
                       SizedBox(
-                        width: MediaQuery.of(context).size.width * 0.4,
+                        width: MediaQuery.of(context).size.width * 0.45,
                         height: 40,
                         child: TextField(
                           textAlign: TextAlign.right,
@@ -99,7 +99,7 @@ class _SelectLocationOnMapState extends State<SelectLocationRentStore> {
                       ),
                       SizedBox(
                         height: 40,
-                        width: MediaQuery.of(context).size.width * 0.4,
+                        width: MediaQuery.of(context).size.width * 0.45,
                         child: TextField(
                           textAlign: TextAlign.right,
                           readOnly: true,
@@ -119,12 +119,12 @@ class _SelectLocationOnMapState extends State<SelectLocationRentStore> {
                 ],
               ),
               const SizedBox(
-                height: 15,
+                height: 25,
               ),
               Directionality(
                 textDirection: TextDirection.rtl,
                 child: TextField(
-                  maxLines: 2,
+                  maxLines: 3,
                   decoration: InputDecoration(
                       label: const Text(
                         "آدرس",
@@ -159,7 +159,7 @@ class _SelectLocationOnMapState extends State<SelectLocationRentStore> {
               SwitchItemVila(
                   type: type, items: const ["اتاق اداری", "مطب", "ملک اداری"]),
               const SizedBox(
-                height: 70,
+                height: 30,
               ),
               GestureDetector(
                 onTap: () {

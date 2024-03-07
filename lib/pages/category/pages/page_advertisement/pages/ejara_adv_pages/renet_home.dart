@@ -20,24 +20,20 @@ class RenetHome extends StatelessWidget {
   final _metragTextController = TextEditingController();
 
   RenetHome({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: buildaAppBar(),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
           child: Column(
             children: [
               const Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Icon(
-                    Icons.arrow_back,
-                    color: Colors.green,
-                    size: 20,
-                  ),
                   Text(
                     "رهن و اجاره آپارتمان",
                     style: TextStyle(
@@ -229,13 +225,13 @@ class RenetHome extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  Text(
+                  const Text(
                     "*",
                     style: TextStyle(
                         fontSize: 20, color: Color.fromRGBO(156, 64, 64, 1)),
                   ),
                   Container(
-                    child: Text(
+                    child: const Text(
                       "طبقه ",
                       style: TextStyle(
                           color: Color.fromRGBO(99, 99, 99, 1),
@@ -249,6 +245,7 @@ class RenetHome extends StatelessWidget {
                 height: 41,
                 width: 372,
                 child: TextField(
+                  readOnly: true,
                   textAlign: TextAlign.right,
                   decoration: InputDecoration(
                     hintText: 'انتخاب نشده',
@@ -297,7 +294,7 @@ class RenetHome extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(
+                      const Text(
                         "آسانسور",
                         style: TextStyle(
                             fontFamily: MAIN_FONT_FAMILY,
@@ -324,7 +321,7 @@ class RenetHome extends StatelessWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text(
+                          const Text(
                             "پارکینگ",
                             style: TextStyle(
                                 fontFamily: MAIN_FONT_FAMILY,
@@ -440,6 +437,7 @@ class RenetHome extends StatelessWidget {
                   height: 41,
                   width: getPageWidth_2(context),
                   child: TextField(
+                    keyboardType: TextInputType.number,
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
                       hintText: 'تایپ کنید',
@@ -455,6 +453,7 @@ class RenetHome extends StatelessWidget {
                   height: 41,
                   width: getPageWidth_2(context),
                   child: TextField(
+                    readOnly: true,
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
                       hintText: 'انتخاب نشده',
@@ -483,6 +482,7 @@ class RenetHome extends StatelessWidget {
                   height: 41,
                   width: getPageWidth_2(context),
                   child: TextField(
+                    readOnly: true,
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
                         hintText: 'انتخاب نشده',
@@ -503,12 +503,12 @@ class RenetHome extends StatelessWidget {
                   height: 41,
                   width: getPageWidth_2(context),
                   child: TextField(
+                    readOnly: true,
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
                       hintText: 'انتخاب نشده',
-                      hintStyle: TextStyle(
-                        color: Color(0xFFA6A6A6),
-                      ),
+                      hintStyle:
+                          TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
@@ -546,6 +546,7 @@ class RenetHome extends StatelessWidget {
                   height: 41,
                   width: getPageWidth_2(context),
                   child: TextField(
+                    readOnly: true,
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
                         hintText: 'انتخاب نشده',
@@ -566,11 +567,12 @@ class RenetHome extends StatelessWidget {
                   height: 41,
                   width: getPageWidth_2(context),
                   child: TextField(
+                    readOnly: true,
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
                       hintText: 'انتخاب نشده',
-                      hintStyle:
-                          TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
+                      hintStyle: const TextStyle(
+                          color: Color(0xFFA6A6A6), fontSize: 13),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
@@ -594,6 +596,7 @@ class RenetHome extends StatelessWidget {
                   height: 41,
                   width: getPageWidth_2(context),
                   child: TextField(
+                    readOnly: true,
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
                       hintText: 'انتخاب نشده',
@@ -615,11 +618,12 @@ class RenetHome extends StatelessWidget {
                   height: 41,
                   width: getPageWidth_2(context),
                   child: TextField(
+                    readOnly: true,
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
                       hintText: 'انتخاب نشده',
-                      hintStyle:
-                          TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
+                      hintStyle: const TextStyle(
+                          color: Color(0xFFA6A6A6), fontSize: 13),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
@@ -633,7 +637,7 @@ class RenetHome extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 15,
               ),
               TwoItemInRow(
@@ -643,6 +647,7 @@ class RenetHome extends StatelessWidget {
                   height: 41,
                   width: getPageWidth_2(context),
                   child: TextField(
+                    readOnly: true,
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
                         hintText: 'انتخاب نشده',
@@ -663,6 +668,7 @@ class RenetHome extends StatelessWidget {
                   height: 41,
                   width: 176,
                   child: TextField(
+                    readOnly: true,
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
                       hintText: 'انتخاب نشده',
@@ -681,14 +687,14 @@ class RenetHome extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
-              Text(
+              const Text(
                 "سایر امکانات",
                 style: TextStyle(fontFamily: MAIN_FONT_FAMILY, fontSize: 16),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 15,
               ),
               Row(
@@ -798,7 +804,7 @@ class RenetHome extends StatelessWidget {
                     'assets/images/Group 1223.svg',
                     fit: BoxFit.fitWidth,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 30,
                   ),
                   Container(
@@ -811,13 +817,13 @@ class RenetHome extends StatelessWidget {
                         borderRadius: BorderRadius.circular(10),
                       ),
                     ),
-                    child: Icon(
+                    child: const Icon(
                       Icons.add,
                     ),
                   )
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               const Divider(
@@ -863,7 +869,7 @@ class RenetHome extends StatelessWidget {
                 children: [
                   Container(
                     height: 41,
-                    width: MediaQuery.of(context).size.width * 1 / 1.06,
+                    width: MediaQuery.of(context).size.width * 1 / 1.117,
                     child: TextField(
                       textAlign: TextAlign.right,
                       decoration: InputDecoration(
@@ -992,6 +998,7 @@ Widget aghsatiForoshWidget(BuildContext context) {
                 width: MediaQuery.of(context).size.width * 0.43,
                 child: TextField(
                   textAlign: TextAlign.right,
+                  keyboardType: TextInputType.number,
                   decoration: InputDecoration(
                     hintText: 'مبلغ را وارد کنید', //todo
                     hintStyle:
@@ -1007,6 +1014,7 @@ Widget aghsatiForoshWidget(BuildContext context) {
                 width: MediaQuery.of(context).size.width * 0.43,
                 child: TextField(
                   textAlign: TextAlign.right,
+                  keyboardType: TextInputType.number,
                   decoration: InputDecoration(
                     hintText: 'مبلغ را وارد کنید', //todo
                     hintStyle:

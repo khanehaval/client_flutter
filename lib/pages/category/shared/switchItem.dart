@@ -4,21 +4,19 @@ import 'package:get/get.dart';
 
 import 'contant.dart';
 
-class SwitchItem extends StatelessWidget{
+class SwitchItem extends StatelessWidget {
   final RxString type;
   List<String> items;
-
 
   SwitchItem({required this.type, required this.items, super.key});
 
   @override
   Widget build(BuildContext context) {
     return buildMelkTypeItem();
-
-
   }
+
   Widget buildMelkTypeItem() => Row(
-      mainAxisAlignment: MainAxisAlignment.end,
+      mainAxisAlignment: MainAxisAlignment.center,
       children: items.map((e) => item(e)).toList());
 
   Widget item(String text) {
@@ -41,19 +39,19 @@ class SwitchItem extends StatelessWidget{
               type.value = text;
             },
             icon: Obx(() => Container(
-              width: 30,
-              height: 30,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  border: Border.all(width: 1, color: Colors.black54)),
-              child: type.value == text
-                  ? const Icon(
-                Icons.check,
-                color: Colors.black,
-                size: 26,
-              )
-                  : const SizedBox.shrink(),
-            )),
+                  width: 30,
+                  height: 30,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      border: Border.all(width: 1, color: Colors.black54)),
+                  child: type.value == text
+                      ? const Icon(
+                          Icons.check,
+                          color: Colors.black,
+                          size: 26,
+                        )
+                      : const SizedBox.shrink(),
+                )),
           )
         ],
       ),

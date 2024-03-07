@@ -1,10 +1,10 @@
-import 'package:bottom_picker/bottom_picker.dart';
-import 'package:bottom_picker/resources/arrays.dart';
+import 'dart:ffi';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/forosh_adv_pages/tabageh_sale.dart';
+import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/ejara_tejari/rent_store.dart';
 import 'package:flutter_application_1/pages/category/shared/contant.dart';
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
 import 'package:flutter_application_1/pages/category/shared/switchItem.dart';
@@ -12,22 +12,22 @@ import 'package:flutter_application_1/pages/category/shared/twoItemInRow.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:get/get_connect/http/src/utils/utils.dart';
-import 'package:persian_datetime_picker/persian_datetime_picker.dart';
-import 'package:persian_datetime_picker/persian_datetime_picker.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 
-class SaleHome2 extends StatelessWidget {
+class Presell extends StatelessWidget {
   final aghsatType = "".obs;
   final onvan = "".obs;
   final _selected = 0.obs;
   final _currentIndex = 0.obs;
   ItemScrollController scrollController = ItemScrollController();
   final ItemScrollController itemScrollController = ItemScrollController();
-  int selectedIndex = 0;
+
   final hasAnbari = false.obs;
   final hasAsansor = false.obs;
   final hasParking = false.obs;
+
   final _onePrice = 0.0.obs;
+
   final _allPriceTextController = TextEditingController();
   final _metragTextController = TextEditingController();
   final _index = 6.obs;
@@ -45,10 +45,15 @@ class SaleHome2 extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
+                  Icon(
+                    Icons.arrow_back,
+                    color: Colors.green,
+                    size: 20,
+                  ),
                   Text(
-                    " خرید و فروش آپارتمان",
+                    "پیش فروش",
                     style: TextStyle(
-                      fontSize: 9,
+                      fontSize: 10,
                       fontFamily: MAIN_FONT_FAMILY,
                     ),
                   ),
@@ -58,9 +63,9 @@ class SaleHome2 extends StatelessWidget {
                     size: 18,
                   ),
                   Text(
-                    "فروش مسکونی",
+                    "ساخت و ساز",
                     style: TextStyle(
-                      fontSize: 9,
+                      fontSize: 10,
                       fontFamily: MAIN_FONT_FAMILY,
                     ),
                   ),
@@ -72,7 +77,7 @@ class SaleHome2 extends StatelessWidget {
                   Text(
                     "  ثبت آگهی اکونومی",
                     style: TextStyle(
-                      fontSize: 9,
+                      fontSize: 10,
                       fontFamily: MAIN_FONT_FAMILY,
                     ),
                   ),
@@ -148,48 +153,6 @@ class SaleHome2 extends StatelessWidget {
               const SizedBox(
                 height: 20,
               ),
-              const Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Text(
-                    "*",
-                    style: TextStyle(
-                        fontSize: 20,
-                        color: Color.fromRGBO(156, 64, 64, 1),
-                        fontFamily: MAIN_FONT_FAMILY),
-                  ),
-                  Text(
-                    "متراژ",
-                    style: TextStyle(
-                        color: Color.fromRGBO(166, 166, 166, 1),
-                        fontFamily: MAIN_FONT_FAMILY),
-                    textAlign: TextAlign.start,
-                  ),
-                ],
-              ),
-              SizedBox(
-                height: 50,
-                width: MediaQuery.of(context).size.width * 0.95,
-                child: TextField(
-                  textAlign: TextAlign.right,
-                  controller: _metragTextController,
-                  keyboardType: TextInputType.number,
-                  onChanged: (m) {
-                    _onePrice.value = m.isNotEmpty
-                        ? int.parse(_allPriceTextController.text) / int.parse(m)
-                        : 0;
-                  },
-                  decoration: InputDecoration(
-                    hintText: '120',
-                    hintStyle: const TextStyle(
-                      color: Color(0xFFA6A6A6),
-                    ),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                  ),
-                ),
-              ),
               aghsatiForoshWidget(context),
               const Divider(
                 endIndent: 20,
@@ -203,83 +166,61 @@ class SaleHome2 extends StatelessWidget {
                 endIndent: 20,
                 indent: 20,
               ),
-              TwoItemInRow(
-                label1: "تعداد اتاق ",
-                label2: "سن بنا ",
-                w1: SizedBox(
-                  height: 41,
-                  width: getPageWidth_2(context),
-                  child: TextField(
-                    readOnly: true,
-                    focusNode: FocusNode(canRequestFocus: false),
-                    textAlign: TextAlign.right,
-                    decoration: InputDecoration(
-                        hintText: 'انتخاب نشده',
-                        hintStyle: const TextStyle(
-                            color: Color(0xFFA6A6A6), fontSize: 13),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        prefixIcon: IconButton(
-                          icon: const Icon(CupertinoIcons.chevron_left_2),
-                          onPressed: () {
-                            // _show_item_1.value = !_show_item_1.isTrue;
-                          },
-                        )),
-                  ),
-                ),
-                w2: SizedBox(
-                  height: 41,
-                  width: getPageWidth_2(context),
-                  child: TextField(
-                    readOnly: true,
-                    focusNode: FocusNode(canRequestFocus: false),
-                    textAlign: TextAlign.right,
-                    decoration: InputDecoration(
-                      hintText: 'انتخاب نشده',
-                      hintStyle: const TextStyle(
-                          color: Color(0xFFA6A6A6), fontSize: 13),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      prefixIcon: IconButton(
-                        icon: const Icon(CupertinoIcons.chevron_left_2),
-                        onPressed: () {
-                          // _show_item_1.value = !_show_item_1.isTrue;
-                        },
-                      ),
-                    ),
-                  ),
-                ),
+              zamin(context),
+              const SizedBox(
+                height: 10,
+              ),
+              const Divider(
+                endIndent: 20,
+                indent: 20,
               ),
               const SizedBox(
                 height: 20,
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  const Text(
-                    "*",
-                    style: TextStyle(
-                        fontSize: 20, color: Color.fromRGBO(156, 64, 64, 1)),
-                  ),
-                  Container(
-                    child: const Text(
-                      "طبقه ",
-                      style: TextStyle(
-                          color: Color.fromRGBO(99, 99, 99, 1),
-                          fontFamily: MAIN_FONT_FAMILY),
-                      textAlign: TextAlign.start,
-                    ),
-                  ),
-                ],
+              Aparteman(context),
+              const SizedBox(
+                height: 20,
+              ),
+              const Divider(
+                endIndent: 20,
+                indent: 20,
+              ),
+              Vila(context),
+              const SizedBox(
+                height: 20,
+              ),
+              const Divider(
+                endIndent: 20,
+                indent: 20,
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              Edari(context),
+              const SizedBox(
+                height: 20,
+              ),
+              const Divider(
+                endIndent: 20,
+                indent: 20,
+              ),
+              const SizedBox(
+                height: 25,
+              ),
+              const Align(
+                alignment: Alignment.bottomRight,
+                child: Text(
+                  "نوع سند",
+                  style: TextStyle(
+                      color: Color.fromRGBO(99, 99, 99, 1),
+                      fontFamily: MAIN_FONT_FAMILY),
+                  textAlign: TextAlign.start,
+                ),
               ),
               Container(
                 height: 41,
                 width: 372,
                 child: TextField(
-                  readOnly: true,
-                  focusNode: FocusNode(canRequestFocus: false),
                   textAlign: TextAlign.right,
                   decoration: InputDecoration(
                     hintText: 'انتخاب نشده',
@@ -291,227 +232,18 @@ class SaleHome2 extends StatelessWidget {
                     prefixIcon: IconButton(
                       icon: const Icon(CupertinoIcons.chevron_left_2),
                       onPressed: () {
-                        buildButtom();
+                        // _show_item_1.value = !_show_item_1.isTrue;
                       },
                     ),
                   ),
                 ),
               ),
               const SizedBox(
-                height: 15,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Text(
-                    "انباری",
-                    style: TextStyle(
-                        fontFamily: MAIN_FONT_FAMILY,
-                        fontSize: 13,
-                        color: Color.fromRGBO(99, 99, 99, 1)),
-                  ),
-                  Container(
-                    child: Transform.scale(
-                      scale: 0.80,
-                      child: Obx(
-                        () => Switch(
-                            onChanged: (_) => hasAnbari.value = _,
-                            value: hasAnbari.value,
-                            activeColor: Colors.white,
-                            activeTrackColor: Color.fromRGBO(54, 216, 89, 1),
-                            inactiveThumbColor: Color.fromRGBO(11, 8, 8, 0.2),
-                            inactiveTrackColor:
-                                Color.fromRGBO(255, 255, 255, 1)),
-                      ),
-                    ),
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Text(
-                        "آسانسور",
-                        style: TextStyle(
-                            fontFamily: MAIN_FONT_FAMILY,
-                            fontSize: 13,
-                            color: Color.fromRGBO(99, 99, 99, 1)),
-                      ),
-                      Container(
-                        child: Transform.scale(
-                          scale: 0.80,
-                          child: Obx(
-                            () => Switch(
-                                onChanged: (_) => hasAsansor.value = _,
-                                value: hasAsansor.value,
-                                activeColor: Colors.white,
-                                activeTrackColor:
-                                    const Color.fromRGBO(54, 216, 89, 1),
-                                inactiveThumbColor:
-                                    const Color.fromRGBO(11, 8, 8, 0.2),
-                                inactiveTrackColor:
-                                    const Color.fromRGBO(255, 255, 255, 1)),
-                          ),
-                        ),
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          const Text(
-                            "پارکینگ",
-                            style: TextStyle(
-                                fontFamily: MAIN_FONT_FAMILY,
-                                fontSize: 13,
-                                color: Color.fromRGBO(99, 99, 99, 1)),
-                          ),
-                          Container(
-                            child: Transform.scale(
-                              scale: 0.80,
-                              child: Obx(
-                                () => Switch(
-                                    onChanged: (_) => hasParking.value = _,
-                                    value: hasParking.value,
-                                    activeColor: Colors.white,
-                                    activeTrackColor:
-                                        Color.fromRGBO(54, 216, 89, 1),
-                                    inactiveThumbColor:
-                                        Color.fromRGBO(11, 8, 8, 0.2),
-                                    inactiveTrackColor:
-                                        Color.fromRGBO(255, 255, 255, 1)),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              const Divider(
-                endIndent: 20,
-                indent: 20,
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              const Text(
-                "سایر ویژگی ها",
-                style: TextStyle(fontFamily: MAIN_FONT_FAMILY, fontSize: 15),
-              ),
-              const SizedBox(
-                height: 15,
+                height: 20,
               ),
               TwoItemInRow(
-                label1: "تعداد کل طبقات",
-                label2: "نوع سند",
-                w1: SizedBox(
-                  height: 41,
-                  width: getPageWidth_2(context),
-                  child: TextField(
-                    readOnly: true,
-                    focusNode: FocusNode(canRequestFocus: false),
-                    textAlign: TextAlign.right,
-                    decoration: InputDecoration(
-                        hintText: 'انتخاب نشده',
-                        hintStyle: const TextStyle(
-                            color: Color(0xFFA6A6A6), fontSize: 13),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        prefixIcon: IconButton(
-                          icon: const Icon(CupertinoIcons.chevron_left_2),
-                          onPressed: () {
-                            Get.bottomSheet(
-                              Container(
-                                decoration: const BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.only(
-                                        topLeft: Radius.circular(20),
-                                        topRight: Radius.circular(20))),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceAround,
-                                  children: [
-                                    GestureDetector(
-                                        onTap: () {
-                                          if (_index.value > 0) {
-                                            _index.value = _index.value - 1;
-                                            itemScrollController.scrollTo(
-                                                index: _index.value,
-                                                duration:
-                                                    const Duration(seconds: 1));
-                                          }
-                                        },
-                                        child: const Icon(Icons.arrow_upward)),
-                                    SizedBox(
-                                      width: MediaQuery.of(context).size.width *
-                                          0.100,
-                                      child: ScrollablePositionedList.builder(
-                                          itemScrollController:
-                                              itemScrollController,
-                                          shrinkWrap: true,
-                                          itemCount: 20,
-                                          itemBuilder: (c, i) {
-                                            return Obx(() => Text(
-                                                (i).toString(),
-                                                style: TextStyle(
-                                                    fontSize: i == _index.value
-                                                        ? 30
-                                                        : 15)));
-                                          }),
-                                    ),
-                                    GestureDetector(
-                                      onTap: () {
-                                        if (_index.value < 15) {
-                                          _index.value = _index.value + 1;
-                                          selectedIndex = 1;
-                                          itemScrollController.scrollTo(
-                                              index: _index.value,
-                                              duration:
-                                                  const Duration(seconds: 1));
-                                        }
-                                      },
-                                      child: const Icon(Icons.arrow_downward),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            );
-                          },
-                        )),
-                  ),
-                ),
-                w2: SizedBox(
-                  height: 41,
-                  width: getPageWidth_2(context),
-                  child: TextField(
-                    readOnly: true,
-                    focusNode: FocusNode(canRequestFocus: false),
-                    textAlign: TextAlign.right,
-                    decoration: InputDecoration(
-                      hintText: 'انتخاب نشده',
-                      hintStyle: const TextStyle(
-                          color: Color(0xFFA6A6A6), fontSize: 13),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      prefixIcon: IconButton(
-                        icon: const Icon(CupertinoIcons.chevron_left_2),
-                        onPressed: () {
-                          _openDatePicker(context);
-                        },
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-              const SizedBox(
-                height: 15,
-              ),
-              TwoItemInRow(
-                label1: "تعداد کل واحد ها",
-                label2: "تعداد واحد در طبقه",
+                label1: "تعداد تیپ ",
+                label2: "مرحله ساخت ",
                 w1: Container(
                   height: 41,
                   width: getPageWidth_2(context),
@@ -556,8 +288,8 @@ class SaleHome2 extends StatelessWidget {
                 height: 15,
               ),
               TwoItemInRow(
-                label1: "بازسازی",
-                label2: "جهت ساختمان",
+                label1: "میزان پیشرفت فیزیکی",
+                label2: "زمان تحویل ",
                 w1: Container(
                   height: 41,
                   width: getPageWidth_2(context),
@@ -613,178 +345,11 @@ class SaleHome2 extends StatelessWidget {
                 indent: 20,
               ),
               const SizedBox(
-                height: 10,
+                height: 20,
               ),
               const Text(
                 "امکانات",
                 style: TextStyle(fontFamily: MAIN_FONT_FAMILY, fontSize: 16),
-              ),
-              const SizedBox(
-                height: 15,
-              ),
-              TwoItemInRow(
-                label1: "نوع کابینت",
-                label2: "جنس کف",
-                w1: Container(
-                  height: 41,
-                  width: getPageWidth_2(context),
-                  child: TextField(
-                    readOnly: true,
-                    focusNode: FocusNode(canRequestFocus: false),
-                    textAlign: TextAlign.right,
-                    decoration: InputDecoration(
-                        hintText: 'انتخاب نشده',
-                        hintStyle:
-                            TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        prefixIcon: IconButton(
-                          icon: const Icon(CupertinoIcons.chevron_left_2),
-                          onPressed: () {
-                            // _show_item_1.value = !_show_item_1.isTrue;
-                          },
-                        )),
-                  ),
-                ),
-                w2: Container(
-                  height: 41,
-                  width: getPageWidth_2(context),
-                  child: TextField(
-                    readOnly: true,
-                    focusNode: FocusNode(canRequestFocus: false),
-                    textAlign: TextAlign.right,
-                    decoration: InputDecoration(
-                      hintText: 'انتخاب نشده',
-                      hintStyle:
-                          TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      prefixIcon: IconButton(
-                        icon: const Icon(CupertinoIcons.chevron_left_2),
-                        onPressed: () {
-                          // _show_item_1.value = !_show_item_1.isTrue;
-                        },
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-              const SizedBox(
-                height: 15,
-              ),
-              TwoItemInRow(
-                label1: "نوع سیستم گرمایش",
-                label2: "نوع سیستم سرمایش",
-                w1: Container(
-                  height: 41,
-                  width: getPageWidth_2(context),
-                  child: TextField(
-                    readOnly: true,
-                    focusNode: FocusNode(canRequestFocus: false),
-                    textAlign: TextAlign.right,
-                    decoration: InputDecoration(
-                      hintText: 'انتخاب نشده',
-                      hintStyle:
-                          TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      prefixIcon: IconButton(
-                        icon: const Icon(CupertinoIcons.chevron_left_2),
-                        onPressed: () {
-                          // _show_item_1.value = !_show_item_1.isTrue;
-                        },
-                      ),
-                    ),
-                  ),
-                ),
-                w2: Container(
-                  height: 41,
-                  width: getPageWidth_2(context),
-                  child: TextField(
-                    readOnly: true,
-                    focusNode: FocusNode(canRequestFocus: false),
-                    textAlign: TextAlign.right,
-                    decoration: InputDecoration(
-                      hintText: 'انتخاب نشده',
-                      hintStyle:
-                          TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      prefixIcon: IconButton(
-                        icon: const Icon(CupertinoIcons.chevron_left_2),
-                        onPressed: () {
-                          // _show_item_1.value = !_show_item_1.isTrue;
-                        },
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: 15,
-              ),
-              TwoItemInRow(
-                label1: "سرویس بهداشتی",
-                label2: "تامین کننده آب گرم",
-                w1: Container(
-                  height: 41,
-                  width: getPageWidth_2(context),
-                  child: TextField(
-                    readOnly: true,
-                    focusNode: FocusNode(canRequestFocus: false),
-                    textAlign: TextAlign.right,
-                    decoration: InputDecoration(
-                        hintText: 'انتخاب نشده',
-                        hintStyle:
-                            TextStyle(color: Color(0xFFA6A6A6), fontSize: 12),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        prefixIcon: IconButton(
-                          icon: const Icon(CupertinoIcons.chevron_left_2),
-                          onPressed: () {
-                            // _show_item_1.value = !_show_item_1.isTrue;
-                          },
-                        )),
-                  ),
-                ),
-                w2: Container(
-                  height: 41,
-                  width: getPageWidth_2(context),
-                  child: TextField(
-                    readOnly: true,
-                    focusNode: FocusNode(canRequestFocus: false),
-                    textAlign: TextAlign.right,
-                    decoration: InputDecoration(
-                      hintText: 'انتخاب نشده',
-                      hintStyle:
-                          TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      prefixIcon: IconButton(
-                        icon: const Icon(CupertinoIcons.chevron_left_2),
-                        onPressed: () {
-                          // _show_item_1.value = !_show_item_1.isTrue;
-                        },
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              const Text(
-                "سایر امکانات",
-                style: TextStyle(fontFamily: MAIN_FONT_FAMILY, fontSize: 16),
-              ),
-              const SizedBox(
-                height: 15,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -876,7 +441,7 @@ class SaleHome2 extends StatelessWidget {
                 ],
               ),
               const SizedBox(
-                height: 20,
+                height: 30,
               ),
               const Divider(
                 endIndent: 20,
@@ -995,7 +560,7 @@ class SaleHome2 extends StatelessWidget {
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   SizedBox(
-                    width: MediaQuery.of(context).size.width * 1 / 1.06,
+                    width: MediaQuery.of(context).size.width * 1 / 1.117,
                     height: 218,
                     child: TextField(
                       maxLines: 5,
@@ -1143,8 +708,7 @@ class SaleHome2 extends StatelessWidget {
                   ),
                   const Text(
                     "در صورت وارد نکردن آیتم ها، آگهی فقط با عنوان اقساطی منتشر میگردد",
-                    style:
-                        TextStyle(fontFamily: MAIN_FONT_FAMILY, fontSize: 9.5),
+                    style: TextStyle(fontFamily: MAIN_FONT_FAMILY, fontSize: 9),
                   ),
                   const SizedBox(
                     height: 20,
@@ -1233,7 +797,7 @@ class SaleHome2 extends StatelessWidget {
                         ),
                       )),
                   const SizedBox(
-                    width: 25,
+                    width: 30,
                     height: 10,
                   ),
                   SwitchItem(
@@ -1241,11 +805,14 @@ class SaleHome2 extends StatelessWidget {
                   const SizedBox(
                     height: 10,
                   ),
+                  const SizedBox(
+                    height: 20,
+                  ),
                   const Text(
                     "قیمت نهایی ملک (پیش پرداخت + اقساط ) : 13.200.000.000 تومان",
                     style: TextStyle(
                       fontFamily: MAIN_FONT_FAMILY,
-                      fontSize: 9.5,
+                      fontSize: 9,
                     ),
                   ),
                   const SizedBox(
@@ -1296,7 +863,7 @@ class SaleHome2 extends StatelessWidget {
                     "در صورت وارد نکردن آیتم ها، آگهی فقط با عنوان دارای وام منتشر میگردد",
                     style: TextStyle(
                         fontFamily: MAIN_FONT_FAMILY,
-                        fontSize: 9.5,
+                        fontSize: 9,
                         overflow: TextOverflow.clip),
                   ),
                   const SizedBox(
@@ -1338,53 +905,6 @@ class SaleHome2 extends StatelessWidget {
                       ),
                     ),
                   ),
-                  const SizedBox(
-                    height: 17,
-                  ),
-                  TwoItemInRow(
-                      label1: "زمان دریافت اقساط",
-                      label2: "تعداد اقساط",
-                      w1: SizedBox(
-                        height: 41,
-                        width: MediaQuery.of(context).size.width * 0.4,
-                        child: TextField(
-                          textAlign: TextAlign.right,
-                          readOnly: true,
-                          focusNode: FocusNode(canRequestFocus: false),
-                          decoration: InputDecoration(
-                              hintText: 'انتخاب نشده',
-                              hintStyle: const TextStyle(
-                                  color: Color(0xFFA6A6A6), fontSize: 13),
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              prefixIcon: IconButton(
-                                icon: const Icon(CupertinoIcons.chevron_left_2),
-                                onPressed: () {},
-                              )),
-                        ),
-                      ),
-                      w2: SizedBox(
-                        height: 41,
-                        width: MediaQuery.of(context).size.width * 0.4,
-                        child: TextField(
-                          textAlign: TextAlign.right,
-                          readOnly: true,
-                          focusNode: FocusNode(canRequestFocus: false),
-                          decoration: InputDecoration(
-                            hintText: 'انتخاب نشده',
-                            hintStyle: const TextStyle(
-                                color: Color(0xFFA6A6A6), fontSize: 13),
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            prefixIcon: IconButton(
-                              icon: const Icon(CupertinoIcons.chevron_left_2),
-                              onPressed: () {},
-                            ),
-                          ),
-                        ),
-                      )),
                   const SizedBox(height: 25),
                   const Align(
                     alignment: Alignment.centerRight,
@@ -1430,124 +950,718 @@ class SaleHome2 extends StatelessWidget {
   }
 }
 
-void _openDatePicker(BuildContext context) {
-  BottomPicker.date(
-    title: 'select a Date',
-    dateOrder: DatePickerDateOrder.dmy,
-    pickerTextStyle: const TextStyle(
-      color: Colors.blue,
-      fontWeight: FontWeight.bold,
-      fontSize: 18,
-    ),
-    titleStyle: const TextStyle(
-        fontWeight: FontWeight.bold, fontSize: 18, color: Colors.blue),
-    onChange: (index) {
-      print(index);
-    },
-    bottomPickerTheme: BottomPickerTheme.plumPlate,
-  ).show(context);
-}
-
-Future<void> _openPersianDatePicker(BuildContext context) async {
-  Jalali? picked = await showPersianDatePicker(
-    context: context,
-    initialDate: Jalali.now(),
-    firstDate: Jalali(1385, 8),
-    lastDate: Jalali(1450, 9),
-  );
-  var label = picked?.formatFullDate();
-  Jalali? pickedDate = await showModalBottomSheet<Jalali>(
-    context: context,
-    builder: (context) {
-      Jalali tempPickedDate;
-      return Container(
-        height: 250,
-        child: Column(
-          children: <Widget>[
-            Container(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  CupertinoButton(
-                    child: const Text(
-                      'لغو',
-                      style: TextStyle(
-                        fontFamily: 'Dana',
-                      ),
-                    ),
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    },
-                  ),
-                  CupertinoButton(
-                    child: const Text(
-                      'تایید',
-                      style: TextStyle(
-                        fontFamily: 'Dana',
-                      ),
-                    ),
-                    onPressed: () {},
-                  ),
-                ],
-              ),
+Widget zamin(BuildContext context) {
+  final isSwitched = true.obs;
+  return Column(
+    children: [
+      Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const Text(
+            "زمین",
+            style: TextStyle(
+                fontFamily: MAIN_FONT_FAMILY,
+                fontSize: 14,
+                color: Color.fromRGBO(99, 99, 99, 1)),
+          ),
+          Transform.scale(
+            scale: 0.80,
+            child: Obx(
+              () => Switch(
+                  onChanged: (_) => isSwitched.value = _,
+                  value: isSwitched.value,
+                  activeColor: Colors.white,
+                  activeTrackColor: const Color.fromRGBO(54, 216, 89, 1),
+                  inactiveThumbColor: const Color.fromRGBO(11, 8, 8, 0.2),
+                  inactiveTrackColor: const Color.fromRGBO(255, 255, 255, 1)),
             ),
-            const Divider(
-              height: 0,
-              thickness: 1,
-            ),
-            Expanded(
-              child: Container(
-                child: CupertinoTheme(
-                  data: const CupertinoThemeData(
-                    textTheme: CupertinoTextThemeData(
-                      dateTimePickerTextStyle: TextStyle(fontFamily: "Dana"),
-                    ),
-                  ),
-                  child: PCupertinoDatePicker(
-                    mode: PCupertinoDatePickerMode.dateAndTime,
-                    onDateTimeChanged: (Jalali dateTime) {
-                      tempPickedDate = dateTime;
-                    },
+          ),
+        ],
+      ),
+      Obx(() => isSwitched.isTrue
+          ? Column(
+              children: [
+                const SizedBox(height: 25),
+                const Align(
+                  alignment: Alignment.centerRight,
+                  child: Text(
+                    "متراژ زمین  ",
+                    style: TextStyle(
+                        color: Color.fromRGBO(166, 166, 166, 1),
+                        fontSize: 13,
+                        fontFamily: MAIN_FONT_FAMILY),
+                    textAlign: TextAlign.start,
                   ),
                 ),
-              ),
-            ),
-          ],
-        ),
-      );
-    },
+                SizedBox(
+                  height: 41,
+                  child: TextField(
+                    keyboardType: TextInputType.number,
+                    textAlign: TextAlign.right,
+                    decoration: InputDecoration(
+                      hintText: '120',
+                      hintStyle: const TextStyle(
+                          color: Color(0xFFA6A6A6), fontSize: 13),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 25),
+                TwoItemInRow(
+                  label1: "مبلغ اقساط",
+                  label2: "میزان وام (تومان)",
+                  w1: SizedBox(
+                    height: 41,
+                    width: MediaQuery.of(context).size.width * 0.4,
+                    child: TextField(
+                      keyboardType: TextInputType.number,
+                      textAlign: TextAlign.right,
+                      decoration: InputDecoration(
+                        hintText: '3,6000000', //todo
+                        hintStyle: const TextStyle(
+                            color: Color(0xFFA6A6A6), fontSize: 13),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                      ),
+                    ),
+                  ),
+                  w2: SizedBox(
+                    height: 41,
+                    width: MediaQuery.of(context).size.width * 0.4,
+                    child: TextField(
+                      keyboardType: TextInputType.number,
+                      textAlign: TextAlign.right,
+                      decoration: InputDecoration(
+                        hintText: '400000000', //todo
+                        hintStyle: const TextStyle(
+                            color: Color(0xFFA6A6A6), fontSize: 13),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  height: 30,
+                ),
+              ],
+            )
+          : const SizedBox.shrink()),
+    ],
   );
 }
 
-Widget _buildItem(String assetPath, int index) {
-  final _selected = 0.obs;
+Widget Aparteman(BuildContext context) {
+  final isSwitched = true.obs;
+  final hasAnbari = false.obs;
+  final hasAsansor = false.obs;
 
-  return GestureDetector(
-    onTap: () {
-      _selected.value = index;
-    },
-    child: Padding(
-      padding: const EdgeInsets.symmetric(vertical: 3, horizontal: 8),
-      child: Obx(() => Container(
-            width: 125,
-            decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(10),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey.withOpacity(0.1),
-                  )
-                ],
-                border: Border.all(
-                  color: _selected.value == index
-                      ? Colors.greenAccent
-                      : Colors.black38,
-                  width: _selected.value == index ? 2.5 : 1.5,
-                )),
-            child: Image.asset(
-              assetPath,
+  final _onePrice = 0.0.obs;
+  final _allPriceTextController = TextEditingController();
+  final _metragTextController = TextEditingController();
+  return Column(
+    children: [
+      Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const Text(
+            "آپارتمان",
+            style: TextStyle(
+                fontFamily: MAIN_FONT_FAMILY,
+                fontSize: 13,
+                color: Color.fromRGBO(99, 99, 99, 1)),
+          ),
+          Transform.scale(
+            scale: 0.80,
+            child: Obx(
+              () => Switch(
+                  onChanged: (_) => isSwitched.value = _,
+                  value: isSwitched.value,
+                  activeColor: Colors.white,
+                  activeTrackColor: const Color.fromRGBO(54, 216, 89, 1),
+                  inactiveThumbColor: const Color.fromRGBO(11, 8, 8, 0.2),
+                  inactiveTrackColor: const Color.fromRGBO(255, 255, 255, 1)),
             ),
-          )),
-    ),
+          ),
+        ],
+      ),
+      Obx(() => isSwitched.isTrue
+          ? Column(
+              children: [
+                const SizedBox(
+                  height: 20,
+                ),
+                TwoItemInRow(
+                  label1: "تعداد اتاق",
+                  label2: "سن بنا ",
+                  w2: Container(
+                    height: 41,
+                    width: getPageWidth_2(context),
+                    child: TextField(
+                      textAlign: TextAlign.right,
+                      decoration: InputDecoration(
+                        hintText: 'تایپ کنید',
+                        hintStyle:
+                            TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                      ),
+                    ),
+                  ),
+                  w1: Container(
+                    height: 41,
+                    width: getPageWidth_2(context),
+                    child: TextField(
+                      textAlign: TextAlign.right,
+                      decoration: InputDecoration(
+                        hintText: 'انتخاب نشده',
+                        hintStyle:
+                            TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        prefixIcon: IconButton(
+                          icon: const Icon(CupertinoIcons.chevron_left_2),
+                          onPressed: () {
+                            // _show_item_1.value = !_show_item_1.isTrue;
+                          },
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                const Align(
+                  alignment: Alignment.bottomRight,
+                  child: Text(
+                    "مدارک محرمیت",
+                    style: TextStyle(
+                        color: Color.fromRGBO(99, 99, 99, 1),
+                        fontFamily: MAIN_FONT_FAMILY),
+                    textAlign: TextAlign.start,
+                  ),
+                ),
+                Container(
+                  height: 41,
+                  width: 372,
+                  child: TextField(
+                    textAlign: TextAlign.right,
+                    decoration: InputDecoration(
+                      hintText: 'انتخاب نشده',
+                      hintStyle:
+                          TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      prefixIcon: IconButton(
+                        icon: const Icon(CupertinoIcons.chevron_left_2),
+                        onPressed: () {
+                          // _show_item_1.value = !_show_item_1.isTrue;
+                        },
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Text(
+                      "انباری",
+                      style: TextStyle(
+                          fontFamily: MAIN_FONT_FAMILY,
+                          fontSize: 13,
+                          color: Color.fromRGBO(99, 99, 99, 1)),
+                    ),
+                    Container(
+                      child: Transform.scale(
+                        scale: 0.80,
+                        child: Obx(
+                          () => Switch(
+                              onChanged: (_) => hasAnbari.value = _,
+                              value: hasAnbari.value,
+                              activeColor: Colors.white,
+                              activeTrackColor: Color.fromRGBO(54, 216, 89, 1),
+                              inactiveThumbColor: Color.fromRGBO(11, 8, 8, 0.2),
+                              inactiveTrackColor:
+                                  Color.fromRGBO(255, 255, 255, 1)),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      width: 15,
+                    ),
+                    Row(
+                      children: [
+                        const Text(
+                          "آسانسور",
+                          style: TextStyle(
+                              fontFamily: MAIN_FONT_FAMILY,
+                              fontSize: 13,
+                              color: Color.fromRGBO(99, 99, 99, 1)),
+                        ),
+                        Container(
+                          child: Transform.scale(
+                            scale: 0.80,
+                            child: Obx(
+                              () => Switch(
+                                  onChanged: (_) => hasAsansor.value = _,
+                                  value: hasAsansor.value,
+                                  activeColor: Colors.white,
+                                  activeTrackColor:
+                                      Color.fromRGBO(54, 216, 89, 1),
+                                  inactiveThumbColor:
+                                      Color.fromRGBO(11, 8, 8, 0.2),
+                                  inactiveTrackColor:
+                                      Color.fromRGBO(255, 255, 255, 1)),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        const Text(
+                          "پارکینگ",
+                          style: TextStyle(
+                              fontFamily: MAIN_FONT_FAMILY,
+                              fontSize: 13,
+                              color: Color.fromRGBO(99, 99, 99, 1)),
+                        ),
+                        Container(
+                          child: Transform.scale(
+                            scale: 0.80,
+                            child: Obx(
+                              () => Switch(
+                                  onChanged: (_) => hasAsansor.value = _,
+                                  value: hasAsansor.value,
+                                  activeColor: Colors.white,
+                                  activeTrackColor:
+                                      Color.fromRGBO(54, 216, 89, 1),
+                                  inactiveThumbColor:
+                                      Color.fromRGBO(11, 8, 8, 0.2),
+                                  inactiveTrackColor:
+                                      Color.fromRGBO(255, 255, 255, 1)),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+                const SizedBox(width: 25),
+                const SizedBox(
+                  height: 20,
+                ),
+                const SizedBox(
+                  height: 30,
+                ),
+              ],
+            )
+          : const SizedBox.shrink()),
+    ],
+  );
+}
+
+Widget Vila(BuildContext context) {
+  final isSwitched = true.obs;
+  final hasAnbari = false.obs;
+  final hasAsansor = false.obs;
+
+  final _onePrice = 0.0.obs;
+  final _allPriceTextController = TextEditingController();
+  final _metragTextController = TextEditingController();
+  return Column(
+    children: [
+      Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const Text(
+            "ویلا",
+            style: TextStyle(
+                fontFamily: MAIN_FONT_FAMILY,
+                fontSize: 13,
+                color: Color.fromRGBO(99, 99, 99, 1)),
+          ),
+          Transform.scale(
+            scale: 0.80,
+            child: Obx(
+              () => Switch(
+                  onChanged: (_) => isSwitched.value = _,
+                  value: isSwitched.value,
+                  activeColor: Colors.white,
+                  activeTrackColor: const Color.fromRGBO(54, 216, 89, 1),
+                  inactiveThumbColor: const Color.fromRGBO(11, 8, 8, 0.2),
+                  inactiveTrackColor: const Color.fromRGBO(255, 255, 255, 1)),
+            ),
+          ),
+        ],
+      ),
+      Obx(() => isSwitched.isTrue
+          ? Column(
+              children: [
+                const SizedBox(
+                  height: 20,
+                ),
+                TwoItemInRow(
+                  label1: "تعداد اتاق ",
+                  label2: "متراژ بنا ",
+                  w2: Container(
+                    height: 41,
+                    width: getPageWidth_2(context),
+                    child: TextField(
+                      textAlign: TextAlign.right,
+                      decoration: InputDecoration(
+                        hintText: 'تایپ کنید',
+                        hintStyle:
+                            TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                      ),
+                    ),
+                  ),
+                  w1: Container(
+                    height: 41,
+                    width: getPageWidth_2(context),
+                    child: TextField(
+                      textAlign: TextAlign.right,
+                      decoration: InputDecoration(
+                        hintText: 'انتخاب نشده',
+                        hintStyle:
+                            TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        prefixIcon: IconButton(
+                          icon: const Icon(CupertinoIcons.chevron_left_2),
+                          onPressed: () {
+                            // _show_item_1.value = !_show_item_1.isTrue;
+                          },
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                const Align(
+                  alignment: Alignment.bottomRight,
+                  child: Text(
+                    "طبقات ویلا ",
+                    style: TextStyle(
+                        color: Color.fromRGBO(99, 99, 99, 1),
+                        fontFamily: MAIN_FONT_FAMILY),
+                    textAlign: TextAlign.start,
+                  ),
+                ),
+                Container(
+                  height: 41,
+                  width: 372,
+                  child: TextField(
+                    textAlign: TextAlign.right,
+                    decoration: InputDecoration(
+                      hintText: 'انتخاب نشده',
+                      hintStyle:
+                          TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      prefixIcon: IconButton(
+                        icon: const Icon(CupertinoIcons.chevron_left_2),
+                        onPressed: () {
+                          // _show_item_1.value = !_show_item_1.isTrue;
+                        },
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Text(
+                      "انباری",
+                      style: TextStyle(
+                          fontFamily: MAIN_FONT_FAMILY,
+                          fontSize: 14,
+                          color: Color.fromRGBO(99, 99, 99, 1)),
+                    ),
+                    Container(
+                      child: Transform.scale(
+                        scale: 0.80,
+                        child: Obx(
+                          () => Switch(
+                              onChanged: (_) => hasAnbari.value = _,
+                              value: hasAnbari.value,
+                              activeColor: Colors.white,
+                              activeTrackColor: Color.fromRGBO(54, 216, 89, 1),
+                              inactiveThumbColor: Color.fromRGBO(11, 8, 8, 0.2),
+                              inactiveTrackColor:
+                                  Color.fromRGBO(255, 255, 255, 1)),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    const Row(
+                      children: [],
+                    ),
+                    const Text(
+                      "پارکینگ",
+                      style: TextStyle(
+                          fontFamily: MAIN_FONT_FAMILY,
+                          fontSize: 14,
+                          color: Color.fromRGBO(99, 99, 99, 1)),
+                    ),
+                    Container(
+                      child: Transform.scale(
+                        scale: 0.80,
+                        child: Obx(
+                          () => Switch(
+                              onChanged: (_) => hasAsansor.value = _,
+                              value: hasAsansor.value,
+                              activeColor: Colors.white,
+                              activeTrackColor: Color.fromRGBO(54, 216, 89, 1),
+                              inactiveThumbColor: Color.fromRGBO(11, 8, 8, 0.2),
+                              inactiveTrackColor:
+                                  Color.fromRGBO(255, 255, 255, 1)),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                const SizedBox(
+                  height: 30,
+                ),
+              ],
+            )
+          : const SizedBox.shrink()),
+    ],
+  );
+}
+
+Widget Edari(BuildContext context) {
+  final isSwitched = true.obs;
+  final hasAnbari = false.obs;
+  final hasAsansor = false.obs;
+
+  final _onePrice = 0.0.obs;
+  final _allPriceTextController = TextEditingController();
+  final _metragTextController = TextEditingController();
+  return Column(
+    children: [
+      Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const Text(
+            "تجاری و اداری",
+            style: TextStyle(
+                fontFamily: MAIN_FONT_FAMILY,
+                fontSize: 13,
+                color: Color.fromRGBO(99, 99, 99, 1)),
+          ),
+          Transform.scale(
+            scale: 0.80,
+            child: Obx(
+              () => Switch(
+                  onChanged: (_) => isSwitched.value = _,
+                  value: isSwitched.value,
+                  activeColor: Colors.white,
+                  activeTrackColor: const Color.fromRGBO(54, 216, 89, 1),
+                  inactiveThumbColor: const Color.fromRGBO(11, 8, 8, 0.2),
+                  inactiveTrackColor: const Color.fromRGBO(255, 255, 255, 1)),
+            ),
+          ),
+        ],
+      ),
+      Obx(() => isSwitched.isTrue
+          ? Column(
+              children: [
+                const Align(
+                  alignment: Alignment.centerRight,
+                  child: Text(
+                    "متراژ زمین  ",
+                    style: TextStyle(
+                        color: Color.fromRGBO(166, 166, 166, 1),
+                        fontSize: 13,
+                        fontFamily: MAIN_FONT_FAMILY),
+                    textAlign: TextAlign.start,
+                  ),
+                ),
+                SizedBox(
+                  height: 41,
+                  child: TextField(
+                    keyboardType: TextInputType.number,
+                    textAlign: TextAlign.right,
+                    decoration: InputDecoration(
+                      hintText: '120',
+                      hintStyle: const TextStyle(
+                          color: Color(0xFFA6A6A6), fontSize: 13),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                TwoItemInRow(
+                  label1: "تعداد اتاق",
+                  label2: "سن بنا ",
+                  w2: Container(
+                    height: 41,
+                    width: getPageWidth_2(context),
+                    child: TextField(
+                      textAlign: TextAlign.right,
+                      decoration: InputDecoration(
+                        hintText: 'تایپ کنید',
+                        hintStyle:
+                            TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                      ),
+                    ),
+                  ),
+                  w1: Container(
+                    height: 41,
+                    width: getPageWidth_2(context),
+                    child: TextField(
+                      textAlign: TextAlign.right,
+                      decoration: InputDecoration(
+                        hintText: 'انتخاب نشده',
+                        hintStyle:
+                            TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        prefixIcon: IconButton(
+                          icon: const Icon(CupertinoIcons.chevron_left_2),
+                          onPressed: () {
+                            // _show_item_1.value = !_show_item_1.isTrue;
+                          },
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Text(
+                      "انباری",
+                      style: TextStyle(
+                          fontFamily: MAIN_FONT_FAMILY,
+                          fontSize: 13,
+                          color: Color.fromRGBO(99, 99, 99, 1)),
+                    ),
+                    Container(
+                      child: Transform.scale(
+                        scale: 0.80,
+                        child: Obx(
+                          () => Switch(
+                              onChanged: (_) => hasAnbari.value = _,
+                              value: hasAnbari.value,
+                              activeColor: Colors.white,
+                              activeTrackColor: Color.fromRGBO(54, 216, 89, 1),
+                              inactiveThumbColor: Color.fromRGBO(11, 8, 8, 0.2),
+                              inactiveTrackColor:
+                                  Color.fromRGBO(255, 255, 255, 1)),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      width: 15,
+                    ),
+                    Row(
+                      children: [
+                        const Text(
+                          "آسانسور",
+                          style: TextStyle(
+                              fontFamily: MAIN_FONT_FAMILY,
+                              fontSize: 13,
+                              color: Color.fromRGBO(99, 99, 99, 1)),
+                        ),
+                        Container(
+                          child: Transform.scale(
+                            scale: 0.80,
+                            child: Obx(
+                              () => Switch(
+                                  onChanged: (_) => hasAsansor.value = _,
+                                  value: hasAsansor.value,
+                                  activeColor: Colors.white,
+                                  activeTrackColor:
+                                      Color.fromRGBO(54, 216, 89, 1),
+                                  inactiveThumbColor:
+                                      Color.fromRGBO(11, 8, 8, 0.2),
+                                  inactiveTrackColor:
+                                      Color.fromRGBO(255, 255, 255, 1)),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        const Text(
+                          "پارکینگ",
+                          style: TextStyle(
+                              fontFamily: MAIN_FONT_FAMILY,
+                              fontSize: 13,
+                              color: Color.fromRGBO(99, 99, 99, 1)),
+                        ),
+                        Container(
+                          child: Transform.scale(
+                            scale: 0.80,
+                            child: Obx(
+                              () => Switch(
+                                  onChanged: (_) => hasAsansor.value = _,
+                                  value: hasAsansor.value,
+                                  activeColor: Colors.white,
+                                  activeTrackColor:
+                                      Color.fromRGBO(54, 216, 89, 1),
+                                  inactiveThumbColor:
+                                      Color.fromRGBO(11, 8, 8, 0.2),
+                                  inactiveTrackColor:
+                                      Color.fromRGBO(255, 255, 255, 1)),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+                const SizedBox(width: 25),
+                const SizedBox(
+                  height: 20,
+                ),
+                const SizedBox(
+                  height: 30,
+                ),
+              ],
+            )
+          : const SizedBox.shrink()),
+    ],
   );
 }

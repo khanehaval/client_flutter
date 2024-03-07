@@ -26,17 +26,12 @@ class SaleStore extends StatelessWidget {
         appBar: buildaAppBar(),
         body: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
             child: Column(children: [
               const Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Icon(
-                    Icons.arrow_back,
-                    color: Colors.green,
-                    size: 15,
-                  ),
                   Text(
                     "خرید و فروش دفاتر صنعتی",
                     style: TextStyle(
@@ -147,6 +142,7 @@ class SaleStore extends StatelessWidget {
                   height: 41,
                   width: getPageWidth_2(context),
                   child: TextField(
+                    readOnly: true,
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
                         hintText: 'انتخاب نشده',
@@ -254,11 +250,12 @@ class SaleStore extends StatelessWidget {
                   height: 41,
                   width: getPageWidth_2(context),
                   child: TextField(
+                    readOnly: true,
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
                         hintText: 'انتخاب نشده',
-                        hintStyle:
-                            TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
+                        hintStyle: const TextStyle(
+                            color: Color(0xFFA6A6A6), fontSize: 13),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
@@ -274,11 +271,12 @@ class SaleStore extends StatelessWidget {
                   height: 41,
                   width: getPageWidth_2(context),
                   child: TextField(
+                    readOnly: true,
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
                       hintText: 'انتخاب نشده',
-                      hintStyle:
-                          TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
+                      hintStyle: const TextStyle(
+                          color: Color(0xFFA6A6A6), fontSize: 13),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
@@ -292,7 +290,7 @@ class SaleStore extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 15,
               ),
               TwoItemInRow(
@@ -302,11 +300,12 @@ class SaleStore extends StatelessWidget {
                   height: 41,
                   width: getPageWidth_2(context),
                   child: TextField(
+                    readOnly: true,
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
                       hintText: 'انتخاب نشده',
-                      hintStyle:
-                          TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
+                      hintStyle: const TextStyle(
+                          color: Color(0xFFA6A6A6), fontSize: 13),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
@@ -323,11 +322,12 @@ class SaleStore extends StatelessWidget {
                   height: 41,
                   width: getPageWidth_2(context),
                   child: TextField(
+                    readOnly: true,
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
                       hintText: 'انتخاب نشده',
-                      hintStyle:
-                          TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
+                      hintStyle: const TextStyle(
+                          color: Color(0xFFA6A6A6), fontSize: 13),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
@@ -341,7 +341,7 @@ class SaleStore extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               Row(
@@ -362,11 +362,12 @@ class SaleStore extends StatelessWidget {
                 height: 41,
                 width: 372,
                 child: TextField(
+                  readOnly: true,
                   textAlign: TextAlign.right,
                   decoration: InputDecoration(
                     hintText: 'انتخاب نشده',
                     hintStyle:
-                        TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
+                        const TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
@@ -379,17 +380,17 @@ class SaleStore extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 15,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
-              Text(
+              const Text(
                 "سایر امکانات",
                 style: TextStyle(fontFamily: MAIN_FONT_FAMILY, fontSize: 16),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               Row(
@@ -564,7 +565,7 @@ class SaleStore extends StatelessWidget {
                 children: [
                   Container(
                     height: 41,
-                    width: MediaQuery.of(context).size.width * 1 / 1.06,
+                    width: MediaQuery.of(context).size.width * 1 / 1.117,
                     child: TextField(
                       textAlign: TextAlign.right,
                       decoration: InputDecoration(
@@ -601,7 +602,7 @@ class SaleStore extends StatelessWidget {
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   SizedBox(
-                    width: MediaQuery.of(context).size.width * 1 / 1.06,
+                    width: MediaQuery.of(context).size.width * 1 / 1.117,
                     height: 218,
                     child: TextField(
                       maxLines: 5,
@@ -687,12 +688,12 @@ Widget onvanWidget(BuildContext context) {
               children: [
                 SizedBox(
                   height: 41,
-                  width: MediaQuery.of(context).size.width * 1 / 1.06,
+                  width: MediaQuery.of(context).size.width * 1 / 1.117,
                   child: TextField(
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
                       hintText: 'آپارتمان 120 متری به صورت اقساطی',
-                      hintStyle: TextStyle(
+                      hintStyle: const TextStyle(
                           color: Color(0xFFA6A6A6),
                           fontFamily: MAIN_FONT_FAMILY,
                           fontSize: 16),
@@ -756,6 +757,7 @@ Widget aghsatiForoshWidget(BuildContext context) {
                     height: 41,
                     width: MediaQuery.of(context).size.width * 0.4,
                     child: TextField(
+                      keyboardType: TextInputType.number,
                       textAlign: TextAlign.right,
                       decoration: InputDecoration(
                         hintText: ' را وارد کنید', //todo
@@ -771,6 +773,7 @@ Widget aghsatiForoshWidget(BuildContext context) {
                     height: 41,
                     width: MediaQuery.of(context).size.width * 0.4,
                     child: TextField(
+                      keyboardType: TextInputType.number,
                       textAlign: TextAlign.right,
                       decoration: InputDecoration(
                         hintText: 'مبلغ را وارد کنید', //todo
@@ -831,7 +834,7 @@ Widget aghsatiForoshWidget(BuildContext context) {
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 Row(
@@ -865,7 +868,7 @@ Widget aghsatiForoshWidget(BuildContext context) {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text(
+                        const Text(
                           "جرثقیل سقفی",
                           style: TextStyle(
                               fontFamily: MAIN_FONT_FAMILY,

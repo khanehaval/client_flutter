@@ -68,7 +68,7 @@ class _SelectLocationOnMapState extends State<SelectLocationStore> {
                         ),
                       ),
                       SizedBox(
-                        width: MediaQuery.of(context).size.width * 0.4,
+                        width: MediaQuery.of(context).size.width * 1 / 2.3,
                         height: 40,
                         child: TextField(
                           textAlign: TextAlign.right,
@@ -97,7 +97,7 @@ class _SelectLocationOnMapState extends State<SelectLocationStore> {
                       ),
                       SizedBox(
                         height: 40,
-                        width: MediaQuery.of(context).size.width * 0.4,
+                        width: MediaQuery.of(context).size.width * 1 / 2.3,
                         child: TextField(
                           textAlign: TextAlign.right,
                           readOnly: true,
@@ -122,7 +122,7 @@ class _SelectLocationOnMapState extends State<SelectLocationStore> {
               Directionality(
                 textDirection: TextDirection.rtl,
                 child: TextField(
-                  maxLines: 2,
+                  maxLines: 3,
                   decoration: InputDecoration(
                       label: const Text(
                         "آدرس",
@@ -157,7 +157,7 @@ class _SelectLocationOnMapState extends State<SelectLocationStore> {
               SwitchItemVila(
                   type: type, items: const ["کارگاه", "سوله", "زمین کشاورزی"]),
               const SizedBox(
-                height: 70,
+                height: 45,
               ),
               GestureDetector(
                 onTap: () {

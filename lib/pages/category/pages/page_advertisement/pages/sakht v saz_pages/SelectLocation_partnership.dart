@@ -1,22 +1,25 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/ejara_tejari/renet_office.dart';
 import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/forosh_adv_pages/sale_home2.dart';
-import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/forosh_adv_pages/sale_old_house.dart';
-import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/forosh_tejari_pages/sale_office.dart';
-import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/forosh_tejari_pages/sale_shop.dart';
+import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/forosh_adv_pages/sale_vila.dart';
+import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/forosh_tejari_pages/sale_store.dart';
+import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/sakht%20v%20saz_pages/partnership.dart';
+import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/sakht%20v%20saz_pages/presell.dart';
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
 import 'package:flutter_application_1/pages/category/shared/switchItem.dart';
+import 'package:flutter_application_1/pages/category/shared/switchitem_vila.dart';
 import 'package:get/get.dart';
 import '../../../../shared/contant.dart';
 
-class SelectLocationShop extends StatefulWidget {
-  const SelectLocationShop({super.key});
+class SelectLocationPartbership extends StatefulWidget {
+  const SelectLocationPartbership({super.key});
 
   @override
-  State<SelectLocationShop> createState() => _SelectLocationOnMapState();
+  State<SelectLocationPartbership> createState() => _SelectLocationOnMapState();
 }
 
-class _SelectLocationOnMapState extends State<SelectLocationShop> {
+class _SelectLocationOnMapState extends State<SelectLocationPartbership> {
   bool isChecked = false;
   final _selected = 0.obs;
 
@@ -28,7 +31,7 @@ class _SelectLocationOnMapState extends State<SelectLocationShop> {
       appBar: buildaAppBar(),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
@@ -56,7 +59,7 @@ class _SelectLocationOnMapState extends State<SelectLocationShop> {
                 height: 10,
               ),
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.end,
@@ -117,59 +120,33 @@ class _SelectLocationOnMapState extends State<SelectLocationShop> {
                 ],
               ),
               const SizedBox(
-                height: 15,
+                height: 30,
               ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Directionality(
-                  textDirection: TextDirection.rtl,
-                  child: TextField(
-                    maxLines: 2,
-                    decoration: InputDecoration(
-                        label: const Text(
-                          "آدرس",
-                          style: TextStyle(
-                              fontFamily: MAIN_FONT_FAMILY,
-                              color: Color.fromRGBO(166, 166, 166, 1)),
-                          textAlign: TextAlign.right,
-                        ),
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10))),
-                  ),
+              Directionality(
+                textDirection: TextDirection.rtl,
+                child: TextField(
+                  maxLines: 3,
+                  decoration: InputDecoration(
+                      label: const Text(
+                        "آدرس",
+                        style: TextStyle(
+                            fontFamily: MAIN_FONT_FAMILY,
+                            color: Color.fromRGBO(166, 166, 166, 1)),
+                        textAlign: TextAlign.right,
+                      ),
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10))),
                 ),
               ),
               const SizedBox(
                 height: 10,
               ),
-              const Align(
-                alignment: Alignment.centerRight,
-                child: Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: Text(
-                    "نوع ملک شما",
-                    style: TextStyle(
-                      color: Color.fromRGBO(
-                        166,
-                        166,
-                        166,
-                        1,
-                      ),
-                      fontSize: 14,
-                      fontFamily: MAIN_FONT_FAMILY,
-                    ),
-                  ),
-                ),
-              ),
-              Align(
-                alignment: Alignment.centerRight,
-                child: SwitchItem(type: type, items: const [" غرفه"]),
-              ),
               const SizedBox(
-                height: 25,
+                height: 80,
               ),
               GestureDetector(
                 onTap: () {
-                  Get.to(() => SaleShop());
+                  Get.to(() => PartnerShip());
                 },
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,

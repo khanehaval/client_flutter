@@ -43,7 +43,7 @@ class Consultants extends StatelessWidget {
                   decoration: const BoxDecoration(
                     image: DecorationImage(
                       image: AssetImage(
-                        'assets/images/intro_screen_2.png',
+                        'assets/images/Rectangle 1.png',
                       ),
                     ),
                   ),
@@ -53,7 +53,7 @@ class Consultants extends StatelessWidget {
                   child: Text(
                     "پنل مشاوران",
                     style: TextStyle(
-                        fontSize: 30,
+                        fontSize: 25,
                         fontWeight: FontWeight.bold,
                         fontFamily: MAIN_FONT_FAMILY),
                   ),

@@ -26,18 +26,13 @@ class SaleVila extends StatelessWidget {
       appBar: buildaAppBar(),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
           child: Column(
             children: [
               const Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Icon(
-                    Icons.arrow_back,
-                    color: Colors.green,
-                    size: 15,
-                  ),
                   Text(
                     " خرید و فروش ویلا",
                     style: TextStyle(
@@ -221,6 +216,7 @@ class SaleVila extends StatelessWidget {
                   height: 41,
                   width: getPageWidth_2(context),
                   child: TextField(
+                    readOnly: true,
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
                         hintText: 'انتخاب نشده',
@@ -241,6 +237,7 @@ class SaleVila extends StatelessWidget {
                   height: 41,
                   width: getPageWidth_2(context),
                   child: TextField(
+                    readOnly: true,
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
                       hintText: 'انتخاب نشده',
@@ -280,6 +277,7 @@ class SaleVila extends StatelessWidget {
                 height: 41,
                 width: 372,
                 child: TextField(
+                  readOnly: true,
                   textAlign: TextAlign.right,
                   decoration: InputDecoration(
                     hintText: 'انتخاب نشده',
@@ -388,6 +386,7 @@ class SaleVila extends StatelessWidget {
                 height: 41,
                 width: 372,
                 child: TextField(
+                  readOnly: true,
                   textAlign: TextAlign.right,
                   decoration: InputDecoration(
                     hintText: 'انتخاب نشده',
@@ -415,6 +414,7 @@ class SaleVila extends StatelessWidget {
                   height: 41,
                   width: getPageWidth_2(context),
                   child: TextField(
+                    readOnly: true,
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
                         hintText: 'انتخاب نشده',
@@ -449,6 +449,7 @@ class SaleVila extends StatelessWidget {
                   height: 41,
                   width: getPageWidth_2(context),
                   child: TextField(
+                    readOnly: true,
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
                       hintText: 'انتخاب نشده',
@@ -494,6 +495,7 @@ class SaleVila extends StatelessWidget {
                   height: 41,
                   width: getPageWidth_2(context),
                   child: TextField(
+                    readOnly: true,
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
                         hintText: 'انتخاب نشده',
@@ -514,6 +516,7 @@ class SaleVila extends StatelessWidget {
                   height: 41,
                   width: getPageWidth_2(context),
                   child: TextField(
+                    readOnly: true,
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
                       hintText: 'انتخاب نشده',
@@ -542,6 +545,7 @@ class SaleVila extends StatelessWidget {
                   height: 41,
                   width: getPageWidth_2(context),
                   child: TextField(
+                    readOnly: true,
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
                       hintText: 'انتخاب نشده',
@@ -563,6 +567,7 @@ class SaleVila extends StatelessWidget {
                   height: 41,
                   width: getPageWidth_2(context),
                   child: TextField(
+                    readOnly: true,
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
                       hintText: 'انتخاب نشده',
@@ -591,6 +596,7 @@ class SaleVila extends StatelessWidget {
                   height: 41,
                   width: getPageWidth_2(context),
                   child: TextField(
+                    readOnly: true,
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
                         hintText: 'انتخاب نشده',
@@ -611,6 +617,7 @@ class SaleVila extends StatelessWidget {
                   height: 41,
                   width: 176,
                   child: TextField(
+                    readOnly: true,
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
                       hintText: 'انتخاب نشده',
@@ -811,7 +818,7 @@ class SaleVila extends StatelessWidget {
                 children: [
                   Container(
                     height: 41,
-                    width: MediaQuery.of(context).size.width * 1 / 1.07,
+                    width: MediaQuery.of(context).size.width * 1 / 1.117,
                     child: TextField(
                       textAlign: TextAlign.right,
                       decoration: InputDecoration(
@@ -848,7 +855,7 @@ class SaleVila extends StatelessWidget {
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   SizedBox(
-                    width: MediaQuery.of(context).size.width * 1 / 1.07,
+                    width: MediaQuery.of(context).size.width * 1 / 1.117,
                     height: 218,
                     child: TextField(
                       maxLines: 5,
@@ -935,7 +942,7 @@ class SaleVila extends StatelessWidget {
                 children: [
                   SizedBox(
                     height: 41,
-                    width: MediaQuery.of(context).size.width * 1 / 1.07,
+                    width: MediaQuery.of(context).size.width * 1 / 1.117,
                     child: TextField(
                       textAlign: TextAlign.right,
                       decoration: InputDecoration(
@@ -993,8 +1000,7 @@ class SaleVila extends StatelessWidget {
                   ),
                   const Text(
                     "در صورت وارد نکردن آیتم ها، آگهی فقط با عنوان اقساطی منتشر میگردد",
-                    style:
-                        TextStyle(fontFamily: MAIN_FONT_FAMILY, fontSize: 9.5),
+                    style: TextStyle(fontFamily: MAIN_FONT_FAMILY, fontSize: 9),
                   ),
                   const SizedBox(
                     height: 20,
@@ -1093,7 +1099,7 @@ class SaleVila extends StatelessWidget {
                     "قیمت نهایی ملک (پیش پرداخت + اقساط ) : 13.200.000.000 تومان",
                     style: TextStyle(
                       fontFamily: MAIN_FONT_FAMILY,
-                      fontSize: 9.5,
+                      fontSize: 9,
                     ),
                   ),
                   const SizedBox(
