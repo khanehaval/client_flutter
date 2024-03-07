@@ -167,7 +167,7 @@ class LoginSecondlyPage extends StatelessWidget {
                         'بعدا یادآوری کن',
                         style: TextStyle(
                             color: Colors.black,
-                            fontSize: 12,
+                            fontSize: 10,
                             fontWeight: FontWeight.bold,
                             fontFamily: MAIN_FONT_FAMILY),
                       ),
@@ -189,7 +189,7 @@ class LoginSecondlyPage extends StatelessWidget {
                         'مشاهده تور آموزشی',
                         style: TextStyle(
                             color: Colors.black,
-                            fontSize: 11,
+                            fontSize: 10,
                             fontFamily: MAIN_FONT_FAMILY),
                       ),
                     ),
