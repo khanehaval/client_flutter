@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/forosh_adv_pages/tabageh_sale.dart';
 import 'package:flutter_application_1/pages/category/shared/contant.dart';
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
 import 'package:flutter_application_1/pages/category/shared/switchItem.dart';
@@ -290,108 +291,7 @@ class SaleHome2 extends StatelessWidget {
                     prefixIcon: IconButton(
                       icon: const Icon(CupertinoIcons.chevron_left_2),
                       onPressed: () {
-                        Get.bottomSheet(
-                            Container(
-                              child: Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(vertical: 20),
-                                child: Column(children: [
-                                  const Text(
-                                      "بیش از یک مورد می توانید انتخاب کنید",
-                                      style: TextStyle(
-                                          fontSize: 15,
-                                          fontFamily: MAIN_FONT_FAMILY)),
-                                  SizedBox(
-                                    height: 20,
-                                  ),
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      _buildItem(
-                                        'assets/images/Category.png',
-                                        1,
-                                      ),
-                                      _buildItem(
-                                          'assets/images/Sale home.png', 2),
-                                    ],
-                                  ),
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      _buildItem(
-                                          'assets/images/Rent store.png', 3),
-                                      _buildItem(
-                                          'assets/images/Sale store.png', 4),
-                                    ],
-                                  ),
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      _buildItem('assets/images/Daily.png', 5),
-                                      _buildItem(
-                                          'assets/images/Construction.png', 6),
-                                    ],
-                                  ),
-                                  SizedBox(
-                                    height: 30,
-                                  ),
-                                  GestureDetector(
-                                    onTap: () {
-                                      if (_selected.value > 0) {
-                                        int index = _selected.value;
-                                        Widget finalWidget =
-                                            const SizedBox.shrink();
-                                        if (index == 2) {
-                                        } else if (index == 1) {
-                                          ();
-                                        } else if (index == 4) {
-                                        } else if (index == 3) {
-                                        } else if (index == 5) {
-                                        } else if (index == 6) {}
-
-                                        Get.to(() => finalWidget);
-                                      }
-                                    },
-                                    child: Obx(() => Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: [
-                                            Text(
-                                              "...تایید و ادامه",
-                                              style: _selected.value == 0
-                                                  ? const TextStyle(
-                                                      fontSize: 15,
-                                                      fontFamily:
-                                                          MAIN_FONT_FAMILY,
-                                                      color: Colors.black38,
-                                                    )
-                                                  : const TextStyle(
-                                                      fontSize: 15,
-                                                      fontFamily:
-                                                          MAIN_FONT_FAMILY),
-                                            ),
-                                            Icon(
-                                              Icons.double_arrow,
-                                              color: _selected.value == 0
-                                                  ? Colors.black54
-                                                  : const Color.fromRGBO(
-                                                      76, 140, 237, 1),
-                                              size: 35,
-                                            ),
-                                          ],
-                                        )),
-                                  ),
-                                ]),
-                              ),
-                            ),
-                            elevation: 20.0,
-                            backgroundColor: Colors.white,
-                            enableDrag: true,
-                            shape: const RoundedRectangleBorder(
-                              borderRadius: BorderRadius.only(
-                                  topLeft: Radius.circular(30.0),
-                                  topRight: Radius.circular(30.0)),
-                            ));
+                        buildButtom();
                       },
                     ),
                   ),

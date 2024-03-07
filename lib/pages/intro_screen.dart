@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/pages/category/shared/contant.dart';
 import 'package:flutter_application_1/pages/register/register.dart';
 import 'package:get/get.dart';
 
@@ -12,18 +14,22 @@ class IntroScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Padding(
-              padding: EdgeInsets.symmetric(
-                  vertical: MediaQuery.of(context).padding.top),
-              child: Image.asset(
-                'assets/images/Vector.png',
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 23),
-              child: Image.asset(
-                'assets/images/slider_1.png',
-              ),
+            Column(
+              children: [
+                Padding(
+                  padding:
+                      EdgeInsets.only(top: MediaQuery.of(context).padding.top),
+                  child: Image.asset(
+                    'assets/images/Vector.png',
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 0),
+                  child: Image.asset(
+                    'assets/images/slider_1.png',
+                  ),
+                ),
+              ],
             ),
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 30, vertical: 30),
@@ -32,6 +38,7 @@ class IntroScreen extends StatelessWidget {
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 17,
+                  fontFamily: MAIN_FONT_FAMILY,
                 ),
                 textDirection: TextDirection.rtl,
                 textAlign: TextAlign.justify,
@@ -54,7 +61,11 @@ class IntroScreen extends StatelessWidget {
               padding: EdgeInsets.symmetric(horizontal: 20),
               child: Text(
                 'دیگه لازم نیست از این بنگاه به اون بنگاه بری و ملکتون رو فایل کنین، ما تمامی ابزارهای خدمات ملک رو اینجا جمع کردیم ',
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17),
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 17,
+                  fontFamily: MAIN_FONT_FAMILY,
+                ),
                 textDirection: TextDirection.rtl,
                 textAlign: TextAlign.justify,
               ),
@@ -91,7 +102,11 @@ class IntroScreen extends StatelessWidget {
               padding: EdgeInsets.symmetric(horizontal: 27),
               child: Text(
                 'دیگه لازم نیست ساعت ها تو ترافیک دنبال مشاور خوب و بنگاه بگردی، ما همه رو اینجا جمع کردیم... ',
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 17,
+                  fontFamily: MAIN_FONT_FAMILY,
+                ),
                 textDirection: TextDirection.rtl,
                 textAlign: TextAlign.justify,
               ),
@@ -112,10 +127,7 @@ class IntroScreen extends StatelessWidget {
               _sliderIndex.value = index + 1;
             }
           },
-          icon: const Icon(
-            Icons.arrow_forward_ios_sharp,
-            size: 35,
-          )),
+          icon: Image.asset('assets/images/arrow_right.png',width: 24,height: 24,)),
     );
   }
 
@@ -127,7 +139,7 @@ class IntroScreen extends StatelessWidget {
       children: [
         Obx(() => _sliders(context)[_sliderIndex.value]),
         Padding(
-          padding: const EdgeInsets.only(right: 8, top: 22),
+          padding: const EdgeInsets.only(right: 8, top: 40),
           child: IconButton(
               onPressed: () {
                 Get.off(() => const Register());

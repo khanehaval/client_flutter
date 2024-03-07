@@ -27,10 +27,10 @@ class _SplashPageOneState extends State<Messages> {
               Image.asset(
                 'assets/images/intro_screen_2.png',
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
-              Column(
+              const Column(
                 children: [
                   SizedBox(
                     width: 283,

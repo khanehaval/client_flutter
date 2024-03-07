@@ -1,9 +1,9 @@
 import 'dart:async';
-import 'dart:ffi';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_application_1/pages/login_secondly_page.dart';
 import 'package:flutter_application_1/repo/acount_repo.dart';
+import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
@@ -21,17 +21,22 @@ class Register extends StatefulWidget {
 
 class _RegisterState extends State<Register> {
   Timer? timer;
-  var time = 30.obs;
+  var time = 60.obs;
   var phoneNumberSended = false.obs;
   var button_is_pressed = false.obs;
+  final _keyboardVisibility = false.obs;
+
+  final _accountRepo = GetIt.I.get<AccountRepo>();
+  final _keyboardVisibilityController = KeyboardVisibilityController();
 
   @override
   void initState() {
-    // TODO: implement initState
+    _keyboardVisibilityController.onChange.listen((visible) {
+      _keyboardVisibility.value = visible;
+    });
+
     super.initState();
   }
-
-  final _accountRepo = GetIt.I.get<AccountRepo>();
 
   @override
   void dispose() {
@@ -42,11 +47,11 @@ class _RegisterState extends State<Register> {
   void startTimer() {
     timer?.cancel();
     time.update((val) {
-      time.value = 30;
+      time.value = 60;
     });
     timer = Timer.periodic(const Duration(seconds: 1), (i) {
       time.update((val) {
-        time.value = max(0, (val ?? 30) - 1);
+        time.value = max(0, (val ?? 60) - 1);
       });
 
       if (time.value == 0) {
@@ -61,12 +66,46 @@ class _RegisterState extends State<Register> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: Obx(() => !_keyboardVisibility.value
+          ? Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Obx(
+                () => button_is_pressed.value
+                    ? const CircularProgressIndicator()
+                    : Container(
+                        width: 110,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(30),
+                          gradient: getGradient(),
+                        ),
+                        child: ElevatedButton(
+                          onPressed: () {
+                            if (phoneNumberSended.value) {
+                              sendVerificationCode();
+                            } else {
+                              sendPhoneNumber();
+                            }
+                          },
+                          style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.transparent,
+                              shadowColor: Colors.transparent),
+                          child: const Text(
+                            'تایید',
+                            style: TextStyle(
+                                fontSize: 20, fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                      ),
+              ),
+          )
+          : const SizedBox.shrink()),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10),
         child: SingleChildScrollView(
           child: Column(
             children: [
-              const SizedBox(height: 60),
+              const SizedBox(height: 90),
               SvgPicture.asset(
                 'assets/images/logo-farsi.svg',
                 width: MediaQuery.of(context).size.width - 200,
@@ -89,7 +128,6 @@ class _RegisterState extends State<Register> {
                     textAlign: TextAlign.center,
                     keyboardType: TextInputType.number,
                     controller: _phoneNumberTextField,
-                    maxLength: 11,
                     onChanged: (_) {
                       phoneNumberSended.value = false;
                     },
@@ -116,85 +154,63 @@ class _RegisterState extends State<Register> {
               ),
               Obx(() => phoneNumberSended.value
                   ? Padding(
-                      padding:
-                          const EdgeInsets.only(left: 80, right: 80, top: 120),
+                      padding: const EdgeInsets.only(
+                          left: 80, right: 80, top: 30, bottom: 10),
                       child: SizedBox(
-                        height: 75,
-                        child: TextField(
-                          textAlign: TextAlign.center,
-                          keyboardType: TextInputType.number,
-                          onSubmitted: (s) {},
-                          maxLength: 6,
-                          controller: _codeTextField,
-                          decoration: InputDecoration(
-                            hintText: "-- -- --",
-                            hintStyle: const TextStyle(fontSize: 16),
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(15),
-                            ),
-                          ),
-                        ),
-                      ),
-                    )
-                  : const SizedBox()),
-              const SizedBox(
-                height: 1,
-              ),
-              Obx(() => phoneNumberSended.value
-                  ? Obx(
-                      () => time.value > 0
-                          ? Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text(time.value < 60
-                                    ? "00:${time.value}"
-                                    : time.value.toString()),
-                              ],
-                            )
-                          : GestureDetector(
-                              child: const Text("00:00 ارسال مجدد کد "),
-                              onTap: () {
-                                sendPhoneNumber();
-                              },
-                            ),
-                    )
-                  : const SizedBox(
-                      height: 150,
-                    )),
-              Align(
-                alignment: Alignment.bottomCenter,
-                child: Padding(
-                    padding: const EdgeInsets.only(bottom: 40, top: 10),
-                    child: Obx(
-                      () => button_is_pressed.value
-                          ? const CircularProgressIndicator()
-                          : Container(
-                              width: 110,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(30),
-                                gradient: getGradient(),
-                              ),
-                              child: ElevatedButton(
-                                onPressed: () {
-                                  if (phoneNumberSended.value) {
-                                    sendVerificationCode();
-                                  } else {
-                                    sendPhoneNumber();
-                                  }
-                                },
-                                style: ElevatedButton.styleFrom(
-                                    backgroundColor: Colors.transparent,
-                                    shadowColor: Colors.transparent),
-                                child: const Text(
-                                  'تایید',
-                                  style: TextStyle(
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.bold),
+                        height: MediaQuery.of(context).size.height / 4,
+                        child: Column(
+                          children: [
+                            SizedBox(
+                              height: 75,
+                              child: TextField(
+                                textAlign: TextAlign.center,
+                                keyboardType: TextInputType.number,
+                                onSubmitted: (_) => sendVerificationCode(),
+                                style: const TextStyle(
+                                  fontSize: 17,
+                                  decoration: TextDecoration.underline,
+                                  decorationStyle: TextDecorationStyle.dashed,
+                                ),
+                                controller: _codeTextField,
+                                decoration: InputDecoration(
+                                  hintText: "--  --  --",
+                                  hintStyle: const TextStyle(
+                                      fontSize: 16,
+                                      decoration: TextDecoration.none,
+                                      decorationStyle:
+                                          TextDecorationStyle.solid),
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(15),
+                                  ),
                                 ),
                               ),
                             ),
-                    )),
-              )
+                            Obx(
+                              () => time.value > 0
+                                  ? Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Text(time.value < 60
+                                            ? "00:${time.value}"
+                                            : time.value.toString()),
+                                      ],
+                                    )
+                                  : GestureDetector(
+                                      child: const Text("00:00 ارسال مجدد کد "),
+                                      onTap: () {
+                                        sendPhoneNumber();
+                                      },
+                                    ),
+                            )
+                          ],
+                        ),
+                      ),
+                    )
+                  : SizedBox(height: MediaQuery.of(context).size.height / 3)),
+              const SizedBox(
+                height: 1,
+              ),
             ],
           ),
         ),
