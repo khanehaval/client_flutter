@@ -10,12 +10,12 @@ buildButtom() {
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 30),
           child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 const Text("بیش از یک مورد می توانید انتخاب کنید",
                     style:
                         TextStyle(fontSize: 15, fontFamily: MAIN_FONT_FAMILY)),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 Row(
@@ -28,12 +28,18 @@ buildButtom() {
                     _buildItem('assets/images/Frame 11.png', 2),
                   ],
                 ),
+                const SizedBox(
+                  height: 10,
+                ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     _buildItem('assets/images/Frame 13.png', 3),
                     _buildItem('assets/images/Frame 11.png', 4),
                   ],
+                ),
+                const SizedBox(
+                  height: 10,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -46,17 +52,21 @@ buildButtom() {
                   height: 10,
                 ),
                 GestureDetector(
-                  child: Container(
-                    decoration:
-                        BoxDecoration(borderRadius: BorderRadius.circular(100)),
-                    child: const Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(
-                          Icons.check_box,
-                          size: 60,
+                  child:         Padding(
+                    padding: const EdgeInsets.only(top: 10),
+                    child: Container(
+                      decoration: BoxDecoration(
+                          color: Colors.cyan, borderRadius: BorderRadius.circular(50)),
+                      child: IconButton(
+                        icon: const Icon(
+                          CupertinoIcons.check_mark,
+                          color: Colors.white,
+                          weight: 10,
                         ),
-                      ],
+                        onPressed: () {
+                          Get.back();
+                        },
+                      ),
                     ),
                   ),
                 ),
@@ -81,8 +91,8 @@ Widget _buildItem(String assetPath, int index) {
     child: Padding(
       padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 8),
       child: Obx(() => Container(
-            width: 148,
-            height: 85,
+            width: 140,
+            height: 80,
             decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(10),

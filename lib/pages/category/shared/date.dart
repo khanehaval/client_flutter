@@ -62,7 +62,7 @@ void persianDataPicker(Function(String) onDateSelected) {
               },
             ),
           ),
-        )
+        ),
       ],
     ),
   ));
