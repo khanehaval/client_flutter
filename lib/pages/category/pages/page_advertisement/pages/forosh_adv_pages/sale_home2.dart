@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/forosh_adv_pages/tabageh_sale.dart';
 import 'package:flutter_application_1/pages/category/shared/contant.dart';
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
 import 'package:flutter_application_1/pages/category/shared/switchItem.dart';
@@ -259,13 +260,13 @@ class SaleHome2 extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  Text(
+                  const Text(
                     "*",
                     style: TextStyle(
                         fontSize: 20, color: Color.fromRGBO(156, 64, 64, 1)),
                   ),
                   Container(
-                    child: Text(
+                    child: const Text(
                       "طبقه ",
                       style: TextStyle(
                           color: Color.fromRGBO(99, 99, 99, 1),
@@ -292,7 +293,7 @@ class SaleHome2 extends StatelessWidget {
                     prefixIcon: IconButton(
                       icon: const Icon(CupertinoIcons.chevron_left_2),
                       onPressed: () {
-                        // _show_item_1.value = !_show_item_1.isTrue;
+                        buildButtom();
                       },
                     ),
                   ),
@@ -440,10 +441,10 @@ class SaleHome2 extends StatelessWidget {
                                                 if (_index.value > 0) {
                                                   _index.value =
                                                       _index.value - 1;
-                                                       itemScrollController.scrollTo(
-                                                    index: _index.value,
-                                                    duration: const Duration(
-                                                        seconds: 1));
+                                                  itemScrollController.scrollTo(
+                                                      index: _index.value,
+                                                      duration: const Duration(
+                                                          seconds: 1));
                                                 }
                                               },
                                               child: const Icon(
