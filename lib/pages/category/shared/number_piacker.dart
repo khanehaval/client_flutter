@@ -104,7 +104,7 @@ void showNumberPicker(Function(String) onSelected) {
                       ],
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(bottom: 20,top: 40),
+                      padding: const EdgeInsets.only(bottom: 20, top: 40),
                       child: Container(
                         decoration: BoxDecoration(
                             gradient: const LinearGradient(
