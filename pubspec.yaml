@@ -37,6 +37,7 @@ dependencies:
   bottom_picker: 2.4.0
   after_layout: 1.2.0
   flutter_launcher_icons: 0.13.1
+  flutter_linear_datepicker: 2.0.5
   flutter_localizations:
     sdk: flutter
   fluttertoast: 8.2.4

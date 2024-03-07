@@ -1,19 +1,15 @@
-import 'package:bottom_picker/bottom_picker.dart';
-import 'package:bottom_picker/resources/arrays.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/forosh_adv_pages/tabageh_sale.dart';
 import 'package:flutter_application_1/pages/category/shared/contant.dart';
+import 'package:flutter_application_1/pages/category/shared/date.dart';
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
 import 'package:flutter_application_1/pages/category/shared/switchItem.dart';
 import 'package:flutter_application_1/pages/category/shared/twoItemInRow.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:get/get_connect/http/src/utils/utils.dart';
-import 'package:persian_datetime_picker/persian_datetime_picker.dart';
-import 'package:persian_datetime_picker/persian_datetime_picker.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 
 class SaleHome2 extends StatelessWidget {
@@ -499,7 +495,9 @@ class SaleHome2 extends StatelessWidget {
                       prefixIcon: IconButton(
                         icon: const Icon(CupertinoIcons.chevron_left_2),
                         onPressed: () {
-                          _openDatePicker(context);
+                          persianDataPicker((date) {
+                            print(date);
+                          });
                         },
                       ),
                     ),
@@ -1428,126 +1426,4 @@ class SaleHome2 extends StatelessWidget {
       ],
     );
   }
-}
-
-void _openDatePicker(BuildContext context) {
-  BottomPicker.date(
-    title: 'select a Date',
-    dateOrder: DatePickerDateOrder.dmy,
-    pickerTextStyle: const TextStyle(
-      color: Colors.blue,
-      fontWeight: FontWeight.bold,
-      fontSize: 18,
-    ),
-    titleStyle: const TextStyle(
-        fontWeight: FontWeight.bold, fontSize: 18, color: Colors.blue),
-    onChange: (index) {
-      print(index);
-    },
-    bottomPickerTheme: BottomPickerTheme.plumPlate,
-  ).show(context);
-}
-
-Future<void> _openPersianDatePicker(BuildContext context) async {
-  Jalali? picked = await showPersianDatePicker(
-    context: context,
-    initialDate: Jalali.now(),
-    firstDate: Jalali(1385, 8),
-    lastDate: Jalali(1450, 9),
-  );
-  var label = picked?.formatFullDate();
-  Jalali? pickedDate = await showModalBottomSheet<Jalali>(
-    context: context,
-    builder: (context) {
-      Jalali tempPickedDate;
-      return Container(
-        height: 250,
-        child: Column(
-          children: <Widget>[
-            Container(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  CupertinoButton(
-                    child: const Text(
-                      'لغو',
-                      style: TextStyle(
-                        fontFamily: 'Dana',
-                      ),
-                    ),
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    },
-                  ),
-                  CupertinoButton(
-                    child: const Text(
-                      'تایید',
-                      style: TextStyle(
-                        fontFamily: 'Dana',
-                      ),
-                    ),
-                    onPressed: () {},
-                  ),
-                ],
-              ),
-            ),
-            const Divider(
-              height: 0,
-              thickness: 1,
-            ),
-            Expanded(
-              child: Container(
-                child: CupertinoTheme(
-                  data: const CupertinoThemeData(
-                    textTheme: CupertinoTextThemeData(
-                      dateTimePickerTextStyle: TextStyle(fontFamily: "Dana"),
-                    ),
-                  ),
-                  child: PCupertinoDatePicker(
-                    mode: PCupertinoDatePickerMode.dateAndTime,
-                    onDateTimeChanged: (Jalali dateTime) {
-                      tempPickedDate = dateTime;
-                    },
-                  ),
-                ),
-              ),
-            ),
-          ],
-        ),
-      );
-    },
-  );
-}
-
-Widget _buildItem(String assetPath, int index) {
-  final _selected = 0.obs;
-
-  return GestureDetector(
-    onTap: () {
-      _selected.value = index;
-    },
-    child: Padding(
-      padding: const EdgeInsets.symmetric(vertical: 3, horizontal: 8),
-      child: Obx(() => Container(
-            width: 125,
-            decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(10),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey.withOpacity(0.1),
-                  )
-                ],
-                border: Border.all(
-                  color: _selected.value == index
-                      ? Colors.greenAccent
-                      : Colors.black38,
-                  width: _selected.value == index ? 2.5 : 1.5,
-                )),
-            child: Image.asset(
-              assetPath,
-            ),
-          )),
-    ),
-  );
 }

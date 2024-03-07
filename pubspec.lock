@@ -430,6 +430,14 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.13.1"
+  flutter_linear_datepicker:
+    dependency: "direct main"
+    description:
+      name: flutter_linear_datepicker
+      sha256: "3c868801330f6452da69802daa8b6e27a9c308f5e193a1726ed621607cbc6056"
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "2.0.5"
   flutter_lints:
     dependency: "direct dev"
     description:
@@ -1149,6 +1157,14 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.3.8"
+  shamsi_date:
+    dependency: transitive
+    description:
+      name: shamsi_date
+      sha256: "19020ef0a001db3eabcec8657f8aa10b93b3746641d9eca64db9a41e6506645c"
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "1.0.2"
   shared_preferences:
     dependency: "direct main"
     description:
