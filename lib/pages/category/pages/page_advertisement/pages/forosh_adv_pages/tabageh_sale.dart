@@ -8,70 +8,59 @@ buildButtom() {
   return Get.bottomSheet(
       Container(
         child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 20),
-          child: Column(children: [
-            const Text("بیش از یک مورد می توانید انتخاب کنید",
-                style: TextStyle(fontSize: 15, fontFamily: MAIN_FONT_FAMILY)),
-            const SizedBox(
-              height: 20,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+          padding: const EdgeInsets.symmetric(vertical: 30),
+          child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                _buildItem(
-                  'assets/images/Category.png',
-                  1,
+                const Text("بیش از یک مورد می توانید انتخاب کنید",
+                    style:
+                        TextStyle(fontSize: 15, fontFamily: MAIN_FONT_FAMILY)),
+                SizedBox(
+                  height: 20,
                 ),
-                _buildItem('assets/images/Sale home.png', 2),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                _buildItem('assets/images/Rent store.png', 3),
-                _buildItem('assets/images/Sale store.png', 4),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                _buildItem('assets/images/Daily.png', 5),
-                _buildItem('assets/images/Construction.png', 6),
-              ],
-            ),
-            const SizedBox(
-              height: 30,
-            ),
-            GestureDetector(
-              onTap: () {
-                if (_selected.value > 0) {
-                  int index = _selected.value;
-                  Widget finalWidget = const SizedBox.shrink();
-                  if (index == 2) {
-                  } else if (index == 1) {
-                    ();
-                  } else if (index == 4) {
-                  } else if (index == 3) {
-                  } else if (index == 5) {
-                  } else if (index == 6) {}
-
-                  Get.to(() => finalWidget);
-                }
-              },
-              child: Obx(() => Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Icon(
-                        Icons.double_arrow,
-                        color: _selected.value == 0
-                            ? Colors.black54
-                            : const Color.fromRGBO(76, 140, 237, 1),
-                        size: 35,
-                      ),
-                    ],
-                  )),
-            ),
-          ]),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    _buildItem(
+                      'assets/images/Frame 12.png',
+                      1,
+                    ),
+                    _buildItem('assets/images/Frame 11.png', 2),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    _buildItem('assets/images/Frame 13.png', 3),
+                    _buildItem('assets/images/Frame 11.png', 4),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    _buildItem('assets/images/Frame 13.png', 5),
+                    _buildItem('assets/images/Frame 11.png', 6),
+                  ],
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                GestureDetector(
+                  child: Container(
+                    decoration:
+                        BoxDecoration(borderRadius: BorderRadius.circular(100)),
+                    child: const Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(
+                          Icons.check_box,
+                          size: 60,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ]),
         ),
       ),
       elevation: 20.0,
@@ -85,15 +74,15 @@ buildButtom() {
 
 Widget _buildItem(String assetPath, int index) {
   final _selected = 0.obs;
-
   return GestureDetector(
     onTap: () {
       _selected.value = index;
     },
     child: Padding(
-      padding: const EdgeInsets.symmetric(vertical: 3, horizontal: 8),
+      padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 8),
       child: Obx(() => Container(
-            width: 125,
+            width: 148,
+            height: 85,
             decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(10),
