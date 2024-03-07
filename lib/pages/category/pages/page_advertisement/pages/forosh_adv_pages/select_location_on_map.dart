@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/forosh_adv_pages/sale_home2.dart';
+import 'package:flutter_application_1/pages/category/shared/map_pages/map.dart';
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
 import 'package:flutter_application_1/pages/category/shared/switchItem.dart';
 import 'package:get/get.dart';
@@ -36,7 +37,9 @@ class _SelectLocationOnMapState extends State<SelectLocationOnMap> {
                     fontSize: 16,
                     fontFamily: MAIN_FONT_FAMILY),
               ),
-              const SizedBox(height: 15,),
+              const SizedBox(
+                height: 15,
+              ),
               Container(
                 decoration: ShapeDecoration(
                   shape: RoundedRectangleBorder(
@@ -149,14 +152,13 @@ class _SelectLocationOnMapState extends State<SelectLocationOnMap> {
                   ),
                 ),
               ),
-              SwitchItem(
-                  type: type, items: const ["سوئیت", "برج", "پنت هاوس"]),
+              SwitchItem(type: type, items: const ["سوئیت", "برج", "پنت هاوس"]),
               const SizedBox(
                 height: 80,
               ),
               GestureDetector(
                 onTap: () {
-                  Get.to(() => SaleHome2());
+                  Get.to(() => AdsMapSelect());
                 },
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
