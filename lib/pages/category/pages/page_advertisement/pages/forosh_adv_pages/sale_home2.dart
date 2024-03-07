@@ -5,20 +5,16 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/forosh_adv_pages/tabageh_sale.dart';
 import 'package:flutter_application_1/pages/category/shared/contant.dart';
 import 'package:flutter_application_1/pages/category/shared/date.dart';
+import 'package:flutter_application_1/pages/category/shared/number_piacker.dart';
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
 import 'package:flutter_application_1/pages/category/shared/switchItem.dart';
 import 'package:flutter_application_1/pages/category/shared/twoItemInRow.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 
 class SaleHome2 extends StatelessWidget {
   final aghsatType = "".obs;
   final onvan = "".obs;
-  final _selected = 0.obs;
-  final _currentIndex = 0.obs;
-  ItemScrollController scrollController = ItemScrollController();
-  final ItemScrollController itemScrollController = ItemScrollController();
   int selectedIndex = 0;
   final hasAnbari = false.obs;
   final hasAsansor = false.obs;
@@ -26,7 +22,6 @@ class SaleHome2 extends StatelessWidget {
   final _onePrice = 0.0.obs;
   final _allPriceTextController = TextEditingController();
   final _metragTextController = TextEditingController();
-  final _index = 6.obs;
 
   @override
   Widget build(BuildContext context) {
@@ -416,64 +411,13 @@ class SaleHome2 extends StatelessWidget {
                           borderRadius: BorderRadius.circular(10),
                         ),
                         prefixIcon: IconButton(
-                          icon: const Icon(CupertinoIcons.chevron_left_2),
+                          icon: const Icon(
+                            Icons.keyboard_double_arrow_down_outlined,
+                            size: 30,
+                          ),
                           onPressed: () {
-                            Get.bottomSheet(
-                              Container(
-                                decoration: const BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.only(
-                                        topLeft: Radius.circular(20),
-                                        topRight: Radius.circular(20))),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceAround,
-                                  children: [
-                                    GestureDetector(
-                                        onTap: () {
-                                          if (_index.value > 0) {
-                                            _index.value = _index.value - 1;
-                                            itemScrollController.scrollTo(
-                                                index: _index.value,
-                                                duration:
-                                                    const Duration(seconds: 1));
-                                          }
-                                        },
-                                        child: const Icon(Icons.arrow_upward)),
-                                    SizedBox(
-                                      width: MediaQuery.of(context).size.width *
-                                          0.100,
-                                      child: ScrollablePositionedList.builder(
-                                          itemScrollController:
-                                              itemScrollController,
-                                          shrinkWrap: true,
-                                          itemCount: 20,
-                                          itemBuilder: (c, i) {
-                                            return Obx(() => Text(
-                                                (i).toString(),
-                                                style: TextStyle(
-                                                    fontSize: i == _index.value
-                                                        ? 30
-                                                        : 15)));
-                                          }),
-                                    ),
-                                    GestureDetector(
-                                      onTap: () {
-                                        if (_index.value < 15) {
-                                          _index.value = _index.value + 1;
-                                          selectedIndex = 1;
-                                          itemScrollController.scrollTo(
-                                              index: _index.value,
-                                              duration:
-                                                  const Duration(seconds: 1));
-                                        }
-                                      },
-                                      child: const Icon(Icons.arrow_downward),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            );
+                            showNumberPicker((_){
+                            });
                           },
                         )),
                   ),
@@ -493,7 +437,10 @@ class SaleHome2 extends StatelessWidget {
                         borderRadius: BorderRadius.circular(10),
                       ),
                       prefixIcon: IconButton(
-                        icon: const Icon(CupertinoIcons.chevron_left_2),
+                        icon: const Icon(
+                          Icons.keyboard_double_arrow_down_rounded,
+                          size: 30,
+                        ),
                         onPressed: () {
                           persianDataPicker((date) {
                             print(date);
