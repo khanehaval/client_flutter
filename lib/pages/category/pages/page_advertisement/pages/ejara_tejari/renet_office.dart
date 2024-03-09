@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/forosh_adv_pages/sale_old_house.dart';
 import 'package:flutter_application_1/pages/category/shared/contant.dart';
+import 'package:flutter_application_1/pages/category/shared/date.dart';
+import 'package:flutter_application_1/pages/category/shared/number_piacker.dart';
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
 import 'package:flutter_application_1/pages/category/shared/twoItemInRow.dart';
 import 'package:flutter_svg/svg.dart';
@@ -146,7 +148,6 @@ class RentOffice extends StatelessWidget {
                 child: TextField(
                   textAlign: TextAlign.right,
                   controller: _metragTextController,
-                  keyboardType: TextInputType.number,
                   onChanged: (m) {
                     _onePrice.value = m.isNotEmpty
                         ? int.parse(_allPriceTextController.text) / int.parse(m)
@@ -180,6 +181,7 @@ class RentOffice extends StatelessWidget {
                   height: 41,
                   width: getPageWidth_2(context),
                   child: TextField(
+                    readOnly: true,
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
                         hintText: 'انتخاب نشده',
@@ -189,9 +191,9 @@ class RentOffice extends StatelessWidget {
                           borderRadius: BorderRadius.circular(10),
                         ),
                         prefixIcon: IconButton(
-                          icon: const Icon(CupertinoIcons.chevron_left_2),
+                          icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                           onPressed: () {
-                            // _show_item_1.value = !_show_item_1.isTrue;
+                            showNumberPicker((_) {});
                           },
                         )),
                   ),
@@ -200,6 +202,7 @@ class RentOffice extends StatelessWidget {
                   height: 41,
                   width: getPageWidth_2(context),
                   child: TextField(
+                    readOnly: true,
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
                       hintText: 'انتخاب نشده',
@@ -209,9 +212,11 @@ class RentOffice extends StatelessWidget {
                         borderRadius: BorderRadius.circular(10),
                       ),
                       prefixIcon: IconButton(
-                        icon: const Icon(CupertinoIcons.chevron_left_2),
+                        icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                         onPressed: () {
-                          // _show_item_1.value = !_show_item_1.isTrue;
+                          persianDataPicker((date) {
+                            print(date);
+                          });
                         },
                       ),
                     ),
@@ -224,13 +229,13 @@ class RentOffice extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  Text(
+                  const Text(
                     "*",
                     style: TextStyle(
                         fontSize: 20, color: Color.fromRGBO(156, 64, 64, 1)),
                   ),
                   Container(
-                    child: Text(
+                    child: const Text(
                       "طبقه ",
                       style: TextStyle(
                           color: Color.fromRGBO(99, 99, 99, 1),
@@ -244,18 +249,19 @@ class RentOffice extends StatelessWidget {
                 height: 41,
                 width: 372,
                 child: TextField(
+                  readOnly: true,
                   textAlign: TextAlign.right,
                   decoration: InputDecoration(
                     hintText: 'انتخاب نشده',
                     hintStyle:
-                        TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
+                        const TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
                     prefixIcon: IconButton(
-                      icon: const Icon(CupertinoIcons.chevron_left_2),
+                      icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                       onPressed: () {
-                        // _show_item_1.value = !_show_item_1.isTrue;
+                        showNumberPicker((_) {});
                       },
                     ),
                   ),
@@ -282,17 +288,19 @@ class RentOffice extends StatelessWidget {
                             onChanged: (_) => hasAnbari.value = _,
                             value: hasAnbari.value,
                             activeColor: Colors.white,
-                            activeTrackColor: Color.fromRGBO(54, 216, 89, 1),
-                            inactiveThumbColor: Color.fromRGBO(11, 8, 8, 0.2),
+                            activeTrackColor:
+                                const Color.fromRGBO(54, 216, 89, 1),
+                            inactiveThumbColor:
+                                const Color.fromRGBO(11, 8, 8, 0.2),
                             inactiveTrackColor:
-                                Color.fromRGBO(255, 255, 255, 1)),
+                                const Color.fromRGBO(255, 255, 255, 1)),
                       ),
                     ),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(
+                      const Text(
                         "آسانسور",
                         style: TextStyle(
                             fontFamily: MAIN_FONT_FAMILY,
@@ -308,9 +316,9 @@ class RentOffice extends StatelessWidget {
                                 value: hasAsansor.value,
                                 activeColor: Colors.white,
                                 activeTrackColor:
-                                    Color.fromRGBO(54, 216, 89, 1),
+                                    const Color.fromRGBO(54, 216, 89, 1),
                                 inactiveThumbColor:
-                                    Color.fromRGBO(11, 8, 8, 0.2),
+                                    const Color.fromRGBO(11, 8, 8, 0.2),
                                 inactiveTrackColor:
                                     Color.fromRGBO(255, 255, 255, 1)),
                           ),
@@ -319,7 +327,7 @@ class RentOffice extends StatelessWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text(
+                          const Text(
                             "پارکینگ",
                             style: TextStyle(
                                 fontFamily: MAIN_FONT_FAMILY,
@@ -335,11 +343,11 @@ class RentOffice extends StatelessWidget {
                                     value: hasParking.value,
                                     activeColor: Colors.white,
                                     activeTrackColor:
-                                        Color.fromRGBO(54, 216, 89, 1),
+                                        const Color.fromRGBO(54, 216, 89, 1),
                                     inactiveThumbColor:
-                                        Color.fromRGBO(11, 8, 8, 0.2),
+                                        const Color.fromRGBO(11, 8, 8, 0.2),
                                     inactiveTrackColor:
-                                        Color.fromRGBO(255, 255, 255, 1)),
+                                        const Color.fromRGBO(255, 255, 255, 1)),
                               ),
                             ),
                           ),
@@ -370,7 +378,7 @@ class RentOffice extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   Container(
-                    child: Text(
+                    child: const Text(
                       "تعداد کل طبقات ",
                       style: TextStyle(
                           color: Color.fromRGBO(99, 99, 99, 1),
@@ -384,6 +392,7 @@ class RentOffice extends StatelessWidget {
                 height: 41,
                 width: 372,
                 child: TextField(
+                  readOnly: true,
                   textAlign: TextAlign.right,
                   decoration: InputDecoration(
                     hintText: 'انتخاب نشده',
@@ -393,9 +402,9 @@ class RentOffice extends StatelessWidget {
                       borderRadius: BorderRadius.circular(10),
                     ),
                     prefixIcon: IconButton(
-                      icon: const Icon(CupertinoIcons.chevron_left_2),
+                      icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                       onPressed: () {
-                        // _show_item_1.value = !_show_item_1.isTrue;
+                        showNumberPicker((_) {});
                       },
                     ),
                   ),
@@ -426,6 +435,7 @@ class RentOffice extends StatelessWidget {
                   height: 41,
                   width: getPageWidth_2(context),
                   child: TextField(
+                    readOnly: true,
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
                       hintText: 'انتخاب نشده',
@@ -435,9 +445,9 @@ class RentOffice extends StatelessWidget {
                         borderRadius: BorderRadius.circular(10),
                       ),
                       prefixIcon: IconButton(
-                        icon: const Icon(CupertinoIcons.chevron_left_2),
+                        icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                         onPressed: () {
-                          // _show_item_1.value = !_show_item_1.isTrue;
+                          showNumberPicker((_) {});
                         },
                       ),
                     ),
@@ -454,6 +464,7 @@ class RentOffice extends StatelessWidget {
                   height: 41,
                   width: getPageWidth_2(context),
                   child: TextField(
+                    readOnly: true,
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
                         hintText: 'انتخاب نشده',
@@ -463,7 +474,7 @@ class RentOffice extends StatelessWidget {
                           borderRadius: BorderRadius.circular(10),
                         ),
                         prefixIcon: IconButton(
-                          icon: const Icon(CupertinoIcons.chevron_left_2),
+                          icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                           onPressed: () {
                             // _show_item_1.value = !_show_item_1.isTrue;
                           },
@@ -474,6 +485,7 @@ class RentOffice extends StatelessWidget {
                   height: 41,
                   width: getPageWidth_2(context),
                   child: TextField(
+                    readOnly: true,
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
                       hintText: 'انتخاب نشده',
@@ -484,7 +496,7 @@ class RentOffice extends StatelessWidget {
                         borderRadius: BorderRadius.circular(10),
                       ),
                       prefixIcon: IconButton(
-                        icon: const Icon(CupertinoIcons.chevron_left_2),
+                        icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                         onPressed: () {
                           // _show_item_1.value = !_show_item_1.isTrue;
                         },
@@ -517,6 +529,7 @@ class RentOffice extends StatelessWidget {
                   height: 41,
                   width: getPageWidth_2(context),
                   child: TextField(
+                    readOnly: true,
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
                         hintText: 'انتخاب نشده',
@@ -526,7 +539,7 @@ class RentOffice extends StatelessWidget {
                           borderRadius: BorderRadius.circular(10),
                         ),
                         prefixIcon: IconButton(
-                          icon: const Icon(CupertinoIcons.chevron_left_2),
+                          icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                           onPressed: () {
                             // _show_item_1.value = !_show_item_1.isTrue;
                           },
@@ -537,6 +550,7 @@ class RentOffice extends StatelessWidget {
                   height: 41,
                   width: getPageWidth_2(context),
                   child: TextField(
+                    readOnly: true,
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
                       hintText: 'انتخاب نشده',
@@ -546,7 +560,7 @@ class RentOffice extends StatelessWidget {
                         borderRadius: BorderRadius.circular(10),
                       ),
                       prefixIcon: IconButton(
-                        icon: const Icon(CupertinoIcons.chevron_left_2),
+                        icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                         onPressed: () {
                           // _show_item_1.value = !_show_item_1.isTrue;
                         },
@@ -565,6 +579,7 @@ class RentOffice extends StatelessWidget {
                   height: 41,
                   width: getPageWidth_2(context),
                   child: TextField(
+                    readOnly: true,
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
                       hintText: 'انتخاب نشده',
@@ -574,7 +589,7 @@ class RentOffice extends StatelessWidget {
                         borderRadius: BorderRadius.circular(10),
                       ),
                       prefixIcon: IconButton(
-                        icon: const Icon(CupertinoIcons.chevron_left_2),
+                        icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                         onPressed: () {
                           // _show_item_1.value = !_show_item_1.isTrue;
                         },
@@ -586,6 +601,7 @@ class RentOffice extends StatelessWidget {
                   height: 41,
                   width: getPageWidth_2(context),
                   child: TextField(
+                    readOnly: true,
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
                       hintText: 'انتخاب نشده',
@@ -595,7 +611,7 @@ class RentOffice extends StatelessWidget {
                         borderRadius: BorderRadius.circular(10),
                       ),
                       prefixIcon: IconButton(
-                        icon: const Icon(CupertinoIcons.chevron_left_2),
+                        icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                         onPressed: () {
                           // _show_item_1.value = !_show_item_1.isTrue;
                         },
@@ -614,6 +630,7 @@ class RentOffice extends StatelessWidget {
                   height: 41,
                   width: getPageWidth_2(context),
                   child: TextField(
+                    readOnly: true,
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
                         hintText: 'انتخاب نشده',
@@ -623,7 +640,7 @@ class RentOffice extends StatelessWidget {
                           borderRadius: BorderRadius.circular(10),
                         ),
                         prefixIcon: IconButton(
-                          icon: const Icon(CupertinoIcons.chevron_left_2),
+                          icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                           onPressed: () {
                             // _show_item_1.value = !_show_item_1.isTrue;
                           },
@@ -632,8 +649,9 @@ class RentOffice extends StatelessWidget {
                 ),
                 w2: Container(
                   height: 41,
-                  width: 176,
+                  width: getPageWidth_2(context),
                   child: TextField(
+                    readOnly: true,
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
                       hintText: 'انتخاب نشده',
@@ -643,7 +661,7 @@ class RentOffice extends StatelessWidget {
                         borderRadius: BorderRadius.circular(10),
                       ),
                       prefixIcon: IconButton(
-                        icon: const Icon(CupertinoIcons.chevron_left_2),
+                        icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                         onPressed: () {
                           // _show_item_1.value = !_show_item_1.isTrue;
                         },

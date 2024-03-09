@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/forosh_adv_pages/sale_old_house.dart';
 import 'package:flutter_application_1/pages/category/shared/contant.dart';
+import 'package:flutter_application_1/pages/category/shared/date.dart';
+import 'package:flutter_application_1/pages/category/shared/number_piacker.dart';
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
 import 'package:flutter_application_1/pages/category/shared/twoItemInRow.dart';
 import 'package:flutter_svg/svg.dart';
@@ -190,9 +192,9 @@ class RenetHome extends StatelessWidget {
                           borderRadius: BorderRadius.circular(10),
                         ),
                         prefixIcon: IconButton(
-                          icon: const Icon(CupertinoIcons.chevron_left_2),
+                          icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                           onPressed: () {
-                            // _show_item_1.value = !_show_item_1.isTrue;
+                            showNumberPicker((_) {});
                           },
                         )),
                   ),
@@ -210,9 +212,11 @@ class RenetHome extends StatelessWidget {
                         borderRadius: BorderRadius.circular(10),
                       ),
                       prefixIcon: IconButton(
-                        icon: const Icon(CupertinoIcons.chevron_left_2),
+                        icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                         onPressed: () {
-                          // _show_item_1.value = !_show_item_1.isTrue;
+                          persianDataPicker((date) {
+                            print(date);
+                          });
                         },
                       ),
                     ),
@@ -250,14 +254,14 @@ class RenetHome extends StatelessWidget {
                   decoration: InputDecoration(
                     hintText: 'انتخاب نشده',
                     hintStyle:
-                        TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
+                        const TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
                     prefixIcon: IconButton(
-                      icon: const Icon(CupertinoIcons.chevron_left_2),
+                      icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                       onPressed: () {
-                        // _show_item_1.value = !_show_item_1.isTrue;
+                        showNumberPicker((_) {});
                       },
                     ),
                   ),
@@ -287,7 +291,7 @@ class RenetHome extends StatelessWidget {
                             activeTrackColor: Color.fromRGBO(54, 216, 89, 1),
                             inactiveThumbColor: Color.fromRGBO(11, 8, 8, 0.2),
                             inactiveTrackColor:
-                                Color.fromRGBO(255, 255, 255, 1)),
+                                const Color.fromRGBO(255, 255, 255, 1)),
                       ),
                     ),
                   ),
@@ -310,11 +314,11 @@ class RenetHome extends StatelessWidget {
                                 value: hasAsansor.value,
                                 activeColor: Colors.white,
                                 activeTrackColor:
-                                    Color.fromRGBO(54, 216, 89, 1),
+                                    const Color.fromRGBO(54, 216, 89, 1),
                                 inactiveThumbColor:
-                                    Color.fromRGBO(11, 8, 8, 0.2),
+                                    const Color.fromRGBO(11, 8, 8, 0.2),
                                 inactiveTrackColor:
-                                    Color.fromRGBO(255, 255, 255, 1)),
+                                    const Color.fromRGBO(255, 255, 255, 1)),
                           ),
                         ),
                       ),
@@ -337,11 +341,11 @@ class RenetHome extends StatelessWidget {
                                     value: hasParking.value,
                                     activeColor: Colors.white,
                                     activeTrackColor:
-                                        Color.fromRGBO(54, 216, 89, 1),
+                                        const Color.fromRGBO(54, 216, 89, 1),
                                     inactiveThumbColor:
-                                        Color.fromRGBO(11, 8, 8, 0.2),
+                                        const Color.fromRGBO(11, 8, 8, 0.2),
                                     inactiveTrackColor:
-                                        Color.fromRGBO(255, 255, 255, 1)),
+                                        const Color.fromRGBO(255, 255, 255, 1)),
                               ),
                             ),
                           ),
@@ -384,23 +388,9 @@ class RenetHome extends StatelessWidget {
                           borderRadius: BorderRadius.circular(10),
                         ),
                         prefixIcon: IconButton(
-                          icon: const Icon(CupertinoIcons.chevron_left_2),
+                          icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                           onPressed: () {
-                            Get.bottomSheet(Container(
-                              decoration: const BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.only(
-                                      topLeft: Radius.circular(20),
-                                      topRight: Radius.circular(20))),
-                              child: ListView.builder(
-                                  shrinkWrap: true,
-                                  itemCount: 10,
-                                  itemBuilder: (c, i) {
-                                    return Center(
-                                      child: Text(i.toString()),
-                                    );
-                                  }),
-                            ));
+                            showNumberPicker((_) {});
                           },
                         )),
                   ),
@@ -418,7 +408,7 @@ class RenetHome extends StatelessWidget {
                         borderRadius: BorderRadius.circular(10),
                       ),
                       prefixIcon: IconButton(
-                        icon: const Icon(CupertinoIcons.chevron_left_2),
+                        icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                         onPressed: () {
                           // _show_item_1.value = !_show_item_1.isTrue;
                         },
@@ -457,15 +447,15 @@ class RenetHome extends StatelessWidget {
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
                       hintText: 'انتخاب نشده',
-                      hintStyle:
-                          TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
+                      hintStyle: const TextStyle(
+                          color: Color(0xFFA6A6A6), fontSize: 13),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
                       prefixIcon: IconButton(
-                        icon: const Icon(CupertinoIcons.chevron_left_2),
+                        icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                         onPressed: () {
-                          // _show_item_1.value = !_show_item_1.isTrue;
+                          showNumberPicker((_) {});
                         },
                       ),
                     ),
@@ -486,13 +476,13 @@ class RenetHome extends StatelessWidget {
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
                         hintText: 'انتخاب نشده',
-                        hintStyle:
-                            TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
+                        hintStyle: const TextStyle(
+                            color: Color(0xFFA6A6A6), fontSize: 13),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
                         prefixIcon: IconButton(
-                          icon: const Icon(CupertinoIcons.chevron_left_2),
+                          icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                           onPressed: () {
                             // _show_item_1.value = !_show_item_1.isTrue;
                           },
@@ -507,13 +497,13 @@ class RenetHome extends StatelessWidget {
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
                       hintText: 'انتخاب نشده',
-                      hintStyle:
-                          TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
+                      hintStyle: const TextStyle(
+                          color: Color(0xFFA6A6A6), fontSize: 13),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
                       prefixIcon: IconButton(
-                        icon: const Icon(CupertinoIcons.chevron_left_2),
+                        icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                         onPressed: () {
                           // _show_item_1.value = !_show_item_1.isTrue;
                         },
@@ -556,7 +546,7 @@ class RenetHome extends StatelessWidget {
                           borderRadius: BorderRadius.circular(10),
                         ),
                         prefixIcon: IconButton(
-                          icon: const Icon(CupertinoIcons.chevron_left_2),
+                          icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                           onPressed: () {
                             // _show_item_1.value = !_show_item_1.isTrue;
                           },
@@ -577,7 +567,7 @@ class RenetHome extends StatelessWidget {
                         borderRadius: BorderRadius.circular(10),
                       ),
                       prefixIcon: IconButton(
-                        icon: const Icon(CupertinoIcons.chevron_left_2),
+                        icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                         onPressed: () {
                           // _show_item_1.value = !_show_item_1.isTrue;
                         },
@@ -606,7 +596,7 @@ class RenetHome extends StatelessWidget {
                         borderRadius: BorderRadius.circular(10),
                       ),
                       prefixIcon: IconButton(
-                        icon: const Icon(CupertinoIcons.chevron_left_2),
+                        icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                         onPressed: () {
                           // _show_item_1.value = !_show_item_1.isTrue;
                         },
@@ -628,7 +618,7 @@ class RenetHome extends StatelessWidget {
                         borderRadius: BorderRadius.circular(10),
                       ),
                       prefixIcon: IconButton(
-                        icon: const Icon(CupertinoIcons.chevron_left_2),
+                        icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                         onPressed: () {
                           // _show_item_1.value = !_show_item_1.isTrue;
                         },
@@ -657,7 +647,7 @@ class RenetHome extends StatelessWidget {
                           borderRadius: BorderRadius.circular(10),
                         ),
                         prefixIcon: IconButton(
-                          icon: const Icon(CupertinoIcons.chevron_left_2),
+                          icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                           onPressed: () {
                             // _show_item_1.value = !_show_item_1.isTrue;
                           },
@@ -666,7 +656,7 @@ class RenetHome extends StatelessWidget {
                 ),
                 w2: Container(
                   height: 41,
-                  width: 176,
+                  width: getPageWidth_2(context),
                   child: TextField(
                     readOnly: true,
                     textAlign: TextAlign.right,
@@ -678,7 +668,7 @@ class RenetHome extends StatelessWidget {
                         borderRadius: BorderRadius.circular(10),
                       ),
                       prefixIcon: IconButton(
-                        icon: const Icon(CupertinoIcons.chevron_left_2),
+                        icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                         onPressed: () {
                           // _show_item_1.value = !_show_item_1.isTrue;
                         },

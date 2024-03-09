@@ -11,6 +11,7 @@ import 'package:flutter_application_1/pages/category/shared/switchItem.dart';
 import 'package:flutter_application_1/pages/category/shared/twoItemInRow.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:persian_datetime_picker/persian_datetime_picker.dart';
 
 class SaleHome2 extends StatelessWidget {
   final aghsatType = "".obs;
@@ -212,9 +213,9 @@ class SaleHome2 extends StatelessWidget {
                           borderRadius: BorderRadius.circular(10),
                         ),
                         prefixIcon: IconButton(
-                          icon: const Icon(CupertinoIcons.chevron_left_2),
+                          icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                           onPressed: () {
-                            // _show_item_1.value = !_show_item_1.isTrue;
+                            showNumberPicker((_) {});
                           },
                         )),
                   ),
@@ -234,9 +235,9 @@ class SaleHome2 extends StatelessWidget {
                         borderRadius: BorderRadius.circular(10),
                       ),
                       prefixIcon: IconButton(
-                        icon: const Icon(CupertinoIcons.chevron_left_2),
+                        icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                         onPressed: () {
-                          // _show_item_1.value = !_show_item_1.isTrue;
+                          persianDataPicker((Date) => print(Date));
                         },
                       ),
                     ),
@@ -280,7 +281,7 @@ class SaleHome2 extends StatelessWidget {
                       borderRadius: BorderRadius.circular(10),
                     ),
                     prefixIcon: IconButton(
-                      icon: const Icon(CupertinoIcons.chevron_left_2),
+                      icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                       onPressed: () {
                         buildButtom();
                       },
@@ -411,13 +412,9 @@ class SaleHome2 extends StatelessWidget {
                           borderRadius: BorderRadius.circular(10),
                         ),
                         prefixIcon: IconButton(
-                          icon: const Icon(
-                            Icons.keyboard_double_arrow_down_outlined,
-                            size: 30,
-                          ),
+                          icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                           onPressed: () {
-                            showNumberPicker((_){
-                            });
+                            showNumberPicker((_) {});
                           },
                         )),
                   ),
@@ -437,10 +434,7 @@ class SaleHome2 extends StatelessWidget {
                         borderRadius: BorderRadius.circular(10),
                       ),
                       prefixIcon: IconButton(
-                        icon: const Icon(
-                          Icons.keyboard_double_arrow_down_rounded,
-                          size: 30,
-                        ),
+                        icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                         onPressed: () {
                           persianDataPicker((date) {
                             print(date);
@@ -488,9 +482,9 @@ class SaleHome2 extends StatelessWidget {
                         borderRadius: BorderRadius.circular(10),
                       ),
                       prefixIcon: IconButton(
-                        icon: const Icon(CupertinoIcons.chevron_left_2),
+                        icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                         onPressed: () {
-                          // _show_item_1.value = !_show_item_1.isTrue;
+                          showNumberPicker((_) {});
                         },
                       ),
                     ),
@@ -518,7 +512,7 @@ class SaleHome2 extends StatelessWidget {
                           borderRadius: BorderRadius.circular(10),
                         ),
                         prefixIcon: IconButton(
-                          icon: const Icon(CupertinoIcons.chevron_left_2),
+                          icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                           onPressed: () {
                             // _show_item_1.value = !_show_item_1.isTrue;
                           },
@@ -541,7 +535,7 @@ class SaleHome2 extends StatelessWidget {
                         borderRadius: BorderRadius.circular(10),
                       ),
                       prefixIcon: IconButton(
-                        icon: const Icon(CupertinoIcons.chevron_left_2),
+                        icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                         onPressed: () {
                           // _show_item_1.value = !_show_item_1.isTrue;
                         },
@@ -585,7 +579,7 @@ class SaleHome2 extends StatelessWidget {
                           borderRadius: BorderRadius.circular(10),
                         ),
                         prefixIcon: IconButton(
-                          icon: const Icon(CupertinoIcons.chevron_left_2),
+                          icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                           onPressed: () {
                             // _show_item_1.value = !_show_item_1.isTrue;
                           },
@@ -607,7 +601,7 @@ class SaleHome2 extends StatelessWidget {
                         borderRadius: BorderRadius.circular(10),
                       ),
                       prefixIcon: IconButton(
-                        icon: const Icon(CupertinoIcons.chevron_left_2),
+                        icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                         onPressed: () {
                           // _show_item_1.value = !_show_item_1.isTrue;
                         },
@@ -637,7 +631,7 @@ class SaleHome2 extends StatelessWidget {
                         borderRadius: BorderRadius.circular(10),
                       ),
                       prefixIcon: IconButton(
-                        icon: const Icon(CupertinoIcons.chevron_left_2),
+                        icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                         onPressed: () {
                           // _show_item_1.value = !_show_item_1.isTrue;
                         },
@@ -660,7 +654,7 @@ class SaleHome2 extends StatelessWidget {
                         borderRadius: BorderRadius.circular(10),
                       ),
                       prefixIcon: IconButton(
-                        icon: const Icon(CupertinoIcons.chevron_left_2),
+                        icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                         onPressed: () {
                           // _show_item_1.value = !_show_item_1.isTrue;
                         },
@@ -669,7 +663,7 @@ class SaleHome2 extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 15,
               ),
               TwoItemInRow(
@@ -690,7 +684,7 @@ class SaleHome2 extends StatelessWidget {
                           borderRadius: BorderRadius.circular(10),
                         ),
                         prefixIcon: IconButton(
-                          icon: const Icon(CupertinoIcons.chevron_left_2),
+                          icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                           onPressed: () {
                             // _show_item_1.value = !_show_item_1.isTrue;
                           },
@@ -706,13 +700,13 @@ class SaleHome2 extends StatelessWidget {
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
                       hintText: 'انتخاب نشده',
-                      hintStyle:
-                          TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
+                      hintStyle: const TextStyle(
+                          color: Color(0xFFA6A6A6), fontSize: 13),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
                       prefixIcon: IconButton(
-                        icon: const Icon(CupertinoIcons.chevron_left_2),
+                        icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                         onPressed: () {
                           // _show_item_1.value = !_show_item_1.isTrue;
                         },
@@ -1088,8 +1082,7 @@ class SaleHome2 extends StatelessWidget {
                   ),
                   const Text(
                     "در صورت وارد نکردن آیتم ها، آگهی فقط با عنوان اقساطی منتشر میگردد",
-                    style:
-                        TextStyle(fontFamily: MAIN_FONT_FAMILY, fontSize: 9.5),
+                    style: TextStyle(fontFamily: MAIN_FONT_FAMILY, fontSize: 9),
                   ),
                   const SizedBox(
                     height: 20,
@@ -1151,8 +1144,13 @@ class SaleHome2 extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(10),
                               ),
                               prefixIcon: IconButton(
-                                icon: const Icon(CupertinoIcons.chevron_left_2),
-                                onPressed: () {},
+                                icon: SvgPicture.asset(
+                                    "assets/images/Vector-20.svg"),
+                                onPressed: () {
+                                  persianDataPicker((Date) {
+                                    print(Date);
+                                  });
+                                },
                               )),
                         ),
                       ),
@@ -1171,8 +1169,11 @@ class SaleHome2 extends StatelessWidget {
                               borderRadius: BorderRadius.circular(10),
                             ),
                             prefixIcon: IconButton(
-                              icon: const Icon(CupertinoIcons.chevron_left_2),
-                              onPressed: () {},
+                              icon: SvgPicture.asset(
+                                  "assets/images/Vector-20.svg"),
+                              onPressed: () {
+                                showNumberPicker((_) {});
+                              },
                             ),
                           ),
                         ),
@@ -1241,7 +1242,7 @@ class SaleHome2 extends StatelessWidget {
                     "در صورت وارد نکردن آیتم ها، آگهی فقط با عنوان دارای وام منتشر میگردد",
                     style: TextStyle(
                         fontFamily: MAIN_FONT_FAMILY,
-                        fontSize: 9.5,
+                        fontSize: 9,
                         overflow: TextOverflow.clip),
                   ),
                   const SizedBox(
@@ -1304,8 +1305,11 @@ class SaleHome2 extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(10),
                               ),
                               prefixIcon: IconButton(
-                                icon: const Icon(CupertinoIcons.chevron_left_2),
-                                onPressed: () {},
+                                icon: SvgPicture.asset(
+                                    "assets/images/Vector-20.svg"),
+                                onPressed: () {
+                                  persianDataPicker((Date) => print(Date));
+                                },
                               )),
                         ),
                       ),
@@ -1324,8 +1328,11 @@ class SaleHome2 extends StatelessWidget {
                               borderRadius: BorderRadius.circular(10),
                             ),
                             prefixIcon: IconButton(
-                              icon: const Icon(CupertinoIcons.chevron_left_2),
-                              onPressed: () {},
+                              icon: SvgPicture.asset(
+                                  "assets/images/Vector-20.svg"),
+                              onPressed: () {
+                                showNumberPicker((_) {});
+                              },
                             ),
                           ),
                         ),
@@ -1356,9 +1363,9 @@ class SaleHome2 extends StatelessWidget {
                           borderRadius: BorderRadius.circular(10),
                         ),
                         prefixIcon: IconButton(
-                          icon: const Icon(CupertinoIcons.chevron_left_2),
+                          icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                           onPressed: () {
-                            // _show_item_1.value = !_show_item_1.isTrue;
+                            showNumberPicker((_) {});
                           },
                         ),
                       ),

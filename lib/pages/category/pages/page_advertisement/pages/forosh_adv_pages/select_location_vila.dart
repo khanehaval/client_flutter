@@ -27,7 +27,7 @@ class _SelectLocationOnMapState extends State<SelectLocationVila> {
       appBar: buildaAppBar(),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15,vertical: 10),
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
@@ -38,7 +38,9 @@ class _SelectLocationOnMapState extends State<SelectLocationVila> {
                     fontSize: 16,
                     fontFamily: MAIN_FONT_FAMILY),
               ),
-              const SizedBox(height: 15,),
+              const SizedBox(
+                height: 15,
+              ),
               Container(
                 decoration: ShapeDecoration(
                   shape: RoundedRectangleBorder(
@@ -53,7 +55,7 @@ class _SelectLocationOnMapState extends State<SelectLocationVila> {
                 height: 10,
               ),
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.end,
@@ -119,7 +121,7 @@ class _SelectLocationOnMapState extends State<SelectLocationVila> {
               Directionality(
                 textDirection: TextDirection.rtl,
                 child: TextField(
-                  maxLines: 2,
+                  maxLines: 3,
                   decoration: InputDecoration(
                       label: const Text(
                         "آدرس",
@@ -154,7 +156,7 @@ class _SelectLocationOnMapState extends State<SelectLocationVila> {
               SwitchItemVila(
                   type: type, items: const ["باغ ویلا", "باغ", "خانه ویلایی"]),
               const SizedBox(
-                height: 75,
+                height: 50,
               ),
               GestureDetector(
                 onTap: () {

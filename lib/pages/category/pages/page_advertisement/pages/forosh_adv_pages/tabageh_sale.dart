@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/shared/contant.dart';
 import 'package:get/get.dart';
+import 'dart:ui';
 
 buildButtom() {
   final _selected = 0.obs;
@@ -56,7 +57,7 @@ buildButtom() {
                     padding: const EdgeInsets.only(top: 10),
                     child: Container(
                       decoration: BoxDecoration(
-                          color: Colors.cyan,
+                          gradient: LinearGradient(colors: GRADIANT_COLOR),
                           borderRadius: BorderRadius.circular(50)),
                       child: IconButton(
                         icon: const Icon(

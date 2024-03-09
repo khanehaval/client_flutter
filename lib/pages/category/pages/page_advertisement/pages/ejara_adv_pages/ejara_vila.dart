@@ -55,7 +55,7 @@ class _SelectLocationOnMapState extends State<SelectLocationOnEjaraVila> {
                 height: 10,
               ),
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.end,
@@ -121,7 +121,7 @@ class _SelectLocationOnMapState extends State<SelectLocationOnEjaraVila> {
               Directionality(
                 textDirection: TextDirection.rtl,
                 child: TextField(
-                  maxLines: 2,
+                  maxLines: 3,
                   decoration: InputDecoration(
                       label: const Text(
                         "آدرس",
@@ -156,7 +156,7 @@ class _SelectLocationOnMapState extends State<SelectLocationOnEjaraVila> {
               SwitchItem(
                   type: type, items: const ["باغ ویلا", "باغ", "خانه ویلایی"]),
               const SizedBox(
-                height: 80,
+                height: 60,
               ),
               GestureDetector(
                 onTap: () {

@@ -6,6 +6,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/ejara_tejari/rent_store.dart';
 import 'package:flutter_application_1/pages/category/shared/contant.dart';
+import 'package:flutter_application_1/pages/category/shared/date.dart';
+import 'package:flutter_application_1/pages/category/shared/number_piacker.dart';
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
 import 'package:flutter_application_1/pages/category/shared/switchItem.dart';
 import 'package:flutter_application_1/pages/category/shared/twoItemInRow.dart';
@@ -221,6 +223,7 @@ class Presell extends StatelessWidget {
                 height: 41,
                 width: 372,
                 child: TextField(
+                  readOnly: true,
                   textAlign: TextAlign.right,
                   decoration: InputDecoration(
                     hintText: 'انتخاب نشده',
@@ -230,7 +233,7 @@ class Presell extends StatelessWidget {
                       borderRadius: BorderRadius.circular(10),
                     ),
                     prefixIcon: IconButton(
-                      icon: const Icon(CupertinoIcons.chevron_left_2),
+                      icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                       onPressed: () {
                         // _show_item_1.value = !_show_item_1.isTrue;
                       },
@@ -248,6 +251,7 @@ class Presell extends StatelessWidget {
                   height: 41,
                   width: getPageWidth_2(context),
                   child: TextField(
+                    readOnly: true,
                     keyboardType: TextInputType.number,
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
@@ -275,10 +279,8 @@ class Presell extends StatelessWidget {
                         borderRadius: BorderRadius.circular(10),
                       ),
                       prefixIcon: IconButton(
-                        icon: const Icon(CupertinoIcons.chevron_left_2),
-                        onPressed: () {
-                          // _show_item_1.value = !_show_item_1.isTrue;
-                        },
+                        icon: SvgPicture.asset("assets/images/Vector-20.svg"),
+                        onPressed: () {},
                       ),
                     ),
                   ),
@@ -305,7 +307,7 @@ class Presell extends StatelessWidget {
                           borderRadius: BorderRadius.circular(10),
                         ),
                         prefixIcon: IconButton(
-                          icon: const Icon(CupertinoIcons.chevron_left_2),
+                          icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                           onPressed: () {
                             // _show_item_1.value = !_show_item_1.isTrue;
                           },
@@ -321,16 +323,18 @@ class Presell extends StatelessWidget {
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
                       hintText: 'انتخاب نشده',
-                      hintStyle: TextStyle(
+                      hintStyle: const TextStyle(
                         color: Color(0xFFA6A6A6),
                       ),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
                       prefixIcon: IconButton(
-                        icon: const Icon(CupertinoIcons.chevron_left_2),
+                        icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                         onPressed: () {
-                          // _show_item_1.value = !_show_item_1.isTrue;
+                          persianDataPicker((date) {
+                            print(date);
+                          });
                         },
                       ),
                     ),
@@ -770,8 +774,13 @@ class Presell extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(10),
                               ),
                               prefixIcon: IconButton(
-                                icon: const Icon(CupertinoIcons.chevron_left_2),
-                                onPressed: () {},
+                                icon: SvgPicture.asset(
+                                    "assets/images/Vector-20.svg"),
+                                onPressed: () {
+                                  persianDataPicker((date) {
+                                    print(date);
+                                  });
+                                },
                               )),
                         ),
                       ),
@@ -790,8 +799,11 @@ class Presell extends StatelessWidget {
                               borderRadius: BorderRadius.circular(10),
                             ),
                             prefixIcon: IconButton(
-                              icon: const Icon(CupertinoIcons.chevron_left_2),
-                              onPressed: () {},
+                              icon: SvgPicture.asset(
+                                  "assets/images/Vector-20.svg"),
+                              onPressed: () {
+                                showNumberPicker((_) {});
+                              },
                             ),
                           ),
                         ),
@@ -931,9 +943,9 @@ class Presell extends StatelessWidget {
                           borderRadius: BorderRadius.circular(10),
                         ),
                         prefixIcon: IconButton(
-                          icon: const Icon(CupertinoIcons.chevron_left_2),
+                          icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                           onPressed: () {
-                            // _show_item_1.value = !_show_item_1.isTrue;
+                            showNumberPicker((_) {});
                           },
                         ),
                       ),
@@ -1102,6 +1114,7 @@ Widget Aparteman(BuildContext context) {
                     height: 41,
                     width: getPageWidth_2(context),
                     child: TextField(
+                      readOnly: true,
                       textAlign: TextAlign.right,
                       decoration: InputDecoration(
                         hintText: 'تایپ کنید',
@@ -1117,6 +1130,7 @@ Widget Aparteman(BuildContext context) {
                     height: 41,
                     width: getPageWidth_2(context),
                     child: TextField(
+                      readOnly: true,
                       textAlign: TextAlign.right,
                       decoration: InputDecoration(
                         hintText: 'انتخاب نشده',
@@ -1126,9 +1140,9 @@ Widget Aparteman(BuildContext context) {
                           borderRadius: BorderRadius.circular(10),
                         ),
                         prefixIcon: IconButton(
-                          icon: const Icon(CupertinoIcons.chevron_left_2),
+                          icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                           onPressed: () {
-                            // _show_item_1.value = !_show_item_1.isTrue;
+                            showNumberPicker((_) {});
                           },
                         ),
                       ),
@@ -1152,6 +1166,7 @@ Widget Aparteman(BuildContext context) {
                   height: 41,
                   width: 372,
                   child: TextField(
+                    readOnly: true,
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
                       hintText: 'انتخاب نشده',
@@ -1161,7 +1176,7 @@ Widget Aparteman(BuildContext context) {
                         borderRadius: BorderRadius.circular(10),
                       ),
                       prefixIcon: IconButton(
-                        icon: const Icon(CupertinoIcons.chevron_left_2),
+                        icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                         onPressed: () {
                           // _show_item_1.value = !_show_item_1.isTrue;
                         },
@@ -1319,6 +1334,7 @@ Widget Vila(BuildContext context) {
                     height: 41,
                     width: getPageWidth_2(context),
                     child: TextField(
+                      readOnly: true,
                       textAlign: TextAlign.right,
                       decoration: InputDecoration(
                         hintText: 'تایپ کنید',
@@ -1334,6 +1350,7 @@ Widget Vila(BuildContext context) {
                     height: 41,
                     width: getPageWidth_2(context),
                     child: TextField(
+                      readOnly: true,
                       textAlign: TextAlign.right,
                       decoration: InputDecoration(
                         hintText: 'انتخاب نشده',
@@ -1343,9 +1360,9 @@ Widget Vila(BuildContext context) {
                           borderRadius: BorderRadius.circular(10),
                         ),
                         prefixIcon: IconButton(
-                          icon: const Icon(CupertinoIcons.chevron_left_2),
+                          icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                           onPressed: () {
-                            // _show_item_1.value = !_show_item_1.isTrue;
+                            showNumberPicker((_) {});
                           },
                         ),
                       ),
@@ -1369,6 +1386,7 @@ Widget Vila(BuildContext context) {
                   height: 41,
                   width: 372,
                   child: TextField(
+                    readOnly: true,
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
                       hintText: 'انتخاب نشده',
@@ -1378,9 +1396,9 @@ Widget Vila(BuildContext context) {
                         borderRadius: BorderRadius.circular(10),
                       ),
                       prefixIcon: IconButton(
-                        icon: const Icon(CupertinoIcons.chevron_left_2),
+                        icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                         onPressed: () {
-                          // _show_item_1.value = !_show_item_1.isTrue;
+                          showNumberPicker((_) {});
                         },
                       ),
                     ),
@@ -1545,6 +1563,7 @@ Widget Edari(BuildContext context) {
                     height: 41,
                     width: getPageWidth_2(context),
                     child: TextField(
+                      readOnly: true,
                       textAlign: TextAlign.right,
                       decoration: InputDecoration(
                         hintText: 'انتخاب نشده',
@@ -1554,9 +1573,9 @@ Widget Edari(BuildContext context) {
                           borderRadius: BorderRadius.circular(10),
                         ),
                         prefixIcon: IconButton(
-                          icon: const Icon(CupertinoIcons.chevron_left_2),
+                          icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                           onPressed: () {
-                            // _show_item_1.value = !_show_item_1.isTrue;
+                            showNumberPicker((_) {});
                           },
                         ),
                       ),
