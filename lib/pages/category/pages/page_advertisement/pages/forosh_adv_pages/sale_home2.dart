@@ -1190,7 +1190,7 @@ class SaleHome2 extends StatelessWidget {
                     "قیمت نهایی ملک (پیش پرداخت + اقساط ) : 13.200.000.000 تومان",
                     style: TextStyle(
                       fontFamily: MAIN_FONT_FAMILY,
-                      fontSize: 9.5,
+                      fontSize: 9,
                     ),
                   ),
                   const SizedBox(
