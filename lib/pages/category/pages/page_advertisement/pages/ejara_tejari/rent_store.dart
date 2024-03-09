@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/shared/contant.dart';
+import 'package:flutter_application_1/pages/category/shared/date.dart';
+import 'package:flutter_application_1/pages/category/shared/number_piacker.dart';
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
 import 'package:flutter_application_1/pages/category/shared/switchItem.dart';
 import 'package:flutter_application_1/pages/category/shared/twoItemInRow.dart';
@@ -251,6 +253,7 @@ class RentStore extends StatelessWidget {
                   height: 41,
                   width: getPageWidth_2(context),
                   child: TextField(
+                    readOnly: true,
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
                         hintText: 'انتخاب نشده',
@@ -260,7 +263,7 @@ class RentStore extends StatelessWidget {
                           borderRadius: BorderRadius.circular(10),
                         ),
                         prefixIcon: IconButton(
-                          icon: const Icon(CupertinoIcons.chevron_left_2),
+                          icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                           onPressed: () {
                             // _show_item_1.value = !_show_item_1.isTrue;
                           },
@@ -271,6 +274,7 @@ class RentStore extends StatelessWidget {
                   height: 41,
                   width: getPageWidth_2(context),
                   child: TextField(
+                    readOnly: true,
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
                       hintText: 'انتخاب نشده',
@@ -280,7 +284,7 @@ class RentStore extends StatelessWidget {
                         borderRadius: BorderRadius.circular(10),
                       ),
                       prefixIcon: IconButton(
-                        icon: const Icon(CupertinoIcons.chevron_left_2),
+                        icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                         onPressed: () {
                           // _show_item_1.value = !_show_item_1.isTrue;
                         },
@@ -299,6 +303,7 @@ class RentStore extends StatelessWidget {
                   height: 41,
                   width: getPageWidth_2(context),
                   child: TextField(
+                    readOnly: true,
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
                       hintText: 'انتخاب نشده',
@@ -308,7 +313,7 @@ class RentStore extends StatelessWidget {
                         borderRadius: BorderRadius.circular(10),
                       ),
                       prefixIcon: IconButton(
-                        icon: const Icon(CupertinoIcons.chevron_left_2),
+                        icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                         onPressed: () {
                           // _show_item_1.value = !_show_item_1.isTrue;
                         },
@@ -320,6 +325,7 @@ class RentStore extends StatelessWidget {
                   height: 41,
                   width: getPageWidth_2(context),
                   child: TextField(
+                    readOnly: true,
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
                       hintText: 'انتخاب نشده',
@@ -329,7 +335,7 @@ class RentStore extends StatelessWidget {
                         borderRadius: BorderRadius.circular(10),
                       ),
                       prefixIcon: IconButton(
-                        icon: const Icon(CupertinoIcons.chevron_left_2),
+                        icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                         onPressed: () {
                           // _show_item_1.value = !_show_item_1.isTrue;
                         },
@@ -338,7 +344,7 @@ class RentStore extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               Row(
@@ -359,6 +365,7 @@ class RentStore extends StatelessWidget {
                 height: 41,
                 width: 372,
                 child: TextField(
+                  readOnly: true,
                   textAlign: TextAlign.right,
                   decoration: InputDecoration(
                     hintText: 'انتخاب نشده',
@@ -368,7 +375,7 @@ class RentStore extends StatelessWidget {
                       borderRadius: BorderRadius.circular(10),
                     ),
                     prefixIcon: IconButton(
-                      icon: const Icon(CupertinoIcons.chevron_left_2),
+                      icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                       onPressed: () {
                         // _show_item_1.value = !_show_item_1.isTrue;
                       },
@@ -376,17 +383,17 @@ class RentStore extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 15,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
-              Text(
+              const Text(
                 "سایر امکانات",
                 style: TextStyle(fontFamily: MAIN_FONT_FAMILY, fontSize: 16),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               Row(
@@ -780,16 +787,7 @@ Widget aghsatiForoshWidget(BuildContext context) {
                     ),
                   ),
                 ),
-                const SizedBox(
-                  height: 17,
-                ),
-                SizedBox(
-                  height: 20,
-                ),
                 const SizedBox(width: 25),
-                const SizedBox(
-                  height: 20,
-                ),
                 const SizedBox(
                   height: 30,
                 ),
@@ -856,6 +854,7 @@ Widget melkByVamBanki(BuildContext context) {
                     height: 41,
                     width: getPageWidth_2(context),
                     child: TextField(
+                      readOnly: true,
                       textAlign: TextAlign.right,
                       decoration: InputDecoration(
                         hintText: 'انتخاب نشده',
@@ -865,9 +864,11 @@ Widget melkByVamBanki(BuildContext context) {
                           borderRadius: BorderRadius.circular(10),
                         ),
                         prefixIcon: IconButton(
-                          icon: const Icon(CupertinoIcons.chevron_left_2),
+                          icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                           onPressed: () {
-                            // _show_item_1.value = !_show_item_1.isTrue;
+                            persianDataPicker((date) {
+                              print(date);
+                            });
                           },
                         ),
                       ),
@@ -884,6 +885,7 @@ Widget melkByVamBanki(BuildContext context) {
                     height: 41,
                     width: getPageWidth_2(context),
                     child: TextField(
+                      readOnly: true,
                       textAlign: TextAlign.right,
                       decoration: InputDecoration(
                         hintText: 'انتخاب نشده',
@@ -893,9 +895,9 @@ Widget melkByVamBanki(BuildContext context) {
                           borderRadius: BorderRadius.circular(10),
                         ),
                         prefixIcon: IconButton(
-                          icon: const Icon(CupertinoIcons.chevron_left_2),
+                          icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                           onPressed: () {
-                            // _show_item_1.value = !_show_item_1.isTrue;
+                            showNumberPicker((_) {});
                           },
                         ),
                       ),
@@ -905,6 +907,7 @@ Widget melkByVamBanki(BuildContext context) {
                     height: 41,
                     width: getPageWidth_2(context),
                     child: TextField(
+                      readOnly: true,
                       textAlign: TextAlign.right,
                       decoration: InputDecoration(
                         hintText: 'انتخاب نشده',
@@ -914,9 +917,9 @@ Widget melkByVamBanki(BuildContext context) {
                           borderRadius: BorderRadius.circular(10),
                         ),
                         prefixIcon: IconButton(
-                          icon: const Icon(CupertinoIcons.chevron_left_2),
+                          icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                           onPressed: () {
-                            // _show_item_1.value = !_show_item_1.isTrue;
+                            showNumberPicker((_) {});
                           },
                         ),
                       ),

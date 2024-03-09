@@ -26,7 +26,7 @@ class _SelectLocationOnMapState extends State<SelectLocationKolangi> {
       appBar: buildaAppBar(),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
@@ -54,7 +54,7 @@ class _SelectLocationOnMapState extends State<SelectLocationKolangi> {
                 height: 10,
               ),
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.end,
@@ -117,23 +117,20 @@ class _SelectLocationOnMapState extends State<SelectLocationKolangi> {
               const SizedBox(
                 height: 15,
               ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Directionality(
-                  textDirection: TextDirection.rtl,
-                  child: TextField(
-                    maxLines: 2,
-                    decoration: InputDecoration(
-                        label: const Text(
-                          "آدرس",
-                          style: TextStyle(
-                              fontFamily: MAIN_FONT_FAMILY,
-                              color: Color.fromRGBO(166, 166, 166, 1)),
-                          textAlign: TextAlign.right,
-                        ),
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10))),
-                  ),
+              Directionality(
+                textDirection: TextDirection.rtl,
+                child: TextField(
+                  maxLines: 3,
+                  decoration: InputDecoration(
+                      label: const Text(
+                        "آدرس",
+                        style: TextStyle(
+                            fontFamily: MAIN_FONT_FAMILY,
+                            color: Color.fromRGBO(166, 166, 166, 1)),
+                        textAlign: TextAlign.right,
+                      ),
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10))),
                 ),
               ),
               const SizedBox(

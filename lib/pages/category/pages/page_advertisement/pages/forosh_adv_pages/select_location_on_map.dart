@@ -58,7 +58,7 @@ class _SelectLocationOnMapState extends State<SelectLocationOnMap> {
                 height: 10,
               ),
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.end,
@@ -124,7 +124,7 @@ class _SelectLocationOnMapState extends State<SelectLocationOnMap> {
               Directionality(
                 textDirection: TextDirection.rtl,
                 child: TextField(
-                  maxLines: 2,
+                  maxLines: 3,
                   decoration: InputDecoration(
                       label: const Text(
                         "آدرس",
@@ -158,7 +158,7 @@ class _SelectLocationOnMapState extends State<SelectLocationOnMap> {
               ),
               SwitchItem(type: type, items: const ["سوئیت", "برج", "پنت هاوس"]),
               const SizedBox(
-                height: 80,
+                height: 65,
               ),
               GestureDetector(
                 onTap: () {

@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/forosh_adv_pages/sale_old_house.dart';
 import 'package:flutter_application_1/pages/category/shared/contant.dart';
+import 'package:flutter_application_1/pages/category/shared/number_piacker.dart';
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
 import 'package:flutter_application_1/pages/category/shared/twoItemInRow.dart';
 import 'package:flutter_svg/svg.dart';
@@ -241,6 +242,7 @@ class DailyAparteman extends StatelessWidget {
                 height: 41,
                 width: getPageWidth_2(context),
                 child: TextField(
+                  readOnly: true,
                   textAlign: TextAlign.right,
                   decoration: InputDecoration(
                       hintText: 'انتخاب نشده',
@@ -250,7 +252,7 @@ class DailyAparteman extends StatelessWidget {
                         borderRadius: BorderRadius.circular(10),
                       ),
                       prefixIcon: IconButton(
-                        icon: const Icon(CupertinoIcons.chevron_left_2),
+                        icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                         onPressed: () {
                           // _show_item_1.value = !_show_item_1.isTrue;
                         },
@@ -261,6 +263,7 @@ class DailyAparteman extends StatelessWidget {
                 height: 41,
                 width: getPageWidth_2(context),
                 child: TextField(
+                  readOnly: true,
                   textAlign: TextAlign.right,
                   decoration: InputDecoration(
                     hintText: 'انتخاب نشده',
@@ -270,7 +273,7 @@ class DailyAparteman extends StatelessWidget {
                       borderRadius: BorderRadius.circular(10),
                     ),
                     prefixIcon: IconButton(
-                      icon: const Icon(CupertinoIcons.chevron_left_2),
+                      icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                       onPressed: () {
                         // _show_item_1.value = !_show_item_1.isTrue;
                       },
@@ -296,6 +299,7 @@ class DailyAparteman extends StatelessWidget {
                 height: 41,
                 width: getPageWidth_2(context),
                 child: TextField(
+                  readOnly: true,
                   textAlign: TextAlign.right,
                   decoration: InputDecoration(
                       hintText: 'انتخاب نشده',
@@ -305,9 +309,9 @@ class DailyAparteman extends StatelessWidget {
                         borderRadius: BorderRadius.circular(10),
                       ),
                       prefixIcon: IconButton(
-                        icon: const Icon(CupertinoIcons.chevron_left_2),
+                        icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                         onPressed: () {
-                          // _show_item_1.value = !_show_item_1.isTrue;
+                          showNumberPicker((_) {});
                         },
                       )),
                 ),
@@ -316,6 +320,7 @@ class DailyAparteman extends StatelessWidget {
                 height: 41,
                 width: getPageWidth_2(context),
                 child: TextField(
+                  readOnly: true,
                   textAlign: TextAlign.right,
                   decoration: InputDecoration(
                     hintText: 'انتخاب نشده',
@@ -325,9 +330,9 @@ class DailyAparteman extends StatelessWidget {
                       borderRadius: BorderRadius.circular(10),
                     ),
                     prefixIcon: IconButton(
-                      icon: const Icon(CupertinoIcons.chevron_left_2),
+                      icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                       onPressed: () {
-                        // _show_item_1.value = !_show_item_1.isTrue;
+                        showNumberPicker((_) {});
                       },
                     ),
                   ),
@@ -344,6 +349,7 @@ class DailyAparteman extends StatelessWidget {
                 height: 41,
                 width: getPageWidth_2(context),
                 child: TextField(
+                  readOnly: true,
                   textAlign: TextAlign.right,
                   decoration: InputDecoration(
                       hintText: 'انتخاب نشده',
@@ -353,9 +359,9 @@ class DailyAparteman extends StatelessWidget {
                         borderRadius: BorderRadius.circular(10),
                       ),
                       prefixIcon: IconButton(
-                        icon: const Icon(CupertinoIcons.chevron_left_2),
+                        icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                         onPressed: () {
-                          // _show_item_1.value = !_show_item_1.isTrue;
+                          showNumberPicker((_) {});
                         },
                       )),
                 ),
@@ -364,6 +370,7 @@ class DailyAparteman extends StatelessWidget {
                 height: 41,
                 width: getPageWidth_2(context),
                 child: TextField(
+                  readOnly: true,
                   textAlign: TextAlign.right,
                   decoration: InputDecoration(
                     hintText: 'انتخاب نشده',
@@ -373,9 +380,9 @@ class DailyAparteman extends StatelessWidget {
                       borderRadius: BorderRadius.circular(10),
                     ),
                     prefixIcon: IconButton(
-                      icon: const Icon(CupertinoIcons.chevron_left_2),
+                      icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                       onPressed: () {
-                        // _show_item_1.value = !_show_item_1.isTrue;
+                        showNumberPicker((_) {});
                       },
                     ),
                   ),
@@ -410,7 +417,7 @@ class DailyAparteman extends StatelessWidget {
                   ),
                 ),
                 Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                  Text(
+                  const Text(
                     "پارکینگ",
                     style: TextStyle(
                         fontFamily: MAIN_FONT_FAMILY,
@@ -452,6 +459,7 @@ class DailyAparteman extends StatelessWidget {
                 height: 41,
                 width: getPageWidth_2(context),
                 child: TextField(
+                  readOnly: true,
                   textAlign: TextAlign.right,
                   decoration: InputDecoration(
                       hintText: 'انتخاب نشده',
@@ -461,7 +469,7 @@ class DailyAparteman extends StatelessWidget {
                         borderRadius: BorderRadius.circular(10),
                       ),
                       prefixIcon: IconButton(
-                        icon: const Icon(CupertinoIcons.chevron_left_2),
+                        icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                         onPressed: () {
                           // _show_item_1.value = !_show_item_1.isTrue;
                         },
@@ -472,6 +480,7 @@ class DailyAparteman extends StatelessWidget {
                 height: 41,
                 width: getPageWidth_2(context),
                 child: TextField(
+                  readOnly: true,
                   textAlign: TextAlign.right,
                   decoration: InputDecoration(
                     hintText: 'انتخاب نشده',
@@ -481,7 +490,7 @@ class DailyAparteman extends StatelessWidget {
                       borderRadius: BorderRadius.circular(10),
                     ),
                     prefixIcon: IconButton(
-                      icon: const Icon(CupertinoIcons.chevron_left_2),
+                      icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                       onPressed: () {
                         // _show_item_1.value = !_show_item_1.isTrue;
                       },
@@ -500,6 +509,7 @@ class DailyAparteman extends StatelessWidget {
                 height: 41,
                 width: getPageWidth_2(context),
                 child: TextField(
+                  readOnly: true,
                   textAlign: TextAlign.right,
                   decoration: InputDecoration(
                       hintText: 'انتخاب نشده',
@@ -509,7 +519,7 @@ class DailyAparteman extends StatelessWidget {
                         borderRadius: BorderRadius.circular(10),
                       ),
                       prefixIcon: IconButton(
-                        icon: const Icon(CupertinoIcons.chevron_left_2),
+                        icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                         onPressed: () {
                           // _show_item_1.value = !_show_item_1.isTrue;
                         },
@@ -520,6 +530,7 @@ class DailyAparteman extends StatelessWidget {
                 height: 41,
                 width: getPageWidth_2(context),
                 child: TextField(
+                  readOnly: true,
                   textAlign: TextAlign.right,
                   decoration: InputDecoration(
                     hintText: 'انتخاب نشده',
@@ -529,7 +540,7 @@ class DailyAparteman extends StatelessWidget {
                       borderRadius: BorderRadius.circular(10),
                     ),
                     prefixIcon: IconButton(
-                      icon: const Icon(CupertinoIcons.chevron_left_2),
+                      icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                       onPressed: () {
                         // _show_item_1.value = !_show_item_1.isTrue;
                       },
@@ -559,6 +570,7 @@ class DailyAparteman extends StatelessWidget {
               height: 41,
               width: 372,
               child: TextField(
+                readOnly: true,
                 textAlign: TextAlign.right,
                 decoration: InputDecoration(
                   hintText: 'انتخاب نشده',
@@ -567,7 +579,7 @@ class DailyAparteman extends StatelessWidget {
                     borderRadius: BorderRadius.circular(10),
                   ),
                   prefixIcon: IconButton(
-                    icon: const Icon(CupertinoIcons.chevron_left_2),
+                    icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                     onPressed: () {
                       // _show_item_1.value = !_show_item_1.isTrue;
                     },
@@ -603,7 +615,7 @@ class DailyAparteman extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(
+                  const Text(
                     "کارت ملی",
                     style: TextStyle(
                         fontFamily: MAIN_FONT_FAMILY,
@@ -656,6 +668,7 @@ class DailyAparteman extends StatelessWidget {
               height: 41,
               width: 372,
               child: TextField(
+                readOnly: true,
                 textAlign: TextAlign.right,
                 decoration: InputDecoration(
                   hintText: 'انتخاب نشده',
@@ -664,9 +677,9 @@ class DailyAparteman extends StatelessWidget {
                     borderRadius: BorderRadius.circular(10),
                   ),
                   prefixIcon: IconButton(
-                    icon: const Icon(CupertinoIcons.chevron_left_2),
+                    icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                     onPressed: () {
-                      // _show_item_1.value = !_show_item_1.isTrue;
+                      showNumberPicker((_) {});
                     },
                   ),
                 ),
@@ -682,6 +695,7 @@ class DailyAparteman extends StatelessWidget {
                 height: 41,
                 width: getPageWidth_2(context),
                 child: TextField(
+                  readOnly: true,
                   textAlign: TextAlign.right,
                   decoration: InputDecoration(
                       hintText: 'انتخاب نشده',
@@ -691,9 +705,9 @@ class DailyAparteman extends StatelessWidget {
                         borderRadius: BorderRadius.circular(10),
                       ),
                       prefixIcon: IconButton(
-                        icon: const Icon(CupertinoIcons.chevron_left_2),
+                        icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                         onPressed: () {
-                          // _show_item_1.value = !_show_item_1.isTrue;
+                          showNumberPicker((_) {});
                         },
                       )),
                 ),
@@ -702,6 +716,7 @@ class DailyAparteman extends StatelessWidget {
                 height: 41,
                 width: getPageWidth_2(context),
                 child: TextField(
+                  readOnly: true,
                   textAlign: TextAlign.right,
                   decoration: InputDecoration(
                     hintText: 'انتخاب نشده',
@@ -711,9 +726,9 @@ class DailyAparteman extends StatelessWidget {
                       borderRadius: BorderRadius.circular(10),
                     ),
                     prefixIcon: IconButton(
-                      icon: const Icon(CupertinoIcons.chevron_left_2),
+                      icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                       onPressed: () {
-                        // _show_item_1.value = !_show_item_1.isTrue;
+                        showNumberPicker((_) {});
                       },
                     ),
                   ),
@@ -744,6 +759,7 @@ class DailyAparteman extends StatelessWidget {
                 height: 41,
                 width: getPageWidth_2(context),
                 child: TextField(
+                  readOnly: true,
                   textAlign: TextAlign.right,
                   decoration: InputDecoration(
                       hintText: 'انتخاب نشده',
@@ -753,7 +769,7 @@ class DailyAparteman extends StatelessWidget {
                         borderRadius: BorderRadius.circular(10),
                       ),
                       prefixIcon: IconButton(
-                        icon: const Icon(CupertinoIcons.chevron_left_2),
+                        icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                         onPressed: () {
                           // _show_item_1.value = !_show_item_1.isTrue;
                         },
@@ -764,6 +780,7 @@ class DailyAparteman extends StatelessWidget {
                 height: 41,
                 width: getPageWidth_2(context),
                 child: TextField(
+                  readOnly: true,
                   textAlign: TextAlign.right,
                   decoration: InputDecoration(
                     hintText: 'انتخاب نشده',
@@ -773,7 +790,7 @@ class DailyAparteman extends StatelessWidget {
                       borderRadius: BorderRadius.circular(10),
                     ),
                     prefixIcon: IconButton(
-                      icon: const Icon(CupertinoIcons.chevron_left_2),
+                      icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                       onPressed: () {
                         // _show_item_1.value = !_show_item_1.isTrue;
                       },
@@ -792,6 +809,7 @@ class DailyAparteman extends StatelessWidget {
                 height: 41,
                 width: getPageWidth_2(context),
                 child: TextField(
+                  readOnly: true,
                   textAlign: TextAlign.right,
                   decoration: InputDecoration(
                     hintText: 'انتخاب نشده',
@@ -801,7 +819,7 @@ class DailyAparteman extends StatelessWidget {
                       borderRadius: BorderRadius.circular(10),
                     ),
                     prefixIcon: IconButton(
-                      icon: const Icon(CupertinoIcons.chevron_left_2),
+                      icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                       onPressed: () {
                         // _show_item_1.value = !_show_item_1.isTrue;
                       },
@@ -813,6 +831,7 @@ class DailyAparteman extends StatelessWidget {
                 height: 41,
                 width: getPageWidth_2(context),
                 child: TextField(
+                  readOnly: true,
                   textAlign: TextAlign.right,
                   decoration: InputDecoration(
                     hintText: 'انتخاب نشده',
@@ -822,7 +841,7 @@ class DailyAparteman extends StatelessWidget {
                       borderRadius: BorderRadius.circular(10),
                     ),
                     prefixIcon: IconButton(
-                      icon: const Icon(CupertinoIcons.chevron_left_2),
+                      icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                       onPressed: () {
                         // _show_item_1.value = !_show_item_1.isTrue;
                       },
@@ -841,6 +860,7 @@ class DailyAparteman extends StatelessWidget {
                 height: 41,
                 width: getPageWidth_2(context),
                 child: TextField(
+                  readOnly: true,
                   textAlign: TextAlign.right,
                   decoration: InputDecoration(
                       hintText: 'انتخاب نشده',
@@ -850,7 +870,7 @@ class DailyAparteman extends StatelessWidget {
                         borderRadius: BorderRadius.circular(10),
                       ),
                       prefixIcon: IconButton(
-                        icon: const Icon(CupertinoIcons.chevron_left_2),
+                        icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                         onPressed: () {
                           // _show_item_1.value = !_show_item_1.isTrue;
                         },
@@ -861,6 +881,7 @@ class DailyAparteman extends StatelessWidget {
                 height: 41,
                 width: getPageWidth_2(context),
                 child: TextField(
+                  readOnly: true,
                   textAlign: TextAlign.right,
                   decoration: InputDecoration(
                     hintText: 'انتخاب نشده',
@@ -870,7 +891,7 @@ class DailyAparteman extends StatelessWidget {
                       borderRadius: BorderRadius.circular(10),
                     ),
                     prefixIcon: IconButton(
-                      icon: const Icon(CupertinoIcons.chevron_left_2),
+                      icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                       onPressed: () {
                         // _show_item_1.value = !_show_item_1.isTrue;
                       },
