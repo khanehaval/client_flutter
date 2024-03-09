@@ -41,7 +41,9 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   fluttertoast: 8.2.4
+  numberpicker: ^2.1.2
   http: 1.1.2
+  gradient_icon: 2.0.9
   image_picker: 1.0.5
   get_it: 7.6.4
   image_cropper: 5.0.1
