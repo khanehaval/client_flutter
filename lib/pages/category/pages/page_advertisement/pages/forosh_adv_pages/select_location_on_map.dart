@@ -48,7 +48,11 @@ class _SelectLocationOnMapState extends State<SelectLocationOnMap> {
                     borderRadius: BorderRadius.circular(10),
                   ),
                 ),
-                child: Image.asset('assets/images/Group 1440.png'),
+                child: GestureDetector(
+                    onTap: () {
+                      Get.to(() => AdsMapSelect());
+                    },
+                    child: Image.asset('assets/images/Group 1440.png')),
               ),
               const SizedBox(
                 height: 10,
@@ -158,7 +162,7 @@ class _SelectLocationOnMapState extends State<SelectLocationOnMap> {
               ),
               GestureDetector(
                 onTap: () {
-                  Get.to(() => AdsMapSelect());
+                  Get.to(() => SaleHome2());
                 },
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,

@@ -52,11 +52,12 @@ buildButtom() {
                   height: 10,
                 ),
                 GestureDetector(
-                  child:         Padding(
+                  child: Padding(
                     padding: const EdgeInsets.only(top: 10),
                     child: Container(
                       decoration: BoxDecoration(
-                          color: Colors.cyan, borderRadius: BorderRadius.circular(50)),
+                          color: Colors.cyan,
+                          borderRadius: BorderRadius.circular(50)),
                       child: IconButton(
                         icon: const Icon(
                           CupertinoIcons.check_mark,
