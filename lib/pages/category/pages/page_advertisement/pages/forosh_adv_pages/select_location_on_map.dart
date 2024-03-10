@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/forosh_adv_pages/sale_home2.dart';
-import 'package:flutter_application_1/pages/category/shared/map_pages/map.dart';
+import 'package:flutter_application_1/pages/category/shared/map_pages/map1.dart';
+import 'package:flutter_application_1/pages/category/shared/map_pages/map2.dart';
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
 import 'package:flutter_application_1/pages/category/shared/switchItem.dart';
 import 'package:flutter_application_1/pages/profile.dart';
@@ -50,7 +51,9 @@ class _SelectLocationOnMapState extends State<SelectLocationOnMap> {
                   ),
                 ),
                 child: GestureDetector(
-                    onTap: () {},
+                    onTap: () {
+                      Get.to(() => const Map1());
+                    },
                     child: Image.asset('assets/images/Group 1440.png')),
               ),
               const SizedBox(
