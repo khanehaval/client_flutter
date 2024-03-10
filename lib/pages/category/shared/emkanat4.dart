@@ -4,7 +4,7 @@ import 'package:flutter_application_1/pages/category/shared/contant.dart';
 import 'package:get/get.dart';
 import 'dart:ui';
 
-buildButtom() {
+buildButtom4() {
   final _selected = 0.obs;
   return Get.bottomSheet(
       Container(
@@ -23,10 +23,10 @@ buildButtom() {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     _buildItem(
-                      'assets/images/Frame 12.png',
+                      'assets/images/Frame_door.png',
                       1,
                     ),
-                    _buildItem('assets/images/Frame 11.png', 2),
+                    _buildItem('assets/images/Frame_camera.png', 2),
                   ],
                 ),
                 const SizedBox(
@@ -35,8 +35,8 @@ buildButtom() {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    _buildItem('assets/images/Frame 13.png', 3),
-                    _buildItem('assets/images/Frame 11.png', 4),
+                    _buildItem('assets/images/Frame_dozdgir.png', 3),
+                    _buildItem('assets/images/Frame_barghi.png', 4),
                   ],
                 ),
                 const SizedBox(
@@ -45,8 +45,8 @@ buildButtom() {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    _buildItem('assets/images/Frame 13.png', 5),
-                    _buildItem('assets/images/Frame 11.png', 6),
+                    _buildItem('assets/images/Frame_negahban.png', 5),
+                    _buildItem('assets/images/Frame_harigh.png', 6),
                   ],
                 ),
                 const SizedBox(
@@ -57,7 +57,8 @@ buildButtom() {
                     padding: const EdgeInsets.only(top: 10),
                     child: Container(
                       decoration: BoxDecoration(
-                          gradient: LinearGradient(colors: GRADIANT_COLOR),
+                          gradient:
+                              const LinearGradient(colors: GRADIANT_COLOR),
                           borderRadius: BorderRadius.circular(50)),
                       child: IconButton(
                         icon: const Icon(

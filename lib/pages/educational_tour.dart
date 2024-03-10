@@ -129,29 +129,44 @@ class _EducationalTourState extends State<EducationalTour> {
           indicatorColor: Color(0x0036d859),
           selectedIndex: currentPageIndex.value,
           destinations: <Widget>[
-            const NavigationDestination(
-              selectedIcon: Icon(CupertinoIcons.home),
-              icon: Icon(Icons.home_filled),
-              label: '',
-            ),
-            const NavigationDestination(
-              selectedIcon: Icon(Icons.messenger),
-              icon: Icon(Icons.message_rounded),
-              label: '',
-            ),
-            const NavigationDestination(
-              selectedIcon: Icon(Icons.add_circle_outline_rounded),
-              icon: Icon(Icons.add_circle_outline_rounded),
+            NavigationDestination(
+              icon: Image.asset(
+                'assets/images/home navigator.png',
+                width: 24,
+                height: 24,
+              ),
               label: '',
             ),
             NavigationDestination(
-              selectedIcon: Icon(Icons.widgets),
-              icon: Icon(Icons.widgets),
+              icon: Image.asset(
+                'assets/images/messages.png',
+                width: 24,
+                height: 24,
+              ),
               label: '',
             ),
-            const NavigationDestination(
-              selectedIcon: Icon(Icons.location_on_outlined),
-              icon: Icon(Icons.location_on_outlined),
+            NavigationDestination(
+              icon: Image.asset(
+                'assets/images/add.png',
+                width: 24,
+                height: 24,
+              ),
+              label: '',
+            ),
+            NavigationDestination(
+              icon: Image.asset(
+                'assets/images/category.png',
+                width: 24,
+                height: 24,
+              ),
+              label: '',
+            ),
+            NavigationDestination(
+              icon: Image.asset(
+                'assets/images/viw.png',
+                width: 24,
+                height: 24,
+              ),
               label: '',
             ),
           ],

@@ -2,12 +2,18 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/forosh_adv_pages/tabageh_sale.dart';
 import 'package:flutter_application_1/pages/category/shared/contant.dart';
 import 'package:flutter_application_1/pages/category/shared/date.dart';
+import 'package:flutter_application_1/pages/category/shared/emkanat2.dart';
+import 'package:flutter_application_1/pages/category/shared/emkanat3.dart';
+import 'package:flutter_application_1/pages/category/shared/emkanat4.dart';
+import 'package:flutter_application_1/pages/category/shared/emkanat5.dart';
+import 'package:flutter_application_1/pages/category/shared/emkanat6.dart';
+import 'package:flutter_application_1/pages/category/shared/emkanat7.dart';
 import 'package:flutter_application_1/pages/category/shared/number_piacker.dart';
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
 import 'package:flutter_application_1/pages/category/shared/switchItem.dart';
+import 'package:flutter_application_1/pages/category/shared/tabageh_sale.dart';
 import 'package:flutter_application_1/pages/category/shared/twoItemInRow.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
@@ -581,7 +587,7 @@ class SaleHome2 extends StatelessWidget {
                         prefixIcon: IconButton(
                           icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                           onPressed: () {
-                            // _show_item_1.value = !_show_item_1.isTrue;
+                            buildButtom4();
                           },
                         )),
                   ),
@@ -603,7 +609,7 @@ class SaleHome2 extends StatelessWidget {
                       prefixIcon: IconButton(
                         icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                         onPressed: () {
-                          // _show_item_1.value = !_show_item_1.isTrue;
+                          buildButtom3();
                         },
                       ),
                     ),
@@ -633,7 +639,7 @@ class SaleHome2 extends StatelessWidget {
                       prefixIcon: IconButton(
                         icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                         onPressed: () {
-                          // _show_item_1.value = !_show_item_1.isTrue;
+                          buildButtom2();
                         },
                       ),
                     ),
@@ -656,7 +662,7 @@ class SaleHome2 extends StatelessWidget {
                       prefixIcon: IconButton(
                         icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                         onPressed: () {
-                          // _show_item_1.value = !_show_item_1.isTrue;
+                          buildButtom5();
                         },
                       ),
                     ),
@@ -686,7 +692,7 @@ class SaleHome2 extends StatelessWidget {
                         prefixIcon: IconButton(
                           icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                           onPressed: () {
-                            // _show_item_1.value = !_show_item_1.isTrue;
+                            buildButtom6();
                           },
                         )),
                   ),
@@ -708,7 +714,7 @@ class SaleHome2 extends StatelessWidget {
                       prefixIcon: IconButton(
                         icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                         onPressed: () {
-                          // _show_item_1.value = !_show_item_1.isTrue;
+                          buildButtom7();
                         },
                       ),
                     ),

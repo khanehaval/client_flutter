@@ -15,29 +15,45 @@ Widget bottomNavigation() {
     },
     indicatorColor: const Color(0x36D859),
     // selectedIndex: currentPageIndex.value,
-    destinations:  <Widget>[
+    destinations: <Widget>[
       NavigationDestination(
-        icon: Image.asset('assets/images/home navigator.png',width: 24,height: 24,),
+        icon: Image.asset(
+          'assets/images/home navigator.png',
+          width: 24,
+          height: 24,
+        ),
         label: '',
       ),
       NavigationDestination(
-        selectedIcon: Icon(Icons.messenger),
-        icon: Icon(Icons.message_rounded),
+        icon: Image.asset(
+          'assets/images/messages.png',
+          width: 24,
+          height: 24,
+        ),
         label: '',
       ),
       NavigationDestination(
-        selectedIcon: Icon(Icons.add_circle_outline_rounded),
-        icon: Icon(Icons.add_circle_outline_rounded),
+        icon: Image.asset(
+          'assets/images/add.png',
+          width: 24,
+          height: 24,
+        ),
         label: '',
       ),
       NavigationDestination(
-        selectedIcon: Icon(Icons.widgets),
-        icon: Icon(Icons.widgets),
+        icon: Image.asset(
+          'assets/images/category.png',
+          width: 24,
+          height: 24,
+        ),
         label: '',
       ),
       NavigationDestination(
-        selectedIcon: Icon(Icons.location_on_outlined),
-        icon: Icon(Icons.location_on_outlined),
+        icon: Image.asset(
+          'assets/images/viw.png',
+          width: 24,
+          height: 24,
+        ),
         label: '',
       ),
     ],

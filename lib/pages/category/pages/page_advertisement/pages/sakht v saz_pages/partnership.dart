@@ -1771,7 +1771,7 @@ Widget Edari(BuildContext context) {
                         ),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 15,
                     ),
                     Row(
@@ -1820,11 +1820,11 @@ Widget Edari(BuildContext context) {
                                   value: hasParking.value,
                                   activeColor: Colors.white,
                                   activeTrackColor:
-                                      Color.fromRGBO(54, 216, 89, 1),
+                                      const Color.fromRGBO(54, 216, 89, 1),
                                   inactiveThumbColor:
-                                      Color.fromRGBO(11, 8, 8, 0.2),
+                                      const Color.fromRGBO(11, 8, 8, 0.2),
                                   inactiveTrackColor:
-                                      Color.fromRGBO(255, 255, 255, 1)),
+                                      const Color.fromRGBO(255, 255, 255, 1)),
                             ),
                           ),
                         ),
