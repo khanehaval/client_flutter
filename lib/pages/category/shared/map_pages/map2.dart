@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/shared/map_pages/adssellfinaledit.dart';
 import 'package:flutter_application_1/pages/category/shared/map_pages/selectlocationmap.dart';
 
-class Map1 extends StatelessWidget {
-  Map1({
+class Map2 extends StatelessWidget {
+  Map2({
     super.key,
   });
 

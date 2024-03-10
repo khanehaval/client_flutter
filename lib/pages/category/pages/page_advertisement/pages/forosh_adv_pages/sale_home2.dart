@@ -838,7 +838,7 @@ class SaleHome2 extends StatelessWidget {
                     'assets/images/Group 1223.svg',
                     fit: BoxFit.fitWidth,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 30,
                   ),
                   Container(
@@ -851,13 +851,13 @@ class SaleHome2 extends StatelessWidget {
                         borderRadius: BorderRadius.circular(10),
                       ),
                     ),
-                    child: Icon(
+                    child: const Icon(
                       Icons.add,
                     ),
                   )
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               const Divider(
