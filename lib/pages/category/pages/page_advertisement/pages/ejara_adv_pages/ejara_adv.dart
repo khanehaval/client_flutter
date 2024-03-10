@@ -7,6 +7,7 @@ import 'package:flutter_application_1/pages/category/pages/page_advertisement/pa
 import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/forosh_adv_pages/select_location_vila.dart';
 import 'package:flutter_application_1/pages/category/shared/contant.dart';
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
+import 'package:flutter_application_1/pages/profile.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
@@ -53,9 +54,12 @@ class EjaraAdv extends StatelessWidget {
             ),
             Column(
               children: [
-                _buildItem('assets/images/ejara_category.png', 1),
+                _buildItem('assets/images/Frame_ejara1.png', 1),
+                SizedBox(
+                  height: 10,
+                ),
                 _buildItem(
-                  'assets/images/rahn_category.png',
+                  'assets/images/Frame_ejara2.png',
                   2,
                 ),
                 Padding(
@@ -117,8 +121,9 @@ class EjaraAdv extends StatelessWidget {
       onTap: () {
         _selected.value = index;
       },
-      child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 3, horizontal: 3),
+      child: SizedBox(
+        height: 90,
+        width: 140,
         child: Obx(() => Container(
               decoration: BoxDecoration(
                   color: Colors.white,
@@ -139,4 +144,35 @@ class EjaraAdv extends StatelessWidget {
       ),
     );
   }
+}
+
+PreferredSizeWidget buildaAppBar() {
+  return AppBar(
+    leading: IconButton(
+      icon: const Icon(
+        Icons.arrow_back_ios,
+      ),
+      onPressed: () => Get.back(),
+    ),
+    actions: [
+      GestureDetector(
+        onTap: () {
+          Get.to(
+            () => const Profile(),
+          );
+        },
+        child: Container(
+          decoration: BoxDecoration(
+              color: Colors.black12, borderRadius: BorderRadius.circular(60)),
+          child: const Padding(
+            padding: EdgeInsets.all(5.0),
+            child: Icon(
+              Icons.person_2_rounded,
+              size: 30,
+            ),
+          ),
+        ),
+      ),
+    ],
+  );
 }

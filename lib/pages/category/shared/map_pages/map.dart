@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/shared/map_pages/adssellfinaledit.dart';
 import 'package:flutter_application_1/pages/category/shared/map_pages/selectlocationmap.dart';
 
-class AdsMapSelect extends StatelessWidget {
-   AdsMapSelect(
-      {super.key,
-    });
+class Map1 extends StatelessWidget {
+  Map1({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -16,11 +16,12 @@ class AdsMapSelect extends StatelessWidget {
     return Scaffold(
       body: Stack(
         children: [
-          SelectLocationMap(selectedType: '', parentName: '',
-
+          const SelectLocationMap(
+            selectedType: '',
+            parentName: '',
           ),
           Positioned(
-              top: height * 0.05,
+              top: height * 0.05, //پروفایل
               left: width * 0.03,
               child: Container(
                 width: width * 0.12,
@@ -55,9 +56,7 @@ class AdsMapSelect extends StatelessWidget {
                 decoration: const BoxDecoration(
                     shape: BoxShape.circle, color: Colors.white),
                 child: IconButton(
-                    onPressed: () {
-
-                    },
+                    onPressed: () {},
                     icon: const Icon(
                       Icons.home_outlined,
                     )),

@@ -62,8 +62,8 @@ class _SelectLocationMapState extends State<SelectLocationMap> {
             width: 80,
             height: 80,
             child: const Icon(
-              Icons.star,
-              color: Colors.yellowAccent,
+              Icons.location_city_outlined,
+              color: Colors.blue,
             ),
           ),
         ]);
@@ -88,7 +88,7 @@ class _SelectLocationMapState extends State<SelectLocationMap> {
           options: MapOptions(
             initialCenter: currentCenter,
             initialZoom: initZoom,
-            maxZoom: 20,
+            maxZoom: 18,
             keepAlive: true,
             onPositionChanged: (position, hasGesture) {
               currentCenter =
@@ -148,53 +148,16 @@ class _SelectLocationMapState extends State<SelectLocationMap> {
                   point: currentCenter,
                   width: 80,
                   height: 80,
-                  child: const Icon(
-                    Icons.star,
-                    color: Colors.yellowAccent,
-                  ),
+                  child: const Icon(Icons.add_location_alt_sharp,
+                      size: 40, color: Colors.blue),
                 ),
               ],
             ),
           ],
         ),
         Positioned(
-            bottom: height * 0.02,
-            right: width * 0.28,
-            child: Container(
-              width: width * 0.45,
-              height: height * 0.15,
-              decoration:
-                  BoxDecoration(borderRadius: BorderRadius.circular(15)),
-              child: Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      address,
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.w900,
-                      ),
-                    ),
-                    Container(
-                        width: width * 0.35,
-                        height: height * 0.05,
-                        margin: EdgeInsets.only(bottom: height * 0.01),
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(15)),
-                        child: ElevatedButton(
-                            onPressed: () {},
-                            child: const Text(
-                              "تایید",
-                              style: TextStyle(),
-                            )))
-                  ],
-                ),
-              ),
-            )),
-        Positioned(
-          bottom: height * 0.01,
-          right: -20,
+          bottom: height * 0.035,
+          right: 20,
           child: MaterialButton(
             onPressed: () {
               backToCurrentLocation();
@@ -206,8 +169,8 @@ class _SelectLocationMapState extends State<SelectLocationMap> {
           ),
         ),
         Positioned(
-          bottom: height * 0.08,
-          right: -20,
+          bottom: height * 0.050,
+          right: 300,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [

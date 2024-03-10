@@ -10,6 +10,7 @@ import 'package:flutter_application_1/pages/category/pages/page_advertisement/pa
 import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/sakht%20v%20saz_pages/SelectLocationpresell.dart';
 import 'package:flutter_application_1/pages/category/shared/contant.dart';
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
+import 'package:flutter_application_1/pages/profile.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
@@ -135,4 +136,35 @@ class SakhVaSaz extends StatelessWidget {
       ),
     );
   }
+}
+
+PreferredSizeWidget buildaAppBar() {
+  return AppBar(
+    leading: IconButton(
+      icon: const Icon(
+        Icons.arrow_back_ios,
+      ),
+      onPressed: () => Get.back(),
+    ),
+    actions: [
+      GestureDetector(
+        onTap: () {
+          Get.to(
+            () => const Profile(),
+          );
+        },
+        child: Container(
+          decoration: BoxDecoration(
+              color: Colors.black12, borderRadius: BorderRadius.circular(60)),
+          child: const Padding(
+            padding: EdgeInsets.all(5.0),
+            child: Icon(
+              Icons.person_2_rounded,
+              size: 30,
+            ),
+          ),
+        ),
+      ),
+    ],
+  );
 }

@@ -9,6 +9,7 @@ import 'package:flutter_application_1/pages/category/pages/page_advertisement/pa
 import 'package:flutter_application_1/pages/category/shared/contant.dart';
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
 import 'package:flutter_application_1/pages/educational_tour.dart';
+import 'package:flutter_application_1/pages/profile.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
@@ -48,24 +49,33 @@ class CategoryAdvertisement extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               _buildItem(
-                'assets/images/Category.png',
+                'assets/images/Frame_rentstore.png',
                 1,
               ),
-              _buildItem('assets/images/Sale home.png', 2),
+              const SizedBox(
+                width: 20,
+              ),
+              _buildItem('assets/images/Frame_salehome.png', 2),
             ],
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              _buildItem('assets/images/Rent store.png', 3),
-              _buildItem('assets/images/Sale store.png', 4),
+              _buildItem('assets/images/Frame_rent.png', 3),
+              const SizedBox(
+                width: 20,
+              ),
+              _buildItem('assets/images/Frame_salestore.png', 4),
             ],
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              _buildItem('assets/images/Daily.png', 5),
-              _buildItem('assets/images/Construction.png', 6),
+              _buildItem('assets/images/Frame_Daily.png', 5),
+              const SizedBox(
+                width: 20,
+              ),
+              _buildItem('assets/images/Frame_Construction.png', 6),
             ],
           ),
           GestureDetector(
@@ -136,24 +146,36 @@ class CategoryAdvertisement extends StatelessWidget {
             ),
             label: '',
           ),
-          const NavigationDestination(
-            selectedIcon: Icon(Icons.messenger),
-            icon: Icon(Icons.message_rounded),
+          NavigationDestination(
+            icon: Image.asset(
+              'assets/images/messages.png',
+              width: 24,
+              height: 24,
+            ),
             label: '',
           ),
-          const NavigationDestination(
-            selectedIcon: Icon(Icons.add_circle_outline_rounded),
-            icon: Icon(Icons.add_circle_outline_rounded),
+          NavigationDestination(
+            icon: Image.asset(
+              'assets/images/add.png',
+              width: 24,
+              height: 24,
+            ),
             label: '',
           ),
-          const NavigationDestination(
-            selectedIcon: Icon(Icons.widgets),
-            icon: Icon(Icons.widgets),
+          NavigationDestination(
+            icon: Image.asset(
+              'assets/images/category.png',
+              width: 24,
+              height: 24,
+            ),
             label: '',
           ),
-          const NavigationDestination(
-            selectedIcon: Icon(Icons.location_on_outlined),
-            icon: Icon(Icons.location_on_outlined),
+          NavigationDestination(
+            icon: Image.asset(
+              'assets/images/viw.png',
+              width: 24,
+              height: 24,
+            ),
             label: '',
           ),
         ],
@@ -166,10 +188,10 @@ class CategoryAdvertisement extends StatelessWidget {
       onTap: () {
         _selected.value = index;
       },
-      child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 3, horizontal: 8),
+      child: SizedBox(
+        height: 90,
+        width: 140,
         child: Obx(() => Container(
-              width: 125,
               decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(10),
@@ -191,4 +213,35 @@ class CategoryAdvertisement extends StatelessWidget {
       ),
     );
   }
+}
+
+PreferredSizeWidget buildaAppBar() {
+  return AppBar(
+    leading: IconButton(
+      icon: const Icon(
+        Icons.arrow_back_ios,
+      ),
+      onPressed: () => Get.back(),
+    ),
+    actions: [
+      GestureDetector(
+        onTap: () {
+          Get.to(
+            () => const Profile(),
+          );
+        },
+        child: Container(
+          decoration: BoxDecoration(
+              color: Colors.black12, borderRadius: BorderRadius.circular(60)),
+          child: const Padding(
+            padding: EdgeInsets.all(5.0),
+            child: Icon(
+              Icons.person_2_rounded,
+              size: 30,
+            ),
+          ),
+        ),
+      ),
+    ],
+  );
 }

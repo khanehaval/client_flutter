@@ -11,6 +11,7 @@ import 'package:flutter_application_1/pages/category/pages/page_advertisement/pa
 import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/forosh_tejari_pages/select_location_sale_store.dart';
 import 'package:flutter_application_1/pages/category/shared/contant.dart';
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
+import 'package:flutter_application_1/pages/profile.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
@@ -23,7 +24,7 @@ class EjaraTejariAdv extends StatelessWidget {
       bottomNavigationBar: bottomNavigation(),
       appBar: buildaAppBar(),
       body: Padding(
-        padding: const EdgeInsets.only(bottom: 30),
+        padding: const EdgeInsets.only(bottom: 25),
         child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -41,7 +42,7 @@ class EjaraTejariAdv extends StatelessWidget {
                     fontFamily: MAIN_FONT_FAMILY),
               ),
               const SizedBox(
-                height: 20,
+                height: 25,
               ),
               SvgPicture.asset(
                 'assets/images/key and home1.svg',
@@ -52,14 +53,20 @@ class EjaraTejariAdv extends StatelessWidget {
               ),
               Column(
                 children: [
-                  _buildItem('assets/images/daftar_kar.png', 1),
+                  _buildItem('assets/images/Frame_ejara_tejari1.png', 1),
+                  SizedBox(
+                    height: 10,
+                  ),
                   _buildItem(
-                    'assets/images/forosh_maqaze.png',
+                    'assets/images/Frame_ejara_tejari2.png',
                     2,
                   ),
-                  _buildItem('assets/images/forosh_sanati.png', 3),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  _buildItem('assets/images/Frame_ejara_tejari3.png', 3),
                   Padding(
-                    padding: const EdgeInsets.only(top: 40),
+                    padding: const EdgeInsets.only(top: 25),
                     child: Center(
                       child: GestureDetector(
                         onTap: () {
@@ -118,8 +125,9 @@ class EjaraTejariAdv extends StatelessWidget {
       onTap: () {
         _selected.value = index;
       },
-      child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 130),
+      child: SizedBox(
+        height: 90,
+        width: 140,
         child: Obx(() => Container(
               decoration: BoxDecoration(
                   color: Colors.white,
@@ -140,4 +148,35 @@ class EjaraTejariAdv extends StatelessWidget {
       ),
     );
   }
+}
+
+PreferredSizeWidget buildaAppBar() {
+  return AppBar(
+    leading: IconButton(
+      icon: const Icon(
+        Icons.arrow_back_ios,
+      ),
+      onPressed: () => Get.back(),
+    ),
+    actions: [
+      GestureDetector(
+        onTap: () {
+          Get.to(
+            () => const Profile(),
+          );
+        },
+        child: Container(
+          decoration: BoxDecoration(
+              color: Colors.black12, borderRadius: BorderRadius.circular(60)),
+          child: const Padding(
+            padding: EdgeInsets.all(5.0),
+            child: Icon(
+              Icons.person_2_rounded,
+              size: 30,
+            ),
+          ),
+        ),
+      ),
+    ],
+  );
 }
