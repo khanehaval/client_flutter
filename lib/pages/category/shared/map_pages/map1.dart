@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/pages/page_advertisement/category_advertisement.dart';
 import 'package:flutter_application_1/pages/category/shared/contant.dart';
+import 'package:flutter_application_1/pages/category/shared/map_pages/map2.dart';
 import 'package:get/get.dart';
 
 class Map1 extends StatefulWidget {
@@ -14,7 +15,6 @@ class Map1 extends StatefulWidget {
 class _SelectLocationOnMapState extends State<Map1> {
   bool isChecked = false;
   final _selected = 0.obs;
-
   final type = "".obs;
 
   @override
@@ -48,8 +48,13 @@ class _SelectLocationOnMapState extends State<Map1> {
                           ),
                         ),
                         child: GestureDetector(
-                            onTap: () {},
-                            child: Image.asset('assets/images/Map1.png')),
+                            onTap: () {
+                              Get.to(() => Map2());
+                            },
+                            child: Image.asset(
+                              'assets/images/Map1.png',
+                              fit: BoxFit.cover,
+                            )),
                       ),
                       const SizedBox(
                         height: 10,

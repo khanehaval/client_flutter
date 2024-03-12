@@ -18,7 +18,7 @@ class SelectLocationMap extends StatefulWidget {
 }
 
 class _SelectLocationMapState extends State<SelectLocationMap> {
-  MapController mapController = MapController();
+  late final MapController mapController = MapController();
   double initZoom = 14;
   LatLng currentCenter = const LatLng(35.699287, 51.338028);
   List<LatLng> selectedPins = [];
@@ -110,7 +110,6 @@ class _SelectLocationMapState extends State<SelectLocationMap> {
               setState(() {
                 currentCenter = LatLng(point.latitude, point.longitude);
               });
-
               try {
                 List<Placemark> placeMarks = await placemarkFromCoordinates(
                     point.latitude, point.longitude);
