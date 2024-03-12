@@ -78,10 +78,7 @@ dependencies:
   flutter_svg: 2.0.9
   json_annotation: 4.8.1
   persian_datetime_picker: 2.6.0
-  flutter_map: 6.1.0
-  location: 5.0.3
-  google_polyline_algorithm: 3.1.0
-  url_launcher: 6.2.5
+  flutter_map: 6.1.0 
   # mapir_raster: 0.0.1
 
 dev_dependencies:
