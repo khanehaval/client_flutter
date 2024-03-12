@@ -31,6 +31,9 @@ class TwoItemInRow extends StatelessWidget {
                   fontSize: 11,
                   fontFamily: MAIN_FONT_FAMILY),
             ),
+            const SizedBox(
+              height: 5,
+            ),
             w1
           ],
         ),
@@ -44,6 +47,9 @@ class TwoItemInRow extends StatelessWidget {
                   color: Color.fromRGBO(99, 99, 99, 1),
                   fontSize: 12,
                   fontFamily: MAIN_FONT_FAMILY),
+            ),
+            const SizedBox(
+              height: 5,
             ),
             w2
           ],

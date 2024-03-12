@@ -55,7 +55,7 @@ class _AdsSellFinalEditState extends State<AdsSellFinalEdit> {
               ))
         ],
       ),
-      body: SingleChildScrollView(
+      body: const SingleChildScrollView(
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,

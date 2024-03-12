@@ -76,13 +76,13 @@ class _CategoryItemsState extends State<CategoryItems> {
   }
 
   var items = [
-    Image.asset('assets/images/amlak.png'),
-    Image.asset('assets/images/ejara_maskoni.png'),
-    Image.asset('assets/images/forosh_maskoni.png'),
-    Image.asset('assets/images/forosh_tagari_edari.png'),
-    Image.asset('assets/images/ejara_tajari_edari.png'),
-    Image.asset('assets/images/ejara_kota_modat.png'),
-    Image.asset('assets/images/sacht_saz.png'),
+    Image.asset('assets/images/Frame_amlak.png'),
+    Image.asset('assets/images/Frame_ejaramaskoni.png'),
+    Image.asset('assets/images/Frame_foroshmaskoni.png'),
+    Image.asset('assets/images/Frame_foroshtejari.png'),
+    Image.asset('assets/images/Frame_ejaratejari.png'),
+    Image.asset('assets/images/Frame_kotamodat.png'),
+    Image.asset('assets/images/Frame_sakht va saz.png'),
   ];
 
   final _pages = [

@@ -82,6 +82,7 @@ class _SelectLocationMapState extends State<SelectLocationMap> {
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
     final height = MediaQuery.of(context).size.height;
+
     return Stack(children: [
       FlutterMap(
         mapController: mapController,
@@ -174,7 +175,14 @@ class _SelectLocationMapState extends State<SelectLocationMap> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    if (getUserCurrentLocation != null) {
+                      mapController.move(
+                          LatLng(
+                              currentCenter.latitude, currentCenter.longitude),
+                          17);
+                    }
+                  },
                   icon: SizedBox(
                       height: 50,
                       width: 50,
@@ -190,18 +198,19 @@ class _SelectLocationMapState extends State<SelectLocationMap> {
             ],
           )),
       Positioned(
-          bottom: height * 0.13,
-          right: 230,
-          child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-            IconButton(
-                onPressed: () {},
-                icon: SizedBox(
-                    height: 60,
-                    width: 60,
-                    child: Image.asset(
-                      "assets/images/Ok.png",
-                    ))),
-          ]))
+        bottom: height * 0.13,
+        right: 230,
+        child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+          IconButton(
+              onPressed: () {},
+              icon: SizedBox(
+                  height: 60,
+                  width: 60,
+                  child: Image.asset(
+                    "assets/images/Ok.png",
+                  ))),
+        ]),
+      ),
     ]);
   }
 }

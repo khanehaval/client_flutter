@@ -45,7 +45,8 @@ class Category extends StatelessWidget {
                           child: SizedBox(
                               height: _getHeight(context) / 5,
                               width: _getHeight(context) / 5,
-                              child: Image.asset('assets/images/amlak.png')),
+                              child:
+                                  Image.asset('assets/images/Frame_amlak.png')),
                         ),
                       ),
                     ),
@@ -75,7 +76,7 @@ class Category extends StatelessWidget {
                               height: _getHeight(context) / 5,
                               width: (_getHeight(context) / 5) * (2 / 3),
                               child: Image.asset(
-                                  'assets/images/ejara_maskoni.png')),
+                                  'assets/images/Frame_ejaramaskoni.png')),
                         ),
                       ),
                     ),
@@ -106,7 +107,8 @@ class Category extends StatelessWidget {
                       onTap: () {
                         Get.to(() => MainCategory(index: 2));
                       },
-                      child: Image.asset('assets/images/forosh_maskoni.png')),
+                      child:
+                          Image.asset('assets/images/Frame_foroshmaskoni.png')),
                 ),
                 const SizedBox(
                   height: 10,
@@ -139,7 +141,7 @@ class Category extends StatelessWidget {
                               height: _getHeight(context) / 6,
                               width: _getHeight(context) / 6,
                               child: Image.asset(
-                                  'assets/images/ejara_tajari_edari.png')),
+                                  'assets/images/Frame_ejaratejari.png')),
                         ),
                       ),
                     ),
@@ -168,7 +170,7 @@ class Category extends StatelessWidget {
                             height: _getHeight(context) / 6,
                             width: _getHeight(context) / 6,
                             child: Image.asset(
-                                'assets/images/forosh_tagari_edari.png'),
+                                'assets/images/Frame_foroshtejari.png'),
                           ),
                         ),
                       ),
@@ -206,7 +208,7 @@ class Category extends StatelessWidget {
                               height: _getHeight(context) / 6,
                               width: _getHeight(context) / 6,
                               child: Image.asset(
-                                  'assets/images/ejara_kota_modat.png')),
+                                  'assets/images/Frame_kotamodat.png')),
                         ),
                       ),
                     ),
@@ -234,8 +236,8 @@ class Category extends StatelessWidget {
                             child: SizedBox(
                                 height: _getHeight(context) / 6,
                                 width: _getHeight(context) / 6,
-                                child:
-                                    Image.asset('assets/images/sacht_saz.png'))),
+                                child: Image.asset(
+                                    'assets/images/Frame_sakht va saz.png'))),
                       ),
                     ),
                   ],
@@ -247,4 +249,5 @@ class Category extends StatelessWidget {
   }
 }
 
-double _getHeight(BuildContext context) => min( MediaQuery.of(context).size.height,780);
+double _getHeight(BuildContext context) =>
+    min(MediaQuery.of(context).size.height, 780);

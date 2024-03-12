@@ -164,7 +164,7 @@ class CategoryAdvertisement extends StatelessWidget {
           ),
           NavigationDestination(
             icon: Image.asset(
-              'assets/images/category.png',
+              'assets/images/Category.png',
               width: 24,
               height: 24,
             ),
