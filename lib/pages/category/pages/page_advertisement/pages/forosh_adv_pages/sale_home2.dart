@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -17,6 +19,7 @@ import 'package:flutter_application_1/pages/category/shared/tabageh_sale.dart';
 import 'package:flutter_application_1/pages/category/shared/twoItemInRow.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:persian_datetime_picker/persian_datetime_picker.dart';
 
 class SaleHome2 extends StatelessWidget {
@@ -29,6 +32,7 @@ class SaleHome2 extends StatelessWidget {
   final _onePrice = 0.0.obs;
   final _allPriceTextController = TextEditingController();
   final _metragTextController = TextEditingController();
+  final _selectedImagesPath = [].obs;
 
   @override
   Widget build(BuildContext context) {
@@ -736,25 +740,31 @@ class SaleHome2 extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  Container(
-                    height: 70,
-                    width: 70,
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(10),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withOpacity(0.1),
-                            spreadRadius: 1,
-                            blurRadius: 5,
-                          )
-                        ],
-                        border: Border.all(
-                          color: Colors.black45,
-                          width: 0.3,
-                        )),
-                    child: const Icon(
-                      Icons.add,
+                  GestureDetector(
+                    behavior: HitTestBehavior.translucent,
+                    onTap: () {
+                      buildButtom7();
+                    },
+                    child: Container(
+                      height: 70,
+                      width: 70,
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(10),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.1),
+                              spreadRadius: 1,
+                              blurRadius: 5,
+                            )
+                          ],
+                          border: Border.all(
+                            color: Colors.black45,
+                            width: 0.3,
+                          )),
+                      child: const Icon(
+                        Icons.add,
+                      ),
                     ),
                   ),
                 ],
@@ -780,6 +790,10 @@ class SaleHome2 extends StatelessWidget {
                   const SizedBox(
                     height: 30,
                   ),
+                  Obx(() => _selectedImagesPath.isNotEmpty
+                      ? ClipRRect(
+                          child: Image.file(File(_selectedImagesPath.first)))
+                      : SizedBox.shrink()),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
@@ -801,8 +815,13 @@ class SaleHome2 extends StatelessWidget {
                               width: 0.3,
                             )),
                         child: GestureDetector(
-                          onTap: () {
-                            Get.to(() => buildButtom7());
+                          onTap: () async {
+                            var filepath = await ImagePicker.platform
+                                .getImageFromSource(
+                                    source: ImageSource.gallery);
+                            if (filepath != null) {
+                              _selectedImagesPath.add(filepath.path);
+                            }
                           },
                           child: const Icon(
                             Icons.add,

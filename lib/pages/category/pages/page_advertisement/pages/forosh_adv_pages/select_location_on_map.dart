@@ -1,13 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/forosh_adv_pages/sale_home2.dart';
+import 'package:flutter_application_1/pages/category/shared/map_pages/location_Info.dart';
 import 'package:flutter_application_1/pages/category/shared/map_pages/map1.dart';
-import 'package:flutter_application_1/pages/category/shared/map_pages/map2.dart';
-import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
 import 'package:flutter_application_1/pages/category/shared/switchItem.dart';
 import 'package:flutter_application_1/pages/profile.dart';
+import 'package:flutter_map/flutter_map.dart';
 import 'package:get/get.dart';
-import '../../../../shared/contant.dart';
+import 'package:latlong2/latlong.dart';
+import 'package:flutter_application_1/pages/category/shared/contant.dart';
 
 class SelectLocationOnMap extends StatefulWidget {
   const SelectLocationOnMap({super.key});
@@ -19,8 +21,24 @@ class SelectLocationOnMap extends StatefulWidget {
 class _SelectLocationOnMapState extends State<SelectLocationOnMap> {
   bool isChecked = false;
   final _selected = 0.obs;
+  MapController mapController = MapController();
+  double initZoom = 12;
+  final _currentCenter = const LatLng(35.699287, 51.338028).obs;
+  List<LatLng> selectedPins = [];
+  String address = "";
+  final showLimit = false.obs;
+
+  final cityName = "تهران".obs;
+  final locationName = "آزادی".obs;
 
   final type = "".obs;
+
+  void _onLocationSelected(LocationInfo info) {
+    cityName.value = info.cityName;
+    locationName.value = info.locationName;
+    _currentCenter.value = info.location;
+    mapController.move(_currentCenter.value, initZoom);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -43,18 +61,94 @@ class _SelectLocationOnMapState extends State<SelectLocationOnMap> {
                 height: 15,
               ),
               Container(
-                decoration: ShapeDecoration(
-                  shape: RoundedRectangleBorder(
-                    side:
-                        const BorderSide(width: 1.50, color: Color(0xFF36D859)),
-                    borderRadius: BorderRadius.circular(10),
+                width: 284,
+                height: 254,
+                decoration: BoxDecoration(
+                    gradient: const LinearGradient(colors: GRADIANT_COLOR),
+                    borderRadius: BorderRadius.circular(10)),
+                child: Padding(
+                  padding: const EdgeInsets.all(2.0),
+                  child: Stack(
+                    children: [
+                      ClipRRect(
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(10)),
+                        child: Obx(() => FlutterMap(
+                              mapController: mapController,
+                              options: MapOptions(
+                                initialCenter: _currentCenter.value,
+                                initialZoom: initZoom,
+                                maxZoom: 18,
+                                keepAlive: true,
+                                interactionOptions: const InteractionOptions(
+                                    enableMultiFingerGestureRace: true,
+                                    enableScrollWheel: true),
+                                onTap: (tapPosition, point) {
+                                  Get.to(() => Map1(
+                                        lastLocation: LocationInfo(
+                                            location: _currentCenter.value,
+                                            cityName: cityName.value,
+                                            locationName: locationName.value),
+                                        onSelect: _onLocationSelected,
+                                      ));
+                                },
+                              ),
+                              children: [
+                                TileLayer(
+                                  urlTemplate:
+                                      'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+                                  userAgentPackageName: 'com.example.app',
+                                ),
+                                CircleLayer(
+                                  circles: [
+                                    CircleMarker(
+                                      point: _currentCenter.value,
+                                      radius: 100,
+                                      useRadiusInMeter: true,
+                                      color: Colors.green.withOpacity(0.3),
+                                    )
+                                  ],
+                                ),
+                                MarkerLayer(
+                                  markers: [
+                                    Marker(
+                                        point: _currentCenter.value,
+                                        width: 52,
+                                        height: 67,
+                                        child: IconButton(
+                                            onPressed: () {
+                                              Get.to(() => Map1(
+                                                    lastLocation: LocationInfo(
+                                                        location: _currentCenter
+                                                            .value,
+                                                        cityName:
+                                                            cityName.value,
+                                                        locationName:
+                                                            locationName.value),
+                                                    onSelect:
+                                                        _onLocationSelected,
+                                                  ));
+                                            },
+                                            icon: Image.asset(
+                                                "assets/images/Group 1279.png"))),
+                                  ],
+                                ),
+                              ],
+                            )),
+                      ),
+                      const Align(
+                        alignment: Alignment.bottomCenter,
+                        child: Text(
+                          "برای تغییر آدرس انتخابی رو نقشه ضربه بزنید",
+                          style: TextStyle(
+                              fontSize: 12,
+                              color: Colors.deepOrangeAccent,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      )
+                    ],
                   ),
                 ),
-                child: GestureDetector(
-                    onTap: () {
-                      Get.to(() => const Map1());
-                    },
-                    child: Image.asset('assets/images/Group 1440.png')),
               ),
               const SizedBox(
                 height: 10,
@@ -71,21 +165,28 @@ class _SelectLocationOnMapState extends State<SelectLocationOnMap> {
                           color: Color.fromRGBO(166, 166, 166, 1),
                         ),
                       ),
-                      SizedBox(
+                      Container(
                         width: MediaQuery.of(context).size.width * 0.4,
-                        height: 40,
-                        child: TextField(
-                          textAlign: TextAlign.right,
-                          readOnly: true,
-                          decoration: InputDecoration(
-                            hintText: 'صادقیه شمالی',
-                            hintStyle: const TextStyle(
-                              color: Color(0xFFA6A6A6),
-                            ),
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                          ),
+                        height: 41,
+                        decoration: BoxDecoration(
+                            color: Colors.black,
+                            borderRadius: BorderRadius.circular(5)),
+                        child: Padding(
+                          padding: const EdgeInsets.all(1.0),
+                          child: Container(
+                              decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(5)),
+                              child: Obx(() => Align(
+                                    alignment: Alignment.centerRight,
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(3.0),
+                                      child: Text(
+                                        locationName.value,
+                                        textAlign: TextAlign.center,
+                                      ),
+                                    ),
+                                  ))),
                         ),
                       ),
                     ],
@@ -99,20 +200,28 @@ class _SelectLocationOnMapState extends State<SelectLocationOnMap> {
                             TextStyle(color: Color.fromRGBO(166, 166, 166, 1)),
                         textAlign: TextAlign.start,
                       ),
-                      SizedBox(
-                        height: 40,
+                      Container(
+                        height: 41,
                         width: MediaQuery.of(context).size.width * 0.4,
-                        child: TextField(
-                          textAlign: TextAlign.right,
-                          readOnly: true,
-                          decoration: InputDecoration(
-                            hintText: 'تهران',
-                            hintStyle: const TextStyle(
-                              color: Color(0xFFA6A6A6),
-                            ),
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10),
-                            ),
+                        decoration: BoxDecoration(
+                            color: Colors.black,
+                            borderRadius: BorderRadius.circular(5)),
+                        child: Padding(
+                          padding: const EdgeInsets.all(1.0),
+                          child: Container(
+                            decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(5)),
+                            child: Obx(() => Align(
+                                  alignment: Alignment.centerRight,
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(3.0),
+                                    child: Text(
+                                      cityName.value,
+                                      textAlign: TextAlign.center,
+                                    ),
+                                  ),
+                                )),
                           ),
                         ),
                       ),
@@ -193,38 +302,6 @@ class _SelectLocationOnMapState extends State<SelectLocationOnMap> {
             ],
           ),
         ),
-      ),
-    );
-  }
-
-  Widget _buildItem(String assetPath, int index) {
-    return GestureDetector(
-      onTap: () {
-        _selected.value = index;
-      },
-      child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-        child: Obx(() => Container(
-              // height: 96,
-              // width: 144,
-              decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(10),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.1),
-                      spreadRadius: 1,
-                      blurRadius: 5,
-                    )
-                  ],
-                  border: Border.all(
-                    color: _selected.value == index
-                        ? Colors.greenAccent
-                        : Colors.black38,
-                    width: _selected.value == index ? 2.5 : 1.5,
-                  )),
-              child: Image.asset(assetPath),
-            )),
       ),
     );
   }

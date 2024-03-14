@@ -52,14 +52,20 @@ class ForoshTejariAdv extends StatelessWidget {
               ),
               Column(
                 children: [
-                  _buildItem('assets/images/daftar_kar.png', 1),
+                  _buildItem('assets/images/Frame_daftar.png', 1),
+                  const SizedBox(
+                    height: 10,
+                  ),
                   _buildItem(
-                    'assets/images/forosh_maqaze.png',
+                    'assets/images/Frame_maqazeh.png',
                     2,
                   ),
-                  _buildItem('assets/images/forosh_sanati.png', 3),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  _buildItem('assets/images/Frame_daftarsanati.png', 3),
                   Padding(
-                    padding: const EdgeInsets.only(top: 40),
+                    padding: const EdgeInsets.only(top: 20),
                     child: Center(
                       child: GestureDetector(
                         onTap: () {
@@ -111,32 +117,41 @@ class ForoshTejariAdv extends StatelessWidget {
   }
 
   Widget _buildItem(
-    String assetPath,
-    int index,
-  ) {
+      String assetPath,
+      int index,
+      ) {
     return GestureDetector(
       onTap: () {
         _selected.value = index;
       },
-      child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 130),
+      child: SizedBox(
+        height: 90,
+        width: 140,
         child: Obx(() => Container(
-              decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(10),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.1),
-                    )
-                  ],
-                  border: Border.all(
-                    color: _selected.value == index
-                        ? Colors.greenAccent
-                        : Colors.black38,
-                    width: _selected.value == index ? 2 : 1.5,
-                  )),
-              child: Image.asset(assetPath),
-            )),
+          decoration: BoxDecoration(
+            gradient: _selected.value == index
+                ? const LinearGradient(colors: GRADIANT_COLOR)
+                : null,
+            borderRadius: BorderRadius.circular(10),
+            // border: Border.all(
+            //   width: _selected.value == index ? 2 : 1.5,
+            // )
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(2.0),
+            child: Container(
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10),
+                    border: Border.all(
+                      color: _selected.value == index
+                          ? Colors.white
+                          : Colors.black12,
+                      width: _selected.value == index ? 2.8 : 1.5,
+                    )),
+                child: Image.asset(assetPath)),
+          ),
+        )),
       ),
     );
   }

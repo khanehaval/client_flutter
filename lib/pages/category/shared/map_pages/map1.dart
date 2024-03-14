@@ -2,20 +2,16 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/pages/page_advertisement/category_advertisement.dart';
 import 'package:flutter_application_1/pages/category/shared/contant.dart';
+import 'package:flutter_application_1/pages/category/shared/map_pages/location_Info.dart';
 import 'package:flutter_application_1/pages/category/shared/map_pages/selectlocationmap.dart';
 import 'package:get/get.dart';
+import 'package:latlong2/latlong.dart';
 
-class Map1 extends StatefulWidget {
-  const Map1({super.key});
+class Map1 extends StatelessWidget {
+  LocationInfo lastLocation;
+  Function(LocationInfo) onSelect;
 
-  @override
-  State<Map1> createState() => _SelectLocationOnMapState();
-}
-
-class _SelectLocationOnMapState extends State<Map1> {
-  bool isChecked = false;
-  final _selected = 0.obs;
-  final type = "".obs;
+  Map1({required this.onSelect, super.key, required this.lastLocation});
 
   @override
   Widget build(BuildContext context) {
@@ -49,9 +45,12 @@ class _SelectLocationOnMapState extends State<Map1> {
                         ),
                         child: GestureDetector(
                             onTap: () {
-                              Get.to(() => const SelectLocationMap(
-                                    selectedType: '',
-                                    parentName: '',
+                              Get.to(() => SelectLocationMap(
+                                    lastLocation: lastLocation,
+                                    onSelect: (_) {
+                                      onSelect(_);
+                                      Get.back();
+                                    },
                                   ));
                             },
                             child: Image.asset(

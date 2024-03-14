@@ -23,17 +23,17 @@ void persianDataPicker(Function(String) onDateSelected) {
               showDay: true,
               labelStyle: const TextStyle(
                 fontFamily: MAIN_FONT_FAMILY,
-                fontSize: 20.0,
+                fontSize: 18.0,
                 color: Colors.black26,
               ),
               selectedRowStyle: const TextStyle(
                 fontFamily: MAIN_FONT_FAMILY,
-                fontSize: 20.0,
+                fontSize: 18.0,
                 color: Colors.black,
               ),
               unselectedRowStyle: const TextStyle(
                 fontFamily: MAIN_FONT_FAMILY,
-                fontSize: 20.0,
+                fontSize: 18.0,
                 color: Colors.black26,
               ),
               yearText: "سال ",

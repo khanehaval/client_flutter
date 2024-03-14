@@ -132,20 +132,28 @@ class UnderForosh extends StatelessWidget {
         width: 140,
         child: Obx(() => Container(
               decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(10),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.1),
-                    )
-                  ],
-                  border: Border.all(
-                    color: _selected.value == index
-                        ? Color.fromARGB(255, 95, 173, 237)
-                        : Colors.black38,
-                    width: _selected.value == index ? 2 : 1.5,
-                  )),
-              child: Image.asset(assetPath),
+                gradient: _selected.value == index
+                    ? const LinearGradient(colors: GRADIANT_COLOR)
+                    : null,
+                borderRadius: BorderRadius.circular(10),
+                // border: Border.all(
+                //   width: _selected.value == index ? 2 : 1.5,
+                // )
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(2.0),
+                child: Container(
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(10),
+                        border: Border.all(
+                          color: _selected.value == index
+                              ? Colors.white
+                              : Colors.black12,
+                          width: _selected.value == index ? 2.8 : 1.5,
+                        )),
+                    child: Image.asset(assetPath)),
+              ),
             )),
       ),
     );
