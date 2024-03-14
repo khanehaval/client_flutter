@@ -47,7 +47,7 @@ class _EducationalTourState extends State<EducationalTour> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         leading: IconButton(
-          icon: Icon(CupertinoIcons.back),
+          icon: const Icon(CupertinoIcons.back),
           onPressed: () => Get.back(),
         ),
         actions: [
@@ -74,7 +74,7 @@ class _EducationalTourState extends State<EducationalTour> {
           ? Container(
               color: Colors.white60,
               child: Padding(
-                padding: EdgeInsets.all(10),
+                padding: const EdgeInsets.all(10),
                 child: SingleChildScrollView(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,

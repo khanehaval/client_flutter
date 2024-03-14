@@ -20,7 +20,7 @@ class SelectLocationMap extends StatefulWidget {
 
 class _SelectLocationMapState extends State<SelectLocationMap> {
   MapController mapController = MapController();
-  double initZoom = 15;
+  double initZoom = 14;
   LatLng currentCenter = const LatLng(35.699287, 51.338028);
   List<LatLng> selectedPins = [];
   String address = "";
@@ -82,13 +82,14 @@ class _SelectLocationMapState extends State<SelectLocationMap> {
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
     final height = MediaQuery.of(context).size.height;
+
     return Stack(children: [
       FlutterMap(
         mapController: mapController,
         options: MapOptions(
           initialCenter: currentCenter,
           initialZoom: initZoom,
-          maxZoom: 10,
+          maxZoom: 18,
           keepAlive: true,
           onPositionChanged: (position, hasGesture) {
             currentCenter =
@@ -155,6 +156,66 @@ class _SelectLocationMapState extends State<SelectLocationMap> {
           ),
         ],
       ),
+      Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              const Text(
+                "انتخاب محله ",
+                style: TextStyle(
+                  color: Color.fromRGBO(166, 166, 166, 1),
+                ),
+              ),
+              SizedBox(
+                width: MediaQuery.of(context).size.width * 0.4,
+                height: 40,
+                child: TextField(
+                  textAlign: TextAlign.right,
+                  readOnly: true,
+                  decoration: InputDecoration(
+                    hintText: 'صادقیه شمالی',
+                    hintStyle: const TextStyle(
+                      color: Color(0xFFA6A6A6),
+                    ),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              const Text(
+                "*انتخاب شهر",
+                style: TextStyle(color: Color.fromRGBO(166, 166, 166, 1)),
+                textAlign: TextAlign.start,
+              ),
+              SizedBox(
+                height: 40,
+                width: MediaQuery.of(context).size.width * 0.4,
+                child: TextField(
+                  textAlign: TextAlign.right,
+                  readOnly: true,
+                  decoration: InputDecoration(
+                    hintText: 'تهران',
+                    hintStyle: const TextStyle(
+                      color: Color(0xFFA6A6A6),
+                    ),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          )
+        ],
+      ),
       Positioned(
         bottom: height * 0.050,
         right: 230,
@@ -174,7 +235,14 @@ class _SelectLocationMapState extends State<SelectLocationMap> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    if (getUserCurrentLocation != null) {
+                      mapController.move(
+                          LatLng(
+                              currentCenter.latitude, currentCenter.longitude),
+                          17);
+                    }
+                  },
                   icon: SizedBox(
                       height: 50,
                       width: 50,
@@ -190,18 +258,19 @@ class _SelectLocationMapState extends State<SelectLocationMap> {
             ],
           )),
       Positioned(
-          bottom: height * 0.13,
-          right: 230,
-          child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-            IconButton(
-                onPressed: () {},
-                icon: SizedBox(
-                    height: 60,
-                    width: 60,
-                    child: Image.asset(
-                      "assets/images/Ok.png",
-                    ))),
-          ]))
+        bottom: height * 0.13,
+        right: 230,
+        child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+          IconButton(
+              onPressed: () {},
+              icon: SizedBox(
+                  height: 60,
+                  width: 60,
+                  child: Image.asset(
+                    "assets/images/Ok.png",
+                  ))),
+        ]),
+      ),
     ]);
   }
 }

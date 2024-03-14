@@ -15,7 +15,6 @@ class Map1 extends StatefulWidget {
 class _SelectLocationOnMapState extends State<Map1> {
   bool isChecked = false;
   final _selected = 0.obs;
-
   final type = "".obs;
 
   @override
