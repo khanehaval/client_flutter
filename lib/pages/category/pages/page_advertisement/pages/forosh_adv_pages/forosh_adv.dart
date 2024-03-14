@@ -141,7 +141,7 @@ class UnderForosh extends StatelessWidget {
                   ],
                   border: Border.all(
                     color: _selected.value == index
-                        ? Colors.greenAccent
+                        ? Color.fromARGB(255, 95, 173, 237)
                         : Colors.black38,
                     width: _selected.value == index ? 2 : 1.5,
                   )),

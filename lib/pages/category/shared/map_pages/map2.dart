@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_application_1/pages/category/shared/map_pages/adssellfinaledit.dart';
 import 'package:flutter_application_1/pages/category/shared/map_pages/selectlocationmap.dart';
 
@@ -20,65 +21,68 @@ class Map2 extends StatelessWidget {
             selectedType: '',
             parentName: '',
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  const Text(
-                    "انتخاب محله ",
-                    style: TextStyle(
-                      color: Color.fromRGBO(166, 166, 166, 1),
+          Positioned(
+            top: 20,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    const Text(
+                      "انتخاب محله ",
+                      style: TextStyle(
+                        color: Color.fromRGBO(166, 166, 166, 1),
+                      ),
                     ),
-                  ),
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width * 0.4,
-                    height: 40,
-                    child: TextField(
-                      textAlign: TextAlign.right,
-                      readOnly: true,
-                      decoration: InputDecoration(
-                        hintText: 'صادقیه شمالی',
-                        hintStyle: const TextStyle(
-                          color: Color(0xFFA6A6A6),
-                        ),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width * 0.4,
+                      height: 40,
+                      child: TextField(
+                        textAlign: TextAlign.right,
+                        readOnly: true,
+                        decoration: InputDecoration(
+                          hintText: 'صادقیه شمالی',
+                          hintStyle: const TextStyle(
+                            color: Color(0xFFA6A6A6),
+                          ),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                ],
-              ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  const Text(
-                    "*انتخاب شهر",
-                    style: TextStyle(color: Color.fromRGBO(166, 166, 166, 1)),
-                    textAlign: TextAlign.start,
-                  ),
-                  SizedBox(
-                    height: 40,
-                    width: MediaQuery.of(context).size.width * 0.4,
-                    child: TextField(
-                      textAlign: TextAlign.right,
-                      readOnly: true,
-                      decoration: InputDecoration(
-                        hintText: 'تهران',
-                        hintStyle: const TextStyle(
-                          color: Color(0xFFA6A6A6),
-                        ),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
+                  ],
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    const Text(
+                      "*انتخاب شهر",
+                      style: TextStyle(color: Color.fromRGBO(166, 166, 166, 1)),
+                      textAlign: TextAlign.start,
+                    ),
+                    SizedBox(
+                      height: 40,
+                      width: MediaQuery.of(context).size.width * 0.4,
+                      child: TextField(
+                        textAlign: TextAlign.right,
+                        readOnly: true,
+                        decoration: InputDecoration(
+                          hintText: 'تهران',
+                          hintStyle: const TextStyle(
+                            color: Color(0xFFA6A6A6),
+                          ),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                ],
-              )
-            ],
+                  ],
+                )
+              ],
+            ),
           ),
           Positioned(
               top: height * 0.05,
