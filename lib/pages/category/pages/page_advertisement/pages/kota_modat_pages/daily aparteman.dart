@@ -1,12 +1,21 @@
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/forosh_adv_pages/sale_old_house.dart';
 import 'package:flutter_application_1/pages/category/shared/contant.dart';
+import 'package:flutter_application_1/pages/category/shared/emkanat2.dart';
+import 'package:flutter_application_1/pages/category/shared/emkanat3.dart';
+import 'package:flutter_application_1/pages/category/shared/emkanat4.dart';
+import 'package:flutter_application_1/pages/category/shared/emkanat8.dart';
 import 'package:flutter_application_1/pages/category/shared/number_piacker.dart';
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
+import 'package:flutter_application_1/pages/category/shared/tabageh_sale.dart';
 import 'package:flutter_application_1/pages/category/shared/twoItemInRow.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 
 class DailyAparteman extends StatelessWidget {
   final aghsatType = "".obs;
@@ -21,6 +30,7 @@ class DailyAparteman extends StatelessWidget {
   final _allPriceTextController = TextEditingController();
   final _metragTextController = TextEditingController();
 
+  final _selectedImagesPath = [].obs;
   DailyAparteman({super.key});
 
   @override
@@ -910,36 +920,45 @@ class DailyAparteman extends StatelessWidget {
             const SizedBox(
               height: 30,
             ),
-            Text(
-              "امکانات",
+            const Text(
+              "سایر امکانات",
               style: TextStyle(fontFamily: MAIN_FONT_FAMILY, fontSize: 16),
             ),
-            SizedBox(
-              height: 20,
+            const SizedBox(
+              height: 15,
             ),
-            Row(mainAxisAlignment: MainAxisAlignment.start, children: [
-              Container(
-                height: 70,
-                width: 70,
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(10),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.1),
-                        spreadRadius: 1,
-                        blurRadius: 5,
-                      )
-                    ],
-                    border: Border.all(
-                      color: Colors.black45,
-                      width: 0.3,
-                    )),
-                child: const Icon(
-                  Icons.add,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                GestureDetector(
+                  behavior: HitTestBehavior.translucent,
+                  onTap: () {
+                    buildButtom8();
+                  },
+                  child: Container(
+                    height: 70,
+                    width: 70,
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(10),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withOpacity(0.1),
+                            spreadRadius: 1,
+                            blurRadius: 5,
+                          )
+                        ],
+                        border: Border.all(
+                          color: Colors.black45,
+                          width: 0.3,
+                        )),
+                    child: const Icon(
+                      Icons.add,
+                    ),
+                  ),
                 ),
-              ),
-            ]),
+              ],
+            ),
             const SizedBox(
               height: 30,
             ),
@@ -958,25 +977,30 @@ class DailyAparteman extends StatelessWidget {
               height: 20,
             ),
             Row(mainAxisAlignment: MainAxisAlignment.start, children: [
-              Container(
-                height: 70,
-                width: 70,
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(10),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.1),
-                        spreadRadius: 1,
-                        blurRadius: 5,
-                      )
-                    ],
-                    border: Border.all(
-                      color: Colors.black45,
-                      width: 0.3,
-                    )),
-                child: const Icon(
-                  Icons.add,
+              GestureDetector(
+                onTap: () {
+                  buildButtom();
+                },
+                child: Container(
+                  height: 70,
+                  width: 70,
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(10),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.1),
+                          spreadRadius: 1,
+                          blurRadius: 5,
+                        )
+                      ],
+                      border: Border.all(
+                        color: Colors.black45,
+                        width: 0.3,
+                      )),
+                  child: const Icon(
+                    Icons.add,
+                  ),
                 ),
               ),
             ]),
@@ -998,25 +1022,30 @@ class DailyAparteman extends StatelessWidget {
               height: 20,
             ),
             Row(mainAxisAlignment: MainAxisAlignment.start, children: [
-              Container(
-                height: 70,
-                width: 70,
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(10),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.1),
-                        spreadRadius: 1,
-                        blurRadius: 5,
-                      )
-                    ],
-                    border: Border.all(
-                      color: Colors.black45,
-                      width: 0.3,
-                    )),
-                child: const Icon(
-                  Icons.add,
+              GestureDetector(
+                onTap: () {
+                  buildButtom2();
+                },
+                child: Container(
+                  height: 70,
+                  width: 70,
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(10),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.1),
+                          spreadRadius: 1,
+                          blurRadius: 5,
+                        )
+                      ],
+                      border: Border.all(
+                        color: Colors.black45,
+                        width: 0.3,
+                      )),
+                  child: const Icon(
+                    Icons.add,
+                  ),
                 ),
               ),
             ]),
@@ -1038,25 +1067,30 @@ class DailyAparteman extends StatelessWidget {
               height: 20,
             ),
             Row(mainAxisAlignment: MainAxisAlignment.start, children: [
-              Container(
-                height: 70,
-                width: 70,
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(10),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.1),
-                        spreadRadius: 1,
-                        blurRadius: 5,
-                      )
-                    ],
-                    border: Border.all(
-                      color: Colors.black45,
-                      width: 0.3,
-                    )),
-                child: const Icon(
-                  Icons.add,
+              GestureDetector(
+                onTap: () {
+                  buildButtom3();
+                },
+                child: Container(
+                  height: 70,
+                  width: 70,
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(10),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.1),
+                          spreadRadius: 1,
+                          blurRadius: 5,
+                        )
+                      ],
+                      border: Border.all(
+                        color: Colors.black45,
+                        width: 0.3,
+                      )),
+                  child: const Icon(
+                    Icons.add,
+                  ),
                 ),
               ),
             ]),
@@ -1070,33 +1104,38 @@ class DailyAparteman extends StatelessWidget {
             const SizedBox(
               height: 30,
             ),
-            Text(
+            const Text(
               "امکانات امنیتی",
               style: TextStyle(fontFamily: MAIN_FONT_FAMILY, fontSize: 16),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Row(mainAxisAlignment: MainAxisAlignment.start, children: [
-              Container(
-                height: 70,
-                width: 70,
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(10),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.1),
-                        spreadRadius: 1,
-                        blurRadius: 5,
-                      )
-                    ],
-                    border: Border.all(
-                      color: Colors.black45,
-                      width: 0.3,
-                    )),
-                child: const Icon(
-                  Icons.add,
+              GestureDetector(
+                onTap: () {
+                  buildButtom4();
+                },
+                child: Container(
+                  height: 70,
+                  width: 70,
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(10),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.1),
+                          spreadRadius: 1,
+                          blurRadius: 5,
+                        )
+                      ],
+                      border: Border.all(
+                        color: Colors.black45,
+                        width: 0.3,
+                      )),
+                  child: const Icon(
+                    Icons.add,
+                  ),
                 ),
               ),
             ]),
@@ -1111,158 +1150,200 @@ class DailyAparteman extends StatelessWidget {
               height: 30,
             ),
             Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                SvgPicture.asset(
-                  'assets/images/Group 1223.svg',
-                  fit: BoxFit.fitWidth,
-                ),
-                SizedBox(
-                  height: 30,
-                ),
-                Container(
-                  width: 372,
-                  height: 193,
-                  decoration: ShapeDecoration(
-                    color: Colors.white,
-                    shape: RoundedRectangleBorder(
-                      side: BorderSide(width: 1, color: Color(0xFFB7B7B7)),
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                  ),
-                  child: Icon(
-                    Icons.add,
-                  ),
-                )
-              ],
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            const Divider(
-              endIndent: 20,
-              indent: 20,
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            const Text(
-              "عنوان و توضیحات آگهی",
-              style: TextStyle(fontFamily: MAIN_FONT_FAMILY, fontSize: 16),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            onvanWidget(context),
-            const SizedBox(
-              height: 20,
-            ),
-            const Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Text(
-                  "*",
-                  style: TextStyle(
-                      fontSize: 20,
-                      color: Color.fromRGBO(156, 64, 64, 1),
-                      fontFamily: MAIN_FONT_FAMILY),
-                ),
-                Text(
-                  "عنوان آگهی",
-                  style: TextStyle(
-                      color: Color.fromRGBO(166, 166, 166, 1),
-                      fontFamily: MAIN_FONT_FAMILY),
-                  textAlign: TextAlign.start,
-                ),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                  height: 41,
-                  width: MediaQuery.of(context).size.width * 1 / 1.117,
-                  child: TextField(
-                    textAlign: TextAlign.right,
-                    decoration: InputDecoration(
-                      hintText: 'تایپ کنید',
-                      hintStyle: const TextStyle(
-                          color: Color(0xFFA6A6A6),
-                          fontFamily: MAIN_FONT_FAMILY,
-                          fontSize: 13),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            const Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Text(
-                  "توضیحات آگهی",
-                  style: TextStyle(
-                      color: Color.fromRGBO(166, 166, 166, 1),
-                      fontFamily: MAIN_FONT_FAMILY),
-                  textAlign: TextAlign.start,
-                ),
-              ],
-            ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                SizedBox(
-                  width: MediaQuery.of(context).size.width * 1 / 1.117,
-                  height: 218,
-                  child: TextField(
-                    maxLines: 5,
-                    textAlign: TextAlign.right,
-                    decoration: InputDecoration(
-                      hintText: 'تایپ کنید',
-                      hintStyle: const TextStyle(
-                          color: Color(0xFFA6A6A6),
-                          fontFamily: MAIN_FONT_FAMILY,
-                          fontSize: 13),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            const Padding(
-              padding: EdgeInsets.only(bottom: 30, top: 10),
-              child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Text(
-                    "...تایید و ادامه",
-                    style: true
-                        ? TextStyle(
+                  SvgPicture.asset(
+                    'assets/images/Group 1223.svg',
+                    fit: BoxFit.fitWidth,
+                  ),
+                  const SizedBox(
+                    height: 30,
+                  ),
+                  Obx(() => _selectedImagesPath.isNotEmpty
+                      ? ClipRRect(
+                          borderRadius: BorderRadius.circular(10),
+                          child: SizedBox(
+                              height: 372,
+                              child:
+                                  Image.file(File(_selectedImagesPath.first))))
+                      : const SizedBox.shrink()),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Container(
+                        height: 70,
+                        width: 70,
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(10),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey.withOpacity(0.1),
+                                spreadRadius: 1,
+                                blurRadius: 5,
+                              )
+                            ],
+                            border: Border.all(
+                              color: Colors.black45,
+                              width: 0.3,
+                            )),
+                        child: GestureDetector(
+                          behavior: HitTestBehavior.translucent,
+                          onTap: () async {
+                            var filepath = await ImagePicker.platform
+                                .getImageFromSource(
+                                    source: ImageSource.gallery);
+                            if (filepath != null) {
+                              _selectedImagesPath.add(filepath.path);
+                            }
+                          },
+                          child: const Icon(
+                            Icons.add,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  const Divider(
+                    endIndent: 20,
+                    indent: 20,
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  const Divider(
+                    endIndent: 20,
+                    indent: 20,
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  const Text(
+                    "عنوان و توضیحات آگهی",
+                    style:
+                        TextStyle(fontFamily: MAIN_FONT_FAMILY, fontSize: 16),
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  onvanWidget(context),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  const Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Text(
+                        "*",
+                        style: TextStyle(
                             fontSize: 20,
-                            fontFamily: MAIN_FONT_FAMILY,
-                            color: Colors.black38,
-                          )
-                        // ignore: dead_code
-                        : TextStyle(fontSize: 20, fontFamily: MAIN_FONT_FAMILY),
+                            color: Color.fromRGBO(156, 64, 64, 1),
+                            fontFamily: MAIN_FONT_FAMILY),
+                      ),
+                      Text(
+                        "عنوان آگهی",
+                        style: TextStyle(
+                            color: Color.fromRGBO(166, 166, 166, 1),
+                            fontFamily: MAIN_FONT_FAMILY),
+                        textAlign: TextAlign.start,
+                      ),
+                    ],
                   ),
-                  Icon(
-                    Icons.double_arrow,
-                    color: Color.fromRGBO(76, 140, 237, 1),
-                    size: 35,
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        height: 41,
+                        width: MediaQuery.of(context).size.width * 1 / 1.117,
+                        child: TextField(
+                          textAlign: TextAlign.right,
+                          decoration: InputDecoration(
+                            hintText: 'تایپ کنید',
+                            hintStyle: const TextStyle(
+                                color: Color(0xFFA6A6A6),
+                                fontFamily: MAIN_FONT_FAMILY,
+                                fontSize: 13),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
-                ],
-              ),
-            ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  const Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Text(
+                        "توضیحات آگهی",
+                        style: TextStyle(
+                            color: Color.fromRGBO(166, 166, 166, 1),
+                            fontFamily: MAIN_FONT_FAMILY),
+                        textAlign: TextAlign.start,
+                      ),
+                    ],
+                  ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      SizedBox(
+                        width: MediaQuery.of(context).size.width * 1 / 1.117,
+                        height: 218,
+                        child: TextField(
+                          maxLines: 5,
+                          textAlign: TextAlign.right,
+                          decoration: InputDecoration(
+                            hintText: 'تایپ کنید',
+                            hintStyle: const TextStyle(
+                                color: Color(0xFFA6A6A6),
+                                fontFamily: MAIN_FONT_FAMILY,
+                                fontSize: 13),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.only(bottom: 30, top: 10),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          "...تایید و ادامه",
+                          style: true
+                              ? TextStyle(
+                                  fontSize: 20,
+                                  fontFamily: MAIN_FONT_FAMILY,
+                                  color: Colors.black38,
+                                )
+                              // ignore: dead_code
+                              : TextStyle(
+                                  fontSize: 20, fontFamily: MAIN_FONT_FAMILY),
+                        ),
+                        Icon(
+                          Icons.double_arrow,
+                          color: Color.fromRGBO(76, 140, 237, 1),
+                          size: 35,
+                        ),
+                      ],
+                    ),
+                  ),
+                ]),
           ]),
         ),
       ),

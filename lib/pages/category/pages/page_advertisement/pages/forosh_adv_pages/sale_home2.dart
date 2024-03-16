@@ -12,6 +12,7 @@ import 'package:flutter_application_1/pages/category/shared/emkanat4.dart';
 import 'package:flutter_application_1/pages/category/shared/emkanat5.dart';
 import 'package:flutter_application_1/pages/category/shared/emkanat6.dart';
 import 'package:flutter_application_1/pages/category/shared/emkanat7.dart';
+import 'package:flutter_application_1/pages/category/shared/emkanat8.dart';
 import 'package:flutter_application_1/pages/category/shared/number_piacker.dart';
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
 import 'package:flutter_application_1/pages/category/shared/switchItem.dart';
@@ -295,7 +296,7 @@ class SaleHome2 extends StatelessWidget {
                     prefixIcon: IconButton(
                       icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                       onPressed: () {
-                        buildButtom();
+                        showNumberPicker((_) {});
                       },
                     ),
                   ),
@@ -592,9 +593,7 @@ class SaleHome2 extends StatelessWidget {
                         ),
                         prefixIcon: IconButton(
                           icon: SvgPicture.asset("assets/images/Vector-20.svg"),
-                          onPressed: () {
-                            buildButtom4();
-                          },
+                          onPressed: () {},
                         )),
                   ),
                 ),
@@ -614,9 +613,7 @@ class SaleHome2 extends StatelessWidget {
                       ),
                       prefixIcon: IconButton(
                         icon: SvgPicture.asset("assets/images/Vector-20.svg"),
-                        onPressed: () {
-                          buildButtom3();
-                        },
+                        onPressed: () {},
                       ),
                     ),
                   ),
@@ -644,9 +641,7 @@ class SaleHome2 extends StatelessWidget {
                       ),
                       prefixIcon: IconButton(
                         icon: SvgPicture.asset("assets/images/Vector-20.svg"),
-                        onPressed: () {
-                          buildButtom2();
-                        },
+                        onPressed: () {},
                       ),
                     ),
                   ),
@@ -667,9 +662,7 @@ class SaleHome2 extends StatelessWidget {
                       ),
                       prefixIcon: IconButton(
                         icon: SvgPicture.asset("assets/images/Vector-20.svg"),
-                        onPressed: () {
-                          buildButtom5();
-                        },
+                        onPressed: () {},
                       ),
                     ),
                   ),
@@ -697,9 +690,7 @@ class SaleHome2 extends StatelessWidget {
                         ),
                         prefixIcon: IconButton(
                           icon: SvgPicture.asset("assets/images/Vector-20.svg"),
-                          onPressed: () {
-                            buildButtom6();
-                          },
+                          onPressed: () {},
                         )),
                   ),
                 ),
@@ -719,9 +710,7 @@ class SaleHome2 extends StatelessWidget {
                       ),
                       prefixIcon: IconButton(
                         icon: SvgPicture.asset("assets/images/Vector-20.svg"),
-                        onPressed: () {
-                          buildButtom7();
-                        },
+                        onPressed: () {},
                       ),
                     ),
                   ),
@@ -743,7 +732,7 @@ class SaleHome2 extends StatelessWidget {
                   GestureDetector(
                     behavior: HitTestBehavior.translucent,
                     onTap: () {
-                      buildButtom7();
+                      buildButtom8();
                     },
                     child: Container(
                       height: 70,
@@ -792,8 +781,12 @@ class SaleHome2 extends StatelessWidget {
                   ),
                   Obx(() => _selectedImagesPath.isNotEmpty
                       ? ClipRRect(
-                          child: Image.file(File(_selectedImagesPath.first)))
-                      : SizedBox.shrink()),
+                          borderRadius: BorderRadius.circular(10),
+                          child: SizedBox(
+                              height: 372,
+                              child:
+                                  Image.file(File(_selectedImagesPath.first))))
+                      : const SizedBox.shrink()),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
@@ -815,6 +808,7 @@ class SaleHome2 extends StatelessWidget {
                               width: 0.3,
                             )),
                         child: GestureDetector(
+                          behavior: HitTestBehavior.translucent,
                           onTap: () async {
                             var filepath = await ImagePicker.platform
                                 .getImageFromSource(

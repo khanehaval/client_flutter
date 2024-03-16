@@ -203,7 +203,7 @@ class Private extends StatelessWidget {
       (MediaQuery.of(context).size.width / 2) * 0.9;
 
   LinearGradient getGradient() => const LinearGradient(colors: [
-        Color.fromARGB(700, 55, 250, 100),
-        Colors.blue,
+        Color.fromARGB(255, 95, 173, 237),
+        Color.fromARGB(126, 118, 238, 146),
       ]);
 }

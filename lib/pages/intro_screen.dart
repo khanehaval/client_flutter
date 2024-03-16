@@ -23,11 +23,8 @@ class IntroScreen extends StatelessWidget {
                     'assets/images/Vector.png',
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 0),
-                  child: Image.asset(
-                    'assets/images/slider_1.png',
-                  ),
+                Image.asset(
+                  'assets/images/slider_1.png',
                 ),
               ],
             ),
@@ -127,7 +124,11 @@ class IntroScreen extends StatelessWidget {
               _sliderIndex.value = index + 1;
             }
           },
-          icon: Image.asset('assets/images/arrow_right.png',width: 24,height: 24,)),
+          icon: Image.asset(
+            'assets/images/arrow_right.png',
+            width: 24,
+            height: 24,
+          )),
     );
   }
 

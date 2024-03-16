@@ -4,7 +4,7 @@ import 'package:flutter_application_1/pages/category/shared/contant.dart';
 import 'package:get/get.dart';
 import 'dart:ui';
 
-buildButtom7() {
+buildButtom8() {
   final _selected = 0.obs;
   return Get.bottomSheet(
       SizedBox(
@@ -24,8 +24,8 @@ buildButtom7() {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        _buildItem('assets/images/Frame_camera.png', 1),
-                        _buildItem('assets/images/Frame_anten.png', 2),
+                        _buildItem('assets/images/Frame_teras.png', 1),
+                        _buildItem('assets/images/Frame_master.png', 2),
                       ],
                     ),
                     const SizedBox(
@@ -34,8 +34,8 @@ buildButtom7() {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        _buildItem('assets/images/Frame_door.png', 3),
-                        _buildItem('assets/images/Frame_dozdgir.png', 4),
+                        _buildItem('assets/images/Frame_anten.png', 3),
+                        _buildItem('assets/images/Frame_labi.png', 4),
                       ],
                     ),
                     const SizedBox(
@@ -44,8 +44,8 @@ buildButtom7() {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        _buildItem('assets/images/Frame_harigh.png', 5),
-                        _buildItem('assets/images/Frame_wifi.png', 6),
+                        _buildItem('assets/images/Frame_sona.png', 5),
+                        _buildItem('assets/images/Frame_estakhr.png', 6),
                       ],
                     ),
                     const SizedBox(
@@ -54,8 +54,28 @@ buildButtom7() {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        _buildItem('assets/images/Frame_ghazakhori.png', 7),
-                        _buildItem('assets/images/Frame_negahban.png', 8),
+                        _buildItem('assets/images/Frame_garden.png', 7),
+                        _buildItem('assets/images/Frame_van.png', 8),
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        _buildItem('assets/images/Frame_salon_varzeshi.png', 9),
+                        _buildItem('assets/images/Frame_alachigh.png', 10),
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        _buildItem('assets/images/Frame_salon_ejtema.png', 11),
+                        _buildItem('assets/images/Frame_game.png', 12),
                       ],
                     ),
                     const SizedBox(

@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_application_1/pages/category/shared/contant.dart';
 import 'package:flutter_application_1/pages/category/shared/map_pages/location_Info.dart';
 import 'package:flutter_map/flutter_map.dart';
@@ -138,34 +139,38 @@ class _SelectLocationMapState extends State<SelectLocationMap> {
         Align(
             alignment: Alignment.bottomRight,
             child: Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  const Text(
-                    "محدوده ملک را نشان بده",
-                    style: TextStyle(
+              padding: const EdgeInsets.all(20.0),
+              child: Container(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    const Text(
+                      "محدوده ملک را نشان بده",
+                      style: TextStyle(
                         fontFamily: MAIN_FONT_FAMILY,
-                        fontSize: 14,
-                        color: Color.fromRGBO(99, 99, 99, 1)),
-                    textAlign: TextAlign.center,
-                  ),
-                  Container(
-                    child: Transform.scale(
-                      scale: 0.80,
-                      child: Obx(
-                        () => Switch(
-                            onChanged: (_) => showLimit.value = _,
-                            value: showLimit.value,
-                            activeColor: Colors.white,
-                            activeTrackColor: Color.fromRGBO(54, 216, 89, 1),
-                            inactiveThumbColor: Color.fromRGBO(11, 8, 8, 0.2),
-                            inactiveTrackColor:
-                                Color.fromRGBO(255, 255, 255, 1)),
+                        fontSize: 12,
+                        color: Color.fromRGBO(99, 99, 99, 1),
+                      ),
+                      textDirection: TextDirection.rtl,
+                      textAlign: TextAlign.justify,
+                    ),
+                    Container(
+                      child: Transform.scale(
+                        scale: 0.80,
+                        child: Obx(
+                          () => Switch(
+                              onChanged: (_) => showLimit.value = _,
+                              value: showLimit.value,
+                              activeColor: Colors.white,
+                              activeTrackColor: Color.fromRGBO(54, 216, 89, 1),
+                              inactiveThumbColor: Color.fromRGBO(11, 8, 8, 0.2),
+                              inactiveTrackColor:
+                                  Color.fromRGBO(255, 255, 255, 1)),
+                        ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             )),
         Padding(
