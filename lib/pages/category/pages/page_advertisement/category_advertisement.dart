@@ -5,9 +5,8 @@ import 'package:flutter_application_1/pages/category/pages/page_advertisement/pa
 import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/forosh_adv_pages/forosh_adv.dart';
 import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/forosh_tejari_pages/forosh_tejari_adv.dart';
 import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/kota_modat_pages/kota_modat_adv.dart';
-import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/sakht%20v%20saz_pages/sakht%20v%20saz_adv.dart';
+import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/sakht_v_saz_pages/sakht_v_saz_adv.dart';
 import 'package:flutter_application_1/pages/category/shared/contant.dart';
-import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
 import 'package:flutter_application_1/pages/educational_tour.dart';
 import 'package:flutter_application_1/pages/profile.dart';
 import 'package:flutter_svg/flutter_svg.dart';

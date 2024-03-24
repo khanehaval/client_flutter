@@ -75,6 +75,7 @@ dependencies:
   country_code_picker: 3.0.0
   country_picker: 2.0.23
   get: 4.6.6
+  gradient_borders: 1.0.0
   flutter_svg: 2.0.9
   json_annotation: 4.8.1
   persian_datetime_picker: 2.6.0

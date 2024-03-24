@@ -1,12 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/ejara_tejari/renet_office.dart';
-import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/forosh_adv_pages/sale_home2.dart';
-import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/forosh_adv_pages/sale_vila.dart';
-import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/forosh_tejari_pages/sale_store.dart';
-import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/sakht%20v%20saz_pages/presell.dart';
+import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/sakht_v_saz_pages/presell.dart';
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
-import 'package:flutter_application_1/pages/category/shared/switchItem.dart';
+
 import 'package:flutter_application_1/pages/category/shared/switchitem_vila.dart';
 import 'package:get/get.dart';
 import '../../../../shared/contant.dart';

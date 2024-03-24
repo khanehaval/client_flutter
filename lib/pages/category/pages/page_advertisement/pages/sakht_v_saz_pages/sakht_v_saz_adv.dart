@@ -1,13 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/forosh_adv_pages/sale_vila.dart';
-import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/forosh_adv_pages/select_location_kolangi.dart';
-import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/forosh_adv_pages/select_location_on_map.dart';
-import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/forosh_adv_pages/select_location_vila.dart';
-import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/forosh_tejari_pages/select_location_sale_office.dart';
-import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/forosh_tejari_pages/select_location_sale_shop.dart';
-import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/forosh_tejari_pages/select_location_sale_store.dart';
-import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/sakht%20v%20saz_pages/SelectLocation_partnership.dart';
-import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/sakht%20v%20saz_pages/SelectLocationpresell.dart';
+import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/sakht_v_saz_pages/SelectLocation_partnership.dart';
+import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/sakht_v_saz_pages/SelectLocationpresell.dart';
+
 import 'package:flutter_application_1/pages/category/shared/contant.dart';
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
 import 'package:flutter_application_1/pages/profile.dart';
