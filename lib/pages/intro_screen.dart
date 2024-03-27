@@ -126,8 +126,8 @@ class IntroScreen extends StatelessWidget {
           },
           icon: Image.asset(
             'assets/images/arrow_right.png',
-            width: 24,
-            height: 24,
+            width: 30,
+            height: 30,
           )),
     );
   }

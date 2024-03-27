@@ -69,8 +69,8 @@ class _RegisterState extends State<Register> {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: Obx(() => !_keyboardVisibility.value
           ? Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Obx(
+              padding: const EdgeInsets.all(8.0),
+              child: Obx(
                 () => button_is_pressed.value
                     ? const CircularProgressIndicator()
                     : Container(
@@ -98,7 +98,7 @@ class _RegisterState extends State<Register> {
                         ),
                       ),
               ),
-          )
+            )
           : const SizedBox.shrink()),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -115,7 +115,7 @@ class _RegisterState extends State<Register> {
               ),
               const Text(
                 'شماره تلفن همراه خود را وارد کنید',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
               ),
               const SizedBox(
                 height: 20,

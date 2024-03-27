@@ -13,6 +13,8 @@ import 'package:flutter_application_1/pages/category/shared/emkanat5.dart';
 import 'package:flutter_application_1/pages/category/shared/emkanat6.dart';
 import 'package:flutter_application_1/pages/category/shared/emkanat7.dart';
 import 'package:flutter_application_1/pages/category/shared/emkanat8.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/jahat_sakhteman.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/sanad.dart';
 import 'package:flutter_application_1/pages/category/shared/number_piacker.dart';
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
 import 'package:flutter_application_1/pages/category/shared/switchItem.dart';
@@ -449,9 +451,7 @@ class SaleHome2 extends StatelessWidget {
                       prefixIcon: IconButton(
                         icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                         onPressed: () {
-                          persianDataPicker((date) {
-                            print(date);
-                          });
+                          Sanad((_) {});
                         },
                       ),
                     ),
@@ -550,7 +550,7 @@ class SaleHome2 extends StatelessWidget {
                       prefixIcon: IconButton(
                         icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                         onPressed: () {
-                          // _show_item_1.value = !_show_item_1.isTrue;
+                          JahatSakhteman((_) {});
                         },
                       ),
                     ),

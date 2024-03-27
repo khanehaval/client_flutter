@@ -42,7 +42,7 @@ Widget bottomNavigation() {
       ),
       NavigationDestination(
         icon: Image.asset(
-          'assets/images/Category.png',
+          'assets/images/category.png',
           width: 24,
           height: 24,
         ),
