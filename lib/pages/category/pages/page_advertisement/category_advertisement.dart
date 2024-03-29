@@ -1,129 +1,105 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/ejara_adv_pages/ejara_adv.dart';
-import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/ejara_tejari/ejara_tejari_adv.dart';
+import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/ejara_tejari_edari/ejara_tejari_edari_adv.dart';
 import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/forosh_adv_pages/forosh_adv.dart';
 import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/forosh_tejari_pages/forosh_tejari_adv.dart';
-import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/kota_modat_pages/kota_modat_adv.dart';
-import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/sakht%20v%20saz_pages/sakht%20v%20saz_adv.dart';
+import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/kota_modat_pages/ejara_kota_modat_page.dart';
+import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/sakht_v_saz_pages/sakht_v_saz_adv.dart';
 import 'package:flutter_application_1/pages/category/shared/contant.dart';
-import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
 import 'package:flutter_application_1/pages/educational_tour.dart';
-import 'package:flutter_application_1/pages/profile.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
+import '../../shared/app_bar.dart';
+
 class CategoryAdvertisement extends StatelessWidget {
-  final _selected = 0.obs;
-  CategoryAdvertisement({
+  const CategoryAdvertisement({
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: buildaAppBar(),
+      appBar: buildAppBar(),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          const Text(
-            "انتخاب دسته بندی",
-            style: TextStyle(
-                color: Color.fromRGBO(
-                  99,
-                  99,
-                  99,
-                  1,
+          Column(
+            children: [
+              const Text(
+                "انتخاب دسته بندی",
+                style: TextStyle(
+                  fontFamily: MAIN_FONT_FAMILY,
+                  color: Color.fromRGBO(
+                    99,
+                    99,
+                    99,
+                    1,
+                  ),
+                  fontSize: 28,
                 ),
-                fontSize: 20,
-                fontFamily: MAIN_FONT_FAMILY),
-          ),
-          SvgPicture.asset(
-            'assets/images/key and home1.svg',
-            width: 210,
-            height: 190,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              _buildItem(
-                'assets/images/Frame_rentstore.png',
-                1,
               ),
               const SizedBox(
-                width: 20,
+                height: 25,
               ),
-              _buildItem('assets/images/Frame_salehome.png', 2),
+              SvgPicture.asset(
+                'assets/images/key and home1.svg',
+              ),
             ],
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              _buildItem('assets/images/Frame_rent.png', 3),
-              const SizedBox(
-                width: 20,
-              ),
-              _buildItem('assets/images/Frame_salestore.png', 4),
-            ],
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              _buildItem('assets/images/Frame_Daily.png', 5),
-              const SizedBox(
-                width: 20,
-              ),
-              _buildItem('assets/images/Frame_Construction.png', 6),
-            ],
-          ),
-          GestureDetector(
-            onTap: () {
-              if (_selected.value > 0) {
-                int index = _selected.value;
-                Widget finalWidget = const SizedBox.shrink();
-                if (index == 2) {
-                  finalWidget = UnderForosh();
-                } else if (index == 1) {
-                  finalWidget = finalWidget = EjaraAdv();
-                  ();
-                } else if (index == 4) {
-                  finalWidget = finalWidget = ForoshTejariAdv();
-                } else if (index == 3) {
-                  finalWidget = finalWidget = EjaraTejariAdv();
-                } else if (index == 5) {
-                  finalWidget = finalWidget = KotaModat();
-                } else if (index == 6) {
-                  finalWidget = finalWidget = SakhVaSaz();
-                }
-
-                Get.to(() => finalWidget);
-              }
-            },
-            child: Obx(() => Row(
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 20),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(
-                      "...تایید و ادامه",
-                      style: _selected.value == 0
-                          ? const TextStyle(
-                              fontSize: 15,
-                              fontFamily: MAIN_FONT_FAMILY,
-                              color: Colors.black38,
-                            )
-                          : const TextStyle(
-                              fontSize: 15, fontFamily: MAIN_FONT_FAMILY),
+                    _buildItem(
+                      'assets/images/Frame_rentstore.png',
+                      EjaraAdv(),
                     ),
-                    Icon(
-                      Icons.double_arrow,
-                      color: _selected.value == 0
-                          ? Colors.black54
-                          : const Color.fromRGBO(76, 140, 237, 1),
-                      size: 35,
+                    const SizedBox(
+                      width: 20,
                     ),
+                    _buildItem(
+                        'assets/images/Frame_salehome.png', const ForoshAdv()),
                   ],
-                )),
-          ),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    _buildItem(
+                        'assets/images/Frame_rent.png', EjaraTejariAdv()),
+                    const SizedBox(
+                      width: 20,
+                    ),
+                    _buildItem(
+                        'assets/images/Frame_salestore.png', ForoshTejariAdv()),
+                  ],
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    _buildItem(
+                        'assets/images/Frame_Daily.png', EjaraKotaModatPage()),
+                    const SizedBox(
+                      width: 20,
+                    ),
+                    _buildItem(
+                        'assets/images/Frame_Construction.png', SakhVaSaz()),
+                  ],
+                ),
+              ],
+            ),
+          )
         ],
       ),
       bottomNavigationBar: NavigationBar(
@@ -184,72 +160,25 @@ class CategoryAdvertisement extends StatelessWidget {
 
   Widget _buildItem(
     String assetPath,
-    int index,
+    Widget nextPage,
   ) {
     return GestureDetector(
       onTap: () {
-        _selected.value = index;
+        Get.to(() => nextPage);
       },
-      child: SizedBox(
-        height: 90,
-        width: 140,
-        child: Obx(() => Container(
-              decoration: BoxDecoration(
-                gradient: _selected.value == index
-                    ? const LinearGradient(colors: GRADIANT_COLOR)
-                    : null,
-                borderRadius: BorderRadius.circular(10),
-                // border: Border.all(
-                //   width: _selected.value == index ? 2 : 1.5,
-                // )
-              ),
-              child: Padding(
-                padding: const EdgeInsets.all(2.0),
-                child: Container(
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(10),
-                        border: Border.all(
-                          color: _selected.value == index
-                              ? Colors.white
-                              : Colors.black12,
-                          width: _selected.value == index ? 2.8 : 1.5,
-                        )),
-                    child: Image.asset(assetPath)),
-              ),
-            )),
-      ),
-    );
-  }
-}
-
-PreferredSizeWidget buildaAppBar() {
-  return AppBar(
-    leading: IconButton(
-      icon: const Icon(
-        Icons.arrow_back_ios,
-      ),
-      onPressed: () => Get.back(),
-    ),
-    actions: [
-      GestureDetector(
-        onTap: () {
-          Get.to(
-            () => const Profile(),
-          );
-        },
-        child: Container(
-          decoration: BoxDecoration(
-              color: Colors.black12, borderRadius: BorderRadius.circular(60)),
-          child: const Padding(
-            padding: EdgeInsets.all(5.0),
-            child: Icon(
-              Icons.person_2_rounded,
-              size: 30,
-            ),
+      child: Container(
+        decoration: BoxDecoration(
+            border: Border.all(style: BorderStyle.solid),
+            borderRadius: BorderRadius.circular(10)),
+        child: SizedBox(
+          height: 90,
+          width: 140,
+          child: Padding(
+            padding: const EdgeInsets.all(2.0),
+            child: Image.asset(assetPath),
           ),
         ),
       ),
-    ],
-  );
+    );
+  }
 }

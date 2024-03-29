@@ -1,17 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/forosh_tejari_pages/forosh_daftar_location_page.dart';
-import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/forosh_tejari_pages/forosh_shop_location_page.dart';
-import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/forosh_tejari_pages/forosh_sanati_location_page.dart';
-import 'package:flutter_application_1/pages/category/shared/contant.dart';
+import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/kota_modat_pages/ejara_km_vila_loation_page.dart';
+import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/kota_modat_pages/ejara_km_aparteman_location_page.dart';
 import 'package:flutter_application_1/pages/category/shared/map_pages/first_map_page.dart';
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/adv_title_widget.dart';
-
-import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
-class ForoshTejariAdv extends StatelessWidget {
-
+class EjaraKotaModatPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,39 +17,26 @@ class ForoshTejariAdv extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             AdvTitleWidget(),
-            const SizedBox(
-              height: 20,
-            ),
+            const SizedBox(height: 100,),
             Column(
               children: [
-                _buildItem('assets/images/Frame_daftar.png', () {
+                _buildItem('assets/images/Frame_kota1.png', () {
                   Get.to(() => FirstMapPage(onSelect: (_) {
-                        Get.back();
-                        Get.to(() => ForoshDaftarLocationPage(locationInfo: _));
+                        Get.to(() =>
+                            EjaraKMApartemanLocationPage(locationInfo: _));
                       }));
                 }),
                 const SizedBox(
                   height: 10,
                 ),
                 _buildItem(
-                  'assets/images/Frame_maqazeh.png',
-                      () {
+                  'assets/images/Frame_kota2.png',
+                  () {
                     Get.to(() => FirstMapPage(onSelect: (_) {
-                      Get.back();
-                      Get.to(() => ForoshShopLocationPage(locationInfo: _));
-                    }));
+                          Get.to(() => EjaraKmLocationPage(locationInfo: _));
+                        }));
                   },
                 ),
-                const SizedBox(
-                  height: 10,
-                ),
-                _buildItem('assets/images/Frame_daftarsanati.png', () {
-                  Get.to(() => FirstMapPage(onSelect: (_) {
-                    Get.back();
-                    Get.to(() => ForoshSanatiLocationPage(locationInfo: _));
-                  }));
-                }),
-
               ],
             )
           ]),

@@ -8,6 +8,7 @@ import 'package:flutter_application_1/db/entities/customer.dart';
 import 'package:flutter_application_1/db/entities/estate.dart';
 import 'package:flutter_application_1/db/entities/user.dart';
 import 'package:flutter_application_1/db/entities/user_type.dart';
+import 'package:flutter_application_1/pages/category/shared/contant.dart';
 import 'package:flutter_application_1/pages/intro_screen.dart';
 import 'package:flutter_application_1/pages/login_secondly_page.dart';
 import 'package:flutter_application_1/repo/acount_repo.dart';
@@ -46,6 +47,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) => MaterialApp(
       debugShowCheckedModeBanner: false,
+      theme: ThemeData(fontFamily: MAIN_FONT_FAMILY),
       debugShowMaterialGrid: false,
       home: FutureBuilder(
           future: _userRepo.isLogin(),
