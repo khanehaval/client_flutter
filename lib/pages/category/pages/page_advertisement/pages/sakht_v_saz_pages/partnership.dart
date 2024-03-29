@@ -1,6 +1,5 @@
 
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/ejara_tejari/rent_store.dart';
 import 'package:flutter_application_1/pages/category/shared/contant.dart';
 import 'package:flutter_application_1/pages/category/shared/date.dart';
 import 'package:flutter_application_1/pages/category/shared/images_picker/images_picker.dart';
@@ -11,6 +10,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
+
+import '../../../../../intro_screen.dart';
 
 class PartnerShip extends StatelessWidget {
   final aghsatType = "".obs;

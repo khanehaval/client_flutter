@@ -1,17 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/forosh_tejari_pages/forosh_daftar_location_page.dart';
-import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/forosh_tejari_pages/forosh_shop_location_page.dart';
-import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/forosh_tejari_pages/forosh_sanati_location_page.dart';
-import 'package:flutter_application_1/pages/category/shared/contant.dart';
+
+import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/ejara_tejari_edari/ejara_daftar_location_page.dart';
+import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/ejara_tejari_edari/ejara_shop_location_page.dart';
 import 'package:flutter_application_1/pages/category/shared/map_pages/first_map_page.dart';
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/adv_title_widget.dart';
-
-import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'ejara_sanati_location_page.dart';
 
-class ForoshTejariAdv extends StatelessWidget {
-
+class EjaraTejariAdv extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,39 +19,44 @@ class ForoshTejariAdv extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             AdvTitleWidget(),
-            const SizedBox(
-              height: 20,
-            ),
             Column(
               children: [
-                _buildItem('assets/images/Frame_daftar.png', () {
+                _buildItem('assets/images/Frame_ejara_tejari1.png', () {
                   Get.to(() => FirstMapPage(onSelect: (_) {
                         Get.back();
-                        Get.to(() => ForoshDaftarLocationPage(locationInfo: _));
+                        Get.to(() => EjaraDaftarLocationPage(
+                              locationInfo: _,
+                            ));
                       }));
                 }),
-                const SizedBox(
+                SizedBox(
                   height: 10,
                 ),
                 _buildItem(
-                  'assets/images/Frame_maqazeh.png',
-                      () {
+                  'assets/images/Frame_ejara_tejari2.png',
+                  () {
                     Get.to(() => FirstMapPage(onSelect: (_) {
-                      Get.back();
-                      Get.to(() => ForoshShopLocationPage(locationInfo: _));
-                    }));
+                          Get.back();
+                          Get.to(() => EajraShopLocationPage(
+                                locationInfo: _,
+                              ));
+                        }));
                   },
                 ),
-                const SizedBox(
+                SizedBox(
                   height: 10,
                 ),
-                _buildItem('assets/images/Frame_daftarsanati.png', () {
-                  Get.to(() => FirstMapPage(onSelect: (_) {
-                    Get.back();
-                    Get.to(() => ForoshSanatiLocationPage(locationInfo: _));
-                  }));
-                }),
-
+                _buildItem(
+                  'assets/images/Frame_ejara_tejari3.png',
+                  () {
+                    Get.to(() => FirstMapPage(onSelect: (_) {
+                          Get.back();
+                          Get.to(() => EjaraSanatiLocationPage(
+                                locationInfo: _,
+                              ));
+                        }));
+                  },
+                ),
               ],
             )
           ]),

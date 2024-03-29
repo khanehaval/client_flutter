@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/shared/contant.dart';
-import 'package:flutter_application_1/pages/home.dart';
+import 'package:flutter_application_1/pages/category/pages/home.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 

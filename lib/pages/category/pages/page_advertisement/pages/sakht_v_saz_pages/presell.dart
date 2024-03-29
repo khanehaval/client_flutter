@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/ejara_tejari/rent_store.dart';
 import 'package:flutter_application_1/pages/category/shared/contant.dart';
 import 'package:flutter_application_1/pages/category/shared/date.dart';
 import 'package:flutter_application_1/pages/category/shared/emkanat8.dart';
@@ -12,6 +11,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
+
+import '../../../../../intro_screen.dart';
 
 class Presell extends StatelessWidget {
   final aghsatType = "".obs;
@@ -602,7 +603,7 @@ class Presell extends StatelessWidget {
                     height: 10,
                   ),
                   SwitchItem(
-                      type: aghsatType, items: const ["ضامن", "سفته", "چک"]),
+                      onSelected: (_){}, items: const ["ضامن", "سفته", "چک"]),
                   const SizedBox(
                     height: 10,
                   ),

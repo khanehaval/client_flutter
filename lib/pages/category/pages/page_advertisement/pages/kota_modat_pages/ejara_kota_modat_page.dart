@@ -1,46 +1,45 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/sakht_v_saz_pages/partnership_locarion_page.dart';
-import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/sakht_v_saz_pages/presell_location_page.dart';
-import 'package:flutter_application_1/pages/category/shared/contant.dart';
+import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/kota_modat_pages/ejara_km_vila_loation_page.dart';
+import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/kota_modat_pages/ejara_km_aparteman_location_page.dart';
 import 'package:flutter_application_1/pages/category/shared/map_pages/first_map_page.dart';
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/adv_title_widget.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
-class SakhVaSaz extends StatelessWidget {
+class EjaraKotaModatPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: bottomNavigation(),
       appBar: buildaAppBar(),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          AdvTitleWidget(),
-          const SizedBox(
-            height: 100,
-          ),
-          Column(children: [
-            _buildItem('assets/images/Frame_sakht1.png', () {
-              Get.to(FirstMapPage(onSelect: (_) {
-                Get.back();
-                Get.to(() => SelectLocationEjaraPresell(locationInfo: _));
-              }));
-            }),
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            AdvTitleWidget(),
+            const SizedBox(height: 100,),
+            Column(
+              children: [
+                _buildItem('assets/images/Frame_kota1.png', () {
+                  Get.to(() => FirstMapPage(onSelect: (_) {
+                        Get.to(() =>
+                            EjaraKMApartemanLocationPage(locationInfo: _));
+                      }));
+                }),
+                const SizedBox(
+                  height: 10,
+                ),
+                _buildItem(
+                  'assets/images/Frame_kota2.png',
+                  () {
+                    Get.to(() => FirstMapPage(onSelect: (_) {
+                          Get.to(() => EjaraKmLocationPage(locationInfo: _));
+                        }));
+                  },
+                ),
+              ],
+            )
           ]),
-          const SizedBox(
-            height: 10,
-          ),
-          _buildItem('assets/images/Frame_sakht2.png', () {
-            Get.to(FirstMapPage(onSelect: (_) {
-              Get.back();
-              Get.to(() => SelectLocationPartbership(locationInfo: _));
-            }));
-          }),
-        ],
-      ),
     );
   }
 
@@ -49,9 +48,7 @@ class SakhVaSaz extends StatelessWidget {
     Function onTap,
   ) {
     return GestureDetector(
-      onTap: () {
-        onTap();
-      },
+      onTap: () => onTap(),
       child: SizedBox(
           height: 90,
           width: 140,

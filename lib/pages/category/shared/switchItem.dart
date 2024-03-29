@@ -5,15 +5,17 @@ import 'package:get/get.dart';
 import 'contant.dart';
 
 class SwitchItem extends StatelessWidget {
-  final RxString type;
+  Function(String) onSelected;
   List<String> items;
 
-  SwitchItem({required this.type, required this.items, super.key});
+  SwitchItem({required this.onSelected, required this.items, super.key});
 
   @override
   Widget build(BuildContext context) {
     return buildMelkTypeItem();
   }
+
+  final selected = "".obs;
 
   Widget buildMelkTypeItem() => Row(
       mainAxisAlignment: MainAxisAlignment.center,
@@ -36,7 +38,8 @@ class SwitchItem extends StatelessWidget {
           ),
           IconButton(
             onPressed: () {
-              type.value = text;
+              selected.value = text;
+              onSelected(text);
             },
             icon: Obx(() => Container(
                   width: 30,
@@ -44,7 +47,7 @@ class SwitchItem extends StatelessWidget {
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
                       border: Border.all(width: 1, color: Colors.black54)),
-                  child: type.value == text
+                  child: selected.value == text
                       ? const Icon(
                           Icons.check,
                           color: Colors.black,
