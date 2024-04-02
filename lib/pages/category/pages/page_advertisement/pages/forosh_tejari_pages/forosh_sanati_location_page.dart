@@ -7,7 +7,7 @@ import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/submit_row.dart';
 
 import 'package:get/get.dart';
-import '../../../../shared/contant.dart';
+import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import '../../../../shared/switchItem.dart';
 
 class ForoshSanatiLocationPage extends StatelessWidget {

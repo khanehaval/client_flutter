@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/pages/category/shared/contant.dart';
+import 'package:flutter_application_1/pages/category/models/AdvInfoModel.dart';
+import 'package:flutter_application_1/pages/category/shared/adv_info/advInfo.dart';
+import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/category/shared/date.dart';
-import 'package:flutter_application_1/pages/category/shared/emkanat8.dart';
+import 'package:flutter_application_1/pages/category/shared/facilities_selector.dart';
 import 'package:flutter_application_1/pages/category/shared/images_picker/images_picker.dart';
 import 'package:flutter_application_1/pages/category/shared/more_emkanat/jahat_sakhteman.dart';
 import 'package:flutter_application_1/pages/category/shared/more_emkanat/sanad.dart';
@@ -9,9 +11,13 @@ import 'package:flutter_application_1/pages/category/shared/number_piacker.dart'
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
 import 'package:flutter_application_1/pages/category/shared/switchItem.dart';
 import 'package:flutter_application_1/pages/category/shared/twoItemInRow.dart';
+import 'package:flutter_application_1/pages/category/shared/widget/text_field.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/route_widget.dart';
+import 'package:flutter_application_1/pages/category/shared/widget/switachable.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+
+import '../../../../models/FacilitiesModel.dart';
 
 class ForoshAdvPage extends StatelessWidget {
   final aghsatType = "".obs;
@@ -24,6 +30,37 @@ class ForoshAdvPage extends StatelessWidget {
   final _allPriceTextController = TextEditingController();
   final _metragTextController = TextEditingController();
   final _selectedImagesPath = [].obs;
+  final _facilities = <FacilitiesModel>[].obs;
+
+  final _buildDirectionController = TextEditingController();
+  final _buildUnitOfAnyFloorCountController = TextEditingController();
+  final _buildFloorsCountController = TextEditingController();
+  final _installmentsController = TextEditingController();
+  final _buildDateController = TextEditingController();
+  final _buildRoomsCountController = TextEditingController();
+  final _buildDocumentController = TextEditingController();
+  final _buildFloorController = TextEditingController();
+  final _buildAllFloorsCountController = TextEditingController();
+  final _reBuildController = TextEditingController();
+  final _buildBaseCapacityController = TextEditingController();
+  final _buildMaxCapacityController = TextEditingController();
+  final _buildRiteController = TextEditingController();
+  final _buildAnimalController = TextEditingController();
+  final _buildSmokingController = TextEditingController();
+  final _buildShoesController = TextEditingController();
+  final _buildDeprivationController = TextEditingController();
+  final _buildSleepServiceCountController = TextEditingController();
+  final _oneBedCountController = TextEditingController();
+  final _twoBedCountController = TextEditingController();
+  final _floorMaterialController = TextEditingController();
+  final _cabinetController = TextEditingController();
+  final _coldTypeController = TextEditingController();
+  final _heatTypeController = TextEditingController();
+  final _heatWaterController = TextEditingController();
+  final _wcController = TextEditingController();
+  final _numberOfInstallmentsController = TextEditingController();
+
+  final _advInfo = AdvInfoModel();
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +78,7 @@ class ForoshAdvPage extends StatelessWidget {
               TwoItemInRow(
                 label1: "قیمت هر متر مربع (تومان)",
                 label2: "قیمت کل (تومان)",
-                w1: Obx(
+                widget1: Obx(
                   () => Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
@@ -58,7 +95,7 @@ class ForoshAdvPage extends StatelessWidget {
                     ),
                   ),
                 ),
-                w2: SizedBox(
+                widget2: SizedBox(
                   height: 41,
                   width: getPageWidth_2(context),
                   child: TextField(
@@ -164,184 +201,59 @@ class ForoshAdvPage extends StatelessWidget {
                 indent: 20,
               ),
               TwoItemInRow(
-                label1: "تعداد اتاق ",
-                label2: "سن بنا ",
-                w1: SizedBox(
-                  height: 41,
-                  width: getPageWidth_2(context),
-                  child: TextField(
-                    readOnly: true,
-                    focusNode: FocusNode(canRequestFocus: false),
-                    textAlign: TextAlign.right,
-                    decoration: InputDecoration(
-                        hintText: 'انتخاب نشده',
-                        hintStyle: const TextStyle(
-                            color: Color(0xFFA6A6A6), fontSize: 13),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        prefixIcon: IconButton(
-                          icon: SvgPicture.asset("assets/images/Vector-20.svg"),
-                          onPressed: () {
-                            showNumberPicker((_) {});
-                          },
-                        )),
-                  ),
-                ),
-                w2: SizedBox(
-                  height: 41,
-                  width: getPageWidth_2(context),
-                  child: TextField(
-                    readOnly: true,
-                    focusNode: FocusNode(canRequestFocus: false),
-                    textAlign: TextAlign.right,
-                    decoration: InputDecoration(
-                      hintText: 'انتخاب نشده',
-                      hintStyle: const TextStyle(
-                          color: Color(0xFFA6A6A6), fontSize: 13),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      prefixIcon: IconButton(
-                        icon: SvgPicture.asset("assets/images/Vector-20.svg"),
-                        onPressed: () {
-                          persianDataPicker((Date) => print(Date));
-                        },
-                      ),
-                    ),
-                  ),
-                ),
-              ),
+                  label1: "تعداد اتاق ",
+                  label2: "سن بنا ",
+                  widget1: ReadOnlyTextField(_buildRoomsCountController, () {
+                    showNumberPicker((_) {
+                      _buildRoomsCountController.text = _;
+                    });
+                  }, width: getPageWidth_2(context)),
+                  widget2: ReadOnlyTextField(_buildDateController, () {
+                    persianDataPicker(
+                        (date) => _buildDateController.text = date);
+                  }, width: getPageWidth_2(context))),
               const SizedBox(
                 height: 20,
               ),
-              Row(
+              const Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  const Text(
+                  Text(
                     "*",
                     style: TextStyle(
                         fontSize: 20, color: Color.fromRGBO(156, 64, 64, 1)),
                   ),
-                  Container(
-                    child: const Text(
-                      "طبقه ",
-                      style: TextStyle(
-                          color: Color.fromRGBO(99, 99, 99, 1),
-                          fontFamily: MAIN_FONT_FAMILY),
-                      textAlign: TextAlign.start,
-                    ),
+                  Text(
+                    "طبقه ",
+                    style: TextStyle(
+                        color: Color.fromRGBO(99, 99, 99, 1),
+                        fontFamily: MAIN_FONT_FAMILY),
+                    textAlign: TextAlign.start,
                   ),
                 ],
               ),
-              Container(
-                height: 41,
-                width: 372,
-                child: TextField(
-                  readOnly: true,
-                  focusNode: FocusNode(canRequestFocus: false),
-                  textAlign: TextAlign.right,
-                  decoration: InputDecoration(
-                    hintText: 'انتخاب نشده',
-                    hintStyle:
-                        TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    prefixIcon: IconButton(
-                      icon: SvgPicture.asset("assets/images/Vector-20.svg"),
-                      onPressed: () {
-                        showNumberPicker((_) {});
-                      },
-                    ),
-                  ),
-                ),
-              ),
+              ReadOnlyTextField(_buildFloorController, () {
+                showNumberPicker((_) {
+                  _buildFloorController.text = _;
+                });
+              }),
               const SizedBox(
                 height: 15,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Text(
+                  switchable(
+                    hasAnbari,
                     "انباری",
-                    style: TextStyle(
-                        fontFamily: MAIN_FONT_FAMILY,
-                        fontSize: 13,
-                        color: Color.fromRGBO(99, 99, 99, 1)),
                   ),
-                  Container(
-                    child: Transform.scale(
-                      scale: 0.80,
-                      child: Obx(
-                        () => Switch(
-                            onChanged: (_) => hasAnbari.value = _,
-                            value: hasAnbari.value,
-                            activeColor: Colors.white,
-                            activeTrackColor: Color.fromRGBO(54, 216, 89, 1),
-                            inactiveThumbColor: Color.fromRGBO(11, 8, 8, 0.2),
-                            inactiveTrackColor:
-                                Color.fromRGBO(255, 255, 255, 1)),
-                      ),
-                    ),
+                  switchable(
+                    hasAsansor,
+                    "آسانسور",
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Text(
-                        "آسانسور",
-                        style: TextStyle(
-                            fontFamily: MAIN_FONT_FAMILY,
-                            fontSize: 13,
-                            color: Color.fromRGBO(99, 99, 99, 1)),
-                      ),
-                      Container(
-                        child: Transform.scale(
-                          scale: 0.80,
-                          child: Obx(
-                            () => Switch(
-                                onChanged: (_) => hasAsansor.value = _,
-                                value: hasAsansor.value,
-                                activeColor: Colors.white,
-                                activeTrackColor:
-                                    const Color.fromRGBO(54, 216, 89, 1),
-                                inactiveThumbColor:
-                                    const Color.fromRGBO(11, 8, 8, 0.2),
-                                inactiveTrackColor:
-                                    const Color.fromRGBO(255, 255, 255, 1)),
-                          ),
-                        ),
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          const Text(
-                            "پارکینگ",
-                            style: TextStyle(
-                                fontFamily: MAIN_FONT_FAMILY,
-                                fontSize: 13,
-                                color: Color.fromRGBO(99, 99, 99, 1)),
-                          ),
-                          Container(
-                            child: Transform.scale(
-                              scale: 0.80,
-                              child: Obx(
-                                () => Switch(
-                                    onChanged: (_) => hasParking.value = _,
-                                    value: hasParking.value,
-                                    activeColor: Colors.white,
-                                    activeTrackColor:
-                                        Color.fromRGBO(54, 216, 89, 1),
-                                    inactiveThumbColor:
-                                        Color.fromRGBO(11, 8, 8, 0.2),
-                                    inactiveTrackColor:
-                                        Color.fromRGBO(255, 255, 255, 1)),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
+                  switchable(
+                    hasParking,
+                    "پارکینگ",
                   ),
                 ],
               ),
@@ -363,153 +275,46 @@ class ForoshAdvPage extends StatelessWidget {
                 height: 15,
               ),
               TwoItemInRow(
-                label1: "تعداد کل طبقات",
-                label2: "نوع سند",
-                w1: SizedBox(
-                  height: 41,
-                  width: getPageWidth_2(context),
-                  child: TextField(
-                    readOnly: true,
-                    focusNode: FocusNode(canRequestFocus: false),
-                    textAlign: TextAlign.right,
-                    decoration: InputDecoration(
-                        hintText: 'انتخاب نشده',
-                        hintStyle: const TextStyle(
-                            color: Color(0xFFA6A6A6), fontSize: 13),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        prefixIcon: IconButton(
-                          icon: SvgPicture.asset("assets/images/Vector-20.svg"),
-                          onPressed: () {
-                            showNumberPicker((_) {});
-                          },
-                        )),
-                  ),
-                ),
-                w2: SizedBox(
-                  height: 41,
-                  width: getPageWidth_2(context),
-                  child: TextField(
-                    readOnly: true,
-                    focusNode: FocusNode(canRequestFocus: false),
-                    textAlign: TextAlign.right,
-                    decoration: InputDecoration(
-                      hintText: 'انتخاب نشده',
-                      hintStyle: const TextStyle(
-                          color: Color(0xFFA6A6A6), fontSize: 13),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      prefixIcon: IconButton(
-                        icon: SvgPicture.asset("assets/images/Vector-20.svg"),
-                        onPressed: () {
-                          Sanad((_) {});
-                        },
-                      ),
-                    ),
-                  ),
-                ),
-              ),
+                  label1: "تعداد کل طبقات",
+                  label2: "نوع سند",
+                  widget1: ReadOnlyTextField(_buildFloorsCountController, () {
+                    showNumberPicker((_) {
+                      _buildFloorsCountController.text = _;
+                    });
+                  }, width: getPageWidth_2(context)),
+                  widget2: ReadOnlyTextField(_buildDocumentController, () {
+                    Sanad((_) {
+                      _buildDocumentController.text = _;
+                    });
+                  }, width: getPageWidth_2(context))),
               const SizedBox(
                 height: 15,
               ),
               TwoItemInRow(
-                label1: "تعداد کل واحد ها",
-                label2: "تعداد واحد در طبقه",
-                w1: Container(
-                  height: 41,
-                  width: getPageWidth_2(context),
-                  child: TextField(
-                    keyboardType: TextInputType.number,
-                    textAlign: TextAlign.right,
-                    decoration: InputDecoration(
-                      hintText: 'تایپ کنید',
-                      hintStyle: const TextStyle(
-                          color: Color(0xFFA6A6A6), fontSize: 13),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                    ),
-                  ),
-                ),
-                w2: Container(
-                  height: 41,
-                  width: getPageWidth_2(context),
-                  child: TextField(
-                    readOnly: true,
-                    focusNode: FocusNode(canRequestFocus: false),
-                    textAlign: TextAlign.right,
-                    decoration: InputDecoration(
-                      hintText: 'انتخاب نشده',
-                      hintStyle: const TextStyle(
-                          color: Color(0xFFA6A6A6), fontSize: 13),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      prefixIcon: IconButton(
-                        icon: SvgPicture.asset("assets/images/Vector-20.svg"),
-                        onPressed: () {
-                          showNumberPicker((_) {});
-                        },
-                      ),
-                    ),
-                  ),
-                ),
-              ),
+                  label1: "تعداد کل واحد ها",
+                  label2: "تعداد واحد در طبقه",
+                  widget1: InputTextField(_buildAllFloorsCountController,
+                      width: getPageWidth_2(context)),
+                  widget2: ReadOnlyTextField(
+                      _buildUnitOfAnyFloorCountController, () {
+                    showNumberPicker((_) {
+                      _buildUnitOfAnyFloorCountController.text = _;
+                    });
+                  }, width: getPageWidth_2(context))),
               const SizedBox(
                 height: 15,
               ),
               TwoItemInRow(
-                label1: "بازسازی",
-                label2: "جهت ساختمان",
-                w1: Container(
-                  height: 41,
-                  width: getPageWidth_2(context),
-                  child: TextField(
-                    readOnly: true,
-                    focusNode: FocusNode(canRequestFocus: false),
-                    textAlign: TextAlign.right,
-                    decoration: InputDecoration(
-                        hintText: 'انتخاب نشده',
-                        hintStyle: const TextStyle(
-                            color: Color(0xFFA6A6A6), fontSize: 13),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        prefixIcon: IconButton(
-                          icon: SvgPicture.asset("assets/images/Vector-20.svg"),
-                          onPressed: () {
-                            // _show_item_1.value = !_show_item_1.isTrue;
-                          },
-                        )),
-                  ),
-                ),
-                w2: Container(
-                  height: 41,
-                  width: getPageWidth_2(context),
-                  child: TextField(
-                    readOnly: true,
-                    focusNode: FocusNode(canRequestFocus: false),
-                    textAlign: TextAlign.right,
-                    decoration: InputDecoration(
-                      hintText: 'انتخاب نشده',
-                      hintStyle: const TextStyle(
-                        color: Color(0xFFA6A6A6),
-                      ),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      prefixIcon: IconButton(
-                        icon: SvgPicture.asset("assets/images/Vector-20.svg"),
-                        onPressed: () {
-                          JahatSakhteman((_) {});
-                        },
-                      ),
-                    ),
-                  ),
-                ),
-              ),
+                  label1: "بازسازی",
+                  label2: "جهت ساختمان",
+                  widget1: ReadOnlyTextField(_reBuildController, () {
+                    //todo
+                  }, width: getPageWidth_2(context)),
+                  widget2: ReadOnlyTextField(_buildDirectionController, () {
+                    jahatSakhteman((_) {
+                      _buildDirectionController.text = _;
+                    });
+                  }, width: getPageWidth_2(context))),
               const SizedBox(
                 height: 20,
               ),
@@ -530,47 +335,12 @@ class ForoshAdvPage extends StatelessWidget {
               TwoItemInRow(
                 label1: "نوع کابینت",
                 label2: "جنس کف",
-                w1: Container(
-                  height: 41,
-                  width: getPageWidth_2(context),
-                  child: TextField(
-                    readOnly: true,
-                    focusNode: FocusNode(canRequestFocus: false),
-                    textAlign: TextAlign.right,
-                    decoration: InputDecoration(
-                        hintText: 'انتخاب نشده',
-                        hintStyle: const TextStyle(
-                            color: Color(0xFFA6A6A6), fontSize: 13),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        prefixIcon: IconButton(
-                          icon: SvgPicture.asset("assets/images/Vector-20.svg"),
-                          onPressed: () {},
-                        )),
-                  ),
-                ),
-                w2: Container(
-                  height: 41,
-                  width: getPageWidth_2(context),
-                  child: TextField(
-                    readOnly: true,
-                    focusNode: FocusNode(canRequestFocus: false),
-                    textAlign: TextAlign.right,
-                    decoration: InputDecoration(
-                      hintText: 'انتخاب نشده',
-                      hintStyle: const TextStyle(
-                          color: Color(0xFFA6A6A6), fontSize: 13),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      prefixIcon: IconButton(
-                        icon: SvgPicture.asset("assets/images/Vector-20.svg"),
-                        onPressed: () {},
-                      ),
-                    ),
-                  ),
-                ),
+                widget1: ReadOnlyTextField(_floorMaterialController, () {
+                  //todo
+                }, width: getPageWidth_2(context)),
+                widget2: ReadOnlyTextField(_cabinetController, () {
+                  //todo
+                }, width: getPageWidth_2(context)),
               ),
               const SizedBox(
                 height: 15,
@@ -578,138 +348,31 @@ class ForoshAdvPage extends StatelessWidget {
               TwoItemInRow(
                 label1: "نوع سیستم گرمایش",
                 label2: "نوع سیستم سرمایش",
-                w1: Container(
-                  height: 41,
-                  width: getPageWidth_2(context),
-                  child: TextField(
-                    readOnly: true,
-                    focusNode: FocusNode(canRequestFocus: false),
-                    textAlign: TextAlign.right,
-                    decoration: InputDecoration(
-                      hintText: 'انتخاب نشده',
-                      hintStyle: const TextStyle(
-                          color: Color(0xFFA6A6A6), fontSize: 13),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      prefixIcon: IconButton(
-                        icon: SvgPicture.asset("assets/images/Vector-20.svg"),
-                        onPressed: () {},
-                      ),
-                    ),
-                  ),
-                ),
-                w2: Container(
-                  height: 41,
-                  width: getPageWidth_2(context),
-                  child: TextField(
-                    readOnly: true,
-                    focusNode: FocusNode(canRequestFocus: false),
-                    textAlign: TextAlign.right,
-                    decoration: InputDecoration(
-                      hintText: 'انتخاب نشده',
-                      hintStyle: const TextStyle(
-                          color: Color(0xFFA6A6A6), fontSize: 13),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      prefixIcon: IconButton(
-                        icon: SvgPicture.asset("assets/images/Vector-20.svg"),
-                        onPressed: () {},
-                      ),
-                    ),
-                  ),
-                ),
+                widget1: ReadOnlyTextField(_heatTypeController, () {
+                  //todo
+                }, width: getPageWidth_2(context)),
+                widget2: ReadOnlyTextField(_coldTypeController, () {
+                  //todo
+                }, width: getPageWidth_2(context)),
               ),
               const SizedBox(
                 height: 15,
               ),
               TwoItemInRow(
-                label1: "سرویس بهداشتی",
-                label2: "تامین کننده آب گرم",
-                w1: Container(
-                  height: 41,
-                  width: getPageWidth_2(context),
-                  child: TextField(
-                    readOnly: true,
-                    focusNode: FocusNode(canRequestFocus: false),
-                    textAlign: TextAlign.right,
-                    decoration: InputDecoration(
-                        hintText: 'انتخاب نشده',
-                        hintStyle: const TextStyle(
-                            color: Color(0xFFA6A6A6), fontSize: 12),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        prefixIcon: IconButton(
-                          icon: SvgPicture.asset("assets/images/Vector-20.svg"),
-                          onPressed: () {},
-                        )),
-                  ),
-                ),
-                w2: Container(
-                  height: 41,
-                  width: getPageWidth_2(context),
-                  child: TextField(
-                    readOnly: true,
-                    focusNode: FocusNode(canRequestFocus: false),
-                    textAlign: TextAlign.right,
-                    decoration: InputDecoration(
-                      hintText: 'انتخاب نشده',
-                      hintStyle: const TextStyle(
-                          color: Color(0xFFA6A6A6), fontSize: 13),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      prefixIcon: IconButton(
-                        icon: SvgPicture.asset("assets/images/Vector-20.svg"),
-                        onPressed: () {},
-                      ),
-                    ),
-                  ),
-                ),
-              ),
+                  label1: "سرویس بهداشتی",
+                  label2: "تامین کننده آب گرم",
+                  widget1: ReadOnlyTextField(_wcController, () {
+                    //todo
+                  }, width: getPageWidth_2(context)),
+                  widget2: ReadOnlyTextField(_heatWaterController, () {
+                    //todo
+                  }, width: getPageWidth_2(context))),
               const SizedBox(
                 height: 20,
               ),
-              const Text(
-                "سایر امکانات",
-                style: TextStyle(fontFamily: MAIN_FONT_FAMILY, fontSize: 16),
-              ),
-              const SizedBox(
-                height: 15,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  GestureDetector(
-                    behavior: HitTestBehavior.translucent,
-                    onTap: () {
-                      buildButtom8();
-                    },
-                    child: Container(
-                      height: 70,
-                      width: 70,
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(10),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(0.1),
-                              spreadRadius: 1,
-                              blurRadius: 5,
-                            )
-                          ],
-                          border: Border.all(
-                            color: Colors.black45,
-                            width: 0.3,
-                          )),
-                      child: const Icon(
-                        Icons.add,
-                      ),
-                    ),
-                  ),
-                ],
+              FacilitiesSelectorWidget(
+                selectable: [Teras(), MasterRoom(), CenterAntenna(), Labi()],
+                selected: _facilities,
               ),
               const SizedBox(
                 height: 20,
@@ -721,7 +384,9 @@ class ForoshAdvPage extends StatelessWidget {
               const SizedBox(
                 height: 20,
               ),
-              ImagesPicker(selectedImagesPath: _selectedImagesPath)
+              ImagesPicker(selectedImagesPath: _selectedImagesPath),
+              const Divider(),
+              AdvInfo(_advInfo)
             ]),
           ),
         ));
@@ -734,31 +399,7 @@ class ForoshAdvPage extends StatelessWidget {
     final isSwitched = true.obs;
     return Column(
       children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            const Text(
-              "فروش به صورت اقساطی",
-              style: TextStyle(
-                  fontFamily: MAIN_FONT_FAMILY,
-                  fontSize: 14,
-                  color: Color.fromRGBO(99, 99, 99, 1)),
-            ),
-            Transform.scale(
-              scale: 0.80,
-              child: Obx(
-                () => Switch(
-                    onChanged: (_) => isSwitched.value = _,
-                    value: isSwitched.value,
-                    activeColor: Colors.white,
-                    activeTrackColor: const Color.fromRGBO(54, 216, 89, 1),
-                    inactiveThumbColor: const Color.fromRGBO(11, 8, 8, 0.2),
-                    inactiveTrackColor: const Color.fromRGBO(255, 255, 255, 1)),
-              ),
-            ),
-          ],
-        ),
+        switchable(isSwitched, "فروش به صورت اقساطی"),
         Obx(() => isSwitched.isTrue
             ? Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -792,33 +433,50 @@ class ForoshAdvPage extends StatelessWidget {
     final isSwitched = true.obs;
     return Column(
       children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Text(
-              "فروش به صورت اقساطی",
-              style: TextStyle(
-                  fontFamily: MAIN_FONT_FAMILY,
-                  fontSize: 12,
-                  color: Color.fromRGBO(99, 99, 99, 1)),
-            ),
-            Transform.scale(
-              scale: 0.80,
-              child: Obx(
-                () => Switch(
-                    onChanged: (_) => isSwitched.value = _,
-                    value: isSwitched.value,
-                    activeColor: Colors.white,
-                    activeTrackColor: const Color.fromRGBO(54, 216, 89, 1),
-                    inactiveThumbColor: const Color.fromRGBO(11, 8, 8, 0.2),
-                    inactiveTrackColor: const Color.fromRGBO(255, 255, 255, 1)),
-              ),
-            ),
-          ],
-        ),
+        switchable(isSwitched, "فروش به صورت اقساطی"),
         Obx(() => isSwitched.isTrue
             ? Column(
                 children: [
+                  Stack(
+                    alignment: Alignment.center,
+                    children: [
+                      Container(
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                              image:
+                                  Image.asset("assets/images/progressbar.png")
+                                      .image,
+                              fit: BoxFit.cover),
+                          // gradient: LinearGradient(colors: GRADIANT_COLOR)
+                        ),
+                      ),
+                      // Image.asset(
+                      //   "assets/images/progressbarRGB.png",
+                      // ),
+
+                      SliderTheme(
+                        data: SliderTheme.of(context).copyWith(
+                          trackHeight: 75,
+                          inactiveTrackColor: Colors.white12,
+                          overlayShape: SliderComponentShape.noOverlay,
+                          activeTrackColor: Colors.white12,
+                          thumbShape: const RoundSliderThumbShape(
+                              enabledThumbRadius: 20),
+                        ),
+                        child: Slider(
+                          value: 40,
+                          min: 0,
+                          max: 100,
+                          onChanged: (double newValue) {
+                            // setState(() {
+                            //   _currentValue = newValue;
+                            // });
+                          },
+                        ),
+                      ),
+                      // Slider(value: 0.6,divisions: 5, onChanged: (_){}),
+                    ],
+                  ),
                   const SizedBox(
                     height: 20,
                   ),
@@ -832,7 +490,7 @@ class ForoshAdvPage extends StatelessWidget {
                   TwoItemInRow(
                     label1: "مبلغ قسط (تومان)",
                     label2: "پیش پرداخت (تومان)",
-                    w1: SizedBox(
+                    widget1: SizedBox(
                       height: 41,
                       width: MediaQuery.of(context).size.width * 0.4,
                       child: TextField(
@@ -848,7 +506,7 @@ class ForoshAdvPage extends StatelessWidget {
                         ),
                       ),
                     ),
-                    w2: SizedBox(
+                    widget2: SizedBox(
                       height: 41,
                       width: MediaQuery.of(context).size.width * 0.4,
                       child: TextField(
@@ -871,7 +529,7 @@ class ForoshAdvPage extends StatelessWidget {
                   TwoItemInRow(
                       label1: "زمان دریافت اقساط",
                       label2: "تعداد اقساط",
-                      w1: SizedBox(
+                      widget1: SizedBox(
                         height: 41,
                         width: MediaQuery.of(context).size.width * 0.4,
                         child: TextField(
@@ -897,7 +555,7 @@ class ForoshAdvPage extends StatelessWidget {
                               )),
                         ),
                       ),
-                      w2: SizedBox(
+                      widget2: SizedBox(
                         height: 41,
                         width: MediaQuery.of(context).size.width * 0.4,
                         child: TextField(
@@ -952,30 +610,7 @@ class ForoshAdvPage extends StatelessWidget {
     final isSwitched = true.obs;
     return Column(
       children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Text(
-              "ملک با وام بانکی",
-              style: TextStyle(
-                  fontFamily: MAIN_FONT_FAMILY,
-                  fontSize: 14,
-                  color: Color.fromRGBO(99, 99, 99, 1)),
-            ),
-            Transform.scale(
-              scale: 0.80,
-              child: Obx(
-                () => Switch(
-                    onChanged: (_) => isSwitched.value = _,
-                    value: isSwitched.value,
-                    activeColor: Colors.white,
-                    activeTrackColor: const Color.fromRGBO(54, 216, 89, 1),
-                    inactiveThumbColor: const Color.fromRGBO(11, 8, 8, 0.2),
-                    inactiveTrackColor: const Color.fromRGBO(255, 255, 255, 1)),
-              ),
-            ),
-          ],
-        ),
+        switchable(isSwitched, "ملک با وام بانکی"),
         const SizedBox(
           height: 10,
         ),
@@ -995,7 +630,7 @@ class ForoshAdvPage extends StatelessWidget {
                   TwoItemInRow(
                     label1: "مبلغ اقساط",
                     label2: "میزان وام (تومان)",
-                    w1: SizedBox(
+                    widget1: SizedBox(
                       height: 41,
                       width: MediaQuery.of(context).size.width * 0.4,
                       child: TextField(
@@ -1011,7 +646,7 @@ class ForoshAdvPage extends StatelessWidget {
                         ),
                       ),
                     ),
-                    w2: SizedBox(
+                    widget2: SizedBox(
                       height: 41,
                       width: MediaQuery.of(context).size.width * 0.4,
                       child: TextField(
@@ -1042,29 +677,11 @@ class ForoshAdvPage extends StatelessWidget {
                       textAlign: TextAlign.start,
                     ),
                   ),
-                  SizedBox(
-                    height: 41,
-                    child: TextField(
-                      readOnly: true,
-                      focusNode: FocusNode(canRequestFocus: false),
-                      textAlign: TextAlign.right,
-                      decoration: InputDecoration(
-                        hintText: 'انتخاب نشده',
-                        hintStyle: const TextStyle(
-                            color: Color(0xFFA6A6A6), fontSize: 13),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        prefixIcon: IconButton(
-                          icon: SvgPicture.asset("assets/images/Vector-20.svg"),
-                          onPressed: () {
-                            FocusScope.of(context).unfocus();
-                            showNumberPicker((_) {});
-                          },
-                        ),
-                      ),
-                    ),
-                  ),
+                  ReadOnlyTextField(_numberOfInstallmentsController, () {
+                    showNumberPicker((_) {
+                      _numberOfInstallmentsController.text = _;
+                    });
+                  }),
                   const SizedBox(
                     height: 30,
                   ),

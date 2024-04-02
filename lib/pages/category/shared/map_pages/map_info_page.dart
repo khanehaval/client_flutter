@@ -1,12 +1,11 @@
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/category/shared/map_pages/location_Info.dart';
 import 'package:flutter_application_1/pages/category/shared/map_pages/select_location_on_map.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:get/get.dart';
 import 'package:latlong2/latlong.dart';
-
-import '../contant.dart';
 
 class MapInfoPage extends StatefulWidget {
   LocationInfo locationInfo;

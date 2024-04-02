@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/forosh_adv_pages/kolangi_adv_page.dart';
-import 'package:flutter_application_1/pages/category/shared/contant.dart';
+import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/category/shared/date.dart';
 import 'package:flutter_application_1/pages/category/shared/emkanat5.dart';
 import 'package:flutter_application_1/pages/category/shared/images_picker/images_picker.dart';
@@ -70,7 +70,7 @@ class EjaraShopPage extends StatelessWidget {
             TwoItemInRow(
               label1: "میزان اجاره (تومان)",
               label2: "میزان رهن (تومان) ",
-              w1: SizedBox(
+              widget1: SizedBox(
                 height: 41,
                 width: getPageWidth_2(context),
                 child: TextField(
@@ -87,7 +87,7 @@ class EjaraShopPage extends StatelessWidget {
                   ),
                 ),
               ),
-              w2: SizedBox(
+              widget2: SizedBox(
                 height: 41,
                 width: getPageWidth_2(context),
                 child: TextField(
@@ -174,7 +174,7 @@ class EjaraShopPage extends StatelessWidget {
             TwoItemInRow(
               label1: "تعداد اتاق ",
               label2: "سن بنا ",
-              w1: SizedBox(
+              widget1: SizedBox(
                 height: 41,
                 width: getPageWidth_2(context),
                 child: TextField(
@@ -195,7 +195,7 @@ class EjaraShopPage extends StatelessWidget {
                       )),
                 ),
               ),
-              w2: SizedBox(
+              widget2: SizedBox(
                 height: 41,
                 width: getPageWidth_2(context),
                 child: TextField(
@@ -226,7 +226,7 @@ class EjaraShopPage extends StatelessWidget {
             TwoItemInRow(
               label1: "طبقه",
               label2: "موقعیت ",
-              w1: SizedBox(
+              widget1: SizedBox(
                 height: 41,
                 width: getPageWidth_2(context),
                 child: TextField(
@@ -247,7 +247,7 @@ class EjaraShopPage extends StatelessWidget {
                       )),
                 ),
               ),
-              w2: SizedBox(
+              widget2: SizedBox(
                 height: 41,
                 width: getPageWidth_2(context),
                 child: TextField(
@@ -416,7 +416,7 @@ class EjaraShopPage extends StatelessWidget {
             TwoItemInRow(
               label1: "نوع سیستم گرمایش",
               label2: "نوع سیستم سرمایش",
-              w1: Container(
+              widget1: Container(
                 height: 41,
                 width: getPageWidth_2(context),
                 child: TextField(
@@ -438,7 +438,7 @@ class EjaraShopPage extends StatelessWidget {
                   ),
                 ),
               ),
-              w2: Container(
+              widget2: Container(
                 height: 41,
                 width: getPageWidth_2(context),
                 child: TextField(
@@ -622,7 +622,7 @@ Widget aghsatiForoshWidget(BuildContext context) {
             TwoItemInRow(
               label1: "میزان اجاره (تومان)",
               label2: "میزان رهن (تومان) ",
-              w1: SizedBox(
+              widget1: SizedBox(
                 height: 41,
                 width: MediaQuery.of(context).size.width * 0.43,
                 child: TextField(
@@ -637,7 +637,7 @@ Widget aghsatiForoshWidget(BuildContext context) {
                   ),
                 ),
               ),
-              w2: SizedBox(
+              widget2: SizedBox(
                 height: 41,
                 width: MediaQuery.of(context).size.width * 0.43,
                 child: TextField(

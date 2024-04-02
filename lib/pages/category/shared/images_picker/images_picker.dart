@@ -9,7 +9,7 @@ import 'package:get/get.dart';
 import 'package:gradient_borders/gradient_borders.dart';
 import 'package:image_picker/image_picker.dart';
 
-import '../contant.dart';
+import '../constant.dart';
 
 class ImagesPicker extends StatelessWidget {
   final RxList selectedImagesPath;

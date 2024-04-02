@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/pages/category/shared/contant.dart';
+import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:get/get.dart';
+import 'package:gradient_icon/gradient_icon.dart';
 
 class SubmitRow extends StatelessWidget {
   final Widget nextPage;
@@ -19,24 +20,33 @@ class SubmitRow extends StatelessWidget {
       child: Obx(() => Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(
-                "...تایید و ادامه",
-                style: !submit.value
-                    ? const TextStyle(
-                        fontSize: 20,
-                        fontFamily: MAIN_FONT_FAMILY,
-                        color: Colors.black38,
-                      )
-                    : const TextStyle(
-                        fontSize: 20, fontFamily: MAIN_FONT_FAMILY),
+              Center(
+                child: Text(
+                  "...تایید و ادامه",
+                  style: !submit.value
+                      ? const TextStyle(
+                          fontSize: 20,
+
+                          fontFamily: MAIN_FONT_FAMILY,
+                          color: Colors.black38,
+                        )
+                      : const TextStyle(
+                          fontSize: 20, fontFamily: MAIN_FONT_FAMILY),
+                  textAlign: TextAlign.center,
+                ),
               ),
-              Icon(
-                Icons.double_arrow,
-                color: !submit.value
-                    ? Colors.black54
-                    : const Color.fromRGBO(76, 140, 237, 1),
-                size: 35,
-              ),
+              const SizedBox(width: 3,),
+              GradientIcon(
+                icon: Icons.double_arrow,
+                gradient: LinearGradient(
+                  colors:
+                      submit.isTrue ? GRADIANT_COLOR : BLACK_12_GRADIANT_COLOR,
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                ),
+                offset: const Offset(0,0),
+                size: 34,
+              )
             ],
           )),
     );

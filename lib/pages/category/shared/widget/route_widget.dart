@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../contant.dart';
+import 'package:flutter_application_1/pages/category/shared/constant.dart';
 
 Widget route(List<String> routes) {
   return SizedBox(

@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'contant.dart';
+import 'constant.dart';
 
 class SwitchItemKolangi extends StatelessWidget {
   final RxString type;

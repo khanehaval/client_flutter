@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/pages/category/shared/contant.dart';
+import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/category/pages/home.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
@@ -202,8 +202,7 @@ class Private extends StatelessWidget {
   double getWidth(BuildContext context) =>
       (MediaQuery.of(context).size.width / 2) * 0.9;
 
-  LinearGradient getGradient() => const LinearGradient(colors: [
-        Color.fromARGB(255, 95, 173, 237),
-        Color.fromARGB(126, 118, 238, 146),
-      ]);
+  LinearGradient getGradient() =>  const LinearGradient(colors:
+       GRADIANT_COLOR
+      );
 }

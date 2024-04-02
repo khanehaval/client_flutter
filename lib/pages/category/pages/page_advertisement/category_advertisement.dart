@@ -6,7 +6,7 @@ import 'package:flutter_application_1/pages/category/pages/page_advertisement/pa
 import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/forosh_tejari_pages/forosh_tejari_adv.dart';
 import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/kota_modat_pages/ejara_kota_modat_page.dart';
 import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/sakht_v_saz_pages/sakht_v_saz_adv.dart';
-import 'package:flutter_application_1/pages/category/shared/contant.dart';
+import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/educational_tour.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
@@ -139,7 +139,7 @@ class CategoryAdvertisement extends StatelessWidget {
           ),
           NavigationDestination(
             icon: Image.asset(
-              'assets/images/category.png',
+              'assets/images/Category.png',
               width: 24,
               height: 24,
             ),

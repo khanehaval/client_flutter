@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/pages/category/shared/contant.dart';
+import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/category/shared/date.dart';
 import 'package:flutter_application_1/pages/category/shared/images_picker/images_picker.dart';
 import 'package:flutter_application_1/pages/category/shared/number_piacker.dart';
@@ -16,8 +16,6 @@ import '../../../../../intro_screen.dart';
 class PartnerShip extends StatelessWidget {
   final aghsatType = "".obs;
   final onvan = "".obs;
-  final _selected = 0.obs;
-  final _currentIndex = 0.obs;
   ItemScrollController scrollController = ItemScrollController();
   final ItemScrollController itemScrollController = ItemScrollController();
   final _allPriceTextController = TextEditingController();
@@ -29,7 +27,6 @@ class PartnerShip extends StatelessWidget {
 
   final _onePrice = 0.0.obs;
 
-  final _index = 6.obs;
 
   @override
   Widget build(BuildContext context) {
@@ -87,7 +84,7 @@ class PartnerShip extends StatelessWidget {
             TwoItemInRow(
               label1: "قیمت هر متر مربع (تومان)",
               label2: " ارزش ملک  (تومان)",
-              w1: Obx(
+              widget1: Obx(
                 () => Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
@@ -104,7 +101,7 @@ class PartnerShip extends StatelessWidget {
                   ),
                 ),
               ),
-              w2: SizedBox(
+              widget2: SizedBox(
                 height: 41,
                 width: getPageWidth_2(context),
                 child: TextField(
@@ -154,7 +151,7 @@ class PartnerShip extends StatelessWidget {
             TwoItemInRow(
               label1: "نوع سند ",
               label2: "متراژ زمین ",
-              w1: SizedBox(
+              widget1: SizedBox(
                 height: 41,
                 width: getPageWidth_2(context),
                 child: TextField(
@@ -172,7 +169,7 @@ class PartnerShip extends StatelessWidget {
                       )),
                 ),
               ),
-              w2: SizedBox(
+              widget2: SizedBox(
                 height: 41,
                 width: getPageWidth_2(context),
                 child: TextField(
@@ -196,7 +193,7 @@ class PartnerShip extends StatelessWidget {
             TwoItemInRow(
               label1: "عرض زمین",
               label2: "طول زمین",
-              w1: SizedBox(
+              widget1: SizedBox(
                 height: 41,
                 width: getPageWidth_2(context),
                 child: TextField(
@@ -213,7 +210,7 @@ class PartnerShip extends StatelessWidget {
                   ),
                 ),
               ),
-              w2: SizedBox(
+              widget2: SizedBox(
                 height: 41,
                 width: getPageWidth_2(context),
                 child: TextField(
@@ -427,7 +424,7 @@ class PartnerShip extends StatelessWidget {
                   TwoItemInRow(
                     label1: " سن بنا",
                     label2: "متراژ بنا",
-                    w2: SizedBox(
+                    widget2: SizedBox(
                       height: 41,
                       width: getPageWidth_2(context),
                       child: TextField(
@@ -443,7 +440,7 @@ class PartnerShip extends StatelessWidget {
                         ),
                       ),
                     ),
-                    w1: SizedBox(
+                    widget1: SizedBox(
                       height: 41,
                       width: getPageWidth_2(context),
                       child: TextField(
@@ -474,7 +471,7 @@ class PartnerShip extends StatelessWidget {
                   TwoItemInRow(
                     label1: "تعداد واحد در طبقه",
                     label2: "تعداد طبقات ",
-                    w2: Container(
+                    widget2: Container(
                       height: 41,
                       width: getPageWidth_2(context),
                       child: TextField(
@@ -497,7 +494,7 @@ class PartnerShip extends StatelessWidget {
                         ),
                       ),
                     ),
-                    w1: Container(
+                    widget1: Container(
                       height: 41,
                       width: getPageWidth_2(context),
                       child: TextField(
@@ -601,7 +598,7 @@ class PartnerShip extends StatelessWidget {
                   TwoItemInRow(
                     label1: "جمع آوری نخاله",
                     label2: "تخریب توسط",
-                    w2: Container(
+                    widget2: Container(
                       height: 41,
                       width: getPageWidth_2(context),
                       child: TextField(
@@ -624,7 +621,7 @@ class PartnerShip extends StatelessWidget {
                         ),
                       ),
                     ),
-                    w1: Container(
+                    widget1: Container(
                       height: 41,
                       width: getPageWidth_2(context),
                       child: TextField(
@@ -654,7 +651,7 @@ class PartnerShip extends StatelessWidget {
                   TwoItemInRow(
                     label1: "نوع اسکلت",
                     label2: "تفکیک و فروش نخاله",
-                    w2: Container(
+                    widget2: Container(
                       height: 41,
                       width: getPageWidth_2(context),
                       child: TextField(
@@ -677,7 +674,7 @@ class PartnerShip extends StatelessWidget {
                         ),
                       ),
                     ),
-                    w1: Container(
+                    widget1: Container(
                       height: 41,
                       width: getPageWidth_2(context),
                       child: TextField(
@@ -771,7 +768,7 @@ Widget zamin(BuildContext context) {
                 TwoItemInRow(
                   label1: "مبلغ اقساط",
                   label2: "میزان وام (تومان)",
-                  w1: SizedBox(
+                  widget1: SizedBox(
                     height: 41,
                     width: MediaQuery.of(context).size.width * 0.4,
                     child: TextField(
@@ -787,7 +784,7 @@ Widget zamin(BuildContext context) {
                       ),
                     ),
                   ),
-                  w2: SizedBox(
+                  widget2: SizedBox(
                     height: 41,
                     width: MediaQuery.of(context).size.width * 0.4,
                     child: TextField(
@@ -858,7 +855,7 @@ Widget Aparteman(BuildContext context) {
                 TwoItemInRow(
                   label1: "تعداد طبقات ",
                   label2: "متراژ زیر بنای ساختمان ",
-                  w2: Container(
+                  widget2: Container(
                     height: 41,
                     width: getPageWidth_2(context),
                     child: TextField(
@@ -873,7 +870,7 @@ Widget Aparteman(BuildContext context) {
                       ),
                     ),
                   ),
-                  w1: Container(
+                  widget1: Container(
                     height: 41,
                     width: getPageWidth_2(context),
                     child: TextField(
@@ -902,7 +899,7 @@ Widget Aparteman(BuildContext context) {
                 TwoItemInRow(
                   label1: "تعداد کل واحد ها",
                   label2: "تعداد واحد در طبقه",
-                  w1: Container(
+                  widget1: Container(
                     height: 41,
                     width: getPageWidth_2(context),
                     child: TextField(
@@ -917,7 +914,7 @@ Widget Aparteman(BuildContext context) {
                       ),
                     ),
                   ),
-                  w2: Container(
+                  widget2: Container(
                     height: 41,
                     width: getPageWidth_2(context),
                     child: TextField(
@@ -946,7 +943,7 @@ Widget Aparteman(BuildContext context) {
                 TwoItemInRow(
                   label1: "تعداد اتاق",
                   label2: "متراژ کوچکترین واحد",
-                  w2: Container(
+                  widget2: Container(
                     height: 41,
                     width: getPageWidth_2(context),
                     child: TextField(
@@ -961,7 +958,7 @@ Widget Aparteman(BuildContext context) {
                       ),
                     ),
                   ),
-                  w1: Container(
+                  widget1: Container(
                     height: 41,
                     width: getPageWidth_2(context),
                     child: TextField(
@@ -990,7 +987,7 @@ Widget Aparteman(BuildContext context) {
                 TwoItemInRow(
                   label1: "تعداد اتاق",
                   label2: "متراژ بزرگترین واحد",
-                  w2: Container(
+                  widget2: Container(
                     height: 41,
                     width: getPageWidth_2(context),
                     child: TextField(
@@ -1005,7 +1002,7 @@ Widget Aparteman(BuildContext context) {
                       ),
                     ),
                   ),
-                  w1: Container(
+                  widget1: Container(
                     height: 41,
                     width: getPageWidth_2(context),
                     child: TextField(
@@ -1175,7 +1172,7 @@ Widget Vila(BuildContext context) {
                 TwoItemInRow(
                   label1: "تعداد ویلاها",
                   label2: " بنای کل شهرک",
-                  w1: SizedBox(
+                  widget1: SizedBox(
                     height: 41,
                     width: getPageWidth_2(context),
                     child: TextField(
@@ -1192,7 +1189,7 @@ Widget Vila(BuildContext context) {
                       ),
                     ),
                   ),
-                  w2: SizedBox(
+                  widget2: SizedBox(
                     height: 41,
                     width: getPageWidth_2(context),
                     child: TextField(
@@ -1216,7 +1213,7 @@ Widget Vila(BuildContext context) {
                 TwoItemInRow(
                   label1: "طبقات ویلا تا ",
                   label2: "طبقات ویلا از ",
-                  w2: Container(
+                  widget2: Container(
                     height: 41,
                     width: getPageWidth_2(context),
                     child: TextField(
@@ -1238,7 +1235,7 @@ Widget Vila(BuildContext context) {
                       ),
                     ),
                   ),
-                  w1: Container(
+                  widget1: Container(
                     height: 41,
                     width: getPageWidth_2(context),
                     child: TextField(
@@ -1267,7 +1264,7 @@ Widget Vila(BuildContext context) {
                 TwoItemInRow(
                   label1: "تعداد اتاق ",
                   label2: "متراژ کوچکترین ویلا",
-                  w2: Container(
+                  widget2: Container(
                     height: 41,
                     width: getPageWidth_2(context),
                     child: TextField(
@@ -1282,7 +1279,7 @@ Widget Vila(BuildContext context) {
                       ),
                     ),
                   ),
-                  w1: Container(
+                  widget1: Container(
                     height: 41,
                     width: getPageWidth_2(context),
                     child: TextField(
@@ -1311,7 +1308,7 @@ Widget Vila(BuildContext context) {
                 TwoItemInRow(
                   label1: "تعداد اتاق",
                   label2: "متراژ بزرگترین ویلا",
-                  w2: Container(
+                  widget2: Container(
                     height: 41,
                     width: getPageWidth_2(context),
                     child: TextField(
@@ -1326,7 +1323,7 @@ Widget Vila(BuildContext context) {
                       ),
                     ),
                   ),
-                  w1: Container(
+                  widget1: Container(
                     height: 41,
                     width: getPageWidth_2(context),
                     child: TextField(
@@ -1464,7 +1461,7 @@ Widget Edari(BuildContext context) {
                 TwoItemInRow(
                   label1: "تعداد طبقات ",
                   label2: "متراژ زیر بنای کل",
-                  w2: Container(
+                  widget2: Container(
                     height: 41,
                     width: getPageWidth_2(context),
                     child: TextField(
@@ -1479,7 +1476,7 @@ Widget Edari(BuildContext context) {
                       ),
                     ),
                   ),
-                  w1: Container(
+                  widget1: Container(
                     height: 41,
                     width: getPageWidth_2(context),
                     child: TextField(
@@ -1506,7 +1503,7 @@ Widget Edari(BuildContext context) {
                 TwoItemInRow(
                   label1: "تعداد کل مغازه ها ",
                   label2: "تعداد مغازه در طبقه",
-                  w1: Container(
+                  widget1: Container(
                     height: 41,
                     width: getPageWidth_2(context),
                     child: TextField(
@@ -1521,7 +1518,7 @@ Widget Edari(BuildContext context) {
                       ),
                     ),
                   ),
-                  w2: Container(
+                  widget2: Container(
                     height: 41,
                     width: getPageWidth_2(context),
                     child: TextField(
@@ -1550,7 +1547,7 @@ Widget Edari(BuildContext context) {
                 TwoItemInRow(
                   label1: "متراژ بزرگترین مغازه",
                   label2: "متراژ کوچکترین مغازه",
-                  w1: SizedBox(
+                  widget1: SizedBox(
                     height: 41,
                     width: getPageWidth_2(context),
                     child: TextField(
@@ -1567,7 +1564,7 @@ Widget Edari(BuildContext context) {
                       ),
                     ),
                   ),
-                  w2: SizedBox(
+                  widget2: SizedBox(
                     height: 41,
                     width: getPageWidth_2(context),
                     child: TextField(

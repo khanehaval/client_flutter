@@ -6,7 +6,7 @@ import 'package:flutter_application_1/pages/category/shared/map_pages/map_info_p
 import 'package:flutter_application_1/pages/category/shared/switchItem.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/submit_row.dart';
 import 'package:get/get.dart';
-import 'package:flutter_application_1/pages/category/shared/contant.dart';
+import 'package:flutter_application_1/pages/category/shared/constant.dart';
 
 class ForshAdvLocationPage extends StatelessWidget {
   LocationInfo locationInfo;

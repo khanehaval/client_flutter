@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/pages/category/models/FacilitiesModel.dart';
 import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/forosh_adv_pages/kolangi_adv_page.dart';
-import 'package:flutter_application_1/pages/category/shared/contant.dart';
+import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/category/shared/date.dart';
-import 'package:flutter_application_1/pages/category/shared/emkanat8.dart';
+import 'package:flutter_application_1/pages/category/shared/facilities_selector.dart';
 import 'package:flutter_application_1/pages/category/shared/images_picker/images_picker.dart';
 import 'package:flutter_application_1/pages/category/shared/number_piacker.dart';
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
@@ -21,6 +22,8 @@ class EjaraVilaPage extends StatelessWidget {
   final _metragTextController = TextEditingController();
   final _selectedImagesPath = [].obs;
   final _onePrice = 0.0.obs;
+
+  final _facilities = <FacilitiesModel>[].obs;
 
   EjaraVilaPage({super.key});
 
@@ -75,7 +78,7 @@ class EjaraVilaPage extends StatelessWidget {
               TwoItemInRow(
                 label1: "میزان اجاره (تومان)",
                 label2: "میزان رهن (تومان) ",
-                w1: SizedBox(
+                widget1: SizedBox(
                   height: 41,
                   width: getPageWidth_2(context),
                   child: TextField(
@@ -92,7 +95,7 @@ class EjaraVilaPage extends StatelessWidget {
                     ),
                   ),
                 ),
-                w2: SizedBox(
+                widget2: SizedBox(
                   height: 41,
                   width: getPageWidth_2(context),
                   child: TextField(
@@ -137,7 +140,7 @@ class EjaraVilaPage extends StatelessWidget {
               TwoItemInRow(
                 label1: " متراژ بنا",
                 label2: "متراژ زمین",
-                w1: Obx(
+                widget1: Obx(
                   () => Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
@@ -154,7 +157,7 @@ class EjaraVilaPage extends StatelessWidget {
                     ),
                   ),
                 ),
-                w2: SizedBox(
+                widget2: SizedBox(
                   height: 41,
                   width: getPageWidth_2(context),
                   child: TextField(
@@ -191,7 +194,7 @@ class EjaraVilaPage extends StatelessWidget {
               TwoItemInRow(
                 label1: "تعداد اتاق ",
                 label2: "سن بنا ",
-                w1: SizedBox(
+                widget1: SizedBox(
                   height: 41,
                   width: getPageWidth_2(context),
                   child: TextField(
@@ -212,7 +215,7 @@ class EjaraVilaPage extends StatelessWidget {
                         )),
                   ),
                 ),
-                w2: SizedBox(
+                widget2: SizedBox(
                   height: 41,
                   width: getPageWidth_2(context),
                   child: TextField(
@@ -360,7 +363,7 @@ class EjaraVilaPage extends StatelessWidget {
               TwoItemInRow(
                 label1: "بازسازی",
                 label2: "جهت ساختمان",
-                w1: Container(
+                widget1: Container(
                   height: 41,
                   width: getPageWidth_2(context),
                   child: TextField(
@@ -381,7 +384,7 @@ class EjaraVilaPage extends StatelessWidget {
                         )),
                   ),
                 ),
-                w2: Container(
+                widget2: Container(
                   height: 41,
                   width: getPageWidth_2(context),
                   child: TextField(
@@ -424,7 +427,7 @@ class EjaraVilaPage extends StatelessWidget {
               TwoItemInRow(
                 label1: "نوع کابینت",
                 label2: "جنس کف",
-                w1: Container(
+                widget1: Container(
                   height: 41,
                   width: getPageWidth_2(context),
                   child: TextField(
@@ -445,7 +448,7 @@ class EjaraVilaPage extends StatelessWidget {
                         )),
                   ),
                 ),
-                w2: Container(
+                widget2: Container(
                   height: 41,
                   width: getPageWidth_2(context),
                   child: TextField(
@@ -474,7 +477,7 @@ class EjaraVilaPage extends StatelessWidget {
               TwoItemInRow(
                 label1: "نوع سیستم گرمایش",
                 label2: "نوع سیستم سرمایش",
-                w1: Container(
+                widget1: Container(
                   height: 41,
                   width: getPageWidth_2(context),
                   child: TextField(
@@ -496,7 +499,7 @@ class EjaraVilaPage extends StatelessWidget {
                     ),
                   ),
                 ),
-                w2: Container(
+                widget2: Container(
                   height: 41,
                   width: getPageWidth_2(context),
                   child: TextField(
@@ -525,7 +528,7 @@ class EjaraVilaPage extends StatelessWidget {
               TwoItemInRow(
                 label1: "سرویس بهداشتی",
                 label2: "تامین کننده آب گرم",
-                w1: Container(
+                widget1: Container(
                   height: 41,
                   width: getPageWidth_2(context),
                   child: TextField(
@@ -546,7 +549,7 @@ class EjaraVilaPage extends StatelessWidget {
                         )),
                   ),
                 ),
-                w2: Container(
+                widget2: Container(
                   height: 41,
                   width: getPageWidth_2(context),
                   child: TextField(
@@ -572,45 +575,11 @@ class EjaraVilaPage extends StatelessWidget {
               const SizedBox(
                 height: 20,
               ),
-              const Text(
-                "سایر امکانات",
-                style: TextStyle(fontFamily: MAIN_FONT_FAMILY, fontSize: 16),
+              FacilitiesSelectorWidget(
+                selectable: [Teras(), MasterRoom(), CenterAntenna(), Labi()],
+                selected: _facilities,
               ),
-              const SizedBox(
-                height: 15,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  GestureDetector(
-                    behavior: HitTestBehavior.translucent,
-                    onTap: () {
-                      buildButtom8();
-                    },
-                    child: Container(
-                      height: 70,
-                      width: 70,
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(10),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(0.1),
-                              spreadRadius: 1,
-                              blurRadius: 5,
-                            )
-                          ],
-                          border: Border.all(
-                            color: Colors.black45,
-                            width: 0.3,
-                          )),
-                      child: const Icon(
-                        Icons.add,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
+
               const SizedBox(
                 height: 20,
               ),
@@ -663,7 +632,7 @@ Widget aghsatiForoshWidget(BuildContext context) {
             TwoItemInRow(
               label1: "میزان اجاره (تومان)",
               label2: "میزان رهن (تومان) ",
-              w1: SizedBox(
+              widget1: SizedBox(
                 height: 41,
                 width: MediaQuery.of(context).size.width * 0.43,
                 child: TextField(
@@ -679,7 +648,7 @@ Widget aghsatiForoshWidget(BuildContext context) {
                   ),
                 ),
               ),
-              w2: SizedBox(
+              widget2: SizedBox(
                 height: 41,
                 width: MediaQuery.of(context).size.width * 0.43,
                 child: TextField(

@@ -1,38 +1,45 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/pages/category/shared/contant.dart';
+import 'package:flutter_application_1/pages/category/models/FacilitiesModel.dart';
+import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/category/shared/date.dart';
-import 'package:flutter_application_1/pages/category/shared/emkanat8.dart';
+import 'package:flutter_application_1/pages/category/shared/facilities_selector.dart';
 import 'package:flutter_application_1/pages/category/shared/images_picker/images_picker.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/jahat_sakhteman.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/sanad.dart';
 import 'package:flutter_application_1/pages/category/shared/number_piacker.dart';
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
 import 'package:flutter_application_1/pages/category/shared/switchItem.dart';
 import 'package:flutter_application_1/pages/category/shared/twoItemInRow.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_application_1/pages/category/shared/widget/text_field.dart';
+import 'package:flutter_application_1/pages/category/shared/widget/route_widget.dart';
+import 'package:flutter_application_1/pages/category/shared/widget/switachable.dart';
+
 import 'package:get/get.dart';
-
-import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
-
-import '../../../../../intro_screen.dart';
 
 class Presell extends StatelessWidget {
   final aghsatType = "".obs;
   final onvan = "".obs;
-  final _selected = 0.obs;
-  final _currentIndex = 0.obs;
-  ItemScrollController scrollController = ItemScrollController();
-  final ItemScrollController itemScrollController = ItemScrollController();
-
   final _selectedImagesPath = [].obs;
-
-  final hasAnbari = false.obs;
-  final hasAsansor = false.obs;
-  final hasParking = false.obs;
+  final _facilities = <FacilitiesModel>[].obs;
+  final _hasAnbari = false.obs;
+  final _hasAsansor = false.obs;
+  final _hasParking = false.obs;
 
   final _onePrice = 0.0.obs;
-
+  final _buildDirectionController = TextEditingController();
+  final _timeToReceiveInstallmentsController = TextEditingController();
+  final _buildFloorsCountController = TextEditingController();
+  final _numberOfInstallmentsController = TextEditingController();
+  final _buildDateController = TextEditingController();
+  final _buildRoomsCountController = TextEditingController();
+  final _buildDocumentController = TextEditingController();
+  final _buildFloorController = TextEditingController();
   final _allPriceTextController = TextEditingController();
   final _metragTextController = TextEditingController();
-  final _index = 6.obs;
+  final _countController = TextEditingController();
+  final _buildStepController = TextEditingController();
+  final _progressController = TextEditingController();
+  final _timeController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -42,55 +49,14 @@ class Presell extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
           child: Column(children: [
-            const Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Icon(
-                  Icons.arrow_back,
-                  color: Colors.green,
-                  size: 20,
-                ),
-                Text(
-                  "پیش فروش",
-                  style: TextStyle(
-                    fontSize: 10,
-                    fontFamily: MAIN_FONT_FAMILY,
-                  ),
-                ),
-                Icon(
-                  Icons.arrow_back,
-                  color: Colors.green,
-                  size: 18,
-                ),
-                Text(
-                  "ساخت و ساز",
-                  style: TextStyle(
-                    fontSize: 10,
-                    fontFamily: MAIN_FONT_FAMILY,
-                  ),
-                ),
-                Icon(
-                  Icons.arrow_back,
-                  color: Colors.green,
-                  size: 18,
-                ),
-                Text(
-                  "  ثبت آگهی اکونومی",
-                  style: TextStyle(
-                    fontSize: 10,
-                    fontFamily: MAIN_FONT_FAMILY,
-                  ),
-                ),
-              ],
-            ),
+            route(["پیش فروش", "ساخت وساز", "ثبت آگهی اکونومی"]),
             const SizedBox(
               height: 30,
             ),
             TwoItemInRow(
               label1: "قیمت هر متر مربع (تومان)",
               label2: "قیمت کل (تومان)",
-              w1: Obx(
+              widget1: Obx(
                 () => Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
@@ -107,7 +73,7 @@ class Presell extends StatelessWidget {
                   ),
                 ),
               ),
-              w2: SizedBox(
+              widget2: SizedBox(
                 height: 41,
                 width: getPageWidth_2(context),
                 child: TextField(
@@ -178,7 +144,7 @@ class Presell extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
-            Aparteman(context),
+            _aparteman(context),
             const SizedBox(
               height: 20,
             ),
@@ -186,7 +152,7 @@ class Presell extends StatelessWidget {
               endIndent: 20,
               indent: 20,
             ),
-            Vila(context),
+            _vila(context),
             const SizedBox(
               height: 20,
             ),
@@ -197,7 +163,7 @@ class Presell extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
-            Edari(context),
+            _edari(context),
             const SizedBox(
               height: 20,
             ),
@@ -208,136 +174,46 @@ class Presell extends StatelessWidget {
             const SizedBox(
               height: 25,
             ),
-            const Align(
-              alignment: Alignment.bottomRight,
-              child: Text(
-                "نوع سند",
-                style: TextStyle(
-                    color: Color.fromRGBO(99, 99, 99, 1),
-                    fontFamily: MAIN_FONT_FAMILY),
-                textAlign: TextAlign.start,
-              ),
-            ),
-            Container(
-              height: 41,
-              width: 372,
-              child: TextField(
-                readOnly: true,
-                textAlign: TextAlign.right,
-                decoration: InputDecoration(
-                  hintText: 'انتخاب نشده',
-                  hintStyle: TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  prefixIcon: IconButton(
-                    icon: SvgPicture.asset("assets/images/Vector-20.svg"),
-                    onPressed: () {
-                      // _show_item_1.value = !_show_item_1.isTrue;
-                    },
-                  ),
-                ),
-              ),
-            ),
+            ReadOnlyTextField(_buildDocumentController, () {
+              Sanad((_) {
+                _buildDocumentController.text = _;
+              });
+            }, width: getPageWidth_2(context)),
             const SizedBox(
               height: 20,
             ),
             TwoItemInRow(
-              label1: "تعداد تیپ ",
-              label2: "مرحله ساخت ",
-              w1: Container(
-                height: 41,
-                width: getPageWidth_2(context),
-                child: TextField(
-                  readOnly: true,
-                  keyboardType: TextInputType.number,
-                  textAlign: TextAlign.right,
-                  decoration: InputDecoration(
-                    hintText: 'تایپ کنید',
-                    hintStyle:
-                        const TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
+                label1: "تعداد تیپ ",
+                label2: "مرحله ساخت ",
+                widget1: Container(
+                  height: 41,
+                  width: getPageWidth_2(context),
+                  child: TextField(
+                    readOnly: true,
+                    keyboardType: TextInputType.number,
+                    textAlign: TextAlign.right,
+                    decoration: InputDecoration(
+                      hintText: 'تایپ کنید',
+                      hintStyle: const TextStyle(
+                          color: Color(0xFFA6A6A6), fontSize: 13),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
                     ),
                   ),
                 ),
-              ),
-              w2: Container(
-                height: 41,
-                width: getPageWidth_2(context),
-                child: TextField(
-                  readOnly: true,
-                  focusNode: FocusNode(canRequestFocus: false),
-                  textAlign: TextAlign.right,
-                  decoration: InputDecoration(
-                    hintText: 'انتخاب نشده',
-                    hintStyle:
-                        TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    prefixIcon: IconButton(
-                      icon: SvgPicture.asset("assets/images/Vector-20.svg"),
-                      onPressed: () {},
-                    ),
-                  ),
-                ),
-              ),
-            ),
+                widget2: ReadOnlyTextField(_buildStepController, () {},
+                    width: getPageWidth_2(context))),
             const SizedBox(
               height: 15,
             ),
             TwoItemInRow(
               label1: "میزان پیشرفت فیزیکی",
               label2: "زمان تحویل ",
-              w1: Container(
-                height: 41,
-                width: getPageWidth_2(context),
-                child: TextField(
-                  readOnly: true,
-                  focusNode: FocusNode(canRequestFocus: false),
-                  textAlign: TextAlign.right,
-                  decoration: InputDecoration(
-                      hintText: 'انتخاب نشده',
-                      hintStyle:
-                          TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      prefixIcon: IconButton(
-                        icon: SvgPicture.asset("assets/images/Vector-20.svg"),
-                        onPressed: () {
-                          // _show_item_1.value = !_show_item_1.isTrue;
-                        },
-                      )),
-                ),
-              ),
-              w2: Container(
-                height: 41,
-                width: getPageWidth_2(context),
-                child: TextField(
-                  readOnly: true,
-                  focusNode: FocusNode(canRequestFocus: false),
-                  textAlign: TextAlign.right,
-                  decoration: InputDecoration(
-                    hintText: 'انتخاب نشده',
-                    hintStyle: const TextStyle(
-                      color: Color(0xFFA6A6A6),
-                    ),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    prefixIcon: IconButton(
-                      icon: SvgPicture.asset("assets/images/Vector-20.svg"),
-                      onPressed: () {
-                        persianDataPicker((date) {
-                          print(date);
-                        });
-                      },
-                    ),
-                  ),
-                ),
-              ),
+              widget1: ReadOnlyTextField(_progressController, () {},
+                  width: getPageWidth_2(context)),
+              widget2: ReadOnlyTextField(_timeController, () {},
+                  width: getPageWidth_2(context)),
             ),
             const SizedBox(
               height: 20,
@@ -349,44 +225,9 @@ class Presell extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
-            const Text(
-              "سایر امکانات",
-              style: TextStyle(fontFamily: MAIN_FONT_FAMILY, fontSize: 16),
-            ),
-            const SizedBox(
-              height: 15,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                GestureDetector(
-                  behavior: HitTestBehavior.translucent,
-                  onTap: () {
-                    buildButtom8();
-                  },
-                  child: Container(
-                    height: 70,
-                    width: 70,
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(10),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withOpacity(0.1),
-                            spreadRadius: 1,
-                            blurRadius: 5,
-                          )
-                        ],
-                        border: Border.all(
-                          color: Colors.black45,
-                          width: 0.3,
-                        )),
-                    child: const Icon(
-                      Icons.add,
-                    ),
-                  ),
-                ),
-              ],
+            FacilitiesSelectorWidget(
+              selectable: [Teras(), MasterRoom(), CenterAntenna(), Labi()],
+              selected: _facilities,
             ),
             const SizedBox(
               height: 30,
@@ -510,7 +351,7 @@ class Presell extends StatelessWidget {
                   TwoItemInRow(
                     label1: "مبلغ قسط (تومان)",
                     label2: "پیش پرداخت (تومان)",
-                    w1: SizedBox(
+                    widget1: SizedBox(
                       height: 41,
                       width: MediaQuery.of(context).size.width * 0.4,
                       child: TextField(
@@ -526,7 +367,7 @@ class Presell extends StatelessWidget {
                         ),
                       ),
                     ),
-                    w2: SizedBox(
+                    widget2: SizedBox(
                       height: 41,
                       width: MediaQuery.of(context).size.width * 0.4,
                       child: TextField(
@@ -546,64 +387,28 @@ class Presell extends StatelessWidget {
                   const SizedBox(
                     height: 17,
                   ),
+                  //numberOfInstallments
                   TwoItemInRow(
                       label1: "زمان دریافت اقساط",
                       label2: "تعداد اقساط",
-                      w1: SizedBox(
-                        height: 41,
-                        width: MediaQuery.of(context).size.width * 0.4,
-                        child: TextField(
-                          textAlign: TextAlign.right,
-                          readOnly: true,
-                          focusNode: FocusNode(canRequestFocus: false),
-                          decoration: InputDecoration(
-                              hintText: 'انتخاب نشده',
-                              hintStyle: const TextStyle(
-                                  color: Color(0xFFA6A6A6), fontSize: 13),
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              prefixIcon: IconButton(
-                                icon: SvgPicture.asset(
-                                    "assets/images/Vector-20.svg"),
-                                onPressed: () {
-                                  persianDataPicker((date) {
-                                    print(date);
-                                  });
-                                },
-                              )),
-                        ),
-                      ),
-                      w2: SizedBox(
-                        height: 41,
-                        width: MediaQuery.of(context).size.width * 0.4,
-                        child: TextField(
-                          textAlign: TextAlign.right,
-                          readOnly: true,
-                          focusNode: FocusNode(canRequestFocus: false),
-                          decoration: InputDecoration(
-                            hintText: 'انتخاب نشده',
-                            hintStyle: const TextStyle(
-                                color: Color(0xFFA6A6A6), fontSize: 13),
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            prefixIcon: IconButton(
-                              icon: SvgPicture.asset(
-                                  "assets/images/Vector-20.svg"),
-                              onPressed: () {
-                                showNumberPicker((_) {});
-                              },
-                            ),
-                          ),
-                        ),
-                      )),
+                      widget1: ReadOnlyTextField(
+                          _timeToReceiveInstallmentsController, () {
+                        persianDataPicker((date) {
+                          _timeToReceiveInstallmentsController.text = date;
+                        });
+                      }, width: MediaQuery.of(context).size.width * 0.4),
+                      widget2: ReadOnlyTextField(
+                          _numberOfInstallmentsController, () {
+                        showNumberPicker((_) {
+                          _numberOfInstallmentsController.text = _;
+                        });
+                      }, width: MediaQuery.of(context).size.width * 0.4)),
                   const SizedBox(
                     width: 30,
                     height: 10,
                   ),
                   SwitchItem(
-                      onSelected: (_){}, items: const ["ضامن", "سفته", "چک"]),
+                      onSelected: (_) {}, items: const ["ضامن", "سفته", "چک"]),
                   const SizedBox(
                     height: 10,
                   ),
@@ -631,30 +436,7 @@ class Presell extends StatelessWidget {
     final isSwitched = true.obs;
     return Column(
       children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Text(
-              "ملک با وام بانکی",
-              style: TextStyle(
-                  fontFamily: MAIN_FONT_FAMILY,
-                  fontSize: 14,
-                  color: Color.fromRGBO(99, 99, 99, 1)),
-            ),
-            Transform.scale(
-              scale: 0.80,
-              child: Obx(
-                () => Switch(
-                    onChanged: (_) => isSwitched.value = _,
-                    value: isSwitched.value,
-                    activeColor: Colors.white,
-                    activeTrackColor: const Color.fromRGBO(54, 216, 89, 1),
-                    inactiveThumbColor: const Color.fromRGBO(11, 8, 8, 0.2),
-                    inactiveTrackColor: const Color.fromRGBO(255, 255, 255, 1)),
-              ),
-            ),
-          ],
-        ),
+        switchable(isSwitched, "ملک با وام بانکی"),
         const SizedBox(
           height: 10,
         ),
@@ -674,7 +456,7 @@ class Presell extends StatelessWidget {
                   TwoItemInRow(
                     label1: "مبلغ اقساط",
                     label2: "میزان وام (تومان)",
-                    w1: SizedBox(
+                    widget1: SizedBox(
                       height: 41,
                       width: MediaQuery.of(context).size.width * 0.4,
                       child: TextField(
@@ -690,7 +472,7 @@ class Presell extends StatelessWidget {
                         ),
                       ),
                     ),
-                    w2: SizedBox(
+                    widget2: SizedBox(
                       height: 41,
                       width: MediaQuery.of(context).size.width * 0.4,
                       child: TextField(
@@ -719,24 +501,89 @@ class Presell extends StatelessWidget {
                       textAlign: TextAlign.start,
                     ),
                   ),
+                  ReadOnlyTextField(_countController, () {
+                    showNumberPicker((_) {
+                      _countController.text = _;
+                    });
+                  }),
+                  const SizedBox(
+                    height: 30,
+                  ),
+                ],
+              )
+            : const SizedBox.shrink()),
+      ],
+    );
+  }
+
+  Widget zamin(BuildContext context) {
+    final isSwitched = true.obs;
+    return Column(
+      children: [
+        switchable(isSwitched, "زمین"),
+        Obx(() => isSwitched.isTrue
+            ? Column(
+                children: [
+                  const SizedBox(height: 25),
+                  const Align(
+                    alignment: Alignment.centerRight,
+                    child: Text(
+                      "متراژ زمین  ",
+                      style: TextStyle(
+                          color: Color.fromRGBO(166, 166, 166, 1),
+                          fontSize: 13,
+                          fontFamily: MAIN_FONT_FAMILY),
+                      textAlign: TextAlign.start,
+                    ),
+                  ),
                   SizedBox(
                     height: 41,
                     child: TextField(
-                      readOnly: true,
-                      focusNode: FocusNode(canRequestFocus: false),
+                      keyboardType: TextInputType.number,
                       textAlign: TextAlign.right,
                       decoration: InputDecoration(
-                        hintText: 'انتخاب نشده',
+                        hintText: '120',
                         hintStyle: const TextStyle(
                             color: Color(0xFFA6A6A6), fontSize: 13),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
-                        prefixIcon: IconButton(
-                          icon: SvgPicture.asset("assets/images/Vector-20.svg"),
-                          onPressed: () {
-                            showNumberPicker((_) {});
-                          },
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 25),
+                  TwoItemInRow(
+                    label1: "مبلغ اقساط",
+                    label2: "میزان وام (تومان)",
+                    widget1: SizedBox(
+                      height: 41,
+                      width: MediaQuery.of(context).size.width * 0.4,
+                      child: TextField(
+                        keyboardType: TextInputType.number,
+                        textAlign: TextAlign.right,
+                        decoration: InputDecoration(
+                          hintText: '3,6000000', //todo
+                          hintStyle: const TextStyle(
+                              color: Color(0xFFA6A6A6), fontSize: 13),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                        ),
+                      ),
+                    ),
+                    widget2: SizedBox(
+                      height: 41,
+                      width: MediaQuery.of(context).size.width * 0.4,
+                      child: TextField(
+                        keyboardType: TextInputType.number,
+                        textAlign: TextAlign.right,
+                        decoration: InputDecoration(
+                          hintText: '400000000', //todo
+                          hintStyle: const TextStyle(
+                              color: Color(0xFFA6A6A6), fontSize: 13),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
                         ),
                       ),
                     ),
@@ -750,78 +597,185 @@ class Presell extends StatelessWidget {
       ],
     );
   }
-}
 
-Widget zamin(BuildContext context) {
-  final isSwitched = true.obs;
-  return Column(
-    children: [
-      Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          const Text(
-            "زمین",
-            style: TextStyle(
-                fontFamily: MAIN_FONT_FAMILY,
-                fontSize: 14,
-                color: Color.fromRGBO(99, 99, 99, 1)),
-          ),
-          Transform.scale(
-            scale: 0.80,
-            child: Obx(
-              () => Switch(
-                  onChanged: (_) => isSwitched.value = _,
-                  value: isSwitched.value,
-                  activeColor: Colors.white,
-                  activeTrackColor: const Color.fromRGBO(54, 216, 89, 1),
-                  inactiveThumbColor: const Color.fromRGBO(11, 8, 8, 0.2),
-                  inactiveTrackColor: const Color.fromRGBO(255, 255, 255, 1)),
-            ),
-          ),
-        ],
-      ),
-      Obx(() => isSwitched.isTrue
-          ? Column(
-              children: [
-                const SizedBox(height: 25),
-                const Align(
-                  alignment: Alignment.centerRight,
-                  child: Text(
-                    "متراژ زمین  ",
-                    style: TextStyle(
-                        color: Color.fromRGBO(166, 166, 166, 1),
-                        fontSize: 13,
-                        fontFamily: MAIN_FONT_FAMILY),
-                    textAlign: TextAlign.start,
+  Widget _aparteman(BuildContext context) {
+    final isSwitched = true.obs;
+
+    return Column(
+      children: [
+        switchable(isSwitched, "آپارتمان"),
+        Obx(() => isSwitched.isTrue
+            ? Column(
+                children: [
+                  const SizedBox(
+                    height: 20,
                   ),
-                ),
-                SizedBox(
-                  height: 41,
-                  child: TextField(
-                    keyboardType: TextInputType.number,
-                    textAlign: TextAlign.right,
-                    decoration: InputDecoration(
-                      hintText: '120',
-                      hintStyle: const TextStyle(
-                          color: Color(0xFFA6A6A6), fontSize: 13),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
+                  TwoItemInRow(
+                      label1: "تعداد اتاق",
+                      label2: "سن بنا ",
+                      widget2: Container(
+                        height: 41,
+                        width: getPageWidth_2(context),
+                        child: TextField(
+                          readOnly: true,
+                          textAlign: TextAlign.right,
+                          decoration: InputDecoration(
+                            hintText: 'تایپ کنید',
+                            hintStyle: TextStyle(
+                                color: Color(0xFFA6A6A6), fontSize: 13),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                          ),
+                        ),
                       ),
+                      widget1: ReadOnlyTextField(_buildDateController, () {
+                        //todo
+                      },width: getPageWidth_2(context))),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  const Align(
+                    alignment: Alignment.bottomRight,
+                    child: Text(
+                      "مدارک محرمیت",
+                      style: TextStyle(
+                          color: Color.fromRGBO(99, 99, 99, 1),
+                          fontFamily: MAIN_FONT_FAMILY),
+                      textAlign: TextAlign.start,
                     ),
                   ),
-                ),
-                const SizedBox(height: 25),
-                TwoItemInRow(
-                  label1: "مبلغ اقساط",
-                  label2: "میزان وام (تومان)",
-                  w1: SizedBox(
+                  ReadOnlyTextField(
+                    _buildDateController,
+                    () {
+                      //todo
+                    },
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                     _anbari(),_asansor(),_parking()
+                    ],
+                  ),
+                  const SizedBox(width: 25),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  const SizedBox(
+                    height: 30,
+                  ),
+                ],
+              )
+            : const SizedBox.shrink()),
+      ],
+    );
+  }
+
+  Widget _vila(BuildContext context) {
+    final isSwitched = true.obs;
+
+    return Column(
+      children: [
+        switchable(isSwitched, "ویلا"),
+        Obx(() => isSwitched.isTrue
+            ? Column(
+                children: [
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  TwoItemInRow(
+                      label1: "تعداد اتاق ",
+                      label2: "متراژ بنا ",
+                      widget2: Container(
+                        height: 41,
+                        width: getPageWidth_2(context),
+                        child: TextField(
+                          readOnly: true,
+                          textAlign: TextAlign.right,
+                          decoration: InputDecoration(
+                            hintText: 'تایپ کنید',
+                            hintStyle: TextStyle(
+                                color: Color(0xFFA6A6A6), fontSize: 13),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                          ),
+                        ),
+                      ),
+                      widget1: ReadOnlyTextField(_buildFloorController, () {
+                        showNumberPicker(
+                            (p0) => _buildFloorController.text = p0);
+                      }, width: getPageWidth_2(context))),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  const Align(
+                    alignment: Alignment.bottomRight,
+                    child: Text(
+                      "طبقات ویلا ",
+                      style: TextStyle(
+                          color: Color.fromRGBO(99, 99, 99, 1),
+                          fontFamily: MAIN_FONT_FAMILY),
+                      textAlign: TextAlign.start,
+                    ),
+                  ),
+                  ReadOnlyTextField(_buildFloorsCountController, () {
+                    showNumberPicker(
+                        (p0) => _buildFloorsCountController.text = p0);
+                  }, width: getPageWidth_2(context)),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [_parking(), _anbari()],
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                ],
+              )
+            : const SizedBox.shrink()),
+      ],
+    );
+  }
+
+  Widget _anbari() => switchable(_hasAnbari, "انباری");
+
+  Widget _asansor() => switchable(_hasAsansor, "آسانسور");
+
+  Widget _parking() => switchable(_hasParking, "پارکینگ");
+
+  Widget _edari(BuildContext context) {
+    final isSwitched = true.obs;
+
+    return Column(
+      children: [
+        switchable(isSwitched, "تجاری و اداری"),
+        Obx(() => isSwitched.isTrue
+            ? Column(
+                children: [
+                  const Align(
+                    alignment: Alignment.centerRight,
+                    child: Text(
+                      "متراژ زمین  ",
+                      style: TextStyle(
+                          color: Color.fromRGBO(166, 166, 166, 1),
+                          fontSize: 13,
+                          fontFamily: MAIN_FONT_FAMILY),
+                      textAlign: TextAlign.start,
+                    ),
+                  ),
+                  SizedBox(
                     height: 41,
-                    width: MediaQuery.of(context).size.width * 0.4,
                     child: TextField(
                       keyboardType: TextInputType.number,
                       textAlign: TextAlign.right,
                       decoration: InputDecoration(
-                        hintText: '3,6000000', //todo
+                        hintText: '120',
                         hintStyle: const TextStyle(
                             color: Color(0xFFA6A6A6), fontSize: 13),
                         border: OutlineInputBorder(
@@ -830,647 +784,39 @@ Widget zamin(BuildContext context) {
                       ),
                     ),
                   ),
-                  w2: SizedBox(
-                    height: 41,
-                    width: MediaQuery.of(context).size.width * 0.4,
-                    child: TextField(
-                      keyboardType: TextInputType.number,
-                      textAlign: TextAlign.right,
-                      decoration: InputDecoration(
-                        hintText: '400000000', //todo
-                        hintStyle: const TextStyle(
-                            color: Color(0xFFA6A6A6), fontSize: 13),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                      ),
-                    ),
+                  const SizedBox(
+                    height: 20,
                   ),
-                ),
-                const SizedBox(
-                  height: 30,
-                ),
-              ],
-            )
-          : const SizedBox.shrink()),
-    ],
-  );
-}
-
-Widget Aparteman(BuildContext context) {
-  final isSwitched = true.obs;
-  final hasAnbari = false.obs;
-  final hasAsansor = false.obs;
-
-  final _onePrice = 0.0.obs;
-  final _allPriceTextController = TextEditingController();
-  final _metragTextController = TextEditingController();
-  return Column(
-    children: [
-      Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          const Text(
-            "آپارتمان",
-            style: TextStyle(
-                fontFamily: MAIN_FONT_FAMILY,
-                fontSize: 13,
-                color: Color.fromRGBO(99, 99, 99, 1)),
-          ),
-          Transform.scale(
-            scale: 0.80,
-            child: Obx(
-              () => Switch(
-                  onChanged: (_) => isSwitched.value = _,
-                  value: isSwitched.value,
-                  activeColor: Colors.white,
-                  activeTrackColor: const Color.fromRGBO(54, 216, 89, 1),
-                  inactiveThumbColor: const Color.fromRGBO(11, 8, 8, 0.2),
-                  inactiveTrackColor: const Color.fromRGBO(255, 255, 255, 1)),
-            ),
-          ),
-        ],
-      ),
-      Obx(() => isSwitched.isTrue
-          ? Column(
-              children: [
-                const SizedBox(
-                  height: 20,
-                ),
-                TwoItemInRow(
-                  label1: "تعداد اتاق",
-                  label2: "سن بنا ",
-                  w2: Container(
-                    height: 41,
-                    width: getPageWidth_2(context),
-                    child: TextField(
-                      readOnly: true,
-                      textAlign: TextAlign.right,
-                      decoration: InputDecoration(
-                        hintText: 'تایپ کنید',
-                        hintStyle:
-                            TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                      ),
-                    ),
+                  TwoItemInRow(
+                      label1: "موقعیت",
+                      label2: "طبقه ",
+                      widget2: ReadOnlyTextField(_buildDirectionController, () {
+                        jahatSakhteman(
+                            (p0) => _buildDirectionController.text = p0);
+                      }, width: getPageWidth_2(context)),
+                      widget1: ReadOnlyTextField(_buildFloorController, () {
+                        showNumberPicker((_) {
+                          _buildFloorController.text = _;
+                        });
+                      }, width: getPageWidth_2(context))),
+                  const SizedBox(
+                    height: 20,
                   ),
-                  w1: Container(
-                    height: 41,
-                    width: getPageWidth_2(context),
-                    child: TextField(
-                      readOnly: true,
-                      textAlign: TextAlign.right,
-                      decoration: InputDecoration(
-                        hintText: 'انتخاب نشده',
-                        hintStyle:
-                            TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        prefixIcon: IconButton(
-                          icon: SvgPicture.asset("assets/images/Vector-20.svg"),
-                          onPressed: () {
-                            showNumberPicker((_) {});
-                          },
-                        ),
-                      ),
-                    ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [_anbari(), _asansor(), _parking()],
                   ),
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                const Align(
-                  alignment: Alignment.bottomRight,
-                  child: Text(
-                    "مدارک محرمیت",
-                    style: TextStyle(
-                        color: Color.fromRGBO(99, 99, 99, 1),
-                        fontFamily: MAIN_FONT_FAMILY),
-                    textAlign: TextAlign.start,
+                  const SizedBox(width: 25),
+                  const SizedBox(
+                    height: 20,
                   ),
-                ),
-                Container(
-                  height: 41,
-                  width: 372,
-                  child: TextField(
-                    readOnly: true,
-                    textAlign: TextAlign.right,
-                    decoration: InputDecoration(
-                      hintText: 'انتخاب نشده',
-                      hintStyle:
-                          TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      prefixIcon: IconButton(
-                        icon: SvgPicture.asset("assets/images/Vector-20.svg"),
-                        onPressed: () {
-                          // _show_item_1.value = !_show_item_1.isTrue;
-                        },
-                      ),
-                    ),
+                  const SizedBox(
+                    height: 30,
                   ),
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Text(
-                      "انباری",
-                      style: TextStyle(
-                          fontFamily: MAIN_FONT_FAMILY,
-                          fontSize: 13,
-                          color: Color.fromRGBO(99, 99, 99, 1)),
-                    ),
-                    Container(
-                      child: Transform.scale(
-                        scale: 0.80,
-                        child: Obx(
-                          () => Switch(
-                              onChanged: (_) => hasAnbari.value = _,
-                              value: hasAnbari.value,
-                              activeColor: Colors.white,
-                              activeTrackColor: Color.fromRGBO(54, 216, 89, 1),
-                              inactiveThumbColor: Color.fromRGBO(11, 8, 8, 0.2),
-                              inactiveTrackColor:
-                                  Color.fromRGBO(255, 255, 255, 1)),
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      width: 15,
-                    ),
-                    Row(
-                      children: [
-                        const Text(
-                          "آسانسور",
-                          style: TextStyle(
-                              fontFamily: MAIN_FONT_FAMILY,
-                              fontSize: 13,
-                              color: Color.fromRGBO(99, 99, 99, 1)),
-                        ),
-                        Container(
-                          child: Transform.scale(
-                            scale: 0.80,
-                            child: Obx(
-                              () => Switch(
-                                  onChanged: (_) => hasAsansor.value = _,
-                                  value: hasAsansor.value,
-                                  activeColor: Colors.white,
-                                  activeTrackColor:
-                                      Color.fromRGBO(54, 216, 89, 1),
-                                  inactiveThumbColor:
-                                      Color.fromRGBO(11, 8, 8, 0.2),
-                                  inactiveTrackColor:
-                                      Color.fromRGBO(255, 255, 255, 1)),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        const Text(
-                          "پارکینگ",
-                          style: TextStyle(
-                              fontFamily: MAIN_FONT_FAMILY,
-                              fontSize: 13,
-                              color: Color.fromRGBO(99, 99, 99, 1)),
-                        ),
-                        Container(
-                          child: Transform.scale(
-                            scale: 0.80,
-                            child: Obx(
-                              () => Switch(
-                                  onChanged: (_) => hasAsansor.value = _,
-                                  value: hasAsansor.value,
-                                  activeColor: Colors.white,
-                                  activeTrackColor:
-                                      Color.fromRGBO(54, 216, 89, 1),
-                                  inactiveThumbColor:
-                                      Color.fromRGBO(11, 8, 8, 0.2),
-                                  inactiveTrackColor:
-                                      Color.fromRGBO(255, 255, 255, 1)),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-                const SizedBox(width: 25),
-                const SizedBox(
-                  height: 20,
-                ),
-                const SizedBox(
-                  height: 30,
-                ),
-              ],
-            )
-          : const SizedBox.shrink()),
-    ],
-  );
-}
-
-Widget Vila(BuildContext context) {
-  final isSwitched = true.obs;
-  final hasAnbari = false.obs;
-  final hasAsansor = false.obs;
-
-  final _onePrice = 0.0.obs;
-  final _allPriceTextController = TextEditingController();
-  final _metragTextController = TextEditingController();
-  return Column(
-    children: [
-      Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          const Text(
-            "ویلا",
-            style: TextStyle(
-                fontFamily: MAIN_FONT_FAMILY,
-                fontSize: 13,
-                color: Color.fromRGBO(99, 99, 99, 1)),
-          ),
-          Transform.scale(
-            scale: 0.80,
-            child: Obx(
-              () => Switch(
-                  onChanged: (_) => isSwitched.value = _,
-                  value: isSwitched.value,
-                  activeColor: Colors.white,
-                  activeTrackColor: const Color.fromRGBO(54, 216, 89, 1),
-                  inactiveThumbColor: const Color.fromRGBO(11, 8, 8, 0.2),
-                  inactiveTrackColor: const Color.fromRGBO(255, 255, 255, 1)),
-            ),
-          ),
-        ],
-      ),
-      Obx(() => isSwitched.isTrue
-          ? Column(
-              children: [
-                const SizedBox(
-                  height: 20,
-                ),
-                TwoItemInRow(
-                  label1: "تعداد اتاق ",
-                  label2: "متراژ بنا ",
-                  w2: Container(
-                    height: 41,
-                    width: getPageWidth_2(context),
-                    child: TextField(
-                      readOnly: true,
-                      textAlign: TextAlign.right,
-                      decoration: InputDecoration(
-                        hintText: 'تایپ کنید',
-                        hintStyle:
-                            TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                      ),
-                    ),
-                  ),
-                  w1: Container(
-                    height: 41,
-                    width: getPageWidth_2(context),
-                    child: TextField(
-                      readOnly: true,
-                      textAlign: TextAlign.right,
-                      decoration: InputDecoration(
-                        hintText: 'انتخاب نشده',
-                        hintStyle:
-                            TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        prefixIcon: IconButton(
-                          icon: SvgPicture.asset("assets/images/Vector-20.svg"),
-                          onPressed: () {
-                            showNumberPicker((_) {});
-                          },
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                const Align(
-                  alignment: Alignment.bottomRight,
-                  child: Text(
-                    "طبقات ویلا ",
-                    style: TextStyle(
-                        color: Color.fromRGBO(99, 99, 99, 1),
-                        fontFamily: MAIN_FONT_FAMILY),
-                    textAlign: TextAlign.start,
-                  ),
-                ),
-                Container(
-                  height: 41,
-                  width: 372,
-                  child: TextField(
-                    readOnly: true,
-                    textAlign: TextAlign.right,
-                    decoration: InputDecoration(
-                      hintText: 'انتخاب نشده',
-                      hintStyle:
-                          TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      prefixIcon: IconButton(
-                        icon: SvgPicture.asset("assets/images/Vector-20.svg"),
-                        onPressed: () {
-                          showNumberPicker((_) {});
-                        },
-                      ),
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Text(
-                      "انباری",
-                      style: TextStyle(
-                          fontFamily: MAIN_FONT_FAMILY,
-                          fontSize: 14,
-                          color: Color.fromRGBO(99, 99, 99, 1)),
-                    ),
-                    Container(
-                      child: Transform.scale(
-                        scale: 0.80,
-                        child: Obx(
-                          () => Switch(
-                              onChanged: (_) => hasAnbari.value = _,
-                              value: hasAnbari.value,
-                              activeColor: Colors.white,
-                              activeTrackColor: Color.fromRGBO(54, 216, 89, 1),
-                              inactiveThumbColor: Color.fromRGBO(11, 8, 8, 0.2),
-                              inactiveTrackColor:
-                                  Color.fromRGBO(255, 255, 255, 1)),
-                        ),
-                      ),
-                    ),
-                    const SizedBox(
-                      width: 10,
-                    ),
-                    const Row(
-                      children: [],
-                    ),
-                    const Text(
-                      "پارکینگ",
-                      style: TextStyle(
-                          fontFamily: MAIN_FONT_FAMILY,
-                          fontSize: 14,
-                          color: Color.fromRGBO(99, 99, 99, 1)),
-                    ),
-                    Container(
-                      child: Transform.scale(
-                        scale: 0.80,
-                        child: Obx(
-                          () => Switch(
-                              onChanged: (_) => hasAsansor.value = _,
-                              value: hasAsansor.value,
-                              activeColor: Colors.white,
-                              activeTrackColor: Color.fromRGBO(54, 216, 89, 1),
-                              inactiveThumbColor: Color.fromRGBO(11, 8, 8, 0.2),
-                              inactiveTrackColor:
-                                  Color.fromRGBO(255, 255, 255, 1)),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                const SizedBox(
-                  height: 30,
-                ),
-              ],
-            )
-          : const SizedBox.shrink()),
-    ],
-  );
-}
-
-Widget Edari(BuildContext context) {
-  final isSwitched = true.obs;
-  final hasAnbari = false.obs;
-  final hasAsansor = false.obs;
-
-  final _onePrice = 0.0.obs;
-  final _allPriceTextController = TextEditingController();
-  final _metragTextController = TextEditingController();
-  return Column(
-    children: [
-      Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          const Text(
-            "تجاری و اداری",
-            style: TextStyle(
-                fontFamily: MAIN_FONT_FAMILY,
-                fontSize: 13,
-                color: Color.fromRGBO(99, 99, 99, 1)),
-          ),
-          Transform.scale(
-            scale: 0.80,
-            child: Obx(
-              () => Switch(
-                  onChanged: (_) => isSwitched.value = _,
-                  value: isSwitched.value,
-                  activeColor: Colors.white,
-                  activeTrackColor: const Color.fromRGBO(54, 216, 89, 1),
-                  inactiveThumbColor: const Color.fromRGBO(11, 8, 8, 0.2),
-                  inactiveTrackColor: const Color.fromRGBO(255, 255, 255, 1)),
-            ),
-          ),
-        ],
-      ),
-      Obx(() => isSwitched.isTrue
-          ? Column(
-              children: [
-                const Align(
-                  alignment: Alignment.centerRight,
-                  child: Text(
-                    "متراژ زمین  ",
-                    style: TextStyle(
-                        color: Color.fromRGBO(166, 166, 166, 1),
-                        fontSize: 13,
-                        fontFamily: MAIN_FONT_FAMILY),
-                    textAlign: TextAlign.start,
-                  ),
-                ),
-                SizedBox(
-                  height: 41,
-                  child: TextField(
-                    keyboardType: TextInputType.number,
-                    textAlign: TextAlign.right,
-                    decoration: InputDecoration(
-                      hintText: '120',
-                      hintStyle: const TextStyle(
-                          color: Color(0xFFA6A6A6), fontSize: 13),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                TwoItemInRow(
-                  label1: "تعداد اتاق",
-                  label2: "سن بنا ",
-                  w2: Container(
-                    height: 41,
-                    width: getPageWidth_2(context),
-                    child: TextField(
-                      textAlign: TextAlign.right,
-                      decoration: InputDecoration(
-                        hintText: 'تایپ کنید',
-                        hintStyle:
-                            TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                      ),
-                    ),
-                  ),
-                  w1: Container(
-                    height: 41,
-                    width: getPageWidth_2(context),
-                    child: TextField(
-                      readOnly: true,
-                      textAlign: TextAlign.right,
-                      decoration: InputDecoration(
-                        hintText: 'انتخاب نشده',
-                        hintStyle:
-                            TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        prefixIcon: IconButton(
-                          icon: SvgPicture.asset("assets/images/Vector-20.svg"),
-                          onPressed: () {
-                            showNumberPicker((_) {});
-                          },
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Text(
-                      "انباری",
-                      style: TextStyle(
-                          fontFamily: MAIN_FONT_FAMILY,
-                          fontSize: 13,
-                          color: Color.fromRGBO(99, 99, 99, 1)),
-                    ),
-                    Container(
-                      child: Transform.scale(
-                        scale: 0.80,
-                        child: Obx(
-                          () => Switch(
-                              onChanged: (_) => hasAnbari.value = _,
-                              value: hasAnbari.value,
-                              activeColor: Colors.white,
-                              activeTrackColor: Color.fromRGBO(54, 216, 89, 1),
-                              inactiveThumbColor: Color.fromRGBO(11, 8, 8, 0.2),
-                              inactiveTrackColor:
-                                  Color.fromRGBO(255, 255, 255, 1)),
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      width: 15,
-                    ),
-                    Row(
-                      children: [
-                        const Text(
-                          "آسانسور",
-                          style: TextStyle(
-                              fontFamily: MAIN_FONT_FAMILY,
-                              fontSize: 13,
-                              color: Color.fromRGBO(99, 99, 99, 1)),
-                        ),
-                        Container(
-                          child: Transform.scale(
-                            scale: 0.80,
-                            child: Obx(
-                              () => Switch(
-                                  onChanged: (_) => hasAsansor.value = _,
-                                  value: hasAsansor.value,
-                                  activeColor: Colors.white,
-                                  activeTrackColor:
-                                      Color.fromRGBO(54, 216, 89, 1),
-                                  inactiveThumbColor:
-                                      Color.fromRGBO(11, 8, 8, 0.2),
-                                  inactiveTrackColor:
-                                      Color.fromRGBO(255, 255, 255, 1)),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        const Text(
-                          "پارکینگ",
-                          style: TextStyle(
-                              fontFamily: MAIN_FONT_FAMILY,
-                              fontSize: 13,
-                              color: Color.fromRGBO(99, 99, 99, 1)),
-                        ),
-                        Container(
-                          child: Transform.scale(
-                            scale: 0.80,
-                            child: Obx(
-                              () => Switch(
-                                  onChanged: (_) => hasAsansor.value = _,
-                                  value: hasAsansor.value,
-                                  activeColor: Colors.white,
-                                  activeTrackColor:
-                                      Color.fromRGBO(54, 216, 89, 1),
-                                  inactiveThumbColor:
-                                      Color.fromRGBO(11, 8, 8, 0.2),
-                                  inactiveTrackColor:
-                                      Color.fromRGBO(255, 255, 255, 1)),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-                const SizedBox(width: 25),
-                const SizedBox(
-                  height: 20,
-                ),
-                const SizedBox(
-                  height: 30,
-                ),
-              ],
-            )
-          : const SizedBox.shrink()),
-    ],
-  );
+                ],
+              )
+            : const SizedBox.shrink()),
+      ],
+    );
+  }
 }

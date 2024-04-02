@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/shared/app_bar.dart';
-import 'package:flutter_application_1/pages/category/shared/contant.dart';
+import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/category/shared/map_pages/location_Info.dart';
 import 'package:flutter_application_1/pages/category/shared/map_pages/select_location_on_map.dart';
 import 'package:get/get.dart';

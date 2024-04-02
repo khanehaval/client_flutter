@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/pages/category/shared/contant.dart';
+import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/category/shared/date.dart';
 import 'package:flutter_application_1/pages/category/shared/emkanat7.dart';
 import 'package:flutter_application_1/pages/category/shared/images_picker/images_picker.dart';
@@ -78,7 +78,7 @@ class ForoshDaftarPage extends StatelessWidget {
               TwoItemInRow(
                 label1: "قیمت هر متر مربع (تومان)",
                 label2: "قیمت کل (تومان)",
-                w1: Obx(
+                widget1: Obx(
                   () => Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
@@ -95,7 +95,7 @@ class ForoshDaftarPage extends StatelessWidget {
                     ),
                   ),
                 ),
-                w2: SizedBox(
+                widget2: SizedBox(
                   height: 41,
                   width: getPageWidth_2(context),
                   child: TextField(
@@ -202,7 +202,7 @@ class ForoshDaftarPage extends StatelessWidget {
               TwoItemInRow(
                 label1: "تعداد اتاق ",
                 label2: "سن بنا ",
-                w1: SizedBox(
+                widget1: SizedBox(
                   height: 41,
                   width: getPageWidth_2(context),
                   child: TextField(
@@ -223,7 +223,7 @@ class ForoshDaftarPage extends StatelessWidget {
                         )),
                   ),
                 ),
-                w2: SizedBox(
+                widget2: SizedBox(
                   height: 41,
                   width: getPageWidth_2(context),
                   child: TextField(
@@ -398,7 +398,7 @@ class ForoshDaftarPage extends StatelessWidget {
               TwoItemInRow(
                 label1: "تعداد کل طبقات",
                 label2: "نوع سند",
-                w1: SizedBox(
+                widget1: SizedBox(
                   height: 41,
                   width: getPageWidth_2(context),
                   child: TextField(
@@ -419,7 +419,7 @@ class ForoshDaftarPage extends StatelessWidget {
                         )),
                   ),
                 ),
-                w2: SizedBox(
+                widget2: SizedBox(
                   height: 41,
                   width: getPageWidth_2(context),
                   child: TextField(
@@ -448,7 +448,7 @@ class ForoshDaftarPage extends StatelessWidget {
               TwoItemInRow(
                 label1: "تعداد کل واحد ها",
                 label2: "تعداد واحد در طبقه",
-                w1: Container(
+                widget1: Container(
                   height: 41,
                   width: getPageWidth_2(context),
                   child: TextField(
@@ -464,7 +464,7 @@ class ForoshDaftarPage extends StatelessWidget {
                     ),
                   ),
                 ),
-                w2: Container(
+                widget2: Container(
                   height: 41,
                   width: getPageWidth_2(context),
                   child: TextField(
@@ -493,7 +493,7 @@ class ForoshDaftarPage extends StatelessWidget {
               TwoItemInRow(
                 label1: "بازسازی",
                 label2: "جهت ساختمان",
-                w1: Container(
+                widget1: Container(
                   height: 41,
                   width: getPageWidth_2(context),
                   child: TextField(
@@ -514,7 +514,7 @@ class ForoshDaftarPage extends StatelessWidget {
                         )),
                   ),
                 ),
-                w2: Container(
+                widget2: Container(
                   height: 41,
                   width: getPageWidth_2(context),
                   child: TextField(
@@ -583,7 +583,7 @@ class ForoshDaftarPage extends StatelessWidget {
                 TwoItemInRow(
                   label1: "نوع کابینت",
                   label2: "جنس کف",
-                  w1: Container(
+                  widget1: Container(
                     height: 41,
                     width: getPageWidth_2(context),
                     child: TextField(
@@ -605,7 +605,7 @@ class ForoshDaftarPage extends StatelessWidget {
                           )),
                     ),
                   ),
-                  w2: Container(
+                  widget2: Container(
                     height: 41,
                     width: getPageWidth_2(context),
                     child: TextField(
@@ -634,7 +634,7 @@ class ForoshDaftarPage extends StatelessWidget {
                 TwoItemInRow(
                   label1: "نوع سیستم گرمایش",
                   label2: "نوع سیستم سرمایش",
-                  w1: Container(
+                  widget1: Container(
                     height: 41,
                     width: getPageWidth_2(context),
                     child: TextField(
@@ -656,7 +656,7 @@ class ForoshDaftarPage extends StatelessWidget {
                       ),
                     ),
                   ),
-                  w2: Container(
+                  widget2: Container(
                     height: 41,
                     width: getPageWidth_2(context),
                     child: TextField(
@@ -685,7 +685,7 @@ class ForoshDaftarPage extends StatelessWidget {
                 TwoItemInRow(
                   label1: "سرویس بهداشتی",
                   label2: "تامین کننده آب گرم",
-                  w1: Container(
+                  widget1: Container(
                     height: 41,
                     width: getPageWidth_2(context),
                     child: TextField(
@@ -707,7 +707,7 @@ class ForoshDaftarPage extends StatelessWidget {
                           )),
                     ),
                   ),
-                  w2: Container(
+                  widget2: Container(
                     height: 41,
                     width: 176,
                     child: TextField(
@@ -895,7 +895,7 @@ class ForoshDaftarPage extends StatelessWidget {
                   TwoItemInRow(
                     label1: "مبلغ قسط (تومان)",
                     label2: "پیش پرداخت (تومان)",
-                    w1: SizedBox(
+                    widget1: SizedBox(
                       height: 41,
                       width: MediaQuery.of(context).size.width * 0.4,
                       child: TextField(
@@ -911,7 +911,7 @@ class ForoshDaftarPage extends StatelessWidget {
                         ),
                       ),
                     ),
-                    w2: SizedBox(
+                    widget2: SizedBox(
                       height: 41,
                       width: MediaQuery.of(context).size.width * 0.4,
                       child: TextField(
@@ -934,7 +934,7 @@ class ForoshDaftarPage extends StatelessWidget {
                   TwoItemInRow(
                       label1: "زمان دریافت اقساط",
                       label2: "تعداد اقساط",
-                      w1: SizedBox(
+                      widget1: SizedBox(
                         height: 41,
                         width: MediaQuery.of(context).size.width * 0.4,
                         child: TextField(
@@ -959,7 +959,7 @@ class ForoshDaftarPage extends StatelessWidget {
                               )),
                         ),
                       ),
-                      w2: SizedBox(
+                      widget2: SizedBox(
                         height: 41,
                         width: MediaQuery.of(context).size.width * 0.4,
                         child: TextField(
@@ -1056,7 +1056,7 @@ class ForoshDaftarPage extends StatelessWidget {
                   TwoItemInRow(
                     label1: "مبلغ اقساط",
                     label2: "میزان وام (تومان)",
-                    w1: SizedBox(
+                    widget1: SizedBox(
                       height: 41,
                       width: MediaQuery.of(context).size.width * 0.4,
                       child: TextField(
@@ -1071,7 +1071,7 @@ class ForoshDaftarPage extends StatelessWidget {
                         ),
                       ),
                     ),
-                    w2: SizedBox(
+                    widget2: SizedBox(
                       height: 41,
                       width: MediaQuery.of(context).size.width * 0.4,
                       child: TextField(
@@ -1093,7 +1093,7 @@ class ForoshDaftarPage extends StatelessWidget {
                   TwoItemInRow(
                       label1: "زمان دریافت اقساط",
                       label2: "تعداد اقساط",
-                      w1: SizedBox(
+                      widget1: SizedBox(
                         height: 41,
                         width: MediaQuery.of(context).size.width * 0.4,
                         child: TextField(
@@ -1113,7 +1113,7 @@ class ForoshDaftarPage extends StatelessWidget {
                               )),
                         ),
                       ),
-                      w2: SizedBox(
+                      widget2: SizedBox(
                         height: 41,
                         width: MediaQuery.of(context).size.width * 0.4,
                         child: TextField(

@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/pages/category/shared/contant.dart';
+import 'package:flutter_application_1/pages/category/models/FacilitiesModel.dart';
+import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/category/shared/date.dart';
-import 'package:flutter_application_1/pages/category/shared/emkanat8.dart';
+import 'package:flutter_application_1/pages/category/shared/facilities_selector.dart';
 import 'package:flutter_application_1/pages/category/shared/images_picker/images_picker.dart';
 import 'package:flutter_application_1/pages/category/shared/number_piacker.dart';
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
 
 import 'package:flutter_application_1/pages/category/shared/twoItemInRow.dart';
+import 'package:flutter_application_1/pages/category/shared/widget/route_widget.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
@@ -24,7 +26,7 @@ class VilaAdvPage extends StatelessWidget {
   final _metragTextController = TextEditingController();
   final _selectedImagesPath = [].obs;
 
-  VilaAdvPage({super.key});
+  final _facilities = <FacilitiesModel>[].obs;
 
   @override
   Widget build(BuildContext context) {
@@ -34,50 +36,15 @@ class VilaAdvPage extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
           child: Column(children: [
-            const Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Text(
-                  " خرید و فروش ویلا",
-                  style: TextStyle(
-                    fontSize: 9,
-                    fontFamily: MAIN_FONT_FAMILY,
-                  ),
-                ),
-                Icon(
-                  Icons.arrow_back,
-                  color: Colors.green,
-                  size: 15,
-                ),
-                Text(
-                  "فروش مسکونی",
-                  style: TextStyle(
-                    fontSize: 9,
-                    fontFamily: MAIN_FONT_FAMILY,
-                  ),
-                ),
-                Icon(
-                  Icons.arrow_back,
-                  color: Colors.green,
-                  size: 15,
-                ),
-                Text(
-                  "  ثبت آگهی اکونومی",
-                  style: TextStyle(
-                    fontSize: 9,
-                    fontFamily: MAIN_FONT_FAMILY,
-                  ),
-                ),
-              ],
-            ),
+            route([" خرید و فروش ویلا", "فروش مسکونی","  ثبت آگهی اکونومی"]),
+
             const SizedBox(
               height: 20,
             ),
             TwoItemInRow(
               label1: "قیمت هر متر مربع (تومان)",
               label2: "قیمت کل (تومان)",
-              w1: Obx(
+              widget1: Obx(
                 () => Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
@@ -94,7 +61,7 @@ class VilaAdvPage extends StatelessWidget {
                   ),
                 ),
               ),
-              w2: SizedBox(
+              widget2: SizedBox(
                 height: 41,
                 width: getPageWidth_2(context),
                 child: TextField(
@@ -144,7 +111,7 @@ class VilaAdvPage extends StatelessWidget {
             TwoItemInRow(
               label1: " متراژ بنا",
               label2: "متراژ زمین",
-              w1: Obx(
+              widget1: Obx(
                 () => Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
@@ -161,7 +128,7 @@ class VilaAdvPage extends StatelessWidget {
                   ),
                 ),
               ),
-              w2: SizedBox(
+              widget2: SizedBox(
                 height: 41,
                 width: getPageWidth_2(context),
                 child: TextField(
@@ -217,7 +184,7 @@ class VilaAdvPage extends StatelessWidget {
             TwoItemInRow(
               label1: "تعداد اتاق ",
               label2: "سن بنا ",
-              w1: SizedBox(
+              widget1: SizedBox(
                 height: 41,
                 width: getPageWidth_2(context),
                 child: TextField(
@@ -238,7 +205,7 @@ class VilaAdvPage extends StatelessWidget {
                       )),
                 ),
               ),
-              w2: SizedBox(
+              widget2: SizedBox(
                 height: 41,
                 width: getPageWidth_2(context),
                 child: TextField(
@@ -410,7 +377,7 @@ class VilaAdvPage extends StatelessWidget {
             TwoItemInRow(
               label1: "بازسازی",
               label2: "جهت ساختمان",
-              w1: SizedBox(
+              widget1: SizedBox(
                 height: 41,
                 width: getPageWidth_2(context),
                 child: TextField(
@@ -445,7 +412,7 @@ class VilaAdvPage extends StatelessWidget {
                       )),
                 ),
               ),
-              w2: SizedBox(
+              widget2: SizedBox(
                 height: 41,
                 width: getPageWidth_2(context),
                 child: TextField(
@@ -491,7 +458,7 @@ class VilaAdvPage extends StatelessWidget {
             TwoItemInRow(
               label1: "نوع کابینت",
               label2: "جنس کف",
-              w1: Container(
+              widget1: Container(
                 height: 41,
                 width: getPageWidth_2(context),
                 child: TextField(
@@ -512,7 +479,7 @@ class VilaAdvPage extends StatelessWidget {
                       )),
                 ),
               ),
-              w2: Container(
+              widget2: Container(
                 height: 41,
                 width: getPageWidth_2(context),
                 child: TextField(
@@ -541,7 +508,7 @@ class VilaAdvPage extends StatelessWidget {
             TwoItemInRow(
               label1: "نوع سیستم گرمایش",
               label2: "نوع سیستم سرمایش",
-              w1: Container(
+              widget1: Container(
                 height: 41,
                 width: getPageWidth_2(context),
                 child: TextField(
@@ -563,7 +530,7 @@ class VilaAdvPage extends StatelessWidget {
                   ),
                 ),
               ),
-              w2: Container(
+              widget2: Container(
                 height: 41,
                 width: getPageWidth_2(context),
                 child: TextField(
@@ -592,7 +559,7 @@ class VilaAdvPage extends StatelessWidget {
             TwoItemInRow(
               label1: "سرویس بهداشتی",
               label2: "تامین کننده آب گرم",
-              w1: Container(
+              widget1: Container(
                 height: 41,
                 width: getPageWidth_2(context),
                 child: TextField(
@@ -613,7 +580,7 @@ class VilaAdvPage extends StatelessWidget {
                       )),
                 ),
               ),
-              w2: Container(
+              widget2: Container(
                 height: 41,
                 width: 176,
                 child: TextField(
@@ -639,45 +606,11 @@ class VilaAdvPage extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
-            const Text(
-              "سایر امکانات",
-              style: TextStyle(fontFamily: MAIN_FONT_FAMILY, fontSize: 16),
+            FacilitiesSelectorWidget(
+              selectable: [Teras(), MasterRoom(), CenterAntenna(), Labi()],
+              selected: _facilities,
             ),
-            const SizedBox(
-              height: 15,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                GestureDetector(
-                  behavior: HitTestBehavior.translucent,
-                  onTap: () {
-                    buildButtom8();
-                  },
-                  child: Container(
-                    height: 70,
-                    width: 70,
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(10),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withOpacity(0.1),
-                            spreadRadius: 1,
-                            blurRadius: 5,
-                          )
-                        ],
-                        border: Border.all(
-                          color: Colors.black45,
-                          width: 0.3,
-                        )),
-                    child: const Icon(
-                      Icons.add,
-                    ),
-                  ),
-                ),
-              ],
-            ),
+
             const SizedBox(
               height: 20,
             ),
@@ -798,7 +731,7 @@ class VilaAdvPage extends StatelessWidget {
                   TwoItemInRow(
                     label1: "مبلغ قسط (تومان)",
                     label2: "پیش پرداخت (تومان)",
-                    w1: SizedBox(
+                    widget1: SizedBox(
                       height: 41,
                       width: MediaQuery.of(context).size.width * 0.4,
                       child: TextField(
@@ -813,7 +746,7 @@ class VilaAdvPage extends StatelessWidget {
                         ),
                       ),
                     ),
-                    w2: SizedBox(
+                    widget2: SizedBox(
                       height: 41,
                       width: MediaQuery.of(context).size.width * 0.4,
                       child: TextField(
@@ -835,7 +768,7 @@ class VilaAdvPage extends StatelessWidget {
                   TwoItemInRow(
                       label1: "زمان دریافت اقساط",
                       label2: "تعداد اقساط",
-                      w1: SizedBox(
+                      widget1: SizedBox(
                         height: 41,
                         width: MediaQuery.of(context).size.width * 0.4,
                         child: TextField(
@@ -858,7 +791,7 @@ class VilaAdvPage extends StatelessWidget {
                               )),
                         ),
                       ),
-                      w2: SizedBox(
+                      widget2: SizedBox(
                         height: 41,
                         width: MediaQuery.of(context).size.width * 0.4,
                         child: TextField(
@@ -955,7 +888,7 @@ class VilaAdvPage extends StatelessWidget {
                   TwoItemInRow(
                     label1: "مبلغ اقساط",
                     label2: "میزان وام (تومان)",
-                    w1: SizedBox(
+                    widget1: SizedBox(
                       height: 41,
                       width: MediaQuery.of(context).size.width * 0.4,
                       child: TextField(
@@ -970,7 +903,7 @@ class VilaAdvPage extends StatelessWidget {
                         ),
                       ),
                     ),
-                    w2: SizedBox(
+                    widget2: SizedBox(
                       height: 41,
                       width: MediaQuery.of(context).size.width * 0.4,
                       child: TextField(
@@ -992,7 +925,7 @@ class VilaAdvPage extends StatelessWidget {
                   TwoItemInRow(
                       label1: "زمان دریافت اقساط",
                       label2: "تعداد اقساط",
-                      w1: SizedBox(
+                      widget1: SizedBox(
                         height: 41,
                         width: MediaQuery.of(context).size.width * 0.4,
                         child: TextField(
@@ -1015,7 +948,7 @@ class VilaAdvPage extends StatelessWidget {
                               )),
                         ),
                       ),
-                      w2: SizedBox(
+                      widget2: SizedBox(
                         height: 41,
                         width: MediaQuery.of(context).size.width * 0.4,
                         child: TextField(

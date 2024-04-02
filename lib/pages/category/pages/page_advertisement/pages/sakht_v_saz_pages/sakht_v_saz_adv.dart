@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/sakht_v_saz_pages/partnership_locarion_page.dart';
 import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/sakht_v_saz_pages/presell_location_page.dart';
-import 'package:flutter_application_1/pages/category/shared/contant.dart';
+import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/category/shared/map_pages/first_map_page.dart';
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/adv_title_widget.dart';

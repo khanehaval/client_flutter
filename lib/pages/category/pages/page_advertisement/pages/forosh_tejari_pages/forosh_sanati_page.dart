@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/pages/category/shared/contant.dart';
-
+import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/category/shared/number_piacker.dart';
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
 
@@ -73,7 +72,7 @@ class ForoshSanatiPage extends StatelessWidget {
               TwoItemInRow(
                 label1: "قیمت هر متر مربع (تومان)",
                 label2: "قیمت کل (تومان)",
-                w1: Obx(
+                widget1: Obx(
                   () => Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
@@ -90,7 +89,7 @@ class ForoshSanatiPage extends StatelessWidget {
                     ),
                   ),
                 ),
-                w2: SizedBox(
+                widget2: SizedBox(
                   height: 41,
                   width: getPageWidth_2(context),
                   child: TextField(
@@ -140,7 +139,7 @@ class ForoshSanatiPage extends StatelessWidget {
               TwoItemInRow(
                 label1: "نوع سند ",
                 label2: "متراژ زمین ",
-                w1: SizedBox(
+                widget1: SizedBox(
                   height: 41,
                   width: getPageWidth_2(context),
                   child: TextField(
@@ -161,7 +160,7 @@ class ForoshSanatiPage extends StatelessWidget {
                         )),
                   ),
                 ),
-                w2: SizedBox(
+                widget2: SizedBox(
                   height: 41,
                   width: getPageWidth_2(context),
                   child: TextField(
@@ -185,7 +184,7 @@ class ForoshSanatiPage extends StatelessWidget {
               TwoItemInRow(
                 label1: "عرض زمین",
                 label2: "طول زمین",
-                w1: SizedBox(
+                widget1: SizedBox(
                   height: 41,
                   width: getPageWidth_2(context),
                   child: TextField(
@@ -202,7 +201,7 @@ class ForoshSanatiPage extends StatelessWidget {
                     ),
                   ),
                 ),
-                w2: SizedBox(
+                widget2: SizedBox(
                   height: 41,
                   width: getPageWidth_2(context),
                   child: TextField(
@@ -248,7 +247,7 @@ class ForoshSanatiPage extends StatelessWidget {
               TwoItemInRow(
                 label1: "جنس دیواره",
                 label2: "جنس کف",
-                w1: Container(
+                widget1: Container(
                   height: 41,
                   width: getPageWidth_2(context),
                   child: TextField(
@@ -269,7 +268,7 @@ class ForoshSanatiPage extends StatelessWidget {
                         )),
                   ),
                 ),
-                w2: Container(
+                widget2: Container(
                   height: 41,
                   width: getPageWidth_2(context),
                   child: TextField(
@@ -298,7 +297,7 @@ class ForoshSanatiPage extends StatelessWidget {
               TwoItemInRow(
                 label1: "نوع سیستم گرمایش",
                 label2: "نوع سیستم سرمایش",
-                w1: Container(
+                widget1: Container(
                   height: 41,
                   width: getPageWidth_2(context),
                   child: TextField(
@@ -320,7 +319,7 @@ class ForoshSanatiPage extends StatelessWidget {
                     ),
                   ),
                 ),
-                w2: Container(
+                widget2: Container(
                   height: 41,
                   width: getPageWidth_2(context),
                   child: TextField(
@@ -755,7 +754,7 @@ Widget aghsatiForoshWidget(BuildContext context) {
                 TwoItemInRow(
                   label1: "سن بنا ",
                   label2: "متراژ ",
-                  w1: SizedBox(
+                  widget1: SizedBox(
                     height: 41,
                     width: MediaQuery.of(context).size.width * 0.4,
                     child: TextField(
@@ -771,7 +770,7 @@ Widget aghsatiForoshWidget(BuildContext context) {
                       ),
                     ),
                   ),
-                  w2: SizedBox(
+                  widget2: SizedBox(
                     height: 41,
                     width: MediaQuery.of(context).size.width * 0.4,
                     child: TextField(
@@ -794,7 +793,7 @@ Widget aghsatiForoshWidget(BuildContext context) {
                 TwoItemInRow(
                   label1: "تعداد اتاق ",
                   label2: "تعداد طبقات ",
-                  w1: SizedBox(
+                  widget1: SizedBox(
                     height: 41,
                     width: MediaQuery.of(context).size.width * 0.4,
                     child: TextField(
@@ -817,7 +816,7 @@ Widget aghsatiForoshWidget(BuildContext context) {
                           )),
                     ),
                   ),
-                  w2: SizedBox(
+                  widget2: SizedBox(
                     height: 41,
                     width: MediaQuery.of(context).size.width * 0.4,
                     child: TextField(
@@ -954,7 +953,7 @@ Widget melkByVamBanki(BuildContext context) {
                 TwoItemInRow(
                   label1: "سن بنا ",
                   label2: "متراژ بنا ",
-                  w1: SizedBox(
+                  widget1: SizedBox(
                     height: 41,
                     width: MediaQuery.of(context).size.width * 0.4,
                     child: TextField(
@@ -969,7 +968,7 @@ Widget melkByVamBanki(BuildContext context) {
                       ),
                     ),
                   ),
-                  w2: SizedBox(
+                  widget2: SizedBox(
                     height: 41,
                     width: MediaQuery.of(context).size.width * 0.4,
                     child: TextField(
