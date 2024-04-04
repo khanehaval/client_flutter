@@ -162,8 +162,6 @@ class Gym extends FacilitiesModel {
   }
 }
 
-//Al-Achiq
-
 class AlAchiq extends FacilitiesModel {
   @override
   String getAssetPath() {
@@ -263,7 +261,7 @@ class Haki extends FacilitiesModel {
 
   @override
   String key() {
-    return "Kali".toUpperCase();
+    return "Haki".toUpperCase();
   }
 }
 
@@ -343,7 +341,7 @@ class TV extends FacilitiesModel {
 
   @override
   String getTitle() {
-    return "کباب پز";
+    return "تلویزیون";
   }
 
   @override
@@ -360,7 +358,7 @@ class Digital extends FacilitiesModel {
 
   @override
   String getTitle() {
-    return "پینگ پونگ";
+    return "گیرنده دیجیتال";
   }
 
   @override
@@ -377,12 +375,12 @@ class Audio extends FacilitiesModel {
 
   @override
   String getTitle() {
-    return "کباب پز";
+    return "سیستم صوتی";
   }
 
   @override
   String key() {
-    return "Frame_system".toUpperCase();
+    return "Audio".toUpperCase();
   }
 }
 
@@ -394,7 +392,7 @@ class Hairdryer extends FacilitiesModel {
 
   @override
   String getTitle() {
-    return "پینگ پونگ";
+    return "سشوار";
   }
 
   @override
@@ -411,7 +409,7 @@ class Iron extends FacilitiesModel {
 
   @override
   String getTitle() {
-    return "کباب پز";
+    return "اتو دستی";
   }
 
   @override
@@ -428,7 +426,7 @@ class Refrigerator extends FacilitiesModel {
 
   @override
   String getTitle() {
-    return "پینگ پونگ";
+    return "یخچال";
   }
 
   @override
@@ -445,7 +443,7 @@ class Kettle extends FacilitiesModel {
 
   @override
   String getTitle() {
-    return "کباب پز";
+    return "کتری";
   }
 
   @override
@@ -462,7 +460,7 @@ class Stove extends FacilitiesModel {
 
   @override
   String getTitle() {
-    return "پینگ پونگ";
+    return "اجاق";
   }
 
   @override
@@ -479,7 +477,7 @@ class Laundry extends FacilitiesModel {
 
   @override
   String getTitle() {
-    return "کباب پز";
+    return "لباسشویی";
   }
 
   @override
@@ -496,7 +494,7 @@ class TeaMaker extends FacilitiesModel {
 
   @override
   String getTitle() {
-    return "پینگ پونگ";
+    return " چای ساز";
   }
 
   @override
@@ -513,7 +511,7 @@ class Microwave extends FacilitiesModel {
 
   @override
   String getTitle() {
-    return "کباب پز";
+    return "ماکروفر";
   }
 
   @override
@@ -530,7 +528,7 @@ class CCTV extends FacilitiesModel {
 
   @override
   String getTitle() {
-    return "پینگ پونگ";
+    return " دوربین مداربسته";
   }
 
   @override
@@ -547,7 +545,7 @@ class Door extends FacilitiesModel {
 
   @override
   String getTitle() {
-    return "کباب پز";
+    return "درب ضد سرقت";
   }
 
   @override
@@ -565,12 +563,12 @@ class BurglarAlarm extends FacilitiesModel {
 
   @override
   String getTitle() {
-    return "کباب پز";
+    return "دزدگیر";
   }
 
   @override
   String key() {
-    return "Kabab".toUpperCase();
+    return "BurglarAlarm".toUpperCase();
   }
 }
 
@@ -582,12 +580,12 @@ class FireExtinguishing extends FacilitiesModel {
 
   @override
   String getTitle() {
-    return "کباب پز";
+    return "اطفای حریق";
   }
 
   @override
   String key() {
-    return "Kabab".toUpperCase();
+    return "FireExtinguishing".toUpperCase();
   }
 }
 
@@ -599,12 +597,12 @@ class Internet extends FacilitiesModel {
 
   @override
   String getTitle() {
-    return "کباب پز";
+    return "اینترنت";
   }
 
   @override
   String key() {
-    return "Kabab".toUpperCase();
+    return "Internet".toUpperCase();
   }
 }
 
@@ -616,7 +614,7 @@ class Guard extends FacilitiesModel {
 
   @override
   String getTitle() {
-    return "کباب پز";
+    return "نگهبان";
   }
 
   @override
