@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/category/shared/date.dart';
@@ -6,6 +5,7 @@ import 'package:flutter_application_1/pages/category/shared/images_picker/images
 import 'package:flutter_application_1/pages/category/shared/number_piacker.dart';
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
 import 'package:flutter_application_1/pages/category/shared/twoItemInRow.dart';
+import 'package:flutter_application_1/pages/category/shared/widget/switachable.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
@@ -24,7 +24,6 @@ class PartnerShip extends StatelessWidget {
   final hasParking = false.obs;
 
   final _onePrice = 0.0.obs;
-
 
   @override
   Widget build(BuildContext context) {
@@ -817,30 +816,7 @@ Widget Aparteman(BuildContext context) {
 
   return Column(
     children: [
-      Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          const Text(
-            "آپارتمان",
-            style: TextStyle(
-                fontFamily: MAIN_FONT_FAMILY,
-                fontSize: 13,
-                color: Color.fromRGBO(99, 99, 99, 1)),
-          ),
-          Transform.scale(
-            scale: 0.80,
-            child: Obx(
-              () => Switch(
-                  onChanged: (_) => isSwitched.value = _,
-                  value: isSwitched.value,
-                  activeColor: Colors.white,
-                  activeTrackColor: const Color.fromRGBO(54, 216, 89, 1),
-                  inactiveThumbColor: const Color.fromRGBO(11, 8, 8, 0.2),
-                  inactiveTrackColor: const Color.fromRGBO(255, 255, 255, 1)),
-            ),
-          ),
-        ],
-      ),
+      switchable(isSwitched, "آپارتمان"),
       Obx(() => isSwitched.isTrue
           ? Column(
               children: [
