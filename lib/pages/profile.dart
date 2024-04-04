@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_application_1/pages/category/shared/contant.dart';
+
 import 'package:flutter_application_1/pages/educational_tour.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
