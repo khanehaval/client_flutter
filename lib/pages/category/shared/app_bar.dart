@@ -15,7 +15,7 @@ PreferredSizeWidget buildAppBar() {
       GestureDetector(
         onTap: () {
           Get.to(
-                () => const Profile(),
+            () => Profile(),
           );
         },
         child: Container(
