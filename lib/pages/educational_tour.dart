@@ -1,13 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/Advertisements.dart';
-import 'package:flutter_application_1/pages/Messages.dart';
-import 'package:flutter_application_1/pages/category/category.dart';
-import 'package:flutter_application_1/pages/home.dart';
-import 'package:flutter_application_1/pages/category/pages/page_advertisement/advertisement_registration.dart';
+import 'package:flutter_application_1/pages/category/pages/messages.dart';
+
+import 'package:flutter_application_1/pages/category/pages/home.dart';
+import 'package:flutter_application_1/pages/category/pages/add_new_advertisment.dart';
 import 'package:flutter_application_1/pages/profile.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+
+import 'category/pages/window/window.dart';
 
 class EducationalTour extends StatefulWidget {
   int index;
@@ -33,10 +34,7 @@ class _EducationalTourState extends State<EducationalTour> {
   var pages = [
     Home(),
     const Messages(),
-    AdvertisementRegistration(
-      index: 0,
-      showEducation: true,
-    ),
+    AddNewAdvertisement(),
     const Category(),
     const Advertisements()
   ];
@@ -155,7 +153,7 @@ class _EducationalTourState extends State<EducationalTour> {
             ),
             NavigationDestination(
               icon: Image.asset(
-                'assets/images/category.png',
+                'assets/images/Category.png',
                 width: 24,
                 height: 24,
               ),

@@ -1,0 +1,200 @@
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_application_1/pages/category/shared/constant.dart';
+import 'package:get/get.dart';
+
+import '../models/FacilitiesModel.dart';
+
+class FacilitiesSelectorWidget extends StatelessWidget {
+  String title;
+  List<FacilitiesModel> selectable;
+  RxList<FacilitiesModel> selected;
+
+  FacilitiesSelectorWidget(
+      {this.title = "سایر امکانات",
+      required this.selectable,
+      required this.selected});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Text(
+          title,
+          style: const TextStyle(fontFamily: MAIN_FONT_FAMILY, fontSize: 16),
+        ),
+        const SizedBox(
+          height: 15,
+        ),
+        Obx(() => SizedBox(
+              height: 70,
+              child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: selected.length + 1,
+                  itemBuilder: (c, i) {
+                    if (i == selected.length) {
+                      return Padding(
+                        padding: const EdgeInsets.all(3),
+                        child: GestureDetector(
+                          behavior: HitTestBehavior.translucent,
+                          onTap: () {
+                            FocusScope.of(context).unfocus();
+                            FacilitiesSelector(selectable, selected);
+                          },
+                          child: Container(
+                            height: 70,
+                            width: 70,
+                            decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(10),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.grey.withOpacity(0.1),
+                                    spreadRadius: 1,
+                                    blurRadius: 5,
+                                  )
+                                ],
+                                border: Border.all(
+                                  color: Colors.black45,
+                                  width: 0.3,
+                                )),
+                            child: const Icon(
+                              Icons.add,
+                            ),
+                          ),
+                        ),
+                      );
+                    } else {
+                      return Padding(
+                        padding: const EdgeInsets.all(3.0),
+                        child: Container(
+                            width: 70,
+                            height: 70,
+                            decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(10),
+                                border: Border.all(
+                                  color: Colors.black12,
+                                  width: 1,
+                                )),
+                            child: Image.asset(selected[i].getAssetPath())),
+                      );
+                    }
+                  }),
+            )),
+      ],
+    );
+  }
+}
+
+FacilitiesSelector(
+    List<FacilitiesModel> selectable, RxList<FacilitiesModel> selected) {
+  return Get.bottomSheet(
+      SizedBox(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 40, horizontal: 30),
+          child: SingleChildScrollView(
+            child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  const Text("بیش از یک مورد می توانید انتخاب کنید",
+                      style: TextStyle(
+                          fontSize: 15, fontFamily: MAIN_FONT_FAMILY)),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  GridView.builder(
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        childAspectRatio: 2,
+                      ),
+                      itemCount: selectable.length,
+                      itemBuilder: (c, index) {
+                        return Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 3, vertical: 5),
+                          child: _buildItem(selectable[index], selected),
+                        );
+                      }),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  GestureDetector(
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 10),
+                      child: Container(
+                        decoration: BoxDecoration(
+                            gradient:
+                                const LinearGradient(colors: GRADIANT_COLOR),
+                            borderRadius: BorderRadius.circular(50)),
+                        child: IconButton(
+                          icon: const Icon(
+                            CupertinoIcons.check_mark,
+                            color: Colors.white,
+                            weight: 10,
+                          ),
+                          onPressed: () {
+                            Get.back();
+                          },
+                        ),
+                      ),
+                    ),
+                  ),
+                ]),
+          ),
+        ),
+      ),
+      backgroundColor: Colors.white,
+      enableDrag: true,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(30.0), topRight: Radius.circular(30.0)),
+      ));
+}
+
+Widget _buildItem(
+    FacilitiesModel facilitiesModel, RxList<FacilitiesModel> selected) {
+  return GestureDetector(
+    onTap: () {
+      if (selected.contains(facilitiesModel)) {
+        selected.remove(facilitiesModel);
+      } else {
+        selected.add(facilitiesModel);
+      }
+    },
+    child: SizedBox(
+      height: 85,
+      width: 140,
+      child: Obx(() => Container(
+            decoration: BoxDecoration(
+              gradient: selected.contains(facilitiesModel)
+                  ? const LinearGradient(colors: GRADIANT_COLOR)
+                  : const LinearGradient(
+                      colors: [Colors.black12, Colors.black12, Colors.black12]),
+              borderRadius: BorderRadius.circular(10),
+              // border: Border.all(
+              //   width: _selected.value == index ? 2 : 1.5,
+              // )
+            ),
+            child: Padding(
+              padding:
+                  EdgeInsets.all(selected.contains(facilitiesModel) ? 3 : 1),
+              child: Container(
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(10),
+                      border: Border.all(
+                        color: selected.contains(facilitiesModel)
+                            ? Colors.white
+                            : Colors.white,
+                        width: selected.contains(facilitiesModel) ? 2.8 : 1.5,
+                      )),
+                  child: Image.asset(facilitiesModel.getAssetPath())),
+            ),
+          )),
+    ),
+  );
+}

@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/pages/category/shared/contant.dart';
+import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_linear_datepicker/flutter_datepicker.dart';
 import 'package:get/get.dart';
 
@@ -18,8 +18,7 @@ void persianDataPicker(Function(String) onDateSelected) {
               endDate: "1440/03/0",
               initialDate: selectedDate,
               addLeadingZero: true,
-              dateChangeListener: (String selectedDate) =>
-                  selectedDate = selectedDate,
+              dateChangeListener: (date) => selectedDate = date,
               showDay: true,
               labelStyle: const TextStyle(
                 fontFamily: MAIN_FONT_FAMILY,
@@ -67,8 +66,3 @@ void persianDataPicker(Function(String) onDateSelected) {
     ),
   ));
 }
-
-const GRADIANT_COLOR = [
-  Color.fromARGB(255, 95, 173, 237),
-  Color.fromARGB(126, 118, 238, 146),
-];

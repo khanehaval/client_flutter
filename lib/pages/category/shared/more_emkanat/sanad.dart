@@ -1,14 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/pages/category/shared/contant.dart';
+import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:gradient_icon/gradient_icon.dart';
 
 void Sanad(Function(String) onSelected) {
-  final index = 6.obs;
-  final _selected = 0.obs;
+  final selected = "".obs;
+
+  final values = ["تجاری", "اداری", "مسکونی"];
+
   Get.bottomSheet(
     Container(
       width: double.infinity,
@@ -41,149 +43,59 @@ void Sanad(Function(String) onSelected) {
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        const GradientIcon(
-                          icon: Icons.keyboard_arrow_up,
-                          gradient: LinearGradient(
-                            colors: GRADIANT_COLOR,
-                            begin: Alignment.topLeft,
-                            end: Alignment.bottomRight,
-                          ),
-                          size: 40,
-                        ),
-                        Obx(
-                          () => Container(
-                            decoration: BoxDecoration(
-                              gradient: _selected.value == index
-                                  ? const LinearGradient(colors: GRADIANT_COLOR)
-                                  : null,
-                              borderRadius: BorderRadius.circular(10),
-                              // border: Border.all(
-                              //   width: _selected.value == index ? 2 : 1.5,
-                              // )
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.all(2.0),
-                              child: Column(
-                                children: [
-                                  Obx(
-                                    () => Container(
-                                        width: 150,
-                                        height: 40,
-                                        decoration: BoxDecoration(
-                                            color: Colors.white,
-                                            borderRadius:
-                                                BorderRadius.circular(10),
-                                            border: Border.all(
-                                              color: _selected.value == index
-                                                  ? Colors.white
-                                                  : Colors.black12,
-                                              width: _selected.value == index
-                                                  ? 2.8
-                                                  : 1.5,
-                                            )),
-                                        child: const Align(
-                                          alignment: Alignment.center,
-                                          child: Text("اداری",
-                                              style: TextStyle(
-                                                  fontSize: 15,
-                                                  fontFamily:
-                                                      MAIN_FONT_FAMILY)),
-                                        )),
+                    ListView.builder(
+                      shrinkWrap: true,
+                      itemBuilder: (c, i) {
+                        String value = values[i];
+                        return GestureDetector(
+                          onTap: () {
+                            selected.value = value;
+                          },
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Center(
+                              child: Obx(() => Container(
+                                  width: 150,
+                                  height: selected.value == value ? 43: 40,
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    gradient: selected.value == value
+                                        ? const LinearGradient(
+                                        colors: GRADIANT_COLOR)
+                                        : const LinearGradient(colors: [
+                                      Colors.black,
+                                      Colors.black,
+                                      Colors.black
+                                    ]),
+                                    borderRadius: BorderRadius.circular(10),
                                   ),
-                                  const SizedBox(
-                                    height: 40,
-                                  ),
-                                  Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
-                                    children: [
-                                      Obx(
-                                        () => Container(
-                                            width: 150,
-                                            height: 40,
-                                            decoration: BoxDecoration(
-                                                color: Colors.white,
-                                                borderRadius:
-                                                    BorderRadius.circular(10),
-                                                border: Border.all(
-                                                  color:
-                                                      _selected.value == index
-                                                          ? Colors.white
-                                                          : Colors.black12,
-                                                  width:
-                                                      _selected.value == index
-                                                          ? 2.8
-                                                          : 1.5,
-                                                )),
-                                            child: const Align(
-                                              alignment: Alignment.center,
-                                              child: Text("تجاری",
-                                                  style: TextStyle(
-                                                      fontSize: 15,
-                                                      fontFamily:
-                                                          MAIN_FONT_FAMILY)),
-                                            )),
+                                  child: Padding(
+                                    padding:selected.value == value? const EdgeInsets.all(3.0):const EdgeInsets.all(1.0),
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                        color: Colors.white,
+                                        borderRadius: BorderRadius.circular(10),
                                       ),
-                                      const SizedBox(
-                                        height: 40,
+                                      child: Center(
+                                        child: Text(value,
+                                            style: const TextStyle(
+                                                fontSize: 15,
+                                                fontFamily: MAIN_FONT_FAMILY)),
                                       ),
-                                      Obx(
-                                        () => Container(
-                                            width: 150,
-                                            height: 40,
-                                            decoration: BoxDecoration(
-                                                color: Colors.white,
-                                                borderRadius:
-                                                    BorderRadius.circular(10),
-                                                border: Border.all(
-                                                  color:
-                                                      _selected.value == index
-                                                          ? Colors.white
-                                                          : Colors.black12,
-                                                  width:
-                                                      _selected.value == index
-                                                          ? 2.8
-                                                          : 1.5,
-                                                )),
-                                            child: const Align(
-                                              alignment: Alignment.center,
-                                              child: Text("مسکونی",
-                                                  style: TextStyle(
-                                                      fontSize: 15,
-                                                      fontFamily:
-                                                          MAIN_FONT_FAMILY)),
-                                            )),
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
+                                    ),
+                                  ))),
                             ),
                           ),
-                        ),
-                        const GradientIcon(
-                          icon: Icons.keyboard_arrow_down_sharp,
-                          gradient: LinearGradient(
-                            colors: GRADIANT_COLOR,
-                            begin: Alignment.topLeft,
-                            end: Alignment.bottomRight,
-                          ),
-                          size: 40,
-                        ),
-                      ],
+                        );
+                      },
+                      itemCount: values.length,
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(bottom: 20, top: 60),
+                      padding: const EdgeInsets.only(bottom: 20, top: 30),
                       child: Container(
                         decoration: BoxDecoration(
-                            gradient: const LinearGradient(
-                              colors: GRADIANT_COLOR,
-                            ),
-                            color: Colors.cyan,
+                            gradient:
+                            const LinearGradient(colors: GRADIANT_COLOR),
                             borderRadius: BorderRadius.circular(50)),
                         child: IconButton(
                           icon: const Icon(
@@ -192,12 +104,12 @@ void Sanad(Function(String) onSelected) {
                             weight: 20,
                           ),
                           onPressed: () {
-                            onSelected(index.value.toString());
+                            onSelected(selected.value);
                             Get.back();
                           },
                         ),
                       ),
-                    )
+                    ),
                   ],
                 ),
               ),
@@ -207,44 +119,4 @@ void Sanad(Function(String) onSelected) {
   );
 }
 
-Widget _buildItem(
-  String assetPath,
-  int index,
-) {
-  final _selected = 0.obs;
 
-  return GestureDetector(
-    onTap: () {
-      _selected.value = index;
-    },
-    child: SizedBox(
-      height: 85,
-      width: 140,
-      child: Obx(() => Container(
-            decoration: BoxDecoration(
-              gradient: _selected.value == index
-                  ? const LinearGradient(colors: GRADIANT_COLOR)
-                  : null,
-              borderRadius: BorderRadius.circular(10),
-              // border: Border.all(
-              //   width: _selected.value == index ? 2 : 1.5,
-              // )
-            ),
-            child: Padding(
-              padding: const EdgeInsets.all(2.0),
-              child: Container(
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(10),
-                      border: Border.all(
-                        color: _selected.value == index
-                            ? Colors.white
-                            : Colors.black12,
-                        width: _selected.value == index ? 2.8 : 1.5,
-                      )),
-                  child: Image.asset(assetPath)),
-            ),
-          )),
-    ),
-  );
-}

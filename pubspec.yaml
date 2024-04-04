@@ -71,10 +71,12 @@ dependencies:
   dart_jsonwebtoken: 2.12.0
   bcrypt: 1.1.3
   geocoding: 2.1.1
+  syncfusion_flutter_sliders: 25.1.37
   geolocator: 10.1.0
   country_code_picker: 3.0.0
   country_picker: 2.0.23
   get: 4.6.6
+  gradient_borders: 1.0.0
   flutter_svg: 2.0.9
   json_annotation: 4.8.1
   persian_datetime_picker: 2.6.0

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/pages/category/pages/ejara_kota_modat.dart';
-import 'package:flutter_application_1/pages/category/pages/ejara_maskoni.dart';
-import 'package:flutter_application_1/pages/category/pages/amlak_page.dart';
-import 'package:flutter_application_1/pages/category/pages/ejara_tajari_edari.dart';
-import 'package:flutter_application_1/pages/category/pages/forosh_maskoni.dart';
-import 'package:flutter_application_1/pages/category/pages/forosh_tgjari_edari.dart';
-import 'package:flutter_application_1/pages/category/pages/sacht_saz.dart';
+import 'package:flutter_application_1/pages/category/pages/window/window_pages/ejara_kota_modat.dart';
+import 'package:flutter_application_1/pages/category/pages/window/window_pages/ejara_maskoni.dart';
+import 'package:flutter_application_1/pages/category/pages/window/window_pages/amlak_page.dart';
+import 'package:flutter_application_1/pages/category/pages/window/window_pages/ejara_tajari_edari.dart';
+import 'package:flutter_application_1/pages/category/pages/window/window_pages/forosh_maskoni.dart';
+import 'package:flutter_application_1/pages/category/pages/window/window_pages/forosh_tgjari_edari.dart';
+import 'package:flutter_application_1/pages/category/pages/window/window_pages/sacht_saz.dart';
 import 'package:get/get.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 

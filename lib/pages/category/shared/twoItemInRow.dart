@@ -1,19 +1,19 @@
 import 'package:flutter/cupertino.dart';
 
-import 'contant.dart';
+import 'constant.dart';
 
 class TwoItemInRow extends StatelessWidget {
   String label1;
   String label2;
 
-  Widget w2;
-  Widget w1;
+  Widget widget2;
+  Widget widget1;
   TwoItemInRow(
       {super.key,
       required this.label1,
       required this.label2,
-      required this.w1,
-      required this.w2});
+      required this.widget1,
+      required this.widget2});
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +34,7 @@ class TwoItemInRow extends StatelessWidget {
             const SizedBox(
               height: 5,
             ),
-            w1
+            widget1
           ],
         ),
         Column(
@@ -51,7 +51,7 @@ class TwoItemInRow extends StatelessWidget {
             const SizedBox(
               height: 5,
             ),
-            w2
+            widget2
           ],
         )
       ],
