@@ -89,7 +89,7 @@ class VilaAdvPage extends StatelessWidget {
                         ),
                   ),
                   height: 41,
-                  width: getPageWidth_2(context),
+                  width: getPageWidth(),
                   child: Center(
                     child: Text(_onePrice.string),
                   ),
@@ -97,7 +97,7 @@ class VilaAdvPage extends StatelessWidget {
               ),
               widget2: SizedBox(
                 height: 41,
-                width: getPageWidth_2(context),
+                width: getPageWidth(),
                 child: TextField(
                   textAlign: TextAlign.right,
                   keyboardType: TextInputType.number,
@@ -156,7 +156,7 @@ class VilaAdvPage extends StatelessWidget {
                         ),
                   ),
                   height: 41,
-                  width: getPageWidth_2(context),
+                  width: getPageWidth(),
                   child: Center(
                     child: Text(_onePrice.string),
                   ),
@@ -164,7 +164,7 @@ class VilaAdvPage extends StatelessWidget {
               ),
               widget2: SizedBox(
                 height: 41,
-                width: getPageWidth_2(context),
+                width: getPageWidth(),
                 child: TextField(
                   textAlign: TextAlign.right,
                   keyboardType: TextInputType.number,
@@ -222,10 +222,10 @@ class VilaAdvPage extends StatelessWidget {
                   showNumberPicker((_) {
                     _buildRoomsCountController.text = _;
                   });
-                }, width: getPageWidth_2(context)),
+                }, width: getPageWidth()),
                 widget2: ReadOnlyTextField(_buildDateController, () {
                   persianDataPicker((date) => _buildDateController.text = date);
-                }, width: getPageWidth_2(context))),
+                }, width: getPageWidth())),
             const SizedBox(
               height: 20,
             ),
@@ -295,10 +295,10 @@ class VilaAdvPage extends StatelessWidget {
                 label2: "جهت ساختمان",
                 widget1: ReadOnlyTextField(_reBuildController, () {
                   //todo
-                }, width: getPageWidth_2(context)),
+                }, width: getPageWidth()),
                 widget2: ReadOnlyTextField(_buildDirectionController, () {
                   jahatSakhteman((p0) => _buildDirectionController.text = p0);
-                }, width: getPageWidth_2(context))),
+                }, width: getPageWidth())),
             const SizedBox(
               height: 30,
             ),
@@ -321,10 +321,10 @@ class VilaAdvPage extends StatelessWidget {
               label2: "جنس کف",
               widget1: ReadOnlyTextField(_floorMaterialController, () {
                 //todo
-              }, width: getPageWidth_2(context)),
+              }, width: getPageWidth()),
               widget2: ReadOnlyTextField(_cabinetController, () {
                 //todo
-              }, width: getPageWidth_2(context)),
+              }, width: getPageWidth()),
             ),
             const SizedBox(
               height: 15,
@@ -334,10 +334,10 @@ class VilaAdvPage extends StatelessWidget {
               label2: "نوع سیستم سرمایش",
               widget1: ReadOnlyTextField(_heatTypeController, () {
                 //todo
-              }, width: getPageWidth_2(context)),
+              }, width: getPageWidth()),
               widget2: ReadOnlyTextField(_coldTypeController, () {
                 //todo
-              }, width: getPageWidth_2(context)),
+              }, width: getPageWidth()),
             ),
             const SizedBox(
               height: 15,
@@ -347,10 +347,10 @@ class VilaAdvPage extends StatelessWidget {
                 label2: "تامین کننده آب گرم",
                 widget1: ReadOnlyTextField(_wcController, () {
                   //todo
-                }, width: getPageWidth_2(context)),
+                }, width: getPageWidth()),
                 widget2: ReadOnlyTextField(_heatWaterController, () {
                   //todo
-                }, width: getPageWidth_2(context))),
+                }, width: getPageWidth())),
             const SizedBox(
               height: 20,
             ),

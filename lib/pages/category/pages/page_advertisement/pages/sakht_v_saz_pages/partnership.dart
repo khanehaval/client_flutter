@@ -11,8 +11,6 @@ import 'package:get/get.dart';
 
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 
-import '../../../../../intro_screen.dart';
-
 class PartnerShip extends StatelessWidget {
   final aghsatType = "".obs;
   final onvan = "".obs;
@@ -95,7 +93,7 @@ class PartnerShip extends StatelessWidget {
                         ),
                   ),
                   height: 41,
-                  width: getPageWidth_2(context),
+                  width: getPageWidth(),
                   child: Center(
                     child: Text(_onePrice.string),
                   ),
@@ -103,7 +101,7 @@ class PartnerShip extends StatelessWidget {
               ),
               widget2: SizedBox(
                 height: 41,
-                width: getPageWidth_2(context),
+                width: getPageWidth(),
                 child: TextField(
                   textAlign: TextAlign.right,
                   keyboardType: TextInputType.number,
@@ -153,7 +151,7 @@ class PartnerShip extends StatelessWidget {
               label2: "متراژ زمین ",
               widget1: SizedBox(
                 height: 41,
-                width: getPageWidth_2(context),
+                width: getPageWidth(),
                 child: TextField(
                   textAlign: TextAlign.right,
                   decoration: InputDecoration(
@@ -171,7 +169,7 @@ class PartnerShip extends StatelessWidget {
               ),
               widget2: SizedBox(
                 height: 41,
-                width: getPageWidth_2(context),
+                width: getPageWidth(),
                 child: TextField(
                   textAlign: TextAlign.right,
                   keyboardType: TextInputType.number,
@@ -195,7 +193,7 @@ class PartnerShip extends StatelessWidget {
               label2: "طول زمین",
               widget1: SizedBox(
                 height: 41,
-                width: getPageWidth_2(context),
+                width: getPageWidth(),
                 child: TextField(
                   textAlign: TextAlign.right,
                   keyboardType: TextInputType.number,
@@ -212,7 +210,7 @@ class PartnerShip extends StatelessWidget {
               ),
               widget2: SizedBox(
                 height: 41,
-                width: getPageWidth_2(context),
+                width: getPageWidth(),
                 child: TextField(
                   textAlign: TextAlign.right,
                   keyboardType: TextInputType.number,
@@ -426,7 +424,7 @@ class PartnerShip extends StatelessWidget {
                     label2: "متراژ بنا",
                     widget2: SizedBox(
                       height: 41,
-                      width: getPageWidth_2(context),
+                      width: getPageWidth(),
                       child: TextField(
                         keyboardType: TextInputType.number,
                         textAlign: TextAlign.right,
@@ -442,7 +440,7 @@ class PartnerShip extends StatelessWidget {
                     ),
                     widget1: SizedBox(
                       height: 41,
-                      width: getPageWidth_2(context),
+                      width: getPageWidth(),
                       child: TextField(
                         textAlign: TextAlign.right,
                         decoration: InputDecoration(
@@ -473,7 +471,7 @@ class PartnerShip extends StatelessWidget {
                     label2: "تعداد طبقات ",
                     widget2: Container(
                       height: 41,
-                      width: getPageWidth_2(context),
+                      width: getPageWidth(),
                       child: TextField(
                         readOnly: true,
                         textAlign: TextAlign.right,
@@ -496,7 +494,7 @@ class PartnerShip extends StatelessWidget {
                     ),
                     widget1: Container(
                       height: 41,
-                      width: getPageWidth_2(context),
+                      width: getPageWidth(),
                       child: TextField(
                         readOnly: true,
                         textAlign: TextAlign.right,
@@ -600,7 +598,7 @@ class PartnerShip extends StatelessWidget {
                     label2: "تخریب توسط",
                     widget2: Container(
                       height: 41,
-                      width: getPageWidth_2(context),
+                      width: getPageWidth(),
                       child: TextField(
                         readOnly: true,
                         textAlign: TextAlign.right,
@@ -623,7 +621,7 @@ class PartnerShip extends StatelessWidget {
                     ),
                     widget1: Container(
                       height: 41,
-                      width: getPageWidth_2(context),
+                      width: getPageWidth(),
                       child: TextField(
                         readOnly: true,
                         textAlign: TextAlign.right,
@@ -653,7 +651,7 @@ class PartnerShip extends StatelessWidget {
                     label2: "تفکیک و فروش نخاله",
                     widget2: Container(
                       height: 41,
-                      width: getPageWidth_2(context),
+                      width: getPageWidth(),
                       child: TextField(
                         readOnly: true,
                         textAlign: TextAlign.right,
@@ -676,7 +674,7 @@ class PartnerShip extends StatelessWidget {
                     ),
                     widget1: Container(
                       height: 41,
-                      width: getPageWidth_2(context),
+                      width: getPageWidth(),
                       child: TextField(
                         readOnly: true,
                         textAlign: TextAlign.right,
@@ -817,9 +815,6 @@ Widget Aparteman(BuildContext context) {
   final hasAsansor = false.obs;
   final hasParking = false.obs;
 
-  final _onePrice = 0.0.obs;
-  final _allPriceTextController = TextEditingController();
-  final _metragTextController = TextEditingController();
   return Column(
     children: [
       Row(
@@ -857,7 +852,7 @@ Widget Aparteman(BuildContext context) {
                   label2: "متراژ زیر بنای ساختمان ",
                   widget2: Container(
                     height: 41,
-                    width: getPageWidth_2(context),
+                    width: getPageWidth(),
                     child: TextField(
                       textAlign: TextAlign.right,
                       decoration: InputDecoration(
@@ -872,7 +867,7 @@ Widget Aparteman(BuildContext context) {
                   ),
                   widget1: Container(
                     height: 41,
-                    width: getPageWidth_2(context),
+                    width: getPageWidth(),
                     child: TextField(
                       readOnly: true,
                       textAlign: TextAlign.right,
@@ -901,7 +896,7 @@ Widget Aparteman(BuildContext context) {
                   label2: "تعداد واحد در طبقه",
                   widget1: Container(
                     height: 41,
-                    width: getPageWidth_2(context),
+                    width: getPageWidth(),
                     child: TextField(
                       textAlign: TextAlign.right,
                       decoration: InputDecoration(
@@ -916,7 +911,7 @@ Widget Aparteman(BuildContext context) {
                   ),
                   widget2: Container(
                     height: 41,
-                    width: getPageWidth_2(context),
+                    width: getPageWidth(),
                     child: TextField(
                       readOnly: true,
                       textAlign: TextAlign.right,
@@ -945,7 +940,7 @@ Widget Aparteman(BuildContext context) {
                   label2: "متراژ کوچکترین واحد",
                   widget2: Container(
                     height: 41,
-                    width: getPageWidth_2(context),
+                    width: getPageWidth(),
                     child: TextField(
                       textAlign: TextAlign.right,
                       decoration: InputDecoration(
@@ -960,7 +955,7 @@ Widget Aparteman(BuildContext context) {
                   ),
                   widget1: Container(
                     height: 41,
-                    width: getPageWidth_2(context),
+                    width: getPageWidth(),
                     child: TextField(
                       readOnly: true,
                       textAlign: TextAlign.right,
@@ -989,7 +984,7 @@ Widget Aparteman(BuildContext context) {
                   label2: "متراژ بزرگترین واحد",
                   widget2: Container(
                     height: 41,
-                    width: getPageWidth_2(context),
+                    width: getPageWidth(),
                     child: TextField(
                       textAlign: TextAlign.right,
                       decoration: InputDecoration(
@@ -1004,7 +999,7 @@ Widget Aparteman(BuildContext context) {
                   ),
                   widget1: Container(
                     height: 41,
-                    width: getPageWidth_2(context),
+                    width: getPageWidth(),
                     child: TextField(
                       readOnly: true,
                       textAlign: TextAlign.right,
@@ -1174,7 +1169,7 @@ Widget Vila(BuildContext context) {
                   label2: " بنای کل شهرک",
                   widget1: SizedBox(
                     height: 41,
-                    width: getPageWidth_2(context),
+                    width: getPageWidth(),
                     child: TextField(
                       textAlign: TextAlign.right,
                       keyboardType: TextInputType.number,
@@ -1191,7 +1186,7 @@ Widget Vila(BuildContext context) {
                   ),
                   widget2: SizedBox(
                     height: 41,
-                    width: getPageWidth_2(context),
+                    width: getPageWidth(),
                     child: TextField(
                       textAlign: TextAlign.right,
                       keyboardType: TextInputType.number,
@@ -1215,7 +1210,7 @@ Widget Vila(BuildContext context) {
                   label2: "طبقات ویلا از ",
                   widget2: Container(
                     height: 41,
-                    width: getPageWidth_2(context),
+                    width: getPageWidth(),
                     child: TextField(
                       readOnly: true,
                       textAlign: TextAlign.right,
@@ -1237,7 +1232,7 @@ Widget Vila(BuildContext context) {
                   ),
                   widget1: Container(
                     height: 41,
-                    width: getPageWidth_2(context),
+                    width: getPageWidth(),
                     child: TextField(
                       readOnly: true,
                       textAlign: TextAlign.right,
@@ -1266,7 +1261,7 @@ Widget Vila(BuildContext context) {
                   label2: "متراژ کوچکترین ویلا",
                   widget2: Container(
                     height: 41,
-                    width: getPageWidth_2(context),
+                    width: getPageWidth(),
                     child: TextField(
                       textAlign: TextAlign.right,
                       decoration: InputDecoration(
@@ -1281,7 +1276,7 @@ Widget Vila(BuildContext context) {
                   ),
                   widget1: Container(
                     height: 41,
-                    width: getPageWidth_2(context),
+                    width: getPageWidth(),
                     child: TextField(
                       readOnly: true,
                       textAlign: TextAlign.right,
@@ -1310,7 +1305,7 @@ Widget Vila(BuildContext context) {
                   label2: "متراژ بزرگترین ویلا",
                   widget2: Container(
                     height: 41,
-                    width: getPageWidth_2(context),
+                    width: getPageWidth(),
                     child: TextField(
                       textAlign: TextAlign.right,
                       decoration: InputDecoration(
@@ -1325,7 +1320,7 @@ Widget Vila(BuildContext context) {
                   ),
                   widget1: Container(
                     height: 41,
-                    width: getPageWidth_2(context),
+                    width: getPageWidth(),
                     child: TextField(
                       readOnly: true,
                       textAlign: TextAlign.right,
@@ -1463,7 +1458,7 @@ Widget Edari(BuildContext context) {
                   label2: "متراژ زیر بنای کل",
                   widget2: Container(
                     height: 41,
-                    width: getPageWidth_2(context),
+                    width: getPageWidth(),
                     child: TextField(
                       textAlign: TextAlign.right,
                       decoration: InputDecoration(
@@ -1478,7 +1473,7 @@ Widget Edari(BuildContext context) {
                   ),
                   widget1: Container(
                     height: 41,
-                    width: getPageWidth_2(context),
+                    width: getPageWidth(),
                     child: TextField(
                       readOnly: true,
                       textAlign: TextAlign.right,
@@ -1505,7 +1500,7 @@ Widget Edari(BuildContext context) {
                   label2: "تعداد مغازه در طبقه",
                   widget1: Container(
                     height: 41,
-                    width: getPageWidth_2(context),
+                    width: getPageWidth(),
                     child: TextField(
                       textAlign: TextAlign.right,
                       decoration: InputDecoration(
@@ -1520,7 +1515,7 @@ Widget Edari(BuildContext context) {
                   ),
                   widget2: Container(
                     height: 41,
-                    width: getPageWidth_2(context),
+                    width: getPageWidth(),
                     child: TextField(
                       readOnly: true,
                       textAlign: TextAlign.right,
@@ -1549,7 +1544,7 @@ Widget Edari(BuildContext context) {
                   label2: "متراژ کوچکترین مغازه",
                   widget1: SizedBox(
                     height: 41,
-                    width: getPageWidth_2(context),
+                    width: getPageWidth(),
                     child: TextField(
                       textAlign: TextAlign.right,
                       keyboardType: TextInputType.number,
@@ -1566,7 +1561,7 @@ Widget Edari(BuildContext context) {
                   ),
                   widget2: SizedBox(
                     height: 41,
-                    width: getPageWidth_2(context),
+                    width: getPageWidth(),
                     child: TextField(
                       textAlign: TextAlign.right,
                       keyboardType: TextInputType.number,

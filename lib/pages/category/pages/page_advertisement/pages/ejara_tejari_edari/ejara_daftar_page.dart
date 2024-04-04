@@ -78,7 +78,7 @@ class EjaraDafterPage extends StatelessWidget {
               label2: "میزان رهن (تومان) ",
               widget1: SizedBox(
                 height: 41,
-                width: getPageWidth_2(context),
+                width: getPageWidth(),
                 child: TextField(
                   textAlign: TextAlign.right,
                   keyboardType: TextInputType.number,
@@ -95,7 +95,7 @@ class EjaraDafterPage extends StatelessWidget {
               ),
               widget2: SizedBox(
                 height: 41,
-                width: getPageWidth_2(context),
+                width: getPageWidth(),
                 child: TextField(
                   textAlign: TextAlign.right,
                   keyboardType: TextInputType.number,
@@ -181,7 +181,7 @@ class EjaraDafterPage extends StatelessWidget {
               label2: "سن بنا ",
               widget1: SizedBox(
                 height: 41,
-                width: getPageWidth_2(context),
+                width: getPageWidth(),
                 child: TextField(
                   readOnly: true,
                   textAlign: TextAlign.right,
@@ -202,7 +202,7 @@ class EjaraDafterPage extends StatelessWidget {
               ),
               widget2: SizedBox(
                 height: 41,
-                width: getPageWidth_2(context),
+                width: getPageWidth(),
                 child: TextField(
                   readOnly: true,
                   textAlign: TextAlign.right,
@@ -419,7 +419,7 @@ class EjaraDafterPage extends StatelessWidget {
               label2: "تعداد واحد در طبقه",
               widget1: Container(
                 height: 41,
-                width: getPageWidth_2(context),
+                width: getPageWidth(),
                 child: TextField(
                   textAlign: TextAlign.right,
                   decoration: InputDecoration(
@@ -434,7 +434,7 @@ class EjaraDafterPage extends StatelessWidget {
               ),
               widget2: Container(
                 height: 41,
-                width: getPageWidth_2(context),
+                width: getPageWidth(),
                 child: TextField(
                   readOnly: true,
                   textAlign: TextAlign.right,
@@ -463,7 +463,7 @@ class EjaraDafterPage extends StatelessWidget {
               label2: "جهت ساختمان",
               widget1: Container(
                 height: 41,
-                width: getPageWidth_2(context),
+                width: getPageWidth(),
                 child: TextField(
                   readOnly: true,
                   textAlign: TextAlign.right,
@@ -484,7 +484,7 @@ class EjaraDafterPage extends StatelessWidget {
               ),
               widget2: Container(
                 height: 41,
-                width: getPageWidth_2(context),
+                width: getPageWidth(),
                 child: TextField(
                   readOnly: true,
                   textAlign: TextAlign.right,
@@ -528,7 +528,7 @@ class EjaraDafterPage extends StatelessWidget {
               label2: "جنس کف",
               widget1: Container(
                 height: 41,
-                width: getPageWidth_2(context),
+                width: getPageWidth(),
                 child: TextField(
                   readOnly: true,
                   textAlign: TextAlign.right,
@@ -549,7 +549,7 @@ class EjaraDafterPage extends StatelessWidget {
               ),
               widget2: Container(
                 height: 41,
-                width: getPageWidth_2(context),
+                width: getPageWidth(),
                 child: TextField(
                   readOnly: true,
                   textAlign: TextAlign.right,
@@ -578,7 +578,7 @@ class EjaraDafterPage extends StatelessWidget {
               label2: "نوع سیستم سرمایش",
               widget1: Container(
                 height: 41,
-                width: getPageWidth_2(context),
+                width: getPageWidth(),
                 child: TextField(
                   readOnly: true,
                   textAlign: TextAlign.right,
@@ -600,7 +600,7 @@ class EjaraDafterPage extends StatelessWidget {
               ),
               widget2: Container(
                 height: 41,
-                width: getPageWidth_2(context),
+                width: getPageWidth(),
                 child: TextField(
                   readOnly: true,
                   textAlign: TextAlign.right,
@@ -629,7 +629,7 @@ class EjaraDafterPage extends StatelessWidget {
               label2: "تامین کننده آب گرم",
               widget1: Container(
                 height: 41,
-                width: getPageWidth_2(context),
+                width: getPageWidth(),
                 child: TextField(
                   readOnly: true,
                   textAlign: TextAlign.right,
@@ -650,7 +650,7 @@ class EjaraDafterPage extends StatelessWidget {
               ),
               widget2: Container(
                 height: 41,
-                width: getPageWidth_2(context),
+                width: getPageWidth(),
                 child: TextField(
                   readOnly: true,
                   textAlign: TextAlign.right,

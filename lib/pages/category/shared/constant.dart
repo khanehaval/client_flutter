@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 const MAIN_FONT_FAMILY = 'Iran Sans Bold';
 const GRADIANT_COLOR = [
@@ -16,3 +17,5 @@ const BLACK_12_GRADIANT_COLOR = [
   Colors.black12,
   Colors.black12,
 ];
+
+double getPageWidth() => Get.width * 0.43;

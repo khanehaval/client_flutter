@@ -92,7 +92,7 @@ class KolangiAdvPage extends StatelessWidget {
                           ),
                     ),
                     height: 41,
-                    width: getPageWidth_2(context),
+                    width: getPageWidth(),
                     child: Center(
                       child: Text(_onePrice.string),
                     ),
@@ -100,7 +100,7 @@ class KolangiAdvPage extends StatelessWidget {
                 ),
                 widget2: SizedBox(
                   height: 41,
-                  width: getPageWidth_2(context),
+                  width: getPageWidth(),
                   child: TextField(
                     textAlign: TextAlign.right,
                     keyboardType: TextInputType.number,
@@ -194,7 +194,7 @@ class KolangiAdvPage extends StatelessWidget {
                 label2: "طول زمین",
                 widget1: SizedBox(
                   height: 41,
-                  width: getPageWidth_2(context),
+                  width: getPageWidth(),
                   child: TextField(
                     textAlign: TextAlign.right,
                     keyboardType: TextInputType.number,
@@ -211,7 +211,7 @@ class KolangiAdvPage extends StatelessWidget {
                 ),
                 widget2: SizedBox(
                   height: 41,
-                  width: getPageWidth_2(context),
+                  width: getPageWidth(),
                   child: TextField(
                     textAlign: TextAlign.right,
                     keyboardType: TextInputType.number,
@@ -267,12 +267,12 @@ class KolangiAdvPage extends StatelessWidget {
                     showNumberPicker((_) {
                       _buildFloorsCountController.text = _;
                     });
-                  }, width: getPageWidth_2(context)),
+                  }, width: getPageWidth()),
                   widget2: ReadOnlyTextField(_buildDocumentController, () {
                     Sanad((_) {
                       _buildDocumentController.text = _;
                     });
-                  }, width: getPageWidth_2(context))),
+                  }, width: getPageWidth())),
               const SizedBox(
                 height: 15,
               ),
@@ -280,13 +280,13 @@ class KolangiAdvPage extends StatelessWidget {
                   label1: "تعداد کل واحد ها",
                   label2: "تعداد واحد در طبقه",
                   widget1: InputTextField(_buildAllFloorsCountController,
-                      width: getPageWidth_2(context)),
+                      width: getPageWidth()),
                   widget2: ReadOnlyTextField(
                       _buildUnitOfAnyFloorCountController, () {
                     showNumberPicker((_) {
                       _buildUnitOfAnyFloorCountController.text = _;
                     });
-                  }, width: getPageWidth_2(context))),
+                  }, width: getPageWidth())),
               const SizedBox(
                 height: 15,
               ),
@@ -295,12 +295,12 @@ class KolangiAdvPage extends StatelessWidget {
                   label2: "جهت ساختمان",
                   widget1: ReadOnlyTextField(_reBuildController, () {
                     //todo
-                  }, width: getPageWidth_2(context)),
+                  }, width: getPageWidth()),
                   widget2: ReadOnlyTextField(_buildDirectionController, () {
                     jahatSakhteman((_) {
                       _buildDirectionController.text = _;
                     });
-                  }, width: getPageWidth_2(context))),
+                  }, width: getPageWidth())),
               const SizedBox(
                 height: 20,
               ),
@@ -320,10 +320,10 @@ class KolangiAdvPage extends StatelessWidget {
                 label2: "جنس کف",
                 widget1: ReadOnlyTextField(_floorMaterialController, () {
                   //todo
-                }, width: getPageWidth_2(context)),
+                }, width: getPageWidth()),
                 widget2: ReadOnlyTextField(_cabinetController, () {
                   //todo
-                }, width: getPageWidth_2(context)),
+                }, width: getPageWidth()),
               ),
               const SizedBox(
                 height: 15,
@@ -333,10 +333,10 @@ class KolangiAdvPage extends StatelessWidget {
                 label2: "نوع سیستم سرمایش",
                 widget1: ReadOnlyTextField(_heatTypeController, () {
                   //todo
-                }, width: getPageWidth_2(context)),
+                }, width: getPageWidth()),
                 widget2: ReadOnlyTextField(_coldTypeController, () {
                   //todo
-                }, width: getPageWidth_2(context)),
+                }, width: getPageWidth()),
               ),
               const SizedBox(
                 height: 15,
@@ -346,10 +346,10 @@ class KolangiAdvPage extends StatelessWidget {
                   label2: "تامین کننده آب گرم",
                   widget1: ReadOnlyTextField(_wcController, () {
                     //todo
-                  }, width: getPageWidth_2(context)),
+                  }, width: getPageWidth()),
                   widget2: ReadOnlyTextField(_heatWaterController, () {
                     //todo
-                  }, width: getPageWidth_2(context))),
+                  }, width: getPageWidth())),
               const SizedBox(
                 height: 20,
               ),

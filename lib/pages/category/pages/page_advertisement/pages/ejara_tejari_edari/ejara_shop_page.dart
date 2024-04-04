@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/forosh_adv_pages/kolangi_adv_page.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/category/shared/date.dart';
 import 'package:flutter_application_1/pages/category/shared/emkanat5.dart';
@@ -72,7 +71,7 @@ class EjaraShopPage extends StatelessWidget {
               label2: "میزان رهن (تومان) ",
               widget1: SizedBox(
                 height: 41,
-                width: getPageWidth_2(context),
+                width: getPageWidth(),
                 child: TextField(
                   textAlign: TextAlign.right,
                   keyboardType: TextInputType.number,
@@ -89,7 +88,7 @@ class EjaraShopPage extends StatelessWidget {
               ),
               widget2: SizedBox(
                 height: 41,
-                width: getPageWidth_2(context),
+                width: getPageWidth(),
                 child: TextField(
                   textAlign: TextAlign.right,
                   keyboardType: TextInputType.number,
@@ -176,7 +175,7 @@ class EjaraShopPage extends StatelessWidget {
               label2: "سن بنا ",
               widget1: SizedBox(
                 height: 41,
-                width: getPageWidth_2(context),
+                width: getPageWidth(),
                 child: TextField(
                   readOnly: true,
                   textAlign: TextAlign.right,
@@ -197,7 +196,7 @@ class EjaraShopPage extends StatelessWidget {
               ),
               widget2: SizedBox(
                 height: 41,
-                width: getPageWidth_2(context),
+                width: getPageWidth(),
                 child: TextField(
                   readOnly: true,
                   textAlign: TextAlign.right,
@@ -228,7 +227,7 @@ class EjaraShopPage extends StatelessWidget {
               label2: "موقعیت ",
               widget1: SizedBox(
                 height: 41,
-                width: getPageWidth_2(context),
+                width: getPageWidth(),
                 child: TextField(
                   readOnly: true,
                   textAlign: TextAlign.right,
@@ -249,7 +248,7 @@ class EjaraShopPage extends StatelessWidget {
               ),
               widget2: SizedBox(
                 height: 41,
-                width: getPageWidth_2(context),
+                width: getPageWidth(),
                 child: TextField(
                   readOnly: true,
                   textAlign: TextAlign.right,
@@ -418,7 +417,7 @@ class EjaraShopPage extends StatelessWidget {
               label2: "نوع سیستم سرمایش",
               widget1: Container(
                 height: 41,
-                width: getPageWidth_2(context),
+                width: getPageWidth(),
                 child: TextField(
                   readOnly: true,
                   textAlign: TextAlign.right,
@@ -440,7 +439,7 @@ class EjaraShopPage extends StatelessWidget {
               ),
               widget2: Container(
                 height: 41,
-                width: getPageWidth_2(context),
+                width: getPageWidth(),
                 child: TextField(
                   readOnly: true,
                   textAlign: TextAlign.right,

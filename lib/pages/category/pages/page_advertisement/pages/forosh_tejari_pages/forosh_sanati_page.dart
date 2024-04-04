@@ -83,7 +83,7 @@ class ForoshSanatiPage extends StatelessWidget {
                           ),
                     ),
                     height: 41,
-                    width: getPageWidth_2(context),
+                    width: getPageWidth(),
                     child: Center(
                       child: Text(_onePrice.string),
                     ),
@@ -91,7 +91,7 @@ class ForoshSanatiPage extends StatelessWidget {
                 ),
                 widget2: SizedBox(
                   height: 41,
-                  width: getPageWidth_2(context),
+                  width: getPageWidth(),
                   child: TextField(
                     textAlign: TextAlign.right,
                     keyboardType: TextInputType.number,
@@ -141,7 +141,7 @@ class ForoshSanatiPage extends StatelessWidget {
                 label2: "متراژ زمین ",
                 widget1: SizedBox(
                   height: 41,
-                  width: getPageWidth_2(context),
+                  width: getPageWidth(),
                   child: TextField(
                     readOnly: true,
                     textAlign: TextAlign.right,
@@ -162,7 +162,7 @@ class ForoshSanatiPage extends StatelessWidget {
                 ),
                 widget2: SizedBox(
                   height: 41,
-                  width: getPageWidth_2(context),
+                  width: getPageWidth(),
                   child: TextField(
                     textAlign: TextAlign.right,
                     keyboardType: TextInputType.number,
@@ -186,7 +186,7 @@ class ForoshSanatiPage extends StatelessWidget {
                 label2: "طول زمین",
                 widget1: SizedBox(
                   height: 41,
-                  width: getPageWidth_2(context),
+                  width: getPageWidth(),
                   child: TextField(
                     textAlign: TextAlign.right,
                     keyboardType: TextInputType.number,
@@ -203,7 +203,7 @@ class ForoshSanatiPage extends StatelessWidget {
                 ),
                 widget2: SizedBox(
                   height: 41,
-                  width: getPageWidth_2(context),
+                  width: getPageWidth(),
                   child: TextField(
                     textAlign: TextAlign.right,
                     keyboardType: TextInputType.number,
@@ -249,7 +249,7 @@ class ForoshSanatiPage extends StatelessWidget {
                 label2: "جنس کف",
                 widget1: Container(
                   height: 41,
-                  width: getPageWidth_2(context),
+                  width: getPageWidth(),
                   child: TextField(
                     readOnly: true,
                     textAlign: TextAlign.right,
@@ -270,7 +270,7 @@ class ForoshSanatiPage extends StatelessWidget {
                 ),
                 widget2: Container(
                   height: 41,
-                  width: getPageWidth_2(context),
+                  width: getPageWidth(),
                   child: TextField(
                     readOnly: true,
                     textAlign: TextAlign.right,
@@ -299,7 +299,7 @@ class ForoshSanatiPage extends StatelessWidget {
                 label2: "نوع سیستم سرمایش",
                 widget1: Container(
                   height: 41,
-                  width: getPageWidth_2(context),
+                  width: getPageWidth(),
                   child: TextField(
                     readOnly: true,
                     textAlign: TextAlign.right,
@@ -321,7 +321,7 @@ class ForoshSanatiPage extends StatelessWidget {
                 ),
                 widget2: Container(
                   height: 41,
-                  width: getPageWidth_2(context),
+                  width: getPageWidth(),
                   child: TextField(
                     readOnly: true,
                     textAlign: TextAlign.right,

@@ -89,7 +89,7 @@ class ForoshDaftarPage extends StatelessWidget {
                           ),
                     ),
                     height: 41,
-                    width: getPageWidth_2(context),
+                    width: getPageWidth(),
                     child: Center(
                       child: Text(_onePrice.string),
                     ),
@@ -97,7 +97,7 @@ class ForoshDaftarPage extends StatelessWidget {
                 ),
                 widget2: SizedBox(
                   height: 41,
-                  width: getPageWidth_2(context),
+                  width: getPageWidth(),
                   child: TextField(
                     textAlign: TextAlign.right,
                     keyboardType: TextInputType.number,
@@ -204,7 +204,7 @@ class ForoshDaftarPage extends StatelessWidget {
                 label2: "سن بنا ",
                 widget1: SizedBox(
                   height: 41,
-                  width: getPageWidth_2(context),
+                  width: getPageWidth(),
                   child: TextField(
                     readOnly: true,
                     textAlign: TextAlign.right,
@@ -225,7 +225,7 @@ class ForoshDaftarPage extends StatelessWidget {
                 ),
                 widget2: SizedBox(
                   height: 41,
-                  width: getPageWidth_2(context),
+                  width: getPageWidth(),
                   child: TextField(
                     readOnly: true,
                     textAlign: TextAlign.right,
@@ -400,7 +400,7 @@ class ForoshDaftarPage extends StatelessWidget {
                 label2: "نوع سند",
                 widget1: SizedBox(
                   height: 41,
-                  width: getPageWidth_2(context),
+                  width: getPageWidth(),
                   child: TextField(
                     readOnly: true,
                     textAlign: TextAlign.right,
@@ -421,7 +421,7 @@ class ForoshDaftarPage extends StatelessWidget {
                 ),
                 widget2: SizedBox(
                   height: 41,
-                  width: getPageWidth_2(context),
+                  width: getPageWidth(),
                   child: TextField(
                     readOnly: true,
                     textAlign: TextAlign.right,
@@ -450,7 +450,7 @@ class ForoshDaftarPage extends StatelessWidget {
                 label2: "تعداد واحد در طبقه",
                 widget1: Container(
                   height: 41,
-                  width: getPageWidth_2(context),
+                  width: getPageWidth(),
                   child: TextField(
                     readOnly: true,
                     textAlign: TextAlign.right,
@@ -466,7 +466,7 @@ class ForoshDaftarPage extends StatelessWidget {
                 ),
                 widget2: Container(
                   height: 41,
-                  width: getPageWidth_2(context),
+                  width: getPageWidth(),
                   child: TextField(
                     readOnly: true,
                     textAlign: TextAlign.right,
@@ -495,7 +495,7 @@ class ForoshDaftarPage extends StatelessWidget {
                 label2: "جهت ساختمان",
                 widget1: Container(
                   height: 41,
-                  width: getPageWidth_2(context),
+                  width: getPageWidth(),
                   child: TextField(
                     readOnly: true,
                     textAlign: TextAlign.right,
@@ -516,7 +516,7 @@ class ForoshDaftarPage extends StatelessWidget {
                 ),
                 widget2: Container(
                   height: 41,
-                  width: getPageWidth_2(context),
+                  width: getPageWidth(),
                   child: TextField(
                     readOnly: true,
                     textAlign: TextAlign.right,
@@ -585,7 +585,7 @@ class ForoshDaftarPage extends StatelessWidget {
                   label2: "جنس کف",
                   widget1: Container(
                     height: 41,
-                    width: getPageWidth_2(context),
+                    width: getPageWidth(),
                     child: TextField(
                       readOnly: true,
                       textAlign: TextAlign.right,
@@ -607,7 +607,7 @@ class ForoshDaftarPage extends StatelessWidget {
                   ),
                   widget2: Container(
                     height: 41,
-                    width: getPageWidth_2(context),
+                    width: getPageWidth(),
                     child: TextField(
                       readOnly: true,
                       textAlign: TextAlign.right,
@@ -636,7 +636,7 @@ class ForoshDaftarPage extends StatelessWidget {
                   label2: "نوع سیستم سرمایش",
                   widget1: Container(
                     height: 41,
-                    width: getPageWidth_2(context),
+                    width: getPageWidth(),
                     child: TextField(
                       readOnly: true,
                       textAlign: TextAlign.right,
@@ -658,7 +658,7 @@ class ForoshDaftarPage extends StatelessWidget {
                   ),
                   widget2: Container(
                     height: 41,
-                    width: getPageWidth_2(context),
+                    width: getPageWidth(),
                     child: TextField(
                       readOnly: true,
                       textAlign: TextAlign.right,
@@ -687,7 +687,7 @@ class ForoshDaftarPage extends StatelessWidget {
                   label2: "تامین کننده آب گرم",
                   widget1: Container(
                     height: 41,
-                    width: getPageWidth_2(context),
+                    width: getPageWidth(),
                     child: TextField(
                       readOnly: true,
                       textAlign: TextAlign.right,

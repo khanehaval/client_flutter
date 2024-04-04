@@ -77,7 +77,7 @@ class EjaraKmVilaPage extends StatelessWidget {
               label2: "اجاره روز عادی (تومان) ",
               widget1: SizedBox(
                 height: 41,
-                width: getPageWidth_2(context),
+                width: getPageWidth(),
                 child: TextField(
                   textAlign: TextAlign.right,
                   keyboardType: TextInputType.number,
@@ -94,7 +94,7 @@ class EjaraKmVilaPage extends StatelessWidget {
               ),
               widget2: SizedBox(
                 height: 41,
-                width: getPageWidth_2(context),
+                width: getPageWidth(),
                 child: TextField(
                   textAlign: TextAlign.right,
                   keyboardType: TextInputType.number,
@@ -118,7 +118,7 @@ class EjaraKmVilaPage extends StatelessWidget {
               label2: "   (تومان)اجاره روز تعطیل",
               widget1: SizedBox(
                 height: 41,
-                width: getPageWidth_2(context),
+                width: getPageWidth(),
                 child: TextField(
                   textAlign: TextAlign.right,
                   keyboardType: TextInputType.number,
@@ -135,7 +135,7 @@ class EjaraKmVilaPage extends StatelessWidget {
               ),
               widget2: SizedBox(
                 height: 41,
-                width: getPageWidth_2(context),
+                width: getPageWidth(),
                 child: TextField(
                   textAlign: TextAlign.right,
                   keyboardType: TextInputType.number,
@@ -218,9 +218,9 @@ class EjaraKmVilaPage extends StatelessWidget {
                 label1: "ساعت خروج",
                 label2: "ساعت ورود",
                 widget1: ReadOnlyTextField(_outTimeController, () {},
-                    width: getPageWidth_2(context)),
+                    width: getPageWidth()),
                 widget2: ReadOnlyTextField(_incomingTimeController, () {},
-                    width: getPageWidth_2(context))),
+                    width: getPageWidth())),
             const SizedBox(
               height: 30,
             ),
@@ -238,12 +238,12 @@ class EjaraKmVilaPage extends StatelessWidget {
                 showNumberPicker((_) {
                   _buildMaxCapacityController.text = _;
                 });
-              }, width: getPageWidth_2(context)),
+              }, width: getPageWidth()),
               widget2: ReadOnlyTextField(_buildBaseCapacityController, () {
                 showNumberPicker((_) {
                   _buildBaseCapacityController.text = _;
                 });
-              }, width: getPageWidth_2(context)),
+              }, width: getPageWidth()),
             ),
             const SizedBox(
               height: 30,
@@ -255,12 +255,12 @@ class EjaraKmVilaPage extends StatelessWidget {
                 showNumberPicker((_) {
                   _buildRoomsCountController.text = _;
                 });
-              }, width: getPageWidth_2(context)),
+              }, width: getPageWidth()),
               widget2: ReadOnlyTextField(_buildFloorController, () {
                 showNumberPicker((_) {
                   _buildFloorController.text = _;
                 });
-              }, width: getPageWidth_2(context)),
+              }, width: getPageWidth()),
             ),
             const SizedBox(
               height: 20,
@@ -286,9 +286,9 @@ class EjaraKmVilaPage extends StatelessWidget {
               label1: "شرایط برگزاری مراسم",
               label2: "شرایط حیوانات خانگی",
               widget1: ReadOnlyTextField(_buildRiteController, () {},
-                  width: getPageWidth_2(context)),
+                  width: getPageWidth()),
               widget2: ReadOnlyTextField(_buildAnimalController, () {},
-                  width: getPageWidth_2(context)),
+                  width: getPageWidth()),
             ),
             const SizedBox(
               height: 20,
@@ -297,9 +297,9 @@ class EjaraKmVilaPage extends StatelessWidget {
                 label1: "استعمال دخانیات",
                 label2: "تردد با کفش",
                 widget1: ReadOnlyTextField(_buildSmokingController, () {},
-                    width: getPageWidth_2(context)),
+                    width: getPageWidth()),
                 widget2: ReadOnlyTextField(_buildShoesController, () {},
-                    width: getPageWidth_2(context))),
+                    width: getPageWidth())),
             const SizedBox(
               height: 20,
             ),
@@ -351,12 +351,12 @@ class EjaraKmVilaPage extends StatelessWidget {
                   showNumberPicker((_) {
                     _twoBedCountController.text = _;
                   });
-                }, width: getPageWidth_2(context)),
+                }, width: getPageWidth()),
                 widget2: ReadOnlyTextField(_oneBedCountController, () {
                   showNumberPicker((_) {
                     _oneBedCountController.text = _;
                   });
-                }, width: getPageWidth_2(context))),
+                }, width: getPageWidth())),
             const SizedBox(
               height: 30,
             ),
@@ -382,12 +382,12 @@ class EjaraKmVilaPage extends StatelessWidget {
                 // showNumberPicker((_) {
                 //   _oneBedCountController.text = _;
                 // });
-              }, width: getPageWidth_2(context)),
+              }, width: getPageWidth()),
               widget2: ReadOnlyTextField(_floorMaterialController, () {
                 // showNumberPicker((_) {
                 //   _oneBedCountController.text = _;
                 // });
-              }, width: getPageWidth_2(context)),
+              }, width: getPageWidth()),
             ),
             const SizedBox(
               height: 15,
@@ -399,9 +399,9 @@ class EjaraKmVilaPage extends StatelessWidget {
                 // showNumberPicker((_) {
                 //   _oneBedCountController.text = _;
                 // });
-              }, width: getPageWidth_2(context)),
+              }, width: getPageWidth()),
               widget2: ReadOnlyTextField(_coldTypeController, () {},
-                  width: getPageWidth_2(context)),
+                  width: getPageWidth()),
             ),
             const SizedBox(
               height: 10,
@@ -410,9 +410,9 @@ class EjaraKmVilaPage extends StatelessWidget {
               label1: "سرویس بهداشتی",
               label2: "تامین کننده آب گرم",
               widget1: ReadOnlyTextField(_wcController, () {},
-                  width: getPageWidth_2(context)),
+                  width: getPageWidth()),
               widget2: ReadOnlyTextField(_heatWaterController, () {},
-                  width: getPageWidth_2(context)),
+                  width: getPageWidth()),
             ),
             const SizedBox(
               height: 30,

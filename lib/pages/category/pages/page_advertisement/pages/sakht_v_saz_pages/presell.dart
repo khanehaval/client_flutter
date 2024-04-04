@@ -67,7 +67,7 @@ class Presell extends StatelessWidget {
                         ),
                   ),
                   height: 41,
-                  width: getPageWidth_2(context),
+                  width: getPageWidth(),
                   child: Center(
                     child: Text(_onePrice.string),
                   ),
@@ -75,7 +75,7 @@ class Presell extends StatelessWidget {
               ),
               widget2: SizedBox(
                 height: 41,
-                width: getPageWidth_2(context),
+                width: getPageWidth(),
                 child: TextField(
                   textAlign: TextAlign.right,
                   keyboardType: TextInputType.number,
@@ -178,7 +178,7 @@ class Presell extends StatelessWidget {
               Sanad((_) {
                 _buildDocumentController.text = _;
               });
-            }, width: getPageWidth_2(context)),
+            }, width: getPageWidth()),
             const SizedBox(
               height: 20,
             ),
@@ -187,7 +187,7 @@ class Presell extends StatelessWidget {
                 label2: "مرحله ساخت ",
                 widget1: Container(
                   height: 41,
-                  width: getPageWidth_2(context),
+                  width: getPageWidth(),
                   child: TextField(
                     readOnly: true,
                     keyboardType: TextInputType.number,
@@ -203,7 +203,7 @@ class Presell extends StatelessWidget {
                   ),
                 ),
                 widget2: ReadOnlyTextField(_buildStepController, () {},
-                    width: getPageWidth_2(context))),
+                    width: getPageWidth())),
             const SizedBox(
               height: 15,
             ),
@@ -211,9 +211,9 @@ class Presell extends StatelessWidget {
               label1: "میزان پیشرفت فیزیکی",
               label2: "زمان تحویل ",
               widget1: ReadOnlyTextField(_progressController, () {},
-                  width: getPageWidth_2(context)),
+                  width: getPageWidth()),
               widget2: ReadOnlyTextField(_timeController, () {},
-                  width: getPageWidth_2(context)),
+                  width: getPageWidth()),
             ),
             const SizedBox(
               height: 20,
@@ -615,7 +615,7 @@ class Presell extends StatelessWidget {
                       label2: "سن بنا ",
                       widget2: Container(
                         height: 41,
-                        width: getPageWidth_2(context),
+                        width: getPageWidth(),
                         child: TextField(
                           readOnly: true,
                           textAlign: TextAlign.right,
@@ -631,7 +631,7 @@ class Presell extends StatelessWidget {
                       ),
                       widget1: ReadOnlyTextField(_buildDateController, () {
                         //todo
-                      },width: getPageWidth_2(context))),
+                      },width: getPageWidth())),
                   const SizedBox(
                     height: 20,
                   ),
@@ -691,7 +691,7 @@ class Presell extends StatelessWidget {
                       label2: "متراژ بنا ",
                       widget2: Container(
                         height: 41,
-                        width: getPageWidth_2(context),
+                        width: getPageWidth(),
                         child: TextField(
                           readOnly: true,
                           textAlign: TextAlign.right,
@@ -708,7 +708,7 @@ class Presell extends StatelessWidget {
                       widget1: ReadOnlyTextField(_buildFloorController, () {
                         showNumberPicker(
                             (p0) => _buildFloorController.text = p0);
-                      }, width: getPageWidth_2(context))),
+                      }, width: getPageWidth())),
                   const SizedBox(
                     height: 20,
                   ),
@@ -725,7 +725,7 @@ class Presell extends StatelessWidget {
                   ReadOnlyTextField(_buildFloorsCountController, () {
                     showNumberPicker(
                         (p0) => _buildFloorsCountController.text = p0);
-                  }, width: getPageWidth_2(context)),
+                  }, width: getPageWidth()),
                   const SizedBox(
                     height: 20,
                   ),
@@ -793,12 +793,12 @@ class Presell extends StatelessWidget {
                       widget2: ReadOnlyTextField(_buildDirectionController, () {
                         jahatSakhteman(
                             (p0) => _buildDirectionController.text = p0);
-                      }, width: getPageWidth_2(context)),
+                      }, width: getPageWidth()),
                       widget1: ReadOnlyTextField(_buildFloorController, () {
                         showNumberPicker((_) {
                           _buildFloorController.text = _;
                         });
-                      }, width: getPageWidth_2(context))),
+                      }, width: getPageWidth())),
                   const SizedBox(
                     height: 20,
                   ),
