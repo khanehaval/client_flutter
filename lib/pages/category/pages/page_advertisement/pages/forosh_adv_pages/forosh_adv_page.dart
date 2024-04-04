@@ -14,7 +14,6 @@ import 'package:flutter_application_1/pages/category/shared/twoItemInRow.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/text_field.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/route_widget.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/switachable.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
 import '../../../../models/FacilitiesModel.dart';
@@ -35,14 +34,14 @@ class ForoshAdvPage extends StatelessWidget {
   final _buildDirectionController = TextEditingController();
   final _buildUnitOfAnyFloorCountController = TextEditingController();
   final _buildFloorsCountController = TextEditingController();
-  final _installmentsController = TextEditingController();
+  final _timeOfInstallmentsController = TextEditingController();
   final _buildDateController = TextEditingController();
   final _buildRoomsCountController = TextEditingController();
   final _buildDocumentController = TextEditingController();
   final _buildFloorController = TextEditingController();
   final _buildAllFloorsCountController = TextEditingController();
   final _reBuildController = TextEditingController();
-  final _buildBaseCapacityController = TextEditingController();
+  final _countOfInstallmentsController = TextEditingController();
   final _buildMaxCapacityController = TextEditingController();
   final _buildRiteController = TextEditingController();
   final _buildAnimalController = TextEditingController();
@@ -440,19 +439,19 @@ class ForoshAdvPage extends StatelessWidget {
                   Stack(
                     alignment: Alignment.center,
                     children: [
-                      Container(
-                        decoration: BoxDecoration(
-                          image: DecorationImage(
-                              image:
-                                  Image.asset("assets/images/progressbar.png")
-                                      .image,
-                              fit: BoxFit.cover),
-                          // gradient: LinearGradient(colors: GRADIANT_COLOR)
-                        ),
-                      ),
-                      // Image.asset(
-                      //   "assets/images/progressbarRGB.png",
+                      // Container(
+                      //   decoration: BoxDecoration(
+                      //     image: DecorationImage(
+                      //         image:
+                      //             Image.asset("assets/images/progressbar.png")
+                      //                 .image,
+                      //         fit: BoxFit.cover),
+                      //     // gradient: LinearGradient(colors: GRADIANT_COLOR)
+                      //   ),
                       // ),
+                      Image.asset(
+                        "assets/images/progressbarRGB.png",
+                      ),
 
                       SliderTheme(
                         data: SliderTheme.of(context).copyWith(
@@ -529,57 +528,18 @@ class ForoshAdvPage extends StatelessWidget {
                   TwoItemInRow(
                       label1: "زمان دریافت اقساط",
                       label2: "تعداد اقساط",
-                      widget1: SizedBox(
-                        height: 41,
-                        width: MediaQuery.of(context).size.width * 0.4,
-                        child: TextField(
-                          textAlign: TextAlign.right,
-                          readOnly: true,
-                          focusNode: FocusNode(canRequestFocus: false),
-                          decoration: InputDecoration(
-                              hintText: 'انتخاب نشده',
-                              hintStyle: const TextStyle(
-                                  color: Color(0xFFA6A6A6), fontSize: 13),
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              prefixIcon: IconButton(
-                                icon: SvgPicture.asset(
-                                    "assets/images/Vector-20.svg"),
-                                onPressed: () {
-                                  FocusScope.of(context).unfocus();
-                                  persianDataPicker((Date) {
-                                    print(Date);
-                                  });
-                                },
-                              )),
-                        ),
-                      ),
-                      widget2: SizedBox(
-                        height: 41,
-                        width: MediaQuery.of(context).size.width * 0.4,
-                        child: TextField(
-                          textAlign: TextAlign.right,
-                          readOnly: true,
-                          focusNode: FocusNode(canRequestFocus: false),
-                          decoration: InputDecoration(
-                            hintText: 'انتخاب نشده',
-                            hintStyle: const TextStyle(
-                                color: Color(0xFFA6A6A6), fontSize: 13),
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            prefixIcon: IconButton(
-                              icon: SvgPicture.asset(
-                                  "assets/images/Vector-20.svg"),
-                              onPressed: () {
-                                FocusScope.of(context).unfocus();
-                                showNumberPicker((_) {});
-                              },
-                            ),
-                          ),
-                        ),
-                      )),
+                      widget1:
+                          ReadOnlyTextField(_timeOfInstallmentsController, () {
+                        persianDataPicker((date) {
+                          _timeOfInstallmentsController.text = date;
+                        });
+                      }, width: MediaQuery.of(context).size.width * 0.4),
+                      widget2:
+                          ReadOnlyTextField(_countOfInstallmentsController, () {
+                        showNumberPicker((_) {
+                          _countOfInstallmentsController.text = _;
+                        });
+                      }, width: MediaQuery.of(context).size.width * 0.4)),
                   const SizedBox(
                     width: 25,
                     height: 10,
