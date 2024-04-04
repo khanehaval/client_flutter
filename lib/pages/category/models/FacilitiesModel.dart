@@ -592,7 +592,7 @@ class FireExtinguishing extends FacilitiesModel {
 class Internet extends FacilitiesModel {
   @override
   String getAssetPath() {
-    return 'assets/images/Frame_kabab.png';
+    return 'assets/images/Frame_internet.png';
   }
 
   @override
@@ -620,5 +620,124 @@ class Guard extends FacilitiesModel {
   @override
   String key() {
     return "Guard".toUpperCase();
+  }
+}
+
+class DinningSalon extends FacilitiesModel {
+  @override
+  String getAssetPath() {
+    return 'assets/images/Frame_salon_ghaza.png';
+  }
+
+  @override
+  String getTitle() {
+    return "سالن غدا خوری";
+  }
+
+  @override
+  String key() {
+    return "DinningSalon".toUpperCase();
+  }
+}
+
+class Lift extends FacilitiesModel {
+  @override
+  String getAssetPath() {
+    return 'assets/images/Frame_balabar.png';
+  }
+
+  @override
+  String getTitle() {
+    return "بالابر";
+  }
+
+  @override
+  String key() {
+    return "Lift".toUpperCase();
+  }
+}
+
+class Categorizing extends FacilitiesModel {
+  @override
+  String getAssetPath() {
+    return 'assets/images/Frame_ghafas.png';
+  }
+
+  @override
+  String getTitle() {
+    return "قفسه بندی";
+  }
+
+  @override
+  String key() {
+    return "Categorizing".toUpperCase();
+  }
+}
+
+class ElectricShutters extends FacilitiesModel {
+  @override
+  String getAssetPath() {
+    return 'assets/images/Frame_barghi.png';
+  }
+
+  @override
+  String getTitle() {
+    return "کرکره برقی";
+  }
+
+  @override
+  String key() {
+    return "ElectricShutters".toUpperCase();
+  }
+}
+
+class Office extends FacilitiesModel {
+  @override
+  String getAssetPath() {
+    return 'assets/images/Frame_daftar_edari.png';
+  }
+
+  @override
+  String getTitle() {
+    return "دفتر اداری";
+  }
+
+  @override
+  String key() {
+    return "Office".toUpperCase();
+  }
+}
+
+class Weighbridge extends FacilitiesModel {
+  @override
+  String getAssetPath() {
+    return 'assets/images/Frame_baskol.png';
+  }
+
+  @override
+  String getTitle() {
+    return "باسکول";
+  }
+
+  @override
+  String key() {
+    return "Weighbridge".toUpperCase();
+  }
+}
+
+class WaterWell extends FacilitiesModel {
+  @override
+  String getAssetPath() {
+    return 'assets/images/Frame_Ab.png';
+  }
+
+  @override
+  String getTitle() {
+    return "چاه آب";
+  }
+
+  @override
+  String key() {
+    return "WaterWell".toUpperCase();
   }
 }

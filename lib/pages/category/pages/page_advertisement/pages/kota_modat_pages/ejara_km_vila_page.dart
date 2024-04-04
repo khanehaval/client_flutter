@@ -425,7 +425,20 @@ class EjaraKmVilaPage extends StatelessWidget {
               height: 30,
             ),
             FacilitiesSelectorWidget(
-              selectable: [Teras(), MasterRoom(), CenterAntenna(), Labi()],
+              selectable: [
+                Teras(),
+                MasterRoom(),
+                CenterAntenna(),
+                Labi(),
+                Sona(),
+                SwimmingPool(),
+                RoofGarden(),
+                Bathtub(),
+                Gym(),
+                AlAchiq(),
+                ConferenceHall(),
+                GameRoom(),
+              ],
               selected: _facilities,
             ),
             const SizedBox(
@@ -450,7 +463,7 @@ class EjaraKmVilaPage extends StatelessWidget {
               ],
               selected: _recreation,
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             const SizedBox(

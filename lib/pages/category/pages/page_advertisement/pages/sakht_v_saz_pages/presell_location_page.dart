@@ -58,7 +58,7 @@ class SelectLocationEjaraPresell extends StatelessWidget {
                 "زمین مسکونی"
               ]),
               const SizedBox(
-                height: 70,
+                height: 40,
               ),
               SubmitRow(submit: submit, nextPage: Presell())
             ],

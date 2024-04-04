@@ -32,7 +32,7 @@ class SwitchItem extends StatelessWidget {
           Text(
             text,
             style: const TextStyle(
-              fontSize: 15,
+              fontSize: 10.5,
               fontFamily: MAIN_FONT_FAMILY,
             ),
           ),

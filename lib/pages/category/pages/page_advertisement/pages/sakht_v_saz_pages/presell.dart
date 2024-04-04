@@ -226,7 +226,20 @@ class Presell extends StatelessWidget {
               height: 20,
             ),
             FacilitiesSelectorWidget(
-              selectable: [Teras(), MasterRoom(), CenterAntenna(), Labi()],
+              selectable: [
+                Teras(),
+                MasterRoom(),
+                CenterAntenna(),
+                Labi(),
+                Sona(),
+                SwimmingPool(),
+                RoofGarden(),
+                Bathtub(),
+                Gym(),
+                AlAchiq(),
+                ConferenceHall(),
+                GameRoom(),
+              ],
               selected: _facilities,
             ),
             const SizedBox(
@@ -631,7 +644,7 @@ class Presell extends StatelessWidget {
                       ),
                       widget1: ReadOnlyTextField(_buildDateController, () {
                         //todo
-                      },width: getPageWidth())),
+                      }, width: getPageWidth())),
                   const SizedBox(
                     height: 20,
                   ),
@@ -656,9 +669,7 @@ class Presell extends StatelessWidget {
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                     _anbari(),_asansor(),_parking()
-                    ],
+                    children: [_anbari(), _asansor(), _parking()],
                   ),
                   const SizedBox(width: 25),
                   const SizedBox(
@@ -790,11 +801,11 @@ class Presell extends StatelessWidget {
                   TwoItemInRow(
                       label1: "موقعیت",
                       label2: "طبقه ",
-                      widget2: ReadOnlyTextField(_buildDirectionController, () {
+                      widget1: ReadOnlyTextField(_buildDirectionController, () {
                         jahatSakhteman(
                             (p0) => _buildDirectionController.text = p0);
                       }, width: getPageWidth()),
-                      widget1: ReadOnlyTextField(_buildFloorController, () {
+                      widget2: ReadOnlyTextField(_buildFloorController, () {
                         showNumberPicker((_) {
                           _buildFloorController.text = _;
                         });

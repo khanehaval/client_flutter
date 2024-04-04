@@ -358,7 +358,20 @@ class VilaAdvPage extends StatelessWidget {
               height: 20,
             ),
             FacilitiesSelectorWidget(
-              selectable: [Teras(), MasterRoom(), CenterAntenna(), Labi()],
+              selectable: [
+                Teras(),
+                MasterRoom(),
+                CenterAntenna(),
+                Labi(),
+                Sona(),
+                SwimmingPool(),
+                RoofGarden(),
+                Bathtub(),
+                Gym(),
+                AlAchiq(),
+                ConferenceHall(),
+                GameRoom(),
+              ],
               selected: _facilities,
             ),
             const SizedBox(
@@ -382,7 +395,6 @@ class VilaAdvPage extends StatelessWidget {
 
   double getPageWidth_2(BuildContext context) =>
       MediaQuery.of(context).size.width * 0.43;
-
 
   Widget aghsatiForoshWidget(BuildContext context) {
     final isSwitched = true.obs;

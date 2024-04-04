@@ -1,9 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/pages/category/models/FacilitiesModel.dart';
 import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/forosh_adv_pages/kolangi_adv_page.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/category/shared/date.dart';
 import 'package:flutter_application_1/pages/category/shared/emkanat7.dart';
+
+import 'package:flutter_application_1/pages/category/shared/facilities_selector.dart';
 import 'package:flutter_application_1/pages/category/shared/images_picker/images_picker.dart';
 import 'package:flutter_application_1/pages/category/shared/number_piacker.dart';
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
@@ -14,6 +17,7 @@ import 'package:get/get.dart';
 class EjaraDafterPage extends StatelessWidget {
   final aghsatType = "".obs;
   final onvan = "".obs;
+  final _facilities = <FacilitiesModel>[].obs;
 
   final hasAnbari = false.obs;
   final hasAsansor = false.obs;
@@ -678,40 +682,18 @@ class EjaraDafterPage extends StatelessWidget {
               "سایر امکانات",
               style: TextStyle(fontFamily: MAIN_FONT_FAMILY, fontSize: 16),
             ),
-            const SizedBox(
-              height: 15,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                GestureDetector(
-                  behavior: HitTestBehavior.translucent,
-                  onTap: () {
-                    buildButtom7();
-                  },
-                  child: Container(
-                    height: 70,
-                    width: 70,
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(10),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withOpacity(0.1),
-                            spreadRadius: 1,
-                            blurRadius: 5,
-                          )
-                        ],
-                        border: Border.all(
-                          color: Colors.black45,
-                          width: 0.3,
-                        )),
-                    child: const Icon(
-                      Icons.add,
-                    ),
-                  ),
-                ),
+            FacilitiesSelectorWidget(
+              selectable: [
+                CCTV(),
+                CenterAntenna(),
+                Door(),
+                BurglarAlarm(),
+                FireExtinguishing(),
+                Internet(),
+                DinningSalon(),
+                Guard(),
               ],
+              selected: _facilities,
             ),
             const SizedBox(
               height: 20,

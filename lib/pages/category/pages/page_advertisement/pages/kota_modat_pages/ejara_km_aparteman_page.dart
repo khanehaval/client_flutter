@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/models/FacilitiesModel.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
@@ -154,7 +153,7 @@ class EjaraKmApartemanPage extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
-           switchable(_agreement, "توافقی"),
+            switchable(_agreement, "توافقی"),
             const Divider(
               endIndent: 20,
               indent: 20,
@@ -425,7 +424,20 @@ class EjaraKmApartemanPage extends StatelessWidget {
               height: 30,
             ),
             FacilitiesSelectorWidget(
-              selectable: [Teras(), MasterRoom(), CenterAntenna(), Labi()],
+              selectable: [
+                Teras(),
+                MasterRoom(),
+                CenterAntenna(),
+                Labi(),
+                Sona(),
+                SwimmingPool(),
+                RoofGarden(),
+                Bathtub(),
+                Gym(),
+                AlAchiq(),
+                ConferenceHall(),
+                GameRoom(),
+              ],
               selected: _facilities,
             ),
             const SizedBox(

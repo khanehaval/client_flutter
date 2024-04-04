@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/forosh_adv_pages/kolangi_adv_page.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
@@ -545,8 +544,8 @@ class EjaraApartemanPage extends StatelessWidget {
                   textAlign: TextAlign.right,
                   decoration: InputDecoration(
                       hintText: 'انتخاب نشده',
-                      hintStyle:
-                          TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
+                      hintStyle: const TextStyle(
+                          color: Color(0xFFA6A6A6), fontSize: 13),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
@@ -686,10 +685,22 @@ class EjaraApartemanPage extends StatelessWidget {
               height: 20,
             ),
             FacilitiesSelectorWidget(
-              selectable: [Teras(), MasterRoom(), CenterAntenna(), Labi()],
+              selectable: [
+                Teras(),
+                MasterRoom(),
+                CenterAntenna(),
+                Labi(),
+                Sona(),
+                SwimmingPool(),
+                RoofGarden(),
+                Bathtub(),
+                Gym(),
+                AlAchiq(),
+                ConferenceHall(),
+                GameRoom(),
+              ],
               selected: _facilities,
             ),
-
             const SizedBox(
               height: 20,
             ),

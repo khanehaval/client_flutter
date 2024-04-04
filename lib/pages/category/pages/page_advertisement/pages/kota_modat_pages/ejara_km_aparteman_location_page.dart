@@ -10,8 +10,7 @@ import '../../../../shared/switchItem.dart';
 
 class EjaraKMApartemanLocationPage extends StatelessWidget {
   LocationInfo locationInfo;
-   EjaraKMApartemanLocationPage({required this.locationInfo,super.key});
-
+  EjaraKMApartemanLocationPage({required this.locationInfo, super.key});
 
   final submit = false.obs;
 
@@ -48,19 +47,18 @@ class EjaraKMApartemanLocationPage extends StatelessWidget {
                 ),
               ),
               SwitchItem(
-                  onSelected: (_){
+                  onSelected: (_) {
                     submit.value = true;
                   },
                   items: const ["اتاق", "سوئیت", "برج", "پنت هاوس"]),
               const SizedBox(
                 height: 40,
               ),
-             SubmitRow(submit: submit, nextPage: EjaraKmApartemanPage())
+              SubmitRow(submit: submit, nextPage: EjaraKmApartemanPage())
             ],
           ),
         ),
       ),
     );
   }
-
 }

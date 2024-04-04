@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/ejara_tejari_edari/ejara_daftar_page.dart';
 import 'package:flutter_application_1/pages/category/shared/map_pages/location_Info.dart';
@@ -59,7 +58,7 @@ class EjaraDaftarLocationPage extends StatelessWidget {
                         },
                         items: const ["اتاق اداری", "مطب", "ملک اداری"]),
                     const SizedBox(
-                      height: 45,
+                      height: 40,
                     ),
                     SubmitRow(submit: submit, nextPage: EjaraDafterPage())
                   ])

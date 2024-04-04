@@ -30,9 +30,6 @@ class ForoshShopLocationPage extends StatelessWidget {
             const SizedBox(
               height: 15,
             ),
-            const SizedBox(
-              height: 10,
-            ),
             const Align(
               alignment: Alignment.centerRight,
               child: Padding(
@@ -61,7 +58,7 @@ class ForoshShopLocationPage extends StatelessWidget {
                   items: const [" غرفه"]),
             ),
             const SizedBox(
-              height: 25,
+              height: 15,
             ),
             SubmitRow(submit: submit, nextPage: SaleShop())
           ],

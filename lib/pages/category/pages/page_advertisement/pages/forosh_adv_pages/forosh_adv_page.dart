@@ -370,7 +370,20 @@ class ForoshAdvPage extends StatelessWidget {
                 height: 20,
               ),
               FacilitiesSelectorWidget(
-                selectable: [Teras(), MasterRoom(), CenterAntenna(), Labi()],
+                selectable: [
+                  Teras(),
+                  MasterRoom(),
+                  CenterAntenna(),
+                  Labi(),
+                  Sona(),
+                  SwimmingPool(),
+                  RoofGarden(),
+                  Bathtub(),
+                  Gym(),
+                  AlAchiq(),
+                  ConferenceHall(),
+                  GameRoom(),
+                ],
                 selected: _facilities,
               ),
               const SizedBox(
@@ -390,8 +403,6 @@ class ForoshAdvPage extends StatelessWidget {
           ),
         ));
   }
-
-
 
   Widget onvanWidget(BuildContext context) {
     final isSwitched = true.obs;
