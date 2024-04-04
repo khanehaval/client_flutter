@@ -117,9 +117,9 @@ class ForoshTejariAdv extends StatelessWidget {
   }
 
   Widget _buildItem(
-      String assetPath,
-      int index,
-      ) {
+    String assetPath,
+    int index,
+  ) {
     return GestureDetector(
       onTap: () {
         _selected.value = index;
@@ -128,30 +128,30 @@ class ForoshTejariAdv extends StatelessWidget {
         height: 90,
         width: 140,
         child: Obx(() => Container(
-          decoration: BoxDecoration(
-            gradient: _selected.value == index
-                ? const LinearGradient(colors: GRADIANT_COLOR)
-                : null,
-            borderRadius: BorderRadius.circular(10),
-            // border: Border.all(
-            //   width: _selected.value == index ? 2 : 1.5,
-            // )
-          ),
-          child: Padding(
-            padding: const EdgeInsets.all(2.0),
-            child: Container(
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(10),
-                    border: Border.all(
-                      color: _selected.value == index
-                          ? Colors.white
-                          : Colors.black12,
-                      width: _selected.value == index ? 2.8 : 1.5,
-                    )),
-                child: Image.asset(assetPath)),
-          ),
-        )),
+              decoration: BoxDecoration(
+                gradient: _selected.value == index
+                    ? const LinearGradient(colors: GRADIANT_COLOR)
+                    : null,
+                borderRadius: BorderRadius.circular(10),
+                // border: Border.all(
+                //   width: _selected.value == index ? 2 : 1.5,
+                // )
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(2.0),
+                child: Container(
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(10),
+                        border: Border.all(
+                          color: _selected.value == index
+                              ? Colors.white
+                              : Colors.black12,
+                          width: _selected.value == index ? 2.8 : 1.5,
+                        )),
+                    child: Image.asset(assetPath)),
+              ),
+            )),
       ),
     );
   }
@@ -169,7 +169,7 @@ PreferredSizeWidget buildaAppBar() {
       GestureDetector(
         onTap: () {
           Get.to(
-            () => const Profile(),
+            () => Profile(),
           );
         },
         child: Container(
