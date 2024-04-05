@@ -1,11 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/pages/category/models/AdvInfoModel.dart';
 import 'package:flutter_application_1/pages/category/models/FacilitiesModel.dart';
-import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/forosh_adv_pages/kolangi_adv_page.dart';
+import 'package:flutter_application_1/pages/category/shared/adv_info/advInfo.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/category/shared/date.dart';
-import 'package:flutter_application_1/pages/category/shared/emkanat7.dart';
-
 import 'package:flutter_application_1/pages/category/shared/facilities_selector.dart';
 import 'package:flutter_application_1/pages/category/shared/images_picker/images_picker.dart';
 import 'package:flutter_application_1/pages/category/shared/number_piacker.dart';
@@ -26,6 +25,7 @@ class EjaraDafterPage extends StatelessWidget {
   final _metragTextController = TextEditingController();
   final _selectedImagesPath = [].obs;
   final _onePrice = 0.0.obs;
+  final _dvInfoModel = AdvInfoModel();
 
   EjaraDafterPage({super.key});
 
@@ -678,10 +678,6 @@ class EjaraDafterPage extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
-            const Text(
-              "سایر امکانات",
-              style: TextStyle(fontFamily: MAIN_FONT_FAMILY, fontSize: 16),
-            ),
             FacilitiesSelectorWidget(
               selectable: [
                 CCTV(),
@@ -705,7 +701,9 @@ class EjaraDafterPage extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
-            ImagesPicker(selectedImagesPath: _selectedImagesPath)
+            ImagesPicker(selectedImagesPath: _selectedImagesPath),
+            const Divider(),
+            AdvInfo(_dvInfoModel),
           ]),
         ),
       ),

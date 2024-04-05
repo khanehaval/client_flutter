@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/pages/category/models/AdvInfoModel.dart';
+import 'package:flutter_application_1/pages/category/shared/adv_info/advInfo.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/category/shared/date.dart';
 import 'package:flutter_application_1/pages/category/shared/emkanat5.dart';
@@ -20,6 +22,8 @@ class EjaraShopPage extends StatelessWidget {
   final _metragTextController = TextEditingController();
   final _selectedImagesPath = [].obs;
   final _onePrice = 0.0.obs;
+
+  final _advInfoModel = AdvInfoModel();
 
   EjaraShopPage({super.key});
 
@@ -522,7 +526,9 @@ class EjaraShopPage extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
-            ImagesPicker(selectedImagesPath: _selectedImagesPath)
+            ImagesPicker(selectedImagesPath: _selectedImagesPath),
+            const Divider(),
+            AdvInfo(_advInfoModel)
           ]),
         ),
       ),
@@ -530,61 +536,7 @@ class EjaraShopPage extends StatelessWidget {
   }
 }
 
-Widget onvanWidget(BuildContext context) {
-  final isSwitched = true.obs;
-  return Column(
-    children: [
-      Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          const Text(
-            "عنوان پیشنهادی خانه اول",
-            style: TextStyle(
-                fontFamily: MAIN_FONT_FAMILY,
-                fontSize: 14,
-                color: Color.fromRGBO(99, 99, 99, 1)),
-          ),
-          Transform.scale(
-            scale: 0.80,
-            child: Obx(
-              () => Switch(
-                  onChanged: (_) => isSwitched.value = _,
-                  value: isSwitched.value,
-                  activeColor: Colors.white,
-                  activeTrackColor: const Color.fromRGBO(54, 216, 89, 1),
-                  inactiveThumbColor: const Color.fromRGBO(11, 8, 8, 0.2),
-                  inactiveTrackColor: const Color.fromRGBO(255, 255, 255, 1)),
-            ),
-          ),
-        ],
-      ),
-      Obx(() => isSwitched.isTrue
-          ? Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SizedBox(
-                  height: 41,
-                  width: MediaQuery.of(context).size.width * 1 / 1.119,
-                  child: TextField(
-                    textAlign: TextAlign.right,
-                    decoration: InputDecoration(
-                      hintText: 'آپارتمان 120 متری به صورت اقساطی',
-                      hintStyle: TextStyle(
-                          color: Color(0xFFA6A6A6),
-                          fontFamily: MAIN_FONT_FAMILY,
-                          fontSize: 16),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            )
-          : const SizedBox.shrink()),
-    ],
-  );
-}
+
 
 Widget aghsatiForoshWidget(BuildContext context) {
   final isSwitched = true.obs;

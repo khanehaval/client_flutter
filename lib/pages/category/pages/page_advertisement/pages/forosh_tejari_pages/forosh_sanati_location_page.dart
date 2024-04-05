@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/forosh_tejari_pages/forosh_sanati_page.dart';
 import 'package:flutter_application_1/pages/category/shared/map_pages/location_Info.dart';
@@ -12,7 +11,8 @@ import '../../../../shared/switchItem.dart';
 
 class ForoshSanatiLocationPage extends StatelessWidget {
   LocationInfo locationInfo;
-   ForoshSanatiLocationPage({required this.locationInfo,super.key});
+
+  ForoshSanatiLocationPage({required this.locationInfo, super.key});
 
   final submit = false.obs;
 
@@ -28,7 +28,7 @@ class ForoshSanatiLocationPage extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-             MapInfoPage(locationInfo),
+              MapInfoPage(locationInfo),
               const SizedBox(
                 height: 10,
               ),
@@ -49,17 +49,18 @@ class ForoshSanatiLocationPage extends StatelessWidget {
                 ),
               ),
               SwitchItem(
-                  onSelected: (_){}, items: const ["کارگاه", "سوله", "زمین کشاورزی"]),
+                  onSelected: (_) {
+                    submit.value = true;
+                  },
+                  items: const ["کارگاه", "سوله", "زمین کشاورزی"]),
               const SizedBox(
                 height: 45,
               ),
-            SubmitRow(submit: submit, nextPage: ForoshSanatiPage())
+              SubmitRow(submit: submit, nextPage: ForoshSanatiPage())
             ],
           ),
         ),
       ),
     );
   }
-
-
 }
