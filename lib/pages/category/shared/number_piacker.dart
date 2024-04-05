@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
+import 'package:numberpicker/numberpicker.dart';
 import 'package:get/get.dart';
 import 'package:gradient_icon/gradient_icon.dart';
 
@@ -39,11 +40,11 @@ void showNumberPicker(Function(String) onSelected) {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         GestureDetector(
                           onTap: () {
-                            if (index.value > 2) {
+                            if (index.value > 0) {
                               index.value = index.value - 1;
                             }
                           },
@@ -57,36 +58,32 @@ void showNumberPicker(Function(String) onSelected) {
                             size: 40,
                           ),
                         ),
-                        Obx(() => Column(
-                              mainAxisSize: MainAxisSize.min,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text((index.value - 1).toString()),
-                                const SizedBox(
-                                  height: 40,
-                                ),
-                                AnimatedSwitcher(
-                                  switchInCurve: Curves.bounceOut,
-                                  switchOutCurve: Curves.easeInCirc,
-                                  transitionBuilder: (c, s) {
-                                    return c;
-                                  },
-                                  key: Key(index.value.toString()),
-                                  duration: const Duration(milliseconds: 600),
-                                  child: Text(
-                                    index.value.toString(),
-                                    style: const TextStyle(fontSize: 30),
-                                  ),
-                                ),
-                                const SizedBox(
-                                  height: 40,
-                                ),
-                                Text((index.value + 1).toString()),
-                              ],
-                            )),
+                        const SizedBox(
+                          width: 30,
+                        ),
+                        Obx(
+                          () => NumberPicker(
+                            value: index.value,
+                            minValue: 0,
+                            maxValue: 20,
+                            step: 1,
+                            itemHeight: 70,
+                            axis: Axis.vertical,
+                            onChanged: (value) => index.value = value,
+                            textStyle: const TextStyle(
+                                fontSize: 20,
+                                color: Colors.black38,
+                                fontFamily: MAIN_FONT_FAMILY),
+                            selectedTextStyle: const TextStyle(
+                                fontFamily: MAIN_FONT_FAMILY, fontSize: 35),
+                          ),
+                        ),
+                        const SizedBox(
+                          width: 30,
+                        ),
                         GestureDetector(
                           onTap: () {
-                            if (index.value < 17) {
+                            if (index.value < 20) {
                               index.value = index.value + 1;
                             }
                           },
@@ -113,9 +110,12 @@ void showNumberPicker(Function(String) onSelected) {
                             borderRadius: BorderRadius.circular(50)),
                         child: IconButton(
                           icon: const Icon(
-                            CupertinoIcons.check_mark,
+                            Icons.check,
                             color: Colors.white,
-                            weight: 20,
+                            weight: 10,
+                            size: 30,
+                            grade: 20,
+                            fill: 0.8,
                           ),
                           onPressed: () {
                             onSelected(index.value.toString());
