@@ -446,46 +446,151 @@ class ForoshAdvPage extends StatelessWidget {
         Obx(() => isSwitched.isTrue
             ? Column(
                 children: [
-                  Stack(
-                    alignment: Alignment.center,
-                    children: [
-                      // Container(
-                      //   decoration: BoxDecoration(
-                      //     image: DecorationImage(
-                      //         image:
-                      //             Image.asset("assets/images/progressbar.png")
-                      //                 .image,
-                      //         fit: BoxFit.cover),
-                      //     // gradient: LinearGradient(colors: GRADIANT_COLOR)
-                      //   ),
-                      // ),
-                      Image.asset(
-                        "assets/images/progressbarRGB.png",
-                      ),
-
-                      SliderTheme(
-                        data: SliderTheme.of(context).copyWith(
-                          trackHeight: 75,
-                          inactiveTrackColor: Colors.white12,
-                          overlayShape: SliderComponentShape.noOverlay,
-                          activeTrackColor: Colors.white12,
-                          thumbShape: const RoundSliderThumbShape(
-                              enabledThumbRadius: 20),
-                        ),
-                        child: Slider(
-                          value: 40,
-                          min: 0,
-                          max: 100,
-                          onChanged: (double newValue) {
-                            // setState(() {
-                            //   _currentValue = newValue;
-                            // });
-                          },
-                        ),
-                      ),
-                      // Slider(value: 0.6,divisions: 5, onChanged: (_){}),
-                    ],
+                  Image.asset(
+                    "assets/images/progressbarRGB.png",
+                    height: 80,
+                    width: double.infinity,
                   ),
+                  // Stack(
+                  //   alignment: Alignment.center,
+                  //   children: [
+                  //     ColorFiltered(
+                  //       colorFilter: ColorFilter.mode(
+                  //         Colors.blue, // Change this to the desired color
+                  //         BlendMode.modulate,
+                  //       ),
+                  //       child: ShaderMask(
+                  //         shaderCallback: (Rect bounds) {
+                  //           return LinearGradient(
+                  //             colors: [
+                  //               Colors.black38,
+                  //               Colors.black38
+                  //             ],
+                  //             stops: [0.4, 0.4],
+                  //             begin: Alignment.centerLeft,
+                  //             end: Alignment.centerRight,
+                  //           ).createShader(bounds);
+                  //         },
+                  //         blendMode: BlendMode.srcIn,
+                  //         child: Image.asset(
+                  //           "assets/images/progressbarRGB.png",
+                  //           height: 80,
+                  //           width: double.infinity,
+                  //         ),
+                  //       ),
+                  //     ),
+                  //     // Container(
+                  //     //   decoration: BoxDecoration(
+                  //     //     image: DecorationImage(
+                  //     //         image:
+                  //     //             Image.asset("assets/images/progressbar.png")
+                  //     //                 .image,
+                  //     //         fit: BoxFit.cover),
+                  //     //     // gradient: LinearGradient(colors: GRADIANT_COLOR)
+                  //     //   ),
+                  //     // ),
+                  //     // Image.asset(
+                  //     //   "assets/images/progressbarRGB.png",
+                  //     // ),
+                  //     //
+                  //     // SliderTheme(
+                  //     //   data: SliderTheme.of(Get.context!).copyWith(
+                  //     //     trackHeight: 75,
+                  //     //     inactiveTrackColor: Colors.black38,
+                  //     //     overlayShape: SliderComponentShape.noOverlay,
+                  //     //     activeTrackColor: Colors.black38,
+                  //     //     trackShape: CustomTrackShape(),
+                  //     //   ),
+                  //     //   child: Slider(
+                  //     //     value: 0,
+                  //     //     min: 0,
+                  //     //     max: 10,
+                  //     //     onChanged: (double newValue) {
+                  //     //       // setState(() {
+                  //     //       //   _currentValue = newValue;
+                  //     //       // });
+                  //     //     },
+                  //     //   ),
+                  //     // ),
+                  //     // Slider(value: 0.6,divisions: 5, onChanged: (_){}),
+                  //   ],
+                  // ),
+                  // Row(
+                  //   mainAxisAlignment: MainAxisAlignment.center,
+                  //   crossAxisAlignment: CrossAxisAlignment.center,
+                  //   children: [
+                  //     Stack(
+                  //       alignment: Alignment.center,
+                  //       fit: StackFit.loose,
+                  //       children: [
+                  //         ColorFiltered(
+                  //           colorFilter: ColorFilter.mode(
+                  //             Colors.blue, // Change this to the desired color
+                  //             BlendMode.modulate,
+                  //           ),
+                  //           child: ShaderMask(
+                  //             shaderCallback: (Rect bounds) {
+                  //               return LinearGradient(
+                  //                 colors: [
+                  //                   Colors.black12,
+                  //                   Colors.black38
+                  //                 ],
+                  //                 stops: [0.4, 0.4],
+                  //                 begin: Alignment.centerLeft,
+                  //                 end: Alignment.centerRight,
+                  //               ).createShader(bounds);
+                  //             },
+                  //             blendMode: BlendMode.srcIn,
+                  //             child: Center(
+                  //               child: Image.asset(
+                  //                 "assets/images/progressbarRGB.png",
+                  //                 height: 80,
+                  //                 width: Get.width-100,
+                  //               ),
+                  //             ),
+                  //           ),
+                  //         ),
+                  //         // Container(
+                  //         //   decoration: BoxDecoration(
+                  //         //     image: DecorationImage(
+                  //         //         image:
+                  //         //             Image.asset("assets/images/progressbar.png")
+                  //         //                 .image,
+                  //         //         fit: BoxFit.cover),
+                  //         //     // gradient: LinearGradient(colors: GRADIANT_COLOR)
+                  //         //   ),
+                  //         // ),
+                  //         // Image.asset(
+                  //         //   "assets/images/progressbarRGB.png",
+                  //         // ),
+                  //
+                  //         Center(
+                  //           child: SliderTheme(
+                  //             data: SliderTheme.of(context).copyWith(
+                  //               trackHeight: 75,
+                  //               inactiveTrackColor: Colors.black,
+                  //                overlayShape: SliderComponentShape.noThumb,
+                  //               activeTrackColor: Colors.black,
+                  //               trackShape: CustomTrackShape(),
+                  //             ),
+                  //             child: Slider(
+                  //               value: 5,
+                  //               min: 0,
+                  //               max: 10,
+                  //               onChanged: (double newValue) {
+                  //                 // setState(() {
+                  //                 //   _currentValue = newValue;
+                  //                 // });
+                  //               },
+                  //             ),
+                  //           ),
+                  //         ),
+                  //          // Slider(value: 0.6,divisions: 5, onChanged: (_){}),
+                  //       ],
+                  //     ),
+                  //   ],
+                  // ),
+
                   const SizedBox(
                     height: 20,
                   ),
@@ -660,5 +765,22 @@ class ForoshAdvPage extends StatelessWidget {
             : const SizedBox.shrink()),
       ],
     );
+  }
+}
+
+class CustomTrackShape extends RoundedRectSliderTrackShape {
+  @override
+  Rect getPreferredRect({
+    required RenderBox parentBox,
+    Offset offset = Offset.zero,
+    required SliderThemeData sliderTheme,
+    bool isEnabled = false,
+    bool isDiscrete = false,
+  }) {
+    final trackHeight = sliderTheme.trackHeight;
+    final trackLeft = 10.0;
+    final trackTop = offset.dy + (parentBox.size.height - trackHeight!) / 2;
+    final trackWidth = 400.0;
+    return Rect.fromLTWH(trackLeft, trackTop, trackWidth, trackHeight);
   }
 }
