@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/pages/category/models/AdvInfoModel.dart';
+import 'package:flutter_application_1/pages/category/shared/adv_info/advInfo.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/category/shared/date.dart';
 import 'package:flutter_application_1/pages/category/shared/images_picker/images_picker.dart';
@@ -14,6 +16,7 @@ import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 class PartnerShip extends StatelessWidget {
   final aghsatType = "".obs;
   final onvan = "".obs;
+  final _advInfo = AdvInfoModel();
   ItemScrollController scrollController = ItemScrollController();
   final ItemScrollController itemScrollController = ItemScrollController();
   final _allPriceTextController = TextEditingController();
@@ -309,7 +312,12 @@ class PartnerShip extends StatelessWidget {
             const SizedBox(
               height: 30,
             ),
-            ImagesPicker(selectedImagesPath: _selectedImagesPath)
+            ImagesPicker(selectedImagesPath: _selectedImagesPath),
+            const Divider(),
+            const SizedBox(
+              height: 15,
+            ),
+            AdvInfo(_advInfo)
           ]),
         ),
       ),

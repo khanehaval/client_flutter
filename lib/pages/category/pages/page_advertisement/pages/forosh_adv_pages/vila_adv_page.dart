@@ -591,10 +591,12 @@ class VilaAdvPage extends StatelessWidget {
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
-                        prefixIcon: IconButton(
-                          icon: SvgPicture.asset("assets/images/Vector-20.svg"),
-                          onPressed: () {
-                            showNumberPicker((_) {});
+                        prefixIcon: ReadOnlyTextField(
+                          _countOfInstallmentsController,
+                          () {
+                            showNumberPicker((_) {
+                              _countOfInstallmentsController.text = _;
+                            });
                           },
                         ),
                       ),

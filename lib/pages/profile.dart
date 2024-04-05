@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/switachable.dart';
 import 'package:flutter_application_1/pages/educational_tour.dart';
+import 'package:flutter_application_1/pages/login_secondly_page.dart';
 import 'package:flutter_application_1/pages/register/register.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
@@ -18,7 +19,7 @@ openProfile() {
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 50, horizontal: 10),
           child: SizedBox(
-            width: Get.width / 2,
+            width: Get.width / 1.5,
             child: Material(
               borderRadius: BorderRadius.circular(10),
               child: Padding(
@@ -26,118 +27,127 @@ openProfile() {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Column(children: [  Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    Column(
                       children: [
-                        Container(
-                          width: 60,
-                          height: 60,
-                          decoration: BoxDecoration(
-                            border: Border.all(width: 3, color: Colors.yellowAccent),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.black.withOpacity(0.1),
-                              )
-                            ],
-                            shape: BoxShape.circle,
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.all(4.0),
-                            child: Image.asset(
-                              'assets/images/logo-fa-photoshop.png',
-                              width: 55,
-                              height: 55,
-                              fit: BoxFit.contain,
-                            ),
-                          ),
-                        ),
-                        const Column(
-                          mainAxisSize: MainAxisSize.min,
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
-                            Text(
-                              "آژانش املاک",
-                              style: TextStyle(
-                                  fontSize: 18,
-                                  fontFamily: MAIN_FONT_FAMILY,
-                                  color: Colors.black54),
-                            ),
-                            Row(
-                              children: [
-                                Icon(
-                                  Icons.verified,
-                                  color: Colors.blue,
+                            Container(
+                              width: 60,
+                              height: 60,
+                              decoration: BoxDecoration(
+                                border: Border.all(
+                                    width: 3, color: Colors.yellowAccent),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.black.withOpacity(0.1),
+                                  )
+                                ],
+                                shape: BoxShape.circle,
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsets.all(4.0),
+                                child: Image.asset(
+                                  'assets/images/logo-fa-photoshop.png',
+                                  width: 55,
+                                  height: 55,
+                                  fit: BoxFit.contain,
                                 ),
+                              ),
+                            ),
+                            const Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
                                 Text(
-                                  "خانه اول",
+                                  "آژانش املاک",
                                   style: TextStyle(
                                       fontSize: 18,
-                                      fontFamily: MAIN_FONT_FAMILY),
+                                      fontFamily: MAIN_FONT_FAMILY,
+                                      color: Colors.black54),
+                                ),
+                                Row(
+                                  children: [
+                                    Icon(
+                                      Icons.verified,
+                                      color: Colors.blue,
+                                    ),
+                                    Text(
+                                      "خانه اول",
+                                      style: TextStyle(
+                                          fontSize: 18,
+                                          fontFamily: MAIN_FONT_FAMILY),
+                                    ),
+                                  ],
                                 ),
                               ],
-                            ),
+                            )
                           ],
-                        )
+                        ),
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        const Divider(),
                       ],
                     ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      const Divider(),],),
-
                     Column(
                       children: [
                         _item('assets/images/profile_category.svg', "میزکار"),
                         _item('assets/images/profile_message.svg', "پیام ها"),
-                        _item(
-                            'assets/images/profile_moshavere.svg', "همکاران"),
+                        _item('assets/images/profile_moshavere.svg', "همکاران"),
                         _item('assets/images/profile_category.svg', "ویترین"),
-                        _item(
-                            'assets/images/profile_vahed.svg', "واحد های من"),
-                        _item(
-                            'assets/images/profile_setting.svg', " تنظیمات"),
+                        _item('assets/images/profile_vahed.svg', "واحد های من"),
+                        _item('assets/images/profile_setting.svg', " تنظیمات"),
                       ],
                     ),
-                    Column(children: [
-                      const Divider(),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Container(
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(25),
-                              color: Colors.black12),
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(
-                                vertical: 3, horizontal: 7),
-                            child: GestureDetector(
-                              onTap: () {},
-                              child: const Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Icon(
-                                    Icons.add_circle,
-                                    color: Colors.black26,
-                                  ),
-                                  Text(
-                                    "ثبت آگهی",
-                                    style:
-                                    TextStyle(fontFamily: MAIN_FONT_FAMILY),
-                                  ),
-                                ],
+                    Column(
+                      children: [
+                        const Divider(),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Container(
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(25),
+                                color: Colors.black12),
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(
+                                  vertical: 3, horizontal: 7),
+                              child: GestureDetector(
+                                onTap: () {},
+                                child: const Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Icon(
+                                      Icons.add_circle,
+                                      color: Colors.black26,
+                                    ),
+                                    Text(
+                                      "ثبت آگهی",
+                                      style: TextStyle(
+                                          fontFamily: MAIN_FONT_FAMILY),
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
                           ),
                         ),
-                      ),
-                      // switchable(, title)
-                      SizedBox(height: 19,),
-                      GestureDetector(
-                        onTap: () {
-                          Get.off(() => const Register());
-                        },
-                        child: SvgPicture.asset("assets/images/exit.svg",width: 40,height: 40,),
-                      )
-                    ],)
-
+                        // switchable(, title)
+                        SizedBox(
+                          height: 19,
+                        ),
+                        GestureDetector(
+                          onTap: () {
+                            Get.off(() => const Register());
+                          },
+                          child: SvgPicture.asset(
+                            "assets/images/exit.svg",
+                            width: 40,
+                            height: 40,
+                          ),
+                        )
+                      ],
+                    )
                   ],
                 ),
               ),
@@ -526,7 +536,9 @@ class BuildProfile extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.only(left: 20),
                         child: IconButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Get.off(() => Register());
+                          },
                           icon: SvgPicture.asset("assets/images/exit.svg"),
                         ),
                       )

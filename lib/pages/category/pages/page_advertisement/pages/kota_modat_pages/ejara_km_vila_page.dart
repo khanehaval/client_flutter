@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/pages/category/models/AdvInfoModel.dart';
 import 'package:flutter_application_1/pages/category/models/FacilitiesModel.dart';
 import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/forosh_adv_pages/kolangi_adv_page.dart';
+import 'package:flutter_application_1/pages/category/shared/adv_info/advInfo.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 
 import 'package:flutter_application_1/pages/category/shared/facilities_selector.dart';
@@ -18,6 +20,7 @@ import '../../../../shared/widget/switachable.dart';
 
 class EjaraKmVilaPage extends StatelessWidget {
   final fullTime = false.obs;
+  final _advInfo = AdvInfoModel();
   final hasParking = false.obs;
   final hasmeli = false.obs;
   final _agreement = false.obs;
@@ -541,7 +544,12 @@ class EjaraKmVilaPage extends StatelessWidget {
             const SizedBox(
               height: 30,
             ),
-            ImagesPicker(selectedImagesPath: _selectedImagesPath)
+            ImagesPicker(selectedImagesPath: _selectedImagesPath),
+            const Divider(),
+            const SizedBox(
+              height: 15,
+            ),
+            AdvInfo(_advInfo)
           ]),
         ),
       ),

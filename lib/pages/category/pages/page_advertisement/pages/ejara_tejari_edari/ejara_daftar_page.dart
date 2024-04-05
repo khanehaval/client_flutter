@@ -7,25 +7,56 @@ import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/category/shared/date.dart';
 import 'package:flutter_application_1/pages/category/shared/facilities_selector.dart';
 import 'package:flutter_application_1/pages/category/shared/images_picker/images_picker.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/jahat_sakhteman.dart';
 import 'package:flutter_application_1/pages/category/shared/number_piacker.dart';
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
 import 'package:flutter_application_1/pages/category/shared/twoItemInRow.dart';
+import 'package:flutter_application_1/pages/category/shared/widget/text_field.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
 class EjaraDafterPage extends StatelessWidget {
   final aghsatType = "".obs;
   final onvan = "".obs;
-  final _facilities = <FacilitiesModel>[].obs;
-
+  int selectedIndex = 0;
   final hasAnbari = false.obs;
   final hasAsansor = false.obs;
   final hasParking = false.obs;
+  final _onePrice = 0.0.obs;
   final _allPriceTextController = TextEditingController();
   final _metragTextController = TextEditingController();
   final _selectedImagesPath = [].obs;
-  final _onePrice = 0.0.obs;
-  final _dvInfoModel = AdvInfoModel();
+  final _facilities = <FacilitiesModel>[].obs;
+
+  final _buildDirectionController = TextEditingController();
+  final _buildUnitOfAnyFloorCountController = TextEditingController();
+  final _buildFloorsCountController = TextEditingController();
+  final _timeOfInstallmentsController = TextEditingController();
+  final _buildDateController = TextEditingController();
+  final _buildRoomsCountController = TextEditingController();
+  final _buildDocumentController = TextEditingController();
+  final _buildFloorController = TextEditingController();
+  final _buildAllFloorsCountController = TextEditingController();
+  final _reBuildController = TextEditingController();
+  final _countOfInstallmentsController = TextEditingController();
+  final _buildMaxCapacityController = TextEditingController();
+  final _buildRiteController = TextEditingController();
+  final _buildAnimalController = TextEditingController();
+  final _buildSmokingController = TextEditingController();
+  final _buildShoesController = TextEditingController();
+  final _buildDeprivationController = TextEditingController();
+  final _buildSleepServiceCountController = TextEditingController();
+  final _oneBedCountController = TextEditingController();
+  final _twoBedCountController = TextEditingController();
+  final _floorMaterialController = TextEditingController();
+  final _cabinetController = TextEditingController();
+  final _coldTypeController = TextEditingController();
+  final _heatTypeController = TextEditingController();
+  final _heatWaterController = TextEditingController();
+  final _wcController = TextEditingController();
+  final _numberOfInstallmentsController = TextEditingController();
+
+  final _advInfo = AdvInfoModel();
 
   EjaraDafterPage({super.key});
 
@@ -181,54 +212,16 @@ class EjaraDafterPage extends StatelessWidget {
               height: 20,
             ),
             TwoItemInRow(
-              label1: "تعداد اتاق ",
-              label2: "سن بنا ",
-              widget1: SizedBox(
-                height: 41,
-                width: getPageWidth(),
-                child: TextField(
-                  readOnly: true,
-                  textAlign: TextAlign.right,
-                  decoration: InputDecoration(
-                      hintText: 'انتخاب نشده',
-                      hintStyle: const TextStyle(
-                          color: Color(0xFFA6A6A6), fontSize: 13),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      prefixIcon: IconButton(
-                        icon: SvgPicture.asset("assets/images/Vector-20.svg"),
-                        onPressed: () {
-                          showNumberPicker((_) {});
-                        },
-                      )),
-                ),
-              ),
-              widget2: SizedBox(
-                height: 41,
-                width: getPageWidth(),
-                child: TextField(
-                  readOnly: true,
-                  textAlign: TextAlign.right,
-                  decoration: InputDecoration(
-                    hintText: 'انتخاب نشده',
-                    hintStyle:
-                        const TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    prefixIcon: IconButton(
-                      icon: SvgPicture.asset("assets/images/Vector-20.svg"),
-                      onPressed: () {
-                        persianDataPicker((date) {
-                          print(date);
-                        });
-                      },
-                    ),
-                  ),
-                ),
-              ),
-            ),
+                label1: "تعداد اتاق ",
+                label2: "سن بنا ",
+                widget1: ReadOnlyTextField(_buildRoomsCountController, () {
+                  showNumberPicker((_) {
+                    _buildRoomsCountController.text = _;
+                  });
+                }, width: getPageWidth()),
+                widget2: ReadOnlyTextField(_buildDateController, () {
+                  persianDataPicker((date) => _buildDateController.text = date);
+                }, width: getPageWidth())),
             const SizedBox(
               height: 20,
             ),
@@ -252,27 +245,27 @@ class EjaraDafterPage extends StatelessWidget {
               ],
             ),
             Container(
-              height: 41,
-              width: 372,
-              child: TextField(
-                readOnly: true,
-                textAlign: TextAlign.right,
-                decoration: InputDecoration(
-                  hintText: 'انتخاب نشده',
-                  hintStyle:
-                      const TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  prefixIcon: IconButton(
-                    icon: SvgPicture.asset("assets/images/Vector-20.svg"),
-                    onPressed: () {
-                      showNumberPicker((_) {});
-                    },
-                  ),
-                ),
-              ),
-            ),
+                height: 41,
+                width: 372,
+                child: TextField(
+                    readOnly: true,
+                    textAlign: TextAlign.right,
+                    decoration: InputDecoration(
+                      hintText: 'انتخاب نشده',
+                      hintStyle: const TextStyle(
+                          color: Color(0xFFA6A6A6), fontSize: 13),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      prefixIcon: ReadOnlyTextField(
+                        _countOfInstallmentsController,
+                        () {
+                          showNumberPicker((_) {
+                            _countOfInstallmentsController.text = _;
+                          });
+                        },
+                      ),
+                    ))),
             const SizedBox(
               height: 15,
             ),
@@ -406,10 +399,12 @@ class EjaraDafterPage extends StatelessWidget {
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
-                  prefixIcon: IconButton(
-                    icon: SvgPicture.asset("assets/images/Vector-20.svg"),
-                    onPressed: () {
-                      showNumberPicker((_) {});
+                  prefixIcon: ReadOnlyTextField(
+                    _countOfInstallmentsController,
+                    () {
+                      showNumberPicker((_) {
+                        _countOfInstallmentsController.text = _;
+                      });
                     },
                   ),
                 ),
@@ -419,97 +414,30 @@ class EjaraDafterPage extends StatelessWidget {
               height: 15,
             ),
             TwoItemInRow(
-              label1: "تعداد کل واحد ها",
-              label2: "تعداد واحد در طبقه",
-              widget1: Container(
-                height: 41,
-                width: getPageWidth(),
-                child: TextField(
-                  textAlign: TextAlign.right,
-                  decoration: InputDecoration(
-                    hintText: 'تایپ کنید',
-                    hintStyle:
-                        TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                  ),
-                ),
-              ),
-              widget2: Container(
-                height: 41,
-                width: getPageWidth(),
-                child: TextField(
-                  readOnly: true,
-                  textAlign: TextAlign.right,
-                  decoration: InputDecoration(
-                    hintText: 'انتخاب نشده',
-                    hintStyle:
-                        TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    prefixIcon: IconButton(
-                      icon: SvgPicture.asset("assets/images/Vector-20.svg"),
-                      onPressed: () {
-                        showNumberPicker((_) {});
-                      },
-                    ),
-                  ),
-                ),
-              ),
-            ),
+                label1: "تعداد کل واحد ها",
+                label2: "تعداد واحد در طبقه",
+                widget1: InputTextField(_buildAllFloorsCountController,
+                    width: getPageWidth()),
+                widget2:
+                    ReadOnlyTextField(_buildUnitOfAnyFloorCountController, () {
+                  showNumberPicker((_) {
+                    _buildUnitOfAnyFloorCountController.text = _;
+                  });
+                }, width: getPageWidth())),
             const SizedBox(
               height: 15,
             ),
             TwoItemInRow(
-              label1: "بازسازی",
-              label2: "جهت ساختمان",
-              widget1: Container(
-                height: 41,
-                width: getPageWidth(),
-                child: TextField(
-                  readOnly: true,
-                  textAlign: TextAlign.right,
-                  decoration: InputDecoration(
-                      hintText: 'انتخاب نشده',
-                      hintStyle:
-                          TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      prefixIcon: IconButton(
-                        icon: SvgPicture.asset("assets/images/Vector-20.svg"),
-                        onPressed: () {
-                          // _show_item_1.value = !_show_item_1.isTrue;
-                        },
-                      )),
-                ),
-              ),
-              widget2: Container(
-                height: 41,
-                width: getPageWidth(),
-                child: TextField(
-                  readOnly: true,
-                  textAlign: TextAlign.right,
-                  decoration: InputDecoration(
-                    hintText: 'انتخاب نشده',
-                    hintStyle: TextStyle(
-                      color: Color(0xFFA6A6A6),
-                    ),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    prefixIcon: IconButton(
-                      icon: SvgPicture.asset("assets/images/Vector-20.svg"),
-                      onPressed: () {
-                        // _show_item_1.value = !_show_item_1.isTrue;
-                      },
-                    ),
-                  ),
-                ),
-              ),
-            ),
+                label1: "بازسازی",
+                label2: "جهت ساختمان",
+                widget1: ReadOnlyTextField(_reBuildController, () {
+                  //todo
+                }, width: getPageWidth()),
+                widget2: ReadOnlyTextField(_buildDirectionController, () {
+                  jahatSakhteman((_) {
+                    _buildDirectionController.text = _;
+                  });
+                }, width: getPageWidth())),
             const SizedBox(
               height: 20,
             ),
@@ -703,7 +631,7 @@ class EjaraDafterPage extends StatelessWidget {
             ),
             ImagesPicker(selectedImagesPath: _selectedImagesPath),
             const Divider(),
-            AdvInfo(_dvInfoModel),
+            AdvInfo(_advInfo),
           ]),
         ),
       ),

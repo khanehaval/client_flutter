@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/pages/category/models/AdvInfoModel.dart';
 import 'package:flutter_application_1/pages/category/models/FacilitiesModel.dart';
+import 'package:flutter_application_1/pages/category/shared/adv_info/advInfo.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/category/shared/date.dart';
 import 'package:flutter_application_1/pages/category/shared/facilities_selector.dart';
@@ -24,7 +26,7 @@ class Presell extends StatelessWidget {
   final _hasAnbari = false.obs;
   final _hasAsansor = false.obs;
   final _hasParking = false.obs;
-
+  final _advInfo = AdvInfoModel();
   final _onePrice = 0.0.obs;
   final _buildDirectionController = TextEditingController();
   final _timeToReceiveInstallmentsController = TextEditingController();
@@ -252,7 +254,12 @@ class Presell extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
-            ImagesPicker(selectedImagesPath: _selectedImagesPath)
+            ImagesPicker(selectedImagesPath: _selectedImagesPath),
+            const Divider(),
+            const SizedBox(
+              height: 15,
+            ),
+            AdvInfo(_advInfo)
           ]),
         ),
       ),
