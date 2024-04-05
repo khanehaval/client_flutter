@@ -19,3 +19,5 @@ const BLACK_12_GRADIANT_COLOR = [
 ];
 
 double getPageWidth() => Get.width * 0.43;
+
+scaffoldKey() => GlobalKey<ScaffoldState>();

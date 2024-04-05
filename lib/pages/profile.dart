@@ -1,16 +1,190 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-
+import 'package:flutter_application_1/pages/category/shared/constant.dart';
+import 'package:flutter_application_1/pages/category/shared/widget/switachable.dart';
 import 'package:flutter_application_1/pages/educational_tour.dart';
+import 'package:flutter_application_1/pages/register/register.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 
-class Profile extends StatelessWidget {
-  Profile({super.key});
-  final _show_item_1 = false.obs;
-  @override
+openProfile() {
+  showGeneralDialog(
+    context: Get.context!,
+    barrierColor: Colors.black54,
+    barrierDismissible: true,
+    barrierLabel: 'Label',
+    pageBuilder: (_, __, ___) {
+      return Align(
+        alignment: Alignment.centerRight,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 50, horizontal: 10),
+          child: SizedBox(
+            width: Get.width / 2,
+            child: Material(
+              borderRadius: BorderRadius.circular(10),
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Column(children: [  Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        Container(
+                          width: 60,
+                          height: 60,
+                          decoration: BoxDecoration(
+                            border: Border.all(width: 3, color: Colors.yellowAccent),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black.withOpacity(0.1),
+                              )
+                            ],
+                            shape: BoxShape.circle,
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(4.0),
+                            child: Image.asset(
+                              'assets/images/logo-fa-photoshop.png',
+                              width: 55,
+                              height: 55,
+                              fit: BoxFit.contain,
+                            ),
+                          ),
+                        ),
+                        const Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Text(
+                              "آژانش املاک",
+                              style: TextStyle(
+                                  fontSize: 18,
+                                  fontFamily: MAIN_FONT_FAMILY,
+                                  color: Colors.black54),
+                            ),
+                            Row(
+                              children: [
+                                Icon(
+                                  Icons.verified,
+                                  color: Colors.blue,
+                                ),
+                                Text(
+                                  "خانه اول",
+                                  style: TextStyle(
+                                      fontSize: 18,
+                                      fontFamily: MAIN_FONT_FAMILY),
+                                ),
+                              ],
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      const Divider(),],),
+
+                    Column(
+                      children: [
+                        _item('assets/images/profile_category.svg', "میزکار"),
+                        _item('assets/images/profile_message.svg', "پیام ها"),
+                        _item(
+                            'assets/images/profile_moshavere.svg', "همکاران"),
+                        _item('assets/images/profile_category.svg', "ویترین"),
+                        _item(
+                            'assets/images/profile_vahed.svg', "واحد های من"),
+                        _item(
+                            'assets/images/profile_setting.svg', " تنظیمات"),
+                      ],
+                    ),
+                    Column(children: [
+                      const Divider(),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Container(
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(25),
+                              color: Colors.black12),
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                                vertical: 3, horizontal: 7),
+                            child: GestureDetector(
+                              onTap: () {},
+                              child: const Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Icon(
+                                    Icons.add_circle,
+                                    color: Colors.black26,
+                                  ),
+                                  Text(
+                                    "ثبت آگهی",
+                                    style:
+                                    TextStyle(fontFamily: MAIN_FONT_FAMILY),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      // switchable(, title)
+                      SizedBox(height: 19,),
+                      GestureDetector(
+                        onTap: () {
+                          Get.off(() => const Register());
+                        },
+                        child: SvgPicture.asset("assets/images/exit.svg",width: 40,height: 40,),
+                      )
+                    ],)
+
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ),
+      );
+    },
+  );
+  // showDialog(
+  //     // useSafeArea: false,
+  //     context: Get.context!,
+  //     builder: (c) {
+  //       return SizedBox(
+  //         width: 40,
+  //         child: Material(
+  //           child: SizedBox(
+  //             width: 40,
+  //             child: Align(
+  //               alignment: Alignment(0, 1),
+  //               child: Material(
+  //                 shape:
+  //                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
+  //                 child: Padding(
+  //                   padding: const EdgeInsets.all(32.0),
+  //                   child: Column(
+  //                     mainAxisSize: MainAxisSize.min,
+  //                     children: <Widget>[
+  //                       Text(
+  //                         'Number Already Exists',
+  //                         style: TextStyle(color: Colors.red),
+  //                         textAlign: TextAlign.center,
+  //                       ),
+  //                       Text(
+  //                         'Use another number',
+  //                         textAlign: TextAlign.center,
+  //                       ),
+  //                     ],
+  //                   ),
+  //                 ),
+  //               ),
+  //             )
+  //           ),
+  //         ),
+  //       );
+  //     });
+
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Colors.white,
@@ -22,9 +196,7 @@ class Profile extends StatelessWidget {
             actions: [
               GestureDetector(
                   onTap: () {
-                    Get.to(
-                      () => Profile(),
-                    );
+                    openProfile();
                   },
                   child: Padding(
                     padding: const EdgeInsets.only(right: 20),
@@ -99,8 +271,32 @@ class Profile extends StatelessWidget {
   }
 }
 
+Widget _item(String assetPath, String title) {
+  return Padding(
+    padding: const EdgeInsets.all(8.0),
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.end,
+      children: [
+        Text(
+          title,
+          style: const TextStyle(fontFamily: MAIN_FONT_FAMILY),
+        ),
+        const SizedBox(
+          width: 20,
+        ),
+        SvgPicture.asset(
+          assetPath,
+          width: 30,
+          height: 30,
+        ),
+      ],
+    ),
+  );
+}
+
 class BuildProfile extends StatelessWidget {
   final _show_item_1 = false.obs;
+
   BuildProfile({
     super.key,
   });
@@ -109,7 +305,7 @@ class BuildProfile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Obx(
       () => _show_item_1.isTrue
-          ? Stack(
+          ? Column(
               children: [
                 Container(
                   decoration: BoxDecoration(
