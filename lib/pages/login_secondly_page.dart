@@ -15,6 +15,10 @@ class LoginSecondlyPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // key: scaffoldKey(),
+      // drawer: Column(
+      //   children: [Text("darrrrrrrrrrrrrrrrta")],
+      // ),
       backgroundColor: Colors.white,
       appBar: AppBar(
         leading: IconButton(
@@ -24,9 +28,7 @@ class LoginSecondlyPage extends StatelessWidget {
         actions: [
           GestureDetector(
             onTap: () {
-              Get.to(
-                () => Profile(),
-              );
+              openProfile();
             },
             child: Padding(
               padding: const EdgeInsets.only(right: 20),
@@ -103,7 +105,7 @@ class LoginSecondlyPage extends StatelessWidget {
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 25,
                   ),
                   GestureDetector(

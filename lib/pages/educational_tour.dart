@@ -51,7 +51,7 @@ class _EducationalTourState extends State<EducationalTour> {
         actions: [
           GestureDetector(
             onTap: () {
-              Get.to(() => Profile());
+              openProfile();
             },
             child: Container(
               decoration: BoxDecoration(
