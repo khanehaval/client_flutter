@@ -91,85 +91,81 @@ class FacilitiesSelectorWidget extends StatelessWidget {
 FacilitiesSelector(
     List<FacilitiesModel> selectable, RxList<FacilitiesModel> selected) {
   return Get.bottomSheet(
-      SingleChildScrollView(
-        child: Container(
-          decoration: BoxDecoration(
-            gradient: const LinearGradient(
-              colors: GRADIANT_COLOR,
-            ),
-            border: Border.all(),
-            borderRadius: const BorderRadius.only(
-                topLeft: Radius.circular(10), topRight: Radius.circular(10)),
+      Container(
+        decoration: BoxDecoration(
+          gradient: const LinearGradient(
+            colors: GRADIANT_COLOR,
           ),
-          child: Padding(
-            padding: const EdgeInsets.all(2.0),
-            child: Container(
-              decoration: const BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(10),
-                    topRight: Radius.circular(10)),
-              ),
-              child: Padding(
-                padding:
-                    const EdgeInsets.symmetric(vertical: 40, horizontal: 30),
-                child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      const Text("بیش از یک مورد می توانید انتخاب کنید",
-                          style: TextStyle(
-                              fontSize: 15, fontFamily: MAIN_FONT_FAMILY)),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      SizedBox(
-                        height: (Get.height / 3),
-                        child: Expanded(
-                          child: GridView.builder(
-                              // shrinkWrap: true,
-                              // physics: const NeverScrollableScrollPhysics(),
-                              gridDelegate:
-                                  const SliverGridDelegateWithFixedCrossAxisCount(
-                                crossAxisCount: 2,
-                                childAspectRatio: 2,
-                              ),
-                              itemCount: selectable.length,
-                              itemBuilder: (c, index) {
-                                return Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 3, vertical: 5),
-                                  child:
-                                      _buildItem(selectable[index], selected),
-                                );
-                              }),
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      GestureDetector(
-                        child: Padding(
-                          padding: const EdgeInsets.only(top: 2),
-                          child: Container(
-                            decoration: BoxDecoration(
-                                gradient: const LinearGradient(
-                                    colors: GRADIANT_COLOR),
-                                borderRadius: BorderRadius.circular(50)),
-                            child: IconButton(
-                              icon: const Icon(
-                                CupertinoIcons.check_mark,
-                                color: Colors.white,
-                                weight: 10,
-                              ),
-                              onPressed: () {
-                                Get.back();
-                              },
+          border: Border.all(),
+          borderRadius: const BorderRadius.only(
+              topLeft: Radius.circular(10), topRight: Radius.circular(10)),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(2.0),
+          child: Container(
+            decoration: const BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(10),
+                  topRight: Radius.circular(10)),
+            ),
+            child: Padding(
+              padding:
+                  const EdgeInsets.symmetric(vertical: 40, horizontal: 30),
+              child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    const Text("بیش از یک مورد می توانید انتخاب کنید",
+                        style: TextStyle(
+                            fontSize: 15, fontFamily: MAIN_FONT_FAMILY)),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    SizedBox(
+                      height: (Get.height / 3),
+                      child: GridView.builder(
+                          // shrinkWrap: true,
+                          // physics: const NeverScrollableScrollPhysics(),
+                          gridDelegate:
+                              const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2,
+                            childAspectRatio: 2,
+                          ),
+                          itemCount: selectable.length,
+                          itemBuilder: (c, index) {
+                            return Padding(
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 3, vertical: 5),
+                              child:
+                                  _buildItem(selectable[index], selected),
+                            );
+                          }),
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    GestureDetector(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 2),
+                        child: Container(
+                          decoration: BoxDecoration(
+                              gradient: const LinearGradient(
+                                  colors: GRADIANT_COLOR),
+                              borderRadius: BorderRadius.circular(50)),
+                          child: IconButton(
+                            icon: const Icon(
+                              CupertinoIcons.check_mark,
+                              color: Colors.white,
+                              weight: 10,
                             ),
+                            onPressed: () {
+                              Get.back();
+                            },
                           ),
                         ),
                       ),
-                    ]),
-              ),
+                    ),
+                  ]),
             ),
           ),
         ),

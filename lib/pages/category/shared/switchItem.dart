@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
 import 'constant.dart';
@@ -17,9 +18,27 @@ class SwitchItem extends StatelessWidget {
 
   final selected = "".obs;
 
-  Widget buildMelkTypeItem() => Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: items.map((e) => item(e)).toList());
+  Widget buildMelkTypeItem() {
+    return Column(
+      children: _split().map((e) => _buildRow(e)).toList(),
+    );
+  }
+
+  List<List<String>> _split() {
+    var res = <List<String>>[];
+    int j = 0;
+    while (j < items.length) {
+      res.add(items.sublist(j, j + 3).toList());
+      j = j + 3;
+    }
+    return res;
+  }
+
+  Widget _buildRow(List<String> items) {
+    return Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: items.map((e) => item(e)).toList());
+  }
 
   Widget item(String text) {
     return Padding(

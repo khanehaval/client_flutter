@@ -138,7 +138,8 @@ openProfile() {
                         ),
                         GestureDetector(
                           onTap: () {
-                            Get.off(() => const Register());
+
+                            Get.offAll(() => const Register());
                           },
                           child: SvgPicture.asset(
                             "assets/images/exit.svg",

@@ -49,12 +49,14 @@ class SelectLocationEjaraPresell extends StatelessWidget {
                   ),
                 ),
               ),
-              SwitchItem(onSelected: (_) {}, items: const [
+              SwitchItem(onSelected: (_) {
+                submit.value = true;
+              }, items: const [
+                "مجتمع تجاری",
                 "ویلا",
                 "آپارتمان",
                 "برج",
                 "پنت هاوس ",
-                "مجتمع تجاری",
                 "زمین مسکونی"
               ]),
               const SizedBox(

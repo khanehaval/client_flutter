@@ -242,10 +242,13 @@ class _SelectLocationMapState extends State<SelectLocationMap> {
           alignment: Alignment.bottomLeft,
           child: Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.end,
               children: [
-                Row(
+                Column(
+                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     IconButton(
                         onPressed: () {
@@ -255,21 +258,7 @@ class _SelectLocationMapState extends State<SelectLocationMap> {
                             height: 50,
                             width: 50,
                             child: Image.asset("assets/images/icon zoom.png"))),
-                    IconButton(
-                        onPressed: () {
-                          widget.onSelect(locationInfo);
-                          // Get.back();
-                        },
-                        icon: SizedBox(
-                            height: 60,
-                            width: 60,
-                            child: Image.asset(
-                              "assets/images/Ok.png",
-                            )))
-                  ],
-                ),
-                Row(
-                  children: [
+                    SizedBox(height: 10,),
                     IconButton(
                         onPressed: () {
                           zoomOut();
@@ -278,6 +267,24 @@ class _SelectLocationMapState extends State<SelectLocationMap> {
                             width: 50,
                             height: 50,
                             child: Image.asset("assets/images/icon -.png"))),
+                  ],
+                ),
+
+                Column(
+                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    IconButton(
+                        onPressed: () {
+                          widget.onSelect(locationInfo);
+                          // Get.back();
+                        },
+                        icon: SizedBox(
+                            height: 70,
+                            width: 70,
+                            child: Image.asset(
+                              "assets/images/Ok.png",
+                            ))),
                     IconButton(
                         onPressed: () {
                           zoomIn();
@@ -287,7 +294,7 @@ class _SelectLocationMapState extends State<SelectLocationMap> {
                             height: 50,
                             child: Image.asset("assets/images/icon +.png")))
                   ],
-                )
+                ),
               ],
             ),
           ),

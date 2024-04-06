@@ -22,7 +22,7 @@ class SubmitRow extends StatelessWidget {
             children: [
               Center(
                 child: Text(
-                  "...تایید و ادامه",
+                  "... تایید و ادامه",
                   style: !submit.value
                       ? const TextStyle(
                           fontSize: 20,
