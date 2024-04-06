@@ -325,7 +325,7 @@ class PartnerShip extends StatelessWidget {
   }
 
   double getPageWidth_2(BuildContext context) =>
-      MediaQuery.of(context).size.width * 0.43;
+      getPageWidth();
 
   Widget onvanWidget(BuildContext context) {
     final isSwitched = true.obs;
@@ -775,7 +775,7 @@ Widget zamin(BuildContext context) {
                   label2: "میزان وام (تومان)",
                   widget1: SizedBox(
                     height: 41,
-                    width: MediaQuery.of(context).size.width * 0.4,
+                    width: getPageWidth(),
                     child: TextField(
                       keyboardType: TextInputType.number,
                       textAlign: TextAlign.right,
@@ -791,7 +791,7 @@ Widget zamin(BuildContext context) {
                   ),
                   widget2: SizedBox(
                     height: 41,
-                    width: MediaQuery.of(context).size.width * 0.4,
+                    width: getPageWidth(),
                     child: TextField(
                       keyboardType: TextInputType.number,
                       textAlign: TextAlign.right,

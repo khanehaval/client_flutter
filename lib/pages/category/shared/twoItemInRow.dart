@@ -28,7 +28,7 @@ class TwoItemInRow extends StatelessWidget {
               label1,
               style: const TextStyle(
                   color: Color.fromRGBO(99, 99, 99, 1),
-                  fontSize: 11,
+                  fontSize: 12,
                   fontFamily: MAIN_FONT_FAMILY),
             ),
             const SizedBox(

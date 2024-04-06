@@ -196,7 +196,7 @@ class _SelectLocationMapState extends State<SelectLocationMap> {
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(10)),
                     child: SizedBox(
-                      width: MediaQuery.of(context).size.width * 0.4,
+                      width: getPageWidth(),
                       height: 40,
                       child: Center(
                         child: Text(
@@ -224,7 +224,7 @@ class _SelectLocationMapState extends State<SelectLocationMap> {
                         borderRadius: BorderRadius.circular(10)),
                     child: SizedBox(
                       height: 40,
-                      width: MediaQuery.of(context).size.width * 0.4,
+                      width: getPageWidth(),
                       child: Center(
                         child: Text(
                           locationInfo.cityName,

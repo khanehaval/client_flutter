@@ -201,7 +201,7 @@ class ForoshAdvPage extends StatelessWidget {
               ),
               TwoItemInRow(
                   label1: "تعداد اتاق ",
-                  label2: "سن بنا ",
+                  label2: "سن بنا",
                   widget1: ReadOnlyTextField(_buildRoomsCountController, () {
                     showNumberPicker((_) {
                       _buildRoomsCountController.text = _;
@@ -210,7 +210,7 @@ class ForoshAdvPage extends StatelessWidget {
                   widget2: ReadOnlyTextField(_buildDateController, () {
                     persianDataPicker(
                         (date) => _buildDateController.text = date);
-                  }, width: getPageWidth())),
+                  }, width: getPageWidth(),fontSize: 13)),
               const SizedBox(
                 height: 20,
               ),
@@ -606,7 +606,7 @@ class ForoshAdvPage extends StatelessWidget {
                     label2: "پیش پرداخت (تومان)",
                     widget1: SizedBox(
                       height: 41,
-                      width: MediaQuery.of(context).size.width * 0.4,
+                      width: getPageWidth(),
                       child: TextField(
                         keyboardType: TextInputType.number,
                         textAlign: TextAlign.right,
@@ -622,7 +622,7 @@ class ForoshAdvPage extends StatelessWidget {
                     ),
                     widget2: SizedBox(
                       height: 41,
-                      width: MediaQuery.of(context).size.width * 0.4,
+                      width: getPageWidth(),
                       child: TextField(
                         keyboardType: TextInputType.number,
                         textAlign: TextAlign.right,
@@ -648,13 +648,13 @@ class ForoshAdvPage extends StatelessWidget {
                         persianDataPicker((date) {
                           _timeOfInstallmentsController.text = date;
                         });
-                      }, width: MediaQuery.of(context).size.width * 0.4),
+                      }, width: getPageWidth(),fontSize: 13),
                       widget2:
                           ReadOnlyTextField(_countOfInstallmentsController, () {
                         showNumberPicker((_) {
                           _countOfInstallmentsController.text = _;
                         });
-                      }, width: MediaQuery.of(context).size.width * 0.4)),
+                      }, width: getPageWidth())),
                   const SizedBox(
                     width: 25,
                     height: 10,
@@ -707,7 +707,7 @@ class ForoshAdvPage extends StatelessWidget {
                     label2: "میزان وام (تومان)",
                     widget1: SizedBox(
                       height: 41,
-                      width: MediaQuery.of(context).size.width * 0.4,
+                      width: getPageWidth(),
                       child: TextField(
                         keyboardType: TextInputType.number,
                         textAlign: TextAlign.right,
@@ -723,7 +723,7 @@ class ForoshAdvPage extends StatelessWidget {
                     ),
                     widget2: SizedBox(
                       height: 41,
-                      width: MediaQuery.of(context).size.width * 0.4,
+                      width: getPageWidth(),
                       child: TextField(
                         keyboardType: TextInputType.number,
                         textAlign: TextAlign.right,

@@ -156,4 +156,4 @@ class IntroScreen extends StatelessWidget {
 }
 
 double getPageWidth_2(BuildContext context) =>
-    MediaQuery.of(context).size.width * 0.4;
+    getPageWidth();

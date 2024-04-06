@@ -250,7 +250,7 @@ class ForoshDaftarPage extends StatelessWidget {
                     widget2: ReadOnlyTextField(_buildDateController, () {
                       persianDataPicker(
                           (date) => _buildDateController.text = date);
-                    }, width: getPageWidth())),
+                    }, width: getPageWidth(),fontSize: 13)),
                 const SizedBox(
                   height: 20,
                 ),
@@ -657,7 +657,7 @@ class ForoshDaftarPage extends StatelessWidget {
   }
 
   double getPageWidth_2(BuildContext context) =>
-      MediaQuery.of(context).size.width * 0.43;
+      getPageWidth();
 
   Widget onvanWidget(BuildContext context) {
     final isSwitched = true.obs;
@@ -764,7 +764,7 @@ class ForoshDaftarPage extends StatelessWidget {
                     label2: "پیش پرداخت (تومان)",
                     widget1: SizedBox(
                       height: 41,
-                      width: MediaQuery.of(context).size.width * 0.4,
+                      width: getPageWidth(),
                       child: TextField(
                         keyboardType: TextInputType.number,
                         textAlign: TextAlign.right,
@@ -780,7 +780,7 @@ class ForoshDaftarPage extends StatelessWidget {
                     ),
                     widget2: SizedBox(
                       height: 41,
-                      width: MediaQuery.of(context).size.width * 0.4,
+                      width: getPageWidth(),
                       child: TextField(
                         keyboardType: TextInputType.number,
                         textAlign: TextAlign.right,
@@ -806,13 +806,13 @@ class ForoshDaftarPage extends StatelessWidget {
                         persianDataPicker((date) {
                           _timeOfInstallmentsController.text = date;
                         });
-                      }, width: MediaQuery.of(context).size.width * 0.4),
+                      }, width: getPageWidth(),fontSize: 13),
                       widget2:
                           ReadOnlyTextField(_countOfInstallmentsController, () {
                         showNumberPicker((_) {
                           _countOfInstallmentsController.text = _;
                         });
-                      }, width: MediaQuery.of(context).size.width * 0.4)),
+                      }, width: getPageWidth())),
                   const SizedBox(
                     width: 25,
                     height: 10,
@@ -888,7 +888,7 @@ class ForoshDaftarPage extends StatelessWidget {
                     label2: "میزان وام (تومان)",
                     widget1: SizedBox(
                       height: 41,
-                      width: MediaQuery.of(context).size.width * 0.4,
+                      width: getPageWidth(),
                       child: TextField(
                         textAlign: TextAlign.right,
                         decoration: InputDecoration(
@@ -903,7 +903,7 @@ class ForoshDaftarPage extends StatelessWidget {
                     ),
                     widget2: SizedBox(
                       height: 41,
-                      width: MediaQuery.of(context).size.width * 0.4,
+                      width: getPageWidth(),
                       child: TextField(
                         textAlign: TextAlign.right,
                         decoration: InputDecoration(
@@ -925,7 +925,7 @@ class ForoshDaftarPage extends StatelessWidget {
                       label2: "تعداد اقساط",
                       widget1: SizedBox(
                         height: 41,
-                        width: MediaQuery.of(context).size.width * 0.4,
+                        width: getPageWidth(),
                         child: TextField(
                           textAlign: TextAlign.right,
                           readOnly: true,
@@ -945,7 +945,7 @@ class ForoshDaftarPage extends StatelessWidget {
                       ),
                       widget2: SizedBox(
                         height: 41,
-                        width: MediaQuery.of(context).size.width * 0.4,
+                        width: getPageWidth(),
                         child: TextField(
                           textAlign: TextAlign.right,
                           readOnly: true,

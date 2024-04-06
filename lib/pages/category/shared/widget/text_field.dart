@@ -3,27 +3,30 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
 Widget ReadOnlyTextField(TextEditingController controller, Function onTap,
-    {double? width}) {
+    {double? width, double? fontSize}) {
   return SizedBox(
     height: 41,
     width: width,
-    child: TextField(
-      readOnly: true,
-      focusNode: FocusNode(canRequestFocus: false),
-      textAlign: TextAlign.right,
-      controller: controller,
-      decoration: InputDecoration(
-        hintText: 'انتخاب نشده',
-        hintStyle: const TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10),
-        ),
-        prefixIcon: IconButton(
-          icon: SvgPicture.asset("assets/images/Vector-20.svg"),
-          onPressed: () {
-            FocusScope.of(Get.context!).unfocus();
-            onTap();
-          },
+    child: Center(
+      child: TextField(
+        readOnly: true,
+        focusNode: FocusNode(canRequestFocus: false),
+        textAlign: TextAlign.right,
+        controller: controller,
+        style: TextStyle(fontSize: fontSize),
+        decoration: InputDecoration(
+          hintText: 'انتخاب نشده',
+          hintStyle: const TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10),
+          ),
+          prefixIcon: IconButton(
+            icon: SvgPicture.asset("assets/images/Vector-20.svg"),
+            onPressed: () {
+              FocusScope.of(Get.context!).unfocus();
+              onTap();
+            },
+          ),
         ),
       ),
     ),

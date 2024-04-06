@@ -278,8 +278,6 @@ class Presell extends StatelessWidget {
     );
   }
 
-  double getPageWidth_2(BuildContext context) =>
-      MediaQuery.of(context).size.width * 0.43;
 
   Widget onvanWidget(BuildContext context) {
     final isSwitched = true.obs;
@@ -385,7 +383,7 @@ class Presell extends StatelessWidget {
                     label2: "پیش پرداخت (تومان)",
                     widget1: SizedBox(
                       height: 41,
-                      width: MediaQuery.of(context).size.width * 0.4,
+                      width: getPageWidth(),
                       child: TextField(
                         keyboardType: TextInputType.number,
                         textAlign: TextAlign.right,
@@ -401,7 +399,7 @@ class Presell extends StatelessWidget {
                     ),
                     widget2: SizedBox(
                       height: 41,
-                      width: MediaQuery.of(context).size.width * 0.4,
+                      width: getPageWidth(),
                       child: TextField(
                         keyboardType: TextInputType.number,
                         textAlign: TextAlign.right,
@@ -428,13 +426,13 @@ class Presell extends StatelessWidget {
                         persianDataPicker((date) {
                           _timeToReceiveInstallmentsController.text = date;
                         });
-                      }, width: MediaQuery.of(context).size.width * 0.4),
+                      }, width: getPageWidth(), fontSize: 13),
                       widget2: ReadOnlyTextField(
                           _numberOfInstallmentsController, () {
                         showNumberPicker((_) {
                           _numberOfInstallmentsController.text = _;
                         });
-                      }, width: MediaQuery.of(context).size.width * 0.4)),
+                      }, width: getPageWidth(), fontSize: 13)),
                   const SizedBox(
                     width: 30,
                     height: 10,
@@ -490,7 +488,7 @@ class Presell extends StatelessWidget {
                     label2: "میزان وام (تومان)",
                     widget1: SizedBox(
                       height: 41,
-                      width: MediaQuery.of(context).size.width * 0.4,
+                      width: getPageWidth(),
                       child: TextField(
                         keyboardType: TextInputType.number,
                         textAlign: TextAlign.right,
@@ -506,7 +504,7 @@ class Presell extends StatelessWidget {
                     ),
                     widget2: SizedBox(
                       height: 41,
-                      width: MediaQuery.of(context).size.width * 0.4,
+                      width: getPageWidth(),
                       child: TextField(
                         keyboardType: TextInputType.number,
                         textAlign: TextAlign.right,
@@ -589,7 +587,7 @@ class Presell extends StatelessWidget {
                     label2: "میزان وام (تومان)",
                     widget1: SizedBox(
                       height: 41,
-                      width: MediaQuery.of(context).size.width * 0.4,
+                      width: getPageWidth(),
                       child: TextField(
                         keyboardType: TextInputType.number,
                         textAlign: TextAlign.right,
@@ -605,7 +603,7 @@ class Presell extends StatelessWidget {
                     ),
                     widget2: SizedBox(
                       height: 41,
-                      width: MediaQuery.of(context).size.width * 0.4,
+                      width: getPageWidth(),
                       child: TextField(
                         keyboardType: TextInputType.number,
                         textAlign: TextAlign.right,

@@ -41,8 +41,8 @@ class _MapInfoPageState extends State<MapInfoPage> {
           height: 15,
         ),
         Container(
-          width: 284,
-          height: 254,
+          width: Get.width*2/3,
+          height: Get.width*2/3,
           decoration: BoxDecoration(
               gradient: const LinearGradient(colors: GRADIANT_COLOR),
               borderRadius: BorderRadius.circular(10)),
@@ -181,7 +181,7 @@ class _MapInfoPageState extends State<MapInfoPage> {
                 ),
                 Container(
                   height: 41,
-                  width: MediaQuery.of(context).size.width * 0.4,
+                  width: getPageWidth(),
                   decoration: BoxDecoration(
                       color: Colors.black,
                       borderRadius: BorderRadius.circular(5)),
@@ -213,7 +213,7 @@ class _MapInfoPageState extends State<MapInfoPage> {
         Directionality(
           textDirection: TextDirection.rtl,
           child: TextField(
-            maxLines: 3,
+            maxLines: 2,
             decoration: InputDecoration(
                 label: const Text(
                   "آدرس",

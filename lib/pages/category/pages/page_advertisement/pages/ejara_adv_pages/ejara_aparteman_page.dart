@@ -225,7 +225,7 @@ class EjaraApartemanPage extends StatelessWidget {
                   widget2: ReadOnlyTextField(_buildDateController, () {
                     persianDataPicker(
                         (date) => _buildDateController.text = date);
-                  }, width: getPageWidth())),
+                  }, width: getPageWidth(),fontSize: 13)),
               const SizedBox(
                 height: 20,
               ),
@@ -692,7 +692,7 @@ Widget aghsatiForoshWidget(BuildContext context) {
               label2: "میزان رهن (تومان) ",
               widget1: SizedBox(
                 height: 41,
-                width: MediaQuery.of(context).size.width * 0.43,
+                width: getPageWidth(),
                 child: TextField(
                   textAlign: TextAlign.right,
                   keyboardType: TextInputType.number,
@@ -708,7 +708,7 @@ Widget aghsatiForoshWidget(BuildContext context) {
               ),
               widget2: SizedBox(
                 height: 41,
-                width: MediaQuery.of(context).size.width * 0.43,
+                width: getPageWidth(),
                 child: TextField(
                   textAlign: TextAlign.right,
                   keyboardType: TextInputType.number,

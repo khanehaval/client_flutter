@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -28,7 +30,7 @@ class SwitchItem extends StatelessWidget {
     var res = <List<String>>[];
     int j = 0;
     while (j < items.length) {
-      res.add(items.sublist(j, j + 3).toList());
+      res.add(items.sublist(j, min(j+3,items.length)).toList());
       j = j + 3;
     }
     return res;

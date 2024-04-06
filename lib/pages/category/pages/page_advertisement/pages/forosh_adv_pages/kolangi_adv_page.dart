@@ -406,7 +406,7 @@ class KolangiAdvPage extends StatelessWidget {
                     label2: "متراژ بنا ",
                     widget1: SizedBox(
                       height: 41,
-                      width: MediaQuery.of(context).size.width * 0.4,
+                      width: getPageWidth(),
                       child: TextField(
                         keyboardType: TextInputType.number,
                         textAlign: TextAlign.right,
@@ -422,7 +422,7 @@ class KolangiAdvPage extends StatelessWidget {
                     ),
                     widget2: SizedBox(
                       height: 41,
-                      width: MediaQuery.of(context).size.width * 0.4,
+                      width: getPageWidth(),
                       child: TextField(
                         keyboardType: TextInputType.number,
                         textAlign: TextAlign.right,
@@ -466,7 +466,7 @@ class KolangiAdvPage extends StatelessWidget {
   }
 
   double getPageWidth_2(BuildContext context) =>
-      MediaQuery.of(context).size.width * 0.4;
+      getPageWidth();
 
   Widget aghsatiForoshWidget(BuildContext context) {
     final isSwitched = true.obs;
@@ -492,7 +492,7 @@ class KolangiAdvPage extends StatelessWidget {
                     label2: "پیش پرداخت (تومان)",
                     widget1: SizedBox(
                       height: 41,
-                      width: MediaQuery.of(context).size.width * 0.4,
+                      width: getPageWidth(),
                       child: TextField(
                         keyboardType: TextInputType.number,
                         textAlign: TextAlign.right,
@@ -508,7 +508,7 @@ class KolangiAdvPage extends StatelessWidget {
                     ),
                     widget2: SizedBox(
                       height: 41,
-                      width: MediaQuery.of(context).size.width * 0.4,
+                      width: getPageWidth(),
                       child: TextField(
                         keyboardType: TextInputType.number,
                         textAlign: TextAlign.right,
@@ -534,13 +534,13 @@ class KolangiAdvPage extends StatelessWidget {
                         persianDataPicker((date) {
                           _timeOfInstallmentsController.text = date;
                         });
-                      }, width: MediaQuery.of(context).size.width * 0.4),
+                      }, width: getPageWidth(),fontSize: 13),
                       widget2:
                           ReadOnlyTextField(_countOfInstallmentsController, () {
                         showNumberPicker((_) {
                           _countOfInstallmentsController.text = _;
                         });
-                      }, width: MediaQuery.of(context).size.width * 0.4)),
+                      }, width: getPageWidth())),
                   const SizedBox(
                     height: 20,
                   ),

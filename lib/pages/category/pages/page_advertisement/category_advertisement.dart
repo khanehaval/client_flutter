@@ -37,14 +37,14 @@ class CategoryAdvertisement extends StatelessWidget {
                     99,
                     1,
                   ),
-                  fontSize: 28,
+                  fontSize: 25,
                 ),
               ),
               const SizedBox(
-                height: 25,
+                height: 5,
               ),
               SvgPicture.asset(
-                'assets/images/key and home1.svg',
+                'assets/images/key and home1.svg',height: Get.height/4,width: Get.height/4,
               ),
             ],
           ),
@@ -96,6 +96,9 @@ class CategoryAdvertisement extends StatelessWidget {
                     _buildItem(
                         'assets/images/Frame_Construction.png', SakhVaSaz()),
                   ],
+                ),
+                SizedBox(
+                  height: 7,
                 ),
               ],
             ),

@@ -491,7 +491,7 @@ class ForoshSanatiPage extends StatelessWidget {
   }
 
   double getPageWidth_2(BuildContext context) =>
-      MediaQuery.of(context).size.width * 0.4;
+      getPageWidth();
   Widget onvanWidget(BuildContext context) {
     final isSwitched = true.obs;
     return Column(
@@ -593,7 +593,7 @@ class ForoshSanatiPage extends StatelessWidget {
                     label2: "متراژ ",
                     widget1: SizedBox(
                       height: 41,
-                      width: MediaQuery.of(context).size.width * 0.4,
+                      width: getPageWidth(),
                       child: TextField(
                         keyboardType: TextInputType.number,
                         textAlign: TextAlign.right,
@@ -609,7 +609,7 @@ class ForoshSanatiPage extends StatelessWidget {
                     ),
                     widget2: SizedBox(
                       height: 41,
-                      width: MediaQuery.of(context).size.width * 0.4,
+                      width: getPageWidth(),
                       child: TextField(
                         keyboardType: TextInputType.number,
                         textAlign: TextAlign.right,
@@ -639,7 +639,7 @@ class ForoshSanatiPage extends StatelessWidget {
                       widget2: ReadOnlyTextField(_buildDateController, () {
                         persianDataPicker(
                             (date) => _buildDateController.text = date);
-                      }, width: getPageWidth())),
+                      }, width: getPageWidth(),fontSize: 13)),
                   const SizedBox(
                     height: 20,
                   ),
@@ -757,7 +757,7 @@ class ForoshSanatiPage extends StatelessWidget {
                     label2: "متراژ بنا ",
                     widget1: SizedBox(
                       height: 41,
-                      width: MediaQuery.of(context).size.width * 0.4,
+                      width: getPageWidth(),
                       child: TextField(
                         textAlign: TextAlign.right,
                         decoration: InputDecoration(
@@ -772,7 +772,7 @@ class ForoshSanatiPage extends StatelessWidget {
                     ),
                     widget2: SizedBox(
                       height: 41,
-                      width: MediaQuery.of(context).size.width * 0.4,
+                      width: getPageWidth(),
                       child: TextField(
                         textAlign: TextAlign.right,
                         decoration: InputDecoration(

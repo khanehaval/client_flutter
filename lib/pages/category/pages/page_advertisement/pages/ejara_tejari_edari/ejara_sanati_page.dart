@@ -463,7 +463,7 @@ class EjaraShanatiPage extends StatelessWidget {
   }
 
   double getPageWidth_2(BuildContext context) =>
-      MediaQuery.of(context).size.width * 0.4;
+      getPageWidth();
 
   Widget onvanWidget(BuildContext context) {
     final isSwitched = true.obs;
@@ -566,7 +566,7 @@ class EjaraShanatiPage extends StatelessWidget {
                     label2: "میزان رهن (تومان)  ",
                     widget1: SizedBox(
                       height: 41,
-                      width: MediaQuery.of(context).size.width * 0.4,
+                      width: getPageWidth(),
                       child: TextField(
                         textAlign: TextAlign.right,
                         decoration: InputDecoration(
@@ -581,7 +581,7 @@ class EjaraShanatiPage extends StatelessWidget {
                     ),
                     widget2: SizedBox(
                       height: 41,
-                      width: MediaQuery.of(context).size.width * 0.4,
+                      width: getPageWidth(),
                       child: TextField(
                         textAlign: TextAlign.right,
                         decoration: InputDecoration(
@@ -651,7 +651,7 @@ class EjaraShanatiPage extends StatelessWidget {
                       widget1: ReadOnlyTextField(_buildDateController, () {
                         persianDataPicker(
                             (date) => _buildDateController.text = date);
-                      }, width: getPageWidth())),
+                      }, width: getPageWidth(),fontSize: 13)),
                   SizedBox(
                     height: 15,
                   ),
