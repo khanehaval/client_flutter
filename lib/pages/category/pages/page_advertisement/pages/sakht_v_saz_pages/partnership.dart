@@ -543,7 +543,7 @@ class PartnerShip extends StatelessWidget {
                       keyboardType: TextInputType.number,
                       textAlign: TextAlign.right,
                       decoration: InputDecoration(
-                        hintText: '120',
+                        hintText: 'تایپ کنید',
                         hintStyle: const TextStyle(
                             color: Color(0xFFA6A6A6), fontSize: 13),
                         border: OutlineInputBorder(

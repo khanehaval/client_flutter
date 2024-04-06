@@ -3,6 +3,7 @@ import 'package:flutter_application_1/pages/category/models/AdvInfoModel.dart';
 import 'package:flutter_application_1/pages/category/models/FacilitiesModel.dart';
 import 'package:flutter_application_1/pages/category/shared/adv_info/advInfo.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
+import 'package:flutter_application_1/pages/category/shared/date.dart';
 import 'package:flutter_application_1/pages/category/shared/facilities_selector.dart';
 import 'package:flutter_application_1/pages/category/shared/images_picker/images_picker.dart';
 import 'package:flutter_application_1/pages/category/shared/number_piacker.dart';
@@ -24,6 +25,8 @@ class EjaraKmApartemanPage extends StatelessWidget {
   final _agreement = false.obs;
   final hasshenase = false.obs;
   final _onePrice = 0.0.obs;
+  final _buildDateController = TextEditingController();
+
   final _facilities = <FacilitiesModel>[].obs;
   final _recreation = <FacilitiesModel>[].obs;
   final _homeAppliances = <FacilitiesModel>[].obs;
@@ -250,18 +253,18 @@ class EjaraKmApartemanPage extends StatelessWidget {
               height: 30,
             ),
             TwoItemInRow(
-              label2: "تعداد اتاق ",
-              label1: " طبقه ",
-              widget1: ReadOnlyTextField(_buildRoomsCountController, () {
-                showNumberPicker((_) {
-                  _buildRoomsCountController.text = _;
-                });
-              }, width: getPageWidth()),
-              widget2: ReadOnlyTextField(_buildFloorController, () {
-                showNumberPicker((_) {
-                  _buildFloorController.text = _;
-                });
-              }, width: getPageWidth()),
+                label2: "تعداد اتاق ",
+                label1: " طبقه ",
+                widget1: ReadOnlyTextField(_buildRoomsCountController, () {
+                  showNumberPicker((_) {
+                    _buildRoomsCountController.text = _;
+                  });
+                }, width: getPageWidth()),
+                widget2: ReadOnlyTextField(_buildDateController, () {
+                  showNumberPicker((date) => _buildDateController.text = date);
+                }, width: getPageWidth())),
+            const SizedBox(
+              height: 20,
             ),
             const SizedBox(
               height: 20,

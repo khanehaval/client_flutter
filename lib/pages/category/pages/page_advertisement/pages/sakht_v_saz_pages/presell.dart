@@ -28,6 +28,9 @@ class Presell extends StatelessWidget {
   final _hasParking = false.obs;
   final _advInfo = AdvInfoModel();
   final _onePrice = 0.0.obs;
+  final _countOfInstallmentsController = TextEditingController();
+  final _buildUnitOfAnyFloorCountController = TextEditingController();
+
   final _buildDirectionController = TextEditingController();
   final _timeToReceiveInstallmentsController = TextEditingController();
   final _buildFloorsCountController = TextEditingController();
@@ -176,11 +179,21 @@ class Presell extends StatelessWidget {
             const SizedBox(
               height: 25,
             ),
+            const Align(
+              alignment: Alignment.bottomRight,
+              child: Text(
+                "نوع سند",
+                style: TextStyle(
+                    color: Color.fromRGBO(99, 99, 99, 1),
+                    fontFamily: MAIN_FONT_FAMILY),
+                textAlign: TextAlign.start,
+              ),
+            ),
             ReadOnlyTextField(_buildDocumentController, () {
               Sanad((_) {
                 _buildDocumentController.text = _;
               });
-            }, width: getPageWidth()),
+            }, width: getPageWidth1()),
             const SizedBox(
               height: 20,
             ),
@@ -191,7 +204,6 @@ class Presell extends StatelessWidget {
                   height: 41,
                   width: getPageWidth(),
                   child: TextField(
-                    readOnly: true,
                     keyboardType: TextInputType.number,
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
@@ -649,8 +661,11 @@ class Presell extends StatelessWidget {
                           ),
                         ),
                       ),
-                      widget1: ReadOnlyTextField(_buildDateController, () {
-                        //todo
+                      widget1:
+                          ReadOnlyTextField(_buildRoomsCountController, () {
+                        showNumberPicker((_) {
+                          _buildRoomsCountController.text = _;
+                        });
                       }, width: getPageWidth())),
                   const SizedBox(
                     height: 20,
@@ -658,7 +673,7 @@ class Presell extends StatelessWidget {
                   const Align(
                     alignment: Alignment.bottomRight,
                     child: Text(
-                      "مدارک محرمیت",
+                      "تعداد اتاق",
                       style: TextStyle(
                           color: Color.fromRGBO(99, 99, 99, 1),
                           fontFamily: MAIN_FONT_FAMILY),
@@ -666,13 +681,12 @@ class Presell extends StatelessWidget {
                     ),
                   ),
                   ReadOnlyTextField(
-                    _buildDateController,
+                    _countOfInstallmentsController,
                     () {
-                      //todo
+                      showNumberPicker((_) {
+                        _countOfInstallmentsController.text = _;
+                      });
                     },
-                  ),
-                  const SizedBox(
-                    height: 20,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -743,7 +757,7 @@ class Presell extends StatelessWidget {
                   ReadOnlyTextField(_buildFloorsCountController, () {
                     showNumberPicker(
                         (p0) => _buildFloorsCountController.text = p0);
-                  }, width: getPageWidth()),
+                  }, width: getPageWidth1()),
                   const SizedBox(
                     height: 20,
                   ),
@@ -812,9 +826,10 @@ class Presell extends StatelessWidget {
                         jahatSakhteman(
                             (p0) => _buildDirectionController.text = p0);
                       }, width: getPageWidth()),
-                      widget2: ReadOnlyTextField(_buildFloorController, () {
+                      widget2: ReadOnlyTextField(
+                          _buildUnitOfAnyFloorCountController, () {
                         showNumberPicker((_) {
-                          _buildFloorController.text = _;
+                          _buildUnitOfAnyFloorCountController.text = _;
                         });
                       }, width: getPageWidth())),
                   const SizedBox(
@@ -838,3 +853,7 @@ class Presell extends StatelessWidget {
     );
   }
 }
+
+double getPageWidth1() => Get.width * 0.90;
+
+scaffoldKey() => GlobalKey<ScaffoldState>();

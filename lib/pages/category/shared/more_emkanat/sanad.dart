@@ -56,21 +56,23 @@ void Sanad(Function(String) onSelected) {
                             child: Center(
                               child: Obx(() => Container(
                                   width: 150,
-                                  height: selected.value == value ? 43: 40,
+                                  height: selected.value == value ? 43 : 40,
                                   decoration: BoxDecoration(
                                     color: Colors.white,
                                     gradient: selected.value == value
                                         ? const LinearGradient(
-                                        colors: GRADIANT_COLOR)
+                                            colors: GRADIANT_COLOR)
                                         : const LinearGradient(colors: [
-                                      Colors.black,
-                                      Colors.black,
-                                      Colors.black
-                                    ]),
+                                            Colors.black,
+                                            Colors.black,
+                                            Colors.black
+                                          ]),
                                     borderRadius: BorderRadius.circular(10),
                                   ),
                                   child: Padding(
-                                    padding:selected.value == value? const EdgeInsets.all(3.0):const EdgeInsets.all(1.0),
+                                    padding: selected.value == value
+                                        ? const EdgeInsets.all(3.0)
+                                        : const EdgeInsets.all(1.0),
                                     child: Container(
                                       decoration: BoxDecoration(
                                         color: Colors.white,
@@ -95,7 +97,7 @@ void Sanad(Function(String) onSelected) {
                       child: Container(
                         decoration: BoxDecoration(
                             gradient:
-                            const LinearGradient(colors: GRADIANT_COLOR),
+                                const LinearGradient(colors: GRADIANT_COLOR),
                             borderRadius: BorderRadius.circular(50)),
                         child: IconButton(
                           icon: const Icon(
@@ -118,5 +120,3 @@ void Sanad(Function(String) onSelected) {
     ),
   );
 }
-
-

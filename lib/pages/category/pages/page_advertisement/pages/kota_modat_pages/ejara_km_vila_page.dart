@@ -304,6 +304,18 @@ class EjaraKmVilaPage extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
+            const Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Text(
+                  "مدارک محرمیت",
+                  style: TextStyle(
+                      color: Color.fromRGBO(99, 99, 99, 1),
+                      fontFamily: MAIN_FONT_FAMILY),
+                  textAlign: TextAlign.start,
+                ),
+              ],
+            ),
             ReadOnlyTextField(
               _buildDeprivationController,
               () {},

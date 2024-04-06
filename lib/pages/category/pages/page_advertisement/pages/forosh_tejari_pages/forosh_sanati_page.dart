@@ -4,28 +4,63 @@ import 'package:flutter_application_1/pages/category/models/AdvInfoModel.dart';
 import 'package:flutter_application_1/pages/category/models/FacilitiesModel.dart';
 import 'package:flutter_application_1/pages/category/shared/adv_info/advInfo.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
+import 'package:flutter_application_1/pages/category/shared/date.dart';
 import 'package:flutter_application_1/pages/category/shared/facilities_selector.dart';
 import 'package:flutter_application_1/pages/category/shared/images_picker/images_picker.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/sanad.dart';
 import 'package:flutter_application_1/pages/category/shared/number_piacker.dart';
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
 
 import 'package:flutter_application_1/pages/category/shared/twoItemInRow.dart';
+import 'package:flutter_application_1/pages/category/shared/widget/text_field.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
 class ForoshSanatiPage extends StatelessWidget {
   final aghsatType = "".obs;
   final onvan = "".obs;
+  final _facilities = <FacilitiesModel>[].obs;
 
   final hasAnbari = false.obs;
   final hasAsansor = false.obs;
-  final _facilities = <FacilitiesModel>[].obs;
-  final _selectedImagesPath = [].obs;
-  final _advInfo = AdvInfoModel();
+  final hasParking = false.obs;
+  final hasSanad = true.obs;
+  int selectedIndex = 0;
 
   final _onePrice = 0.0.obs;
   final _allPriceTextController = TextEditingController();
   final _metragTextController = TextEditingController();
+  final _selectedImagesPath = [].obs;
+
+  final _buildDirectionController = TextEditingController();
+  final _buildUnitOfAnyFloorCountController = TextEditingController();
+  final _buildFloorsCountController = TextEditingController();
+  final _timeOfInstallmentsController = TextEditingController();
+  final _buildDateController = TextEditingController();
+  final _buildRoomsCountController = TextEditingController();
+  final _buildDocumentController = TextEditingController();
+  final _buildFloorController = TextEditingController();
+  final _buildAllFloorsCountController = TextEditingController();
+  final _reBuildController = TextEditingController();
+  final _countOfInstallmentsController = TextEditingController();
+  final _buildMaxCapacityController = TextEditingController();
+  final _buildRiteController = TextEditingController();
+  final _buildAnimalController = TextEditingController();
+  final _buildSmokingController = TextEditingController();
+  final _buildShoesController = TextEditingController();
+  final _buildDeprivationController = TextEditingController();
+  final _buildSleepServiceCountController = TextEditingController();
+  final _oneBedCountController = TextEditingController();
+  final _twoBedCountController = TextEditingController();
+  final _floorMaterialController = TextEditingController();
+  final _cabinetController = TextEditingController();
+  final _coldTypeController = TextEditingController();
+  final _heatTypeController = TextEditingController();
+  final _heatWaterController = TextEditingController();
+  final _wcController = TextEditingController();
+  final _numberOfInstallmentsController = TextEditingController();
+
+  final _advInfo = AdvInfoModel();
 
   ForoshSanatiPage({super.key});
 
@@ -145,47 +180,35 @@ class ForoshSanatiPage extends StatelessWidget {
                 height: 20,
               ),
               TwoItemInRow(
-                label1: "نوع سند ",
-                label2: "متراژ زمین ",
-                widget1: SizedBox(
-                  height: 41,
-                  width: getPageWidth(),
-                  child: TextField(
-                    readOnly: true,
-                    textAlign: TextAlign.right,
-                    decoration: InputDecoration(
-                        hintText: 'انتخاب نشده',
-                        hintStyle: const TextStyle(
-                            color: Color(0xFFA6A6A6), fontSize: 13),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        prefixIcon: IconButton(
-                          icon: SvgPicture.asset("assets/images/Vector-20.svg"),
-                          onPressed: () {
-                            // _show_item_1.value = !_show_item_1.isTrue;
-                          },
-                        )),
-                  ),
-                ),
-                widget2: SizedBox(
-                  height: 41,
-                  width: getPageWidth(),
-                  child: TextField(
-                    textAlign: TextAlign.right,
-                    keyboardType: TextInputType.number,
-                    decoration: InputDecoration(
-                      hintText: "0",
-                      hintStyle: const TextStyle(
-                        color: Color(0xFFA6A6A6),
-                      ),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
+                  label1: "نوع سند ",
+                  label2: "متراژ زمین ",
+                  widget2: SizedBox(
+                    height: 41,
+                    width: getPageWidth(),
+                    child: TextField(
+                      readOnly: true,
+                      textAlign: TextAlign.right,
+                      decoration: InputDecoration(
+                          hintText: 'انتخاب نشده',
+                          hintStyle: const TextStyle(
+                              color: Color(0xFFA6A6A6), fontSize: 13),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          prefixIcon: IconButton(
+                            icon:
+                                SvgPicture.asset("assets/images/Vector-20.svg"),
+                            onPressed: () {
+                              // _show_item_1.value = !_show_item_1.isTrue;
+                            },
+                          )),
                     ),
                   ),
-                ),
-              ),
+                  widget1: ReadOnlyTextField(_buildDocumentController, () {
+                    Sanad((_) {
+                      _buildDocumentController.text = _;
+                    });
+                  }, width: getPageWidth())),
               const SizedBox(
                 height: 20,
               ),
@@ -605,56 +628,18 @@ class ForoshSanatiPage extends StatelessWidget {
                     height: 17,
                   ),
                   TwoItemInRow(
-                    label1: "تعداد اتاق ",
-                    label2: "تعداد طبقات ",
-                    widget1: SizedBox(
-                      height: 41,
-                      width: MediaQuery.of(context).size.width * 0.4,
-                      child: TextField(
-                        textAlign: TextAlign.right,
-                        readOnly: true,
-                        focusNode: FocusNode(canRequestFocus: false),
-                        decoration: InputDecoration(
-                            hintText: 'انتخاب نشده',
-                            hintStyle: const TextStyle(
-                                color: Color(0xFFA6A6A6), fontSize: 13),
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            prefixIcon: IconButton(
-                              icon: SvgPicture.asset(
-                                  "assets/images/Vector-20.svg"),
-                              onPressed: () {
-                                showNumberPicker((_) {});
-                              },
-                            )),
-                      ),
-                    ),
-                    widget2: SizedBox(
-                      height: 41,
-                      width: MediaQuery.of(context).size.width * 0.4,
-                      child: TextField(
-                        textAlign: TextAlign.right,
-                        readOnly: true,
-                        focusNode: FocusNode(canRequestFocus: false),
-                        decoration: InputDecoration(
-                          hintText: 'انتخاب نشده',
-                          hintStyle: const TextStyle(
-                              color: Color(0xFFA6A6A6), fontSize: 13),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          prefixIcon: IconButton(
-                            icon:
-                                SvgPicture.asset("assets/images/Vector-20.svg"),
-                            onPressed: () {
-                              showNumberPicker((_) {});
-                            },
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
+                      label1: "تعداد اتاق ",
+                      label2: "تعداد طبقات ",
+                      widget1:
+                          ReadOnlyTextField(_buildRoomsCountController, () {
+                        showNumberPicker((_) {
+                          _buildRoomsCountController.text = _;
+                        });
+                      }, width: getPageWidth()),
+                      widget2: ReadOnlyTextField(_buildDateController, () {
+                        persianDataPicker(
+                            (date) => _buildDateController.text = date);
+                      }, width: getPageWidth())),
                   const SizedBox(
                     height: 20,
                   ),
@@ -707,11 +692,11 @@ class ForoshSanatiPage extends StatelessWidget {
                                     value: hasAsansor.value,
                                     activeColor: Colors.white,
                                     activeTrackColor:
-                                        Color.fromRGBO(54, 216, 89, 1),
+                                        const Color.fromRGBO(54, 216, 89, 1),
                                     inactiveThumbColor:
-                                        Color.fromRGBO(11, 8, 8, 0.2),
+                                        const Color.fromRGBO(11, 8, 8, 0.2),
                                     inactiveTrackColor:
-                                        Color.fromRGBO(255, 255, 255, 1)),
+                                        const Color.fromRGBO(255, 255, 255, 1)),
                               ),
                             ),
                           ),

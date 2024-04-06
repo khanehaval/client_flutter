@@ -1,4 +1,3 @@
-
 import 'dart:io';
 
 import 'package:dotted_border/dotted_border.dart';
@@ -6,7 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:gradient_borders/gradient_borders.dart';
+import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../constant.dart';
