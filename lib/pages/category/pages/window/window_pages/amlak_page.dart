@@ -120,7 +120,7 @@ class AmlakPage extends StatelessWidget {
               Obx(() => IconButton(
                     icon: _show_item_1.value
                         ? const Icon(
-                            Icons.keyboard_double_arrow_down_outlined,
+                            Icons.keyboard_double_arrow_down,
                             size: 25,
                           )
                         : const Icon(CupertinoIcons.chevron_left_2),

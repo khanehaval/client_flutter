@@ -60,8 +60,8 @@ class _CategoryItemsState extends State<CategoryItems> {
                         borderRadius: BorderRadius.circular(10),
                         border: Border.all(
                             color: _currentIndex.value == i
-                                ? const Color.fromARGB(126, 118, 238, 146)
-                                : const Color.fromRGBO(234, 234, 234, 4),
+                                ? Color.fromARGB(124, 4, 126, 116)
+                                : Color.fromARGB(251, 234, 234, 234),
                             width: _currentIndex.value == i ? 3 : 1),
                       ),
                       child: items[i],

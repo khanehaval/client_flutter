@@ -20,18 +20,15 @@ class ForoshSanatiPage extends StatelessWidget {
   final aghsatType = "".obs;
   final onvan = "".obs;
   final _facilities = <FacilitiesModel>[].obs;
-
   final hasAnbari = false.obs;
   final hasAsansor = false.obs;
   final hasParking = false.obs;
   final hasSanad = true.obs;
   int selectedIndex = 0;
-
   final _onePrice = 0.0.obs;
   final _allPriceTextController = TextEditingController();
   final _metragTextController = TextEditingController();
   final _selectedImagesPath = [].obs;
-
   final _buildDirectionController = TextEditingController();
   final _buildUnitOfAnyFloorCountController = TextEditingController();
   final _buildFloorsCountController = TextEditingController();
@@ -490,8 +487,7 @@ class ForoshSanatiPage extends StatelessWidget {
         ));
   }
 
-  double getPageWidth_2(BuildContext context) =>
-      getPageWidth();
+  double getPageWidth_2(BuildContext context) => getPageWidth();
   Widget onvanWidget(BuildContext context) {
     final isSwitched = true.obs;
     return Column(
@@ -639,7 +635,7 @@ class ForoshSanatiPage extends StatelessWidget {
                       widget2: ReadOnlyTextField(_buildDateController, () {
                         persianDataPicker(
                             (date) => _buildDateController.text = date);
-                      }, width: getPageWidth(),fontSize: 13)),
+                      }, width: getPageWidth(), fontSize: 13)),
                   const SizedBox(
                     height: 20,
                   ),

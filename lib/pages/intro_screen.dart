@@ -155,5 +155,4 @@ class IntroScreen extends StatelessWidget {
   }
 }
 
-double getPageWidth_2(BuildContext context) =>
-    getPageWidth();
+double getPageWidth_2(BuildContext context) => getPageWidth();
