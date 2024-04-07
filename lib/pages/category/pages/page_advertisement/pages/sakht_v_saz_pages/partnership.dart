@@ -324,8 +324,7 @@ class PartnerShip extends StatelessWidget {
     );
   }
 
-  double getPageWidth_2(BuildContext context) =>
-      getPageWidth();
+  double getPageWidth_2(BuildContext context) => getPageWidth();
 
   Widget onvanWidget(BuildContext context) {
     final isSwitched = true.obs;
