@@ -6,6 +6,7 @@ import 'package:flutter_application_1/pages/category/pages/messages.dart';
 import 'package:flutter_application_1/pages/category/pages/home.dart';
 import 'package:flutter_application_1/pages/category/pages/add_new_advertisment.dart';
 import 'package:flutter_application_1/pages/profile.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
 import 'category/pages/window/window.dart';
@@ -45,7 +46,10 @@ class _EducationalTourState extends State<EducationalTour> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         leading: IconButton(
-          icon: const Icon(CupertinoIcons.back),
+          icon: const Icon(
+            CupertinoIcons.back,
+            size: 30,
+          ),
           onPressed: () => Get.back(),
         ),
         actions: [
@@ -53,17 +57,15 @@ class _EducationalTourState extends State<EducationalTour> {
             onTap: () {
               openProfile();
             },
-            child: Container(
-              decoration: BoxDecoration(
-                  color: Colors.black12,
-                  borderRadius: BorderRadius.circular(60)),
-              child: const Padding(
-                padding: EdgeInsets.all(5.0),
-                child: Icon(
-                  Icons.person_2_rounded,
-                  size: 30,
-                ),
-              ),
+            child: Padding(
+              padding: const EdgeInsets.only(right: 20),
+              child: Container(
+                  decoration: BoxDecoration(
+                      color: Colors.black12,
+                      borderRadius: BorderRadius.circular(60)),
+                  child: SvgPicture.asset(
+                    'assets/images/profile.svg',
+                  )),
             ),
           ),
         ],
@@ -119,51 +121,50 @@ class _EducationalTourState extends State<EducationalTour> {
           : pages[currentPageIndex.value]),
       bottomNavigationBar: Obx(
         () => NavigationBar(
-          backgroundColor: Colors.white,
+          backgroundColor: Color.fromRGBO(248, 248, 248, 1),
           onDestinationSelected: (int index) {
             currentPageIndex.value = index;
             showEducation.value = false;
           },
-          indicatorColor: Color(0x0036d859),
           selectedIndex: currentPageIndex.value,
           destinations: <Widget>[
             NavigationDestination(
               icon: Image.asset(
                 'assets/images/home navigator.png',
-                width: 24,
-                height: 24,
+                width: 30,
+                height: 30,
               ),
               label: '',
             ),
             NavigationDestination(
               icon: Image.asset(
                 'assets/images/messages.png',
-                width: 24,
-                height: 24,
+                width: 30,
+                height: 30,
               ),
               label: '',
             ),
             NavigationDestination(
               icon: Image.asset(
                 'assets/images/add.png',
-                width: 24,
-                height: 24,
+                width: 46,
+                height: 46,
               ),
               label: '',
             ),
             NavigationDestination(
               icon: Image.asset(
                 'assets/images/Category.png',
-                width: 24,
-                height: 24,
+                width: 30,
+                height: 30,
               ),
               label: '',
             ),
             NavigationDestination(
               icon: Image.asset(
                 'assets/images/viw.png',
-                width: 24,
-                height: 24,
+                width: 30,
+                height: 30,
               ),
               label: '',
             ),

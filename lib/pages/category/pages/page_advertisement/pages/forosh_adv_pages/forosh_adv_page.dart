@@ -210,7 +210,7 @@ class ForoshAdvPage extends StatelessWidget {
                   widget2: ReadOnlyTextField(_buildDateController, () {
                     persianDataPicker(
                         (date) => _buildDateController.text = date);
-                  }, width: getPageWidth(),fontSize: 13)),
+                  }, width: getPageWidth(), fontSize: 13)),
               const SizedBox(
                 height: 20,
               ),
@@ -648,7 +648,7 @@ class ForoshAdvPage extends StatelessWidget {
                         persianDataPicker((date) {
                           _timeOfInstallmentsController.text = date;
                         });
-                      }, width: getPageWidth(),fontSize: 13),
+                      }, width: getPageWidth(), fontSize: 13),
                       widget2:
                           ReadOnlyTextField(_countOfInstallmentsController, () {
                         showNumberPicker((_) {

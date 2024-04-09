@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/pages/category/shared/constant.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
 class AmlakPage extends StatelessWidget {
@@ -17,22 +19,21 @@ class AmlakPage extends StatelessWidget {
           indent: 20,
         ),
         Container(
-          margin: const EdgeInsets.all(10),
-          padding: const EdgeInsets.all(5),
-          height: 153,
-          width: MediaQuery.of(context).size.width * 1 / 1,
-          decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(10),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.grey.withOpacity(.01),
-                  spreadRadius: 1,
-                  blurRadius: 1,
-                ),
-              ]),
-          child: Image.asset('assets/images/Group 658.png'),
-        ),
+            margin: const EdgeInsets.all(10),
+            padding: const EdgeInsets.all(5),
+            height: 153,
+            width: MediaQuery.of(context).size.width * 1 / 1,
+            decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(10),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(.01),
+                    spreadRadius: 1,
+                    blurRadius: 1,
+                  ),
+                ]),
+            child: SvgPicture.asset('assets/images/Group 658.svg')),
         const Divider(
           endIndent: 20,
           indent: 20,
@@ -45,23 +46,19 @@ class AmlakPage extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(10),
                 child: Container(
-                  height: 90,
-                  width: 147,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(10),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(.01),
-                        blurRadius: 5,
-                      )
-                    ],
-                  ),
-                  child: Image.asset(
-                    'assets/images/Group 650.png',
-                    fit: BoxFit.fill,
-                  ),
-                ),
+                    height: 90,
+                    width: 147,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(10),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(.2),
+                          blurRadius: 5,
+                        )
+                      ],
+                    ),
+                    child: SvgPicture.asset('assets/images/axhans_amlak.svg')),
               ),
               Container(
                 height: 90,
@@ -71,15 +68,12 @@ class AmlakPage extends StatelessWidget {
                   borderRadius: BorderRadius.circular(10),
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.grey.withOpacity(.01),
+                      color: Colors.grey.withOpacity(.2),
                       blurRadius: 5,
                     )
                   ],
                 ),
-                child: Image.asset(
-                  'assets/images/Group 649.png',
-                  fit: BoxFit.fill,
-                ),
+                child: SvgPicture.asset('assets/images/moshaver_amlak.svg'),
               ),
               Container(
                 margin: const EdgeInsetsDirectional.all(10),
@@ -90,14 +84,13 @@ class AmlakPage extends StatelessWidget {
                   borderRadius: BorderRadius.circular(10),
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.grey.withOpacity(.01),
+                      color: Colors.grey.withOpacity(.2),
                       blurRadius: 5,
                     )
                   ],
                 ),
-                child: Image.asset(
-                  'assets/images/Group 648.png',
-                  fit: BoxFit.fill,
+                child: SvgPicture.asset(
+                  'assets/images/kharid_khaneh.svg',
                 ),
               ),
             ],
@@ -113,30 +106,30 @@ class AmlakPage extends StatelessWidget {
         Container(
           margin: const EdgeInsets.only(left: 10, right: 10),
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10), border: Border.all()),
+              borderRadius: BorderRadius.circular(10),
+              border: Border.all(color: Color.fromRGBO(234, 234, 234, 1))),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Obx(() => IconButton(
                     icon: _show_item_1.value
-                        ? const Icon(
-                            Icons.keyboard_double_arrow_down,
-                            size: 25,
+                        ? SvgPicture.asset(
+                            'assets/images/down.svg',
                           )
-                        : const Icon(CupertinoIcons.chevron_left_2),
+                        : SvgPicture.asset('assets/images/=.svg'),
                     onPressed: () {
                       _show_item_1.value = !_show_item_1.value;
                     },
                   )),
               const Padding(
-                padding: EdgeInsets.all(8.0),
+                padding: EdgeInsets.only(left: 10, right: 10),
                 child: Text(
                   'فروش ویژه',
                   style: TextStyle(
-                      fontSize: 20,
+                      fontSize: 18,
                       color: Colors.black,
                       fontWeight: FontWeight.bold,
-                      fontFamily: 'Iran Sans Bold,'),
+                      fontFamily: MAIN_FONT_FAMILY),
                 ),
               ),
             ],
@@ -156,31 +149,36 @@ class AmlakPage extends StatelessWidget {
         Container(
           margin: const EdgeInsets.only(left: 10, right: 10),
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10), border: Border.all()),
+              borderRadius: BorderRadius.circular(10),
+              border: Border.all(
+                  color: Color.fromRGBO(
+                234,
+                234,
+                234,
+                1,
+              ))),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Obx(() => IconButton(
                     icon: _show_item_2.value
-                        ? const Icon(
-                            Icons.keyboard_double_arrow_down_outlined,
-                            size: 25,
-                          )
-                        : const Icon(
-                            CupertinoIcons.chevron_left_2,
-                          ),
+                        ? SvgPicture.asset('assets/images/down.svg')
+                        : SvgPicture.asset('assets/images/=.svg'),
                     style: const ButtonStyle(),
                     onPressed: () {
                       _show_item_2.value = !_show_item_2.value;
                     },
                   )),
-              const Text(
-                'خانه اول',
-                style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                    fontFamily: 'Iran Sans Bold,'),
+              const Padding(
+                padding: EdgeInsets.only(left: 10, right: 10),
+                child: Text(
+                  'خانه اول',
+                  style: TextStyle(
+                      fontSize: 18,
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: MAIN_FONT_FAMILY),
+                ),
               ),
             ],
           ),
@@ -212,49 +210,25 @@ class AmlakPage extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Container(
-                            height: 98,
-                            width: 182,
-                            decoration: BoxDecoration(
+                              height: 98,
+                              width: 182,
+                              decoration: BoxDecoration(
                                 color: Colors.white,
                                 borderRadius: BorderRadius.circular(10),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.grey.withOpacity(0.1),
-                                  )
-                                ],
-                                border: Border.all(
-                                  color: Colors.black,
-                                  // Initial border color
-                                  width: 0.1,
-                                )),
-                            child: Image.asset(
-                              'assets/images/Group 768.png',
-                              fit: BoxFit.fill,
-                            ),
-                          ),
+                              ),
+                              child: SvgPicture.asset(
+                                'assets/images/Group 768.svg',
+                              )),
                           Container(
-                            height: 98,
-                            width: 182,
-                            decoration: BoxDecoration(
+                              height: 98,
+                              width: 182,
+                              decoration: BoxDecoration(
                                 color: Colors.white,
                                 borderRadius: BorderRadius.circular(10),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.grey.withOpacity(0.1),
-                                    spreadRadius: 1,
-                                    blurRadius: 10,
-                                  )
-                                ],
-                                border: Border.all(
-                                  color: Colors.black,
-                                  // Initial border color
-                                  width: 0.1,
-                                )),
-                            child: Image.asset(
-                              'assets/images/Group 767.png',
-                              fit: BoxFit.fill,
-                            ),
-                          ),
+                              ),
+                              child: SvgPicture.asset(
+                                'assets/images/Group 767.svg',
+                              )),
                         ],
                       ),
                     ),
@@ -284,42 +258,25 @@ class AmlakPage extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
                           Container(
-                            height: 97,
-                            width: 180,
-                            decoration: BoxDecoration(
+                              height: 97,
+                              width: 180,
+                              decoration: BoxDecoration(
                                 color: Colors.white,
                                 borderRadius: BorderRadius.circular(10),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.grey.withOpacity(.01),
-                                  )
-                                ],
-                                border: Border.all(
-                                  color: Colors.black,
-                                  // Initial border color
-                                  width: 0.1,
-                                )),
-                            child: Image.asset('assets/images/Group 655.png',
-                                fit: BoxFit.fill),
-                          ),
+                              ),
+                              child: SvgPicture.asset(
+                                'assets/images/Group 655.svg',
+                              )),
                           Container(
-                            height: 98,
-                            width: 180,
-                            decoration: BoxDecoration(
+                              height: 98,
+                              width: 180,
+                              decoration: BoxDecoration(
                                 color: Colors.white,
                                 borderRadius: BorderRadius.circular(10),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.grey.withOpacity(.01),
-                                  )
-                                ],
-                                border: Border.all(
-                                  color: Colors.blue,
-                                  width: 0.1,
-                                )),
-                            child: Image.asset('assets/images/Group 654.png',
-                                fit: BoxFit.fill),
-                          ),
+                              ),
+                              child: SvgPicture.asset(
+                                'assets/images/Group 654.svg',
+                              )),
                         ],
                       ),
                     ),

@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/register/register.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
 class IntroScreen extends StatelessWidget {
@@ -17,23 +18,23 @@ class IntroScreen extends StatelessWidget {
             Column(
               children: [
                 Padding(
-                  padding:
-                      EdgeInsets.only(top: MediaQuery.of(context).padding.top),
-                  child: Image.asset(
-                    'assets/images/Vector.png',
-                  ),
-                ),
-                Image.asset(
-                  'assets/images/slider_1.png',
+                    padding: EdgeInsets.only(
+                        top: MediaQuery.of(context).padding.top),
+                    child: SvgPicture.asset(
+                      'assets/images/1.svg',
+                      fit: BoxFit.cover,
+                    )),
+                SvgPicture.asset(
+                  'assets/images/Page 1.svg',
                 ),
               ],
             ),
             const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 30, vertical: 30),
+              padding: EdgeInsets.symmetric(horizontal: 40, vertical: 30),
               child: Text(
                 'اینجا کلی امکانات جدید و جذاب داریم، آگهی، مشاور، آژانس همه روی نقشه منتظر شما هستند...',
                 style: TextStyle(
-                  fontWeight: FontWeight.bold,
+                  fontWeight: FontWeight.w400,
                   fontSize: 17,
                   fontFamily: MAIN_FONT_FAMILY,
                 ),
@@ -52,7 +53,7 @@ class IntroScreen extends StatelessWidget {
             ),
             Image.asset(
               'assets/images/Group 2.png',
-              height: 200,
+              height: 240,
             ),
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 20),
@@ -60,7 +61,7 @@ class IntroScreen extends StatelessWidget {
                 'دیگه لازم نیست از این بنگاه به اون بنگاه بری و ملکتون رو فایل کنین، ما تمامی ابزارهای خدمات ملک رو اینجا جمع کردیم ',
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
-                  fontSize: 17,
+                  fontSize: 20,
                   fontFamily: MAIN_FONT_FAMILY,
                 ),
                 textDirection: TextDirection.rtl,

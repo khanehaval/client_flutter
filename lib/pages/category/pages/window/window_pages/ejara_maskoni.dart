@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
 class EjaraMaskoni extends StatelessWidget {
@@ -17,20 +18,21 @@ class EjaraMaskoni extends StatelessWidget {
           indent: 20,
         ),
         Container(
-          margin: const EdgeInsets.all(10),
-          padding: const EdgeInsets.all(5),
-          height: 153,
-          width: MediaQuery.of(context).size.width * 1 / 1,
-          decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(10),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.grey.withOpacity(.01),
-                ),
-              ]),
-          child: Image.asset('assets/images/Group_699.png'),
-        ),
+            margin: const EdgeInsets.all(10),
+            padding: const EdgeInsets.all(5),
+            height: 153,
+            width: MediaQuery.of(context).size.width * 1 / 1,
+            decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(10),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(.01),
+                  ),
+                ]),
+            child: SvgPicture.asset(
+              'assets/images/Group 699.svg',
+            )),
         Divider(
           endIndent: 20,
           indent: 20,
@@ -40,8 +42,24 @@ class EjaraMaskoni extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(10),
               child: Container(
+                  height: 90,
+                  width: 171,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(.01),
+                      )
+                    ],
+                  ),
+                  child: SvgPicture.asset(
+                    'assets/images/Group 753.svg',
+                  )),
+            ),
+            Container(
                 height: 90,
-                width: 171,
+                width: 181,
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(10),
@@ -51,29 +69,9 @@ class EjaraMaskoni extends StatelessWidget {
                     )
                   ],
                 ),
-                child: Image.asset(
-                  'assets/images/Group 650.png',
-                  fit: BoxFit.fill,
-                ),
-              ),
-            ),
-            Container(
-              height: 90,
-              width: 181,
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(10),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey.withOpacity(.01),
-                  )
-                ],
-              ),
-              child: Image.asset(
-                'assets/images/Group 649.png',
-                fit: BoxFit.fill,
-              ),
-            ),
+                child: SvgPicture.asset(
+                  'assets/images/Group 752.svg',
+                )),
           ],
         ),
         Divider(
@@ -92,24 +90,20 @@ class EjaraMaskoni extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Obx(
-                    () => IconButton(
-                      icon: _show_item_1.value
-                          ? const Icon(
-                              Icons.keyboard_double_arrow_down_outlined,
-                              size: 25,
-                            )
-                          : const Icon(CupertinoIcons.chevron_left_2),
-                      onPressed: () {
-                        _show_item_1.value = !_show_item_1.isTrue;
-                      },
-                    ),
-                  ),
-                  Divider(
+                  Obx(() => IconButton(
+                        icon: _show_item_1.value
+                            ? SvgPicture.asset('assets/images/down.svg')
+                            : SvgPicture.asset('assets/images/=.svg'),
+                        style: const ButtonStyle(),
+                        onPressed: () {
+                          _show_item_1.value = !_show_item_1.value;
+                        },
+                      )),
+                  const Divider(
                     endIndent: 20,
                     indent: 20,
                   ),
-                  Column(
+                  const Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
@@ -119,7 +113,7 @@ class EjaraMaskoni extends StatelessWidget {
                             fontSize: 18,
                             color: Colors.black,
                             fontWeight: FontWeight.bold,
-                            fontFamily: 'Iran Sans Bold,'),
+                            fontFamily: MAIN_FONT_FAMILY),
                       ),
                     ],
                   ),
@@ -140,62 +134,38 @@ class EjaraMaskoni extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(15),
                 child: Container(
+                    height: 90,
+                    width: 147,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: SvgPicture.asset(
+                      'assets/images/Group 651.svg',
+                    )),
+              ),
+              Container(
                   height: 90,
                   width: 147,
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(10),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.3),
-                        blurRadius: 5,
-                      )
-                    ],
                   ),
-                  child: Image.asset(
-                    'assets/images/Group 651.png',
-                    fit: BoxFit.fill,
-                  ),
-                ),
-              ),
-              Container(
-                height: 90,
-                width: 147,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(10),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.3),
-                      blurRadius: 5,
-                    )
-                  ],
-                ),
-                child: Image.asset(
-                  'assets/images/Group 655.png',
-                  fit: BoxFit.fill,
-                ),
-              ),
+                  child: SvgPicture.asset(
+                    'assets/images/Group 655.svg',
+                  )),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Container(
-                  height: 90,
-                  width: 147,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(10),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.3),
-                        blurRadius: 5,
-                      )
-                    ],
-                  ),
-                  child: Image.asset(
-                    'assets/images/Group 654.png',
-                    fit: BoxFit.fill,
-                  ),
-                ),
+                    height: 90,
+                    width: 147,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: SvgPicture.asset(
+                      'assets/images/Group 654.svg',
+                    )),
               )
             ],
           ),

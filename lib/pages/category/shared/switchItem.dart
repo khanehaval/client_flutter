@@ -30,7 +30,7 @@ class SwitchItem extends StatelessWidget {
     var res = <List<String>>[];
     int j = 0;
     while (j < items.length) {
-      res.add(items.sublist(j, min(j+3,items.length)).toList());
+      res.add(items.sublist(j, min(j + 3, items.length)).toList());
       j = j + 3;
     }
     return res;
@@ -48,7 +48,7 @@ class SwitchItem extends StatelessWidget {
       child: Row(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.end,
         children: [
           Text(
             text,

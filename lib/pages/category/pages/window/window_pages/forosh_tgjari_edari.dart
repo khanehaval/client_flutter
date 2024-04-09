@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
 class ForoshTagariEdari extends StatelessWidget {
@@ -43,9 +44,9 @@ class ForoshTagariEdari extends StatelessWidget {
           scrollDirection: Axis.horizontal,
           child: Row(
             children: [
-              _buildRowItem('assets/images/Group 762.png'),
-              _buildRowItem('assets/images/Group 761.png'),
-              _buildRowItem('assets/images/kar.png'),
+              _buildRowItem('assets/images/Group 762.svg'),
+              _buildRowItem('assets/images/Group 761.svg'),
+              _buildRowItem('assets/images/Group 760.svg'),
             ],
           ),
         ),
@@ -62,11 +63,9 @@ class ForoshTagariEdari extends StatelessWidget {
               children: [
                 Obx(() => IconButton(
                       icon: _show_item_1.value
-                          ? const Icon(
-                              Icons.keyboard_double_arrow_down_outlined,
-                              size: 25,
-                            )
-                          : const Icon(CupertinoIcons.chevron_left_2),
+                          ? SvgPicture.asset('assets/images/down.svg')
+                          : SvgPicture.asset('assets/images/=.svg'),
+                      style: const ButtonStyle(),
                       onPressed: () {
                         _show_item_1.value = !_show_item_1.value;
                       },
@@ -74,7 +73,7 @@ class ForoshTagariEdari extends StatelessWidget {
                 const Text(
                   ' فروش بر اساس قیمت',
                   style: TextStyle(
-                      fontSize: 16,
+                      fontSize: 18,
                       color: Color.fromRGBO(48, 48, 48, 1),
                       fontFamily: MAIN_FONT_FAMILY),
                 ),
@@ -103,19 +102,17 @@ class ForoshTagariEdari extends StatelessWidget {
               children: [
                 Obx(() => IconButton(
                       icon: _show_item_2.value
-                          ? const Icon(
-                              Icons.keyboard_double_arrow_down_outlined,
-                              size: 25,
-                            )
-                          : const Icon(CupertinoIcons.chevron_left_2),
+                          ? SvgPicture.asset('assets/images/down.svg')
+                          : SvgPicture.asset('assets/images/=.svg'),
+                      style: const ButtonStyle(),
                       onPressed: () {
                         _show_item_2.value = !_show_item_2.value;
                       },
                     )),
-                Text(
+                const Text(
                   'فروش بر اساس متراژ',
                   style: TextStyle(
-                      fontSize: 16,
+                      fontSize: 18,
                       color: Color.fromRGBO(48, 48, 48, 1),
                       fontFamily: MAIN_FONT_FAMILY),
                 ),
@@ -132,9 +129,9 @@ class ForoshTagariEdari extends StatelessWidget {
           scrollDirection: Axis.horizontal,
           child: Row(
             children: [
-              _builrRowItem2('assets/images/Group 653.png'),
-              _builrRowItem2('assets/images/Group 649.png'),
-              _builrRowItem2('assets/images/Group 650.png'),
+              _builrRowItem2('assets/images/Group 653.svg'),
+              _builrRowItem2('assets/images/Group 649.svg'),
+              _builrRowItem2('assets/images/Group 650.svg'),
             ],
           ),
         ),
@@ -144,22 +141,18 @@ class ForoshTagariEdari extends StatelessWidget {
 
   Padding _builrRowItem2(String asset) {
     return Padding(
-      padding: const EdgeInsets.all(15),
-      child: Image.asset(
-        asset,
-        fit: BoxFit.fill,
-      ),
-    );
+        padding: const EdgeInsets.all(10),
+        child: SvgPicture.asset(
+          asset,
+        ));
   }
 
   Padding _buildRowItem(String asset) {
     return Padding(
-      padding: const EdgeInsets.all(15),
-      child: Image.asset(
-        asset,
-        fit: BoxFit.fill,
-      ),
-    );
+        padding: const EdgeInsets.all(10),
+        child: SvgPicture.asset(
+          asset,
+        ));
   }
 
   Obx buildItem1() {

@@ -148,19 +148,17 @@ class _SelectLocationMapState extends State<SelectLocationMap> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    const Text(
-                      "محدوده ملک را نشان بده",
-                      style: TextStyle(
-                        fontFamily: MAIN_FONT_FAMILY,
-                        fontSize: 12,
-                        color: Color.fromRGBO(99, 99, 99, 1),
-                      ),
-                      textDirection: TextDirection.rtl,
-                      textAlign: TextAlign.justify,
-                    ),
+                    const Text("محدوده ملک را نشان بده",
+                        style: TextStyle(
+                          fontFamily: MAIN_FONT_FAMILY,
+                          fontSize: 12,
+                          color: Color.fromRGBO(99, 99, 99, 1),
+                        ),
+                        textDirection: TextDirection.rtl,
+                        textAlign: TextAlign.center),
                     Container(
                       child: Transform.scale(
-                        scale: 0.80,
+                        scale: 0.90,
                         child: Obx(
                           () => Switch(
                               onChanged: (_) => showLimit.value = _,
@@ -189,6 +187,8 @@ class _SelectLocationMapState extends State<SelectLocationMap> {
                     "انتخاب محله ",
                     style: TextStyle(
                       color: Colors.black,
+                      fontSize: 12,
+                      fontFamily: MAIN_FONT_FAMILY,
                     ),
                   ),
                   Container(
@@ -214,7 +214,8 @@ class _SelectLocationMapState extends State<SelectLocationMap> {
                   const Text(
                     "*انتخاب شهر",
                     style: TextStyle(
-                      color: Colors.black,
+                      fontSize: 12,
+                      fontFamily: MAIN_FONT_FAMILY,
                     ),
                     textAlign: TextAlign.start,
                   ),
@@ -258,7 +259,9 @@ class _SelectLocationMapState extends State<SelectLocationMap> {
                             height: 50,
                             width: 50,
                             child: Image.asset("assets/images/icon zoom.png"))),
-                    SizedBox(height: 10,),
+                    const SizedBox(
+                      height: 10,
+                    ),
                     IconButton(
                         onPressed: () {
                           zoomOut();
@@ -269,10 +272,9 @@ class _SelectLocationMapState extends State<SelectLocationMap> {
                             child: Image.asset("assets/images/icon -.png"))),
                   ],
                 ),
-
                 Column(
                   mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.end,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     IconButton(
                         onPressed: () {

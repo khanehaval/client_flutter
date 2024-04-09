@@ -6,6 +6,7 @@ import 'package:flutter_application_1/pages/category/pages/window/window_pages/e
 import 'package:flutter_application_1/pages/category/pages/window/window_pages/forosh_maskoni.dart';
 import 'package:flutter_application_1/pages/category/pages/window/window_pages/forosh_tgjari_edari.dart';
 import 'package:flutter_application_1/pages/category/pages/window/window_pages/sacht_saz.dart';
+import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:get/get.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 
@@ -51,21 +52,23 @@ class _CategoryItemsState extends State<CategoryItems> {
                       alignment: 0.5);
                   _currentIndex.value = i;
                 },
-                child: Obx(() => Container(
-                      margin: const EdgeInsets.all(10),
-                      padding: const EdgeInsets.all(5),
-                      height: 98,
-                      width: 130,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        border: Border.all(
-                            color: _currentIndex.value == i
-                                ? Color.fromARGB(124, 4, 126, 116)
-                                : Color.fromARGB(251, 234, 234, 234),
-                            width: _currentIndex.value == i ? 3 : 1),
+                child: Obx(
+                  () => Container(
+                    margin: const EdgeInsets.all(10),
+                    padding: const EdgeInsets.all(5),
+                    height: 98,
+                    width: 130,
+                    decoration: BoxDecoration(
+                      gradient: const LinearGradient(
+                        colors: GRADIANT_COLOR,
                       ),
-                      child: items[i],
-                    )),
+                      borderRadius: BorderRadius.circular(10),
+                      border:
+                          Border.all(width: _currentIndex.value == i ? 2 : 1),
+                    ),
+                    child: items[i],
+                  ),
+                ),
               ),
             ),
           ),
@@ -76,13 +79,62 @@ class _CategoryItemsState extends State<CategoryItems> {
   }
 
   var items = [
-    Image.asset('assets/images/Frame_amlak.png'),
-    Image.asset('assets/images/Frame_ejaramaskoni.png'),
-    Image.asset('assets/images/Frame_foroshmaskoni.png'),
-    Image.asset('assets/images/Frame_foroshtejari.png'),
-    Image.asset('assets/images/Frame_ejaratejari.png'),
-    Image.asset('assets/images/Frame_kotamodat.png'),
-    Image.asset('assets/images/Frame_sakht va saz.png'),
+    Padding(
+      padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 12),
+      child: Image.asset(
+        'assets/images/Frame_amlak.png',
+        width: 51,
+        height: 51,
+      ),
+    ),
+    Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Image.asset(
+        'assets/images/Frame_ejaramaskoni.png',
+        width: 51,
+        height: 51,
+      ),
+    ),
+    Padding(
+      padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 12),
+      child: Image.asset(
+        'assets/images/Frame_foroshmaskoni.png',
+        width: 51,
+        height: 51,
+      ),
+    ),
+    Padding(
+      padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 12),
+      child: Image.asset(
+        'assets/images/Frame_foroshtejari.png',
+        width: 51,
+        height: 51,
+      ),
+    ),
+    Padding(
+      padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 12),
+      child: Image.asset(
+        'assets/images/Frame_ejaratejari.png',
+        width: 51,
+        height: 51,
+      ),
+    ),
+    Padding(
+      padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 12),
+      child: Image.asset(
+        'assets/images/Frame_kotamodat.png',
+        width: 51,
+        height: 51,
+      ),
+    ),
+    Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 10),
+      child: Image.asset(
+        'assets/images/Frame_sakht va saz.png',
+        width: 51,
+        height: 51,
+      ),
+    ),
   ];
 
   final _pages = [

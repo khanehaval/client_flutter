@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
 class EjaraKotaModat extends StatelessWidget {
@@ -40,46 +41,36 @@ class EjaraKotaModat extends StatelessWidget {
           endIndent: 20,
           indent: 20,
         ),
+        const SizedBox(
+          height: 20,
+        ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Container(
-              height: 90,
-          width: MediaQuery.of(context).size.width * 1 / 2.4,
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(10),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey.withOpacity(.01),
-                    blurRadius: 5,
-                  )
-                ],
-              ),
-              child: Image.asset(
-                'assets/images/Group 7621.png',
-                fit: BoxFit.fill,
-              ),
-            ),
+                height: 90,
+                width: MediaQuery.of(context).size.width * 1 / 2.4,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: SvgPicture.asset(
+                  'assets/images/Group jotaaparteman.svg',
+                )),
             Container(
-              height: 90,
-          width: MediaQuery.of(context).size.width * 1 / 2.4,
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(10),
-                boxShadow: [
-                  BoxShadow(
-                                    color: Colors.grey.withOpacity(.01),
-                    blurRadius: 5,
-                  )
-                ],
-              ),
-              child: Image.asset(
-                'assets/images/Group 7601.png',
-                fit: BoxFit.fill,
-              ),
-            ),
+                height: 90,
+                width: MediaQuery.of(context).size.width * 1 / 2.4,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: SvgPicture.asset(
+                  'assets/images/Group kotavila.svg',
+                )),
           ],
+        ),
+        const SizedBox(
+          height: 20,
         ),
         const Divider(
           endIndent: 20,
@@ -98,19 +89,15 @@ class EjaraKotaModat extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Obx(
-                      () => IconButton(
-                        icon: _show_item_1.value
-                            ? const Icon(
-                                Icons.keyboard_double_arrow_down_outlined,
-                                size: 25,
-                              )
-                            : const Icon(CupertinoIcons.chevron_left_2),
-                        onPressed: () {
-                          _show_item_1.value = !_show_item_1.value;
-                        },
-                      ),
-                    ),
+                    Obx(() => IconButton(
+                          icon: _show_item_1.value
+                              ? SvgPicture.asset('assets/images/down.svg')
+                              : SvgPicture.asset('assets/images/=.svg'),
+                          style: const ButtonStyle(),
+                          onPressed: () {
+                            _show_item_1.value = !_show_item_1.value;
+                          },
+                        )),
                     Divider(
                       endIndent: 20,
                       indent: 20,
@@ -120,7 +107,7 @@ class EjaraKotaModat extends StatelessWidget {
                         Text(
                           'اجاره کوتاه مدت ویلا در شمال',
                           style: TextStyle(
-                              fontSize: 16,
+                              fontSize: 18,
                               color: Colors.black,
                               fontWeight: FontWeight.bold,
                               fontFamily: MAIN_FONT_FAMILY),
@@ -145,62 +132,38 @@ class EjaraKotaModat extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(15),
                 child: Container(
+                    height: 90,
+                    width: 147,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: SvgPicture.asset(
+                      'assets/images/Group 650.svg',
+                    )),
+              ),
+              Container(
                   height: 90,
                   width: 147,
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(10),
-                    boxShadow: [
-                      BoxShadow(
-                                    color: Colors.grey.withOpacity(.01),
-                        blurRadius: 5,
-                      )
-                    ],
                   ),
-                  child: Image.asset(
-                    'assets/images/Group 650.png',
-                    fit: BoxFit.fill,
-                  ),
-                ),
-              ),
-              Container(
-                height: 90,
-                width: 147,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(10),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.3),
-                      blurRadius: 5,
-                    )
-                  ],
-                ),
-                child: Image.asset(
-                  'assets/images/Group 655.png',
-                  fit: BoxFit.fill,
-                ),
-              ),
+                  child: SvgPicture.asset(
+                    'assets/images/Group 655.svg',
+                  )),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Container(
-                  height: 90,
-                  width: 147,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(10),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.3),
-                        blurRadius: 5,
-                      )
-                    ],
-                  ),
-                  child: Image.asset(
-                    'assets/images/Group 654.png',
-                    fit: BoxFit.fill,
-                  ),
-                ),
+                    height: 90,
+                    width: 147,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: SvgPicture.asset(
+                      'assets/images/Group 654.svg',
+                    )),
               ),
             ],
           ),
@@ -215,8 +178,10 @@ class EjaraKotaModat extends StatelessWidget {
             padding: const EdgeInsets.all(10),
             child: Column(
               children: [
-                Image.asset('assets/images/Group 628.png'),
-                SizedBox(height: 10,),
+                Image.asset('assets/images/Group shomal kota.png'),
+                SizedBox(
+                  height: 10,
+                ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -281,7 +246,9 @@ class EjaraKotaModat extends StatelessWidget {
                     )
                   ],
                 ),
-                SizedBox(height: 10,),
+                SizedBox(
+                  height: 10,
+                ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -345,7 +312,9 @@ class EjaraKotaModat extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(height: 10,),
+                SizedBox(
+                  height: 10,
+                ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [

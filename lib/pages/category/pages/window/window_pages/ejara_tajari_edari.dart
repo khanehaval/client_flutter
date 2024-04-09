@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
 class EjaraTagariEdari extends StatelessWidget {
@@ -46,62 +47,38 @@ class EjaraTagariEdari extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(15),
                 child: Container(
+                    height: 90,
+                    width: 147,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: SvgPicture.asset(
+                      'assets/images/Group sanati.svg',
+                    )),
+              ),
+              Container(
                   height: 90,
                   width: 147,
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(10),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.3),
-                        blurRadius: 5,
-                      )
-                    ],
                   ),
-                  child: Image.asset(
-                    'assets/images/sanati.png',
-                    fit: BoxFit.fill,
-                  ),
-                ),
-              ),
-              Container(
-                height: 90,
-                width: 147,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(10),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.3),
-                      blurRadius: 5,
-                    )
-                  ],
-                ),
-                child: Image.asset(
-                  'assets/images/maqazeh.png',
-                  fit: BoxFit.fill,
-                ),
-              ),
+                  child: SvgPicture.asset(
+                    'assets/images/Group 761.svg',
+                  )),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Container(
-                  height: 90,
-                  width: 147,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(10),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.3),
-                        blurRadius: 5,
-                      )
-                    ],
-                  ),
-                  child: Image.asset(
-                    'assets/images/rahn_760.png',
-                    fit: BoxFit.fill,
-                  ),
-                ),
+                    height: 90,
+                    width: 147,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: SvgPicture.asset(
+                      'assets/images/Group 769.svg',
+                    )),
               ),
             ],
           ),
@@ -123,11 +100,9 @@ class EjaraTagariEdari extends StatelessWidget {
               children: [
                 Obx(() => IconButton(
                       icon: _show_item_1.value
-                          ? const Icon(
-                              Icons.keyboard_double_arrow_down_outlined,
-                              size: 25,
-                            )
-                          : const Icon(CupertinoIcons.chevron_left_2),
+                          ? SvgPicture.asset('assets/images/down.svg')
+                          : SvgPicture.asset('assets/images/=.svg'),
+                      style: const ButtonStyle(),
                       onPressed: () {
                         _show_item_1.value = !_show_item_1.value;
                       },
@@ -137,7 +112,7 @@ class EjaraTagariEdari extends StatelessWidget {
                   child: Text(
                     ' فروش بر اساس قیمت',
                     style: TextStyle(
-                        fontSize: 16,
+                        fontSize: 18,
                         color: Colors.black,
                         fontFamily: MAIN_FONT_FAMILY),
                   ),
@@ -167,11 +142,9 @@ class EjaraTagariEdari extends StatelessWidget {
               children: [
                 Obx(() => IconButton(
                       icon: _show_item_2.value
-                          ? const Icon(
-                              Icons.keyboard_double_arrow_down_outlined,
-                              size: 25,
-                            )
-                          : const Icon(CupertinoIcons.chevron_left_2),
+                          ? SvgPicture.asset('assets/images/down.svg')
+                          : SvgPicture.asset('assets/images/=.svg'),
+                      style: const ButtonStyle(),
                       onPressed: () {
                         _show_item_2.value = !_show_item_2.value;
                       },
@@ -181,7 +154,7 @@ class EjaraTagariEdari extends StatelessWidget {
                   child: Text(
                     'فروش بر اساس متراژ',
                     style: TextStyle(
-                        fontSize: 16,
+                        fontSize: 18,
                         color: Colors.black,
                         fontFamily: MAIN_FONT_FAMILY),
                   ),
@@ -202,62 +175,38 @@ class EjaraTagariEdari extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(15),
                 child: Container(
+                    height: 90,
+                    width: 147,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: SvgPicture.asset(
+                      'assets/images/Group 654.svg',
+                    )),
+              ),
+              Container(
                   height: 90,
                   width: 147,
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(10),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.3),
-                        blurRadius: 5,
-                      )
-                    ],
                   ),
-                  child: Image.asset(
-                    'assets/images/Group 654.png',
-                    fit: BoxFit.fill,
-                  ),
-                ),
-              ),
-              Container(
-                height: 90,
-                width: 147,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(10),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.3),
-                      blurRadius: 5,
-                    )
-                  ],
-                ),
-                child: Image.asset(
-                  'assets/images/Group 649.png',
-                  fit: BoxFit.fill,
-                ),
-              ),
+                  child: SvgPicture.asset(
+                    'assets/images/Group 649.svg',
+                  )),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Container(
-                  height: 90,
-                  width: 147,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(10),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.3),
-                        blurRadius: 5,
-                      )
-                    ],
-                  ),
-                  child: Image.asset(
-                    'assets/images/Group 650.png',
-                    fit: BoxFit.fill,
-                  ),
-                ),
+                    height: 90,
+                    width: 147,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: SvgPicture.asset(
+                      'assets/images/Group 650.svg',
+                    )),
               ),
             ],
           ),

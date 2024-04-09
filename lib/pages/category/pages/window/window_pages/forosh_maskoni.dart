@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
 class ForoshMaskoni extends StatelessWidget {
@@ -47,6 +49,23 @@ class ForoshMaskoni extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(15),
                 child: Container(
+                    height: 90,
+                    width: 147,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(10),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.3),
+                          blurRadius: 5,
+                        )
+                      ],
+                    ),
+                    child: SvgPicture.asset(
+                      'assets/images/Group 759.svg',
+                    )),
+              ),
+              Container(
                   height: 90,
                   width: 147,
                   decoration: BoxDecoration(
@@ -59,50 +78,27 @@ class ForoshMaskoni extends StatelessWidget {
                       )
                     ],
                   ),
-                  child: Image.asset(
-                    'assets/images/kolang.png',
-                    fit: BoxFit.fill,
-                  ),
-                ),
-              ),
-              Container(
-                height: 90,
-                width: 147,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(10),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.3),
-                      blurRadius: 5,
-                    )
-                  ],
-                ),
-                child: Image.asset(
-                  'assets/images/vila.png',
-                  fit: BoxFit.fill,
-                ),
-              ),
+                  child: SvgPicture.asset(
+                    'assets/images/Group 758.svg',
+                  )),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Container(
-                  height: 90,
-                  width: 147,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(10),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.3),
-                        blurRadius: 5,
-                      )
-                    ],
-                  ),
-                  child: Image.asset(
-                    'assets/images/Group 648.png',
-                    fit: BoxFit.fill,
-                  ),
-                ),
+                    height: 90,
+                    width: 147,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(10),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.3),
+                          blurRadius: 5,
+                        )
+                      ],
+                    ),
+                    child: SvgPicture.asset(
+                      'assets/images/Group 757.svg',
+                    )),
               ),
             ],
           ),
@@ -124,11 +120,9 @@ class ForoshMaskoni extends StatelessWidget {
               children: [
                 Obx(() => IconButton(
                       icon: _show_item_1.value
-                          ? const Icon(
-                              Icons.keyboard_double_arrow_down_outlined,
-                              size: 25,
-                            )
-                          : const Icon(CupertinoIcons.chevron_left_2),
+                          ? SvgPicture.asset('assets/images/down.svg')
+                          : SvgPicture.asset('assets/images/=.svg'),
+                      style: const ButtonStyle(),
                       onPressed: () {
                         _show_item_1.value = !_show_item_1.value;
                       },
@@ -139,7 +133,7 @@ class ForoshMaskoni extends StatelessWidget {
                       fontSize: 18,
                       color: Colors.black,
                       fontWeight: FontWeight.bold,
-                      fontFamily: 'Iran Sans Bold,'),
+                      fontFamily: MAIN_FONT_FAMILY),
                 ),
               ],
             ),
@@ -166,11 +160,9 @@ class ForoshMaskoni extends StatelessWidget {
               children: [
                 Obx(() => IconButton(
                       icon: _show_item_2.value
-                          ? const Icon(
-                              Icons.keyboard_double_arrow_down_outlined,
-                              size: 25,
-                            )
-                          : const Icon(CupertinoIcons.chevron_left_2),
+                          ? SvgPicture.asset('assets/images/down.svg')
+                          : SvgPicture.asset('assets/images/=.svg'),
+                      style: const ButtonStyle(),
                       onPressed: () {
                         _show_item_2.value = !_show_item_2.value;
                       },
@@ -181,7 +173,7 @@ class ForoshMaskoni extends StatelessWidget {
                       fontSize: 18,
                       color: Colors.black,
                       fontWeight: FontWeight.bold,
-                      fontFamily: 'Iran Sans Bold,'),
+                      fontFamily: MAIN_FONT_FAMILY),
                 ),
               ],
             ),
@@ -202,11 +194,9 @@ class ForoshMaskoni extends StatelessWidget {
               children: [
                 Obx(() => IconButton(
                       icon: _show_item_3.value
-                          ? const Icon(
-                              Icons.keyboard_double_arrow_down_outlined,
-                              size: 25,
-                            )
-                          : const Icon(CupertinoIcons.chevron_left_2),
+                          ? SvgPicture.asset('assets/images/down.svg')
+                          : SvgPicture.asset('assets/images/=.svg'),
+                      style: const ButtonStyle(),
                       onPressed: () {
                         _show_item_3.value = !_show_item_3.value;
                       },
@@ -217,7 +207,7 @@ class ForoshMaskoni extends StatelessWidget {
                       fontSize: 18,
                       color: Colors.black,
                       fontWeight: FontWeight.bold,
-                      fontFamily: 'Iran Sans Bold,'),
+                      fontFamily: MAIN_FONT_FAMILY),
                 ),
               ],
             ),
@@ -660,63 +650,68 @@ class ForoshMaskoni extends StatelessWidget {
               child: Column(
                 children: [
                   Image.asset(
-                    'assets/images/Group 631.png',
+                    'assets/images/Group 628.png',
                     width: 372,
                     height: 150,
                   ),
-                  Column(
-                    children: [
-                      GestureDetector(
-                        onTap: () {},
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Container(
-                              height: 98,
-                              width: 175,
-                              decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(10),
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Colors.grey.withOpacity(0.1),
-                                      spreadRadius: 1,
-                                      blurRadius: 10,
-                                    )
-                                  ],
-                                  border: Border.all(
-                                    color: Colors.black,
-                                    // Initial border color
-                                    width: 0.01,
-                                  )),
-                              child: Image.asset('assets/images/Group 655.png',
-                                  fit: BoxFit.fill),
-                            ),
-                            Container(
-                              height: 98,
-                              width: 175,
-                              decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(10),
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Colors.grey.withOpacity(.01),
-                                      spreadRadius: 1,
-                                      blurRadius: 10,
-                                    )
-                                  ],
-                                  border: Border.all(
-                                    color: Colors.black,
-                                    // Initial border color
-                                    width: 0.01,
-                                  )),
-                              child: Image.asset('assets/images/Group 654.png',
-                                  fit: BoxFit.fill),
-                            ),
-                          ],
+                  SingleChildScrollView(
+                    reverse: true,
+                    scrollDirection: Axis.horizontal,
+                    child: Column(
+                      children: [
+                        GestureDetector(
+                          onTap: () {},
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.all(10.0),
+                                child: Container(
+                                    height: 98,
+                                    width: 175,
+                                    decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.circular(10),
+                                    ),
+                                    child: SvgPicture.asset(
+                                      'assets/images/Group 755.svg',
+                                      fit: BoxFit.fill,
+                                    )),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(10.0),
+                                child: Container(
+                                    height: 98,
+                                    width: 175,
+                                    decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.circular(10),
+                                    ),
+                                    child: SvgPicture.asset(
+                                      'assets/images/Group 652.svg',
+                                      fit: BoxFit.cover,
+                                    )),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(10.0),
+                                child: Container(
+                                    height: 98,
+                                    width: 175,
+                                    decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.circular(10),
+                                      boxShadow: [],
+                                    ),
+                                    child: SvgPicture.asset(
+                                      'assets/images/Group 653.svg',
+                                      fit: BoxFit.cover,
+                                    )),
+                              )
+                            ],
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ],
               ),

@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_application_1/pages/login_secondly_page.dart';
 import 'package:flutter_application_1/repo/acount_repo.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
@@ -93,7 +94,9 @@ class _RegisterState extends State<Register> {
                           child: const Text(
                             'تایید',
                             style: TextStyle(
-                                fontSize: 20, fontWeight: FontWeight.bold),
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                color: Color.fromRGBO(48, 48, 48, 1)),
                           ),
                         ),
                       ),
@@ -118,12 +121,12 @@ class _RegisterState extends State<Register> {
                 style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
               ),
               const SizedBox(
-                height: 20,
+                height: 15,
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 60),
                 child: SizedBox(
-                  height: 75,
+                  height: 50,
                   child: TextFormField(
                     textAlign: TextAlign.center,
                     keyboardType: TextInputType.number,
@@ -132,16 +135,25 @@ class _RegisterState extends State<Register> {
                       phoneNumberSended.value = false;
                     },
                     onFieldSubmitted: (_) => sendPhoneNumber(),
-                    style: const TextStyle(fontSize: 16),
+                    style: const TextStyle(fontSize: 15),
                     inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                     decoration: InputDecoration(
-                        hintText: "09121234567",
-                        hintStyle: const TextStyle(color: Colors.black38),
+                        hintText: "0912  123  4567",
+                        hintStyle: const TextStyle(
+                            color: Color.fromRGBO(222, 222, 222, 1)),
                         border: OutlineInputBorder(
+                            borderSide: const BorderSide(
+                                color: Color.fromRGBO(222, 222, 222, 1)),
                             borderRadius: BorderRadius.circular(15)),
                         suffix: Obx(() => phoneNumberSended.value
                             ? IconButton(
-                                icon: const Icon(Icons.edit),
+                                icon: SizedBox(
+                                  height: 19,
+                                  width: 17,
+                                  child: SvgPicture.asset(
+                                    'assets/images/edit.svg',
+                                  ),
+                                ),
                                 onPressed: () =>
                                     phoneNumberSended.value = false,
                               )
@@ -155,13 +167,13 @@ class _RegisterState extends State<Register> {
               Obx(() => phoneNumberSended.value
                   ? Padding(
                       padding: const EdgeInsets.only(
-                          left: 80, right: 80, top: 30, bottom: 10),
+                          left: 80, right: 80, top: 30, bottom: 20),
                       child: SizedBox(
-                        height: MediaQuery.of(context).size.height / 4,
+                        height: MediaQuery.of(context).size.width / 3,
                         child: Column(
                           children: [
                             SizedBox(
-                              height: 75,
+                              height: 50,
                               child: TextField(
                                 textAlign: TextAlign.center,
                                 keyboardType: TextInputType.number,
@@ -173,7 +185,7 @@ class _RegisterState extends State<Register> {
                                 ),
                                 controller: _codeTextField,
                                 decoration: InputDecoration(
-                                  hintText: "--  --  --",
+                                  hintText: "--  --  --  --",
                                   hintStyle: const TextStyle(
                                       fontSize: 16,
                                       decoration: TextDecoration.none,
@@ -197,7 +209,9 @@ class _RegisterState extends State<Register> {
                                       ],
                                     )
                                   : GestureDetector(
-                                      child: const Text("00:00 ارسال مجدد کد "),
+                                      child: const Text(
+                                        "00:00     ارسال مجدد کد ",
+                                      ),
                                       onTap: () {
                                         sendPhoneNumber();
                                       },

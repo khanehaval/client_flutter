@@ -15,6 +15,7 @@ class ForoshAdv extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       bottomNavigationBar: bottomNavigation(),
       appBar: buildAppBar(),
       body: Column(

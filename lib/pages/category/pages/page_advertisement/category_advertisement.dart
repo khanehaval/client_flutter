@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/ejara_adv_pages/ejara_adv.dart';
 import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/ejara_tejari_edari/ejara_tejari_edari_adv.dart';
 import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/forosh_adv_pages/forosh_adv.dart';
@@ -25,31 +26,35 @@ class CategoryAdvertisement extends StatelessWidget {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Column(
-            children: [
-              const Text(
-                "انتخاب دسته بندی",
-                style: TextStyle(
-                  fontFamily: MAIN_FONT_FAMILY,
-                  color: Color.fromRGBO(
-                    99,
-                    99,
-                    99,
-                    1,
+          SingleChildScrollView(
+            child: Column(
+              children: [
+                const Text(
+                  "انتخاب دسته بندی",
+                  style: TextStyle(
+                    fontFamily: MAIN_FONT_FAMILY,
+                    color: Color.fromRGBO(
+                      99,
+                      99,
+                      99,
+                      1,
+                    ),
+                    fontSize: 25,
                   ),
-                  fontSize: 25,
                 ),
-              ),
-              const SizedBox(
-                height: 5,
-              ),
-              SvgPicture.asset(
-                'assets/images/key and home1.svg',height: Get.height/4,width: Get.height/4,
-              ),
-            ],
+                const SizedBox(
+                  height: 15,
+                ),
+                SvgPicture.asset(
+                  'assets/images/key and home1.svg',
+                  height: Get.height / 4,
+                  width: Get.height / 4,
+                ),
+              ],
+            ),
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(vertical: 20),
+            padding: const EdgeInsets.symmetric(vertical: 30),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -119,40 +124,40 @@ class CategoryAdvertisement extends StatelessWidget {
           NavigationDestination(
             icon: Image.asset(
               'assets/images/home navigator.png',
-              width: 24,
-              height: 24,
+              width: 30,
+              height: 30,
             ),
             label: '',
           ),
           NavigationDestination(
             icon: Image.asset(
               'assets/images/messages.png',
-              width: 24,
-              height: 24,
+              width: 30,
+              height: 30,
             ),
             label: '',
           ),
           NavigationDestination(
             icon: Image.asset(
               'assets/images/add.png',
-              width: 24,
-              height: 24,
+              width: 46,
+              height: 46,
             ),
             label: '',
           ),
           NavigationDestination(
             icon: Image.asset(
               'assets/images/Category.png',
-              width: 24,
-              height: 24,
+              width: 30,
+              height: 30,
             ),
             label: '',
           ),
           NavigationDestination(
             icon: Image.asset(
               'assets/images/viw.png',
-              width: 24,
-              height: 24,
+              width: 30,
+              height: 30,
             ),
             label: '',
           ),

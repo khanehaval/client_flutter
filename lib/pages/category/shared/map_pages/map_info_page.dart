@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/category/shared/map_pages/location_Info.dart';
@@ -41,8 +40,8 @@ class _MapInfoPageState extends State<MapInfoPage> {
           height: 15,
         ),
         Container(
-          width: Get.width*2/3,
-          height: Get.width*2/3,
+          width: Get.width * 2 / 3,
+          height: Get.width * 2 / 3,
           decoration: BoxDecoration(
               gradient: const LinearGradient(colors: GRADIANT_COLOR),
               borderRadius: BorderRadius.circular(10)),
@@ -121,8 +120,8 @@ class _MapInfoPageState extends State<MapInfoPage> {
                   child: Text(
                     "برای تغییر آدرس انتخابی رو نقشه ضربه بزنید",
                     style: TextStyle(
-                        fontSize: 12,
-                        color: Colors.deepOrangeAccent,
+                        fontSize: 11,
+                        color: Colors.blueAccent,
                         fontWeight: FontWeight.bold),
                   ),
                 )
@@ -149,14 +148,14 @@ class _MapInfoPageState extends State<MapInfoPage> {
                     width: Get.width * 0.4,
                     height: 41,
                     decoration: BoxDecoration(
-                        color: Colors.black,
-                        borderRadius: BorderRadius.circular(5)),
+                        color: Color.fromRGBO(166, 166, 166, 1),
+                        borderRadius: BorderRadius.circular(10)),
                     child: Padding(
                       padding: const EdgeInsets.all(1.0),
                       child: Container(
                         decoration: BoxDecoration(
                             color: Colors.white,
-                            borderRadius: BorderRadius.circular(5)),
+                            borderRadius: BorderRadius.circular(10)),
                         child: Align(
                           alignment: Alignment.centerRight,
                           child: Padding(
@@ -183,14 +182,14 @@ class _MapInfoPageState extends State<MapInfoPage> {
                   height: 41,
                   width: getPageWidth(),
                   decoration: BoxDecoration(
-                      color: Colors.black,
-                      borderRadius: BorderRadius.circular(5)),
+                      color: Color.fromRGBO(166, 166, 166, 1),
+                      borderRadius: BorderRadius.circular(10)),
                   child: Padding(
                     padding: const EdgeInsets.all(1.0),
                     child: Container(
                       decoration: BoxDecoration(
                           color: Colors.white,
-                          borderRadius: BorderRadius.circular(5)),
+                          borderRadius: BorderRadius.circular(10)),
                       child: Align(
                           alignment: Alignment.centerRight,
                           child: Padding(

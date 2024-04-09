@@ -5,8 +5,10 @@ import 'package:flutter_application_1/pages/consultants.dart';
 import 'package:flutter_application_1/pages/educational_tour.dart';
 import 'package:flutter_application_1/pages/category/pages/home.dart';
 import 'package:flutter_application_1/pages/profile.dart';
+import 'package:flutter_application_1/pages/profile_private.dart';
 import 'package:flutter_application_1/pages/real_estate_agency.dart';
 import 'package:flutter_application_1/pages/private.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
 class LoginSecondlyPage extends StatelessWidget {
@@ -21,32 +23,32 @@ class LoginSecondlyPage extends StatelessWidget {
       // ),
       backgroundColor: Colors.white,
       appBar: AppBar(
-        leading: IconButton(
-          icon: const Icon(Icons.close),
-          onPressed: () => Get.to(() => EducationalTour()),
-        ),
-        actions: [
-          GestureDetector(
-            onTap: () {
-              openProfile();
-            },
-            child: Padding(
-              padding: const EdgeInsets.only(right: 20),
-              child: Container(
-                  decoration: BoxDecoration(
-                      color: Colors.black12,
-                      borderRadius: BorderRadius.circular(60)),
-                  child: const Padding(
-                    padding: EdgeInsets.all(3),
-                    child: Icon(
-                      Icons.person_2_rounded,
-                      size: 30,
+          leading: IconButton(
+            icon: SvgPicture.asset(
+              'assets/images/Vector-47.svg',
+              width: 18,
+              height: 18,
+            ),
+            onPressed: () => Get.to(() => EducationalTour()),
+          ),
+          actions: [
+            GestureDetector(
+              onTap: () {
+                openProfilePrivate();
+              },
+              child: Padding(
+                  padding: const EdgeInsets.only(right: 20),
+                  child: Container(
+                    decoration: BoxDecoration(
+                        color: Colors.black12,
+                        borderRadius: BorderRadius.circular(60)),
+                    child: SvgPicture.asset(
+                      'assets/images/profile.svg',
                     ),
                   )),
             ),
-          ),
-        ],
-      ),
+          ]),
+
       body: Center(
         child: Container(
           width: MediaQuery.of(context).size.width * 0.7,
@@ -66,7 +68,6 @@ class LoginSecondlyPage extends StatelessWidget {
                   ),
                   const Text(
                     "نوع کاربری خود را انتخاب کنید",
-                    textAlign: TextAlign.justify,
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 17,

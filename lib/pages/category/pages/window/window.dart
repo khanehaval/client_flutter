@@ -45,8 +45,9 @@ class Category extends StatelessWidget {
                           child: SizedBox(
                               height: _getHeight(context) / 5,
                               width: _getHeight(context) / 5,
-                              child:
-                                  Image.asset('assets/images/Frame_amlak.png')),
+                              child: Image.asset(
+                                'assets/images/Frame_amlak.png',
+                              )),
                         ),
                       ),
                     ),
