@@ -146,16 +146,22 @@ class _RegisterState extends State<Register> {
                                 color: Color.fromRGBO(222, 222, 222, 1)),
                             borderRadius: BorderRadius.circular(15)),
                         suffix: Obx(() => phoneNumberSended.value
-                            ? IconButton(
-                                icon: SizedBox(
-                                  height: 19,
-                                  width: 17,
-                                  child: SvgPicture.asset(
-                                    'assets/images/edit.svg',
+                            ? Align(
+                                alignment: Alignment.centerRight,
+                                child: IconButton(
+                                  icon: SizedBox(
+                                    height: 19,
+                                    width: 17,
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(top: 20),
+                                      child: SvgPicture.asset(
+                                        'assets/images/edit.svg',
+                                      ),
+                                    ),
                                   ),
+                                  onPressed: () =>
+                                      phoneNumberSended.value = false,
                                 ),
-                                onPressed: () =>
-                                    phoneNumberSended.value = false,
                               )
                             : const SizedBox.shrink())),
                   ),
