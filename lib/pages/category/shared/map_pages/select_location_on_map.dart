@@ -28,7 +28,8 @@ class _SelectLocationMapState extends State<SelectLocationMap> {
   var locationInfo = LocationInfo(
       location: LatLng(35.699287, 51.338028),
       cityName: "تهران",
-      locationName: "آزادی");
+      locationName: "آزادی",
+      formatted_address: '');
 
   @override
   void initState() {
@@ -319,6 +320,11 @@ class _SelectLocationMapState extends State<SelectLocationMap> {
       }
       if (locationInfo.locationName.isEmpty) {
         locationInfo.locationName = result.data["route_name"];
+      }
+      locationInfo.formatted_address =
+          result.data["formatted_address"] as String;
+      if (locationInfo.formatted_address.isEmpty) {
+        locationInfo.locationName = result.data["formatted_address"];
       }
       setState(() {});
     } catch (_) {

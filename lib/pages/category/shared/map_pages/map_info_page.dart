@@ -16,8 +16,11 @@ class MapInfoPage extends StatefulWidget {
 }
 
 class _MapInfoPageState extends State<MapInfoPage> {
-  var locationInfo =
-      LocationInfo(location: LatLng(0, 0), cityName: "", locationName: "");
+  var locationInfo = LocationInfo(
+      location: LatLng(0, 0),
+      cityName: "",
+      locationName: "",
+      formatted_address: "");
 
   final _mapController = MapController();
 
