@@ -24,9 +24,12 @@ class _MapInfoPageState extends State<MapInfoPage> {
 
   final _mapController = MapController();
 
+  TextEditingController _addressController = TextEditingController();
+
   @override
   void initState() {
     locationInfo = widget.locationInfo;
+    _addressController.text = widget.locationInfo.formatted_address;
     super.initState();
   }
 
@@ -72,6 +75,9 @@ class _MapInfoPageState extends State<MapInfoPage> {
                                   locationInfo = _;
                                   _mapController.move(
                                       locationInfo.location, 16);
+                                  _addressController.text =
+                                      locationInfo.formatted_address;
+
                                   setState(() {});
                                 },
                               ));
@@ -108,6 +114,9 @@ class _MapInfoPageState extends State<MapInfoPage> {
                                               locationInfo = _;
                                               _mapController.move(
                                                   locationInfo.location, 16);
+                                              _addressController.text =
+                                                  locationInfo
+                                                      .formatted_address;
                                               setState(() {});
                                             },
                                           ));
@@ -215,6 +224,7 @@ class _MapInfoPageState extends State<MapInfoPage> {
         Directionality(
           textDirection: TextDirection.rtl,
           child: TextField(
+            controller: _addressController,
             maxLines: 2,
             decoration: InputDecoration(
                 label: const Text(

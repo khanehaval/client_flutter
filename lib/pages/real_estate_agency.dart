@@ -368,8 +368,5 @@ class Realestateagency extends StatelessWidget {
     );
   }
 
-  LinearGradient getGradient() => const LinearGradient(colors: [
-        Color.fromARGB(700, 55, 250, 100),
-        Colors.blue,
-      ]);
+
 }

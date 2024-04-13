@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/login_secondly_page.dart';
 import 'package:flutter_application_1/repo/acount_repo.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
@@ -78,7 +78,9 @@ class _RegisterState extends State<Register> {
                         width: 110,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(30),
-                          gradient: getGradient(),
+                          gradient: const LinearGradient(
+                            colors: GRADIANT_COLOR,
+                          ),
                         ),
                         child: ElevatedButton(
                           onPressed: () {
@@ -146,22 +148,18 @@ class _RegisterState extends State<Register> {
                                 color: Color.fromRGBO(222, 222, 222, 1)),
                             borderRadius: BorderRadius.circular(15)),
                         suffix: Obx(() => phoneNumberSended.value
-                            ? Align(
-                                alignment: Alignment.centerRight,
-                                child: IconButton(
-                                  icon: SizedBox(
-                                    height: 19,
-                                    width: 17,
-                                    child: Padding(
-                                      padding: const EdgeInsets.only(top: 20),
-                                      child: SvgPicture.asset(
-                                        'assets/images/edit.svg',
-                                      ),
+                            ? GestureDetector(
+                                child: Padding(
+                                  padding: const EdgeInsets.only(top: 2),
+                                  child: SizedBox(
+                                    height: 22,
+                                    width: 22,
+                                    child: SvgPicture.asset(
+                                      'assets/images/edit.svg',
                                     ),
                                   ),
-                                  onPressed: () =>
-                                      phoneNumberSended.value = false,
                                 ),
+                                onTap: () => phoneNumberSended.value = false,
                               )
                             : const SizedBox.shrink())),
                   ),
@@ -272,8 +270,3 @@ class _RegisterState extends State<Register> {
         fontSize: 16.0);
   }
 }
-
-LinearGradient getGradient() => const LinearGradient(colors: [
-      Color.fromARGB(255, 95, 173, 237),
-      Color.fromARGB(126, 118, 238, 146),
-    ]);

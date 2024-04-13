@@ -54,19 +54,30 @@ class _CategoryItemsState extends State<CategoryItems> {
                 },
                 child: Obx(
                   () => Container(
-                    margin: const EdgeInsets.all(10),
-                    padding: const EdgeInsets.all(5),
+                    margin: const EdgeInsets.only(left: 10,right: 10,bottom: 7,top: 7),
+                    padding: const EdgeInsets.all(2),
                     height: 98,
                     width: 130,
                     decoration: BoxDecoration(
-                      gradient: const LinearGradient(
-                        colors: GRADIANT_COLOR,
+                      gradient: _currentIndex.value == i
+                          ? const LinearGradient(
+                              colors: GRADIANT_COLOR,
+                            )
+                          : const LinearGradient(
+                        colors: BLACK_12_GRADIANT_COLOR,
                       ),
                       borderRadius: BorderRadius.circular(10),
-                      border:
-                          Border.all(width: _currentIndex.value == i ? 2 : 1),
+                      // border:
+                      //     Border.all(width: _currentIndex.value == i ? 1 : 1),
                     ),
-                    child: items[i],
+                    child: Container(
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(10),
+                          border: Border.all(
+                              width: _currentIndex.value == i ? 0 : 1),
+                        ),
+                        child: items[i]),
                   ),
                 ),
               ),
