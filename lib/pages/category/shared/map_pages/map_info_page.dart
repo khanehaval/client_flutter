@@ -1,8 +1,10 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/category/shared/map_pages/location_Info.dart';
 import 'package:flutter_application_1/pages/category/shared/map_pages/select_location_on_map.dart';
 import 'package:flutter_map/flutter_map.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:latlong2/latlong.dart';
 
@@ -127,14 +129,15 @@ class _MapInfoPageState extends State<MapInfoPage> {
                         ),
                       ],
                     )),
-                const Align(
+                Align(
                   alignment: Alignment.bottomCenter,
-                  child: Text(
-                    "برای تغییر آدرس انتخابی رو نقشه ضربه بزنید",
-                    style: TextStyle(
-                        fontSize: 11,
-                        color: Colors.blueAccent,
-                        fontWeight: FontWeight.bold),
+                  child: GestureDetector(
+                    onTap: () {
+                      Get.to(() => SelectLocationMap);
+                    },
+                    child: SvgPicture.asset(
+                      'assets/images/Frame 2328.svg',
+                    ),
                   ),
                 )
               ],
@@ -194,7 +197,7 @@ class _MapInfoPageState extends State<MapInfoPage> {
                   height: 41,
                   width: getPageWidth(),
                   decoration: BoxDecoration(
-                      color: Color.fromRGBO(166, 166, 166, 1),
+                      color: const Color.fromRGBO(166, 166, 166, 1),
                       borderRadius: BorderRadius.circular(10)),
                   child: Padding(
                     padding: const EdgeInsets.all(1.0),
@@ -221,19 +224,23 @@ class _MapInfoPageState extends State<MapInfoPage> {
         const SizedBox(
           height: 15,
         ),
+        const Align(
+          alignment: Alignment.centerRight,
+          child: Text(
+            "آدرس",
+            style: TextStyle(
+                color: Color(0xFF636363),
+                fontSize: 14,
+                fontWeight: FontWeight.w500,
+                fontFamily: MAIN_FONT_FAMILY),
+          ),
+        ),
         Directionality(
           textDirection: TextDirection.rtl,
           child: TextField(
             controller: _addressController,
             maxLines: 2,
             decoration: InputDecoration(
-                label: const Text(
-                  "آدرس",
-                  style: TextStyle(
-                      fontFamily: MAIN_FONT_FAMILY,
-                      color: Color.fromRGBO(166, 166, 166, 1)),
-                  textAlign: TextAlign.right,
-                ),
                 border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10))),
           ),

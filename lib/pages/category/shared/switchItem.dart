@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
 import 'constant.dart';
@@ -69,10 +70,12 @@ class SwitchItem extends StatelessWidget {
                       borderRadius: BorderRadius.circular(10),
                       border: Border.all(width: 1, color: Colors.black54)),
                   child: selected.value == text
-                      ? const Icon(
-                          Icons.check,
-                          color: Colors.black,
-                          size: 26,
+                      ? SizedBox(
+                          width: 15,
+                          height: 14,
+                          child: SvgPicture.asset(
+                            'assets/images/check.svg',
+                          ),
                         )
                       : const SizedBox.shrink(),
                 )),

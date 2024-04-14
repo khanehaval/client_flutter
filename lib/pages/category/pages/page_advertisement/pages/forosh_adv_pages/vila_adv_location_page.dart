@@ -1,4 +1,3 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/forosh_adv_pages/vila_adv_page.dart';
@@ -12,12 +11,8 @@ import 'package:flutter_application_1/pages/category/shared/constant.dart';
 
 class VilaLocationAdvPage extends StatelessWidget {
   LocationInfo locationInfo;
-
   VilaLocationAdvPage({required this.locationInfo, super.key});
-
-
   final _submit = false.obs;
-
 
   @override
   Widget build(BuildContext context) {
@@ -50,18 +45,18 @@ class VilaLocationAdvPage extends StatelessWidget {
                 ),
               ),
               SwitchItem(
-                  onSelected:(_){
+                  onSelected: (_) {
                     _submit.value = true;
-                  }, items: const ["باغ ویلا", "باغ", "خانه ویلایی"]),
+                  },
+                  items: const ["باغ ویلا", "باغ", "خانه ویلایی"]),
               const SizedBox(
                 height: 50,
               ),
-              SubmitRow(submit:_submit , nextPage: VilaAdvPage())
+              SubmitRow(submit: _submit, nextPage: VilaAdvPage())
             ],
           ),
         ),
       ),
     );
   }
-
 }

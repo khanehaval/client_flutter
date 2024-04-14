@@ -23,92 +23,94 @@ class CategoryAdvertisement extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: buildAppBar(),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          SingleChildScrollView(
-            child: Column(
-              children: [
-                const Text(
-                  "انتخاب دسته بندی",
-                  style: TextStyle(
-                    fontFamily: MAIN_FONT_FAMILY,
-                    color: Color.fromRGBO(
-                      99,
-                      99,
-                      99,
-                      1,
+      body: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            SingleChildScrollView(
+              child: Column(
+                children: [
+                  const Text(
+                    "انتخاب دسته بندی",
+                    style: TextStyle(
+                      fontFamily: MAIN_FONT_FAMILY,
+                      color: Color.fromRGBO(
+                        99,
+                        99,
+                        99,
+                        1,
+                      ),
+                      fontSize: 25,
                     ),
-                    fontSize: 25,
                   ),
-                ),
-                const SizedBox(
-                  height: 15,
-                ),
-                SvgPicture.asset(
-                  'assets/images/key and home1.svg',
-                  height: Get.height / 4,
-                  width: Get.height / 4,
-                ),
-              ],
+                  const SizedBox(
+                    height: 15,
+                  ),
+                  SvgPicture.asset(
+                    'assets/images/key and home1.svg',
+                    height: Get.height / 4,
+                    width: Get.height / 4,
+                  ),
+                ],
+              ),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 30),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    _buildItem(
-                      'assets/images/Frame_rentstore.png',
-                      EjaraAdv(),
-                    ),
-                    const SizedBox(
-                      width: 20,
-                    ),
-                    _buildItem(
-                        'assets/images/Frame_salehome.png', const ForoshAdv()),
-                  ],
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    _buildItem(
-                        'assets/images/Frame_rent.png', EjaraTejariAdv()),
-                    const SizedBox(
-                      width: 20,
-                    ),
-                    _buildItem(
-                        'assets/images/Frame_salestore.png', ForoshTejariAdv()),
-                  ],
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    _buildItem(
-                        'assets/images/Frame_Daily.png', EjaraKotaModatPage()),
-                    const SizedBox(
-                      width: 20,
-                    ),
-                    _buildItem(
-                        'assets/images/Frame_Construction.png', SakhVaSaz()),
-                  ],
-                ),
-                SizedBox(
-                  height: 7,
-                ),
-              ],
-            ),
-          )
-        ],
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 35),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      _buildItem(
+                        'assets/images/Frame_rentstore.png',
+                        EjaraAdv(),
+                      ),
+                      const SizedBox(
+                        width: 20,
+                      ),
+                      _buildItem('assets/images/Frame_salehome.png',
+                          const ForoshAdv()),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      _buildItem(
+                          'assets/images/Frame_rent.png', EjaraTejariAdv()),
+                      const SizedBox(
+                        width: 20,
+                      ),
+                      _buildItem('assets/images/Frame_salestore.png',
+                          ForoshTejariAdv()),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      _buildItem('assets/images/Frame_Daily.png',
+                          EjaraKotaModatPage()),
+                      const SizedBox(
+                        width: 20,
+                      ),
+                      _buildItem(
+                          'assets/images/Frame_Construction.png', SakhVaSaz()),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 7,
+                  ),
+                ],
+              ),
+            )
+          ],
+        ),
       ),
       bottomNavigationBar: NavigationBar(
         backgroundColor: Colors.white,

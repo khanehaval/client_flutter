@@ -9,7 +9,9 @@ import 'package:flutter_application_1/db/entities/estate.dart';
 import 'package:flutter_application_1/db/entities/user.dart';
 import 'package:flutter_application_1/db/entities/user_type.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
+import 'package:flutter_application_1/pages/educational_tour.dart';
 import 'package:flutter_application_1/pages/intro_screen.dart';
+import 'package:flutter_application_1/pages/login_secondly_page.dart';
 import 'package:flutter_application_1/repo/acount_repo.dart';
 import 'package:flutter_application_1/services/acount_service.dart';
 import 'package:get/get.dart';
@@ -45,10 +47,18 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(fontFamily: MAIN_FONT_FAMILY),
-      debugShowMaterialGrid: false,
-      home: IntroScreen(),
-    );
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(fontFamily: MAIN_FONT_FAMILY),
+        debugShowMaterialGrid: false,
+        home: FutureBuilder(
+            future: _userRepo.isLogin(),
+            builder: (c, s) {
+              if (s.connectionState == ConnectionState.waiting) {
+                return Container();
+              }
+              return (s.data ?? false)
+                  ? const LoginSecondlyPage()
+                  : IntroScreen();
+            }));
   }
 }

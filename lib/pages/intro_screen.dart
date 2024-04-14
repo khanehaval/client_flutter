@@ -26,8 +26,8 @@ class IntroScreen extends StatelessWidget {
                       fit: BoxFit.cover,
                     ),
                     SizedBox(
-                      // height: 212,
-                      // width: 220,
+                      height: 212,
+                      width: 316,
                       child: SvgPicture.asset(
                         'assets/images/Page 1.svg',
                       ),
@@ -52,14 +52,14 @@ class IntroScreen extends StatelessWidget {
                     textAlign: TextAlign.justify,
                   ),
                   SizedBox(
-                    height: 10,
+                    height: 5,
                   ),
                   Text(
                     'اینجا کلی امکانات جدید و جذاب \nداریم، آگهی، مشاور، آژانس همه\n روی نقشه منتظر شما هستند...',
                     style: TextStyle(
-                      fontWeight: FontWeight.bold,
+                      fontWeight: FontWeight.w600,
                       fontSize: 18,
-                      fontFamily: MAIN_FONT_FAMILY,
+                      fontFamily: AutofillHints.streetAddressLevel2,
                     ),
                     textDirection: TextDirection.rtl,
                     textAlign: TextAlign.justify,
@@ -83,10 +83,8 @@ class IntroScreen extends StatelessWidget {
                       'assets/images/Vector11 1.png',
                       fit: BoxFit.cover,
                     ),
-                    Image.asset(
-                      width: 280,
-                      height: 280,
-                      'assets/images/screen2_1.png',
+                    SvgPicture.asset(
+                      'assets/images/Group 2.svg',
                     ),
                   ],
                 ),
@@ -109,14 +107,14 @@ class IntroScreen extends StatelessWidget {
                         textAlign: TextAlign.justify,
                       ),
                       SizedBox(
-                        height: 10,
+                        height: 5,
                       ),
                       Text(
                         'دیگه لازم نیست از این بنگاه به\n اون بنگاه بری و ملکتون رو فایل\n کنین، ما تمامی ابزارهای خدمات\n ملک رو اینجا جمع کردیم ',
                         style: TextStyle(
-                          fontWeight: FontWeight.bold,
+                          fontWeight: FontWeight.w600,
                           fontSize: 17,
-                          fontFamily: MAIN_FONT_FAMILY,
+                          fontFamily: AutofillHints.streetAddressLevel2,
                         ),
                         textDirection: TextDirection.rtl,
                         textAlign: TextAlign.justify,
@@ -139,13 +137,18 @@ class IntroScreen extends StatelessWidget {
                   padding: EdgeInsets.symmetric(
                       vertical: MediaQuery.of(context).padding.top),
                   child: Image.asset(
-                    'assets/images/Vector11 1.png',
+                    'assets/images/Vector22.png',
                   ),
                 ),
-                Image.asset(
-                  width: 280,
-                  height: 280,
-                  'assets/images/screen3_1.png',
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 80),
+                  child: SizedBox(
+                    height: 280,
+                    width: 280,
+                    child: SvgPicture.asset(
+                      'assets/images/Group 2362.svg',
+                    ),
+                  ),
                 ),
               ],
             ),
@@ -165,14 +168,14 @@ class IntroScreen extends StatelessWidget {
                     textAlign: TextAlign.justify,
                   ),
                   SizedBox(
-                    height: 10,
+                    height: 5,
                   ),
                   Text(
                     'دیگه لازم نیست ساعت ها تو ترافیک\n دنبال مشاور خوب و بنگاه بگردی، ما\n همه رو اینجا جمع کردیم... ',
                     style: TextStyle(
-                      fontWeight: FontWeight.bold,
+                      fontWeight: FontWeight.w500,
                       fontSize: 17,
-                      fontFamily: MAIN_FONT_FAMILY,
+                      fontFamily: AutofillHints.streetAddressLevel2,
                     ),
                     textDirection: TextDirection.rtl,
                     textAlign: TextAlign.justify,
@@ -212,7 +215,7 @@ class IntroScreen extends StatelessWidget {
             child: Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(30),
-                gradient: const LinearGradient(colors: GRADIANT_COLOR),
+                gradient: GetGradient(),
               ),
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -255,14 +258,13 @@ class IntroScreen extends StatelessWidget {
           () => _sliderIndex.value == 0
               ? const SizedBox.shrink()
               : Padding(
-                  padding: const EdgeInsets.only(right: 8, top: 40),
+                  padding: const EdgeInsets.only(right: 330, top: 40),
                   child: IconButton(
                       onPressed: () {
                         Get.off(() => const Register());
                       },
-                      icon: const Icon(
-                        Icons.clear,
-                        size: 35,
+                      icon: SvgPicture.asset(
+                        'assets/images/Vector-47.svg',
                       )),
                 ),
         )
@@ -272,3 +274,7 @@ class IntroScreen extends StatelessWidget {
 }
 
 double getPageWidth_2(BuildContext context) => getPageWidth();
+LinearGradient GetGradient() => const LinearGradient(colors: [
+      Color.fromARGB(255, 95, 173, 237),
+      Color.fromARGB(126, 118, 238, 146),
+    ]);

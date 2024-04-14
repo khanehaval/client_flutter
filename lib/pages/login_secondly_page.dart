@@ -219,10 +219,7 @@ class LoginSecondlyPage extends StatelessWidget {
         ],
       ),
       shape: RoundedRectangleBorder(
-        side: const BorderSide(
-          width: 1,
-          color: Color.fromARGB(255, 19, 122, 133),
-        ),
+        side: const BorderSide(width: 1, color: Color(0xFF429F56)),
         borderRadius: BorderRadius.circular(10),
       ),
     );

@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/profile.dart';
+import 'package:flutter_application_1/pages/profile_private.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
 PreferredSizeWidget buildAppBar() {
@@ -14,19 +16,18 @@ PreferredSizeWidget buildAppBar() {
     actions: [
       GestureDetector(
         onTap: () {
-          openProfile();
+          openProfilePrivate();
         },
-        child: Container(
-          decoration: BoxDecoration(
-              color: Colors.black12, borderRadius: BorderRadius.circular(60)),
-          child: const Padding(
-            padding: EdgeInsets.all(5.0),
-            child: Icon(
-              Icons.person_2_rounded,
-              size: 30,
-            ),
-          ),
-        ),
+        child: Padding(
+            padding: const EdgeInsets.only(right: 20),
+            child: Container(
+              decoration: BoxDecoration(
+                  color: Colors.black12,
+                  borderRadius: BorderRadius.circular(60)),
+              child: SvgPicture.asset(
+                'assets/images/profile.svg',
+              ),
+            )),
       ),
     ],
   );
