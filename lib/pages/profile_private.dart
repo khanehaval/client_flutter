@@ -139,7 +139,8 @@ openProfilePrivate() {
                                 child: Container(
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(25),
-                                      color: Color.fromRGBO(226, 226, 226, 1)),
+                                      color: const Color.fromRGBO(
+                                          226, 226, 226, 1)),
                                   child: Padding(
                                     padding: const EdgeInsets.symmetric(
                                         vertical: 2, horizontal: 7),
