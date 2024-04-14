@@ -1,10 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/pages/Advertisements.dart';
+import 'package:flutter_application_1/pages/category/pages/Advertisements/Advertisements.dart';
 import 'package:flutter_application_1/pages/category/pages/messages.dart';
 
 import 'package:flutter_application_1/pages/category/pages/home.dart';
 import 'package:flutter_application_1/pages/category/pages/add_new_advertisment.dart';
+import 'package:flutter_application_1/pages/category/pages/real_estate.dart';
 import 'package:flutter_application_1/pages/profile.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
@@ -37,7 +38,9 @@ class _EducationalTourState extends State<EducationalTour> {
     const Messages(),
     AddNewAdvertisement(),
     const Category(),
-    const Advertisements()
+    Advertisements(
+      onSelect: (LocationInfo) {},
+    )
   ];
 
   @override
