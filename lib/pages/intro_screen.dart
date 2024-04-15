@@ -7,184 +7,210 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
 class IntroScreen extends StatelessWidget {
-  IntroScreen({super.key});
-
   final _sliderIndex = 0.obs;
+  int index = 0;
 
+  IntroScreen({super.key});
   List<Widget> _sliders(BuildContext context) => [
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Column(
-              children: [
-                Stack(
-                  alignment: Alignment.center,
+        GestureDetector(
+          onHorizontalDragStart: (details) {
+            if (index > 0) {
+              Get.off(() => const Register());
+            } else {
+              _sliderIndex.value = index + 1;
+            }
+          },
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Padding(
+                padding:
+                    EdgeInsets.only(top: MediaQuery.of(context).padding.top),
+                child: Column(
                   children: [
-                    Image.asset(
-                      'assets/images/Vector111 1.png',
-                      fit: BoxFit.cover,
+                    Stack(
+                      alignment: Alignment.center,
+                      children: [
+                        SizedBox(
+                          height: 412,
+                          width: 664,
+                          child: SvgPicture.asset(
+                            'assets/images/Group 2363.svg',
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 30, vertical: 30),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    Text(
+                      "جستجو در نقشه:",
+                      style: TextStyle(
+                        fontWeight: FontWeight.w200,
+                        fontSize: 20,
+                        fontFamily: MAIN_FONT_FAMILY,
+                      ),
+                      textDirection: TextDirection.rtl,
+                      textAlign: TextAlign.justify,
                     ),
                     SizedBox(
-                      height: 212,
-                      width: 316,
-                      child: SvgPicture.asset(
-                        'assets/images/Page 1.svg',
-                      ),
+                      height: 5,
+                    ),
+                    Text(
+                      'اینجا کلی امکانات جدید و جذاب \nداریم، آگهی، مشاور، آژانس همه\n روی نقشه منتظر شما هستند...',
+                      style: TextStyle(
+                          fontWeight: FontWeight.w200,
+                          fontSize: 18,
+                          fontFamily: MAIN_FONT_FAMILY),
+                      textDirection: TextDirection.rtl,
+                      textAlign: TextAlign.justify,
                     ),
                   ],
                 ),
-              ],
-            ),
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 30, vertical: 30),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  Text(
-                    "جستجو در نقشه:",
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20,
-                      fontFamily: MAIN_FONT_FAMILY,
-                    ),
-                    textDirection: TextDirection.rtl,
-                    textAlign: TextAlign.justify,
-                  ),
-                  SizedBox(
-                    height: 5,
-                  ),
-                  Text(
-                    'اینجا کلی امکانات جدید و جذاب \nداریم، آگهی، مشاور، آژانس همه\n روی نقشه منتظر شما هستند...',
-                    style: TextStyle(
-                      fontWeight: FontWeight.w600,
-                      fontSize: 18,
-                      fontFamily: AutofillHints.streetAddressLevel2,
-                    ),
-                    textDirection: TextDirection.rtl,
-                    textAlign: TextAlign.justify,
-                  ),
-                ],
               ),
-            ),
-            _nextRow(0)
-          ],
+              _nextRow(0)
+            ],
+          ),
         ),
-        Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Stack(
-                  alignment: Alignment.center,
-                  children: [
-                    Image.asset(
-                      'assets/images/Vector11 1.png',
-                      fit: BoxFit.cover,
-                    ),
-                    SvgPicture.asset(
-                      'assets/images/Group 2.svg',
-                    ),
-                  ],
-                ),
-                const SizedBox(
-                  height: 40,
-                ),
-                const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.end,
+        GestureDetector(
+          onHorizontalDragStart: (details) {
+            if (index == 0) {
+              Get.off(() => const Register());
+            } else {
+              _sliderIndex.value = index + 1;
+            }
+          },
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Stack(
+                    alignment: Alignment.center,
                     children: [
-                      Text(
-                        'امکانات ویژه',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20,
-                          fontFamily: MAIN_FONT_FAMILY,
-                        ),
-                        textDirection: TextDirection.rtl,
-                        textAlign: TextAlign.justify,
+                      Image.asset(
+                        'assets/images/Vector11 1.png',
+                        fit: BoxFit.cover,
                       ),
-                      SizedBox(
-                        height: 5,
-                      ),
-                      Text(
-                        'دیگه لازم نیست از این بنگاه به\n اون بنگاه بری و ملکتون رو فایل\n کنین، ما تمامی ابزارهای خدمات\n ملک رو اینجا جمع کردیم ',
-                        style: TextStyle(
-                          fontWeight: FontWeight.w600,
-                          fontSize: 17,
-                          fontFamily: AutofillHints.streetAddressLevel2,
-                        ),
-                        textDirection: TextDirection.rtl,
-                        textAlign: TextAlign.justify,
+                      SvgPicture.asset(
+                        'assets/images/Group 2.svg',
                       ),
                     ],
                   ),
-                ),
-              ],
-            ),
-            _nextRow(1)
-          ],
-        ),
-        Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Stack(
-              alignment: Alignment.center,
-              children: [
-                Padding(
-                  padding: EdgeInsets.symmetric(
-                      vertical: MediaQuery.of(context).padding.top),
-                  child: Image.asset(
-                    'assets/images/Vector22.png',
+                  const SizedBox(
+                    height: 40,
                   ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 80),
-                  child: SizedBox(
-                    height: 280,
-                    width: 280,
-                    child: SvgPicture.asset(
-                      'assets/images/Group 2362.svg',
+                  const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        Text(
+                          'امکانات ویژه',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20,
+                            fontFamily: MAIN_FONT_FAMILY,
+                          ),
+                          textDirection: TextDirection.rtl,
+                          textAlign: TextAlign.justify,
+                        ),
+                        SizedBox(
+                          height: 5,
+                        ),
+                        Text(
+                          'دیگه لازم نیست از این بنگاه به\n اون بنگاه بری و ملکتون رو فایل\n کنین، ما تمامی ابزارهای خدمات\n ملک رو اینجا جمع کردیم ',
+                          style: TextStyle(
+                            fontWeight: FontWeight.w600,
+                            fontSize: 17,
+                            fontFamily: AutofillHints.streetAddressLevel2,
+                          ),
+                          textDirection: TextDirection.rtl,
+                          textAlign: TextAlign.justify,
+                        ),
+                      ],
                     ),
-                  ),
-                ),
-              ],
-            ),
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 27),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  Text(
-                    'مشاورین متخصص',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20,
-                      fontFamily: MAIN_FONT_FAMILY,
-                    ),
-                    textDirection: TextDirection.rtl,
-                    textAlign: TextAlign.justify,
-                  ),
-                  SizedBox(
-                    height: 5,
-                  ),
-                  Text(
-                    'دیگه لازم نیست ساعت ها تو ترافیک\n دنبال مشاور خوب و بنگاه بگردی، ما\n همه رو اینجا جمع کردیم... ',
-                    style: TextStyle(
-                      fontWeight: FontWeight.w500,
-                      fontSize: 17,
-                      fontFamily: AutofillHints.streetAddressLevel2,
-                    ),
-                    textDirection: TextDirection.rtl,
-                    textAlign: TextAlign.justify,
                   ),
                 ],
               ),
-            ),
-            _nextRow(2)
-          ],
+              _nextRow(1)
+            ],
+          ),
+        ),
+        GestureDetector(
+          onHorizontalDragStart: (details) {
+            if (index > 2) {
+              Get.off(() => const Register());
+            } else {
+              _sliderIndex.value = index + 1;
+            }
+          },
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Stack(
+                alignment: Alignment.center,
+                children: [
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                        vertical: MediaQuery.of(context).padding.top),
+                    child: Image.asset(
+                      'assets/images/Vector22.png',
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 80),
+                    child: SizedBox(
+                      height: 280,
+                      width: 280,
+                      child: SvgPicture.asset(
+                        'assets/images/Group 2362.svg',
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 27),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    Text(
+                      'مشاورین متخصص',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20,
+                        fontFamily: MAIN_FONT_FAMILY,
+                      ),
+                      textDirection: TextDirection.rtl,
+                      textAlign: TextAlign.justify,
+                    ),
+                    SizedBox(
+                      height: 5,
+                    ),
+                    Text(
+                      'دیگه لازم نیست ساعت ها تو ترافیک\n دنبال مشاور خوب و بنگاه بگردی، ما\n همه رو اینجا جمع کردیم... ',
+                      style: TextStyle(
+                        fontWeight: FontWeight.w500,
+                        fontSize: 17,
+                        fontFamily: AutofillHints.streetAddressLevel2,
+                      ),
+                      textDirection: TextDirection.rtl,
+                      textAlign: TextAlign.justify,
+                    ),
+                  ],
+                ),
+              ),
+              _nextRow(2)
+            ],
+          ),
         )
       ];
 

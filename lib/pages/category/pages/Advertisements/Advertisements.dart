@@ -1,8 +1,14 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/category/shared/map_pages/location_Info.dart';
+import 'package:flutter_application_1/pages/category/shared/number_piacker.dart';
+import 'package:flutter_application_1/pages/category/shared/widget/text_field.dart';
 import 'package:flutter_map/flutter_map.dart';
+import 'package:flutter_rating_stars/generated/assets.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
@@ -21,6 +27,8 @@ class Advertisements extends StatefulWidget {
 class _SelectLocationMapState extends State<Advertisements> {
   MapController mapController = MapController();
   double initZoom = 16;
+  final _buildFloorController = TextEditingController();
+
   List<LatLng> selectedPins = [];
   String address = "";
   final showLimit = false.obs;
@@ -50,11 +58,6 @@ class _SelectLocationMapState extends State<Advertisements> {
       _getLocationInfo();
       setState(() {});
     }
-  }
-
-  void zoomOut() {
-    initZoom = initZoom - 1;
-    mapController.move(locationInfo.location, initZoom);
   }
 
   void zoomIn() {
@@ -116,58 +119,122 @@ class _SelectLocationMapState extends State<Advertisements> {
         ],
       ),
       const Align(
-        alignment: Alignment.topLeft,
+        alignment: Alignment.topRight,
       ),
-      Padding(
-        padding: const EdgeInsets.only(top: 20, left: 180, right: 20),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(10)),
-                  child: SizedBox(
-                    height: 40,
-                    width: getPageWidth(),
-                    child: Center(
+      SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        child: Padding(
+          padding: const EdgeInsets.only(left: 140, top: 5),
+          child: Row(
+            children: [
+              Container(
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10)),
+                child: SizedBox(
+                  height: 40,
+                  width: 100,
+                  child: Stack(children: [
+                    const Padding(
+                      padding: EdgeInsets.only(left: 30, top: 10),
                       child: Text(
-                        locationInfo.cityName,
+                        "فیلتر",
                         textAlign: TextAlign.center,
+                        style: TextStyle(
+                            fontSize: 11,
+                            fontFamily: MAIN_FONT_FAMILY,
+                            color: Color.fromRGBO(99, 99, 99, 1)),
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 15,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 60),
+                      child: IconButton(
+                        icon: SvgPicture.asset("assets/images/filter.svg"),
+                        onPressed: () {
+                          FocusScope.of(Get.context!).unfocus();
+                        },
+                      ),
+                    ),
+                  ]),
+                ),
+              ),
+              const SizedBox(
+                width: 10,
+              ),
+              Container(
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10)),
+                child: SizedBox(
+                  height: 40,
+                  width: 100,
+                  child: Stack(children: [
+                    const Padding(
+                      padding: EdgeInsets.only(left: 50, top: 10),
+                      child: Text(
+                        "آگهی ها",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            fontSize: 11,
+                            fontFamily: MAIN_FONT_FAMILY,
+                            color: Color.fromRGBO(99, 99, 99, 1)),
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 15,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(right: 30),
+                      child: IconButton(
+                        icon: SvgPicture.asset("assets/images/Vector-20.svg"),
+                        onPressed: () {
+                          FocusScope.of(Get.context!).unfocus();
+                        },
+                      ),
+                    ),
+                  ]),
+                ),
+              ),
+              const SizedBox(
+                width: 10,
+              ),
+              Row(
+                children: [
+                  Container(
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(10)),
+                    child: SizedBox(
+                      height: 40,
+                      width: getPageWidth(),
+                      child: Center(
+                        child: Stack(children: [
+                          Padding(
+                            padding: const EdgeInsets.only(right: 3),
+                            child: Text(
+                              locationInfo.cityName,
+                              textAlign: TextAlign.center,
+                              style: const TextStyle(
+                                  fontFamily: MAIN_FONT_FAMILY,
+                                  color: Color.fromRGBO(99, 99, 99, 1),
+                                  fontSize: 12),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 50),
+                            child: SvgPicture.asset(
+                              'assets/images/location1.svg',
+                            ),
+                          )
+                        ]),
                       ),
                     ),
                   ),
-                ),
-              ],
-            )
-          ],
-        ),
-      ),
-      Align(
-        alignment: Alignment.bottomLeft,
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: [
-              Column(
-                mainAxisSize: MainAxisSize.min,
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  IconButton(
-                      onPressed: () {
-                        getUserCurrentLocation();
-                      },
-                      icon: SizedBox(
-                          height: 50,
-                          width: 50,
-                          child: Image.asset("assets/images/icon zoom.png"))),
-                  const SizedBox(
-                    height: 10,
+                  SvgPicture.asset(
+                    'assets/images/Map and list.svg',
                   ),
                 ],
               ),
@@ -175,6 +242,252 @@ class _SelectLocationMapState extends State<Advertisements> {
           ),
         ),
       ),
+      const SizedBox(
+        height: 20,
+      ),
+      Padding(
+        padding: const EdgeInsets.only(
+          top: 55,
+        ),
+        child: SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Row(
+            children: [
+              Container(
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10)),
+                child: SizedBox(
+                  height: 40,
+                  width: 110,
+                  child: Stack(children: [
+                    const Padding(
+                      padding: EdgeInsets.only(left: 50, top: 10),
+                      child: Text(
+                        "تعداد اتاق",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            fontSize: 11,
+                            fontFamily: MAIN_FONT_FAMILY,
+                            color: Color.fromRGBO(99, 99, 99, 1)),
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 15,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(right: 30),
+                      child: IconButton(
+                        icon: SvgPicture.asset(
+                          "assets/images/Vector-20.svg",
+                          color: const Color.fromRGBO(
+                            166,
+                            166,
+                            166,
+                            1,
+                          ),
+                        ),
+                        onPressed: () {
+                          FocusScope.of(Get.context!).unfocus();
+                        },
+                      ),
+                    ),
+                  ]),
+                ),
+              ),
+              const SizedBox(
+                width: 10,
+              ),
+              Container(
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10)),
+                child: SizedBox(
+                  height: 40,
+                  width: 140,
+                  child: Stack(children: [
+                    const Padding(
+                      padding: EdgeInsets.only(left: 50, top: 10),
+                      child: Text(
+                        "محدوده قیمت",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            fontSize: 11,
+                            fontFamily: MAIN_FONT_FAMILY,
+                            color: Color.fromRGBO(99, 99, 99, 1)),
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 15,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(right: 30),
+                      child: IconButton(
+                        icon: SvgPicture.asset(
+                          "assets/images/Vector-20.svg",
+                          color: const Color.fromRGBO(
+                            166,
+                            166,
+                            166,
+                            1,
+                          ),
+                        ),
+                        onPressed: () {
+                          FocusScope.of(Get.context!).unfocus();
+                        },
+                      ),
+                    ),
+                  ]),
+                ),
+              ),
+              const SizedBox(
+                width: 10,
+              ),
+              Container(
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10)),
+                child: SizedBox(
+                  height: 40,
+                  width: 110,
+                  child: Stack(children: [
+                    const Padding(
+                      padding: EdgeInsets.only(left: 50, top: 10),
+                      child: Text(
+                        "نوع ملک",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            fontSize: 11,
+                            fontFamily: MAIN_FONT_FAMILY,
+                            color: Color.fromRGBO(99, 99, 99, 1)),
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 15,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(right: 30),
+                      child: IconButton(
+                        icon: SvgPicture.asset("assets/images/Vector-20.svg"),
+                        onPressed: () {
+                          FocusScope.of(Get.context!).unfocus();
+                        },
+                      ),
+                    ),
+                  ]),
+                ),
+              ),
+              const SizedBox(
+                width: 10,
+              ),
+              Container(
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10)),
+                child: SizedBox(
+                  height: 40,
+                  width: 110,
+                  child: Stack(children: [
+                    const Padding(
+                      padding: EdgeInsets.only(left: 50, top: 10),
+                      child: Text(
+                        " املاک",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            fontSize: 11,
+                            fontFamily: MAIN_FONT_FAMILY,
+                            color: Color.fromRGBO(99, 99, 99, 1)),
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 15,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(right: 30),
+                      child: IconButton(
+                        icon: SvgPicture.asset(
+                          "assets/images/Vector-20.svg",
+                        ),
+                        onPressed: () {
+                          FocusScope.of(Get.context!).unfocus();
+                        },
+                      ),
+                    ),
+                  ]),
+                ),
+              ),
+              const SizedBox(
+                width: 10,
+              ),
+            ],
+          ),
+        ),
+      ),
+      Align(
+          alignment: Alignment.bottomLeft,
+          child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    Column(
+                      mainAxisSize: MainAxisSize.min,
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        IconButton(
+                            onPressed: () {
+                              getUserCurrentLocation();
+                            },
+                            icon: SizedBox(
+                                height: 50,
+                                width: 50,
+                                child: Image.asset(
+                                    "assets/images/icon zoom.png"))),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                      ],
+                    ),
+                    Column(children: [
+                      Padding(
+                        padding: const EdgeInsets.only(
+                          top: 100,
+                        ),
+                        child: SingleChildScrollView(
+                          scrollDirection: Axis.horizontal,
+                          child: Row(
+                            children: [
+                              Container(
+                                decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(20)),
+                                child: const SizedBox(
+                                    height: 40,
+                                    width: 260,
+                                    child: Stack(
+                                      children: [
+                                        Center(
+                                          child: Text(
+                                            "خرید و فروش، رهن و اجاره انواع املاک در تهران",
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.w400,
+                                                fontSize: 10,
+                                                fontFamily: MAIN_FONT_FAMILY,
+                                                color: Color.fromRGBO(
+                                                    48, 48, 48, 1)),
+                                          ),
+                                        ),
+                                      ],
+                                    )),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ])
+                  ])))
     ]));
   }
 

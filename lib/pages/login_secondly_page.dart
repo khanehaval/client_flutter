@@ -13,14 +13,9 @@ import 'package:get/get.dart';
 
 class LoginSecondlyPage extends StatelessWidget {
   const LoginSecondlyPage({super.key});
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // key: scaffoldKey(),
-      // drawer: Column(
-      //   children: [Text("darrrrrrrrrrrrrrrrta")],
-      // ),
       backgroundColor: Colors.white,
       appBar: AppBar(
           leading: IconButton(
@@ -29,7 +24,7 @@ class LoginSecondlyPage extends StatelessWidget {
               width: 18,
               height: 18,
             ),
-            onPressed: () => Get.to(() => EducationalTour()),
+            onPressed: () => Get.to(() => Home()),
           ),
           actions: [
             GestureDetector(
@@ -48,7 +43,6 @@ class LoginSecondlyPage extends StatelessWidget {
                   )),
             ),
           ]),
-
       body: Center(
         child: Container(
           width: MediaQuery.of(context).size.width * 0.7,

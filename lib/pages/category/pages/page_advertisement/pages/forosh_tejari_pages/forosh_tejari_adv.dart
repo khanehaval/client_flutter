@@ -10,7 +10,6 @@ import 'package:flutter_application_1/pages/category/shared/widget/adv_title_wid
 import 'package:get/get.dart';
 
 class ForoshTejariAdv extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,11 +36,11 @@ class ForoshTejariAdv extends StatelessWidget {
                 ),
                 _buildItem(
                   'assets/images/Frame_maqazeh.png',
-                      () {
+                  () {
                     Get.to(() => FirstMapPage(onSelect: (_) {
-                      Get.back();
-                      Get.to(() => ForoshShopLocationPage(locationInfo: _));
-                    }));
+                          Get.back();
+                          Get.to(() => ForoshShopLocationPage(locationInfo: _));
+                        }));
                   },
                 ),
                 const SizedBox(
@@ -49,11 +48,10 @@ class ForoshTejariAdv extends StatelessWidget {
                 ),
                 _buildItem('assets/images/Frame_daftarsanati.png', () {
                   Get.to(() => FirstMapPage(onSelect: (_) {
-                    Get.back();
-                    Get.to(() => ForoshSanatiLocationPage(locationInfo: _));
-                  }));
+                        Get.back();
+                        Get.to(() => ForoshSanatiLocationPage(locationInfo: _));
+                      }));
                 }),
-
               ],
             )
           ]),
