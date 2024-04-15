@@ -63,22 +63,23 @@ class _RegisterState extends State<Register> {
               keyboardType: TextInputType.number,
               controller: _textController,
               maxLength: 11,
-              style: const TextStyle(fontSize: 20),
+              style: const TextStyle(fontSize: 20, color: Colors.amber),
               inputFormatters: [FilteringTextInputFormatter.digitsOnly],
               decoration: InputDecoration(
                 hintText: "09121234567",
-                border:
-                    OutlineInputBorder(borderRadius: BorderRadius.circular(15)),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(15),
+                ),
                 suffix: const Icon(Icons.edit),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 50,
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
-            TextField(
+            const TextField(
               decoration: InputDecoration(),
             ),
             Obx(() => sended.value
@@ -99,7 +100,7 @@ class _RegisterState extends State<Register> {
                 width: 100,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(30),
-                  gradient: LinearGradient(colors: [
+                  gradient: const LinearGradient(colors: [
                     Color.fromARGB(700, 55, 250, 100),
                     Colors.blue,
                   ]),
@@ -117,10 +118,10 @@ class _RegisterState extends State<Register> {
                   style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.transparent,
                       shadowColor: Colors.transparent),
-                  child: Text(
+                  child: const Text(
                     'تایید',
                     style: TextStyle(
-                        color: const Color.fromARGB(255, 144, 71, 71),
+                        color: Color.fromARGB(255, 144, 71, 71),
                         fontSize: 19,
                         fontWeight: FontWeight.bold),
                   ),

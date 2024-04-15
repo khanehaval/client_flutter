@@ -14,7 +14,7 @@ class IntroScreen extends StatelessWidget {
   List<Widget> _sliders(BuildContext context) => [
         GestureDetector(
           onHorizontalDragStart: (details) {
-            if (index > 0) {
+            if (index > 1) {
               Get.off(() => const Register());
             } else {
               _sliderIndex.value = index + 1;
@@ -80,10 +80,10 @@ class IntroScreen extends StatelessWidget {
         ),
         GestureDetector(
           onHorizontalDragStart: (details) {
-            if (index == 0) {
+            if (index > 2) {
               Get.off(() => const Register());
             } else {
-              _sliderIndex.value = index + 1;
+              _sliderIndex.value = index + 2;
             }
           },
           child: Column(
@@ -146,10 +146,9 @@ class IntroScreen extends StatelessWidget {
         ),
         GestureDetector(
           onHorizontalDragStart: (details) {
-            if (index > 2) {
-              Get.off(() => const Register());
+            if (index > 3) {
             } else {
-              _sliderIndex.value = index + 1;
+              Get.off(() => const Register());
             }
           },
           child: Column(
