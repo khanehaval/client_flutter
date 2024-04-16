@@ -33,10 +33,9 @@ class _RegisterState extends State<Register> {
 
   @override
   void initState() {
-    _keyboardVisibilityController.onChange.listen((visible) {
-      _keyboardVisibility.value = visible;
-    });
-
+    // _keyboardVisibilityController.onChange.listen((visible) {
+    //   _keyboardVisibility.value = visible;
+    // });
     super.initState();
   }
 

@@ -93,9 +93,10 @@ class LoginSecondlyPage extends StatelessWidget {
                         child: Text(
                           'شخصی',
                           style: TextStyle(
-                              fontSize: 16,
-                              fontFamily: MAIN_FONT_FAMILY,
-                              color: Colors.black),
+                            fontSize: 16,
+                            fontFamily: MAIN_FONT_FAMILY,
+                            color: Color.fromRGBO(48, 48, 48, 1),
+                          ),
                         ),
                       ),
                     ),
@@ -114,9 +115,10 @@ class LoginSecondlyPage extends StatelessWidget {
                         child: Text(
                           'مشاوران ',
                           style: TextStyle(
-                              fontSize: 16,
-                              fontFamily: MAIN_FONT_FAMILY,
-                              color: Colors.black),
+                            fontSize: 16,
+                            fontFamily: MAIN_FONT_FAMILY,
+                            color: Color.fromRGBO(48, 48, 48, 1),
+                          ),
                         ),
                       ),
                     ),
@@ -135,13 +137,14 @@ class LoginSecondlyPage extends StatelessWidget {
                         child: Text(
                           'آژانس املاک ',
                           style: TextStyle(
-                              fontSize: 16,
-                              fontFamily: MAIN_FONT_FAMILY,
-                              color: Colors.black),
+                            fontSize: 16,
+                            fontFamily: MAIN_FONT_FAMILY,
+                            color: Color.fromRGBO(48, 48, 48, 1),
+                          ),
                         ),
                       ),
                     ),
-                  ),
+                  )
                 ],
               ),
               Row(
@@ -163,7 +166,7 @@ class LoginSecondlyPage extends StatelessWidget {
                       child: const Text(
                         'بعدا یادآوری کن',
                         style: TextStyle(
-                            color: Colors.black,
+                            color: Color.fromRGBO(48, 48, 48, 1),
                             fontSize: 10,
                             fontWeight: FontWeight.bold,
                             fontFamily: MAIN_FONT_FAMILY),
@@ -185,7 +188,7 @@ class LoginSecondlyPage extends StatelessWidget {
                       child: const Text(
                         'مشاهده تور آموزشی',
                         style: TextStyle(
-                            color: Colors.black,
+                            color: Color.fromRGBO(48, 48, 48, 1),
                             fontSize: 10,
                             fontFamily: MAIN_FONT_FAMILY),
                       ),

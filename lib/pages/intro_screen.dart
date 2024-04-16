@@ -9,7 +9,6 @@ import 'package:get/get.dart';
 class IntroScreen extends StatelessWidget {
   final _sliderIndex = 0.obs;
   int index = 0;
-
   IntroScreen({super.key});
   List<Widget> _sliders(BuildContext context) => [
         GestureDetector(
@@ -33,10 +32,11 @@ class IntroScreen extends StatelessWidget {
                       alignment: Alignment.center,
                       children: [
                         SizedBox(
-                          height: 412,
-                          width: 664,
-                          child: SvgPicture.asset(
-                            'assets/images/Group 2363.svg',
+                          height: 473,
+                          width: 412,
+                          child: Image.asset(
+                            'assets/images/Group 2376.png',
+                            fit: BoxFit.cover,
                           ),
                         ),
                       ],
@@ -53,7 +53,7 @@ class IntroScreen extends StatelessWidget {
                       "جستجو در نقشه:",
                       style: TextStyle(
                         fontWeight: FontWeight.w200,
-                        fontSize: 20,
+                        fontSize: 18,
                         fontFamily: MAIN_FONT_FAMILY,
                       ),
                       textDirection: TextDirection.rtl,
@@ -65,9 +65,9 @@ class IntroScreen extends StatelessWidget {
                     Text(
                       'اینجا کلی امکانات جدید و جذاب \nداریم، آگهی، مشاور، آژانس همه\n روی نقشه منتظر شما هستند...',
                       style: TextStyle(
-                          fontWeight: FontWeight.w200,
-                          fontSize: 18,
-                          fontFamily: MAIN_FONT_FAMILY),
+                          fontWeight: FontWeight.w400,
+                          fontSize: 16,
+                          fontFamily: 'Iran Sans'),
                       textDirection: TextDirection.rtl,
                       textAlign: TextAlign.justify,
                     ),
@@ -89,56 +89,57 @@ class IntroScreen extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Stack(
-                    alignment: Alignment.center,
-                    children: [
-                      Image.asset(
-                        'assets/images/Vector11 1.png',
-                        fit: BoxFit.cover,
-                      ),
-                      SvgPicture.asset(
-                        'assets/images/Group 2.svg',
-                      ),
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 40,
-                  ),
-                  const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.end,
+              Padding(
+                padding:
+                    EdgeInsets.only(top: MediaQuery.of(context).padding.top),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Stack(
+                      alignment: Alignment.center,
                       children: [
-                        Text(
-                          'امکانات ویژه',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20,
-                            fontFamily: MAIN_FONT_FAMILY,
-                          ),
-                          textDirection: TextDirection.rtl,
-                          textAlign: TextAlign.justify,
-                        ),
-                        SizedBox(
-                          height: 5,
-                        ),
-                        Text(
-                          'دیگه لازم نیست از این بنگاه به\n اون بنگاه بری و ملکتون رو فایل\n کنین، ما تمامی ابزارهای خدمات\n ملک رو اینجا جمع کردیم ',
-                          style: TextStyle(
-                            fontWeight: FontWeight.w600,
-                            fontSize: 17,
-                            fontFamily: AutofillHints.streetAddressLevel2,
-                          ),
-                          textDirection: TextDirection.rtl,
-                          textAlign: TextAlign.justify,
+                        Image.asset(
+                          'assets/images/Group 2375.png',
+                          fit: BoxFit.cover,
                         ),
                       ],
                     ),
-                  ),
-                ],
+                    const SizedBox(
+                      height: 40,
+                    ),
+                    const Padding(
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          Text(
+                            'امکانات ویژه',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20,
+                              fontFamily: MAIN_FONT_FAMILY,
+                            ),
+                            textDirection: TextDirection.rtl,
+                            textAlign: TextAlign.justify,
+                          ),
+                          SizedBox(
+                            height: 5,
+                          ),
+                          Text(
+                            'دیگه لازم نیست از این بنگاه به\n اون بنگاه بری و ملکتون رو فایل\n کنین، ما تمامی ابزارهای خدمات\n ملک رو اینجا جمع کردیم ',
+                            style: TextStyle(
+                                fontWeight: FontWeight.w400,
+                                fontSize: 17,
+                                fontFamily: 'Iran Sans'),
+                            textDirection: TextDirection.rtl,
+                            textAlign: TextAlign.justify,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
               ),
               _nextRow(1)
             ],
@@ -161,17 +162,7 @@ class IntroScreen extends StatelessWidget {
                     padding: EdgeInsets.symmetric(
                         vertical: MediaQuery.of(context).padding.top),
                     child: Image.asset(
-                      'assets/images/Vector22.png',
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 80),
-                    child: SizedBox(
-                      height: 280,
-                      width: 280,
-                      child: SvgPicture.asset(
-                        'assets/images/Group 2362.svg',
-                      ),
+                      'assets/images/Group 2374.png',
                     ),
                   ),
                 ],
@@ -197,10 +188,9 @@ class IntroScreen extends StatelessWidget {
                     Text(
                       'دیگه لازم نیست ساعت ها تو ترافیک\n دنبال مشاور خوب و بنگاه بگردی، ما\n همه رو اینجا جمع کردیم... ',
                       style: TextStyle(
-                        fontWeight: FontWeight.w500,
-                        fontSize: 17,
-                        fontFamily: AutofillHints.streetAddressLevel2,
-                      ),
+                          fontWeight: FontWeight.w400,
+                          fontSize: 18,
+                          fontFamily: 'Iran Sans'),
                       textDirection: TextDirection.rtl,
                       textAlign: TextAlign.justify,
                     ),
@@ -215,7 +205,7 @@ class IntroScreen extends StatelessWidget {
 
   Widget _nextRow(int index) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 23, left: 20, right: 20),
+      padding: const EdgeInsets.only(bottom: 23, left: 50, right: 50),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -243,19 +233,20 @@ class IntroScreen extends StatelessWidget {
                 gradient: GetGradient(),
               ),
               child: Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.only(
+                    top: 5, bottom: 5, left: 12, right: 12),
                 child: Row(
                   children: [
                     const Text(
                       "بعدی",
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
-                        fontSize: 17,
+                        fontSize: 15,
                         fontFamily: MAIN_FONT_FAMILY,
                       ),
                     ),
                     const SizedBox(
-                      width: 4,
+                      width: 8,
                     ),
                     Image.asset(
                       'assets/images/arrow_right.png',

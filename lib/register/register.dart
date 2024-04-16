@@ -67,9 +67,9 @@ class _RegisterState extends State<Register> {
               inputFormatters: [FilteringTextInputFormatter.digitsOnly],
               decoration: InputDecoration(
                 hintText: "09121234567",
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(15),
-                ),
+                focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(15),
+                    borderSide: const BorderSide(color: Colors.red)),
                 suffix: const Icon(Icons.edit),
               ),
             ),
@@ -93,7 +93,7 @@ class _RegisterState extends State<Register> {
                           //todo resend sms
                         },
                       ))
-                : SizedBox()),
+                : const SizedBox()),
             Padding(
               padding: const EdgeInsets.only(top: 24),
               child: Container(
@@ -121,7 +121,7 @@ class _RegisterState extends State<Register> {
                   child: const Text(
                     'تایید',
                     style: TextStyle(
-                        color: Color.fromARGB(255, 144, 71, 71),
+                        color: Color.fromARGB(48, 48, 48, 1),
                         fontSize: 19,
                         fontWeight: FontWeight.bold),
                   ),
