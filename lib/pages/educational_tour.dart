@@ -1,13 +1,10 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/pages/category/pages/Advertisements/Advertisements.dart';
+import 'package:flutter_application_1/pages/category/pages/Advertisements/advertisements.dart';
 import 'package:flutter_application_1/pages/category/pages/messages.dart';
 
 import 'package:flutter_application_1/pages/category/pages/home.dart';
 import 'package:flutter_application_1/pages/category/pages/add_new_advertisment.dart';
-import 'package:flutter_application_1/pages/category/pages/real_estate.dart';
-import 'package:flutter_application_1/pages/profile.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:flutter_application_1/pages/category/shared/app_bar.dart';
 import 'package:get/get.dart';
 
 import 'category/pages/window/window.dart';
@@ -36,102 +33,93 @@ class _EducationalTourState extends State<EducationalTour> {
   var pages = [
     Home(),
     const Messages(),
-    AddNewAdvertisement(),
+    const AddNewAdvertisement(),
     const Category(),
-    Advertisements(
-      onSelect: (LocationInfo) {},
-    )
+    Advertisements(),
   ];
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(
-        leading: IconButton(
-          icon: const Icon(
-            CupertinoIcons.back,
-            size: 30,
-          ),
-          onPressed: () => Get.back(),
-        ),
-        actions: [
-          GestureDetector(
-            onTap: () {
-              openProfile();
-            },
-            child: Padding(
-              padding: const EdgeInsets.only(right: 20),
-              child: Container(
-                  decoration: BoxDecoration(
-                      color: Colors.black12,
-                      borderRadius: BorderRadius.circular(60)),
-                  child: SvgPicture.asset(
-                    'assets/images/profile.svg',
-                  )),
-            ),
-          ),
-        ],
-      ),
-      body: Obx(() => showEducation.value
-          ? Container(
-              color: Colors.white60,
-              child: Padding(
-                padding: const EdgeInsets.all(10),
-                child: SingleChildScrollView(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: GestureDetector(
-                          onTap: () {
-                            Get.to(() => ());
-                          },
-                          child: Image.asset(
-                            'assets/images/Personal user panel.png',
+    return Obx(() => Scaffold(
+          backgroundColor: Colors.white,
+          appBar: currentPageIndex.value == 4 ? null : buildAppBar(),
+          body: Stack(
+            alignment: Alignment.topCenter,
+            children: [
+              Obx(() => showEducation.value
+                  ? Container(
+                      color: Colors.white,
+                      child: Padding(
+                        padding: const EdgeInsets.all(10),
+                        child: SingleChildScrollView(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: GestureDetector(
+                                  onTap: () {
+                                    Get.to(() => ());
+                                  },
+                                  child: Image.asset(
+                                    'assets/images/Personal user panel.png',
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: GestureDetector(
+                                  onTap: () {
+                                    Get.to(() => ());
+                                  },
+                                  child: Image.asset(
+                                    "assets/images/Consultants user panel.png",
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: GestureDetector(
+                                  onTap: () {
+                                    Get.to(() => ());
+                                  },
+                                  child: Image.asset(
+                                    "assets/images/Real estate agency user panel.png",
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: GestureDetector(
-                          onTap: () {
-                            Get.to(() => ());
-                          },
-                          child: Image.asset(
-                            "assets/images/Consultants user panel.png",
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: GestureDetector(
-                          onTap: () {
-                            Get.to(() => ());
-                          },
-                          child: Image.asset(
-                            "assets/images/Real estate agency user panel.png",
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
+                    )
+                  : pages[currentPageIndex.value]),
+              Align(
+                alignment: Alignment.bottomCenter,
+                child: bottomNavigationBar(),
               ),
-            )
-          : pages[currentPageIndex.value]),
-      bottomNavigationBar: Obx(
-        () => NavigationBar(
-          backgroundColor: Color.fromRGBO(248, 248, 248, 1),
-          onDestinationSelected: (int index) {
+            ],
+          ),
+        ));
+  }
+
+  Widget bottomNavigationBar() {
+    return ClipRRect(
+      borderRadius: const BorderRadius.only(
+          topLeft: Radius.circular(20), topRight: Radius.circular(20)),
+      child: Obx(
+        () => BottomNavigationBar(
+          backgroundColor: Colors.white,
+          // shadowColor: Colors.white,
+          // surfaceTintColor: Colors.white,
+          onTap: (int index) {
             currentPageIndex.value = index;
             showEducation.value = false;
           },
-          selectedIndex: currentPageIndex.value,
-          destinations: <Widget>[
-            NavigationDestination(
+          currentIndex: currentPageIndex.value,
+          items: <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
               icon: Image.asset(
                 'assets/images/home navigator.png',
                 width: 30,
@@ -139,7 +127,7 @@ class _EducationalTourState extends State<EducationalTour> {
               ),
               label: '',
             ),
-            NavigationDestination(
+            BottomNavigationBarItem(
               icon: Image.asset(
                 'assets/images/messages.png',
                 width: 30,
@@ -147,7 +135,7 @@ class _EducationalTourState extends State<EducationalTour> {
               ),
               label: '',
             ),
-            NavigationDestination(
+            BottomNavigationBarItem(
               icon: Image.asset(
                 'assets/images/add.png',
                 width: 46,
@@ -155,7 +143,7 @@ class _EducationalTourState extends State<EducationalTour> {
               ),
               label: '',
             ),
-            NavigationDestination(
+            BottomNavigationBarItem(
               icon: Image.asset(
                 'assets/images/Category.png',
                 width: 30,
@@ -163,7 +151,7 @@ class _EducationalTourState extends State<EducationalTour> {
               ),
               label: '',
             ),
-            NavigationDestination(
+            BottomNavigationBarItem(
               icon: Image.asset(
                 'assets/images/viw.png',
                 width: 30,

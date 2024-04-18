@@ -149,7 +149,7 @@ class _SelectLocationMapState extends State<SelectLocationMap> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    const Text("محدوده ملک را نشان بده",
+                    const Text("محدوده ملک\n را نشان بده",
                         style: TextStyle(
                           fontFamily: MAIN_FONT_FAMILY,
                           fontSize: 12,
@@ -195,6 +195,7 @@ class _SelectLocationMapState extends State<SelectLocationMap> {
                   Container(
                     decoration: BoxDecoration(
                         color: Colors.white,
+                        border: Border.all(color: Colors.black),
                         borderRadius: BorderRadius.circular(10)),
                     child: SizedBox(
                       width: getPageWidth(),
@@ -223,6 +224,7 @@ class _SelectLocationMapState extends State<SelectLocationMap> {
                   Container(
                     decoration: BoxDecoration(
                         color: Colors.white,
+                        border: Border.all(color: Colors.black),
                         borderRadius: BorderRadius.circular(10)),
                     child: SizedBox(
                       height: 40,

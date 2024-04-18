@@ -31,6 +31,7 @@ openProfilePrivate() {
                         children: [
                           Column(
                             children: [
+                              //todo set image
                               Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceAround,
