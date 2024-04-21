@@ -4,6 +4,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_application_1/pages/category/models/AdvertismentMoidel.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/shared/methods.dart';
 import 'package:flutter_map/flutter_map.dart';
+import 'package:flutter_svg/svg.dart';
 
 import 'package:get/get.dart';
 import 'package:get/get_connect/http/src/utils/utils.dart';
@@ -98,6 +99,21 @@ class AdvMap extends StatelessWidget {
                     child: Image.asset("assets/images/icon zoom.png"))),
           ),
         ),
+        Align(
+          alignment: Alignment.bottomLeft,
+          child: Padding(
+            padding: const EdgeInsets.only(bottom: 93, left: 295),
+            child: IconButton(
+              onPressed: () {},
+              icon: SizedBox(
+                  height: 60,
+                  width: 60,
+                  child: SvgPicture.asset(
+                    "assets/images/list - iconhome.svg",
+                  )),
+            ),
+          ),
+        )
       ],
     );
   }

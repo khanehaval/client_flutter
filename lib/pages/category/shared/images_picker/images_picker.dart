@@ -12,7 +12,6 @@ import '../constant.dart';
 
 class ImagesPicker extends StatelessWidget {
   final RxList selectedImagesPath;
-
   const ImagesPicker({super.key, required this.selectedImagesPath});
 
   @override

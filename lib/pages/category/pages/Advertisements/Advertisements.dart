@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/models/AdvertismentMoidel.dart';
+import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/filter.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/map/adv_map.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_map/flutter_map.dart';
@@ -120,7 +121,9 @@ class _SelectLocationMapState extends State<Advertisements> {
                           child: IconButton(
                             icon: SvgPicture.asset("assets/images/filter.svg"),
                             onPressed: () {
-                              FocusScope.of(Get.context!).unfocus();
+                              Get.to(() => CategoryItems(
+                                    index: 0,
+                                  ));
                             },
                           ),
                         ),
@@ -199,9 +202,6 @@ class _SelectLocationMapState extends State<Advertisements> {
                             ]),
                           ),
                         ),
-                      ),
-                      SvgPicture.asset(
-                        'assets/images/Map and list.svg',
                       ),
                     ],
                   ),
