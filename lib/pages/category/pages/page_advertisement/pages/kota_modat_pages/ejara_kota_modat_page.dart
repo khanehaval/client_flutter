@@ -17,7 +17,9 @@ class EjaraKotaModatPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             AdvTitleWidget(),
-            const SizedBox(height: 100,),
+            const SizedBox(
+              height: 100,
+            ),
             Column(
               children: [
                 _buildItem('assets/images/Frame_kota1.png', () {

@@ -1,4 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/amlak_display.dart';
+import 'package:flutter_application_1/pages/category/pages/window/window_pages/amlak_page.dart';
+import 'package:flutter_application_1/pages/category/pages/window/window_pages/ejara_kota_modat.dart';
+import 'package:flutter_application_1/pages/category/pages/window/window_pages/ejara_maskoni.dart';
+import 'package:flutter_application_1/pages/category/pages/window/window_pages/ejara_tajari_edari.dart';
+import 'package:flutter_application_1/pages/category/pages/window/window_pages/forosh_maskoni.dart';
+import 'package:flutter_application_1/pages/category/pages/window/window_pages/forosh_tgjari_edari.dart';
+import 'package:flutter_application_1/pages/category/pages/window/window_pages/sacht_saz.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:get/get.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
@@ -23,11 +31,11 @@ class _CategoryItemsState extends State<CategoryItems> {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(
+    return Scaffold(
+      body: Column(
         children: [
           SizedBox(
-            height: 150,
+            height: 135,
             child: ScrollablePositionedList.builder(
               reverse: true,
               itemScrollController: _controller,
@@ -47,7 +55,7 @@ class _CategoryItemsState extends State<CategoryItems> {
                   () => Container(
                     margin: const EdgeInsets.only(
                         left: 10, right: 10, bottom: 7, top: 80),
-                    padding: const EdgeInsets.all(2),
+                    padding: const EdgeInsets.all(1.5),
                     height: 98,
                     width: 130,
                     decoration: BoxDecoration(
@@ -66,8 +74,6 @@ class _CategoryItemsState extends State<CategoryItems> {
                         decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(20),
-                          border: Border.all(
-                              width: _currentIndex.value == i ? 0 : 1),
                         ),
                         child: items[i]),
                   ),
@@ -75,6 +81,7 @@ class _CategoryItemsState extends State<CategoryItems> {
               ),
             ),
           ),
+          Obx(() => _pages[_currentIndex.value])
         ],
       ),
     );
@@ -139,3 +146,13 @@ class _CategoryItemsState extends State<CategoryItems> {
     ),
   ];
 }
+
+final _pages = [
+  AmlakDisplay(),
+  EjaraMaskoni(),
+  ForoshMaskoni(),
+  ForoshTagariEdari(),
+  EjaraTagariEdari(),
+  EjaraKotaModat(),
+  SachtSaz(),
+];
