@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/forosh_maskoni_display.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/intro_screen.dart';
 import 'package:flutter_svg/svg.dart';
@@ -497,7 +498,9 @@ class AmlakDisplay extends StatelessWidget {
                 gradient: GetGradient(),
               ),
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Get.to(() => ForoshMaskoniDisplay());
+                },
                 style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.transparent,
                     shadowColor: Colors.transparent),
