@@ -202,7 +202,7 @@ class ImagesPicker extends StatelessWidget {
           borderRadius: BorderRadius.circular(10),
           color: Colors.white38),
       child: IconButton(
-        icon: Icon(
+        icon: const Icon(
           Icons.crop,
           size: 20,
         ),
