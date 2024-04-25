@@ -121,7 +121,7 @@ class _SelectLocationMapState extends State<Advertisements> {
                           child: IconButton(
                             icon: SvgPicture.asset("assets/images/filter.svg"),
                             onPressed: () {
-                              Get.to(() => CategoryItems(
+                              Get.to(() => Filter(
                                     index: 0,
                                   ));
                             },

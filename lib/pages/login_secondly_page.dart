@@ -4,7 +4,6 @@ import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/consultants.dart';
 import 'package:flutter_application_1/pages/educational_tour.dart';
 import 'package:flutter_application_1/pages/category/pages/home.dart';
-import 'package:flutter_application_1/pages/profile.dart';
 import 'package:flutter_application_1/pages/profile_private.dart';
 import 'package:flutter_application_1/pages/real_estate_agency.dart';
 import 'package:flutter_application_1/pages/private.dart';
@@ -13,6 +12,7 @@ import 'package:get/get.dart';
 
 class LoginSecondlyPage extends StatelessWidget {
   const LoginSecondlyPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -222,8 +222,5 @@ class LoginSecondlyPage extends StatelessWidget {
     );
   }
 
-  LinearGradient getGradient() => const LinearGradient(colors: [
-        Color.fromARGB(255, 95, 173, 237),
-        Color.fromARGB(126, 118, 238, 146),
-      ]);
+  LinearGradient getGradient() => const LinearGradient(colors: GRADIANT_COLOR);
 }

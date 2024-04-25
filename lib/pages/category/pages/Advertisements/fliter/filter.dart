@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/shared.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/amlak_display.dart';
-import 'package:flutter_application_1/pages/category/pages/window/window_pages/amlak_page.dart';
+import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/ejar_filter/EjaraFilter.dart';
 import 'package:flutter_application_1/pages/category/pages/window/window_pages/ejara_kota_modat.dart';
-import 'package:flutter_application_1/pages/category/pages/window/window_pages/ejara_maskoni.dart';
 import 'package:flutter_application_1/pages/category/pages/window/window_pages/ejara_tajari_edari.dart';
 import 'package:flutter_application_1/pages/category/pages/window/window_pages/forosh_maskoni.dart';
 import 'package:flutter_application_1/pages/category/pages/window/window_pages/forosh_tgjari_edari.dart';
@@ -11,148 +11,279 @@ import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:get/get.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 
-class CategoryItems extends StatefulWidget {
+import '../../../shared/shated_widget.dart';
+
+class Filter extends StatefulWidget {
   int index;
-  CategoryItems({super.key, required this.index});
+
+  Filter({super.key, required this.index});
+
   @override
-  State<CategoryItems> createState() => _CategoryItemsState();
+  State<Filter> createState() => _FilterState();
 }
 
-class _CategoryItemsState extends State<CategoryItems> {
+class _FilterState extends State<Filter> {
   final _controller = ItemScrollController();
 
   final _currentIndex = 0.obs;
+  final _subIndex = 0.obs;
+  final _subFilterType = SubFilterType.None.obs;
 
   @override
   void initState() {
     _currentIndex.value = widget.index;
+    _currentIndex.listen((p0) {
+      if (p0 == 0) {
+        _subIndex.value = 0;
+        _subFilterType.value = SubFilterType.None;
+      }
+    });
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          SizedBox(
-            height: 135,
-            child: ScrollablePositionedList.builder(
-              reverse: true,
-              itemScrollController: _controller,
-              itemCount: 7,
-              scrollDirection: Axis.horizontal,
-              initialScrollIndex: widget.index,
-              itemBuilder: (context, i) => GestureDetector(
-                onTap: () {
-                  _controller.scrollTo(
-                      index: i,
-                      duration: const Duration(microseconds: 100),
-                      opacityAnimationWeights: [10, 30, 10],
-                      alignment: 0.5);
-                  _currentIndex.value = i;
-                },
-                child: Obx(
-                  () => Container(
-                    margin: const EdgeInsets.only(
-                        left: 10, right: 10, bottom: 7, top: 80),
-                    padding: const EdgeInsets.all(1.5),
-                    height: 98,
-                    width: 130,
-                    decoration: BoxDecoration(
-                      gradient: _currentIndex.value == i
-                          ? const LinearGradient(
-                              colors: GRADIANT_COLOR,
-                            )
-                          : const LinearGradient(
-                              colors: BLACK_12_GRADIANT_COLOR,
+      bottomNavigationBar:         bottomNavigation(),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            SizedBox(
+              height: 100,
+              child: Obx(() => _currentIndex.value == 0
+                  ? ScrollablePositionedList.builder(
+                      reverse: true,
+                      itemScrollController: _controller,
+                      itemCount: 7,
+                      scrollDirection: Axis.horizontal,
+                      initialScrollIndex: widget.index,
+                      itemBuilder: (context, i) => GestureDetector(
+                        onTap: () {
+                          _controller.scrollTo(
+                              index: i,
+                              duration: const Duration(microseconds: 100),
+                              opacityAnimationWeights: [10, 30, 10],
+                              alignment: 0.5);
+                          _currentIndex.value = i;
+                        },
+                        child: Obx(
+                          () => Container(
+                            margin: const EdgeInsets.only(
+                                left: 10, right: 10, bottom: 7, top: 40),
+                            padding: const EdgeInsets.all(1.5),
+                            height: 98,
+                            width: 130,
+                            decoration: BoxDecoration(
+                              gradient: _currentIndex.value == i
+                                  ? const LinearGradient(
+                                      colors: GRADIANT_COLOR,
+                                    )
+                                  : const LinearGradient(
+                                      colors: BLACK_12_GRADIANT_COLOR,
+                                    ),
+                              borderRadius: BorderRadius.circular(20),
+                              // border:
+                              //     Border.all(width: _currentIndex.value == i ? 1 : 1),
                             ),
-                      borderRadius: BorderRadius.circular(20),
-                      // border:
-                      //     Border.all(width: _currentIndex.value == i ? 1 : 1),
-                    ),
-                    child: Container(
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(20),
+                            child: Container(
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(20),
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(
+                                    vertical: 6, horizontal: 6),
+                                child: Image.asset(
+                                  items[i].assetPath,
+                                  width: 51,
+                                  height: 51,
+                                ),
+                              ),
+                            ),
+                          ),
                         ),
-                        child: items[i]),
-                  ),
-                ),
-              ),
+                      ),
+                    )
+                  : Padding(
+                      padding: const EdgeInsets.only(top: 50),
+                      child: ScrollablePositionedList.builder(
+                          reverse: true,
+                          itemScrollController: _controller,
+                          itemCount:
+                              items[_currentIndex.value].subItems.length + 2,
+                          scrollDirection: Axis.horizontal,
+                          initialScrollIndex: widget.index,
+                          itemBuilder: (context, i) {
+                            if (i == 0) {
+                              return GestureDetector(
+                                child: Row(
+                                  children: [
+                                    Container(
+                                      margin: const EdgeInsets.only(
+                                        left: 5,
+                                        right: 5,
+                                      ),
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(10),
+                                        border: Border.all(width: 1),
+                                      ),
+                                      child: const Padding(
+                                        padding: EdgeInsets.all(4.0),
+                                        child: Text("املاک"),
+                                      ),
+                                    ),
+                                    const Icon(Icons.arrow_forward_ios_rounded)
+                                  ],
+                                ),
+                                onTap: () {
+                                  _currentIndex.value = 0;
+                                },
+                              );
+                            }
+                            if (i == 1) {
+                              return Row(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Icon(Icons.arrow_back_ios),
+                                  Container(
+                                    margin: const EdgeInsets.only(
+                                      left: 0,
+                                      right: 1,
+                                    ),
+                                    padding: const EdgeInsets.all(1.5),
+                                    width: 130,
+                                    decoration: BoxDecoration(
+                                      gradient: const LinearGradient(
+                                        colors: GRADIANT_COLOR,
+                                      ),
+                                      border: Border.all(width: 1.5),
+                                      borderRadius: BorderRadius.circular(20),
+                                    ),
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                        color: Colors.white,
+                                        borderRadius: BorderRadius.circular(20),
+                                      ),
+                                      child: Image.asset(
+                                        items[i].assetPath,
+                                        width: 51,
+                                        height: 51,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              );
+                            } else {
+                              return GestureDetector(
+                                onTap: () {
+                                  _subIndex.value = i;
+                                  _subFilterType.value =
+                                      items[_currentIndex.value]
+                                          .subItems[i - 2]
+                                          .type;
+                                },
+                                child: Obx(
+                                  () => Container(
+                                    margin: const EdgeInsets.only(
+                                      left: 3,
+                                      right: 3,
+                                    ),
+                                    padding: const EdgeInsets.all(1.5),
+                                    width: 130,
+                                    decoration: BoxDecoration(
+                                      gradient: _subIndex.value == i
+                                          ? const LinearGradient(
+                                              colors: GRADIANT_COLOR,
+                                            )
+                                          : const LinearGradient(
+                                              colors: BLACK_12_GRADIANT_COLOR,
+                                            ),
+                                      borderRadius: BorderRadius.circular(20),
+                                      border: Border.all(
+                                          width:
+                                              _currentIndex.value == i ? 1.5 : 1),
+                                    ),
+                                    child: Container(
+                                        decoration: BoxDecoration(
+                                          color: Colors.white,
+                                          borderRadius: BorderRadius.circular(20),
+                                        ),
+                                        child: Center(
+                                          child: Text(items[_currentIndex.value]
+                                              .subItems[i - 2]
+                                              .title),
+                                        )),
+                                  ),
+                                ),
+                              );
+                            }
+                          }),
+                    )),
             ),
-          ),
-          Obx(() => _pages[_currentIndex.value])
-        ],
+            Obx(() =>  _pages()[_currentIndex.value]),
+          ],
+        ),
       ),
     );
   }
 
+  _pages() => [
+        AmlakFilter(),
+        EjaraFilter(_subFilterType.value),
+        ForoshMaskoni(),
+        ForoshTagariEdari(),
+        EjaraTagariEdari(),
+        EjaraKotaModat(),
+        SachtSaz(),
+      ];
+
   var items = [
-    Padding(
-      padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 12),
-      child: Image.asset(
-        'assets/images/category filter.png',
-        width: 51,
-        height: 51,
-      ),
-    ),
-    Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Image.asset(
-        'assets/images/Frame_ejaramaskoni.png',
-        width: 51,
-        height: 51,
-      ),
-    ),
-    Padding(
-      padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 12),
-      child: Image.asset(
-        'assets/images/Frame_foroshmaskoni.png',
-        width: 51,
-        height: 51,
-      ),
-    ),
-    Padding(
-      padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 12),
-      child: Image.asset(
-        'assets/images/Frame_foroshtejari.png',
-        width: 51,
-        height: 51,
-      ),
-    ),
-    Padding(
-      padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 12),
-      child: Image.asset(
-        'assets/images/Frame_ejaratejari.png',
-        width: 51,
-        height: 51,
-      ),
-    ),
-    Padding(
-      padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 12),
-      child: Image.asset(
-        'assets/images/Frame_kotamodat.png',
-        width: 51,
-        height: 51,
-      ),
-    ),
-    Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 10),
-      child: Image.asset(
-        'assets/images/Frame_sakht va saz.png',
-        width: 51,
-        height: 51,
-      ),
-    ),
+    FilterModel(
+        title: "املاک",
+        assetPath: 'assets/images/category filter.png',
+        subItems: []),
+    FilterModel(
+        title: "اجاره مسکونی",
+        assetPath: 'assets/images/Frame_ejaramaskoni.png',
+        subItems: [
+          SubItemModel("آپارتمان", SubFilterType.Aparteman),
+          SubItemModel("ویلا", SubFilterType.Vila)
+        ]),
+    FilterModel(
+        title: "فروش مسکونی",
+        assetPath: 'assets/images/Frame_foroshmaskoni.png',
+        subItems: []),
+    FilterModel(
+        title: "فروش تجاری واداری",
+        assetPath: 'assets/images/Frame_foroshtejari.png',
+        subItems: []),
+    FilterModel(
+        title: "اجاره تجاری اداری",
+        assetPath: 'assets/images/Frame_ejaratejari.png',
+        subItems: []),
+    FilterModel(
+        title: "اجاره کوتاه مدت",
+        assetPath: 'assets/images/Frame_kotamodat.png',
+        subItems: []),
+    FilterModel(
+        title: "ساخت وساز",
+        assetPath: 'assets/images/Frame_sakht va saz.png',
+        subItems: []),
   ];
 }
 
-final _pages = [
-  AmlakDisplay(),
-  EjaraMaskoni(),
-  ForoshMaskoni(),
-  ForoshTagariEdari(),
-  EjaraTagariEdari(),
-  EjaraKotaModat(),
-  SachtSaz(),
-];
+class FilterModel {
+  String title;
+  String assetPath;
+  List<SubItemModel> subItems;
+
+  FilterModel(
+      {required this.title, required this.assetPath, required this.subItems});
+}
+
+class SubItemModel {
+  SubFilterType type;
+  String title;
+
+  SubItemModel(this.title, this.type);
+}

@@ -3,6 +3,9 @@ import 'dart:io';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
+import 'package:flutter/widgets.dart';
+import 'package:flutter_application_1/pages/category/shared/images_picker/image_croped.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
@@ -12,6 +15,7 @@ import '../constant.dart';
 
 class ImagesPicker extends StatelessWidget {
   final RxList selectedImagesPath;
+
   const ImagesPicker({super.key, required this.selectedImagesPath});
 
   @override
@@ -112,6 +116,12 @@ class ImagesPicker extends StatelessWidget {
                                               selectedImagesPath[index + 1],
                                               size: 34),
                                         ),
+                                      ),
+                                      Align(
+                                        alignment: Alignment.topRight,
+                                        child: croper(
+                                          selectedImagesPath[index + 1],
+                                        ),
                                       )
                                     ],
                                   ),
@@ -170,8 +180,39 @@ class ImagesPicker extends StatelessWidget {
                 ],
               ),
             ),
+          ),
+          Align(
+            alignment: Alignment.topRight,
+            child: croper(path),
           )
         ],
+      ),
+    );
+  }
+
+  Widget croper(
+    String path,
+  ) {
+    return Container(
+      width: 40,
+      height: 40,
+      decoration: BoxDecoration(
+          border: const GradientBoxBorder(
+              gradient: LinearGradient(colors: GRADIANT_COLOR), width: 1),
+          borderRadius: BorderRadius.circular(10),
+          color: Colors.white38),
+      child: IconButton(
+        icon: Icon(
+          Icons.crop,
+          size: 20,
+        ),
+        onPressed: () async {
+          var result = await Cropper.cropImage(path);
+          if (result != null) {
+            var i = selectedImagesPath.indexOf(path);
+            selectedImagesPath[i] = result;
+          }
+        },
       ),
     );
   }

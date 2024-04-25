@@ -2,61 +2,67 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/educational_tour.dart';
 import 'package:flutter_application_1/pages/profile.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
 Widget bottomNavigation() {
-  return NavigationBar(
-    backgroundColor: Colors.white,
-    onDestinationSelected: (int index) {
-      Get.to(() => EducationalTour(
-            index: index,
-            showEducation: false,
-          ));
-    },
-    indicatorColor: const Color(0x36D859),
-    // selectedIndex: currentPageIndex.value,
-    destinations: <Widget>[
-      NavigationDestination(
-        icon: Image.asset(
-          'assets/images/home navigator.png',
-          width: 24,
-          height: 24,
+  return ClipRRect(
+    borderRadius: const BorderRadius.only(
+        topLeft: Radius.circular(20), topRight: Radius.circular(20)),
+    child: BottomNavigationBar(
+      backgroundColor: Colors.white,
+      // shadowColor: Colors.white,
+      // surfaceTintColor: Colors.white,
+      onTap: (int index) {
+        Get.to(() => EducationalTour(
+              index: index,
+              showEducation: false,
+            ));
+      },
+      // currentIndex: currentPageIndex.value,
+      items: <BottomNavigationBarItem>[
+        BottomNavigationBarItem(
+          icon: SvgPicture.asset(
+            'assets/images/navigation1.svg',
+            width: 30,
+            height: 30,
+          ),
+          label: '',
         ),
-        label: '',
-      ),
-      NavigationDestination(
-        icon: Image.asset(
-          'assets/images/messages.png',
-          width: 24,
-          height: 24,
+        BottomNavigationBarItem(
+          icon: SvgPicture.asset(
+            'assets/images/navigation2.svg',
+            width: 30,
+            height: 30,
+          ),
+          label: '',
         ),
-        label: '',
-      ),
-      NavigationDestination(
-        icon: Image.asset(
-          'assets/images/add.png',
-          width: 24,
-          height: 24,
+        BottomNavigationBarItem(
+          icon: SvgPicture.asset(
+            'assets/images/navigation3.svg',
+            width: 46,
+            height: 46,
+          ),
+          label: '',
         ),
-        label: '',
-      ),
-      NavigationDestination(
-        icon: Image.asset(
-          'assets/images/Category.png',
-          width: 24,
-          height: 24,
+        BottomNavigationBarItem(
+          icon: SvgPicture.asset(
+            'assets/images/navigation4.svg',
+            width: 30,
+            height: 30,
+          ),
+          label: '',
         ),
-        label: '',
-      ),
-      NavigationDestination(
-        icon: Image.asset(
-          'assets/images/viw.png',
-          width: 24,
-          height: 24,
+        BottomNavigationBarItem(
+          icon: SvgPicture.asset(
+            'assets/images/navigation5.svg',
+            width: 30,
+            height: 30,
+          ),
+          label: '',
         ),
-        label: '',
-      ),
-    ],
+      ],
+    ),
   );
 }
 
