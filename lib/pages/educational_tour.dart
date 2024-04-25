@@ -5,6 +5,7 @@ import 'package:flutter_application_1/pages/category/pages/messages.dart';
 import 'package:flutter_application_1/pages/category/pages/home.dart';
 import 'package:flutter_application_1/pages/category/pages/add_new_advertisment.dart';
 import 'package:flutter_application_1/pages/category/shared/app_bar.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
 import 'category/pages/window/window.dart';
@@ -120,40 +121,40 @@ class _EducationalTourState extends State<EducationalTour> {
           currentIndex: currentPageIndex.value,
           items: <BottomNavigationBarItem>[
             BottomNavigationBarItem(
-              icon: Image.asset(
-                'assets/images/home navigator.png',
+              icon: SvgPicture.asset(
+                'assets/images/navigation1.svg',
                 width: 30,
                 height: 30,
               ),
               label: '',
             ),
             BottomNavigationBarItem(
-              icon: Image.asset(
-                'assets/images/messages.png',
+              icon: SvgPicture.asset(
+                'assets/images/navigation2.svg',
                 width: 30,
                 height: 30,
               ),
               label: '',
             ),
             BottomNavigationBarItem(
-              icon: Image.asset(
-                'assets/images/add.png',
+              icon: SvgPicture.asset(
+                'assets/images/navigation3.svg',
                 width: 46,
                 height: 46,
               ),
               label: '',
             ),
             BottomNavigationBarItem(
-              icon: Image.asset(
-                'assets/images/Category.png',
+              icon: SvgPicture.asset(
+                'assets/images/navigation4.svg',
                 width: 30,
                 height: 30,
               ),
               label: '',
             ),
             BottomNavigationBarItem(
-              icon: Image.asset(
-                'assets/images/viw.png',
+              icon: SvgPicture.asset(
+                'assets/images/navigation5.svg',
                 width: 30,
                 height: 30,
               ),

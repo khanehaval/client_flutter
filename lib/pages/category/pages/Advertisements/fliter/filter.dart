@@ -91,7 +91,7 @@ class _CategoryItemsState extends State<CategoryItems> {
     Padding(
       padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 12),
       child: Image.asset(
-        'assets/images/Frame_amlak.png',
+        'assets/images/category filter.png',
         width: 51,
         height: 51,
       ),
