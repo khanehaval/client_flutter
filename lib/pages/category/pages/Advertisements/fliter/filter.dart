@@ -2,16 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/shared.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/amlak_display.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/ejar_filter/EjaraFilter.dart';
+import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/forosh_filter/ForoshFilter.dart';
 import 'package:flutter_application_1/pages/category/pages/window/window_pages/ejara_kota_modat.dart';
 import 'package:flutter_application_1/pages/category/pages/window/window_pages/ejara_tajari_edari.dart';
 import 'package:flutter_application_1/pages/category/pages/window/window_pages/forosh_maskoni.dart';
 import 'package:flutter_application_1/pages/category/pages/window/window_pages/forosh_tgjari_edari.dart';
 import 'package:flutter_application_1/pages/category/pages/window/window_pages/sacht_saz.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
+import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
 import 'package:get/get.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
-
-import '../../../shared/shated_widget.dart';
 
 class Filter extends StatefulWidget {
   int index;
@@ -44,7 +44,7 @@ class _FilterState extends State<Filter> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar:         bottomNavigation(),
+      bottomNavigationBar: bottomNavigation(),
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -92,11 +92,12 @@ class _FilterState extends State<Filter> {
                               ),
                               child: Padding(
                                 padding: const EdgeInsets.symmetric(
-                                    vertical: 6, horizontal: 6),
+                                    vertical: 7, horizontal: 7),
                                 child: Image.asset(
                                   items[i].assetPath,
-                                  width: 51,
-                                  height: 51,
+                                  width: 40,
+                                  height: 40,
+                                  fit: BoxFit.fitHeight,
                                 ),
                               ),
                             ),
@@ -128,7 +129,7 @@ class _FilterState extends State<Filter> {
                                         border: Border.all(width: 1),
                                       ),
                                       child: const Padding(
-                                        padding: EdgeInsets.all(4.0),
+                                        padding: EdgeInsets.all(10.0),
                                         child: Text("املاک"),
                                       ),
                                     ),
@@ -144,7 +145,7 @@ class _FilterState extends State<Filter> {
                               return Row(
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
-                                  Icon(Icons.arrow_back_ios),
+                                  const Icon(Icons.arrow_back_ios),
                                   Container(
                                     margin: const EdgeInsets.only(
                                       left: 0,
@@ -200,13 +201,15 @@ class _FilterState extends State<Filter> {
                                             ),
                                       borderRadius: BorderRadius.circular(20),
                                       border: Border.all(
-                                          width:
-                                              _currentIndex.value == i ? 1.5 : 1),
+                                          width: _currentIndex.value == i
+                                              ? 1.0
+                                              : 1),
                                     ),
                                     child: Container(
                                         decoration: BoxDecoration(
                                           color: Colors.white,
-                                          borderRadius: BorderRadius.circular(20),
+                                          borderRadius:
+                                              BorderRadius.circular(20),
                                         ),
                                         child: Center(
                                           child: Text(items[_currentIndex.value]
@@ -220,7 +223,7 @@ class _FilterState extends State<Filter> {
                           }),
                     )),
             ),
-            Obx(() =>  _pages()[_currentIndex.value]),
+            Obx(() => _pages()[_currentIndex.value]),
           ],
         ),
       ),
@@ -230,7 +233,7 @@ class _FilterState extends State<Filter> {
   _pages() => [
         AmlakFilter(),
         EjaraFilter(_subFilterType.value),
-        ForoshMaskoni(),
+        ForoshFilter(_subFilterType.value),
         ForoshTagariEdari(),
         EjaraTagariEdari(),
         EjaraKotaModat(),
@@ -240,19 +243,23 @@ class _FilterState extends State<Filter> {
   var items = [
     FilterModel(
         title: "املاک",
-        assetPath: 'assets/images/category filter.png',
+        assetPath: 'assets/images/Property 1=House.png',
         subItems: []),
     FilterModel(
         title: "اجاره مسکونی",
-        assetPath: 'assets/images/Frame_ejaramaskoni.png',
+        assetPath: 'assets/images/Property 2=Maskoni.png',
         subItems: [
           SubItemModel("آپارتمان", SubFilterType.Aparteman),
           SubItemModel("ویلا", SubFilterType.Vila)
         ]),
     FilterModel(
         title: "فروش مسکونی",
-        assetPath: 'assets/images/Frame_foroshmaskoni.png',
-        subItems: []),
+        assetPath: 'assets/images/Property 3=Maskoni.png',
+        subItems: [
+          SubItemModel("آپارتمان", SubFilterType.Aparteman),
+          SubItemModel("ویلا", SubFilterType.Vila),
+          SubItemModel("خانه کلنگی", SubFilterType.kolangi),
+        ]),
     FilterModel(
         title: "فروش تجاری واداری",
         assetPath: 'assets/images/Frame_foroshtejari.png',

@@ -1,13 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/shared.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/intro_screen.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
 class ForoshApartemanDisplay extends StatelessWidget {
-  ForoshApartemanDisplay({super.key}) {}
   final fori = false.obs;
+  SubFilterType type;
+
+  ForoshApartemanDisplay(this.type);
 
   @override
   Widget build(BuildContext context) {

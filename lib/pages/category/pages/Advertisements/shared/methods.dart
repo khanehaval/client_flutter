@@ -7,7 +7,6 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 
-
 showAdvertisment(AdvertismentModel advertismentModel) {
   showGeneralDialog(
     pageBuilder: (_, __, ___) {
@@ -18,16 +17,17 @@ showAdvertisment(AdvertismentModel advertismentModel) {
             Padding(
               padding: const EdgeInsets.all(10.0),
               child: Transform.translate(
-                offset: const Offset(0,20),
+                offset: const Offset(0, 20),
                 child: Container(
                   decoration: const BoxDecoration(color: Colors.transparent),
                   child: Stack(
                     fit: StackFit.passthrough,
                     // alignment: Alignment.topCenter,
                     children: [
-
                       Container(
-                        decoration: const BoxDecoration(color: Colors.white),
+                        decoration: const BoxDecoration(
+                          color: Colors.white,
+                        ),
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Column(
@@ -42,14 +42,12 @@ showAdvertisment(AdvertismentModel advertismentModel) {
                                       fit: BoxFit.cover,
                                     ),
                                   ),
-
                                   Align(
                                     alignment: Alignment.centerRight,
                                     child: SvgPicture.asset(
                                       "assets/images/Score.svg",
                                     ),
                                   ),
-
                                   Align(
                                     alignment: Alignment.centerLeft,
                                     child: SvgPicture.asset(
@@ -57,7 +55,8 @@ showAdvertisment(AdvertismentModel advertismentModel) {
                                     ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsets.only(top: 170, right: 10),
+                                    padding: const EdgeInsets.only(
+                                        top: 170, right: 10),
                                     child: Align(
                                       alignment: Alignment.bottomRight,
                                       child: SvgPicture.asset(
@@ -66,7 +65,8 @@ showAdvertisment(AdvertismentModel advertismentModel) {
                                     ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsets.only(top: 170, right: 40),
+                                    padding: const EdgeInsets.only(
+                                        top: 170, right: 40),
                                     child: Align(
                                       alignment: Alignment.bottomRight,
                                       child: SvgPicture.asset(
@@ -75,7 +75,8 @@ showAdvertisment(AdvertismentModel advertismentModel) {
                                     ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsets.only(top: 170, left: 5),
+                                    padding: const EdgeInsets.only(
+                                        top: 170, left: 5),
                                     child: Align(
                                       alignment: Alignment.bottomLeft,
                                       child: SvgPicture.asset(
@@ -83,7 +84,6 @@ showAdvertisment(AdvertismentModel advertismentModel) {
                                       ),
                                     ),
                                   ),
-
                                 ],
                               ),
                               Row(
@@ -97,29 +97,33 @@ showAdvertisment(AdvertismentModel advertismentModel) {
                                     ),
                                   ),
                                   const SizedBox(
-                                    width: 8,
+                                    width: 100,
                                   ),
-                                  Padding(
-                                    padding: EdgeInsets.only(right: 5),
-                                    child: Text(
-                                      "...ویلا 100 متری در زمین 250 متری",
-                                      style: TextStyle(
-                                          fontSize: 10, fontFamily: MAIN_FONT_FAMILY),
-                                    ),
+                                  const Text(
+                                    "...ویلا 100 متری در زمین 250 متری",
+                                    style: TextStyle(
+                                        fontSize: 10,
+                                        fontFamily: MAIN_FONT_FAMILY,
+                                        color: Color.fromRGBO(99, 99, 99, 1)),
                                   ),
                                 ],
                               ),
+                              const SizedBox(
+                                width: 50,
+                              ),
                               Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   SvgPicture.asset(
                                     "assets/images/price.svg",
                                   ),
                                   Container(
                                       child: SvgPicture.asset(
-                                        "assets/images/property1.svg",
-                                        width: 10,
-                                        height: 19,
-                                      ))
+                                    "assets/images/property1.svg",
+                                    width: 10,
+                                    height: 19,
+                                  ))
                                 ],
                               ),
                               Row(
@@ -137,20 +141,17 @@ showAdvertisment(AdvertismentModel advertismentModel) {
                         ),
                       ),
                       Positioned(
-                        top: -20,
+                        left: 170,
                         child: SvgPicture.asset(
                           "assets/images/delete.svg",
                         ),
                       ),
-
                     ],
                   ),
                 ),
               ),
             ),
-
-
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Row(
@@ -180,8 +181,7 @@ showAdvertisment(AdvertismentModel advertismentModel) {
                     )),
                 ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                        backgroundColor:
-                        const Color.fromRGBO(23, 102, 175, 1)),
+                        backgroundColor: const Color.fromRGBO(23, 102, 175, 1)),
                     onPressed: () {},
                     child: const Row(
                       mainAxisSize: MainAxisSize.min,
@@ -203,8 +203,6 @@ showAdvertisment(AdvertismentModel advertismentModel) {
                     )),
               ],
             )
-
-
           ],
         ),
       );

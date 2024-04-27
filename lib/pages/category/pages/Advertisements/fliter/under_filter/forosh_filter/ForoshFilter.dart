@@ -3,15 +3,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/shared.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/ejar_filter/aparteman_filter.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/ejar_filter/ejara_vila_filter.dart';
+import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/forosh_filter/Forosh_Vila_display.dart';
+import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/forosh_filter/Forosh_kolangi_filter.dart';
+import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/forosh_filter/forosh_aparteman_display.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/intro_screen.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
-class EjaraFilter extends StatelessWidget {
+class ForoshFilter extends StatelessWidget {
   SubFilterType type;
   final fori = false.obs;
-  EjaraFilter(this.type);
+
+  ForoshFilter(this.type);
 
   @override
   Widget build(BuildContext context) {
@@ -289,7 +293,7 @@ class EjaraFilter extends StatelessWidget {
                     const Padding(
                       padding: EdgeInsets.only(right: 20),
                       child: Text(
-                        "  در طبقه",
+                        "امکانات آگهی",
                         style: TextStyle(
                             fontFamily: MAIN_FONT_FAMILY, fontSize: 12),
                       ),
@@ -376,8 +380,8 @@ class EjaraFilter extends StatelessWidget {
         ],
       );
     } else if (type == SubFilterType.Aparteman) {
-      return EjaraApartemanFilter();
+      return ForoshVilaFilter(SubFilterType.Vila);
     }
-    return EjaraVilaFilter();
+    return ForoshKolangi(type);
   }
 }

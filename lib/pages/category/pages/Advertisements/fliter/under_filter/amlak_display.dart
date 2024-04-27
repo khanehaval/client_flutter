@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/forosh_filter/forosh_maskoni_display.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/intro_screen.dart';
 import 'package:flutter_svg/svg.dart';
@@ -21,7 +20,8 @@ class AmlakFilter extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
-      child: Column(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+      child:
+          Column(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
         const Divider(
           endIndent: 20,
           indent: 20,
@@ -54,7 +54,8 @@ class AmlakFilter extends StatelessWidget {
                         Padding(
                           padding: const EdgeInsets.only(right: 20),
                           child: IconButton(
-                            icon: SvgPicture.asset("assets/images/location1.svg"),
+                            icon:
+                                SvgPicture.asset("assets/images/location1.svg"),
                             onPressed: () {},
                           ),
                         ),
@@ -103,8 +104,8 @@ class AmlakFilter extends StatelessWidget {
                 height: 120,
                 decoration: BoxDecoration(
                     color: const Color.fromRGBO(250, 250, 250, 1),
-                    border:
-                        Border.all(color: const Color.fromRGBO(166, 166, 166, 1)),
+                    border: Border.all(
+                        color: const Color.fromRGBO(166, 166, 166, 1)),
                     borderRadius: BorderRadius.circular(15)),
                 child: Column(children: [
                   Padding(
@@ -175,8 +176,8 @@ class AmlakFilter extends StatelessWidget {
               Container(
                 decoration: BoxDecoration(
                     color: const Color.fromRGBO(250, 250, 250, 1),
-                    border:
-                        Border.all(color: const Color.fromRGBO(166, 166, 166, 1)),
+                    border: Border.all(
+                        color: const Color.fromRGBO(166, 166, 166, 1)),
                     borderRadius: BorderRadius.circular(15)),
                 child: Column(
                   children: [
@@ -393,8 +394,7 @@ class AmlakFilter extends StatelessWidget {
           height: 33,
           decoration: BoxDecoration(
               color: const Color.fromRGBO(250, 250, 250, 1),
-              border:
-                  Border.all(color: const Color.fromRGBO(166, 166, 166, 1)),
+              border: Border.all(color: const Color.fromRGBO(166, 166, 166, 1)),
               borderRadius: BorderRadius.circular(15)),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -406,10 +406,8 @@ class AmlakFilter extends StatelessWidget {
                       onChanged: (_) => fori.value = _,
                       value: fori.value,
                       activeColor: Colors.white,
-                      activeTrackColor:
-                          const Color.fromRGBO(54, 216, 89, 1),
-                      inactiveThumbColor:
-                          const Color.fromRGBO(11, 8, 8, 0.2),
+                      activeTrackColor: const Color.fromRGBO(54, 216, 89, 1),
+                      inactiveThumbColor: const Color.fromRGBO(11, 8, 8, 0.2),
                       inactiveTrackColor:
                           const Color.fromRGBO(255, 255, 255, 1)),
                 ),
@@ -418,8 +416,7 @@ class AmlakFilter extends StatelessWidget {
                 padding: EdgeInsets.only(right: 20),
                 child: Text(
                   "آگهی فوری",
-                  style:
-                      TextStyle(fontFamily: MAIN_FONT_FAMILY, fontSize: 12),
+                  style: TextStyle(fontFamily: MAIN_FONT_FAMILY, fontSize: 12),
                 ),
               ),
             ],
@@ -438,9 +435,7 @@ class AmlakFilter extends StatelessWidget {
                   gradient: GetGradient(),
                 ),
                 child: ElevatedButton(
-                  onPressed: () {
-                    Get.to(() => ForoshMaskoniDisplay());
-                  },
+                  onPressed: () {},
                   style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.transparent,
                       shadowColor: Colors.transparent),
@@ -459,5 +454,3 @@ class AmlakFilter extends StatelessWidget {
     );
   }
 }
-
-

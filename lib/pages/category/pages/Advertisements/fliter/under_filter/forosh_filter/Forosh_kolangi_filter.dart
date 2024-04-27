@@ -1,11 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/shared.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/intro_screen.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
-class EjaraApartemanFilter extends StatelessWidget {
+class ForoshKolangi extends StatelessWidget {
   final shakhsi = false.obs;
   final amlak = false.obs;
   final moshaver = false.obs;
@@ -13,6 +14,10 @@ class EjaraApartemanFilter extends StatelessWidget {
   final aksdar = false.obs;
   final videodar = false.obs;
   final fori = false.obs;
+  SubFilterType type;
+
+  ForoshKolangi(this.type);
+
   @override
   Widget build(BuildContext context) {
     return Column(children: [
