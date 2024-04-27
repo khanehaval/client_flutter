@@ -15,7 +15,7 @@ class ForoshFilter extends StatelessWidget {
   SubFilterType type;
   final fori = false.obs;
 
-  ForoshFilter(this.type);
+  ForoshFilter(this.type, {super.key});
 
   @override
   Widget build(BuildContext context) {

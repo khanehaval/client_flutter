@@ -234,10 +234,6 @@ class _FilterState extends State<Filter> {
         AmlakFilter(),
         EjaraFilter(_subFilterType.value),
         ForoshFilter(_subFilterType.value),
-        ForoshTagariEdari(),
-        EjaraTagariEdari(),
-        EjaraKotaModat(),
-        SachtSaz(),
       ];
 
   var items = [
