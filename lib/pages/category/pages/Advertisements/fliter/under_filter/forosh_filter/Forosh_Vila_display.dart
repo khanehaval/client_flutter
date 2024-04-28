@@ -14,10 +14,6 @@ class ForoshVilaFilter extends StatelessWidget {
   final aksdar = false.obs;
   final videodar = false.obs;
   final fori = false.obs;
-  SubFilterType type;
-
-  ForoshVilaFilter(this.type, {super.key});
-
   @override
   Widget build(BuildContext context) {
     return Column(children: [
@@ -38,7 +34,7 @@ class ForoshVilaFilter extends StatelessWidget {
                     const Padding(
                       padding: EdgeInsets.only(left: 20),
                       child: Text(
-                        "تهران",
+                        "نمیا",
                         textAlign: TextAlign.center,
                         style: TextStyle(
                             fontSize: 11,

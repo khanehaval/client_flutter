@@ -1,7 +1,9 @@
 enum SubFilterType {
   None,
   Aparteman,
+  ForoshAparteman,
   Vila,
+  ForoshVila,
   kolangi,
   daftarkar,
   maqazeh,
@@ -9,5 +11,4 @@ enum SubFilterType {
   sakhtvasaz,
   pishfrosh,
   mosharekatdarsakht,
-  ForoshMaskoniDisplay,
 }

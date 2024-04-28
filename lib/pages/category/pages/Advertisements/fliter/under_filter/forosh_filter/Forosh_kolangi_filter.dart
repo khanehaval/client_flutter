@@ -14,10 +14,6 @@ class ForoshKolangi extends StatelessWidget {
   final aksdar = false.obs;
   final videodar = false.obs;
   final fori = false.obs;
-  SubFilterType type;
-
-  ForoshKolangi(this.type);
-
   @override
   Widget build(BuildContext context) {
     return Column(children: [
@@ -38,7 +34,7 @@ class ForoshKolangi extends StatelessWidget {
                     const Padding(
                       padding: EdgeInsets.only(left: 20),
                       child: Text(
-                        "تهران",
+                        "ddddd",
                         textAlign: TextAlign.center,
                         style: TextStyle(
                             fontSize: 11,

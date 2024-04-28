@@ -3,6 +3,7 @@ import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter
 import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/amlak_display.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/ejar_filter/EjaraFilter.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/forosh_filter/ForoshFilter.dart';
+import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/forosh_filter/forosh_aparteman_filter.dart';
 import 'package:flutter_application_1/pages/category/pages/window/window_pages/ejara_kota_modat.dart';
 import 'package:flutter_application_1/pages/category/pages/window/window_pages/ejara_tajari_edari.dart';
 import 'package:flutter_application_1/pages/category/pages/window/window_pages/forosh_maskoni.dart';
@@ -166,7 +167,7 @@ class _FilterState extends State<Filter> {
                                         borderRadius: BorderRadius.circular(20),
                                       ),
                                       child: Image.asset(
-                                        items[i].assetPath,
+                                        items[_currentIndex.value].assetPath,
                                         width: 51,
                                         height: 51,
                                       ),
@@ -201,21 +202,22 @@ class _FilterState extends State<Filter> {
                                             ),
                                       borderRadius: BorderRadius.circular(20),
                                       border: Border.all(
-                                          width: _currentIndex.value == i
+                                          width: _currentIndex.value ==
+                                                  _currentIndex.value
                                               ? 1.0
                                               : 1),
                                     ),
                                     child: Container(
-                                        decoration: BoxDecoration(
-                                          color: Colors.white,
-                                          borderRadius:
-                                              BorderRadius.circular(20),
-                                        ),
-                                        child: Center(
-                                          child: Text(items[_currentIndex.value]
-                                              .subItems[i - 2]
-                                              .title),
-                                        )),
+                                      decoration: BoxDecoration(
+                                        color: Colors.white,
+                                        borderRadius: BorderRadius.circular(20),
+                                      ),
+                                      child: Center(
+                                        child: Text(items[_currentIndex.value]
+                                            .subItems[i - 2]
+                                            .title),
+                                      ),
+                                    ),
                                   ),
                                 ),
                               );
@@ -252,8 +254,8 @@ class _FilterState extends State<Filter> {
         title: "فروش مسکونی",
         assetPath: 'assets/images/Property 3=Maskoni.png',
         subItems: [
-          SubItemModel("آپارتمان", SubFilterType.Aparteman),
-          SubItemModel("ویلا", SubFilterType.Vila),
+          SubItemModel("آپارتمان", SubFilterType.ForoshAparteman),
+          SubItemModel("ویلا", SubFilterType.ForoshVila),
           SubItemModel("خانه کلنگی", SubFilterType.kolangi),
         ]),
     FilterModel(

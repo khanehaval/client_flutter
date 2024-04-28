@@ -5,7 +5,7 @@ import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter
 import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/ejar_filter/ejara_vila_filter.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/forosh_filter/Forosh_Vila_display.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/forosh_filter/Forosh_kolangi_filter.dart';
-import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/forosh_filter/forosh_aparteman_display.dart';
+import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/forosh_filter/forosh_aparteman_filter.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/intro_screen.dart';
 import 'package:flutter_svg/svg.dart';
@@ -15,7 +15,7 @@ class ForoshFilter extends StatelessWidget {
   SubFilterType type;
   final fori = false.obs;
 
-  ForoshFilter(this.type, {super.key});
+  ForoshFilter(this.type);
 
   @override
   Widget build(BuildContext context) {
@@ -379,9 +379,11 @@ class ForoshFilter extends StatelessWidget {
               ])
         ],
       );
-    } else if (type == SubFilterType.Aparteman) {
-      return ForoshVilaFilter(SubFilterType.Vila);
+    } else if (type == SubFilterType.ForoshAparteman) {
+      return ForoshApartemanFilter();
+    } else if (type == SubFilterType.ForoshVila) {
+      return ForoshVilaFilter();
     }
-    return ForoshKolangi(type);
+    return ForoshKolangi();
   }
 }
