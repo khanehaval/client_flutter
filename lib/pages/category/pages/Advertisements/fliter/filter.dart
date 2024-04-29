@@ -3,12 +3,6 @@ import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter
 import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/amlak_display.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/ejar_filter/EjaraFilter.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/forosh_filter/ForoshFilter.dart';
-import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/forosh_filter/forosh_aparteman_filter.dart';
-import 'package:flutter_application_1/pages/category/pages/window/window_pages/ejara_kota_modat.dart';
-import 'package:flutter_application_1/pages/category/pages/window/window_pages/ejara_tajari_edari.dart';
-import 'package:flutter_application_1/pages/category/pages/window/window_pages/forosh_maskoni.dart';
-import 'package:flutter_application_1/pages/category/pages/window/window_pages/forosh_tgjari_edari.dart';
-import 'package:flutter_application_1/pages/category/pages/window/window_pages/sacht_saz.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
 import 'package:get/get.dart';

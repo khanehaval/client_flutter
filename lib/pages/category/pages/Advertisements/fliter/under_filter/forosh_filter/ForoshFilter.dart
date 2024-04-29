@@ -6,6 +6,7 @@ import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter
 import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/forosh_filter/Forosh_Vila_display.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/forosh_filter/Forosh_kolangi_filter.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/forosh_filter/forosh_aparteman_filter.dart';
+import 'package:flutter_application_1/pages/category/pages/window/window_pages/forosh_maskoni.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/intro_screen.dart';
 import 'package:flutter_svg/svg.dart';
@@ -14,7 +15,6 @@ import 'package:get/get.dart';
 class ForoshFilter extends StatelessWidget {
   SubFilterType type;
   final fori = false.obs;
-
   ForoshFilter(this.type);
 
   @override
@@ -34,28 +34,28 @@ class ForoshFilter extends StatelessWidget {
                           color: const Color.fromRGBO(166, 166, 166, 1)),
                       borderRadius: BorderRadius.circular(15)),
                   child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        const Padding(
-                          padding: EdgeInsets.only(left: 20),
-                          child: Text(
-                            "تهران",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                                fontSize: 11,
-                                fontFamily: MAIN_FONT_FAMILY,
-                                color: Color.fromRGBO(99, 99, 99, 1)),
-                          ),
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      const Padding(
+                        padding: EdgeInsets.only(left: 20),
+                        child: Text(
+                          "تهران",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              fontSize: 11,
+                              fontFamily: MAIN_FONT_FAMILY,
+                              color: Color.fromRGBO(99, 99, 99, 1)),
                         ),
-                        Padding(
-                          padding: const EdgeInsets.only(right: 20),
-                          child: IconButton(
-                            icon:
-                                SvgPicture.asset("assets/images/location1.svg"),
-                            onPressed: () {},
-                          ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(right: 20),
+                        child: IconButton(
+                          icon: SvgPicture.asset("assets/images/location1.svg"),
+                          onPressed: () {},
                         ),
-                      ]),
+                      ),
+                    ],
+                  ),
                 ),
                 Container(
                   decoration: BoxDecoration(
@@ -380,7 +380,7 @@ class ForoshFilter extends StatelessWidget {
         ],
       );
     } else if (type == SubFilterType.ForoshAparteman) {
-      return ForoshApartemanFilter();
+      return const ForoshApartemanFilter();
     } else if (type == SubFilterType.ForoshVila) {
       return ForoshVilaFilter();
     }
