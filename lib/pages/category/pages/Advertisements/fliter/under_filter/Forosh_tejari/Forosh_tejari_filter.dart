@@ -1,6 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/shared.dart';
+import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/Forosh_tejari/Daftar_kar_Filter.dart';
+import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/Forosh_tejari/Daftar_sanati_filter.dart';
+import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/Forosh_tejari/maqazeh_filter.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/ejar_filter/aparteman_filter.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/ejar_filter/ejara_vila_filter.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/forosh_filter/Forosh_Vila_display.dart';
@@ -12,10 +15,10 @@ import 'package:flutter_application_1/pages/intro_screen.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
-class ForoshFilter extends StatelessWidget {
+class ForoshTejariFilter extends StatelessWidget {
   SubFilterType type;
   final fori = false.obs;
-  ForoshFilter(this.type);
+  ForoshTejariFilter(this.type);
 
   @override
   Widget build(BuildContext context) {
@@ -379,11 +382,11 @@ class ForoshFilter extends StatelessWidget {
               ])
         ],
       );
-    } else if (type == SubFilterType.ForoshAparteman) {
-      return ForoshApartemanFilter();
-    } else if (type == SubFilterType.ForoshVila) {
-      return ForoshVilaFilter();
+    } else if (type == SubFilterType.daftarkar) {
+      return DaftarKarFilter();
+    } else if (type == SubFilterType.maqazeh) {
+      return MaqazehFilter();
     }
-    return ForoshKolangi();
+    return ForoshSanatiFilter();
   }
 }

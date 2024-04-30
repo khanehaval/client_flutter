@@ -34,7 +34,7 @@ class ForoshVilaFilter extends StatelessWidget {
                     const Padding(
                       padding: EdgeInsets.only(left: 20),
                       child: Text(
-                        "نمیا",
+                        "تهران",
                         textAlign: TextAlign.center,
                         style: TextStyle(
                             fontSize: 11,

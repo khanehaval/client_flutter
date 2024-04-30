@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/shared.dart';
+import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/Forosh_tejari/Forosh_tejari_filter.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/amlak_display.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/ejar_filter/EjaraFilter.dart';
+import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/ejara_tejari/Ejara_tejari_filter.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/forosh_filter/ForoshFilter.dart';
+import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/kota_modat/kota_modat_filter.dart';
+import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/sakht_va_saz/sakht_va_saz_filter.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
 import 'package:get/get.dart';
@@ -87,7 +91,7 @@ class _FilterState extends State<Filter> {
                               ),
                               child: Padding(
                                 padding: const EdgeInsets.symmetric(
-                                    vertical: 7, horizontal: 7),
+                                    vertical: 9, horizontal: 9),
                                 child: Image.asset(
                                   items[i].assetPath,
                                   width: 40,
@@ -230,6 +234,10 @@ class _FilterState extends State<Filter> {
         AmlakFilter(),
         EjaraFilter(_subFilterType.value),
         ForoshFilter(_subFilterType.value),
+        ForoshTejariFilter(_subFilterType.value),
+        EjaraTejariFilter(_subFilterType.value),
+        KotaModatFilter(_subFilterType.value),
+        SakhtVaSazFilter(_subFilterType.value),
       ];
 
   var items = [
@@ -254,20 +262,34 @@ class _FilterState extends State<Filter> {
         ]),
     FilterModel(
         title: "فروش تجاری واداری",
-        assetPath: 'assets/images/Frame_foroshtejari.png',
-        subItems: []),
+        assetPath: 'assets/images/forosh_tejari_filter1.png',
+        subItems: [
+          SubItemModel("دفتر کار", SubFilterType.daftarkar),
+          SubItemModel("مغازه", SubFilterType.maqazeh),
+          SubItemModel("دفاتر صنعتی", SubFilterType.daftarsanati),
+        ]),
     FilterModel(
         title: "اجاره تجاری اداری",
-        assetPath: 'assets/images/Frame_ejaratejari.png',
-        subItems: []),
+        assetPath: 'assets/images/ejara_tejari_filter.png',
+        subItems: [
+          SubItemModel("دفتر کار", SubFilterType.earadaftarkar),
+          SubItemModel("مغازه", SubFilterType.ejaramaqazeh),
+          SubItemModel("دفاتر صنعتی", SubFilterType.ejaradaftarsanati),
+        ]),
     FilterModel(
         title: "اجاره کوتاه مدت",
-        assetPath: 'assets/images/Frame_kotamodat.png',
-        subItems: []),
+        assetPath: 'assets/images/kotamodat_filter.png',
+        subItems: [
+          SubItemModel("آپارتمان", SubFilterType.kotamodataparteman),
+          SubItemModel("ویلا", SubFilterType.kotamodatvila)
+        ]),
     FilterModel(
         title: "ساخت وساز",
-        assetPath: 'assets/images/Frame_sakht va saz.png',
-        subItems: []),
+        assetPath: 'assets/images/SakhtvasazFilter.png',
+        subItems: [
+          SubItemModel("پـیش فروش", SubFilterType.pishfrosh),
+          SubItemModel("مشارکت در ساخت", SubFilterType.mosharekatdarsakht)
+        ]),
   ];
 }
 

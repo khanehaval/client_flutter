@@ -5,7 +5,7 @@ import 'package:flutter_application_1/pages/intro_screen.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
-class ForoshApartemanFilter extends StatelessWidget {
+class EjaraDaftarKarFilter extends StatelessWidget {
   final shakhsi = false.obs;
   final amlak = false.obs;
   final moshaver = false.obs;
@@ -13,7 +13,6 @@ class ForoshApartemanFilter extends StatelessWidget {
   final aksdar = false.obs;
   final videodar = false.obs;
   final fori = false.obs;
-
   @override
   Widget build(BuildContext context) {
     return Column(children: [
@@ -132,7 +131,7 @@ class ForoshApartemanFilter extends StatelessWidget {
             const Padding(
               padding: EdgeInsets.only(right: 20),
               child: Text(
-                "قیمت کل",
+                "میزان رهن",
                 style: TextStyle(fontFamily: MAIN_FONT_FAMILY, fontSize: 12),
               ),
             ),
@@ -142,36 +141,57 @@ class ForoshApartemanFilter extends StatelessWidget {
       const SizedBox(
         height: 10,
       ),
-      Column(
-        children: [
-          Container(
-            height: 50,
-            width: 370,
-            decoration: BoxDecoration(
-                color: const Color.fromRGBO(250, 250, 250, 1),
-                border:
-                    Border.all(color: const Color.fromRGBO(166, 166, 166, 1)),
-                borderRadius: BorderRadius.circular(15)),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                IconButton(
-                  icon: SvgPicture.asset("assets/images/Vector-20.svg"),
-                  onPressed: () {},
-                ),
-                const Padding(
-                  padding: EdgeInsets.only(right: 20),
-                  child: Text(
-                    "متراژ",
-                    style:
-                        TextStyle(fontFamily: MAIN_FONT_FAMILY, fontSize: 12),
-                  ),
-                ),
-              ],
+      Column(children: [
+        Container(
+          height: 50,
+          width: 370,
+          decoration: BoxDecoration(
+              color: const Color.fromRGBO(250, 250, 250, 1),
+              border: Border.all(color: const Color.fromRGBO(166, 166, 166, 1)),
+              borderRadius: BorderRadius.circular(15)),
+          child:
+              Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+            IconButton(
+              icon: SvgPicture.asset("assets/images/Vector-20.svg"),
+              onPressed: () {},
             ),
-          ),
-        ],
+            const Padding(
+              padding: EdgeInsets.only(right: 20),
+              child: Text(
+                "میزان اجاره",
+                style: TextStyle(fontFamily: MAIN_FONT_FAMILY, fontSize: 12),
+              ),
+            ),
+          ]),
+        ),
+      ]),
+      const SizedBox(
+        height: 10,
       ),
+      Column(children: [
+        Container(
+          height: 50,
+          width: 370,
+          decoration: BoxDecoration(
+              color: const Color.fromRGBO(250, 250, 250, 1),
+              border: Border.all(color: const Color.fromRGBO(166, 166, 166, 1)),
+              borderRadius: BorderRadius.circular(15)),
+          child:
+              Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+            IconButton(
+              icon: SvgPicture.asset("assets/images/Vector-20.svg"),
+              onPressed: () {},
+            ),
+            const Padding(
+              padding: EdgeInsets.only(right: 20),
+              child: Text(
+                "متراژ",
+                style: TextStyle(fontFamily: MAIN_FONT_FAMILY, fontSize: 12),
+              ),
+            ),
+          ]),
+        ),
+      ]),
       const SizedBox(
         height: 10,
       ),
@@ -327,60 +347,6 @@ class ForoshApartemanFilter extends StatelessWidget {
             const Padding(
               padding: EdgeInsets.only(right: 20),
               child: Text(
-                "نوع سند",
-                style: TextStyle(fontFamily: MAIN_FONT_FAMILY, fontSize: 12),
-              ),
-            ),
-          ]),
-        ),
-      ]),
-      const SizedBox(
-        height: 10,
-      ),
-      Column(children: [
-        Container(
-          height: 50,
-          width: 370,
-          decoration: BoxDecoration(
-              color: const Color.fromRGBO(250, 250, 250, 1),
-              border: Border.all(color: const Color.fromRGBO(166, 166, 166, 1)),
-              borderRadius: BorderRadius.circular(15)),
-          child:
-              Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-            IconButton(
-              icon: SvgPicture.asset("assets/images/Vector-20.svg"),
-              onPressed: () {},
-            ),
-            const Padding(
-              padding: EdgeInsets.only(right: 20),
-              child: Text(
-                "سایر امکانات",
-                style: TextStyle(fontFamily: MAIN_FONT_FAMILY, fontSize: 12),
-              ),
-            ),
-          ]),
-        ),
-      ]),
-      const SizedBox(
-        height: 10,
-      ),
-      Column(children: [
-        Container(
-          height: 50,
-          width: 370,
-          decoration: BoxDecoration(
-              color: const Color.fromRGBO(250, 250, 250, 1),
-              border: Border.all(color: const Color.fromRGBO(166, 166, 166, 1)),
-              borderRadius: BorderRadius.circular(15)),
-          child:
-              Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-            IconButton(
-              icon: SvgPicture.asset("assets/images/Vector-20.svg"),
-              onPressed: () {},
-            ),
-            const Padding(
-              padding: EdgeInsets.only(right: 20),
-              child: Text(
                 "آگهی دهنده",
                 style: TextStyle(fontFamily: MAIN_FONT_FAMILY, fontSize: 12),
               ),
@@ -415,6 +381,159 @@ class ForoshApartemanFilter extends StatelessWidget {
           ]),
         ),
       ]),
+      const SizedBox(
+        height: 10,
+      ),
+      Column(
+        children: [
+          Container(
+            decoration: BoxDecoration(
+                color: const Color.fromRGBO(250, 250, 250, 1),
+                border:
+                    Border.all(color: const Color.fromRGBO(166, 166, 166, 1)),
+                borderRadius: BorderRadius.circular(15)),
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(left: 20, top: 5),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      SvgPicture.asset(
+                        'assets/images/=.svg',
+                        width: 20,
+                        height: 10,
+                      ),
+                      const Padding(
+                        padding: EdgeInsets.only(right: 10),
+                        child: Text(
+                          "سایر امکانات",
+                          style: TextStyle(
+                              fontFamily: MAIN_FONT_FAMILY,
+                              color: Color.fromRGBO(48, 48, 48, 1),
+                              fontSize: 12),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Transform.scale(
+                      scale: 0.6,
+                      child: Obx(
+                        () => Switch(
+                            onChanged: (_) => shakhsi.value = _,
+                            value: shakhsi.value,
+                            activeColor: Colors.white,
+                            activeTrackColor:
+                                const Color.fromRGBO(54, 216, 89, 1),
+                            inactiveThumbColor:
+                                const Color.fromRGBO(11, 8, 8, 0.2),
+                            inactiveTrackColor:
+                                const Color.fromRGBO(255, 255, 255, 1)),
+                      ),
+                    ),
+                    const Padding(
+                      padding: EdgeInsets.only(right: 20),
+                      child: Text(
+                        "آسانسور",
+                        style: TextStyle(
+                            fontFamily: MAIN_FONT_FAMILY, fontSize: 12),
+                      ),
+                    ),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Transform.scale(
+                      scale: 0.60,
+                      child: Obx(
+                        () => Switch(
+                            onChanged: (_) => amlak.value = _,
+                            value: amlak.value,
+                            activeTrackColor:
+                                const Color.fromRGBO(54, 216, 89, 1),
+                            inactiveThumbColor:
+                                const Color.fromRGBO(11, 8, 8, 0.2),
+                            inactiveTrackColor:
+                                const Color.fromRGBO(255, 255, 255, 1)),
+                      ),
+                    ),
+                    const Padding(
+                      padding: EdgeInsets.only(right: 20),
+                      child: Text(
+                        "انباری",
+                        style: TextStyle(
+                            fontFamily: MAIN_FONT_FAMILY, fontSize: 12),
+                      ),
+                    ),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Transform.scale(
+                      scale: 0.60,
+                      child: Obx(
+                        () => Switch(
+                            onChanged: (_) => moshaver.value = _,
+                            value: moshaver.value,
+                            activeColor: Colors.white,
+                            activeTrackColor:
+                                const Color.fromRGBO(54, 216, 89, 1),
+                            inactiveThumbColor:
+                                const Color.fromRGBO(11, 8, 8, 0.2),
+                            inactiveTrackColor:
+                                const Color.fromRGBO(255, 255, 255, 1)),
+                      ),
+                    ),
+                    const Padding(
+                      padding: EdgeInsets.only(right: 20),
+                      child: Text(
+                        "پارکینگ",
+                        style: TextStyle(
+                            fontFamily: MAIN_FONT_FAMILY, fontSize: 12),
+                      ),
+                    ),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Transform.scale(
+                      scale: 0.60,
+                      child: Obx(
+                        () => Switch(
+                          onChanged: (_) => bazsazi.value = _,
+                          value: bazsazi.value,
+                          activeColor: Colors.white,
+                          activeTrackColor:
+                              const Color.fromRGBO(54, 216, 89, 1),
+                          inactiveThumbColor:
+                              const Color.fromRGBO(11, 8, 8, 0.2),
+                          inactiveTrackColor:
+                              const Color.fromRGBO(255, 255, 255, 1),
+                        ),
+                      ),
+                    ),
+                    const Padding(
+                      padding: EdgeInsets.only(right: 20),
+                      child: Text(
+                        "بازسازی شده",
+                        style: TextStyle(
+                            fontFamily: MAIN_FONT_FAMILY, fontSize: 12),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
       const SizedBox(
         height: 10,
       ),
@@ -462,6 +581,57 @@ class ForoshApartemanFilter extends StatelessWidget {
             ),
           ),
         ],
+      ),
+      const SizedBox(
+        height: 10,
+      ),
+      Column(
+        children: [
+          Container(
+            height: 50,
+            width: 370,
+            decoration: BoxDecoration(
+                color: const Color.fromRGBO(250, 250, 250, 1),
+                border:
+                    Border.all(color: const Color.fromRGBO(166, 166, 166, 1)),
+                borderRadius: BorderRadius.circular(15)),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Container(
+                  child: Container(
+                    child: Transform.scale(
+                      scale: 0.60,
+                      child: Obx(
+                        () => Switch(
+                            onChanged: (_) => fori.value = _,
+                            value: fori.value,
+                            activeColor: Colors.white,
+                            activeTrackColor:
+                                const Color.fromRGBO(54, 216, 89, 1),
+                            inactiveThumbColor:
+                                const Color.fromRGBO(11, 8, 8, 0.2),
+                            inactiveTrackColor:
+                                const Color.fromRGBO(255, 255, 255, 1)),
+                      ),
+                    ),
+                  ),
+                ),
+                const Padding(
+                  padding: EdgeInsets.only(right: 20),
+                  child: Text(
+                    "سند اداری",
+                    style:
+                        TextStyle(fontFamily: MAIN_FONT_FAMILY, fontSize: 12),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+      const SizedBox(
+        height: 10,
       ),
       const SizedBox(
         height: 10,

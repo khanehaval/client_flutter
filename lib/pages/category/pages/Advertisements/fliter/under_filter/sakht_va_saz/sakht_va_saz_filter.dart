@@ -1,21 +1,28 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/shared.dart';
+import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/Forosh_tejari/Daftar_kar_Filter.dart';
+import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/Forosh_tejari/Daftar_sanati_filter.dart';
+import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/Forosh_tejari/maqazeh_filter.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/ejar_filter/aparteman_filter.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/ejar_filter/ejara_vila_filter.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/forosh_filter/Forosh_Vila_display.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/forosh_filter/Forosh_kolangi_filter.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/forosh_filter/forosh_aparteman_filter.dart';
+import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/kota_modat/ejara_kota_aparteman.dart';
+import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/kota_modat/ejara_kota_vila.dart';
+import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/sakht_va_saz/Pish_Forosh_filter.dart';
+import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/sakht_va_saz/mosharekat_dar_sakht_filter.dart';
 import 'package:flutter_application_1/pages/category/pages/window/window_pages/forosh_maskoni.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/intro_screen.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
-class ForoshFilter extends StatelessWidget {
+class SakhtVaSazFilter extends StatelessWidget {
   SubFilterType type;
   final fori = false.obs;
-  ForoshFilter(this.type);
+  SakhtVaSazFilter(this.type);
 
   @override
   Widget build(BuildContext context) {
@@ -143,126 +150,6 @@ class ForoshFilter extends StatelessWidget {
                     const Padding(
                       padding: EdgeInsets.only(right: 20),
                       child: Text(
-                        "میزان رهن",
-                        style: TextStyle(
-                            fontFamily: MAIN_FONT_FAMILY, fontSize: 12),
-                      ),
-                    ),
-                  ]),
-            ),
-          ]),
-          const SizedBox(
-            height: 10,
-          ),
-          Column(children: [
-            Container(
-              height: 50,
-              width: 370,
-              decoration: BoxDecoration(
-                  color: const Color.fromRGBO(250, 250, 250, 1),
-                  border:
-                      Border.all(color: const Color.fromRGBO(166, 166, 166, 1)),
-                  borderRadius: BorderRadius.circular(15)),
-              child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    IconButton(
-                      icon: SvgPicture.asset("assets/images/Vector-20.svg"),
-                      onPressed: () {},
-                    ),
-                    const Padding(
-                      padding: EdgeInsets.only(right: 20),
-                      child: Text(
-                        "میزان اجاره",
-                        style: TextStyle(
-                            fontFamily: MAIN_FONT_FAMILY, fontSize: 12),
-                      ),
-                    ),
-                  ]),
-            ),
-          ]),
-          const SizedBox(
-            height: 10,
-          ),
-          Column(children: [
-            Container(
-              height: 50,
-              width: 370,
-              decoration: BoxDecoration(
-                  color: const Color.fromRGBO(250, 250, 250, 1),
-                  border:
-                      Border.all(color: const Color.fromRGBO(166, 166, 166, 1)),
-                  borderRadius: BorderRadius.circular(15)),
-              child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    IconButton(
-                      icon: SvgPicture.asset("assets/images/Vector-20.svg"),
-                      onPressed: () {},
-                    ),
-                    const Padding(
-                      padding: EdgeInsets.only(right: 20),
-                      child: Text(
-                        "متراژ",
-                        style: TextStyle(
-                            fontFamily: MAIN_FONT_FAMILY, fontSize: 12),
-                      ),
-                    ),
-                  ]),
-            ),
-          ]),
-          const SizedBox(
-            height: 10,
-          ),
-          Column(children: [
-            Container(
-              height: 50,
-              width: 370,
-              decoration: BoxDecoration(
-                  color: const Color.fromRGBO(250, 250, 250, 1),
-                  border:
-                      Border.all(color: const Color.fromRGBO(166, 166, 166, 1)),
-                  borderRadius: BorderRadius.circular(15)),
-              child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    IconButton(
-                      icon: SvgPicture.asset("assets/images/Vector-20.svg"),
-                      onPressed: () {},
-                    ),
-                    const Padding(
-                      padding: EdgeInsets.only(right: 20),
-                      child: Text(
-                        "تعداد اتاق",
-                        style: TextStyle(
-                            fontFamily: MAIN_FONT_FAMILY, fontSize: 12),
-                      ),
-                    ),
-                  ]),
-            ),
-          ]),
-          const SizedBox(
-            height: 10,
-          ),
-          Column(children: [
-            Container(
-              height: 50,
-              width: 370,
-              decoration: BoxDecoration(
-                  color: const Color.fromRGBO(250, 250, 250, 1),
-                  border:
-                      Border.all(color: const Color.fromRGBO(166, 166, 166, 1)),
-                  borderRadius: BorderRadius.circular(15)),
-              child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    IconButton(
-                      icon: SvgPicture.asset("assets/images/Vector-20.svg"),
-                      onPressed: () {},
-                    ),
-                    const Padding(
-                      padding: EdgeInsets.only(right: 20),
-                      child: Text(
                         "آگهی دهنده",
                         style: TextStyle(
                             fontFamily: MAIN_FONT_FAMILY, fontSize: 12),
@@ -350,7 +237,7 @@ class ForoshFilter extends StatelessWidget {
             ],
           ),
           const SizedBox(
-            height: 10,
+            height: 20,
           ),
           Row(
               mainAxisSize: MainAxisSize.max,
@@ -379,11 +266,9 @@ class ForoshFilter extends StatelessWidget {
               ])
         ],
       );
-    } else if (type == SubFilterType.ForoshAparteman) {
-      return ForoshApartemanFilter();
-    } else if (type == SubFilterType.ForoshVila) {
-      return ForoshVilaFilter();
+    } else if (type == SubFilterType.pishfrosh) {
+      return PishForoshFilter();
     }
-    return ForoshKolangi();
+    return MosharekatDarSakhtFilter();
   }
 }

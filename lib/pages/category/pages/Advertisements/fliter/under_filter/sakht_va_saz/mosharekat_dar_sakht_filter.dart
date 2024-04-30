@@ -1,12 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/shared.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/intro_screen.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
-class ForoshKolangi extends StatelessWidget {
+class MosharekatDarSakhtFilter extends StatelessWidget {
   final shakhsi = false.obs;
   final amlak = false.obs;
   final moshaver = false.obs;
@@ -132,60 +131,6 @@ class ForoshKolangi extends StatelessWidget {
             const Padding(
               padding: EdgeInsets.only(right: 20),
               child: Text(
-                "محله",
-                style: TextStyle(fontFamily: MAIN_FONT_FAMILY, fontSize: 12),
-              ),
-            ),
-          ]),
-        ),
-      ]),
-      const SizedBox(
-        height: 10,
-      ),
-      Column(children: [
-        Container(
-          height: 50,
-          width: 370,
-          decoration: BoxDecoration(
-              color: const Color.fromRGBO(250, 250, 250, 1),
-              border: Border.all(color: const Color.fromRGBO(166, 166, 166, 1)),
-              borderRadius: BorderRadius.circular(15)),
-          child:
-              Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-            IconButton(
-              icon: SvgPicture.asset("assets/images/Vector-20.svg"),
-              onPressed: () {},
-            ),
-            const Padding(
-              padding: EdgeInsets.only(right: 20),
-              child: Text(
-                "قیمت کل",
-                style: TextStyle(fontFamily: MAIN_FONT_FAMILY, fontSize: 12),
-              ),
-            ),
-          ]),
-        ),
-      ]),
-      const SizedBox(
-        height: 10,
-      ),
-      Column(children: [
-        Container(
-          height: 50,
-          width: 370,
-          decoration: BoxDecoration(
-              color: const Color.fromRGBO(250, 250, 250, 1),
-              border: Border.all(color: const Color.fromRGBO(166, 166, 166, 1)),
-              borderRadius: BorderRadius.circular(15)),
-          child:
-              Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-            IconButton(
-              icon: SvgPicture.asset("assets/images/Vector-20.svg"),
-              onPressed: () {},
-            ),
-            const Padding(
-              padding: EdgeInsets.only(right: 20),
-              child: Text(
                 "متراژ",
                 style: TextStyle(fontFamily: MAIN_FONT_FAMILY, fontSize: 12),
               ),
@@ -193,6 +138,9 @@ class ForoshKolangi extends StatelessWidget {
           ]),
         ),
       ]),
+      const SizedBox(
+        height: 10,
+      ),
       const SizedBox(
         height: 10,
       ),
@@ -219,7 +167,7 @@ class ForoshKolangi extends StatelessWidget {
                       const Padding(
                         padding: EdgeInsets.only(right: 10),
                         child: Text(
-                          "نوع ملک",
+                          "نوع ملک موجود",
                           style: TextStyle(
                               fontFamily: MAIN_FONT_FAMILY,
                               color: Color.fromRGBO(48, 48, 48, 1),
@@ -250,7 +198,7 @@ class ForoshKolangi extends StatelessWidget {
                     const Padding(
                       padding: EdgeInsets.only(right: 20),
                       child: Text(
-                        "زمین مسکونی",
+                        "زمین",
                         style: TextStyle(
                             fontFamily: MAIN_FONT_FAMILY, fontSize: 12),
                       ),
@@ -261,11 +209,12 @@ class ForoshKolangi extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Transform.scale(
-                      scale: 0.60,
+                      scale: 0.6,
                       child: Obx(
                         () => Switch(
-                            onChanged: (_) => amlak.value = _,
-                            value: amlak.value,
+                            onChanged: (_) => shakhsi.value = _,
+                            value: shakhsi.value,
+                            activeColor: Colors.white,
                             activeTrackColor:
                                 const Color.fromRGBO(54, 216, 89, 1),
                             inactiveThumbColor:
@@ -277,7 +226,7 @@ class ForoshKolangi extends StatelessWidget {
                     const Padding(
                       padding: EdgeInsets.only(right: 20),
                       child: Text(
-                        "خانه کلنگی",
+                        "ساختمان کلنگی",
                         style: TextStyle(
                             fontFamily: MAIN_FONT_FAMILY, fontSize: 12),
                       ),
@@ -289,6 +238,33 @@ class ForoshKolangi extends StatelessWidget {
           ),
         ],
       ),
+      const SizedBox(
+        height: 10,
+      ),
+      Column(children: [
+        Container(
+          height: 50,
+          width: 370,
+          decoration: BoxDecoration(
+              color: const Color.fromRGBO(250, 250, 250, 1),
+              border: Border.all(color: const Color.fromRGBO(166, 166, 166, 1)),
+              borderRadius: BorderRadius.circular(15)),
+          child:
+              Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+            IconButton(
+              icon: SvgPicture.asset("assets/images/Vector-20.svg"),
+              onPressed: () {},
+            ),
+            const Padding(
+              padding: EdgeInsets.only(right: 20),
+              child: Text(
+                "مشارکت در ساخت (ساختمان جدید)",
+                style: TextStyle(fontFamily: MAIN_FONT_FAMILY, fontSize: 12),
+              ),
+            ),
+          ]),
+        ),
+      ]),
       const SizedBox(
         height: 10,
       ),
@@ -337,33 +313,6 @@ class ForoshKolangi extends StatelessWidget {
               padding: EdgeInsets.only(right: 20),
               child: Text(
                 "امکانات آگهی",
-                style: TextStyle(fontFamily: MAIN_FONT_FAMILY, fontSize: 12),
-              ),
-            ),
-          ]),
-        ),
-      ]),
-      const SizedBox(
-        height: 10,
-      ),
-      Column(children: [
-        Container(
-          height: 50,
-          width: 370,
-          decoration: BoxDecoration(
-              color: const Color.fromRGBO(250, 250, 250, 1),
-              border: Border.all(color: const Color.fromRGBO(166, 166, 166, 1)),
-              borderRadius: BorderRadius.circular(15)),
-          child:
-              Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-            IconButton(
-              icon: SvgPicture.asset("assets/images/Vector-20.svg"),
-              onPressed: () {},
-            ),
-            const Padding(
-              padding: EdgeInsets.only(right: 20),
-              child: Text(
-                "نوع سند",
                 style: TextStyle(fontFamily: MAIN_FONT_FAMILY, fontSize: 12),
               ),
             ),
