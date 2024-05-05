@@ -13,6 +13,8 @@ class EjaraApartemanFilter extends StatelessWidget {
   final aksdar = false.obs;
   final videodar = false.obs;
   final fori = false.obs;
+  final _show_item_mahaleh_1 = false.obs;
+
   @override
   Widget build(BuildContext context) {
     return Column(children: [
@@ -89,25 +91,35 @@ class EjaraApartemanFilter extends StatelessWidget {
       ),
       Column(children: [
         Container(
-          height: 50,
-          width: 370,
+          height: _show_item_mahaleh_1.isTrue ? 130 : 50,
           decoration: BoxDecoration(
               color: const Color.fromRGBO(250, 250, 250, 1),
               border: Border.all(color: const Color.fromRGBO(166, 166, 166, 1)),
               borderRadius: BorderRadius.circular(15)),
-          child:
-              Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-            IconButton(
-              icon: SvgPicture.asset("assets/images/Vector-20.svg"),
-              onPressed: () {},
-            ),
-            const Padding(
-              padding: EdgeInsets.only(right: 20),
-              child: Text(
-                "محله",
-                style: TextStyle(fontFamily: MAIN_FONT_FAMILY, fontSize: 12),
+          child: Column(children: [
+            Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+              IconButton(
+                icon: _show_item_mahaleh_1.value
+                    ? SvgPicture.asset(
+                        'assets/images/=.svg',
+                      )
+                    : SvgPicture.asset('assets/images/down.svg'),
+                onPressed: () {
+                  _show_item_mahaleh_1.value = !_show_item_mahaleh_1.value;
+                },
               ),
-            ),
+              const Padding(
+                padding: EdgeInsets.only(left: 10, right: 10),
+                child: Text(
+                  'محله',
+                  style: TextStyle(
+                      fontFamily: MAIN_FONT_FAMILY,
+                      color: Color.fromRGBO(48, 48, 48, 1),
+                      fontSize: 12),
+                ),
+              ),
+            ]),
+            buildmahaleh()
           ]),
         ),
       ]),
@@ -772,5 +784,40 @@ class EjaraApartemanFilter extends StatelessWidget {
             ),
           ])
     ]);
+  }
+
+  Obx buildmahaleh() {
+    return Obx(
+      () => _show_item_mahaleh_1.isTrue
+          ? Column(
+              children: [
+                Container(
+                  height: 41,
+                  width: 330,
+                  child: TextField(
+                      readOnly: true,
+                      textAlign: TextAlign.right,
+                      decoration: InputDecoration(
+                          hintText: 'انتخاب کنید',
+                          hintStyle: const TextStyle(
+                              color: Colors.black,
+                              fontSize: 13,
+                              fontFamily: MAIN_FONT_FAMILY),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          prefixIcon: IconButton(
+                            onPressed: () {},
+                            icon: SvgPicture.asset(
+                              "assets/images/left.svg",
+                              width: 15,
+                              height: 15,
+                            ),
+                          ))),
+                ),
+              ],
+            )
+          : const SizedBox.shrink(),
+    );
   }
 }
