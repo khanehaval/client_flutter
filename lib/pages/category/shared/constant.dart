@@ -11,7 +11,9 @@ const GRADIANT_COLOR = [
   Color.fromRGBO(71, 157, 204, 1),
   Color.fromRGBO(76, 140, 237, 1),
 ];
-
+const GRADIANT_COLOR2 = [
+  Color.fromRGBO(76, 140, 237, 1),
+];
 const BLACK_12_GRADIANT_COLOR = [
   Colors.black12,
   Colors.black12,

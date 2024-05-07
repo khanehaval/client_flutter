@@ -69,7 +69,7 @@ class _FilterState extends State<Filter> {
                           () => Container(
                             margin: const EdgeInsets.only(
                                 left: 10, right: 10, bottom: 7, top: 40),
-                            padding: const EdgeInsets.all(1.5),
+                            padding: const EdgeInsets.all(1),
                             height: 98,
                             width: 130,
                             decoration: BoxDecoration(
@@ -150,13 +150,13 @@ class _FilterState extends State<Filter> {
                                       left: 0,
                                       right: 1,
                                     ),
-                                    padding: const EdgeInsets.all(1.5),
+                                    padding: const EdgeInsets.all(1),
                                     width: 130,
                                     decoration: BoxDecoration(
                                       gradient: const LinearGradient(
                                         colors: GRADIANT_COLOR,
                                       ),
-                                      border: Border.all(width: 1.5),
+                                      border: Border.all(width: 0.5),
                                       borderRadius: BorderRadius.circular(20),
                                     ),
                                     child: Container(
@@ -188,7 +188,7 @@ class _FilterState extends State<Filter> {
                                       left: 3,
                                       right: 3,
                                     ),
-                                    padding: const EdgeInsets.all(1.5),
+                                    padding: const EdgeInsets.all(0.5),
                                     width: 130,
                                     decoration: BoxDecoration(
                                       gradient: _subIndex.value == i
@@ -202,8 +202,8 @@ class _FilterState extends State<Filter> {
                                       border: Border.all(
                                           width: _currentIndex.value ==
                                                   _currentIndex.value
-                                              ? 1.0
-                                              : 1),
+                                              ? 0.5
+                                              : 0.5),
                                     ),
                                     child: Container(
                                       decoration: BoxDecoration(

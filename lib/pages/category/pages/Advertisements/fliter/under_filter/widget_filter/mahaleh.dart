@@ -4,7 +4,7 @@ import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
-Widget Mahaleh() {
+Obx Mahaleh() {
   final showItemMahaleh1 = false.obs;
   return Obx(
     () => showItemMahaleh1.isTrue
