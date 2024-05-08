@@ -3,11 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 
-Widget Mahaleh() {
-  final _show_item_mahaleh_1 = false.obs;
+Widget wc() {
+  final _show_item_wc_1 = false.obs;
+
   return Obx(
-    () => _show_item_mahaleh_1.isTrue
+    () => _show_item_wc_1.isTrue
         ? Column(
             children: [
               Container(

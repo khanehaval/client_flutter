@@ -1026,14 +1026,3 @@ class EjaraFilter extends StatelessWidget {
 
   void setState(Null Function() param0) {}
 }
-
-  // double _brightnessValue = 1.0;
-  //   final _show_item_mizanrahn = false.obs;
-  //   void _setBrightnees(double brightness) async {
-  //     if (brightness >= 0.0 && brightness <= 1.0) {
-  //       await ScreenBrightness().setScreenBrightness(brightness);
-  //       setState(() {
-  //         _brightnessValue = brightness;
-  //       });
-  //     }
-  //   }

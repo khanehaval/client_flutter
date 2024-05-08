@@ -3,11 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 
-Widget Mahaleh() {
-  final _show_item_mahaleh_1 = false.obs;
+Obx buildotagh() {
+  final _show_item_otagh = false.obs;
+
   return Obx(
-    () => _show_item_mahaleh_1.isTrue
+    () => _show_item_otagh.isTrue
         ? Column(
             children: [
               Container(
@@ -28,9 +30,9 @@ Widget Mahaleh() {
                         prefixIcon: IconButton(
                           onPressed: () {},
                           icon: SvgPicture.asset(
-                            "assets/images/left.svg",
-                            width: 15,
-                            height: 15,
+                            "assets/images/arrow_down.svg",
+                            width: 10,
+                            height: 10,
                           ),
                         ))),
               ),
