@@ -1,17 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 
-Obx buildagahidahandeh() {
-  final _show_item_agahidahandeh_1 = false.obs;
-  final shakhsi = false.obs;
-  final amlak = false.obs;
-  final moshaver = false.obs;
-  return Obx(() => _show_item_agahidahandeh_1.value
-      ? Column(children: [
+Widget buildagahidahandeh({required Rx<bool> shakhsi,required Rx<bool> amlak,required Rx<bool> moshaver  }) {
+
+  return  Column(children: [
           SingleChildScrollView(
             scrollDirection: Axis.vertical,
             child: Row(
@@ -90,6 +85,5 @@ Obx buildagahidahandeh() {
               ),
             ],
           )
-        ])
-      : const SizedBox.shrink());
+        ]);
 }
