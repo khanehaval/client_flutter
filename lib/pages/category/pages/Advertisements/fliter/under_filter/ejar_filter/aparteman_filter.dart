@@ -187,7 +187,7 @@ class EjaraApartemanFilter extends StatelessWidget {
                           ),
                         ),
                       ]),
-                  buildrahn(),
+                  if (_show_item_mizanrahn.isTrue) buildrahn(),
                   const SizedBox(
                     height: 10,
                   ),
