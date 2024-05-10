@@ -6,11 +6,7 @@ import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 
 Widget taminabegarm() {
-  final _show_item_taminAbeGarm_1 = false.obs;
-
-  return Obx(
-    () => _show_item_taminAbeGarm_1.isTrue
-        ? Column(
+  return Column(
             children: [
               Container(
                 height: 41,
@@ -37,7 +33,5 @@ Widget taminabegarm() {
                         ))),
               ),
             ],
-          )
-        : const SizedBox.shrink(),
-  );
+          );
 }

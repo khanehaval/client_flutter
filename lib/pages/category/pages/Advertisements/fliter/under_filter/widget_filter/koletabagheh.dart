@@ -2,14 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:get/get.dart';
-import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
+
 
 Widget koletabagheh() {
-  final _show_item_koletabageh_1 = false.obs;
-
-  return Obx(() => _show_item_koletabageh_1.isTrue
-      ? Container(
+  return  Container(
           height: 50,
           width: 330,
           decoration: BoxDecoration(
@@ -53,15 +49,11 @@ Widget koletabagheh() {
               )
             ],
           ),
-        )
-      : const SizedBox.shrink());
+        );
 }
 
 Widget koletabagheh2() {
-  final _show_item_koletabageh_1 = false.obs;
-
-  return Obx(() => _show_item_koletabageh_1.isTrue
-      ? Container(
+  return  Container(
           height: 50,
           width: 330,
           decoration: BoxDecoration(
@@ -105,6 +97,5 @@ Widget koletabagheh2() {
               )
             ],
           ),
-        )
-      : const SizedBox.shrink());
+        );
 }

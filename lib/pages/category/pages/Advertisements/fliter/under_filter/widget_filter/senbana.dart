@@ -2,13 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:get/get.dart';
-import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
+
 
 Widget senbana() {
-  final _show_item_senbana_1 = false.obs;
-  return Obx(() => _show_item_senbana_1.isTrue
-      ? Container(
+  return Container(
           height: 50,
           width: 330,
           decoration: BoxDecoration(
@@ -52,14 +49,11 @@ Widget senbana() {
               )
             ],
           ),
-        )
-      : const SizedBox.shrink());
+        );
 }
 
 Widget senbana2() {
-  final _show_item_senbana_1 = false.obs;
-  return Obx(() => _show_item_senbana_1.isTrue
-      ? Container(
+  return Container(
           height: 50,
           width: 330,
           decoration: BoxDecoration(
@@ -103,6 +97,5 @@ Widget senbana2() {
               )
             ],
           ),
-        )
-      : const SizedBox.shrink());
+        );
 }

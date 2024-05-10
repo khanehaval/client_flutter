@@ -1,24 +1,34 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/widget_filter/agahidahandeh.dart';
+import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/widget_filter/emkanatagahi.dart';
+import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/widget_filter/jahatsakhteman.dart';
+import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/widget_filter/jenskaf.dart';
+import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/widget_filter/koletabagheh.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/widget_filter/metraj.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/widget_filter/mizanejara.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/widget_filter/mizanrahn.dart';
-import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/widget_filter/otagh.dart';
+import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/widget_filter/otheremkanat.dart';
+import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/widget_filter/senbana.dart';
+import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/widget_filter/systemgarm.dart';
+import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/widget_filter/systemsard.dart';
+import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/widget_filter/tabagheh.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/widget_filter/taeedvaemalefilter.dart';
+import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/widget_filter/taminabegarm.dart';
+import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/widget_filter/tedadvahed.dart';
+import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/widget_filter/wc.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
-import 'package:flutter_application_1/pages/intro_screen.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/get_state_manager.dart';
-import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:get/state_manager.dart';
 
 class EjaraApartemanFilter extends StatelessWidget {
   final shakhsi = false.obs;
+  final asansor = false.obs;
+  final anbari = false.obs;
+  final parking = false.obs;
+  final bazsazi = false.obs;
   final amlak = false.obs;
   final moshaver = false.obs;
-  final bazsazi = false.obs;
   final aksdar = false.obs;
   final videodar = false.obs;
   final fori = false.obs;
@@ -187,12 +197,14 @@ class EjaraApartemanFilter extends StatelessWidget {
                           ),
                         ),
                       ]),
-                  if (_show_item_mizanrahn.isTrue) buildrahn(),
+                  if (_show_item_mizanrahn.isTrue) rahn(),
                   const SizedBox(
                     height: 10,
                   ),
-                  buildrahn2()
+                  rahn2(
+                    ),
                 ],
+                
               ),
             )),
         const SizedBox(
@@ -231,11 +243,11 @@ class EjaraApartemanFilter extends StatelessWidget {
                         ),
                       ),
                     ]),
-                buildejara(),
+                if(_show_item_mizanejara.isTrue)ejara(),
                 const SizedBox(
                   height: 10,
                 ),
-                buildejara2()
+                ejara2()
               ],
             ),
           ),
@@ -276,11 +288,11 @@ class EjaraApartemanFilter extends StatelessWidget {
                         ),
                       ),
                     ]),
-                buildmetraj(),
+                if(_show_item_mizanmetraj.isTrue)metraj(),
                 const SizedBox(
                   height: 10,
                 ),
-                buildmetraj2()
+                metraj2()
               ],
             ),
           ),
@@ -321,11 +333,11 @@ class EjaraApartemanFilter extends StatelessWidget {
                         ),
                       ),
                     ]),
-                buildtabagheh(),
+                if(_show_item_tabagheh_1.isTrue)tabagheh(),
                 const SizedBox(
                   height: 10,
                 ),
-                buildtabagheh2(),
+                tabagheh2(),
               ],
             ),
           ),
@@ -366,11 +378,11 @@ class EjaraApartemanFilter extends StatelessWidget {
                         ),
                       ),
                     ]),
-                buildkoletabagheh(),
+                if(_show_item_koletabageh_1.isTrue)koletabagheh(),
                 const SizedBox(
                   height: 10,
                 ),
-                buildkoletabagheh2()
+                koletabagheh2()
               ],
             ),
           ),
@@ -411,11 +423,11 @@ class EjaraApartemanFilter extends StatelessWidget {
                         ),
                       ),
                     ]),
-                buildvaheddarabagheh(),
+                if(_show_item_vaheddartabageh_1.isTrue)tedadvahed(),
                 const SizedBox(
                   height: 10,
                 ),
-                buildvaheddarabagheh2()
+                tedadvahed2()
               ],
             ),
           ),
@@ -456,11 +468,11 @@ class EjaraApartemanFilter extends StatelessWidget {
                         ),
                       ),
                     ]),
-                buildsenbana(),
+                if(_show_item_senbana_1.isTrue)senbana(),
                 const SizedBox(
                   height: 10,
                 ),
-                buildsenbana2()
+                senbana2()
               ],
             ),
           ),
@@ -502,7 +514,7 @@ class EjaraApartemanFilter extends StatelessWidget {
                       ),
                     ]),
                 if (_show_item_agahidahandeh_1.isTrue)
-                  buildagahidahandeh(
+                  agahidahandeh(
                       shakhsi: shakhsi, amlak: amlak, moshaver: moshaver),
               ],
             ),
@@ -544,7 +556,7 @@ class EjaraApartemanFilter extends StatelessWidget {
                         ),
                       ),
                     ]),
-                buildotheremkanatagahi()
+                if(_show_item_otheremkanatagahi_1.isTrue)otheremkanatagahi(asansor: asansor, anbari: anbari, parking: parking, bazsazi: bazsazi)
               ],
             ),
           ),
@@ -585,7 +597,7 @@ class EjaraApartemanFilter extends StatelessWidget {
                         ),
                       ),
                     ]),
-                buildemkanatagahi()
+                if(_show_item_emkanatagahi_1.isTrue)emkanatagahi(aksdar: aksdar, videodar: videodar)
               ],
             ),
           ),
@@ -674,7 +686,7 @@ class EjaraApartemanFilter extends StatelessWidget {
                         ),
                       ),
                     ]),
-                buildjahatsakhteman()
+                if(_show_item_jahatsakhteman_1.isTrue)jahatsakhteman()
               ],
             ),
           ),
@@ -715,7 +727,7 @@ class EjaraApartemanFilter extends StatelessWidget {
                         ),
                       ),
                     ]),
-                buildtaminabegarm()
+                if(_show_item_taminAbeGarm_1.isTrue)taminabegarm()
               ],
             ),
           ),
@@ -756,7 +768,7 @@ class EjaraApartemanFilter extends StatelessWidget {
                         ),
                       ),
                     ]),
-                buildsystemgarm()
+                if(_show_item_systemGarm_1.isTrue)systemgarm()
               ],
             ),
           ),
@@ -797,7 +809,7 @@ class EjaraApartemanFilter extends StatelessWidget {
                         ),
                       ),
                     ]),
-                buildsystemsard()
+                if(_show_item_systemSard_1.isTrue)systemsard()
               ],
             ),
           ),
@@ -837,7 +849,7 @@ class EjaraApartemanFilter extends StatelessWidget {
                         ),
                       ),
                     ]),
-                buildwc()
+                if(_show_item_wc_1.isTrue)wc()
               ],
             ),
           ),
@@ -847,7 +859,7 @@ class EjaraApartemanFilter extends StatelessWidget {
         ),
         Obx(
           () => Container(
-            height: _show_item_jensKaf_1.isTrue ? 230 : 50,
+            height: _show_item_jensKaf_1.isTrue ? 130 : 50,
             decoration: BoxDecoration(
                 color: const Color.fromRGBO(250, 250, 250, 1),
                 border:
@@ -878,7 +890,7 @@ class EjaraApartemanFilter extends StatelessWidget {
                         ),
                       ),
                     ]),
-                buildjenskaf()
+                if(_show_item_jensKaf_1.isTrue)jenskaf()
               ],
             ),
           ),
@@ -1539,9 +1551,8 @@ class EjaraApartemanFilter extends StatelessWidget {
         : const SizedBox.shrink());
   }
 
-  Obx buildkoletabagheh() {
-    return Obx(() => _show_item_koletabageh_1.isTrue
-        ? Container(
+  Widget buildkoletabagheh() {
+    return Container(
             height: 50,
             width: 330,
             decoration: BoxDecoration(
@@ -1585,13 +1596,11 @@ class EjaraApartemanFilter extends StatelessWidget {
                 )
               ],
             ),
-          )
-        : const SizedBox.shrink());
+          );
   }
 
-  Obx buildkoletabagheh2() {
-    return Obx(() => _show_item_koletabageh_1.isTrue
-        ? Container(
+  Widget buildkoletabagheh2() {
+    return  Container(
             height: 50,
             width: 330,
             decoration: BoxDecoration(
@@ -1635,8 +1644,7 @@ class EjaraApartemanFilter extends StatelessWidget {
                 )
               ],
             ),
-          )
-        : const SizedBox.shrink());
+          );
   }
 
   Obx buildvaheddarabagheh() {

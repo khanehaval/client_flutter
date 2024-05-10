@@ -2,14 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:get/get.dart';
-import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 
 Widget tabagheh() {
-  final _show_item_tabagheh_1 = false.obs;
-
-  return Obx(() => _show_item_tabagheh_1.isTrue
-      ? Container(
+  return  Container(
           height: 50,
           width: 330,
           decoration: BoxDecoration(
@@ -53,15 +48,11 @@ Widget tabagheh() {
               )
             ],
           ),
-        )
-      : const SizedBox.shrink());
+        );
 }
 
 Widget tabagheh2() {
-  final _show_item_tabagheh_1 = false.obs;
-
-  return Obx(() => _show_item_tabagheh_1.isTrue
-      ? Container(
+  return  Container(
           height: 50,
           width: 330,
           decoration: BoxDecoration(
@@ -105,6 +96,5 @@ Widget tabagheh2() {
               )
             ],
           ),
-        )
-      : const SizedBox.shrink());
+        );
 }

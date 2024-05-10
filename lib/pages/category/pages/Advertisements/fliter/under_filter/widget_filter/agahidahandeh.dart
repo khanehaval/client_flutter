@@ -4,7 +4,7 @@ import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 
-Widget buildagahidahandeh({required Rx<bool> shakhsi,required Rx<bool> amlak,required Rx<bool> moshaver  }) {
+Widget agahidahandeh({required Rx<bool> shakhsi,required Rx<bool> amlak,required Rx<bool> moshaver  }) {
 
   return  Column(children: [
           SingleChildScrollView(

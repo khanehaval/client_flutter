@@ -1,16 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 
-Obx buildemkanatagahi() {
-  final _show_item_emkanatagahi_1 = false.obs;
+Widget emkanatagahi({required Rx<bool>aksdar,required Rx<bool>videodar,}) {
   final aksdar = false.obs;
   final videodar = false.obs;
-  return Obx(() => _show_item_emkanatagahi_1.isTrue
-      ? Column(children: [
+  return Column(children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -61,6 +58,5 @@ Obx buildemkanatagahi() {
               ),
             ],
           )
-        ])
-      : const SizedBox.shrink());
+        ]);
 }

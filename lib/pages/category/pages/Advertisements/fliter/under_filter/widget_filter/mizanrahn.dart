@@ -5,11 +5,8 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 
-Obx buildrahn() {
-  final _show_item_mizanrahn = false.obs;
-
-  return Obx(() => _show_item_mizanrahn.isTrue
-      ? Container(
+Widget rahn() {
+  return Container(
           height: 50,
           width: 330,
           decoration: BoxDecoration(
@@ -53,14 +50,11 @@ Obx buildrahn() {
               )
             ],
           ),
-        )
-      : const SizedBox.shrink());
+        );
 }
 
-Obx buildrahn2() {
-  final _show_item_mizanrahn = false.obs;
-  return Obx(() => _show_item_mizanrahn.isTrue
-      ? Stack(children: [
+Widget rahn2() {
+  return  Stack(children: [
           Container(
             height: 50,
             width: 325,
@@ -106,6 +100,5 @@ Obx buildrahn2() {
               ],
             ),
           )
-        ])
-      : const SizedBox.shrink());
-}
+        ]);
+        }
