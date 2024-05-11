@@ -5,7 +5,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 
-Widget otagh() {
+Widget tabaghehvila() {
   return Column(
     children: [
       Container(

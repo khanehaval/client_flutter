@@ -272,7 +272,7 @@ class _FilterState extends State<Filter> {
         title: "اجاره تجاری اداری",
         assetPath: 'assets/images/ejara_tejari_filter.png',
         subItems: [
-          SubItemModel("دفتر کار", SubFilterType.earadaftarkar),
+          SubItemModel("دفتر کار", SubFilterType.ejaradaftarkar),
           SubItemModel("مغازه", SubFilterType.ejaramaqazeh),
           SubItemModel("دفاتر صنعتی", SubFilterType.ejaradaftarsanati),
         ]),

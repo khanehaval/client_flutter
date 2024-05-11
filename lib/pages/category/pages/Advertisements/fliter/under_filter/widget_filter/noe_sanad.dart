@@ -2,10 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:get/get.dart';
-import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 
-Widget otagh() {
+Widget NoeSanad() {
   return Column(
     children: [
       Container(
@@ -26,9 +24,9 @@ Widget otagh() {
                 prefixIcon: IconButton(
                   onPressed: () {},
                   icon: SvgPicture.asset(
-                    "assets/images/arrow_down.svg",
-                    width: 10,
-                    height: 10,
+                    "assets/images/left.svg",
+                    width: 15,
+                    height: 15,
                   ),
                 ))),
       ),
