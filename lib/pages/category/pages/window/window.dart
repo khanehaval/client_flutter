@@ -40,10 +40,11 @@ class Category extends StatelessWidget {
                         padding: const EdgeInsets.all(14.0),
                         child: GestureDetector(
                           onTap: () {
-                            Get.to(() => MainCategory(index: 0));
+                            Get.to(() => MainCategory(index: 0),
+                                transition: Transition.downToUp);
                           },
                           child: SizedBox(
-                              height: _getHeight(context) / 5,
+                              height: _getHeight(context) / 6,
                               width: _getHeight(context) / 5,
                               child: Image.asset(
                                 'assets/images/Frame_amlak.png',
@@ -71,10 +72,11 @@ class Category extends StatelessWidget {
                         padding: const EdgeInsets.all(15.0),
                         child: GestureDetector(
                           onTap: () {
-                            Get.to(() => MainCategory(index: 1));
+                            Get.to(() => MainCategory(index: 1),
+                                transition: Transition.downToUp);
                           },
                           child: SizedBox(
-                              height: _getHeight(context) / 5,
+                              height: _getHeight(context) / 6,
                               width: (_getHeight(context) / 5) * (2 / 3),
                               child: Image.asset(
                                   'assets/images/Frame_ejaramaskoni.png')),
@@ -106,7 +108,8 @@ class Category extends StatelessWidget {
                   ),
                   child: GestureDetector(
                       onTap: () {
-                        Get.to(() => MainCategory(index: 2));
+                        Get.to(() => MainCategory(index: 2),
+                            transition: Transition.downToUp);
                       },
                       child:
                           Image.asset('assets/images/Frame_foroshmaskoni.png')),
@@ -136,7 +139,8 @@ class Category extends StatelessWidget {
                         padding: const EdgeInsets.all(15.0),
                         child: GestureDetector(
                           onTap: () {
-                            Get.to(() => MainCategory(index: 4));
+                            Get.to(() => MainCategory(index: 4),
+                                transition: Transition.downToUp);
                           },
                           child: SizedBox(
                               height: _getHeight(context) / 6,
@@ -165,7 +169,8 @@ class Category extends StatelessWidget {
                         padding: const EdgeInsets.all(15),
                         child: GestureDetector(
                           onTap: () {
-                            Get.to(() => MainCategory(index: 3));
+                            Get.to(() => MainCategory(index: 3),
+                                transition: Transition.downToUp);
                           },
                           child: SizedBox(
                             height: _getHeight(context) / 6,
@@ -178,7 +183,7 @@ class Category extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 Row(
@@ -203,7 +208,8 @@ class Category extends StatelessWidget {
                         padding: const EdgeInsets.all(15.0),
                         child: GestureDetector(
                           onTap: () {
-                            Get.to(() => MainCategory(index: 5));
+                            Get.to(() => MainCategory(index: 5),
+                                transition: Transition.downToUp);
                           },
                           child: SizedBox(
                               height: _getHeight(context) / 6,
@@ -232,7 +238,8 @@ class Category extends StatelessWidget {
                         padding: const EdgeInsets.all(15.0),
                         child: GestureDetector(
                             onTap: () {
-                              Get.to(() => MainCategory(index: 6));
+                              Get.to(() => MainCategory(index: 6),
+                                  transition: Transition.downToUp);
                             },
                             child: SizedBox(
                                 height: _getHeight(context) / 6,

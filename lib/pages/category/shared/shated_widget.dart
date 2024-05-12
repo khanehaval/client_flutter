@@ -73,23 +73,5 @@ PreferredSizeWidget buildaAppBar() {
       ),
       onPressed: () => Get.back(),
     ),
-    actions: [
-      GestureDetector(
-        onTap: () {
-          openProfile();
-        },
-        child: Container(
-          decoration: BoxDecoration(
-              color: Colors.black12, borderRadius: BorderRadius.circular(60)),
-          child: const Padding(
-            padding: EdgeInsets.all(5.0),
-            child: Icon(
-              Icons.person_2_rounded,
-              size: 30,
-            ),
-          ),
-        ),
-      ),
-    ],
   );
 }
