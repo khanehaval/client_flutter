@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/consultants.dart';
 import 'package:flutter_application_1/pages/educational_tour.dart';
 import 'package:flutter_application_1/pages/category/pages/home.dart';
-import 'package:flutter_application_1/pages/profile_private.dart';
 import 'package:flutter_application_1/pages/real_estate_agency.dart';
 import 'package:flutter_application_1/pages/private.dart';
 import 'package:flutter_svg/svg.dart';
@@ -141,7 +141,6 @@ class LoginSecondlyPage extends StatelessWidget {
                 ],
               ),
               Row(
-                mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Container(
@@ -166,24 +165,29 @@ class LoginSecondlyPage extends StatelessWidget {
                       ),
                     ),
                   ),
-                  Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(30),
-                      gradient: getGradient(),
-                    ),
-                    child: ElevatedButton(
-                      onPressed: () {
-                        Get.to(() => EducationalTour());
-                      },
-                      style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.transparent,
-                          shadowColor: Colors.transparent),
-                      child: const Text(
-                        'مشاهده تور آموزشی',
-                        style: TextStyle(
-                            color: Color.fromRGBO(48, 48, 48, 1),
-                            fontSize: 10,
-                            fontFamily: MAIN_FONT_FAMILY),
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  Expanded(
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(30),
+                        gradient: getGradient(),
+                      ),
+                      child: ElevatedButton(
+                        onPressed: () {
+                          Get.to(() => EducationalTour());
+                        },
+                        style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.transparent,
+                            shadowColor: Colors.transparent),
+                        child: const Text(
+                          'مشاهده تور آموزشی',
+                          style: TextStyle(
+                              color: Color.fromRGBO(48, 48, 48, 1),
+                              fontSize: 9,
+                              fontFamily: MAIN_FONT_FAMILY),
+                        ),
                       ),
                     ),
                   ),
