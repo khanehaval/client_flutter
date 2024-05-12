@@ -1,27 +1,15 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/widget_filter/agahidahandeh.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/widget_filter/emkanatagahi.dart';
-import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/widget_filter/jahatsakhteman.dart';
-import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/widget_filter/jenskaf.dart';
-import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/widget_filter/koletabagheh.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/widget_filter/mahaleh.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/widget_filter/metraj.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/widget_filter/mizanejara.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/widget_filter/mizanrahn.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/widget_filter/otagh.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/widget_filter/otheremkanat.dart';
-import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/widget_filter/qemat_kol.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/widget_filter/senbana.dart';
-import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/widget_filter/systemgarm.dart';
-import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/widget_filter/systemsard.dart';
-import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/widget_filter/tabagheh.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/widget_filter/taeedvaemalefilter.dart';
-import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/widget_filter/taminabegarm.dart';
-import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/widget_filter/tedadvahed.dart';
-import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/widget_filter/wc.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
-import 'package:flutter_application_1/pages/intro_screen.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 

@@ -21,7 +21,6 @@ class AmlakFilter extends StatelessWidget {
   final aksdar = false.obs;
   final videodar = false.obs;
   final fori = false.obs;
-
   @override
   Widget build(BuildContext context) {
     return Padding(
