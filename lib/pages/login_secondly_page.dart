@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/consultants.dart';
 import 'package:flutter_application_1/pages/educational_tour.dart';
@@ -176,7 +174,8 @@ class LoginSecondlyPage extends StatelessWidget {
                       ),
                       child: ElevatedButton(
                         onPressed: () {
-                          Get.to(() => EducationalTour());
+                          Get.to(() => EducationalTour(),
+                              transition: Transition.downToUp);
                         },
                         style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.transparent,
