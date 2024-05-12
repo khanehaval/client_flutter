@@ -15,7 +15,7 @@ showAdvertisment(AdvertismentModel advertismentModel) {
           mainAxisSize: MainAxisSize.min,
           children: [
             Padding(
-              padding: const EdgeInsets.all(10.0),
+              padding: const EdgeInsets.all(35.0),
               child: Transform.translate(
                 offset: const Offset(0, 20),
                 child: Container(
@@ -29,7 +29,7 @@ showAdvertisment(AdvertismentModel advertismentModel) {
                           color: Colors.white,
                         ),
                         child: Padding(
-                          padding: const EdgeInsets.all(8.0),
+                          padding: const EdgeInsets.all(10.0),
                           child: Column(
                             children: [
                               Stack(
@@ -37,6 +37,7 @@ showAdvertisment(AdvertismentModel advertismentModel) {
                                 children: [
                                   SizedBox(
                                     height: 200,
+                                    width: 300,
                                     child: Image.asset(
                                       "assets/images/pic.png",
                                       fit: BoxFit.cover,
@@ -97,7 +98,7 @@ showAdvertisment(AdvertismentModel advertismentModel) {
                                     ),
                                   ),
                                   const SizedBox(
-                                    width: 100,
+                                    width: 50,
                                   ),
                                   const Text(
                                     "...ویلا 100 متری در زمین 250 متری",
@@ -141,7 +142,7 @@ showAdvertisment(AdvertismentModel advertismentModel) {
                         ),
                       ),
                       Positioned(
-                        left: 170,
+                        left: 150,
                         child: SvgPicture.asset(
                           "assets/images/delete.svg",
                         ),
@@ -155,7 +156,7 @@ showAdvertisment(AdvertismentModel advertismentModel) {
               height: 20,
             ),
             Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 ElevatedButton(
                     style: ElevatedButton.styleFrom(

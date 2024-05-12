@@ -18,31 +18,15 @@ class LoginSecondlyPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-          leading: IconButton(
-            icon: SvgPicture.asset(
-              'assets/images/Vector-47.svg',
-              width: 18,
-              height: 18,
-            ),
-            onPressed: () => Get.to(() => Home()),
+        leading: IconButton(
+          icon: SvgPicture.asset(
+            'assets/images/Vector-47.svg',
+            width: 18,
+            height: 18,
           ),
-          actions: [
-            GestureDetector(
-              onTap: () {
-                openProfilePrivate();
-              },
-              child: Padding(
-                  padding: const EdgeInsets.only(right: 20),
-                  child: Container(
-                    decoration: BoxDecoration(
-                        color: Colors.black12,
-                        borderRadius: BorderRadius.circular(60)),
-                    child: SvgPicture.asset(
-                      'assets/images/profile.svg',
-                    ),
-                  )),
-            ),
-          ]),
+          onPressed: () => Get.to(() => Home()),
+        ),
+      ),
       body: Center(
         child: Container(
           width: MediaQuery.of(context).size.width * 0.7,
@@ -84,7 +68,10 @@ class LoginSecondlyPage extends StatelessWidget {
                 children: [
                   GestureDetector(
                     onTap: () {
-                      Get.to(() => Private());
+                      Get.to(
+                        () => Private(),
+                        transition: Transition.downToUp,
+                      );
                     },
                     child: Container(
                       height: 65,
@@ -106,7 +93,10 @@ class LoginSecondlyPage extends StatelessWidget {
                   ),
                   GestureDetector(
                     onTap: () {
-                      Get.to(() => Consultants());
+                      Get.to(
+                        () => Consultants(),
+                        transition: Transition.downToUp,
+                      );
                     },
                     child: Container(
                       height: 65,
@@ -128,7 +118,10 @@ class LoginSecondlyPage extends StatelessWidget {
                   ),
                   GestureDetector(
                     onTap: () {
-                      Get.to(() => const Realestateagency());
+                      Get.to(
+                        () => const Realestateagency(),
+                        transition: Transition.downToUp,
+                      );
                     },
                     child: Container(
                       height: 65,

@@ -7,63 +7,62 @@ import 'package:get/get.dart';
 
 Widget bottomNavigation() {
   return ClipRRect(
-    borderRadius: const BorderRadius.only(
-        topLeft: Radius.circular(20), topRight: Radius.circular(20)),
-    child: BottomNavigationBar(
-      backgroundColor: Colors.white,
-      // shadowColor: Colors.white,
-      // surfaceTintColor: Colors.white,
-      onTap: (int index) {
-        Get.to(() => EducationalTour(
-              index: index,
-              showEducation: false,
-            ));
-      },
-      // currentIndex: currentPageIndex.value,
-      items: <BottomNavigationBarItem>[
-        BottomNavigationBarItem(
-          icon: SvgPicture.asset(
-            'assets/images/navigation1.svg',
-            width: 30,
-            height: 30,
+      borderRadius: const BorderRadius.only(
+          topLeft: Radius.circular(20), topRight: Radius.circular(20)),
+      child: BottomNavigationBar(
+        backgroundColor: Colors.white,
+        // shadowColor: Colors.white,
+        // surfaceTintColor: Colors.white,
+        onTap: (int index) {
+          Get.to(() => EducationalTour(
+                index: index,
+                showEducation: false,
+              ));
+        },
+        // currentIndex: currentPageIndex.value,
+        items: <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: SvgPicture.asset(
+              'assets/images/navigation1.svg',
+              width: 30,
+              height: 30,
+            ),
+            label: '',
           ),
-          label: '',
-        ),
-        BottomNavigationBarItem(
-          icon: SvgPicture.asset(
-            'assets/images/navigation2.svg',
-            width: 30,
-            height: 30,
+          BottomNavigationBarItem(
+            icon: SvgPicture.asset(
+              'assets/images/navigation2.svg',
+              width: 30,
+              height: 30,
+            ),
+            label: '',
           ),
-          label: '',
-        ),
-        BottomNavigationBarItem(
-          icon: SvgPicture.asset(
-            'assets/images/navigation3.svg',
-            width: 46,
-            height: 46,
+          BottomNavigationBarItem(
+            icon: SvgPicture.asset(
+              'assets/images/navigation3.svg',
+              width: 46,
+              height: 46,
+            ),
+            label: '',
           ),
-          label: '',
-        ),
-        BottomNavigationBarItem(
-          icon: SvgPicture.asset(
-            'assets/images/navigation4.svg',
-            width: 30,
-            height: 30,
+          BottomNavigationBarItem(
+            icon: SvgPicture.asset(
+              'assets/images/navigation4.svg',
+              width: 30,
+              height: 30,
+            ),
+            label: '',
           ),
-          label: '',
-        ),
-        BottomNavigationBarItem(
-          icon: SvgPicture.asset(
-            'assets/images/navigation5.svg',
-            width: 30,
-            height: 30,
+          BottomNavigationBarItem(
+            icon: SvgPicture.asset(
+              'assets/images/navigation5.svg',
+              width: 30,
+              height: 30,
+            ),
+            label: '',
           ),
-          label: '',
-        ),
-      ],
-    ),
-  );
+        ],
+      ));
 }
 
 PreferredSizeWidget buildaAppBar() {

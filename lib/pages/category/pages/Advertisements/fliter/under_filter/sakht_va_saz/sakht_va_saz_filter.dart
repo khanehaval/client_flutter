@@ -13,6 +13,9 @@ import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter
 import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/kota_modat/ejara_kota_vila.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/sakht_va_saz/Pish_Forosh_filter.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/sakht_va_saz/mosharekat_dar_sakht_filter.dart';
+import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/widget_filter/agahidahandeh.dart';
+import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/widget_filter/emkanatagahi.dart';
+import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/widget_filter/mahaleh.dart';
 import 'package:flutter_application_1/pages/category/pages/window/window_pages/forosh_maskoni.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/intro_screen.dart';
@@ -21,7 +24,19 @@ import 'package:get/get.dart';
 
 class SakhtVaSazFilter extends StatelessWidget {
   SubFilterType type;
+  final shakhsi = false.obs;
+  final amlak = false.obs;
+  final moshaver = false.obs;
+  final bazsazi = false.obs;
+  final aksdar = false.obs;
+  final videodar = false.obs;
   final fori = false.obs;
+  final asansor = false.obs;
+  final anbari = false.obs;
+  final parking = false.obs;
+  final _show_item_mahaleh_1 = false.obs;
+  final _show_item_agahidahandeh_1 = false.obs;
+  final _show_item_emkanatagahi_1 = false.obs;
   SakhtVaSazFilter(this.type);
 
   @override
@@ -101,93 +116,132 @@ class SakhtVaSazFilter extends StatelessWidget {
           const SizedBox(
             height: 5,
           ),
-          Column(children: [
-            Container(
-              height: 50,
+          Obx(
+            () => Container(
+              height: _show_item_mahaleh_1.isTrue ? 130 : 50,
               width: 370,
               decoration: BoxDecoration(
                   color: const Color.fromRGBO(250, 250, 250, 1),
                   border:
                       Border.all(color: const Color.fromRGBO(166, 166, 166, 1)),
                   borderRadius: BorderRadius.circular(15)),
-              child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    IconButton(
-                      icon: SvgPicture.asset("assets/images/Vector-20.svg"),
-                      onPressed: () {},
-                    ),
-                    const Padding(
-                      padding: EdgeInsets.only(right: 20),
-                      child: Text(
-                        "محله",
-                        style: TextStyle(
-                            fontFamily: MAIN_FONT_FAMILY, fontSize: 12),
-                      ),
-                    ),
-                  ]),
+              child: Column(
+                children: [
+                  Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        IconButton(
+                          icon: _show_item_mahaleh_1.value
+                              ? SvgPicture.asset(
+                                  'assets/images/=.svg',
+                                )
+                              : SvgPicture.asset('assets/images/down.svg'),
+                          onPressed: () {
+                            _show_item_mahaleh_1.value =
+                                !_show_item_mahaleh_1.value;
+                          },
+                        ),
+                        const Padding(
+                          padding: EdgeInsets.only(right: 20),
+                          child: Text(
+                            "محله",
+                            style: TextStyle(
+                                fontFamily: MAIN_FONT_FAMILY, fontSize: 12),
+                          ),
+                        ),
+                      ]),
+                  if (_show_item_mahaleh_1.isTrue) Mahaleh()
+                ],
+              ),
             ),
-          ]),
+          ),
           const SizedBox(
             height: 10,
           ),
-          Column(children: [
-            Container(
-              height: 50,
+          Obx(
+            () => Container(
+              height: _show_item_agahidahandeh_1.isTrue ? 250 : 50,
               width: 370,
               decoration: BoxDecoration(
                   color: const Color.fromRGBO(250, 250, 250, 1),
                   border:
                       Border.all(color: const Color.fromRGBO(166, 166, 166, 1)),
                   borderRadius: BorderRadius.circular(15)),
-              child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    IconButton(
-                      icon: SvgPicture.asset("assets/images/Vector-20.svg"),
-                      onPressed: () {},
-                    ),
-                    const Padding(
-                      padding: EdgeInsets.only(right: 20),
-                      child: Text(
-                        "آگهی دهنده",
-                        style: TextStyle(
-                            fontFamily: MAIN_FONT_FAMILY, fontSize: 12),
-                      ),
-                    ),
-                  ]),
+              child: Column(
+                children: [
+                  Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        IconButton(
+                          icon: _show_item_agahidahandeh_1.value
+                              ? SvgPicture.asset(
+                                  'assets/images/=.svg',
+                                )
+                              : SvgPicture.asset('assets/images/down.svg'),
+                          onPressed: () {
+                            _show_item_agahidahandeh_1.value =
+                                !_show_item_agahidahandeh_1.value;
+                          },
+                        ),
+                        const Padding(
+                          padding: EdgeInsets.only(right: 20),
+                          child: Text(
+                            "آگهی دهنده",
+                            style: TextStyle(
+                                fontFamily: MAIN_FONT_FAMILY, fontSize: 12),
+                          ),
+                        ),
+                      ]),
+                  if (_show_item_agahidahandeh_1.isTrue)
+                    agahidahandeh(
+                        shakhsi: shakhsi, amlak: amlak, moshaver: moshaver)
+                ],
+              ),
             ),
-          ]),
+          ),
           const SizedBox(
             height: 10,
           ),
-          Column(children: [
-            Container(
-              height: 50,
+          Obx(
+            () => Container(
+              height: _show_item_emkanatagahi_1.isTrue ? 150 : 50,
               width: 370,
               decoration: BoxDecoration(
                   color: const Color.fromRGBO(250, 250, 250, 1),
                   border:
                       Border.all(color: const Color.fromRGBO(166, 166, 166, 1)),
                   borderRadius: BorderRadius.circular(15)),
-              child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    IconButton(
-                      icon: SvgPicture.asset("assets/images/Vector-20.svg"),
-                      onPressed: () {},
-                    ),
-                    const Padding(
-                      padding: EdgeInsets.only(right: 20),
-                      child: Text(
-                        "امکانات آگهی",
-                        style: TextStyle(
-                            fontFamily: MAIN_FONT_FAMILY, fontSize: 12),
-                      ),
-                    ),
-                  ]),
+              child: Column(
+                children: [
+                  Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        IconButton(
+                          icon: _show_item_emkanatagahi_1.value
+                              ? SvgPicture.asset(
+                                  'assets/images/=.svg',
+                                )
+                              : SvgPicture.asset('assets/images/down.svg'),
+                          onPressed: () {
+                            _show_item_emkanatagahi_1.value =
+                                !_show_item_emkanatagahi_1.value;
+                          },
+                        ),
+                        const Padding(
+                          padding: EdgeInsets.only(right: 20),
+                          child: Text(
+                            "امکانات آگهی",
+                            style: TextStyle(
+                                fontFamily: MAIN_FONT_FAMILY, fontSize: 12),
+                          ),
+                        ),
+                      ]),
+                  if (_show_item_emkanatagahi_1.isTrue)
+                    emkanatagahi(aksdar: aksdar, videodar: videodar)
+                ],
+              ),
             ),
-          ]),
+          ),
           const SizedBox(
             height: 10,
           ),

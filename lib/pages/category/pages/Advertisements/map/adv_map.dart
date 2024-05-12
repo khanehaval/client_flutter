@@ -49,7 +49,7 @@ class AdvMap extends StatelessWidget {
                               children: [
                                 Icon(
                                   Icons.location_on,
-                                  size: 80,
+                                  size: 60,
                                   color: getColor(adv.type),
                                 ),
                                 Positioned(

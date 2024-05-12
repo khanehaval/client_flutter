@@ -13,22 +13,5 @@ PreferredSizeWidget buildAppBar() {
       ),
       onPressed: () => Get.back(),
     ),
-    actions: [
-      GestureDetector(
-        onTap: () {
-          openProfilePrivate();
-        },
-        child: Padding(
-            padding: const EdgeInsets.only(right: 20),
-            child: Container(
-              decoration: BoxDecoration(
-                  color: Colors.black12,
-                  borderRadius: BorderRadius.circular(60)),
-              child: SvgPicture.asset(
-                'assets/images/profile.svg',
-              ),
-            )),
-      ),
-    ],
   );
 }

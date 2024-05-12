@@ -14,7 +14,7 @@ class IntroScreen extends StatelessWidget {
         GestureDetector(
           onHorizontalDragStart: (details) {
             if (index > 1) {
-              Get.off(() => const Register());
+              Get.off(() => const Register(), transition: Transition.fade);
             } else {
               _sliderIndex.value = index + 1;
             }
