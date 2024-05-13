@@ -163,7 +163,7 @@ showAdvertisment(AdvertismentModel advertismentModel) {
                         backgroundColor: const Color.fromRGBO(0, 189, 97, 1)),
                     onPressed: () {},
                     child: const Row(
-                      mainAxisSize: MainAxisSize.min,
+                      mainAxisSize: MainAxisSize.max,
                       children: [
                         Icon(
                           CupertinoIcons.back,
@@ -185,7 +185,8 @@ showAdvertisment(AdvertismentModel advertismentModel) {
                         backgroundColor: const Color.fromRGBO(23, 102, 175, 1)),
                     onPressed: () {},
                     child: const Row(
-                      mainAxisSize: MainAxisSize.min,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      mainAxisSize: MainAxisSize.max,
                       children: [
                         Text(
                           "بعدی",

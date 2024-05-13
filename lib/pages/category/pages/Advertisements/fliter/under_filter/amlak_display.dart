@@ -148,7 +148,7 @@ class AmlakFilter extends StatelessWidget {
                                   ),
                                 ),
                               ]),
-                          buildmahaleh()
+                          buildmahaleh(),
                         ]),
                       ),
                     )

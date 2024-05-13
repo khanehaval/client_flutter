@@ -66,10 +66,9 @@ class LoginSecondlyPage extends StatelessWidget {
                 children: [
                   GestureDetector(
                     onTap: () {
-                      Get.to(
-                        () => Private(),
-                        transition: Transition.downToUp,
-                      );
+                      Get.to(() => Private(),
+                          transition: Transition.downToUp,
+                          duration: const Duration(milliseconds: 400));
                     },
                     child: Container(
                       height: 65,
@@ -91,10 +90,9 @@ class LoginSecondlyPage extends StatelessWidget {
                   ),
                   GestureDetector(
                     onTap: () {
-                      Get.to(
-                        () => Consultants(),
-                        transition: Transition.downToUp,
-                      );
+                      Get.to(() => Consultants(),
+                          transition: Transition.downToUp,
+                          duration: const Duration(milliseconds: 400));
                     },
                     child: Container(
                       height: 65,
@@ -116,10 +114,9 @@ class LoginSecondlyPage extends StatelessWidget {
                   ),
                   GestureDetector(
                     onTap: () {
-                      Get.to(
-                        () => const Realestateagency(),
-                        transition: Transition.downToUp,
-                      );
+                      Get.to(() => const Realestateagency(),
+                          transition: Transition.downToUp,
+                          duration: const Duration(milliseconds: 400));
                     },
                     child: Container(
                       height: 65,
@@ -175,7 +172,8 @@ class LoginSecondlyPage extends StatelessWidget {
                       child: ElevatedButton(
                         onPressed: () {
                           Get.to(() => EducationalTour(),
-                              transition: Transition.downToUp);
+                              transition: Transition.leftToRightWithFade,
+                              duration: const Duration(milliseconds: 400));
                         },
                         style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.transparent,

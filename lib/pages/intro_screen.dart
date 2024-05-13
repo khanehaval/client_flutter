@@ -14,7 +14,7 @@ class IntroScreen extends StatelessWidget {
         GestureDetector(
           onHorizontalDragStart: (details) {
             if (index > 1) {
-              Get.off(() => const Register(), transition: Transition.fade);
+              Get.off(() => const Register(), transition: Transition.downToUp);
             } else {
               _sliderIndex.value = index + 1;
             }
@@ -81,7 +81,10 @@ class IntroScreen extends StatelessWidget {
         GestureDetector(
           onHorizontalDragStart: (details) {
             if (index > 2) {
-              Get.off(() => const Register());
+              Get.off(
+                () => const Register(),
+                transition: Transition.downToUp,
+              );
             } else {
               _sliderIndex.value = index + 2;
             }
@@ -149,7 +152,10 @@ class IntroScreen extends StatelessWidget {
           onHorizontalDragStart: (details) {
             if (index > 3) {
             } else {
-              Get.off(() => const Register());
+              Get.off(
+                () => const Register(),
+                transition: Transition.downToUp,
+              );
             }
           },
           child: Column(
@@ -197,7 +203,7 @@ class IntroScreen extends StatelessWidget {
                   ],
                 ),
               ),
-              _nextRow(2)
+              _nextRow(2),
             ],
           ),
         )
