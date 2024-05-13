@@ -150,7 +150,7 @@ class _FilterState extends State<Filter> {
                                       left: 0,
                                       right: 1,
                                     ),
-                                    padding: const EdgeInsets.all(1),
+                                    padding: const EdgeInsets.all(0.7),
                                     width: 130,
                                     decoration: BoxDecoration(
                                       gradient: const LinearGradient(
@@ -188,8 +188,8 @@ class _FilterState extends State<Filter> {
                                       left: 3,
                                       right: 3,
                                     ),
-                                    padding: const EdgeInsets.all(0.5),
-                                    width: 130,
+                                    padding: const EdgeInsets.all(.7),
+                                    width: 85,
                                     decoration: BoxDecoration(
                                       gradient: _subIndex.value == i
                                           ? const LinearGradient(
@@ -211,9 +211,14 @@ class _FilterState extends State<Filter> {
                                         borderRadius: BorderRadius.circular(20),
                                       ),
                                       child: Center(
-                                        child: Text(items[_currentIndex.value]
-                                            .subItems[i - 2]
-                                            .title),
+                                        child: Text(
+                                          items[_currentIndex.value]
+                                              .subItems[i - 2]
+                                              .title,
+                                          style: const TextStyle(
+                                              fontFamily: MAIN_FONT_FAMILY,
+                                              fontSize: 8),
+                                        ),
                                       ),
                                     ),
                                   ),
@@ -272,7 +277,7 @@ class _FilterState extends State<Filter> {
         title: "اجاره تجاری اداری",
         assetPath: 'assets/images/ejara_tejari_filter.png',
         subItems: [
-          SubItemModel("دفتر کار", SubFilterType.earadaftarkar),
+          SubItemModel("دفتر کار", SubFilterType.ejaradaftarkar),
           SubItemModel("مغازه", SubFilterType.ejaramaqazeh),
           SubItemModel("دفاتر صنعتی", SubFilterType.ejaradaftarsanati),
         ]),
@@ -297,7 +302,6 @@ class FilterModel {
   String title;
   String assetPath;
   List<SubItemModel> subItems;
-
   FilterModel(
       {required this.title, required this.assetPath, required this.subItems});
 }

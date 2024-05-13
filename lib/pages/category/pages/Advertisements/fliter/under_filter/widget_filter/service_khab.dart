@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_svg/svg.dart';
 
-Widget rahn() {
+Widget servicekhab() {
   return Container(
     height: 50,
     width: 330,
@@ -51,7 +51,7 @@ Widget rahn() {
   );
 }
 
-Widget rahn2() {
+Widget servicekhab2() {
   return Stack(children: [
     Container(
       height: 50,

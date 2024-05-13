@@ -256,7 +256,7 @@ class Realestateagency extends StatelessWidget {
               ],
             ),
           ),
-          const SizedBox(height: 15),
+          const SizedBox(height: 10),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 14),
             child: Row(
@@ -310,8 +310,20 @@ class Realestateagency extends StatelessWidget {
               ],
             ),
           ),
-          const SizedBox(
-            height: 15,
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Text("Agancy / Ayandeh"),
+                Container(
+                  child: const Text(
+                    ":برای مثال ",
+                    style: TextStyle(color: Color.fromRGBO(166, 166, 166, 1)),
+                  ),
+                )
+              ],
+            ),
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 14),
@@ -334,9 +346,6 @@ class Realestateagency extends StatelessWidget {
                 ))
               ],
             ),
-          ),
-          const SizedBox(
-            height: 20,
           ),
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 25),
@@ -367,6 +376,4 @@ class Realestateagency extends StatelessWidget {
       ),
     );
   }
-
-
 }

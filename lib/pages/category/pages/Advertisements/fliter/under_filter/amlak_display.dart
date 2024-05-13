@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/widget_filter/mahaleh.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/intro_screen.dart';
 import 'package:flutter_svg/svg.dart';
@@ -22,7 +21,6 @@ class AmlakFilter extends StatelessWidget {
   final aksdar = false.obs;
   final videodar = false.obs;
   final fori = false.obs;
-
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -150,7 +148,7 @@ class AmlakFilter extends StatelessWidget {
                                   ),
                                 ),
                               ]),
-                          buildmahaleh()
+                          buildmahaleh(),
                         ]),
                       ),
                     )

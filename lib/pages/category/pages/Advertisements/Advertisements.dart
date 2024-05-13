@@ -20,15 +20,15 @@ class _SelectLocationMapState extends State<Advertisements> {
 
   final advertisments = [
     AdvertismentModel(
-      location: LatLng(35.73, 51.40),
+      location: const LatLng(35.73, 51.40),
       title: "شخصی",
     ),
     AdvertismentModel(
-        location: LatLng(35.74, 51.40),
+        location: const LatLng(35.74, 51.40),
         title: "    املاک صادقی",
         type: AdvertismentType.AMALAK),
     AdvertismentModel(
-        location: LatLng(35.75, 51.41),
+        location: const LatLng(35.75, 51.41),
         title: "مشاور",
         type: AdvertismentType.REAL_ESTATE)
   ].obs;
@@ -121,9 +121,11 @@ class _SelectLocationMapState extends State<Advertisements> {
                           child: IconButton(
                             icon: SvgPicture.asset("assets/images/filter.svg"),
                             onPressed: () {
-                              Get.to(() => Filter(
-                                    index: 0,
-                                  ));
+                              Get.to(
+                                  () => Filter(
+                                        index: 0,
+                                      ),
+                                  transition: Transition.leftToRight);
                             },
                           ),
                         ),
@@ -185,7 +187,7 @@ class _SelectLocationMapState extends State<Advertisements> {
                               const Padding(
                                 padding: EdgeInsets.only(right: 3),
                                 child: Text(
-                                  "",
+                                  "تهران",
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
                                       fontFamily: MAIN_FONT_FAMILY,

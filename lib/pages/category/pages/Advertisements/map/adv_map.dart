@@ -20,7 +20,7 @@ class AdvMap extends StatelessWidget {
       children: [
         FlutterMap(
           options: MapOptions(
-            initialZoom: 14,
+            initialZoom: 13,
             initialCenter: advertisements.first.location,
             maxZoom: 18,
             keepAlive: true,
@@ -49,12 +49,12 @@ class AdvMap extends StatelessWidget {
                               children: [
                                 Icon(
                                   Icons.location_on,
-                                  size: 80,
+                                  size: 60,
                                   color: getColor(adv.type),
                                 ),
                                 Positioned(
-                                  left: 132,
-                                  top: 15,
+                                  left: 133,
+                                  top: 12,
                                   child: Padding(
                                     padding: const EdgeInsets.only(left: 1),
                                     child: Container(
@@ -65,7 +65,7 @@ class AdvMap extends StatelessWidget {
                                                 BorderRadius.circular(20)),
                                         child: Padding(
                                           padding: const EdgeInsets.symmetric(
-                                              horizontal: 5),
+                                              horizontal: 4),
                                           child: Row(
                                             children: [
                                               Icon(

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_svg/svg.dart';
 
-Widget wc() {
+Widget Marhalehsakht() {
   return Column(
     children: [
       Container(

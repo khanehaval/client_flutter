@@ -4,6 +4,7 @@ import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter
 import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/widget_filter/jahatsakhteman.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/widget_filter/jenskaf.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/widget_filter/koletabagheh.dart';
+import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/widget_filter/mahaleh.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/widget_filter/metraj.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/widget_filter/mizanejara.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/widget_filter/mizanrahn.dart';
@@ -36,7 +37,6 @@ class EjaraApartemanFilter extends StatelessWidget {
   final _show_item_mizanrahn = false.obs;
   final _show_item_mizanejara = false.obs;
   final _show_item_mizanmetraj = false.obs;
-  final _show_item_otagh = false.obs;
   final _show_item_agahidahandeh_1 = false.obs;
   final _show_item_emkanatagahi_1 = false.obs;
   final _show_item_otheremkanatagahi_1 = false.obs;
@@ -158,7 +158,7 @@ class EjaraApartemanFilter extends StatelessWidget {
                   ),
                 ),
               ]),
-              buildmahaleh()
+              if (_show_item_mahaleh_1.isTrue) Mahaleh()
             ]),
           ),
         ),
@@ -1557,98 +1557,98 @@ class EjaraApartemanFilter extends StatelessWidget {
 
   Widget buildkoletabagheh() {
     return Container(
-      height: 50,
-      width: 330,
-      decoration: BoxDecoration(
-        color: const Color.fromRGBO(183, 183, 183, 1),
-        borderRadius: BorderRadius.circular(15),
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          Container(
-            color: Colors.white,
-            height: 30,
-            width: 250,
-            child: TextFormField(
-                readOnly: true,
-                textAlign: TextAlign.right,
-                decoration: InputDecoration(
-                    hintText: 'انتخاب کنید (به تومان)',
-                    hintStyle: const TextStyle(
-                        color: Color.fromRGBO(166, 166, 166, 1),
-                        fontSize: 10,
-                        fontFamily: MAIN_FONT_FAMILY),
-                    border: const OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.white)),
-                    prefixIcon: IconButton(
-                      onPressed: () {},
-                      icon: SvgPicture.asset(
-                        "assets/images/arrow_down.svg",
-                        width: 10,
-                        height: 10,
-                      ),
-                    ))),
-          ),
-          const Text(
-            "حداقل",
-            style: TextStyle(
-              fontFamily: MAIN_FONT_FAMILY,
-              fontSize: 11,
-              color: Color.fromRGBO(99, 99, 99, 1),
+            height: 50,
+            width: 330,
+            decoration: BoxDecoration(
+              color: const Color.fromRGBO(183, 183, 183, 1),
+              borderRadius: BorderRadius.circular(15),
             ),
-          )
-        ],
-      ),
-    );
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Container(
+                  color: Colors.white,
+                  height: 30,
+                  width: 250,
+                  child: TextFormField(
+                      readOnly: true,
+                      textAlign: TextAlign.right,
+                      decoration: InputDecoration(
+                          hintText: 'انتخاب کنید (به تومان)',
+                          hintStyle: const TextStyle(
+                              color: Color.fromRGBO(166, 166, 166, 1),
+                              fontSize: 10,
+                              fontFamily: MAIN_FONT_FAMILY),
+                          border: const OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.white)),
+                          prefixIcon: IconButton(
+                            onPressed: () {},
+                            icon: SvgPicture.asset(
+                              "assets/images/arrow_down.svg",
+                              width: 10,
+                              height: 10,
+                            ),
+                          ))),
+                ),
+                const Text(
+                  "حداقل",
+                  style: TextStyle(
+                    fontFamily: MAIN_FONT_FAMILY,
+                    fontSize: 11,
+                    color: Color.fromRGBO(99, 99, 99, 1),
+                  ),
+                )
+              ],
+            ),
+          );
   }
 
   Widget buildkoletabagheh2() {
-    return Container(
-      height: 50,
-      width: 330,
-      decoration: BoxDecoration(
-        color: const Color.fromRGBO(183, 183, 183, 1),
-        borderRadius: BorderRadius.circular(15),
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          Container(
-            color: Colors.white,
-            height: 30,
-            width: 250,
-            child: TextFormField(
-                readOnly: true,
-                textAlign: TextAlign.right,
-                decoration: InputDecoration(
-                    hintText: 'انتخاب کنید (به تومان)',
-                    hintStyle: const TextStyle(
-                        color: Color.fromRGBO(166, 166, 166, 1),
-                        fontSize: 10,
-                        fontFamily: MAIN_FONT_FAMILY),
-                    border: const OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.white)),
-                    prefixIcon: IconButton(
-                      onPressed: () {},
-                      icon: SvgPicture.asset(
-                        "assets/images/arrow_down.svg",
-                        width: 10,
-                        height: 10,
-                      ),
-                    ))),
-          ),
-          const Text(
-            "حداقل",
-            style: TextStyle(
-              fontFamily: MAIN_FONT_FAMILY,
-              fontSize: 11,
-              color: Color.fromRGBO(99, 99, 99, 1),
+    return  Container(
+            height: 50,
+            width: 330,
+            decoration: BoxDecoration(
+              color: const Color.fromRGBO(183, 183, 183, 1),
+              borderRadius: BorderRadius.circular(15),
             ),
-          )
-        ],
-      ),
-    );
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Container(
+                  color: Colors.white,
+                  height: 30,
+                  width: 250,
+                  child: TextFormField(
+                      readOnly: true,
+                      textAlign: TextAlign.right,
+                      decoration: InputDecoration(
+                          hintText: 'انتخاب کنید (به تومان)',
+                          hintStyle: const TextStyle(
+                              color: Color.fromRGBO(166, 166, 166, 1),
+                              fontSize: 10,
+                              fontFamily: MAIN_FONT_FAMILY),
+                          border: const OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.white)),
+                          prefixIcon: IconButton(
+                            onPressed: () {},
+                            icon: SvgPicture.asset(
+                              "assets/images/arrow_down.svg",
+                              width: 10,
+                              height: 10,
+                            ),
+                          ))),
+                ),
+                const Text(
+                  "حداقل",
+                  style: TextStyle(
+                    fontFamily: MAIN_FONT_FAMILY,
+                    fontSize: 11,
+                    color: Color.fromRGBO(99, 99, 99, 1),
+                  ),
+                )
+              ],
+            ),
+          );
   }
 
   Obx buildvaheddarabagheh() {

@@ -84,6 +84,7 @@ dependencies:
   introduction_screen: 3.1.14
   badges: 3.1.2
   screen_brightness: 1.0.1
+  animate_do: 2.1.0
   # mapir_raster: 0.0.1
 
 dev_dependencies:

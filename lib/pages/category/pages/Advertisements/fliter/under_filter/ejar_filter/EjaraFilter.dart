@@ -4,18 +4,13 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/shared.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/ejar_filter/aparteman_filter.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/ejar_filter/ejara_vila_filter.dart';
-import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/ejar_filter/slider.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/intro_screen.dart';
-import 'package:flutter_launcher_icons/xml_templates.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:get/get_navigation/src/routes/default_transitions.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:get/state_manager.dart';
-import 'package:screen_brightness/screen_brightness.dart';
-import 'package:syncfusion_flutter_sliders/sliders.dart';
 
 class EjaraFilter extends StatelessWidget {
   SubFilterType type;

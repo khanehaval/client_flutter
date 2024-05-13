@@ -8,7 +8,7 @@ enum SubFilterType {
   daftarkar,
   maqazeh,
   daftarsanati,
-  earadaftarkar,
+  ejaradaftarkar,
   ejaramaqazeh,
   ejaradaftarsanati,
   kotamodataparteman,

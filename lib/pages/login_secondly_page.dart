@@ -1,10 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/consultants.dart';
 import 'package:flutter_application_1/pages/educational_tour.dart';
 import 'package:flutter_application_1/pages/category/pages/home.dart';
-import 'package:flutter_application_1/pages/profile_private.dart';
 import 'package:flutter_application_1/pages/real_estate_agency.dart';
 import 'package:flutter_application_1/pages/private.dart';
 import 'package:flutter_svg/svg.dart';
@@ -18,31 +16,15 @@ class LoginSecondlyPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-          leading: IconButton(
-            icon: SvgPicture.asset(
-              'assets/images/Vector-47.svg',
-              width: 18,
-              height: 18,
-            ),
-            onPressed: () => Get.to(() => Home()),
+        leading: IconButton(
+          icon: SvgPicture.asset(
+            'assets/images/Vector-47.svg',
+            width: 18,
+            height: 18,
           ),
-          actions: [
-            GestureDetector(
-              onTap: () {
-                openProfilePrivate();
-              },
-              child: Padding(
-                  padding: const EdgeInsets.only(right: 20),
-                  child: Container(
-                    decoration: BoxDecoration(
-                        color: Colors.black12,
-                        borderRadius: BorderRadius.circular(60)),
-                    child: SvgPicture.asset(
-                      'assets/images/profile.svg',
-                    ),
-                  )),
-            ),
-          ]),
+          onPressed: () => Get.to(() => Home()),
+        ),
+      ),
       body: Center(
         child: Container(
           width: MediaQuery.of(context).size.width * 0.7,
@@ -84,7 +66,9 @@ class LoginSecondlyPage extends StatelessWidget {
                 children: [
                   GestureDetector(
                     onTap: () {
-                      Get.to(() => Private());
+                      Get.to(() => Private(),
+                          transition: Transition.downToUp,
+                          duration: const Duration(milliseconds: 400));
                     },
                     child: Container(
                       height: 65,
@@ -106,7 +90,9 @@ class LoginSecondlyPage extends StatelessWidget {
                   ),
                   GestureDetector(
                     onTap: () {
-                      Get.to(() => Consultants());
+                      Get.to(() => Consultants(),
+                          transition: Transition.downToUp,
+                          duration: const Duration(milliseconds: 400));
                     },
                     child: Container(
                       height: 65,
@@ -128,7 +114,9 @@ class LoginSecondlyPage extends StatelessWidget {
                   ),
                   GestureDetector(
                     onTap: () {
-                      Get.to(() => const Realestateagency());
+                      Get.to(() => const Realestateagency(),
+                          transition: Transition.downToUp,
+                          duration: const Duration(milliseconds: 400));
                     },
                     child: Container(
                       height: 65,
@@ -148,7 +136,6 @@ class LoginSecondlyPage extends StatelessWidget {
                 ],
               ),
               Row(
-                mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Container(
@@ -173,24 +160,31 @@ class LoginSecondlyPage extends StatelessWidget {
                       ),
                     ),
                   ),
-                  Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(30),
-                      gradient: getGradient(),
-                    ),
-                    child: ElevatedButton(
-                      onPressed: () {
-                        Get.to(() => EducationalTour());
-                      },
-                      style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.transparent,
-                          shadowColor: Colors.transparent),
-                      child: const Text(
-                        'مشاهده تور آموزشی',
-                        style: TextStyle(
-                            color: Color.fromRGBO(48, 48, 48, 1),
-                            fontSize: 10,
-                            fontFamily: MAIN_FONT_FAMILY),
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  Expanded(
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(30),
+                        gradient: getGradient(),
+                      ),
+                      child: ElevatedButton(
+                        onPressed: () {
+                          Get.to(() => EducationalTour(),
+                              transition: Transition.leftToRightWithFade,
+                              duration: const Duration(milliseconds: 400));
+                        },
+                        style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.transparent,
+                            shadowColor: Colors.transparent),
+                        child: const Text(
+                          'مشاهده تور آموزشی',
+                          style: TextStyle(
+                              color: Color.fromRGBO(48, 48, 48, 1),
+                              fontSize: 9,
+                              fontFamily: MAIN_FONT_FAMILY),
+                        ),
                       ),
                     ),
                   ),
