@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -11,80 +12,81 @@ class IntroScreen extends StatelessWidget {
   int index = 0;
   IntroScreen({super.key});
   List<Widget> _sliders(BuildContext context) => [
-        GestureDetector(
-          onHorizontalDragStart: (details) {
-            if (index > 1) {
-              Get.off(() => const Register(), transition: Transition.downToUp);
-            } else {
-              _sliderIndex.value = index + 1;
-            }
-          },
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Padding(
-                padding:
-                    EdgeInsets.only(top: MediaQuery.of(context).padding.top),
-                child: Column(
-                  children: [
-                    Stack(
-                      alignment: Alignment.center,
+        FadeInRight(
+          child: GestureDetector(
+            onHorizontalDragStart: (details) {
+              if (index > 1) {
+                Get.off(() => const Register(), transition: Transition.fade);
+              } else {
+                _sliderIndex.value = index + 1;
+              }
+            },
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                FadeInRight(
+                  child: Padding(
+                    padding: EdgeInsets.only(
+                        top: MediaQuery.of(context).padding.top),
+                    child: Column(
                       children: [
-                        SizedBox(
-                          height: 473,
-                          width: 412,
-                          child: Image.asset(
-                            'assets/images/Group 2376.png',
-                            fit: BoxFit.cover,
-                          ),
+                        Stack(
+                          alignment: Alignment.center,
+                          children: [
+                            SizedBox(
+                              height: 473,
+                              width: 412,
+                              child: Image.asset(
+                                'assets/images/Group 2376.png',
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          ],
                         ),
                       ],
                     ),
-                  ],
+                  ),
                 ),
-              ),
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 30, vertical: 30),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    Text(
-                      "جستجو در نقشه:",
-                      style: TextStyle(
-                        fontWeight: FontWeight.w200,
-                        fontSize: 18,
-                        fontFamily: MAIN_FONT_FAMILY,
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 30, vertical: 30),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      Text(
+                        "جستجو در نقشه:",
+                        style: TextStyle(
+                          fontWeight: FontWeight.w200,
+                          fontSize: 18,
+                          fontFamily: MAIN_FONT_FAMILY,
+                        ),
+                        textDirection: TextDirection.rtl,
+                        textAlign: TextAlign.justify,
                       ),
-                      textDirection: TextDirection.rtl,
-                      textAlign: TextAlign.justify,
-                    ),
-                    SizedBox(
-                      height: 5,
-                    ),
-                    Text(
-                      'اینجا کلی امکانات جدید و جذاب \nداریم، آگهی، مشاور، آژانس همه\n روی نقشه منتظر شما هستند...',
-                      style: TextStyle(
-                          fontWeight: FontWeight.w400,
-                          fontSize: 16,
-                          fontFamily: 'Iran Sans'),
-                      textDirection: TextDirection.rtl,
-                      textAlign: TextAlign.justify,
-                    ),
-                  ],
+                      SizedBox(
+                        height: 5,
+                      ),
+                      Text(
+                        'اینجا کلی امکانات جدید و جذاب \nداریم، آگهی، مشاور، آژانس همه\n روی نقشه منتظر شما هستند...',
+                        style: TextStyle(
+                            fontWeight: FontWeight.w400,
+                            fontSize: 16,
+                            fontFamily: 'Iran Sans'),
+                        textDirection: TextDirection.rtl,
+                        textAlign: TextAlign.justify,
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-              _nextRow(0)
-            ],
+                _nextRow(0)
+              ],
+            ),
           ),
         ),
         GestureDetector(
           onHorizontalDragStart: (details) {
             if (index > 2) {
-              Get.off(
-                () => const Register(),
-                transition: Transition.downToUp,
-              );
+              Get.off(() => const Register());
             } else {
               _sliderIndex.value = index + 2;
             }
@@ -92,86 +94,88 @@ class IntroScreen extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Padding(
-                padding:
-                    EdgeInsets.only(top: MediaQuery.of(context).padding.top),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Stack(
-                      alignment: Alignment.center,
-                      children: [
-                        Image.asset(
-                          'assets/images/Group 2375.png',
-                          fit: BoxFit.cover,
-                        ),
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 40,
-                    ),
-                    const Padding(
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.end,
+              FadeInRight(
+                child: Padding(
+                  padding:
+                      EdgeInsets.only(top: MediaQuery.of(context).padding.top),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Stack(
+                        alignment: Alignment.center,
                         children: [
-                          Text(
-                            'امکانات ویژه',
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 20,
-                              fontFamily: MAIN_FONT_FAMILY,
-                            ),
-                            textDirection: TextDirection.rtl,
-                            textAlign: TextAlign.justify,
-                          ),
-                          SizedBox(
-                            height: 5,
-                          ),
-                          Text(
-                            'دیگه لازم نیست از این بنگاه به\n اون بنگاه بری و ملکتون رو فایل\n کنین، ما تمامی ابزارهای خدمات\n ملک رو اینجا جمع کردیم ',
-                            style: TextStyle(
-                                fontWeight: FontWeight.w400,
-                                fontSize: 17,
-                                fontFamily: 'Iran Sans'),
-                            textDirection: TextDirection.rtl,
-                            textAlign: TextAlign.justify,
+                          Image.asset(
+                            'assets/images/Group 2375.png',
+                            fit: BoxFit.cover,
                           ),
                         ],
                       ),
-                    ),
-                  ],
+                      const SizedBox(
+                        height: 40,
+                      ),
+                      const Padding(
+                        padding:
+                            EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: [
+                            Text(
+                              'امکانات ویژه',
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 20,
+                                fontFamily: MAIN_FONT_FAMILY,
+                              ),
+                              textDirection: TextDirection.rtl,
+                              textAlign: TextAlign.justify,
+                            ),
+                            SizedBox(
+                              height: 5,
+                            ),
+                            Text(
+                              'دیگه لازم نیست از این بنگاه به\n اون بنگاه بری و ملکتون رو فایل\n کنین، ما تمامی ابزارهای خدمات\n ملک رو اینجا جمع کردیم ',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w400,
+                                  fontSize: 17,
+                                  fontFamily: 'Iran Sans'),
+                              textDirection: TextDirection.rtl,
+                              textAlign: TextAlign.justify,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
               _nextRow(1)
             ],
           ),
         ),
-        GestureDetector(
+        FadeInRight(
+            child: GestureDetector(
           onHorizontalDragStart: (details) {
             if (index > 3) {
             } else {
-              Get.off(
-                () => const Register(),
-                transition: Transition.downToUp,
-              );
+              Get.off(() => const Register());
             }
           },
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Stack(
-                alignment: Alignment.center,
-                children: [
-                  Padding(
-                    padding: EdgeInsets.symmetric(
-                        vertical: MediaQuery.of(context).padding.top),
-                    child: Image.asset(
-                      'assets/images/Group 2374.png',
+              FadeInRight(
+                child: Stack(
+                  alignment: Alignment.center,
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.symmetric(
+                          vertical: MediaQuery.of(context).padding.top),
+                      child: Image.asset(
+                        'assets/images/Group 2374.png',
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
               const Padding(
                 padding: EdgeInsets.symmetric(horizontal: 27),
@@ -203,10 +207,10 @@ class IntroScreen extends StatelessWidget {
                   ],
                 ),
               ),
-              _nextRow(2),
+              _nextRow(2)
             ],
           ),
-        )
+        ))
       ];
 
   Widget _nextRow(int index) {
