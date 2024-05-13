@@ -201,10 +201,8 @@ class EjaraApartemanFilter extends StatelessWidget {
                   const SizedBox(
                     height: 10,
                   ),
-                  rahn2(
-                    ),
+                  rahn2(),
                 ],
-                
               ),
             )),
         const SizedBox(
@@ -243,7 +241,7 @@ class EjaraApartemanFilter extends StatelessWidget {
                         ),
                       ),
                     ]),
-                if(_show_item_mizanejara.isTrue)ejara(),
+                if (_show_item_mizanejara.isTrue) ejara(),
                 const SizedBox(
                   height: 10,
                 ),
@@ -288,7 +286,7 @@ class EjaraApartemanFilter extends StatelessWidget {
                         ),
                       ),
                     ]),
-                if(_show_item_mizanmetraj.isTrue)metraj(),
+                if (_show_item_mizanmetraj.isTrue) metraj(),
                 const SizedBox(
                   height: 10,
                 ),
@@ -333,7 +331,7 @@ class EjaraApartemanFilter extends StatelessWidget {
                         ),
                       ),
                     ]),
-                if(_show_item_tabagheh_1.isTrue)tabagheh(),
+                if (_show_item_tabagheh_1.isTrue) tabagheh(),
                 const SizedBox(
                   height: 10,
                 ),
@@ -378,7 +376,7 @@ class EjaraApartemanFilter extends StatelessWidget {
                         ),
                       ),
                     ]),
-                if(_show_item_koletabageh_1.isTrue)koletabagheh(),
+                if (_show_item_koletabageh_1.isTrue) koletabagheh(),
                 const SizedBox(
                   height: 10,
                 ),
@@ -423,7 +421,7 @@ class EjaraApartemanFilter extends StatelessWidget {
                         ),
                       ),
                     ]),
-                if(_show_item_vaheddartabageh_1.isTrue)tedadvahed(),
+                if (_show_item_vaheddartabageh_1.isTrue) tedadvahed(),
                 const SizedBox(
                   height: 10,
                 ),
@@ -468,7 +466,7 @@ class EjaraApartemanFilter extends StatelessWidget {
                         ),
                       ),
                     ]),
-                if(_show_item_senbana_1.isTrue)senbana(),
+                if (_show_item_senbana_1.isTrue) senbana(),
                 const SizedBox(
                   height: 10,
                 ),
@@ -556,7 +554,12 @@ class EjaraApartemanFilter extends StatelessWidget {
                         ),
                       ),
                     ]),
-                if(_show_item_otheremkanatagahi_1.isTrue)otheremkanatagahi(asansor: asansor, anbari: anbari, parking: parking, bazsazi: bazsazi)
+                if (_show_item_otheremkanatagahi_1.isTrue)
+                  otheremkanatagahi(
+                      asansor: asansor,
+                      anbari: anbari,
+                      parking: parking,
+                      bazsazi: bazsazi)
               ],
             ),
           ),
@@ -597,7 +600,8 @@ class EjaraApartemanFilter extends StatelessWidget {
                         ),
                       ),
                     ]),
-                if(_show_item_emkanatagahi_1.isTrue)emkanatagahi(aksdar: aksdar, videodar: videodar)
+                if (_show_item_emkanatagahi_1.isTrue)
+                  emkanatagahi(aksdar: aksdar, videodar: videodar)
               ],
             ),
           ),
@@ -686,7 +690,7 @@ class EjaraApartemanFilter extends StatelessWidget {
                         ),
                       ),
                     ]),
-                if(_show_item_jahatsakhteman_1.isTrue)jahatsakhteman()
+                if (_show_item_jahatsakhteman_1.isTrue) jahatsakhteman()
               ],
             ),
           ),
@@ -727,7 +731,7 @@ class EjaraApartemanFilter extends StatelessWidget {
                         ),
                       ),
                     ]),
-                if(_show_item_taminAbeGarm_1.isTrue)taminabegarm()
+                if (_show_item_taminAbeGarm_1.isTrue) taminabegarm()
               ],
             ),
           ),
@@ -768,7 +772,7 @@ class EjaraApartemanFilter extends StatelessWidget {
                         ),
                       ),
                     ]),
-                if(_show_item_systemGarm_1.isTrue)systemgarm()
+                if (_show_item_systemGarm_1.isTrue) systemgarm()
               ],
             ),
           ),
@@ -809,7 +813,7 @@ class EjaraApartemanFilter extends StatelessWidget {
                         ),
                       ),
                     ]),
-                if(_show_item_systemSard_1.isTrue)systemsard()
+                if (_show_item_systemSard_1.isTrue) systemsard()
               ],
             ),
           ),
@@ -849,7 +853,7 @@ class EjaraApartemanFilter extends StatelessWidget {
                         ),
                       ),
                     ]),
-                if(_show_item_wc_1.isTrue)wc()
+                if (_show_item_wc_1.isTrue) wc()
               ],
             ),
           ),
@@ -890,7 +894,7 @@ class EjaraApartemanFilter extends StatelessWidget {
                         ),
                       ),
                     ]),
-                if(_show_item_jensKaf_1.isTrue)jenskaf()
+                if (_show_item_jensKaf_1.isTrue) jenskaf()
               ],
             ),
           ),
@@ -1553,98 +1557,98 @@ class EjaraApartemanFilter extends StatelessWidget {
 
   Widget buildkoletabagheh() {
     return Container(
-            height: 50,
-            width: 330,
-            decoration: BoxDecoration(
-              color: const Color.fromRGBO(183, 183, 183, 1),
-              borderRadius: BorderRadius.circular(15),
+      height: 50,
+      width: 330,
+      decoration: BoxDecoration(
+        color: const Color.fromRGBO(183, 183, 183, 1),
+        borderRadius: BorderRadius.circular(15),
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          Container(
+            color: Colors.white,
+            height: 30,
+            width: 250,
+            child: TextFormField(
+                readOnly: true,
+                textAlign: TextAlign.right,
+                decoration: InputDecoration(
+                    hintText: 'انتخاب کنید (به تومان)',
+                    hintStyle: const TextStyle(
+                        color: Color.fromRGBO(166, 166, 166, 1),
+                        fontSize: 10,
+                        fontFamily: MAIN_FONT_FAMILY),
+                    border: const OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.white)),
+                    prefixIcon: IconButton(
+                      onPressed: () {},
+                      icon: SvgPicture.asset(
+                        "assets/images/arrow_down.svg",
+                        width: 10,
+                        height: 10,
+                      ),
+                    ))),
+          ),
+          const Text(
+            "حداقل",
+            style: TextStyle(
+              fontFamily: MAIN_FONT_FAMILY,
+              fontSize: 11,
+              color: Color.fromRGBO(99, 99, 99, 1),
             ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Container(
-                  color: Colors.white,
-                  height: 30,
-                  width: 250,
-                  child: TextFormField(
-                      readOnly: true,
-                      textAlign: TextAlign.right,
-                      decoration: InputDecoration(
-                          hintText: 'انتخاب کنید (به تومان)',
-                          hintStyle: const TextStyle(
-                              color: Color.fromRGBO(166, 166, 166, 1),
-                              fontSize: 10,
-                              fontFamily: MAIN_FONT_FAMILY),
-                          border: const OutlineInputBorder(
-                              borderSide: BorderSide(color: Colors.white)),
-                          prefixIcon: IconButton(
-                            onPressed: () {},
-                            icon: SvgPicture.asset(
-                              "assets/images/arrow_down.svg",
-                              width: 10,
-                              height: 10,
-                            ),
-                          ))),
-                ),
-                const Text(
-                  "حداقل",
-                  style: TextStyle(
-                    fontFamily: MAIN_FONT_FAMILY,
-                    fontSize: 11,
-                    color: Color.fromRGBO(99, 99, 99, 1),
-                  ),
-                )
-              ],
-            ),
-          );
+          )
+        ],
+      ),
+    );
   }
 
   Widget buildkoletabagheh2() {
-    return  Container(
-            height: 50,
-            width: 330,
-            decoration: BoxDecoration(
-              color: const Color.fromRGBO(183, 183, 183, 1),
-              borderRadius: BorderRadius.circular(15),
+    return Container(
+      height: 50,
+      width: 330,
+      decoration: BoxDecoration(
+        color: const Color.fromRGBO(183, 183, 183, 1),
+        borderRadius: BorderRadius.circular(15),
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          Container(
+            color: Colors.white,
+            height: 30,
+            width: 250,
+            child: TextFormField(
+                readOnly: true,
+                textAlign: TextAlign.right,
+                decoration: InputDecoration(
+                    hintText: 'انتخاب کنید (به تومان)',
+                    hintStyle: const TextStyle(
+                        color: Color.fromRGBO(166, 166, 166, 1),
+                        fontSize: 10,
+                        fontFamily: MAIN_FONT_FAMILY),
+                    border: const OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.white)),
+                    prefixIcon: IconButton(
+                      onPressed: () {},
+                      icon: SvgPicture.asset(
+                        "assets/images/arrow_down.svg",
+                        width: 10,
+                        height: 10,
+                      ),
+                    ))),
+          ),
+          const Text(
+            "حداقل",
+            style: TextStyle(
+              fontFamily: MAIN_FONT_FAMILY,
+              fontSize: 11,
+              color: Color.fromRGBO(99, 99, 99, 1),
             ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Container(
-                  color: Colors.white,
-                  height: 30,
-                  width: 250,
-                  child: TextFormField(
-                      readOnly: true,
-                      textAlign: TextAlign.right,
-                      decoration: InputDecoration(
-                          hintText: 'انتخاب کنید (به تومان)',
-                          hintStyle: const TextStyle(
-                              color: Color.fromRGBO(166, 166, 166, 1),
-                              fontSize: 10,
-                              fontFamily: MAIN_FONT_FAMILY),
-                          border: const OutlineInputBorder(
-                              borderSide: BorderSide(color: Colors.white)),
-                          prefixIcon: IconButton(
-                            onPressed: () {},
-                            icon: SvgPicture.asset(
-                              "assets/images/arrow_down.svg",
-                              width: 10,
-                              height: 10,
-                            ),
-                          ))),
-                ),
-                const Text(
-                  "حداقل",
-                  style: TextStyle(
-                    fontFamily: MAIN_FONT_FAMILY,
-                    fontSize: 11,
-                    color: Color.fromRGBO(99, 99, 99, 1),
-                  ),
-                )
-              ],
-            ),
-          );
+          )
+        ],
+      ),
+    );
   }
 
   Obx buildvaheddarabagheh() {
