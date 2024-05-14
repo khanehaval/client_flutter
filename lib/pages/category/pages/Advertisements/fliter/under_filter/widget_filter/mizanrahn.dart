@@ -27,8 +27,7 @@ Widget rahn() {
                       color: Color.fromRGBO(166, 166, 166, 1),
                       fontSize: 10,
                       fontFamily: MAIN_FONT_FAMILY),
-                  border: const OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.white)),
+                  border: const OutlineInputBorder(),
                   prefixIcon: IconButton(
                     onPressed: () {},
                     icon: SvgPicture.asset(
@@ -77,7 +76,7 @@ Widget rahn2() {
                         fontSize: 10,
                         fontFamily: MAIN_FONT_FAMILY),
                     border: const OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.white)),
+                        borderSide: BorderSide(color: Colors.red)),
                     prefixIcon: IconButton(
                       onPressed: () {},
                       icon: SvgPicture.asset(
@@ -100,3 +99,44 @@ Widget rahn2() {
     )
   ]);
 }
+
+//  Container(
+//             height: 35,
+//             width: 250,
+//             decoration: BoxDecoration(
+//                 color: const Color.fromRGBO(250, 250, 250, 1),
+//                 border:
+//                     Border.all(color: const Color.fromRGBO(166, 166, 166, 1)),
+//                 borderRadius: BorderRadius.circular(15)),
+//             child: Column(children: [
+//               Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+//                 IconButton(
+//                   icon: Padding(
+//                     padding: const EdgeInsets.only(bottom: 10),
+//                     child: SvgPicture.asset(
+//                       "assets/images/arrow_down.svg",
+//                     ),
+//                   ),
+//                   onPressed: () {},
+//                 ),
+//                 const Padding(
+//                   padding: EdgeInsets.only(bottom: 10),
+//                   child: Text(
+//                     'انتخاب کنید (به تومان)',
+//                     style: TextStyle(
+//                         color: Color.fromRGBO(166, 166, 166, 1),
+//                         fontSize: 10,
+//                         fontFamily: MAIN_FONT_FAMILY),
+//                   ),
+//                 ),
+//               ]),
+//             ])),
+//         const Text(
+//           "حداکثر",
+//           style: TextStyle(
+//             fontFamily: MAIN_FONT_FAMILY,
+//             fontSize: 11,
+//             color: Color.fromRGBO(99, 99, 99, 1),
+//           ),
+//         )
+//       ])

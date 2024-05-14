@@ -4,6 +4,10 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/shared.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/ejar_filter/aparteman_filter.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/ejar_filter/ejara_vila_filter.dart';
+import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/widget_filter/agahidahandeh.dart';
+import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/widget_filter/emkanatagahi.dart';
+import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/widget_filter/metraj.dart';
+import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/widget_filter/otagh.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/intro_screen.dart';
 import 'package:flutter_svg/svg.dart';
@@ -240,7 +244,7 @@ class EjaraFilter extends StatelessWidget {
                 ),
               ),
               const SizedBox(
-                height: 10,
+                height: 9,
               ),
               Obx(
                 () => Container(
@@ -275,11 +279,11 @@ class EjaraFilter extends StatelessWidget {
                               ),
                             ),
                           ]),
-                      buildmetraj(),
+                      if (_show_item_mizanmetraj.isTrue) metraj(),
                       const SizedBox(
-                        height: 20,
+                        height: 10,
                       ),
-                      buildmetraj2(),
+                      metraj2(),
                     ],
                   ),
                 ),
@@ -301,7 +305,7 @@ class EjaraFilter extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             IconButton(
-                              icon: _show_item_mizanmetraj.value
+                              icon: _show_item_otagh.value
                                   ? SvgPicture.asset(
                                       'assets/images/=.svg',
                                     )
@@ -320,7 +324,7 @@ class EjaraFilter extends StatelessWidget {
                               ),
                             ),
                           ]),
-                      buildotagh()
+                      if (_show_item_otagh.isTrue) otagh()
                     ],
                   ),
                 ),
@@ -361,7 +365,9 @@ class EjaraFilter extends StatelessWidget {
                               ),
                             ),
                           ]),
-                      buildagahidahandeh()
+                      if (_show_item_agahidahandeh_1.isTrue)
+                        agahidahandeh(
+                            shakhsi: shakhsi, amlak: amlak, moshaver: moshaver)
                     ],
                   ),
                 ),
@@ -402,7 +408,8 @@ class EjaraFilter extends StatelessWidget {
                               ),
                             ),
                           ]),
-                      buildemkanatagahi()
+                      if (_show_item_emkanatagahi_1.isTrue)
+                        emkanatagahi(aksdar: aksdar, videodar: videodar)
                     ],
                   ),
                 ),

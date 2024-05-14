@@ -22,7 +22,7 @@ Widget servicekhab() {
               readOnly: true,
               textAlign: TextAlign.right,
               decoration: InputDecoration(
-                  hintText: 'انتخاب کنید (به تومان)',
+                  hintText: 'انتخاب کنید',
                   hintStyle: const TextStyle(
                       color: Color.fromRGBO(166, 166, 166, 1),
                       fontSize: 10,
@@ -71,7 +71,7 @@ Widget servicekhab2() {
                 readOnly: true,
                 textAlign: TextAlign.right,
                 decoration: InputDecoration(
-                    hintText: 'انتخاب کنید (به تومان)',
+                    hintText: 'انتخاب کنید',
                     hintStyle: const TextStyle(
                         color: Color.fromRGBO(166, 166, 166, 1),
                         fontSize: 10,

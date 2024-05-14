@@ -22,7 +22,7 @@ Widget metraj() {
               readOnly: true,
               textAlign: TextAlign.right,
               decoration: InputDecoration(
-                  hintText: 'انتخاب کنید (به تومان)',
+                  hintText: 'انتخاب کنید (به متر مربع)',
                   hintStyle: const TextStyle(
                       color: Color.fromRGBO(166, 166, 166, 1),
                       fontSize: 10,
@@ -70,7 +70,7 @@ Widget metraj2() {
               readOnly: true,
               textAlign: TextAlign.right,
               decoration: InputDecoration(
-                  hintText: 'انتخاب کنید (به تومان)',
+                  hintText: 'انتخاب کنید (به متر مربع)',
                   hintStyle: const TextStyle(
                       color: Color.fromRGBO(166, 166, 166, 1),
                       fontSize: 10,
