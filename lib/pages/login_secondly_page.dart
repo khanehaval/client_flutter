@@ -161,7 +161,7 @@ class LoginSecondlyPage extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(
-                    width: 10,
+                    width: 25,
                   ),
                   Expanded(
                     child: Container(

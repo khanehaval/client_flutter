@@ -8,6 +8,7 @@ import 'package:flutter_application_1/db/entities/customer.dart';
 import 'package:flutter_application_1/db/entities/estate.dart';
 import 'package:flutter_application_1/db/entities/user.dart';
 import 'package:flutter_application_1/db/entities/user_type.dart';
+import 'package:flutter_application_1/pages/category/pages/Advertisements/Advertisements.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/educational_tour.dart';
 import 'package:flutter_application_1/pages/intro_screen.dart';
@@ -56,9 +57,7 @@ class MyApp extends StatelessWidget {
               if (s.connectionState == ConnectionState.waiting) {
                 return Container();
               }
-              return (s.data ?? false)
-                  ? const LoginSecondlyPage()
-                  : IntroScreen();
+              return (s.data ?? false) ? Advertisements() : IntroScreen();
             }));
   }
 }

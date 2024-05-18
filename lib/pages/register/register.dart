@@ -108,20 +108,20 @@ class _RegisterState extends State<Register> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              const SizedBox(height: 90),
+              const SizedBox(height: 80),
               SvgPicture.asset(
                 'assets/images/logo-farsi.svg',
-                width: MediaQuery.of(context).size.width - 200,
+                width: MediaQuery.of(context).size.width - 230,
               ),
               const SizedBox(
-                height: 80,
+                height: 70,
               ),
               const Text(
                 'شماره تلفن همراه خود را وارد کنید',
-                style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+                style: TextStyle(fontSize: 18, fontFamily: MAIN_FONT_FAMILY),
               ),
               const SizedBox(
-                height: 15,
+                height: 25,
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 60),
@@ -172,54 +172,75 @@ class _RegisterState extends State<Register> {
                           left: 80, right: 80, top: 30, bottom: 20),
                       child: SizedBox(
                         height: MediaQuery.of(context).size.width / 3,
-                        child: Column(
-                          children: [
-                            SizedBox(
-                              height: 50,
-                              child: TextField(
-                                textAlign: TextAlign.center,
-                                keyboardType: TextInputType.number,
-                                onSubmitted: (_) => sendVerificationCode(),
-                                style: const TextStyle(
-                                  fontSize: 17,
-                                  decoration: TextDecoration.underline,
-                                  decorationStyle: TextDecorationStyle.dashed,
-                                ),
-                                controller: _codeTextField,
-                                decoration: InputDecoration(
-                                  hintText: "--  --  --  --",
-                                  hintStyle: const TextStyle(
-                                      fontSize: 16,
-                                      decoration: TextDecoration.none,
-                                      decorationStyle:
-                                          TextDecorationStyle.solid),
-                                  border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(15),
+                        child: SingleChildScrollView(
+                          child: Column(
+                            children: [
+                              SizedBox(
+                                height: 50,
+                                child: TextField(
+                                  textAlign: TextAlign.center,
+                                  keyboardType: TextInputType.number,
+                                  onSubmitted: (_) => sendVerificationCode(),
+                                  style: const TextStyle(
+                                    fontSize: 17,
+                                    decoration: TextDecoration.underline,
+                                    decorationStyle: TextDecorationStyle.dashed,
+                                  ),
+                                  controller: _codeTextField,
+                                  decoration: InputDecoration(
+                                    hintText: "--  --  --  --",
+                                    hintStyle: const TextStyle(
+                                        fontSize: 16,
+                                        decoration: TextDecoration.none,
+                                        decorationStyle:
+                                            TextDecorationStyle.solid),
+                                    border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(15),
+                                    ),
                                   ),
                                 ),
                               ),
-                            ),
-                            Obx(
-                              () => time.value > 0
-                                  ? Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        Text(time.value < 60
-                                            ? "00:${time.value}"
-                                            : time.value.toString()),
-                                      ],
-                                    )
-                                  : GestureDetector(
-                                      child: const Text(
-                                        "00:00     ارسال مجدد کد ",
+                              const SizedBox(
+                                height: 10,
+                              ),
+                              Obx(
+                                () => time.value > 0
+                                    ? Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Text(time.value < 120
+                                              ? "00:${time.value}"
+                                              : time.value.toString()),
+                                        ],
+                                      )
+                                    : GestureDetector(
+                                        child: const Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              Text(
+                                                "00:00 ",
+                                                style: TextStyle(
+                                                    fontFamily:
+                                                        MAIN_FONT_FAMILY),
+                                              ),
+                                              Text(
+                                                " ارسال مجدد کد ",
+                                                style: TextStyle(
+                                                    fontFamily:
+                                                        MAIN_FONT_FAMILY,
+                                                    color: Color.fromRGBO(
+                                                        156, 64, 64, 100)),
+                                              ),
+                                            ]),
+                                        onTap: () {
+                                          sendPhoneNumber();
+                                        },
                                       ),
-                                      onTap: () {
-                                        sendPhoneNumber();
-                                      },
-                                    ),
-                            )
-                          ],
+                              )
+                            ],
+                          ),
                         ),
                       ),
                     )
@@ -260,11 +281,11 @@ class _RegisterState extends State<Register> {
 
   void showErrorToast() {
     Fluttertoast.showToast(
-        msg: "خطایی رخ داده است",
-        toastLength: Toast.LENGTH_SHORT,
-        gravity: ToastGravity.CENTER,
-        backgroundColor: Colors.red,
+        msg: "شماره موبایل خود را کامل وارد کنید",
+        toastLength: Toast.LENGTH_LONG,
+        gravity: ToastGravity.TOP_RIGHT,
+        backgroundColor: Colors.green,
         textColor: Colors.white,
-        fontSize: 16.0);
+        fontSize: 50.0);
   }
 }
