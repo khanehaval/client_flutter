@@ -12,102 +12,99 @@ class IntroScreen extends StatelessWidget {
   int index = 0;
   IntroScreen({super.key});
   List<Widget> _sliders(BuildContext context) => [
-        FadeInRight(
-          child: GestureDetector(
-            onHorizontalDragStart: (details) {
-              if (index > 1) {
-                Get.off(() => const Register(), transition: Transition.fade);
-              } else {
-                _sliderIndex.value = index + 1;
-              }
-            },
-            child: Stack(children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  FadeInRight(
-                    duration: const Duration(milliseconds: 100),
-                    child: Padding(
-                      padding: EdgeInsets.only(
-                          top: MediaQuery.of(context).padding.top),
-                      child: Column(
+        GestureDetector(
+          onHorizontalDragStart: (details) {
+            if (index > 1) {
+              Get.off(
+                () => const Register(),
+              );
+            } else {
+              _sliderIndex.value = index + 1;
+            }
+          },
+          child: Stack(children: [
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Padding(
+                  padding:
+                      EdgeInsets.only(top: MediaQuery.of(context).padding.top),
+                  child: Column(
+                    children: [
+                      Stack(
+                        alignment: Alignment.center,
                         children: [
-                          Stack(
-                            alignment: Alignment.center,
-                            children: [
-                              SizedBox(
-                                height: 473,
-                                width: 412,
-                                child: Image.asset(
-                                  'assets/images/Group 2376.png',
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(
-                                    bottom: 400, right: 320),
-                                child: IconButton(
-                                    icon: SvgPicture.asset(
-                                        'assets/images/Vector-47.svg'),
-                                    onPressed: () =>
-                                        Get.to(() => const Register())),
-                              ),
-                            ],
+                          SizedBox(
+                            height: 473,
+                            width: 412,
+                            child: Image.asset(
+                              'assets/images/Group 2376.png',
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                          Padding(
+                            padding:
+                                const EdgeInsets.only(bottom: 400, right: 320),
+                            child: IconButton(
+                                icon: SvgPicture.asset(
+                                    'assets/images/Vector-47.svg'),
+                                onPressed: () =>
+                                    Get.to(() => const Register())),
                           ),
                         ],
                       ),
-                    ),
+                    ],
                   ),
-                  const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 60, vertical: 30),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      children: [
-                        Text(
-                          "جستجو در نقشه:",
-                          style: TextStyle(
-                            fontWeight: FontWeight.w200,
-                            fontSize: 21,
-                            fontFamily: MAIN_FONT_FAMILY,
-                          ),
-                          textDirection: TextDirection.rtl,
-                          textAlign: TextAlign.right,
+                ),
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 60, vertical: 30),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      Text(
+                        "جستجو در نقشه:",
+                        style: TextStyle(
+                          fontWeight: FontWeight.w200,
+                          fontSize: 21,
+                          fontFamily: MAIN_FONT_FAMILY,
                         ),
-                        SizedBox(
-                          height: 5,
-                        ),
-                        Text(
-                          'اینجا کلی امکانات جدید و جذاب داریم  آگهی، مشاور، آژانس همه روی نقشه منتظر شما هستند...',
-                          style: TextStyle(
-                              fontWeight: FontWeight.w400,
-                              fontSize: 20,
-                              fontFamily: 'Iran Sans'),
-                          textDirection: TextDirection.rtl,
-                          textAlign: TextAlign.justify,
-                        )
-                      ],
-                    ),
+                        textDirection: TextDirection.rtl,
+                        textAlign: TextAlign.right,
+                      ),
+                      SizedBox(
+                        height: 5,
+                      ),
+                      Text(
+                        'اینجا کلی امکانات جدید و جذاب داریم  آگهی، مشاور، آژانس همه روی نقشه منتظر شما هستند...',
+                        style: TextStyle(
+                            fontWeight: FontWeight.w400,
+                            fontSize: 20,
+                            fontFamily: 'Iran Sans'),
+                        textDirection: TextDirection.rtl,
+                        textAlign: TextAlign.justify,
+                      )
+                    ],
                   ),
-                  _nextRow(0)
-                ],
-              ),
-            ]),
-          ),
+                ),
+                _nextRow(0)
+              ],
+            ),
+          ]),
         ),
         GestureDetector(
           onHorizontalDragStart: (details) {
             if (index > 2) {
               Get.off(() => const Register());
             } else {
-              _sliderIndex.value = index + 2;
+              _sliderIndex.value = index + 1;
             }
           },
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               FadeInRight(
-                duration: const Duration(milliseconds: 100),
+                duration: const Duration(milliseconds: 400),
                 child: Padding(
                   padding:
                       EdgeInsets.only(top: MediaQuery.of(context).padding.top),
@@ -165,72 +162,68 @@ class IntroScreen extends StatelessWidget {
             ],
           ),
         ),
-        FadeInRight(
-            duration: const Duration(milliseconds: 100),
-            child: GestureDetector(
-              onHorizontalDragStart: (details) {
-                if (index > 3) {
-                } else {
-                  Get.off(() => const Register());
-                }
-              },
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        GestureDetector(
+          onHorizontalDragStart: (details) {
+            if (index > 3) {
+              Get.off(() => const Register());
+            } else {
+              _sliderIndex.value = index + 1;
+            }
+          },
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Stack(
+                alignment: Alignment.center,
                 children: [
-                  FadeInRight(
-                    duration: const Duration(milliseconds: 100),
-                    child: Stack(
-                      alignment: Alignment.center,
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.symmetric(
-                              vertical: MediaQuery.of(context).padding.top),
-                          child: Image.asset(
-                            'assets/images/Group 2374.png',
-                          ),
-                        ),
-                      ],
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                        vertical: MediaQuery.of(context).padding.top),
+                    child: Image.asset(
+                      'assets/images/Group 2374.png',
                     ),
                   ),
-                  const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 27),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      children: [
-                        Text(
-                          'مشاورین متخصص',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20,
-                            fontFamily: MAIN_FONT_FAMILY,
-                          ),
-                          textDirection: TextDirection.rtl,
-                          textAlign: TextAlign.justify,
-                        ),
-                        SizedBox(
-                          height: 5,
-                        ),
-                        Text(
-                          'دیگه لازم نیست ساعت ها تو ترافیک\n دنبال مشاور خوب و بنگاه بگردی، ما\n همه رو اینجا جمع کردیم... ',
-                          style: TextStyle(
-                              fontWeight: FontWeight.w400,
-                              fontSize: 18,
-                              fontFamily: 'Iran Sans'),
-                          textDirection: TextDirection.rtl,
-                          textAlign: TextAlign.justify,
-                        ),
-                      ],
-                    ),
-                  ),
-                  _nextRow(2)
                 ],
               ),
-            ))
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 27),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    Text(
+                      'مشاورین متخصص',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20,
+                        fontFamily: MAIN_FONT_FAMILY,
+                      ),
+                      textDirection: TextDirection.rtl,
+                      textAlign: TextAlign.justify,
+                    ),
+                    SizedBox(
+                      height: 5,
+                    ),
+                    Text(
+                      'دیگه لازم نیست ساعت ها تو ترافیک\n دنبال مشاور خوب و بنگاه بگردی، ما\n همه رو اینجا جمع کردیم... ',
+                      style: TextStyle(
+                          fontWeight: FontWeight.w400,
+                          fontSize: 18,
+                          fontFamily: 'Iran Sans'),
+                      textDirection: TextDirection.rtl,
+                      textAlign: TextAlign.justify,
+                    ),
+                  ],
+                ),
+              ),
+              _start(2)
+            ],
+          ),
+        )
       ];
 
   Widget _nextRow(int index) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 23, left: 50, right: 50),
+      padding: const EdgeInsets.only(bottom: 23, left: 40, right: 40),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -244,12 +237,11 @@ class IntroScreen extends StatelessWidget {
                 .toList(),
           ),
           GestureDetector(
-            behavior: HitTestBehavior.translucent,
             onTap: () {
               if (index == 2) {
-                Get.off(() => const Register(),
-                    transition: Transition.leftToRight,
-                    duration: const Duration(milliseconds: 100));
+                Get.off(
+                  () => const Register(),
+                );
               } else {
                 _sliderIndex.value = index + 1;
               }
@@ -277,9 +269,62 @@ class IntroScreen extends StatelessWidget {
                     ),
                     Image.asset(
                       'assets/images/arrow_right.png',
-                      width: 18,
-                      height: 18,
+                      width: 17,
+                      height: 17,
                     )
+                  ],
+                ),
+              ),
+            ),
+          )
+        ],
+      ),
+    );
+  }
+
+  Widget _start(int index) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 23, left: 50, right: 50),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Row(
+            children: [0, 1, 2]
+                .map((e) => Icon(Icons.circle,
+                    size: 11,
+                    color: index == e
+                        ? Colors.green
+                        : const Color.fromRGBO(183, 183, 183, 100)))
+                .toList(),
+          ),
+          GestureDetector(
+            onTap: () {
+              if (index == 2) {
+                Get.off(
+                  () => const Register(),
+                );
+              } else {
+                _sliderIndex.value = index + 1;
+              }
+            },
+            child: Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(30),
+                gradient: GetGradient(),
+              ),
+              child: const Padding(
+                padding:
+                    EdgeInsets.only(top: 5, bottom: 5, left: 20, right: 20),
+                child: Row(
+                  children: [
+                    Text(
+                      "شروع",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 15,
+                        fontFamily: MAIN_FONT_FAMILY,
+                      ),
+                    ),
                   ],
                 ),
               ),
@@ -311,7 +356,9 @@ class IntroScreen extends StatelessWidget {
                         Icons.arrow_back_ios,
                         size: 33,
                       ),
-                      onPressed: () => Get.back(),
+                      onPressed: () {
+                        Get.back();
+                      },
                     ),
                   ),
                 ),

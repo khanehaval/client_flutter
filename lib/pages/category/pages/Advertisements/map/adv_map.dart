@@ -34,56 +34,37 @@ class AdvMap extends StatelessWidget {
             ),
             MarkerLayer(
                 markers: advertisements
-                    .map((adv) => Marker(
+                    .map(
+                      (adv) => Marker(
                         alignment: Alignment.center,
                         point: adv.location,
                         width: 300,
                         height: 67,
                         child: GestureDetector(
-                            onTap: () {
-                              showAdvertisment(adv);
-                            },
-                            child: Stack(
-                              // textDirection: TextDirection.rtl,
-                              alignment: Alignment.center,
-                              children: [
-                                Icon(
-                                  Icons.location_on,
-                                  size: 60,
-                                  color: getColor(adv.type),
+                          onTap: () {
+                            showAdvertisment(adv);
+                          },
+                          child: Stack(
+                            // textDirection: TextDirection.rtl,
+                            alignment: Alignment.center,
+                            children: [
+                              SvgPicture.asset(
+                                'assets/images/LOCATION.svg',
+                                width: 98,
+                                height: 48,
+                              ),
+                              Container(
+                                child: const Padding(
+                                  padding:
+                                      EdgeInsets.only(bottom: 15, left: 30),
+                                  child: Text("شخصی"),
                                 ),
-                                Positioned(
-                                  left: 133,
-                                  top: 12,
-                                  child: Padding(
-                                    padding: const EdgeInsets.only(left: 1),
-                                    child: Container(
-                                        decoration: BoxDecoration(
-                                            color: Colors.white,
-                                            border: Border.all(),
-                                            borderRadius:
-                                                BorderRadius.circular(20)),
-                                        child: Padding(
-                                          padding: const EdgeInsets.symmetric(
-                                              horizontal: 4),
-                                          child: Row(
-                                            children: [
-                                              Icon(
-                                                Icons.circle,
-                                                color: getColor(adv.type),
-                                              ),
-                                              Text(
-                                                adv.title,
-                                                textDirection:
-                                                    TextDirection.ltr,
-                                              ),
-                                            ],
-                                          ),
-                                        )),
-                                  ),
-                                ),
-                              ],
-                            ))))
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                    )
                     .toList()),
           ],
         ),
@@ -109,7 +90,7 @@ class AdvMap extends StatelessWidget {
                   height: 60,
                   width: 60,
                   child: SvgPicture.asset(
-                    "assets/images/list - iconhome.svg",
+                    "assets/images/list - consultant.svg",
                   )),
             ),
           ),

@@ -108,20 +108,20 @@ class _RegisterState extends State<Register> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              const SizedBox(height: 80),
+              const SizedBox(height: 70),
               SvgPicture.asset(
                 'assets/images/logo-farsi.svg',
-                width: MediaQuery.of(context).size.width - 230,
+                width: MediaQuery.of(context).size.width - 250,
               ),
               const SizedBox(
-                height: 70,
+                height: 40,
               ),
               const Text(
                 'شماره تلفن همراه خود را وارد کنید',
                 style: TextStyle(fontSize: 18, fontFamily: MAIN_FONT_FAMILY),
               ),
               const SizedBox(
-                height: 25,
+                height: 10,
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 60),
