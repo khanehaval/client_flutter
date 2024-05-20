@@ -200,7 +200,7 @@ showAdvertisment(AdvertismentModel advertismentModel) {
                     ],
                   )),
             ],
-          )
+          ),
         ],
       );
     },

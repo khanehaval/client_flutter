@@ -3,13 +3,22 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_application_1/pages/category/models/AdvertismentMoidel.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/shared/methods.dart';
+import 'package:flutter_application_1/pages/category/shared/aghahi.dart';
+import 'package:flutter_application_1/pages/category/shared/constant.dart';
+import 'package:flutter_application_1/pages/category/shared/date.dart';
+import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
+import 'package:flutter_linear_datepicker/number_picker.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:flutter_svg/svg.dart';
 
 import 'package:get/get.dart';
 import 'package:get/get_connect/http/src/utils/utils.dart';
+import 'package:gradient_icon/gradient_icon.dart';
+import 'package:introduction_screen/introduction_screen.dart';
 
 class AdvMap extends StatelessWidget {
+  final _buildDateController = TextEditingController();
+
   RxList<AdvertismentModel> advertisements;
 
   AdvMap(this.advertisements);
@@ -71,7 +80,7 @@ class AdvMap extends StatelessWidget {
         Align(
           alignment: Alignment.bottomLeft,
           child: Padding(
-            padding: const EdgeInsets.only(bottom: 100, left: 15),
+            padding: const EdgeInsets.only(bottom: 155, left: 15),
             child: IconButton(
                 onPressed: () {},
                 icon: SizedBox(
@@ -83,7 +92,7 @@ class AdvMap extends StatelessWidget {
         Align(
           alignment: Alignment.bottomLeft,
           child: Padding(
-            padding: const EdgeInsets.only(bottom: 93, left: 295),
+            padding: const EdgeInsets.only(bottom: 150, left: 295),
             child: IconButton(
               onPressed: () {},
               icon: SizedBox(
@@ -94,7 +103,52 @@ class AdvMap extends StatelessWidget {
                   )),
             ),
           ),
-        )
+        ),
+        SingleChildScrollView(
+          controller: ScrollController(),
+          child: Padding(
+            padding: const EdgeInsets.only(top: 680),
+            child: SingleChildScrollView(
+              child: GestureDetector(
+                onTap: () {
+                  aghahi((aghahi) => _buildDateController.text = aghahi);
+                },
+                child: SingleChildScrollView(
+                  child: Stack(children: [
+                    Container(
+                      decoration: BoxDecoration(
+                          border: Border.all(
+                              color: const Color.fromRGBO(166, 166, 166, 1)),
+                          color: const Color.fromARGB(255, 255, 255, 255),
+                          borderRadius: BorderRadius.circular(10)),
+                      width: 383,
+                      height: 60,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(top: 10),
+                          child: Container(
+                            decoration: BoxDecoration(
+                                border: Border.all(
+                                    color:
+                                        const Color.fromRGBO(166, 166, 166, 1)),
+                                color: Colors.white10,
+                                borderRadius: BorderRadius.circular(10)),
+                            width: 37,
+                            height: 2,
+                          ),
+                        ),
+                      ],
+                    )
+                  ]),
+                ),
+              ),
+            ),
+          ),
+        ),
+        Align(alignment: Alignment.bottomCenter, child: bottomNavigation()),
       ],
     );
   }
