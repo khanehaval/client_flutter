@@ -1,27 +1,19 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_application_1/pages/category/models/AdvertismentMoidel.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/shared/methods.dart';
 import 'package:flutter_application_1/pages/category/shared/aghahi.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
-import 'package:flutter_application_1/pages/category/shared/date.dart';
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
-import 'package:flutter_linear_datepicker/number_picker.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:flutter_svg/svg.dart';
-
 import 'package:get/get.dart';
-import 'package:get/get_connect/http/src/utils/utils.dart';
-import 'package:gradient_icon/gradient_icon.dart';
-import 'package:introduction_screen/introduction_screen.dart';
 
 class AdvMap extends StatelessWidget {
   final _buildDateController = TextEditingController();
 
   RxList<AdvertismentModel> advertisements;
 
-  AdvMap(this.advertisements);
+  AdvMap(this.advertisements, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -57,10 +49,15 @@ class AdvMap extends StatelessWidget {
                             // textDirection: TextDirection.rtl,
                             alignment: Alignment.center,
                             children: [
-                              SvgPicture.asset(
-                                'assets/images/LOCATION.svg',
-                                width: 98,
-                                height: 48,
+                              GestureDetector(
+                                onTap: () {
+                                  showAdvertisment(adv);
+                                },
+                                child: SvgPicture.asset(
+                                  'assets/images/LOCATION.svg',
+                                  width: 98,
+                                  height: 48,
+                                ),
                               ),
                               Container(
                                 child: const Padding(
@@ -104,47 +101,51 @@ class AdvMap extends StatelessWidget {
             ),
           ),
         ),
-        SingleChildScrollView(
-          controller: ScrollController(),
-          child: Padding(
-            padding: const EdgeInsets.only(top: 680),
-            child: SingleChildScrollView(
-              child: GestureDetector(
-                onTap: () {
-                  aghahi((aghahi) => _buildDateController.text = aghahi);
-                },
-                child: SingleChildScrollView(
-                  child: Stack(children: [
-                    Container(
-                      decoration: BoxDecoration(
-                          border: Border.all(
-                              color: const Color.fromRGBO(166, 166, 166, 1)),
-                          color: const Color.fromARGB(255, 255, 255, 255),
-                          borderRadius: BorderRadius.circular(10)),
-                      width: 383,
-                      height: 60,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(top: 10),
-                          child: Container(
-                            decoration: BoxDecoration(
-                                border: Border.all(
-                                    color:
-                                        const Color.fromRGBO(166, 166, 166, 1)),
-                                color: Colors.white10,
-                                borderRadius: BorderRadius.circular(10)),
-                            width: 37,
-                            height: 2,
-                          ),
-                        ),
-                      ],
-                    )
-                  ]),
+        Padding(
+          padding: const EdgeInsets.only(top: 680),
+          child: SingleChildScrollView(
+            child: GestureDetector(
+              onTap: () {
+                aghahi((aghahi) => _buildDateController.text = aghahi);
+              },
+              child: Stack(children: [
+                Container(
+                  decoration: BoxDecoration(
+                      border: Border.all(
+                          color: const Color.fromRGBO(166, 166, 166, 1)),
+                      color: const Color.fromARGB(255, 255, 255, 255),
+                      borderRadius: BorderRadius.circular(10)),
+                  width: 383,
+                  height: 60,
                 ),
-              ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(top: 10),
+                      child: Container(
+                        decoration: BoxDecoration(
+                            border: Border.all(
+                                color: const Color.fromRGBO(166, 166, 166, 1)),
+                            color: Colors.white10,
+                            borderRadius: BorderRadius.circular(10)),
+                        width: 37,
+                        height: 2,
+                      ),
+                    ),
+                  ],
+                ),
+                const Padding(
+                  padding: EdgeInsets.only(left: 60, top: 20),
+                  child: Text(
+                    "خرید و فروش، رهن و اجاره انواع املاک در تهران",
+                    style: TextStyle(
+                        fontFamily: MAIN_FONT_FAMILY,
+                        fontSize: 12,
+                        color: Color.fromRGBO(99, 99, 99, 1)),
+                  ),
+                )
+              ]),
             ),
           ),
         ),

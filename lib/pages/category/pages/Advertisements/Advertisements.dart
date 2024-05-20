@@ -2,17 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/models/AdvertismentMoidel.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/filter.dart';
-import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/shared.dart';
-import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/Forosh_tejari/Forosh_tejari_filter.dart';
-import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/amlak_display.dart';
-import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/ejar_filter/EjaraFilter.dart';
-import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/ejara_tejari/Ejara_tejari_filter.dart';
-import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/forosh_filter/ForoshFilter.dart';
-import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/kota_modat/kota_modat_filter.dart';
-import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/sakht_va_saz/sakht_va_saz_filter.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/map/adv_map.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
-import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
@@ -30,10 +21,8 @@ class _SelectLocationMapState extends State<Advertisements> {
   MapController mapController = MapController();
   double initZoom = 16;
   final _controller = ItemScrollController();
-
   final _currentIndex = 0.obs;
   final _subIndex = 0.obs;
-  final _subFilterType = SubFilterType.None.obs;
   final advertisments = [
     AdvertismentModel(
       location: const LatLng(35.73, 51.40),
@@ -48,9 +37,7 @@ class _SelectLocationMapState extends State<Advertisements> {
         title: "مشاور",
         type: AdvertismentType.REAL_ESTATE)
   ].obs;
-
   List<LatLng> selectedPins = [];
-
   @override
   void initState() {
     _currentIndex.value = widget.index;
@@ -73,9 +60,8 @@ class _SelectLocationMapState extends State<Advertisements> {
       Column(
         children: [
           SizedBox(
-            height: 100,
-            child: Obx(
-              () => _currentIndex.value == 0
+              height: 100,
+              child: Obx(() => _currentIndex.value == 0
                   ? ScrollablePositionedList.builder(
                       reverse: true,
                       itemScrollController: _controller,
@@ -130,131 +116,7 @@ class _SelectLocationMapState extends State<Advertisements> {
                         ),
                       ),
                     )
-                  : Padding(
-                      padding: const EdgeInsets.only(top: 120),
-                      child: ScrollablePositionedList.builder(
-                          reverse: true,
-                          itemScrollController: _controller,
-                          itemCount:
-                              items[_currentIndex.value].subItems.length + 2,
-                          scrollDirection: Axis.horizontal,
-                          initialScrollIndex: widget.index,
-                          itemBuilder: (context, i) {
-                            if (i == 0) {
-                              return GestureDetector(
-                                child: Row(
-                                  children: [
-                                    Container(
-                                      margin: const EdgeInsets.only(
-                                        left: 5,
-                                        right: 5,
-                                      ),
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(10),
-                                        border: Border.all(width: 1),
-                                      ),
-                                      child: const Padding(
-                                        padding: EdgeInsets.all(10.0),
-                                        child: Text("املاک"),
-                                      ),
-                                    ),
-                                    const Icon(Icons.arrow_forward_ios_rounded)
-                                  ],
-                                ),
-                                onTap: () {
-                                  _currentIndex.value = 0;
-                                },
-                              );
-                            }
-                            if (i == 1) {
-                              return Row(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  const Icon(Icons.arrow_back_ios),
-                                  Container(
-                                    margin: const EdgeInsets.only(
-                                      left: 0,
-                                      right: 1,
-                                    ),
-                                    padding: const EdgeInsets.all(0.7),
-                                    width: 130,
-                                    decoration: BoxDecoration(
-                                      gradient: const LinearGradient(
-                                        colors: GRADIANT_COLOR,
-                                      ),
-                                      border: Border.all(width: 0.5),
-                                      borderRadius: BorderRadius.circular(20),
-                                    ),
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                        color: Colors.white,
-                                        borderRadius: BorderRadius.circular(20),
-                                      ),
-                                      child: Image.asset(
-                                        items[_currentIndex.value].assetPath,
-                                        width: 51,
-                                        height: 51,
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              );
-                            } else {
-                              return GestureDetector(
-                                onTap: () {
-                                  _subIndex.value = i;
-                                  _subFilterType.value =
-                                      items[_currentIndex.value]
-                                          .subItems[i - 2]
-                                          .type;
-                                },
-                                child: Obx(
-                                  () => Container(
-                                    margin: const EdgeInsets.only(
-                                      left: 3,
-                                      right: 3,
-                                    ),
-                                    padding: const EdgeInsets.all(.7),
-                                    width: 85,
-                                    decoration: BoxDecoration(
-                                      gradient: _subIndex.value == i
-                                          ? const LinearGradient(
-                                              colors: GRADIANT_COLOR,
-                                            )
-                                          : const LinearGradient(
-                                              colors: BLACK_12_GRADIANT_COLOR,
-                                            ),
-                                      borderRadius: BorderRadius.circular(20),
-                                      border: Border.all(
-                                          width: _currentIndex.value ==
-                                                  _currentIndex.value
-                                              ? 0.5
-                                              : 0.5),
-                                    ),
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                        color: Colors.white,
-                                        borderRadius: BorderRadius.circular(20),
-                                      ),
-                                      child: Center(
-                                        child: Text(
-                                          items[_currentIndex.value]
-                                              .subItems[i - 2]
-                                              .title,
-                                          style: const TextStyle(
-                                              fontFamily: MAIN_FONT_FAMILY,
-                                              fontSize: 8),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              );
-                            }
-                          }),
-                    ),
-            ),
-          ),
+                  : const SizedBox.shrink())),
           SingleChildScrollView(
             reverse: true,
             scrollDirection: Axis.horizontal,
