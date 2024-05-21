@@ -104,6 +104,7 @@ class AdvMap extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.only(top: 680),
           child: SingleChildScrollView(
+            scrollDirection: Axis.vertical,
             child: GestureDetector(
               onTap: () {
                 aghahi((aghahi) => _buildDateController.text = aghahi);

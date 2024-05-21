@@ -23,72 +23,75 @@ class IntroScreen extends StatelessWidget {
             }
           },
           child: Stack(children: [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Padding(
-                  padding:
-                      EdgeInsets.only(top: MediaQuery.of(context).padding.top),
-                  child: Column(
-                    children: [
-                      Stack(
-                        alignment: Alignment.center,
-                        children: [
-                          SizedBox(
-                            height: 473,
-                            width: 412,
-                            child: Image.asset(
-                              'assets/images/Group 2376.png',
-                              fit: BoxFit.cover,
+            FadeInRight(
+              duration: const Duration(milliseconds: 100),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Padding(
+                    padding: EdgeInsets.only(
+                        top: MediaQuery.of(context).padding.top),
+                    child: Column(
+                      children: [
+                        Stack(
+                          alignment: Alignment.center,
+                          children: [
+                            SizedBox(
+                              height: 473,
+                              width: 412,
+                              child: Image.asset(
+                                'assets/images/Group 2376.png',
+                                fit: BoxFit.cover,
+                              ),
                             ),
-                          ),
-                          Padding(
-                            padding:
-                                const EdgeInsets.only(bottom: 400, right: 320),
-                            child: IconButton(
-                                icon: SvgPicture.asset(
-                                    'assets/images/Vector-47.svg'),
-                                onPressed: () =>
-                                    Get.to(() => const Register())),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-                const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 60, vertical: 30),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      Text(
-                        "جستجو در نقشه:",
-                        style: TextStyle(
-                          fontWeight: FontWeight.w200,
-                          fontSize: 21,
-                          fontFamily: MAIN_FONT_FAMILY,
+                            Padding(
+                              padding: const EdgeInsets.only(
+                                  bottom: 400, right: 320),
+                              child: IconButton(
+                                  icon: SvgPicture.asset(
+                                      'assets/images/Vector-47.svg'),
+                                  onPressed: () =>
+                                      Get.to(() => const Register())),
+                            ),
+                          ],
                         ),
-                        textDirection: TextDirection.rtl,
-                        textAlign: TextAlign.right,
-                      ),
-                      SizedBox(
-                        height: 5,
-                      ),
-                      Text(
-                        'اینجا کلی امکانات جدید و جذاب داریم  آگهی، مشاور، آژانس همه روی نقشه منتظر شما هستند...',
-                        style: TextStyle(
-                            fontWeight: FontWeight.w400,
-                            fontSize: 20,
-                            fontFamily: 'Iran Sans'),
-                        textDirection: TextDirection.rtl,
-                        textAlign: TextAlign.justify,
-                      )
-                    ],
+                      ],
+                    ),
                   ),
-                ),
-                _nextRow(0)
-              ],
+                  const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 60, vertical: 30),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        Text(
+                          "جستجو در نقشه:",
+                          style: TextStyle(
+                            fontWeight: FontWeight.w200,
+                            fontSize: 21,
+                            fontFamily: MAIN_FONT_FAMILY,
+                          ),
+                          textDirection: TextDirection.rtl,
+                          textAlign: TextAlign.right,
+                        ),
+                        SizedBox(
+                          height: 5,
+                        ),
+                        Text(
+                          'اینجا کلی امکانات جدید و جذاب داریم  آگهی، مشاور، آژانس همه روی نقشه منتظر شما هستند...',
+                          style: TextStyle(
+                              fontWeight: FontWeight.w400,
+                              fontSize: 20,
+                              fontFamily: 'Iran Sans'),
+                          textDirection: TextDirection.rtl,
+                          textAlign: TextAlign.justify,
+                        )
+                      ],
+                    ),
+                  ),
+                  _nextRow(0)
+                ],
+              ),
             ),
           ]),
         ),
@@ -170,53 +173,56 @@ class IntroScreen extends StatelessWidget {
               _sliderIndex.value = index + 1;
             }
           },
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Stack(
-                alignment: Alignment.center,
-                children: [
-                  Padding(
-                    padding: EdgeInsets.symmetric(
-                        vertical: MediaQuery.of(context).padding.top),
-                    child: Image.asset(
-                      'assets/images/Group 2374.png',
-                    ),
-                  ),
-                ],
-              ),
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 27),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.end,
+          child: FadeInRight(
+            duration: const Duration(milliseconds: 400),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Stack(
+                  alignment: Alignment.center,
                   children: [
-                    Text(
-                      'مشاورین متخصص',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20,
-                        fontFamily: MAIN_FONT_FAMILY,
+                    Padding(
+                      padding: EdgeInsets.symmetric(
+                          vertical: MediaQuery.of(context).padding.top),
+                      child: Image.asset(
+                        'assets/images/Group 2374.png',
                       ),
-                      textDirection: TextDirection.rtl,
-                      textAlign: TextAlign.justify,
-                    ),
-                    SizedBox(
-                      height: 5,
-                    ),
-                    Text(
-                      'دیگه لازم نیست ساعت ها تو ترافیک\n دنبال مشاور خوب و بنگاه بگردی، ما\n همه رو اینجا جمع کردیم... ',
-                      style: TextStyle(
-                          fontWeight: FontWeight.w400,
-                          fontSize: 18,
-                          fontFamily: 'Iran Sans'),
-                      textDirection: TextDirection.rtl,
-                      textAlign: TextAlign.justify,
                     ),
                   ],
                 ),
-              ),
-              _start(2)
-            ],
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 27),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      Text(
+                        'مشاورین متخصص',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20,
+                          fontFamily: MAIN_FONT_FAMILY,
+                        ),
+                        textDirection: TextDirection.rtl,
+                        textAlign: TextAlign.justify,
+                      ),
+                      SizedBox(
+                        height: 5,
+                      ),
+                      Text(
+                        'دیگه لازم نیست ساعت ها تو ترافیک\n دنبال مشاور خوب و بنگاه بگردی، ما\n همه رو اینجا جمع کردیم... ',
+                        style: TextStyle(
+                            fontWeight: FontWeight.w400,
+                            fontSize: 18,
+                            fontFamily: 'Iran Sans'),
+                        textDirection: TextDirection.rtl,
+                        textAlign: TextAlign.justify,
+                      ),
+                    ],
+                  ),
+                ),
+                _start(2)
+              ],
+            ),
           ),
         )
       ];
@@ -357,7 +363,11 @@ class IntroScreen extends StatelessWidget {
                         size: 33,
                       ),
                       onPressed: () {
-                        Get.back();
+                        (details) {
+                          if (index > 3) {
+                            _sliderIndex.value = index - 1;
+                          }
+                        };
                       },
                     ),
                   ),
