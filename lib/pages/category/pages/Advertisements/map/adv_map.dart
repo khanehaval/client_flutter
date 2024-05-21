@@ -81,8 +81,8 @@ class AdvMap extends StatelessWidget {
             child: IconButton(
                 onPressed: () {},
                 icon: SizedBox(
-                    height: 50,
-                    width: 50,
+                    height: 60,
+                    width: 60,
                     child: Image.asset("assets/images/icon zoom.png"))),
           ),
         ),
@@ -93,8 +93,8 @@ class AdvMap extends StatelessWidget {
             child: IconButton(
               onPressed: () {},
               icon: SizedBox(
-                  height: 60,
-                  width: 60,
+                  height: 70,
+                  width: 70,
                   child: SvgPicture.asset(
                     "assets/images/list - consultant.svg",
                   )),

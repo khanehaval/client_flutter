@@ -23,75 +23,72 @@ class IntroScreen extends StatelessWidget {
             }
           },
           child: Stack(children: [
-            FadeInRight(
-              duration: const Duration(milliseconds: 100),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Padding(
-                    padding: EdgeInsets.only(
-                        top: MediaQuery.of(context).padding.top),
-                    child: Column(
-                      children: [
-                        Stack(
-                          alignment: Alignment.center,
-                          children: [
-                            SizedBox(
-                              height: 473,
-                              width: 412,
-                              child: Image.asset(
-                                'assets/images/Group 2376.png',
-                                fit: BoxFit.cover,
-                              ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Padding(
+                  padding:
+                      EdgeInsets.only(top: MediaQuery.of(context).padding.top),
+                  child: Column(
+                    children: [
+                      Stack(
+                        alignment: Alignment.center,
+                        children: [
+                          SizedBox(
+                            height: 473,
+                            width: 412,
+                            child: Image.asset(
+                              'assets/images/Group 2376.png',
+                              fit: BoxFit.cover,
                             ),
-                            Padding(
-                              padding: const EdgeInsets.only(
-                                  bottom: 400, right: 320),
-                              child: IconButton(
-                                  icon: SvgPicture.asset(
-                                      'assets/images/Vector-47.svg'),
-                                  onPressed: () =>
-                                      Get.to(() => const Register())),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                  const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 60, vertical: 30),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      children: [
-                        Text(
-                          "جستجو در نقشه:",
-                          style: TextStyle(
-                            fontWeight: FontWeight.w200,
-                            fontSize: 21,
-                            fontFamily: MAIN_FONT_FAMILY,
                           ),
-                          textDirection: TextDirection.rtl,
-                          textAlign: TextAlign.right,
-                        ),
-                        SizedBox(
-                          height: 5,
-                        ),
-                        Text(
-                          'اینجا کلی امکانات جدید و جذاب داریم  آگهی، مشاور، آژانس همه روی نقشه منتظر شما هستند...',
-                          style: TextStyle(
-                              fontWeight: FontWeight.w400,
-                              fontSize: 20,
-                              fontFamily: 'Iran Sans'),
-                          textDirection: TextDirection.rtl,
-                          textAlign: TextAlign.justify,
-                        )
-                      ],
-                    ),
+                          Padding(
+                            padding:
+                                const EdgeInsets.only(bottom: 400, right: 320),
+                            child: IconButton(
+                                icon: SvgPicture.asset(
+                                    'assets/images/Vector-47.svg'),
+                                onPressed: () =>
+                                    Get.to(() => const Register())),
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
-                  _nextRow(0)
-                ],
-              ),
+                ),
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 60, vertical: 30),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      Text(
+                        "جستجو در نقشه:",
+                        style: TextStyle(
+                          fontWeight: FontWeight.w200,
+                          fontSize: 21,
+                          fontFamily: MAIN_FONT_FAMILY,
+                        ),
+                        textDirection: TextDirection.rtl,
+                        textAlign: TextAlign.right,
+                      ),
+                      SizedBox(
+                        height: 5,
+                      ),
+                      Text(
+                        'اینجا کلی امکانات جدید و جذاب داریم  آگهی، مشاور، آژانس همه روی نقشه منتظر شما هستند...',
+                        style: TextStyle(
+                            fontWeight: FontWeight.w400,
+                            fontSize: 20,
+                            fontFamily: 'Iran Sans'),
+                        textDirection: TextDirection.rtl,
+                        textAlign: TextAlign.justify,
+                      )
+                    ],
+                  ),
+                ),
+                _nextRow(0)
+              ],
             ),
           ]),
         ),
@@ -106,30 +103,29 @@ class IntroScreen extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              FadeInRight(
-                duration: const Duration(milliseconds: 400),
-                child: Padding(
-                  padding:
-                      EdgeInsets.only(top: MediaQuery.of(context).padding.top),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Stack(
-                        alignment: Alignment.center,
-                        children: [
-                          Image.asset(
-                            'assets/images/Group 2375.png',
-                            fit: BoxFit.cover,
-                          ),
-                        ],
-                      ),
-                      const SizedBox(
-                        height: 40,
-                      ),
-                      const Padding(
-                        padding:
-                            EdgeInsets.symmetric(horizontal: 30, vertical: 20),
-                        child: Column(
+              Padding(
+                padding:
+                    EdgeInsets.only(top: MediaQuery.of(context).padding.top),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Stack(
+                      alignment: Alignment.center,
+                      children: [
+                        Image.asset(
+                          'assets/images/Group 2375.png',
+                          fit: BoxFit.cover,
+                        ),
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 40,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 30, vertical: 20),
+                      child: FadeInDown(
+                        child: const Column(
                           crossAxisAlignment: CrossAxisAlignment.end,
                           children: [
                             Text(
@@ -157,8 +153,8 @@ class IntroScreen extends StatelessWidget {
                           ],
                         ),
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
               _nextRow(1)
@@ -173,26 +169,31 @@ class IntroScreen extends StatelessWidget {
               _sliderIndex.value = index + 1;
             }
           },
-          child: FadeInRight(
-            duration: const Duration(milliseconds: 400),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Stack(
-                  alignment: Alignment.center,
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.symmetric(
-                          vertical: MediaQuery.of(context).padding.top),
-                      child: Image.asset(
-                        'assets/images/Group 2374.png',
-                      ),
-                    ),
-                  ],
-                ),
-                const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 27),
-                  child: Column(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Stack(
+                alignment: Alignment.center,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(top: 15),
+                    child: Stack(children: [
+                      SvgPicture.asset('assets/images/bg3.svg'),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 80, left: 50),
+                        child: SvgPicture.asset(
+                          'assets/images/property3.svg',
+                        ),
+                      )
+                    ]),
+                  ),
+                ],
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 27),
+                child: FadeInDown(
+                  duration: const Duration(milliseconds: 350),
+                  child: const Column(
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
                       Text(
@@ -220,9 +221,9 @@ class IntroScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-                _start(2)
-              ],
-            ),
+              ),
+              _start(2)
+            ],
           ),
         )
       ];
@@ -290,11 +291,12 @@ class IntroScreen extends StatelessWidget {
 
   Widget _start(int index) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 23, left: 50, right: 50),
+      padding: const EdgeInsets.only(bottom: 23, left: 40, right: 40),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [0, 1, 2]
                 .map((e) => Icon(Icons.circle,
                     size: 11,
@@ -320,7 +322,7 @@ class IntroScreen extends StatelessWidget {
               ),
               child: const Padding(
                 padding:
-                    EdgeInsets.only(top: 5, bottom: 5, left: 20, right: 20),
+                    EdgeInsets.only(top: 5, bottom: 5, left: 25, right: 25),
                 child: Row(
                   children: [
                     Text(
@@ -348,31 +350,18 @@ class IntroScreen extends StatelessWidget {
       alignment: Alignment.topRight,
       children: [
         Obx(() => _sliders(context)[_sliderIndex.value]),
-        Obx(
-          () => _sliderIndex.value == 0
-              ? const SizedBox.shrink()
-              : Padding(
-                  padding: const EdgeInsets.only(right: 330, top: 40),
-                  child: IconButton(
+        Obx(() => _sliderIndex.value == 0
+            ? const SizedBox.shrink()
+            : Padding(
+                padding: const EdgeInsets.only(right: 330, top: 40),
+                child: IconButton(
+                    icon: SvgPicture.asset('assets/images/Vector.svg'),
                     onPressed: () {
-                      Get.off(() => const Register());
-                    },
-                    icon: IconButton(
-                      icon: const Icon(
-                        Icons.arrow_back_ios,
-                        size: 33,
-                      ),
-                      onPressed: () {
-                        (details) {
-                          if (index > 3) {
-                            _sliderIndex.value = index - 1;
-                          }
-                        };
-                      },
-                    ),
-                  ),
-                ),
-        )
+                      if (index > 2) {
+                        _sliderIndex.value = index - 1;
+                      }
+                    }),
+              ))
       ],
     ));
   }

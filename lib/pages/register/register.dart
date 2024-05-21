@@ -94,8 +94,9 @@ class _RegisterState extends State<Register> {
                           child: const Text(
                             'تایید',
                             style: TextStyle(
-                                fontSize: 20,
+                                fontSize: 17,
                                 fontWeight: FontWeight.bold,
+                                fontFamily: MAIN_FONT_FAMILY,
                                 color: Color.fromRGBO(48, 48, 48, 1)),
                           ),
                         ),
@@ -104,24 +105,24 @@ class _RegisterState extends State<Register> {
             )
           : const SizedBox.shrink()),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 10),
+        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
         child: SingleChildScrollView(
           child: Column(
             children: [
               const SizedBox(height: 70),
               SvgPicture.asset(
                 'assets/images/logo-farsi.svg',
-                width: MediaQuery.of(context).size.width - 250,
+                width: MediaQuery.of(context).size.width - 200,
               ),
               const SizedBox(
-                height: 40,
+                height: 60,
               ),
               const Text(
                 'شماره تلفن همراه خود را وارد کنید',
-                style: TextStyle(fontSize: 18, fontFamily: MAIN_FONT_FAMILY),
+                style: TextStyle(fontSize: 16, fontFamily: MAIN_FONT_FAMILY),
               ),
               const SizedBox(
-                height: 10,
+                height: 20,
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 60),
@@ -148,7 +149,7 @@ class _RegisterState extends State<Register> {
                         suffix: Obx(() => phoneNumberSended.value
                             ? GestureDetector(
                                 child: Padding(
-                                  padding: const EdgeInsets.only(top: 2),
+                                  padding: const EdgeInsets.only(top: 3),
                                   child: SizedBox(
                                     height: 22,
                                     width: 22,
