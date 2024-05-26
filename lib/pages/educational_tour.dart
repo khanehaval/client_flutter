@@ -112,8 +112,8 @@ class _EducationalTourState extends State<EducationalTour> {
       child: Obx(
         () => BottomNavigationBar(
           backgroundColor: Colors.white,
-          // shadowColor: Colors.white,
-          // surfaceTintColor: Colors.white,
+          selectedItemColor: const Color(0xff6200ee),
+          unselectedItemColor: const Color(0xff757575),
           onTap: (int index) {
             currentPageIndex.value = index;
             showEducation.value = false;
@@ -126,10 +126,20 @@ class _EducationalTourState extends State<EducationalTour> {
                 width: 30,
                 height: 30,
               ),
+              activeIcon: SvgPicture.asset(
+                'assets/images/navigation1.svg',
+                width: 30,
+                height: 30,
+              ),
               label: '',
             ),
             BottomNavigationBarItem(
               icon: SvgPicture.asset(
+                'assets/images/navigation2.svg',
+                width: 30,
+                height: 30,
+              ),
+              activeIcon: SvgPicture.asset(
                 'assets/images/navigation2.svg',
                 width: 30,
                 height: 30,
@@ -139,8 +149,13 @@ class _EducationalTourState extends State<EducationalTour> {
             BottomNavigationBarItem(
               icon: SvgPicture.asset(
                 'assets/images/navigation3.svg',
-                width: 46,
-                height: 46,
+                width: 30,
+                height: 30,
+              ),
+              activeIcon: SvgPicture.asset(
+                'assets/images/navigation3.svg',
+                width: 30,
+                height: 30,
               ),
               label: '',
             ),
@@ -150,10 +165,20 @@ class _EducationalTourState extends State<EducationalTour> {
                 width: 30,
                 height: 30,
               ),
+              activeIcon: SvgPicture.asset(
+                'assets/images/navigation4.svg',
+                width: 30,
+                height: 30,
+              ),
               label: '',
             ),
             BottomNavigationBarItem(
               icon: SvgPicture.asset(
+                'assets/images/navigation5.svg',
+                width: 30,
+                height: 30,
+              ),
+              activeIcon: SvgPicture.asset(
                 'assets/images/navigation5.svg',
                 width: 30,
                 height: 30,

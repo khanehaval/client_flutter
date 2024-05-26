@@ -4,7 +4,6 @@ import 'package:flutter_application_1/pages/educational_tour.dart';
 import 'package:flutter_application_1/pages/profile.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-
 Widget bottomNavigation() {
   return ClipRRect(
       borderRadius: const BorderRadius.only(

@@ -74,48 +74,53 @@ class _RegisterState extends State<Register> {
               child: Obx(
                 () => button_is_pressed.value
                     ? const CircularProgressIndicator()
-                    : Container(
-                        width: 110,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(30),
-                          gradient: GetGradient(),
-                        ),
-                        child: ElevatedButton(
-                          onPressed: () {
-                            if (phoneNumberSended.value) {
-                              sendVerificationCode();
-                            } else {
-                              sendPhoneNumber();
-                            }
-                          },
-                          style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.transparent,
-                              shadowColor: Colors.transparent),
-                          child: const Text(
-                            'تایید',
-                            style: TextStyle(
-                                fontSize: 17,
-                                fontWeight: FontWeight.bold,
-                                fontFamily: MAIN_FONT_FAMILY,
-                                color: Color.fromRGBO(48, 48, 48, 1)),
+                    : SingleChildScrollView(
+                        scrollDirection: Axis.vertical,
+                        child: Container(
+                          width: 130,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(30),
+                            gradient: GetGradient(),
+                          ),
+                          child: ElevatedButton(
+                            onPressed: () {
+                              if (phoneNumberSended.value) {
+                                sendVerificationCode();
+                              } else {
+                                sendPhoneNumber();
+                              }
+                            },
+                            style: ElevatedButton.styleFrom(
+                                backgroundColor: Colors.transparent,
+                                shadowColor: Colors.transparent),
+                            child: const Text(
+                              'تایید',
+                              style: TextStyle(
+                                  fontSize: 17,
+                                  fontWeight: FontWeight.bold,
+                                  fontFamily: MAIN_FONT_FAMILY,
+                                  color: Color.fromRGBO(48, 48, 48, 1)),
+                            ),
                           ),
                         ),
                       ),
               ),
             )
           : const SizedBox.shrink()),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-        child: SingleChildScrollView(
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(
+            horizontal: 10,
+          ),
           child: Column(
             children: [
-              const SizedBox(height: 70),
+              const SizedBox(height: 50),
               SvgPicture.asset(
                 'assets/images/logo-farsi.svg',
-                width: MediaQuery.of(context).size.width - 200,
+                width: MediaQuery.of(context).size.width - 250,
               ),
               const SizedBox(
-                height: 60,
+                height: 30,
               ),
               const Text(
                 'شماره تلفن همراه خود را وارد کنید',

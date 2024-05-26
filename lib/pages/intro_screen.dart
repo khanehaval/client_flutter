@@ -39,7 +39,7 @@ class IntroScreen extends StatelessWidget {
                             height: 473,
                             width: 412,
                             child: Image.asset(
-                              'assets/images/Group 2376.png',
+                              'assets/images/Rectangle1.png',
                               fit: BoxFit.cover,
                             ),
                           ),
@@ -51,6 +51,12 @@ class IntroScreen extends StatelessWidget {
                                     'assets/images/Vector-47.svg'),
                                 onPressed: () =>
                                     Get.to(() => const Register())),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(top: 70, left: 4),
+                            child: SvgPicture.asset(
+                              'assets/images/Page 1.svg',
+                            ),
                           ),
                         ],
                       ),
@@ -113,9 +119,15 @@ class IntroScreen extends StatelessWidget {
                       alignment: Alignment.center,
                       children: [
                         Image.asset(
-                          'assets/images/Group 2375.png',
+                          'assets/images/Rectangle 457.png',
                           fit: BoxFit.cover,
                         ),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 60, left: 30),
+                          child: SvgPicture.asset(
+                            'assets/images/Group 2.svg',
+                          ),
+                        )
                       ],
                     ),
                     const SizedBox(
