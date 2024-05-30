@@ -61,9 +61,6 @@ dependencies:
   path_provider: 2.1.1
   json_serializable: 6.7.1
   curved_navigation_bar: 1.0.3
-  osm_flutter_hooks: 1.4.0
-  flutter_hooks: 0.18.6 
-  flutter_osm_plugin: 0.60.5
   dotted_border: 2.1.0
   latlong2: 0.9.0
   dio: 5.3.3
@@ -85,7 +82,6 @@ dependencies:
   badges: 3.1.2
   screen_brightness: 1.0.1
   animate_do: 2.1.0
-  draggable_home: 1.0.5
   # mapir_raster: 0.0.1
 
 dev_dependencies:
