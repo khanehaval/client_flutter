@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/db/dao/user_dao.dart';
 import 'package:flutter_application_1/db/entities/user.dart';
 import 'package:flutter_application_1/db/entities/user_type.dart';
+import 'package:flutter_application_1/pages/category/pages/Advertisements/Advertisements.dart';
 import 'package:flutter_application_1/services/acount_service.dart';
+import 'package:flutter_application_1/services/models/list-aghahi.dart';
 import 'package:flutter_application_1/services/models/login_res.dart';
 import 'package:get_it/get_it.dart';
 
@@ -37,5 +39,9 @@ class AccountRepo {
       return true;
     }
     return false;
+  }
+
+  Future<List<Aghahi>> fetchagahi() async {
+    return _accountService.fetchagahifromserver();
   }
 }

@@ -1,5 +1,6 @@
 import 'package:country_code_picker/country_code_picker.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter_application_1/services/models/list-aghahi.dart';
 import 'package:flutter_application_1/services/models/login_res.dart';
 import 'package:flutter_application_1/services/models/send_verification_req.dart';
 import 'package:flutter_application_1/services/models/send_verification_res.dart';
@@ -21,7 +22,6 @@ class AccountService {
       return null;
     }
   }
-
   Future<SendVerificationRes?> sendVerificationCode(
       {required String code, required String cellphone}) async {
     try {
@@ -34,5 +34,18 @@ class AccountService {
       _logger.e(e);
       return null;
     }
+  }
+  Future<List<Aghahi>> fetchagahifromserver() async {
+    try {
+      List<Aghahi> ress = [];
+      final result = await _dio.post("", data: {'address': 365, 'page': 1});
+      for(var l in result.data["result"]){
+        ress.add(Aghahi.fromJson(l));
+      }
+      return ress;
+    } catch (e) {
+      print(e);
+    }
+    return [];
   }
 }

@@ -33,7 +33,7 @@ class _EducationalTourState extends State<EducationalTour> {
 
   var pages = [
     Home(),
-    const Messages(),
+     Messages(),
     const AddNewAdvertisement(),
     const Category(),
     Advertisements(),
