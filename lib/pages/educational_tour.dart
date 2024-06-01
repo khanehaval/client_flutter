@@ -1,13 +1,12 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/advertisements.dart';
 import 'package:flutter_application_1/pages/category/pages/messages.dart';
-
 import 'package:flutter_application_1/pages/category/pages/home.dart';
 import 'package:flutter_application_1/pages/category/pages/add_new_advertisment.dart';
 import 'package:flutter_application_1/pages/category/shared/app_bar.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-
 import 'category/pages/window/window.dart';
 
 class EducationalTour extends StatefulWidget {
@@ -33,7 +32,7 @@ class _EducationalTourState extends State<EducationalTour> {
 
   var pages = [
     Home(),
-     Messages(),
+    Messages(),
     const AddNewAdvertisement(),
     const Category(),
     Advertisements(),
@@ -106,14 +105,20 @@ class _EducationalTourState extends State<EducationalTour> {
   }
 
   Widget bottomNavigationBar() {
-    return ClipRRect(
-      borderRadius: const BorderRadius.only(
-          topLeft: Radius.circular(20), topRight: Radius.circular(20)),
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: const BorderRadius.only(
+          topLeft: Radius.circular(20),
+          topRight: Radius.circular(20),
+        ),
+      ),
       child: Obx(
         () => BottomNavigationBar(
+          selectedItemColor: Colors.red,
+          selectedLabelStyle: null,
+          showUnselectedLabels: false,
+          elevation: 10,
           backgroundColor: Colors.white,
-          selectedItemColor: const Color(0xff6200ee),
-          unselectedItemColor: const Color(0xff757575),
           onTap: (int index) {
             currentPageIndex.value = index;
             showEducation.value = false;
@@ -121,6 +126,7 @@ class _EducationalTourState extends State<EducationalTour> {
           currentIndex: currentPageIndex.value,
           items: <BottomNavigationBarItem>[
             BottomNavigationBarItem(
+              backgroundColor: const Color.fromRGBO(255, 255, 255, 1),
               icon: SvgPicture.asset(
                 'assets/images/navigation1.svg',
                 width: 30,

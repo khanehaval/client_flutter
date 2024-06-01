@@ -73,7 +73,7 @@ class EjaraApartemanFilter extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
                           const Padding(
-                            padding: EdgeInsets.only(left: 20),
+                            padding: EdgeInsets.only(left: 20, right: 20),
                             child: Text(
                               "تهران",
                               textAlign: TextAlign.center,
@@ -84,7 +84,7 @@ class EjaraApartemanFilter extends StatelessWidget {
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsets.only(right: 20),
+                            padding: const EdgeInsets.only(left: 20, right: 20),
                             child: IconButton(
                               icon: SvgPicture.asset(
                                   "assets/images/location1.svg"),
@@ -101,7 +101,7 @@ class EjaraApartemanFilter extends StatelessWidget {
                         borderRadius: BorderRadius.circular(15)),
                     child: Row(children: [
                       const Padding(
-                        padding: EdgeInsets.only(left: 20),
+                        padding: EdgeInsets.only(left: 20, right: 20),
                         child: Text(
                           "فیلتر",
                           textAlign: TextAlign.center,
@@ -112,7 +112,7 @@ class EjaraApartemanFilter extends StatelessWidget {
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(right: 20),
+                        padding: const EdgeInsets.only(left: 20, right: 20),
                         child: IconButton(
                           icon: SvgPicture.asset(
                             "assets/images/filter.svg",
@@ -129,7 +129,7 @@ class EjaraApartemanFilter extends StatelessWidget {
             ],
           ),
           const SizedBox(
-            height: 5,
+            height: 10,
           ),
           Obx(
             () => Container(

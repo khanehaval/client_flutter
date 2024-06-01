@@ -130,7 +130,15 @@ class AmlakFilter extends StatelessWidget {
                               border: Border.all(
                                   color:
                                       const Color.fromRGBO(166, 166, 166, 1)),
-                              borderRadius: BorderRadius.circular(15)),
+                              borderRadius: BorderRadius.circular(15),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.grey.withOpacity(0.2),
+                                  spreadRadius: 2,
+                                  blurRadius: 10,
+                                  offset: Offset(2, 5),
+                                )
+                              ]),
                           child: Column(children: [
                             Row(
                                 mainAxisAlignment:
@@ -311,6 +319,14 @@ class AmlakFilter extends StatelessWidget {
                         Container(
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(30),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey.withOpacity(0.3),
+                                spreadRadius: 1,
+                                blurRadius: 7,
+                                offset: const Offset(0, 3),
+                              )
+                            ],
                             gradient: GetGradient(),
                           ),
                           child: ElevatedButton(

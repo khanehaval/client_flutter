@@ -4,6 +4,7 @@ import 'package:flutter_application_1/pages/educational_tour.dart';
 import 'package:flutter_application_1/pages/profile.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+
 Widget bottomNavigation() {
   return ClipRRect(
       borderRadius: const BorderRadius.only(
@@ -21,6 +22,7 @@ Widget bottomNavigation() {
         // currentIndex: currentPageIndex.value,
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
+            backgroundColor: const Color.fromRGBO(255, 255, 255, 1),
             icon: SvgPicture.asset(
               'assets/images/navigation1.svg',
               width: 30,

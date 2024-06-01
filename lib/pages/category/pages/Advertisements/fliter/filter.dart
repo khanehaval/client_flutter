@@ -43,6 +43,7 @@ class _FilterState extends State<Filter> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       bottomNavigationBar: bottomNavigation(),
       body: Padding(
         padding: const EdgeInsets.only(top: 5),
@@ -70,7 +71,7 @@ class _FilterState extends State<Filter> {
                           child: Obx(
                             () => Container(
                               margin: const EdgeInsets.only(
-                                  left: 10, right: 10, bottom: 7, top: 40),
+                                  right: 10, bottom: 10, top: 40),
                               padding: const EdgeInsets.all(1),
                               height: 98,
                               width: 130,
@@ -82,18 +83,18 @@ class _FilterState extends State<Filter> {
                                     : const LinearGradient(
                                         colors: BLACK_12_GRADIANT_COLOR,
                                       ),
-                                borderRadius: BorderRadius.circular(20),
+                                borderRadius: BorderRadius.circular(10),
                                 // border:
                                 //     Border.all(width: _currentIndex.value == i ? 1 : 1),
                               ),
                               child: Container(
                                 decoration: BoxDecoration(
                                   color: Colors.white,
-                                  borderRadius: BorderRadius.circular(20),
+                                  borderRadius: BorderRadius.circular(10),
                                 ),
                                 child: Padding(
                                   padding: const EdgeInsets.symmetric(
-                                      vertical: 9, horizontal: 9),
+                                      vertical: 7, horizontal: 9),
                                   child: Image.asset(
                                     items[i].assetPath,
                                     width: 40,
@@ -126,13 +127,22 @@ class _FilterState extends State<Filter> {
                                           right: 5,
                                         ),
                                         decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(10),
-                                          border: Border.all(width: 1),
-                                        ),
+                                            borderRadius:
+                                                BorderRadius.circular(10),
+                                            border: Border.all(width: 1),
+                                            boxShadow: [
+                                              BoxShadow(
+                                                color: Colors.grey
+                                                    .withOpacity(0.5),
+                                              )
+                                            ]),
                                         child: const Padding(
                                           padding: EdgeInsets.all(10.0),
-                                          child: Text("املاک"),
+                                          child: Text(
+                                            "املاک",
+                                            style: TextStyle(
+                                                fontFamily: MAIN_FONT_FAMILY),
+                                          ),
                                         ),
                                       ),
                                       const Icon(
@@ -161,13 +171,13 @@ class _FilterState extends State<Filter> {
                                           colors: GRADIANT_COLOR,
                                         ),
                                         border: Border.all(width: 0.5),
-                                        borderRadius: BorderRadius.circular(20),
+                                        borderRadius: BorderRadius.circular(10),
                                       ),
                                       child: Container(
                                         decoration: BoxDecoration(
                                           color: Colors.white,
                                           borderRadius:
-                                              BorderRadius.circular(20),
+                                              BorderRadius.circular(10),
                                         ),
                                         child: Image.asset(
                                           items[_currentIndex.value].assetPath,
@@ -203,7 +213,7 @@ class _FilterState extends State<Filter> {
                                             : const LinearGradient(
                                                 colors: BLACK_12_GRADIANT_COLOR,
                                               ),
-                                        borderRadius: BorderRadius.circular(20),
+                                        borderRadius: BorderRadius.circular(8),
                                         border: Border.all(
                                             width: _currentIndex.value ==
                                                     _currentIndex.value
@@ -214,7 +224,7 @@ class _FilterState extends State<Filter> {
                                         decoration: BoxDecoration(
                                           color: Colors.white,
                                           borderRadius:
-                                              BorderRadius.circular(20),
+                                              BorderRadius.circular(8),
                                         ),
                                         child: Center(
                                           child: Text(
@@ -223,7 +233,9 @@ class _FilterState extends State<Filter> {
                                                 .title,
                                             style: const TextStyle(
                                                 fontFamily: MAIN_FONT_FAMILY,
-                                                fontSize: 8),
+                                                color: Color.fromRGBO(
+                                                    99, 99, 99, 1),
+                                                fontSize: 9),
                                           ),
                                         ),
                                       ),

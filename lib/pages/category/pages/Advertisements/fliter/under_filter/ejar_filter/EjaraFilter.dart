@@ -36,7 +36,7 @@ class EjaraFilter extends StatelessWidget {
   Widget build(BuildContext context) {
     if (type == SubFilterType.None) {
       return Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(10.0),
         child: SingleChildScrollView(
           scrollDirection: Axis.vertical,
           child: Padding(
@@ -54,13 +54,14 @@ class EjaraFilter extends StatelessWidget {
                           decoration: BoxDecoration(
                               color: Colors.white,
                               border: Border.all(
-                                  color: const Color.fromRGBO(166, 166, 166, 1)),
+                                  color:
+                                      const Color.fromRGBO(166, 166, 166, 1)),
                               borderRadius: BorderRadius.circular(15)),
                           child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
                                 const Padding(
-                                  padding: EdgeInsets.only(left: 20),
+                                  padding: EdgeInsets.only(left: 20, right: 20),
                                   child: Text(
                                     "تهران",
                                     textAlign: TextAlign.center,
@@ -71,7 +72,8 @@ class EjaraFilter extends StatelessWidget {
                                   ),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsets.only(right: 20),
+                                  padding: const EdgeInsets.only(
+                                      left: 20, right: 20),
                                   child: IconButton(
                                     icon: SvgPicture.asset(
                                         "assets/images/location1.svg"),
@@ -84,11 +86,12 @@ class EjaraFilter extends StatelessWidget {
                           decoration: BoxDecoration(
                               color: Colors.white,
                               border: Border.all(
-                                  color: const Color.fromRGBO(166, 166, 166, 1)),
+                                  color:
+                                      const Color.fromRGBO(166, 166, 166, 1)),
                               borderRadius: BorderRadius.circular(15)),
                           child: Row(children: [
                             const Padding(
-                              padding: EdgeInsets.only(left: 20),
+                              padding: EdgeInsets.only(left: 20, right: 20),
                               child: Text(
                                 "فیلتر",
                                 textAlign: TextAlign.center,
@@ -99,7 +102,8 @@ class EjaraFilter extends StatelessWidget {
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsets.only(right: 20),
+                              padding:
+                                  const EdgeInsets.only(left: 20, right: 20),
                               child: IconButton(
                                 icon: SvgPicture.asset(
                                   "assets/images/filter.svg",
@@ -221,7 +225,8 @@ class EjaraFilter extends StatelessWidget {
                                     ? SvgPicture.asset(
                                         'assets/images/=.svg',
                                       )
-                                    : SvgPicture.asset('assets/images/down.svg'),
+                                    : SvgPicture.asset(
+                                        'assets/images/down.svg'),
                                 onPressed: () {
                                   _show_item_mizanejara.value =
                                       !_show_item_mizanejara.value;
@@ -232,7 +237,8 @@ class EjaraFilter extends StatelessWidget {
                                 child: Text(
                                   "میزان اجاره",
                                   style: TextStyle(
-                                      fontFamily: MAIN_FONT_FAMILY, fontSize: 12),
+                                      fontFamily: MAIN_FONT_FAMILY,
+                                      fontSize: 12),
                                 ),
                               ),
                             ]),
@@ -266,7 +272,8 @@ class EjaraFilter extends StatelessWidget {
                                     ? SvgPicture.asset(
                                         'assets/images/=.svg',
                                       )
-                                    : SvgPicture.asset('assets/images/down.svg'),
+                                    : SvgPicture.asset(
+                                        'assets/images/down.svg'),
                                 onPressed: () {
                                   _show_item_mizanmetraj.value =
                                       !_show_item_mizanmetraj.value;
@@ -277,7 +284,8 @@ class EjaraFilter extends StatelessWidget {
                                 child: Text(
                                   "متراژ",
                                   style: TextStyle(
-                                      fontFamily: MAIN_FONT_FAMILY, fontSize: 12),
+                                      fontFamily: MAIN_FONT_FAMILY,
+                                      fontSize: 12),
                                 ),
                               ),
                             ]),
@@ -311,7 +319,8 @@ class EjaraFilter extends StatelessWidget {
                                     ? SvgPicture.asset(
                                         'assets/images/=.svg',
                                       )
-                                    : SvgPicture.asset('assets/images/down.svg'),
+                                    : SvgPicture.asset(
+                                        'assets/images/down.svg'),
                                 onPressed: () {
                                   _show_item_otagh.value =
                                       !_show_item_otagh.value;
@@ -322,7 +331,8 @@ class EjaraFilter extends StatelessWidget {
                                 child: Text(
                                   "تعداد اتاق",
                                   style: TextStyle(
-                                      fontFamily: MAIN_FONT_FAMILY, fontSize: 12),
+                                      fontFamily: MAIN_FONT_FAMILY,
+                                      fontSize: 12),
                                 ),
                               ),
                             ]),
@@ -352,7 +362,8 @@ class EjaraFilter extends StatelessWidget {
                                     ? SvgPicture.asset(
                                         'assets/images/=.svg',
                                       )
-                                    : SvgPicture.asset('assets/images/down.svg'),
+                                    : SvgPicture.asset(
+                                        'assets/images/down.svg'),
                                 onPressed: () {
                                   _show_item_agahidahandeh_1.value =
                                       !_show_item_agahidahandeh_1.value;
@@ -363,13 +374,16 @@ class EjaraFilter extends StatelessWidget {
                                 child: Text(
                                   "آگهی دهنده",
                                   style: TextStyle(
-                                      fontFamily: MAIN_FONT_FAMILY, fontSize: 12),
+                                      fontFamily: MAIN_FONT_FAMILY,
+                                      fontSize: 12),
                                 ),
                               ),
                             ]),
                         if (_show_item_agahidahandeh_1.isTrue)
                           agahidahandeh(
-                              shakhsi: shakhsi, amlak: amlak, moshaver: moshaver)
+                              shakhsi: shakhsi,
+                              amlak: amlak,
+                              moshaver: moshaver)
                       ],
                     ),
                   ),
@@ -395,7 +409,8 @@ class EjaraFilter extends StatelessWidget {
                                     ? SvgPicture.asset(
                                         'assets/images/=.svg',
                                       )
-                                    : SvgPicture.asset('assets/images/down.svg'),
+                                    : SvgPicture.asset(
+                                        'assets/images/down.svg'),
                                 onPressed: () {
                                   _show_item_emkanatagahi_1.value =
                                       !_show_item_emkanatagahi_1.value;
@@ -406,7 +421,8 @@ class EjaraFilter extends StatelessWidget {
                                 child: Text(
                                   "امکانات آگهی",
                                   style: TextStyle(
-                                      fontFamily: MAIN_FONT_FAMILY, fontSize: 12),
+                                      fontFamily: MAIN_FONT_FAMILY,
+                                      fontSize: 12),
                                 ),
                               ),
                             ]),
@@ -445,8 +461,8 @@ class EjaraFilter extends StatelessWidget {
                                           const Color.fromRGBO(54, 216, 89, 1),
                                       inactiveThumbColor:
                                           const Color.fromRGBO(11, 8, 8, 0.2),
-                                      inactiveTrackColor:
-                                          const Color.fromRGBO(255, 255, 255, 1)),
+                                      inactiveTrackColor: const Color.fromRGBO(
+                                          255, 255, 255, 1)),
                                 ),
                               ),
                             ),
