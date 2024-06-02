@@ -14,6 +14,7 @@ class EjaraAdv extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       bottomNavigationBar: bottomNavigation(),
       appBar: buildaAppBar(),
       body: Column(

@@ -57,7 +57,7 @@ class MyApp extends StatelessWidget {
               if (s.connectionState == ConnectionState.waiting) {
                 return Container();
               }
-              return (s.data ?? false) ? Advertisements() : IntroScreen();
+              return (s.data ?? false) ? Advertisements() : LoginSecondlyPage();
             }));
   }
 }

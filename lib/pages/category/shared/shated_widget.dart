@@ -22,7 +22,7 @@ Widget bottomNavigation() {
         // currentIndex: currentPageIndex.value,
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            backgroundColor: const Color.fromRGBO(255, 255, 255, 1),
+            backgroundColor: Colors.white,
             icon: SvgPicture.asset(
               'assets/images/navigation1.svg',
               width: 30,
@@ -68,6 +68,7 @@ Widget bottomNavigation() {
 
 PreferredSizeWidget buildaAppBar() {
   return AppBar(
+    backgroundColor: Colors.white,
     leading: IconButton(
       icon: const Icon(
         Icons.arrow_back_ios,
