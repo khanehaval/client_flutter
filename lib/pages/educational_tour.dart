@@ -13,6 +13,7 @@ import 'category/pages/window/window.dart';
 class EducationalTour extends StatefulWidget {
   int index;
   bool showEducation;
+  int mycurrentindex = 0;
 
   EducationalTour({super.key, this.index = 0, this.showEducation = true});
 
@@ -33,7 +34,7 @@ class _EducationalTourState extends State<EducationalTour> {
 
   var pages = [
     Home(),
-     Messages(),
+    Messages(),
     const AddNewAdvertisement(),
     const Category(),
     Advertisements(),
@@ -98,7 +99,7 @@ class _EducationalTourState extends State<EducationalTour> {
                   : pages[currentPageIndex.value]),
               Align(
                 alignment: Alignment.bottomCenter,
-                child: bottomNavigationBar(),
+                child: bottomNavigationBar1(),
               ),
             ],
           ),
@@ -189,5 +190,34 @@ class _EducationalTourState extends State<EducationalTour> {
         ),
       ),
     );
+  }
+
+  Widget bottomNavigationBar1() {
+    return ClipRRect(
+        borderRadius: const BorderRadius.only(
+            topLeft: Radius.circular(20), topRight: Radius.circular(20)),
+        child: Obx(() => Container(decoration: BoxDecoration(),
+          child: BottomNavigationBar(
+                  backgroundColor: Colors.white,
+                  selectedItemColor: const Color(0xff6200ee),
+                  unselectedItemColor: const Color(0xff757575),
+                  onTap: (int index) {
+                    currentPageIndex.value = index;
+                    showEducation.value = false;
+                  },
+                  currentIndex: currentPageIndex.value,
+                  items: const <BottomNavigationBarItem>[
+                    BottomNavigationBarItem(
+                        icon: Icon(Icons.person), label: 'پروفایل'),
+                    BottomNavigationBarItem(
+                        icon: Icon(Icons.message), label: 'چت'),
+                    BottomNavigationBarItem(
+                        icon: Icon(Icons.home), label: 'خانه'),
+                    BottomNavigationBarItem(
+                        icon: Icon(Icons.category_rounded), label: 'دسته بندی'),
+                    BottomNavigationBarItem(
+                        icon: Icon(Icons.view_week), label: 'آگهی'),
+                  ]),
+        )));
   }
 }
