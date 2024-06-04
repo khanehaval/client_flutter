@@ -130,7 +130,15 @@ class AmlakFilter extends StatelessWidget {
                               border: Border.all(
                                   color:
                                       const Color.fromRGBO(166, 166, 166, 1)),
-                              borderRadius: BorderRadius.circular(15)),
+                              borderRadius: BorderRadius.circular(15),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.grey.withOpacity(0.2),
+                                  spreadRadius: 2,
+                                  blurRadius: 10,
+                                  offset: Offset(2, 5),
+                                )
+                              ]),
                           child: Column(children: [
                             Row(
                                 mainAxisAlignment:
@@ -311,20 +319,35 @@ class AmlakFilter extends StatelessWidget {
                         Container(
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(30),
+                            boxShadow: const [
+                              BoxShadow(
+                                color: Color.fromRGBO(0, 0, 0, 0.07),
+                                spreadRadius: 1,
+                                blurRadius: 5,
+                                offset: Offset(0, 2),
+                              )
+                            ],
                             gradient: GetGradient(),
                           ),
-                          child: ElevatedButton(
-                            onPressed: () {},
-                            style: ElevatedButton.styleFrom(
-                                backgroundColor: Colors.transparent,
-                                shadowColor: Colors.transparent),
-                            child: const Text(
-                              'تائید و اعمال فیلتر',
-                              style: TextStyle(
-                                  color: Color.fromRGBO(48, 48, 48, 1),
-                                  fontSize: 10,
-                                  fontWeight: FontWeight.bold,
-                                  fontFamily: MAIN_FONT_FAMILY),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(30),
+                              border: Border.all(
+                                  color: const Color.fromRGBO(99, 99, 99, 1)),
+                            ),
+                            child: ElevatedButton(
+                              onPressed: () {},
+                              style: ElevatedButton.styleFrom(
+                                  backgroundColor: Colors.transparent,
+                                  shadowColor: Colors.transparent),
+                              child: const Text(
+                                'تائید و اعمال فیلتر',
+                                style: TextStyle(
+                                    color: Color.fromRGBO(48, 48, 48, 1),
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.bold,
+                                    fontFamily: MAIN_FONT_FAMILY),
+                              ),
                             ),
                           ),
                         ),

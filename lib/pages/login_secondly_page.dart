@@ -14,8 +14,9 @@ class LoginSecondlyPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: const Color.fromRGBO(255, 255, 255, 1),
       appBar: AppBar(
+        backgroundColor: Colors.white,
         leading: IconButton(
           icon: SvgPicture.asset(
             'assets/images/Vector-47.svg',

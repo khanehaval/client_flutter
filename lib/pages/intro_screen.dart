@@ -187,9 +187,13 @@ class IntroScreen extends StatelessWidget {
                 alignment: Alignment.center,
                 children: [
                   Padding(
-                    padding: const EdgeInsets.only(top: 15),
+                    padding: EdgeInsets.only(
+                        top: MediaQuery.of(context).padding.top),
                     child: Stack(children: [
-                      SvgPicture.asset('assets/images/bg3.svg'),
+                      Image.asset(
+                        'assets/images/Rectangle 457.png',
+                        fit: BoxFit.cover,
+                      ),
                       Padding(
                         padding: const EdgeInsets.only(top: 80, left: 50),
                         child: SvgPicture.asset(

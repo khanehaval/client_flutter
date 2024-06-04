@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 
 PreferredSizeWidget buildAppBar() {
   return AppBar(
+    backgroundColor: Colors.white70,
     leading: IconButton(
       icon: const Icon(
         Icons.arrow_back_ios,

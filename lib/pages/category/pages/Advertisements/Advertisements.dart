@@ -253,10 +253,11 @@ class _SelectLocationMapState extends State<Advertisements> {
                 ),
                 Container(
                   decoration: BoxDecoration(
-                      border: Border.all(
-                          color: const Color.fromRGBO(166, 166, 166, 1)),
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(10)),
+                    border: Border.all(
+                        color: const Color.fromRGBO(166, 166, 166, 1)),
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
                   child: SizedBox(
                     height: 40,
                     width: 100,

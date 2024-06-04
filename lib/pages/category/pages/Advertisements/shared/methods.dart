@@ -14,35 +14,37 @@ showAdvertisment(AdvertismentModel advertismentModel) {
             return Column(
               children: [
                 Transform.translate(
-                  offset: const Offset(0, 50),
+                  offset: const Offset(20, 60),
                   child: Padding(
-                    padding: const EdgeInsets.only(top: 180),
+                    padding:
+                        const EdgeInsets.only(top: 90, right: 40, bottom: 70),
                     child: Container(
+                      width: 350,
+                      height: 400,
                       decoration:
                           const BoxDecoration(color: Colors.transparent),
                       child: Stack(
-                        fit: StackFit.passthrough,
                         // alignment: Alignment.topCenter,
                         children: [
                           Padding(
-                            padding: const EdgeInsets.all(60.0),
+                            padding: const EdgeInsets.only(
+                                top: 130, right: 30, bottom: 30, left: 30),
                             child: Container(
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(5),
                                 color: Colors.white,
                               ),
                               child: Padding(
-                                padding: const EdgeInsets.all(5.0),
+                                padding: const EdgeInsets.all(4.0),
                                 child: Column(
                                   children: [
                                     Stack(
                                       children: [
                                         SizedBox(
-                                          height: 200,
                                           width: 300,
                                           child: Image.asset(
                                             "assets/images/pic.png",
-                                            fit: BoxFit.cover,
+                                            fit: BoxFit.fitWidth,
                                           ),
                                         ),
                                         Align(
@@ -59,54 +61,63 @@ showAdvertisment(AdvertismentModel advertismentModel) {
                                         ),
                                         Padding(
                                           padding: const EdgeInsets.only(
-                                              top: 170, right: 10),
+                                              top: 115, right: 10),
                                           child: Align(
                                             alignment: Alignment.bottomRight,
                                             child: SvgPicture.asset(
                                               "assets/images/save.svg",
+                                              width: 15,
+                                              height: 15,
                                             ),
                                           ),
                                         ),
                                         Padding(
                                           padding: const EdgeInsets.only(
-                                              top: 170, right: 40),
+                                              top: 115, right: 30),
                                           child: Align(
                                             alignment: Alignment.bottomRight,
                                             child: SvgPicture.asset(
                                               "assets/images/loc and cam.svg",
+                                              width: 15,
+                                              height: 15,
                                             ),
                                           ),
                                         ),
                                         Padding(
                                           padding: const EdgeInsets.only(
-                                              top: 170, left: 5),
+                                              top: 115, left: 5),
                                           child: Align(
                                             alignment: Alignment.bottomLeft,
                                             child: SvgPicture.asset(
                                               "assets/images/announcement.svg",
+                                              width: 15,
+                                              height: 15,
                                             ),
                                           ),
                                         ),
                                       ],
+                                    ),
+                                    const SizedBox(
+                                      height: 10,
                                     ),
                                     Row(
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceBetween,
                                       children: [
                                         SizedBox(
-                                          height: 40,
-                                          width: 40,
+                                          height: 20,
+                                          width: 20,
                                           child: SvgPicture.asset(
                                             "assets/images/total price.svg",
                                           ),
                                         ),
                                         const SizedBox(
-                                          width: 30,
+                                          width: 20,
                                         ),
                                         const Text(
                                           "...ویلا 100 متری در زمین 250 متری",
                                           style: TextStyle(
-                                              fontSize: 11,
+                                              fontSize: 10,
                                               fontFamily: MAIN_FONT_FAMILY,
                                               color: Color.fromRGBO(
                                                   99, 99, 99, 1)),
@@ -114,7 +125,8 @@ showAdvertisment(AdvertismentModel advertismentModel) {
                                       ],
                                     ),
                                     const SizedBox(
-                                      width: 50,
+                                      width: 30,
+                                      height: 10,
                                     ),
                                     Row(
                                       mainAxisAlignment:
@@ -122,12 +134,14 @@ showAdvertisment(AdvertismentModel advertismentModel) {
                                       children: [
                                         SvgPicture.asset(
                                           "assets/images/price.svg",
-                                          height: 19,
+                                          height: 20,
+                                          width: 20,
                                         ),
                                         Container(
                                             child: SvgPicture.asset(
                                           "assets/images/property1.svg",
-                                          height: 19,
+                                          height: 15,
+                                          width: 15,
                                         ))
                                       ],
                                     ),
@@ -137,6 +151,8 @@ showAdvertisment(AdvertismentModel advertismentModel) {
                                           alignment: Alignment.centerLeft,
                                           child: SvgPicture.asset(
                                             "assets/images/Sqm.svg",
+                                            width: 20,
+                                            height: 20,
                                           ),
                                         ),
                                       ],
@@ -147,14 +163,16 @@ showAdvertisment(AdvertismentModel advertismentModel) {
                             ),
                           ),
                           Positioned(
-                            left: 177,
-                            top: 40,
+                            left: 160,
+                            top: 110,
                             child: GestureDetector(
                               onTap: () {
                                 Get.back();
                               },
                               child: SvgPicture.asset(
                                 "assets/images/delete.svg",
+                                width: 30,
+                                height: 30,
                               ),
                             ),
                           ),

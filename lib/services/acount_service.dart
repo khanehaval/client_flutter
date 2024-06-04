@@ -22,6 +22,7 @@ class AccountService {
       return null;
     }
   }
+
   Future<SendVerificationRes?> sendVerificationCode(
       {required String code, required String cellphone}) async {
     try {
@@ -35,11 +36,12 @@ class AccountService {
       return null;
     }
   }
+
   Future<List<Aghahi>> fetchagahifromserver() async {
     try {
       List<Aghahi> ress = [];
       final result = await _dio.post("", data: {'address': 365, 'page': 1});
-      for(var l in result.data["result"]){
+      for (var l in result.data["result"]) {
         ress.add(Aghahi.fromJson(l));
       }
       return ress;
