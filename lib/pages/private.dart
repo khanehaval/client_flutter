@@ -69,8 +69,10 @@ class Private extends StatelessWidget {
                         height: 48,
                         width: getWidth(context),
                         child: TextField(
+                          
                           textAlign: TextAlign.right,
                           decoration: InputDecoration(
+                            
                             hintText: '* نام خانوادگی ',
                             hintStyle: const TextStyle(
                               fontSize: 13,

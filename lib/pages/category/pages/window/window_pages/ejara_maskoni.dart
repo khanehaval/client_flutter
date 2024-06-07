@@ -33,7 +33,7 @@ class EjaraMaskoni extends StatelessWidget {
             child: SvgPicture.asset(
               'assets/images/Group 699.svg',
             )),
-        Divider(
+        const Divider(
           endIndent: 20,
           indent: 20,
         ),
@@ -43,7 +43,7 @@ class EjaraMaskoni extends StatelessWidget {
               padding: const EdgeInsets.all(10),
               child: Container(
                   height: 90,
-                  width: 171,
+                  width: 175,
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(10),
@@ -59,7 +59,7 @@ class EjaraMaskoni extends StatelessWidget {
             ),
             Container(
                 height: 90,
-                width: 181,
+                width: 175,
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(10),
@@ -74,11 +74,11 @@ class EjaraMaskoni extends StatelessWidget {
                 )),
           ],
         ),
-        Divider(
+        const Divider(
           endIndent: 20,
           indent: 20,
         ),
-        SizedBox(
+        const SizedBox(
           height: 10,
         ),
         Container(
@@ -104,16 +104,18 @@ class EjaraMaskoni extends StatelessWidget {
                     indent: 20,
                   ),
                   const Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Text(
-                        'اجاره آپارتمان بر اساس متراژ',
-                        style: TextStyle(
-                            fontSize: 18,
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold,
-                            fontFamily: MAIN_FONT_FAMILY),
+                      Padding(
+                        padding: EdgeInsets.only(right:10.0),
+                        child: Text(
+                          'اجاره آپارتمان بر اساس متراژ',
+                          style: TextStyle(
+                              fontSize: 18,
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold,
+                              fontFamily: MAIN_FONT_FAMILY),
+                        ),
                       ),
                     ],
                   ),
@@ -204,7 +206,7 @@ class EjaraMaskoni extends StatelessWidget {
                                 color: Colors.black45,
                                 width: 0.3,
                               )),
-                          child: Text(
+                          child: const Text(
                             'تا 60 متر مربع',
                             textAlign: TextAlign.center,
                             style: TextStyle(
@@ -338,7 +340,7 @@ class EjaraMaskoni extends StatelessWidget {
                                   color: Colors.black45,
                                   width: 0.3,
                                 )),
-                            child: Text(
+                            child: const Text(
                               'تا 100 متر مربع',
                               textAlign: TextAlign.center,
                               style: TextStyle(

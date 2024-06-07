@@ -4,6 +4,7 @@ import 'package:flutter_application_1/pages/category/pages/Advertisements/advert
 import 'package:flutter_application_1/pages/category/pages/messages.dart';
 import 'package:flutter_application_1/pages/category/pages/home.dart';
 import 'package:flutter_application_1/pages/category/pages/add_new_advertisment.dart';
+import 'package:flutter_application_1/pages/category/pages/page_advertisement/category_advertisement.dart';
 import 'package:flutter_application_1/pages/category/shared/app_bar.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
@@ -34,7 +35,7 @@ class _EducationalTourState extends State<EducationalTour> {
   var pages = [
     Home(),
     Messages(),
-    const AddNewAdvertisement(),
+    const CategoryAdvertisement(),
     const Category(),
     Advertisements(),
   ];
@@ -107,6 +108,7 @@ class _EducationalTourState extends State<EducationalTour> {
 
   Widget bottomNavigationBar() {
     return Container(
+      
       decoration: BoxDecoration(
         borderRadius: const BorderRadius.only(
           topLeft: Radius.circular(20),
@@ -115,6 +117,7 @@ class _EducationalTourState extends State<EducationalTour> {
       ),
       child: Obx(
         () => BottomNavigationBar(
+          
           selectedItemColor: Colors.red,
           selectedLabelStyle: null,
           showUnselectedLabels: false,
@@ -214,6 +217,7 @@ class _EducationalTourState extends State<EducationalTour> {
                   currentIndex: currentPageIndex.value,
                   items: const <BottomNavigationBarItem>[
                     BottomNavigationBarItem(
+                      backgroundColor: Colors.white,
                         icon: Icon(Icons.person), label: 'پروفایل'),
                     BottomNavigationBarItem(
                         icon: Icon(Icons.message), label: 'چت'),

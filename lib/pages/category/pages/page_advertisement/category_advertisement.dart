@@ -23,7 +23,6 @@ class CategoryAdvertisement extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: buildAppBar(),
       body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -113,59 +112,59 @@ class CategoryAdvertisement extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: NavigationBar(
-        backgroundColor: Colors.white,
-        onDestinationSelected: (int index) {
-          Get.to(() => EducationalTour(
-                index: index,
-                showEducation: false,
-              ));
-        },
-        indicatorColor: const Color(0x36D859),
-        // selectedIndex: currentPageIndex.value,
-        destinations: <Widget>[
-          NavigationDestination(
-            icon: Image.asset(
-              'assets/images/home navigator.png',
-              width: 30,
-              height: 30,
-            ),
-            label: '',
-          ),
-          NavigationDestination(
-            icon: Image.asset(
-              'assets/images/messages.png',
-              width: 30,
-              height: 30,
-            ),
-            label: '',
-          ),
-          NavigationDestination(
-            icon: Image.asset(
-              'assets/images/add.png',
-              width: 46,
-              height: 46,
-            ),
-            label: '',
-          ),
-          NavigationDestination(
-            icon: Image.asset(
-              'assets/images/Category.png',
-              width: 30,
-              height: 30,
-            ),
-            label: '',
-          ),
-          NavigationDestination(
-            icon: Image.asset(
-              'assets/images/viw.png',
-              width: 30,
-              height: 30,
-            ),
-            label: '',
-          ),
-        ],
-      ),
+      // bottomNavigationBar: NavigationBar(
+      //   backgroundColor: Colors.white,
+      //   onDestinationSelected: (int index) {
+      //     Get.to(() => EducationalTour(
+      //           index: index,
+      //           showEducation: false,
+      //         ));
+      //   },
+      //   indicatorColor: const Color(0x36D859),
+      //   // selectedIndex: currentPageIndex.value,
+      //   destinations: <Widget>[
+      //     NavigationDestination(
+      //       icon: Image.asset(
+      //         'assets/images/home navigator.png',
+      //         width: 30,
+      //         height: 30,
+      //       ),
+      //       label: '',
+      //     ),
+      //     NavigationDestination(
+      //       icon: Image.asset(
+      //         'assets/images/messages.png',
+      //         width: 30,
+      //         height: 30,
+      //       ),
+      //       label: '',
+      //     ),
+      //     NavigationDestination(
+      //       icon: Image.asset(
+      //         'assets/images/add.png',
+      //         width: 46,
+      //         height: 46,
+      //       ),
+      //       label: '',
+      //     ),
+      //     NavigationDestination(
+      //       icon: Image.asset(
+      //         'assets/images/Category.png',
+      //         width: 30,
+      //         height: 30,
+      //       ),
+      //       label: '',
+      //     ),
+      //     NavigationDestination(
+      //       icon: Image.asset(
+      //         'assets/images/viw.png',
+      //         width: 30,
+      //         height: 30,
+      //       ),
+      //       label: '',
+      //     ),
+      //   ],
+      // ),
     );
   }
 

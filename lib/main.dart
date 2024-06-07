@@ -44,7 +44,6 @@ void initServicesAndRepo() {
 class MyApp extends StatelessWidget {
   MyApp({super.key});
   final _userRepo = GetIt.I.get<AccountRepo>();
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
