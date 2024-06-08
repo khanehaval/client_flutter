@@ -16,7 +16,7 @@ class ForoshAdv extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      bottomNavigationBar: bottomNavigation(),
+      bottomNavigationBar: bottomNavigationBar1(),
       appBar: buildAppBar(),
       body: Column(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -25,7 +25,7 @@ class ForoshAdv extends StatelessWidget {
             AdvTitleWidget(),
             Padding(
               padding: const EdgeInsets.symmetric(
-                vertical: 10,
+                vertical: 35,
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -43,9 +43,15 @@ class ForoshAdv extends StatelessWidget {
                         height: 90,
                         width: 140,
                         child: Container(
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              border: Border.all()),
+                          width: 144,
+                          height: 96,
+                          decoration: ShapeDecoration(
+                              color: Colors.white,
+                              shape: RoundedRectangleBorder(
+                                side: const BorderSide(
+                                    width: 1.50, color: Color(0xFFE9E9E9)),
+                                borderRadius: BorderRadius.circular(10),
+                              )),
                           child: Padding(
                             padding: const EdgeInsets.all(2.0),
                             child:
@@ -64,19 +70,21 @@ class ForoshAdv extends StatelessWidget {
                                 ));
                           }));
                     },
-                    child: SizedBox(
-                        height: 90,
-                        width: 140,
-                        child: Container(
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              border: Border.all()),
-                          child: Padding(
-                            padding: const EdgeInsets.all(2.0),
-                            child:
-                                Image.asset('assets/images/Frame_forosh2.png'),
-                          ),
-                        )),
+                    child: Container(
+                      width: 144,
+                      height: 96,
+                      decoration: ShapeDecoration(
+                          color: Colors.white,
+                          shape: RoundedRectangleBorder(
+                            side: const BorderSide(
+                                width: 1.50, color: Color(0xFFE9E9E9)),
+                            borderRadius: BorderRadius.circular(10),
+                          )),
+                      child: Padding(
+                        padding: const EdgeInsets.all(2.0),
+                        child: Image.asset('assets/images/Frame_forosh2.png'),
+                      ),
+                    ),
                   ),
                   const SizedBox(
                     height: 10,
@@ -89,19 +97,21 @@ class ForoshAdv extends StatelessWidget {
                                 ));
                           }));
                     },
-                    child: SizedBox(
-                        height: 90,
-                        width: 140,
-                        child: Container(
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              border: Border.all()),
-                          child: Padding(
-                            padding: const EdgeInsets.all(2.0),
-                            child:
-                                Image.asset('assets/images/Frame_forosh3.png'),
-                          ),
-                        )),
+                    child: Container(
+                      width: 144,
+                      height: 96,
+                      decoration: ShapeDecoration(
+                          color: Colors.white,
+                          shape: RoundedRectangleBorder(
+                            side: const BorderSide(
+                                width: 1.50, color: Color(0xFFE9E9E9)),
+                            borderRadius: BorderRadius.circular(10),
+                          )),
+                      child: Padding(
+                        padding: const EdgeInsets.all(2.0),
+                        child: Image.asset('assets/images/Frame_forosh3.png'),
+                      ),
+                    ),
                   )
                 ],
               ),

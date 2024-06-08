@@ -1,3 +1,4 @@
+import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -35,32 +36,26 @@ class FacilitiesSelectorWidget extends StatelessWidget {
                   itemBuilder: (c, i) {
                     if (i == selected.length) {
                       return Padding(
-                        padding: const EdgeInsets.all(3),
+                        padding: const EdgeInsets.all(1),
                         child: GestureDetector(
                           behavior: HitTestBehavior.translucent,
                           onTap: () {
                             FocusScope.of(context).unfocus();
                             FacilitiesSelector(selectable, selected);
                           },
-                          child: Container(
-                            height: 70,
-                            width: 70,
-                            decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(10),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.grey.withOpacity(0.1),
-                                    spreadRadius: 1,
-                                    blurRadius: 5,
-                                  )
-                                ],
-                                border: Border.all(
-                                  color: Colors.black45,
-                                  width: 0.3,
-                                )),
-                            child: const Icon(
-                              Icons.add,
+                          child: DottedBorder(
+                            radius: const Radius.circular(10),
+                            borderType: BorderType.RRect,
+                            color: Colors.black26,
+                            strokeWidth: 1,
+                            child: const SizedBox(
+                              width: 70,
+                              height: 70,
+                              child: Icon(
+                                Icons.add,
+                                size: 35,
+                                color: Colors.black26,
+                              ),
                             ),
                           ),
                         ),
@@ -69,16 +64,20 @@ class FacilitiesSelectorWidget extends StatelessWidget {
                       return Padding(
                         padding: const EdgeInsets.all(3.0),
                         child: Container(
-                            width: 70,
-                            height: 70,
-                            decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(10),
-                                border: Border.all(
-                                  color: Colors.black12,
-                                  width: 1,
-                                )),
-                            child: Image.asset(selected[i].getAssetPath())),
+                          width: 70,
+                          height: 70,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(10),
+                            border: Border.all(
+                              color: Colors.black12,
+                              width: 1,
+                            ),
+                          ),
+                          child: Image.asset(
+                            selected[i].getAssetPath(),
+                          ),
+                        ),
                       );
                     }
                   }),
@@ -92,26 +91,23 @@ FacilitiesSelector(
     List<FacilitiesModel> selectable, RxList<FacilitiesModel> selected) {
   return Get.bottomSheet(
       Container(
-        decoration: BoxDecoration(
-          gradient: const LinearGradient(
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
             colors: GRADIANT_COLOR,
           ),
-          border: Border.all(),
-          borderRadius: const BorderRadius.only(
-              topLeft: Radius.circular(10), topRight: Radius.circular(10)),
+          borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(20), topRight: Radius.circular(20)),
         ),
         child: Padding(
-          padding: const EdgeInsets.all(2.0),
+          padding: const EdgeInsets.all(1.0),
           child: Container(
             decoration: const BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(10),
-                  topRight: Radius.circular(10)),
+                  topLeft: Radius.circular(20), topRight: Radius.circular(20)),
             ),
             child: Padding(
-              padding:
-                  const EdgeInsets.symmetric(vertical: 10, horizontal: 30),
+              padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 30),
               child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
@@ -129,15 +125,14 @@ FacilitiesSelector(
                           gridDelegate:
                               const SliverGridDelegateWithFixedCrossAxisCount(
                             crossAxisCount: 2,
-                            childAspectRatio: 2,
+                            childAspectRatio: 1.6,
                           ),
                           itemCount: selectable.length,
                           itemBuilder: (c, index) {
                             return Padding(
                               padding: const EdgeInsets.symmetric(
                                   horizontal: 3, vertical: 5),
-                              child:
-                                  _buildItem(selectable[index], selected),
+                              child: _buildItem(selectable[index], selected),
                             );
                           }),
                     ),
@@ -149,8 +144,8 @@ FacilitiesSelector(
                         padding: const EdgeInsets.only(top: 2),
                         child: Container(
                           decoration: BoxDecoration(
-                              gradient: const LinearGradient(
-                                  colors: GRADIANT_COLOR),
+                              gradient:
+                                  const LinearGradient(colors: GRADIANT_COLOR),
                               borderRadius: BorderRadius.circular(50)),
                           child: IconButton(
                             icon: const Icon(
@@ -204,7 +199,7 @@ Widget _buildItem(
             ),
             child: Padding(
               padding:
-                  EdgeInsets.all(selected.contains(facilitiesModel) ? 2 : 1),
+                  EdgeInsets.all(selected.contains(facilitiesModel) ? 1 : 1),
               child: Container(
                   decoration: BoxDecoration(
                       color: Colors.white,
@@ -213,7 +208,7 @@ Widget _buildItem(
                         color: selected.contains(facilitiesModel)
                             ? Colors.white
                             : Colors.white,
-                        width: selected.contains(facilitiesModel) ? 2.8 : 1.5,
+                        width: selected.contains(facilitiesModel) ? 1 : 1.5,
                       )),
                   child: Image.asset(facilitiesModel.getAssetPath())),
             ),

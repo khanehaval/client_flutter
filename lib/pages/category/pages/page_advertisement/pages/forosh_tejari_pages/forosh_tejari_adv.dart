@@ -10,10 +10,13 @@ import 'package:flutter_application_1/pages/category/shared/widget/adv_title_wid
 import 'package:get/get.dart';
 
 class ForoshTejariAdv extends StatelessWidget {
+  const ForoshTejariAdv({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: bottomNavigation(),
+      backgroundColor: Colors.white,
+      bottomNavigationBar: bottomNavigationBar1(),
       appBar: buildaAppBar(),
       body: Column(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -21,7 +24,7 @@ class ForoshTejariAdv extends StatelessWidget {
           children: [
             AdvTitleWidget(),
             const SizedBox(
-              height: 20,
+              height: 40,
             ),
             Column(
               children: [

@@ -1,25 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/ejara_adv_pages/ejara_aparteman_location_page.dart';
 import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/ejara_adv_pages/ejara_vila_location_page.dart';
+import 'package:flutter_application_1/pages/category/shared/app_bar.dart';
 import 'package:flutter_application_1/pages/category/shared/map_pages/first_map_page.dart';
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
 import 'package:get/get.dart';
 import '../../../../shared/widget/adv_title_widget.dart';
 
 class EjaraAdv extends StatelessWidget {
+  var currentPageIndex = 0.obs;
+  var showEducation = false.obs;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      bottomNavigationBar: bottomNavigation(),
-      appBar: buildaAppBar(),
+      bottomNavigationBar: bottomNavigationBar1(),
+      appBar: currentPageIndex.value == 4 ? null : buildAppBar(),
       body: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             AdvTitleWidget(),
             const SizedBox(
-              height: 100,
+              height: 80,
             ),
             Column(
               children: [
@@ -33,7 +36,7 @@ class EjaraAdv extends StatelessWidget {
                       })),
                 ),
                 const SizedBox(
-                  height: 10,
+                  height: 20,
                 ),
                 _buildItem(
                   'assets/images/Frame_ejara2.png',

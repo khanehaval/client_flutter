@@ -2,35 +2,33 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_linear_datepicker/flutter_datepicker.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
 void persianDataPicker(Function(String) onDateSelected) {
   String selectedDate = "1400/03/03";
   Get.bottomSheet(Container(
     width: double.infinity,
-    decoration: BoxDecoration(
-      gradient: const LinearGradient(
+    decoration: const BoxDecoration(
+      gradient: LinearGradient(
         colors: GRADIANT_COLOR,
       ),
-      border: Border.all(
-        width: 1,
-      ),
-      borderRadius: const BorderRadius.only(
-          topLeft: Radius.circular(10), topRight: Radius.circular(10)),
+      borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(20), topRight: Radius.circular(20)),
     ),
     child: Padding(
-      padding: const EdgeInsets.all(2.0),
+      padding: const EdgeInsets.all(1.0),
       child: Container(
         decoration: const BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(10), topRight: Radius.circular(10)),
+              topLeft: Radius.circular(20), topRight: Radius.circular(20)),
         ),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
             SizedBox(
-              height: 250,
+              height: 300,
               child: LinearDatePicker(
                   startDate: "1370/01/01",
                   endDate: "1440/03/0",
@@ -66,12 +64,23 @@ void persianDataPicker(Function(String) onDateSelected) {
               child: Container(
                 decoration: BoxDecoration(
                     gradient: const LinearGradient(colors: GRADIANT_COLOR),
-                    borderRadius: BorderRadius.circular(50)),
+                    borderRadius: BorderRadius.circular(50),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.1),
+                        spreadRadius: 2,
+                        blurRadius: 8,
+                        offset: const Offset(0, 1),
+                      ),
+                    ]),
                 child: IconButton(
-                  icon: const Icon(
-                    CupertinoIcons.check_mark,
-                    color: Colors.white,
-                    weight: 20,
+                  icon: Padding(
+                    padding: const EdgeInsets.only(top: 5.0),
+                    child: SvgPicture.asset(
+                      'assets/images/tic.svg',
+                      width: 33,
+                      height: 26,
+                    ),
                   ),
                   onPressed: () {
                     onDateSelected(selectedDate);

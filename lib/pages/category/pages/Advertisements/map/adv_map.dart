@@ -23,7 +23,7 @@ class AdvMap extends StatelessWidget {
           options: MapOptions(
             initialZoom: 13,
             initialCenter: advertisements.first.location,
-            maxZoom: 18,
+            maxZoom: 14,
             keepAlive: true,
             interactionOptions: const InteractionOptions(
                 enableMultiFingerGestureRace: true, enableScrollWheel: true),

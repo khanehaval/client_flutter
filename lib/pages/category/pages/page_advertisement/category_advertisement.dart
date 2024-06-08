@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/ejara_adv_pages/ejara_adv.dart';
 import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/ejara_tejari_edari/ejara_tejari_edari_adv.dart';
 import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/forosh_adv_pages/forosh_adv.dart';
@@ -8,11 +6,8 @@ import 'package:flutter_application_1/pages/category/pages/page_advertisement/pa
 import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/kota_modat_pages/ejara_kota_modat_page.dart';
 import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/sakht_v_saz_pages/sakht_v_saz_adv.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
-import 'package:flutter_application_1/pages/educational_tour.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-
-import '../../shared/app_bar.dart';
 
 class CategoryAdvertisement extends StatelessWidget {
   const CategoryAdvertisement({
@@ -44,7 +39,7 @@ class CategoryAdvertisement extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(
-                    height: 15,
+                    height: 5,
                   ),
                   SvgPicture.asset(
                     'assets/images/key and home1.svg',
@@ -55,7 +50,7 @@ class CategoryAdvertisement extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(vertical: 35),
+              padding: const EdgeInsets.symmetric(vertical: 55),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
@@ -177,9 +172,15 @@ class CategoryAdvertisement extends StatelessWidget {
         Get.to(() => nextPage);
       },
       child: Container(
-        decoration: BoxDecoration(
-            border: Border.all(style: BorderStyle.solid),
-            borderRadius: BorderRadius.circular(10)),
+        width: 144,
+        height: 96,
+        decoration: ShapeDecoration(
+          color: Colors.white,
+          shape: RoundedRectangleBorder(
+            side: const BorderSide(width: 1.50, color: Color(0xFFE9E9E9)),
+            borderRadius: BorderRadius.circular(10),
+          ),
+        ),
         child: SizedBox(
           height: 90,
           width: 140,

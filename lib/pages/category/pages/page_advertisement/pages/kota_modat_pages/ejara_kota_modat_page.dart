@@ -10,7 +10,8 @@ class EjaraKotaModatPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: bottomNavigation(),
+      backgroundColor: Colors.white,
+      bottomNavigationBar: bottomNavigationBar1(),
       appBar: buildaAppBar(),
       body: Column(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -18,7 +19,7 @@ class EjaraKotaModatPage extends StatelessWidget {
           children: [
             AdvTitleWidget(),
             const SizedBox(
-              height: 100,
+              height: 80,
             ),
             Column(
               children: [
@@ -29,7 +30,7 @@ class EjaraKotaModatPage extends StatelessWidget {
                       }));
                 }),
                 const SizedBox(
-                  height: 10,
+                  height: 20,
                 ),
                 _buildItem(
                   'assets/images/Frame_kota2.png',

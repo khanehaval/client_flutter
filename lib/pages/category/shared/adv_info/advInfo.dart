@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/models/AdvInfoModel.dart';
+import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/switachable.dart';
 import 'package:get/get.dart';
 
@@ -15,7 +16,10 @@ class AdvInfo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const Text("عنوان و توضیحات آکهی"),
+        const Text(
+          "عنوان و توضیحات آکهی",
+          style: TextStyle(fontFamily: MAIN_FONT_FAMILY),
+        ),
         const SizedBox(
           height: 10,
         ),
@@ -45,7 +49,17 @@ class AdvInfo extends StatelessWidget {
                 if (proposalTitle.isFalse)
                   Column(
                     children: [
-                      const Text("*عنوان آگهی"),
+                      const Padding(
+                        padding: EdgeInsets.only(right: 10.0),
+                        child: Align(
+                            alignment: Alignment.centerRight,
+                            child: Text(
+                              "*عنوان آگهی",
+                              style: TextStyle(
+                                  fontFamily: MAIN_FONT_FAMILY,
+                                  color: Color.fromRGBO(166, 166, 166, 1)),
+                            )),
+                      ),
                       TextField(
                         textAlign: TextAlign.right,
                         onChanged: (_) {
@@ -61,11 +75,20 @@ class AdvInfo extends StatelessWidget {
                       ),
                       Column(
                         children: [
-                          const Text("توضیحات آگهی"),
+                          const Padding(
+                            padding: EdgeInsets.only(right: 10.0),
+                            child: Align(
+                                alignment: Alignment.centerRight,
+                                child: Text(
+                                  "توضیحات آگهی",
+                                  style: TextStyle(
+                                      fontFamily: MAIN_FONT_FAMILY,
+                                      color: Color.fromRGBO(166, 166, 166, 1)),
+                                )),
+                          ),
                           TextField(
                             textAlign: TextAlign.right,
                             maxLines: 5,
-
                             onChanged: (_) {
                               advInfoModel.description = _;
                             },

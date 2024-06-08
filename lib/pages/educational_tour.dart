@@ -106,107 +106,106 @@ class _EducationalTourState extends State<EducationalTour> {
         ));
   }
 
-  Widget bottomNavigationBar() {
-    return Container(
-      
-      decoration: BoxDecoration(
-        borderRadius: const BorderRadius.only(
-          topLeft: Radius.circular(20),
-          topRight: Radius.circular(20),
-        ),
-      ),
-      child: Obx(
-        () => BottomNavigationBar(
-          
-          selectedItemColor: Colors.red,
-          selectedLabelStyle: null,
-          showUnselectedLabels: false,
-          elevation: 10,
-          backgroundColor: Colors.white,
-          onTap: (int index) {
-            currentPageIndex.value = index;
-            showEducation.value = false;
-          },
-          currentIndex: currentPageIndex.value,
-          items: <BottomNavigationBarItem>[
-            BottomNavigationBarItem(
-              backgroundColor: const Color.fromRGBO(255, 255, 255, 1),
-              icon: SvgPicture.asset(
-                'assets/images/navigation1.svg',
-                width: 30,
-                height: 30,
-              ),
-              activeIcon: SvgPicture.asset(
-                'assets/images/navigation1.svg',
-                width: 30,
-                height: 30,
-              ),
-              label: '',
-            ),
-            BottomNavigationBarItem(
-              icon: SvgPicture.asset(
-                'assets/images/navigation2.svg',
-                width: 30,
-                height: 30,
-              ),
-              activeIcon: SvgPicture.asset(
-                'assets/images/navigation2.svg',
-                width: 30,
-                height: 30,
-              ),
-              label: '',
-            ),
-            BottomNavigationBarItem(
-              icon: SvgPicture.asset(
-                'assets/images/navigation3.svg',
-                width: 30,
-                height: 30,
-              ),
-              activeIcon: SvgPicture.asset(
-                'assets/images/navigation3.svg',
-                width: 30,
-                height: 30,
-              ),
-              label: '',
-            ),
-            BottomNavigationBarItem(
-              icon: SvgPicture.asset(
-                'assets/images/navigation4.svg',
-                width: 30,
-                height: 30,
-              ),
-              activeIcon: SvgPicture.asset(
-                'assets/images/navigation4.svg',
-                width: 30,
-                height: 30,
-              ),
-              label: '',
-            ),
-            BottomNavigationBarItem(
-              icon: SvgPicture.asset(
-                'assets/images/navigation5.svg',
-                width: 30,
-                height: 30,
-              ),
-              activeIcon: SvgPicture.asset(
-                'assets/images/navigation5.svg',
-                width: 30,
-                height: 30,
-              ),
-              label: '',
-            ),
-          ],
-        ),
-      ),
-    );
-  }
+  // Widget bottomNavigationBar() {
+  //   return Container(
+  //     decoration: const BoxDecoration(
+  //       borderRadius: BorderRadius.only(
+  //         topLeft: Radius.circular(20),
+  //         topRight: Radius.circular(20),
+  //       ),
+  //     ),
+  //     child: Obx(
+  //       () => BottomNavigationBar(
+  //         selectedItemColor: Colors.red,
+  //         selectedLabelStyle: null,
+  //         showUnselectedLabels: false,
+  //         elevation: 10,
+  //         backgroundColor: Colors.white,
+  //         onTap: (int index) {
+  //           currentPageIndex.value = index;
+  //           showEducation.value = false;
+  //         },
+  //         currentIndex: currentPageIndex.value,
+  //         items: <BottomNavigationBarItem>[
+  //           BottomNavigationBarItem(
+  //             backgroundColor: const Color.fromRGBO(255, 255, 255, 1),
+  //             icon: SvgPicture.asset(
+  //               'assets/images/navigation1.svg',
+  //               width: 30,
+  //               height: 30,
+  //             ),
+  //             activeIcon: SvgPicture.asset(
+  //               'assets/images/navigation1.svg',
+  //               width: 30,
+  //               height: 30,
+  //             ),
+  //             label: '',
+  //           ),
+  //           BottomNavigationBarItem(
+  //             icon: SvgPicture.asset(
+  //               'assets/images/navigation2.svg',
+  //               width: 30,
+  //               height: 30,
+  //             ),
+  //             activeIcon: SvgPicture.asset(
+  //               'assets/images/navigation2.svg',
+  //               width: 30,
+  //               height: 30,
+  //             ),
+  //             label: '',
+  //           ),
+  //           BottomNavigationBarItem(
+  //             icon: SvgPicture.asset(
+  //               'assets/images/navigation3.svg',
+  //               width: 30,
+  //               height: 30,
+  //             ),
+  //             activeIcon: SvgPicture.asset(
+  //               'assets/images/navigation3.svg',
+  //               width: 30,
+  //               height: 30,
+  //             ),
+  //             label: '',
+  //           ),
+  //           BottomNavigationBarItem(
+  //             icon: SvgPicture.asset(
+  //               'assets/images/navigation4.svg',
+  //               width: 30,
+  //               height: 30,
+  //             ),
+  //             activeIcon: SvgPicture.asset(
+  //               'assets/images/navigation4.svg',
+  //               width: 30,
+  //               height: 30,
+  //             ),
+  //             label: '',
+  //           ),
+  //           BottomNavigationBarItem(
+  //             icon: SvgPicture.asset(
+  //               'assets/images/navigation5.svg',
+  //               width: 30,
+  //               height: 30,
+  //             ),
+  //             activeIcon: SvgPicture.asset(
+  //               'assets/images/navigation5.svg',
+  //               width: 30,
+  //               height: 30,
+  //             ),
+  //             label: '',
+  //           ),
+  //         ],
+  //       ),
+  //     ),
+  //   );
+  // }
 
   Widget bottomNavigationBar1() {
     return ClipRRect(
         borderRadius: const BorderRadius.only(
             topLeft: Radius.circular(20), topRight: Radius.circular(20)),
-        child: Obx(() => Container(decoration: BoxDecoration(),
-          child: BottomNavigationBar(
+        child: Obx(() => Container(
+              decoration: BoxDecoration(),
+              child: BottomNavigationBar(
                   backgroundColor: Colors.white,
                   selectedItemColor: const Color(0xff6200ee),
                   unselectedItemColor: const Color(0xff757575),
@@ -217,8 +216,9 @@ class _EducationalTourState extends State<EducationalTour> {
                   currentIndex: currentPageIndex.value,
                   items: const <BottomNavigationBarItem>[
                     BottomNavigationBarItem(
-                      backgroundColor: Colors.white,
-                        icon: Icon(Icons.person), label: 'پروفایل'),
+                        backgroundColor: Colors.white,
+                        icon: Icon(Icons.person),
+                        label: 'پروفایل'),
                     BottomNavigationBarItem(
                         icon: Icon(Icons.message), label: 'چت'),
                     BottomNavigationBarItem(
@@ -228,6 +228,6 @@ class _EducationalTourState extends State<EducationalTour> {
                     BottomNavigationBarItem(
                         icon: Icon(Icons.view_week), label: 'آگهی'),
                   ]),
-        )));
+            )));
   }
 }

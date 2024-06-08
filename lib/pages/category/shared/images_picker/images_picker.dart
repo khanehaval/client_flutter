@@ -45,7 +45,7 @@ class ImagesPicker extends StatelessWidget {
                       height: 70,
                       child: Icon(
                         Icons.add,
-                        size: 50,
+                        size: 35,
                         color: Colors.black26,
                       ),
                     ),
@@ -56,7 +56,7 @@ class ImagesPicker extends StatelessWidget {
                 children: [
                   mainImage(selectedImagesPath.first),
                   const SizedBox(
-                    height: 10,
+                    height: 30,
                   ),
                   GridView.builder(
                       shrinkWrap: true,
@@ -69,8 +69,7 @@ class ImagesPicker extends StatelessWidget {
                       itemCount: selectedImagesPath.length,
                       itemBuilder: (c, index) {
                         return Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 3, vertical: 5),
+                          padding: const EdgeInsets.all(1),
                           child: index == selectedImagesPath.length - 1
                               ? GestureDetector(
                                   behavior: HitTestBehavior.translucent,
@@ -79,7 +78,7 @@ class ImagesPicker extends StatelessWidget {
                                     borderType: BorderType.RRect,
                                     color: Colors.black26,
                                     strokeWidth: 1,
-                                    radius: const Radius.circular(7),
+                                    radius: const Radius.circular(6),
                                     child: SizedBox(
                                       width: Get.mediaQuery.size.width * 0.4,
                                       height: 200,
@@ -96,33 +95,27 @@ class ImagesPicker extends StatelessWidget {
                               : Container(
                                   decoration: BoxDecoration(
                                     color: Get.theme.focusColor,
-                                    border: Border.all(color: Colors.black),
-                                    borderRadius: BorderRadius.circular(7),
+                                    border: Border.all(color: Colors.black12),
+                                    borderRadius: BorderRadius.circular(6),
                                   ),
                                   child: Stack(
                                     alignment: Alignment.bottomCenter,
                                     children: [
                                       Image.file(
                                         File(selectedImagesPath[index + 1]),
-                                        height: 150,
+                                        height: 100,
                                         width: double.infinity,
-                                        fit: BoxFit.fill,
+                                        fit: BoxFit.cover,
                                       ),
                                       Align(
                                         alignment: Alignment.topLeft,
                                         child: Padding(
-                                          padding: const EdgeInsets.all(4),
+                                          padding: const EdgeInsets.all(1),
                                           child: removeIcon(
                                               selectedImagesPath[index + 1],
                                               size: 34),
                                         ),
                                       ),
-                                      Align(
-                                        alignment: Alignment.topRight,
-                                        child: croper(
-                                          selectedImagesPath[index + 1],
-                                        ),
-                                      )
                                     ],
                                   ),
                                 ),

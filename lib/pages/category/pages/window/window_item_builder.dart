@@ -15,7 +15,7 @@ class MainCategory extends StatelessWidget {
       body: CategoryItems(
         index: index,
       ),
-      bottomNavigationBar: bottomNavigation(),
+      bottomNavigationBar: bottomNavigationBar1(),
     );
   }
 }

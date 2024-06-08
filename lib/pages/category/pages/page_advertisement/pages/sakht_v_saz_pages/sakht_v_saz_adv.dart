@@ -12,7 +12,8 @@ class SakhVaSaz extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: bottomNavigation(),
+      backgroundColor: Colors.white,
+      bottomNavigationBar: bottomNavigationBar1(),
       appBar: buildaAppBar(),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
@@ -31,7 +32,7 @@ class SakhVaSaz extends StatelessWidget {
             }),
           ]),
           const SizedBox(
-            height: 10,
+            height: 20,
           ),
           _buildItem('assets/images/Frame_sakht2.png', () {
             Get.to(FirstMapPage(onSelect: (_) {
