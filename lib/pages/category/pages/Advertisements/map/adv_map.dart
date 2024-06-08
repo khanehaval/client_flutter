@@ -150,7 +150,6 @@ class AdvMap extends StatelessWidget {
             ),
           ),
         ),
-        Align(alignment: Alignment.bottomCenter, child: bottomNavigation()),
       ],
     );
   }

@@ -56,7 +56,7 @@ class _CategoryItemsState extends State<CategoryItems> {
                   () => Container(
                     margin: const EdgeInsets.only(
                         left: 10, right: 10, bottom: 7, top: 7),
-                    padding: const EdgeInsets.all(2),
+                    padding: const EdgeInsets.all(1.3),
                     height: 98,
                     width: 130,
                     decoration: BoxDecoration(
@@ -74,9 +74,8 @@ class _CategoryItemsState extends State<CategoryItems> {
                     child: Container(
                         decoration: BoxDecoration(
                           color: Colors.white,
-                          borderRadius: BorderRadius.circular(10),
-                          border: Border.all(
-                              width: _currentIndex.value == i ? 0 : 1),
+                          borderRadius: BorderRadius.circular(8),
+                          
                         ),
                         child: items[i]),
                   ),

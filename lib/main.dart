@@ -44,7 +44,6 @@ void initServicesAndRepo() {
 class MyApp extends StatelessWidget {
   MyApp({super.key});
   final _userRepo = GetIt.I.get<AccountRepo>();
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -57,7 +56,9 @@ class MyApp extends StatelessWidget {
               if (s.connectionState == ConnectionState.waiting) {
                 return Container();
               }
-              return (s.data ?? false) ? Advertisements() : LoginSecondlyPage();
+              return (s.data ?? false)
+                  ? Advertisements()
+                  : const LoginSecondlyPage();
             }));
   }
 }

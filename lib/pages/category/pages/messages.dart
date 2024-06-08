@@ -27,7 +27,7 @@ class Messages extends StatelessWidget {
               children: [
                 Container(
                   child: Text(
-                    snapshot.data![index].userTitle.toString(),
+                    snapshot.data![index].userSite.toString(),
                     style: TextStyle(
                         color: index % 2 == 0 ? Colors.red : Colors.green),
                   ),
