@@ -153,22 +153,32 @@ class _SelectLocationMapState extends State<SelectLocationMap> {
                         style: TextStyle(
                           fontFamily: MAIN_FONT_FAMILY,
                           fontSize: 12,
-                          color: Color.fromRGBO(99, 99, 99, 1),
+                          color: Color.fromRGBO(48, 48, 48, 1),
                         ),
                         textDirection: TextDirection.rtl,
                         textAlign: TextAlign.center),
                     Container(
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          boxShadow: const [
+                            BoxShadow(
+                                color: Color.fromRGBO(165, 161, 161, 0.247),
+                                blurRadius: 7,
+                                offset: Offset(0, 2)),
+                          ]),
                       child: Transform.scale(
-                        scale: 0.90,
+                        scale: 0.99,
                         child: Obx(
                           () => Switch(
                               onChanged: (_) => showLimit.value = _,
                               value: showLimit.value,
                               activeColor: Colors.white,
-                              activeTrackColor: Color.fromRGBO(54, 216, 89, 1),
-                              inactiveThumbColor: Color.fromRGBO(11, 8, 8, 0.2),
+                              activeTrackColor:
+                                  const Color.fromRGBO(54, 216, 89, 1),
+                              inactiveThumbColor:
+                                  const Color.fromRGBO(11, 8, 8, 0.2),
                               inactiveTrackColor:
-                                  Color.fromRGBO(255, 255, 255, 1)),
+                                  const Color.fromRGBO(255, 255, 255, 1)),
                         ),
                       ),
                     ),
@@ -187,23 +197,33 @@ class _SelectLocationMapState extends State<SelectLocationMap> {
                   const Text(
                     "انتخاب محله ",
                     style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 12,
+                      color: Color.fromRGBO(99, 99, 99, 1),
+                      fontSize: 16,
                       fontFamily: MAIN_FONT_FAMILY,
                     ),
                   ),
                   Container(
                     decoration: BoxDecoration(
                         color: Colors.white,
-                        border: Border.all(color: Colors.black),
+                        border: Border.all(
+                            color: const Color.fromRGBO(99, 99, 99, 1)),
                         borderRadius: BorderRadius.circular(10)),
                     child: SizedBox(
                       width: getPageWidth(),
                       height: 40,
                       child: Center(
-                        child: Text(
-                          locationInfo.locationName,
-                          textAlign: TextAlign.center,
+                        child: Padding(
+                          padding: const EdgeInsets.only(right: 10.0),
+                          child: Align(
+                            alignment: Alignment.centerRight,
+                            child: Text(
+                              style: const TextStyle(
+                                  fontFamily: 'Iran Sans Bold,',
+                                  fontWeight: FontWeight.w400),
+                              locationInfo.locationName,
+                              textAlign: TextAlign.right,
+                            ),
+                          ),
                         ),
                       ),
                     ),
@@ -213,26 +233,49 @@ class _SelectLocationMapState extends State<SelectLocationMap> {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  const Text(
-                    "*انتخاب شهر",
-                    style: TextStyle(
-                      fontSize: 12,
-                      fontFamily: MAIN_FONT_FAMILY,
-                    ),
-                    textAlign: TextAlign.start,
+                  const Row(
+                    children: [
+                      Text(
+                        '*',
+                        style: TextStyle(
+                            color: Color.fromRGBO(156, 64, 64, 1),
+                            fontSize: 16),
+                      ),
+                      SizedBox(
+                        width: 5,
+                      ),
+                      Text(
+                        "انتخاب شهر",
+                        style: TextStyle(
+                            fontSize: 16,
+                            fontFamily: MAIN_FONT_FAMILY,
+                            color: Color.fromRGBO(99, 99, 99, 1)),
+                        textAlign: TextAlign.start,
+                      ),
+                    ],
                   ),
                   Container(
                     decoration: BoxDecoration(
                         color: Colors.white,
-                        border: Border.all(color: Colors.black),
+                        border: Border.all(
+                            color: const Color.fromRGBO(99, 99, 99, 1)),
                         borderRadius: BorderRadius.circular(10)),
                     child: SizedBox(
                       height: 40,
                       width: getPageWidth(),
                       child: Center(
-                        child: Text(
-                          locationInfo.cityName,
-                          textAlign: TextAlign.center,
+                        child: Padding(
+                          padding: const EdgeInsets.only(right: 10.0),
+                          child: Align(
+                            alignment: Alignment.centerRight,
+                            child: Text(
+                              style: const TextStyle(
+                                  fontFamily: 'Iran Sans Bold,',
+                                  fontWeight: FontWeight.w400),
+                              locationInfo.cityName,
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
                         ),
                       ),
                     ),

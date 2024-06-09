@@ -10,14 +10,11 @@ void showNumberPicker(Function(String) onSelected) {
   Get.bottomSheet(
     Container(
       width: double.infinity,
-      decoration: BoxDecoration(
-        gradient: const LinearGradient(
+      decoration: const BoxDecoration(
+        gradient: LinearGradient(
           colors: GRADIANT_COLOR,
         ),
-        border: Border.all(
-          width: 1,
-        ),
-        borderRadius: const BorderRadius.only(
+        borderRadius: BorderRadius.only(
             topLeft: Radius.circular(10), topRight: Radius.circular(10)),
       ),
       child: Padding(

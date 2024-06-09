@@ -42,15 +42,6 @@ class ForoshAdvPage extends StatelessWidget {
   final _buildAllFloorsCountController = TextEditingController();
   final _reBuildController = TextEditingController();
   final _countOfInstallmentsController = TextEditingController();
-  final _buildMaxCapacityController = TextEditingController();
-  final _buildRiteController = TextEditingController();
-  final _buildAnimalController = TextEditingController();
-  final _buildSmokingController = TextEditingController();
-  final _buildShoesController = TextEditingController();
-  final _buildDeprivationController = TextEditingController();
-  final _buildSleepServiceCountController = TextEditingController();
-  final _oneBedCountController = TextEditingController();
-  final _twoBedCountController = TextEditingController();
   final _floorMaterialController = TextEditingController();
   final _cabinetController = TextEditingController();
   final _coldTypeController = TextEditingController();
@@ -64,6 +55,7 @@ class ForoshAdvPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Colors.white,
         appBar: buildaAppBar(),
         body: SingleChildScrollView(
           child: Padding(
@@ -151,6 +143,9 @@ class ForoshAdvPage extends StatelessWidget {
                         color: Color.fromRGBO(156, 64, 64, 1),
                         fontFamily: MAIN_FONT_FAMILY),
                   ),
+                  SizedBox(
+                    width: 5,
+                  ),
                   Text(
                     "متراژ",
                     style: TextStyle(
@@ -195,10 +190,7 @@ class ForoshAdvPage extends StatelessWidget {
               const SizedBox(
                 height: 20,
               ),
-              const Divider(
-                endIndent: 20,
-                indent: 20,
-              ),
+              const Divider(),
               TwoItemInRow(
                   label1: "تعداد اتاق ",
                   label2: "سن بنا",
@@ -240,7 +232,7 @@ class ForoshAdvPage extends StatelessWidget {
                 height: 15,
               ),
               Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   switchable(
                     hasAnbari,
@@ -443,6 +435,13 @@ class ForoshAdvPage extends StatelessWidget {
     return Column(
       children: [
         switchable(isSwitched, "فروش به صورت اقساطی"),
+        const Text(
+          "در صورت وارد نکردن آیتم ها، آگهی فقط با عنوان اقساطی منتشر میگردد",
+          style: TextStyle(
+              fontFamily: MAIN_FONT_FAMILY,
+              fontSize: 10,
+              color: Color.fromRGBO(48, 48, 48, 1)),
+        ),
         Obx(() => isSwitched.isTrue
             ? Column(
                 children: [
@@ -594,10 +593,7 @@ class ForoshAdvPage extends StatelessWidget {
                   const SizedBox(
                     height: 20,
                   ),
-                  const Text(
-                    "در صورت وارد نکردن آیتم ها، آگهی فقط با عنوان اقساطی منتشر میگردد",
-                    style: TextStyle(fontFamily: MAIN_FONT_FAMILY, fontSize: 9),
-                  ),
+
                   const SizedBox(
                     height: 20,
                   ),
@@ -668,7 +664,7 @@ class ForoshAdvPage extends StatelessWidget {
                     "قیمت نهایی ملک (پیش پرداخت + اقساط ) : 13.200.000.000 تومان",
                     style: TextStyle(
                       fontFamily: MAIN_FONT_FAMILY,
-                      fontSize: 9,
+                      fontSize: 10,
                     ),
                   ),
                   const SizedBox(
@@ -696,7 +692,7 @@ class ForoshAdvPage extends StatelessWidget {
                     "در صورت وارد نکردن آیتم ها، آگهی فقط با عنوان دارای وام منتشر میگردد",
                     style: TextStyle(
                         fontFamily: MAIN_FONT_FAMILY,
-                        fontSize: 9,
+                        fontSize: 10,
                         overflow: TextOverflow.clip),
                   ),
                   const SizedBox(

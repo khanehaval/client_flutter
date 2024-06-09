@@ -8,9 +8,7 @@ import 'package:get/get.dart';
 
 class FirstMapPage extends StatelessWidget {
   Function(LocationInfo) onSelect;
-
   FirstMapPage({required this.onSelect, super.key});
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(

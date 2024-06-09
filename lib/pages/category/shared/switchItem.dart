@@ -69,11 +69,12 @@ class SwitchItem extends StatelessWidget {
                       borderRadius: BorderRadius.circular(10),
                       border: Border.all(width: 1, color: Colors.black54)),
                   child: selected.value == text
-                      ? SizedBox(
-                          width: 15,
-                          height: 14,
+                      ? Padding(
+                          padding: const EdgeInsets.all(5.0),
                           child: SvgPicture.asset(
                             'assets/images/check.svg',
+                            width: 10,
+                            height: 10,
                           ),
                         )
                       : const SizedBox.shrink(),

@@ -51,7 +51,7 @@ class _MapInfoPageState extends State<MapInfoPage> {
           width: Get.width * 2 / 3,
           height: Get.width * 2 / 3,
           decoration: BoxDecoration(
-              gradient: const LinearGradient(colors: GRADIANT_COLOR),
+              color: Color.fromRGBO(183, 183, 183, 1),
               borderRadius: BorderRadius.circular(10)),
           child: Padding(
             padding: const EdgeInsets.all(2.0),
@@ -135,8 +135,11 @@ class _MapInfoPageState extends State<MapInfoPage> {
                     onTap: () {
                       Get.to(() => SelectLocationMap);
                     },
-                    child: SvgPicture.asset(
-                      'assets/images/Frame 2328.svg',
+                    child: Padding(
+                      padding: const EdgeInsets.only(bottom: 10.0),
+                      child: SvgPicture.asset(
+                        'assets/images/Notif.svg',
+                      ),
                     ),
                   ),
                 )
@@ -145,7 +148,7 @@ class _MapInfoPageState extends State<MapInfoPage> {
           ),
         ),
         const SizedBox(
-          height: 10,
+          height: 20,
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -156,7 +159,9 @@ class _MapInfoPageState extends State<MapInfoPage> {
                 const Text(
                   "انتخاب محله ",
                   style: TextStyle(
-                    color: Color.fromRGBO(166, 166, 166, 1),
+                    color: Color.fromRGBO(99, 99, 99, 1),
+                    fontSize: 16,
+                    fontFamily: MAIN_FONT_FAMILY,
                   ),
                 ),
                 Container(
@@ -175,9 +180,15 @@ class _MapInfoPageState extends State<MapInfoPage> {
                           alignment: Alignment.centerRight,
                           child: Padding(
                             padding: const EdgeInsets.all(3.0),
-                            child: Text(
-                              locationInfo.locationName,
-                              textAlign: TextAlign.center,
+                            child: Padding(
+                              padding: const EdgeInsets.only(right: 10.0),
+                              child: Text(
+                                style: const TextStyle(
+                                    fontFamily: 'Iran Sans Bold,',
+                                    fontWeight: FontWeight.w400),
+                                locationInfo.locationName,
+                                textAlign: TextAlign.right,
+                              ),
                             ),
                           ),
                         ),
@@ -190,7 +201,11 @@ class _MapInfoPageState extends State<MapInfoPage> {
               children: [
                 const Text(
                   "*انتخاب شهر",
-                  style: TextStyle(color: Color.fromRGBO(166, 166, 166, 1)),
+                  style: TextStyle(
+                    color: Color.fromRGBO(99, 99, 99, 1),
+                    fontSize: 16,
+                    fontFamily: MAIN_FONT_FAMILY,
+                  ),
                   textAlign: TextAlign.start,
                 ),
                 Container(
@@ -209,9 +224,15 @@ class _MapInfoPageState extends State<MapInfoPage> {
                           alignment: Alignment.centerRight,
                           child: Padding(
                             padding: const EdgeInsets.all(3.0),
-                            child: Text(
-                              locationInfo.cityName,
-                              textAlign: TextAlign.center,
+                            child: Padding(
+                              padding: const EdgeInsets.only(right: 10.0),
+                              child: Text(
+                                style: const TextStyle(
+                                    fontFamily: 'Iran Sans Bold,',
+                                    fontWeight: FontWeight.w400),
+                                locationInfo.cityName,
+                                textAlign: TextAlign.center,
+                              ),
                             ),
                           )),
                     ),
@@ -227,7 +248,7 @@ class _MapInfoPageState extends State<MapInfoPage> {
         const Align(
           alignment: Alignment.centerRight,
           child: Text(
-            "آدرس",
+            "توضیحات",
             style: TextStyle(
                 color: Color(0xFF636363),
                 fontSize: 14,
@@ -239,8 +260,12 @@ class _MapInfoPageState extends State<MapInfoPage> {
           textDirection: TextDirection.rtl,
           child: TextField(
             controller: _addressController,
-            maxLines: 2,
+            maxLines: 3,
             decoration: InputDecoration(
+                hintText: 'برای مثال: پلاک 9، طبقه اول، واحد 2',
+                hintStyle: const TextStyle(
+                    fontWeight: FontWeight.w400,
+                    color: Color.fromRGBO(166, 166, 166, 1)),
                 border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10))),
           ),
