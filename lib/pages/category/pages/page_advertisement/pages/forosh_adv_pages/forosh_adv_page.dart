@@ -58,6 +58,7 @@ class ForoshAdvPage extends StatelessWidget {
         backgroundColor: Colors.white,
         appBar: buildaAppBar(),
         body: SingleChildScrollView(
+          scrollDirection: Axis.vertical,
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
             child: Column(children: [
@@ -126,10 +127,7 @@ class ForoshAdvPage extends StatelessWidget {
               const SizedBox(
                 height: 20,
               ),
-              const Divider(
-                endIndent: 20,
-                indent: 20,
-              ),
+              const Divider(),
               const SizedBox(
                 height: 20,
               ),
@@ -182,10 +180,7 @@ class ForoshAdvPage extends StatelessWidget {
                 height: 20,
               ),
               aghsatiForoshWidget(context),
-              const Divider(
-                endIndent: 20,
-                indent: 20,
-              ),
+              const Divider(),
               melkByVamBanki(context),
               const SizedBox(
                 height: 20,
@@ -251,10 +246,7 @@ class ForoshAdvPage extends StatelessWidget {
               const SizedBox(
                 height: 10,
               ),
-              const Divider(
-                endIndent: 20,
-                indent: 20,
-              ),
+              const Divider(),
               const SizedBox(
                 height: 10,
               ),
@@ -361,22 +353,26 @@ class ForoshAdvPage extends StatelessWidget {
               const SizedBox(
                 height: 20,
               ),
-              FacilitiesSelectorWidget(
-                selectable: [
-                  Teras(),
-                  MasterRoom(),
-                  CenterAntenna(),
-                  Labi(),
-                  Sona(),
-                  SwimmingPool(),
-                  RoofGarden(),
-                  Bathtub(),
-                  Gym(),
-                  AlAchiq(),
-                  ConferenceHall(),
-                  GameRoom(),
+              Stack(
+                children: [
+                  FacilitiesSelectorWidget(
+                    selectable: [
+                      Teras(),
+                      MasterRoom(),
+                      CenterAntenna(),
+                      Labi(),
+                      Sona(),
+                      SwimmingPool(),
+                      RoofGarden(),
+                      Bathtub(),
+                      Gym(),
+                      AlAchiq(),
+                      ConferenceHall(),
+                      GameRoom(),
+                    ],
+                    selected: _facilities,
+                  ),
                 ],
-                selected: _facilities,
               ),
               const SizedBox(
                 height: 20,
@@ -435,12 +431,29 @@ class ForoshAdvPage extends StatelessWidget {
     return Column(
       children: [
         switchable(isSwitched, "فروش به صورت اقساطی"),
-        const Text(
-          "در صورت وارد نکردن آیتم ها، آگهی فقط با عنوان اقساطی منتشر میگردد",
-          style: TextStyle(
+        RichText(
+          text: const TextSpan(
+            text: "در صورت وارد نکردن آیتم ها، آگهی فقط با عنوان ",
+            style: TextStyle(
               fontFamily: MAIN_FONT_FAMILY,
-              fontSize: 10,
-              color: Color.fromRGBO(48, 48, 48, 1)),
+              fontSize: 12,
+              color: Colors.black,
+            ),
+            children: <TextSpan>[
+              TextSpan(
+                text: 'اقساطی',
+                style: TextStyle(color: Color.fromRGBO(156, 64, 64, 1)),
+              ),
+              TextSpan(
+                text: ' منتشر میگردد',
+                style: TextStyle(
+                  fontFamily: MAIN_FONT_FAMILY,
+                  fontSize: 12,
+                  color: Colors.black,
+                ),
+              ),
+            ],
+          ),
         ),
         Obx(() => isSwitched.isTrue
             ? Column(
@@ -688,12 +701,33 @@ class ForoshAdvPage extends StatelessWidget {
         Obx(() => isSwitched.isTrue
             ? Column(
                 children: [
-                  const Text(
-                    "در صورت وارد نکردن آیتم ها، آگهی فقط با عنوان دارای وام منتشر میگردد",
-                    style: TextStyle(
+                  RichText(
+                    text: const TextSpan(
+                      text: "در صورت وارد نکردن آیتم ها، آگهی فقط با عنوان  ",
+                      style: TextStyle(
                         fontFamily: MAIN_FONT_FAMILY,
-                        fontSize: 10,
-                        overflow: TextOverflow.clip),
+                        fontSize: 12.3,
+                        color: Colors.black,
+                      ),
+                      children: <TextSpan>[
+                        TextSpan(
+                          text: 'دارای وام',
+                          style: TextStyle(
+                            fontFamily: MAIN_FONT_FAMILY,
+                            fontSize: 12,
+                            color: Color.fromRGBO(156, 64, 64, 1),
+                          ),
+                        ),
+                        TextSpan(
+                          text: ' منتشر میگردد',
+                          style: TextStyle(
+                            fontFamily: MAIN_FONT_FAMILY,
+                            fontSize: 12,
+                            color: Colors.black,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                   const SizedBox(
                     height: 20,
@@ -740,7 +774,7 @@ class ForoshAdvPage extends StatelessWidget {
                   const Align(
                     alignment: Alignment.centerRight,
                     child: Text(
-                      "تعداد اقساط (هر ماه)  ",
+                      "تعداد اقساط   ",
                       style: TextStyle(
                           color: Color.fromRGBO(166, 166, 166, 1),
                           fontSize: 13,

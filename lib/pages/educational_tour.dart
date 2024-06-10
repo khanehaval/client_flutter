@@ -200,34 +200,61 @@ class _EducationalTourState extends State<EducationalTour> {
   // }
 
   Widget bottomNavigationBar1() {
-    return ClipRRect(
+    return Container(
+      decoration: BoxDecoration(
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.5),
+            spreadRadius: 5,
+            blurRadius: 7,
+            offset: Offset(0, 3), // changes position of shadow
+          ),
+        ],
+      ),
+      child: ClipRRect(
         borderRadius: const BorderRadius.only(
-            topLeft: Radius.circular(20), topRight: Radius.circular(20)),
-        child: Obx(() => Container(
-              decoration: BoxDecoration(),
-              child: BottomNavigationBar(
+          topLeft: Radius.circular(20),
+          topRight: Radius.circular(20),
+        ),
+        child: Obx(
+          () => Container(
+            color: Colors.black,
+            child: BottomNavigationBar(
+              backgroundColor: Colors.white,
+              selectedItemColor: const Color(0xff6200ee),
+              unselectedItemColor: const Color(0xff757575),
+              onTap: (int index) {
+                currentPageIndex.value = index;
+                showEducation.value = false;
+              },
+              currentIndex: currentPageIndex.value,
+              items: const <BottomNavigationBarItem>[
+                BottomNavigationBarItem(
                   backgroundColor: Colors.white,
-                  selectedItemColor: const Color(0xff6200ee),
-                  unselectedItemColor: const Color(0xff757575),
-                  onTap: (int index) {
-                    currentPageIndex.value = index;
-                    showEducation.value = false;
-                  },
-                  currentIndex: currentPageIndex.value,
-                  items: const <BottomNavigationBarItem>[
-                    BottomNavigationBarItem(
-                        backgroundColor: Colors.white,
-                        icon: Icon(Icons.person),
-                        label: 'پروفایل'),
-                    BottomNavigationBarItem(
-                        icon: Icon(Icons.message), label: 'چت'),
-                    BottomNavigationBarItem(
-                        icon: Icon(Icons.home), label: 'خانه'),
-                    BottomNavigationBarItem(
-                        icon: Icon(Icons.category_rounded), label: 'دسته بندی'),
-                    BottomNavigationBarItem(
-                        icon: Icon(Icons.view_week), label: 'آگهی'),
-                  ]),
-            )));
+                  icon: Icon(Icons.person),
+                  label: 'پروفایل',
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.message),
+                  label: 'چت',
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.home),
+                  label: 'خانه',
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.category_rounded),
+                  label: 'دسته بندی',
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.view_week),
+                  label: 'آگهی',
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
   }
 }

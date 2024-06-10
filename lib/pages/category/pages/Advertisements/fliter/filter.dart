@@ -94,7 +94,7 @@ class _FilterState extends State<Filter> {
                                 ),
                                 child: Padding(
                                   padding: const EdgeInsets.symmetric(
-                                      vertical: 7, horizontal: 9),
+                                      vertical: 7, horizontal: 8),
                                   child: Image.asset(
                                     items[i].assetPath,
                                     width: 40,

@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
@@ -63,15 +64,14 @@ void Sanad(Function(String) onSelected) {
                                         ? const LinearGradient(
                                             colors: GRADIANT_COLOR)
                                         : const LinearGradient(colors: [
-                                            Colors.black,
-                                            Colors.black,
-                                            Colors.black
+                                            Colors.black26,
+                                            Colors.black26,
                                           ]),
                                     borderRadius: BorderRadius.circular(10),
                                   ),
                                   child: Padding(
                                     padding: selected.value == value
-                                        ? const EdgeInsets.all(3.0)
+                                        ? const EdgeInsets.all(1.0)
                                         : const EdgeInsets.all(1.0),
                                     child: Container(
                                       decoration: BoxDecoration(
@@ -100,10 +100,13 @@ void Sanad(Function(String) onSelected) {
                                 const LinearGradient(colors: GRADIANT_COLOR),
                             borderRadius: BorderRadius.circular(50)),
                         child: IconButton(
-                          icon: const Icon(
-                            CupertinoIcons.check_mark,
-                            color: Colors.white,
-                            weight: 20,
+                          icon: Padding(
+                            padding: const EdgeInsets.only(top: 5.0),
+                            child: SvgPicture.asset(
+                              'assets/images/tic.svg',
+                              width: 33,
+                              height: 26,
+                            ),
                           ),
                           onPressed: () {
                             onSelected(selected.value);

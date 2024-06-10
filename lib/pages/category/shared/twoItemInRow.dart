@@ -5,7 +5,6 @@ import 'constant.dart';
 class TwoItemInRow extends StatelessWidget {
   String label1;
   String label2;
-
   Widget widget2;
   Widget widget1;
   TwoItemInRow(

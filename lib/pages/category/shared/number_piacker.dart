@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:numberpicker/numberpicker.dart';
 import 'package:get/get.dart';
 import 'package:gradient_icon/gradient_icon.dart';
@@ -106,13 +107,13 @@ void showNumberPicker(Function(String) onSelected) {
                             color: Colors.cyan,
                             borderRadius: BorderRadius.circular(50)),
                         child: IconButton(
-                          icon: const Icon(
-                            Icons.check,
-                            color: Colors.white,
-                            weight: 10,
-                            size: 30,
-                            grade: 20,
-                            fill: 0.8,
+                          icon: Padding(
+                            padding: const EdgeInsets.only(top: 5.0),
+                            child: SvgPicture.asset(
+                              'assets/images/tic.svg',
+                              width: 33,
+                              height: 26,
+                            ),
                           ),
                           onPressed: () {
                             onSelected(index.value.toString());

@@ -56,14 +56,20 @@ class AdvMap extends StatelessWidget {
                                 child: SvgPicture.asset(
                                   'assets/images/LOCATION.svg',
                                   width: 98,
-                                  height: 48,
+                                  height: 50,
                                 ),
                               ),
                               Container(
                                 child: const Padding(
                                   padding:
                                       EdgeInsets.only(bottom: 15, left: 30),
-                                  child: Text("شخصی"),
+                                  child: Text(
+                                    "شخصی",
+                                    style: TextStyle(
+                                        fontFamily: MAIN_FONT_FAMILY,
+                                        color: Color.fromRGBO(48, 48, 48, 1),
+                                        fontSize: 10),
+                                  ),
                                 ),
                               )
                             ],
@@ -95,14 +101,22 @@ class AdvMap extends StatelessWidget {
               icon: SizedBox(
                   height: 70,
                   width: 70,
-                  child: SvgPicture.asset(
-                    "assets/images/list - consultant.svg",
+                  child: Container(
+                    decoration: BoxDecoration(boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.1),
+                        blurRadius: 1,
+                      )
+                    ]),
+                    child: SvgPicture.asset(
+                      "assets/images/list - consultant.svg",
+                    ),
                   )),
             ),
           ),
         ),
         Padding(
-          padding: const EdgeInsets.only(top: 680),
+          padding: const EdgeInsets.only(top: 690),
           child: SingleChildScrollView(
             scrollDirection: Axis.vertical,
             child: GestureDetector(
@@ -111,13 +125,15 @@ class AdvMap extends StatelessWidget {
               },
               child: Stack(children: [
                 Container(
-                  decoration: BoxDecoration(
-                      border: Border.all(
-                          color: const Color.fromRGBO(166, 166, 166, 1)),
-                      color: const Color.fromARGB(255, 255, 255, 255),
-                      borderRadius: BorderRadius.circular(10)),
-                  width: 383,
-                  height: 60,
+                  child: Container(
+                    decoration: BoxDecoration(
+                        border: Border.all(
+                            color: const Color.fromRGBO(166, 166, 166, 1)),
+                        color: const Color.fromARGB(255, 255, 255, 255),
+                        borderRadius: BorderRadius.circular(10)),
+                    width: 383,
+                    height: 60,
+                  ),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,

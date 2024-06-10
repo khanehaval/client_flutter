@@ -80,10 +80,10 @@ class _SelectLocationMapState extends State<Advertisements> {
                         child: Obx(
                           () => Container(
                             margin: const EdgeInsets.only(
-                                left: 10, right: 10, bottom: 11, top: 40),
+                                left: 0, right: 10, bottom: 11, top: 40),
                             padding: const EdgeInsets.all(1),
                             height: 98,
-                            width: 130,
+                            width: 110,
                             decoration: BoxDecoration(
                               gradient: _currentIndex.value == i
                                   ? const LinearGradient(
@@ -92,18 +92,18 @@ class _SelectLocationMapState extends State<Advertisements> {
                                   : const LinearGradient(
                                       colors: BLACK_12_GRADIANT_COLOR,
                                     ),
-                              borderRadius: BorderRadius.circular(20),
+                              borderRadius: BorderRadius.circular(10),
                               // border:
                               //     Border.all(width: _currentIndex.value == i ? 1 : 1),
                             ),
                             child: Container(
                               decoration: BoxDecoration(
                                 color: Colors.white,
-                                borderRadius: BorderRadius.circular(20),
+                                borderRadius: BorderRadius.circular(10),
                               ),
                               child: Padding(
                                 padding: const EdgeInsets.symmetric(
-                                    vertical: 8, horizontal: 12),
+                                    vertical: 8, horizontal: 2),
                                 child: Image.asset(
                                   items[i].assetPath,
                                   width: 35,
@@ -251,57 +251,67 @@ class _SelectLocationMapState extends State<Advertisements> {
                 const SizedBox(
                   width: 10,
                 ),
-                Container(
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                        color: const Color.fromRGBO(166, 166, 166, 1)),
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: SizedBox(
-                    height: 40,
-                    width: 100,
-                    child: Stack(children: [
-                      const Padding(
-                        padding: EdgeInsets.only(left: 30, top: 10),
-                        child: Text(
-                          "فیلتر",
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                              fontSize: 11,
-                              fontFamily: MAIN_FONT_FAMILY,
-                              color: Color.fromRGBO(99, 99, 99, 1)),
+                GestureDetector(
+                  onTap: () {
+                    Get.to(
+                        () => Filter(
+                              index: 0,
+                            ),
+                        transition: Transition.leftToRight);
+                  },
+                  child: Container(
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                          color: const Color.fromRGBO(166, 166, 166, 1)),
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: SizedBox(
+                      height: 40,
+                      width: 100,
+                      child: Stack(children: [
+                        const Padding(
+                          padding: EdgeInsets.only(left: 30, top: 10),
+                          child: Text(
+                            "فیلتر",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                fontSize: 12,
+                                fontFamily: MAIN_FONT_FAMILY,
+                                color: Color.fromRGBO(99, 99, 99, 1)),
+                          ),
                         ),
-                      ),
-                      const SizedBox(
-                        width: 15,
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 60),
-                        child: IconButton(
-                          icon: SvgPicture.asset("assets/images/filter.svg"),
-                          onPressed: () {
-                            Get.to(
-                                () => Filter(
-                                      index: 0,
-                                    ),
-                                transition: Transition.leftToRight);
-                          },
+                        const SizedBox(
+                          width: 15,
                         ),
-                      ),
-                    ]),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 55),
+                          child: IconButton(
+                            icon: SvgPicture.asset(
+                              "assets/images/filter.svg",
+                              width: 17,
+                              height: 17,
+                            ),
+                            onPressed: () {
+                              Get.to(
+                                  () => Filter(
+                                        index: 0,
+                                      ),
+                                  transition: Transition.leftToRight);
+                            },
+                          ),
+                        ),
+                      ]),
+                    ),
                   ),
                 ),
                 const SizedBox(
-                  width: 10,
+                  width: 5,
                 ),
               ],
             ),
           ),
         ],
-      ),
-      const SizedBox(
-        height: 20,
       ),
     ]));
   }
