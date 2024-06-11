@@ -116,7 +116,9 @@ class AdvMap extends StatelessWidget {
           ),
         ),
         Padding(
-          padding: const EdgeInsets.only(top: 690),
+          padding: const EdgeInsets.only(
+            top: 702,
+          ),
           child: SingleChildScrollView(
             scrollDirection: Axis.vertical,
             child: GestureDetector(
@@ -130,9 +132,9 @@ class AdvMap extends StatelessWidget {
                         border: Border.all(
                             color: const Color.fromRGBO(166, 166, 166, 1)),
                         color: const Color.fromARGB(255, 255, 255, 255),
-                        borderRadius: BorderRadius.circular(10)),
-                    width: 383,
-                    height: 60,
+                        borderRadius: BorderRadius.circular(20)),
+                    width: 384,
+                    height: 70,
                   ),
                 ),
                 Row(

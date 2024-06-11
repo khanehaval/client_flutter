@@ -75,7 +75,6 @@ class _CategoryItemsState extends State<CategoryItems> {
                         decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(8),
-                          
                         ),
                         child: items[i]),
                   ),

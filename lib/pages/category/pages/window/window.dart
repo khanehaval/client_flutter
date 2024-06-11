@@ -1,257 +1,224 @@
 import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/pages/window/window_item_builder.dart';
-
 import 'package:get/get.dart';
 
 class Category extends StatelessWidget {
   const Category({super.key});
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
+        padding: const EdgeInsets.symmetric(horizontal: 15),
         child: SingleChildScrollView(
-          child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          child:
+              Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(10),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(0.5),
-                              spreadRadius: 1,
-                              blurRadius: 10,
-                            )
-                          ],
-                          border: Border.all(
-                            color: Colors.blue, // Initial border color
-                            width: 0.6,
-                          )),
-                      child: Padding(
-                        padding: const EdgeInsets.all(14.0),
-                        child: GestureDetector(
-                          onTap: () {
-                            Get.to(() => MainCategory(index: 0),
-                                transition: Transition.downToUp);
-                          },
-                          child: SizedBox(
-                              height: _getHeight(context) / 6,
-                              width: _getHeight(context) / 5,
-                              child: Image.asset(
-                                'assets/images/Frame_amlak.png',
-                              )),
-                        ),
-                      ),
-                    ),
-                    Container(
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(10),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withOpacity(0.5),
-                            spreadRadius: 1,
-                            blurRadius: 10,
-                          )
-                        ],
-                        border: Border.all(
-                          color: Colors.blue,
-                          width: 0.7,
-                        ),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(15.0),
-                        child: GestureDetector(
-                          onTap: () {
-                            Get.to(() => MainCategory(index: 1),
-                                transition: Transition.downToUp);
-                          },
-                          child: SizedBox(
-                              height: _getHeight(context) / 6,
-                              width: (_getHeight(context) / 5) * (2 / 3),
-                              child: Image.asset(
-                                  'assets/images/Frame_ejaramaskoni.png')),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
                 Container(
-                  height: _getHeight(context) / 7,
-                  width: MediaQuery.of(context).size.width,
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(10),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.5),
-                        spreadRadius: 1,
-                        blurRadius: 10,
-                      )
-                    ],
                     border: Border.all(
-                      color: Colors.blue,
-                      width: 0.7,
-                    ),
+                      color: const Color.fromRGBO(65, 177, 164, 1),
+                      width: 0.6,
+                    ), // Initial border color
                   ),
-                  child: GestureDetector(
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: GestureDetector(
                       onTap: () {
-                        Get.to(() => MainCategory(index: 2),
+                        Get.to(() => MainCategory(index: 0),
                             transition: Transition.downToUp);
                       },
-                      child:
-                          Image.asset('assets/images/Frame_foroshmaskoni.png')),
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(10),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(0.5),
-                              spreadRadius: 1,
-                              blurRadius: 10,
-                            )
-                          ],
-                          border: Border.all(
-                            color: Colors.blue, // Initial border color
-                            width: 0.7,
-                          )),
-                      child: Padding(
-                        padding: const EdgeInsets.all(15.0),
-                        child: GestureDetector(
-                          onTap: () {
-                            Get.to(() => MainCategory(index: 4),
-                                transition: Transition.downToUp);
-                          },
-                          child: SizedBox(
-                              height: _getHeight(context) / 6,
-                              width: _getHeight(context) / 6,
-                              child: Image.asset(
-                                  'assets/images/Frame_ejaratejari.png')),
-                        ),
-                      ),
-                    ),
-                    Container(
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(10),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(0.5),
-                              spreadRadius: 1,
-                              blurRadius: 10,
-                            )
-                          ],
-                          border: Border.all(
-                            color: Colors.blue, // Initial border color
-                            width: 0.7,
-                          )),
-                      child: Padding(
-                        padding: const EdgeInsets.all(15),
-                        child: GestureDetector(
-                          onTap: () {
-                            Get.to(() => MainCategory(index: 3),
-                                transition: Transition.downToUp);
-                          },
-                          child: SizedBox(
-                            height: _getHeight(context) / 6,
-                            width: _getHeight(context) / 6,
+                      child: SizedBox(
+                          height: _getHeight(context) / 4.8,
+                          width: _getHeight(context) / 5,
+                          child: Padding(
+                            padding: const EdgeInsets.all(25.0),
                             child: Image.asset(
-                                'assets/images/Frame_foroshtejari.png'),
-                          ),
+                              'assets/images/Frame_amlak.png',
+                            ),
+                          )),
+                    ),
+                  ),
+                ),
+                Container(
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10),
+                    border: Border.all(
+                      color: const Color.fromRGBO(65, 177, 164, 1),
+                      width: 0.6,
+                    ),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: GestureDetector(
+                      onTap: () {
+                        Get.to(() => MainCategory(index: 1),
+                            transition: Transition.downToUp);
+                      },
+                      child: SizedBox(
+                          height: _getHeight(context) / 4.8,
+                          width: (_getHeight(context) / 5) * (2 / 3),
+                          child: Padding(
+                            padding: const EdgeInsets.all(20.0),
+                            child: Image.asset(
+                                'assets/images/Frame_ejaramaskoni.png'),
+                          )),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            Container(
+              height: _getHeight(context) / 8,
+              width: 330,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(10),
+                border: Border.all(
+                  color: const Color.fromRGBO(65, 177, 164, 1),
+                  width: 0.6,
+                ),
+              ),
+              child: GestureDetector(
+                  onTap: () {
+                    Get.to(() => MainCategory(index: 2),
+                        transition: Transition.downToUp);
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.all(20.0),
+                    child: Image.asset('assets/images/Frame_foroshmaskoni.png'),
+                  )),
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Container(
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(10),
+                      border: Border.all(
+                        color: const Color.fromRGBO(65, 177, 164, 1),
+                        width: 0.7,
+                      )),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: GestureDetector(
+                      onTap: () {
+                        Get.to(() => MainCategory(index: 4),
+                            transition: Transition.downToUp);
+                      },
+                      child: SizedBox(
+                          height: _getHeight(context) / 6.1,
+                          width: _getHeight(context) / 6.0,
+                          child: Padding(
+                            padding: const EdgeInsets.all(20.0),
+                            child: Image.asset(
+                                'assets/images/Frame_ejaratejari.png'),
+                          )),
+                    ),
+                  ),
+                ),
+                Container(
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(10),
+                      border: Border.all(
+                        color: const Color.fromRGBO(65, 177, 164, 1),
+                        width: 0.6,
+                      )),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8),
+                    child: GestureDetector(
+                      onTap: () {
+                        Get.to(() => MainCategory(index: 3),
+                            transition: Transition.downToUp);
+                      },
+                      child: SizedBox(
+                        height: _getHeight(context) / 6.2,
+                        width: _getHeight(context) / 6.1,
+                        child: Padding(
+                          padding: const EdgeInsets.all(20.0),
+                          child: Image.asset(
+                              'assets/images/Frame_foroshtejari.png'),
                         ),
                       ),
                     ),
-                  ],
+                  ),
                 ),
-                const SizedBox(
-                  height: 10,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(10),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(0.5),
-                              spreadRadius: 1,
-                              blurRadius: 10,
-                            )
-                          ],
-                          border: Border.all(
-                            color: Colors.blue, // Initial border color
-                            width: 0.7,
+              ],
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Container(
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(10),
+                      border: Border.all(
+                        color: const Color.fromRGBO(65, 177, 164, 1),
+                        width: 0.8,
+                      )),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: GestureDetector(
+                      onTap: () {
+                        Get.to(() => MainCategory(index: 5),
+                            transition: Transition.downToUp);
+                      },
+                      child: SizedBox(
+                          height: _getHeight(context) / 6.2,
+                          width: _getHeight(context) / 6.1,
+                          child: Padding(
+                            padding: const EdgeInsets.all(20.0),
+                            child: Image.asset(
+                                'assets/images/Frame_kotamodat.png'),
                           )),
-                      child: Padding(
-                        padding: const EdgeInsets.all(15.0),
-                        child: GestureDetector(
-                          onTap: () {
-                            Get.to(() => MainCategory(index: 5),
-                                transition: Transition.downToUp);
-                          },
-                          child: SizedBox(
-                              height: _getHeight(context) / 6,
-                              width: _getHeight(context) / 6,
+                    ),
+                  ),
+                ),
+                Container(
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(10),
+                      border: Border.all(
+                        color: const Color.fromRGBO(65, 177, 164, 1),
+                        width: 0.8,
+                      )),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: GestureDetector(
+                        onTap: () {
+                          Get.to(() => MainCategory(index: 6),
+                              transition: Transition.downToUp);
+                        },
+                        child: SizedBox(
+                            height: _getHeight(context) / 6.2,
+                            width: _getHeight(context) / 6.1,
+                            child: Padding(
+                              padding: const EdgeInsets.all(20.0),
                               child: Image.asset(
-                                  'assets/images/Frame_kotamodat.png')),
-                        ),
-                      ),
-                    ),
-                    Container(
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(10),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(0.5),
-                              spreadRadius: 1,
-                              blurRadius: 10,
-                            )
-                          ],
-                          border: Border.all(
-                            color: Colors.blue, // Initial border color
-                            width: 0.7,
-                          )),
-                      child: Padding(
-                        padding: const EdgeInsets.all(15.0),
-                        child: GestureDetector(
-                            onTap: () {
-                              Get.to(() => MainCategory(index: 6),
-                                  transition: Transition.downToUp);
-                            },
-                            child: SizedBox(
-                                height: _getHeight(context) / 6,
-                                width: _getHeight(context) / 6,
-                                child: Image.asset(
-                                    'assets/images/Frame_sakht va saz.png'))),
-                      ),
-                    ),
-                  ],
+                                  'assets/images/Frame_sakht va saz.png'),
+                            ))),
+                  ),
                 ),
-              ]),
+              ],
+            ),
+          ]),
         ),
       ),
     );
@@ -259,4 +226,4 @@ class Category extends StatelessWidget {
 }
 
 double _getHeight(BuildContext context) =>
-    min(MediaQuery.of(context).size.height, 780);
+    min(MediaQuery.of(context).size.height, 900);

@@ -201,6 +201,7 @@ class _EducationalTourState extends State<EducationalTour> {
 
   Widget bottomNavigationBar1() {
     return Container(
+      height: 70,
       decoration: BoxDecoration(
         boxShadow: [
           BoxShadow(

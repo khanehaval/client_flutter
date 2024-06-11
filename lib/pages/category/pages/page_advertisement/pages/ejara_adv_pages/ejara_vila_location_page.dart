@@ -11,16 +11,13 @@ import 'package:flutter_application_1/pages/category/shared/constant.dart';
 
 class EjaraVilaLocationPage extends StatelessWidget {
   LocationInfo locationInfo;
-
   EjaraVilaLocationPage({required this.locationInfo, super.key});
-
   final submit = false.obs;
-
   final type = "".obs;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: buildaAppBar(),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),

@@ -27,34 +27,11 @@ class EjaraVilaPage extends StatelessWidget {
   final _metragTextController = TextEditingController();
   final _selectedImagesPath = [].obs;
   final _facilities = <FacilitiesModel>[].obs;
-
   final _buildDirectionController = TextEditingController();
-  final _buildUnitOfAnyFloorCountController = TextEditingController();
-  final _buildFloorsCountController = TextEditingController();
-  final _timeOfInstallmentsController = TextEditingController();
   final _buildDateController = TextEditingController();
   final _buildRoomsCountController = TextEditingController();
-  final _buildDocumentController = TextEditingController();
-  final _buildFloorController = TextEditingController();
-  final _buildAllFloorsCountController = TextEditingController();
   final _reBuildController = TextEditingController();
   final _countOfInstallmentsController = TextEditingController();
-  final _buildMaxCapacityController = TextEditingController();
-  final _buildRiteController = TextEditingController();
-  final _buildAnimalController = TextEditingController();
-  final _buildSmokingController = TextEditingController();
-  final _buildShoesController = TextEditingController();
-  final _buildDeprivationController = TextEditingController();
-  final _buildSleepServiceCountController = TextEditingController();
-  final _oneBedCountController = TextEditingController();
-  final _twoBedCountController = TextEditingController();
-  final _floorMaterialController = TextEditingController();
-  final _cabinetController = TextEditingController();
-  final _coldTypeController = TextEditingController();
-  final _heatTypeController = TextEditingController();
-  final _heatWaterController = TextEditingController();
-  final _wcController = TextEditingController();
-  final _numberOfInstallmentsController = TextEditingController();
 
   final _advInfo = AdvInfoModel();
 
@@ -63,6 +40,7 @@ class EjaraVilaPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Colors.white,
         appBar: buildaAppBar(),
         body: SingleChildScrollView(
           child: Padding(
@@ -235,7 +213,7 @@ class EjaraVilaPage extends StatelessWidget {
                   widget2: ReadOnlyTextField(_buildDateController, () {
                     persianDataPicker(
                         (date) => _buildDateController.text = date);
-                  }, width: getPageWidth(),fontSize: 13)),
+                  }, width: getPageWidth(), fontSize: 13)),
               const SizedBox(
                 height: 20,
               ),
