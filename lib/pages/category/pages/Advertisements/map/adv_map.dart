@@ -4,6 +4,8 @@ import 'package:flutter_application_1/pages/category/pages/Advertisements/shared
 import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/widget_filter/aghahi.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
+import 'package:flutter_application_1/pages/category/shared/widget/Navi.dart';
+import 'package:flutter_application_1/pages/real_estate_agency.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
@@ -71,7 +73,7 @@ class AdvMap extends StatelessWidget {
                                         fontSize: 10),
                                   ),
                                 ),
-                              )
+                              ),
                             ],
                           ),
                         ),
@@ -115,59 +117,60 @@ class AdvMap extends StatelessWidget {
             ),
           ),
         ),
-        Padding(
-          padding: const EdgeInsets.only(
-            top: 702,
-          ),
-          child: SingleChildScrollView(
-            scrollDirection: Axis.vertical,
-            child: GestureDetector(
-              onTap: () {
-                aghahi((aghahi) => _buildDateController.text = aghahi);
-              },
-              child: Stack(children: [
-                Container(
-                  child: Container(
-                    decoration: BoxDecoration(
-                        border: Border.all(
-                            color: const Color.fromRGBO(166, 166, 166, 1)),
-                        color: const Color.fromARGB(255, 255, 255, 255),
-                        borderRadius: BorderRadius.circular(20)),
-                    width: 384,
-                    height: 70,
-                  ),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(top: 10),
-                      child: Container(
-                        decoration: BoxDecoration(
-                            border: Border.all(
-                                color: const Color.fromRGBO(166, 166, 166, 1)),
-                            color: Colors.white10,
-                            borderRadius: BorderRadius.circular(10)),
-                        width: 37,
-                        height: 2,
-                      ),
-                    ),
-                  ],
-                ),
-                const Padding(
-                  padding: EdgeInsets.only(left: 60, top: 20),
-                  child: Text(
-                    "خرید و فروش، رهن و اجاره انواع املاک در تهران",
-                    style: TextStyle(
-                        fontFamily: MAIN_FONT_FAMILY,
-                        fontSize: 12,
-                        color: Color.fromRGBO(99, 99, 99, 1)),
-                  ),
-                )
-              ]),
-            ),
-          ),
-        ),
+        Navi()
+        // Padding(
+        //   padding: const EdgeInsets.only(
+        //     top: 685,
+        //   ),
+        //   child: SingleChildScrollView(
+        //     scrollDirection: Axis.vertical,
+        //     child: GestureDetector(
+        //       onTap: () {
+        //         aghahi((aghahi) => _buildDateController.text = aghahi);
+        //       },
+        //       child: Stack(children: [
+        //         Container(
+        //           child: Container(
+        //             decoration: BoxDecoration(
+        //                 border: Border.all(
+        //                     color: const Color.fromRGBO(166, 166, 166, 1)),
+        //                 color: const Color.fromARGB(255, 255, 255, 255),
+        //                 borderRadius: BorderRadius.circular(20)),
+        //             width: 384,
+        //             height: 70,
+        //           ),
+        //         ),
+        //         Row(
+        //           mainAxisAlignment: MainAxisAlignment.center,
+        //           children: [
+        //             Padding(
+        //               padding: const EdgeInsets.only(top: 10),
+        //               child: Container(
+        //                 decoration: BoxDecoration(
+        //                     border: Border.all(
+        //                         color: const Color.fromRGBO(166, 166, 166, 1)),
+        //                     color: Colors.white10,
+        //                     borderRadius: BorderRadius.circular(10)),
+        //                 width: 37,
+        //                 height: 2,
+        //               ),
+        //             ),
+        //           ],
+        //         ),
+        //         const Padding(
+        //           padding: EdgeInsets.only(left: 60, top: 20),
+        //           child: Text(
+        //             "خرید و فروش، رهن و اجاره انواع املاک در تهران",
+        //             style: TextStyle(
+        //                 fontFamily: MAIN_FONT_FAMILY,
+        //                 fontSize: 12,
+        //                 color: Color.fromRGBO(99, 99, 99, 1)),
+        //           ),
+        //         )
+        //       ]),
+        //     ),
+        //   ),
+        // ),
       ],
     );
   }

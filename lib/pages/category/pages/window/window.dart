@@ -75,7 +75,7 @@ class Category extends StatelessWidget {
               ],
             ),
             const SizedBox(
-              height: 20,
+              height: 17,
             ),
             Container(
               height: _getHeight(context) / 8,
@@ -99,7 +99,7 @@ class Category extends StatelessWidget {
                   )),
             ),
             const SizedBox(
-              height: 20,
+              height: 17,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -160,7 +160,7 @@ class Category extends StatelessWidget {
               ],
             ),
             const SizedBox(
-              height: 20,
+              height: 17,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
