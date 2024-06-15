@@ -36,7 +36,7 @@ class _CategoryItemsState extends State<CategoryItems> {
       child: Column(
         children: [
           SizedBox(
-            height: 150,
+            height: 130,
             child: ScrollablePositionedList.builder(
               reverse: true,
               itemScrollController: _controller,
@@ -74,7 +74,7 @@ class _CategoryItemsState extends State<CategoryItems> {
                     child: Container(
                         decoration: BoxDecoration(
                           color: Colors.white,
-                          borderRadius: BorderRadius.circular(8),
+                          borderRadius: BorderRadius.circular(10),
                         ),
                         child: items[i]),
                   ),
@@ -90,57 +90,83 @@ class _CategoryItemsState extends State<CategoryItems> {
 
   var items = [
     Padding(
-      padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 12),
+      padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 12),
       child: Image.asset(
         'assets/images/Frame_amlak.png',
+        color: const Color.fromRGBO(99, 99, 99, 1),
         width: 51,
         height: 51,
       ),
     ),
     Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 12),
       child: Image.asset(
         'assets/images/Frame_ejaramaskoni.png',
+        color: const Color.fromRGBO(99, 99, 99, 1),
         width: 51,
         height: 51,
       ),
     ),
     Padding(
-      padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 12),
-      child: Image.asset(
-        'assets/images/Frame_foroshmaskoni.png',
-        width: 51,
-        height: 51,
+      padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 12),
+      child: Stack(
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(left: 25.0),
+            child: Image.asset(
+              'assets/images/1397.png',
+              color: const Color.fromRGBO(99, 99, 99, 1),
+              width: 60,
+              height: 60,
+            ),
+          ),
+          const Padding(
+            padding: EdgeInsets.only(top: 65.0),
+            child: Center(
+              child: Text(
+                'فروش مسکونی',
+                style: TextStyle(
+                    fontFamily: MAIN_FONT_FAMILY,
+                    fontSize: 12,
+                    color: Color.fromRGBO(99, 99, 99, 1)),
+              ),
+            ),
+          )
+        ],
       ),
     ),
     Padding(
-      padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 12),
+      padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 12),
       child: Image.asset(
         'assets/images/Frame_foroshtejari.png',
+        color: const Color.fromRGBO(99, 99, 99, 1),
         width: 51,
         height: 51,
       ),
     ),
     Padding(
-      padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 12),
+      padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 12),
       child: Image.asset(
         'assets/images/Frame_ejaratejari.png',
+        color: const Color.fromRGBO(99, 99, 99, 1),
         width: 51,
         height: 51,
       ),
     ),
     Padding(
-      padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 12),
+      padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 12),
       child: Image.asset(
         'assets/images/Frame_kotamodat.png',
+        color: const Color.fromRGBO(99, 99, 99, 1),
         width: 51,
         height: 51,
       ),
     ),
     Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 10),
+      padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
       child: Image.asset(
         'assets/images/Frame_sakht va saz.png',
+        color: const Color.fromRGBO(99, 99, 99, 1),
         width: 51,
         height: 51,
       ),

@@ -105,6 +105,7 @@ void FacilitiesSelector(
     List<FacilitiesModel> selectable, RxList<FacilitiesModel> selected) {
   Get.bottomSheet(
     Container(
+      height: 600, // Set the height to 600
       decoration: const BoxDecoration(
         gradient: LinearGradient(colors: GRADIANT_COLOR),
         borderRadius: BorderRadius.only(
@@ -138,7 +139,7 @@ void FacilitiesSelector(
                     gridDelegate:
                         const SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2,
-                      childAspectRatio: 1.6,
+                      childAspectRatio: 1.8,
                     ),
                     itemCount: selectable.length,
                     itemBuilder: (context, index) {
@@ -160,10 +161,13 @@ void FacilitiesSelector(
                         borderRadius: BorderRadius.circular(50),
                       ),
                       child: IconButton(
-                        icon: const Icon(
-                          CupertinoIcons.check_mark,
-                          color: Colors.white,
-                          weight: 10,
+                        icon: Padding(
+                          padding: const EdgeInsets.only(top: 5.0),
+                          child: SvgPicture.asset(
+                            'assets/images/tic.svg',
+                            width: 33,
+                            height: 26,
+                          ),
                         ),
                         onPressed: () {
                           Get.back();

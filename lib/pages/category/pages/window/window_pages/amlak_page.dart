@@ -7,9 +7,7 @@ import 'package:get/get.dart';
 class AmlakPage extends StatelessWidget {
   final _show_item_1 = false.obs;
   final _show_item_2 = false.obs;
-
   AmlakPage({super.key});
-
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -107,7 +105,8 @@ class AmlakPage extends StatelessWidget {
           margin: const EdgeInsets.only(left: 10, right: 10),
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
-              border: Border.all(color: Color.fromRGBO(234, 234, 234, 1))),
+              border:
+                  Border.all(color: const Color.fromRGBO(234, 234, 234, 1))),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -151,7 +150,7 @@ class AmlakPage extends StatelessWidget {
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
               border: Border.all(
-                  color: Color.fromRGBO(
+                  color: const Color.fromRGBO(
                 234,
                 234,
                 234,
@@ -163,7 +162,9 @@ class AmlakPage extends StatelessWidget {
               Obx(() => IconButton(
                     icon: _show_item_2.value
                         ? SvgPicture.asset('assets/images/down.svg')
-                        : SvgPicture.asset('assets/images/=.svg'),
+                        : SvgPicture.asset(
+                            'assets/images/=.svg',
+                          ),
                     style: const ButtonStyle(),
                     onPressed: () {
                       _show_item_2.value = !_show_item_2.value;
