@@ -107,7 +107,7 @@ class EjaraMaskoni extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Padding(
-                        padding: EdgeInsets.only(right:10.0),
+                        padding: EdgeInsets.only(right: 10.0),
                         child: Text(
                           'اجاره آپارتمان بر اساس متراژ',
                           style: TextStyle(
