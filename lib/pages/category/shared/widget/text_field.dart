@@ -38,6 +38,7 @@ Widget InputTextField(TextEditingController controller, {double? width}) {
     height: 41,
     width: width,
     child: TextField(
+      
       keyboardType: TextInputType.number,
       controller: controller,
       textAlign: TextAlign.right,
