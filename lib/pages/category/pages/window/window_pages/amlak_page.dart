@@ -101,37 +101,45 @@ class AmlakPage extends StatelessWidget {
         const SizedBox(
           height: 10,
         ),
-        Container(
-          margin: const EdgeInsets.only(left: 10, right: 10),
-          decoration: BoxDecoration(
+        GestureDetector(
+          onTap: () {
+            _show_item_1.value = !_show_item_1.value;
+          },
+          child: Container(
+            margin: const EdgeInsets.symmetric(horizontal: 10),
+            decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
-              border:
-                  Border.all(color: const Color.fromRGBO(234, 234, 234, 1))),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Obx(() => IconButton(
-                    icon: _show_item_1.value
-                        ? SvgPicture.asset(
-                            'assets/images/down.svg',
-                          )
-                        : SvgPicture.asset('assets/images/=.svg'),
+              border: Border.all(color: const Color.fromRGBO(234, 234, 234, 1)),
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Obx(
+                  () => IconButton(
+                    icon: SvgPicture.asset(
+                      _show_item_1.value
+                          ? 'assets/images/down.svg'
+                          : 'assets/images/=.svg',
+                    ),
                     onPressed: () {
                       _show_item_1.value = !_show_item_1.value;
                     },
-                  )),
-              const Padding(
-                padding: EdgeInsets.only(left: 10, right: 10),
-                child: Text(
-                  'فروش ویژه',
-                  style: TextStyle(
+                  ),
+                ),
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 10),
+                  child: Text(
+                    'فروش ویژه',
+                    style: TextStyle(
                       fontSize: 18,
                       color: Colors.black,
                       fontWeight: FontWeight.bold,
-                      fontFamily: MAIN_FONT_FAMILY),
+                      fontFamily: MAIN_FONT_FAMILY,
+                    ),
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
         buildItem1(),
