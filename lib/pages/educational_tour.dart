@@ -198,7 +198,6 @@ class _EducationalTourState extends State<EducationalTour> {
   //     ),
   //   );
   // }
-
   Widget bottomNavigationBar1() {
     return Container(
       height: 70,
@@ -222,33 +221,44 @@ class _EducationalTourState extends State<EducationalTour> {
             color: Colors.black,
             child: BottomNavigationBar(
               backgroundColor: Colors.white,
-              selectedItemColor: const Color(0xff6200ee),
+              selectedItemColor: const Color.fromARGB(255, 130, 8, 8),
               unselectedItemColor: const Color(0xff757575),
               onTap: (int index) {
                 currentPageIndex.value = index;
                 showEducation.value = false;
               },
               currentIndex: currentPageIndex.value,
-              items: const <BottomNavigationBarItem>[
-                BottomNavigationBarItem(
+              items: <BottomNavigationBarItem>[
+                const BottomNavigationBarItem(
                   backgroundColor: Colors.white,
-                  icon: Icon(Icons.person),
+                  icon: Icon(
+                    CupertinoIcons.person_fill,
+                    size: 30,
+                  ),
                   label: 'پروفایل',
                 ),
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.message),
+                const BottomNavigationBarItem(
+                  icon: Icon(
+                    Icons.message,
+                    size: 30,
+                  ),
                   label: 'چت',
                 ),
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.home),
-                  label: 'خانه',
+                const BottomNavigationBarItem(
+                  icon: Icon(
+                    Icons.add_circle_outline,
+                    size: 30,
+                  ),
+                  label: ' ثبت آگهی',
                 ),
                 BottomNavigationBarItem(
-                  icon: Icon(Icons.category_rounded),
-                  label: 'دسته بندی',
+                  icon: SvgPicture.asset("assets/images/navigation4.svg"),
+                  label: '',
+                  activeIcon:
+                      SvgPicture.asset("assets/images/navigation4-active.svg"),
                 ),
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.view_week),
+                const BottomNavigationBarItem(
+                  icon: Icon(CupertinoIcons.color_filter_fill),
                   label: 'آگهی',
                 ),
               ],

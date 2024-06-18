@@ -20,7 +20,7 @@ class AdvMap extends StatelessWidget {
   Widget build(BuildContext context) {
     return DraggableHome(
         backgroundColor: Colors.white,
-        bottomNavigationBar: bottomNavigationBar1(),
+        bottomNavigationBar: bottomNavigationBar2(),
         stretchTriggerOffset: 100,
         headerExpandedHeight: 0.83,
         stretchMaxHeight: 0.86,
@@ -105,7 +105,6 @@ class AdvMap extends StatelessWidget {
             ),
             Obx(() => _selectedModel.value != null
                 ? Align(
-                    alignment: Alignment.bottomCenter,
                     child: Padding(
                       padding: const EdgeInsets.only(bottom: 45),
                       child: showAdvertisment(_selectedModel.value!),
@@ -167,17 +166,22 @@ class AdvMap extends StatelessWidget {
                       ),
                     ],
                   ),
-                  Container(
-                      decoration: const BoxDecoration(boxShadow: [
-                        BoxShadow(
-                          color: Colors.white,
-                          blurRadius: 10,
-                        )
-                      ]),
-                      padding: const EdgeInsets.all(8.0),
-                      child: Stack(
-                        children: [viewaghahi()],
-                      )),
+                  ConstrainedBox(
+                    constraints: const BoxConstraints(
+                      maxHeight: 750,
+                    ),
+                    child: Container(
+                        decoration: const BoxDecoration(boxShadow: [
+                          BoxShadow(
+                            color: Colors.white,
+                            blurRadius: 10,
+                          )
+                        ]),
+                        padding: const EdgeInsets.all(8.0),
+                        child: Stack(
+                          children: [viewaghahi()],
+                        )),
+                  ),
                 ],
               ))
         ]);

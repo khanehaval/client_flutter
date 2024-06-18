@@ -7,7 +7,7 @@ import 'package:flutter_application_1/pages/category/pages/page_advertisement/ca
 import 'package:flutter_application_1/pages/category/pages/window/window.dart';
 import 'package:get/get.dart';
 
-Widget bottomNavigationBar1() {
+Widget bottomNavigationBar2() {
   var currentPageIndex = 0.obs;
   var showEducation = false.obs;
 
@@ -20,30 +20,47 @@ Widget bottomNavigationBar1() {
   ];
   return ClipRRect(
     borderRadius: const BorderRadius.only(
-        topLeft: Radius.circular(20), topRight: Radius.circular(20)),
-    child: Obx(() => Container(
-          child: BottomNavigationBar(
+      topLeft: Radius.circular(20),
+      topRight: Radius.circular(20),
+    ),
+    child: Obx(
+      () => Container(
+        color: Colors.black,
+        child: BottomNavigationBar(
+          backgroundColor: Colors.white,
+          selectedItemColor: const Color(0xff6200ee),
+          unselectedItemColor: const Color(0xff757575),
+          onTap: (int index) {
+            currentPageIndex.value = index;
+            showEducation.value = false;
+          },
+          currentIndex: currentPageIndex.value,
+          items: const <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
               backgroundColor: Colors.white,
-              selectedItemColor: const Color(0xff6200ee),
-              unselectedItemColor: const Color(0xff757575),
-              onTap: (int index) {
-                currentPageIndex.value = index;
-                showEducation.value = false;
-              },
-              currentIndex: currentPageIndex.value,
-              items: const <BottomNavigationBarItem>[
-                BottomNavigationBarItem(
-                    backgroundColor: Colors.white,
-                    icon: Icon(Icons.person),
-                    label: 'پروفایل'),
-                BottomNavigationBarItem(icon: Icon(Icons.message), label: 'چت'),
-                BottomNavigationBarItem(icon: Icon(Icons.home), label: 'خانه'),
-                BottomNavigationBarItem(
-                    icon: Icon(Icons.category_rounded), label: 'دسته بندی'),
-                BottomNavigationBarItem(
-                    icon: Icon(Icons.view_week), label: 'آگهی'),
-              ]),
-        )),
+              icon: Icon(CupertinoIcons.add),
+              label: 'پروفایل',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.message),
+              label: 'چت',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              label: 'خانه',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.category_rounded),
+              label: 'دسته بندی',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.view_week),
+              label: 'آگهی',
+            ),
+          ],
+        ),
+      ),
+    ),
   );
 }
 
