@@ -10,11 +10,12 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
 class AdvMap extends StatelessWidget {
-  final _buildDateController = TextEditingController();
-
   RxList<AdvertismentModel> advertisements;
 
+  Rxn<AdvertismentModel> _selectedModel = Rxn();
+
   AdvMap(this.advertisements, {super.key});
+
   @override
   Widget build(BuildContext context) {
     return DraggableHome(
@@ -52,7 +53,7 @@ class AdvMap extends StatelessWidget {
                             height: 67,
                             child: GestureDetector(
                               onTap: () {
-                                showAdvertisment(adv);
+                                _selectedModel.value = adv;
                               },
                               child: Stack(
                                 // textDirection: TextDirection.rtl,
@@ -60,7 +61,7 @@ class AdvMap extends StatelessWidget {
                                 children: [
                                   GestureDetector(
                                     onTap: () {
-                                      showAdvertisment(adv);
+                                      _selectedModel.value = adv;
                                     },
                                     child: SvgPicture.asset(
                                       'assets/images/LOCATION.svg',
@@ -102,6 +103,15 @@ class AdvMap extends StatelessWidget {
                         child: Image.asset("assets/images/icon zoom.png"))),
               ),
             ),
+            Obx(() => _selectedModel.value != null
+                ? Align(
+                    alignment: Alignment.bottomCenter,
+                    child: Padding(
+                      padding: const EdgeInsets.only(bottom: 45),
+                      child: showAdvertisment(_selectedModel.value!),
+                    ),
+                  )
+                : const SizedBox.shrink()),
             Align(
               alignment: Alignment.bottomLeft,
               child: Padding(
