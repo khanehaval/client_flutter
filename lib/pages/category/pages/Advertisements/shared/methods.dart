@@ -214,3 +214,7 @@ Widget showAdvertisment(AdvertismentModel advertismentModel) {
     ),
   );
 }
+
+void deleteAdvertsment() {
+  return null;
+}

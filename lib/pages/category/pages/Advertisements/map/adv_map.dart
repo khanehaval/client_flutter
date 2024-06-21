@@ -10,6 +10,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
 class AdvMap extends StatelessWidget {
+  
   RxList<AdvertismentModel> advertisements;
 
   Rxn<AdvertismentModel> _selectedModel = Rxn();
@@ -32,7 +33,7 @@ class AdvMap extends StatelessWidget {
               options: MapOptions(
                 initialZoom: 13,
                 initialCenter: advertisements.first.location,
-                maxZoom: 14,
+                maxZoom: 15,
                 keepAlive: true,
                 interactionOptions: const InteractionOptions(
                     enableMultiFingerGestureRace: true,

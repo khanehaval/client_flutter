@@ -53,12 +53,7 @@ class MyApp extends StatelessWidget {
         home: FutureBuilder(
             future: _userRepo.isLogin(),
             builder: (c, s) {
-              if (s.connectionState == ConnectionState.waiting) {
-                return Container();
-              }
-              return (s.data ?? false)
-                  ? Advertisements()
-                  : const LoginSecondlyPage();
+              return (s.data ?? false) ? LoginSecondlyPage() : IntroScreen();
             }));
   }
 }

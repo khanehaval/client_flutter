@@ -15,7 +15,6 @@ class SwitchItem extends StatefulWidget {
   @override
   _SwitchItemState createState() => _SwitchItemState();
 }
-
 class _SwitchItemState extends State<SwitchItem> {
   final selectedItems = <String>[].obs;
 

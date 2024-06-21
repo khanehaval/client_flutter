@@ -229,37 +229,36 @@ class _EducationalTourState extends State<EducationalTour> {
               },
               currentIndex: currentPageIndex.value,
               items: <BottomNavigationBarItem>[
-                const BottomNavigationBarItem(
+                 BottomNavigationBarItem(
                   backgroundColor: Colors.white,
-                  icon: Icon(
-                    CupertinoIcons.person_fill,
-                    size: 30,
-                  ),
-                  label: 'پروفایل',
-                ),
-                const BottomNavigationBarItem(
-                  icon: Icon(
-                    Icons.message,
-                    size: 30,
-                  ),
-                  label: 'چت',
-                ),
-                const BottomNavigationBarItem(
-                  icon: Icon(
-                    Icons.add_circle_outline,
-                    size: 30,
-                  ),
-                  label: ' ثبت آگهی',
-                ),
-                BottomNavigationBarItem(
-                  icon: SvgPicture.asset("assets/images/navigation4.svg"),
+                  icon: SvgPicture.asset("assets/images/navigation1.svg",width: 30,height: 30,),
                   label: '',
                   activeIcon:
-                      SvgPicture.asset("assets/images/navigation4-active.svg"),
+                      SvgPicture.asset("assets/images/navigation1-active.svg",width: 30,height: 30,),
                 ),
-                const BottomNavigationBarItem(
-                  icon: Icon(CupertinoIcons.color_filter_fill),
-                  label: 'آگهی',
+                 BottomNavigationBarItem(
+                 icon: SvgPicture.asset("assets/images/navigation2.svg",width: 30,height: 30,),
+                  label: '',
+                  activeIcon:
+                      SvgPicture.asset("assets/images/navigation2-active.svg",width: 30,height: 30,),
+                ),
+                 BottomNavigationBarItem(
+                icon: SvgPicture.asset("assets/images/navigation3.svg",width: 30,height: 30,),
+                  label: '',
+                  activeIcon:
+                      SvgPicture.asset("assets/images/navigation3-active.svg",width: 30,height: 30,),
+                ),
+                BottomNavigationBarItem(
+                  icon: SvgPicture.asset("assets/images/navigation4.svg",width: 30,height: 30,),
+                  label: '',
+                  activeIcon:
+                      SvgPicture.asset("assets/images/navigation4-active.svg",width: 30,height: 30,),
+                ),
+                 BottomNavigationBarItem(
+                   icon: SvgPicture.asset("assets/images/navigation5.svg",width: 30,height: 30,),
+                  label: '',
+                  activeIcon:
+                      SvgPicture.asset("assets/images/navigation5-active.svg",width: 30,height: 30,),
                 ),
               ],
             ),

@@ -34,7 +34,7 @@ class Category extends StatelessWidget {
                             transition: Transition.downToUp);
                       },
                       child: SizedBox(
-                          height: _getHeight(context) / 4.8,
+                          height: _getHeight(context) / 4.9,
                           width: _getHeight(context) / 5,
                           child: Padding(
                             padding: const EdgeInsets.all(25.0),
@@ -62,7 +62,7 @@ class Category extends StatelessWidget {
                             transition: Transition.downToUp);
                       },
                       child: SizedBox(
-                          height: _getHeight(context) / 4.8,
+                          height: _getHeight(context) / 4.9,
                           width: (_getHeight(context) / 5) * (2 / 3),
                           child: Padding(
                             padding: const EdgeInsets.all(20.0),
