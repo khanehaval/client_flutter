@@ -10,7 +10,6 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
 class AdvMap extends StatelessWidget {
-  
   RxList<AdvertismentModel> advertisements;
 
   Rxn<AdvertismentModel> _selectedModel = Rxn();
@@ -108,7 +107,8 @@ class AdvMap extends StatelessWidget {
                 ? Align(
                     child: Padding(
                       padding: const EdgeInsets.only(bottom: 45),
-                      child: showAdvertisment(_selectedModel.value!),
+                      child: showAdvertisment(_selectedModel.value!,
+                          () => _selectedModel.value = null),
                     ),
                   )
                 : const SizedBox.shrink()),

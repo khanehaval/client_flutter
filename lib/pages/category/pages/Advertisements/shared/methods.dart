@@ -6,7 +6,7 @@ import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
-Widget showAdvertisment(AdvertismentModel advertismentModel) {
+Widget showAdvertisment(AdvertismentModel advertismentModel, Function onTap) {
   return SafeArea(
     child: Column(
       children: [
@@ -150,7 +150,7 @@ Widget showAdvertisment(AdvertismentModel advertismentModel) {
                     top: 110,
                     child: GestureDetector(
                       onTap: () {
-                        Get.back();
+                        onTap();
                       },
                       child: SvgPicture.asset(
                         "assets/images/delete.svg",
