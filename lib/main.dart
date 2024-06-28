@@ -53,7 +53,7 @@ class MyApp extends StatelessWidget {
         home: FutureBuilder(
             future: _userRepo.isLogin(),
             builder: (c, s) {
-              return (s.data ?? false) ? LoginSecondlyPage() : IntroScreen();
+              return IntroScreen();
             }));
   }
 }

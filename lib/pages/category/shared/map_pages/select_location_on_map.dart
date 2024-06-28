@@ -104,7 +104,7 @@ class _SelectLocationMapState extends State<SelectLocationMap> {
                     circles: [
                       CircleMarker(
                         point: locationInfo.location,
-                        radius: 150,
+                        radius: 100,
                         useRadiusInMeter: true,
                         borderStrokeWidth: 3,
                         borderColor: Colors.blueAccent,
@@ -117,8 +117,8 @@ class _SelectLocationMapState extends State<SelectLocationMap> {
               markers: [
                 Marker(
                     point: locationInfo.location,
-                    width: 52,
-                    height: 67,
+                    width: 30,
+                    height: 50,
                     child: Obx(() => showLimit.isTrue
                         ? const Icon(
                             Icons.circle,
@@ -163,11 +163,11 @@ class _SelectLocationMapState extends State<SelectLocationMap> {
                           boxShadow: const [
                             BoxShadow(
                                 color: Color.fromRGBO(165, 161, 161, 0.247),
-                                blurRadius: 7,
-                                offset: Offset(0, 2)),
+                                blurRadius: 3,
+                                offset: Offset(0, 1)),
                           ]),
                       child: Transform.scale(
-                        scale: 0.99,
+                        scale: 1.1,
                         child: Obx(
                           () => Switch(
                               onChanged: (_) => showLimit.value = _,
@@ -219,7 +219,7 @@ class _SelectLocationMapState extends State<SelectLocationMap> {
                             child: Text(
                               style: const TextStyle(
                                   fontFamily: 'Iran Sans Bold,',
-                                  fontWeight: FontWeight.w400),
+                                  fontWeight: FontWeight.bold),
                               locationInfo.locationName,
                               textAlign: TextAlign.right,
                             ),
@@ -271,7 +271,7 @@ class _SelectLocationMapState extends State<SelectLocationMap> {
                             child: Text(
                               style: const TextStyle(
                                   fontFamily: 'Iran Sans Bold,',
-                                  fontWeight: FontWeight.w400),
+                                  fontWeight: FontWeight.bold),
                               locationInfo.cityName,
                               textAlign: TextAlign.center,
                             ),
