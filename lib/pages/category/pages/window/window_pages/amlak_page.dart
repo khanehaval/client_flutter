@@ -41,56 +41,9 @@ class AmlakPage extends StatelessWidget {
           scrollDirection: Axis.horizontal,
           child: Row(
             children: [
-              Padding(
-                padding: const EdgeInsets.all(10),
-                child: Container(
-                    height: 90,
-                    width: 147,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(10),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey.withOpacity(.2),
-                          blurRadius: 5,
-                        )
-                      ],
-                    ),
-                    child: SvgPicture.asset('assets/images/axhans_amlak.svg')),
-              ),
-              Container(
-                height: 90,
-                width: MediaQuery.of(context).size.width * 0.4,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(10),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(.2),
-                      blurRadius: 5,
-                    )
-                  ],
-                ),
-                child: SvgPicture.asset('assets/images/moshaver_amlak.svg'),
-              ),
-              Container(
-                margin: const EdgeInsetsDirectional.all(10),
-                height: 90,
-                width: MediaQuery.of(context).size.width * 0.4,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(10),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(.2),
-                      blurRadius: 5,
-                    )
-                  ],
-                ),
-                child: SvgPicture.asset(
-                  'assets/images/kharid_khaneh.svg',
-                ),
-              ),
+              _buildRowItem('assets/images/axhans_amlak.svg'),
+              _buildRowItem('assets/images/moshaver_amlak.svg'),
+              _buildRowItem('assets/images/kharid_khaneh.svg'),
             ],
           ),
         ),
@@ -102,46 +55,59 @@ class AmlakPage extends StatelessWidget {
           height: 10,
         ),
         GestureDetector(
-          onTap: () {
-            _show_item_1.value = !_show_item_1.value;
-          },
-          child: Container(
-            margin: const EdgeInsets.symmetric(horizontal: 10),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              border: Border.all(color: const Color.fromRGBO(234, 234, 234, 1)),
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Obx(
-                  () => IconButton(
-                    icon: SvgPicture.asset(
-                      _show_item_1.value
-                          ? 'assets/images/down.svg'
-                          : 'assets/images/=.svg',
+            onTap: () {
+              _show_item_1.value = !_show_item_1.value;
+            },
+            child: Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Container(
+                  decoration: BoxDecoration(
+                      gradient: const LinearGradient(colors: GRADIANT_COLOR3),
+                      borderRadius: BorderRadius.circular(10)),
+                  child: Padding(
+                    padding: const EdgeInsets.all(0.5),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Obx(
+                              () => IconButton(
+                                icon: SvgPicture.asset(
+                                  _show_item_1.value
+                                      ? 'assets/images/down.svg'
+                                      : 'assets/images/=.svg',
+                                ),
+                                onPressed: () {
+                                  _show_item_1.value = !_show_item_1.value;
+                                },
+                              ),
+                            ),
+                            const Padding(
+                              padding: EdgeInsets.symmetric(horizontal: 10),
+                              child: Text(
+                                'فروش ویژه',
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold,
+                                  fontFamily: MAIN_FONT_FAMILY,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
-                    onPressed: () {
-                      _show_item_1.value = !_show_item_1.value;
-                    },
-                  ),
-                ),
-                const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 10),
-                  child: Text(
-                    'فروش ویژه',
-                    style: TextStyle(
-                      fontSize: 18,
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold,
-                      fontFamily: MAIN_FONT_FAMILY,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
+                  )),
+            )),
         buildItem1(),
         const SizedBox(
           height: 10,
@@ -295,5 +261,13 @@ class AmlakPage extends StatelessWidget {
             )
           : const SizedBox.shrink(),
     );
+  }
+
+  Padding _buildRowItem(String asset) {
+    return Padding(
+        padding: const EdgeInsets.all(8),
+        child: SvgPicture.asset(
+          asset,
+        ));
   }
 }

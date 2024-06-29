@@ -14,7 +14,7 @@ class LoginSecondlyPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromRGBO(255, 255, 255, 1),
+      backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.white,
         leading: IconButton(
@@ -115,7 +115,7 @@ class LoginSecondlyPage extends StatelessWidget {
                   ),
                   GestureDetector(
                     onTap: () {
-                      Get.to(() => const Realestateagency(),
+                      Get.to(() => Realestateagency(),
                           transition: Transition.downToUp,
                           duration: const Duration(milliseconds: 400));
                     },
@@ -211,7 +211,8 @@ class LoginSecondlyPage extends StatelessWidget {
         ],
       ),
       shape: RoundedRectangleBorder(
-        side: const BorderSide(width: 1, color: Color(0xFF429F56)),
+        side: const BorderSide(
+            width: 1, color: Color.fromARGB(255, 13, 165, 112)),
         borderRadius: BorderRadius.circular(10),
       ),
     );

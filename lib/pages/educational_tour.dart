@@ -51,48 +51,40 @@ class _EducationalTourState extends State<EducationalTour> {
               Obx(() => showEducation.value
                   ? Container(
                       color: Colors.white,
-                      child: Padding(
-                        padding: const EdgeInsets.all(10),
-                        child: SingleChildScrollView(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: GestureDetector(
-                                  onTap: () {
-                                    Get.to(() => ());
-                                  },
-                                  child: Image.asset(
-                                    'assets/images/Personal user panel.png',
-                                  ),
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: GestureDetector(
-                                  onTap: () {
-                                    Get.to(() => ());
-                                  },
-                                  child: Image.asset(
-                                    "assets/images/Consultants user panel.png",
-                                  ),
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: GestureDetector(
-                                  onTap: () {
-                                    Get.to(() => ());
-                                  },
-                                  child: Image.asset(
-                                    "assets/images/Real estate agency user panel.png",
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
+                      child: SingleChildScrollView(
+                        child: Column(
+                          children: [
+                            GestureDetector(
+                                onTap: () {
+                                  Get.to(() => ());
+                                },
+                                child: SvgPicture.asset(
+                                    width: 350,
+                                    height: 185,
+                                    'assets/images/Personal user panel.svg')),
+                            const SizedBox(
+                              height: 30,
+                            ),
+                            GestureDetector(
+                                onTap: () {
+                                  Get.to(() => ());
+                                },
+                                child: SvgPicture.asset(
+                                    width: 350,
+                                    height: 185,
+                                    'assets/images/Consultants user panel.svg')),
+                            const SizedBox(
+                              height: 30,
+                            ),
+                            GestureDetector(
+                                onTap: () {
+                                  Get.to(() => ());
+                                },
+                                child: SvgPicture.asset(
+                                    width: 350,
+                                    height: 185,
+                                    'assets/images/Real estate agency user panel.svg')),
+                          ],
                         ),
                       ),
                     )
@@ -200,14 +192,14 @@ class _EducationalTourState extends State<EducationalTour> {
   // }
   Widget bottomNavigationBar1() {
     return Container(
-      height: 70,
+      height: 76,
       decoration: BoxDecoration(
         boxShadow: [
           BoxShadow(
             color: Colors.grey.withOpacity(0.5),
-            spreadRadius: 5,
-            blurRadius: 7,
-            offset: Offset(0, 3), // changes position of shadow
+            spreadRadius: 0,
+            blurRadius: 5,
+            offset: Offset(-1, 0), // changes position of shadow
           ),
         ],
       ),
@@ -221,44 +213,77 @@ class _EducationalTourState extends State<EducationalTour> {
             color: Colors.black,
             child: BottomNavigationBar(
               backgroundColor: Colors.white,
-              selectedItemColor: const Color.fromARGB(255, 130, 8, 8),
-              unselectedItemColor: const Color(0xff757575),
               onTap: (int index) {
                 currentPageIndex.value = index;
                 showEducation.value = false;
               },
               currentIndex: currentPageIndex.value,
               items: <BottomNavigationBarItem>[
-                 BottomNavigationBarItem(
+                BottomNavigationBarItem(
                   backgroundColor: Colors.white,
-                  icon: SvgPicture.asset("assets/images/navigation1.svg",width: 30,height: 30,),
+                  icon: SvgPicture.asset(
+                    "assets/images/navigation1.svg",
+                    width: 30,
+                    height: 30,
+                  ),
                   label: '',
-                  activeIcon:
-                      SvgPicture.asset("assets/images/navigation1-active.svg",width: 30,height: 30,),
-                ),
-                 BottomNavigationBarItem(
-                 icon: SvgPicture.asset("assets/images/navigation2.svg",width: 30,height: 30,),
-                  label: '',
-                  activeIcon:
-                      SvgPicture.asset("assets/images/navigation2-active.svg",width: 30,height: 30,),
-                ),
-                 BottomNavigationBarItem(
-                icon: SvgPicture.asset("assets/images/navigation3.svg",width: 30,height: 30,),
-                  label: '',
-                  activeIcon:
-                      SvgPicture.asset("assets/images/navigation3-active.svg",width: 30,height: 30,),
+                  activeIcon: SvgPicture.asset(
+                    "assets/images/navigation1-active.svg",
+                    width: 30,
+                    height: 30,
+                  ),
                 ),
                 BottomNavigationBarItem(
-                  icon: SvgPicture.asset("assets/images/navigation4.svg",width: 30,height: 30,),
+                  icon: SvgPicture.asset(
+                    "assets/images/navigation2.svg",
+                    width: 30,
+                    height: 30,
+                  ),
                   label: '',
-                  activeIcon:
-                      SvgPicture.asset("assets/images/navigation4-active.svg",width: 30,height: 30,),
+                  activeIcon: SvgPicture.asset(
+                    "assets/images/navigation2-active.svg",
+                    width: 30,
+                    height: 30,
+                  ),
                 ),
-                 BottomNavigationBarItem(
-                   icon: SvgPicture.asset("assets/images/navigation5.svg",width: 30,height: 30,),
+                BottomNavigationBarItem(
+                  icon: SvgPicture.asset(
+                    "assets/images/navigation3.svg",
+                    width: 40,
+                    height: 40,
+                  ),
                   label: '',
-                  activeIcon:
-                      SvgPicture.asset("assets/images/navigation5-active.svg",width: 30,height: 30,),
+                  activeIcon: SvgPicture.asset(
+                    "assets/images/navigation3-active.svg",
+                    width: 40,
+                    height: 40,
+                  ),
+                ),
+                BottomNavigationBarItem(
+                  icon: SvgPicture.asset(
+                    "assets/images/navigation4.svg",
+                    width: 30,
+                    height: 30,
+                  ),
+                  label: '',
+                  activeIcon: SvgPicture.asset(
+                    "assets/images/navigation4-active.svg",
+                    width: 30,
+                    height: 30,
+                  ),
+                ),
+                BottomNavigationBarItem(
+                  icon: SvgPicture.asset(
+                    "assets/images/navigation5.svg",
+                    width: 30,
+                    height: 30,
+                  ),
+                  label: '',
+                  activeIcon: SvgPicture.asset(
+                    "assets/images/navigation5-active.svg",
+                    width: 30,
+                    height: 30,
+                  ),
                 ),
               ],
             ),

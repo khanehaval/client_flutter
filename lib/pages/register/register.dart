@@ -110,20 +110,20 @@ class _RegisterState extends State<Register> {
         ),
         child: Column(
           children: [
-            const SizedBox(height: 50),
+            const SizedBox(height: 100),
             SvgPicture.asset(
               'assets/images/logo-farsi.svg',
-              width: MediaQuery.of(context).size.width - 250,
+              width: MediaQuery.of(context).size.width - 240,
             ),
             const SizedBox(
-              height: 30,
+              height: 50,
             ),
             const Text(
               'شماره تلفن همراه خود را وارد کنید',
               style: TextStyle(fontSize: 16, fontFamily: MAIN_FONT_FAMILY),
             ),
             const SizedBox(
-              height: 20,
+              height: 40,
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 60),
@@ -140,17 +140,36 @@ class _RegisterState extends State<Register> {
                   style: const TextStyle(fontSize: 15),
                   inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                   decoration: InputDecoration(
-                      hintText: "0912  123  4567",
+                      hintText: "۰۹۱۲ ۱۲۳ ۴۵۶۷",
                       hintStyle: const TextStyle(
-                          color: Color.fromRGBO(222, 222, 222, 1)),
+                          color: Color.fromRGBO(222, 222, 222, 1),
+                          fontSize: 21),
                       border: OutlineInputBorder(
-                          borderSide: const BorderSide(
-                              color: Color.fromRGBO(222, 222, 222, 1)),
-                          borderRadius: BorderRadius.circular(15)),
+                        borderRadius: BorderRadius.circular(15),
+                        borderSide: const BorderSide(
+                          color: Color.fromRGBO(
+                            99,
+                            99,
+                            99,
+                            1,
+                          ),
+                        ),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(15),
+                        borderSide: const BorderSide(
+                          color: Color.fromRGBO(
+                            99,
+                            99,
+                            99,
+                            1,
+                          ),
+                        ),
+                      ),
                       suffix: Obx(() => phoneNumberSended.value
                           ? GestureDetector(
                               child: Padding(
-                                padding: const EdgeInsets.only(top: 3),
+                                padding: const EdgeInsets.only(top: 10),
                                 child: SizedBox(
                                   height: 22,
                                   width: 22,
@@ -165,15 +184,12 @@ class _RegisterState extends State<Register> {
                 ),
               ),
             ),
-            const SizedBox(
-              height: 3,
-            ),
             Obx(() => phoneNumberSended.value
                 ? Padding(
                     padding: const EdgeInsets.only(
-                        left: 80, right: 80, top: 30, bottom: 20),
+                        left: 80, right: 80, top: 20, bottom: 20),
                     child: SizedBox(
-                      height: MediaQuery.of(context).size.width / 3,
+                      height: MediaQuery.of(context).size.width / 4.5,
                       child: SingleChildScrollView(
                         child: Column(
                           children: [
@@ -192,12 +208,31 @@ class _RegisterState extends State<Register> {
                                 decoration: InputDecoration(
                                   hintText: "--  --  --  --",
                                   hintStyle: const TextStyle(
-                                      fontSize: 16,
-                                      decoration: TextDecoration.none,
-                                      decorationStyle:
-                                          TextDecorationStyle.solid),
+                                    fontSize: 16,
+                                    decoration: TextDecoration.none,
+                                    decorationStyle: TextDecorationStyle.solid,
+                                  ),
                                   border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(15),
+                                    borderSide: const BorderSide(
+                                      color: Color.fromRGBO(
+                                        99,
+                                        99,
+                                        99,
+                                        1,
+                                      ),
+                                    ),
+                                  ),
+                                  focusedBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(15),
+                                    borderSide: const BorderSide(
+                                      color: Color.fromRGBO(
+                                        99,
+                                        99,
+                                        99,
+                                        1,
+                                      ),
+                                    ),
                                   ),
                                 ),
                               ),
@@ -229,10 +264,15 @@ class _RegisterState extends State<Register> {
                                             Text(
                                               " ارسال مجدد کد ",
                                               style: TextStyle(
-                                                  fontFamily: MAIN_FONT_FAMILY,
-                                                  color: Color.fromRGBO(
-                                                      156, 64, 64, 100)),
-                                            ),
+                                                fontFamily: MAIN_FONT_FAMILY,
+                                                color: Color.fromRGBO(
+                                                    156, 64, 64, 1),
+                                                decoration:
+                                                    TextDecoration.underline,
+                                                decorationColor: Color.fromRGBO(
+                                                    156, 64, 64, 1),
+                                              ),
+                                            )
                                           ]),
                                       onTap: () {
                                         sendPhoneNumber();

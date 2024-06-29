@@ -24,7 +24,9 @@ class Private extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
+        backgroundColor: Colors.white,
         leading: IconButton(
           onPressed: () => Get.to(() => Home()),
           icon: SvgPicture.asset(
@@ -67,12 +69,10 @@ class Private extends StatelessWidget {
                     children: [
                       SizedBox(
                         height: 48,
-                        width: getWidth(context),
+                        width: getWidth1(context),
                         child: TextField(
-                          
                           textAlign: TextAlign.right,
                           decoration: InputDecoration(
-                            
                             hintText: '* نام خانوادگی ',
                             hintStyle: const TextStyle(
                               fontSize: 13,
@@ -80,13 +80,32 @@ class Private extends StatelessWidget {
                             ),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10),
+                              borderSide: const BorderSide(
+                                color: Color.fromRGBO(
+                                  99,
+                                  99,
+                                  99,
+                                  1,
+                                ),
+                              ),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10),
+                              borderSide: const BorderSide(
+                                color: Color.fromRGBO(
+                                  99,
+                                  99,
+                                  99,
+                                  1,
+                                ),
+                              ),
                             ),
                           ),
                         ),
                       ),
                       SizedBox(
                         height: 48,
-                        width: getWidth(context),
+                        width: getWidth1(context),
                         child: TextField(
                           onTap: () => show.value = false,
                           textAlign: TextAlign.right,
@@ -96,6 +115,25 @@ class Private extends StatelessWidget {
                                 color: Color(0xFFA6A6A6), fontSize: 13),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10),
+                              borderSide: const BorderSide(
+                                color: Color.fromRGBO(
+                                  99,
+                                  99,
+                                  99,
+                                  1,
+                                ),
+                              ),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10),
+                              borderSide: const BorderSide(
+                                color: Color.fromRGBO(
+                                  99,
+                                  99,
+                                  99,
+                                  1,
+                                ),
+                              ),
                             ),
                           ),
                         ),
@@ -108,7 +146,7 @@ class Private extends StatelessWidget {
                     children: [
                       SizedBox(
                         height: 48,
-                        width: getWidth(context),
+                        width: getWidth1(context),
                         child: TextField(
                           textAlign: TextAlign.right,
                           readOnly: true,
@@ -126,13 +164,32 @@ class Private extends StatelessWidget {
                             ),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10),
+                              borderSide: const BorderSide(
+                                color: Color.fromRGBO(
+                                  99,
+                                  99,
+                                  99,
+                                  1,
+                                ),
+                              ),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10),
+                              borderSide: const BorderSide(
+                                color: Color.fromRGBO(
+                                  99,
+                                  99,
+                                  99,
+                                  1,
+                                ),
+                              ),
                             ),
                           ),
                         ),
                       ),
                       SizedBox(
                         height: 48,
-                        width: getWidth(context),
+                        width: getWidth1(context),
                         child: TextField(
                           textAlign: TextAlign.right,
                           decoration: InputDecoration(
@@ -141,6 +198,25 @@ class Private extends StatelessWidget {
                                 color: Color(0xFFA6A6A6), fontSize: 13),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10),
+                              borderSide: const BorderSide(
+                                color: Color.fromRGBO(
+                                  99,
+                                  99,
+                                  99,
+                                  1,
+                                ),
+                              ),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10),
+                              borderSide: const BorderSide(
+                                color: Color.fromRGBO(
+                                  99,
+                                  99,
+                                  99,
+                                  1,
+                                ),
+                              ),
                             ),
                           ),
                         ),
@@ -153,20 +229,33 @@ class Private extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 2),
                     child: SizedBox(
-                      height: 48,
+                      height: 43,
                       // width: getWidth(context),
                       child: TextField(
                         scrollPadding: EdgeInsets.only(
                             bottom: MediaQuery.of(context).viewInsets.bottom),
                         textAlign: TextAlign.right,
                         decoration: InputDecoration(
-                            hintText: 'نام کاربری * ( به انگلیسی) ',
-                            hintStyle: const TextStyle(
-                              color: Color(0xFFA6A6A6),
+                          hintText: ' * نام کاربری  ( به انگلیسی) ',
+                          hintStyle: const TextStyle(
+                            color: Color(0xFFA5A5A5),
+                            fontSize: 12,
+                            fontFamily: 'Iran Sans',
+                            fontWeight: FontWeight.w400,
+                          ),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10),
+                            borderSide: const BorderSide(
+                              color: Color.fromRGBO(23, 102, 175, 1),
                             ),
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10),
-                            )),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10),
+                            borderSide: const BorderSide(
+                              color: Color.fromRGBO(23, 102, 175, 1),
+                            ),
+                          ),
+                        ),
                       ),
                     ),
                   ),
@@ -211,8 +300,8 @@ class Private extends StatelessWidget {
     );
   }
 
-  double getWidth(BuildContext context) =>
-      (MediaQuery.of(context).size.width / 2) * 0.9;
+  double getWidth1(BuildContext context) =>
+      (MediaQuery.of(context).size.width / 2.05) * 0.9;
 }
 
 LinearGradient GetGradient() => const LinearGradient(colors: [

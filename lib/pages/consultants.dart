@@ -28,7 +28,9 @@ class Consultants extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
+        backgroundColor: Colors.white,
         leading: IconButton(
           onPressed: () => Get.to(() => Home()),
           icon: SvgPicture.asset(
@@ -81,6 +83,25 @@ class Consultants extends StatelessWidget {
                                 color: Color(0xFFA6A6A6), fontSize: 13),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10),
+                              borderSide: const BorderSide(
+                                color: Color.fromRGBO(
+                                  99,
+                                  99,
+                                  99,
+                                  1,
+                                ),
+                              ),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10),
+                              borderSide: const BorderSide(
+                                color: Color.fromRGBO(
+                                  99,
+                                  99,
+                                  99,
+                                  1,
+                                ),
+                              ),
                             ),
                           ),
                         ),
@@ -97,6 +118,25 @@ class Consultants extends StatelessWidget {
                                 color: Color(0xFFA6A6A6), fontSize: 13),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10),
+                              borderSide: const BorderSide(
+                                color: Color.fromRGBO(
+                                  99,
+                                  99,
+                                  99,
+                                  1,
+                                ),
+                              ),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10),
+                              borderSide: const BorderSide(
+                                color: Color.fromRGBO(
+                                  99,
+                                  99,
+                                  99,
+                                  1,
+                                ),
+                              ),
                             ),
                           ),
                         ),
@@ -127,6 +167,25 @@ class Consultants extends StatelessWidget {
                             ),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10),
+                              borderSide: const BorderSide(
+                                color: Color.fromRGBO(
+                                  99,
+                                  99,
+                                  99,
+                                  1,
+                                ),
+                              ),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10),
+                              borderSide: const BorderSide(
+                                color: Color.fromRGBO(
+                                  99,
+                                  99,
+                                  99,
+                                  1,
+                                ),
+                              ),
                             ),
                           ),
                         ),
@@ -142,6 +201,25 @@ class Consultants extends StatelessWidget {
                                 color: Color(0xFFA6A6A6), fontSize: 13),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10),
+                              borderSide: const BorderSide(
+                                color: Color.fromRGBO(
+                                  99,
+                                  99,
+                                  99,
+                                  1,
+                                ),
+                              ),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10),
+                              borderSide: const BorderSide(
+                                color: Color.fromRGBO(
+                                  99,
+                                  99,
+                                  99,
+                                  1,
+                                ),
+                              ),
                             ),
                           ),
                         ),
@@ -172,6 +250,25 @@ class Consultants extends StatelessWidget {
                             ),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10),
+                              borderSide: const BorderSide(
+                                color: Color.fromRGBO(
+                                  99,
+                                  99,
+                                  99,
+                                  1,
+                                ),
+                              ),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10),
+                              borderSide: const BorderSide(
+                                color: Color.fromRGBO(
+                                  99,
+                                  99,
+                                  99,
+                                  1,
+                                ),
+                              ),
                             ),
                           ),
                         ),
@@ -183,7 +280,12 @@ class Consultants extends StatelessWidget {
                           textAlign: TextAlign.right,
                           decoration: InputDecoration(
                             hintText: 'تهران',
-                            prefixIcon: Icon(Icons.location_on_outlined),
+                            prefixIcon: Padding(
+                              padding: const EdgeInsets.all(12.0),
+                              child: SvgPicture.asset(
+                                'assets/images/location_moshaver.svg',
+                              ),
+                            ),
                             hintStyle: const TextStyle(
                                 color: Colors.black,
                                 fontSize: 14,
@@ -191,6 +293,25 @@ class Consultants extends StatelessWidget {
                                 fontFamily: MAIN_FONT_FAMILY),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10),
+                              borderSide: const BorderSide(
+                                color: Color.fromRGBO(
+                                  99,
+                                  99,
+                                  99,
+                                  1,
+                                ),
+                              ),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10),
+                              borderSide: const BorderSide(
+                                color: Color.fromRGBO(
+                                  99,
+                                  99,
+                                  99,
+                                  1,
+                                ),
+                              ),
                             ),
                           ),
                         ),
@@ -210,13 +331,33 @@ class Consultants extends StatelessWidget {
                             bottom: MediaQuery.of(context).viewInsets.bottom),
                         textAlign: TextAlign.right,
                         decoration: InputDecoration(
-                            hintText: 'نام کاربری ( به انگلیسی) *',
-                            hintStyle: const TextStyle(
-                              color: Color(0xFFA6A6A6),
+                          hintText: 'نام کاربری ( به انگلیسی) *',
+                          hintStyle: const TextStyle(
+                            color: Color(0xFFA6A6A6),
+                          ),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10),
+                            borderSide: const BorderSide(
+                              color: Color.fromRGBO(
+                                99,
+                                99,
+                                99,
+                                1,
+                              ),
                             ),
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10),
-                            )),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10),
+                            borderSide: const BorderSide(
+                              color: Color.fromRGBO(
+                                99,
+                                99,
+                                99,
+                                1,
+                              ),
+                            ),
+                          ),
+                        ),
                       ),
                     ),
                   ),
@@ -260,7 +401,7 @@ class Consultants extends StatelessWidget {
   }
 
   double getWidth(BuildContext context) =>
-      (MediaQuery.of(context).size.width / 2) * 0.9;
+      (MediaQuery.of(context).size.width / 2.05) * 0.9;
 
   LinearGradient GetGradient() => const LinearGradient(colors: [
         Color.fromARGB(255, 95, 173, 237),
