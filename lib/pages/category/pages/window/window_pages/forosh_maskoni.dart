@@ -25,83 +25,58 @@ class ForoshMaskoni extends StatelessWidget {
           padding: const EdgeInsets.all(5),
           height: 149,
           width: 372,
-          decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(10),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.grey.withOpacity(0.2),
-                  spreadRadius: 1,
-                  blurRadius: 1,
-                ),
-              ]),
           child: Image.asset('assets/images/Group 667.png'),
         ),
         const Divider(
           endIndent: 20,
           indent: 20,
         ),
+        const SizedBox(
+          height: 10,
+        ),
         SingleChildScrollView(
           reverse: true,
           scrollDirection: Axis.horizontal,
           child: Row(
             children: [
-              Padding(
-                padding: const EdgeInsets.all(15),
-                child: Container(
-                    height: 90,
-                    width: 147,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(10),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey.withOpacity(0.3),
-                          blurRadius: 5,
-                        )
-                      ],
-                    ),
-                    child: SvgPicture.asset(
-                      'assets/images/Group 759.svg',
-                    )),
-              ),
               Container(
                   height: 90,
-                  width: 147,
+                  width: 170,
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(10),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.3),
-                        blurRadius: 5,
-                      )
-                    ],
+                  ),
+                  child: SvgPicture.asset(
+                    'assets/images/Group 759.svg',
+                  )),
+              const SizedBox(
+                height: 10,
+              ),
+              Container(
+                  height: 90,
+                  width: 170,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10),
                   ),
                   child: SvgPicture.asset(
                     'assets/images/Group 758.svg',
                   )),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Container(
-                    height: 90,
-                    width: 147,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(10),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey.withOpacity(0.3),
-                          blurRadius: 5,
-                        )
-                      ],
-                    ),
-                    child: SvgPicture.asset(
-                      'assets/images/Group 757.svg',
-                    )),
-              ),
+              Container(
+                  height: 90,
+                  width: 170,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: SvgPicture.asset(
+                    'assets/images/Group 757.svg',
+                  )),
             ],
           ),
+        ),
+        const SizedBox(
+          height: 10,
         ),
         const Divider(
           endIndent: 20,
@@ -114,7 +89,14 @@ class ForoshMaskoni extends StatelessWidget {
           padding: const EdgeInsets.only(left: 8, right: 8),
           child: Container(
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10), border: Border.all()),
+                borderRadius: BorderRadius.circular(10),
+                border: Border.all(
+                    color: const Color.fromRGBO(
+                  234,
+                  234,
+                  234,
+                  1,
+                ))),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -127,13 +109,21 @@ class ForoshMaskoni extends StatelessWidget {
                         _show_item_1.value = !_show_item_1.value;
                       },
                     )),
-                const Text(
-                  'فروش آپارتمان بر اساس قیمت',
-                  style: TextStyle(
-                      fontSize: 18,
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold,
-                      fontFamily: MAIN_FONT_FAMILY),
+                const Padding(
+                  padding: EdgeInsets.only(right: 15.0),
+                  child: Text(
+                    'فروش آپارتمان بر اساس قیمت',
+                    style: TextStyle(
+                        fontSize: 18,
+                        color: Color.fromRGBO(
+                          48,
+                          48,
+                          48,
+                          1,
+                        ),
+                        fontWeight: FontWeight.bold,
+                        fontFamily: MAIN_FONT_FAMILY),
+                  ),
                 ),
               ],
             ),
@@ -154,7 +144,16 @@ class ForoshMaskoni extends StatelessWidget {
           padding: const EdgeInsets.only(left: 8, right: 8),
           child: Container(
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10), border: Border.all()),
+              borderRadius: BorderRadius.circular(10),
+              border: Border.all(
+                color: const Color.fromRGBO(
+                  234,
+                  234,
+                  234,
+                  1,
+                ),
+              ),
+            ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -167,13 +166,21 @@ class ForoshMaskoni extends StatelessWidget {
                         _show_item_2.value = !_show_item_2.value;
                       },
                     )),
-                const Text(
-                  'فروش آپارتمان بر اساس متراژ',
-                  style: TextStyle(
-                      fontSize: 18,
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold,
-                      fontFamily: MAIN_FONT_FAMILY),
+                const Padding(
+                  padding: EdgeInsets.only(right: 15.0),
+                  child: Text(
+                    'فروش آپارتمان بر اساس متراژ',
+                    style: TextStyle(
+                        fontSize: 18,
+                        color: Color.fromRGBO(
+                          48,
+                          48,
+                          48,
+                          1,
+                        ),
+                        fontWeight: FontWeight.bold,
+                        fontFamily: MAIN_FONT_FAMILY),
+                  ),
                 ),
               ],
             ),
@@ -183,12 +190,22 @@ class ForoshMaskoni extends StatelessWidget {
         const SizedBox(
           height: 20,
         ),
-        const Divider(),
+        const Divider(
+          endIndent: 20,
+          indent: 20,
+        ),
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: Container(
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10), border: Border.all()),
+                borderRadius: BorderRadius.circular(10),
+                border: Border.all(
+                    color: const Color.fromRGBO(
+                  234,
+                  234,
+                  234,
+                  1,
+                ))),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -201,13 +218,21 @@ class ForoshMaskoni extends StatelessWidget {
                         _show_item_3.value = !_show_item_3.value;
                       },
                     )),
-                const Text(
-                  'خرید ویلا در شمال',
-                  style: TextStyle(
-                      fontSize: 18,
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold,
-                      fontFamily: MAIN_FONT_FAMILY),
+                Padding(
+                  padding: EdgeInsets.only(right: 15.0),
+                  child: const Text(
+                    'خرید ویلا در شمال',
+                    style: TextStyle(
+                        fontSize: 18,
+                        color: Color.fromRGBO(
+                          48,
+                          48,
+                          48,
+                          1,
+                        ),
+                        fontWeight: FontWeight.bold,
+                        fontFamily: MAIN_FONT_FAMILY),
+                  ),
                 ),
               ],
             ),
@@ -667,8 +692,8 @@ class ForoshMaskoni extends StatelessWidget {
                               Padding(
                                 padding: const EdgeInsets.all(10.0),
                                 child: Container(
-                                    height: 98,
-                                    width: 175,
+                                    height: 76,
+                                    width: 134,
                                     decoration: BoxDecoration(
                                       color: Colors.white,
                                       borderRadius: BorderRadius.circular(10),
@@ -681,8 +706,8 @@ class ForoshMaskoni extends StatelessWidget {
                               Padding(
                                 padding: const EdgeInsets.all(10.0),
                                 child: Container(
-                                    height: 98,
-                                    width: 175,
+                                    height: 76,
+                                    width: 134,
                                     decoration: BoxDecoration(
                                       color: Colors.white,
                                       borderRadius: BorderRadius.circular(10),
@@ -692,21 +717,18 @@ class ForoshMaskoni extends StatelessWidget {
                                       fit: BoxFit.cover,
                                     )),
                               ),
-                              Padding(
-                                padding: const EdgeInsets.all(10.0),
-                                child: Container(
-                                    height: 98,
-                                    width: 175,
-                                    decoration: BoxDecoration(
-                                      color: Colors.white,
-                                      borderRadius: BorderRadius.circular(10),
-                                      boxShadow: [],
-                                    ),
-                                    child: SvgPicture.asset(
-                                      'assets/images/Group 653.svg',
-                                      fit: BoxFit.cover,
-                                    )),
-                              )
+                              Container(
+                                  height: 76,
+                                  width: 134,
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(10),
+                                    boxShadow: [],
+                                  ),
+                                  child: SvgPicture.asset(
+                                    'assets/images/Group 653.svg',
+                                    fit: BoxFit.cover,
+                                  ))
                             ],
                           ),
                         ),

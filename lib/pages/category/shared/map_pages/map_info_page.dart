@@ -159,10 +159,10 @@ class _MapInfoPageState extends State<MapInfoPage> {
                 const Text(
                   "انتخاب محله ",
                   style: TextStyle(
-                    color: Color.fromRGBO(99, 99, 99, 1),
-                    fontSize: 16,
-                    fontFamily: MAIN_FONT_FAMILY,
-                  ),
+                      color: Color.fromRGBO(99, 99, 99, 1),
+                      fontSize: 16,
+                      fontFamily: 'Iran Sans',
+                      fontWeight: FontWeight.w500),
                 ),
                 Container(
                     width: Get.width * 0.4,
@@ -202,10 +202,10 @@ class _MapInfoPageState extends State<MapInfoPage> {
                 const Text(
                   "*انتخاب شهر",
                   style: TextStyle(
-                    color: Color.fromRGBO(99, 99, 99, 1),
-                    fontSize: 16,
-                    fontFamily: MAIN_FONT_FAMILY,
-                  ),
+                      color: Color.fromRGBO(99, 99, 99, 1),
+                      fontSize: 16,
+                      fontFamily: 'Iran Sans',
+                      fontWeight: FontWeight.w500),
                   textAlign: TextAlign.start,
                 ),
                 Container(
@@ -229,6 +229,7 @@ class _MapInfoPageState extends State<MapInfoPage> {
                               child: Text(
                                 style: const TextStyle(
                                     fontFamily: 'Iran Sans Bold,',
+                                    color: Color.fromRGBO(99, 99, 99, 1),
                                     fontWeight: FontWeight.w400),
                                 locationInfo.cityName,
                                 textAlign: TextAlign.center,
@@ -250,7 +251,7 @@ class _MapInfoPageState extends State<MapInfoPage> {
           child: Text(
             "توضیحات",
             style: TextStyle(
-                color: Color(0xFF636363),
+                color: Color.fromRGBO(226, 226, 226, 1),
                 fontSize: 14,
                 fontWeight: FontWeight.w500,
                 fontFamily: MAIN_FONT_FAMILY),

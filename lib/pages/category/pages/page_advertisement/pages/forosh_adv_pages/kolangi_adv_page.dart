@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/models/AdvInfoModel.dart';
 import 'package:flutter_application_1/pages/category/models/FacilitiesModel.dart';
+import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/ejara_adv_pages/ejara_vila_page.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/category/shared/date.dart';
 import 'package:flutter_application_1/pages/category/shared/facilities_selector.dart';
@@ -11,6 +12,7 @@ import 'package:flutter_application_1/pages/category/shared/number_piacker.dart'
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
 import 'package:flutter_application_1/pages/category/shared/twoItemInRow.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/route_widget.dart';
+import 'package:flutter_application_1/pages/category/shared/widget/submit_row.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/switachable.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
@@ -22,6 +24,7 @@ import '../../../../shared/widget/text_field.dart';
 class KolangiAdvPage extends StatelessWidget {
   final aghsatType = "".obs;
   final onvan = "".obs;
+  final submit = false.obs;
 
   final hasAnbari = false.obs;
   final hasAsansor = false.obs;
@@ -65,6 +68,7 @@ class KolangiAdvPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Colors.white,
         appBar: buildaAppBar(),
         body: SingleChildScrollView(
           child: Padding(
@@ -139,8 +143,14 @@ class KolangiAdvPage extends StatelessWidget {
                 height: 20,
               ),
               const Divider(
-                endIndent: 20,
-                indent: 20,
+                color: Color.fromRGBO(
+                  226,
+                  226,
+                  226,
+                  1,
+                ),
+                endIndent: 6,
+                indent: 6,
               ),
               const SizedBox(
                 height: 20,
@@ -231,16 +241,28 @@ class KolangiAdvPage extends StatelessWidget {
                 height: 20,
               ),
               const Divider(
-                endIndent: 20,
-                indent: 20,
+                color: Color.fromRGBO(
+                  226,
+                  226,
+                  226,
+                  1,
+                ),
+                endIndent: 6,
+                indent: 6,
               ),
               const SizedBox(
                 height: 20,
               ),
               aghsatiForoshWidget(context),
               const Divider(
-                endIndent: 20,
-                indent: 20,
+                color: Color.fromRGBO(
+                  226,
+                  226,
+                  226,
+                  1,
+                ),
+                endIndent: 6,
+                indent: 6,
               ),
               melkByVamBanki(context),
               const SizedBox(
@@ -250,8 +272,14 @@ class KolangiAdvPage extends StatelessWidget {
                 height: 15,
               ),
               const Divider(
-                endIndent: 20,
-                indent: 20,
+                color: Color.fromRGBO(
+                  226,
+                  226,
+                  226,
+                  1,
+                ),
+                endIndent: 6,
+                indent: 6,
               ),
               const Text(
                 "سایر ویژگی ها",
@@ -305,8 +333,14 @@ class KolangiAdvPage extends StatelessWidget {
                 height: 20,
               ),
               const Divider(
-                endIndent: 20,
-                indent: 20,
+                color: Color.fromRGBO(
+                  226,
+                  226,
+                  226,
+                  1,
+                ),
+                endIndent: 6,
+                indent: 6,
               ),
               const Text(
                 "امکانات",
@@ -374,8 +408,14 @@ class KolangiAdvPage extends StatelessWidget {
                 height: 20,
               ),
               const Divider(
-                endIndent: 20,
-                indent: 20,
+                color: Color.fromRGBO(
+                  226,
+                  226,
+                  226,
+                  1,
+                ),
+                endIndent: 6,
+                indent: 6,
               ),
               const SizedBox(
                 height: 20,
@@ -383,8 +423,21 @@ class KolangiAdvPage extends StatelessWidget {
               ImagesPicker(
                 selectedImagesPath: _selectedImagesPath,
               ),
-              const Divider(),
-              AdvInfo(_advInfo)
+              const Divider(
+                color: Color.fromRGBO(
+                  226,
+                  226,
+                  226,
+                  1,
+                ),
+                endIndent: 6,
+                indent: 6,
+              ),
+              AdvInfo(_advInfo),
+              const SizedBox(
+                height: 30,
+              ),
+              SubmitRow(submit: submit, nextPage: EjaraVilaPage())
             ]),
           ),
         ));
@@ -465,8 +518,7 @@ class KolangiAdvPage extends StatelessWidget {
     );
   }
 
-  double getPageWidth_2(BuildContext context) =>
-      getPageWidth();
+  double getPageWidth_2(BuildContext context) => getPageWidth();
 
   Widget aghsatiForoshWidget(BuildContext context) {
     final isSwitched = true.obs;
@@ -534,7 +586,7 @@ class KolangiAdvPage extends StatelessWidget {
                         persianDataPicker((date) {
                           _timeOfInstallmentsController.text = date;
                         });
-                      }, width: getPageWidth(),fontSize: 13),
+                      }, width: getPageWidth(), fontSize: 13),
                       widget2:
                           ReadOnlyTextField(_countOfInstallmentsController, () {
                         showNumberPicker((_) {

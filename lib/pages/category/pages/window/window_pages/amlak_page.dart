@@ -91,12 +91,17 @@ class AmlakPage extends StatelessWidget {
                               ),
                             ),
                             const Padding(
-                              padding: EdgeInsets.symmetric(horizontal: 10),
+                              padding: EdgeInsets.only(right: 15.0),
                               child: Text(
                                 'فروش ویژه',
                                 style: TextStyle(
                                   fontSize: 18,
-                                  color: Colors.black,
+                                  color: Color.fromRGBO(
+                                    48,
+                                    48,
+                                    48,
+                                    1,
+                                  ),
                                   fontWeight: FontWeight.bold,
                                   fontFamily: MAIN_FONT_FAMILY,
                                 ),
@@ -145,12 +150,17 @@ class AmlakPage extends StatelessWidget {
                     },
                   )),
               const Padding(
-                padding: EdgeInsets.only(left: 10, right: 10),
+                padding: EdgeInsets.only(right: 15.0),
                 child: Text(
                   'خانه اول',
                   style: TextStyle(
                       fontSize: 18,
-                      color: Colors.black,
+                      color: Color.fromRGBO(
+                        48,
+                        48,
+                        48,
+                        1,
+                      ),
                       fontWeight: FontWeight.bold,
                       fontFamily: MAIN_FONT_FAMILY),
                 ),
@@ -185,8 +195,8 @@ class AmlakPage extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Container(
-                              height: 98,
-                              width: 182,
+                              height: 90,
+                              width: 170,
                               decoration: BoxDecoration(
                                 color: Colors.white,
                                 borderRadius: BorderRadius.circular(10),
@@ -195,8 +205,8 @@ class AmlakPage extends StatelessWidget {
                                 'assets/images/Group 768.svg',
                               )),
                           Container(
-                              height: 98,
-                              width: 182,
+                              height: 90,
+                              width: 170,
                               decoration: BoxDecoration(
                                 color: Colors.white,
                                 borderRadius: BorderRadius.circular(10),
@@ -232,26 +242,20 @@ class AmlakPage extends StatelessWidget {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
-                          Container(
-                              height: 97,
-                              width: 180,
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              child: SvgPicture.asset(
-                                'assets/images/Group 655.svg',
-                              )),
-                          Container(
-                              height: 98,
-                              width: 180,
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              child: SvgPicture.asset(
-                                'assets/images/Group 654.svg',
-                              )),
+                          SizedBox(
+                            height: 90,
+                            width: 165,
+                            child: SvgPicture.asset(
+                              'assets/images/Group 655.svg',
+                            ),
+                          ),
+                          SizedBox(
+                            height: 90,
+                            width: 165,
+                            child: SvgPicture.asset(
+                              'assets/images/Group 654.svg',
+                            ),
+                          ),
                         ],
                       ),
                     ),

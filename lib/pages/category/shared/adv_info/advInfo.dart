@@ -56,7 +56,8 @@ class AdvInfo extends StatelessWidget {
                             child: Text(
                               "*عنوان آگهی",
                               style: TextStyle(
-                                  fontFamily: MAIN_FONT_FAMILY,
+                                  fontFamily: 'Iran Sans',
+                                  fontWeight: FontWeight.w600,
                                   color: Color.fromRGBO(166, 166, 166, 1)),
                             )),
                       ),
@@ -66,9 +67,23 @@ class AdvInfo extends StatelessWidget {
                           advInfoModel.title = _;
                         },
                         decoration: InputDecoration(
-                            hintText: "تایپ کنید",
-                            border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(15))),
+                          hintText: "تایپ کنید",
+                          hintStyle: const TextStyle(
+                              fontFamily: 'Iran Sans',
+                              fontWeight: FontWeight.w400),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10),
+                            borderSide: const BorderSide(
+                              color: Color.fromRGBO(23, 102, 175, 1),
+                            ),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10),
+                            borderSide: const BorderSide(
+                              color: Color.fromRGBO(23, 102, 175, 1),
+                            ),
+                          ),
+                        ),
                       ),
                       const SizedBox(
                         height: 10,
@@ -82,7 +97,8 @@ class AdvInfo extends StatelessWidget {
                                 child: Text(
                                   "توضیحات آگهی",
                                   style: TextStyle(
-                                      fontFamily: MAIN_FONT_FAMILY,
+                                      fontFamily: 'Iran Sans',
+                                      fontWeight: FontWeight.w600,
                                       color: Color.fromRGBO(166, 166, 166, 1)),
                                 )),
                           ),
@@ -93,9 +109,20 @@ class AdvInfo extends StatelessWidget {
                               advInfoModel.description = _;
                             },
                             decoration: InputDecoration(
-                                hintText: "تایپ کنید",
-                                border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(15))),
+                              hintText: "تایپ کنید",
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10),
+                                borderSide: const BorderSide(
+                                  color: Color.fromRGBO(23, 102, 175, 1),
+                                ),
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10),
+                                borderSide: const BorderSide(
+                                  color: Color.fromRGBO(23, 102, 175, 1),
+                                ),
+                              ),
+                            ),
                           )
                         ],
                       )

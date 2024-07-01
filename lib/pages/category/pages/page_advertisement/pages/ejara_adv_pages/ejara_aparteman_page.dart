@@ -109,6 +109,15 @@ class EjaraApartemanPage extends StatelessWidget {
                       ),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
+                        borderSide: const BorderSide(
+                          color: Color.fromRGBO(23, 102, 175, 1),
+                        ),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                        borderSide: const BorderSide(
+                          color: Color.fromRGBO(23, 102, 175, 1),
+                        ),
                       ),
                     ),
                   ),
@@ -126,6 +135,15 @@ class EjaraApartemanPage extends StatelessWidget {
                       ),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
+                        borderSide: const BorderSide(
+                          color: Color.fromRGBO(23, 102, 175, 1),
+                        ),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                        borderSide: const BorderSide(
+                          color: Color.fromRGBO(23, 102, 175, 1),
+                        ),
                       ),
                     ),
                   ),
@@ -134,11 +152,39 @@ class EjaraApartemanPage extends StatelessWidget {
               const SizedBox(
                 height: 20,
               ),
-              const Text(
-                "برای ثبت آگهی با عنوان رهن کامل، اجاره را وارد نکنید",
-                style: TextStyle(
-                  fontSize: 12,
-                  fontFamily: MAIN_FONT_FAMILY,
+              RichText(
+                text: const TextSpan(
+                  children: [
+                    TextSpan(
+                      text: "برای ثبت آگهی با عنوان ",
+                      style: TextStyle(
+                        fontSize: 12,
+                        fontFamily: MAIN_FONT_FAMILY,
+                        color: Colors.black, // Default text color
+                      ),
+                    ),
+                    TextSpan(
+                      text: "رهن کامل",
+                      style: TextStyle(
+                        fontSize: 12,
+                        fontFamily: MAIN_FONT_FAMILY,
+                        color: Color.fromRGBO(
+                          156,
+                          64,
+                          64,
+                          1,
+                        ), // Red color for this specific text
+                      ),
+                    ),
+                    TextSpan(
+                      text: "، اجاره را وارد نکنید",
+                      style: TextStyle(
+                        fontSize: 12,
+                        fontFamily: MAIN_FONT_FAMILY,
+                        color: Colors.black, // Default text color
+                      ),
+                    ),
+                  ],
                 ),
               ),
               const SizedBox(
@@ -183,6 +229,15 @@ class EjaraApartemanPage extends StatelessWidget {
                     ),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
+                      borderSide: const BorderSide(
+                        color: Color.fromRGBO(23, 102, 175, 1),
+                      ),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      borderSide: const BorderSide(
+                        color: Color.fromRGBO(23, 102, 175, 1),
+                      ),
                     ),
                   ),
                 ),
@@ -191,8 +246,14 @@ class EjaraApartemanPage extends StatelessWidget {
                 height: 20,
               ),
               const Divider(
-                endIndent: 20,
-                indent: 20,
+                color: Color.fromRGBO(
+                  226,
+                  226,
+                  226,
+                  1,
+                ),
+                endIndent: 6,
+                indent: 6,
               ),
               const SizedBox(
                 height: 20,
@@ -347,8 +408,14 @@ class EjaraApartemanPage extends StatelessWidget {
                 height: 10,
               ),
               const Divider(
-                endIndent: 20,
-                indent: 20,
+                color: Color.fromRGBO(
+                  226,
+                  226,
+                  226,
+                  1,
+                ),
+                endIndent: 6,
+                indent: 6,
               ),
               const SizedBox(
                 height: 10,
@@ -435,8 +502,14 @@ class EjaraApartemanPage extends StatelessWidget {
                 height: 20,
               ),
               const Divider(
-                endIndent: 20,
-                indent: 20,
+                color: Color.fromRGBO(
+                  226,
+                  226,
+                  226,
+                  1,
+                ),
+                endIndent: 6,
+                indent: 6,
               ),
               const SizedBox(
                 height: 10,
@@ -620,14 +693,29 @@ class EjaraApartemanPage extends StatelessWidget {
                 height: 20,
               ),
               const Divider(
-                endIndent: 20,
-                indent: 20,
+                color: Color.fromRGBO(
+                  226,
+                  226,
+                  226,
+                  1,
+                ),
+                endIndent: 6,
+                indent: 6,
               ),
               const SizedBox(
                 height: 20,
               ),
               ImagesPicker(selectedImagesPath: _selectedImagesPath),
-              const Divider(),
+              const Divider(
+                color: Color.fromRGBO(
+                  226,
+                  226,
+                  226,
+                  1,
+                ),
+                endIndent: 6,
+                indent: 6,
+              ),
               const SizedBox(
                 height: 5,
               ),
@@ -691,6 +779,15 @@ Widget aghsatiForoshWidget(BuildContext context) {
                         const TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
+                      borderSide: const BorderSide(
+                        color: Color.fromRGBO(23, 102, 175, 1),
+                      ),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      borderSide: const BorderSide(
+                        color: Color.fromRGBO(23, 102, 175, 1),
+                      ),
                     ),
                   ),
                 ),
@@ -707,6 +804,15 @@ Widget aghsatiForoshWidget(BuildContext context) {
                         const TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
+                      borderSide: const BorderSide(
+                        color: Color.fromRGBO(23, 102, 175, 1),
+                      ),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      borderSide: const BorderSide(
+                        color: Color.fromRGBO(23, 102, 175, 1),
+                      ),
                     ),
                   ),
                 ),

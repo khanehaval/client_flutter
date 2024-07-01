@@ -172,21 +172,30 @@ class CategoryAdvertisement extends StatelessWidget {
         Get.to(() => nextPage);
       },
       child: Container(
-        width: 144,
-        height: 96,
-        decoration: ShapeDecoration(
-          color: Colors.white,
-          shape: RoundedRectangleBorder(
-            side: const BorderSide(width: 1.50, color: Color(0xFFE9E9E9)),
-            borderRadius: BorderRadius.circular(10),
-          ),
-        ),
-        child: SizedBox(
-          height: 90,
-          width: 140,
-          child: Padding(
-            padding: const EdgeInsets.all(2.0),
-            child: Image.asset(assetPath),
+        decoration: BoxDecoration(
+            gradient: const LinearGradient(
+              colors: GRADIANT_COLOR3,
+            ),
+            borderRadius: BorderRadius.circular(10)),
+        child: Padding(
+          padding: const EdgeInsets.all(0.5),
+          child: Container(
+            width: 144,
+            height: 96,
+            decoration: ShapeDecoration(
+              color: Colors.white,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
+            ),
+            child: SizedBox(
+              height: 90,
+              width: 140,
+              child: Padding(
+                padding: const EdgeInsets.all(3.0),
+                child: Image.asset(assetPath),
+              ),
+            ),
           ),
         ),
       ),

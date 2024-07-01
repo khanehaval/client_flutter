@@ -23,16 +23,6 @@ class SachtSaz extends StatelessWidget {
           padding: const EdgeInsets.all(5),
           height: 153,
           width: 372,
-          decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(10),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.grey.withOpacity(0.2),
-                  spreadRadius: 1,
-                  blurRadius: 1,
-                ),
-              ]),
           child: Image.asset('assets/images/Group 722.png'),
         ),
         const Divider(
@@ -47,7 +37,7 @@ class SachtSaz extends StatelessWidget {
           children: [
             Container(
                 height: 90,
-                width: 180,
+                width: 170,
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(10),
@@ -62,7 +52,7 @@ class SachtSaz extends StatelessWidget {
                 )),
             Container(
                 height: 90,
-                width: 180,
+                width: 170,
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(10),
@@ -86,7 +76,14 @@ class SachtSaz extends StatelessWidget {
           padding: const EdgeInsets.only(left: 8, right: 8),
           child: Container(
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10), border: Border.all()),
+                borderRadius: BorderRadius.circular(10),
+                border: Border.all(
+                    color: const Color.fromRGBO(
+                  234,
+                  234,
+                  234,
+                  1,
+                ))),
             child: Column(
               children: [
                 Row(
@@ -105,19 +102,24 @@ class SachtSaz extends StatelessWidget {
                       endIndent: 20,
                       indent: 20,
                     ),
-                    const Padding(
-                      padding: EdgeInsets.all(8.0),
-                      child: Column(
-                        children: [
-                          Text(
+                    const Column(
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.all(15.0),
+                          child: Text(
                             'فروش ویژه',
                             style: TextStyle(
                                 fontSize: 16,
-                                color: Colors.black,
+                                color: Color.fromRGBO(
+                                  48,
+                                  48,
+                                  48,
+                                  1,
+                                ),
                                 fontFamily: MAIN_FONT_FAMILY),
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
                   ],
                 ),
@@ -138,30 +140,12 @@ class SachtSaz extends StatelessWidget {
                   margin: EdgeInsets.all(10),
                   height: 90,
                   width: 147,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(10),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(.01),
-                      )
-                    ],
-                  ),
                   child: SvgPicture.asset(
                     'assets/images/Group 649.svg',
                   )),
               Container(
                   height: 90,
                   width: 147,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(10),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(.01),
-                      )
-                    ],
-                  ),
                   child: SvgPicture.asset(
                     'assets/images/Group 652.svg',
                   )),
@@ -169,15 +153,6 @@ class SachtSaz extends StatelessWidget {
                   margin: EdgeInsets.all(10),
                   height: 90,
                   width: 147,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(10),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(.01),
-                      )
-                    ],
-                  ),
                   child: SvgPicture.asset(
                     'assets/images/Group 653.svg',
                   )),
@@ -192,47 +167,24 @@ class SachtSaz extends StatelessWidget {
     return Obx(() => _show_item_1.isTrue
         ? Column(
             children: [
-              Image.asset('assets/images/Group project.png'),
+              Image.asset(
+                'assets/images/Group project.png',
+                width: 370,
+                height: 111,
+              ),
               const SizedBox(
                 height: 10,
               ),
               Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
                 Container(
-                    height: 98,
-                    width: 180,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(10),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey.withOpacity(.01),
-                        )
-                      ],
-                      border: Border.all(
-                        color: Colors.black45,
-                        width: 0.1,
-                      ),
-                    ),
+                    height: 90,
+                    width: 170,
                     child: SvgPicture.asset(
                       'assets/images/Group mehregan.svg',
                     )),
                 Container(
-                    height: 98,
-                    width: 180,
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(10),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withOpacity(.01),
-                            spreadRadius: 1,
-                            blurRadius: 10,
-                          )
-                        ],
-                        border: Border.all(
-                          color: Colors.black45,
-                          width: 0.1,
-                        )),
+                    height: 90,
+                    width: 170,
                     child: SvgPicture.asset(
                       'assets/images/Group loshan.svg',
                     )),

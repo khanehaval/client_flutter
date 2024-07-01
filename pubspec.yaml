@@ -77,7 +77,7 @@ dependencies:
   flutter_svg: 2.0.9
   json_annotation: 4.8.1
   persian_datetime_picker: 2.6.0
-  flutter_map: 6.1.0 
+  flutter_map: 6.1.0
   introduction_screen: 3.1.14
   badges: 3.1.2
   screen_brightness: 1.0.1

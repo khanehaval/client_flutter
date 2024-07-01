@@ -32,7 +32,7 @@ class SakhVaSaz extends StatelessWidget {
             }),
           ]),
           const SizedBox(
-            height: 20,
+            height: 30,
           ),
           _buildItem('assets/images/Frame_sakht2.png', () {
             Get.to(FirstMapPage(onSelect: (_) {
@@ -54,25 +54,10 @@ class SakhVaSaz extends StatelessWidget {
         onTap();
       },
       child: SizedBox(
-          height: 90,
-          width: 140,
-          child: Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: Padding(
-              padding: const EdgeInsets.all(2.0),
-              child: Container(
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(10),
-                      border: Border.all(
-                        color: Colors.black12,
-                        width: 1.5,
-                      )),
-                  child: Image.asset(assetPath)),
-            ),
-          )),
+        height: 90,
+        width: 140,
+        child: Container(child: Image.asset(assetPath)),
+      ),
     );
   }
 }

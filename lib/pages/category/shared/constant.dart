@@ -20,12 +20,17 @@ const GRADIANT_COLOR3 = [
   Color.fromRGBO(234, 234, 234, 1),
   Color.fromRGBO(189, 189, 189, 1),
 ];
+const GRADIANT_COLOR4 = [
+  Color.fromRGBO(255, 255, 255, 1),
+  Color.fromRGBO(99, 99, 99, 1),
+];
 const BLACK_12_GRADIANT_COLOR = [
   Colors.black12,
   Colors.black12,
   Colors.black12,
 ];
 
-double getPageWidth() => Get.width * 0.35;
+double getPageWidth() => Get.width * 0.40;
+double getPageWidthlocation() => Get.width * 0.40;
 
 scaffoldKey() => GlobalKey<ScaffoldState>();

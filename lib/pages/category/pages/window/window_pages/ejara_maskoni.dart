@@ -53,9 +53,7 @@ class EjaraMaskoni extends StatelessWidget {
                       )
                     ],
                   ),
-                  child: SvgPicture.asset(
-                    'assets/images/Group 753.svg',
-                  )),
+                  child: Image.asset('assets/images/Group 753.png')),
             ),
             Container(
                 height: 90,
@@ -84,7 +82,15 @@ class EjaraMaskoni extends StatelessWidget {
         Container(
           margin: const EdgeInsets.only(left: 10, right: 10),
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10), border: Border.all()),
+            borderRadius: BorderRadius.circular(10),
+            border: Border.all(
+                color: const Color.fromRGBO(
+              234,
+              234,
+              234,
+              1,
+            )),
+          ),
           child: Column(
             children: [
               Row(
@@ -107,12 +113,17 @@ class EjaraMaskoni extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Padding(
-                        padding: EdgeInsets.only(right: 10.0),
+                        padding: EdgeInsets.only(right: 15.0),
                         child: Text(
                           'اجاره آپارتمان بر اساس متراژ',
                           style: TextStyle(
                               fontSize: 18,
-                              color: Colors.black,
+                              color: Color.fromRGBO(
+                                48,
+                                48,
+                                48,
+                                1,
+                              ),
                               fontWeight: FontWeight.bold,
                               fontFamily: MAIN_FONT_FAMILY),
                         ),

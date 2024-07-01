@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/models/AdvInfoModel.dart';
 import 'package:flutter_application_1/pages/category/models/FacilitiesModel.dart';
 import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/forosh_adv_pages/kolangi_adv_page.dart';
+import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/kota_modat_pages/ejara_km_vila_page.dart';
 import 'package:flutter_application_1/pages/category/shared/adv_info/advInfo.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/category/shared/date.dart';
@@ -11,6 +12,7 @@ import 'package:flutter_application_1/pages/category/shared/more_emkanat/jahat_s
 import 'package:flutter_application_1/pages/category/shared/number_piacker.dart';
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
 import 'package:flutter_application_1/pages/category/shared/twoItemInRow.dart';
+import 'package:flutter_application_1/pages/category/shared/widget/submit_row.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/text_field.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
@@ -18,6 +20,8 @@ import 'package:get/get.dart';
 class EjaraVilaPage extends StatelessWidget {
   final aghsatType = "".obs;
   final onvan = "".obs;
+  final submit = false.obs;
+
   int selectedIndex = 0;
   final hasAnbari = false.obs;
   final hasAsansor = false.obs;
@@ -127,11 +131,38 @@ class EjaraVilaPage extends StatelessWidget {
               const SizedBox(
                 height: 20,
               ),
-              const Text(
-                "برای ثبت آگهی با عنوان رهن کامل، اجاره را وارد نکنید",
-                style: TextStyle(
-                  fontSize: 12,
-                  fontFamily: MAIN_FONT_FAMILY,
+              RichText(
+                text: const TextSpan(
+                  children: [
+                    TextSpan(
+                      text: "برای ثبت آگهی با عنوان ",
+                      style: TextStyle(
+                        fontSize: 12,
+                        fontFamily: MAIN_FONT_FAMILY,
+                        color: Colors.black, // Default text color
+                      ),
+                    ),
+                    TextSpan(
+                      text: "رهن کامل",
+                      style: TextStyle(
+                          fontSize: 12,
+                          fontFamily: MAIN_FONT_FAMILY,
+                          color: Color.fromRGBO(
+                            156,
+                            64,
+                            64,
+                            1,
+                          )),
+                    ),
+                    TextSpan(
+                      text: "، اجاره را وارد نکنید",
+                      style: TextStyle(
+                        fontSize: 12,
+                        fontFamily: MAIN_FONT_FAMILY,
+                        color: Colors.black, // Default text color
+                      ),
+                    ),
+                  ],
                 ),
               ),
               const SizedBox(
@@ -142,8 +173,14 @@ class EjaraVilaPage extends StatelessWidget {
                 height: 20,
               ),
               const Divider(
-                endIndent: 20,
-                indent: 20,
+                color: Color.fromRGBO(
+                  226,
+                  226,
+                  226,
+                  1,
+                ),
+                endIndent: 6,
+                indent: 6,
               ),
               const SizedBox(
                 height: 20,
@@ -196,8 +233,14 @@ class EjaraVilaPage extends StatelessWidget {
                 height: 20,
               ),
               const Divider(
-                endIndent: 20,
-                indent: 20,
+                color: Color.fromRGBO(
+                  226,
+                  226,
+                  226,
+                  1,
+                ),
+                endIndent: 6,
+                indent: 6,
               ),
               const SizedBox(
                 height: 20,
@@ -323,8 +366,14 @@ class EjaraVilaPage extends StatelessWidget {
                 height: 10,
               ),
               const Divider(
-                endIndent: 20,
-                indent: 20,
+                color: Color.fromRGBO(
+                  226,
+                  226,
+                  226,
+                  1,
+                ),
+                endIndent: 6,
+                indent: 6,
               ),
               const SizedBox(
                 height: 10,
@@ -351,8 +400,14 @@ class EjaraVilaPage extends StatelessWidget {
                 height: 20,
               ),
               const Divider(
-                endIndent: 20,
-                indent: 20,
+                color: Color.fromRGBO(
+                  226,
+                  226,
+                  226,
+                  1,
+                ),
+                endIndent: 6,
+                indent: 6,
               ),
               const SizedBox(
                 height: 10,
@@ -536,18 +591,37 @@ class EjaraVilaPage extends StatelessWidget {
                 height: 20,
               ),
               const Divider(
-                endIndent: 20,
-                indent: 20,
+                color: Color.fromRGBO(
+                  226,
+                  226,
+                  226,
+                  1,
+                ),
+                endIndent: 6,
+                indent: 6,
               ),
               const SizedBox(
                 height: 20,
               ),
               ImagesPicker(selectedImagesPath: _selectedImagesPath),
-              const Divider(),
+              const Divider(
+                color: Color.fromRGBO(
+                  226,
+                  226,
+                  226,
+                  1,
+                ),
+                endIndent: 6,
+                indent: 6,
+              ),
               const SizedBox(
                 height: 15,
               ),
-              AdvInfo(_advInfo)
+              AdvInfo(_advInfo),
+              const SizedBox(
+                height: 30,
+              ),
+              SubmitRow(submit: submit, nextPage: EjaraVilaPage())
             ]),
           ),
         ));

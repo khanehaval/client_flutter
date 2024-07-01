@@ -2,6 +2,8 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/category/shared/map_pages/location_Info.dart';
+import 'package:flutter_application_1/pages/category/shared/widget/Neighbourhood.dart';
+import 'package:flutter_application_1/pages/category/shared/widget/city_widget.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:geolocator/geolocator.dart';
@@ -170,24 +172,25 @@ class _SelectLocationMapState extends State<SelectLocationMap> {
                         scale: 1.1,
                         child: Obx(
                           () => Switch(
-                              onChanged: (_) => showLimit.value = _,
-                              value: showLimit.value,
-                              activeColor: Colors.white,
-                              activeTrackColor:
-                                  const Color.fromRGBO(54, 216, 89, 1),
-                              inactiveThumbColor:
-                                  const Color.fromRGBO(11, 8, 8, 0.2),
-                              inactiveTrackColor:
-                                  const Color.fromRGBO(255, 255, 255, 1)),
+                            onChanged: (_) => showLimit.value = _,
+                            value: showLimit.value,
+                            activeColor: Colors.white,
+                            activeTrackColor:
+                                const Color.fromRGBO(54, 216, 89, 1),
+                            inactiveThumbColor:
+                                const Color.fromRGBO(255, 255, 255, 1),
+                            inactiveTrackColor:
+                                Color.fromARGB(255, 219, 209, 209),
+                          ),
                         ),
                       ),
-                    ),
+                    )
                   ],
                 ),
               ),
             )),
         Padding(
-          padding: const EdgeInsets.only(top: 60, left: 20, right: 20),
+          padding: const EdgeInsets.only(top: 80, left: 20, right: 20),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -202,26 +205,40 @@ class _SelectLocationMapState extends State<SelectLocationMap> {
                       fontFamily: MAIN_FONT_FAMILY,
                     ),
                   ),
-                  Container(
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        border: Border.all(
-                            color: const Color.fromRGBO(99, 99, 99, 1)),
-                        borderRadius: BorderRadius.circular(10)),
-                    child: SizedBox(
-                      width: getPageWidth(),
-                      height: 40,
-                      child: Center(
-                        child: Padding(
-                          padding: const EdgeInsets.only(right: 10.0),
-                          child: Align(
-                            alignment: Alignment.centerRight,
-                            child: Text(
-                              style: const TextStyle(
-                                  fontFamily: 'Iran Sans Bold,',
-                                  fontWeight: FontWeight.bold),
-                              locationInfo.locationName,
-                              textAlign: TextAlign.right,
+                  GestureDetector(
+                    onTap: () {
+                      Get.to(() => Neighbourhood());
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          border: Border.all(
+                              color: Color.fromARGB(255, 158, 147, 147)),
+                          borderRadius: BorderRadius.circular(10)),
+                      child: SizedBox(
+                        width: getPageWidthlocation(),
+                        height: 40,
+                        child: Center(
+                          child: Padding(
+                            padding: const EdgeInsets.only(right: 10.0),
+                            child: Align(
+                              alignment: Alignment.centerRight,
+                              child: Padding(
+                                padding: const EdgeInsets.only(right: 5.0),
+                                child: Text(
+                                  style: const TextStyle(
+                                      fontFamily: 'Iran Sans Bold,',
+                                      color: Color.fromRGBO(
+                                        48,
+                                        48,
+                                        48,
+                                        1,
+                                      ),
+                                      fontWeight: FontWeight.w400),
+                                  locationInfo.locationName,
+                                  textAlign: TextAlign.right,
+                                ),
+                              ),
                             ),
                           ),
                         ),
@@ -254,26 +271,40 @@ class _SelectLocationMapState extends State<SelectLocationMap> {
                       ),
                     ],
                   ),
-                  Container(
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        border: Border.all(
-                            color: const Color.fromRGBO(99, 99, 99, 1)),
-                        borderRadius: BorderRadius.circular(10)),
-                    child: SizedBox(
-                      height: 40,
-                      width: getPageWidth(),
-                      child: Center(
-                        child: Padding(
-                          padding: const EdgeInsets.only(right: 10.0),
-                          child: Align(
-                            alignment: Alignment.centerRight,
-                            child: Text(
-                              style: const TextStyle(
-                                  fontFamily: 'Iran Sans Bold,',
-                                  fontWeight: FontWeight.bold),
-                              locationInfo.cityName,
-                              textAlign: TextAlign.center,
+                  GestureDetector(
+                    onTap: () {
+                      Get.to(() => City());
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          border: Border.all(
+                              color: Color.fromARGB(255, 158, 147, 147)),
+                          borderRadius: BorderRadius.circular(10)),
+                      child: SizedBox(
+                        height: 40,
+                        width: getPageWidthlocation(),
+                        child: Center(
+                          child: Padding(
+                            padding: const EdgeInsets.only(right: 10.0),
+                            child: Align(
+                              alignment: Alignment.centerRight,
+                              child: Padding(
+                                padding: const EdgeInsets.only(right: 5.0),
+                                child: Text(
+                                  style: const TextStyle(
+                                      fontFamily: 'Iran Sans Bold,',
+                                      color: Color.fromRGBO(
+                                        48,
+                                        48,
+                                        48,
+                                        1,
+                                      ),
+                                      fontWeight: FontWeight.w400),
+                                  locationInfo.cityName,
+                                  textAlign: TextAlign.center,
+                                ),
+                              ),
                             ),
                           ),
                         ),

@@ -17,7 +17,7 @@ class ImagesPicker extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         SvgPicture.asset(
           'assets/images/Group 1223.svg',

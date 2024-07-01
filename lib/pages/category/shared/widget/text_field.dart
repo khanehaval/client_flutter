@@ -19,6 +19,15 @@ Widget ReadOnlyTextField(TextEditingController controller, Function onTap,
           hintStyle: const TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
+            borderSide: const BorderSide(
+              color: Color.fromRGBO(23, 102, 175, 1),
+            ),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10),
+            borderSide: const BorderSide(
+              color: Color.fromRGBO(23, 102, 175, 1),
+            ),
           ),
           prefixIcon: IconButton(
             icon: SvgPicture.asset("assets/images/Vector-20.svg"),
@@ -38,7 +47,6 @@ Widget InputTextField(TextEditingController controller, {double? width}) {
     height: 41,
     width: width,
     child: TextField(
-      
       keyboardType: TextInputType.number,
       controller: controller,
       textAlign: TextAlign.right,
@@ -47,6 +55,15 @@ Widget InputTextField(TextEditingController controller, {double? width}) {
         hintStyle: const TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
+          borderSide: const BorderSide(
+            color: Color.fromRGBO(23, 102, 175, 1),
+          ),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
+          borderSide: const BorderSide(
+            color: Color.fromRGBO(23, 102, 175, 1),
+          ),
         ),
       ),
     ),

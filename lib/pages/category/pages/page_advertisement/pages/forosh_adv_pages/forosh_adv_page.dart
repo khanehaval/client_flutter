@@ -127,7 +127,16 @@ class ForoshAdvPage extends StatelessWidget {
               const SizedBox(
                 height: 20,
               ),
-              const Divider(),
+              const Divider(
+                color: Color.fromRGBO(
+                  226,
+                  226,
+                  226,
+                  1,
+                ),
+                endIndent: 6,
+                indent: 6,
+              ),
               const SizedBox(
                 height: 20,
               ),
@@ -180,12 +189,30 @@ class ForoshAdvPage extends StatelessWidget {
                 height: 20,
               ),
               aghsatiForoshWidget(context),
-              const Divider(),
+              const Divider(
+                color: Color.fromRGBO(
+                  226,
+                  226,
+                  226,
+                  1,
+                ),
+                endIndent: 6,
+                indent: 6,
+              ),
               melkByVamBanki(context),
               const SizedBox(
                 height: 20,
               ),
-              const Divider(),
+              const Divider(
+                color: Color.fromRGBO(
+                  226,
+                  226,
+                  226,
+                  1,
+                ),
+                endIndent: 6,
+                indent: 6,
+              ),
               TwoItemInRow(
                   label1: "تعداد اتاق ",
                   label2: "سن بنا",
@@ -246,7 +273,16 @@ class ForoshAdvPage extends StatelessWidget {
               const SizedBox(
                 height: 10,
               ),
-              const Divider(),
+              const Divider(
+                color: Color.fromRGBO(
+                  226,
+                  226,
+                  226,
+                  1,
+                ),
+                endIndent: 6,
+                indent: 6,
+              ),
               const SizedBox(
                 height: 10,
               ),
@@ -302,8 +338,14 @@ class ForoshAdvPage extends StatelessWidget {
                 height: 20,
               ),
               const Divider(
-                endIndent: 20,
-                indent: 20,
+                color: Color.fromRGBO(
+                  226,
+                  226,
+                  226,
+                  1,
+                ),
+                endIndent: 6,
+                indent: 6,
               ),
               const SizedBox(
                 height: 10,
@@ -378,14 +420,29 @@ class ForoshAdvPage extends StatelessWidget {
                 height: 20,
               ),
               const Divider(
-                endIndent: 20,
-                indent: 20,
+                color: Color.fromRGBO(
+                  226,
+                  226,
+                  226,
+                  1,
+                ),
+                endIndent: 6,
+                indent: 6,
               ),
               const SizedBox(
                 height: 20,
               ),
               ImagesPicker(selectedImagesPath: _selectedImagesPath),
-              const Divider(),
+              const Divider(
+                color: Color.fromRGBO(
+                  226,
+                  226,
+                  226,
+                  1,
+                ),
+                endIndent: 6,
+                indent: 6,
+              ),
               AdvInfo(_advInfo)
             ]),
           ),

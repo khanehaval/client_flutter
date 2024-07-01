@@ -23,16 +23,6 @@ class EjaraTagariEdari extends StatelessWidget {
           padding: const EdgeInsets.all(5),
           height: 153,
           width: 372,
-          decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(10),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.grey.withOpacity(0.2),
-                  spreadRadius: 1,
-                  blurRadius: 1,
-                ),
-              ]),
           child: Image.asset('assets/images/Group 724.png'),
         ),
         const Divider(
@@ -94,7 +84,14 @@ class EjaraTagariEdari extends StatelessWidget {
           padding: const EdgeInsets.only(left: 8, right: 8),
           child: Container(
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10), border: Border.all()),
+                borderRadius: BorderRadius.circular(10),
+                border: Border.all(
+                    color: const Color.fromRGBO(
+                  234,
+                  234,
+                  234,
+                  1,
+                ))),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -108,12 +105,17 @@ class EjaraTagariEdari extends StatelessWidget {
                       },
                     )),
                 const Padding(
-                  padding: EdgeInsets.all(8.0),
+                  padding: EdgeInsets.all(15.0),
                   child: Text(
                     ' فروش بر اساس قیمت',
                     style: TextStyle(
                         fontSize: 18,
-                        color: Colors.black,
+                        color: Color.fromRGBO(
+                          48,
+                          48,
+                          48,
+                          1,
+                        ),
                         fontFamily: MAIN_FONT_FAMILY),
                   ),
                 ),
@@ -136,7 +138,14 @@ class EjaraTagariEdari extends StatelessWidget {
           padding: const EdgeInsets.only(left: 8, right: 8),
           child: Container(
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10), border: Border.all()),
+                borderRadius: BorderRadius.circular(10),
+                border: Border.all(
+                    color: const Color.fromRGBO(
+                  234,
+                  234,
+                  234,
+                  1,
+                ))),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -150,12 +159,17 @@ class EjaraTagariEdari extends StatelessWidget {
                       },
                     )),
                 const Padding(
-                  padding: EdgeInsets.all(8.0),
+                  padding: EdgeInsets.all(15.0),
                   child: Text(
                     'فروش بر اساس متراژ',
                     style: TextStyle(
                         fontSize: 18,
-                        color: Colors.black,
+                        color: Color.fromRGBO(
+                          48,
+                          48,
+                          48,
+                          1,
+                        ),
                         fontFamily: MAIN_FONT_FAMILY),
                   ),
                 ),

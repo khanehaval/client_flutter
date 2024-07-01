@@ -49,23 +49,23 @@ class EjaraKotaModat extends StatelessWidget {
           children: [
             Container(
                 height: 90,
-                width: MediaQuery.of(context).size.width * 1 / 2.4,
+                width: MediaQuery.of(context).size.width * 1 / 2.2,
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(10),
                 ),
-                child: SvgPicture.asset(
-                  'assets/images/Group jotaaparteman.svg',
+                child: Image.asset(
+                  'assets/images/Group kjotavila.png',
                 )),
             Container(
                 height: 90,
-                width: MediaQuery.of(context).size.width * 1 / 2.4,
+                width: MediaQuery.of(context).size.width * 1 / 2.2,
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(10),
                 ),
-                child: SvgPicture.asset(
-                  'assets/images/Group kotavila.svg',
+                child: Image.asset(
+                  'assets/images/Group kjotaparteman.png',
                 )),
           ],
         ),
@@ -83,7 +83,14 @@ class EjaraKotaModat extends StatelessWidget {
           padding: const EdgeInsets.only(left: 8, right: 8),
           child: Container(
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10), border: Border.all()),
+                borderRadius: BorderRadius.circular(10),
+                border: Border.all(
+                    color: const Color.fromRGBO(
+                  234,
+                  234,
+                  234,
+                  1,
+                ))),
             child: Column(
               children: [
                 Row(
@@ -104,13 +111,21 @@ class EjaraKotaModat extends StatelessWidget {
                     ),
                     const Column(
                       children: [
-                        Text(
-                          'اجاره کوتاه مدت ویلا در شمال',
-                          style: TextStyle(
-                              fontSize: 18,
-                              color: Colors.black,
-                              fontWeight: FontWeight.bold,
-                              fontFamily: MAIN_FONT_FAMILY),
+                        Padding(
+                          padding: EdgeInsets.only(right: 15.0),
+                          child: Text(
+                            'اجاره کوتاه مدت ویلا در شمال',
+                            style: TextStyle(
+                                fontSize: 18,
+                                color: Color.fromRGBO(
+                                  48,
+                                  48,
+                                  48,
+                                  1,
+                                ),
+                                fontWeight: FontWeight.bold,
+                                fontFamily: MAIN_FONT_FAMILY),
+                          ),
                         ),
                       ],
                     ),
@@ -130,7 +145,7 @@ class EjaraKotaModat extends StatelessWidget {
           child: Row(
             children: [
               Padding(
-                padding: const EdgeInsets.all(15),
+                padding: const EdgeInsets.all(10),
                 child: Container(
                     height: 90,
                     width: 147,
@@ -179,7 +194,7 @@ class EjaraKotaModat extends StatelessWidget {
             child: Column(
               children: [
                 Image.asset('assets/images/Group shomal kota.png'),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 Row(
@@ -191,15 +206,8 @@ class EjaraKotaModat extends StatelessWidget {
                       decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(10),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withOpacity(0.1),
-                            spreadRadius: 1,
-                            blurRadius: 5,
-                          )
-                        ],
                         border: Border.all(
-                          color: Colors.black45,
+                          color: const Color.fromRGBO(183, 183, 183, 1),
                           width: 0.3,
                         ),
                       ),
@@ -221,15 +229,8 @@ class EjaraKotaModat extends StatelessWidget {
                       decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(10),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(0.1),
-                              spreadRadius: 1,
-                              blurRadius: 10,
-                            )
-                          ],
                           border: Border.all(
-                            color: Colors.black45,
+                            color: const Color.fromRGBO(183, 183, 183, 1),
                             width: 0.3,
                           )),
                       child: const Text(
@@ -246,7 +247,7 @@ class EjaraKotaModat extends StatelessWidget {
                     )
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 Row(
@@ -258,15 +259,8 @@ class EjaraKotaModat extends StatelessWidget {
                       decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(10),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(0.1),
-                              spreadRadius: 1,
-                              blurRadius: 5,
-                            )
-                          ],
                           border: Border.all(
-                            color: Colors.black45,
+                            color: const Color.fromRGBO(183, 183, 183, 1),
                             width: 0.3,
                           )),
                       child: const Text(
@@ -287,15 +281,8 @@ class EjaraKotaModat extends StatelessWidget {
                       decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(10),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(0.1),
-                              spreadRadius: 1,
-                              blurRadius: 10,
-                            )
-                          ],
                           border: Border.all(
-                            color: Colors.black45,
+                            color: const Color.fromRGBO(183, 183, 183, 1),
                             width: 0.3,
                           )),
                       child: const Text(
@@ -312,7 +299,7 @@ class EjaraKotaModat extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 Row(
@@ -324,18 +311,11 @@ class EjaraKotaModat extends StatelessWidget {
                       decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(10),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(0.1),
-                              spreadRadius: 1,
-                              blurRadius: 5,
-                            )
-                          ],
                           border: Border.all(
-                            color: Colors.black45,
+                            color: const Color.fromRGBO(183, 183, 183, 1),
                             width: 0.3,
                           )),
-                      child: Text(
+                      child: const Text(
                         'چالوس',
                         textAlign: TextAlign.center,
                         style: TextStyle(
@@ -353,15 +333,8 @@ class EjaraKotaModat extends StatelessWidget {
                       decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(10),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(0.1),
-                              spreadRadius: 1,
-                              blurRadius: 10,
-                            )
-                          ],
                           border: Border.all(
-                            color: Colors.black45,
+                            color: const Color.fromRGBO(183, 183, 183, 1),
                             width: 0.3,
                           )),
                       child: const Text(

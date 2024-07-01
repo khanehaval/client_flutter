@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/forosh_adv_pages/kolangi_adv_location_page.dart';
 import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/forosh_adv_pages/forosh_adv_location_page.dart';
 import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/forosh_adv_pages/vila_adv_location_page.dart';
+import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/category/shared/map_pages/first_map_page.dart';
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/adv_title_widget.dart';
@@ -43,19 +44,27 @@ class ForoshAdv extends StatelessWidget {
                         height: 90,
                         width: 140,
                         child: Container(
-                          width: 144,
-                          height: 96,
-                          decoration: ShapeDecoration(
-                              color: Colors.white,
-                              shape: RoundedRectangleBorder(
-                                side: const BorderSide(
-                                    width: 1.50, color: Color(0xFFE9E9E9)),
-                                borderRadius: BorderRadius.circular(10),
-                              )),
+                          decoration: BoxDecoration(
+                              gradient: const LinearGradient(
+                                colors: GRADIANT_COLOR3,
+                              ),
+                              borderRadius: BorderRadius.circular(10)),
                           child: Padding(
-                            padding: const EdgeInsets.all(2.0),
-                            child:
-                                Image.asset('assets/images/Frame_forosh.png'),
+                            padding: const EdgeInsets.all(0.6),
+                            child: Container(
+                              width: 144,
+                              height: 96,
+                              decoration: ShapeDecoration(
+                                  color: Colors.white,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10),
+                                  )),
+                              child: Padding(
+                                padding: const EdgeInsets.all(3.0),
+                                child: Image.asset(
+                                    'assets/images/Frame_forosh.png'),
+                              ),
+                            ),
                           ),
                         )),
                   ),
@@ -71,18 +80,34 @@ class ForoshAdv extends StatelessWidget {
                           }));
                     },
                     child: Container(
-                      width: 144,
-                      height: 96,
-                      decoration: ShapeDecoration(
-                          color: Colors.white,
-                          shape: RoundedRectangleBorder(
-                            side: const BorderSide(
-                                width: 1.50, color: Color(0xFFE9E9E9)),
-                            borderRadius: BorderRadius.circular(10),
-                          )),
-                      child: Padding(
-                        padding: const EdgeInsets.all(2.0),
-                        child: Image.asset('assets/images/Frame_forosh2.png'),
+                      decoration: BoxDecoration(
+                          gradient: const LinearGradient(
+                            colors: GRADIANT_COLOR3,
+                          ),
+                          borderRadius: BorderRadius.circular(10)),
+                      child: Container(
+                        decoration: BoxDecoration(
+                            gradient: const LinearGradient(
+                              colors: GRADIANT_COLOR3,
+                            ),
+                            borderRadius: BorderRadius.circular(10)),
+                        child: Padding(
+                          padding: const EdgeInsets.all(0.6),
+                          child: Container(
+                            width: 144,
+                            height: 96,
+                            decoration: ShapeDecoration(
+                                color: Colors.white,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                )),
+                            child: Padding(
+                              padding: const EdgeInsets.all(3.0),
+                              child: Image.asset(
+                                  'assets/images/Frame_forosh2.png'),
+                            ),
+                          ),
+                        ),
                       ),
                     ),
                   ),
@@ -90,29 +115,37 @@ class ForoshAdv extends StatelessWidget {
                     height: 10,
                   ),
                   GestureDetector(
-                    onTap: () {
-                      Get.to(() => FirstMapPage(onSelect: (_) {
-                            Get.to(() => KolangiAdvLocationPage(
-                                  locationInfo: _,
-                                ));
-                          }));
-                    },
-                    child: Container(
-                      width: 144,
-                      height: 96,
-                      decoration: ShapeDecoration(
-                          color: Colors.white,
-                          shape: RoundedRectangleBorder(
-                            side: const BorderSide(
-                                width: 1.50, color: Color(0xFFE9E9E9)),
-                            borderRadius: BorderRadius.circular(10),
-                          )),
-                      child: Padding(
-                        padding: const EdgeInsets.all(2.0),
-                        child: Image.asset('assets/images/Frame_forosh3.png'),
-                      ),
-                    ),
-                  )
+                      onTap: () {
+                        Get.to(() => FirstMapPage(onSelect: (_) {
+                              Get.to(() => KolangiAdvLocationPage(
+                                    locationInfo: _,
+                                  ));
+                            }));
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                            gradient: const LinearGradient(
+                              colors: GRADIANT_COLOR3,
+                            ),
+                            borderRadius: BorderRadius.circular(10)),
+                        child: Padding(
+                          padding: const EdgeInsets.all(0.6),
+                          child: Container(
+                            width: 144,
+                            height: 96,
+                            decoration: ShapeDecoration(
+                                color: Colors.white,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                )),
+                            child: Padding(
+                              padding: const EdgeInsets.all(3.0),
+                              child: Image.asset(
+                                  'assets/images/Frame_forosh3.png'),
+                            ),
+                          ),
+                        ),
+                      ))
                 ],
               ),
             )
