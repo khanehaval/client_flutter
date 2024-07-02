@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/models/AdvInfoModel.dart';
 import 'package:flutter_application_1/pages/category/models/FacilitiesModel.dart';
+import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/ejara_adv_pages/ejara_vila_page.dart';
 import 'package:flutter_application_1/pages/category/shared/adv_info/advInfo.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/category/shared/date.dart';
@@ -9,6 +10,7 @@ import 'package:flutter_application_1/pages/category/shared/images_picker/images
 import 'package:flutter_application_1/pages/category/shared/number_piacker.dart';
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
 import 'package:flutter_application_1/pages/category/shared/twoItemInRow.dart';
+import 'package:flutter_application_1/pages/category/shared/widget/submit_row.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/text_field.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
@@ -25,33 +27,10 @@ class EjaraShanatiPage extends StatelessWidget {
   final _metragTextController = TextEditingController();
   final _selectedImagesPath = [].obs;
   final _facilities = <FacilitiesModel>[].obs;
-  final _buildAllFloorsCountController = TextEditingController();
-  final _buildDirectionController = TextEditingController();
-  final _buildUnitOfAnyFloorCountController = TextEditingController();
-  final _buildFloorsCountController = TextEditingController();
-  final _timeOfInstallmentsController = TextEditingController();
   final _buildDateController = TextEditingController();
   final _buildRoomsCountController = TextEditingController();
-  final _buildDocumentController = TextEditingController();
   final _buildFloorController = TextEditingController();
-  final _reBuildController = TextEditingController();
-  final _countOfInstallmentsController = TextEditingController();
-  final _buildMaxCapacityController = TextEditingController();
-  final _buildRiteController = TextEditingController();
-  final _buildAnimalController = TextEditingController();
-  final _buildSmokingController = TextEditingController();
-  final _buildShoesController = TextEditingController();
-  final _buildDeprivationController = TextEditingController();
-  final _buildSleepServiceCountController = TextEditingController();
-  final _oneBedCountController = TextEditingController();
-  final _twoBedCountController = TextEditingController();
-  final _floorMaterialController = TextEditingController();
-  final _cabinetController = TextEditingController();
-  final _coldTypeController = TextEditingController();
-  final _heatTypeController = TextEditingController();
-  final _heatWaterController = TextEditingController();
-  final _wcController = TextEditingController();
-  final _numberOfInstallmentsController = TextEditingController();
+  final submit = false.obs;
 
   final _advInfo = AdvInfoModel();
 
@@ -60,6 +39,7 @@ class EjaraShanatiPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Colors.white,
         appBar: buildaAppBar(),
         body: SingleChildScrollView(
           child: Padding(
@@ -456,14 +436,17 @@ class EjaraShanatiPage extends StatelessWidget {
               const SizedBox(
                 height: 15,
               ),
-              AdvInfo(_advInfo)
+              AdvInfo(_advInfo),
+              const SizedBox(
+                height: 30,
+              ),
+              SubmitRow(submit: submit, nextPage: EjaraVilaPage())
             ]),
           ),
         ));
   }
 
-  double getPageWidth_2(BuildContext context) =>
-      getPageWidth();
+  double getPageWidth_2(BuildContext context) => getPageWidth();
 
   Widget onvanWidget(BuildContext context) {
     final isSwitched = true.obs;
@@ -651,7 +634,7 @@ class EjaraShanatiPage extends StatelessWidget {
                       widget1: ReadOnlyTextField(_buildDateController, () {
                         persianDataPicker(
                             (date) => _buildDateController.text = date);
-                      }, width: getPageWidth(),fontSize: 13)),
+                      }, width: getPageWidth(), fontSize: 13)),
                   SizedBox(
                     height: 15,
                   ),

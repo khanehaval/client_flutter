@@ -471,7 +471,7 @@ class VilaAdvPage extends StatelessWidget {
                       child: TextField(
                         textAlign: TextAlign.right,
                         decoration: InputDecoration(
-                          hintText: 'مبلغ را وارد کنید', //todo
+                          hintText: 'مبلغ را وارد کنید',
                           hintStyle: const TextStyle(
                               color: Color(0xFFA6A6A6), fontSize: 13),
                           border: OutlineInputBorder(
@@ -486,7 +486,7 @@ class VilaAdvPage extends StatelessWidget {
                       child: TextField(
                         textAlign: TextAlign.right,
                         decoration: InputDecoration(
-                          hintText: 'مبلغ را وارد کنید', //todo
+                          hintText: 'مبلغ را وارد کنید',
                           hintStyle: const TextStyle(
                               color: Color(0xFFA6A6A6), fontSize: 13),
                           border: OutlineInputBorder(

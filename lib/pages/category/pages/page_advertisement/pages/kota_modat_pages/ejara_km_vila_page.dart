@@ -1,21 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/models/AdvInfoModel.dart';
 import 'package:flutter_application_1/pages/category/models/FacilitiesModel.dart';
-import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/forosh_adv_pages/kolangi_adv_page.dart';
+import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/ejara_adv_pages/ejara_vila_page.dart';
 import 'package:flutter_application_1/pages/category/shared/adv_info/advInfo.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
-
 import 'package:flutter_application_1/pages/category/shared/facilities_selector.dart';
 import 'package:flutter_application_1/pages/category/shared/images_picker/images_picker.dart';
 import 'package:flutter_application_1/pages/category/shared/number_piacker.dart';
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
-import 'package:flutter_application_1/pages/category/shared/tabageh_sale.dart';
 import 'package:flutter_application_1/pages/category/shared/twoItemInRow.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/text_field.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/route_widget.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
+import '../../../../shared/widget/submit_row.dart';
 import '../../../../shared/widget/switachable.dart';
 
 class EjaraKmVilaPage extends StatelessWidget {
@@ -33,9 +31,8 @@ class EjaraKmVilaPage extends StatelessWidget {
   final _securityAppliances = <FacilitiesModel>[].obs;
   final _allPriceTextController = TextEditingController();
   final _metragTextController = TextEditingController();
-
+  final submit = false.obs;
   final _selectedImagesPath = [].obs;
-
   final _incomingTimeController = TextEditingController();
   final _outTimeController = TextEditingController();
   final _buildRoomsCountController = TextEditingController();
@@ -60,6 +57,7 @@ class EjaraKmVilaPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: buildaAppBar(),
       body: SingleChildScrollView(
         child: Padding(
@@ -561,7 +559,11 @@ class EjaraKmVilaPage extends StatelessWidget {
             const SizedBox(
               height: 15,
             ),
-            AdvInfo(_advInfo)
+            AdvInfo(_advInfo),
+            const SizedBox(
+              height: 30,
+            ),
+            SubmitRow(submit: submit, nextPage: EjaraVilaPage())
           ]),
         ),
       ),

@@ -11,8 +11,7 @@ import '../../../../shared/switchItem.dart';
 
 class EjaraKmLocationPage extends StatelessWidget {
   LocationInfo locationInfo;
-   EjaraKmLocationPage({required this.locationInfo,super.key});
-
+  EjaraKmLocationPage({required this.locationInfo, super.key});
 
   final submit = false.obs;
 
@@ -21,6 +20,7 @@ class EjaraKmLocationPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: buildaAppBar(),
       body: SingleChildScrollView(
         child: Padding(
@@ -28,7 +28,7 @@ class EjaraKmLocationPage extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-            MapInfoPage(locationInfo),
+              MapInfoPage(locationInfo),
               const SizedBox(
                 height: 10,
               ),
@@ -49,19 +49,18 @@ class EjaraKmLocationPage extends StatelessWidget {
                 ),
               ),
               SwitchItem(
-                  onSelected: (_){
+                  onSelected: (_) {
                     submit.value = true;
                   },
                   items: const ["اتاق", "سوئیت", "برج", "پنت هاوس"]),
               const SizedBox(
                 height: 40,
               ),
-             SubmitRow(submit: submit, nextPage:EjaraKmVilaPage())
+              SubmitRow(submit: submit, nextPage: EjaraKmVilaPage())
             ],
           ),
         ),
       ),
     );
   }
-
 }

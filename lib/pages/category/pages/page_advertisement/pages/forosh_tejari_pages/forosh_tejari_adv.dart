@@ -3,16 +3,13 @@ import 'package:flutter_application_1/pages/category/pages/page_advertisement/pa
 import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/forosh_tejari_pages/forosh_shop_location_page.dart';
 import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/forosh_tejari_pages/forosh_sanati_location_page.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
-
 import 'package:flutter_application_1/pages/category/shared/map_pages/first_map_page.dart';
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/adv_title_widget.dart';
-
 import 'package:get/get.dart';
 
 class ForoshTejariAdv extends StatelessWidget {
   const ForoshTejariAdv({super.key});
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -22,6 +22,7 @@ class SelectLocationEjaraPresell extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: buildaAppBar(),
       body: SingleChildScrollView(
         child: Padding(
@@ -49,16 +50,18 @@ class SelectLocationEjaraPresell extends StatelessWidget {
                   ),
                 ),
               ),
-              SwitchItem(onSelected: (_) {
-                submit.value = true;
-              }, items: const [
-                "مجتمع تجاری",
-                "ویلا",
-                "آپارتمان",
-                "برج",
-                "پنت هاوس ",
-                "زمین مسکونی"
-              ]),
+              SwitchItem(
+                  onSelected: (_) {
+                    submit.value = true;
+                  },
+                  items: const [
+                    "مجتمع تجاری",
+                    "ویلا",
+                    "آپارتمان",
+                    "برج",
+                    "پنت هاوس ",
+                    "زمین مسکونی"
+                  ]),
               const SizedBox(
                 height: 40,
               ),

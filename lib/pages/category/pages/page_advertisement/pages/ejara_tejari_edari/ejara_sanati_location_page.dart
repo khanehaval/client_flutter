@@ -11,9 +11,7 @@ import '../../../../shared/switchItem.dart';
 
 class EjaraSanatiLocationPage extends StatelessWidget {
   LocationInfo locationInfo;
-   EjaraSanatiLocationPage({required this.locationInfo,super.key});
-
-
+  EjaraSanatiLocationPage({required this.locationInfo, super.key});
 
   final submit = false.obs;
 
@@ -22,6 +20,7 @@ class EjaraSanatiLocationPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: buildaAppBar(),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
@@ -49,11 +48,14 @@ class EjaraSanatiLocationPage extends StatelessWidget {
               ),
             ),
             SwitchItem(
-                onSelected: (_){submit.value = true;}, items: const ["اتاق اداری", "مطب", "ملک اداری"]),
+                onSelected: (_) {
+                  submit.value = true;
+                },
+                items: const ["اتاق اداری", "مطب", "ملک اداری"]),
             const SizedBox(
               height: 30,
             ),
-           SubmitRow(submit: submit, nextPage:  EjaraShanatiPage())
+            SubmitRow(submit: submit, nextPage: EjaraShanatiPage())
           ],
         ),
       ),

@@ -64,7 +64,7 @@ class _FilterState extends State<Filter> {
                             _controller.scrollTo(
                                 index: i,
                                 duration: const Duration(microseconds: 100),
-                                opacityAnimationWeights: [10, 30, 10],
+                                opacityAnimationWeights: [20, 30, 10],
                                 alignment: 0.5);
                             _currentIndex.value = i;
                           },
@@ -72,9 +72,9 @@ class _FilterState extends State<Filter> {
                             () => Container(
                               margin: const EdgeInsets.only(
                                   right: 10, bottom: 10, top: 40),
-                              padding: const EdgeInsets.all(1),
+                              padding: const EdgeInsets.all(1.2),
                               height: 98,
-                              width: 130,
+                              width: 132,
                               decoration: BoxDecoration(
                                 gradient: _currentIndex.value == i
                                     ? const LinearGradient(
@@ -92,15 +92,10 @@ class _FilterState extends State<Filter> {
                                   color: Colors.white,
                                   borderRadius: BorderRadius.circular(10),
                                 ),
-                                child: Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      vertical: 7, horizontal: 8),
-                                  child: Image.asset(
-                                    items[i].assetPath,
-                                    width: 40,
-                                    height: 40,
-                                    fit: BoxFit.fitHeight,
-                                  ),
+                                child: Image.asset(
+                                  items[i].assetPath,
+                                  width: 40,
+                                  height: 40,
                                 ),
                               ),
                             ),
@@ -122,26 +117,32 @@ class _FilterState extends State<Filter> {
                                   child: Row(
                                     children: [
                                       Container(
-                                        margin: const EdgeInsets.only(
-                                          left: 5,
-                                          right: 5,
-                                        ),
                                         decoration: BoxDecoration(
                                             borderRadius:
                                                 BorderRadius.circular(10),
-                                            border: Border.all(width: 1),
-                                            boxShadow: [
-                                              BoxShadow(
-                                                color: Colors.grey
-                                                    .withOpacity(0.5),
-                                              )
-                                            ]),
-                                        child: const Padding(
-                                          padding: EdgeInsets.all(10.0),
-                                          child: Text(
-                                            "املاک",
-                                            style: TextStyle(
-                                                fontFamily: MAIN_FONT_FAMILY),
+                                            color: const Color.fromRGBO(
+                                              226,
+                                              226,
+                                              226,
+                                              1,
+                                            )),
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(1.3),
+                                          child: Container(
+                                            decoration: BoxDecoration(
+                                              color: Colors.white,
+                                              borderRadius:
+                                                  BorderRadius.circular(10),
+                                            ),
+                                            child: const Padding(
+                                              padding: EdgeInsets.all(10.0),
+                                              child: Text(
+                                                "املاک",
+                                                style: TextStyle(
+                                                    fontFamily:
+                                                        MAIN_FONT_FAMILY),
+                                              ),
+                                            ),
                                           ),
                                         ),
                                       ),
@@ -162,7 +163,7 @@ class _FilterState extends State<Filter> {
                                     Container(
                                       margin: const EdgeInsets.only(
                                         left: 0,
-                                        right: 1,
+                                        right: 2,
                                       ),
                                       padding: const EdgeInsets.all(0.7),
                                       width: 130,
@@ -170,7 +171,6 @@ class _FilterState extends State<Filter> {
                                         gradient: const LinearGradient(
                                           colors: GRADIANT_COLOR,
                                         ),
-                                        border: Border.all(width: 0.5),
                                         borderRadius: BorderRadius.circular(10),
                                       ),
                                       child: Container(
