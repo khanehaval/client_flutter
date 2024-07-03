@@ -1,10 +1,19 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/advertisements.dart';
+import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/filter.dart';
 import 'package:flutter_application_1/pages/category/pages/messages.dart';
 import 'package:flutter_application_1/pages/category/pages/home.dart';
 import 'package:flutter_application_1/pages/category/pages/add_new_advertisment.dart';
 import 'package:flutter_application_1/pages/category/pages/page_advertisement/category_advertisement.dart';
+import 'package:flutter_application_1/pages/category/pages/window/window_item_builder.dart';
+import 'package:flutter_application_1/pages/category/pages/window/window_pages/amlak_page.dart';
+import 'package:flutter_application_1/pages/category/pages/window/window_pages/ejara_kota_modat.dart';
+import 'package:flutter_application_1/pages/category/pages/window/window_pages/ejara_maskoni.dart';
+import 'package:flutter_application_1/pages/category/pages/window/window_pages/ejara_tajari_edari.dart';
+import 'package:flutter_application_1/pages/category/pages/window/window_pages/forosh_maskoni.dart';
+import 'package:flutter_application_1/pages/category/pages/window/window_pages/forosh_tgjari_edari.dart';
+import 'package:flutter_application_1/pages/category/pages/window/window_pages/sacht_saz.dart';
 import 'package:flutter_application_1/pages/category/shared/app_bar.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
@@ -38,13 +47,26 @@ class _EducationalTourState extends State<EducationalTour> {
     const CategoryAdvertisement(),
     const Category(),
     Advertisements(),
+    Filter(
+      index: 0,
+    ),
+    MainCategory(
+      index: 0,
+    ),
+    AmlakPage(),
+    EjaraKotaModat(),
+    EjaraMaskoni(),
+    EjaraTagariEdari(),
+    ForoshMaskoni(),
+    ForoshTagariEdari(),
+    SachtSaz()
   ];
 
   @override
   Widget build(BuildContext context) {
     return Obx(() => Scaffold(
           backgroundColor: Colors.white,
-          appBar: currentPageIndex.value == 4 ? null : buildAppBar(),
+          appBar: currentPageIndex.value == 5 ? null : buildAppBar(),
           body: Stack(
             alignment: Alignment.topCenter,
             children: [

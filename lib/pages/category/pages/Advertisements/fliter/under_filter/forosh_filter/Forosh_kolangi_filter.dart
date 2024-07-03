@@ -27,23 +27,11 @@ class ForoshKolangi extends StatelessWidget {
   final parking = false.obs;
   final _show_item_mahaleh_1 = false.obs;
   final _show_item_noesanad_1 = false.obs;
-  final _show_item_mizanrahn = false.obs;
   final _show_item_qematkol = false.obs;
   final _show_item_noemelk = false.obs;
-  final _show_item_mizanejara = false.obs;
   final _show_item_mizanmetraj = false.obs;
-  final _show_item_tedadotagh = false.obs;
-  final _show_item_tabaghehvila = false.obs;
   final _show_item_agahidahandeh_1 = false.obs;
   final _show_item_emkanatagahi_1 = false.obs;
-  final _show_item_otheremkanatagahi_1 = false.obs;
-  final _show_item_senbana_1 = false.obs;
-  final _show_item_jahatsakhteman_1 = false.obs;
-  final _show_item_taminAbeGarm_1 = false.obs;
-  final _show_item_systemGarm_1 = false.obs;
-  final _show_item_systemSard_1 = false.obs;
-  final _show_item_wc_1 = false.obs;
-  final _show_item_jensKaf_1 = false.obs;
 
   @override
   Widget build(BuildContext context) {
@@ -86,7 +74,12 @@ class ForoshKolangi extends StatelessWidget {
               ),
               Container(
                 decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: const Color.fromRGBO(
+                      0,
+                      189,
+                      97,
+                      1,
+                    ),
                     border: Border.all(
                         color: const Color.fromRGBO(166, 166, 166, 1)),
                     borderRadius: BorderRadius.circular(15)),

@@ -94,8 +94,6 @@ class _FilterState extends State<Filter> {
                                 ),
                                 child: Image.asset(
                                   items[i].assetPath,
-                                  width: 40,
-                                  height: 40,
                                 ),
                               ),
                             ),
@@ -140,7 +138,8 @@ class _FilterState extends State<Filter> {
                                                 "املاک",
                                                 style: TextStyle(
                                                     fontFamily:
-                                                        MAIN_FONT_FAMILY),
+                                                        MAIN_FONT_FAMILY,
+                                                    fontSize: 14),
                                               ),
                                             ),
                                           ),
@@ -235,7 +234,7 @@ class _FilterState extends State<Filter> {
                                                 fontFamily: MAIN_FONT_FAMILY,
                                                 color: Color.fromRGBO(
                                                     99, 99, 99, 1),
-                                                fontSize: 9),
+                                                fontSize: 10),
                                           ),
                                         ),
                                       ),
