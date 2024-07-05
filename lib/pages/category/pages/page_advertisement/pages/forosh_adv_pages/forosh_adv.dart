@@ -8,7 +8,7 @@ import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/adv_title_widget.dart';
 import 'package:get/get.dart';
 
-import '../../../../shared/app_bar.dart';
+import '../../../../shared/widget/app_bar.dart';
 
 class ForoshAdv extends StatelessWidget {
   const ForoshAdv({super.key});

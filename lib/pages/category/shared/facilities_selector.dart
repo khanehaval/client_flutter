@@ -1,11 +1,11 @@
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
 import '../models/FacilitiesModel.dart';
-import 'package:flutter_application_1/pages/category/shared/constant.dart';
 
 class FacilitiesSelectorWidget extends StatelessWidget {
   final String title;

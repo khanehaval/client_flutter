@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_application_1/pages/category/shared/constant.dart';
 
-import 'constant.dart';
 
 class TwoItemInRow extends StatelessWidget {
   String label1;

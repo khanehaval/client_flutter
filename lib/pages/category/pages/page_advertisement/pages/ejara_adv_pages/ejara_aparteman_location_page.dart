@@ -6,7 +6,7 @@ import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
 import 'package:flutter_application_1/pages/category/shared/switchItem.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/submit_row.dart';
 import 'package:get/get.dart';
-import '../../../../shared/constant.dart';
+import 'package:flutter_application_1/pages/category/shared/constant.dart';
 
 class EjaraApartemanLocationPage extends StatelessWidget {
   LocationInfo locationInfo;

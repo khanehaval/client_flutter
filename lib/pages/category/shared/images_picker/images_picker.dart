@@ -6,7 +6,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:image_picker/image_picker.dart';
-import '../constant.dart';
+import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'image_croped.dart';
 
 class ImagesPicker extends StatelessWidget {

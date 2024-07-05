@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:flutter_application_1/pages/category/shared/constant.dart';
 
 class EjaraKotaModat extends StatelessWidget {
   final _show_item_1 = false.obs;
