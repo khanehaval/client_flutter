@@ -43,10 +43,9 @@ class _FilterState extends State<Filter> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       bottomNavigationBar: bottomNavigationBar2(),
       body: Padding(
-        padding: const EdgeInsets.only(top: 5),
+        padding: const EdgeInsets.only(top: 20),
         child: SingleChildScrollView(
           child: Column(
             children: [

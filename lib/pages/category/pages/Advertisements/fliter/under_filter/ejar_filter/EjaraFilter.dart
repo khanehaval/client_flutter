@@ -7,6 +7,8 @@ import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter
 import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/widget_filter/agahidahandeh.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/widget_filter/emkanatagahi.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/widget_filter/metraj.dart';
+import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/widget_filter/mizanejara.dart';
+import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/widget_filter/mizanrahn.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/widget_filter/otagh.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/widget_filter/taeedvaemalefilter.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
@@ -202,11 +204,11 @@ class EjaraFilter extends StatelessWidget {
                               ),
                             ),
                           ]),
-                      buildrahn(),
+                      if (_show_item_mizanrahn.isTrue) rahn(),
                       const SizedBox(
-                        height: 20,
+                        height: 10,
                       ),
-                      buildrahn2(),
+                      rahn2(),
                     ]),
                   ),
                 ),
@@ -248,11 +250,11 @@ class EjaraFilter extends StatelessWidget {
                                 ),
                               ),
                             ]),
-                        buildejara(),
+                        if (_show_item_mizanejara.isTrue) ejara(),
                         const SizedBox(
-                          height: 20,
+                          height: 10,
                         ),
-                        buildejara2(),
+                        ejara2(),
                       ],
                     ),
                   ),

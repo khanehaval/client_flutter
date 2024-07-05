@@ -60,8 +60,8 @@ class _SelectLocationMapState extends State<Advertisements> {
       Column(
         children: [
           SizedBox(
-              height: 100,
-              child: Obx(() => _currentIndex.value == 0
+              height: 20,
+              child: Obx(() => _currentIndex.value == 1
                   ? ScrollablePositionedList.builder(
                       reverse: true,
                       itemScrollController: _controller,

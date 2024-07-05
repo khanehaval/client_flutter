@@ -17,7 +17,6 @@ Widget bottomNavigationBar2() {
     Messages(),
     const CategoryAdvertisement(),
     const Category(),
-    Advertisements(),
   ];
   return  ClipRRect(
         borderRadius: const BorderRadius.only(

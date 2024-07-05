@@ -13,7 +13,7 @@ Widget showAdvertisment(AdvertismentModel advertismentModel, Function onTap) {
         Transform.translate(
           offset: const Offset(20, 60),
           child: Padding(
-            padding: const EdgeInsets.only(top: 90, right: 40, bottom: 70),
+            padding: const EdgeInsets.only(top: 25, right: 40, bottom: 70),
             child: Container(
               width: 350,
               height: 400,
@@ -167,47 +167,55 @@ Widget showAdvertisment(AdvertismentModel advertismentModel, Function onTap) {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: const Color.fromRGBO(0, 189, 97, 1),
-              ),
-              onPressed: () {},
-              child: const Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Icon(CupertinoIcons.back, color: Colors.white),
-                  SizedBox(width: 5),
-                  Text(
-                    "قبلی",
-                    style: TextStyle(
+      Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Container(
+                width: 89,
+                height: 42,
+                decoration: const BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(10)),
+                    color: Color.fromRGBO(
+                    0, 189, 97, 1
+                    )),
+                child: const Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                   
+                    Icon(CupertinoIcons.back, color: Colors.white),
+                     Text('قبلی',   style: TextStyle(
                       color: Colors.white,
                       fontFamily: MAIN_FONT_FAMILY,
-                    ),
-                  ),
-                ],
+                    ),),
+                  ],
+                ),
               ),
             ),
             const SizedBox(width: 10),
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: const Color.fromRGBO(23, 102, 175, 1),
-              ),
-              onPressed: () {},
-              child: const Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Text(
-                    "بعدی",
-                    style: TextStyle(
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Container(
+                width: 89,
+                height: 42,
+                decoration: const BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(10)),
+                    color: Color.fromRGBO(
+                      23,
+                      102,
+                      175,
+                      1,
+                    )),
+                child: const Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Text('بعدی',   style: TextStyle(
                       color: Colors.white,
                       fontFamily: MAIN_FONT_FAMILY,
-                    ),
-                  ),
-                  SizedBox(width: 5),
-                  Icon(CupertinoIcons.forward, color: Colors.white),
-                ],
+                    ),),
+                    Icon(CupertinoIcons.forward, color: Colors.white),
+                  ],
+                ),
               ),
-            ),
+            )
           ],
         ),
       ],

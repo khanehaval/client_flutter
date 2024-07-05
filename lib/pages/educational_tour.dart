@@ -14,7 +14,7 @@ import 'package:flutter_application_1/pages/category/pages/window/window_pages/e
 import 'package:flutter_application_1/pages/category/pages/window/window_pages/forosh_maskoni.dart';
 import 'package:flutter_application_1/pages/category/pages/window/window_pages/forosh_tgjari_edari.dart';
 import 'package:flutter_application_1/pages/category/pages/window/window_pages/sacht_saz.dart';
-import 'package:flutter_application_1/pages/category/shared/app_bar.dart';
+import 'package:flutter_application_1/pages/category/shared/widget/app_bar.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'category/pages/window/window.dart';
@@ -47,9 +47,6 @@ class _EducationalTourState extends State<EducationalTour> {
     const CategoryAdvertisement(),
     const Category(),
     Advertisements(),
-    Filter(
-      index: 0,
-    ),
     MainCategory(
       index: 0,
     ),

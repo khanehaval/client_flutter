@@ -22,9 +22,8 @@ class AdvMap extends StatelessWidget {
         backgroundColor: Colors.white,
         bottomNavigationBar: bottomNavigationBar2(),
         stretchTriggerOffset: 100,
-        headerExpandedHeight: 0.83,
-        stretchMaxHeight: 0.86,
-        headerBottomBar: const SizedBox.shrink(),
+        headerExpandedHeight: 0.75,
+        stretchMaxHeight: 0.88,
         title: const SizedBox.shrink(),
         headerWidget: Stack(
           children: [
@@ -119,8 +118,8 @@ class AdvMap extends StatelessWidget {
                 child: IconButton(
                   onPressed: () {},
                   icon: SizedBox(
-                      height: 70,
-                      width: 70,
+                      height: 65,
+                      width: 65,
                       child: Container(
                         decoration: BoxDecoration(boxShadow: [
                           BoxShadow(
