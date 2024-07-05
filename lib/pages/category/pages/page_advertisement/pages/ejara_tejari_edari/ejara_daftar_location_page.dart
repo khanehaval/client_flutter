@@ -22,6 +22,7 @@ class EjaraDaftarLocationPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Colors.white,
         appBar: buildaAppBar(),
         body: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),

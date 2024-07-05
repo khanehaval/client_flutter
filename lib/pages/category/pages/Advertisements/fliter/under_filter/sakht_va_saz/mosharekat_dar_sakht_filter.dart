@@ -78,7 +78,12 @@ class MosharekatDarSakhtFilter extends StatelessWidget {
               ),
               Container(
                 decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: const Color.fromRGBO(
+                      0,
+                      189,
+                      97,
+                      1,
+                    ),
                     border: Border.all(
                         color: const Color.fromRGBO(166, 166, 166, 1)),
                     borderRadius: BorderRadius.circular(15)),

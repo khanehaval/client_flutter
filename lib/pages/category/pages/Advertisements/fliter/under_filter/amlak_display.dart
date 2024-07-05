@@ -40,41 +40,47 @@ class AmlakFilter extends StatelessWidget {
                           children: [
                             Container(
                               decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  border: Border.all(
-                                      color: const Color.fromRGBO(
-                                          166, 166, 166, 1)),
-                                  borderRadius: BorderRadius.circular(15)),
+                                  borderRadius: BorderRadius.circular(15),
+                                  color:
+                                      const Color.fromRGBO(166, 166, 166, 1)),
                               child: Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(horizontal: 20),
-                                child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      const Padding(
-                                        padding: EdgeInsets.only(
-                                            left: 10, right: 10),
-                                        child: Text(
-                                          "تهران",
-                                          textAlign: TextAlign.center,
-                                          style: TextStyle(
-                                              fontSize: 11,
-                                              fontFamily: MAIN_FONT_FAMILY,
-                                              color: Color.fromRGBO(
-                                                  99, 99, 99, 1)),
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding:
-                                            const EdgeInsets.only(right: 20),
-                                        child: IconButton(
-                                          icon: SvgPicture.asset(
-                                              "assets/images/location1.svg"),
-                                          onPressed: () {},
-                                        ),
-                                      ),
-                                    ]),
+                                padding: const EdgeInsets.all(0.7),
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.circular(15)),
+                                  child: Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 20),
+                                    child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          const Padding(
+                                            padding: EdgeInsets.only(
+                                                left: 10, right: 10),
+                                            child: Text(
+                                              "تهران",
+                                              textAlign: TextAlign.center,
+                                              style: TextStyle(
+                                                  fontSize: 11,
+                                                  fontFamily: MAIN_FONT_FAMILY,
+                                                  color: Color.fromRGBO(
+                                                      99, 99, 99, 1)),
+                                            ),
+                                          ),
+                                          Padding(
+                                            padding: const EdgeInsets.only(
+                                                right: 20),
+                                            child: IconButton(
+                                              icon: SvgPicture.asset(
+                                                  "assets/images/location1.svg"),
+                                              onPressed: () {},
+                                            ),
+                                          ),
+                                        ]),
+                                  ),
+                                ),
                               ),
                             ),
                             const SizedBox(
@@ -82,38 +88,51 @@ class AmlakFilter extends StatelessWidget {
                             ),
                             Container(
                               decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  border: Border.all(
-                                      color: const Color.fromRGBO(
-                                          166, 166, 166, 1)),
-                                  borderRadius: BorderRadius.circular(15)),
-                              child: Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(horizontal: 20),
-                                child: Row(children: [
-                                  const Padding(
-                                    padding: EdgeInsets.only(left: 20),
-                                    child: Text(
-                                      "فیلتر",
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                          fontSize: 11,
-                                          fontFamily: MAIN_FONT_FAMILY,
-                                          color: Color.fromRGBO(99, 99, 99, 1)),
+                                  borderRadius: BorderRadius.circular(15),
+                                  color: const Color.fromRGBO(
+                                    166,
+                                    166,
+                                    166,
+                                    1,
+                                  )),
+                              child: Container(
+                                decoration: BoxDecoration(
+                                    color: const Color.fromRGBO(
+                                      0,
+                                      189,
+                                      97,
+                                      1,
                                     ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(right: 20),
-                                    child: IconButton(
-                                      icon: SvgPicture.asset(
-                                        "assets/images/filter.svg",
-                                        width: 18,
-                                        height: 18,
+                                    borderRadius: BorderRadius.circular(15)),
+                                child: Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 20),
+                                  child: Row(children: [
+                                    const Padding(
+                                      padding: EdgeInsets.only(left: 20),
+                                      child: Text(
+                                        "فیلتر",
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                            fontSize: 11,
+                                            fontFamily: MAIN_FONT_FAMILY,
+                                            color:
+                                                Color.fromRGBO(99, 99, 99, 1)),
                                       ),
-                                      onPressed: () {},
                                     ),
-                                  ),
-                                ]),
+                                    Padding(
+                                      padding: const EdgeInsets.only(right: 20),
+                                      child: IconButton(
+                                        icon: SvgPicture.asset(
+                                          "assets/images/filter.svg",
+                                          width: 18,
+                                          height: 18,
+                                        ),
+                                        onPressed: () {},
+                                      ),
+                                    ),
+                                  ]),
+                                ),
                               ),
                             ),
                           ],
@@ -126,19 +145,11 @@ class AmlakFilter extends StatelessWidget {
                         () => Container(
                           height: _show_item_mahaleh_1.isTrue ? 130 : 50,
                           decoration: BoxDecoration(
-                              color: const Color.fromRGBO(250, 250, 250, 1),
-                              border: Border.all(
-                                  color:
-                                      const Color.fromRGBO(166, 166, 166, 1)),
-                              borderRadius: BorderRadius.circular(15),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.grey.withOpacity(0.2),
-                                  spreadRadius: 2,
-                                  blurRadius: 10,
-                                  offset: Offset(2, 5),
-                                )
-                              ]),
+                            color: const Color.fromRGBO(250, 250, 250, 1),
+                            border: Border.all(
+                                color: const Color.fromRGBO(166, 166, 166, 1)),
+                            borderRadius: BorderRadius.circular(15),
+                          ),
                           child: Column(children: [
                             Row(
                                 mainAxisAlignment:

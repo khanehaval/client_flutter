@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/models/AdvInfoModel.dart';
 import 'package:flutter_application_1/pages/category/models/FacilitiesModel.dart';
+import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/ejara_adv_pages/ejara_vila_page.dart';
 import 'package:flutter_application_1/pages/category/shared/adv_info/advInfo.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
-import 'package:flutter_application_1/pages/category/shared/date.dart';
 import 'package:flutter_application_1/pages/category/shared/facilities_selector.dart';
 import 'package:flutter_application_1/pages/category/shared/images_picker/images_picker.dart';
 import 'package:flutter_application_1/pages/category/shared/number_piacker.dart';
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
 import 'package:flutter_application_1/pages/category/shared/twoItemInRow.dart';
+import 'package:flutter_application_1/pages/category/shared/widget/submit_row.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/text_field.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/route_widget.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/switachable.dart';
@@ -40,7 +41,6 @@ class EjaraKmApartemanPage extends StatelessWidget {
   final _incomingTimeController = TextEditingController();
   final _outTimeController = TextEditingController();
   final _buildRoomsCountController = TextEditingController();
-  final _buildFloorController = TextEditingController();
   final _buildBaseCapacityController = TextEditingController();
   final _buildMaxCapacityController = TextEditingController();
   final _buildRiteController = TextEditingController();
@@ -57,12 +57,14 @@ class EjaraKmApartemanPage extends StatelessWidget {
   final _heatTypeController = TextEditingController();
   final _heatWaterController = TextEditingController();
   final _wcController = TextEditingController();
+  final submit = false.obs;
 
   EjaraKmApartemanPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: buildaAppBar(),
       body: SingleChildScrollView(
         child: Padding(
@@ -552,7 +554,11 @@ class EjaraKmApartemanPage extends StatelessWidget {
             const SizedBox(
               height: 15,
             ),
-            AdvInfo(_advInfo)
+            AdvInfo(_advInfo),
+            const SizedBox(
+              height: 30,
+            ),
+            SubmitRow(submit: submit, nextPage: EjaraVilaPage())
           ]),
         ),
       ),

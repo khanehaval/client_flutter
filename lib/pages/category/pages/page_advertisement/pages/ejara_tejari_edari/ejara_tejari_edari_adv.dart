@@ -85,7 +85,7 @@ class EjaraTejariAdv extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.all(0.6),
             child: Padding(
-              padding: const EdgeInsets.all(3.0),
+              padding: const EdgeInsets.all(1.1),
               child: Container(
                   decoration: BoxDecoration(
                     color: Colors.white,

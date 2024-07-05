@@ -9,13 +9,16 @@ import 'package:flutter_application_1/pages/category/shared/facilities_selector.
 import 'package:flutter_application_1/pages/category/shared/images_picker/images_picker.dart';
 import 'package:flutter_application_1/pages/category/shared/more_emkanat/jahat_sakhteman.dart';
 import 'package:flutter_application_1/pages/category/shared/more_emkanat/sanad.dart';
+import 'package:flutter_application_1/pages/category/shared/namayesh.dart';
 import 'package:flutter_application_1/pages/category/shared/number_piacker.dart';
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
 import 'package:flutter_application_1/pages/category/shared/twoItemInRow.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/submit_row.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/text_field.dart';
+import 'package:flutter_application_1/pages/login_secondly_page.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:gradient_icon/gradient_icon.dart';
 
 import '../../../../models/FacilitiesModel.dart';
 
@@ -723,7 +726,45 @@ class EjaraApartemanPage extends StatelessWidget {
               const SizedBox(
                 height: 30,
               ),
-              SubmitRow(submit: submit, nextPage: EjaraKmVilaPage())
+              GestureDetector(
+                onTap: () {
+                  Get.to(() => NamayeshAgahi());
+                },
+                child: Obx(() => Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Center(
+                          child: Text(
+                            "... تایید و ادامه",
+                            style: !submit.value
+                                ? const TextStyle(
+                                    fontSize: 20,
+                                    fontFamily: MAIN_FONT_FAMILY,
+                                    color: Colors.black38,
+                                  )
+                                : const TextStyle(
+                                    fontSize: 20, fontFamily: MAIN_FONT_FAMILY),
+                            textAlign: TextAlign.center,
+                          ),
+                        ),
+                        const SizedBox(
+                          width: 3,
+                        ),
+                        GradientIcon(
+                          icon: Icons.double_arrow,
+                          gradient: LinearGradient(
+                            colors: submit.isTrue
+                                ? GRADIANT_COLOR
+                                : BLACK_12_GRADIANT_COLOR,
+                            begin: Alignment.topLeft,
+                            end: Alignment.bottomRight,
+                          ),
+                          offset: const Offset(0, 0),
+                          size: 34,
+                        )
+                      ],
+                    )),
+              )
             ],
           ),
         ),

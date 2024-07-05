@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/models/AdvInfoModel.dart';
+import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/ejara_adv_pages/ejara_vila_page.dart';
 import 'package:flutter_application_1/pages/category/shared/adv_info/advInfo.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/category/shared/date.dart';
@@ -7,6 +8,7 @@ import 'package:flutter_application_1/pages/category/shared/images_picker/images
 import 'package:flutter_application_1/pages/category/shared/number_piacker.dart';
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
 import 'package:flutter_application_1/pages/category/shared/twoItemInRow.dart';
+import 'package:flutter_application_1/pages/category/shared/widget/submit_row.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/switachable.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
@@ -25,12 +27,12 @@ class PartnerShip extends StatelessWidget {
   final hasAnbari = false.obs;
   final hasAsansor = false.obs;
   final hasParking = false.obs;
-
+  final submit = false.obs;
   final _onePrice = 0.0.obs;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: buildaAppBar(),
       body: SingleChildScrollView(
         child: Padding(
@@ -317,7 +319,11 @@ class PartnerShip extends StatelessWidget {
             const SizedBox(
               height: 15,
             ),
-            AdvInfo(_advInfo)
+            AdvInfo(_advInfo),
+            const SizedBox(
+              height: 30,
+            ),
+            SubmitRow(submit: submit, nextPage: EjaraVilaPage())
           ]),
         ),
       ),

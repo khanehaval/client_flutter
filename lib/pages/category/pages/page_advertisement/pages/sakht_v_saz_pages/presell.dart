@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/models/AdvInfoModel.dart';
 import 'package:flutter_application_1/pages/category/models/FacilitiesModel.dart';
+import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/ejara_adv_pages/ejara_vila_page.dart';
 import 'package:flutter_application_1/pages/category/shared/adv_info/advInfo.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/category/shared/date.dart';
@@ -12,6 +13,7 @@ import 'package:flutter_application_1/pages/category/shared/number_piacker.dart'
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
 import 'package:flutter_application_1/pages/category/shared/switchItem.dart';
 import 'package:flutter_application_1/pages/category/shared/twoItemInRow.dart';
+import 'package:flutter_application_1/pages/category/shared/widget/submit_row.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/text_field.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/route_widget.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/switachable.dart';
@@ -30,12 +32,12 @@ class Presell extends StatelessWidget {
   final _onePrice = 0.0.obs;
   final _countOfInstallmentsController = TextEditingController();
   final _buildUnitOfAnyFloorCountController = TextEditingController();
+  final submit = false.obs;
 
   final _buildDirectionController = TextEditingController();
   final _timeToReceiveInstallmentsController = TextEditingController();
   final _buildFloorsCountController = TextEditingController();
   final _numberOfInstallmentsController = TextEditingController();
-  final _buildDateController = TextEditingController();
   final _buildRoomsCountController = TextEditingController();
   final _buildDocumentController = TextEditingController();
   final _buildFloorController = TextEditingController();
@@ -49,6 +51,7 @@ class Presell extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: buildaAppBar(),
       body: SingleChildScrollView(
         child: Padding(
@@ -271,13 +274,16 @@ class Presell extends StatelessWidget {
             const SizedBox(
               height: 15,
             ),
-            AdvInfo(_advInfo)
+            AdvInfo(_advInfo),
+            const SizedBox(
+              height: 30,
+            ),
+            SubmitRow(submit: submit, nextPage: EjaraVilaPage())
           ]),
         ),
       ),
     );
   }
-
 
   Widget onvanWidget(BuildContext context) {
     final isSwitched = true.obs;

@@ -8,6 +8,7 @@ import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter
 import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/widget_filter/emkanatagahi.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/widget_filter/metraj.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/widget_filter/otagh.dart';
+import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/widget_filter/taeedvaemalefilter.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/intro_screen.dart';
 import 'package:flutter_svg/svg.dart';
@@ -84,7 +85,12 @@ class EjaraFilter extends StatelessWidget {
                         ),
                         Container(
                           decoration: BoxDecoration(
-                              color: Colors.white,
+                              color: const Color.fromRGBO(
+                                0,
+                                189,
+                                97,
+                                1,
+                              ),
                               border: Border.all(
                                   color:
                                       const Color.fromRGBO(166, 166, 166, 1)),
@@ -483,31 +489,7 @@ class EjaraFilter extends StatelessWidget {
                 const SizedBox(
                   height: 30,
                 ),
-                Row(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(30),
-                          gradient: GetGradient(),
-                        ),
-                        child: ElevatedButton(
-                          onPressed: () {},
-                          style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.transparent,
-                              shadowColor: Colors.transparent),
-                          child: const Text(
-                            'تائید و اعمال فیلتر',
-                            style: TextStyle(
-                                color: Color.fromRGBO(48, 48, 48, 1),
-                                fontSize: 10,
-                                fontWeight: FontWeight.bold,
-                                fontFamily: MAIN_FONT_FAMILY),
-                          ),
-                        ),
-                      ),
-                    ])
+                taeedvaemalefilter()
               ],
             ),
           ),

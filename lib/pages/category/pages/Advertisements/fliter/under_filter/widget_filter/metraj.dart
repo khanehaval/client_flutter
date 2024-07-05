@@ -6,46 +6,79 @@ import 'package:flutter_svg/svg.dart';
 Widget metraj() {
   return Container(
     height: 50,
-    width: 325,
+    width: 330,
     decoration: BoxDecoration(
-      color: const Color.fromRGBO(183, 183, 183, 1),
+      color: Color.fromARGB(255, 205, 203, 203),
       borderRadius: BorderRadius.circular(15),
     ),
     child: Row(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         Container(
-          color: Colors.white,
-          height: 30,
-          width: 250,
-          child: TextFormField(
-              readOnly: true,
-              textAlign: TextAlign.right,
-              decoration: InputDecoration(
-                  hintText: 'انتخاب کنید (به متر مربع)',
-                  hintStyle: const TextStyle(
-                      color: Color.fromRGBO(166, 166, 166, 1),
-                      fontSize: 10,
-                      fontFamily: MAIN_FONT_FAMILY),
-                  border: const OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.white)),
-                  prefixIcon: IconButton(
-                    onPressed: () {},
-                    icon: SvgPicture.asset(
-                      "assets/images/arrow_down.svg",
-                      width: 10,
-                      height: 10,
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              color: const Color.fromRGBO(
+                183,
+                183,
+                183,
+                1,
+              )),
+          child: Container(
+            width: 264,
+            height: 35,
+            decoration: ShapeDecoration(
+              color: Colors.white,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
+              shadows: const [
+                BoxShadow(
+                  color: Color(0x11000000),
+                  blurRadius: 7,
+                  offset: Offset(0, 5),
+                  spreadRadius: 2,
+                ),
+              ],
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                IconButton(
+                  onPressed: () {},
+                  icon: SvgPicture.asset(
+                    "assets/images/arrow_down.svg",
+                    width: 10,
+                    height: 10,
+                    color: const Color.fromRGBO(
+                      48,
+                      48,
+                      48,
+                      1,
                     ),
-                  ))),
+                  ),
+                ),
+                const Padding(
+                  padding: EdgeInsets.only(right: 20.0),
+                  child: Text(
+                    'انتخاب کنید (به متر مربع)',
+                    style: TextStyle(
+                        fontFamily: MAIN_FONT_FAMILY,
+                        fontSize: 12,
+                        color: Color.fromRGBO(166, 166, 166, 1)),
+                  ),
+                ),
+              ],
+            ),
+          ),
         ),
         const Text(
-          "حداکثر",
+          "حداقل",
           style: TextStyle(
             fontFamily: MAIN_FONT_FAMILY,
             fontSize: 11,
             color: Color.fromRGBO(99, 99, 99, 1),
           ),
-        )
+        ),
       ],
     ),
   );
@@ -54,37 +87,70 @@ Widget metraj() {
 Widget metraj2() {
   return Container(
     height: 50,
-    width: 325,
+    width: 330,
     decoration: BoxDecoration(
-      color: const Color.fromRGBO(183, 183, 183, 1),
+      color: Color.fromARGB(255, 205, 203, 203),
       borderRadius: BorderRadius.circular(15),
     ),
     child: Row(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         Container(
-          color: Colors.white,
-          height: 30,
-          width: 250,
-          child: TextFormField(
-              readOnly: true,
-              textAlign: TextAlign.right,
-              decoration: InputDecoration(
-                  hintText: 'انتخاب کنید (به متر مربع)',
-                  hintStyle: const TextStyle(
-                      color: Color.fromRGBO(166, 166, 166, 1),
-                      fontSize: 10,
-                      fontFamily: MAIN_FONT_FAMILY),
-                  border: const OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.white)),
-                  prefixIcon: IconButton(
-                    onPressed: () {},
-                    icon: SvgPicture.asset(
-                      "assets/images/arrow_down.svg",
-                      width: 10,
-                      height: 10,
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              color: const Color.fromRGBO(
+                183,
+                183,
+                183,
+                1,
+              )),
+          child: Container(
+            width: 264,
+            height: 35,
+            decoration: ShapeDecoration(
+              color: Colors.white,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
+              shadows: const [
+                BoxShadow(
+                  color: Color(0x11000000),
+                  blurRadius: 7,
+                  offset: Offset(0, 5),
+                  spreadRadius: 2,
+                ),
+              ],
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                IconButton(
+                  onPressed: () {},
+                  icon: SvgPicture.asset(
+                    "assets/images/arrow_down.svg",
+                    width: 10,
+                    height: 10,
+                    color: const Color.fromRGBO(
+                      48,
+                      48,
+                      48,
+                      1,
                     ),
-                  ))),
+                  ),
+                ),
+                const Padding(
+                  padding: EdgeInsets.only(right: 20.0),
+                  child: Text(
+                    'انتخاب کنید (به متر مربع)',
+                    style: TextStyle(
+                        fontFamily: MAIN_FONT_FAMILY,
+                        fontSize: 12,
+                        color: Color.fromRGBO(166, 166, 166, 1)),
+                  ),
+                ),
+              ],
+            ),
+          ),
         ),
         const Text(
           "حداکثر",
@@ -93,7 +159,7 @@ Widget metraj2() {
             fontSize: 11,
             color: Color.fromRGBO(99, 99, 99, 1),
           ),
-        )
+        ),
       ],
     ),
   );

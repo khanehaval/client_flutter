@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/models/AdvInfoModel.dart';
+import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/ejara_adv_pages/ejara_vila_page.dart';
 import 'package:flutter_application_1/pages/category/shared/adv_info/advInfo.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/category/shared/date.dart';
@@ -11,6 +12,7 @@ import 'package:flutter_application_1/pages/category/shared/number_piacker.dart'
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
 import 'package:flutter_application_1/pages/category/shared/switchItem.dart';
 import 'package:flutter_application_1/pages/category/shared/twoItemInRow.dart';
+import 'package:flutter_application_1/pages/category/shared/widget/submit_row.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/text_field.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/route_widget.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/switachable.dart';
@@ -22,6 +24,8 @@ class ForoshAdvPage extends StatelessWidget {
   final aghsatType = "".obs;
   final onvan = "".obs;
   int selectedIndex = 0;
+  final submit = false.obs;
+
   final hasAnbari = false.obs;
   final hasAsansor = false.obs;
   final hasParking = false.obs;
@@ -443,7 +447,11 @@ class ForoshAdvPage extends StatelessWidget {
                 endIndent: 6,
                 indent: 6,
               ),
-              AdvInfo(_advInfo)
+              AdvInfo(_advInfo),
+              const SizedBox(
+                height: 30,
+              ),
+              SubmitRow(submit: submit, nextPage: EjaraVilaPage())
             ]),
           ),
         ));

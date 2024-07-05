@@ -95,7 +95,12 @@ class EjaraApartemanFilter extends StatelessWidget {
                   ),
                   Container(
                     decoration: BoxDecoration(
-                        color: Colors.white,
+                        color: const Color.fromRGBO(
+                          0,
+                          189,
+                          97,
+                          1,
+                        ),
                         border: Border.all(
                             color: const Color.fromRGBO(166, 166, 166, 1)),
                         borderRadius: BorderRadius.circular(15)),
@@ -129,7 +134,7 @@ class EjaraApartemanFilter extends StatelessWidget {
             ],
           ),
           const SizedBox(
-            height: 10,
+            height: 20,
           ),
           Obx(
             () => Container(
@@ -170,7 +175,7 @@ class EjaraApartemanFilter extends StatelessWidget {
             ),
           ),
           const SizedBox(
-            height: 10,
+            height: 20,
           ),
           Obx(() => Container(
                 height: _show_item_mizanrahn.isTrue ? 230 : 50,
@@ -206,14 +211,14 @@ class EjaraApartemanFilter extends StatelessWidget {
                         ]),
                     if (_show_item_mizanrahn.isTrue) rahn(),
                     const SizedBox(
-                      height: 10,
+                      height: 21,
                     ),
                     rahn2(),
                   ],
                 ),
               )),
           const SizedBox(
-            height: 10,
+            height: 20,
           ),
           Obx(
             () => Container(
@@ -250,7 +255,7 @@ class EjaraApartemanFilter extends StatelessWidget {
                       ]),
                   if (_show_item_mizanejara.isTrue) ejara(),
                   const SizedBox(
-                    height: 10,
+                    height: 21,
                   ),
                   ejara2()
                 ],
@@ -258,7 +263,7 @@ class EjaraApartemanFilter extends StatelessWidget {
             ),
           ),
           const SizedBox(
-            height: 10,
+            height: 20,
           ),
           Obx(
             () => Container(
@@ -295,7 +300,7 @@ class EjaraApartemanFilter extends StatelessWidget {
                       ]),
                   if (_show_item_mizanmetraj.isTrue) metraj(),
                   const SizedBox(
-                    height: 10,
+                    height: 21,
                   ),
                   metraj2()
                 ],
@@ -303,7 +308,7 @@ class EjaraApartemanFilter extends StatelessWidget {
             ),
           ),
           const SizedBox(
-            height: 10,
+            height: 20,
           ),
           Obx(
             () => Container(
@@ -340,7 +345,7 @@ class EjaraApartemanFilter extends StatelessWidget {
                       ]),
                   if (_show_item_tabagheh_1.isTrue) tabagheh(),
                   const SizedBox(
-                    height: 10,
+                    height: 21,
                   ),
                   tabagheh2(),
                 ],
@@ -348,7 +353,7 @@ class EjaraApartemanFilter extends StatelessWidget {
             ),
           ),
           const SizedBox(
-            height: 10,
+            height: 20,
           ),
           Obx(
             () => Container(
@@ -385,7 +390,7 @@ class EjaraApartemanFilter extends StatelessWidget {
                       ]),
                   if (_show_item_koletabageh_1.isTrue) koletabagheh(),
                   const SizedBox(
-                    height: 10,
+                    height: 21,
                   ),
                   koletabagheh2()
                 ],
@@ -393,7 +398,7 @@ class EjaraApartemanFilter extends StatelessWidget {
             ),
           ),
           const SizedBox(
-            height: 10,
+            height: 20,
           ),
           Obx(
             () => Container(
@@ -430,7 +435,7 @@ class EjaraApartemanFilter extends StatelessWidget {
                       ]),
                   if (_show_item_vaheddartabageh_1.isTrue) tedadvahed(),
                   const SizedBox(
-                    height: 10,
+                    height: 21,
                   ),
                   tedadvahed2()
                 ],
@@ -438,7 +443,7 @@ class EjaraApartemanFilter extends StatelessWidget {
             ),
           ),
           const SizedBox(
-            height: 10,
+            height: 20,
           ),
           Obx(
             () => Container(
@@ -475,7 +480,7 @@ class EjaraApartemanFilter extends StatelessWidget {
                       ]),
                   if (_show_item_senbana_1.isTrue) senbana(),
                   const SizedBox(
-                    height: 10,
+                    height: 21,
                   ),
                   senbana2()
                 ],
@@ -483,7 +488,7 @@ class EjaraApartemanFilter extends StatelessWidget {
             ),
           ),
           const SizedBox(
-            height: 10,
+            height: 20,
           ),
           Obx(
             () => Container(
