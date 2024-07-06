@@ -84,6 +84,7 @@ dependencies:
   animate_do: 2.1.0
   loading_animation_widget: 1.2.1
   draggable_home: 1.0.5
+  onboarding: 4.0.2
   # mapir_raster: 0.0.1
 
 dev_dependencies:

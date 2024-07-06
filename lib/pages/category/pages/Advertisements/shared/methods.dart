@@ -43,14 +43,20 @@ Widget showAdvertisment(AdvertismentModel advertismentModel, Function onTap) {
                                 ),
                                 Align(
                                   alignment: Alignment.centerRight,
-                                  child: SvgPicture.asset(
-                                    "assets/images/Score.svg",
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: SvgPicture.asset(
+                                      "assets/images/Score.svg",
+                                    ),
                                   ),
                                 ),
                                 Align(
                                   alignment: Alignment.centerLeft,
-                                  child: SvgPicture.asset(
-                                    "assets/images/Pic Number.svg",
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: SvgPicture.asset(
+                                      "assets/images/Pic Number.svg",
+                                    ),
                                   ),
                                 ),
                                 Padding(
@@ -79,35 +85,40 @@ Widget showAdvertisment(AdvertismentModel advertismentModel, Function onTap) {
                                 ),
                                 Padding(
                                   padding:
-                                      const EdgeInsets.only(top: 115, left: 5),
+                                      const EdgeInsets.only(top: 110, left: 10),
                                   child: Align(
                                     alignment: Alignment.bottomLeft,
                                     child: SvgPicture.asset(
                                       "assets/images/announcement.svg",
-                                      width: 15,
-                                      height: 15,
+                                      width: 20,
+                                      height: 20,
                                     ),
                                   ),
                                 ),
                               ],
                             ),
-                            const SizedBox(height: 10),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 SizedBox(
-                                  height: 20,
-                                  width: 20,
-                                  child: SvgPicture.asset(
-                                      "assets/images/total price.svg"),
+                                  height: 35,
+                                  width: 35,
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(top: 20.0),
+                                    child: SvgPicture.asset(
+                                        "assets/images/total price.svg"),
+                                  ),
                                 ),
                                 const SizedBox(width: 20),
-                                const Text(
-                                  "...ویلا 100 متری در زمین 250 متری",
-                                  style: TextStyle(
-                                    fontSize: 10,
-                                    fontFamily: MAIN_FONT_FAMILY,
-                                    color: Color.fromRGBO(99, 99, 99, 1),
+                                const Padding(
+                                  padding: EdgeInsets.only(top: 20.0),
+                                  child: Text(
+                                    "...ویلا 100 متری در زمین 250 متری",
+                                    style: TextStyle(
+                                      fontSize: 10,
+                                      fontFamily: MAIN_FONT_FAMILY,
+                                      color: Color.fromRGBO(99, 99, 99, 1),
+                                    ),
                                   ),
                                 ),
                               ],
@@ -121,10 +132,13 @@ Widget showAdvertisment(AdvertismentModel advertismentModel, Function onTap) {
                                   height: 20,
                                   width: 20,
                                 ),
-                                SvgPicture.asset(
-                                  "assets/images/property1.svg",
-                                  height: 15,
-                                  width: 15,
+                                Padding(
+                                  padding: const EdgeInsets.only(top: 10.0),
+                                  child: SvgPicture.asset(
+                                    "assets/images/property1.svg",
+                                    height: 15,
+                                    width: 1,
+                                  ),
                                 ),
                               ],
                             ),
@@ -134,8 +148,8 @@ Widget showAdvertisment(AdvertismentModel advertismentModel, Function onTap) {
                                   alignment: Alignment.centerLeft,
                                   child: SvgPicture.asset(
                                     "assets/images/Sqm.svg",
-                                    width: 20,
-                                    height: 20,
+                                    width: 25,
+                                    height: 25,
                                   ),
                                 ),
                               ],
@@ -147,7 +161,7 @@ Widget showAdvertisment(AdvertismentModel advertismentModel, Function onTap) {
                   ),
                   Positioned(
                     left: 160,
-                    top: 110,
+                    top: 115,
                     child: GestureDetector(
                       onTap: () {
                         onTap();
@@ -176,14 +190,17 @@ Widget showAdvertisment(AdvertismentModel advertismentModel, Function onTap) {
                     borderRadius: BorderRadius.all(Radius.circular(10)),
                     color: Color.fromRGBO(0, 189, 97, 1)),
                 child: const Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Icon(CupertinoIcons.back, color: Colors.white),
-                    Text(
-                      'قبلی',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontFamily: MAIN_FONT_FAMILY,
+                    Padding(
+                      padding: EdgeInsets.only(right: 10.0),
+                      child: Text(
+                        'قبلی',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontFamily: MAIN_FONT_FAMILY,
+                        ),
                       ),
                     ),
                   ],
@@ -205,13 +222,16 @@ Widget showAdvertisment(AdvertismentModel advertismentModel, Function onTap) {
                       1,
                     )),
                 child: const Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Text(
-                      'بعدی',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontFamily: MAIN_FONT_FAMILY,
+                    Padding(
+                      padding: EdgeInsets.only(left: 10.0),
+                      child: Text(
+                        'بعدی',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontFamily: MAIN_FONT_FAMILY,
+                        ),
                       ),
                     ),
                     Icon(CupertinoIcons.forward, color: Colors.white),
