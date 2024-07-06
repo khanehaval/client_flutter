@@ -52,268 +52,269 @@ class _SelectLocationMapState extends State<Advertisements> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Colors.white,
         body: Stack(children: [
-      AdvMap(advertisments),
-      const Align(
-        alignment: Alignment.topRight,
-      ),
-      Column(
-        children: [
-          SizedBox(
-              height: 20,
-              child: Obx(() => _currentIndex.value == 1
-                  ? ScrollablePositionedList.builder(
-                      reverse: true,
-                      itemScrollController: _controller,
-                      itemCount: 7,
-                      scrollDirection: Axis.horizontal,
-                      initialScrollIndex: widget.index,
-                      itemBuilder: (context, i) => GestureDetector(
-                        onTap: () {
-                          _controller.scrollTo(
-                              index: i,
-                              duration: const Duration(microseconds: 100),
-                              opacityAnimationWeights: [10, 30, 10],
-                              alignment: 0.5);
-                          _currentIndex.value = i;
-                        },
-                        child: Obx(
-                          () => Container(
-                            margin: const EdgeInsets.only(
-                                left: 0, right: 10, bottom: 11, top: 40),
-                            padding: const EdgeInsets.all(1),
-                            height: 98,
-                            width: 110,
-                            decoration: BoxDecoration(
-                              gradient: _currentIndex.value == i
-                                  ? const LinearGradient(
-                                      colors: GRADIANT_COLOR,
-                                    )
-                                  : const LinearGradient(
-                                      colors: BLACK_12_GRADIANT_COLOR,
+          AdvMap(advertisments),
+          const Align(
+            alignment: Alignment.topRight,
+          ),
+          Column(
+            children: [
+              SizedBox(
+                  height: 98,
+                  child: Obx(() => _currentIndex.value == 0
+                      ? ScrollablePositionedList.builder(
+                          reverse: true,
+                          itemScrollController: _controller,
+                          itemCount: 7,
+                          scrollDirection: Axis.horizontal,
+                          initialScrollIndex: widget.index,
+                          itemBuilder: (context, i) => GestureDetector(
+                            onTap: () {
+                              _controller.scrollTo(
+                                  index: i,
+                                  duration: const Duration(microseconds: 100),
+                                  opacityAnimationWeights: [10, 30, 10],
+                                  alignment: 0.5);
+                              _currentIndex.value = i;
+                            },
+                            child: Obx(
+                              () => Container(
+                                margin: const EdgeInsets.only(
+                                    left: 0, right: 10, bottom: 5, top: 40),
+                                padding: const EdgeInsets.all(1.2),
+                                height: 98,
+                                width: 130,
+                                decoration: BoxDecoration(
+                                  gradient: _currentIndex.value == i
+                                      ? const LinearGradient(
+                                          colors: GRADIANT_COLOR,
+                                        )
+                                      : const LinearGradient(
+                                          colors: BLACK_12_GRADIANT_COLOR,
+                                        ),
+                                  borderRadius: BorderRadius.circular(10),
+                                  // border:
+                                  //     Border.all(width: _currentIndex.value == i ? 1 : 1),
+                                ),
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
+                                  child: Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 5),
+                                    child: Image.asset(
+                                      items[i].assetPath,
+                                      width: 80,
+                                      height: 80,
+                                      fit: BoxFit.fitWidth,
                                     ),
-                              borderRadius: BorderRadius.circular(10),
-                              // border:
-                              //     Border.all(width: _currentIndex.value == i ? 1 : 1),
-                            ),
-                            child: Container(
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              child: Padding(
-                                padding: const EdgeInsets.symmetric(
-                                    vertical: 8, horizontal: 2),
-                                child: Image.asset(
-                                  items[i].assetPath,
-                                  width: 35,
-                                  height: 35,
-                                  fit: BoxFit.fitHeight,
+                                  ),
                                 ),
                               ),
                             ),
                           ),
-                        ),
-                      ),
-                    )
-                  : const SizedBox.shrink())),
-          SingleChildScrollView(
-            reverse: true,
-            scrollDirection: Axis.horizontal,
-            child: Row(
-              children: [
-                Container(
-                  decoration: BoxDecoration(
-                      border: Border.all(
-                          color: const Color.fromRGBO(166, 166, 166, 1)),
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(10)),
-                  child: SizedBox(
-                    height: 40,
-                    width: 110,
-                    child: Stack(children: [
-                      const Padding(
-                        padding: EdgeInsets.only(left: 50, top: 10),
-                        child: Text(
-                          "تعداد اتاق",
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                              fontSize: 11,
-                              fontFamily: MAIN_FONT_FAMILY,
-                              color: Color.fromRGBO(99, 99, 99, 1)),
-                        ),
-                      ),
-                      const SizedBox(
-                        width: 15,
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(right: 30),
-                        child: IconButton(
-                          icon: SvgPicture.asset(
-                            "assets/images/Vector-20.svg",
-                            color: const Color.fromRGBO(
-                              166,
-                              166,
-                              166,
-                              1,
-                            ),
-                          ),
-                          onPressed: () {
-                            FocusScope.of(Get.context!).unfocus();
-                          },
-                        ),
-                      ),
-                    ]),
-                  ),
-                ),
-                const SizedBox(
-                  width: 10,
-                ),
-                Container(
-                  decoration: BoxDecoration(
-                      border: Border.all(
-                          color: const Color.fromRGBO(166, 166, 166, 1)),
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(10)),
-                  child: SizedBox(
-                    height: 40,
-                    width: 100,
-                    child: Stack(children: [
-                      const Padding(
-                        padding: EdgeInsets.only(left: 60, top: 10),
-                        child: Text(
-                          "محله",
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                              fontSize: 11,
-                              fontFamily: MAIN_FONT_FAMILY,
-                              color: Color.fromRGBO(99, 99, 99, 1)),
-                        ),
-                      ),
-                      const SizedBox(
-                        width: 15,
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(right: 30),
-                        child: IconButton(
-                          icon: SvgPicture.asset(
-                            "assets/images/Vector-20.svg",
-                            color: const Color.fromRGBO(
-                              166,
-                              166,
-                              166,
-                              1,
-                            ),
-                          ),
-                          onPressed: () {
-                            FocusScope.of(Get.context!).unfocus();
-                          },
-                        ),
-                      ),
-                    ]),
-                  ),
-                ),
-                const SizedBox(
-                  width: 10,
-                ),
-                Container(
-                  decoration: BoxDecoration(
-                      border: Border.all(
-                          color: const Color.fromRGBO(166, 166, 166, 1)),
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(10)),
-                  child: SizedBox(
-                    height: 40,
-                    width: getPageWidth(),
-                    child: Center(
-                      child: Stack(children: [
-                        const Padding(
-                          padding: EdgeInsets.only(right: 5),
-                          child: Text(
-                            "تهران",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                                fontFamily: MAIN_FONT_FAMILY,
-                                color: Color.fromRGBO(99, 99, 99, 1),
-                                fontSize: 12),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 50),
-                          child: SvgPicture.asset(
-                            'assets/images/location1.svg',
-                          ),
                         )
-                      ]),
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  width: 10,
-                ),
-                GestureDetector(
-                  onTap: () {
-                    Get.to(
-                        () => Filter(
-                              index: 0,
+                      : const SizedBox.shrink())),
+              SingleChildScrollView(
+                reverse: true,
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  children: [
+                    Container(
+                      decoration: BoxDecoration(
+                          border: Border.all(
+                              color: const Color.fromRGBO(166, 166, 166, 1)),
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(10)),
+                      child: SizedBox(
+                        height: 40,
+                        width: 110,
+                        child: Stack(children: [
+                          const Padding(
+                            padding: EdgeInsets.only(left: 50, top: 10),
+                            child: Text(
+                              "تعداد اتاق",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  fontSize: 11,
+                                  fontFamily: MAIN_FONT_FAMILY,
+                                  color: Color.fromRGBO(99, 99, 99, 1)),
                             ),
-                        transition: Transition.leftToRight);
-                  },
-                  child: Container(
-                    decoration: BoxDecoration(
-                      border: Border.all(
-                          color: const Color.fromRGBO(166, 166, 166, 1)),
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: SizedBox(
-                      height: 40,
-                      width: 100,
-                      child: Stack(children: [
-                        const Padding(
-                          padding: EdgeInsets.only(left: 30, top: 10),
-                          child: Text(
-                            "فیلتر",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                                fontSize: 12,
-                                fontFamily: MAIN_FONT_FAMILY,
-                                color: Color.fromRGBO(99, 99, 99, 1)),
                           ),
-                        ),
-                        const SizedBox(
-                          width: 15,
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 55),
-                          child: IconButton(
-                            icon: SvgPicture.asset(
-                              "assets/images/filter.svg",
-                              width: 17,
-                              height: 17,
+                          const SizedBox(
+                            width: 15,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(right: 30),
+                            child: IconButton(
+                              icon: SvgPicture.asset(
+                                "assets/images/Vector-20.svg",
+                                color: const Color.fromRGBO(
+                                  166,
+                                  166,
+                                  166,
+                                  1,
+                                ),
+                              ),
+                              onPressed: () {
+                                FocusScope.of(Get.context!).unfocus();
+                              },
                             ),
-                            onPressed: () {
-                              Get.to(
-                                  () => Filter(
-                                        index: 0,
-                                      ),
-                                  transition: Transition.leftToRight);
-                            },
                           ),
-                        ),
-                      ]),
+                        ]),
+                      ),
                     ),
-                  ),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    Container(
+                      decoration: BoxDecoration(
+                          border: Border.all(
+                              color: const Color.fromRGBO(166, 166, 166, 1)),
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(10)),
+                      child: SizedBox(
+                        height: 40,
+                        width: 100,
+                        child: Stack(children: [
+                          const Padding(
+                            padding: EdgeInsets.only(left: 60, top: 10),
+                            child: Text(
+                              "محله",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  fontSize: 11,
+                                  fontFamily: MAIN_FONT_FAMILY,
+                                  color: Color.fromRGBO(99, 99, 99, 1)),
+                            ),
+                          ),
+                          const SizedBox(
+                            width: 15,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(right: 30),
+                            child: IconButton(
+                              icon: SvgPicture.asset(
+                                "assets/images/Vector-20.svg",
+                                color: const Color.fromRGBO(
+                                  166,
+                                  166,
+                                  166,
+                                  1,
+                                ),
+                              ),
+                              onPressed: () {
+                                FocusScope.of(Get.context!).unfocus();
+                              },
+                            ),
+                          ),
+                        ]),
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    Container(
+                      decoration: BoxDecoration(
+                          border: Border.all(
+                              color: const Color.fromRGBO(166, 166, 166, 1)),
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(10)),
+                      child: SizedBox(
+                        height: 40,
+                        width: getPageWidth(),
+                        child: Center(
+                          child: Stack(children: [
+                            const Padding(
+                              padding: EdgeInsets.only(right: 5),
+                              child: Text(
+                                "تهران",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    fontFamily: MAIN_FONT_FAMILY,
+                                    color: Color.fromRGBO(99, 99, 99, 1),
+                                    fontSize: 12),
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 50),
+                              child: SvgPicture.asset(
+                                'assets/images/location1.svg',
+                              ),
+                            )
+                          ]),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        Get.to(
+                            () => Filter(
+                                  index: 0,
+                                ),
+                            transition: Transition.leftToRight);
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                              color: const Color.fromRGBO(166, 166, 166, 1)),
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: SizedBox(
+                          height: 40,
+                          width: 100,
+                          child: Stack(children: [
+                            const Padding(
+                              padding: EdgeInsets.only(left: 30, top: 10),
+                              child: Text(
+                                "فیلتر",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    fontSize: 12,
+                                    fontFamily: MAIN_FONT_FAMILY,
+                                    color: Color.fromRGBO(99, 99, 99, 1)),
+                              ),
+                            ),
+                            const SizedBox(
+                              width: 15,
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 55),
+                              child: IconButton(
+                                icon: SvgPicture.asset(
+                                  "assets/images/filter.svg",
+                                  width: 17,
+                                  height: 17,
+                                ),
+                                onPressed: () {
+                                  Get.to(
+                                      () => Filter(
+                                            index: 0,
+                                          ),
+                                      transition: Transition.leftToRight);
+                                },
+                              ),
+                            ),
+                          ]),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 5,
+                    ),
+                  ],
                 ),
-                const SizedBox(
-                  width: 5,
-                ),
-              ],
-            ),
+              ),
+            ],
           ),
-        ],
-      ),
-    ]));
+        ]));
   }
 
   var items = [

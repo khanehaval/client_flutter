@@ -154,7 +154,7 @@ class EjaraFilter extends StatelessWidget {
                               },
                             ),
                             const Padding(
-                              padding: EdgeInsets.only(left: 10, right: 10),
+                              padding: EdgeInsets.only(left: 10, right: 20),
                               child: Text(
                                 'محله',
                                 style: TextStyle(
@@ -196,11 +196,13 @@ class EjaraFilter extends StatelessWidget {
                               },
                             ),
                             const Padding(
-                              padding: EdgeInsets.only(left: 10, right: 10),
+                              padding: EdgeInsets.only(left: 10, right: 20),
                               child: Text(
                                 "میزان رهن",
                                 style: TextStyle(
-                                    fontFamily: MAIN_FONT_FAMILY, fontSize: 14),
+                                    color: Color.fromRGBO(48, 48, 48, 1),
+                                    fontFamily: MAIN_FONT_FAMILY,
+                                    fontSize: 12),
                               ),
                             ),
                           ]),

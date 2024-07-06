@@ -47,9 +47,6 @@ class _EducationalTourState extends State<EducationalTour> {
     const CategoryAdvertisement(),
     const Category(),
     Advertisements(),
-    MainCategory(
-      index: 0,
-    ),
     AmlakPage(),
     EjaraKotaModat(),
     EjaraMaskoni(),
@@ -63,7 +60,7 @@ class _EducationalTourState extends State<EducationalTour> {
   Widget build(BuildContext context) {
     return Obx(() => Scaffold(
           backgroundColor: Colors.white,
-          appBar: currentPageIndex.value == 5 ? null : buildAppBar(),
+          appBar: currentPageIndex.value == 4 ? null : buildAppBar(),
           body: Stack(
             alignment: Alignment.topCenter,
             children: [
@@ -229,7 +226,6 @@ class _EducationalTourState extends State<EducationalTour> {
         ),
         child: Obx(
           () => Container(
-            color: Colors.black,
             child: BottomNavigationBar(
               backgroundColor: Colors.white,
               onTap: (int index) {

@@ -13,7 +13,7 @@ Widget showAdvertisment(AdvertismentModel advertismentModel, Function onTap) {
         Transform.translate(
           offset: const Offset(20, 60),
           child: Padding(
-            padding: const EdgeInsets.only(top: 25, right: 40, bottom: 70),
+            padding: const EdgeInsets.only(top: 75, right: 40, bottom: 70),
             child: Container(
               width: 350,
               height: 400,
@@ -167,25 +167,25 @@ Widget showAdvertisment(AdvertismentModel advertismentModel, Function onTap) {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-      Padding(
+            Padding(
               padding: const EdgeInsets.all(8.0),
               child: Container(
                 width: 89,
                 height: 42,
                 decoration: const BoxDecoration(
                     borderRadius: BorderRadius.all(Radius.circular(10)),
-                    color: Color.fromRGBO(
-                    0, 189, 97, 1
-                    )),
+                    color: Color.fromRGBO(0, 189, 97, 1)),
                 child: const Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                   
                     Icon(CupertinoIcons.back, color: Colors.white),
-                     Text('قبلی',   style: TextStyle(
-                      color: Colors.white,
-                      fontFamily: MAIN_FONT_FAMILY,
-                    ),),
+                    Text(
+                      'قبلی',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontFamily: MAIN_FONT_FAMILY,
+                      ),
+                    ),
                   ],
                 ),
               ),
@@ -207,10 +207,13 @@ Widget showAdvertisment(AdvertismentModel advertismentModel, Function onTap) {
                 child: const Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    Text('بعدی',   style: TextStyle(
-                      color: Colors.white,
-                      fontFamily: MAIN_FONT_FAMILY,
-                    ),),
+                    Text(
+                      'بعدی',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontFamily: MAIN_FONT_FAMILY,
+                      ),
+                    ),
                     Icon(CupertinoIcons.forward, color: Colors.white),
                   ],
                 ),

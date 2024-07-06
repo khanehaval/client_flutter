@@ -43,6 +43,7 @@ class _FilterState extends State<Filter> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       bottomNavigationBar: bottomNavigationBar2(),
       body: Padding(
         padding: const EdgeInsets.only(top: 20),
@@ -161,7 +162,7 @@ class _FilterState extends State<Filter> {
                                     Container(
                                       margin: const EdgeInsets.only(
                                         left: 0,
-                                        right: 2,
+                                        right: 5,
                                       ),
                                       padding: const EdgeInsets.all(0.7),
                                       width: 130,
@@ -198,11 +199,11 @@ class _FilterState extends State<Filter> {
                                   child: Obx(
                                     () => Container(
                                       margin: const EdgeInsets.only(
-                                        left: 3,
-                                        right: 3,
+                                        left: 5,
+                                        right: 5,
                                       ),
-                                      padding: const EdgeInsets.all(.7),
-                                      width: 85,
+                                      padding: const EdgeInsets.all(0.7),
+                                      width: 105,
                                       decoration: BoxDecoration(
                                         gradient: _subIndex.value == i
                                             ? const LinearGradient(
@@ -215,8 +216,8 @@ class _FilterState extends State<Filter> {
                                         border: Border.all(
                                             width: _currentIndex.value ==
                                                     _currentIndex.value
-                                                ? 0.5
-                                                : 0.5),
+                                                ? .0008
+                                                : 0.1),
                                       ),
                                       child: Container(
                                         decoration: BoxDecoration(
@@ -233,7 +234,7 @@ class _FilterState extends State<Filter> {
                                                 fontFamily: MAIN_FONT_FAMILY,
                                                 color: Color.fromRGBO(
                                                     99, 99, 99, 1),
-                                                fontSize: 10),
+                                                fontSize: 12),
                                           ),
                                         ),
                                       ),
