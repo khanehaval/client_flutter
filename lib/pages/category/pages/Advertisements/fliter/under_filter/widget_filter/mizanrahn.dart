@@ -20,7 +20,7 @@ Widget rahn() {
         height: 50,
         width: 310,
         decoration: BoxDecoration(
-          color: Color.fromARGB(255, 50, 48, 48),
+          color: const Color.fromARGB(255, 225, 225, 225),
           borderRadius: BorderRadius.circular(15),
         ),
         child: Row(

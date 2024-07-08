@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/register/register.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
@@ -117,12 +118,12 @@ class IntroScreen extends StatelessWidget {
                     Stack(
                       alignment: Alignment.center,
                       children: [
-                        Image.asset(
-                          'assets/images/Rectangle 457.png',
+                        SvgPicture.asset(
+                          'assets/images/Rectangle 457.svg',
                           fit: BoxFit.cover,
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(top: 60, left: 30),
+                          padding: const EdgeInsets.only(top: 10, left: 30),
                           child: SvgPicture.asset(
                             'assets/images/Group 2.svg',
                           ),
@@ -134,7 +135,7 @@ class IntroScreen extends StatelessWidget {
                     ),
                     Padding(
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 30, vertical: 20),
+                          horizontal: 30, vertical: 10),
                       child: FadeInDown(
                         child: const Column(
                           crossAxisAlignment: CrossAxisAlignment.end,
@@ -186,22 +187,17 @@ class IntroScreen extends StatelessWidget {
               Stack(
                 alignment: Alignment.center,
                 children: [
-                  Padding(
-                    padding: EdgeInsets.only(
-                        top: MediaQuery.of(context).padding.top),
-                    child: Stack(children: [
-                      Image.asset(
-                        'assets/images/Rectangle 457.png',
-                        fit: BoxFit.cover,
+                  Stack(children: [
+                    SvgPicture.asset(
+                      'assets/images/Rectangle 458.svg',
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 80, left: 50),
+                      child: SvgPicture.asset(
+                        'assets/images/property3.svg',
                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 80, left: 50),
-                        child: SvgPicture.asset(
-                          'assets/images/property3.svg',
-                        ),
-                      )
-                    ]),
-                  ),
+                    )
+                  ]),
                 ],
               ),
               Padding(
@@ -384,6 +380,7 @@ class IntroScreen extends StatelessWidget {
 
 double getPageWidth_2(BuildContext context) => getPageWidth();
 LinearGradient GetGradient() => const LinearGradient(colors: [
-      Color.fromARGB(255, 95, 173, 237),
-      Color.fromARGB(126, 118, 238, 146),
+      Color.fromRGBO(144, 199, 255, 1),
+      Color.fromRGBO(144, 236, 218, 1),
+      Color.fromRGBO(160, 241, 168, 1),
     ]);
