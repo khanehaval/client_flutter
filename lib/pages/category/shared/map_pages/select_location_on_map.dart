@@ -180,7 +180,7 @@ class _SelectLocationMapState extends State<SelectLocationMap> {
                             inactiveThumbColor:
                                 const Color.fromRGBO(255, 255, 255, 1),
                             inactiveTrackColor:
-                                Color.fromARGB(255, 219, 209, 209),
+                                Color.fromARGB(255, 204, 204, 204),
                           ),
                         ),
                       ),

@@ -22,7 +22,14 @@ import 'package:gradient_icon/gradient_icon.dart';
 
 import '../../../../models/FacilitiesModel.dart';
 
-class EjaraApartemanPage extends StatelessWidget {
+class EjaraApartemanPage extends StatefulWidget {
+  const EjaraApartemanPage({super.key});
+
+  @override
+  _EjaraApartemanPageState createState() => _EjaraApartemanPageState();
+}
+
+class _EjaraApartemanPageState extends State<EjaraApartemanPage> {
   final aghsatType = "".obs;
   final onvan = "".obs;
   final submit = false.obs;
@@ -45,7 +52,32 @@ class EjaraApartemanPage extends StatelessWidget {
   final _reBuildController = TextEditingController();
   final _countOfInstallmentsController = TextEditingController();
   final _advInfo = AdvInfoModel();
-  EjaraApartemanPage({super.key});
+
+  @override
+  void initState() {
+    super.initState();
+
+    // Add listeners to text controllers
+    _allPriceTextController.addListener(_checkFields);
+    _metragTextController.addListener(_checkFields);
+  }
+
+  void _checkFields() {
+    if (_allPriceTextController.text.isNotEmpty &&
+        _metragTextController.text.isNotEmpty) {
+      submit.value = true;
+    } else {
+      submit.value = false;
+    }
+  }
+
+  @override
+  void dispose() {
+    _allPriceTextController.dispose();
+    _metragTextController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -103,6 +135,7 @@ class EjaraApartemanPage extends StatelessWidget {
                   height: 41,
                   width: getPageWidth(),
                   child: TextField(
+                    controller: _allPriceTextController,
                     textAlign: TextAlign.right,
                     keyboardType: TextInputType.number,
                     decoration: InputDecoration(
@@ -129,6 +162,7 @@ class EjaraApartemanPage extends StatelessWidget {
                   height: 41,
                   width: getPageWidth(),
                   child: TextField(
+                    controller: _metragTextController,
                     textAlign: TextAlign.right,
                     keyboardType: TextInputType.number,
                     decoration: InputDecoration(
@@ -728,7 +762,9 @@ class EjaraApartemanPage extends StatelessWidget {
               ),
               GestureDetector(
                 onTap: () {
-                  Get.to(() => NamayeshAgahi());
+                  if (submit.value) {
+                    Get.to(() => NamayeshAgahi());
+                  }
                 },
                 child: Obx(() => Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -753,8 +789,8 @@ class EjaraApartemanPage extends StatelessWidget {
                         GradientIcon(
                           icon: Icons.double_arrow,
                           gradient: LinearGradient(
-                            colors: submit.isTrue
-                                ? GRADIANT_COLOR
+                            colors: submit.value
+                                ? GRADIANT_COLOR1
                                 : BLACK_12_GRADIANT_COLOR,
                             begin: Alignment.topLeft,
                             end: Alignment.bottomRight,

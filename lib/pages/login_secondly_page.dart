@@ -72,15 +72,26 @@ class LoginSecondlyPage extends StatelessWidget {
                           duration: const Duration(milliseconds: 400));
                     },
                     child: Container(
-                      height: 65,
-                      decoration: buildShapeDecoration(),
-                      child: const Center(
-                        child: Text(
-                          'شخصی',
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontFamily: MAIN_FONT_FAMILY,
-                            color: Color.fromRGBO(48, 48, 48, 1),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          gradient:
+                              const LinearGradient(colors: GRADIANT_COLOR)),
+                      child: Padding(
+                        padding: const EdgeInsets.all(1.2),
+                        child: Container(
+                          height: 65,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              color: Colors.white),
+                          child: const Center(
+                            child: Text(
+                              'شخصی',
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontFamily: MAIN_FONT_FAMILY,
+                                color: Color.fromRGBO(48, 48, 48, 1),
+                              ),
+                            ),
                           ),
                         ),
                       ),
@@ -96,15 +107,26 @@ class LoginSecondlyPage extends StatelessWidget {
                           duration: const Duration(milliseconds: 400));
                     },
                     child: Container(
-                      height: 65,
-                      decoration: buildShapeDecoration(),
-                      child: const Center(
-                        child: Text(
-                          'مشاوران ',
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontFamily: MAIN_FONT_FAMILY,
-                            color: Color.fromRGBO(48, 48, 48, 1),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          gradient:
+                              const LinearGradient(colors: GRADIANT_COLOR)),
+                      child: Padding(
+                        padding: const EdgeInsets.all(1.2),
+                        child: Container(
+                          height: 65,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              color: Colors.white),
+                          child: const Center(
+                            child: Text(
+                              'مشاوران',
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontFamily: MAIN_FONT_FAMILY,
+                                color: Color.fromRGBO(48, 48, 48, 1),
+                              ),
+                            ),
                           ),
                         ),
                       ),
@@ -120,15 +142,26 @@ class LoginSecondlyPage extends StatelessWidget {
                           duration: const Duration(milliseconds: 400));
                     },
                     child: Container(
-                      height: 65,
-                      decoration: buildShapeDecoration(),
-                      child: const Center(
-                        child: Text(
-                          'آژانس املاک ',
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontFamily: MAIN_FONT_FAMILY,
-                            color: Color.fromRGBO(48, 48, 48, 1),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          gradient:
+                              const LinearGradient(colors: GRADIANT_COLOR)),
+                      child: Padding(
+                        padding: const EdgeInsets.all(1.2),
+                        child: Container(
+                          height: 65,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              color: Colors.white),
+                          child: const Center(
+                            child: Text(
+                              'آژانس املاک',
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontFamily: MAIN_FONT_FAMILY,
+                                color: Color.fromRGBO(48, 48, 48, 1),
+                              ),
+                            ),
                           ),
                         ),
                       ),
@@ -212,7 +245,8 @@ class LoginSecondlyPage extends StatelessWidget {
       ),
       shape: RoundedRectangleBorder(
         side: const BorderSide(
-            width: 1, color: Color.fromARGB(255, 13, 165, 112)),
+          width: 1,
+        ),
         borderRadius: BorderRadius.circular(10),
       ),
     );

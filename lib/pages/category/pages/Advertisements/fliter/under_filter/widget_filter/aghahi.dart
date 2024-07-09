@@ -15,7 +15,7 @@ Widget viewaghahi() {
     child: SingleChildScrollView(
       child: Column(children: [
         Transform.translate(
-          offset: const Offset(0, 50),
+          offset: const Offset(0, 20),
           child: Container(
             decoration: const BoxDecoration(color: Colors.transparent),
             child: SingleChildScrollView(
