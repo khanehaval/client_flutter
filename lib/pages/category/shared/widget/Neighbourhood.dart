@@ -3,11 +3,44 @@ import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/category/shared/switchItem.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 
-class Neighbourhood extends StatelessWidget {
+class Neighbourhood extends StatefulWidget {
   Neighbourhood({super.key});
-  final submit = false.obs;
+
+  @override
+  _NeighbourhoodState createState() => _NeighbourhoodState();
+}
+
+class _NeighbourhoodState extends State<Neighbourhood> {
+  final selectedNeighborhoods = <String>[].obs;
+  final List<String> neighborhoods = [
+    'شهران',
+    'محله 1',
+    'محله 2',
+    'محله 3',
+  ];
+  final searchController = TextEditingController();
+  final filteredNeighborhoods = <String>[].obs;
+
+  @override
+  void initState() {
+    super.initState();
+    filteredNeighborhoods.addAll(neighborhoods);
+    searchController.addListener(_filterNeighborhoods);
+  }
+
+  @override
+  void dispose() {
+    searchController.dispose();
+    super.dispose();
+  }
+
+  void _filterNeighborhoods() {
+    final query = searchController.text.toLowerCase();
+    filteredNeighborhoods.value = neighborhoods
+        .where((neighborhood) => neighborhood.toLowerCase().contains(query))
+        .toList();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -17,279 +50,166 @@ class Neighbourhood extends StatelessWidget {
         backgroundColor: Colors.white,
       ),
       body: SafeArea(
-          child: Column(children: [
-        const Center(
-          child: Text(
-            'انتخاب محله',
-            style: TextStyle(fontFamily: MAIN_FONT_FAMILY, fontSize: 22),
-          ),
-        ),
-        const SizedBox(
-          height: 40,
-        ),
-        SvgPicture.asset(
-          'assets/images/city.svg',
-          semanticsLabel: 'City Illustration',
-        ),
-        const SizedBox(
-          height: 40,
-        ),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
-          child: TextField(
-            textAlign: TextAlign.end,
-            decoration: InputDecoration(
-              hintText: 'جستجو در همه شهر ها',
-              hintStyle: const TextStyle(
-                  fontFamily: 'Iran Sans', fontWeight: FontWeight.w400),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: const BorderSide(
-                  color: Color.fromRGBO(23, 102, 175, 1),
-                ),
-              ),
-              focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: const BorderSide(
-                  color: Color.fromRGBO(23, 102, 175, 1),
-                ),
-              ),
-              prefixIcon: const Icon(Icons.search),
-            ),
-            onChanged: (value) {
-              // Add your search logic here
-            },
-          ),
-        ),
-        const SizedBox(
-          height: 20,
-        ),
-        Stack(
+        child: Column(
           children: [
+            const Center(
+              child: Text(
+                'انتخاب محله',
+                style: TextStyle(fontFamily: MAIN_FONT_FAMILY, fontSize: 22),
+              ),
+            ),
+            const SizedBox(height: 20),
+            SvgPicture.asset(
+              'assets/images/city.svg',
+              semanticsLabel: 'City Illustration',
+            ),
+            const SizedBox(height: 10),
+            Obx(() => selectedNeighborhoods.isEmpty
+                ? Container()
+                : Padding(
+                    padding: const EdgeInsets.only(right: 20.0),
+                    child: Align(
+                      alignment: Alignment.centerRight,
+                      child: Wrap(
+                        direction: Axis.horizontal,
+                        spacing: 5.0,
+                        children: selectedNeighborhoods
+                            .map((neighborhood) => Chip(
+                                  deleteIconColor: Colors.red,
+                                  backgroundColor: Colors.white,
+                                  label: Text(
+                                    neighborhood,
+                                    style: const TextStyle(
+                                        fontFamily: MAIN_FONT_FAMILY,
+                                        fontSize: 10),
+                                  ),
+                                  onDeleted: () {
+                                    selectedNeighborhoods.remove(neighborhood);
+                                  },
+                                ))
+                            .toList(),
+                      ),
+                    ),
+                  )),
+            Padding(
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
+              child: TextField(
+                controller: searchController,
+                textAlign: TextAlign.end,
+                decoration: InputDecoration(
+                  hintText: 'جستجو در همه شهر ها',
+                  hintStyle: const TextStyle(
+                      fontFamily: 'Iran Sans', fontWeight: FontWeight.w400),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide: const BorderSide(
+                      color: Color.fromRGBO(23, 102, 175, 1),
+                    ),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide: const BorderSide(
+                      color: Color.fromRGBO(23, 102, 175, 1),
+                    ),
+                  ),
+                  prefixIcon: const Icon(Icons.search),
+                ),
+              ),
+            ),
             Center(
               child: Container(
                 decoration: const BoxDecoration(
-                    color: Color.fromRGBO(
-                      99,
-                      99,
-                      99,
-                      1,
-                    ),
-                    borderRadius: BorderRadius.all(Radius.circular(10))),
+                  color: Color.fromRGBO(99, 99, 99, 1),
+                  borderRadius: BorderRadius.all(Radius.circular(15)),
+                ),
                 child: Padding(
                   padding: const EdgeInsets.all(0.6),
                   child: Container(
                     width: 346,
-                    height: 291,
+                    height: 280,
                     decoration: const BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.all(Radius.circular(10))),
+                      color: Colors.white,
+                      borderRadius: BorderRadius.all(Radius.circular(15)),
+                    ),
+                    child: Obx(() => ListView.builder(
+                          itemCount: filteredNeighborhoods.length,
+                          itemBuilder: (context, index) {
+                            return Column(
+                              children: [
+                                _buildNeighborhoodRow(
+                                    filteredNeighborhoods[index]),
+                                if (index < filteredNeighborhoods.length - 1)
+                                  _buildDivider(),
+                              ],
+                            );
+                          },
+                        )),
                   ),
                 ),
               ),
             ),
-            SingleChildScrollView(
-              child: Stack(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      SwitchItem(
-                          onSelected: (_) {
-                            submit.value = true;
-                          },
-                          items: const [
-                            "",
-                          ]),
-                      const SizedBox(
-                        width: 1,
+            const SizedBox(height: 20),
+            GestureDetector(
+              child: Padding(
+                padding: const EdgeInsets.only(top: 10),
+                child: Container(
+                  decoration: BoxDecoration(
+                    gradient: const LinearGradient(colors: GRADIANT_COLOR),
+                    borderRadius: BorderRadius.circular(50),
+                  ),
+                  child: IconButton(
+                    icon: Padding(
+                      padding: const EdgeInsets.only(top: 5.0),
+                      child: SvgPicture.asset(
+                        'assets/images/tic.svg',
+                        width: 33,
+                        height: 26,
                       ),
-                      const Text(
-                        'همه محله های تهران',
-                        style: TextStyle(
-                            fontFamily: MAIN_FONT_FAMILY, fontSize: 12),
-                      ),
-                    ],
+                    ),
+                    onPressed: () {
+                      Get.back();
+                    },
                   ),
-                ],
-              ),
-            ),
-            const Padding(
-              padding: EdgeInsets.only(top: 40.0),
-              child: Divider(
-                endIndent: 40,
-                indent: 40,
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 50.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  SwitchItem(
-                      onSelected: (_) {
-                        submit.value = true;
-                      },
-                      items: const [
-                        "",
-                      ]),
-                  const SizedBox(
-                    width: 150,
-                  ),
-                  const Text(
-                    'شهران',
-                    style:
-                        TextStyle(fontFamily: MAIN_FONT_FAMILY, fontSize: 12),
-                  ),
-                ],
-              ),
-            ),
-            const Padding(
-              padding: EdgeInsets.only(top: 90.0),
-              child: Divider(
-                endIndent: 40,
-                indent: 40,
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 100.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  SwitchItem(
-                      onSelected: (_) {
-                        submit.value = true;
-                      },
-                      items: const [
-                        "",
-                      ]),
-                  const SizedBox(
-                    width: 150,
-                  ),
-                  const Text(
-                    'شهران',
-                    style:
-                        TextStyle(fontFamily: MAIN_FONT_FAMILY, fontSize: 12),
-                  ),
-                ],
-              ),
-            ),
-            const Padding(
-              padding: EdgeInsets.only(top: 140.0),
-              child: Divider(
-                endIndent: 40,
-                indent: 40,
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 150.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  SwitchItem(
-                      onSelected: (_) {
-                        submit.value = true;
-                      },
-                      items: const [
-                        "",
-                      ]),
-                  const SizedBox(
-                    width: 150,
-                  ),
-                  const Text(
-                    'شهران',
-                    style:
-                        TextStyle(fontFamily: MAIN_FONT_FAMILY, fontSize: 12),
-                  ),
-                ],
-              ),
-            ),
-            const Padding(
-              padding: EdgeInsets.only(top: 190.0),
-              child: Divider(
-                endIndent: 40,
-                indent: 40,
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 200.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  SwitchItem(
-                      onSelected: (_) {
-                        submit.value = true;
-                      },
-                      items: const [
-                        "",
-                      ]),
-                  const SizedBox(
-                    width: 150,
-                  ),
-                  const Text(
-                    'شهران',
-                    style:
-                        TextStyle(fontFamily: MAIN_FONT_FAMILY, fontSize: 12),
-                  ),
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 250.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  SwitchItem(
-                      onSelected: (_) {
-                        submit.value = true;
-                      },
-                      items: const [
-                        "",
-                      ]),
-                  const SizedBox(
-                    width: 150,
-                  ),
-                  const Text(
-                    'شهران',
-                    style:
-                        TextStyle(fontFamily: MAIN_FONT_FAMILY, fontSize: 12),
-                  ),
-                ],
-              ),
-            ),
-            const Padding(
-              padding: EdgeInsets.only(top: 240.0),
-              child: Divider(
-                endIndent: 40,
-                indent: 40,
+                ),
               ),
             ),
           ],
         ),
-        GestureDetector(
-          child: Padding(
-            padding: const EdgeInsets.only(top: 10),
-            child: Container(
-              decoration: BoxDecoration(
-                  gradient: const LinearGradient(colors: GRADIANT_COLOR),
-                  borderRadius: BorderRadius.circular(50)),
-              child: IconButton(
-                icon: Padding(
-                  padding: const EdgeInsets.only(top: 5.0),
-                  child: SvgPicture.asset(
-                    'assets/images/tic.svg',
-                    width: 33,
-                    height: 26,
-                  ),
-                ),
-                onPressed: () {
-                  Get.back();
-                },
-              ),
-            ),
+      ),
+    );
+  }
+
+  Widget _buildNeighborhoodRow(String neighborhood) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        Obx(() => SwitchItem(
+              onSelected: (_) {
+                if (selectedNeighborhoods.contains(neighborhood)) {
+                  selectedNeighborhoods.remove(neighborhood);
+                } else {
+                  selectedNeighborhoods.add(neighborhood);
+                }
+              },
+              items: [selectedNeighborhoods.contains(neighborhood) ? "" : ""],
+            )),
+        const SizedBox(width: 170),
+        Text(
+          neighborhood,
+          style: const TextStyle(
+            fontFamily: MAIN_FONT_FAMILY,
+            fontSize: 12,
           ),
         ),
-      ])),
+      ],
+    );
+  }
+
+  Widget _buildDivider() {
+    return const Divider(
+      endIndent: 30,
+      indent: 30,
     );
   }
 }
