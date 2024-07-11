@@ -50,7 +50,7 @@ class SelectLocationEjaraPresell extends StatelessWidget {
                   ),
                 ),
               ),
-              SwitchItem(
+              SwitchItems(
                   onSelected: (_) {
                     submit.value = true;
                   },

@@ -20,7 +20,7 @@ class AdvMap extends StatelessWidget {
   Widget build(BuildContext context) {
     return DraggableHome(
         backgroundColor: Colors.white,
-        bottomNavigationBar: bottomNavigationBar2(),
+        bottomNavigationBar: bottomNavigationBar2(4),
         stretchTriggerOffset: 100,
         headerExpandedHeight: 0.82,
         stretchMaxHeight: 0.86,
@@ -62,18 +62,30 @@ class AdvMap extends StatelessWidget {
                                     onTap: () {
                                       _selectedModel.value = adv;
                                     },
-                                    child: SvgPicture.asset(
-                                      'assets/images/LOCATION.svg',
-                                      width: 98,
-                                      height: 50,
-                                    ),
+                                    child: adv.type == AdvertismentType.PERSONAL
+                                        ? SvgPicture.asset(
+                                            'assets/images/LOCATION.svg',
+                                            width: 98,
+                                            height: 50,
+                                          )
+                                        : adv.type == AdvertismentType.AMALAK
+                                            ? SvgPicture.asset(
+                                                'assets/images/LOCATION.svg',
+                                                width: 98,
+                                                height: 50,
+                                              )
+                                            : SvgPicture.asset(
+                                                'assets/images/LOCATION.svg',
+                                                width: 98,
+                                                height: 50,
+                                              ),
                                   ),
                                   Container(
-                                    child: const Padding(
+                                    child: Padding(
                                       padding:
                                           EdgeInsets.only(bottom: 15, left: 30),
                                       child: Text(
-                                        "شخصی",
+                                        adv.title,
                                         style: TextStyle(
                                             fontFamily: MAIN_FONT_FAMILY,
                                             color:
@@ -106,8 +118,26 @@ class AdvMap extends StatelessWidget {
                 ? Align(
                     child: Padding(
                       padding: const EdgeInsets.only(bottom: 45),
-                      child: showAdvertisment(_selectedModel.value!,
-                          () => _selectedModel.value = null),
+                      child: showAdvertisment(
+                          advertismentModel: _selectedModel.value!,
+                          onTap: () => _selectedModel.value = null,
+                          onBack: () {
+                            int i =
+                                advertisements.indexOf(_selectedModel.value);
+                            if (i > 0) {
+                              _selectedModel.value = advertisements[i - 1];
+                            } else {
+                              _selectedModel.value = advertisements[i + 1];
+                            }
+                          },
+                          onNext: () {
+                            int i = advertisements.indexOf(_selectedModel);
+                            if (i < advertisements.length) {
+                              _selectedModel.value = advertisements[i + 1];
+                            } else {
+                              _selectedModel.value = advertisements[i - 1];
+                            }
+                          }),
                     ),
                   )
                 : const SizedBox.shrink()),

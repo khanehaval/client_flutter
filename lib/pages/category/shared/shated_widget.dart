@@ -1,22 +1,25 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/Advertisements.dart';
+import 'package:flutter_application_1/pages/category/pages/Advertisements/map/adv_map.dart';
 import 'package:flutter_application_1/pages/category/pages/home.dart';
 import 'package:flutter_application_1/pages/category/pages/messages.dart';
 import 'package:flutter_application_1/pages/category/pages/page_advertisement/category_advertisement.dart';
 import 'package:flutter_application_1/pages/category/pages/window/window.dart';
+import 'package:flutter_application_1/pages/educational_tour.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
-Widget bottomNavigationBar2() {
-  var currentPageIndex = 0.obs;
+Widget bottomNavigationBar2(int currentMainPageIndex) {
+  var currentPageIndex = currentMainPageIndex.obs;
   var showEducation = false.obs;
 
   var pages = [
-    Home(),
-    Messages(),
-    const CategoryAdvertisement(),
-    const Category(),
+    // Home(),
+    // Messages(),
+    // const CategoryAdvertisement(),
+    // const Category(),
+    // Advertisements()
   ];
   return ClipRRect(
     borderRadius: const BorderRadius.only(
@@ -27,12 +30,22 @@ Widget bottomNavigationBar2() {
       () => Container(
         color: Colors.black,
         child: BottomNavigationBar(
+          unselectedFontSize: 14,
+          selectedFontSize: 14,
+          showSelectedLabels: false,
+          showUnselectedLabels: false,
+          type: BottomNavigationBarType.fixed,
           backgroundColor: Colors.white,
-          selectedItemColor: const Color.fromARGB(255, 130, 8, 8),
-          unselectedItemColor: const Color(0xff757575),
+          // selectedItemColor: const Color.fromARGB(255, 130, 8, 8),
+          // unselectedItemColor: const Color(0xff757575),
           onTap: (int index) {
-            currentPageIndex.value = index;
-            showEducation.value = false;
+            Get.off(EducationalTour(
+              index: index,
+              showEducation: false,
+            ));
+            // currentPageIndex.value = index;
+            // Get.offAll(() => pages[index]);
+            // // showEducation.value = false;
           },
           currentIndex: currentPageIndex.value,
           items: <BottomNavigationBarItem>[

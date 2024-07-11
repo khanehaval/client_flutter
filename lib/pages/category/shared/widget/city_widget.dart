@@ -183,7 +183,7 @@ class _CityState extends State<City> {
   Widget _buildCityRow(String City) {
     return Row(
       children: [
-        Obx(() => SwitchItem(
+        Obx(() => SwitchItems(
               onSelected: (_) {
                 if (selectedCity.contains(City)) {
                   selectedCity.remove(City);

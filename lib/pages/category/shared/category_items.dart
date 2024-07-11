@@ -31,56 +31,53 @@ class _CategoryItemsState extends State<CategoryItems> {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(
-        children: [
-          SizedBox(
-            height: 130,
-            child: ScrollablePositionedList.builder(
-              reverse: true,
-              itemScrollController: _controller,
-              itemCount: items.length,
-              scrollDirection: Axis.horizontal,
-              initialScrollIndex: widget.index,
-              itemBuilder: (context, i) => GestureDetector(
-                onTap: () {
-                  _controller.scrollTo(
-                    index: i,
-                    duration: const Duration(milliseconds: 100),
-                    opacityAnimationWeights: [10, 30, 10],
-                    alignment: 0.5,
-                  );
-                  _currentIndex.value = i;
-                },
-                child: Obx(
-                  () => Container(
-                    margin: const EdgeInsets.only(
-                        left: 10, right: 10, bottom: 7, top: 7),
-                    padding: const EdgeInsets.all(1.3),
-                    height: 98,
-                    width: 130,
+    return Column(
+      children: [
+        SizedBox(
+          height: 130,
+          child: ScrollablePositionedList.builder(
+            reverse: true,
+            itemScrollController: _controller,
+            itemCount: items.length,
+            scrollDirection: Axis.horizontal,
+            initialScrollIndex: widget.index,
+            itemBuilder: (context, i) => GestureDetector(
+              onTap: () {
+                _controller.scrollTo(
+                  index: i,
+                  duration: const Duration(milliseconds: 100),
+                  opacityAnimationWeights: [10, 30, 10],
+                  alignment: 0.5,
+                );
+                _currentIndex.value = i;
+              },
+              child: Obx(
+                () => Container(
+                  margin: const EdgeInsets.only(
+                      left: 10, right: 10, bottom: 7, top: 7),
+                  padding: const EdgeInsets.all(1.3),
+                  height: 98,
+                  width: 130,
+                  decoration: BoxDecoration(
+                    gradient: _currentIndex.value == i
+                        ? const LinearGradient(colors: GRADIANT_COLOR)
+                        : const LinearGradient(colors: BLACK_12_GRADIANT_COLOR),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Container(
                     decoration: BoxDecoration(
-                      gradient: _currentIndex.value == i
-                          ? const LinearGradient(colors: GRADIANT_COLOR)
-                          : const LinearGradient(
-                              colors: BLACK_12_GRADIANT_COLOR),
+                      color: Colors.white,
                       borderRadius: BorderRadius.circular(10),
                     ),
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: items[i](_currentIndex.value == i),
-                    ),
+                    child: items[i](_currentIndex.value == i),
                   ),
                 ),
               ),
             ),
           ),
-          Obx(() => _pages[_currentIndex.value]),
-        ],
-      ),
+        ),
+        Obx(() => Expanded(child: _pages[_currentIndex.value])),
+      ],
     );
   }
 

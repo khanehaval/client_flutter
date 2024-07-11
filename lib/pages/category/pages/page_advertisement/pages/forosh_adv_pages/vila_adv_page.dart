@@ -518,7 +518,7 @@ class VilaAdvPage extends StatelessWidget {
                     width: 25,
                     height: 15,
                   ),
-                  SwitchItem(
+                  SwitchItems(
                       onSelected: (_) {}, items: const ["ضامن", "سفته", "چک"]),
                   const SizedBox(
                     height: 10,

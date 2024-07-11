@@ -4,19 +4,18 @@ import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
-
-class SwitchItem extends StatefulWidget {
+class SwitchItems extends StatefulWidget {
   final Function(List<String>) onSelected;
   final List<String> items;
 
-  const SwitchItem({required this.onSelected, required this.items, Key? key})
+  const SwitchItems({required this.onSelected, required this.items, Key? key})
       : super(key: key);
 
   @override
-  _SwitchItemState createState() => _SwitchItemState();
+  _SwitchItemsState createState() => _SwitchItemsState();
 }
 
-class _SwitchItemState extends State<SwitchItem> {
+class _SwitchItemsState extends State<SwitchItems> {
   final selectedItems = <String>[].obs;
 
   @override

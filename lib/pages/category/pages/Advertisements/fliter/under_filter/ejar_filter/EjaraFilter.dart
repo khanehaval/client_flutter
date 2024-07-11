@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/filters_widgets/rhna_filter_wigget.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/shared.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/ejar_filter/aparteman_filter.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/ejar_filter/ejara_vila_filter.dart';
@@ -8,7 +9,6 @@ import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter
 import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/widget_filter/emkanatagahi.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/widget_filter/metraj.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/widget_filter/mizanejara.dart';
-import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/widget_filter/mizanrahn.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/widget_filter/otagh.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/widget_filter/taeedvaemalefilter.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
@@ -171,49 +171,7 @@ class EjaraFilter extends StatelessWidget {
                 const SizedBox(
                   height: 10,
                 ),
-                Obx(
-                  () => Container(
-                    height: _show_item_mizanrahn.isTrue ? 230 : 50,
-                    width: 370,
-                    decoration: BoxDecoration(
-                        color: const Color.fromRGBO(250, 250, 250, 1),
-                        border: Border.all(
-                            color: const Color.fromRGBO(166, 166, 166, 1)),
-                        borderRadius: BorderRadius.circular(15)),
-                    child: Column(children: [
-                      Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            IconButton(
-                              icon: _show_item_mizanrahn.value
-                                  ? SvgPicture.asset(
-                                      'assets/images/=.svg',
-                                    )
-                                  : SvgPicture.asset('assets/images/down.svg'),
-                              onPressed: () {
-                                _show_item_mizanrahn.value =
-                                    !_show_item_mizanrahn.value;
-                              },
-                            ),
-                            const Padding(
-                              padding: EdgeInsets.only(left: 10, right: 20),
-                              child: Text(
-                                "میزان رهن",
-                                style: TextStyle(
-                                    color: Color.fromRGBO(48, 48, 48, 1),
-                                    fontFamily: MAIN_FONT_FAMILY,
-                                    fontSize: 12),
-                              ),
-                            ),
-                          ]),
-                      if (_show_item_mizanrahn.isTrue) rahn(),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      rahn2(),
-                    ]),
-                  ),
-                ),
+                RahnFilterWidget(),
                 const SizedBox(
                   height: 10,
                 ),

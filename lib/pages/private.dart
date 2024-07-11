@@ -1,4 +1,6 @@
+import 'dart:async';
 import 'dart:io';
+import 'dart:math';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
@@ -6,6 +8,7 @@ import 'package:flutter_application_1/pages/category/pages/home.dart';
 import 'package:flutter_application_1/pages/register/register.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:image_picker/image_picker.dart';
 
 class Private extends StatelessWidget {
@@ -135,42 +138,36 @@ class Private extends StatelessWidget {
                         width: _getTextFieldWidth(context),
                         child: Obx(() => Container(
                               decoration: BoxDecoration(
-                                border: Border.all(
-                                  color: imagePath.value.isNotEmpty
-                                      ? Colors.green
-                                      : Color.fromRGBO(99, 99, 99, 1),
-                                ),
+                                gradient:
+                                    LinearGradient(colors: GRADIANT_COLOR),
                                 borderRadius: BorderRadius.circular(10),
                               ),
-                              child: Row(
-                                children: [
-                                  IconButton(
-                                    icon:
-                                        const Icon(CupertinoIcons.add_circled),
-                                    onPressed: pickImage,
-                                  ),
-                                  const Expanded(
-                                    child: TextField(
-                                      textAlign: TextAlign.right,
-                                      readOnly: true,
-                                      decoration: InputDecoration(
-                                        hintText: '* بارگذاری تصویر کارت ملی',
-                                        hintStyle: TextStyle(
-                                          fontSize: 12,
-                                          color: Color(0xFFA6A6A6),
-                                        ),
-                                        border: InputBorder.none,
+                              child: Padding(
+                                padding: const EdgeInsets.all(1.0),
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(10),
+                                      color: imagePath.isEmpty
+                                          ? Colors.white
+                                          : null),
+                                  child: Row(
+                                    children: [
+                                      IconButton(
+                                        icon: Icon(imagePath.isEmpty
+                                            ? CupertinoIcons.add_circled
+                                            : CupertinoIcons.clear_circled),
+                                        onPressed: pickImage,
                                       ),
-                                    ),
+                                      if (imagePath.isEmpty)
+                                        const Text(
+                                          '* بارگذاری تصویر کارت ملی',
+                                          style: TextStyle(fontSize: 10),
+                                        )
+                                      else
+                                        Text(_getImageName())
+                                    ],
                                   ),
-                                  if (imagePath.value.isNotEmpty)
-                                    Image.file(
-                                      File(imagePath.value),
-                                      width: 50,
-                                      height: 50,
-                                      fit: BoxFit.cover,
-                                    ),
-                                ],
+                                ),
                               ),
                             )),
                       ),
@@ -292,6 +289,15 @@ class Private extends StatelessWidget {
 
   double _getTextFieldWidth(BuildContext context) =>
       (MediaQuery.of(context).size.width / 2.05) * 0.9;
+
+  String _getImageName() {
+    var s = imagePath.value.split("/").last;
+    if (s.length > 10) {
+      var i = s.length - 10;
+      s = s.substring(i, s.length);
+    }
+    return s;
+  }
 }
 
 LinearGradient GetGradient() => const LinearGradient(

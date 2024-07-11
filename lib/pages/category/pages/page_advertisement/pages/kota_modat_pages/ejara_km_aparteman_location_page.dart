@@ -47,7 +47,7 @@ class EjaraKMApartemanLocationPage extends StatelessWidget {
                   ),
                 ),
               ),
-              SwitchItem(
+              SwitchItems(
                   onSelected: (_) {
                     submit.value = true;
                   },

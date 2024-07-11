@@ -16,6 +16,7 @@ import 'package:flutter_application_1/pages/screens/screen1.dart';
 import 'package:flutter_application_1/pages/screens/screen3.dart';
 import 'package:flutter_application_1/pages/screens/screens2.dart';
 import 'package:flutter_application_1/repo/acount_repo.dart';
+import 'package:flutter_application_1/repo/advRepo.dart';
 import 'package:flutter_application_1/services/acount_service.dart';
 import 'package:get/get.dart';
 import 'package:get_it/get_it.dart';
@@ -40,6 +41,7 @@ void initServicesAndRepo() {
   GetIt.instance.registerSingleton<UserDao>(UserDao());
   GetIt.instance.registerSingleton<CustomerDao>(CustomerDao());
   GetIt.instance.registerSingleton<EstateDao>(EstateDao());
+  GetIt.instance.registerSingleton<AdvRepo>(AdvRepo());
 
   GetIt.instance.registerSingleton<AccountService>(AccountService());
   GetIt.instance.registerSingleton<AccountRepo>(AccountRepo());
@@ -59,88 +61,114 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
+    return MaterialApp(
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(fontFamily: MAIN_FONT_FAMILY),
+        debugShowMaterialGrid: false,
+        home: FutureBuilder<bool>(
+            future: _userRepo.isLogin(),
+            builder: (c, s) {
+              if (s.hasData && s.data != null && s.data!) {
+                return const LoginSecondlyPage();
+              } else {
+                if (s.connectionState == ConnectionState.active ||
+                    s.connectionState == ConnectionState.done) {
+                  return sliderWidget();
+                }
+                return Container();
+              }
+            }));
+  }
+
+  Widget sliderWidget() {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Stack(
-        children: [
-          PageView(
-            controller: pageController,
-            onPageChanged: (index) {
-              _sliderIndex.value = index;
-            },
-            children: const [Screen1(), Screen2(), Screen3()],
-          ),
-          Positioned(
-            bottom: 30,
-            left: 0,
-            right: 0,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
+      body: FutureBuilder<bool>(
+          future: _userRepo.isLogin(),
+          builder: (context, snapshot) {
+            return Stack(
               children: [
-                SmoothPageIndicator(
+                PageView(
                   controller: pageController,
-                  count: 3,
-                  effect: const WormEffect(
-                      dotWidth: 8.0,
-                      dotHeight: 8.0,
-                      dotColor: Colors.grey,
-                      activeDotColor: Color.fromARGB(255, 7, 201, 69)),
+                  onPageChanged: (index) {
+                    _sliderIndex.value = index;
+                  },
+                  children: const [Screen1(), Screen2(), Screen3()],
                 ),
-                const SizedBox(height: 10),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Obx(() {
-                      return GestureDetector(
-                        onTap: () {
-                          if (_sliderIndex.value < 2) {
-                            pageController.nextPage(
-                              duration: const Duration(milliseconds: 500),
-                              curve: Curves.decelerate,
-                            );
-                          } else {
-                            // Handle the start button action here
-                            // For example, navigate to another screen
-                            Get.off(() => const LoginSecondlyPage());
-                          }
-                        },
-                        child: Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(30),
-                            gradient: GetGradient(),
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(
-                                vertical: 8, horizontal: 20),
-                            child: Row(
-                              children: [
-                                Text(
-                                  _sliderIndex.value < 2 ? "بعدی" : "شروع",
-                                  style: const TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 15,
-                                    fontFamily: MAIN_FONT_FAMILY,
+                Positioned(
+                  bottom: 30,
+                  left: 0,
+                  right: 0,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      SmoothPageIndicator(
+                        controller: pageController,
+                        count: 3,
+                        effect: const WormEffect(
+                            dotWidth: 8.0,
+                            dotHeight: 8.0,
+                            dotColor: Colors.grey,
+                            activeDotColor: Color.fromARGB(255, 7, 201, 69)),
+                      ),
+                      const SizedBox(height: 10),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Obx(() {
+                            return GestureDetector(
+                              onTap: () {
+                                if (_sliderIndex.value < 2) {
+                                  pageController.nextPage(
+                                    duration: const Duration(milliseconds: 500),
+                                    curve: Curves.decelerate,
+                                  );
+                                } else {
+                                  // Handle the start button action here
+                                  // For example, navigate to another screen
+                                  Get.off(() => const Register());
+                                }
+                              },
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(30),
+                                  gradient: GetGradient(),
+                                ),
+                                child: Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      vertical: 8, horizontal: 20),
+                                  child: Row(
+                                    children: [
+                                      Text(
+                                        _sliderIndex.value < 2
+                                            ? "بعدی"
+                                            : "شروع",
+                                        style: const TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 15,
+                                          fontFamily: MAIN_FONT_FAMILY,
+                                        ),
+                                      ),
+                                      const SizedBox(width: 8),
+                                      Image.asset(
+                                        'assets/images/arrow_right.png',
+                                        width: 17,
+                                        height: 17,
+                                      ),
+                                    ],
                                   ),
                                 ),
-                                const SizedBox(width: 8),
-                                Image.asset(
-                                  'assets/images/arrow_right.png',
-                                  width: 17,
-                                  height: 17,
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      );
-                    }),
-                  ],
+                              ),
+                            );
+                          }),
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
               ],
-            ),
-          ),
-        ],
-      ),
+            );
+          }),
     );
   }
 }

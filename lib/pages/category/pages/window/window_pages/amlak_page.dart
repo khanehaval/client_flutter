@@ -10,7 +10,7 @@ class AmlakPage extends StatelessWidget {
   AmlakPage({super.key});
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return ListView(
       children: [
         const Divider(
           endIndent: 20,

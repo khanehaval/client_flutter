@@ -52,7 +52,7 @@ class ForoshShopLocationPage extends StatelessWidget {
             ),
             Align(
               alignment: Alignment.centerRight,
-              child: SwitchItem(
+              child: SwitchItems(
                   onSelected: (_) {
                     submit.value = true;
                   },

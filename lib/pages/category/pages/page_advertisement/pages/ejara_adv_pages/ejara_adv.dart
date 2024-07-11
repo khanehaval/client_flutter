@@ -15,7 +15,7 @@ class EjaraAdv extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      bottomNavigationBar: bottomNavigationBar2(),
+      bottomNavigationBar: bottomNavigationBar2(3),
       appBar: currentPageIndex.value == 4 ? null : buildAppBar(),
       body: Column(
           mainAxisAlignment: MainAxisAlignment.start,

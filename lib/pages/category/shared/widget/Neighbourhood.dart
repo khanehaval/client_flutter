@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/category/shared/switchItem.dart';
+import 'package:flutter_application_1/pages/category/shared/widget/switch_onr_item.dart';
+import 'package:flutter_application_1/repo/advRepo.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:get_it/get_it.dart';
 
 class Neighbourhood extends StatefulWidget {
   Neighbourhood({super.key});
@@ -12,7 +15,7 @@ class Neighbourhood extends StatefulWidget {
 }
 
 class _NeighbourhoodState extends State<Neighbourhood> {
-  final selectedNeighborhoods = <String>[].obs;
+  var selectedNeighborhoods = <String>[].obs;
   final List<String> neighborhoods = [
     'شهران',
     'محله 1',
@@ -22,8 +25,11 @@ class _NeighbourhoodState extends State<Neighbourhood> {
   final searchController = TextEditingController();
   final filteredNeighborhoods = <String>[].obs;
 
+  final _advRepo = GetIt.I.get<AdvRepo>();
+
   @override
   void initState() {
+    selectedNeighborhoods.addAll(_advRepo.selectedCity);
     super.initState();
     filteredNeighborhoods.addAll(neighborhoods);
     searchController.addListener(_filterNeighborhoods);
@@ -168,6 +174,7 @@ class _NeighbourhoodState extends State<Neighbourhood> {
                       ),
                     ),
                     onPressed: () {
+                      _advRepo.mangeCity(selectedNeighborhoods);
                       Get.back();
                     },
                   ),
@@ -181,28 +188,16 @@ class _NeighbourhoodState extends State<Neighbourhood> {
   }
 
   Widget _buildNeighborhoodRow(String neighborhood) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: [
-        Obx(() => SwitchItem(
-              onSelected: (_) {
-                if (selectedNeighborhoods.contains(neighborhood)) {
-                  selectedNeighborhoods.remove(neighborhood);
-                } else {
-                  selectedNeighborhoods.add(neighborhood);
-                }
-              },
-              items: [selectedNeighborhoods.contains(neighborhood) ? "" : ""],
-            )),
-        const SizedBox(width: 170),
-        Text(
-          neighborhood,
-          style: const TextStyle(
-            fontFamily: MAIN_FONT_FAMILY,
-            fontSize: 12,
-          ),
-        ),
-      ],
+    return SwitchItem(
+      IsSelected: selectedNeighborhoods.contains(neighborhood),
+      onSelected: (_) {
+        if (selectedNeighborhoods.contains(neighborhood)) {
+          selectedNeighborhoods.remove(neighborhood);
+        } else {
+          selectedNeighborhoods.add(neighborhood);
+        }
+      },
+      item: neighborhood,
     );
   }
 

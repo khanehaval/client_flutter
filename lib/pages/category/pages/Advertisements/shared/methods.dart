@@ -7,7 +7,11 @@ import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
-Widget showAdvertisment(AdvertismentModel advertismentModel, Function onTap) {
+Widget showAdvertisment(
+    {required advertismentModel,
+    required onTap,
+    required Function onNext,
+    required Function onBack}) {
   return SafeArea(
     child: Column(
       children: [
@@ -46,6 +50,7 @@ Widget showAdvertisment(AdvertismentModel advertismentModel, Function onTap) {
                                       fit: BoxFit.fitWidth,
                                     ),
                                   ),
+                                  // Text(advertismentModel.title),
                                   Align(
                                     alignment: Alignment.centerRight,
                                     child: Padding(
@@ -191,59 +196,69 @@ Widget showAdvertisment(AdvertismentModel advertismentModel, Function onTap) {
           children: [
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Container(
-                width: 89,
-                height: 42,
-                decoration: const BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(10)),
-                    color: Color.fromRGBO(0, 189, 97, 1)),
-                child: const Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Icon(CupertinoIcons.back, color: Colors.white),
-                    Padding(
-                      padding: EdgeInsets.only(right: 10.0),
-                      child: Text(
-                        'قبلی',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontFamily: MAIN_FONT_FAMILY,
+              child: GestureDetector(
+                onTap: () {
+                  onBack();
+                },
+                child: Container(
+                  width: 89,
+                  height: 42,
+                  decoration: const BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(10)),
+                      color: Color.fromRGBO(0, 189, 97, 1)),
+                  child: const Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Icon(CupertinoIcons.back, color: Colors.white),
+                      Padding(
+                        padding: EdgeInsets.only(right: 10.0),
+                        child: Text(
+                          'قبلی',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontFamily: MAIN_FONT_FAMILY,
+                          ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ),
             const SizedBox(width: 10),
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Container(
-                width: 89,
-                height: 42,
-                decoration: const BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(10)),
-                    color: Color.fromRGBO(
-                      23,
-                      102,
-                      175,
-                      1,
-                    )),
-                child: const Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.only(left: 10.0),
-                      child: Text(
-                        'بعدی',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontFamily: MAIN_FONT_FAMILY,
+              child: GestureDetector(
+                onTap: () {
+                  onNext();
+                },
+                child: Container(
+                  width: 89,
+                  height: 42,
+                  decoration: const BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(10)),
+                      color: Color.fromRGBO(
+                        23,
+                        102,
+                        175,
+                        1,
+                      )),
+                  child: const Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.only(left: 10.0),
+                        child: Text(
+                          'بعدی',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontFamily: MAIN_FONT_FAMILY,
+                          ),
                         ),
                       ),
-                    ),
-                    Icon(CupertinoIcons.forward, color: Colors.white),
-                  ],
+                      Icon(CupertinoIcons.forward, color: Colors.white),
+                    ],
+                  ),
                 ),
               ),
             )

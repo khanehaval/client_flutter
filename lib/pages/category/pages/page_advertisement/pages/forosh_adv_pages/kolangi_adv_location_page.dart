@@ -59,7 +59,7 @@ class _SelectLocationOnMapState extends State<KolangiAdvLocationPage> {
               ),
               Align(
                 alignment: Alignment.centerRight,
-                child: SwitchItem(
+                child: SwitchItems(
                     onSelected: (_) {
                       submit.value = true;
                     },

@@ -47,13 +47,6 @@ class _EducationalTourState extends State<EducationalTour> {
     const CategoryAdvertisement(),
     const Category(),
     Advertisements(),
-    AmlakPage(),
-    EjaraKotaModat(),
-    EjaraMaskoni(),
-    EjaraTagariEdari(),
-    ForoshMaskoni(),
-    ForoshTagariEdari(),
-    SachtSaz()
   ];
 
   @override
@@ -114,98 +107,6 @@ class _EducationalTourState extends State<EducationalTour> {
         ));
   }
 
-  // Widget bottomNavigationBar() {
-  //   return Container(
-  //     decoration: const BoxDecoration(
-  //       borderRadius: BorderRadius.only(
-  //         topLeft: Radius.circular(20),
-  //         topRight: Radius.circular(20),
-  //       ),
-  //     ),
-  //     child: Obx(
-  //       () => BottomNavigationBar(
-  //         selectedItemColor: Colors.red,
-  //         selectedLabelStyle: null,
-  //         showUnselectedLabels: false,
-  //         elevation: 10,
-  //         backgroundColor: Colors.white,
-  //         onTap: (int index) {
-  //           currentPageIndex.value = index;
-  //           showEducation.value = false;
-  //         },
-  //         currentIndex: currentPageIndex.value,
-  //         items: <BottomNavigationBarItem>[
-  //           BottomNavigationBarItem(
-  //             backgroundColor: const Color.fromRGBO(255, 255, 255, 1),
-  //             icon: SvgPicture.asset(
-  //               'assets/images/navigation1.svg',
-  //               width: 30,
-  //               height: 30,
-  //             ),
-  //             activeIcon: SvgPicture.asset(
-  //               'assets/images/navigation1.svg',
-  //               width: 30,
-  //               height: 30,
-  //             ),
-  //             label: '',
-  //           ),
-  //           BottomNavigationBarItem(
-  //             icon: SvgPicture.asset(
-  //               'assets/images/navigation2.svg',
-  //               width: 30,
-  //               height: 30,
-  //             ),
-  //             activeIcon: SvgPicture.asset(
-  //               'assets/images/navigation2.svg',
-  //               width: 30,
-  //               height: 30,
-  //             ),
-  //             label: '',
-  //           ),
-  //           BottomNavigationBarItem(
-  //             icon: SvgPicture.asset(
-  //               'assets/images/navigation3.svg',
-  //               width: 30,
-  //               height: 30,
-  //             ),
-  //             activeIcon: SvgPicture.asset(
-  //               'assets/images/navigation3.svg',
-  //               width: 30,
-  //               height: 30,
-  //             ),
-  //             label: '',
-  //           ),
-  //           BottomNavigationBarItem(
-  //             icon: SvgPicture.asset(
-  //               'assets/images/navigation4.svg',
-  //               width: 30,
-  //               height: 30,
-  //             ),
-  //             activeIcon: SvgPicture.asset(
-  //               'assets/images/navigation4.svg',
-  //               width: 30,
-  //               height: 30,
-  //             ),
-  //             label: '',
-  //           ),
-  //           BottomNavigationBarItem(
-  //             icon: SvgPicture.asset(
-  //               'assets/images/navigation5.svg',
-  //               width: 30,
-  //               height: 30,
-  //             ),
-  //             activeIcon: SvgPicture.asset(
-  //               'assets/images/navigation5.svg',
-  //               width: 30,
-  //               height: 30,
-  //             ),
-  //             label: '',
-  //           ),
-  //         ],
-  //       ),
-  //     ),
-  //   );
-  // }
   Widget bottomNavigationBar1() {
     return Container(
       height: 76,
@@ -227,6 +128,8 @@ class _EducationalTourState extends State<EducationalTour> {
         child: Obx(
           () => Container(
             child: BottomNavigationBar(
+              showSelectedLabels: false,
+              type: BottomNavigationBarType.fixed,
               backgroundColor: Colors.white,
               onTap: (int index) {
                 currentPageIndex.value = index;

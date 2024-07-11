@@ -13,30 +13,23 @@ class Messages extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<List<Aghahi>>(
-      future: _accountRepo.fetchagahi(),
-      builder: (BuildContext context, snapshot) {
-        if (!snapshot.hasData) {
-          return const CircularProgressIndicator();
-        }
-        return ListView.builder(
-          shrinkWrap: true,
-          itemCount: snapshot.data!.length,
-          itemBuilder: (BuildContext context, int index) {
-            return Row(
-              children: [
-                Container(
-                  child: Text(
-                    snapshot.data![index].userSite.toString(),
-                    style: TextStyle(
-                        color: index % 2 == 0 ? Colors.red : Colors.green),
-                  ),
-                )
-              ],
+    return FutureBuilder<String>(
+        future: downloadData(),
+        builder: (BuildContext, AsyncSnapshot<String> snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return Center(
+              child: Text('p;ease wait its loading...'),
             );
-          },
-        );
-      },
-    );
+          } else {
+            if (snapshot.hasError)
+              return Center(child: Text('error:${snapshot.error}'));
+            else
+              return Center(child: Text('${snapshot.data}'));
+          }
+        });
+  }
+
+  Future<String> downloadData() async {
+    return Future.value("Data download successfully");
   }
 }

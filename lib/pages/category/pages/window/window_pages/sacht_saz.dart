@@ -12,7 +12,7 @@ class SachtSaz extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return ListView(
       children: [
         const Divider(
           endIndent: 20,

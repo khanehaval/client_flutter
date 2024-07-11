@@ -45,7 +45,7 @@ class VilaLocationAdvPage extends StatelessWidget {
                   ),
                 ),
               ),
-              SwitchItem(
+              SwitchItems(
                   onSelected: (_) {
                     _submit.value = true;
                   },

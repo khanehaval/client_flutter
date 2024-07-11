@@ -48,7 +48,7 @@ class ForshAdvLocationPage extends StatelessWidget {
                   ),
                 ),
               ),
-              SwitchItem(
+              SwitchItems(
                 items: const ["سوئیت", "برج", "پنت هاوس"],
                 onSelected: (_) {
                   _submit.value = true;
