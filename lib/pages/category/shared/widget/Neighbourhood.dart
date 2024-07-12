@@ -8,7 +8,7 @@ import 'package:get/get.dart';
 import 'package:get_it/get_it.dart';
 
 class Neighbourhood extends StatefulWidget {
-  Neighbourhood({super.key});
+  Neighbourhood({super.key, required int index1});
 
   @override
   _NeighbourhoodState createState() => _NeighbourhoodState();

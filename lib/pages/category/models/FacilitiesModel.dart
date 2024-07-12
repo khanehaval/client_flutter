@@ -39,7 +39,6 @@ class MasterRoom extends FacilitiesModel {
     return "MASTER_ROOM";
   }
 }
-
 class CenterAntenna extends FacilitiesModel {
   @override
   String getAssetPath() {

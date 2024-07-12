@@ -110,7 +110,7 @@ class _RegisterState extends State<Register> {
           child: Column(
             children: [
               SizedBox(
-                height: _keyboardVisibility.isTrue ? 40 : 100,
+                height: _keyboardVisibility.isTrue ? 65 : 80,
               ),
               SvgPicture.asset(
                 'assets/images/logo-farsi.svg',

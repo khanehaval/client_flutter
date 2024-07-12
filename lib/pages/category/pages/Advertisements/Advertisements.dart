@@ -15,6 +15,7 @@ import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 
 class Advertisements extends StatefulWidget {
   int get index => 0;
+  int get index1 => 0;
 
   @override
   State<Advertisements> createState() => _SelectLocationMapState();
@@ -34,11 +35,11 @@ class _SelectLocationMapState extends State<Advertisements> {
     ),
     AdvertismentModel(
         location: const LatLng(35.74, 51.40),
-        title: "    املاک صادقی",
+        title: " ",
         type: AdvertismentType.AMALAK),
     AdvertismentModel(
         location: const LatLng(35.75, 51.41),
-        title: "مشاور",
+        title: "",
         type: AdvertismentType.REAL_ESTATE)
   ].obs;
   List<LatLng> selectedPins = [];
@@ -58,7 +59,7 @@ class _SelectLocationMapState extends State<Advertisements> {
     return Scaffold(
         backgroundColor: Colors.white,
         body: Stack(children: [
-          AdvMap(advertisments),
+          AdvMap(advertisments,advertisments),
           const Align(
             alignment: Alignment.topRight,
           ),
@@ -172,40 +173,45 @@ class _SelectLocationMapState extends State<Advertisements> {
                     const SizedBox(
                       width: 10,
                     ),
-                    GestureDetector(
+                   GestureDetector(
                       onTap: () {
-                        Get.to(() => Neighbourhood());
+                        Get.to(
+                            () => Neighbourhood(
+                                  index1: 0,
+                                ),
+                            transition: Transition.leftToRight);
                       },
                       child: Obx(() => Container(
                             decoration: BoxDecoration(
                                 border: Border.all(
+                                  
                                     color:
-                                        const Color.fromRGBO(166, 166, 166, 1)),
+                                        Color.fromARGB(255, 160, 179, 161)),
                                 color: Colors.white,
                                 borderRadius: BorderRadius.circular(10)),
                             child: SizedBox(
                               height: 40,
-                              width: 120,
+                              width: 130,
                               child: Row(
                                   mainAxisAlignment: MainAxisAlignment.end,
                                   children: [
                                     _advRepo.selectedCity.isNotEmpty
                                         ? Padding(
                                             padding: const EdgeInsets.symmetric(
-                                                horizontal: 6),
+                                                horizontal: 7),
                                             child: Container(
-                                              width: 16,
-                                              decoration: BoxDecoration(
-                                                  color: Colors.white,
+                                              width: 17,
+                                              decoration: const BoxDecoration(
+                                                  color: Colors.green,
                                                   shape: BoxShape.circle),
                                               child: Center(
                                                 child: Text(_advRepo
                                                     .selectedCity.length
-                                                    .toString()),
+                                                    .toString(),style: const TextStyle(color: Colors.white,fontSize: 10),),
                                               ),
                                             ),
                                           )
-                                        : SizedBox(),
+                                        : const SizedBox(),
                                     const Text(
                                       "محله",
                                       textAlign: TextAlign.center,
@@ -238,35 +244,39 @@ class _SelectLocationMapState extends State<Advertisements> {
                     const SizedBox(
                       width: 10,
                     ),
-                    Container(
-                      decoration: BoxDecoration(
-                          border: Border.all(
-                              color: const Color.fromRGBO(166, 166, 166, 1)),
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(10)),
-                      child: SizedBox(
-                        height: 40,
-                        width: getPageWidth(),
-                        child: Center(
-                          child: Stack(children: [
-                            const Padding(
-                              padding: EdgeInsets.only(right: 5),
-                              child: Text(
-                                "تهران",
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                    fontFamily: MAIN_FONT_FAMILY,
-                                    color: Color.fromRGBO(99, 99, 99, 1),
-                                    fontSize: 12),
+                    Obx(()=>
+                     Container(
+                        decoration: BoxDecoration(
+                            border: Border.all(
+                                color: const Color.fromRGBO(166, 166, 166, 1)),
+                            color: _advRepo.filters.isNotEmpty
+                                  ? Colors.green
+                                  : Colors.white,
+                            borderRadius: BorderRadius.circular(10)),
+                        child: SizedBox(
+                          height: 40,
+                          width: getPageWidth(),
+                          child: Center(
+                            child: Stack(children: [
+                              const Padding(
+                                padding: EdgeInsets.only(right: 5),
+                                child: Text(
+                                  "تهران",
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                      fontFamily: MAIN_FONT_FAMILY,
+                                      color: Color.fromRGBO(99, 99, 99, 1),
+                                      fontSize: 12),
+                                ),
                               ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(left: 50),
-                              child: SvgPicture.asset(
-                                'assets/images/location1.svg',
-                              ),
-                            )
-                          ]),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 50),
+                                child: SvgPicture.asset(
+                                  'assets/images/location1.svg',
+                                ),
+                              )
+                            ]),
+                          ),
                         ),
                       ),
                     ),
@@ -305,7 +315,7 @@ class _SelectLocationMapState extends State<Advertisements> {
                                                 horizontal: 6),
                                             child: Container(
                                               width: 16,
-                                              decoration: BoxDecoration(
+                                              decoration: const BoxDecoration(
                                                   color: Colors.white,
                                                   shape: BoxShape.circle),
                                               child: Center(

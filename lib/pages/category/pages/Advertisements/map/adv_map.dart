@@ -11,11 +11,11 @@ import 'package:get/get.dart';
 
 class AdvMap extends StatelessWidget {
   RxList<AdvertismentModel> advertisements;
+  RxList<AdvertismentModel> advertisements1;
 
   Rxn<AdvertismentModel> _selectedModel = Rxn();
 
-  AdvMap(this.advertisements, {super.key});
-
+  AdvMap(this.advertisements,this.advertisements1, {super.key});
   @override
   Widget build(BuildContext context) {
     return DraggableHome(
@@ -70,12 +70,12 @@ class AdvMap extends StatelessWidget {
                                           )
                                         : adv.type == AdvertismentType.AMALAK
                                             ? SvgPicture.asset(
-                                                'assets/images/LOCATION.svg',
+                                                'assets/images/LOCATION2.svg',
                                                 width: 98,
                                                 height: 50,
                                               )
                                             : SvgPicture.asset(
-                                                'assets/images/LOCATION.svg',
+                                                'assets/images/LOCATION3.svg',
                                                 width: 98,
                                                 height: 50,
                                               ),
