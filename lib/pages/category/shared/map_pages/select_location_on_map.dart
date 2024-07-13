@@ -207,13 +207,15 @@ class _SelectLocationMapState extends State<SelectLocationMap> {
                   ),
                   GestureDetector(
                     onTap: () {
-                      Get.to(() => Neighbourhood(index1: 0,));
+                      Get.to(() => Neighbourhood(
+                            index1: 0,
+                          ));
                     },
                     child: Container(
                       decoration: BoxDecoration(
                           color: Colors.white,
                           border: Border.all(
-                              color: Color.fromARGB(255, 11, 223, 106)),
+                              color: const Color.fromARGB(255, 158, 147, 147)),
                           borderRadius: BorderRadius.circular(10)),
                       child: SizedBox(
                         width: getPageWidthlocation(),

@@ -23,4 +23,6 @@ class AdvRepo {
     selectedCity.clear();
     selectedCity.addAll(cities);
   }
+
+  void clearSelectedCity() {}
 }

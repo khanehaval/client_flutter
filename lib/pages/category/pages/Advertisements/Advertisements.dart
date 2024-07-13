@@ -184,7 +184,9 @@ class _SelectLocationMapState extends State<Advertisements> {
                       child: Obx(() => Container(
                             decoration: BoxDecoration(
                                 border: Border.all(
-                                    color: Color.fromARGB(255, 160, 179, 161)),
+                                  
+                                    color:
+                                        Color.fromARGB(255, 160, 179, 161)),
                                 color: Colors.white,
                                 borderRadius: BorderRadius.circular(10)),
                             child: SizedBox(
@@ -246,14 +248,14 @@ class _SelectLocationMapState extends State<Advertisements> {
                     const SizedBox(
                       width: 10,
                     ),
-                    Obx(
-                      () => Container(
+                    Obx(()=>
+                     Container(
                         decoration: BoxDecoration(
                             border: Border.all(
                                 color: const Color.fromRGBO(166, 166, 166, 1)),
                             color: _advRepo.filters.isNotEmpty
-                                ? Colors.green
-                                : Colors.white,
+                                  ? Colors.green
+                                  : Colors.white,
                             borderRadius: BorderRadius.circular(10)),
                         child: SizedBox(
                           height: 40,

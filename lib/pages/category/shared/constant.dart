@@ -10,8 +10,8 @@ const GRADIANT_COLOR = [
   Color.fromRGBO(160, 241, 168, 1),
 ];
 const GRADIANT_COLOR1 = [
-  Color.fromRGBO(54, 216, 89, 0.4),
-  Color.fromRGBO(76, 140, 237, 0.6),
+  Color.fromRGBO(23, 102, 175, 1),
+  Color.fromRGBO(66, 159, 86, 1),
 ];
 const GRADIANT_COLOR2 = [
   Color.fromRGBO(76, 140, 237, 1),

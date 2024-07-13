@@ -25,7 +25,7 @@ class NamayeshAgahi1 extends StatelessWidget {
                         top: MediaQuery.of(context).padding.top),
                     child: Image.asset(
                       "assets/images/Pic One.png",
-                      height: 330,
+                      height: 310,
                       fit: BoxFit.fitWidth,
                     ),
                   ),
@@ -70,11 +70,14 @@ class NamayeshAgahi1 extends StatelessWidget {
               ],
             ),
             DraggableScrollableSheet(
-              maxChildSize: 0.9,
-              initialChildSize: 0.9,
+              controller: DraggableScrollableController(),
+              initialChildSize: 0.95,
+              minChildSize: 0.5,
+              maxChildSize: 0.95,
               builder:
                   (BuildContext context, ScrollController scrollController) {
                 return SingleChildScrollView(
+                  scrollDirection: Axis.vertical,
                   child: Column(
                     children: [
                       Padding(

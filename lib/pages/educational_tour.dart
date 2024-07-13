@@ -55,7 +55,7 @@ class _EducationalTourState extends State<EducationalTour> {
           backgroundColor: Colors.white,
           appBar: currentPageIndex.value == 4 ? null : buildAppBar(),
           body: Stack(
-            alignment: Alignment.topCenter,
+            alignment: Alignment.center,
             children: [
               Obx(() => showEducation.value
                   ? Container(
@@ -109,7 +109,7 @@ class _EducationalTourState extends State<EducationalTour> {
 
   Widget bottomNavigationBar1() {
     return Container(
-      height: 76,
+      height: 82,
       decoration: BoxDecoration(
         boxShadow: [
           BoxShadow(
@@ -139,68 +139,120 @@ class _EducationalTourState extends State<EducationalTour> {
               items: <BottomNavigationBarItem>[
                 BottomNavigationBarItem(
                   backgroundColor: Colors.white,
-                  icon: SvgPicture.asset(
-                    "assets/images/navigation1.svg",
-                    width: 30,
-                    height: 30,
+                  icon: Center(
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 12.0),
+                      child: SvgPicture.asset(
+                        "assets/images/navigation1.svg",
+                        width: 30,
+                        height: 31,
+                      ),
+                    ),
                   ),
                   label: '',
-                  activeIcon: SvgPicture.asset(
-                    "assets/images/navigation1-active.svg",
-                    width: 30,
-                    height: 30,
+                  activeIcon: Padding(
+                    padding: const EdgeInsets.only(top: 12.0),
+                    child: Center(
+                      child: SvgPicture.asset(
+                        "assets/images/navigation1-active.svg",
+                        width: 30,
+                        height: 31,
+                      ),
+                    ),
                   ),
                 ),
                 BottomNavigationBarItem(
-                  icon: SvgPicture.asset(
-                    "assets/images/navigation2.svg",
-                    width: 30,
-                    height: 30,
+                  icon: Padding(
+                    padding: const EdgeInsets.only(top: 15.0),
+                    child: Center(
+                      child: SvgPicture.asset(
+                        "assets/images/navigation2.svg",
+                        width: 31,
+                        height: 31,
+                      ),
+                    ),
                   ),
                   label: '',
-                  activeIcon: SvgPicture.asset(
-                    "assets/images/navigation2-active.svg",
-                    width: 30,
-                    height: 30,
+                  activeIcon: Padding(
+                    padding: const EdgeInsets.only(top: 15.0),
+                    child: Center(
+                      child: SvgPicture.asset(
+                        "assets/images/navigation2-active.svg",
+                        width: 31,
+                        height: 31,
+                      ),
+                    ),
                   ),
                 ),
                 BottomNavigationBarItem(
-                  icon: SvgPicture.asset(
-                    "assets/images/navigation3.svg",
-                    width: 40,
-                    height: 40,
+                  icon: Padding(
+                    padding: const EdgeInsets.only(top: 7.0),
+                    child: Center(
+                      child: SvgPicture.asset(
+                        "assets/images/navigation3.svg",
+                        width: 41,
+                        height: 35,
+                      ),
+                    ),
                   ),
                   label: '',
-                  activeIcon: SvgPicture.asset(
-                    "assets/images/navigation3-active.svg",
-                    width: 40,
-                    height: 40,
+                  activeIcon: Padding(
+                    padding: const EdgeInsets.only(top: 7.0),
+                    child: Center(
+                      child: SvgPicture.asset(
+                        "assets/images/navigation3-active.svg",
+                        width: 39,
+                        height: 39,
+                      ),
+                    ),
                   ),
                 ),
                 BottomNavigationBarItem(
-                  icon: SvgPicture.asset(
-                    "assets/images/navigation4.svg",
-                    width: 30,
-                    height: 30,
+                  icon: Center(
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 14.0),
+                      child: Center(
+                        child: SvgPicture.asset(
+                          "assets/images/navigation4.svg",
+                          width: 29,
+                          height: 29,
+                        ),
+                      ),
+                    ),
                   ),
                   label: '',
-                  activeIcon: SvgPicture.asset(
-                    "assets/images/navigation4-active.svg",
-                    width: 30,
-                    height: 30,
+                  activeIcon: Padding(
+                    padding: const EdgeInsets.only(top: 14.0),
+                    child: Center(
+                      child: SvgPicture.asset(
+                        "assets/images/navigation4-active.svg",
+                        width: 29,
+                        height: 29,
+                      ),
+                    ),
                   ),
                 ),
                 BottomNavigationBarItem(
-                  icon: SvgPicture.asset(
-                    "assets/images/navigation5.svg",
-                    width: 30,
-                    height: 30,
+                  icon: Padding(
+                    padding: const EdgeInsets.only(top: 14.0),
+                    child: Center(
+                      child: SvgPicture.asset(
+                        "assets/images/navigation5.svg",
+                        width: 32,
+                        height: 32,
+                      ),
+                    ),
                   ),
                   label: '',
-                  activeIcon: SvgPicture.asset(
-                    "assets/images/navigation5-active.svg",
-                    width: 30,
-                    height: 30,
+                  activeIcon: Padding(
+                    padding: const EdgeInsets.only(top: 14.0),
+                    child: Center(
+                      child: SvgPicture.asset(
+                        "assets/images/navigation5-active.svg",
+                        width: 32,
+                        height: 32,
+                      ),
+                    ),
                   ),
                 ),
               ],

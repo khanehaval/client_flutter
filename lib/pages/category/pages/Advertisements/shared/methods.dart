@@ -18,7 +18,7 @@ Widget showAdvertisment(
         Transform.translate(
           offset: const Offset(20, 60),
           child: Padding(
-            padding: const EdgeInsets.only(top: 75, right: 40, bottom: 70),
+            padding: const EdgeInsets.only(top: 85, right: 40, bottom: 70),
             child: Container(
               width: 350,
               height: 400,
@@ -292,21 +292,20 @@ Widget showAdvertisment1(
               child: Stack(
                 children: [
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 30)
-                        .copyWith(top: 130, bottom: 30),
-                    child: GestureDetector(
-                      onTap: () {
-                        Get.to(() => NamayeshAgahi1());
-                      },
-                      child: Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(5),
-                          color: Colors.white,
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(4.0),
-                          child: Column(
-                            children: [
+                      padding: const EdgeInsets.symmetric(horizontal: 30)
+                          .copyWith(top: 130, bottom: 30),
+                      child: GestureDetector(
+                        onTap: () {
+                          Get.to(() => NamayeshAgahi1());
+                        },
+                        child: Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(5),
+                            color: Colors.white,
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(4.0),
+                            child: Column(children: [
                               Stack(
                                 children: [
                                   SizedBox(
@@ -389,7 +388,6 @@ Widget showAdvertisment1(
                                   const SizedBox(width: 20),
                                   const Padding(
                                     padding: EdgeInsets.only(top: 20.0),
-                                   
                                   ),
                                 ],
                               ),
@@ -403,25 +401,24 @@ Widget showAdvertisment1(
                                     height: 20,
                                     width: 20,
                                   ),
-                    
-                              Row(
-                                children: [
-                                  Align(
-                                    alignment: Alignment.centerLeft,
-                                    child: SvgPicture.asset(
-                                      "assets/images/Sqm.svg",
-                                      width: 25,
-                                      height: 25,
-                                    ),
+                                  Row(
+                                    children: [
+                                      Align(
+                                        alignment: Alignment.centerLeft,
+                                        child: SvgPicture.asset(
+                                          "assets/images/Sqm.svg",
+                                          width: 25,
+                                          height: 25,
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                 ],
                               ),
-                            ],
+                            ]),
                           ),
-                 ] ),
-                      ),
-                    ),
-                    )),
+                        ),
+                      )),
                   Positioned(
                     left: 160,
                     top: 115,

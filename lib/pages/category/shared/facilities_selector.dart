@@ -2,9 +2,8 @@ import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-
 import '../models/FacilitiesModel.dart';
 
 class FacilitiesSelectorWidget extends StatelessWidget {
@@ -26,86 +25,99 @@ class FacilitiesSelectorWidget extends StatelessWidget {
           title,
           style: const TextStyle(fontFamily: MAIN_FONT_FAMILY, fontSize: 16),
         ),
-        const SizedBox(height: 15),
-        Obx(() => SizedBox(
-              height: 70,
-              child: ListView.builder(
-                scrollDirection: Axis.horizontal,
-                itemCount: selected.length + 1,
-                itemBuilder: (context, index) {
+        const SizedBox(height: 25),
+        Obx(
+          () => SizedBox(
+            height: 210, // Adjust the height to accommodate multiple rows
+            child: Wrap(
+              spacing: 21,
+              runSpacing: 21,
+              children: List.generate(
+                selected.length + 1,
+                (index) {
                   if (index == selected.length) {
-                    return Padding(
-                      padding: const EdgeInsets.all(1),
-                      child: GestureDetector(
-                        behavior: HitTestBehavior.translucent,
-                        onTap: () {
-                          FocusScope.of(context).unfocus();
-                          FacilitiesSelector(selectable, selected);
-                        },
-                        child: DottedBorder(
-                          radius: const Radius.circular(10),
-                          borderType: BorderType.RRect,
-                          color: Colors.black26,
-                          strokeWidth: 1,
-                          child: const SizedBox(
-                            width: 70,
-                            height: 70,
-                            child: Icon(
-                              Icons.add,
-                              size: 35,
-                              color: Colors.black26,
-                            ),
-                          ),
-                        ),
-                      ),
-                    );
+                    return _buildAddButton(context);
                   } else {
-                    return Padding(
-                      padding: const EdgeInsets.all(3.0),
-                      child: Stack(
-                        children: [
-                          Container(
-                            width: 70,
-                            height: 70,
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(10),
-                              border:
-                                  Border.all(color: Colors.black12, width: 1),
-                            ),
-                            child: Image.asset(selected[index].getAssetPath()),
-                          ),
-                          Positioned(
-                            bottom: 33,
-                            right: 10,
-                            child: IconButton(
-                              icon: SvgPicture.asset(
-                                'assets/images/delete.svg',
-                                width: 15,
-                                height: 15,
-                              ),
-                              onPressed: () {
-                                selected.removeAt(index);
-                              },
-                            ),
-                          ),
-                        ],
-                      ),
-                    );
+                    return _buildSelectedItem(index);
                   }
                 },
               ),
-            )),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildAddButton(BuildContext context) {
+    return GestureDetector(
+      behavior: HitTestBehavior.translucent,
+      onTap: () {
+        FocusScope.of(context).unfocus();
+        FacilitiesSelector(selectable, selected);
+      },
+      child: DottedBorder(
+        dashPattern: const [4, 4],
+        radius: const Radius.circular(10),
+        borderType: BorderType.RRect,
+        color: Color.fromARGB(115, 172, 172, 172),
+        strokeWidth: 2,
+        child: const SizedBox(
+          width: 63,
+          height: 63,
+          child: Icon(
+            Icons.add,
+            size: 35,
+            color: Colors.black26,
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildSelectedItem(int index) {
+    return Stack(
+      clipBehavior: Clip.none,
+      children: [
+        Container(
+          width: 70,
+          height: 70,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(10),
+            border: Border.all(color: Colors.black12, width: 1),
+          ),
+          child: Image.asset(selected[index].getAssetPath()),
+        ),
+        Positioned(
+          top: -22,
+          left: 0,
+          right: 0,
+          child: Center(
+            child: IconButton(
+              icon: SvgPicture.asset(
+                'assets/images/delete.svg',
+                width: 15,
+                height: 15,
+              ),
+              onPressed: () {
+                selected.removeAt(index);
+              },
+            ),
+          ),
+        ),
       ],
     );
   }
 }
 
 void FacilitiesSelector(
-    List<FacilitiesModel> selectable, RxList<FacilitiesModel> selected) {
+  List<FacilitiesModel> selectable,
+  RxList<FacilitiesModel> selected,
+) {
   Get.bottomSheet(
     Container(
-      height: 600, // Set the height to 600
+      height: 600,
       decoration: const BoxDecoration(
         gradient: LinearGradient(colors: GRADIANT_COLOR),
         borderRadius: BorderRadius.only(
@@ -146,7 +158,10 @@ void FacilitiesSelector(
                       return Padding(
                         padding: const EdgeInsets.symmetric(
                             horizontal: 3, vertical: 5),
-                        child: _buildItem(selectable[index], selected),
+                        child: _FacilityItem(
+                          facilitiesModel: selectable[index],
+                          selected: selected,
+                        ),
                       );
                     },
                   ),
@@ -193,45 +208,60 @@ void FacilitiesSelector(
   );
 }
 
-Widget _buildItem(
-    FacilitiesModel facilitiesModel, RxList<FacilitiesModel> selected) {
-  return GestureDetector(
-    onTap: () {
-      if (selected.contains(facilitiesModel)) {
-        selected.remove(facilitiesModel);
-      } else {
-        selected.add(facilitiesModel);
-      }
-    },
-    child: SizedBox(
-      height: 85,
-      width: 140,
-      child: Obx(() {
-        bool isSelected = selected.contains(facilitiesModel);
-        return Container(
-          decoration: BoxDecoration(
-            gradient: isSelected
-                ? const LinearGradient(colors: GRADIANT_COLOR)
-                : const LinearGradient(
-                    colors: [Colors.black12, Colors.black12, Colors.black12]),
-            borderRadius: BorderRadius.circular(10),
-          ),
-          child: Padding(
-            padding: EdgeInsets.all(isSelected ? 1 : 1),
-            child: Container(
+class _FacilityItem extends StatelessWidget {
+  final FacilitiesModel facilitiesModel;
+  final RxList<FacilitiesModel> selected;
+
+  const _FacilityItem({
+    required this.facilitiesModel,
+    required this.selected,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        if (selected.contains(facilitiesModel)) {
+          selected.remove(facilitiesModel);
+        } else {
+          selected.add(facilitiesModel);
+        }
+      },
+      child: SizedBox(
+        height: 85,
+        width: 140,
+        child: Obx(
+          () {
+            bool isSelected = selected.contains(facilitiesModel);
+            return Container(
               decoration: BoxDecoration(
-                color: Colors.white,
+                gradient: isSelected
+                    ? const LinearGradient(colors: GRADIANT_COLOR)
+                    : const LinearGradient(colors: [
+                        Colors.black12,
+                        Colors.black12,
+                        Colors.black12
+                      ]),
                 borderRadius: BorderRadius.circular(10),
-                border: Border.all(
-                  color: Colors.white,
-                  width: isSelected ? 1 : 1.5,
+              ),
+              child: Padding(
+                padding: EdgeInsets.all(isSelected ? 1 : 1),
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10),
+                    border: Border.all(
+                      color: Colors.white,
+                      width: isSelected ? 1 : 1.5,
+                    ),
+                  ),
+                  child: Image.asset(facilitiesModel.getAssetPath()),
                 ),
               ),
-              child: Image.asset(facilitiesModel.getAssetPath()),
-            ),
-          ),
-        );
-      }),
-    ),
-  );
+            );
+          },
+        ),
+      ),
+    );
+  }
 }
