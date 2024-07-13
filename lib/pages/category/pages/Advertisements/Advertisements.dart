@@ -59,7 +59,7 @@ class _SelectLocationMapState extends State<Advertisements> {
     return Scaffold(
         backgroundColor: Colors.white,
         body: Stack(children: [
-          AdvMap(advertisments,advertisments),
+          AdvMap(advertisments, advertisments),
           const Align(
             alignment: Alignment.topRight,
           ),
@@ -173,7 +173,7 @@ class _SelectLocationMapState extends State<Advertisements> {
                     const SizedBox(
                       width: 10,
                     ),
-                   GestureDetector(
+                    GestureDetector(
                       onTap: () {
                         Get.to(
                             () => Neighbourhood(
@@ -184,9 +184,8 @@ class _SelectLocationMapState extends State<Advertisements> {
                       child: Obx(() => Container(
                             decoration: BoxDecoration(
                                 border: Border.all(
-                                  
-                                    color:
-                                        Color.fromARGB(255, 160, 179, 161)),
+                                    color: const Color.fromARGB(
+                                        255, 160, 179, 161)),
                                 color: Colors.white,
                                 borderRadius: BorderRadius.circular(10)),
                             child: SizedBox(
@@ -205,9 +204,13 @@ class _SelectLocationMapState extends State<Advertisements> {
                                                   color: Colors.green,
                                                   shape: BoxShape.circle),
                                               child: Center(
-                                                child: Text(_advRepo
-                                                    .selectedCity.length
-                                                    .toString(),style: const TextStyle(color: Colors.white,fontSize: 10),),
+                                                child: Text(
+                                                  _advRepo.selectedCity.length
+                                                      .toString(),
+                                                  style: const TextStyle(
+                                                      color: Colors.white,
+                                                      fontSize: 10),
+                                                ),
                                               ),
                                             ),
                                           )
@@ -244,39 +247,35 @@ class _SelectLocationMapState extends State<Advertisements> {
                     const SizedBox(
                       width: 10,
                     ),
-                    Obx(()=>
-                     Container(
-                        decoration: BoxDecoration(
-                            border: Border.all(
-                                color: const Color.fromRGBO(166, 166, 166, 1)),
-                            color: _advRepo.filters.isNotEmpty
-                                  ? Colors.green
-                                  : Colors.white,
-                            borderRadius: BorderRadius.circular(10)),
-                        child: SizedBox(
-                          height: 40,
-                          width: getPageWidth(),
-                          child: Center(
-                            child: Stack(children: [
-                              const Padding(
-                                padding: EdgeInsets.only(right: 5),
-                                child: Text(
-                                  "تهران",
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                      fontFamily: MAIN_FONT_FAMILY,
-                                      color: Color.fromRGBO(99, 99, 99, 1),
-                                      fontSize: 12),
-                                ),
+                    Container(
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          border: Border.all(
+                              color: const Color.fromRGBO(166, 166, 166, 1)),
+                          borderRadius: BorderRadius.circular(10)),
+                      child: SizedBox(
+                        height: 40,
+                        width: getPageWidth(),
+                        child: Center(
+                          child: Stack(children: [
+                            const Padding(
+                              padding: EdgeInsets.only(right: 5),
+                              child: Text(
+                                "تهران",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    fontFamily: MAIN_FONT_FAMILY,
+                                    color: Color.fromRGBO(99, 99, 99, 1),
+                                    fontSize: 12),
                               ),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 50),
-                                child: SvgPicture.asset(
-                                  'assets/images/location1.svg',
-                                ),
-                              )
-                            ]),
-                          ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 50),
+                              child: SvgPicture.asset(
+                                'assets/images/location1.svg',
+                              ),
+                            )
+                          ]),
                         ),
                       ),
                     ),

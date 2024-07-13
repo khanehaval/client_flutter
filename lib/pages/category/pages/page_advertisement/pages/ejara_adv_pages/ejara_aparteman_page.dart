@@ -707,7 +707,7 @@ class _EjaraApartemanPageState extends State<EjaraApartemanPage> {
                 ),
               ),
               const SizedBox(
-                height: 20,
+                height: 50,
               ),
               FacilitiesSelectorWidget(
                 selectable: [
@@ -727,7 +727,7 @@ class _EjaraApartemanPageState extends State<EjaraApartemanPage> {
                 selected: _facilities,
               ),
               const SizedBox(
-                height: 20,
+                height: 30,
               ),
               const Divider(
                 color: Color.fromRGBO(

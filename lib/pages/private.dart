@@ -47,7 +47,7 @@ class Private extends StatelessWidget {
         children: [
           SingleChildScrollView(
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 15),
+              padding: const EdgeInsets.symmetric(horizontal: 14),
               child: Column(
                 children: [
                   Container(
@@ -64,15 +64,23 @@ class Private extends StatelessWidget {
                     child: Text(
                       "پنل شخصی",
                       style: TextStyle(
-                        fontSize: 25,
-                        fontWeight: FontWeight.bold,
-                        fontFamily: MAIN_FONT_FAMILY,
-                      ),
+                          fontSize: 25,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: MAIN_FONT_FAMILY,
+                          color: Color.fromRGBO(
+                            48,
+                            48,
+                            48,
+                            1,
+                          )),
                     ),
                   ),
-                  const SizedBox(height: 10),
+                  const SizedBox(
+                    height: 10,
+                    width: 20,
+                  ),
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       SizedBox(
                         height: 48,
@@ -129,43 +137,59 @@ class Private extends StatelessWidget {
                       ),
                     ],
                   ),
-                  const SizedBox(height: 30),
+                  const SizedBox(
+                    height: 20,
+                    width: 20,
+                  ),
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       SizedBox(
                         height: 48,
                         width: _getTextFieldWidth(context),
                         child: Obx(() => Container(
                               decoration: BoxDecoration(
-                                gradient:
-                                    LinearGradient(colors: GRADIANT_COLOR),
-                                borderRadius: BorderRadius.circular(10),
-                              ),
+                                  borderRadius: BorderRadius.circular(10),
+                                  gradient: const LinearGradient(
+                                      colors: GRADIANT_COLOR1)),
                               child: Padding(
-                                padding: const EdgeInsets.all(1.0),
+                                padding: const EdgeInsets.all(1.2),
                                 child: Container(
                                   decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(10),
-                                      color: imagePath.isEmpty
-                                          ? Colors.white
-                                          : null),
-                                  child: Row(
-                                    children: [
-                                      IconButton(
-                                        icon: Icon(imagePath.isEmpty
-                                            ? CupertinoIcons.add_circled
-                                            : CupertinoIcons.clear_circled),
-                                        onPressed: pickImage,
-                                      ),
-                                      if (imagePath.isEmpty)
-                                        const Text(
-                                          '* بارگذاری تصویر کارت ملی',
-                                          style: TextStyle(fontSize: 10),
-                                        )
-                                      else
-                                        Text(_getImageName())
-                                    ],
+                                    gradient: const LinearGradient(
+                                        colors: GRADIANT_COLOR),
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(10),
+                                        color: imagePath.isEmpty
+                                            ? Colors.white
+                                            : null),
+                                    child: Row(
+                                      children: [
+                                        IconButton(
+                                          icon: Icon(imagePath.isEmpty
+                                              ? CupertinoIcons.add_circled
+                                              : CupertinoIcons.clear_circled),
+                                          onPressed: pickImage,
+                                        ),
+                                        if (imagePath.isEmpty)
+                                          const Padding(
+                                            padding:
+                                                EdgeInsets.only(left: 12.0),
+                                            child: Text(
+                                              '* تصویر کارت ملی',
+                                              style: TextStyle(
+                                                  fontSize: 12,
+                                                  color: Color.fromRGBO(
+                                                      99, 99, 99, 1)),
+                                            ),
+                                          )
+                                        else
+                                          Text(_getImageName())
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ),
@@ -199,35 +223,33 @@ class Private extends StatelessWidget {
                       ),
                     ],
                   ),
-                  const SizedBox(height: 30),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 2),
-                    child: SizedBox(
-                      height: 43,
-                      child: TextField(
-                        scrollPadding: EdgeInsets.only(
-                          bottom: MediaQuery.of(context).viewInsets.bottom,
+                  const SizedBox(height: 20),
+                  SizedBox(
+                    width: 360,
+                    height: 41,
+                    child: TextField(
+                      scrollPadding: EdgeInsets.only(
+                        bottom: MediaQuery.of(context).viewInsets.bottom,
+                      ),
+                      textAlign: TextAlign.right,
+                      decoration: InputDecoration(
+                        hintText: ' * نام کاربری  ( به انگلیسی) ',
+                        hintStyle: const TextStyle(
+                          color: Color(0xFFA5A5A5),
+                          fontSize: 12,
+                          fontFamily: 'Iran Sans',
+                          fontWeight: FontWeight.w400,
                         ),
-                        textAlign: TextAlign.right,
-                        decoration: InputDecoration(
-                          hintText: ' * نام کاربری  ( به انگلیسی) ',
-                          hintStyle: const TextStyle(
-                            color: Color(0xFFA5A5A5),
-                            fontSize: 12,
-                            fontFamily: 'Iran Sans',
-                            fontWeight: FontWeight.w400,
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                          borderSide: const BorderSide(
+                            color: Color.fromRGBO(23, 102, 175, 1),
                           ),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
-                            borderSide: const BorderSide(
-                              color: Color.fromRGBO(23, 102, 175, 1),
-                            ),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
-                            borderSide: const BorderSide(
-                              color: Color.fromRGBO(23, 102, 175, 1),
-                            ),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                          borderSide: const BorderSide(
+                            color: Color.fromRGBO(23, 102, 175, 1),
                           ),
                         ),
                       ),
@@ -254,24 +276,34 @@ class Private extends StatelessWidget {
                             backgroundColor: Colors.transparent,
                             shadowColor: Colors.transparent,
                             shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(30),
+                              borderRadius: BorderRadius.circular(20),
                             ),
                             padding: EdgeInsets.zero,
                           ),
-                          child: Ink(
-                            decoration: BoxDecoration(
-                              gradient: GetGradient(),
-                              borderRadius: BorderRadius.circular(30),
-                            ),
-                            child: Container(
-                              alignment: Alignment.center,
-                              child: const Text(
-                                'تایید',
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold,
-                                  fontFamily: MAIN_FONT_FAMILY,
+                          child: Padding(
+                            padding: const EdgeInsets.all(2.0),
+                            child: Ink(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(20),
+                                boxShadow: [
+                                  BoxShadow(
+                                      color: Colors.grey.withOpacity(0.25),
+                                      spreadRadius: 1,
+                                      blurRadius: 3,
+                                      offset: const Offset(0, 1)),
+                                ],
+                                gradient: GetGradient(),
+                              ),
+                              child: Container(
+                                alignment: Alignment.center,
+                                child: const Text(
+                                  'تایید',
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold,
+                                    fontFamily: MAIN_FONT_FAMILY,
+                                  ),
                                 ),
                               ),
                             ),
