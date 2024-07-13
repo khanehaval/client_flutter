@@ -59,7 +59,7 @@ class _SelectLocationMapState extends State<Advertisements> {
     return Scaffold(
         backgroundColor: Colors.white,
         body: Stack(children: [
-          AdvMap(advertisments,advertisments),
+          AdvMap(advertisments, advertisments),
           const Align(
             alignment: Alignment.topRight,
           ),
@@ -173,7 +173,7 @@ class _SelectLocationMapState extends State<Advertisements> {
                     const SizedBox(
                       width: 10,
                     ),
-                   GestureDetector(
+                    GestureDetector(
                       onTap: () {
                         Get.to(
                             () => Neighbourhood(
@@ -184,9 +184,7 @@ class _SelectLocationMapState extends State<Advertisements> {
                       child: Obx(() => Container(
                             decoration: BoxDecoration(
                                 border: Border.all(
-                                  
-                                    color:
-                                        Color.fromARGB(255, 160, 179, 161)),
+                                    color: Color.fromARGB(255, 160, 179, 161)),
                                 color: Colors.white,
                                 borderRadius: BorderRadius.circular(10)),
                             child: SizedBox(
@@ -205,9 +203,13 @@ class _SelectLocationMapState extends State<Advertisements> {
                                                   color: Colors.green,
                                                   shape: BoxShape.circle),
                                               child: Center(
-                                                child: Text(_advRepo
-                                                    .selectedCity.length
-                                                    .toString(),style: const TextStyle(color: Colors.white,fontSize: 10),),
+                                                child: Text(
+                                                  _advRepo.selectedCity.length
+                                                      .toString(),
+                                                  style: const TextStyle(
+                                                      color: Colors.white,
+                                                      fontSize: 10),
+                                                ),
                                               ),
                                             ),
                                           )
@@ -244,14 +246,14 @@ class _SelectLocationMapState extends State<Advertisements> {
                     const SizedBox(
                       width: 10,
                     ),
-                    Obx(()=>
-                     Container(
+                    Obx(
+                      () => Container(
                         decoration: BoxDecoration(
                             border: Border.all(
                                 color: const Color.fromRGBO(166, 166, 166, 1)),
                             color: _advRepo.filters.isNotEmpty
-                                  ? Colors.green
-                                  : Colors.white,
+                                ? Colors.green
+                                : Colors.white,
                             borderRadius: BorderRadius.circular(10)),
                         child: SizedBox(
                           height: 40,
