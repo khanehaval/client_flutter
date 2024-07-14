@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/category/pages/home.dart';
+import 'package:flutter_application_1/pages/category/shared/widget/Neighbourhood.dart';
+import 'package:flutter_application_1/pages/category/shared/widget/city_widget.dart';
 import 'package:flutter_application_1/pages/private.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
@@ -9,19 +11,19 @@ import 'package:image_picker/image_picker.dart';
 
 class Realestateagency extends StatelessWidget {
   var shows = true.obs;
-
   Future<void> pickImage() async {
-    final ImagePicker picker = ImagePicker();
+    final ImagePicker _picker = ImagePicker();
     final XFile? pickedFile =
-        await picker.pickImage(source: ImageSource.gallery);
+        await _picker.pickImage(source: ImageSource.gallery);
 
     if (pickedFile != null) {
-      print("Picked Image Path: ${pickedFile.path}");
+      imagePath.value = pickedFile.path;
     }
   }
 
   Realestateagency({super.key});
-
+  final show = true.obs;
+  final imagePath = ''.obs;
   @override
   Widget build(BuildContext context) {
     var shows = true.obs;
@@ -82,53 +84,86 @@ class Realestateagency extends StatelessWidget {
               const SizedBox(
                 height: 2,
               ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 15),
-                child: Row(
-                  children: [
-                    Expanded(
-                        child: Container(
-                      height: 45,
-                      width: 178,
-                      child: TextField(
-                        textAlign: TextAlign.right,
-                        decoration: InputDecoration(
-                          hintText: '* نام آژانس ',
-                          hintStyle: const TextStyle(
-                              color: Color(0xFFA6A6A6), fontSize: 13),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
-                            borderSide: const BorderSide(
-                              color: Color.fromRGBO(
-                                99,
-                                99,
-                                99,
-                                1,
+              Row(
+                children: [
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 12.0, right: 13),
+                      child: Container(
+                        height: 45,
+                        child: Stack(
+                          alignment: Alignment.center,
+                          children: [
+                            TextField(
+                              textAlign: TextAlign.center,
+                              textDirection: TextDirection.rtl,
+                              decoration: InputDecoration(
+                                hintText: 'نام آژانس (برای مثال : آینده)',
+                                hintStyle: const TextStyle(
+                                  color: Color(0xFFA6A6A6),
+                                  fontSize: 14,
+                                ),
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                  borderSide:
+                                      const BorderSide(color: Colors.white),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                  borderSide: const BorderSide(
+                                    color: Color(0xFFA6A6A6),
+                                  ),
+                                ),
                               ),
                             ),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
-                            borderSide: const BorderSide(
-                              color: Color.fromRGBO(
-                                99,
-                                99,
-                                99,
-                                1,
+                            Padding(
+                              padding: const EdgeInsets.only(left: 270.0),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Container(
+                                    decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(10),
+                                        gradient: const LinearGradient(
+                                            colors: GRADIANT_COLOR3)),
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(1.2),
+                                      child: Container(
+                                        width: 80,
+                                        height: 30,
+                                        padding: const EdgeInsets.all(5),
+                                        decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(7),
+                                            color: Colors.white),
+                                        child: const Text(
+                                          'آژانس املاک',
+                                          style: TextStyle(
+                                            fontFamily: MAIN_FONT_FAMILY,
+                                            fontSize: 12,
+                                            color: Colors.black,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
                               ),
                             ),
-                          ),
+                          ],
                         ),
                       ),
-                    ))
-                  ],
-                ),
+                    ),
+                  ),
+                ],
               ),
             ],
           ),
           Padding(
-            padding: const EdgeInsets.all(16.0),
+            padding: const EdgeInsets.all(15.0),
             child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Expanded(
                   child: SizedBox(
@@ -209,49 +244,55 @@ class Realestateagency extends StatelessWidget {
             child: Row(
               children: [
                 Expanded(
-                  child: Container(
+                  child: SizedBox(
                     height: 41,
-                    width: 178,
-                    child: TextField(
-                      textAlign: TextAlign.right,
-                      decoration: InputDecoration(
-                        hintText: '*  بارگذاری تصویر جواز',
-                        prefixIcon: IconButton(
-                          icon: const Icon(
-                            CupertinoIcons.add_circled,
-                          ),
-                          onPressed: () {
-                            pickImage();
-                          },
-                        ),
-                        hintStyle: const TextStyle(
-                          fontSize: 10,
-                          color: Color(0xFFA6A6A6),
-                        ),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                          borderSide: const BorderSide(
-                            color: Color.fromRGBO(
-                              99,
-                              99,
-                              99,
-                              1,
+                    width: getWidth3(context),
+                    child: Obx(() => Container(
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              gradient: const LinearGradient(
+                                  colors: GRADIANT_COLOR1)),
+                          child: Padding(
+                            padding: const EdgeInsets.all(1.2),
+                            child: Container(
+                              decoration: BoxDecoration(
+                                gradient: const LinearGradient(
+                                    colors: GRADIANT_COLOR),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              child: Container(
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(10),
+                                    color: imagePath.isEmpty
+                                        ? Colors.white
+                                        : null),
+                                child: Row(
+                                  children: [
+                                    IconButton(
+                                      icon: Icon(imagePath.isEmpty
+                                          ? CupertinoIcons.add_circled
+                                          : CupertinoIcons.clear_circled),
+                                      onPressed: pickImage,
+                                    ),
+                                    if (imagePath.isEmpty)
+                                      const Padding(
+                                        padding: EdgeInsets.only(left: 12.0),
+                                        child: Text(
+                                          'بارگذاری تصویر جواز',
+                                          style: TextStyle(
+                                              fontSize: 12,
+                                              color: Color.fromRGBO(
+                                                  99, 99, 99, 1)),
+                                        ),
+                                      )
+                                    else
+                                      Text(_getImageName_real())
+                                  ],
+                                ),
+                              ),
                             ),
                           ),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                          borderSide: const BorderSide(
-                            color: Color.fromRGBO(
-                              99,
-                              99,
-                              99,
-                              1,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
+                        )),
                   ),
                 ),
                 const SizedBox(
@@ -260,7 +301,7 @@ class Realestateagency extends StatelessWidget {
                 Expanded(
                   child: Container(
                     height: 41,
-                    width: 178,
+                    width: getWidth3(context),
                     child: TextField(
                       textAlign: TextAlign.right,
                       decoration: InputDecoration(
@@ -326,7 +367,7 @@ class Realestateagency extends StatelessWidget {
                 Expanded(
                   child: Container(
                     height: 41,
-                    width: MediaQuery.of(context).size.width * 1 / 1.06,
+                    width: getWidth3(context),
                     child: TextField(
                       textAlign: TextAlign.right,
                       decoration: InputDecoration(
@@ -363,7 +404,7 @@ class Realestateagency extends StatelessWidget {
                 Expanded(
                   child: Container(
                     height: 41,
-                    width: MediaQuery.of(context).size.width * 1 / 1.06,
+                    width: getWidth3(context),
                     child: TextField(
                       textAlign: TextAlign.right,
                       decoration: InputDecoration(
@@ -400,109 +441,114 @@ class Realestateagency extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 10),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 14),
-            child: Row(
-              children: [
-                Expanded(
-                  child: Container(
-                    height: 41,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      gradient: const LinearGradient(
-                        colors: [
-                          Color.fromARGB(255, 95, 173, 237),
-                          Color.fromARGB(126, 118, 238, 146),
-                        ],
-                      ),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(1.2),
-                      child: Container(
-                        decoration: BoxDecoration(
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              GestureDetector(
+                onDoubleTap: () {
+                  Get.to(
+                      () => Neighbourhood(
+                            index1: 0,
+                          ),
+                      transition: Transition.leftToRight);
+                },
+                child: SizedBox(
+                  height: 41,
+                  width: getWidth3(context),
+                  child: Padding(
+                    padding: const EdgeInsets.all(1.2),
+                    child: Container(
+                      decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
-                          color: Colors
-                              .white, // Background color inside the border
-                        ),
-                        child: TextField(
-                          textAlign: TextAlign.right,
-                          decoration: InputDecoration(
-                            hintText: 'محدوده فعالیت *',
-                            prefixIcon: Padding(
-                              padding: const EdgeInsets.all(12.0),
-                              child: SvgPicture.asset(
-                                'assets/images/moghay.svg',
-                              ),
-                            ),
-                            hintStyle: const TextStyle(
-                              fontSize: 12,
-                              fontWeight: FontWeight.bold,
-                              color: Color.fromRGBO(
-                                166,
-                                166,
-                                166,
-                                1,
-                              ),
-                              fontFamily: MAIN_FONT_FAMILY,
-                            ),
-                            border: InputBorder.none,
-                            focusedBorder: InputBorder.none,
-                            contentPadding:
-                                EdgeInsets.symmetric(horizontal: 10),
+                          gradient:
+                              const LinearGradient(colors: GRADIANT_COLOR)),
+                      child: Padding(
+                        padding: const EdgeInsets.all(1.2),
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: Row(
+                            children: [
+                              IconButton(
+                                  onPressed: () {},
+                                  icon: SvgPicture.asset(
+                                    'assets/images/moghay.svg',
+                                    color: const Color.fromRGBO(
+                                      48,
+                                      48,
+                                      48,
+                                      1,
+                                    ),
+                                  )),
+                              const Padding(
+                                padding: EdgeInsets.only(left: 12.0),
+                                child: Text(
+                                  '*   محدوده فعالیت ',
+                                  style: TextStyle(
+                                      fontFamily: MAIN_FONT_FAMILY,
+                                      fontSize: 10,
+                                      color: Color.fromRGBO(99, 99, 99, 1)),
+                                ),
+                              )
+                            ],
                           ),
                         ),
                       ),
                     ),
                   ),
                 ),
-                const SizedBox(width: 10),
-                Expanded(
-                  child: Container(
-                    height: 41,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      gradient: const LinearGradient(
-                        colors: [
-                          Color.fromARGB(255, 95, 173, 237),
-                          Color.fromARGB(126, 118, 238, 146),
-                        ],
+              ),
+              SizedBox(
+                height: 41,
+                width: getWidth3(context),
+                child: TextField(
+                  onTap: () {
+                    Get.to(() => City());
+                  },
+                  readOnly: true,
+                  textAlign: TextAlign.right,
+                  decoration: InputDecoration(
+                    hintText: ' *  انتخاب شهر',
+                    prefixIcon: Padding(
+                      padding: const EdgeInsets.all(12.0),
+                      child: SvgPicture.asset(
+                        'assets/images/location_moshaver.svg',
+                        color: const Color.fromRGBO(166, 166, 166, 1),
                       ),
                     ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(1.2),
-                      child: Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          color: Colors.white,
+                    hintStyle: const TextStyle(
+                        color: Color.fromRGBO(166, 166, 166, 1),
+                        fontSize: 14,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: MAIN_FONT_FAMILY),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      borderSide: const BorderSide(
+                        color: Color.fromRGBO(
+                          99,
+                          99,
+                          99,
+                          1,
                         ),
-                        child: TextField(
-                          textAlign: TextAlign.right,
-                          decoration: InputDecoration(
-                            hintText: 'تهران',
-                            prefixIcon: Padding(
-                              padding: const EdgeInsets.all(12.0),
-                              child: SvgPicture.asset(
-                                'assets/images/location_moshaver.svg',
-                              ),
-                            ),
-                            hintStyle: const TextStyle(
-                              fontSize: 12,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black,
-                              fontFamily: MAIN_FONT_FAMILY,
-                            ),
-                            border: InputBorder.none,
-                            focusedBorder: InputBorder.none,
-                            contentPadding:
-                                const EdgeInsets.symmetric(horizontal: 10),
-                          ),
+                      ),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      borderSide: const BorderSide(
+                        color: Color.fromRGBO(
+                          99,
+                          99,
+                          99,
+                          1,
                         ),
                       ),
                     ),
                   ),
-                )
-              ],
-            ),
+                ),
+              ),
+            ],
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
@@ -664,5 +710,16 @@ class Realestateagency extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  double getWidth3(BuildContext context) =>
+      (MediaQuery.of(context).size.width / 2.05) * 0.9;
+  String _getImageName_real() {
+    var s = imagePath.value.split("/").last;
+    if (s.length > 10) {
+      var i = s.length - 10;
+      s = s.substring(i, s.length);
+    }
+    return s;
   }
 }

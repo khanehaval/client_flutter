@@ -8,6 +8,7 @@ import 'package:flutter_application_1/pages/category/shared/facilities_selector.
 import 'package:flutter_application_1/pages/category/shared/images_picker/images_picker.dart';
 import 'package:flutter_application_1/pages/category/shared/more_emkanat/jahat_sakhteman.dart';
 import 'package:flutter_application_1/pages/category/shared/more_emkanat/sanad.dart';
+import 'package:flutter_application_1/pages/category/shared/namayesh.dart';
 import 'package:flutter_application_1/pages/category/shared/number_piacker.dart';
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
 import 'package:flutter_application_1/pages/category/shared/switchItem.dart';
@@ -17,46 +18,109 @@ import 'package:flutter_application_1/pages/category/shared/widget/text_field.da
 import 'package:flutter_application_1/pages/category/shared/widget/route_widget.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/switachable.dart';
 import 'package:get/get.dart';
+import 'package:gradient_icon/gradient_icon.dart';
 
 import '../../../../models/FacilitiesModel.dart';
 
-class ForoshAdvPage extends StatelessWidget {
+class ForoshAdvPage extends StatefulWidget {
+  @override
+  State<ForoshAdvPage> createState() => _ForoshAdvPageState();
+}
+
+class _ForoshAdvPageState extends State<ForoshAdvPage> {
   final aghsatType = "".obs;
+
   final onvan = "".obs;
+
   int selectedIndex = 0;
+
   final submit = false.obs;
 
   final hasAnbari = false.obs;
+
   final hasAsansor = false.obs;
+
   final hasParking = false.obs;
+
   final _onePrice = 0.0.obs;
+
   final _allPriceTextController = TextEditingController();
+
   final _metragTextController = TextEditingController();
+
   final _selectedImagesPath = [].obs;
+
   final _facilities = <FacilitiesModel>[].obs;
 
   final _buildDirectionController = TextEditingController();
+
   final _buildUnitOfAnyFloorCountController = TextEditingController();
+
   final _buildFloorsCountController = TextEditingController();
+
   final _timeOfInstallmentsController = TextEditingController();
+
   final _buildDateController = TextEditingController();
+
   final _buildRoomsCountController = TextEditingController();
+
   final _buildDocumentController = TextEditingController();
+
   final _buildFloorController = TextEditingController();
+
   final _buildAllFloorsCountController = TextEditingController();
+
   final _reBuildController = TextEditingController();
+
   final _countOfInstallmentsController = TextEditingController();
+
   final _floorMaterialController = TextEditingController();
+
   final _cabinetController = TextEditingController();
+
   final _coldTypeController = TextEditingController();
+
   final _heatTypeController = TextEditingController();
+
   final _heatWaterController = TextEditingController();
+
   final _wcController = TextEditingController();
+
   final _numberOfInstallmentsController = TextEditingController();
 
   final _advInfo = AdvInfoModel();
 
   @override
+  void initState() {
+    super.initState();
+
+    // Add listeners to text controllers
+    _allPriceTextController.addListener(_checkFields);
+    _metragTextController.addListener(_checkFields);
+    _buildRoomsCountController.addListener(_checkFields);
+
+    _buildFloorController.addListener(_checkFields);
+  }
+
+  void _checkFields() {
+    if (_allPriceTextController.text.isNotEmpty &&
+        _metragTextController.text.isNotEmpty &&
+        _buildFloorController.text.isNotEmpty &&
+        _buildRoomsCountController.text.isNotEmpty) {
+      submit.value = true;
+    } else {
+      submit.value = false;
+    }
+  }
+
+  @override
+  void dispose() {
+    _allPriceTextController.dispose();
+    _metragTextController.dispose();
+    _buildFloorController.dispose();
+    super.dispose();
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Colors.white,
@@ -71,9 +135,9 @@ class ForoshAdvPage extends StatelessWidget {
               const SizedBox(
                 height: 30,
               ),
-              TwoItemInRow(
+              TwoItemInRow1(
                 label1: "قیمت هر متر مربع (تومان)",
-                label2: "قیمت کل (تومان)",
+                label2: "  قیمت کل (تومان)",
                 widget1: Obx(
                   () => Container(
                     decoration: BoxDecoration(
@@ -157,12 +221,15 @@ class ForoshAdvPage extends StatelessWidget {
                   SizedBox(
                     width: 5,
                   ),
-                  Text(
-                    "متراژ",
-                    style: TextStyle(
-                        color: Color.fromRGBO(166, 166, 166, 1),
-                        fontFamily: MAIN_FONT_FAMILY),
-                    textAlign: TextAlign.start,
+                  Padding(
+                    padding: const EdgeInsets.only(right: 7),
+                    child: Text(
+                      "متراژ",
+                      style: TextStyle(
+                          color: Color.fromRGBO(166, 166, 166, 1),
+                          fontFamily: MAIN_FONT_FAMILY),
+                      textAlign: TextAlign.start,
+                    ),
                   ),
                 ],
               ),
@@ -217,7 +284,7 @@ class ForoshAdvPage extends StatelessWidget {
                 endIndent: 6,
                 indent: 6,
               ),
-              TwoItemInRow(
+              TwoItemInRow2(
                   label1: "تعداد اتاق ",
                   label2: "سن بنا",
                   widget1: ReadOnlyTextField(_buildRoomsCountController, () {
@@ -451,7 +518,47 @@ class ForoshAdvPage extends StatelessWidget {
               const SizedBox(
                 height: 30,
               ),
-              SubmitRow(submit: submit, nextPage: EjaraVilaPage())
+              GestureDetector(
+                onTap: () {
+                  if (submit.value) {
+                    Get.to(() => NamayeshAgahi());
+                  }
+                },
+                child: Obx(() => Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Center(
+                          child: Text(
+                            "... تایید و ادامه",
+                            style: !submit.value
+                                ? const TextStyle(
+                                    fontSize: 20,
+                                    fontFamily: MAIN_FONT_FAMILY,
+                                    color: Colors.black38,
+                                  )
+                                : const TextStyle(
+                                    fontSize: 20, fontFamily: MAIN_FONT_FAMILY),
+                            textAlign: TextAlign.center,
+                          ),
+                        ),
+                        const SizedBox(
+                          width: 3,
+                        ),
+                        GradientIcon(
+                          icon: Icons.double_arrow,
+                          gradient: LinearGradient(
+                            colors: submit.value
+                                ? GRADIANT_COLOR1
+                                : BLACK_12_GRADIANT_COLOR,
+                            begin: Alignment.topLeft,
+                            end: Alignment.bottomRight,
+                          ),
+                          offset: const Offset(0, 0),
+                          size: 34,
+                        )
+                      ],
+                    )),
+              )
             ]),
           ),
         ));
