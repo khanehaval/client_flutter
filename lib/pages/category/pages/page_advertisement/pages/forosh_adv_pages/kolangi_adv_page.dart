@@ -8,6 +8,7 @@ import 'package:flutter_application_1/pages/category/shared/date.dart';
 import 'package:flutter_application_1/pages/category/shared/facilities_selector.dart';
 import 'package:flutter_application_1/pages/category/shared/images_picker/images_picker.dart';
 import 'package:flutter_application_1/pages/category/shared/more_emkanat/sanad.dart';
+import 'package:flutter_application_1/pages/category/shared/namayesh.dart';
 import 'package:flutter_application_1/pages/category/shared/number_piacker.dart';
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
 import 'package:flutter_application_1/pages/category/shared/twoItemInRow.dart';
@@ -16,75 +17,142 @@ import 'package:flutter_application_1/pages/category/shared/widget/submit_row.da
 import 'package:flutter_application_1/pages/category/shared/widget/switachable.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:gradient_icon/gradient_icon.dart';
 
 import '../../../../shared/adv_info/advInfo.dart';
 import '../../../../shared/more_emkanat/jahat_sakhteman.dart';
 import '../../../../shared/widget/text_field.dart';
 
-class KolangiAdvPage extends StatelessWidget {
-  final aghsatType = "".obs;
-  final onvan = "".obs;
-  final submit = false.obs;
-
-  final hasAnbari = false.obs;
-  final hasAsansor = false.obs;
-  final _allPriceTextController = TextEditingController();
-  final _metragTextController = TextEditingController();
-  final _selectedImagesPath = [].obs;
-  final _onePrice = 0.0.obs;
-  final _advInfo = AdvInfoModel();
-  final _facilities = <FacilitiesModel>[].obs;
-
-  final _buildDirectionController = TextEditingController();
-  final _buildUnitOfAnyFloorCountController = TextEditingController();
-  final _buildFloorsCountController = TextEditingController();
-  final _timeOfInstallmentsController = TextEditingController();
-  final _buildDateController = TextEditingController();
-  final _buildRoomsCountController = TextEditingController();
-  final _buildDocumentController = TextEditingController();
-  final _buildFloorController = TextEditingController();
-  final _buildAllFloorsCountController = TextEditingController();
-  final _reBuildController = TextEditingController();
-  final _countOfInstallmentsController = TextEditingController();
-  final _buildMaxCapacityController = TextEditingController();
-  final _buildRiteController = TextEditingController();
-  final _buildAnimalController = TextEditingController();
-  final _buildSmokingController = TextEditingController();
-  final _buildShoesController = TextEditingController();
-  final _buildDeprivationController = TextEditingController();
-  final _buildSleepServiceCountController = TextEditingController();
-  final _oneBedCountController = TextEditingController();
-  final _twoBedCountController = TextEditingController();
-  final _floorMaterialController = TextEditingController();
-  final _cabinetController = TextEditingController();
-  final _coldTypeController = TextEditingController();
-  final _heatTypeController = TextEditingController();
-  final _heatWaterController = TextEditingController();
-  final _wcController = TextEditingController();
-  final _numberOfInstallmentsController = TextEditingController();
+class KolangiAdvPage extends StatefulWidget {
 
   KolangiAdvPage({super.key});
 
   @override
+  State<KolangiAdvPage> createState() => _KolangiAdvPageState();
+}
+
+class _KolangiAdvPageState extends State<KolangiAdvPage> {
+  final aghsatType = "".obs;
+
+  final onvan = "".obs;
+
+  final submit = false.obs;
+
+  final hasAnbari = false.obs;
+
+  final hasAsansor = false.obs;
+
+  final _allPriceTextController = TextEditingController();
+
+  final _metragTextController = TextEditingController();
+
+  final _selectedImagesPath = [].obs;
+
+  final _onePrice = 0.0.obs;
+
+  final _advInfo = AdvInfoModel();
+
+  final _facilities = <FacilitiesModel>[].obs;
+
+  final _buildDirectionController = TextEditingController();
+
+  final _buildUnitOfAnyFloorCountController = TextEditingController();
+
+  final _buildFloorsCountController = TextEditingController();
+
+  final _timeOfInstallmentsController = TextEditingController();
+
+  final _buildDateController = TextEditingController();
+
+  final _buildRoomsCountController = TextEditingController();
+
+  final _buildDocumentController = TextEditingController();
+
+  final _buildFloorController = TextEditingController();
+
+  final _buildAllFloorsCountController = TextEditingController();
+
+  final _reBuildController = TextEditingController();
+
+  final _countOfInstallmentsController = TextEditingController();
+
+  final _buildMaxCapacityController = TextEditingController();
+
+  final _buildRiteController = TextEditingController();
+
+  final _buildAnimalController = TextEditingController();
+
+  final _buildSmokingController = TextEditingController();
+
+  final _buildShoesController = TextEditingController();
+
+  final _buildDeprivationController = TextEditingController();
+
+  final _buildSleepServiceCountController = TextEditingController();
+
+  final _oneBedCountController = TextEditingController();
+
+  final _twoBedCountController = TextEditingController();
+
+  final _floorMaterialController = TextEditingController();
+
+  final _cabinetController = TextEditingController();
+
+  final _coldTypeController = TextEditingController();
+
+  final _heatTypeController = TextEditingController();
+
+  final _heatWaterController = TextEditingController();
+
+  final _wcController = TextEditingController();
+
+  final _numberOfInstallmentsController = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+
+   
+    _allPriceTextController.addListener(_checkFields);
+    _metragTextController.addListener(_checkFields);
+   
+  }
+
+  void _checkFields() {
+    if (_allPriceTextController.text.isNotEmpty &&
+        _metragTextController.text.isNotEmpty 
+      ) {
+      submit.value = true;
+    } else {
+      submit.value = false;
+    }
+  }
+
+  @override
+  void dispose() {
+    _allPriceTextController.dispose();
+    _metragTextController.dispose();
+
+    super.dispose();
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Colors.white,
         appBar: buildaAppBar(),
         body: SingleChildScrollView(
+          scrollDirection: Axis.vertical,
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
             child: Column(children: [
-              route([
-                "ثبت آگهی اکونومی",
-                "فروش مسکونی",
-                "خرید و فروش خانه کلنگی"
-              ]),
+              route(
+                  ["ثبت آگهی اکونومی", "فروش مسکونی", "خرید و فروش آپارتمان"]),
               const SizedBox(
                 height: 30,
               ),
-              TwoItemInRow(
+              TwoItemInRow1(
                 label1: "قیمت هر متر مربع (تومان)",
-                label2: "قیمت کل (تومان)",
+                label2: "  قیمت کل (تومان)",
                 widget1: Obx(
                   () => Container(
                     decoration: BoxDecoration(
@@ -165,17 +233,24 @@ class KolangiAdvPage extends StatelessWidget {
                         color: Color.fromRGBO(156, 64, 64, 1),
                         fontFamily: MAIN_FONT_FAMILY),
                   ),
-                  Text(
-                    " متراژ زمین",
-                    style: TextStyle(
-                        color: Color.fromRGBO(166, 166, 166, 1),
-                        fontFamily: MAIN_FONT_FAMILY),
-                    textAlign: TextAlign.start,
+                  SizedBox(
+                    width: 5,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(right: 7),
+                    child: Text(
+                      "متراژ",
+                      style: TextStyle(
+                          color: Color.fromRGBO(166, 166, 166, 1),
+                          fontFamily: MAIN_FONT_FAMILY),
+                      textAlign: TextAlign.start,
+                    ),
                   ),
                 ],
               ),
               SizedBox(
                 height: 50,
+                width: MediaQuery.of(context).size.width * 0.95,
                 child: TextField(
                   textAlign: TextAlign.right,
                   controller: _metragTextController,
@@ -437,7 +512,47 @@ class KolangiAdvPage extends StatelessWidget {
               const SizedBox(
                 height: 30,
               ),
-              SubmitRow(submit: submit, nextPage: EjaraVilaPage())
+                    GestureDetector(
+                onTap: () {
+                  if (submit.value) {
+                    Get.to(() => NamayeshAgahi());
+                  }
+                },
+                child: Obx(() => Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Center(
+                          child: Text(
+                            "... تایید و ادامه",
+                            style: !submit.value
+                                ? const TextStyle(
+                                    fontSize: 20,
+                                    fontFamily: MAIN_FONT_FAMILY,
+                                    color: Colors.black38,
+                                  )
+                                : const TextStyle(
+                                    fontSize: 20, fontFamily: MAIN_FONT_FAMILY),
+                            textAlign: TextAlign.center,
+                          ),
+                        ),
+                        const SizedBox(
+                          width: 3,
+                        ),
+                        GradientIcon(
+                          icon: Icons.double_arrow,
+                          gradient: LinearGradient(
+                            colors: submit.value
+                                ? GRADIANT_COLOR1
+                                : BLACK_12_GRADIANT_COLOR,
+                            begin: Alignment.topLeft,
+                            end: Alignment.bottomRight,
+                          ),
+                          offset: const Offset(0, 0),
+                          size: 34,
+                        )
+                      ],
+                    )),
+              )
             ]),
           ),
         ));
@@ -454,25 +569,15 @@ class KolangiAdvPage extends StatelessWidget {
         Obx(() => isSwitched.isTrue
             ? Column(
                 children: [
-                  TwoItemInRow(
+                  TwoItemInRow2(
                     label1: "سن بنا ",
                     label2: "متراژ بنا ",
-                    widget1: SizedBox(
-                      height: 41,
-                      width: getPageWidth(),
-                      child: TextField(
-                        keyboardType: TextInputType.number,
-                        textAlign: TextAlign.right,
-                        decoration: InputDecoration(
-                          hintText: 'تایپ کنید', //todo
-                          hintStyle: const TextStyle(
-                              color: Color(0xFFA6A6A6), fontSize: 13),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                        ),
-                      ),
-                    ),
+                    widget1: ReadOnlyTextField(
+                      _buildUnitOfAnyFloorCountController, () {
+                    showNumberPicker((_) {
+                      _buildUnitOfAnyFloorCountController.text = _;
+                    });
+                  }, width: getPageWidth()),
                     widget2: SizedBox(
                       height: 41,
                       width: getPageWidth(),
@@ -495,12 +600,26 @@ class KolangiAdvPage extends StatelessWidget {
                   ),
                   const Align(
                     alignment: Alignment.centerRight,
-                    child: Text(
-                      "تعداد اتاق ",
-                      style: TextStyle(
-                          color: Color.fromRGBO(99, 99, 99, 1),
-                          fontFamily: MAIN_FONT_FAMILY),
-                      textAlign: TextAlign.start,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Text("*",style: TextStyle(
+                            color: Color.fromRGBO(
+                              156,
+                              64,
+                              64,
+                              1,
+                            ),
+                            fontFamily: MAIN_FONT_FAMILY,
+                            fontSize: 16),),
+                        Text(
+                          "تعداد اتاق ",
+                          style: TextStyle(
+                              color: Color.fromRGBO(99, 99, 99, 1),
+                              fontFamily: MAIN_FONT_FAMILY),
+                          textAlign: TextAlign.start,
+                        ),
+                      ],
                     ),
                   ),
                   ReadOnlyTextField(_buildRoomsCountController, () {

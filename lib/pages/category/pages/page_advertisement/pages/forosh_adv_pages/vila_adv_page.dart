@@ -9,6 +9,7 @@ import 'package:flutter_application_1/pages/category/shared/facilities_selector.
 import 'package:flutter_application_1/pages/category/shared/images_picker/images_picker.dart';
 import 'package:flutter_application_1/pages/category/shared/more_emkanat/jahat_sakhteman.dart';
 import 'package:flutter_application_1/pages/category/shared/more_emkanat/sanad.dart';
+import 'package:flutter_application_1/pages/category/shared/namayesh.dart';
 import 'package:flutter_application_1/pages/category/shared/number_piacker.dart';
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
 
@@ -19,54 +20,118 @@ import 'package:flutter_application_1/pages/category/shared/widget/switachable.d
 import 'package:flutter_application_1/pages/category/shared/widget/text_field.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:gradient_icon/gradient_icon.dart';
 
 import '../../../../shared/switchItem.dart';
 
-class VilaAdvPage extends StatelessWidget {
+class VilaAdvPage extends StatefulWidget {
+  @override
+  State<VilaAdvPage> createState() => _VilaAdvPageState();
+}
+
+class _VilaAdvPageState extends State<VilaAdvPage> {
   final aghsatType = "".obs;
+
   final _onePrice = 0.0.obs;
+
   final submit = false.obs;
 
   final hasAnbari = false.obs;
+
   final hasAsansor = false.obs;
+
   final hasParking = false.obs;
 
   final _advInfo = AdvInfoModel();
 
   final _allPriceTextController = TextEditingController();
+
   final _metragTextController = TextEditingController();
+
   final _selectedImagesPath = [].obs;
 
   final _facilities = <FacilitiesModel>[].obs;
+
   final _buildDirectionController = TextEditingController();
+
   final _buildUnitOfAnyFloorCountController = TextEditingController();
+
   final _buildFloorsCountController = TextEditingController();
+
   final _timeOfInstallmentsController = TextEditingController();
+
   final _buildDateController = TextEditingController();
+
   final _buildRoomsCountController = TextEditingController();
+
   final _buildDocumentController = TextEditingController();
+
   final _buildFloorController = TextEditingController();
+  final _metragbanaTextController = TextEditingController();
+  final _metrajzaminTextController = TextEditingController();
+
   final _buildAllFloorsCountController = TextEditingController();
+
   final _reBuildController = TextEditingController();
+
   final _countOfInstallmentsController = TextEditingController();
+
   final _buildMaxCapacityController = TextEditingController();
+
   final _buildRiteController = TextEditingController();
+
   final _buildAnimalController = TextEditingController();
+
   final _buildSmokingController = TextEditingController();
+
   final _buildShoesController = TextEditingController();
+
   final _buildDeprivationController = TextEditingController();
+
   final _buildSleepServiceCountController = TextEditingController();
+
   final _oneBedCountController = TextEditingController();
+
   final _twoBedCountController = TextEditingController();
+
   final _floorMaterialController = TextEditingController();
+
   final _cabinetController = TextEditingController();
+
   final _coldTypeController = TextEditingController();
+
   final _heatTypeController = TextEditingController();
+
   final _heatWaterController = TextEditingController();
+
   final _wcController = TextEditingController();
+
   final _numberOfInstallmentsController = TextEditingController();
 
   @override
+  void initState() {
+    super.initState();
+
+    _allPriceTextController.addListener(_checkFields);
+    _metragbanaTextController.addListener(_checkFields);
+  }
+
+  void _checkFields() {
+    if (_allPriceTextController.text.isNotEmpty) {
+      submit.value = true;
+    } else {
+      submit.value = false;
+    }
+  }
+
+  @override
+  void dispose() {
+    _allPriceTextController.dispose();
+    _metragTextController.dispose();
+
+    super.dispose();
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
@@ -79,7 +144,7 @@ class VilaAdvPage extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
-            TwoItemInRow(
+            TwoItemInRow1(
               label1: "قیمت هر متر مربع (تومان)",
               label2: "قیمت کل (تومان)",
               widget1: Obx(
@@ -152,23 +217,28 @@ class VilaAdvPage extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
-            TwoItemInRow(
+            TwoItemInRow2(
               label1: " متراژ بنا",
               label2: "متراژ زمین",
-              widget1: Obx(
-                () => Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    border: Border.all(
-                        width: 1, //
-                        color: Theme.of(context)
-                            .hintColor //  <--- border width here
-                        ),
-                  ),
-                  height: 41,
-                  width: getPageWidth(),
-                  child: Center(
-                    child: Text(_onePrice.string),
+              widget1: SizedBox(
+                height: 41,
+                child: TextField(
+                  textAlign: TextAlign.right,
+                  keyboardType: TextInputType.number,
+                  onChanged: (m) {
+                    _onePrice.value = m.isNotEmpty
+                        ? int.parse(_buildAllFloorsCountController.text) /
+                            int.parse(m)
+                        : 0;
+                  },
+                  decoration: InputDecoration(
+                    hintText: "0",
+                    hintStyle: const TextStyle(
+                      color: Color(0xFFA6A6A6),
+                    ),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
                   ),
                 ),
               ),
@@ -178,10 +248,10 @@ class VilaAdvPage extends StatelessWidget {
                 child: TextField(
                   textAlign: TextAlign.right,
                   keyboardType: TextInputType.number,
-                  controller: _allPriceTextController,
-                  onChanged: (_) {
-                    _onePrice.value = _.isNotEmpty
-                        ? int.parse(_) / int.parse(_metragTextController.text)
+                  controller: _metragbanaTextController,
+                  onChanged: (m) {
+                    _onePrice.value = m.isNotEmpty
+                        ? int.parse(_allPriceTextController.text) / int.parse(m)
                         : 0;
                   },
                   decoration: InputDecoration(
@@ -243,7 +313,7 @@ class VilaAdvPage extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
-            TwoItemInRow(
+            TwoItemInRow2(
                 label1: "تعداد اتاق ",
                 label2: "سن بنا ",
                 widget1: ReadOnlyTextField(_buildRoomsCountController, () {
@@ -260,6 +330,11 @@ class VilaAdvPage extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
+                const Text(
+                  "*",
+                  style: TextStyle(
+                      fontSize: 20, color: Color.fromRGBO(156, 64, 64, 1)),
+                ),
                 Container(
                   child: const Text(
                     "تعداد طبقات ویلا",
@@ -436,7 +511,47 @@ class VilaAdvPage extends StatelessWidget {
             const SizedBox(
               height: 30,
             ),
-            SubmitRow(submit: submit, nextPage: EjaraVilaPage())
+            GestureDetector(
+              onTap: () {
+                if (submit.value) {
+                  Get.to(() => NamayeshAgahi());
+                }
+              },
+              child: Obx(() => Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Center(
+                        child: Text(
+                          "... تایید و ادامه",
+                          style: !submit.value
+                              ? const TextStyle(
+                                  fontSize: 20,
+                                  fontFamily: MAIN_FONT_FAMILY,
+                                  color: Colors.black38,
+                                )
+                              : const TextStyle(
+                                  fontSize: 20, fontFamily: MAIN_FONT_FAMILY),
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                      const SizedBox(
+                        width: 3,
+                      ),
+                      GradientIcon(
+                        icon: Icons.double_arrow,
+                        gradient: LinearGradient(
+                          colors: submit.value
+                              ? GRADIANT_COLOR1
+                              : BLACK_12_GRADIANT_COLOR,
+                          begin: Alignment.topLeft,
+                          end: Alignment.bottomRight,
+                        ),
+                        offset: const Offset(0, 0),
+                        size: 34,
+                      )
+                    ],
+                  )),
+            )
           ]),
         ),
       ),

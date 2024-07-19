@@ -128,7 +128,7 @@ class _EjaraApartemanPageState extends State<EjaraApartemanPage> {
               const SizedBox(
                 height: 30,
               ),
-              TwoItemInRow(
+              TwoItemInRow1(
                 label1: "میزان اجاره (تومان)",
                 label2: "میزان رهن (تومان) ",
                 widget1: SizedBox(
@@ -162,7 +162,6 @@ class _EjaraApartemanPageState extends State<EjaraApartemanPage> {
                   height: 41,
                   width: getPageWidth(),
                   child: TextField(
-                    controller: _metragTextController,
                     textAlign: TextAlign.right,
                     keyboardType: TextInputType.number,
                     decoration: InputDecoration(
@@ -295,7 +294,7 @@ class _EjaraApartemanPageState extends State<EjaraApartemanPage> {
               const SizedBox(
                 height: 20,
               ),
-              TwoItemInRow(
+              TwoItemInRow2(
                   label1: "تعداد اتاق ",
                   label2: "سن بنا ",
                   widget1: ReadOnlyTextField(_buildRoomsCountController, () {
@@ -841,7 +840,7 @@ Widget aghsatiForoshWidget(BuildContext context) {
             const SizedBox(
               height: 20,
             ),
-            TwoItemInRow(
+            TwoItemInRow2(
               label1: "میزان اجاره (تومان)",
               label2: "میزان رهن (تومان) ",
               widget1: SizedBox(

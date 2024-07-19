@@ -295,9 +295,8 @@ class _AdvMapState extends State<AdvMap> {
 
   Widget _buildDraggableScrollableSheet() {
     return DraggableScrollableSheet(
-      initialChildSize: 0.1,
-      minChildSize: 0.1,
-      maxChildSize: 0.80,
+      initialChildSize: 0.12,
+      minChildSize: 0.12,
       builder: (context, scrollController) {
         return Container(
           decoration: BoxDecoration(
@@ -308,7 +307,7 @@ class _AdvMapState extends State<AdvMap> {
             child: Container(
               decoration: BoxDecoration(
                 color: Colors.white,
-                borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+                borderRadius: const BorderRadius.vertical(top: Radius.circular(20)),
                 boxShadow: [
                   BoxShadow(
                     color: Colors.black.withOpacity(0.1),
@@ -340,8 +339,8 @@ class _AdvMapState extends State<AdvMap> {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: SvgPicture.asset('assets/images/divider.svg'),
+          padding: const EdgeInsets.only(top:20.0),
+          child: SvgPicture.asset('assets/images/divider.svg',width: 5,height: 5,),
         )
       ],
     );
@@ -355,7 +354,7 @@ class _AdvMapState extends State<AdvMap> {
           "خرید و فروش، رهن و اجاره انواع املاک در تهران",
           style: TextStyle(
             fontFamily: MAIN_FONT_FAMILY,
-            fontSize: 12,
+            fontSize: 14,
             color: Color.fromRGBO(99, 99, 99, 1),
           ),
         ),

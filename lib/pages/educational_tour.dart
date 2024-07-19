@@ -59,44 +59,42 @@ class _EducationalTourState extends State<EducationalTour> {
               Obx(() => showEducation.value
                   ? Padding(
                       padding: const EdgeInsets.only(left: 25.0),
-                      child: Expanded(
-                        child: Container(
-                          color: Colors.white,
-                          child: SingleChildScrollView(
-                            child: Column(
-                              children: [
-                                GestureDetector(
-                                    onTap: () {
-                                      Get.to(() => ());
-                                    },
-                                    child: SvgPicture.asset(
-                                        width: 350,
-                                        height: 185,
-                                        'assets/images/Personal user panel.svg')),
-                                const SizedBox(
-                                  height: 30,
-                                ),
-                                GestureDetector(
-                                    onTap: () {
-                                      Get.to(() => ());
-                                    },
-                                    child: SvgPicture.asset(
-                                        width: 350,
-                                        height: 185,
-                                        'assets/images/Consultants user panel.svg')),
-                                const SizedBox(
-                                  height: 30,
-                                ),
-                                GestureDetector(
-                                    onTap: () {
-                                      Get.to(() => ());
-                                    },
-                                    child: SvgPicture.asset(
-                                        width: 350,
-                                        height: 185,
-                                        'assets/images/Real estate agency user panel.svg')),
-                              ],
-                            ),
+                      child: Container(
+                        color: Colors.white,
+                        child: SingleChildScrollView(
+                          child: Column(
+                            children: [
+                              GestureDetector(
+                                  onTap: () {
+                                    Get.to(() => ());
+                                  },
+                                  child: SvgPicture.asset(
+                                      width: 350,
+                                      height: 185,
+                                      'assets/images/Personal user panel.svg')),
+                              const SizedBox(
+                                height: 20,
+                              ),
+                              GestureDetector(
+                                  onTap: () {
+                                    Get.to(() => ());
+                                  },
+                                  child: SvgPicture.asset(
+                                      width: 350,
+                                      height: 185,
+                                      'assets/images/Consultants user panel.svg')),
+                              const SizedBox(
+                                height: 20,
+                              ),
+                              GestureDetector(
+                                  onTap: () {
+                                    Get.to(() => ());
+                                  },
+                                  child: SvgPicture.asset(
+                                      width: 350,
+                                      height: 185,
+                                      'assets/images/Real estate agency user panel.svg')),
+                            ],
                           ),
                         ),
                       ),
@@ -145,7 +143,7 @@ class _EducationalTourState extends State<EducationalTour> {
                   backgroundColor: Colors.white,
                   icon: Center(
                     child: Padding(
-                      padding: const EdgeInsets.only(top: 20.0),
+                      padding: const EdgeInsets.only(top: 10.0),
                       child: SvgPicture.asset(
                         "assets/images/navigation1.svg",
                         width: 30,
@@ -155,7 +153,7 @@ class _EducationalTourState extends State<EducationalTour> {
                   ),
                   label: '',
                   activeIcon: Padding(
-                    padding: const EdgeInsets.only(top: 20.0),
+                    padding: const EdgeInsets.only(top: 10.0),
                     child: Center(
                       child: SvgPicture.asset(
                         "assets/images/navigation1-active.svg",
@@ -167,7 +165,7 @@ class _EducationalTourState extends State<EducationalTour> {
                 ),
                 BottomNavigationBarItem(
                   icon: Padding(
-                    padding: const EdgeInsets.only(top: 20.0),
+                    padding: const EdgeInsets.only(top: 10.0),
                     child: Center(
                       child: SvgPicture.asset(
                         "assets/images/navigation2.svg",
@@ -178,7 +176,7 @@ class _EducationalTourState extends State<EducationalTour> {
                   ),
                   label: '',
                   activeIcon: Padding(
-                    padding: const EdgeInsets.only(top: 20.0),
+                    padding: const EdgeInsets.only(top: 10.0),
                     child: Center(
                       child: SvgPicture.asset(
                         "assets/images/navigation2-active.svg",
@@ -190,23 +188,23 @@ class _EducationalTourState extends State<EducationalTour> {
                 ),
                 BottomNavigationBarItem(
                   icon: Padding(
-                    padding: const EdgeInsets.only(top: 20.0),
+                    padding: const EdgeInsets.only(top: 10.0),
                     child: Center(
                       child: SvgPicture.asset(
                         "assets/images/navigation3.svg",
-                        width: 41,
-                        height: 35,
+                        width: 38,
+                        height: 36,
                       ),
                     ),
                   ),
                   label: '',
                   activeIcon: Padding(
-                    padding: const EdgeInsets.only(top: 20.0),
+                    padding: const EdgeInsets.only(top: 10.0),
                     child: Center(
                       child: SvgPicture.asset(
                         "assets/images/navigation3-active.svg",
-                        width: 39,
-                        height: 39,
+                        width: 38,
+                        height: 36,
                       ),
                     ),
                   ),
@@ -214,7 +212,7 @@ class _EducationalTourState extends State<EducationalTour> {
                 BottomNavigationBarItem(
                   icon: Center(
                     child: Padding(
-                      padding: const EdgeInsets.only(top: 20.0),
+                      padding: const EdgeInsets.only(top: 10.0),
                       child: Center(
                         child: SvgPicture.asset(
                           "assets/images/navigation4.svg",
@@ -226,7 +224,7 @@ class _EducationalTourState extends State<EducationalTour> {
                   ),
                   label: '',
                   activeIcon: Padding(
-                    padding: const EdgeInsets.only(top: 20.0),
+                    padding: const EdgeInsets.only(top: 10.0),
                     child: Center(
                       child: SvgPicture.asset(
                         "assets/images/navigation4-active.svg",
@@ -238,7 +236,7 @@ class _EducationalTourState extends State<EducationalTour> {
                 ),
                 BottomNavigationBarItem(
                   icon: Padding(
-                    padding: const EdgeInsets.only(top: 20.0),
+                    padding: const EdgeInsets.only(top: 12.0),
                     child: Center(
                       child: SvgPicture.asset(
                         "assets/images/navigation5.svg",
@@ -249,7 +247,7 @@ class _EducationalTourState extends State<EducationalTour> {
                   ),
                   label: '',
                   activeIcon: Padding(
-                    padding: const EdgeInsets.only(top: 20.0),
+                    padding: const EdgeInsets.only(top: 12.0),
                     child: Center(
                       child: SvgPicture.asset(
                         "assets/images/navigation5-active.svg",

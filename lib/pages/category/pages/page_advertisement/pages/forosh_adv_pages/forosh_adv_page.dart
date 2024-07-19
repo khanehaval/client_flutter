@@ -94,11 +94,10 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
   void initState() {
     super.initState();
 
-    // Add listeners to text controllers
+   
     _allPriceTextController.addListener(_checkFields);
     _metragTextController.addListener(_checkFields);
     _buildRoomsCountController.addListener(_checkFields);
-
     _buildFloorController.addListener(_checkFields);
   }
 

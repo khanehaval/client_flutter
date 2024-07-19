@@ -10,7 +10,6 @@ Widget ReadOnlyTextField(TextEditingController controller, Function onTap,
     child: Center(
       child: TextField(
         readOnly: true,
-        focusNode: FocusNode(canRequestFocus: false),
         textAlign: TextAlign.right,
         controller: controller,
         style: TextStyle(fontSize: fontSize),

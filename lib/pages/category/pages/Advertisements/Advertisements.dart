@@ -5,6 +5,7 @@ import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter
 import 'package:flutter_application_1/pages/category/pages/Advertisements/map/adv_map.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/Neighbourhood.dart';
+import 'package:flutter_application_1/pages/category/shared/widget/city_widget.dart';
 import 'package:flutter_application_1/repo/advRepo.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:flutter_svg/svg.dart';
@@ -247,37 +248,42 @@ class _SelectLocationMapState extends State<Advertisements> {
                       width: 10,
                     ),
                     Obx(
-                      () => Container(
-                        decoration: BoxDecoration(
-                            border: Border.all(
-                                color: const Color.fromRGBO(166, 166, 166, 1)),
-                            color: _advRepo.filters.isEmpty
-                                ? Colors.white
-                                : Colors.white,
-                            borderRadius: BorderRadius.circular(10)),
-                        child: SizedBox(
-                          height: 40,
-                          width: getPageWidth(),
-                          child: Center(
-                            child: Stack(children: [
-                              const Padding(
-                                padding: EdgeInsets.only(right: 5),
-                                child: Text(
-                                  "تهران",
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                      fontFamily: MAIN_FONT_FAMILY,
-                                      color: Color.fromRGBO(99, 99, 99, 1),
-                                      fontSize: 12),
+                      () => GestureDetector(
+                        onTap: () {
+                          Get.to(()=> City());
+                        },
+                        child: Container(
+                          decoration: BoxDecoration(
+                              border: Border.all(
+                                  color: const Color.fromRGBO(166, 166, 166, 1)),
+                              color: _advRepo.filters.isEmpty
+                                  ? Colors.white
+                                  : Colors.white,
+                              borderRadius: BorderRadius.circular(10)),
+                          child: SizedBox(
+                            height: 40,
+                            width: getPageWidth(),
+                            child: Center(
+                              child: Stack(children: [
+                                const Padding(
+                                  padding: EdgeInsets.only(right: 5),
+                                  child: Text(
+                                    "تهران",
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                        fontFamily: MAIN_FONT_FAMILY,
+                                        color: Color.fromRGBO(99, 99, 99, 1),
+                                        fontSize: 12),
+                                  ),
                                 ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 50),
-                                child: SvgPicture.asset(
-                                  'assets/images/location1.svg',
-                                ),
-                              )
-                            ]),
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 50),
+                                  child: SvgPicture.asset(
+                                    'assets/images/location1.svg',
+                                  ),
+                                )
+                              ]),
+                            ),
                           ),
                         ),
                       ),

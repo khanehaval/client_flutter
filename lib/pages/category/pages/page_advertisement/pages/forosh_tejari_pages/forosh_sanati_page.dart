@@ -9,6 +9,7 @@ import 'package:flutter_application_1/pages/category/shared/date.dart';
 import 'package:flutter_application_1/pages/category/shared/facilities_selector.dart';
 import 'package:flutter_application_1/pages/category/shared/images_picker/images_picker.dart';
 import 'package:flutter_application_1/pages/category/shared/more_emkanat/sanad.dart';
+import 'package:flutter_application_1/pages/category/shared/namayesh.dart';
 import 'package:flutter_application_1/pages/category/shared/number_piacker.dart';
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
 
@@ -17,30 +18,73 @@ import 'package:flutter_application_1/pages/category/shared/widget/submit_row.da
 import 'package:flutter_application_1/pages/category/shared/widget/text_field.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:gradient_icon/gradient_icon.dart';
 
-class ForoshSanatiPage extends StatelessWidget {
-  final aghsatType = "".obs;
-  final onvan = "".obs;
-  final _facilities = <FacilitiesModel>[].obs;
-  final hasAnbari = false.obs;
-  final hasAsansor = false.obs;
-  final hasParking = false.obs;
-  final hasSanad = true.obs;
-  int selectedIndex = 0;
-  final _onePrice = 0.0.obs;
-  final submit = false.obs;
-
-  final _allPriceTextController = TextEditingController();
-  final _metragTextController = TextEditingController();
-  final _selectedImagesPath = [].obs;
-  final _buildDateController = TextEditingController();
-  final _buildRoomsCountController = TextEditingController();
-  final _buildDocumentController = TextEditingController();
-  final _advInfo = AdvInfoModel();
-
+class ForoshSanatiPage extends StatefulWidget {
   ForoshSanatiPage({super.key});
 
   @override
+  State<ForoshSanatiPage> createState() => _ForoshSanatiPageState();
+}
+
+class _ForoshSanatiPageState extends State<ForoshSanatiPage> {
+  final aghsatType = "".obs;
+
+  final onvan = "".obs;
+
+  final _facilities = <FacilitiesModel>[].obs;
+
+  final hasAnbari = false.obs;
+
+  final hasAsansor = false.obs;
+
+  final hasParking = false.obs;
+
+  final hasSanad = true.obs;
+
+  int selectedIndex = 0;
+
+  final _onePrice = 0.0.obs;
+
+  final submit = false.obs;
+
+  final _allPriceTextController = TextEditingController();
+
+  final _metragTextController = TextEditingController();
+
+  final _selectedImagesPath = [].obs;
+
+  final _buildDateController = TextEditingController();
+
+  final _buildRoomsCountController = TextEditingController();
+
+  final _buildDocumentController = TextEditingController();
+
+  final _advInfo = AdvInfoModel();
+
+  @override
+   void initState() {
+    super.initState();
+
+   
+    _allPriceTextController.addListener(_checkFields);
+  }
+
+  void _checkFields() {
+    if (_allPriceTextController.text.isNotEmpty 
+        ) {
+      submit.value = true;
+    } else {
+      submit.value = false;
+    }
+  }
+
+  @override
+  void dispose() {
+    _allPriceTextController.dispose();
+    super.dispose();
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Colors.white,
@@ -156,7 +200,7 @@ class ForoshSanatiPage extends StatelessWidget {
               const SizedBox(
                 height: 20,
               ),
-              TwoItemInRow(
+              TwoItemInRow1(
                   label1: "نوع سند ",
                   label2: "متراژ زمین ",
                   widget2: SizedBox(
@@ -465,13 +509,54 @@ class ForoshSanatiPage extends StatelessWidget {
               const SizedBox(
                 height: 30,
               ),
-              SubmitRow(submit: submit, nextPage: EjaraVilaPage())
+                     GestureDetector(
+                onTap: () {
+                  if (submit.value) {
+                    Get.to(() => NamayeshAgahi());
+                  }
+                },
+                child: Obx(() => Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Center(
+                          child: Text(
+                            "... تایید و ادامه",
+                            style: !submit.value
+                                ? const TextStyle(
+                                    fontSize: 20,
+                                    fontFamily: MAIN_FONT_FAMILY,
+                                    color: Colors.black38,
+                                  )
+                                : const TextStyle(
+                                    fontSize: 20, fontFamily: MAIN_FONT_FAMILY),
+                            textAlign: TextAlign.center,
+                          ),
+                        ),
+                        const SizedBox(
+                          width: 3,
+                        ),
+                        GradientIcon(
+                          icon: Icons.double_arrow,
+                          gradient: LinearGradient(
+                            colors: submit.value
+                                ? GRADIANT_COLOR1
+                                : BLACK_12_GRADIANT_COLOR,
+                            begin: Alignment.topLeft,
+                            end: Alignment.bottomRight,
+                          ),
+                          offset: const Offset(0, 0),
+                          size: 34,
+                        )
+                      ],
+                    )),
+              )
             ]),
           ),
         ));
   }
 
   double getPageWidth_2(BuildContext context) => getPageWidth();
+
   Widget onvanWidget(BuildContext context) {
     final isSwitched = true.obs;
     return Column(
@@ -568,7 +653,7 @@ class ForoshSanatiPage extends StatelessWidget {
                   const SizedBox(
                     height: 20,
                   ),
-                  TwoItemInRow(
+                  TwoItemInRow2(
                     label1: "سن بنا ",
                     label2: "متراژ ",
                     widget1: SizedBox(
@@ -607,7 +692,7 @@ class ForoshSanatiPage extends StatelessWidget {
                   const SizedBox(
                     height: 17,
                   ),
-                  TwoItemInRow(
+                  TwoItemInRow2(
                       label1: "تعداد اتاق ",
                       label2: "تعداد طبقات ",
                       widget1:
