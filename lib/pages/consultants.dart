@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/category/pages/home.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/Neighbourhood.dart';
+import 'package:flutter_application_1/pages/category/shared/widget/app_bar.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/city_widget.dart';
 import 'package:flutter_application_1/pages/private.dart';
 import 'package:flutter_svg/svg.dart';
@@ -22,23 +23,22 @@ class Consultants extends StatelessWidget {
     }
   }
 
+  void deleteImage() {
+    imagePath.value = ''; // Clear the image path to delete the image
+  }
+
+  String _getImageName() {
+    // Implement your logic to get the image name from the imagePath
+    return imagePath.value.split('/').last;
+  }
+
   Consultants({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        leading: IconButton(
-          onPressed: () => Get.to(() => Home()),
-          icon: SvgPicture.asset(
-            'assets/images/Vector-47.svg',
-            width: 18,
-            height: 18,
-          ),
-        ),
-      ),
+      appBar: buildAppBar(),
       body: Stack(
         children: [
           SingleChildScrollView(
@@ -142,60 +142,72 @@ class Consultants extends StatelessWidget {
                       ),
                     ],
                   ),
-                  const SizedBox(height: 30),
+                  const SizedBox(height: 20),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       SizedBox(
                         height: 48,
                         width: getWidth(context),
-                        child: Obx(() => Container(
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(10),
+                        child: Obx(
+                          () => Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              gradient: const LinearGradient(
+                                colors: GRADIANT_COLOR1,
+                              ),
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.all(1.2),
+                              child: Container(
+                                decoration: BoxDecoration(
                                   gradient: const LinearGradient(
-                                      colors: GRADIANT_COLOR1)),
-                              child: Padding(
-                                padding: const EdgeInsets.all(1.2),
+                                    colors: GRADIANT_COLOR,
+                                  ),
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
                                 child: Container(
                                   decoration: BoxDecoration(
-                                    gradient: const LinearGradient(
-                                        colors: GRADIANT_COLOR),
                                     borderRadius: BorderRadius.circular(10),
+                                    color:
+                                        imagePath.isEmpty ? Colors.white : null,
                                   ),
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(10),
-                                        color: imagePath.isEmpty
-                                            ? Colors.white
-                                            : null),
-                                    child: Row(
-                                      children: [
-                                        IconButton(
-                                          icon: Icon(imagePath.isEmpty
+                                  child: Row(
+                                    children: [
+                                      IconButton(
+                                        icon: Icon(
+                                          imagePath.isEmpty
                                               ? CupertinoIcons.add_circled
-                                              : CupertinoIcons.clear_circled),
-                                          onPressed: pickImage,
+                                              : CupertinoIcons.clear_circled,
                                         ),
-                                        if (imagePath.isEmpty)
-                                          const Padding(
-                                            padding:
-                                                EdgeInsets.only(left: 12.0),
-                                            child: Text(
-                                              '* تصویر کارت ملی',
-                                              style: TextStyle(
-                                                  fontSize: 12,
-                                                  color: Color.fromRGBO(
-                                                      99, 99, 99, 1)),
+                                        onPressed: () {
+                                          if (imagePath.isEmpty) {
+                                            pickImage();
+                                          } else {
+                                            deleteImage();
+                                          }
+                                        },
+                                      ),
+                                      if (imagePath.isEmpty)
+                                        const Padding(
+                                          padding: EdgeInsets.only(left: 13.0),
+                                          child: Text(
+                                            ' تصویر کارت ملی',
+                                            style: TextStyle(
+                                              fontSize: 12,
+                                              color: Color(0xFFA6A6A6),
                                             ),
-                                          )
-                                        else
-                                          Text(_getImageName_moshaver())
-                                      ],
-                                    ),
+                                          ),
+                                        )
+                                      else
+                                        Text(_getImageName()),
+                                    ],
                                   ),
                                 ),
                               ),
-                            )),
+                            ),
+                          ),
+                        ),
                       ),
                       SizedBox(
                         height: 48,
@@ -225,7 +237,7 @@ class Consultants extends StatelessWidget {
                       ),
                     ],
                   ),
-                  const SizedBox(height: 30),
+                  const SizedBox(height: 20),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -246,7 +258,7 @@ class Consultants extends StatelessWidget {
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(10),
                                   gradient: const LinearGradient(
-                                      colors: GRADIANT_COLOR)),
+                                      colors: GRADIANT_COLOR1)),
                               child: Padding(
                                 padding: const EdgeInsets.all(1.2),
                                 child: Container(
@@ -260,6 +272,8 @@ class Consultants extends StatelessWidget {
                                           onPressed: () {},
                                           icon: SvgPicture.asset(
                                             'assets/images/moghay.svg',
+                                            width: 18,
+                                            height: 20,
                                             color: const Color.fromRGBO(
                                               48,
                                               48,
@@ -268,14 +282,13 @@ class Consultants extends StatelessWidget {
                                             ),
                                           )),
                                       const Padding(
-                                        padding: EdgeInsets.only(left: 12.0),
+                                        padding: EdgeInsets.only(left: 13.0),
                                         child: Text(
-                                          '*   محدوده فعالیت ',
+                                          '*  محدوده فعالیت ',
                                           style: TextStyle(
-                                              fontFamily: MAIN_FONT_FAMILY,
-                                              fontSize: 10,
-                                              color: Color.fromRGBO(
-                                                  99, 99, 99, 1)),
+                                            fontSize: 12,
+                                            color: Color(0xFFA6A6A6),
+                                          ),
                                         ),
                                       )
                                     ],
@@ -298,17 +311,16 @@ class Consultants extends StatelessWidget {
                           decoration: InputDecoration(
                             hintText: ' *  انتخاب شهر',
                             prefixIcon: Padding(
-                              padding: const EdgeInsets.all(12.0),
+                              padding: const EdgeInsets.all(14.0),
                               child: SvgPicture.asset(
                                 'assets/images/location_moshaver.svg',
-                                color: Color.fromRGBO(166, 166, 166, 1),
+                                color: Color.fromRGBO(48, 48, 48, 1),
                               ),
                             ),
                             hintStyle: const TextStyle(
-                                color: Color.fromRGBO(166, 166, 166, 1),
-                                fontSize: 14,
-                                fontWeight: FontWeight.bold,
-                                fontFamily: MAIN_FONT_FAMILY),
+                              color: Color(0xFFA6A6A6),
+                              fontSize: 13,
+                            ),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10),
                               borderSide: const BorderSide(
@@ -337,40 +349,34 @@ class Consultants extends StatelessWidget {
                     ],
                   ),
                   const SizedBox(
-                    height: 30,
+                    height: 20,
                   ),
                   SizedBox(
-                    height: 48,
-                    // width: getWidth(context),
+                    width: 360,
+                    height: 41,
                     child: TextField(
                       scrollPadding: EdgeInsets.only(
-                          bottom: MediaQuery.of(context).viewInsets.bottom),
+                        bottom: MediaQuery.of(context).viewInsets.bottom,
+                      ),
                       textAlign: TextAlign.right,
                       decoration: InputDecoration(
-                        hintText: 'نام کاربری ( به انگلیسی) *',
+                        hintText: ' * نام کاربری  ( به انگلیسی) ',
                         hintStyle: const TextStyle(
-                          color: Color(0xFFA6A6A6),
+                          color: Color(0xFFA5A5A5),
+                          fontSize: 12,
+                          fontFamily: 'Iran Sans',
+                          fontWeight: FontWeight.w400,
                         ),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                           borderSide: const BorderSide(
-                            color: Color.fromRGBO(
-                              99,
-                              99,
-                              99,
-                              1,
-                            ),
+                            color: Color.fromRGBO(23, 102, 175, 1),
                           ),
                         ),
                         focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                           borderSide: const BorderSide(
-                            color: Color.fromRGBO(
-                              99,
-                              99,
-                              99,
-                              1,
-                            ),
+                            color: Color.fromRGBO(23, 102, 175, 1),
                           ),
                         ),
                       ),
@@ -380,36 +386,61 @@ class Consultants extends StatelessWidget {
               ),
             ),
           ),
-          Obx(() => show.value
-              ? Padding(
-                  padding: const EdgeInsets.all(20),
-                  child: Align(
-                    alignment: Alignment.bottomCenter,
-                    child: Container(
-                      width: 160,
-                      height: 50,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(30),
-                        gradient: GetGradient(),
-                      ),
-                      child: ElevatedButton(
-                        onPressed: () {},
-                        style: ElevatedButton.styleFrom(
+          Obx(
+            () => show.value
+                ? Padding(
+                    padding: const EdgeInsets.all(20),
+                    child: Align(
+                      alignment: Alignment.bottomCenter,
+                      child: SizedBox(
+                        width: 160,
+                        height: 50,
+                        child: ElevatedButton(
+                          onPressed: () {
+                            Get.to(() => Home());
+                          },
+                          style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.transparent,
-                            shadowColor: Colors.transparent),
-                        child: const Text(
-                          'تایید',
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                              fontFamily: MAIN_FONT_FAMILY),
+                            shadowColor: Colors.transparent,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                            padding: EdgeInsets.zero,
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(2.0),
+                            child: Ink(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(20),
+                                boxShadow: [
+                                  BoxShadow(
+                                      color: Colors.grey.withOpacity(0.25),
+                                      spreadRadius: 1,
+                                      blurRadius: 3,
+                                      offset: const Offset(0, 1)),
+                                ],
+                                gradient: GetGradient(),
+                              ),
+                              child: Container(
+                                alignment: Alignment.center,
+                                child: const Text(
+                                  'تایید',
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold,
+                                    fontFamily: MAIN_FONT_FAMILY,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                )
-              : const SizedBox.shrink()),
+                  )
+                : const SizedBox.shrink(),
+          ),
         ],
       ),
     );

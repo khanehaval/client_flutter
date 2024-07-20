@@ -10,6 +10,7 @@ import 'package:flutter_application_1/pages/category/shared/emkanat5.dart';
 import 'package:flutter_application_1/pages/category/shared/facilities_selector.dart';
 import 'package:flutter_application_1/pages/category/shared/images_picker/images_picker.dart';
 import 'package:flutter_application_1/pages/category/shared/more_emkanat/jahat_sakhteman.dart';
+import 'package:flutter_application_1/pages/category/shared/namayesh.dart';
 import 'package:flutter_application_1/pages/category/shared/number_piacker.dart';
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
 import 'package:flutter_application_1/pages/category/shared/switchItem.dart';
@@ -18,31 +19,73 @@ import 'package:flutter_application_1/pages/category/shared/widget/submit_row.da
 import 'package:flutter_application_1/pages/category/shared/widget/text_field.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:gradient_icon/gradient_icon.dart';
 
-class SaleShop extends StatelessWidget {
-  final aghsatType = "".obs;
-  final onvan = "".obs;
-  final submit = false.obs;
-
-  final _facilities = <FacilitiesModel>[].obs;
-  final hasAnbari = false.obs;
-  final hasAsansor = false.obs;
-  final hasParking = false.obs;
-  final hasSanad = true.obs;
-  int selectedIndex = 0;
-  final _onePrice = 0.0.obs;
-  final _allPriceTextController = TextEditingController();
-  final _metragTextController = TextEditingController();
-  final _selectedImagesPath = [].obs;
-  final _buildDirectionController = TextEditingController();
-  final _buildUnitOfAnyFloorCountController = TextEditingController();
-  final _buildDateController = TextEditingController();
-  final _buildRoomsCountController = TextEditingController();
-
-  final _advInfo = AdvInfoModel();
+class SaleShop extends StatefulWidget {
   SaleShop({super.key});
 
   @override
+  State<SaleShop> createState() => _SaleShopState();
+}
+
+class _SaleShopState extends State<SaleShop> {
+  final aghsatType = "".obs;
+
+  final onvan = "".obs;
+
+  final submit = false.obs;
+
+  final _facilities = <FacilitiesModel>[].obs;
+
+  final hasAnbari = false.obs;
+
+  final hasAsansor = false.obs;
+
+  final hasParking = false.obs;
+
+  final hasSanad = true.obs;
+
+  int selectedIndex = 0;
+
+  final _onePrice = 0.0.obs;
+
+  final _allPriceTextController = TextEditingController();
+
+  final _metragTextController = TextEditingController();
+
+  final _selectedImagesPath = [].obs;
+
+  final _buildDirectionController = TextEditingController();
+
+  final _buildUnitOfAnyFloorCountController = TextEditingController();
+
+  final _buildDateController = TextEditingController();
+
+  final _buildRoomsCountController = TextEditingController();
+
+  final _advInfo = AdvInfoModel();
+
+  @override
+  void initState() {
+    super.initState();
+
+    _allPriceTextController.addListener(_checkFields);
+  }
+
+  void _checkFields() {
+    if (_allPriceTextController.text.isNotEmpty) {
+      submit.value = true;
+    } else {
+      submit.value = false;
+    }
+  }
+
+  @override
+  void dispose() {
+    _allPriceTextController.dispose();
+    super.dispose();
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Colors.white,
@@ -91,7 +134,7 @@ class SaleShop extends StatelessWidget {
             const SizedBox(
               height: 30,
             ),
-            TwoItemInRow(
+            TwoItemInRow1(
               label1: "قیمت هر متر مربع (تومان)",
               label2: "قیمت کل (تومان)",
               widget1: Obx(
@@ -551,7 +594,47 @@ class SaleShop extends StatelessWidget {
               const SizedBox(
                 height: 30,
               ),
-              SubmitRow(submit: submit, nextPage: EjaraVilaPage())
+              GestureDetector(
+                onTap: () {
+                  if (submit.value) {
+                    Get.to(() => NamayeshAgahi());
+                  }
+                },
+                child: Obx(() => Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Center(
+                          child: Text(
+                            "... تایید و ادامه",
+                            style: !submit.value
+                                ? const TextStyle(
+                                    fontSize: 20,
+                                    fontFamily: MAIN_FONT_FAMILY,
+                                    color: Colors.black38,
+                                  )
+                                : const TextStyle(
+                                    fontSize: 20, fontFamily: MAIN_FONT_FAMILY),
+                            textAlign: TextAlign.center,
+                          ),
+                        ),
+                        const SizedBox(
+                          width: 3,
+                        ),
+                        GradientIcon(
+                          icon: Icons.double_arrow,
+                          gradient: LinearGradient(
+                            colors: submit.value
+                                ? GRADIANT_COLOR1
+                                : BLACK_12_GRADIANT_COLOR,
+                            begin: Alignment.topLeft,
+                            end: Alignment.bottomRight,
+                          ),
+                          offset: const Offset(0, 0),
+                          size: 34,
+                        )
+                      ],
+                    )),
+              )
             ]),
           ]),
         )));

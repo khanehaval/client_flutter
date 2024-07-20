@@ -172,7 +172,7 @@ class _RegisterState extends State<Register> {
           hintStyle: const TextStyle(
             color: Color.fromRGBO(222, 222, 222, 1),
             fontFamily: MAIN_FONT_FAMILY,
-            fontSize: 17,
+            fontSize: 15,
           ),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(15),

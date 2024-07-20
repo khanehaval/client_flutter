@@ -108,7 +108,7 @@ class _MyAppState extends State<MyApp> {
                         effect: const WormEffect(
                             dotWidth: 8.0,
                             dotHeight: 8.0,
-                            dotColor: Colors.grey,
+                            dotColor: Color.fromARGB(255, 214, 213, 213),
                             activeDotColor: Color.fromARGB(255, 7, 201, 69)),
                       ),
                       const SizedBox(height: 10),

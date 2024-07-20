@@ -7,6 +7,7 @@ import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/category/shared/date.dart';
 import 'package:flutter_application_1/pages/category/shared/facilities_selector.dart';
 import 'package:flutter_application_1/pages/category/shared/images_picker/images_picker.dart';
+import 'package:flutter_application_1/pages/category/shared/namayesh.dart';
 import 'package:flutter_application_1/pages/category/shared/number_piacker.dart';
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
 import 'package:flutter_application_1/pages/category/shared/twoItemInRow.dart';
@@ -14,29 +15,69 @@ import 'package:flutter_application_1/pages/category/shared/widget/submit_row.da
 import 'package:flutter_application_1/pages/category/shared/widget/text_field.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:gradient_icon/gradient_icon.dart';
 
-class EjaraShanatiPage extends StatelessWidget {
+class EjaraShanatiPage extends StatefulWidget {
+  EjaraShanatiPage({super.key});
+
+  @override
+  State<EjaraShanatiPage> createState() => _EjaraShanatiPageState();
+}
+
+class _EjaraShanatiPageState extends State<EjaraShanatiPage> {
   final aghsatType = "".obs;
+
   final onvan = "".obs;
+
   int selectedIndex = 0;
+
   final hasAnbari = false.obs;
+
   final hasAsansor = false.obs;
+
   final hasParking = false.obs;
+
   final _onePrice = 0.0.obs;
+
   final _allPriceTextController = TextEditingController();
+
   final _metragTextController = TextEditingController();
+
   final _selectedImagesPath = [].obs;
+
   final _facilities = <FacilitiesModel>[].obs;
+
   final _buildDateController = TextEditingController();
+
   final _buildRoomsCountController = TextEditingController();
+
   final _buildFloorController = TextEditingController();
+
   final submit = false.obs;
 
   final _advInfo = AdvInfoModel();
 
-  EjaraShanatiPage({super.key});
+  @override
+  void initState() {
+    super.initState();
+
+    _allPriceTextController.addListener(_checkFields);
+  }
+
+  void _checkFields() {
+    if (_allPriceTextController.text.isNotEmpty) {
+      submit.value = true;
+    } else {
+      submit.value = false;
+    }
+  }
 
   @override
+  void dispose() {
+    _allPriceTextController.dispose();
+    super.dispose();
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Colors.white,
@@ -85,23 +126,23 @@ class EjaraShanatiPage extends StatelessWidget {
               const SizedBox(
                 height: 20,
               ),
-              TwoItemInRow(
-                label1: "قیمت هر متر مربع (تومان)",
+              TwoItemInRow1(
+                label1: "میزان اجاره (تومان)",
                 label2: "قیمت کل (تومان)",
-                widget1: Obx(
-                  () => Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      border: Border.all(
-                          width: 1, //
-                          color: Theme.of(context)
-                              .hintColor //  <--- border width here
-                          ),
-                    ),
-                    height: 41,
-                    width: getPageWidth(),
-                    child: Center(
-                      child: Text(_onePrice.string),
+                widget1: SizedBox(
+                  height: 41,
+                  width: getPageWidth(),
+                  child: TextField(
+                    textAlign: TextAlign.right,
+                    keyboardType: TextInputType.number,
+                    decoration: InputDecoration(
+                      hintText: "0",
+                      hintStyle: const TextStyle(
+                        color: Color(0xFFA6A6A6),
+                      ),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
                     ),
                   ),
                 ),
@@ -111,7 +152,6 @@ class EjaraShanatiPage extends StatelessWidget {
                   child: TextField(
                     textAlign: TextAlign.right,
                     keyboardType: TextInputType.number,
-                    controller: _allPriceTextController,
                     onChanged: (_) {
                       _onePrice.value = _.isNotEmpty
                           ? int.parse(_) / int.parse(_metragTextController.text)
@@ -440,7 +480,47 @@ class EjaraShanatiPage extends StatelessWidget {
               const SizedBox(
                 height: 30,
               ),
-              SubmitRow(submit: submit, nextPage: EjaraVilaPage())
+              GestureDetector(
+                onTap: () {
+                  if (submit.value) {
+                    Get.to(() => NamayeshAgahi());
+                  }
+                },
+                child: Obx(() => Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Center(
+                          child: Text(
+                            "... تایید و ادامه",
+                            style: !submit.value
+                                ? const TextStyle(
+                                    fontSize: 20,
+                                    fontFamily: MAIN_FONT_FAMILY,
+                                    color: Colors.black38,
+                                  )
+                                : const TextStyle(
+                                    fontSize: 20, fontFamily: MAIN_FONT_FAMILY),
+                            textAlign: TextAlign.center,
+                          ),
+                        ),
+                        const SizedBox(
+                          width: 3,
+                        ),
+                        GradientIcon(
+                          icon: Icons.double_arrow,
+                          gradient: LinearGradient(
+                            colors: submit.value
+                                ? GRADIANT_COLOR1
+                                : BLACK_12_GRADIANT_COLOR,
+                            begin: Alignment.topLeft,
+                            end: Alignment.bottomRight,
+                          ),
+                          offset: const Offset(0, 0),
+                          size: 34,
+                        )
+                      ],
+                    )),
+              )
             ]),
           ),
         ));
@@ -544,7 +624,7 @@ class EjaraShanatiPage extends StatelessWidget {
                   const SizedBox(
                     height: 20,
                   ),
-                  TwoItemInRow(
+                  TwoItemInRow1(
                     label1: "میزان اجاره",
                     label2: "میزان رهن (تومان)  ",
                     widget1: SizedBox(
@@ -626,7 +706,7 @@ class EjaraShanatiPage extends StatelessWidget {
         Obx(() => isSwitched.isTrue
             ? Column(
                 children: [
-                  TwoItemInRow(
+                  TwoItemInRow2(
                       label1: "سن بنا",
                       label2: "متراژ",
                       widget2: InputTextField(_buildAllFloorsCountController,
@@ -635,10 +715,10 @@ class EjaraShanatiPage extends StatelessWidget {
                         persianDataPicker(
                             (date) => _buildDateController.text = date);
                       }, width: getPageWidth(), fontSize: 13)),
-                  SizedBox(
+                  const SizedBox(
                     height: 15,
                   ),
-                  TwoItemInRow(
+                  TwoItemInRow2(
                     label1: "تعداد اتاق ",
                     label2: "تعداد طبقات ",
                     widget1: ReadOnlyTextField(_buildRoomsCountController, () {

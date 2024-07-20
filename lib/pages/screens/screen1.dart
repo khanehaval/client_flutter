@@ -24,7 +24,7 @@ class Screen1 extends StatelessWidget {
                   children: [
                     SizedBox(
                       height: 450,
-                      width: 412,
+                      width: MediaQuery.of(context).size.width / 1.0,
                       child: Image.asset(
                         'assets/images/BG 3.png',
                         fit: BoxFit.cover,
@@ -44,15 +44,15 @@ class Screen1 extends StatelessWidget {
           const Stack(
             children: [
               Padding(
-                padding: EdgeInsets.only(bottom: 140.0, left: 55, right: 50),
+                padding: EdgeInsets.only(bottom: 170.0, left: 55, right: 50),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
                     Text(
-                      "جستجو در نقشه:",
+                      "جستجو در نقشه",
                       style: TextStyle(
                         fontWeight: FontWeight.w200,
-                        fontSize: 21,
+                        fontSize: 18,
                         fontFamily: MAIN_FONT_FAMILY,
                       ),
                       textDirection: TextDirection.rtl,
@@ -65,7 +65,7 @@ class Screen1 extends StatelessWidget {
                       'اینجا کلی امکانات جدید و جذاب داریم  آگهی، مشاور، آژانس همه روی نقشه منتظر شما هستند...',
                       style: TextStyle(
                           fontWeight: FontWeight.w400,
-                          fontSize: 20,
+                          fontSize: 16,
                           fontFamily: 'Iran Sans'),
                       textDirection: TextDirection.rtl,
                       textAlign: TextAlign.justify,

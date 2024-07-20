@@ -263,12 +263,23 @@ class _MapInfoPageState extends State<MapInfoPage> {
             controller: _addressController,
             maxLines: 3,
             decoration: InputDecoration(
-                hintText: 'برای مثال: پلاک 9، طبقه اول، واحد 2',
-                hintStyle: const TextStyle(
-                    fontWeight: FontWeight.w400,
-                    color: Color.fromRGBO(166, 166, 166, 1)),
-                border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10))),
+              hintText: 'برای مثال: پلاک 9، طبقه اول، واحد 2',
+              hintStyle: const TextStyle(
+                  fontWeight: FontWeight.w400,
+                  color: Color.fromRGBO(166, 166, 166, 1)),
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10),
+                borderSide: const BorderSide(
+                  color: Color.fromRGBO(23, 102, 175, 1),
+                ),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10),
+                borderSide: const BorderSide(
+                  color: Color.fromRGBO(23, 102, 175, 1),
+                ),
+              ),
+            ),
           ),
         ),
       ],

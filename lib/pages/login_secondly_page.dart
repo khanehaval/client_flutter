@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/pages/category/pages/Advertisements/Advertisements.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/consultants.dart';
 import 'package:flutter_application_1/pages/educational_tour.dart';
@@ -23,7 +24,7 @@ class LoginSecondlyPage extends StatelessWidget {
             width: 18,
             height: 18,
           ),
-          onPressed: () => Get.to(() => Home()),
+          onPressed: () => Get.to(() => Advertisements()),
         ),
       ),
       body: Center(
@@ -37,8 +38,9 @@ class LoginSecondlyPage extends StatelessWidget {
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Image.asset(
-                    'assets/images/Rectangle 1.png',
+                  SvgPicture.asset(
+                    'assets/images/logo-farsi.svg',
+                    width: MediaQuery.of(context).size.width - 220,
                   ),
                   const SizedBox(
                     height: 30,
@@ -75,7 +77,7 @@ class LoginSecondlyPage extends StatelessWidget {
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
                           gradient:
-                              const LinearGradient(colors: GRADIANT_COLOR)),
+                              const LinearGradient(colors: GRADIANT_COLOR1)),
                       child: Padding(
                         padding: const EdgeInsets.all(1.2),
                         child: Container(
@@ -110,7 +112,7 @@ class LoginSecondlyPage extends StatelessWidget {
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
                           gradient:
-                              const LinearGradient(colors: GRADIANT_COLOR)),
+                              const LinearGradient(colors: GRADIANT_COLOR1)),
                       child: Padding(
                         padding: const EdgeInsets.all(1.2),
                         child: Container(
@@ -145,7 +147,7 @@ class LoginSecondlyPage extends StatelessWidget {
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
                           gradient:
-                              const LinearGradient(colors: GRADIANT_COLOR)),
+                              const LinearGradient(colors: GRADIANT_COLOR1)),
                       child: Padding(
                         padding: const EdgeInsets.all(1.2),
                         child: Container(

@@ -9,6 +9,7 @@ import 'package:flutter_application_1/pages/category/shared/facilities_selector.
 import 'package:flutter_application_1/pages/category/shared/images_picker/images_picker.dart';
 import 'package:flutter_application_1/pages/category/shared/more_emkanat/jahat_sakhteman.dart';
 import 'package:flutter_application_1/pages/category/shared/more_emkanat/sanad.dart';
+import 'package:flutter_application_1/pages/category/shared/namayesh.dart';
 import 'package:flutter_application_1/pages/category/shared/number_piacker.dart';
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
 import 'package:flutter_application_1/pages/category/shared/switchItem.dart';
@@ -20,35 +21,83 @@ import 'package:flutter_application_1/pages/category/shared/widget/switachable.d
 
 import 'package:get/get.dart';
 
-class Presell extends StatelessWidget {
+class Presell extends StatefulWidget {
+  @override
+  State<Presell> createState() => _PresellState();
+}
+
+class _PresellState extends State<Presell> {
   final aghsatType = "".obs;
+
   final onvan = "".obs;
+
   final _selectedImagesPath = [].obs;
+
   final _facilities = <FacilitiesModel>[].obs;
+
   final _hasAnbari = false.obs;
+
   final _hasAsansor = false.obs;
+
   final _hasParking = false.obs;
+
   final _advInfo = AdvInfoModel();
+
   final _onePrice = 0.0.obs;
+
   final _countOfInstallmentsController = TextEditingController();
+
   final _buildUnitOfAnyFloorCountController = TextEditingController();
+
   final submit = false.obs;
 
   final _buildDirectionController = TextEditingController();
+
   final _timeToReceiveInstallmentsController = TextEditingController();
+
   final _buildFloorsCountController = TextEditingController();
+
   final _numberOfInstallmentsController = TextEditingController();
+
   final _buildRoomsCountController = TextEditingController();
+
   final _buildDocumentController = TextEditingController();
+
   final _buildFloorController = TextEditingController();
+
   final _allPriceTextController = TextEditingController();
+
   final _metragTextController = TextEditingController();
+
   final _countController = TextEditingController();
+
   final _buildStepController = TextEditingController();
+
   final _progressController = TextEditingController();
+
   final _timeController = TextEditingController();
 
   @override
+  void initState() {
+    super.initState();
+
+    _allPriceTextController.addListener(_checkFields);
+  }
+
+  void _checkFields() {
+    if (_allPriceTextController.text.isNotEmpty) {
+      submit.value = true;
+    } else {
+      submit.value = false;
+    }
+  }
+
+  @override
+  void dispose() {
+    _allPriceTextController.dispose();
+    super.dispose();
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
@@ -61,7 +110,7 @@ class Presell extends StatelessWidget {
             const SizedBox(
               height: 30,
             ),
-            TwoItemInRow(
+            TwoItemInRow1(
               label1: "قیمت هر متر مربع (تومان)",
               label2: "قیمت کل (تومان)",
               widget1: Obx(
@@ -88,11 +137,6 @@ class Presell extends StatelessWidget {
                   textAlign: TextAlign.right,
                   keyboardType: TextInputType.number,
                   controller: _allPriceTextController,
-                  onChanged: (_) {
-                    _onePrice.value = _.isNotEmpty
-                        ? int.parse(_) / int.parse(_metragTextController.text)
-                        : 0;
-                  },
                   decoration: InputDecoration(
                     hintText: "0",
                     hintStyle: const TextStyle(
@@ -278,7 +322,7 @@ class Presell extends StatelessWidget {
             const SizedBox(
               height: 30,
             ),
-            SubmitRow(submit: submit, nextPage: EjaraVilaPage())
+            SubmitRow(submit: submit, nextPage: NamayeshAgahi())
           ]),
         ),
       ),
@@ -646,7 +690,7 @@ class Presell extends StatelessWidget {
                   const SizedBox(
                     height: 20,
                   ),
-                  TwoItemInRow(
+                  TwoItemInRow2(
                       label1: "تعداد اتاق",
                       label2: "سن بنا ",
                       widget2: Container(
@@ -722,7 +766,7 @@ class Presell extends StatelessWidget {
                   const SizedBox(
                     height: 20,
                   ),
-                  TwoItemInRow(
+                  TwoItemInRow2(
                       label1: "تعداد اتاق ",
                       label2: "متراژ بنا ",
                       widget2: Container(
@@ -823,7 +867,7 @@ class Presell extends StatelessWidget {
                   const SizedBox(
                     height: 20,
                   ),
-                  TwoItemInRow(
+                  TwoItemInRow2(
                       label1: "موقعیت",
                       label2: "طبقه ",
                       widget1: ReadOnlyTextField(_buildDirectionController, () {

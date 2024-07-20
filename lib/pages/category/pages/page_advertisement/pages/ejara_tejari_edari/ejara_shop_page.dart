@@ -8,6 +8,7 @@ import 'package:flutter_application_1/pages/category/shared/date.dart';
 import 'package:flutter_application_1/pages/category/shared/facilities_selector.dart';
 import 'package:flutter_application_1/pages/category/shared/images_picker/images_picker.dart';
 import 'package:flutter_application_1/pages/category/shared/more_emkanat/jahat_sakhteman.dart';
+import 'package:flutter_application_1/pages/category/shared/namayesh.dart';
 import 'package:flutter_application_1/pages/category/shared/number_piacker.dart';
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
 import 'package:flutter_application_1/pages/category/shared/twoItemInRow.dart';
@@ -15,30 +16,71 @@ import 'package:flutter_application_1/pages/category/shared/widget/submit_row.da
 import 'package:flutter_application_1/pages/category/shared/widget/text_field.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:gradient_icon/gradient_icon.dart';
 
-class EjaraShopPage extends StatelessWidget {
+class EjaraShopPage extends StatefulWidget {
+  EjaraShopPage({super.key});
+
+  @override
+  State<EjaraShopPage> createState() => _EjaraShopPageState();
+}
+
+class _EjaraShopPageState extends State<EjaraShopPage> {
   final aghsatType = "".obs;
+
   final onvan = "".obs;
+
   int selectedIndex = 0;
+
   final hasAnbari = false.obs;
+
   final hasAsansor = false.obs;
+
   final hasParking = false.obs;
+
   final _onePrice = 0.0.obs;
+
   final _allPriceTextController = TextEditingController();
+
   final _metragTextController = TextEditingController();
+
   final _selectedImagesPath = [].obs;
+
   final _facilities = <FacilitiesModel>[].obs;
+
   final _buildDirectionController = TextEditingController();
+
   final _buildUnitOfAnyFloorCountController = TextEditingController();
+
   final _buildDateController = TextEditingController();
+
   final _buildRoomsCountController = TextEditingController();
+
   final submit = false.obs;
 
   final _advInfo = AdvInfoModel();
 
-  EjaraShopPage({super.key});
+  @override
+  void initState() {
+    super.initState();
+
+    _allPriceTextController.addListener(_checkFields);
+  }
+
+  void _checkFields() {
+    if (_allPriceTextController.text.isNotEmpty) {
+      submit.value = true;
+    } else {
+      submit.value = false;
+    }
+  }
 
   @override
+  void dispose() {
+    _allPriceTextController.dispose();
+    super.dispose();
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Colors.white,
@@ -82,7 +124,7 @@ class EjaraShopPage extends StatelessWidget {
               const SizedBox(
                 height: 30,
               ),
-              TwoItemInRow(
+              TwoItemInRow1(
                 label1: "میزان اجاره (تومان)",
                 label2: "میزان رهن (تومان) ",
                 widget1: SizedBox(
@@ -106,6 +148,7 @@ class EjaraShopPage extends StatelessWidget {
                   height: 41,
                   width: getPageWidth(),
                   child: TextField(
+                    controller: _allPriceTextController,
                     textAlign: TextAlign.right,
                     keyboardType: TextInputType.number,
                     decoration: InputDecoration(
@@ -186,7 +229,7 @@ class EjaraShopPage extends StatelessWidget {
               const SizedBox(
                 height: 20,
               ),
-              TwoItemInRow(
+              TwoItemInRow2(
                   label1: "تعداد اتاق ",
                   label2: "سن بنا ",
                   widget1: ReadOnlyTextField(_buildRoomsCountController, () {
@@ -201,8 +244,8 @@ class EjaraShopPage extends StatelessWidget {
               const SizedBox(
                 height: 15,
               ),
-              TwoItemInRow(
-                  label1: "طیقه",
+              TwoItemInRow1(
+                  label1: "طبقه",
                   label2: "موقیعت",
                   widget1: ReadOnlyTextField(
                       _buildUnitOfAnyFloorCountController, () {
@@ -462,7 +505,47 @@ class EjaraShopPage extends StatelessWidget {
               const SizedBox(
                 height: 30,
               ),
-              SubmitRow(submit: submit, nextPage: EjaraVilaPage())
+              GestureDetector(
+                onTap: () {
+                  if (submit.value) {
+                    Get.to(() => NamayeshAgahi());
+                  }
+                },
+                child: Obx(() => Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Center(
+                          child: Text(
+                            "... تایید و ادامه",
+                            style: !submit.value
+                                ? const TextStyle(
+                                    fontSize: 20,
+                                    fontFamily: MAIN_FONT_FAMILY,
+                                    color: Colors.black38,
+                                  )
+                                : const TextStyle(
+                                    fontSize: 20, fontFamily: MAIN_FONT_FAMILY),
+                            textAlign: TextAlign.center,
+                          ),
+                        ),
+                        const SizedBox(
+                          width: 3,
+                        ),
+                        GradientIcon(
+                          icon: Icons.double_arrow,
+                          gradient: LinearGradient(
+                            colors: submit.value
+                                ? GRADIANT_COLOR1
+                                : BLACK_12_GRADIANT_COLOR,
+                            begin: Alignment.topLeft,
+                            end: Alignment.bottomRight,
+                          ),
+                          offset: const Offset(0, 0),
+                          size: 34,
+                        )
+                      ],
+                    )),
+              )
             ]),
           ),
         ));
@@ -501,7 +584,7 @@ Widget aghsatiForoshWidget(BuildContext context) {
             const SizedBox(
               height: 20,
             ),
-            TwoItemInRow(
+            TwoItemInRow2(
               label1: "میزان اجاره (تومان)",
               label2: "میزان رهن (تومان) ",
               widget1: SizedBox(

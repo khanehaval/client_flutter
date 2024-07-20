@@ -5,6 +5,7 @@ import 'package:flutter_application_1/pages/category/shared/adv_info/advInfo.dar
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/category/shared/date.dart';
 import 'package:flutter_application_1/pages/category/shared/images_picker/images_picker.dart';
+import 'package:flutter_application_1/pages/category/shared/namayesh.dart';
 import 'package:flutter_application_1/pages/category/shared/number_piacker.dart';
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
 import 'package:flutter_application_1/pages/category/shared/twoItemInRow.dart';
@@ -15,21 +16,59 @@ import 'package:get/get.dart';
 
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 
-class PartnerShip extends StatelessWidget {
-  final aghsatType = "".obs;
-  final onvan = "".obs;
-  final _advInfo = AdvInfoModel();
-  ItemScrollController scrollController = ItemScrollController();
-  final ItemScrollController itemScrollController = ItemScrollController();
-  final _allPriceTextController = TextEditingController();
-  final _metragTextController = TextEditingController();
-  final _selectedImagesPath = [].obs;
-  final hasAnbari = false.obs;
-  final hasAsansor = false.obs;
-  final hasParking = false.obs;
-  final submit = false.obs;
-  final _onePrice = 0.0.obs;
+class PartnerShip extends StatefulWidget {
   @override
+  State<PartnerShip> createState() => _PartnerShipState();
+}
+
+class _PartnerShipState extends State<PartnerShip> {
+  final aghsatType = "".obs;
+
+  final onvan = "".obs;
+
+  final _advInfo = AdvInfoModel();
+
+  ItemScrollController scrollController = ItemScrollController();
+
+  final ItemScrollController itemScrollController = ItemScrollController();
+
+  final _allPriceTextController = TextEditingController();
+
+  final _metragTextController = TextEditingController();
+
+  final _selectedImagesPath = [].obs;
+
+  final hasAnbari = false.obs;
+
+  final hasAsansor = false.obs;
+
+  final hasParking = false.obs;
+
+  final submit = false.obs;
+
+  final _onePrice = 0.0.obs;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _allPriceTextController.addListener(_checkFields);
+  }
+
+  void _checkFields() {
+    if (_allPriceTextController.text.isNotEmpty) {
+      submit.value = true;
+    } else {
+      submit.value = false;
+    }
+  }
+
+  @override
+  void dispose() {
+    _allPriceTextController.dispose();
+    super.dispose();
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
@@ -83,7 +122,7 @@ class PartnerShip extends StatelessWidget {
             const SizedBox(
               height: 30,
             ),
-            TwoItemInRow(
+            TwoItemInRow1(
               label1: "قیمت هر متر مربع (تومان)",
               label2: " ارزش ملک  (تومان)",
               widget1: Obx(
@@ -150,7 +189,7 @@ class PartnerShip extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
-            TwoItemInRow(
+            TwoItemInRow1(
               label1: "نوع سند ",
               label2: "متراژ زمین ",
               widget1: SizedBox(
@@ -323,7 +362,7 @@ class PartnerShip extends StatelessWidget {
             const SizedBox(
               height: 30,
             ),
-            SubmitRow(submit: submit, nextPage: EjaraVilaPage())
+            SubmitRow(submit: submit, nextPage: NamayeshAgahi())
           ]),
         ),
       ),
@@ -431,7 +470,7 @@ class PartnerShip extends StatelessWidget {
                   const SizedBox(
                     height: 20,
                   ),
-                  TwoItemInRow(
+                  TwoItemInRow2(
                     label1: " سن بنا",
                     label2: "متراژ بنا",
                     widget2: SizedBox(
@@ -478,7 +517,7 @@ class PartnerShip extends StatelessWidget {
                   const SizedBox(
                     height: 17,
                   ),
-                  TwoItemInRow(
+                  TwoItemInRow2(
                     label1: "تعداد واحد در طبقه",
                     label2: "تعداد طبقات ",
                     widget2: Container(
@@ -836,7 +875,7 @@ Widget Aparteman(BuildContext context) {
                 const SizedBox(
                   height: 20,
                 ),
-                TwoItemInRow(
+                TwoItemInRow2(
                   label1: "تعداد طبقات ",
                   label2: "متراژ زیر بنای ساختمان ",
                   widget2: Container(
@@ -1153,7 +1192,7 @@ Widget Vila(BuildContext context) {
                 const SizedBox(
                   height: 20,
                 ),
-                TwoItemInRow(
+                TwoItemInRow2(
                   label1: "تعداد ویلاها",
                   label2: " بنای کل شهرک",
                   widget1: SizedBox(
@@ -1442,7 +1481,7 @@ Widget Edari(BuildContext context) {
                 const SizedBox(
                   height: 20,
                 ),
-                TwoItemInRow(
+                TwoItemInRow2(
                   label1: "تعداد طبقات ",
                   label2: "متراژ زیر بنای کل",
                   widget2: Container(
@@ -1484,7 +1523,7 @@ Widget Edari(BuildContext context) {
                   ),
                 ),
                 SizedBox(height: 20),
-                TwoItemInRow(
+                TwoItemInRow2(
                   label1: "تعداد کل مغازه ها ",
                   label2: "تعداد مغازه در طبقه",
                   widget1: Container(

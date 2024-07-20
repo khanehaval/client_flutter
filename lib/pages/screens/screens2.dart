@@ -25,6 +25,7 @@ class Screen2 extends StatelessWidget {
                   Image.asset(
                     'assets/images/BG 2.png',
                     height: 450,
+                    width: MediaQuery.of(context).size.width / 1.0,
                     fit: BoxFit.cover,
                   ),
                   Padding(
@@ -36,37 +37,44 @@ class Screen2 extends StatelessWidget {
                 ],
               ),
               const SizedBox(
-                height: 40,
+                height: 30,
               ),
-              const Padding(
-                padding: EdgeInsets.only(bottom: 110.0, left: 40, right: 10),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    Text(
-                      'امکانات ویژه',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 22,
-                        fontFamily: MAIN_FONT_FAMILY,
+              const Stack(
+                children: [
+                  Column(
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.only(left: 200.0),
+                        child: Text(
+                          'امکانات ویژه',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18,
+                            fontFamily: MAIN_FONT_FAMILY,
+                          ),
+                          textDirection: TextDirection.rtl,
+                          textAlign: TextAlign.justify,
+                        ),
                       ),
-                      textDirection: TextDirection.rtl,
-                      textAlign: TextAlign.justify,
-                    ),
-                    SizedBox(
-                      height: 5,
-                    ),
-                    Text(
-                      'دیگه لازم نیست از این بنگاه به\n اون بنگاه بری و ملکتون رو فایل\n کنین، ما تمامی ابزارهای خدمات\n ملک رو اینجا جمع کردیم ',
-                      style: TextStyle(
-                          fontWeight: FontWeight.w400,
-                          fontSize: 18,
-                          fontFamily: 'Iran Sans'),
-                      textDirection: TextDirection.rtl,
-                      textAlign: TextAlign.justify,
-                    ),
-                  ],
-                ),
+                      SizedBox(
+                        height: 5,
+                      ),
+                      Padding(
+                        padding:
+                            EdgeInsets.only(bottom: 140.0, left: 40, right: 40),
+                        child: Text(
+                          'دیگه لازم نیست از این بنگاه به اون بنگاه بریو ملکتون رو فایل کنین، ما تمامی ابزارهای خدمات ملک رو اینجا جمع کردیم ',
+                          style: TextStyle(
+                              fontWeight: FontWeight.w400,
+                              fontSize: 16,
+                              fontFamily: 'Iran Sans'),
+                          textDirection: TextDirection.rtl,
+                          textAlign: TextAlign.justify,
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
               ),
             ],
           ),

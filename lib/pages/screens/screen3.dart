@@ -22,6 +22,7 @@ class Screen3 extends StatelessWidget {
                 Image.asset(
                   'assets/images/BG 1.png',
                   height: 450,
+                  width: MediaQuery.of(context).size.width / 1.0,
                   fit: BoxFit.cover,
                 ),
                 Padding(
@@ -35,7 +36,7 @@ class Screen3 extends StatelessWidget {
           ],
         ),
         const Padding(
-          padding: EdgeInsets.only(bottom: 140.0, left: 55, right: 55),
+          padding: EdgeInsets.only(bottom: 170.0, left: 45, right: 45),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
@@ -43,7 +44,7 @@ class Screen3 extends StatelessWidget {
                 'مشاورین متخصص',
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
-                  fontSize: 20,
+                  fontSize: 18,
                   fontFamily: MAIN_FONT_FAMILY,
                 ),
                 textDirection: TextDirection.rtl,
@@ -53,10 +54,10 @@ class Screen3 extends StatelessWidget {
                 height: 5,
               ),
               Text(
-                'دیگه لازم نیست ساعت ها تو ترافیک\n دنبال مشاور خوب و بنگاه بگردی، ما\n همه رو اینجا جمع کردیم... ',
+                'دیگه لازم نیست ساعت ها تو ترافیک دنبال مشاور خوب و بنگاه بگردی، ما همه رو اینجا جمع کردیم... ',
                 style: TextStyle(
                     fontWeight: FontWeight.w400,
-                    fontSize: 18,
+                    fontSize: 16,
                     fontFamily: 'Iran Sans'),
                 textDirection: TextDirection.rtl,
                 textAlign: TextAlign.justify,

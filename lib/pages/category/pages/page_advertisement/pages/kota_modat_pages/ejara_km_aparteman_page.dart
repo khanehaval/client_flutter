@@ -6,6 +6,7 @@ import 'package:flutter_application_1/pages/category/shared/adv_info/advInfo.dar
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/category/shared/facilities_selector.dart';
 import 'package:flutter_application_1/pages/category/shared/images_picker/images_picker.dart';
+import 'package:flutter_application_1/pages/category/shared/namayesh.dart';
 import 'package:flutter_application_1/pages/category/shared/number_piacker.dart';
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
 import 'package:flutter_application_1/pages/category/shared/twoItemInRow.dart';
@@ -14,54 +15,115 @@ import 'package:flutter_application_1/pages/category/shared/widget/text_field.da
 import 'package:flutter_application_1/pages/category/shared/widget/route_widget.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/switachable.dart';
 import 'package:get/get.dart';
+import 'package:gradient_icon/gradient_icon.dart';
 
-class EjaraKmApartemanPage extends StatelessWidget {
+class EjaraKmApartemanPage extends StatefulWidget {
+  EjaraKmApartemanPage({super.key});
+
+  @override
+  State<EjaraKmApartemanPage> createState() => _EjaraKmApartemanPageState();
+}
+
+class _EjaraKmApartemanPageState extends State<EjaraKmApartemanPage> {
   final aghsatType = "".obs;
+
   final onvan = "".obs;
+
   final _advInfo = AdvInfoModel();
+
   final hasAnbari = false.obs;
+
   final hasAsansor = false.obs;
+
   final hasParking = false.obs;
+
   final hasmeli = false.obs;
+
   final _agreement = false.obs;
+
   final hasshenase = false.obs;
+
   final _onePrice = 0.0.obs;
+
   final _buildDateController = TextEditingController();
 
   final _facilities = <FacilitiesModel>[].obs;
+
   final _recreation = <FacilitiesModel>[].obs;
+
   final _homeAppliances = <FacilitiesModel>[].obs;
+
   final _kitchenAppliances = <FacilitiesModel>[].obs;
+
   final _securityAppliances = <FacilitiesModel>[].obs;
+
   final _allPriceTextController = TextEditingController();
+
   final _metragTextController = TextEditingController();
 
   final _selectedImagesPath = [].obs;
 
   final _incomingTimeController = TextEditingController();
+
   final _outTimeController = TextEditingController();
+
   final _buildRoomsCountController = TextEditingController();
+
   final _buildBaseCapacityController = TextEditingController();
+
   final _buildMaxCapacityController = TextEditingController();
+
   final _buildRiteController = TextEditingController();
+
   final _buildAnimalController = TextEditingController();
+
   final _buildSmokingController = TextEditingController();
+
   final _buildShoesController = TextEditingController();
+
   final _buildDeprivationController = TextEditingController();
+
   final _buildSleepServiceCountController = TextEditingController();
+
   final _oneBedCountController = TextEditingController();
+
   final _twoBedCountController = TextEditingController();
+
   final _floorMaterialController = TextEditingController();
+
   final _cabinetController = TextEditingController();
+
   final _coldTypeController = TextEditingController();
+
   final _heatTypeController = TextEditingController();
+
   final _heatWaterController = TextEditingController();
+
   final _wcController = TextEditingController();
+
   final submit = false.obs;
 
-  EjaraKmApartemanPage({super.key});
+  @override
+  void initState() {
+    super.initState();
+
+    _allPriceTextController.addListener(_checkFields);
+  }
+
+  void _checkFields() {
+    if (_allPriceTextController.text.isNotEmpty) {
+      submit.value = true;
+    } else {
+      submit.value = false;
+    }
+  }
 
   @override
+  void dispose() {
+    _allPriceTextController.dispose();
+    super.dispose();
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
@@ -78,7 +140,7 @@ class EjaraKmApartemanPage extends StatelessWidget {
             const SizedBox(
               height: 30,
             ),
-            TwoItemInRow(
+            TwoItemInRow2(
               label1: " اجاره روز خاص (تومان)",
               label2: "اجاره روز عادی (تومان) ",
               widget1: SizedBox(
@@ -102,6 +164,7 @@ class EjaraKmApartemanPage extends StatelessWidget {
                 height: 41,
                 width: getPageWidth(),
                 child: TextField(
+                  controller: _allPriceTextController,
                   textAlign: TextAlign.right,
                   keyboardType: TextInputType.number,
                   decoration: InputDecoration(
@@ -119,7 +182,7 @@ class EjaraKmApartemanPage extends StatelessWidget {
             const SizedBox(
               height: 15,
             ),
-            TwoItemInRow(
+            TwoItemInRow2(
               label1: " هزینه نفر اضافه (تومان)",
               label2: "   (تومان)اجاره روز تعطیل",
               widget1: SizedBox(
@@ -558,7 +621,47 @@ class EjaraKmApartemanPage extends StatelessWidget {
             const SizedBox(
               height: 30,
             ),
-            SubmitRow(submit: submit, nextPage: EjaraVilaPage())
+            GestureDetector(
+              onTap: () {
+                if (submit.value) {
+                  Get.to(() => NamayeshAgahi());
+                }
+              },
+              child: Obx(() => Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Center(
+                        child: Text(
+                          "... تایید و ادامه",
+                          style: !submit.value
+                              ? const TextStyle(
+                                  fontSize: 20,
+                                  fontFamily: MAIN_FONT_FAMILY,
+                                  color: Colors.black38,
+                                )
+                              : const TextStyle(
+                                  fontSize: 20, fontFamily: MAIN_FONT_FAMILY),
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                      const SizedBox(
+                        width: 3,
+                      ),
+                      GradientIcon(
+                        icon: Icons.double_arrow,
+                        gradient: LinearGradient(
+                          colors: submit.value
+                              ? GRADIANT_COLOR1
+                              : BLACK_12_GRADIANT_COLOR,
+                          begin: Alignment.topLeft,
+                          end: Alignment.bottomRight,
+                        ),
+                        offset: const Offset(0, 0),
+                        size: 34,
+                      )
+                    ],
+                  )),
+            )
           ]),
         ),
       ),

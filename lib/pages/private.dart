@@ -5,6 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/category/pages/home.dart';
+import 'package:flutter_application_1/pages/category/shared/widget/app_bar.dart';
 import 'package:flutter_application_1/pages/register/register.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
@@ -27,22 +28,15 @@ class Private extends StatelessWidget {
     }
   }
 
+  void deleteImage() {
+    imagePath.value = ''; // Clear the image path to delete the image
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        leading: IconButton(
-          onPressed: () => Get.to(() => Home()),
-          icon: SvgPicture.asset(
-            'assets/images/Vector-47.svg',
-            width: 18,
-            height: 18,
-            alignment: Alignment.centerRight,
-          ),
-        ),
-      ),
+      appBar: buildAppBar(),
       body: Stack(
         children: [
           SingleChildScrollView(
@@ -147,53 +141,65 @@ class Private extends StatelessWidget {
                       SizedBox(
                         height: 48,
                         width: _getTextFieldWidth(context),
-                        child: Obx(() => Container(
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(10),
+                        child: Obx(
+                          () => Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              gradient: const LinearGradient(
+                                colors: GRADIANT_COLOR1,
+                              ),
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.all(1.2),
+                              child: Container(
+                                decoration: BoxDecoration(
                                   gradient: const LinearGradient(
-                                      colors: GRADIANT_COLOR1)),
-                              child: Padding(
-                                padding: const EdgeInsets.all(1.2),
+                                    colors: GRADIANT_COLOR,
+                                  ),
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
                                 child: Container(
                                   decoration: BoxDecoration(
-                                    gradient: const LinearGradient(
-                                        colors: GRADIANT_COLOR),
                                     borderRadius: BorderRadius.circular(10),
+                                    color:
+                                        imagePath.isEmpty ? Colors.white : null,
                                   ),
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(10),
-                                        color: imagePath.isEmpty
-                                            ? Colors.white
-                                            : null),
-                                    child: Row(
-                                      children: [
-                                        IconButton(
-                                          icon: Icon(imagePath.isEmpty
+                                  child: Row(
+                                    children: [
+                                      IconButton(
+                                        icon: Icon(
+                                          imagePath.isEmpty
                                               ? CupertinoIcons.add_circled
-                                              : CupertinoIcons.clear_circled),
-                                          onPressed: pickImage,
+                                              : CupertinoIcons.clear_circled,
                                         ),
-                                        if (imagePath.isEmpty)
-                                          const Padding(
-                                            padding:
-                                                EdgeInsets.only(left: 12.0),
-                                            child: Text(
-                                              '* تصویر کارت ملی',
-                                              style: TextStyle(
-                                                  fontSize: 12,
-                                                  color: Color.fromRGBO(
-                                                      99, 99, 99, 1)),
+                                        onPressed: () {
+                                          if (imagePath.isEmpty) {
+                                            pickImage();
+                                          } else {
+                                            deleteImage();
+                                          }
+                                        },
+                                      ),
+                                      if (imagePath.isEmpty)
+                                        const Padding(
+                                          padding: EdgeInsets.only(left: 12.0),
+                                          child: Text(
+                                            '* تصویر کارت ملی',
+                                            style: TextStyle(
+                                              fontSize: 12,
+                                              color: Color(0xFFA6A6A6),
                                             ),
-                                          )
-                                        else
-                                          Text(_getImageName())
-                                      ],
-                                    ),
+                                          ),
+                                        )
+                                      else
+                                        Text(_getImageName()),
+                                    ],
                                   ),
                                 ),
                               ),
-                            )),
+                            ),
+                          ),
+                        ),
                       ),
                       SizedBox(
                         height: 48,

@@ -63,16 +63,14 @@ class _ForoshSanatiPageState extends State<ForoshSanatiPage> {
   final _advInfo = AdvInfoModel();
 
   @override
-   void initState() {
+  void initState() {
     super.initState();
 
-   
     _allPriceTextController.addListener(_checkFields);
   }
 
   void _checkFields() {
-    if (_allPriceTextController.text.isNotEmpty 
-        ) {
+    if (_allPriceTextController.text.isNotEmpty) {
       submit.value = true;
     } else {
       submit.value = false;
@@ -133,7 +131,7 @@ class _ForoshSanatiPageState extends State<ForoshSanatiPage> {
               const SizedBox(
                 height: 20,
               ),
-              TwoItemInRow(
+              TwoItemInRow1(
                 label1: "قیمت هر متر مربع (تومان)",
                 label2: "قیمت کل (تومان)",
                 widget1: Obx(
@@ -207,22 +205,24 @@ class _ForoshSanatiPageState extends State<ForoshSanatiPage> {
                     height: 41,
                     width: getPageWidth(),
                     child: TextField(
-                      readOnly: true,
+                      controller: _metragTextController,
+                      onChanged: (_) {
+                        _onePrice.value = _.isNotEmpty
+                            ? int.parse(_) /
+                                int.parse(_metragTextController.text)
+                            : 0;
+                      },
                       textAlign: TextAlign.right,
+                      keyboardType: TextInputType.number,
                       decoration: InputDecoration(
-                          hintText: 'انتخاب نشده',
-                          hintStyle: const TextStyle(
-                              color: Color(0xFFA6A6A6), fontSize: 13),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          prefixIcon: IconButton(
-                            icon:
-                                SvgPicture.asset("assets/images/Vector-20.svg"),
-                            onPressed: () {
-                              // _show_item_1.value = !_show_item_1.isTrue;
-                            },
-                          )),
+                        hintText: "0",
+                        hintStyle: const TextStyle(
+                          color: Color(0xFFA6A6A6),
+                        ),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                      ),
                     ),
                   ),
                   widget1: ReadOnlyTextField(_buildDocumentController, () {
@@ -509,7 +509,7 @@ class _ForoshSanatiPageState extends State<ForoshSanatiPage> {
               const SizedBox(
                 height: 30,
               ),
-                     GestureDetector(
+              GestureDetector(
                 onTap: () {
                   if (submit.value) {
                     Get.to(() => NamayeshAgahi());
