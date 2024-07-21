@@ -14,10 +14,7 @@ class SachtSaz extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView(
       children: [
-        const Divider(
-          endIndent: 20,
-          indent: 20,
-        ),
+        dividerwidget(),
         Container(
           margin: const EdgeInsets.all(10),
           padding: const EdgeInsets.all(5),
@@ -25,10 +22,7 @@ class SachtSaz extends StatelessWidget {
           width: 372,
           child: Image.asset('assets/images/Group 722.png'),
         ),
-        const Divider(
-          endIndent: 20,
-          indent: 20,
-        ),
+        dividerwidget(),
         const SizedBox(
           height: 10,
         ),
@@ -65,65 +59,56 @@ class SachtSaz extends StatelessWidget {
         const SizedBox(
           height: 10,
         ),
-        const Divider(
-          endIndent: 20,
-          indent: 20,
-        ),
+        dividerwidget(),
         const SizedBox(
           height: 10,
         ),
         Padding(
           padding: const EdgeInsets.only(left: 8, right: 8),
           child: Container(
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                border: Border.all(
-                    color: const Color.fromRGBO(
-                  234,
-                  234,
-                  234,
-                  1,
-                ))),
-            child: Column(
-              children: [
-                Row(
+            decoration: const BoxDecoration(
+                borderRadius: BorderRadius.all(Radius.circular(10)),
+                gradient: LinearGradient(colors: GRADIANT_COLOR3)),
+            child: Padding(
+              padding: const EdgeInsets.all(1.2),
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Obx(() => IconButton(
                           icon: _show_item_1.value
                               ? SvgPicture.asset('assets/images/down.svg')
-                              : SvgPicture.asset('assets/images/=.svg'),
+                              : SvgPicture.asset(
+                                  'assets/images/=.svg',
+                                ),
                           style: const ButtonStyle(),
                           onPressed: () {
                             _show_item_1.value = !_show_item_1.value;
                           },
                         )),
-                    const Divider(
-                      endIndent: 20,
-                      indent: 20,
-                    ),
-                    const Column(
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.all(15.0),
-                          child: Text(
-                            'فروش ویژه',
-                            style: TextStyle(
-                                fontSize: 16,
-                                color: Color.fromRGBO(
-                                  48,
-                                  48,
-                                  48,
-                                  1,
-                                ),
-                                fontFamily: MAIN_FONT_FAMILY),
-                          ),
-                        ),
-                      ],
+                    const Padding(
+                      padding: EdgeInsets.only(right: 15.0),
+                      child: Text(
+                        'فروش ویژه',
+                        style: TextStyle(
+                            fontSize: 14,
+                            color: Color.fromRGBO(
+                              48,
+                              48,
+                              48,
+                              1,
+                            ),
+                            fontWeight: FontWeight.bold,
+                            fontFamily: MAIN_FONT_FAMILY),
+                      ),
                     ),
                   ],
                 ),
-              ],
+              ),
             ),
           ),
         ),
@@ -131,6 +116,7 @@ class SachtSaz extends StatelessWidget {
         const SizedBox(
           height: 10,
         ),
+        dividerwidget(),
         SingleChildScrollView(
           reverse: true,
           scrollDirection: Axis.horizontal,
@@ -150,7 +136,7 @@ class SachtSaz extends StatelessWidget {
                     'assets/images/Group 652.svg',
                   )),
               Container(
-                  margin: EdgeInsets.all(10),
+                  margin: const EdgeInsets.all(10),
                   height: 90,
                   width: 147,
                   child: SvgPicture.asset(
@@ -159,6 +145,9 @@ class SachtSaz extends StatelessWidget {
             ],
           ),
         ),
+        const SizedBox(
+          height: 10,
+        )
       ],
     );
   }
@@ -192,5 +181,13 @@ class SachtSaz extends StatelessWidget {
             ],
           )
         : const SizedBox.shrink());
+  }
+
+  Divider dividerwidget() {
+    return const Divider(
+      endIndent: 20,
+      indent: 20,
+      color: Color.fromRGBO(236, 236, 236, 1),
+    );
   }
 }

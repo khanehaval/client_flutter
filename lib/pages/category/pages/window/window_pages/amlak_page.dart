@@ -12,10 +12,7 @@ class AmlakPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView(
       children: [
-        const Divider(
-          endIndent: 20,
-          indent: 20,
-        ),
+        dividerwidget(),
         Container(
             margin: const EdgeInsets.all(10),
             padding: const EdgeInsets.all(5),
@@ -32,9 +29,9 @@ class AmlakPage extends StatelessWidget {
                   ),
                 ]),
             child: SvgPicture.asset('assets/images/Group 658.svg')),
-        const Divider(
-          endIndent: 20,
-          indent: 20,
+        dividerwidget(),
+        const SizedBox(
+          height: 10,
         ),
         SingleChildScrollView(
           reverse: true,
@@ -47,10 +44,10 @@ class AmlakPage extends StatelessWidget {
             ],
           ),
         ),
-        const Divider(
-          endIndent: 20,
-          indent: 20,
+        const SizedBox(
+          height: 10,
         ),
+        dividerwidget(),
         const SizedBox(
           height: 10,
         ),
@@ -65,7 +62,7 @@ class AmlakPage extends StatelessWidget {
                       gradient: const LinearGradient(colors: GRADIANT_COLOR3),
                       borderRadius: BorderRadius.circular(10)),
                   child: Padding(
-                    padding: const EdgeInsets.all(0.5),
+                    padding: const EdgeInsets.all(1.2),
                     child: Container(
                       decoration: BoxDecoration(
                         color: Colors.white,
@@ -95,7 +92,7 @@ class AmlakPage extends StatelessWidget {
                               child: Text(
                                 'فروش ویژه',
                                 style: TextStyle(
-                                  fontSize: 18,
+                                  fontSize: 14,
                                   color: Color.fromRGBO(
                                     48,
                                     48,
@@ -117,62 +114,78 @@ class AmlakPage extends StatelessWidget {
         const SizedBox(
           height: 10,
         ),
-        const Divider(
-          endIndent: 20,
-          indent: 20,
-        ),
+        dividerwidget(),
         const SizedBox(
           height: 10,
         ),
-        Container(
-          margin: const EdgeInsets.only(left: 10, right: 10),
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              border: Border.all(
-                  color: const Color.fromRGBO(
-                234,
-                234,
-                234,
-                1,
-              ))),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Obx(() => IconButton(
-                    icon: _show_item_2.value
-                        ? SvgPicture.asset('assets/images/down.svg')
-                        : SvgPicture.asset(
-                            'assets/images/=.svg',
+        Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Container(
+              decoration: BoxDecoration(
+                  gradient: const LinearGradient(colors: GRADIANT_COLOR3),
+                  borderRadius: BorderRadius.circular(10)),
+              child: Padding(
+                padding: const EdgeInsets.all(1.2),
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Obx(
+                          () => IconButton(
+                            icon: SvgPicture.asset(
+                              _show_item_1.value
+                                  ? 'assets/images/down.svg'
+                                  : 'assets/images/=.svg',
+                            ),
+                            onPressed: () {
+                              _show_item_1.value = !_show_item_1.value;
+                            },
                           ),
-                    style: const ButtonStyle(),
-                    onPressed: () {
-                      _show_item_2.value = !_show_item_2.value;
-                    },
-                  )),
-              const Padding(
-                padding: EdgeInsets.only(right: 15.0),
-                child: Text(
-                  'خانه اول',
-                  style: TextStyle(
-                      fontSize: 18,
-                      color: Color.fromRGBO(
-                        48,
-                        48,
-                        48,
-                        1,
-                      ),
-                      fontWeight: FontWeight.bold,
-                      fontFamily: MAIN_FONT_FAMILY),
+                        ),
+                        const Padding(
+                          padding: EdgeInsets.only(right: 15.0),
+                          child: Text(
+                            'خانه اول',
+                            style: TextStyle(
+                              fontSize: 14,
+                              color: Color.fromRGBO(
+                                48,
+                                48,
+                                48,
+                                1,
+                              ),
+                              fontWeight: FontWeight.bold,
+                              fontFamily: MAIN_FONT_FAMILY,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
                 ),
-              ),
-            ],
-          ),
+              )),
         ),
         _buildItem2(),
         const SizedBox(
           height: 20,
         )
       ],
+    );
+  }
+
+  Divider dividerwidget() {
+    return const Divider(
+      endIndent: 20,
+      indent: 20,
+      color: Color.fromRGBO(236, 236, 236, 1),
     );
   }
 
@@ -240,22 +253,65 @@ class AmlakPage extends StatelessWidget {
                     GestureDetector(
                       onTap: () {},
                       child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
+                          Container(
+                              width: 165,
+                              height: 76,
+                              decoration: BoxDecoration(
+                                  gradient: const LinearGradient(
+                                      colors: GRADIANT_COLOR3),
+                                  borderRadius: BorderRadius.circular(10)),
+                              child: Padding(
+                                padding: const EdgeInsets.all(1.5),
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(10),
+                                    ),
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(14.0),
+                                      child: SvgPicture.asset(
+                                        'assets/images/Group 654.svg',
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              )),
                           SizedBox(
-                            height: 90,
-                            width: 165,
-                            child: SvgPicture.asset(
-                              'assets/images/Group 655.svg',
-                            ),
+                            width: 0,
                           ),
-                          SizedBox(
-                            height: 90,
-                            width: 165,
-                            child: SvgPicture.asset(
-                              'assets/images/Group 654.svg',
-                            ),
-                          ),
+                          Container(
+                              width: 165,
+                              height: 76,
+                              decoration: BoxDecoration(
+                                  gradient: const LinearGradient(
+                                      colors: GRADIANT_COLOR3),
+                                  borderRadius: BorderRadius.circular(10)),
+                              child: Padding(
+                                padding: const EdgeInsets.all(1.5),
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(10),
+                                    ),
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(14.0),
+                                      child: SvgPicture.asset(
+                                        'assets/images/Group 654.svg',
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              )),
                         ],
                       ),
                     ),

@@ -113,6 +113,7 @@ class _EducationalTourState extends State<EducationalTour> {
     return Container(
       height: 82,
       decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20),
         boxShadow: [
           BoxShadow(
             color: Colors.grey.withOpacity(0.5),

@@ -295,8 +295,8 @@ class _AdvMapState extends State<AdvMap> {
 
   Widget _buildDraggableScrollableSheet() {
     return DraggableScrollableSheet(
-      initialChildSize: 0.12,
-      minChildSize: 0.12,
+      initialChildSize: 0.10,
+      minChildSize: 0.10,
       builder: (context, scrollController) {
         return Container(
           decoration: BoxDecoration(
@@ -307,7 +307,8 @@ class _AdvMapState extends State<AdvMap> {
             child: Container(
               decoration: BoxDecoration(
                 color: Colors.white,
-                borderRadius: const BorderRadius.vertical(top: Radius.circular(20)),
+                borderRadius:
+                    const BorderRadius.vertical(top: Radius.circular(20)),
                 boxShadow: [
                   BoxShadow(
                     color: Colors.black.withOpacity(0.1),
@@ -339,8 +340,12 @@ class _AdvMapState extends State<AdvMap> {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Padding(
-          padding: const EdgeInsets.only(top:20.0),
-          child: SvgPicture.asset('assets/images/divider.svg',width: 5,height: 5,),
+          padding: const EdgeInsets.only(top: 20.0),
+          child: SvgPicture.asset(
+            'assets/images/divider.svg',
+            width: 5,
+            height: 5,
+          ),
         )
       ],
     );

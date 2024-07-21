@@ -13,10 +13,7 @@ class EjaraKotaModat extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView(
       children: [
-        const Divider(
-          endIndent: 20,
-          indent: 20,
-        ),
+        dividerwidget(),
         Container(
           margin: const EdgeInsets.all(10),
           padding: const EdgeInsets.all(5),
@@ -37,10 +34,7 @@ class EjaraKotaModat extends StatelessWidget {
             fit: BoxFit.fill,
           ),
         ),
-        const Divider(
-          endIndent: 20,
-          indent: 20,
-        ),
+        dividerwidget(),
         const SizedBox(
           height: 20,
         ),
@@ -72,66 +66,56 @@ class EjaraKotaModat extends StatelessWidget {
         const SizedBox(
           height: 20,
         ),
-        const Divider(
-          endIndent: 20,
-          indent: 20,
-        ),
+        dividerwidget(),
         const SizedBox(
           height: 10,
         ),
         Padding(
           padding: const EdgeInsets.only(left: 8, right: 8),
           child: Container(
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                border: Border.all(
-                    color: const Color.fromRGBO(
-                  234,
-                  234,
-                  234,
-                  1,
-                ))),
-            child: Column(
-              children: [
-                Row(
+            decoration: const BoxDecoration(
+                borderRadius: BorderRadius.all(Radius.circular(10)),
+                gradient: LinearGradient(colors: GRADIANT_COLOR3)),
+            child: Padding(
+              padding: const EdgeInsets.all(1.2),
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Obx(() => IconButton(
                           icon: _show_item_1.value
                               ? SvgPicture.asset('assets/images/down.svg')
-                              : SvgPicture.asset('assets/images/=.svg'),
+                              : SvgPicture.asset(
+                                  'assets/images/=.svg',
+                                ),
                           style: const ButtonStyle(),
                           onPressed: () {
                             _show_item_1.value = !_show_item_1.value;
                           },
                         )),
-                    Divider(
-                      endIndent: 20,
-                      indent: 20,
-                    ),
-                    const Column(
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.only(right: 15.0),
-                          child: Text(
-                            'اجاره کوتاه مدت ویلا در شمال',
-                            style: TextStyle(
-                                fontSize: 18,
-                                color: Color.fromRGBO(
-                                  48,
-                                  48,
-                                  48,
-                                  1,
-                                ),
-                                fontWeight: FontWeight.bold,
-                                fontFamily: MAIN_FONT_FAMILY),
-                          ),
-                        ),
-                      ],
+                    const Padding(
+                      padding: EdgeInsets.only(right: 15.0),
+                      child: Text(
+                        'اجاره کوتاه مدت ویلا در شمال',
+                        style: TextStyle(
+                            fontSize: 14,
+                            color: Color.fromRGBO(
+                              48,
+                              48,
+                              48,
+                              1,
+                            ),
+                            fontWeight: FontWeight.bold,
+                            fontFamily: MAIN_FONT_FAMILY),
+                      ),
                     ),
                   ],
                 ),
-              ],
+              ),
             ),
           ),
         ),
@@ -139,6 +123,7 @@ class EjaraKotaModat extends StatelessWidget {
         const SizedBox(
           height: 10,
         ),
+        dividerwidget(),
         SingleChildScrollView(
           reverse: true,
           scrollDirection: Axis.horizontal,
@@ -147,8 +132,8 @@ class EjaraKotaModat extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(10),
                 child: Container(
-                    height: 90,
-                    width: 147,
+                    width: 165,
+                    height: 76,
                     decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(10),
@@ -158,30 +143,68 @@ class EjaraKotaModat extends StatelessWidget {
                     )),
               ),
               Container(
-                  height: 90,
-                  width: 147,
+                  width: 140,
+                  height: 76,
                   decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: SvgPicture.asset(
-                    'assets/images/Group 655.svg',
+                      gradient: const LinearGradient(colors: GRADIANT_COLOR3),
+                      borderRadius: BorderRadius.circular(10)),
+                  child: Padding(
+                    padding: const EdgeInsets.all(1.5),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(14.0),
+                          child: SvgPicture.asset(
+                            'assets/images/Group 654.svg',
+                          ),
+                        ),
+                      ),
+                    ),
                   )),
+              const SizedBox(
+                width: 10,
+              ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Container(
-                    height: 90,
-                    width: 147,
+                    width: 140,
+                    height: 76,
                     decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: SvgPicture.asset(
-                      'assets/images/Group 654.svg',
+                        gradient: const LinearGradient(colors: GRADIANT_COLOR3),
+                        borderRadius: BorderRadius.circular(10)),
+                    child: Padding(
+                      padding: const EdgeInsets.all(1.5),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(14.0),
+                            child: SvgPicture.asset(
+                              'assets/images/Group 654.svg',
+                            ),
+                          ),
+                        ),
+                      ),
                     )),
               ),
             ],
           ),
+        ),
+        const SizedBox(
+          height: 10,
         ),
       ],
     );
@@ -355,5 +378,13 @@ class EjaraKotaModat extends StatelessWidget {
             ),
           )
         : const SizedBox.shrink());
+  }
+
+  Divider dividerwidget() {
+    return const Divider(
+      endIndent: 20,
+      indent: 20,
+      color: Color.fromRGBO(236, 236, 236, 1),
+    );
   }
 }

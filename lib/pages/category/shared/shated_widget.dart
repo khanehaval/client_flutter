@@ -21,101 +21,112 @@ Widget bottomNavigationBar2(int currentMainPageIndex) {
     // const Category(),
     // Advertisements()
   ];
-  return ClipRRect(
-    borderRadius: const BorderRadius.only(
-      topLeft: Radius.circular(20),
-      topRight: Radius.circular(20),
-    ),
-    child: Obx(
-      () => Container(
-        color: Colors.black,
-        child: BottomNavigationBar(
-          unselectedFontSize: 14,
-          selectedFontSize: 14,
-          showSelectedLabels: false,
-          showUnselectedLabels: false,
-          type: BottomNavigationBarType.fixed,
-          backgroundColor: Colors.white,
-          // selectedItemColor: const Color.fromARGB(255, 130, 8, 8),
-          // unselectedItemColor: const Color(0xff757575),
-          onTap: (int index) {
-            Get.off(EducationalTour(
-              index: index,
-              showEducation: false,
-            ));
-            // currentPageIndex.value = index;
-            // Get.offAll(() => pages[index]);
-            // // showEducation.value = false;
-          },
-          currentIndex: currentPageIndex.value,
-          items: <BottomNavigationBarItem>[
-            BottomNavigationBarItem(
-              backgroundColor: Colors.white,
-              icon: SvgPicture.asset(
-                "assets/images/navigation1.svg",
-                width: 30,
-                height: 30,
+  return Container(
+    height: 82,
+    decoration: BoxDecoration(boxShadow: [
+      BoxShadow(
+        color: Colors.grey.withOpacity(0.5),
+        spreadRadius: 0,
+        blurRadius: 5,
+        offset: Offset(-1, 0),
+      )
+    ]),
+    child: ClipRRect(
+      borderRadius: const BorderRadius.only(
+        topLeft: Radius.circular(20),
+        topRight: Radius.circular(20),
+      ),
+      child: Obx(
+        () => Container(
+          color: Colors.black,
+          child: BottomNavigationBar(
+            unselectedFontSize: 14,
+            selectedFontSize: 14,
+            showSelectedLabels: false,
+            showUnselectedLabels: false,
+            type: BottomNavigationBarType.fixed,
+            backgroundColor: Colors.white,
+            // selectedItemColor: const Color.fromARGB(255, 130, 8, 8),
+            // unselectedItemColor: const Color(0xff757575),
+            onTap: (int index) {
+              Get.off(EducationalTour(
+                index: index,
+                showEducation: false,
+              ));
+              // currentPageIndex.value = index;
+              // Get.offAll(() => pages[index]);
+              // // showEducation.value = false;
+            },
+            currentIndex: currentPageIndex.value,
+            items: <BottomNavigationBarItem>[
+              BottomNavigationBarItem(
+                backgroundColor: Colors.white,
+                icon: SvgPicture.asset(
+                  "assets/images/navigation1.svg",
+                  width: 30,
+                  height: 30,
+                ),
+                label: '',
+                activeIcon: SvgPicture.asset(
+                  "assets/images/navigation1-active.svg",
+                  width: 30,
+                  height: 30,
+                ),
               ),
-              label: '',
-              activeIcon: SvgPicture.asset(
-                "assets/images/navigation1-active.svg",
-                width: 30,
-                height: 30,
+              BottomNavigationBarItem(
+                icon: SvgPicture.asset(
+                  "assets/images/navigation2.svg",
+                  width: 30,
+                  height: 30,
+                ),
+                label: '',
+                activeIcon: SvgPicture.asset(
+                  "assets/images/navigation2-active.svg",
+                  width: 30,
+                  height: 30,
+                ),
               ),
-            ),
-            BottomNavigationBarItem(
-              icon: SvgPicture.asset(
-                "assets/images/navigation2.svg",
-                width: 30,
-                height: 30,
+              BottomNavigationBarItem(
+                icon: SvgPicture.asset(
+                  "assets/images/navigation3.svg",
+                  width: 30,
+                  height: 30,
+                ),
+                label: '',
+                activeIcon: SvgPicture.asset(
+                  "assets/images/navigation3-active.svg",
+                  width: 30,
+                  height: 30,
+                ),
               ),
-              label: '',
-              activeIcon: SvgPicture.asset(
-                "assets/images/navigation2-active.svg",
-                width: 30,
-                height: 30,
+              BottomNavigationBarItem(
+                icon: SvgPicture.asset(
+                  "assets/images/navigation4.svg",
+                  width: 30,
+                  height: 30,
+                ),
+                label: '',
+                activeIcon: SvgPicture.asset(
+                  "assets/images/navigation4-active.svg",
+                  width: 30,
+                  height: 30,
+                ),
               ),
-            ),
-            BottomNavigationBarItem(
-              icon: SvgPicture.asset(
-                "assets/images/navigation3.svg",
-                width: 30,
-                height: 30,
+              BottomNavigationBarItem(
+                icon: SvgPicture.asset(
+                  "assets/images/navigation5.svg",
+                  width: 30,
+                  height: 30,
+                ),
+                label: '',
+                activeIcon: SvgPicture.asset(
+                  "assets/images/navigation5-active.svg",
+                  width: 30,
+                  height: 30,
+                ),
               ),
-              label: '',
-              activeIcon: SvgPicture.asset(
-                "assets/images/navigation3-active.svg",
-                width: 30,
-                height: 30,
-              ),
-            ),
-            BottomNavigationBarItem(
-              icon: SvgPicture.asset(
-                "assets/images/navigation4.svg",
-                width: 30,
-                height: 30,
-              ),
-              label: '',
-              activeIcon: SvgPicture.asset(
-                "assets/images/navigation4-active.svg",
-                width: 30,
-                height: 30,
-              ),
-            ),
-            BottomNavigationBarItem(
-              icon: SvgPicture.asset(
-                "assets/images/navigation5.svg",
-                width: 30,
-                height: 30,
-              ),
-              label: '',
-              activeIcon: SvgPicture.asset(
-                "assets/images/navigation5-active.svg",
-                width: 30,
-                height: 30,
-              ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     ),
