@@ -7,13 +7,14 @@ import 'package:get/get.dart';
 class SachtSaz extends StatelessWidget {
   final _show_item_1 = false.obs;
   final _show_item_2 = false.obs;
-
   SachtSaz({super.key});
-
   @override
   Widget build(BuildContext context) {
     return ListView(
       children: [
+        const SizedBox(
+          height: 10,
+        ),
         dividerwidget(),
         Container(
           margin: const EdgeInsets.all(10),
@@ -156,6 +157,9 @@ class SachtSaz extends StatelessWidget {
     return Obx(() => _show_item_1.isTrue
         ? Column(
             children: [
+              const SizedBox(
+                height: 10,
+              ),
               Image.asset(
                 'assets/images/Group project.png',
                 width: 370,

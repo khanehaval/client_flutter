@@ -24,17 +24,17 @@ class TwoItemInRow extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             Padding(
-              padding: const EdgeInsets.only(right: 5),
+              padding: const EdgeInsets.only(right: 10),
               child: Text(
                 label1,
                 style: const TextStyle(
                     color: Color.fromRGBO(99, 99, 99, 1),
-                    fontSize: 12,
+                    fontSize: 13,
                     fontFamily: MAIN_FONT_FAMILY),
               ),
             ),
             const SizedBox(
-              height: 5,
+              height: 4,
             ),
             widget1
           ],
@@ -44,17 +44,17 @@ class TwoItemInRow extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             Padding(
-              padding: const EdgeInsets.only(right: 5),
+              padding: const EdgeInsets.only(right: 10),
               child: Text(
                 label2,
                 style: const TextStyle(
                     color: Color.fromRGBO(99, 99, 99, 1),
-                    fontSize: 12,
+                    fontSize: 13,
                     fontFamily: MAIN_FONT_FAMILY),
               ),
             ),
             const SizedBox(
-              height: 5,
+              height: 4,
             ),
             widget2
           ],
@@ -86,13 +86,13 @@ class TwoItemInRow1 extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               Padding(
-                padding: const EdgeInsets.only(top: 5.0, right: 5),
+                padding: const EdgeInsets.only(top: 5.0, right: 10),
                 child: RichText(
                   text: TextSpan(
                     text: label1,
                     style: const TextStyle(
                         fontFamily: MAIN_FONT_FAMILY,
-                        fontSize: 12,
+                        fontSize: 13,
                         color: Color.fromRGBO(
                           99,
                           99,
@@ -101,6 +101,9 @@ class TwoItemInRow1 extends StatelessWidget {
                         )),
                   ),
                 ),
+              ),
+              const SizedBox(
+                height: 5,
               ),
               widget1,
             ],
@@ -112,27 +115,29 @@ class TwoItemInRow1 extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               Padding(
-                padding: const EdgeInsets.only(right: 5),
+                padding: const EdgeInsets.only(right: 10),
                 child: RichText(
                   text: TextSpan(
                     children: [
                       const TextSpan(
-                        text: ' *',
+                        text: ' *  ',
                         style: TextStyle(
-                            color: Color.fromRGBO(
-                              156,
-                              64,
-                              64,
-                              1,
-                            ),
-                            fontFamily: MAIN_FONT_FAMILY,
-                            fontSize: 16),
+                          color: Color.fromRGBO(
+                            156,
+                            64,
+                            64,
+                            1,
+                          ),
+                          fontFamily: 'Iran Sans',
+                          fontWeight: FontWeight.w900,
+                          fontSize: 14,
+                        ),
                       ),
                       TextSpan(
                         text: label2,
                         style: const TextStyle(
                             fontFamily: MAIN_FONT_FAMILY,
-                            fontSize: 12,
+                            fontSize: 13,
                             color: Color.fromRGBO(
                               99,
                               99,
@@ -143,6 +148,9 @@ class TwoItemInRow1 extends StatelessWidget {
                     ],
                   ),
                 ),
+              ),
+              const SizedBox(
+                height: 5,
               ),
               widget2,
             ],
@@ -169,35 +177,33 @@ class TwoItemInRow2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
         Expanded(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               Padding(
-                padding: const EdgeInsets.only(right: 5),
+                padding: const EdgeInsets.only(top: 5.0, right: 10),
                 child: RichText(
                   text: TextSpan(
                     children: [
                       const TextSpan(
-                        text: ' *',
+                        text: ' * ',
                         style: TextStyle(
-                            color: Color.fromRGBO(
-                              156,
-                              64,
-                              64,
-                              1,
-                            ),
-                            fontFamily: MAIN_FONT_FAMILY,
-                            fontSize: 16),
+                          color: Color.fromRGBO(
+                            156,
+                            64,
+                            64,
+                            1,
+                          ),
+                          fontFamily: MAIN_FONT_FAMILY,
+                        ),
                       ),
                       TextSpan(
                         text: label1,
                         style: const TextStyle(
                             fontFamily: MAIN_FONT_FAMILY,
-                            fontSize: 12,
+                            fontSize: 13,
                             color: Color.fromRGBO(
                               99,
                               99,
@@ -209,22 +215,25 @@ class TwoItemInRow2 extends StatelessWidget {
                   ),
                 ),
               ),
+              const SizedBox(
+                height: 4,
+              ),
               widget1,
             ],
           ),
         ),
-        const SizedBox(width: 30), // Add some spacing between the two columns
+        const SizedBox(width: 16), // Add some spacing between the two columns
         Expanded(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               Padding(
-                padding: const EdgeInsets.only(right: 5),
+                padding: const EdgeInsets.only(top: 5, right: 10),
                 child: RichText(
                   text: TextSpan(
                     children: [
                       const TextSpan(
-                        text: ' *',
+                        text: ' * ',
                         style: TextStyle(
                             color: Color.fromRGBO(
                               156,
@@ -233,13 +242,13 @@ class TwoItemInRow2 extends StatelessWidget {
                               1,
                             ),
                             fontFamily: MAIN_FONT_FAMILY,
-                            fontSize: 16),
+                            fontSize: 14),
                       ),
                       TextSpan(
                         text: label2,
                         style: const TextStyle(
                             fontFamily: MAIN_FONT_FAMILY,
-                            fontSize: 12,
+                            fontSize: 13,
                             color: Color.fromRGBO(
                               99,
                               99,
@@ -250,6 +259,9 @@ class TwoItemInRow2 extends StatelessWidget {
                     ],
                   ),
                 ),
+              ),
+              const SizedBox(
+                height: 4,
               ),
               widget2,
             ],

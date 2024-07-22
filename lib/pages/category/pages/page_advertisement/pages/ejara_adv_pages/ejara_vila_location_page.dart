@@ -19,41 +19,47 @@ class EjaraVilaLocationPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: buildaAppBar(),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            MapInfoPage(locationInfo),
-            const SizedBox(
-              height: 10,
-            ),
-            const Align(
-              alignment: Alignment.centerRight,
-              child: Text(
-                "نوع ملک شما",
-                style: TextStyle(
-                  color: Color.fromRGBO(
-                    166,
-                    166,
-                    166,
-                    1,
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: Column(
+            children: [
+              MapInfoPage(locationInfo),
+              const SizedBox(
+                height: 20,
+              ),
+              const Align(
+                alignment: Alignment.centerRight,
+                child: Text(
+                  "نوع ملک شما",
+                  style: TextStyle(
+                    color: Color.fromRGBO(99, 99, 99, 1),
+                    fontSize: 12,
+                    fontFamily: MAIN_FONT_FAMILY,
                   ),
-                  fontSize: 12,
-                  fontFamily: MAIN_FONT_FAMILY,
                 ),
               ),
-            ),
-            SwitchItems(
-                onSelected: (_) {
-                  submit.value = true;
-                },
-                items: const ["باغ ویلا", "باغ", "خانه ویلایی"]),
-            const SizedBox(
-              height: 60,
-            ),
-            SubmitRow(submit: submit, nextPage: EjaraVilaPage())
-          ],
+              Padding(
+                padding: const EdgeInsets.only(left: 75.0),
+                child: SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: SwitchItems(
+                      onSelected: (_) {
+                        submit.value = true;
+                      },
+                      items: const ["باغ ویلا", "باغ", "خانه ویلایی"]),
+                ),
+              ),
+              const SizedBox(
+                height: 40,
+              ),
+              GestureDetector(
+                  onTap: () {
+                    Get.to(() => EjaraVilaPage());
+                  },
+                  child: Center(child: submit_row1()))
+            ],
+          ),
         ),
       ),
     );

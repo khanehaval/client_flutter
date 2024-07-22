@@ -16,6 +16,9 @@ class ForoshMaskoni extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView(
       children: [
+        const SizedBox(
+          height: 10,
+        ),
         dividerwidget(),
         Container(
           margin: const EdgeInsets.all(10),
@@ -208,13 +211,6 @@ class ForoshMaskoni extends StatelessWidget {
                         decoration: BoxDecoration(
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(10),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.grey.withOpacity(0.1),
-                                spreadRadius: 1,
-                                blurRadius: 5,
-                              )
-                            ],
                             border: Border.all(
                               color: Colors.black45,
                               width: 0.3,
@@ -237,13 +233,6 @@ class ForoshMaskoni extends StatelessWidget {
                         decoration: BoxDecoration(
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(10),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.grey.withOpacity(0.1),
-                                spreadRadius: 1,
-                                blurRadius: 10,
-                              )
-                            ],
                             border: Border.all(
                               color: Colors.black45,
                               width: 0.3,
@@ -276,13 +265,6 @@ class ForoshMaskoni extends StatelessWidget {
                       decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(10),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(0.1),
-                              spreadRadius: 1,
-                              blurRadius: 5,
-                            )
-                          ],
                           border: Border.all(
                             color: Colors.black45,
                             width: 0.3,
@@ -305,13 +287,6 @@ class ForoshMaskoni extends StatelessWidget {
                       decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(10),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(0.1),
-                              spreadRadius: 1,
-                              blurRadius: 10,
-                            )
-                          ],
                           border: Border.all(
                             color: Colors.black45,
                             width: 0.3,
@@ -342,13 +317,6 @@ class ForoshMaskoni extends StatelessWidget {
                       decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(10),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(0.1),
-                              spreadRadius: 1,
-                              blurRadius: 5,
-                            )
-                          ],
                           border: Border.all(
                             color: Colors.black45,
                             width: 0.3,
@@ -371,13 +339,6 @@ class ForoshMaskoni extends StatelessWidget {
                       decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(10),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(0.1),
-                              spreadRadius: 1,
-                              blurRadius: 10,
-                            )
-                          ],
                           border: Border.all(
                             color: Colors.black45,
                             width: 0.3,
@@ -409,13 +370,6 @@ class ForoshMaskoni extends StatelessWidget {
       decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(10),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.grey.withOpacity(0.1),
-              spreadRadius: 1,
-              blurRadius: 10,
-            )
-          ],
           border: Border.all(
             color: Colors.black45,
             width: 0.3,
@@ -532,7 +486,6 @@ class ForoshMaskoni extends StatelessWidget {
                                   decoration: BoxDecoration(
                                     color: Colors.white,
                                     borderRadius: BorderRadius.circular(10),
-                                    boxShadow: [],
                                   ),
                                   child: SvgPicture.asset(
                                     'assets/images/Group 653.svg',
@@ -568,13 +521,6 @@ class ForoshMaskoni extends StatelessWidget {
                                     decoration: BoxDecoration(
                                         color: Colors.white,
                                         borderRadius: BorderRadius.circular(10),
-                                        boxShadow: [
-                                          BoxShadow(
-                                            color: Colors.grey.withOpacity(.01),
-                                            spreadRadius: 1,
-                                            blurRadius: 10,
-                                          )
-                                        ],
                                         border: Border.all(
                                           color: Colors.black,
                                           // Initial border color
@@ -593,14 +539,6 @@ class ForoshMaskoni extends StatelessWidget {
                                           color: Colors.white,
                                           borderRadius:
                                               BorderRadius.circular(10),
-                                          boxShadow: [
-                                            BoxShadow(
-                                              color:
-                                                  Colors.grey.withOpacity(0.1),
-                                              spreadRadius: 1,
-                                              blurRadius: 10,
-                                            )
-                                          ],
                                           border: Border.all(
                                             color: Colors.blue,
                                             // Initial border color

@@ -17,11 +17,13 @@ class ImagesPicker extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        SvgPicture.asset(
-          'assets/images/Group 1223.svg',
-          fit: BoxFit.fitWidth,
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: SvgPicture.asset(
+            'assets/images/Group 1223.svg',
+            fit: BoxFit.fitWidth,
+          ),
         ),
         const SizedBox(height: 20),
         Obx(() => selectedImagesPath.isEmpty
@@ -37,13 +39,14 @@ class ImagesPicker extends StatelessWidget {
       child: GestureDetector(
         onTap: () => _showImageSourceActionSheet(context),
         child: DottedBorder(
+          dashPattern: const [4, 4],
           radius: const Radius.circular(10),
           borderType: BorderType.RRect,
-          color: Colors.black26,
-          strokeWidth: 1,
+          color: Color.fromARGB(115, 172, 172, 172),
+          strokeWidth: 2,
           child: const SizedBox(
-            width: 70,
-            height: 70,
+            width: 63,
+            height: 63,
             child: Icon(
               Icons.add,
               size: 35,

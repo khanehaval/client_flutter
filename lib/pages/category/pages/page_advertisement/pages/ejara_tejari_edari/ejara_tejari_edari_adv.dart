@@ -84,15 +84,15 @@ class EjaraTejariAdv extends StatelessWidget {
               borderRadius: BorderRadius.circular(10)),
           child: Padding(
             padding: const EdgeInsets.all(0.6),
-            child: Padding(
-              padding: const EdgeInsets.all(1.1),
-              child: Container(
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: Image.asset(assetPath)),
-            ),
+            child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Image.asset(assetPath),
+                )),
           ),
         ),
       ),

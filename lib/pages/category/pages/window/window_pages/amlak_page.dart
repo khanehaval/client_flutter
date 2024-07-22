@@ -12,6 +12,9 @@ class AmlakPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView(
       children: [
+        const SizedBox(
+          height: 10,
+        ),
         dividerwidget(),
         Container(
             margin: const EdgeInsets.all(10),
@@ -118,60 +121,65 @@ class AmlakPage extends StatelessWidget {
         const SizedBox(
           height: 10,
         ),
-        Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: Container(
-              decoration: BoxDecoration(
-                  gradient: const LinearGradient(colors: GRADIANT_COLOR3),
-                  borderRadius: BorderRadius.circular(10)),
-              child: Padding(
-                padding: const EdgeInsets.all(1.2),
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(10),
-                  ),
+        GestureDetector(
+          onTap: () {
+            _show_item_2.value = !_show_item_2.value;
+          },
+          child: Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Container(
+                decoration: BoxDecoration(
+                    gradient: const LinearGradient(colors: GRADIANT_COLOR3),
+                    borderRadius: BorderRadius.circular(10)),
+                child: Padding(
+                  padding: const EdgeInsets.all(1.2),
                   child: Container(
                     decoration: BoxDecoration(
+                      color: Colors.white,
                       borderRadius: BorderRadius.circular(10),
                     ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Obx(
-                          () => IconButton(
-                            icon: SvgPicture.asset(
-                              _show_item_1.value
-                                  ? 'assets/images/down.svg'
-                                  : 'assets/images/=.svg',
-                            ),
-                            onPressed: () {
-                              _show_item_1.value = !_show_item_1.value;
-                            },
-                          ),
-                        ),
-                        const Padding(
-                          padding: EdgeInsets.only(right: 15.0),
-                          child: Text(
-                            'خانه اول',
-                            style: TextStyle(
-                              fontSize: 14,
-                              color: Color.fromRGBO(
-                                48,
-                                48,
-                                48,
-                                1,
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Obx(
+                            () => IconButton(
+                              icon: SvgPicture.asset(
+                                _show_item_2.value
+                                    ? 'assets/images/down.svg'
+                                    : 'assets/images/=.svg',
                               ),
-                              fontWeight: FontWeight.bold,
-                              fontFamily: MAIN_FONT_FAMILY,
+                              onPressed: () {
+                                _show_item_2.value = !_show_item_2.value;
+                              },
                             ),
                           ),
-                        ),
-                      ],
+                          const Padding(
+                            padding: EdgeInsets.only(right: 15.0),
+                            child: Text(
+                              'خانه اول',
+                              style: TextStyle(
+                                fontSize: 14,
+                                color: Color.fromRGBO(
+                                  48,
+                                  48,
+                                  48,
+                                  1,
+                                ),
+                                fontWeight: FontWeight.bold,
+                                fontFamily: MAIN_FONT_FAMILY,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
-                ),
-              )),
+                )),
+          ),
         ),
         _buildItem2(),
         const SizedBox(
@@ -231,6 +239,9 @@ class AmlakPage extends StatelessWidget {
                       ),
                     ),
                   ],
+                ),
+                const SizedBox(
+                  height: 10,
                 ),
               ],
             )

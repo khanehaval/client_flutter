@@ -79,7 +79,10 @@ class EjaraKotaModatPage extends StatelessWidget {
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(10),
                           ),
-                          child: Image.asset(assetPath)),
+                          child: Padding(
+                            padding: const EdgeInsets.all(10.0),
+                            child: Image.asset(assetPath),
+                          )),
                     ),
                   )),
             )));

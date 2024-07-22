@@ -15,7 +15,11 @@ Widget ReadOnlyTextField(TextEditingController controller, Function onTap,
         style: TextStyle(fontSize: fontSize),
         decoration: InputDecoration(
           hintText: 'انتخاب نشده',
-          hintStyle: const TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
+          hintStyle: const TextStyle(
+              fontFamily: 'Iran Sans',
+              fontWeight: FontWeight.w400,
+              color: Color(0xFFA6A6A6),
+              fontSize: 13),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
             borderSide: const BorderSide(
@@ -51,7 +55,11 @@ Widget InputTextField(TextEditingController controller, {double? width}) {
       textAlign: TextAlign.right,
       decoration: InputDecoration(
         hintText: 'تایپ کنید',
-        hintStyle: const TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
+        hintStyle: const TextStyle(
+            fontFamily: 'Iran Sans',
+            fontWeight: FontWeight.w400,
+            color: Color(0xFFA6A6A6),
+            fontSize: 13),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
           borderSide: const BorderSide(

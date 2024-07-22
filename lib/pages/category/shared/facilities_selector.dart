@@ -12,10 +12,11 @@ class FacilitiesSelectorWidget extends StatelessWidget {
   final RxList<FacilitiesModel> selected;
 
   FacilitiesSelectorWidget({
+    Key? key,
     this.title = "سایر امکانات",
     required this.selectable,
     required this.selected,
-  });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -27,23 +28,27 @@ class FacilitiesSelectorWidget extends StatelessWidget {
         ),
         const SizedBox(height: 25),
         Obx(
-          () => SizedBox(
-            height: 210, // Adjust the height to accommodate multiple rows
-            child: Wrap(
-              spacing: 21,
-              runSpacing: 21,
-              children: List.generate(
-                selected.length + 1,
-                (index) {
-                  if (index == selected.length) {
-                    return _buildAddButton(context);
-                  } else {
-                    return _buildSelectedItem(index);
-                  }
-                },
+          () {
+            int rows = (selected.length / 3).ceil();
+            return SizedBox(
+              height: 70.0 * rows +
+                  50, // Adjust the height based on the number of rows
+              child: Wrap(
+                spacing: 21,
+                runSpacing: 21,
+                children: List.generate(
+                  selected.length + 1,
+                  (index) {
+                    if (index == selected.length) {
+                      return _buildAddButton(context);
+                    } else {
+                      return _buildSelectedItem(index);
+                    }
+                  },
+                ),
               ),
-            ),
-          ),
+            );
+          },
         ),
       ],
     );
@@ -60,7 +65,7 @@ class FacilitiesSelectorWidget extends StatelessWidget {
         dashPattern: const [4, 4],
         radius: const Radius.circular(10),
         borderType: BorderType.RRect,
-        color: Color.fromARGB(115, 172, 172, 172),
+        color: const Color.fromARGB(115, 172, 172, 172),
         strokeWidth: 2,
         child: const SizedBox(
           width: 63,
@@ -91,14 +96,14 @@ class FacilitiesSelectorWidget extends StatelessWidget {
         ),
         Positioned(
           top: -22,
-          left: 0,
-          right: 0,
+          left: -30,
+          right: 30,
           child: Center(
             child: IconButton(
               icon: SvgPicture.asset(
                 'assets/images/delete.svg',
-                width: 15,
-                height: 15,
+                width: 22,
+                height: 22,
               ),
               onPressed: () {
                 selected.removeAt(index);
@@ -213,9 +218,10 @@ class _FacilityItem extends StatelessWidget {
   final RxList<FacilitiesModel> selected;
 
   const _FacilityItem({
+    Key? key,
     required this.facilitiesModel,
     required this.selected,
-  });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -240,12 +246,12 @@ class _FacilityItem extends StatelessWidget {
                     : const LinearGradient(colors: [
                         Colors.black12,
                         Colors.black12,
-                        Colors.black12
+                        Colors.black12,
                       ]),
                 borderRadius: BorderRadius.circular(10),
               ),
               child: Padding(
-                padding: EdgeInsets.all(isSelected ? 1 : 1),
+                padding: const EdgeInsets.all(1),
                 child: Container(
                   decoration: BoxDecoration(
                     color: Colors.white,

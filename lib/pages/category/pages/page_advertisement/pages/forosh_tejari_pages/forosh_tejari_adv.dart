@@ -77,8 +77,6 @@ class ForoshTejariAdv extends StatelessWidget {
               child: Padding(
                   padding: const EdgeInsets.all(0.6),
                   child: Container(
-                    width: 144,
-                    height: 96,
                     decoration: ShapeDecoration(
                         color: Colors.white,
                         shape: RoundedRectangleBorder(
@@ -89,7 +87,10 @@ class ForoshTejariAdv extends StatelessWidget {
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(10),
                         ),
-                        child: Image.asset(assetPath)),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Image.asset(assetPath),
+                        )),
                   )),
             )));
   }

@@ -6,6 +6,8 @@ import 'package:flutter_application_1/pages/category/pages/home.dart';
 import 'package:flutter_application_1/pages/category/pages/messages.dart';
 import 'package:flutter_application_1/pages/category/pages/page_advertisement/category_advertisement.dart';
 import 'package:flutter_application_1/pages/category/pages/window/window.dart';
+import 'package:flutter_application_1/pages/category/shared/constant.dart';
+import 'package:flutter_application_1/pages/category/shared/widget/submit_row.dart';
 import 'package:flutter_application_1/pages/educational_tour.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
@@ -22,10 +24,10 @@ Widget bottomNavigationBar2(int currentMainPageIndex) {
     // Advertisements()
   ];
   return Container(
-    height: 82,
+    height: 76,
     decoration: BoxDecoration(boxShadow: [
       BoxShadow(
-        color: Colors.grey.withOpacity(0.5),
+        color: Colors.black.withOpacity(0.15),
         spreadRadius: 0,
         blurRadius: 5,
         offset: Offset(-1, 0),
@@ -38,7 +40,6 @@ Widget bottomNavigationBar2(int currentMainPageIndex) {
       ),
       child: Obx(
         () => Container(
-          color: Colors.black,
           child: BottomNavigationBar(
             unselectedFontSize: 14,
             selectedFontSize: 14,
@@ -137,10 +138,31 @@ PreferredSizeWidget buildaAppBar() {
   return AppBar(
     backgroundColor: Colors.white,
     leading: IconButton(
-      icon: const Icon(
-        Icons.arrow_back_ios,
-      ),
+      icon: SvgPicture.asset('assets/images/left_icon.svg'),
       onPressed: () => Get.back(),
     ),
+  );
+}
+
+Widget submit_row1() {
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.center,
+    children: [
+      const Text(
+        "...تائید و ادامه ",
+        style: TextStyle(
+            fontFamily: MAIN_FONT_FAMILY,
+            fontSize: 16,
+            color: Color.fromRGBO(
+              48,
+              48,
+              48,
+              1,
+            )),
+      ),
+      IconButton(
+          onPressed: () {},
+          icon: SvgPicture.asset('assets/images/right_icon.svg'))
+    ],
   );
 }

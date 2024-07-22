@@ -32,7 +32,7 @@ class SakhVaSaz extends StatelessWidget {
             }),
           ]),
           const SizedBox(
-            height: 30,
+            height: 20,
           ),
           _buildItem('assets/images/Frame_sakht2.png', () {
             Get.to(FirstMapPage(onSelect: (_) {

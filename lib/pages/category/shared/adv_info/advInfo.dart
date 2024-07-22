@@ -44,6 +44,10 @@ class AdvInfo extends StatelessWidget {
                         child: Text(
                           "آپارتمان 120 متری به صورت اقساطی",
                           textAlign: TextAlign.right,
+                          style: TextStyle(
+                            fontFamily: 'Iran Sans',
+                            fontWeight: FontWeight.w400,
+                          ),
                         ),
                       )),
                 if (proposalTitle.isFalse)
@@ -54,7 +58,7 @@ class AdvInfo extends StatelessWidget {
                         child: Align(
                             alignment: Alignment.centerRight,
                             child: Text(
-                              "*عنوان آگهی",
+                              "* عنوان آگهی",
                               style: TextStyle(
                                   fontFamily: 'Iran Sans',
                                   fontWeight: FontWeight.w600,

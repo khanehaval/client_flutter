@@ -14,6 +14,9 @@ class EjaraTagariEdari extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView(
       children: [
+        const SizedBox(
+          height: 10,
+        ),
         dividerwidget(),
         Container(
           margin: const EdgeInsets.all(10),
@@ -258,6 +261,9 @@ class EjaraTagariEdari extends StatelessWidget {
           ? Padding(
               padding: const EdgeInsets.all(10),
               child: Column(children: [
+                const SizedBox(
+                  height: 10,
+                ),
                 GestureDetector(
                   onTap: () {},
                   child: Row(
@@ -269,13 +275,6 @@ class EjaraTagariEdari extends StatelessWidget {
                         decoration: BoxDecoration(
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(10),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.grey.withOpacity(0.1),
-                                spreadRadius: 1,
-                                blurRadius: 5,
-                              )
-                            ],
                             border: Border.all(
                               color: Colors.black45,
                               width: 0.3,
@@ -298,13 +297,6 @@ class EjaraTagariEdari extends StatelessWidget {
                         decoration: BoxDecoration(
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(10),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.grey.withOpacity(0.1),
-                                spreadRadius: 1,
-                                blurRadius: 10,
-                              )
-                            ],
                             border: Border.all(
                               color: Colors.black45,
                               width: 0.3,
@@ -337,13 +329,6 @@ class EjaraTagariEdari extends StatelessWidget {
                       decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(10),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(0.1),
-                              spreadRadius: 1,
-                              blurRadius: 5,
-                            )
-                          ],
                           border: Border.all(
                             color: Colors.black45,
                             width: 0.3,
@@ -366,13 +351,6 @@ class EjaraTagariEdari extends StatelessWidget {
                       decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(10),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(0.1),
-                              spreadRadius: 1,
-                              blurRadius: 10,
-                            )
-                          ],
                           border: Border.all(
                             color: Colors.black45,
                             width: 0.3,
@@ -403,13 +381,6 @@ class EjaraTagariEdari extends StatelessWidget {
                       decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(10),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(0.1),
-                              spreadRadius: 1,
-                              blurRadius: 5,
-                            )
-                          ],
                           border: Border.all(
                             color: Colors.black45,
                             width: 0.3,
@@ -432,13 +403,6 @@ class EjaraTagariEdari extends StatelessWidget {
                       decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(10),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(0.1),
-                              spreadRadius: 1,
-                              blurRadius: 10,
-                            )
-                          ],
                           border: Border.all(
                             color: Colors.black45,
                             width: 0.3,
@@ -470,7 +434,7 @@ class EjaraTagariEdari extends StatelessWidget {
             child: Column(
               children: [
                 const SizedBox(
-                  height: 17,
+                  height: 10,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -512,13 +476,6 @@ class EjaraTagariEdari extends StatelessWidget {
       decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(10),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.grey.withOpacity(0.1),
-              spreadRadius: 1,
-              blurRadius: 10,
-            )
-          ],
           border: Border.all(
             color: Colors.black45,
             width: 0.3,

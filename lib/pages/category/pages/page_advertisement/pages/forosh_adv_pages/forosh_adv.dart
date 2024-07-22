@@ -52,15 +52,15 @@ class ForoshAdv extends StatelessWidget {
                           child: Padding(
                             padding: const EdgeInsets.all(0.6),
                             child: Container(
-                              width: 144,
-                              height: 96,
+                              width: 140,
+                              height: 80,
                               decoration: ShapeDecoration(
                                   color: Colors.white,
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(10),
                                   )),
                               child: Padding(
-                                padding: const EdgeInsets.all(3.0),
+                                padding: const EdgeInsets.all(10.0),
                                 child: Image.asset(
                                     'assets/images/Frame_forosh.png'),
                               ),
@@ -94,15 +94,15 @@ class ForoshAdv extends StatelessWidget {
                         child: Padding(
                           padding: const EdgeInsets.all(0.6),
                           child: Container(
-                            width: 144,
-                            height: 96,
+                            width: 140,
+                            height: 80,
                             decoration: ShapeDecoration(
                                 color: Colors.white,
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(10),
                                 )),
                             child: Padding(
-                              padding: const EdgeInsets.all(3.0),
+                              padding: const EdgeInsets.all(10.0),
                               child: Image.asset(
                                   'assets/images/Frame_forosh2.png'),
                             ),
@@ -131,15 +131,15 @@ class ForoshAdv extends StatelessWidget {
                         child: Padding(
                           padding: const EdgeInsets.all(0.6),
                           child: Container(
-                            width: 144,
-                            height: 96,
+                            width: 140,
+                            height: 80,
                             decoration: ShapeDecoration(
                                 color: Colors.white,
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(10),
                                 )),
                             child: Padding(
-                              padding: const EdgeInsets.all(3.0),
+                              padding: const EdgeInsets.all(10.0),
                               child: Image.asset(
                                   'assets/images/Frame_forosh3.png'),
                             ),

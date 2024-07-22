@@ -111,12 +111,12 @@ class _EducationalTourState extends State<EducationalTour> {
 
   Widget bottomNavigationBar1() {
     return Container(
-      height: 82,
+      height: 75,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
         boxShadow: [
           BoxShadow(
-            color: Colors.grey.withOpacity(0.5),
+            color: Colors.black.withOpacity(0.15),
             spreadRadius: 0,
             blurRadius: 5,
             offset: Offset(-1, 0), // changes position of shadow

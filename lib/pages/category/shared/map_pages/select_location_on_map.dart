@@ -5,6 +5,7 @@ import 'package:flutter_application_1/pages/category/shared/map_pages/location_I
 import 'package:flutter_application_1/pages/category/shared/widget/Neighbourhood.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/city_widget.dart';
 import 'package:flutter_map/flutter_map.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
@@ -106,8 +107,7 @@ class _SelectLocationMapState extends State<SelectLocationMap> {
                     circles: [
                       CircleMarker(
                         point: locationInfo.location,
-                        radius: 100,
-                        useRadiusInMeter: true,
+                        radius: 70,
                         borderStrokeWidth: 3,
                         borderColor: Colors.blueAccent,
                         color: Colors.white54,
@@ -120,7 +120,7 @@ class _SelectLocationMapState extends State<SelectLocationMap> {
                 Marker(
                     point: locationInfo.location,
                     width: 30,
-                    height: 50,
+                    height: 30,
                     child: Obx(() => showLimit.isTrue
                         ? const Icon(
                             Icons.circle,
@@ -136,7 +136,7 @@ class _SelectLocationMapState extends State<SelectLocationMap> {
           child: Padding(
             padding: const EdgeInsets.only(top: 30, left: 10),
             child: IconButton(
-              icon: const Icon(Icons.arrow_back_ios),
+              icon: SvgPicture.asset('assets/images/left_icon.svg'),
               onPressed: () {
                 Get.back();
               },
@@ -151,7 +151,7 @@ class _SelectLocationMapState extends State<SelectLocationMap> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    const Text("محدوده ملک\n را نشان بده",
+                    const Text("محدوده ملک\n را نـشان بـده",
                         style: TextStyle(
                           fontFamily: MAIN_FONT_FAMILY,
                           fontSize: 12,
@@ -159,17 +159,22 @@ class _SelectLocationMapState extends State<SelectLocationMap> {
                         ),
                         textDirection: TextDirection.rtl,
                         textAlign: TextAlign.center),
+                    const SizedBox(
+                      width: 10,
+                    ),
                     Container(
+                      width: 45,
+                      height: 40,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(20),
                           boxShadow: const [
                             BoxShadow(
                                 color: Color.fromRGBO(165, 161, 161, 0.247),
-                                blurRadius: 3,
-                                offset: Offset(0, 1)),
+                                blurRadius: 10,
+                                offset: Offset(-2, 0)),
                           ]),
                       child: Transform.scale(
-                        scale: 1.1,
+                        scale: 0.9,
                         child: Obx(
                           () => Switch(
                             onChanged: (_) => showLimit.value = _,
@@ -197,12 +202,15 @@ class _SelectLocationMapState extends State<SelectLocationMap> {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  const Text(
-                    "انتخاب محله ",
-                    style: TextStyle(
-                      color: Color.fromRGBO(99, 99, 99, 1),
-                      fontSize: 16,
-                      fontFamily: MAIN_FONT_FAMILY,
+                  const Padding(
+                    padding: EdgeInsets.only(right: 10.0),
+                    child: Text(
+                      "انتخاب محله ",
+                      style: TextStyle(
+                        color: Color.fromRGBO(99, 99, 99, 1),
+                        fontSize: 14,
+                        fontFamily: MAIN_FONT_FAMILY,
+                      ),
                     ),
                   ),
                   GestureDetector(
@@ -229,7 +237,7 @@ class _SelectLocationMapState extends State<SelectLocationMap> {
                                 padding: const EdgeInsets.only(right: 5.0),
                                 child: Text(
                                   style: const TextStyle(
-                                      fontFamily: 'Iran Sans Bold,',
+                                      fontFamily: 'Iran Sans',
                                       color: Color.fromRGBO(
                                         48,
                                         48,
@@ -263,13 +271,16 @@ class _SelectLocationMapState extends State<SelectLocationMap> {
                       SizedBox(
                         width: 5,
                       ),
-                      Text(
-                        "انتخاب شهر",
-                        style: TextStyle(
-                            fontSize: 16,
-                            fontFamily: MAIN_FONT_FAMILY,
-                            color: Color.fromRGBO(99, 99, 99, 1)),
-                        textAlign: TextAlign.start,
+                      Padding(
+                        padding: const EdgeInsets.only(right: 10.0),
+                        child: Text(
+                          "انتخاب شهر",
+                          style: TextStyle(
+                              fontSize: 14,
+                              fontFamily: MAIN_FONT_FAMILY,
+                              color: Color.fromRGBO(99, 99, 99, 1)),
+                          textAlign: TextAlign.start,
+                        ),
                       ),
                     ],
                   ),
@@ -318,66 +329,68 @@ class _SelectLocationMapState extends State<SelectLocationMap> {
             ],
           ),
         ),
-        Align(
-          alignment: Alignment.bottomLeft,
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                Column(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    IconButton(
-                        onPressed: () {
-                          getUserCurrentLocation();
-                        },
-                        icon: SizedBox(
-                            height: 50,
-                            width: 50,
-                            child: Image.asset("assets/images/icon zoom.png"))),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    IconButton(
-                        onPressed: () {
-                          zoomOut();
-                        },
-                        icon: SizedBox(
-                            width: 50,
-                            height: 50,
-                            child: Image.asset("assets/images/icon -.png"))),
-                  ],
-                ),
-                Column(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    IconButton(
-                        onPressed: () {
-                          widget.onSelect(locationInfo);
-                          // Get.back();
-                        },
-                        icon: SizedBox(
-                            height: 70,
-                            width: 70,
-                            child: Image.asset(
-                              "assets/images/Ok.png",
-                            ))),
-                    IconButton(
-                        onPressed: () {
-                          zoomIn();
-                        },
-                        icon: SizedBox(
-                            width: 50,
-                            height: 50,
-                            child: Image.asset("assets/images/icon +.png")))
-                  ],
-                ),
-              ],
-            ),
+        Positioned(
+          top: 660,
+          left: 15,
+          child: Column(
+            children: [
+              IconButton(
+                  onPressed: () {
+                    zoomIn();
+                  },
+                  icon: SizedBox(
+                      height: 50,
+                      width: 50,
+                      child: Image.asset("assets/images/icon zoom.png"))),
+            ],
+          ),
+        ),
+        Positioned(
+          top: 720,
+          left: 15,
+          child: Column(
+            children: [
+              IconButton(
+                  onPressed: () {
+                    zoomOut();
+                  },
+                  icon: SizedBox(
+                      width: 50,
+                      height: 50,
+                      child: Image.asset("assets/images/icon -.png"))),
+            ],
+          ),
+        ),
+        Positioned(
+          top: 650,
+          left: 70,
+          child: Column(
+            children: [
+              IconButton(
+                  onPressed: () {
+                    widget.onSelect(locationInfo);
+                  },
+                  icon: SizedBox(
+                      height: 68,
+                      width: 70,
+                      child: Image.asset("assets/images/Ok.png"))),
+            ],
+          ),
+        ),
+        Positioned(
+          top: 720,
+          left: 75,
+          child: Column(
+            children: [
+              IconButton(
+                  onPressed: () {
+                    zoomIn();
+                  },
+                  icon: SizedBox(
+                      width: 50,
+                      height: 50,
+                      child: Image.asset("assets/images/icon +.png"))),
+            ],
           ),
         ),
       ]),

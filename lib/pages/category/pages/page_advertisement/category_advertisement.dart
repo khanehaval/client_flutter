@@ -32,7 +32,6 @@ class _CategoryAdvertisementState extends State<CategoryAdvertisement> {
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Column(
               children: [
@@ -44,7 +43,7 @@ class _CategoryAdvertisementState extends State<CategoryAdvertisement> {
                     fontSize: 25,
                   ),
                 ),
-                const SizedBox(height: 5),
+                const SizedBox(height: 20),
                 SvgPicture.asset(
                   'assets/images/key and home1.svg',
                   height: Get.height / 4,
@@ -53,22 +52,21 @@ class _CategoryAdvertisementState extends State<CategoryAdvertisement> {
               ],
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(vertical: 55),
+              padding: const EdgeInsets.symmetric(vertical: 30),
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   _buildRow([
                     _buildItem('rentstore', 'assets/images/Frame_rentstore.png',
                         EjaraAdv()),
                     _buildItem('salehome', 'assets/images/Frame_salehome.png',
-                        ForoshAdv()),
+                        const ForoshAdv()),
                   ]),
                   const SizedBox(height: 10),
                   _buildRow([
                     _buildItem('rent', 'assets/images/Frame_rent.png',
                         EjaraTejariAdv()),
                     _buildItem('salestore', 'assets/images/Frame_salestore.png',
-                        ForoshTejariAdv()),
+                        const ForoshTejariAdv()),
                   ]),
                   const SizedBox(height: 10),
                   _buildRow([
@@ -91,7 +89,7 @@ class _CategoryAdvertisementState extends State<CategoryAdvertisement> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children:
-          items.expand((item) => [item, const SizedBox(width: 20)]).toList()
+          items.expand((item) => [item, const SizedBox(width: 10)]).toList()
             ..removeLast(),
     );
   }
@@ -130,10 +128,10 @@ class _CategoryAdvertisementState extends State<CategoryAdvertisement> {
                 borderRadius: BorderRadius.circular(7),
               ),
               child: SizedBox(
-                height: 90,
+                height: 80,
                 width: 140,
                 child: Padding(
-                  padding: const EdgeInsets.all(3.0),
+                  padding: const EdgeInsets.all(10.0),
                   child: Image.asset(assetPath),
                 ),
               ),

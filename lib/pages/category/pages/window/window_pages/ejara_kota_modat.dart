@@ -13,6 +13,9 @@ class EjaraKotaModat extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView(
       children: [
+        const SizedBox(
+          height: 10,
+        ),
         dividerwidget(),
         Container(
           margin: const EdgeInsets.all(10),

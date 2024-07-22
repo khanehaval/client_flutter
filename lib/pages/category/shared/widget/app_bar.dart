@@ -9,11 +9,9 @@ PreferredSizeWidget buildAppBar() {
   return AppBar(
     backgroundColor: Colors.white,
     leading: IconButton(
-      icon: const Padding(
-        padding: EdgeInsets.only(left: 10.0),
-        child: Icon(
-          Icons.arrow_back_ios,
-        ),
+      icon: Padding(
+        padding: EdgeInsets.only(left: 20.0),
+        child: SvgPicture.asset('assets/images/left_icon.svg'),
       ),
       onPressed: () => Get.back(),
     ),

@@ -57,26 +57,25 @@ class EjaraAdv extends StatelessWidget {
   Widget _buildItem(String assetPath, Function onTap) {
     return GestureDetector(
       onTap: () => onTap(),
-      child: SizedBox(
+      child: Container(
         height: 90,
         width: 140,
-        child: Container(
-          child: Container(
-            decoration: BoxDecoration(
-                gradient: const LinearGradient(
-                  colors: GRADIANT_COLOR3,
-                ),
-                borderRadius: BorderRadius.circular(10)),
-            child: Padding(
-              padding: const EdgeInsets.all(0.6),
-              child: Container(
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: Image.asset(assetPath)),
+        decoration: BoxDecoration(
+            gradient: const LinearGradient(
+              colors: GRADIANT_COLOR3,
             ),
-          ),
+            borderRadius: BorderRadius.circular(10)),
+        child: Padding(
+          padding: const EdgeInsets.all(0.6),
+          child: Container(
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Image.asset(assetPath),
+              )),
         ),
       ),
     );
