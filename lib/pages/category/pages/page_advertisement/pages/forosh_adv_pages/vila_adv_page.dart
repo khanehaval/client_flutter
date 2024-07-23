@@ -179,6 +179,9 @@ class _VilaAdvPageState extends State<VilaAdvPage> {
                   decoration: InputDecoration(
                     hintText: "0",
                     hintStyle: const TextStyle(
+                      fontSize: 13,
+                      fontFamily: 'Iran Sans',
+                      fontWeight: FontWeight.w400,
                       color: Color(0xFFA6A6A6),
                     ),
                     border: OutlineInputBorder(
@@ -234,6 +237,9 @@ class _VilaAdvPageState extends State<VilaAdvPage> {
                   decoration: InputDecoration(
                     hintText: "0",
                     hintStyle: const TextStyle(
+                      fontSize: 13,
+                      fontFamily: 'Iran Sans',
+                      fontWeight: FontWeight.w400,
                       color: Color(0xFFA6A6A6),
                     ),
                     border: OutlineInputBorder(
@@ -257,6 +263,9 @@ class _VilaAdvPageState extends State<VilaAdvPage> {
                   decoration: InputDecoration(
                     hintText: "0",
                     hintStyle: const TextStyle(
+                      fontSize: 13,
+                      fontFamily: 'Iran Sans',
+                      fontWeight: FontWeight.w400,
                       color: Color(0xFFA6A6A6),
                     ),
                     border: OutlineInputBorder(
@@ -588,7 +597,11 @@ class _VilaAdvPageState extends State<VilaAdvPage> {
                         decoration: InputDecoration(
                           hintText: 'مبلغ را وارد کنید',
                           hintStyle: const TextStyle(
-                              color: Color(0xFFA6A6A6), fontSize: 13),
+                            fontSize: 13,
+                            fontFamily: 'Iran Sans',
+                            fontWeight: FontWeight.w400,
+                            color: Color(0xFFA6A6A6),
+                          ),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10),
                           ),
@@ -603,7 +616,11 @@ class _VilaAdvPageState extends State<VilaAdvPage> {
                         decoration: InputDecoration(
                           hintText: 'مبلغ را وارد کنید',
                           hintStyle: const TextStyle(
-                              color: Color(0xFFA6A6A6), fontSize: 13),
+                            fontSize: 13,
+                            fontFamily: 'Iran Sans',
+                            fontWeight: FontWeight.w400,
+                            color: Color(0xFFA6A6A6),
+                          ),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10),
                           ),
@@ -690,7 +707,11 @@ class _VilaAdvPageState extends State<VilaAdvPage> {
                         decoration: InputDecoration(
                           hintText: '3,6000000', //todo
                           hintStyle: const TextStyle(
-                              color: Color(0xFFA6A6A6), fontSize: 13),
+                            fontSize: 13,
+                            fontFamily: 'Iran Sans',
+                            fontWeight: FontWeight.w400,
+                            color: Color(0xFFA6A6A6),
+                          ),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10),
                           ),
@@ -705,7 +726,11 @@ class _VilaAdvPageState extends State<VilaAdvPage> {
                         decoration: InputDecoration(
                           hintText: '400000000', //todo
                           hintStyle: const TextStyle(
-                              color: Color(0xFFA6A6A6), fontSize: 13),
+                            fontSize: 13,
+                            fontFamily: 'Iran Sans',
+                            fontWeight: FontWeight.w400,
+                            color: Color(0xFFA6A6A6),
+                          ),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10),
                           ),

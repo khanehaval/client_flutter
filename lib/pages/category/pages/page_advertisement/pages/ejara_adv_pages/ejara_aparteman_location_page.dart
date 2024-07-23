@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/ejara_adv_pages/ejara_aparteman_page.dart';
+import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/ejara_adv_pages/ejara_vila_page.dart';
 import 'package:flutter_application_1/pages/category/shared/map_pages/location_Info.dart';
 import 'package:flutter_application_1/pages/category/shared/map_pages/map_info_page.dart';
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
@@ -49,14 +50,16 @@ class EjaraApartemanLocationPage extends StatelessWidget {
                 ),
               ),
               SwitchItems(
-                  onSelected: (_) {
-                    submit.value = true;
-                  },
+                  onSelected: (_) {},
                   items: const ["سوئیت", "برج", "پنت هاوس"]),
               const SizedBox(
                 height: 55,
               ),
-              SubmitRow(submit: submit, nextPage: EjaraApartemanPage())
+              GestureDetector(
+                  onTap: () {
+                    Get.to(() => EjaraVilaPage());
+                  },
+                  child: Center(child: submit_row1()))
             ],
           ),
         ),

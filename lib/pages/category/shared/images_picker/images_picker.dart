@@ -39,10 +39,10 @@ class ImagesPicker extends StatelessWidget {
       child: GestureDetector(
         onTap: () => _showImageSourceActionSheet(context),
         child: DottedBorder(
-          dashPattern: const [4, 4],
+          dashPattern: const [5, 5],
           radius: const Radius.circular(10),
           borderType: BorderType.RRect,
-          color: Color.fromARGB(115, 172, 172, 172),
+          color: const Color.fromARGB(115, 172, 172, 172),
           strokeWidth: 2,
           child: const SizedBox(
             width: 63,
@@ -68,12 +68,14 @@ class ImagesPicker extends StatelessWidget {
           physics: const NeverScrollableScrollPhysics(),
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
-            childAspectRatio: 2,
+            crossAxisSpacing: 10,
+            mainAxisSpacing: 10,
+            childAspectRatio: 190 / 119,
           ),
           itemCount: selectedImagesPath.length,
           itemBuilder: (context, index) {
             return Padding(
-              padding: const EdgeInsets.all(1),
+              padding: const EdgeInsets.all(5),
               child: index == selectedImagesPath.length - 1
                   ? _buildAddMoreButton(context)
                   : _buildImageGridItem(index),
@@ -94,7 +96,7 @@ class ImagesPicker extends StatelessWidget {
             File(path),
             height: 200,
             width: double.infinity,
-            fit: BoxFit.fill,
+            fit: BoxFit.cover,
           ),
           Align(
             alignment: Alignment.bottomCenter,
@@ -163,7 +165,7 @@ class ImagesPicker extends StatelessWidget {
     );
   }
 
-  Widget _buildRemoveIcon(String path, {double size = 52}) {
+  Widget _buildRemoveIcon(String path, {double size = 78}) {
     return Container(
       width: size,
       height: size,
@@ -176,7 +178,7 @@ class ImagesPicker extends StatelessWidget {
         color: Colors.white70,
       ),
       child: IconButton(
-        icon: Icon(CupertinoIcons.clear_circled, size: size / 2),
+        icon: Icon(CupertinoIcons.clear_circled, size: size / 1.88),
         onPressed: () => selectedImagesPath.remove(path),
       ),
     );
@@ -186,16 +188,19 @@ class ImagesPicker extends StatelessWidget {
     return GestureDetector(
       behavior: HitTestBehavior.translucent,
       onTap: () => _showImageSourceActionSheet(context),
-      child: DottedBorder(
-        borderType: BorderType.RRect,
-        color: Colors.black26,
-        strokeWidth: 1,
-        radius: const Radius.circular(6),
-        child: SizedBox(
-          width: Get.mediaQuery.size.width * 0.4,
-          height: 200,
-          child: const Center(
-            child: Icon(Icons.add, size: 30, color: Colors.black26),
+      child: Padding(
+        padding: const EdgeInsets.only(right: 65, top: 20),
+        child: DottedBorder(
+          borderType: BorderType.RRect,
+          color: Colors.black26,
+          strokeWidth: 2,
+          radius: const Radius.circular(10),
+          child: SizedBox(
+            width: Get.mediaQuery.size.width * 0.4,
+            height: 200,
+            child: const Center(
+              child: Icon(Icons.add, size: 30, color: Colors.black26),
+            ),
           ),
         ),
       ),
@@ -203,29 +208,33 @@ class ImagesPicker extends StatelessWidget {
   }
 
   Widget _buildImageGridItem(int index) {
-    return Container(
-      decoration: BoxDecoration(
-        color: Get.theme.focusColor,
-        border: Border.all(color: Colors.black12),
-        borderRadius: BorderRadius.circular(6),
-      ),
-      child: Stack(
-        alignment: Alignment.bottomCenter,
-        children: [
-          Image.file(
-            File(selectedImagesPath[index + 1]),
-            height: 100,
-            width: double.infinity,
-            fit: BoxFit.cover,
-          ),
-          Align(
-            alignment: Alignment.topLeft,
-            child: Padding(
-              padding: const EdgeInsets.all(1),
-              child: _buildRemoveIcon(selectedImagesPath[index + 1], size: 34),
+    return SizedBox(
+      height: 200,
+      width: 130,
+      child: Container(
+        decoration: BoxDecoration(
+          color: Get.theme.focusColor,
+          border: Border.all(color: Colors.black12),
+          borderRadius: BorderRadius.circular(4),
+        ),
+        child: Stack(
+          children: [
+            Image.file(
+              File(selectedImagesPath[index + 1]),
+              height: 119,
+              width: 190,
+              fit: BoxFit.cover,
             ),
-          ),
-        ],
+            Align(
+              alignment: Alignment.topLeft,
+              child: Padding(
+                padding: const EdgeInsets.all(5),
+                child:
+                    _buildRemoveIcon(selectedImagesPath[index + 1], size: 34),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -242,7 +251,7 @@ class ImagesPicker extends StatelessWidget {
                 title: const Text('Photo Library'),
                 onTap: () {
                   _pickImage(ImageSource.gallery);
-                  Navigator.of(context).pop();
+                  Get.back();
                 },
               ),
               ListTile(
@@ -250,7 +259,7 @@ class ImagesPicker extends StatelessWidget {
                 title: const Text('Camera'),
                 onTap: () {
                   _pickImage(ImageSource.camera);
-                  Navigator.of(context).pop();
+                  Get.back();
                 },
               ),
             ],
@@ -264,10 +273,16 @@ class ImagesPicker extends StatelessWidget {
     try {
       final pickedFile = await ImagePicker().pickImage(source: source);
       if (pickedFile != null) {
-        selectedImagesPath.add(pickedFile.path);
+        var croppedFile = await Cropper.cropImage(pickedFile.path);
+        if (croppedFile != null) {
+          selectedImagesPath.add(croppedFile);
+        } else {
+          selectedImagesPath.add(pickedFile.path);
+        }
       }
     } catch (e) {
       print('Error picking image: $e');
+      Get.snackbar('Error', 'Failed to pick image: $e');
     }
   }
 }

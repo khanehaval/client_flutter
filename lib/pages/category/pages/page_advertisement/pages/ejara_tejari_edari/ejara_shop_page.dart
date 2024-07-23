@@ -136,6 +136,9 @@ class _EjaraShopPageState extends State<EjaraShopPage> {
                     decoration: InputDecoration(
                       hintText: "0",
                       hintStyle: const TextStyle(
+                        fontSize: 13,
+                        fontFamily: 'Iran Sans',
+                        fontWeight: FontWeight.w400,
                         color: Color(0xFFA6A6A6),
                       ),
                       border: OutlineInputBorder(
@@ -154,6 +157,9 @@ class _EjaraShopPageState extends State<EjaraShopPage> {
                     decoration: InputDecoration(
                       hintText: "0",
                       hintStyle: const TextStyle(
+                        fontSize: 13,
+                        fontFamily: 'Iran Sans',
+                        fontWeight: FontWeight.w400,
                         color: Color(0xFFA6A6A6),
                       ),
                       border: OutlineInputBorder(
@@ -211,6 +217,9 @@ class _EjaraShopPageState extends State<EjaraShopPage> {
                   decoration: InputDecoration(
                     hintText: '120',
                     hintStyle: const TextStyle(
+                      fontSize: 13,
+                      fontFamily: 'Iran Sans',
+                      fontWeight: FontWeight.w400,
                       color: Color(0xFFA6A6A6),
                     ),
                     border: OutlineInputBorder(
@@ -388,8 +397,12 @@ class _EjaraShopPageState extends State<EjaraShopPage> {
                   textAlign: TextAlign.right,
                   decoration: InputDecoration(
                     hintText: 'انتخاب نشده',
-                    hintStyle:
-                        TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
+                    hintStyle: TextStyle(
+                      fontSize: 13,
+                      fontFamily: 'Iran Sans',
+                      fontWeight: FontWeight.w400,
+                      color: Color(0xFFA6A6A6),
+                    ),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
@@ -416,8 +429,12 @@ class _EjaraShopPageState extends State<EjaraShopPage> {
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
                       hintText: 'انتخاب نشده',
-                      hintStyle:
-                          TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
+                      hintStyle: TextStyle(
+                        fontSize: 13,
+                        fontFamily: 'Iran Sans',
+                        fontWeight: FontWeight.w400,
+                        color: Color(0xFFA6A6A6),
+                      ),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
@@ -438,8 +455,12 @@ class _EjaraShopPageState extends State<EjaraShopPage> {
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
                       hintText: 'انتخاب نشده',
-                      hintStyle:
-                          TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
+                      hintStyle: TextStyle(
+                        fontSize: 13,
+                        fontFamily: 'Iran Sans',
+                        fontWeight: FontWeight.w400,
+                        color: Color(0xFFA6A6A6),
+                      ),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
@@ -594,8 +615,12 @@ Widget aghsatiForoshWidget(BuildContext context) {
                   textAlign: TextAlign.right,
                   decoration: InputDecoration(
                     hintText: 'مبلغ را وارد کنید', //todo
-                    hintStyle:
-                        const TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
+                    hintStyle: const TextStyle(
+                      fontSize: 13,
+                      fontFamily: 'Iran Sans',
+                      fontWeight: FontWeight.w400,
+                      color: Color(0xFFA6A6A6),
+                    ),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
@@ -609,8 +634,12 @@ Widget aghsatiForoshWidget(BuildContext context) {
                   textAlign: TextAlign.right,
                   decoration: InputDecoration(
                     hintText: 'مبلغ را وارد کنید', //todo
-                    hintStyle:
-                        const TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
+                    hintStyle: const TextStyle(
+                      fontSize: 13,
+                      fontFamily: 'Iran Sans',
+                      fontWeight: FontWeight.w400,
+                      color: Color(0xFFA6A6A6),
+                    ),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),

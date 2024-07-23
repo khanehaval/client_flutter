@@ -53,16 +53,16 @@ class EajraShopLocationPage extends StatelessWidget {
               ),
               Align(
                 alignment: Alignment.centerRight,
-                child: SwitchItems(
-                    onSelected: (_) {
-                      submit.value = true;
-                    },
-                    items: const [" غرفه"]),
+                child: SwitchItems(onSelected: (_) {}, items: const [" غرفه"]),
               ),
               const SizedBox(
                 height: 20,
               ),
-              SubmitRow(submit: submit, nextPage: EjaraShopPage())
+              GestureDetector(
+                  onTap: () {
+                    Get.to(() => EjaraShopPage());
+                  },
+                  child: Center(child: submit_row1()))
             ],
           ),
         ),

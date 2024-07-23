@@ -55,15 +55,16 @@ class ForoshDaftarLocationPage extends StatelessWidget {
               Align(
                 alignment: Alignment.centerRight,
                 child: SwitchItems(
-                    onSelected: (_) {
-                      submit.value = true;
-                    },
-                    items: const ["مطب", "ملک اداری"]),
+                    onSelected: (_) {}, items: const ["مطب", "ملک اداری"]),
               ),
               const SizedBox(
                 height: 30,
               ),
-              SubmitRow(submit: submit, nextPage: ForoshDaftarPage())
+              GestureDetector(
+                  onTap: () {
+                    Get.to(() => ForoshDaftarPage());
+                  },
+                  child: Center(child: submit_row1()))
             ],
           ),
         ),

@@ -22,47 +22,49 @@ class ForoshShopLocationPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: buildaAppBar(),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            MapInfoPage(locationInfo),
-            const SizedBox(
-              height: 15,
-            ),
-            const Align(
-              alignment: Alignment.centerRight,
-              child: Padding(
-                padding: EdgeInsets.all(8.0),
-                child: Text(
-                  "نوع ملک شما",
-                  style: TextStyle(
-                    color: Color.fromRGBO(
-                      166,
-                      166,
-                      166,
-                      1,
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              MapInfoPage(locationInfo),
+              const SizedBox(
+                height: 15,
+              ),
+              const Align(
+                alignment: Alignment.centerRight,
+                child: Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: Text(
+                    "نوع ملک شما",
+                    style: TextStyle(
+                      color: Color.fromRGBO(
+                        166,
+                        166,
+                        166,
+                        1,
+                      ),
+                      fontSize: 14,
+                      fontFamily: MAIN_FONT_FAMILY,
                     ),
-                    fontSize: 14,
-                    fontFamily: MAIN_FONT_FAMILY,
                   ),
                 ),
               ),
-            ),
-            Align(
-              alignment: Alignment.centerRight,
-              child: SwitchItems(
-                  onSelected: (_) {
-                    submit.value = true;
+              Align(
+                alignment: Alignment.centerRight,
+                child: SwitchItems(onSelected: (_) {}, items: const [" غرفه"]),
+              ),
+              const SizedBox(
+                height: 5,
+              ),
+              GestureDetector(
+                  onTap: () {
+                    Get.to(() => SaleShop());
                   },
-                  items: const [" غرفه"]),
-            ),
-            const SizedBox(
-              height: 15,
-            ),
-            SubmitRow(submit: submit, nextPage: SaleShop())
-          ],
+                  child: Center(child: submit_row1()))
+            ],
+          ),
         ),
       ),
     );

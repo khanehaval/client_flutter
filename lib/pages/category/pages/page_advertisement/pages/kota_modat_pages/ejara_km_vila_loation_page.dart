@@ -49,14 +49,16 @@ class EjaraKmLocationPage extends StatelessWidget {
                 ),
               ),
               SwitchItems(
-                  onSelected: (_) {
-                    submit.value = true;
-                  },
+                  onSelected: (_) {},
                   items: const ["اتاق", "سوئیت", "برج", "پنت هاوس"]),
               const SizedBox(
-                height: 40,
+                height: 5,
               ),
-              SubmitRow(submit: submit, nextPage: EjaraKmVilaPage())
+              GestureDetector(
+                  onTap: () {
+                    Get.to(() => EjaraKmVilaPage());
+                  },
+                  child: Center(child: submit_row1()))
             ],
           ),
         ),

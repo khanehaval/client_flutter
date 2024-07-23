@@ -50,22 +50,22 @@ class SelectLocationEjaraPresell extends StatelessWidget {
                   ),
                 ),
               ),
-              SwitchItems(
-                  onSelected: (_) {
-                    submit.value = true;
-                  },
-                  items: const [
-                    "مجتمع تجاری",
-                    "ویلا",
-                    "آپارتمان",
-                    "برج",
-                    "پنت هاوس ",
-                    "زمین مسکونی"
-                  ]),
+              SwitchItems(onSelected: (_) {}, items: const [
+                "مجتمع تجاری",
+                "ویلا",
+                "آپارتمان",
+                "برج",
+                "پنت هاوس ",
+                "زمین مسکونی"
+              ]),
               const SizedBox(
-                height: 40,
+                height: 5,
               ),
-              SubmitRow(submit: submit, nextPage: Presell())
+              GestureDetector(
+                  onTap: () {
+                    Get.to(() => Presell());
+                  },
+                  child: Center(child: submit_row1()))
             ],
           ),
         ),

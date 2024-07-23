@@ -10,7 +10,6 @@ class FacilitiesSelectorWidget extends StatelessWidget {
   final String title;
   final List<FacilitiesModel> selectable;
   final RxList<FacilitiesModel> selected;
-
   FacilitiesSelectorWidget({
     Key? key,
     this.title = "سایر امکانات",

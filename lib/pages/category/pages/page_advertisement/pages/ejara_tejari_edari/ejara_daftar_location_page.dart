@@ -24,45 +24,51 @@ class EjaraDaftarLocationPage extends StatelessWidget {
     return Scaffold(
         backgroundColor: Colors.white,
         appBar: buildaAppBar(),
-        body: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-            child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  MapInfoPage(locationInfo),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  Column(crossAxisAlignment: CrossAxisAlignment.end, children: [
+        body: SingleChildScrollView(
+          child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+              child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    MapInfoPage(locationInfo),
                     const SizedBox(
                       height: 10,
                     ),
-                    const Align(
-                      alignment: Alignment.centerRight,
-                      child: Text(
-                        "نوع ملک شما",
-                        style: TextStyle(
-                          color: Color.fromRGBO(
-                            166,
-                            166,
-                            166,
-                            1,
+                    Column(
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          const SizedBox(
+                            height: 10,
                           ),
-                          fontSize: 13,
-                          fontFamily: MAIN_FONT_FAMILY,
-                        ),
-                      ),
-                    ),
-                    SwitchItems(
-                        onSelected: (_) {
-                          submit.value = true;
-                        },
-                        items: const ["اتاق اداری", "مطب", "ملک اداری"]),
-                    const SizedBox(
-                      height: 40,
-                    ),
-                    SubmitRow(submit: submit, nextPage: EjaraDafterPage())
-                  ])
-                ])));
+                          const Align(
+                            alignment: Alignment.centerRight,
+                            child: Text(
+                              "نوع ملک شما",
+                              style: TextStyle(
+                                color: Color.fromRGBO(
+                                  166,
+                                  166,
+                                  166,
+                                  1,
+                                ),
+                                fontSize: 13,
+                                fontFamily: MAIN_FONT_FAMILY,
+                              ),
+                            ),
+                          ),
+                          SwitchItems(
+                              onSelected: (_) {},
+                              items: const ["اتاق اداری", "مطب", "ملک اداری"]),
+                          const SizedBox(
+                            height: 25,
+                          ),
+                          GestureDetector(
+                              onTap: () {
+                                Get.to(() => EjaraDafterPage());
+                              },
+                              child: Center(child: submit_row1()))
+                        ])
+                  ])),
+        ));
   }
 }

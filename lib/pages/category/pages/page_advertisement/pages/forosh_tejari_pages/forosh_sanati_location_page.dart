@@ -50,14 +50,16 @@ class ForoshSanatiLocationPage extends StatelessWidget {
                 ),
               ),
               SwitchItems(
-                  onSelected: (_) {
-                    submit.value = true;
-                  },
+                  onSelected: (_) {},
                   items: const ["کارگاه", "سوله", "زمین کشاورزی"]),
               const SizedBox(
                 height: 45,
               ),
-              SubmitRow(submit: submit, nextPage: ForoshSanatiPage())
+              GestureDetector(
+                  onTap: () {
+                    Get.to(() => ForoshSanatiPage());
+                  },
+                  child: Center(child: submit_row1()))
             ],
           ),
         ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/forosh_adv_pages/forosh_adv_page.dart';
+import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/app_bar.dart';
 import 'package:flutter_application_1/pages/category/shared/map_pages/location_Info.dart';
 import 'package:flutter_application_1/pages/category/shared/map_pages/map_info_page.dart';
@@ -50,14 +51,16 @@ class ForshAdvLocationPage extends StatelessWidget {
               ),
               SwitchItems(
                 items: const ["سوئیت", "برج", "پنت هاوس"],
-                onSelected: (_) {
-                  _submit.value = true;
-                },
+                onSelected: (_) {},
               ),
               const SizedBox(
                 height: 65,
               ),
-              SubmitRow(submit: _submit, nextPage: ForoshAdvPage())
+              GestureDetector(
+                  onTap: () {
+                    Get.to(() => ForoshAdvPage());
+                  },
+                  child: Center(child: submit_row1()))
             ],
           ),
         ),

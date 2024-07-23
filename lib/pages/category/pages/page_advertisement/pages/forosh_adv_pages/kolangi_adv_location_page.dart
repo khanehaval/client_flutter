@@ -60,15 +60,17 @@ class _SelectLocationOnMapState extends State<KolangiAdvLocationPage> {
               Align(
                 alignment: Alignment.centerRight,
                 child: SwitchItems(
-                    onSelected: (_) {
-                      submit.value = true;
-                    },
+                    onSelected: (_) {},
                     items: const ["زمین مسکونی", "خانه کلنگی"]),
               ),
               const SizedBox(
                 height: 30,
               ),
-              SubmitRow(submit: submit, nextPage: KolangiAdvPage())
+              GestureDetector(
+                  onTap: () {
+                    Get.to(() => KolangiAdvPage());
+                  },
+                  child: Center(child: submit_row1()))
             ],
           ),
         ),

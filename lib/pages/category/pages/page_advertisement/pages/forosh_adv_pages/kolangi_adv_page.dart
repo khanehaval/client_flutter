@@ -24,7 +24,6 @@ import '../../../../shared/more_emkanat/jahat_sakhteman.dart';
 import '../../../../shared/widget/text_field.dart';
 
 class KolangiAdvPage extends StatefulWidget {
-
   KolangiAdvPage({super.key});
 
   @override
@@ -112,16 +111,13 @@ class _KolangiAdvPageState extends State<KolangiAdvPage> {
   void initState() {
     super.initState();
 
-   
     _allPriceTextController.addListener(_checkFields);
     _metragTextController.addListener(_checkFields);
-   
   }
 
   void _checkFields() {
     if (_allPriceTextController.text.isNotEmpty &&
-        _metragTextController.text.isNotEmpty 
-      ) {
+        _metragTextController.text.isNotEmpty) {
       submit.value = true;
     } else {
       submit.value = false;
@@ -185,6 +181,9 @@ class _KolangiAdvPageState extends State<KolangiAdvPage> {
                     decoration: InputDecoration(
                       hintText: "0",
                       hintStyle: const TextStyle(
+                        fontSize: 13,
+                        fontFamily: 'Iran Sans',
+                        fontWeight: FontWeight.w400,
                         color: Color(0xFFA6A6A6),
                       ),
                       border: OutlineInputBorder(
@@ -263,6 +262,9 @@ class _KolangiAdvPageState extends State<KolangiAdvPage> {
                   decoration: InputDecoration(
                     hintText: '120',
                     hintStyle: const TextStyle(
+                      fontSize: 13,
+                      fontFamily: 'Iran Sans',
+                      fontWeight: FontWeight.w400,
                       color: Color(0xFFA6A6A6),
                     ),
                     border: OutlineInputBorder(
@@ -286,6 +288,9 @@ class _KolangiAdvPageState extends State<KolangiAdvPage> {
                     decoration: InputDecoration(
                       hintText: "0",
                       hintStyle: const TextStyle(
+                        fontSize: 13,
+                        fontFamily: 'Iran Sans',
+                        fontWeight: FontWeight.w400,
                         color: Color(0xFFA6A6A6),
                       ),
                       border: OutlineInputBorder(
@@ -303,6 +308,9 @@ class _KolangiAdvPageState extends State<KolangiAdvPage> {
                     decoration: InputDecoration(
                       hintText: "0",
                       hintStyle: const TextStyle(
+                        fontSize: 13,
+                        fontFamily: 'Iran Sans',
+                        fontWeight: FontWeight.w400,
                         color: Color(0xFFA6A6A6),
                       ),
                       border: OutlineInputBorder(
@@ -512,7 +520,7 @@ class _KolangiAdvPageState extends State<KolangiAdvPage> {
               const SizedBox(
                 height: 30,
               ),
-                    GestureDetector(
+              GestureDetector(
                 onTap: () {
                   if (submit.value) {
                     Get.to(() => NamayeshAgahi());
@@ -573,11 +581,11 @@ class _KolangiAdvPageState extends State<KolangiAdvPage> {
                     label1: "سن بنا ",
                     label2: "متراژ بنا ",
                     widget1: ReadOnlyTextField(
-                      _buildUnitOfAnyFloorCountController, () {
-                    showNumberPicker((_) {
-                      _buildUnitOfAnyFloorCountController.text = _;
-                    });
-                  }, width: getPageWidth()),
+                        _buildUnitOfAnyFloorCountController, () {
+                      showNumberPicker((_) {
+                        _buildUnitOfAnyFloorCountController.text = _;
+                      });
+                    }, width: getPageWidth()),
                     widget2: SizedBox(
                       height: 41,
                       width: getPageWidth(),
@@ -587,7 +595,11 @@ class _KolangiAdvPageState extends State<KolangiAdvPage> {
                         decoration: InputDecoration(
                           hintText: 'تایپ کنید', //todo
                           hintStyle: const TextStyle(
-                              color: Color(0xFFA6A6A6), fontSize: 13),
+                            fontSize: 13,
+                            fontFamily: 'Iran Sans',
+                            fontWeight: FontWeight.w400,
+                            color: Color(0xFFA6A6A6),
+                          ),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10),
                           ),
@@ -603,15 +615,18 @@ class _KolangiAdvPageState extends State<KolangiAdvPage> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                        Text("*",style: TextStyle(
-                            color: Color.fromRGBO(
-                              156,
-                              64,
-                              64,
-                              1,
-                            ),
-                            fontFamily: MAIN_FONT_FAMILY,
-                            fontSize: 16),),
+                        Text(
+                          "*",
+                          style: TextStyle(
+                              color: Color.fromRGBO(
+                                156,
+                                64,
+                                64,
+                                1,
+                              ),
+                              fontFamily: MAIN_FONT_FAMILY,
+                              fontSize: 16),
+                        ),
                         Text(
                           "تعداد اتاق ",
                           style: TextStyle(
@@ -670,7 +685,11 @@ class _KolangiAdvPageState extends State<KolangiAdvPage> {
                         decoration: InputDecoration(
                           hintText: ' را وارد کنید', //todo
                           hintStyle: const TextStyle(
-                              color: Color(0xFFA6A6A6), fontSize: 13),
+                            fontSize: 13,
+                            fontFamily: 'Iran Sans',
+                            fontWeight: FontWeight.w400,
+                            color: Color(0xFFA6A6A6),
+                          ),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10),
                           ),
@@ -686,7 +705,11 @@ class _KolangiAdvPageState extends State<KolangiAdvPage> {
                         decoration: InputDecoration(
                           hintText: 'مبلغ را وارد کنید', //todo
                           hintStyle: const TextStyle(
-                              color: Color(0xFFA6A6A6), fontSize: 13),
+                            fontSize: 13,
+                            fontFamily: 'Iran Sans',
+                            fontWeight: FontWeight.w400,
+                            color: Color(0xFFA6A6A6),
+                          ),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10),
                           ),

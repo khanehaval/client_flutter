@@ -157,6 +157,9 @@ class _PartnerShipState extends State<PartnerShip> {
                   decoration: InputDecoration(
                     hintText: "0",
                     hintStyle: const TextStyle(
+                      fontSize: 13,
+                      fontFamily: 'Iran Sans',
+                      fontWeight: FontWeight.w400,
                       color: Color(0xFFA6A6A6),
                     ),
                     border: OutlineInputBorder(
@@ -200,7 +203,11 @@ class _PartnerShipState extends State<PartnerShip> {
                   decoration: InputDecoration(
                       hintText: 'انتخاب نشده',
                       hintStyle: const TextStyle(
-                          color: Color(0xFFA6A6A6), fontSize: 13),
+                        fontSize: 13,
+                        fontFamily: 'Iran Sans',
+                        fontWeight: FontWeight.w400,
+                        color: Color(0xFFA6A6A6),
+                      ),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
@@ -219,6 +226,9 @@ class _PartnerShipState extends State<PartnerShip> {
                   decoration: InputDecoration(
                     hintText: "0",
                     hintStyle: const TextStyle(
+                      fontSize: 13,
+                      fontFamily: 'Iran Sans',
+                      fontWeight: FontWeight.w400,
                       color: Color(0xFFA6A6A6),
                     ),
                     border: OutlineInputBorder(
@@ -243,6 +253,9 @@ class _PartnerShipState extends State<PartnerShip> {
                   decoration: InputDecoration(
                     hintText: "0",
                     hintStyle: const TextStyle(
+                      fontSize: 13,
+                      fontFamily: 'Iran Sans',
+                      fontWeight: FontWeight.w400,
                       color: Color(0xFFA6A6A6),
                     ),
                     border: OutlineInputBorder(
@@ -260,6 +273,9 @@ class _PartnerShipState extends State<PartnerShip> {
                   decoration: InputDecoration(
                     hintText: "0",
                     hintStyle: const TextStyle(
+                      fontSize: 13,
+                      fontFamily: 'Iran Sans',
+                      fontWeight: FontWeight.w400,
                       color: Color(0xFFA6A6A6),
                     ),
                     border: OutlineInputBorder(
@@ -482,7 +498,11 @@ class _PartnerShipState extends State<PartnerShip> {
                         decoration: InputDecoration(
                           hintText: 'مبلغ را وارد کنید', //todo
                           hintStyle: const TextStyle(
-                              color: Color(0xFFA6A6A6), fontSize: 13),
+                            fontSize: 13,
+                            fontFamily: 'Iran Sans',
+                            fontWeight: FontWeight.w400,
+                            color: Color(0xFFA6A6A6),
+                          ),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10),
                           ),
@@ -496,8 +516,12 @@ class _PartnerShipState extends State<PartnerShip> {
                         textAlign: TextAlign.right,
                         decoration: InputDecoration(
                           hintText: 'انتخاب نشده',
-                          hintStyle:
-                              TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
+                          hintStyle: const TextStyle(
+                            fontSize: 13,
+                            fontFamily: 'Iran Sans',
+                            fontWeight: FontWeight.w400,
+                            color: Color(0xFFA6A6A6),
+                          ),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10),
                           ),
@@ -529,7 +553,11 @@ class _PartnerShipState extends State<PartnerShip> {
                         decoration: InputDecoration(
                           hintText: 'انتخاب نشده',
                           hintStyle: const TextStyle(
-                              color: Color(0xFFA6A6A6), fontSize: 13),
+                            fontSize: 13,
+                            fontFamily: 'Iran Sans',
+                            fontWeight: FontWeight.w400,
+                            color: Color(0xFFA6A6A6),
+                          ),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10),
                           ),
@@ -551,8 +579,12 @@ class _PartnerShipState extends State<PartnerShip> {
                         textAlign: TextAlign.right,
                         decoration: InputDecoration(
                           hintText: 'انتخاب نشده',
-                          hintStyle:
-                              TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
+                          hintStyle: const TextStyle(
+                            fontSize: 13,
+                            fontFamily: 'Iran Sans',
+                            fontWeight: FontWeight.w400,
+                            color: Color(0xFFA6A6A6),
+                          ),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10),
                           ),
@@ -589,7 +621,11 @@ class _PartnerShipState extends State<PartnerShip> {
                       decoration: InputDecoration(
                         hintText: 'تایپ کنید',
                         hintStyle: const TextStyle(
-                            color: Color(0xFFA6A6A6), fontSize: 13),
+                          fontSize: 13,
+                          fontFamily: 'Iran Sans',
+                          fontWeight: FontWeight.w400,
+                          color: Color(0xFFA6A6A6),
+                        ),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
@@ -655,8 +691,12 @@ class _PartnerShipState extends State<PartnerShip> {
                         textAlign: TextAlign.right,
                         decoration: InputDecoration(
                           hintText: 'انتخاب نشده',
-                          hintStyle:
-                              TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
+                          hintStyle: TextStyle(
+                            fontSize: 13,
+                            fontFamily: 'Iran Sans',
+                            fontWeight: FontWeight.w400,
+                            color: Color(0xFFA6A6A6),
+                          ),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10),
                           ),
@@ -678,8 +718,12 @@ class _PartnerShipState extends State<PartnerShip> {
                         textAlign: TextAlign.right,
                         decoration: InputDecoration(
                           hintText: 'انتخاب نشده',
-                          hintStyle:
-                              TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
+                          hintStyle: const TextStyle(
+                            fontSize: 13,
+                            fontFamily: 'Iran Sans',
+                            fontWeight: FontWeight.w400,
+                            color: Color(0xFFA6A6A6),
+                          ),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10),
                           ),
@@ -708,8 +752,12 @@ class _PartnerShipState extends State<PartnerShip> {
                         textAlign: TextAlign.right,
                         decoration: InputDecoration(
                           hintText: 'انتخاب نشده',
-                          hintStyle:
-                              TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
+                          hintStyle: const TextStyle(
+                            fontSize: 13,
+                            fontFamily: 'Iran Sans',
+                            fontWeight: FontWeight.w400,
+                            color: Color(0xFFA6A6A6),
+                          ),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10),
                           ),
@@ -731,8 +779,12 @@ class _PartnerShipState extends State<PartnerShip> {
                         textAlign: TextAlign.right,
                         decoration: InputDecoration(
                           hintText: 'انتخاب نشده',
-                          hintStyle:
-                              TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
+                          hintStyle: const TextStyle(
+                            fontSize: 13,
+                            fontFamily: 'Iran Sans',
+                            fontWeight: FontWeight.w400,
+                            color: Color(0xFFA6A6A6),
+                          ),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10),
                           ),
@@ -806,7 +858,11 @@ Widget zamin(BuildContext context) {
                     decoration: InputDecoration(
                       hintText: '120',
                       hintStyle: const TextStyle(
-                          color: Color(0xFFA6A6A6), fontSize: 13),
+                        fontSize: 13,
+                        fontFamily: 'Iran Sans',
+                        fontWeight: FontWeight.w400,
+                        color: Color(0xFFA6A6A6),
+                      ),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
@@ -826,7 +882,11 @@ Widget zamin(BuildContext context) {
                       decoration: InputDecoration(
                         hintText: '3,6000000', //todo
                         hintStyle: const TextStyle(
-                            color: Color(0xFFA6A6A6), fontSize: 13),
+                          fontSize: 13,
+                          fontFamily: 'Iran Sans',
+                          fontWeight: FontWeight.w400,
+                          color: Color(0xFFA6A6A6),
+                        ),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
@@ -842,7 +902,11 @@ Widget zamin(BuildContext context) {
                       decoration: InputDecoration(
                         hintText: '400000000', //todo
                         hintStyle: const TextStyle(
-                            color: Color(0xFFA6A6A6), fontSize: 13),
+                          fontSize: 13,
+                          fontFamily: 'Iran Sans',
+                          fontWeight: FontWeight.w400,
+                          color: Color(0xFFA6A6A6),
+                        ),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
@@ -885,8 +949,12 @@ Widget Aparteman(BuildContext context) {
                       textAlign: TextAlign.right,
                       decoration: InputDecoration(
                         hintText: 'تایپ کنید',
-                        hintStyle:
-                            TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
+                        hintStyle: TextStyle(
+                          fontSize: 13,
+                          fontFamily: 'Iran Sans',
+                          fontWeight: FontWeight.w400,
+                          color: Color(0xFFA6A6A6),
+                        ),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
@@ -901,8 +969,12 @@ Widget Aparteman(BuildContext context) {
                       textAlign: TextAlign.right,
                       decoration: InputDecoration(
                         hintText: 'انتخاب نشده',
-                        hintStyle:
-                            TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
+                        hintStyle: TextStyle(
+                          fontSize: 13,
+                          fontFamily: 'Iran Sans',
+                          fontWeight: FontWeight.w400,
+                          color: Color(0xFFA6A6A6),
+                        ),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
@@ -929,8 +1001,12 @@ Widget Aparteman(BuildContext context) {
                       textAlign: TextAlign.right,
                       decoration: InputDecoration(
                         hintText: 'تایپ کنید',
-                        hintStyle:
-                            TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
+                        hintStyle: TextStyle(
+                          fontSize: 13,
+                          fontFamily: 'Iran Sans',
+                          fontWeight: FontWeight.w400,
+                          color: Color(0xFFA6A6A6),
+                        ),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
@@ -945,8 +1021,12 @@ Widget Aparteman(BuildContext context) {
                       textAlign: TextAlign.right,
                       decoration: InputDecoration(
                         hintText: 'انتخاب نشده',
-                        hintStyle:
-                            TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
+                        hintStyle: TextStyle(
+                          fontSize: 13,
+                          fontFamily: 'Iran Sans',
+                          fontWeight: FontWeight.w400,
+                          color: Color(0xFFA6A6A6),
+                        ),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
@@ -973,8 +1053,12 @@ Widget Aparteman(BuildContext context) {
                       textAlign: TextAlign.right,
                       decoration: InputDecoration(
                         hintText: 'تایپ کنید',
-                        hintStyle:
-                            TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
+                        hintStyle: TextStyle(
+                          fontSize: 13,
+                          fontFamily: 'Iran Sans',
+                          fontWeight: FontWeight.w400,
+                          color: Color(0xFFA6A6A6),
+                        ),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
@@ -989,8 +1073,12 @@ Widget Aparteman(BuildContext context) {
                       textAlign: TextAlign.right,
                       decoration: InputDecoration(
                         hintText: 'انتخاب نشده',
-                        hintStyle:
-                            TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
+                        hintStyle: TextStyle(
+                          fontSize: 13,
+                          fontFamily: 'Iran Sans',
+                          fontWeight: FontWeight.w400,
+                          color: Color(0xFFA6A6A6),
+                        ),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
@@ -1017,8 +1105,12 @@ Widget Aparteman(BuildContext context) {
                       textAlign: TextAlign.right,
                       decoration: InputDecoration(
                         hintText: 'تایپ کنید',
-                        hintStyle:
-                            TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
+                        hintStyle: TextStyle(
+                          fontSize: 13,
+                          fontFamily: 'Iran Sans',
+                          fontWeight: FontWeight.w400,
+                          color: Color(0xFFA6A6A6),
+                        ),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
@@ -1033,8 +1125,12 @@ Widget Aparteman(BuildContext context) {
                       textAlign: TextAlign.right,
                       decoration: InputDecoration(
                         hintText: 'انتخاب نشده',
-                        hintStyle:
-                            TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
+                        hintStyle: TextStyle(
+                          fontSize: 13,
+                          fontFamily: 'Iran Sans',
+                          fontWeight: FontWeight.w400,
+                          color: Color(0xFFA6A6A6),
+                        ),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
@@ -1204,6 +1300,9 @@ Widget Vila(BuildContext context) {
                       decoration: InputDecoration(
                         hintText: "تایپ کنید",
                         hintStyle: const TextStyle(
+                          fontSize: 13,
+                          fontFamily: 'Iran Sans',
+                          fontWeight: FontWeight.w400,
                           color: Color(0xFFA6A6A6),
                         ),
                         border: OutlineInputBorder(
@@ -1221,6 +1320,9 @@ Widget Vila(BuildContext context) {
                       decoration: InputDecoration(
                         hintText: "تایپ کنید",
                         hintStyle: const TextStyle(
+                          fontSize: 13,
+                          fontFamily: 'Iran Sans',
+                          fontWeight: FontWeight.w400,
                           color: Color(0xFFA6A6A6),
                         ),
                         border: OutlineInputBorder(
@@ -1244,8 +1346,12 @@ Widget Vila(BuildContext context) {
                       textAlign: TextAlign.right,
                       decoration: InputDecoration(
                         hintText: 'انتخاب نشده',
-                        hintStyle:
-                            TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
+                        hintStyle: TextStyle(
+                          fontSize: 13,
+                          fontFamily: 'Iran Sans',
+                          fontWeight: FontWeight.w400,
+                          color: Color(0xFFA6A6A6),
+                        ),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
@@ -1266,8 +1372,12 @@ Widget Vila(BuildContext context) {
                       textAlign: TextAlign.right,
                       decoration: InputDecoration(
                         hintText: 'انتخاب نشده',
-                        hintStyle:
-                            TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
+                        hintStyle: TextStyle(
+                          fontSize: 13,
+                          fontFamily: 'Iran Sans',
+                          fontWeight: FontWeight.w400,
+                          color: Color(0xFFA6A6A6),
+                        ),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
@@ -1294,8 +1404,12 @@ Widget Vila(BuildContext context) {
                       textAlign: TextAlign.right,
                       decoration: InputDecoration(
                         hintText: 'تایپ کنید',
-                        hintStyle:
-                            TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
+                        hintStyle: TextStyle(
+                          fontSize: 13,
+                          fontFamily: 'Iran Sans',
+                          fontWeight: FontWeight.w400,
+                          color: Color(0xFFA6A6A6),
+                        ),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
@@ -1310,8 +1424,12 @@ Widget Vila(BuildContext context) {
                       textAlign: TextAlign.right,
                       decoration: InputDecoration(
                         hintText: 'انتخاب نشده',
-                        hintStyle:
-                            TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
+                        hintStyle: TextStyle(
+                          fontSize: 13,
+                          fontFamily: 'Iran Sans',
+                          fontWeight: FontWeight.w400,
+                          color: Color(0xFFA6A6A6),
+                        ),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
@@ -1338,8 +1456,12 @@ Widget Vila(BuildContext context) {
                       textAlign: TextAlign.right,
                       decoration: InputDecoration(
                         hintText: 'تایپ کنید',
-                        hintStyle:
-                            TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
+                        hintStyle: TextStyle(
+                          fontSize: 13,
+                          fontFamily: 'Iran Sans',
+                          fontWeight: FontWeight.w400,
+                          color: Color(0xFFA6A6A6),
+                        ),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
@@ -1354,8 +1476,12 @@ Widget Vila(BuildContext context) {
                       textAlign: TextAlign.right,
                       decoration: InputDecoration(
                         hintText: 'انتخاب نشده',
-                        hintStyle:
-                            TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
+                        hintStyle: TextStyle(
+                          fontSize: 13,
+                          fontFamily: 'Iran Sans',
+                          fontWeight: FontWeight.w400,
+                          color: Color(0xFFA6A6A6),
+                        ),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
@@ -1492,7 +1618,11 @@ Widget Edari(BuildContext context) {
                       decoration: InputDecoration(
                         hintText: 'تایپ کنید',
                         hintStyle: const TextStyle(
-                            color: Color(0xFFA6A6A6), fontSize: 13),
+                          fontSize: 13,
+                          fontFamily: 'Iran Sans',
+                          fontWeight: FontWeight.w400,
+                          color: Color(0xFFA6A6A6),
+                        ),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
@@ -1508,7 +1638,11 @@ Widget Edari(BuildContext context) {
                       decoration: InputDecoration(
                         hintText: 'انتخاب نشده',
                         hintStyle: const TextStyle(
-                            color: Color(0xFFA6A6A6), fontSize: 13),
+                          fontSize: 13,
+                          fontFamily: 'Iran Sans',
+                          fontWeight: FontWeight.w400,
+                          color: Color(0xFFA6A6A6),
+                        ),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
@@ -1534,7 +1668,11 @@ Widget Edari(BuildContext context) {
                       decoration: InputDecoration(
                         hintText: 'تایپ کنید',
                         hintStyle: const TextStyle(
-                            color: Color(0xFFA6A6A6), fontSize: 13),
+                          fontSize: 13,
+                          fontFamily: 'Iran Sans',
+                          fontWeight: FontWeight.w400,
+                          color: Color(0xFFA6A6A6),
+                        ),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
@@ -1550,7 +1688,11 @@ Widget Edari(BuildContext context) {
                       decoration: InputDecoration(
                         hintText: 'انتخاب نشده',
                         hintStyle: const TextStyle(
-                            color: Color(0xFFA6A6A6), fontSize: 13),
+                          fontSize: 13,
+                          fontFamily: 'Iran Sans',
+                          fontWeight: FontWeight.w400,
+                          color: Color(0xFFA6A6A6),
+                        ),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
@@ -1579,6 +1721,9 @@ Widget Edari(BuildContext context) {
                       decoration: InputDecoration(
                         hintText: "تایپ کنید",
                         hintStyle: const TextStyle(
+                          fontSize: 13,
+                          fontFamily: 'Iran Sans',
+                          fontWeight: FontWeight.w400,
                           color: Color(0xFFA6A6A6),
                         ),
                         border: OutlineInputBorder(
@@ -1596,6 +1741,9 @@ Widget Edari(BuildContext context) {
                       decoration: InputDecoration(
                         hintText: "تایپ کنید",
                         hintStyle: const TextStyle(
+                          fontSize: 13,
+                          fontFamily: 'Iran Sans',
+                          fontWeight: FontWeight.w400,
                           color: Color(0xFFA6A6A6),
                         ),
                         border: OutlineInputBorder(

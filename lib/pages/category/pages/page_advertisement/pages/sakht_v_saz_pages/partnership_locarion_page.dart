@@ -31,7 +31,11 @@ class SelectLocationPartbership extends StatelessWidget {
               const SizedBox(
                 height: 80,
               ),
-              SubmitRow(submit: submit, nextPage: PartnerShip())
+              GestureDetector(
+                  onTap: () {
+                    Get.to(() => PartnerShip());
+                  },
+                  child: Center(child: submit_row1()))
             ],
           ),
         ),

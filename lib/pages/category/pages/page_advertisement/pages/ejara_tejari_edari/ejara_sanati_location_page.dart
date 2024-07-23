@@ -48,14 +48,17 @@ class EjaraSanatiLocationPage extends StatelessWidget {
               ),
             ),
             SwitchItems(
-                onSelected: (_) {
-                  submit.value = true;
-                },
+                onSelected: (_) {},
                 items: const ["اتاق اداری", "مطب", "ملک اداری"]),
             const SizedBox(
               height: 30,
             ),
-            SubmitRow(submit: submit, nextPage: EjaraShanatiPage())
+            GestureDetector(
+              onTap: () {
+                Get.to(() => EjaraShanatiPage());
+              },
+              child: Center(child: submit_row1()),
+            ),
           ],
         ),
       ),

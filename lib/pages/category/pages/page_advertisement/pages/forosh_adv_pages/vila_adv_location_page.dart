@@ -46,14 +46,16 @@ class VilaLocationAdvPage extends StatelessWidget {
                 ),
               ),
               SwitchItems(
-                  onSelected: (_) {
-                    _submit.value = true;
-                  },
+                  onSelected: (_) {},
                   items: const ["باغ ویلا", "باغ", "خانه ویلایی"]),
               const SizedBox(
                 height: 50,
               ),
-              SubmitRow(submit: _submit, nextPage: VilaAdvPage())
+              GestureDetector(
+                  onTap: () {
+                    Get.to(() => VilaAdvPage());
+                  },
+                  child: Center(child: submit_row1()))
             ],
           ),
         ),
