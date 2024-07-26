@@ -12,7 +12,7 @@ import 'image_croped.dart';
 class ImagesPicker extends StatelessWidget {
   final RxList<dynamic> selectedImagesPath;
 
-  const ImagesPicker({super.key, required this.selectedImagesPath});
+  const ImagesPicker({Key? key, required this.selectedImagesPath}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -72,14 +72,18 @@ class ImagesPicker extends StatelessWidget {
             mainAxisSpacing: 10,
             childAspectRatio: 190 / 119,
           ),
-          itemCount: selectedImagesPath.length,
+          itemCount: selectedImagesPath.length < 5
+              ? selectedImagesPath.length + 1
+              : selectedImagesPath.length,
           itemBuilder: (context, index) {
-            return Padding(
-              padding: const EdgeInsets.all(5),
-              child: index == selectedImagesPath.length - 1
-                  ? _buildAddMoreButton(context)
-                  : _buildImageGridItem(index),
-            );
+            if (index == selectedImagesPath.length) {
+              return _buildAddMoreButton(context);
+            } else {
+              return Padding(
+                padding: const EdgeInsets.all(5),
+                child: _buildImageGridItem(index),
+              );
+            }
           },
         ),
       ],
@@ -107,26 +111,7 @@ class ImagesPicker extends StatelessWidget {
                 children: [
                   _buildRemoveIcon(path),
                   const SizedBox(width: 20),
-                  Container(
-                    height: 50,
-                    decoration: BoxDecoration(
-                      border: const GradientBoxBorder(
-                        gradient: LinearGradient(colors: GRADIANT_COLOR),
-                        width: 1,
-                      ),
-                      borderRadius: BorderRadius.circular(10),
-                      color: Colors.white70,
-                    ),
-                    child: const Padding(
-                      padding: EdgeInsets.all(10.0),
-                      child: Center(
-                        child: Text(
-                          "عکس اصلی",
-                          style: TextStyle(fontFamily: MAIN_FONT_FAMILY),
-                        ),
-                      ),
-                    ),
-                  ),
+                  _buildMainImageLabel(),
                 ],
               ),
             ),
@@ -136,6 +121,29 @@ class ImagesPicker extends StatelessWidget {
             child: _buildCropper(path),
           ),
         ],
+      ),
+    );
+  }
+
+  Widget _buildMainImageLabel() {
+    return Container(
+      height: 50,
+      decoration: BoxDecoration(
+        border: const GradientBoxBorder(
+          gradient: LinearGradient(colors: GRADIANT_COLOR),
+          width: 1,
+        ),
+        borderRadius: BorderRadius.circular(10),
+        color: Colors.white70,
+      ),
+      child: const Padding(
+        padding: EdgeInsets.all(10.0),
+        child: Center(
+          child: Text(
+            "عکس اصلی",
+            style: TextStyle(fontFamily: MAIN_FONT_FAMILY),
+          ),
+        ),
       ),
     );
   }
@@ -155,10 +163,14 @@ class ImagesPicker extends StatelessWidget {
       child: IconButton(
         icon: const Icon(Icons.crop, size: 20),
         onPressed: () async {
-          var result = await Cropper.cropImage(path);
-          if (result != null) {
-            var i = selectedImagesPath.indexOf(path);
-            selectedImagesPath[i] = result;
+          try {
+            var result = await Cropper.cropImage(path);
+            if (result != null) {
+              var i = selectedImagesPath.indexOf(path);
+              selectedImagesPath[i] = result;
+            }
+          } catch (e) {
+            Get.snackbar('Error', 'Failed to crop image: $e');
           }
         },
       ),
@@ -220,7 +232,7 @@ class ImagesPicker extends StatelessWidget {
         child: Stack(
           children: [
             Image.file(
-              File(selectedImagesPath[index + 1]),
+              File(selectedImagesPath[index]),
               height: 119,
               width: 190,
               fit: BoxFit.cover,
@@ -229,8 +241,7 @@ class ImagesPicker extends StatelessWidget {
               alignment: Alignment.topLeft,
               child: Padding(
                 padding: const EdgeInsets.all(5),
-                child:
-                    _buildRemoveIcon(selectedImagesPath[index + 1], size: 34),
+                child: _buildRemoveIcon(selectedImagesPath[index], size: 34),
               ),
             ),
           ],
@@ -270,6 +281,10 @@ class ImagesPicker extends StatelessWidget {
   }
 
   Future<void> _pickImage(ImageSource source) async {
+    if (selectedImagesPath.length >= 5) {
+      Get.snackbar('Error', 'You cannot add more than 5 images');
+      return;
+    }
     try {
       final pickedFile = await ImagePicker().pickImage(source: source);
       if (pickedFile != null) {
@@ -281,7 +296,6 @@ class ImagesPicker extends StatelessWidget {
         }
       }
     } catch (e) {
-      print('Error picking image: $e');
       Get.snackbar('Error', 'Failed to pick image: $e');
     }
   }

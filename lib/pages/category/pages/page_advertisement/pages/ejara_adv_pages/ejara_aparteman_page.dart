@@ -52,6 +52,7 @@ class _EjaraApartemanPageState extends State<EjaraApartemanPage> {
   final _reBuildController = TextEditingController();
   final _countOfInstallmentsController = TextEditingController();
   final _advInfo = AdvInfoModel();
+  final _formKey = GlobalKey<FormState>();
 
   @override
   void initState() {
