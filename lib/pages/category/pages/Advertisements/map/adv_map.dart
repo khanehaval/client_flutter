@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/models/AdvertismentMoidel.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/widget_filter/aghahi.dart';
@@ -14,9 +13,8 @@ import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 class AdvMap extends StatefulWidget {
   final RxList<AdvertismentModel> advertisements;
   final RxList<AdvertismentModel> advertisements1;
-  AdvMap(this.advertisements, this.advertisements1, {Key? key})
+  const AdvMap(this.advertisements, this.advertisements1, {Key? key})
       : super(key: key);
-
   @override
   _AdvMapState createState() => _AdvMapState();
 }
@@ -37,14 +35,12 @@ class _AdvMapState extends State<AdvMap> {
     _locationNotificationStreamController = StreamController<bool>.broadcast();
     _locationNotificationStream = _locationNotificationStreamController.stream;
 
-    // ارسال داده اولیه به StreamController برای نمایش اولیه ویجت‌ها
     _notificationStreamController.add(true);
     _locationNotificationStreamController.add(true);
   }
 
   @override
   void dispose() {
-    // ارسال داده نهایی به StreamController برای عدم نمایش ویجت‌ها
     _notificationStreamController.add(false);
     _locationNotificationStreamController.add(false);
 
@@ -68,7 +64,7 @@ class _AdvMapState extends State<AdvMap> {
               if (snapshot.data == true) {
                 return _notification();
               } else {
-                return SizedBox.shrink();
+                return const SizedBox.shrink();
               }
             },
           ),
@@ -80,7 +76,7 @@ class _AdvMapState extends State<AdvMap> {
               if (snapshot.data == true) {
                 return _locationNotification();
               } else {
-                return SizedBox.shrink();
+                return const SizedBox.shrink();
               }
             },
           ),
@@ -179,7 +175,7 @@ class _AdvMapState extends State<AdvMap> {
     return Align(
       alignment: Alignment.bottomLeft,
       child: Padding(
-        padding: const EdgeInsets.only(bottom: 90, left: 15),
+        padding: const EdgeInsets.only(bottom: 80, left: 15),
         child: IconButton(
           onPressed: () {},
           icon: SizedBox(
@@ -196,11 +192,10 @@ class _AdvMapState extends State<AdvMap> {
     return Align(
       alignment: Alignment.bottomLeft,
       child: Padding(
-        padding: const EdgeInsets.only(bottom: 90, left: 90),
+        padding: const EdgeInsets.only(bottom: 80, left: 90),
         child: IconButton(
           onPressed: () {
-            _notificationStreamController
-                .add(false); // ارسال داده به Stream برای عدم نمایش ویجت
+            _notificationStreamController.add(false);
           },
           icon: SizedBox(
             height: 33,
@@ -216,11 +211,10 @@ class _AdvMapState extends State<AdvMap> {
     return Align(
       alignment: Alignment.bottomLeft,
       child: Padding(
-        padding: const EdgeInsets.only(bottom: 150, left: 30),
+        padding: const EdgeInsets.only(bottom: 140, left: 30),
         child: IconButton(
           onPressed: () {
-            _locationNotificationStreamController
-                .add(false); // ارسال داده به Stream برای عدم نمایش ویجت
+            _locationNotificationStreamController.add(false);
           },
           icon: SizedBox(
             height: 80,
@@ -234,14 +228,11 @@ class _AdvMapState extends State<AdvMap> {
 
   Widget _buildAdvertismentOverlay() {
     return Align(
-      child: Padding(
-        padding: const EdgeInsets.only(bottom: 45),
-        child: showAdvertisment(
-          advertismentModel: _selectedModel.value!,
-          onTap: () => _selectedModel.value = null,
-          onBack: _onBack,
-          onNext: _onNext,
-        ),
+      child: showAdvertisment(
+        advertismentModel: _selectedModel.value!,
+        onTap: () => _selectedModel.value = null,
+        onBack: _onBack,
+        onNext: _onNext,
       ),
     );
   }
@@ -268,7 +259,7 @@ class _AdvMapState extends State<AdvMap> {
     return Align(
       alignment: Alignment.bottomLeft,
       child: Padding(
-        padding: const EdgeInsets.only(bottom: 85, left: 295),
+        padding: const EdgeInsets.only(bottom: 75, left: 295),
         child: IconButton(
           onPressed: () {},
           icon: SizedBox(
@@ -297,35 +288,38 @@ class _AdvMapState extends State<AdvMap> {
     return DraggableScrollableSheet(
       initialChildSize: 0.10,
       minChildSize: 0.10,
+      maxChildSize: 0.81,
       builder: (context, scrollController) {
         return Container(
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
-              gradient: const LinearGradient(colors: GRADIANT_COLOR)),
-          child: Padding(
-            padding: const EdgeInsets.all(1.2),
-            child: Container(
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius:
-                    const BorderRadius.vertical(top: Radius.circular(20)),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withOpacity(0.1),
-                    blurRadius: 10,
-                    spreadRadius: 5,
-                  ),
-                ],
+            borderRadius: BorderRadius.circular(20),
+          ),
+          child: Container(
+            decoration: const BoxDecoration(
+              borderRadius: BorderRadius.all(
+                Radius.circular(20),
               ),
-              child: SingleChildScrollView(
-                controller: scrollController,
-                child: Column(
-                  children: [
-                    _buildTopDivider(),
-                    const SizedBox(height: 10),
-                    _buildHeaderText(),
-                    _buildAdvertisementsList(),
-                  ],
+              gradient: LinearGradient(colors: GRADIANT_COLOR),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.only(top: 1.2),
+              child: Container(
+                decoration: const BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.vertical(
+                    top: Radius.circular(20),
+                  ),
+                ),
+                child: SingleChildScrollView(
+                  controller: scrollController,
+                  child: Column(
+                    children: [
+                      _buildTopDivider(),
+                      const SizedBox(height: 10),
+                      _buildHeaderText(),
+                      _buildAdvertisementsList(),
+                    ],
+                  ),
                 ),
               ),
             ),
@@ -368,22 +362,8 @@ class _AdvMapState extends State<AdvMap> {
   }
 
   Widget _buildAdvertisementsList() {
-    return ConstrainedBox(
-      constraints: const BoxConstraints(maxHeight: 750),
-      child: Container(
-        decoration: const BoxDecoration(
-          boxShadow: [
-            BoxShadow(
-              color: Colors.white,
-              blurRadius: 10,
-            ),
-          ],
-        ),
-        padding: const EdgeInsets.all(8.0),
-        child: Stack(
-          children: [viewaghahi()],
-        ),
-      ),
+    return Stack(
+      children: [viewaghahi()],
     );
   }
 }

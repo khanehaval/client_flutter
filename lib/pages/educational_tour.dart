@@ -1,19 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/advertisements.dart';
-import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/filter.dart';
 import 'package:flutter_application_1/pages/category/pages/messages.dart';
 import 'package:flutter_application_1/pages/category/pages/home.dart';
-import 'package:flutter_application_1/pages/category/pages/add_new_advertisment.dart';
 import 'package:flutter_application_1/pages/category/pages/page_advertisement/category_advertisement.dart';
-import 'package:flutter_application_1/pages/category/pages/window/window_item_builder.dart';
-import 'package:flutter_application_1/pages/category/pages/window/window_pages/amlak_page.dart';
-import 'package:flutter_application_1/pages/category/pages/window/window_pages/ejara_kota_modat.dart';
-import 'package:flutter_application_1/pages/category/pages/window/window_pages/ejara_maskoni.dart';
-import 'package:flutter_application_1/pages/category/pages/window/window_pages/ejara_tajari_edari.dart';
-import 'package:flutter_application_1/pages/category/pages/window/window_pages/forosh_maskoni.dart';
-import 'package:flutter_application_1/pages/category/pages/window/window_pages/forosh_tgjari_edari.dart';
-import 'package:flutter_application_1/pages/category/pages/window/window_pages/sacht_saz.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/app_bar.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
@@ -144,7 +134,7 @@ class _EducationalTourState extends State<EducationalTour> {
                   backgroundColor: Colors.white,
                   icon: Center(
                     child: Padding(
-                      padding: const EdgeInsets.only(top: 10.0),
+                      padding: const EdgeInsets.only(top: 8.0),
                       child: SvgPicture.asset(
                         "assets/images/navigation1.svg",
                         width: 30,
@@ -154,7 +144,7 @@ class _EducationalTourState extends State<EducationalTour> {
                   ),
                   label: '',
                   activeIcon: Padding(
-                    padding: const EdgeInsets.only(top: 10.0),
+                    padding: const EdgeInsets.only(top: 8.0),
                     child: Center(
                       child: SvgPicture.asset(
                         "assets/images/navigation1-active.svg",
@@ -166,7 +156,7 @@ class _EducationalTourState extends State<EducationalTour> {
                 ),
                 BottomNavigationBarItem(
                   icon: Padding(
-                    padding: const EdgeInsets.only(top: 10.0),
+                    padding: const EdgeInsets.only(top: 8.0),
                     child: Center(
                       child: SvgPicture.asset(
                         "assets/images/navigation2.svg",
@@ -177,7 +167,7 @@ class _EducationalTourState extends State<EducationalTour> {
                   ),
                   label: '',
                   activeIcon: Padding(
-                    padding: const EdgeInsets.only(top: 10.0),
+                    padding: const EdgeInsets.only(top: 8.0),
                     child: Center(
                       child: SvgPicture.asset(
                         "assets/images/navigation2-active.svg",
@@ -189,23 +179,23 @@ class _EducationalTourState extends State<EducationalTour> {
                 ),
                 BottomNavigationBarItem(
                   icon: Padding(
-                    padding: const EdgeInsets.only(top: 10.0),
+                    padding: const EdgeInsets.only(top: 8.0),
                     child: Center(
                       child: SvgPicture.asset(
                         "assets/images/navigation3.svg",
-                        width: 38,
-                        height: 36,
+                        width: 34,
+                        height: 32,
                       ),
                     ),
                   ),
                   label: '',
                   activeIcon: Padding(
-                    padding: const EdgeInsets.only(top: 10.0),
+                    padding: const EdgeInsets.only(top: 8.0),
                     child: Center(
                       child: SvgPicture.asset(
                         "assets/images/navigation3-active.svg",
-                        width: 38,
-                        height: 36,
+                        width: 34,
+                        height: 32,
                       ),
                     ),
                   ),
@@ -213,7 +203,7 @@ class _EducationalTourState extends State<EducationalTour> {
                 BottomNavigationBarItem(
                   icon: Center(
                     child: Padding(
-                      padding: const EdgeInsets.only(top: 10.0),
+                      padding: const EdgeInsets.only(top: 8.0),
                       child: Center(
                         child: SvgPicture.asset(
                           "assets/images/navigation4.svg",
@@ -225,7 +215,7 @@ class _EducationalTourState extends State<EducationalTour> {
                   ),
                   label: '',
                   activeIcon: Padding(
-                    padding: const EdgeInsets.only(top: 10.0),
+                    padding: const EdgeInsets.only(top: 8.0),
                     child: Center(
                       child: SvgPicture.asset(
                         "assets/images/navigation4-active.svg",
@@ -237,7 +227,7 @@ class _EducationalTourState extends State<EducationalTour> {
                 ),
                 BottomNavigationBarItem(
                   icon: Padding(
-                    padding: const EdgeInsets.only(top: 12.0),
+                    padding: const EdgeInsets.only(top: 8.0),
                     child: Center(
                       child: SvgPicture.asset(
                         "assets/images/navigation5.svg",
@@ -248,7 +238,7 @@ class _EducationalTourState extends State<EducationalTour> {
                   ),
                   label: '',
                   activeIcon: Padding(
-                    padding: const EdgeInsets.only(top: 12.0),
+                    padding: const EdgeInsets.only(top: 8.0),
                     child: Center(
                       child: SvgPicture.asset(
                         "assets/images/navigation5-active.svg",

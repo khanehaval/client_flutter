@@ -27,7 +27,7 @@ Widget bottomNavigationBar2(int currentMainPageIndex) {
     height: 76,
     decoration: BoxDecoration(boxShadow: [
       BoxShadow(
-        color: Colors.black.withOpacity(0.15),
+        color: Colors.black.withOpacity(0.01),
         spreadRadius: 0,
         blurRadius: 5,
         offset: Offset(-1, 0),

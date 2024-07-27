@@ -39,6 +39,9 @@ class RahnFilterWidget extends StatelessWidget {
                 Column(
                   children: [
                     rahn(),
+                    const SizedBox(
+                      height: 25,
+                    ),
                     rahn2(),
                   ],
                 ),

@@ -30,7 +30,7 @@ Widget showAdvertisment(
                         .copyWith(top: 130, bottom: 30),
                     child: GestureDetector(
                       onTap: () {
-                        Get.to(() => NamayeshAgahi1());
+                        Get.to(() => const NamayeshAgahi1());
                       },
                       child: Container(
                         decoration: BoxDecoration(

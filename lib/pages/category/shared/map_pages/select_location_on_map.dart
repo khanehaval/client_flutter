@@ -335,13 +335,15 @@ class _SelectLocationMapState extends State<SelectLocationMap> {
           child: Column(
             children: [
               IconButton(
-                  onPressed: () {
-                    zoomIn();
-                  },
-                  icon: SizedBox(
-                      height: 50,
-                      width: 50,
-                      child: Image.asset("assets/images/icon zoom.png"))),
+                onPressed: () {
+                  getUserCurrentLocation();
+                },
+                icon: SizedBox(
+                  height: 50,
+                  width: 50,
+                  child: Image.asset("assets/images/icon zoom.png"),
+                ),
+              ),
             ],
           ),
         ),
