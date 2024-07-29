@@ -44,7 +44,7 @@ class _EmkanatFilterWidgetState extends State<EmkanatFilterWidget> {
                       },
                     ),
                     const Padding(
-                      padding: EdgeInsets.only(right: 10),
+                      padding: EdgeInsets.only(right: 20),
                       child: Text(
                         "امکانات آگهی",
                         style: TextStyle(

@@ -65,7 +65,7 @@ class _AgahiDahandaFilterWidgetState extends State<AgahiDahandaFilterWidget> {
                       },
                     ),
                     const Padding(
-                      padding: EdgeInsets.only(right: 10),
+                      padding: EdgeInsets.only(right: 20),
                       child: Text(
                         "آگهی دهنده",
                         style: TextStyle(

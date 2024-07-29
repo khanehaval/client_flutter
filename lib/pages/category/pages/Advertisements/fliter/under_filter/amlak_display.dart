@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/filters_widgets/City&Filter_filter_widget.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/filters_widgets/agahi_dahanda_filter_widget.dart';
+import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/filters_widgets/aghahifori_filter_widget.dart';
+import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/filters_widgets/emkanat_filter_widget.dart';
+import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/filters_widgets/mahaleh_filter_widget.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/intro_screen.dart';
 import 'package:flutter_application_1/repo/advRepo.dart';
@@ -64,159 +68,17 @@ class _AmlakFilterState extends State<AmlakFilter> {
                   SingleChildScrollView(
                     scrollDirection: Axis.vertical,
                     child: Column(children: [
-                      SingleChildScrollView(
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            Container(
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(15),
-                                  color:
-                                      const Color.fromRGBO(166, 166, 166, 1)),
-                              child: Padding(
-                                padding: const EdgeInsets.all(0.7),
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                      color: Colors.white,
-                                      borderRadius: BorderRadius.circular(15)),
-                                  child: Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 20),
-                                    child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          const Padding(
-                                            padding: EdgeInsets.only(
-                                                left: 10, right: 10),
-                                            child: Text(
-                                              "تهران",
-                                              textAlign: TextAlign.center,
-                                              style: TextStyle(
-                                                  fontSize: 11,
-                                                  fontFamily: MAIN_FONT_FAMILY,
-                                                  color: Color.fromRGBO(
-                                                      99, 99, 99, 1)),
-                                            ),
-                                          ),
-                                          Padding(
-                                            padding: const EdgeInsets.only(
-                                                right: 20),
-                                            child: IconButton(
-                                              icon: SvgPicture.asset(
-                                                  "assets/images/location1.svg"),
-                                              onPressed: () {},
-                                            ),
-                                          ),
-                                        ]),
-                                  ),
-                                ),
-                              ),
-                            ),
-                            const SizedBox(
-                              width: 30,
-                            ),
-                            Container(
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(15),
-                                  color: const Color.fromRGBO(
-                                    166,
-                                    166,
-                                    166,
-                                    1,
-                                  )),
-                              child: Container(
-                                decoration: BoxDecoration(
-                                    color: const Color.fromRGBO(
-                                      0,
-                                      189,
-                                      97,
-                                      1,
-                                    ),
-                                    borderRadius: BorderRadius.circular(15)),
-                                child: Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 20),
-                                  child: Row(children: [
-                                    const Padding(
-                                      padding: EdgeInsets.only(left: 20),
-                                      child: Text(
-                                        "فیلتر",
-                                        textAlign: TextAlign.center,
-                                        style: TextStyle(
-                                            fontSize: 11,
-                                            fontFamily: MAIN_FONT_FAMILY,
-                                            color:
-                                                Color.fromRGBO(99, 99, 99, 1)),
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.only(right: 20),
-                                      child: IconButton(
-                                        icon: SvgPicture.asset(
-                                          "assets/images/filter.svg",
-                                          width: 18,
-                                          height: 18,
-                                        ),
-                                        onPressed: () {},
-                                      ),
-                                    ),
-                                  ]),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
+                      const SingleChildScrollView(
+                        child: CityfilterFilterWidget(),
                       ),
                       const SizedBox(
-                        height: 15,
+                        height: 20,
                       ),
-                      Obx(
-                        () => Container(
-                          height: _show_item_mahaleh_1.isTrue ? 130 : 50,
-                          decoration: BoxDecoration(
-                            color: const Color.fromRGBO(250, 250, 250, 1),
-                            border: Border.all(
-                                color: const Color.fromRGBO(166, 166, 166, 1)),
-                            borderRadius: BorderRadius.circular(15),
-                          ),
-                          child: Column(children: [
-                            Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  IconButton(
-                                    icon: _show_item_mahaleh_1.value
-                                        ? SvgPicture.asset(
-                                            'assets/images/=.svg',
-                                          )
-                                        : SvgPicture.asset(
-                                            'assets/images/down.svg'),
-                                    onPressed: () {
-                                      _show_item_mahaleh_1.value =
-                                          !_show_item_mahaleh_1.value;
-                                    },
-                                  ),
-                                  const Padding(
-                                    padding:
-                                        EdgeInsets.only(left: 20, right: 10),
-                                    child: Text(
-                                      'محله',
-                                      style: TextStyle(
-                                          fontFamily: MAIN_FONT_FAMILY,
-                                          color: Color.fromRGBO(48, 48, 48, 1),
-                                          fontSize: 12),
-                                    ),
-                                  ),
-                                ]),
-                            buildmahaleh(),
-                          ]),
-                        ),
-                      )
+                      MahalehFilterWidget(),
                     ]),
                   ),
                   const SizedBox(
-                    height: 15,
+                    height: 20,
                   ),
                   AgahiDahandaFilterWidget(
                     onChange: (_) {
@@ -228,89 +90,13 @@ class _AmlakFilterState extends State<AmlakFilter> {
                     },
                   ),
                   const SizedBox(
-                    height: 15,
+                    height: 20,
                   ),
-                  Obx(
-                    () => Container(
-                      height: _show_item_emkanatagahi_1.isTrue ? 155 : 50,
-                      decoration: BoxDecoration(
-                          color: const Color.fromRGBO(250, 250, 250, 1),
-                          border: Border.all(
-                              color: const Color.fromRGBO(166, 166, 166, 1)),
-                          borderRadius: BorderRadius.circular(15)),
-                      child: Column(
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              IconButton(
-                                icon: _show_item_emkanatagahi_1.value
-                                    ? SvgPicture.asset(
-                                        'assets/images/=.svg',
-                                      )
-                                    : SvgPicture.asset(
-                                        'assets/images/down.svg'),
-                                onPressed: () {
-                                  _show_item_emkanatagahi_1.value =
-                                      !_show_item_emkanatagahi_1.value;
-                                },
-                              ),
-                              const Padding(
-                                padding: EdgeInsets.only(right: 10),
-                                child: Text(
-                                  "امکانات آگهی",
-                                  style: TextStyle(
-                                      fontFamily: MAIN_FONT_FAMILY,
-                                      color: Color.fromRGBO(48, 48, 48, 1),
-                                      fontSize: 12),
-                                ),
-                              ),
-                            ],
-                          ),
-                          buildemkanatagahi()
-                        ],
-                      ),
-                    ),
-                  ),
+                  EmkanatFilterWidget(),
                   const SizedBox(
-                    height: 15,
+                    height: 20,
                   ),
-                  Container(
-                    height: 41,
-                    decoration: BoxDecoration(
-                        color: const Color.fromRGBO(250, 250, 250, 1),
-                        border: Border.all(
-                            color: const Color.fromRGBO(166, 166, 166, 1)),
-                        borderRadius: BorderRadius.circular(15)),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Transform.scale(
-                          scale: 0.60,
-                          child: Obx(
-                            () => Switch(
-                                onChanged: (_) => fori.value = _,
-                                value: fori.value,
-                                activeColor: Colors.white,
-                                activeTrackColor:
-                                    const Color.fromRGBO(54, 216, 89, 1),
-                                inactiveThumbColor:
-                                    const Color.fromRGBO(11, 8, 8, 0.2),
-                                inactiveTrackColor:
-                                    const Color.fromRGBO(255, 255, 255, 1)),
-                          ),
-                        ),
-                        const Padding(
-                          padding: EdgeInsets.only(right: 20),
-                          child: Text(
-                            "آگهی فوری",
-                            style: TextStyle(
-                                fontFamily: MAIN_FONT_FAMILY, fontSize: 12),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
+                  AghahiforiFilterWidget(),
                   const SizedBox(
                     height: 30,
                   ),
