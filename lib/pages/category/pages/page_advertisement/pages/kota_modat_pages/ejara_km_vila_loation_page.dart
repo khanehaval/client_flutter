@@ -30,7 +30,7 @@ class EjaraKmLocationPage extends StatelessWidget {
             children: [
               MapInfoPage(locationInfo),
               const SizedBox(
-                height: 10,
+                height: 20,
               ),
               const Align(
                 alignment: Alignment.centerRight,
@@ -48,11 +48,14 @@ class EjaraKmLocationPage extends StatelessWidget {
                   ),
                 ),
               ),
-              SwitchItems(
-                  onSelected: (_) {},
-                  items: const ["اتاق", "سوئیت", "برج", "پنت هاوس"]),
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: SwitchItems(
+                    onSelected: (_) {},
+                    items: const ["اتاق", "سوئیت", "برج", "پنت هاوس"]),
+              ),
               const SizedBox(
-                height: 5,
+                height: 35,
               ),
               GestureDetector(
                   onTap: () {

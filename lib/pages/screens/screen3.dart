@@ -26,7 +26,7 @@ class Screen3 extends StatelessWidget {
                   fit: BoxFit.cover,
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(top: 80, left: 50),
+                  padding: const EdgeInsets.only(top: 30, left: 50),
                   child: SvgPicture.asset(
                     'assets/images/property3.svg',
                   ),

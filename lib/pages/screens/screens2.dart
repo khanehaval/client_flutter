@@ -29,7 +29,7 @@ class Screen2 extends StatelessWidget {
                     fit: BoxFit.cover,
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(top: 60, left: 30),
+                    padding: const EdgeInsets.only(top: 20, left: 30),
                     child: SvgPicture.asset(
                       'assets/images/Group 2.svg',
                     ),

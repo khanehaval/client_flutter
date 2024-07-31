@@ -31,7 +31,7 @@ class Screen1 extends StatelessWidget {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(top: 70, left: 4),
+                      padding: const EdgeInsets.only(top: 10, left: 4),
                       child: SvgPicture.asset(
                         'assets/images/Page 1.svg',
                       ),

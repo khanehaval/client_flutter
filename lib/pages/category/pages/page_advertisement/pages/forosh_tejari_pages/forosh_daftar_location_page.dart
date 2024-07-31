@@ -52,10 +52,13 @@ class ForoshDaftarLocationPage extends StatelessWidget {
                   ),
                 ),
               ),
-              Align(
-                alignment: Alignment.centerRight,
-                child: SwitchItems(
-                    onSelected: (_) {}, items: const ["مطب", "ملک اداری"]),
+              Padding(
+                padding: const EdgeInsets.only(left: 160.0),
+                child: SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: SwitchItems(
+                      onSelected: (_) {}, items: const ["مطب", "ملک اداری"]),
+                ),
               ),
               const SizedBox(
                 height: 30,

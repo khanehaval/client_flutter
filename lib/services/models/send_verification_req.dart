@@ -8,10 +8,11 @@ class SendVerificationReq {
   String cellphone;
   int code;
 
-  SendVerificationReq(
-      {required this.address
-      ,required this.cellphone,required this.code, });
+  SendVerificationReq({
+    required this.address,
+    required this.cellphone,
+    required this.code,
+  });
 
   Map<String, dynamic> toJson() => _$SendVerificationReqToJson(this);
-
 }

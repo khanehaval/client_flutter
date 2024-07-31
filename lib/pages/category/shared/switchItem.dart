@@ -33,8 +33,8 @@ class _SwitchItemsState extends State<SwitchItems> {
     var res = <List<String>>[];
     int j = 0;
     while (j < items.length) {
-      res.add(items.sublist(j, min(j + 3, items.length)).toList());
-      j = j + 3;
+      res.add(items.sublist(j, min(j + 4, items.length)).toList());
+      j = j + 4;
     }
     return res;
   }
@@ -56,7 +56,7 @@ class _SwitchItemsState extends State<SwitchItems> {
           Text(
             text,
             style: const TextStyle(
-              fontSize: 10.5,
+              fontSize: 10,
               fontFamily: MAIN_FONT_FAMILY,
             ),
           ),

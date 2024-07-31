@@ -56,9 +56,19 @@ class EjaraDaftarLocationPage extends StatelessWidget {
                               ),
                             ),
                           ),
-                          SwitchItems(
-                              onSelected: (_) {},
-                              items: const ["اتاق اداری", "مطب", "ملک اداری"]),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 60.0),
+                            child: SingleChildScrollView(
+                              scrollDirection: Axis.horizontal,
+                              child: SwitchItems(
+                                  onSelected: (_) {},
+                                  items: const [
+                                    "اتاق اداری",
+                                    "مطب",
+                                    "ملک اداری"
+                                  ]),
+                            ),
+                          ),
                           const SizedBox(
                             height: 25,
                           ),

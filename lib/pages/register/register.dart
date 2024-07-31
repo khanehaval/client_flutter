@@ -165,7 +165,7 @@ class _RegisterState extends State<Register> {
         controller: _phoneNumberTextField,
         onChanged: (_) => _phoneNumberSended.value = false,
         onFieldSubmitted: (_) => _sendPhoneNumber(),
-        style: const TextStyle(fontSize: 15),
+        style: const TextStyle(fontSize: 14),
         inputFormatters: [FilteringTextInputFormatter.digitsOnly],
         decoration: InputDecoration(
           hintText: "۰۹۱۲   ۱۲۳   ۴۵۶۷",

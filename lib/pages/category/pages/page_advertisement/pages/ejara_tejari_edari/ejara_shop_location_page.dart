@@ -51,9 +51,12 @@ class EajraShopLocationPage extends StatelessWidget {
                   ),
                 ),
               ),
-              Align(
-                alignment: Alignment.centerRight,
-                child: SwitchItems(onSelected: (_) {}, items: const [" غرفه"]),
+              Padding(
+                padding: const EdgeInsets.only(left: 270.0),
+                child: SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: SwitchItems(
+                        onSelected: (_) {}, items: const [" غرفه"])),
               ),
               const SizedBox(
                 height: 20,

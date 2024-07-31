@@ -49,9 +49,15 @@ class EjaraApartemanLocationPage extends StatelessWidget {
                   ),
                 ),
               ),
-              SwitchItems(
-                  onSelected: (_) {},
-                  items: const ["سوئیت", "برج", "پنت هاوس"]),
+              Padding(
+                padding: const EdgeInsets.only(left: 75.0),
+                child: SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: SwitchItems(
+                      onSelected: (_) {},
+                      items: const ["سوئیت", "برج", "پنت هاوس"]),
+                ),
+              ),
               const SizedBox(
                 height: 55,
               ),

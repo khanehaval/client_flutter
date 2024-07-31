@@ -49,9 +49,15 @@ class ForshAdvLocationPage extends StatelessWidget {
                   ),
                 ),
               ),
-              SwitchItems(
-                items: const ["سوئیت", "برج", "پنت هاوس"],
-                onSelected: (_) {},
+              Padding(
+                padding: const EdgeInsets.only(left: 75.0),
+                child: SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: SwitchItems(
+                    items: const ["سوئیت", "برج", "پنت هاوس"],
+                    onSelected: (_) {},
+                  ),
+                ),
               ),
               const SizedBox(
                 height: 65,

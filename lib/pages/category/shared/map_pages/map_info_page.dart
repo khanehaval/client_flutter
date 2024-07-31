@@ -51,7 +51,7 @@ class _MapInfoPageState extends State<MapInfoPage> {
           width: Get.width * 2 / 3,
           height: Get.width * 2 / 3,
           decoration: BoxDecoration(
-              color: Color.fromRGBO(183, 183, 183, 1),
+              color: const Color.fromRGBO(183, 183, 183, 1),
               borderRadius: BorderRadius.circular(10)),
           child: Padding(
             padding: const EdgeInsets.all(2.0),
@@ -63,12 +63,11 @@ class _MapInfoPageState extends State<MapInfoPage> {
                       mapController: _mapController,
                       options: MapOptions(
                         initialCenter: locationInfo.location,
-                        initialZoom: 12,
+                        initialZoom: 14,
                         maxZoom: 18,
-                        keepAlive: true,
-                        interactionOptions: const InteractionOptions(
-                            enableMultiFingerGestureRace: true,
-                            enableScrollWheel: true),
+                        interactiveFlags: InteractiveFlag.pinchZoom |
+                            InteractiveFlag.doubleTapZoom |
+                            InteractiveFlag.rotate,
                         onTap: (tapPosition, point) {
                           Get.to(() => SelectLocationMap(
                                 lastLocation: locationInfo,
@@ -91,22 +90,12 @@ class _MapInfoPageState extends State<MapInfoPage> {
                               'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
                           userAgentPackageName: 'com.example.app',
                         ),
-                        CircleLayer(
-                          circles: [
-                            CircleMarker(
-                              point: locationInfo.location,
-                              radius: 100,
-                              useRadiusInMeter: true,
-                              color: Colors.green.withOpacity(0.3),
-                            )
-                          ],
-                        ),
                         MarkerLayer(
                           markers: [
                             Marker(
                                 point: locationInfo.location,
-                                width: 52,
-                                height: 67,
+                                width: 60,
+                                height: 60,
                                 child: IconButton(
                                     onPressed: () {
                                       Get.to(() => SelectLocationMap(
@@ -115,7 +104,7 @@ class _MapInfoPageState extends State<MapInfoPage> {
                                               Get.back();
                                               locationInfo = _;
                                               _mapController.move(
-                                                  locationInfo.location, 16);
+                                                  locationInfo.location, 13);
                                               _addressController.text =
                                                   locationInfo
                                                       .formatted_address;

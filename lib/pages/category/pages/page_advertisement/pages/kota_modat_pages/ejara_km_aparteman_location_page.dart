@@ -47,11 +47,17 @@ class EjaraKMApartemanLocationPage extends StatelessWidget {
                   ),
                 ),
               ),
-              SwitchItems(
-                  onSelected: (_) {},
-                  items: const ["اتاق", "سوئیت", "برج", "پنت هاوس"]),
+              Padding(
+                padding: const EdgeInsets.only(left: 2.0),
+                child: SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: SwitchItems(
+                      onSelected: (_) {},
+                      items: const ["اتاق", "سوئیت", "برج", "پنت هاوس"]),
+                ),
+              ),
               const SizedBox(
-                height: 5,
+                height: 35,
               ),
               GestureDetector(
                   onTap: () {

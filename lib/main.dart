@@ -127,7 +127,7 @@ class _MyAppState extends State<MyApp> {
                                 } else {
                                   // Handle the start button action here
                                   // For example, navigate to another screen
-                                  Get.off(() => Advertisements());
+                                  Get.off(() => const Register());
                                 }
                               },
                               child: Container(

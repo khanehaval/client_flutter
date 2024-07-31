@@ -50,14 +50,17 @@ class SelectLocationEjaraPresell extends StatelessWidget {
                   ),
                 ),
               ),
-              SwitchItems(onSelected: (_) {}, items: const [
-                "مجتمع تجاری",
-                "ویلا",
-                "آپارتمان",
-                "برج",
-                "پنت هاوس ",
-                "زمین مسکونی"
-              ]),
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: SwitchItems(onSelected: (_) {}, items: const [
+                  "مجتمع تجاری",
+                  "ویلا",
+                  "آپارتمان",
+                  "برج",
+                  "پنت هاوس ",
+                  "زمین مسکونی"
+                ]),
+              ),
               const SizedBox(
                 height: 5,
               ),

@@ -177,6 +177,13 @@ class LoginSecondlyPage extends StatelessWidget {
                   Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(30),
+                      boxShadow: [
+                        BoxShadow(
+                            color: Colors.grey.withOpacity(0.25),
+                            spreadRadius: 1,
+                            blurRadius: 5,
+                            offset: const Offset(0, 1)),
+                      ],
                       gradient: getGradient(),
                     ),
                     child: ElevatedButton(
@@ -203,6 +210,13 @@ class LoginSecondlyPage extends StatelessWidget {
                     child: Container(
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(30),
+                        boxShadow: [
+                          BoxShadow(
+                              color: Colors.grey.withOpacity(0.25),
+                              spreadRadius: 1,
+                              blurRadius: 5,
+                              offset: const Offset(0, 1)),
+                        ],
                         gradient: getGradient(),
                       ),
                       child: ElevatedButton(

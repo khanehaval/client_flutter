@@ -57,11 +57,14 @@ class _SelectLocationOnMapState extends State<KolangiAdvLocationPage> {
                   ),
                 ),
               ),
-              Align(
-                alignment: Alignment.centerRight,
-                child: SwitchItems(
-                    onSelected: (_) {},
-                    items: const ["زمین مسکونی", "خانه کلنگی"]),
+              Padding(
+                padding: const EdgeInsets.only(left: 85.0),
+                child: SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: SwitchItems(
+                      onSelected: (_) {},
+                      items: const ["زمین مسکونی", "خانه کلنگی"]),
+                ),
               ),
               const SizedBox(
                 height: 30,

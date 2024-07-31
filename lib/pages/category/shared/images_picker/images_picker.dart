@@ -12,7 +12,8 @@ import 'image_croped.dart';
 class ImagesPicker extends StatelessWidget {
   final RxList<dynamic> selectedImagesPath;
 
-  const ImagesPicker({Key? key, required this.selectedImagesPath}) : super(key: key);
+  const ImagesPicker({Key? key, required this.selectedImagesPath})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -79,10 +80,7 @@ class ImagesPicker extends StatelessWidget {
             if (index == selectedImagesPath.length) {
               return _buildAddMoreButton(context);
             } else {
-              return Padding(
-                padding: const EdgeInsets.all(5),
-                child: _buildImageGridItem(index),
-              );
+              return _buildImageGridItem(index);
             }
           },
         ),
@@ -116,10 +114,6 @@ class ImagesPicker extends StatelessWidget {
               ),
             ),
           ),
-          Align(
-            alignment: Alignment.topRight,
-            child: _buildCropper(path),
-          ),
         ],
       ),
     );
@@ -127,7 +121,7 @@ class ImagesPicker extends StatelessWidget {
 
   Widget _buildMainImageLabel() {
     return Container(
-      height: 50,
+      height: 40,
       decoration: BoxDecoration(
         border: const GradientBoxBorder(
           gradient: LinearGradient(colors: GRADIANT_COLOR),
@@ -137,7 +131,7 @@ class ImagesPicker extends StatelessWidget {
         color: Colors.white70,
       ),
       child: const Padding(
-        padding: EdgeInsets.all(10.0),
+        padding: EdgeInsets.all(8.0),
         child: Center(
           child: Text(
             "عکس اصلی",
@@ -177,7 +171,7 @@ class ImagesPicker extends StatelessWidget {
     );
   }
 
-  Widget _buildRemoveIcon(String path, {double size = 78}) {
+  Widget _buildRemoveIcon(String path, {double size = 40}) {
     return Container(
       width: size,
       height: size,
@@ -190,7 +184,7 @@ class ImagesPicker extends StatelessWidget {
         color: Colors.white70,
       ),
       child: IconButton(
-        icon: Icon(CupertinoIcons.clear_circled, size: size / 1.88),
+        icon: Icon(CupertinoIcons.clear_circled, size: size / 1.83),
         onPressed: () => selectedImagesPath.remove(path),
       ),
     );

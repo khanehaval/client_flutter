@@ -47,9 +47,15 @@ class EjaraSanatiLocationPage extends StatelessWidget {
                 ),
               ),
             ),
-            SwitchItems(
-                onSelected: (_) {},
-                items: const ["اتاق اداری", "مطب", "ملک اداری"]),
+            Padding(
+              padding: const EdgeInsets.only(left: 65.0),
+              child: SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: SwitchItems(
+                    onSelected: (_) {},
+                    items: const ["اتاق اداری", "مطب", "ملک اداری"]),
+              ),
+            ),
             const SizedBox(
               height: 30,
             ),

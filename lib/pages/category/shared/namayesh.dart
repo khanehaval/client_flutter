@@ -37,8 +37,8 @@ class NamayeshAgahi extends StatelessWidget {
                   decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(10)),
-                  width: 372,
-                  height: 273,
+                  width: 380,
+                  height: 280,
                 ),
               ),
             ),
@@ -48,15 +48,18 @@ class NamayeshAgahi extends StatelessWidget {
                   children: [
                     SizedBox(
                       width: 350,
-                      child: Image.asset(
-                        "assets/images/pic.png",
-                        fit: BoxFit.fitWidth,
+                      height: 175,
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 5.0),
+                        child: Image.asset(
+                          "assets/images/pic.png",
+                        ),
                       ),
                     ),
                     Align(
                       alignment: Alignment.centerRight,
                       child: Padding(
-                        padding: const EdgeInsets.only(right: 10.0),
+                        padding: const EdgeInsets.only(right: 10.0, top: 5),
                         child: SvgPicture.asset(
                           "assets/images/Score.svg",
                         ),
@@ -65,7 +68,7 @@ class NamayeshAgahi extends StatelessWidget {
                     Align(
                       alignment: Alignment.centerLeft,
                       child: Padding(
-                        padding: const EdgeInsets.only(left: 5.0),
+                        padding: const EdgeInsets.only(left: 5.0, top: 5),
                         child: SvgPicture.asset(
                           "assets/images/Pic Number.svg",
                         ),
@@ -94,7 +97,7 @@ class NamayeshAgahi extends StatelessWidget {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(top: 150, left: 5),
+                      padding: const EdgeInsets.only(top: 150, left: 10),
                       child: Align(
                         alignment: Alignment.bottomLeft,
                         child: SvgPicture.asset(
@@ -113,14 +116,21 @@ class NamayeshAgahi extends StatelessWidget {
                     SizedBox(
                       height: 30,
                       width: 30,
-                      child: SvgPicture.asset("assets/images/total price.svg"),
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 5.0),
+                        child:
+                            SvgPicture.asset("assets/images/total price.svg"),
+                      ),
                     ),
-                    const Text(
-                      "...ویلا 100 متری در زمین 250 متری",
-                      style: TextStyle(
-                        fontSize: 15,
-                        fontFamily: MAIN_FONT_FAMILY,
-                        color: Color.fromRGBO(99, 99, 99, 1),
+                    const Padding(
+                      padding: EdgeInsets.only(right: 5.0),
+                      child: Text(
+                        "...ویلا 100 متری در زمین 250 متری",
+                        style: TextStyle(
+                          fontSize: 15,
+                          fontFamily: MAIN_FONT_FAMILY,
+                          color: Color.fromRGBO(99, 99, 99, 1),
+                        ),
                       ),
                     ),
                   ],
@@ -129,24 +139,33 @@ class NamayeshAgahi extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    SvgPicture.asset(
-                      "assets/images/price.svg",
-                      height: 20,
-                      width: 20,
+                    Padding(
+                      padding: const EdgeInsets.only(left: 5.0),
+                      child: SvgPicture.asset(
+                        "assets/images/price.svg",
+                        height: 20,
+                        width: 20,
+                      ),
                     ),
-                    SvgPicture.asset(
-                      "assets/images/property1.svg",
-                      height: 20,
-                      width: 20,
+                    Padding(
+                      padding: const EdgeInsets.only(right: 5.0),
+                      child: SvgPicture.asset(
+                        "assets/images/property1.svg",
+                        height: 20,
+                        width: 20,
+                      ),
                     ),
                   ],
                 ),
                 Row(
                   children: [
-                    SvgPicture.asset(
-                      "assets/images/Sqm.svg",
-                      width: 20,
-                      height: 20,
+                    Padding(
+                      padding: const EdgeInsets.only(left: 5.0),
+                      child: SvgPicture.asset(
+                        "assets/images/Sqm.svg",
+                        width: 20,
+                        height: 20,
+                      ),
                     ),
                   ],
                 ),

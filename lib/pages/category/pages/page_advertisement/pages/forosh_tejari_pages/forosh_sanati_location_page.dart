@@ -49,9 +49,15 @@ class ForoshSanatiLocationPage extends StatelessWidget {
                   ),
                 ),
               ),
-              SwitchItems(
-                  onSelected: (_) {},
-                  items: const ["کارگاه", "سوله", "زمین کشاورزی"]),
+              Padding(
+                padding: const EdgeInsets.only(left: 75.0),
+                child: SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: SwitchItems(
+                      onSelected: (_) {},
+                      items: const ["کارگاه", "سوله", "زمین کشاورزی"]),
+                ),
+              ),
               const SizedBox(
                 height: 45,
               ),

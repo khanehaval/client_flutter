@@ -43,7 +43,7 @@ class ForoshFilter extends StatelessWidget {
           padding: const EdgeInsets.all(10.0),
           child: Column(
             children: [
-              CityfilterFilterWidget(),
+              const CityfilterFilterWidget(),
               const SizedBox(
                 height: 20,
               ),

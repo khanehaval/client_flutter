@@ -45,9 +45,15 @@ class VilaLocationAdvPage extends StatelessWidget {
                   ),
                 ),
               ),
-              SwitchItems(
-                  onSelected: (_) {},
-                  items: const ["باغ ویلا", "باغ", "خانه ویلایی"]),
+              Padding(
+                padding: const EdgeInsets.only(left: 75.0),
+                child: SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: SwitchItems(
+                      onSelected: (_) {},
+                      items: const ["باغ ویلا", "باغ", "خانه ویلایی"]),
+                ),
+              ),
               const SizedBox(
                 height: 50,
               ),

@@ -28,6 +28,8 @@ class ForoshAdvPage extends StatefulWidget {
 }
 
 class _ForoshAdvPageState extends State<ForoshAdvPage> {
+  final ImageController imageController = Get.put(ImageController());
+
   final aghsatType = "".obs;
 
   final onvan = "".obs;
@@ -601,6 +603,8 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
 
   Widget aghsatiForoshWidget(BuildContext context) {
     final isSwitched = true.obs;
+    final ImageController imageController = Get.put(ImageController());
+
     return Column(
       children: [
         switchable(isSwitched, "فروش به صورت اقساطی"),
@@ -628,363 +632,234 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
             ],
           ),
         ),
-        Obx(() => isSwitched.isTrue
-            ? Column(
-                children: [
-                  Image.asset(
+        Obx(() => Stack(
+              children: [
+                ColorFiltered(
+                  colorFilter: ColorFilter.mode(
+                    Colors.black
+                        .withOpacity(1 - imageController.sliderValue.value),
+                    BlendMode.srcATop,
+                  ),
+                  child: Image.asset(
                     "assets/images/progressbarRGB.png",
-                    height: 80,
+                    height: 100,
                     width: double.infinity,
+                    fit: BoxFit.cover,
                   ),
-                  // Stack(
-                  //   alignment: Alignment.center,
-                  //   children: [
-                  //     ColorFiltered(
-                  //       colorFilter: ColorFilter.mode(
-                  //         Colors.blue, // Change this to the desired color
-                  //         BlendMode.modulate,
-                  //       ),
-                  //       child: ShaderMask(
-                  //         shaderCallback: (Rect bounds) {
-                  //           return LinearGradient(
-                  //             colors: [
-                  //               Colors.black38,
-                  //               Colors.black38
-                  //             ],
-                  //             stops: [0.4, 0.4],
-                  //             begin: Alignment.centerLeft,
-                  //             end: Alignment.centerRight,
-                  //           ).createShader(bounds);
-                  //         },
-                  //         blendMode: BlendMode.srcIn,
-                  //         child: Image.asset(
-                  //           "assets/images/progressbarRGB.png",
-                  //           height: 80,
-                  //           width: double.infinity,
-                  //         ),
-                  //       ),
-                  //     ),
-                  //     // Container(
-                  //     //   decoration: BoxDecoration(
-                  //     //     image: DecorationImage(
-                  //     //         image:
-                  //     //             Image.asset("assets/images/progressbar.png")
-                  //     //                 .image,
-                  //     //         fit: BoxFit.cover),
-                  //     //     // gradient: LinearGradient(colors: GRADIANT_COLOR)
-                  //     //   ),
-                  //     // ),
-                  //     // Image.asset(
-                  //     //   "assets/images/progressbarRGB.png",
-                  //     // ),
-                  //     //
-                  //     // SliderTheme(
-                  //     //   data: SliderTheme.of(Get.context!).copyWith(
-                  //     //     trackHeight: 75,
-                  //     //     inactiveTrackColor: Colors.black38,
-                  //     //     overlayShape: SliderComponentShape.noOverlay,
-                  //     //     activeTrackColor: Colors.black38,
-                  //     //     trackShape: CustomTrackShape(),
-                  //     //   ),
-                  //     //   child: Slider(
-                  //     //     value: 0,
-                  //     //     min: 0,
-                  //     //     max: 10,
-                  //     //     onChanged: (double newValue) {
-                  //     //       // setState(() {
-                  //     //       //   _currentValue = newValue;
-                  //     //       // });
-                  //     //     },
-                  //     //   ),
-                  //     // ),
-                  //     // Slider(value: 0.6,divisions: 5, onChanged: (_){}),
-                  //   ],
-                  // ),
-                  // Row(
-                  //   mainAxisAlignment: MainAxisAlignment.center,
-                  //   crossAxisAlignment: CrossAxisAlignment.center,
-                  //   children: [
-                  //     Stack(
-                  //       alignment: Alignment.center,
-                  //       fit: StackFit.loose,
-                  //       children: [
-                  //         ColorFiltered(
-                  //           colorFilter: ColorFilter.mode(
-                  //             Colors.blue, // Change this to the desired color
-                  //             BlendMode.modulate,
-                  //           ),
-                  //           child: ShaderMask(
-                  //             shaderCallback: (Rect bounds) {
-                  //               return LinearGradient(
-                  //                 colors: [
-                  //                   Colors.black12,
-                  //                   Colors.black38
-                  //                 ],
-                  //                 stops: [0.4, 0.4],
-                  //                 begin: Alignment.centerLeft,
-                  //                 end: Alignment.centerRight,
-                  //               ).createShader(bounds);
-                  //             },
-                  //             blendMode: BlendMode.srcIn,
-                  //             child: Center(
-                  //               child: Image.asset(
-                  //                 "assets/images/progressbarRGB.png",
-                  //                 height: 80,
-                  //                 width: Get.width-100,
-                  //               ),
-                  //             ),
-                  //           ),
-                  //         ),
-                  //         // Container(
-                  //         //   decoration: BoxDecoration(
-                  //         //     image: DecorationImage(
-                  //         //         image:
-                  //         //             Image.asset("assets/images/progressbar.png")
-                  //         //                 .image,
-                  //         //         fit: BoxFit.cover),
-                  //         //     // gradient: LinearGradient(colors: GRADIANT_COLOR)
-                  //         //   ),
-                  //         // ),
-                  //         // Image.asset(
-                  //         //   "assets/images/progressbarRGB.png",
-                  //         // ),
-                  //
-                  //         Center(
-                  //           child: SliderTheme(
-                  //             data: SliderTheme.of(context).copyWith(
-                  //               trackHeight: 75,
-                  //               inactiveTrackColor: Colors.black,
-                  //                overlayShape: SliderComponentShape.noThumb,
-                  //               activeTrackColor: Colors.black,
-                  //               trackShape: CustomTrackShape(),
-                  //             ),
-                  //             child: Slider(
-                  //               value: 5,
-                  //               min: 0,
-                  //               max: 10,
-                  //               onChanged: (double newValue) {
-                  //                 // setState(() {
-                  //                 //   _currentValue = newValue;
-                  //                 // });
-                  //               },
-                  //             ),
-                  //           ),
-                  //         ),
-                  //          // Slider(value: 0.6,divisions: 5, onChanged: (_){}),
-                  //       ],
-                  //     ),
-                  //   ],
-                  // ),
-
-                  const SizedBox(
-                    height: 20,
+                ),
+                Positioned(
+                  top: 52,
+                  left: 10,
+                  right: 20,
+                  child: Slider(
+                    value: imageController.sliderValue.value,
+                    min: 0,
+                    max: 1,
+                    onChanged: (value) {
+                      imageController.updateSliderValue(value);
+                    },
                   ),
-
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  TwoItemInRow(
-                    label1: "مبلغ قسط (تومان)",
-                    label2: "پیش پرداخت (تومان)",
-                    widget1: SizedBox(
-                      height: 41,
-                      width: getPageWidth(),
-                      child: TextField(
-                        keyboardType: TextInputType.number,
-                        textAlign: TextAlign.right,
-                        decoration: InputDecoration(
-                          hintText: 'مبلغ را وارد کنید', //todo
-                          hintStyle: const TextStyle(
-                            fontSize: 13,
-                            fontFamily: 'Iran Sans',
-                            fontWeight: FontWeight.w400,
-                            color: Color(0xFFA6A6A6),
-                          ),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                        ),
-                      ),
-                    ),
-                    widget2: SizedBox(
-                      height: 41,
-                      width: getPageWidth(),
-                      child: TextField(
-                        keyboardType: TextInputType.number,
-                        textAlign: TextAlign.right,
-                        decoration: InputDecoration(
-                          hintText: 'مبلغ را وارد کنید', //todo
-                          hintStyle: const TextStyle(
-                            fontSize: 13,
-                            fontFamily: 'Iran Sans',
-                            fontWeight: FontWeight.w400,
-                            color: Color(0xFFA6A6A6),
-                          ),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  TwoItemInRow(
-                      label1: "زمان دریافت اقساط",
-                      label2: "تعداد اقساط",
-                      widget1:
-                          ReadOnlyTextField(_timeOfInstallmentsController, () {
-                        persianDataPicker((date) {
-                          _timeOfInstallmentsController.text = date;
-                        });
-                      }, width: getPageWidth(), fontSize: 13),
-                      widget2:
-                          ReadOnlyTextField(_countOfInstallmentsController, () {
-                        showNumberPicker((_) {
-                          _countOfInstallmentsController.text = _;
-                        });
-                      }, width: getPageWidth())),
-                  const SizedBox(
-                    width: 25,
-                    height: 10,
-                  ),
-                  SwitchItems(
-                      onSelected: (_) {}, items: const ["ضامن", "سفته", "چک"]),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  const Text(
-                    "قیمت نهایی ملک (پیش پرداخت + اقساط ) : 13.200.000.000 تومان",
-                    style: TextStyle(
-                      fontFamily: MAIN_FONT_FAMILY,
-                      fontSize: 10,
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 30,
-                  ),
-                ],
-              )
-            : const SizedBox.shrink()),
-      ],
-    );
-  }
-
-  Widget melkByVamBanki(BuildContext context) {
-    final isSwitched = true.obs;
-    return Column(
-      children: [
-        switchable(isSwitched, "ملک با وام بانکی"),
+                ),
+              ],
+            )),
+        const SizedBox(
+          height: 20,
+        ),
+        const SizedBox(
+          height: 20,
+        ),
+        TwoItemInRow(
+          label1: "مبلغ قسط (تومان)",
+          label2: "پیش پرداخت (تومان)",
+          widget1: SizedBox(
+            height: 41,
+            width: getPageWidth(),
+            child: TextField(
+              keyboardType: TextInputType.number,
+              textAlign: TextAlign.right,
+              decoration: InputDecoration(
+                hintText: 'مبلغ را وارد کنید', // todo
+                hintStyle: const TextStyle(
+                  fontSize: 13,
+                  fontFamily: 'Iran Sans',
+                  fontWeight: FontWeight.w400,
+                  color: Color(0xFFA6A6A6),
+                ),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+              ),
+            ),
+          ),
+          widget2: SizedBox(
+            height: 41,
+            width: getPageWidth(),
+            child: TextField(
+              keyboardType: TextInputType.number,
+              textAlign: TextAlign.right,
+              decoration: InputDecoration(
+                hintText: 'مبلغ را وارد کنید', // todo
+                hintStyle: const TextStyle(
+                  fontSize: 13,
+                  fontFamily: 'Iran Sans',
+                  fontWeight: FontWeight.w400,
+                  color: Color(0xFFA6A6A6),
+                ),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+              ),
+            ),
+          ),
+        ),
+        const SizedBox(
+          height: 20,
+        ),
+        TwoItemInRow(
+          label1: "زمان دریافت اقساط",
+          label2: "تعداد اقساط",
+          widget1: ReadOnlyTextField(_timeOfInstallmentsController, () {
+            persianDataPicker((date) {
+              _timeOfInstallmentsController.text = date;
+            });
+          }, width: getPageWidth(), fontSize: 13),
+          widget2: ReadOnlyTextField(_countOfInstallmentsController, () {
+            showNumberPicker((_) {
+              _countOfInstallmentsController.text = _;
+            });
+          }, width: getPageWidth()),
+        ),
+        const SizedBox(
+          width: 25,
+          height: 10,
+        ),
+        SwitchItems(onSelected: (_) {}, items: const ["ضامن", "سفته", "چک"]),
         const SizedBox(
           height: 10,
         ),
-        Obx(() => isSwitched.isTrue
-            ? Column(
-                children: [
-                  RichText(
-                    text: const TextSpan(
-                      text: "در صورت وارد نکردن آیتم ها، آگهی فقط با عنوان  ",
-                      style: TextStyle(
-                        fontFamily: MAIN_FONT_FAMILY,
-                        fontSize: 12.3,
-                        color: Colors.black,
-                      ),
-                      children: <TextSpan>[
-                        TextSpan(
-                          text: 'دارای وام',
-                          style: TextStyle(
-                            fontFamily: MAIN_FONT_FAMILY,
-                            fontSize: 12,
-                            color: Color.fromRGBO(156, 64, 64, 1),
-                          ),
-                        ),
-                        TextSpan(
-                          text: ' منتشر میگردد',
-                          style: TextStyle(
-                            fontFamily: MAIN_FONT_FAMILY,
-                            fontSize: 12,
-                            color: Colors.black,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  TwoItemInRow(
-                    label1: "مبلغ اقساط",
-                    label2: "میزان وام (تومان)",
-                    widget1: SizedBox(
-                      height: 41,
-                      width: getPageWidth(),
-                      child: TextField(
-                        keyboardType: TextInputType.number,
-                        textAlign: TextAlign.right,
-                        decoration: InputDecoration(
-                          hintText: '3,6000000', //todo
-                          hintStyle: const TextStyle(
-                            fontSize: 13,
-                            fontFamily: 'Iran Sans',
-                            fontWeight: FontWeight.w400,
-                            color: Color(0xFFA6A6A6),
-                          ),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                        ),
-                      ),
-                    ),
-                    widget2: SizedBox(
-                      height: 41,
-                      width: getPageWidth(),
-                      child: TextField(
-                        keyboardType: TextInputType.number,
-                        textAlign: TextAlign.right,
-                        decoration: InputDecoration(
-                          hintText: '400000000', //todo
-                          hintStyle: const TextStyle(
-                            fontSize: 13,
-                            fontFamily: 'Iran Sans',
-                            fontWeight: FontWeight.w400,
-                            color: Color(0xFFA6A6A6),
-                          ),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 17,
-                  ),
-                  const Align(
-                    alignment: Alignment.centerRight,
-                    child: Text(
-                      "تعداد اقساط   ",
-                      style: TextStyle(
-                          color: Color.fromRGBO(166, 166, 166, 1),
-                          fontSize: 13,
-                          fontFamily: MAIN_FONT_FAMILY),
-                      textAlign: TextAlign.start,
-                    ),
-                  ),
-                  ReadOnlyTextField(_numberOfInstallmentsController, () {
-                    showNumberPicker((_) {
-                      _numberOfInstallmentsController.text = _;
-                    });
-                  }),
-                  const SizedBox(
-                    height: 30,
-                  ),
-                ],
-              )
-            : const SizedBox.shrink()),
+        const Text(
+          "قیمت نهایی ملک (پیش پرداخت + اقساط ) : 13.200.000.000 تومان",
+          style: TextStyle(
+            fontFamily: MAIN_FONT_FAMILY,
+            fontSize: 10,
+          ),
+        ),
+        const SizedBox(
+          height: 30,
+        ),
       ],
     );
   }
+}
+
+Widget melkByVamBanki(BuildContext context) {
+  final isSwitched = true.obs;
+  return Column(
+    children: [
+      switchable(isSwitched, "ملک با وام بانکی"),
+      const SizedBox(
+        height: 10,
+      ),
+      Obx(() => isSwitched.isTrue
+          ? Column(
+              children: [
+                RichText(
+                  text: const TextSpan(
+                    text: "در صورت وارد نکردن آیتم ها، آگهی فقط با عنوان  ",
+                    style: TextStyle(
+                      fontFamily: MAIN_FONT_FAMILY,
+                      fontSize: 12.3,
+                      color: Colors.black,
+                    ),
+                    children: <TextSpan>[
+                      TextSpan(
+                        text: 'دارای وام',
+                        style: TextStyle(
+                          fontFamily: MAIN_FONT_FAMILY,
+                          fontSize: 12,
+                          color: Color.fromRGBO(156, 64, 64, 1),
+                        ),
+                      ),
+                      TextSpan(
+                        text: ' منتشر میگردد',
+                        style: TextStyle(
+                          fontFamily: MAIN_FONT_FAMILY,
+                          fontSize: 12,
+                          color: Colors.black,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                TwoItemInRow(
+                  label1: "مبلغ اقساط",
+                  label2: "میزان وام (تومان)",
+                  widget1: SizedBox(
+                    height: 41,
+                    width: getPageWidth(),
+                    child: TextField(
+                      keyboardType: TextInputType.number,
+                      textAlign: TextAlign.right,
+                      decoration: InputDecoration(
+                        hintText: '3,6000000', //todo
+                        hintStyle: const TextStyle(
+                          fontSize: 13,
+                          fontFamily: 'Iran Sans',
+                          fontWeight: FontWeight.w400,
+                          color: Color(0xFFA6A6A6),
+                        ),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                      ),
+                    ),
+                  ),
+                  widget2: SizedBox(
+                    height: 41,
+                    width: getPageWidth(),
+                    child: TextField(
+                      keyboardType: TextInputType.number,
+                      textAlign: TextAlign.right,
+                      decoration: InputDecoration(
+                        hintText: '400000000', //todo
+                        hintStyle: const TextStyle(
+                          fontSize: 13,
+                          fontFamily: 'Iran Sans',
+                          fontWeight: FontWeight.w400,
+                          color: Color(0xFFA6A6A6),
+                        ),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  height: 17,
+                ),
+                const Align(
+                  alignment: Alignment.centerRight,
+                  child: Text(
+                    "تعداد اقساط   ",
+                    style: TextStyle(
+                        color: Color.fromRGBO(166, 166, 166, 1),
+                        fontSize: 13,
+                        fontFamily: MAIN_FONT_FAMILY),
+                    textAlign: TextAlign.start,
+                  ),
+                ),
+                const SizedBox(
+                  height: 30,
+                ),
+              ],
+            )
+          : const SizedBox.shrink()),
+    ],
+  );
 }
 
 class CustomTrackShape extends RoundedRectSliderTrackShape {
@@ -1001,5 +876,13 @@ class CustomTrackShape extends RoundedRectSliderTrackShape {
     final trackTop = offset.dy + (parentBox.size.height - trackHeight!) / 2;
     final trackWidth = 400.0;
     return Rect.fromLTWH(trackLeft, trackTop, trackWidth, trackHeight);
+  }
+}
+
+class ImageController extends GetxController {
+  var sliderValue = 0.0.obs; // Initial dim value set to 50%
+
+  void updateSliderValue(double value) {
+    sliderValue.value = value;
   }
 }
