@@ -34,7 +34,6 @@ User _$UserFromJson(Map<String, dynamic> json) => User(
       createdAt: json['createdAt'] as String,
       updatedAt: json['updatedAt'] as String,
       cellphone: json['cellphone'] as String,
-      type: json['type'] as String,
       subscriberType: json['subscriberType'] as String,
     );
 
@@ -43,6 +42,5 @@ Map<String, dynamic> _$UserToJson(User instance) => <String, dynamic>{
       'createdAt': instance.createdAt,
       'updatedAt': instance.updatedAt,
       'cellphone': instance.cellphone,
-      'type': instance.type,
       'subscriberType': instance.subscriberType,
     };

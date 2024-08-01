@@ -42,7 +42,6 @@ class User {
   String createdAt;
   String updatedAt;
   String cellphone;
-  String type;
   String subscriberType;
 
   User({
@@ -50,7 +49,6 @@ class User {
     required this.createdAt,
     required this.updatedAt,
     required this.cellphone,
-    required this.type,
     required this.subscriberType,
   });
 
