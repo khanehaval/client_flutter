@@ -9,11 +9,10 @@ import 'models/login_req.dart';
 class AccountService {
   final Logger _logger = Logger();
   final Dio _dio =
-      Dio(BaseOptions(baseUrl: "https://app.khanehaval.com/new_address"));
+      Dio(BaseOptions(baseUrl: "https://api.khaneaval.com/"));
   Future<LoginRes?> login(String phoneNumber) async {
     try {
-      var result =
-          await _dio.post("", data: LoginReq("2184", phoneNumber).toJson());
+      var result = await _dio.post("api/v1/auth/login", data: LoginReq(phoneNumber).toJson());
       return LoginRes.fromJson(result.data);
     } catch (e) {
       _logger.e(e);
@@ -24,10 +23,9 @@ class AccountService {
   Future<SendVerificationRes?> sendVerificationCode(
       {required String code, required String cellphone}) async {
     try {
-      final result = await _dio.post("",
-          data: SendVerificationReq(
-                  address: "2185", cellphone: cellphone, code: int.parse(code))
-              .toJson());
+    
+      final result = await _dio.post("api/v1/auth/verify",    
+          data: SendVerificationReq(cellphone: cellphone, code: code).toJson());
       return SendVerificationRes.fromJson(result.data);
     } catch (e) {
       _logger.e(e);

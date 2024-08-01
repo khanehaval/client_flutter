@@ -4,12 +4,10 @@ part 'send_verification_req.g.dart';
 
 @JsonSerializable(includeIfNull: false)
 class SendVerificationReq {
-  String address;
   String cellphone;
-  int code;
+  String code;
 
   SendVerificationReq({
-    required this.address,
     required this.cellphone,
     required this.code,
   });

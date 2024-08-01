@@ -16,7 +16,7 @@ class AccountRepo {
 
   Future<bool> login(String phoneNumber) async {
     var result = await _accountService.login(phoneNumber);
-    if (result == null || result.status == 2) {
+    if (result == null || result.state == 2) {
       return false;
     }
     _loginResultModel = result;
@@ -28,7 +28,7 @@ class AccountRepo {
   Future<bool> sendVerificationCode(
       {required String code, required String cellphone}) async {
     var result = await _accountService.sendVerificationCode(
-        cellphone: cellphone, code: cellphone);
+        cellphone: cellphone, code: code);
     if (result?.status == 1) {
       _userDao.saveUser(User(
         phoneNumber: cellphone,
