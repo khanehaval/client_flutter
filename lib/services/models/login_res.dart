@@ -7,7 +7,6 @@ class LoginRes {
   bool state;
   String message;
 
-
   LoginRes(
       {
       required this.state,

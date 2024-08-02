@@ -6,7 +6,7 @@ part 'send_verification_req.g.dart';
 class SendVerificationReq {
   String cellphone;
   String code;
-
+  
   SendVerificationReq({
     required this.cellphone,
     required this.code,

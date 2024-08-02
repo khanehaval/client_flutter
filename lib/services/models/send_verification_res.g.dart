@@ -38,6 +38,7 @@ User _$UserFromJson(Map<String, dynamic> json) {
       cellphone: (json['cellphone'] ?? "") as String,
       subscriberType: (json['subscriberType'] ?? "") as String,
     );
+    
   } catch (e) {
     print("erorrrrrrrrrrrrrrrrrrrrrr \t ${e.toString()}");
     return User(
