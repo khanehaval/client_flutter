@@ -29,12 +29,12 @@ class AccountRepo {
       {required String code, required String cellphone}) async {
     var result = await _accountService.sendVerificationCode(
         cellphone: cellphone, code: code);
-    if (result?.status == 1) {
+    if (result?.status ?? false) {
       _userDao.saveUser(User(
         phoneNumber: cellphone,
-        userToken: "",
-        userId: "",
-        userType: UserType.advisor,
+        userToken: result!.data.token,
+        userId: result.data.user.id,
+        userType: UserType.advisor, //todo..........
       ));
       return true;
     }
