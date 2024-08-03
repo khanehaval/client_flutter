@@ -6,12 +6,20 @@ part of 'login_res.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-LoginRes _$LoginResFromJson(Map<String, dynamic> json) => LoginRes(
-      state: json['state'] as bool,
-      message: json['message'] as String,
+LoginRes _$LoginResFromJson(Map<String, dynamic> json) {
+  try {
+    return LoginRes(
+      status: (json['status'] ?? "") as String,
+      message: (json['message'] ?? "") as String,
     );
+  } catch (e) {
+    print("erorrrrrrrrrrrrrrrrrrrrrr \t ${e.toString()}");
+
+    return LoginRes(status: 'status', message: "message");
+  }
+}
 
 Map<String, dynamic> _$LoginResToJson(LoginRes instance) => <String, dynamic>{
-      'state': instance.state,
+      'status': instance.status,
       'message': instance.message,
     };

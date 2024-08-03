@@ -342,24 +342,16 @@ class _EjaraVilaPageState extends State<EjaraVilaPage> {
               ),
               TwoItemInRow2(
                   label1: "تعداد اتاق ",
-                  label2: "سن بنا ",
-                  widget1: ReadOnlyTextField(
-                    _buildRoomsCountController,
-                    () {
-                      showNumberPicker((_) {
-                        _buildRoomsCountController.text = _;
-                      });
-                    },
-                    width: getPageWidth(),
-                  ),
-                  widget2: ReadOnlyTextField(
-                    _buildDateController,
-                    () {
-                      persianDataPicker(
-                          (date) => _buildDateController.text = date);
-                    },
-                    width: getPageWidth(),
-                  )),
+                  label2: "سن بنا",
+                  widget1: ReadOnlyTextField(_buildRoomsCountController, () {
+                    showNumberPicker((_) {
+                      _buildRoomsCountController.text = _;
+                    });
+                  }, width: getPageWidth()),
+                  widget2: ReadOnlyTextField(_buildDateController, () {
+                    persianDataPicker(
+                        (date) => _buildDateController.text = date);
+                  }, width: getPageWidth(), fontSize: 13)),
               const SizedBox(
                 height: 20,
               ),

@@ -38,7 +38,6 @@ User _$UserFromJson(Map<String, dynamic> json) {
       cellphone: (json['cellphone'] ?? "") as String,
       subscriberType: (json['subscriberType'] ?? "") as String,
     );
-    
   } catch (e) {
     print("erorrrrrrrrrrrrrrrrrrrrrr \t ${e.toString()}");
     return User(
@@ -51,12 +50,10 @@ User _$UserFromJson(Map<String, dynamic> json) {
   }
 }
 
-
-  Map<String, dynamic> _$UserToJson(User instance) => <String, dynamic>{
-        'id': instance.id,
-        'createdAt': instance.createdAt,
-        'updatedAt': instance.updatedAt,
-        'cellphone': instance.cellphone,
-        'subscriberType': instance.subscriberType,
-      };
-
+Map<String, dynamic> _$UserToJson(User instance) => <String, dynamic>{
+      'id': instance.id,
+      'createdAt': instance.createdAt,
+      'updatedAt': instance.updatedAt,
+      'cellphone': instance.cellphone,
+      'subscriberType': instance.subscriberType,
+    };

@@ -16,7 +16,7 @@ class AccountRepo {
 
   Future<bool> login(String phoneNumber) async {
     var result = await _accountService.login(phoneNumber);
-    if (result == null || result.state == 2) {
+    if (result == null || result.status == 2) {
       return false;
     }
     _loginResultModel = result;

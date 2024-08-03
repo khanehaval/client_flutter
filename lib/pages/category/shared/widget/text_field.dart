@@ -19,7 +19,7 @@ Widget ReadOnlyTextField(TextEditingController controller, Function onTap,
               fontFamily: 'Iran Sans',
               fontWeight: FontWeight.w400,
               color: Color(0xFFA6A6A6),
-              fontSize: 13),
+              fontSize: 12),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
             borderSide: const BorderSide(
@@ -35,7 +35,6 @@ Widget ReadOnlyTextField(TextEditingController controller, Function onTap,
           prefixIcon: IconButton(
             icon: SvgPicture.asset("assets/images/Vector-20.svg"),
             onPressed: () {
-              FocusScope.of(Get.context!).unfocus();
               onTap();
             },
           ),

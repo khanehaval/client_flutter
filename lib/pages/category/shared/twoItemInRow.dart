@@ -24,12 +24,12 @@ class TwoItemInRow extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             Padding(
-              padding: const EdgeInsets.only(right: 10),
+              padding: const EdgeInsets.only(right: 5),
               child: Text(
                 label1,
                 style: const TextStyle(
                     color: Color.fromRGBO(99, 99, 99, 1),
-                    fontSize: 13,
+                    fontSize: 12,
                     fontFamily: MAIN_FONT_FAMILY),
               ),
             ),
@@ -44,12 +44,12 @@ class TwoItemInRow extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             Padding(
-              padding: const EdgeInsets.only(right: 10),
+              padding: const EdgeInsets.only(right: 5),
               child: Text(
                 label2,
                 style: const TextStyle(
                     color: Color.fromRGBO(99, 99, 99, 1),
-                    fontSize: 13,
+                    fontSize: 12,
                     fontFamily: MAIN_FONT_FAMILY),
               ),
             ),
@@ -115,7 +115,7 @@ class TwoItemInRow1 extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               Padding(
-                padding: const EdgeInsets.only(right: 10),
+                padding: const EdgeInsets.only(right: 5),
                 child: RichText(
                   text: TextSpan(
                     children: [
@@ -130,7 +130,7 @@ class TwoItemInRow1 extends StatelessWidget {
                           ),
                           fontFamily: 'Iran Sans',
                           fontWeight: FontWeight.w900,
-                          fontSize: 14,
+                          fontSize: 13,
                         ),
                       ),
                       TextSpan(
@@ -183,21 +183,21 @@ class TwoItemInRow2 extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               Padding(
-                padding: const EdgeInsets.only(top: 5.0, right: 10),
+                padding: const EdgeInsets.only(top: 5.0, right: 5),
                 child: RichText(
                   text: TextSpan(
                     children: [
                       const TextSpan(
                         text: ' * ',
                         style: TextStyle(
-                          color: Color.fromRGBO(
-                            156,
-                            64,
-                            64,
-                            1,
-                          ),
-                          fontFamily: MAIN_FONT_FAMILY,
-                        ),
+                            color: Color.fromRGBO(
+                              156,
+                              64,
+                              64,
+                              1,
+                            ),
+                            fontFamily: MAIN_FONT_FAMILY,
+                            fontSize: 14),
                       ),
                       TextSpan(
                         text: label1,
@@ -228,7 +228,7 @@ class TwoItemInRow2 extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               Padding(
-                padding: const EdgeInsets.only(top: 5, right: 10),
+                padding: const EdgeInsets.only(top: 5, right: 5),
                 child: RichText(
                   text: TextSpan(
                     children: [

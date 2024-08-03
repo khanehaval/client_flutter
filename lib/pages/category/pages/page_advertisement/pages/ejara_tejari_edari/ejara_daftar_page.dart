@@ -101,7 +101,7 @@ class _EjaraDafterPageState extends State<EjaraDafterPage> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Text(
-                  "  اجاره آپارتمان",
+                  "دفتر کار",
                   style: TextStyle(
                     fontSize: 10,
                     fontFamily: MAIN_FONT_FAMILY,
@@ -155,6 +155,15 @@ class _EjaraDafterPageState extends State<EjaraDafterPage> {
                     ),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
+                      borderSide: const BorderSide(
+                        color: Color.fromRGBO(23, 102, 175, 1),
+                      ),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      borderSide: const BorderSide(
+                        color: Color.fromRGBO(23, 102, 175, 1),
+                      ),
                     ),
                   ),
                 ),
@@ -176,6 +185,15 @@ class _EjaraDafterPageState extends State<EjaraDafterPage> {
                     ),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
+                      borderSide: const BorderSide(
+                        color: Color.fromRGBO(23, 102, 175, 1),
+                      ),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      borderSide: const BorderSide(
+                        color: Color.fromRGBO(23, 102, 175, 1),
+                      ),
                     ),
                   ),
                 ),
@@ -195,27 +213,59 @@ class _EjaraDafterPageState extends State<EjaraDafterPage> {
               height: 20,
             ),
             aghsatiForoshWidget(context),
-            const Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Text(
-                  "*",
-                  style: TextStyle(
-                      fontSize: 20,
-                      color: Color.fromRGBO(156, 64, 64, 1),
-                      fontFamily: MAIN_FONT_FAMILY),
-                ),
-                Text(
-                  "متراژ",
-                  style: TextStyle(
-                      color: Color.fromRGBO(166, 166, 166, 1),
-                      fontFamily: MAIN_FONT_FAMILY),
-                  textAlign: TextAlign.start,
-                ),
-              ],
+            const Divider(
+              color: Color.fromRGBO(
+                226,
+                226,
+                226,
+                1,
+              ),
+              endIndent: 6,
+              indent: 6,
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            const Padding(
+              padding: EdgeInsets.only(right: 5.0, top: 5),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Text(
+                    "*",
+                    style: TextStyle(
+                        fontSize: 13,
+                        color: Color.fromRGBO(156, 64, 64, 1),
+                        fontFamily: MAIN_FONT_FAMILY),
+                  ),
+                  SizedBox(
+                    width: 5,
+                    height: 5,
+                  ),
+                  Text(
+                    "متراژ",
+                    style: TextStyle(
+                        fontSize: 13,
+                        color: Color.fromRGBO(
+                          99,
+                          99,
+                          99,
+                          1,
+                        ),
+                        fontFamily: MAIN_FONT_FAMILY),
+                    textAlign: TextAlign.start,
+                  ),
+                  SizedBox(
+                    height: 10,
+                  )
+                ],
+              ),
+            ),
+            const SizedBox(
+              height: 5,
             ),
             SizedBox(
-              height: 50,
+              height: 41,
               width: MediaQuery.of(context).size.width * 0.95,
               child: TextField(
                 textAlign: TextAlign.right,
@@ -235,6 +285,15 @@ class _EjaraDafterPageState extends State<EjaraDafterPage> {
                   ),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
+                    borderSide: const BorderSide(
+                      color: Color.fromRGBO(23, 102, 175, 1),
+                    ),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide: const BorderSide(
+                      color: Color.fromRGBO(23, 102, 175, 1),
+                    ),
                   ),
                 ),
               ),
@@ -243,8 +302,14 @@ class _EjaraDafterPageState extends State<EjaraDafterPage> {
               height: 20,
             ),
             const Divider(
-              endIndent: 20,
-              indent: 20,
+              color: Color.fromRGBO(
+                226,
+                226,
+                226,
+                1,
+              ),
+              endIndent: 6,
+              indent: 6,
             ),
             const SizedBox(
               height: 20,
@@ -256,31 +321,41 @@ class _EjaraDafterPageState extends State<EjaraDafterPage> {
                   showNumberPicker((_) {
                     _buildRoomsCountController.text = _;
                   });
-                }, width: getPageWidth()),
+                }, width: getPageWidth(), fontSize: 13),
                 widget2: ReadOnlyTextField(_buildDateController, () {
                   persianDataPicker((date) => _buildDateController.text = date);
                 }, width: getPageWidth(), fontSize: 13)),
             const SizedBox(
               height: 20,
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                const Text(
-                  "*",
-                  style: TextStyle(
-                      fontSize: 20, color: Color.fromRGBO(156, 64, 64, 1)),
-                ),
-                Container(
-                  child: const Text(
-                    "طبقه ",
+            Padding(
+              padding: EdgeInsets.only(right: 5.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  const Text(
+                    "*",
                     style: TextStyle(
-                        color: Color.fromRGBO(99, 99, 99, 1),
-                        fontFamily: MAIN_FONT_FAMILY),
-                    textAlign: TextAlign.start,
+                        fontSize: 13, color: Color.fromRGBO(156, 64, 64, 1)),
                   ),
-                ),
-              ],
+                  const SizedBox(
+                    width: 5,
+                  ),
+                  Container(
+                    child: const Text(
+                      "طبقه ",
+                      style: TextStyle(
+                          color: Color.fromRGBO(99, 99, 99, 1),
+                          fontFamily: MAIN_FONT_FAMILY,
+                          fontSize: 13),
+                      textAlign: TextAlign.start,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(
+              height: 5,
             ),
             Container(
                 height: 41,
@@ -398,8 +473,14 @@ class _EjaraDafterPageState extends State<EjaraDafterPage> {
               height: 10,
             ),
             const Divider(
-              endIndent: 20,
-              indent: 20,
+              color: Color.fromRGBO(
+                226,
+                226,
+                226,
+                1,
+              ),
+              endIndent: 6,
+              indent: 6,
             ),
             const SizedBox(
               height: 10,
@@ -419,7 +500,8 @@ class _EjaraDafterPageState extends State<EjaraDafterPage> {
                     "تعداد کل طبقات ",
                     style: TextStyle(
                         color: Color.fromRGBO(99, 99, 99, 1),
-                        fontFamily: MAIN_FONT_FAMILY),
+                        fontFamily: MAIN_FONT_FAMILY,
+                        fontSize: 12),
                     textAlign: TextAlign.start,
                   ),
                 ),
@@ -485,8 +567,14 @@ class _EjaraDafterPageState extends State<EjaraDafterPage> {
               height: 20,
             ),
             const Divider(
-              endIndent: 20,
-              indent: 20,
+              color: Color.fromRGBO(
+                226,
+                226,
+                226,
+                1,
+              ),
+              endIndent: 6,
+              indent: 6,
             ),
             const SizedBox(
               height: 10,
@@ -687,17 +775,35 @@ class _EjaraDafterPageState extends State<EjaraDafterPage> {
               selected: _facilities,
             ),
             const SizedBox(
-              height: 20,
+              height: 50,
             ),
             const Divider(
-              endIndent: 20,
-              indent: 20,
+              color: Color.fromRGBO(
+                226,
+                226,
+                226,
+                1,
+              ),
+              endIndent: 6,
+              indent: 6,
             ),
             const SizedBox(
               height: 20,
             ),
             ImagesPicker(selectedImagesPath: _selectedImagesPath),
-            const Divider(),
+            const Divider(
+              color: Color.fromRGBO(
+                226,
+                226,
+                226,
+                1,
+              ),
+              endIndent: 6,
+              indent: 6,
+            ),
+            const SizedBox(
+              height: 20,
+            ),
             AdvInfo(_advInfo),
             const SizedBox(
               height: 30,
@@ -852,6 +958,19 @@ Widget aghsatiForoshWidget(BuildContext context) {
                         const TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
+                      borderSide: const BorderSide(
+                        color: Color.fromRGBO(23, 102, 175, 1),
+                      ),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      borderSide: const BorderSide(
+                        color: Color.fromRGBO(23, 102, 175, 1),
+                      ),
+                    ),
+                    prefixIcon: IconButton(
+                      icon: SvgPicture.asset("assets/images/Vector-20.svg"),
+                      onPressed: () {},
                     ),
                   ),
                 ),
@@ -867,6 +986,19 @@ Widget aghsatiForoshWidget(BuildContext context) {
                         const TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
+                      borderSide: const BorderSide(
+                        color: Color.fromRGBO(23, 102, 175, 1),
+                      ),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      borderSide: const BorderSide(
+                        color: Color.fromRGBO(23, 102, 175, 1),
+                      ),
+                    ),
+                    prefixIcon: IconButton(
+                      icon: SvgPicture.asset("assets/images/Vector-20.svg"),
+                      onPressed: () {},
                     ),
                   ),
                 ),

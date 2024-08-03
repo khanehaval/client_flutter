@@ -1,10 +1,8 @@
-
 import 'package:json_annotation/json_annotation.dart';
 
 part 'send_verification_res.g.dart';
 
 @JsonSerializable(includeIfNull: false)
-
 @JsonSerializable()
 class SendVerificationRes {
   bool status;

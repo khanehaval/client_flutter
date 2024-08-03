@@ -1,17 +1,14 @@
+import 'package:flutter_application_1/db/entities/user.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'login_res.g.dart';
 
 @JsonSerializable(includeIfNull: false)
 class LoginRes {
-  bool state;
+  String status;
   String message;
 
-  LoginRes(
-      {
-      required this.state,
-      required this.message});
+  LoginRes({required this.status, required this.message});
 
-  static LoginRes fromJson(dynamic data) =>
-      _$LoginResFromJson(data);
+  static LoginRes fromJson(dynamic data) => _$LoginResFromJson(data);
 }

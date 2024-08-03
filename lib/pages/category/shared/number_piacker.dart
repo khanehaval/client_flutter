@@ -19,7 +19,7 @@ void showNumberPicker(Function(String) onSelected) {
             topLeft: Radius.circular(10), topRight: Radius.circular(10)),
       ),
       child: Padding(
-          padding: const EdgeInsets.all(2.0),
+          padding: const EdgeInsets.only(top: 2, left: 2, right: 2),
           child: Container(
             decoration: const BoxDecoration(
               color: Colors.white,

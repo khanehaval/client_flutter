@@ -392,57 +392,61 @@ class _SelectLocationMapState extends State<SelectLocationMap> {
   }
 
   Widget _buildZoomControls() {
-    return Positioned(
-      bottom: 20,
-      left: 10,
-      child: Column(
-        children: [
-          Row(
+    return Align(
+        alignment: Alignment.bottomLeft,
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
             children: [
-              IconButton(
-                onPressed: getUserCurrentLocation,
-                icon: SizedBox(
-                  height: 50,
-                  width: 50,
-                  child: Image.asset("assets/images/icon zoom.png"),
-                ),
+              Row(
+                children: [
+                  IconButton(
+                      onPressed: () {
+                        getUserCurrentLocation();
+                      },
+                      icon: SizedBox(
+                          height: 50,
+                          width: 50,
+                          child: Image.asset("assets/images/icon zoom.png"))),
+                  IconButton(
+                      onPressed: () {
+                        widget.onSelect(locationInfo);
+                        // Get.back();
+                      },
+                      icon: SizedBox(
+                          height: 65,
+                          width: 65,
+                          child: Positioned(
+                            right: 20,
+                            child: Image.asset(
+                              "assets/images/Ok.png",
+                            ),
+                          )))
+                ],
               ),
-              IconButton(
-                onPressed: () => widget.onSelect(locationInfo),
-                icon: SizedBox(
-                  height: 50,
-                  width: 50,
-                  child: Image.asset("assets/images/Ok.png"),
-                ),
-              ),
+              Row(
+                children: [
+                  IconButton(
+                      onPressed: () {
+                        zoomOut();
+                      },
+                      icon: SizedBox(
+                          width: 50,
+                          height: 50,
+                          child: Image.asset("assets/images/icon -.png"))),
+                  IconButton(
+                      onPressed: () {
+                        zoomIn();
+                      },
+                      icon: SizedBox(
+                          width: 50,
+                          height: 50,
+                          child: Image.asset("assets/images/icon +.png")))
+                ],
+              )
             ],
           ),
-          SizedBox(
-            width: 10,
-          ),
-          Row(
-            children: [
-              IconButton(
-                onPressed: zoomIn,
-                icon: SizedBox(
-                  height: 50,
-                  width: 50,
-                  child: Image.asset("assets/images/icon +.png"),
-                ),
-              ),
-              IconButton(
-                onPressed: zoomOut,
-                icon: SizedBox(
-                  height: 50,
-                  width: 50,
-                  child: Image.asset("assets/images/icon -.png"),
-                ),
-                tooltip: 'Zoom In',
-              ),
-            ],
-          ),
-        ],
-      ),
-    );
+        ));
   }
 }

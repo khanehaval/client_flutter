@@ -132,9 +132,9 @@ void FacilitiesSelector(
       child: Padding(
         padding: const EdgeInsets.all(1.0),
         child: Container(
-          decoration: const BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.only(
+          decoration: BoxDecoration(
+            color: Colors.white.withOpacity(1),
+            borderRadius: const BorderRadius.only(
               topLeft: Radius.circular(20),
               topRight: Radius.circular(20),
             ),
