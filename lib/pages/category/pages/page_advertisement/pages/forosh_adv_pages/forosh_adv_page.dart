@@ -89,7 +89,6 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
   final _wcController = TextEditingController();
   final ValueNotifier<String> _persianWords = ValueNotifier<String>('');
 
-  final _numberOfInstallmentsController = TextEditingController();
   final _advInfo = AdvInfoModel();
   String numberToFarsiWords(int number) {
     if (number == 0) return 'صفر';
