@@ -76,24 +76,6 @@ class _VilaAdvPageState extends State<VilaAdvPage> {
 
   final _countOfInstallmentsController = TextEditingController();
 
-  final _buildMaxCapacityController = TextEditingController();
-
-  final _buildRiteController = TextEditingController();
-
-  final _buildAnimalController = TextEditingController();
-
-  final _buildSmokingController = TextEditingController();
-
-  final _buildShoesController = TextEditingController();
-
-  final _buildDeprivationController = TextEditingController();
-
-  final _buildSleepServiceCountController = TextEditingController();
-
-  final _oneBedCountController = TextEditingController();
-
-  final _twoBedCountController = TextEditingController();
-
   final _floorMaterialController = TextEditingController();
 
   final _cabinetController = TextEditingController();
@@ -106,18 +88,118 @@ class _VilaAdvPageState extends State<VilaAdvPage> {
 
   final _wcController = TextEditingController();
 
-  final _numberOfInstallmentsController = TextEditingController();
+  final ValueNotifier<String> _persianWords = ValueNotifier<String>('');
+
+  String numberToFarsiWords(int number) {
+    if (number == 0) return 'صفر';
+
+    const ones = [
+      'صفر',
+      'یک',
+      'دو',
+      'سه',
+      'چهار',
+      'پنج',
+      'شش',
+      'هفت',
+      'هشت',
+      'نه'
+    ];
+    const teens = [
+      'ده',
+      'یازده',
+      'دوازده',
+      'سیزده',
+      'چهارده',
+      'پانزده',
+      'شانزده',
+      'هفده',
+      'هجده',
+      'نوزده'
+    ];
+    const tens = [
+      '',
+      '',
+      'بیست',
+      'سی',
+      'چهل',
+      'پنجاه',
+      'شصت',
+      'هفتاد',
+      'هشتاد',
+      'نود'
+    ];
+    const hundreds = [
+      '',
+      'صد',
+      'دویست',
+      'سیصد',
+      'چهارصد',
+      'پانصد',
+      'ششصد',
+      'هفتصد',
+      'هشتصد',
+      'نهصد'
+    ];
+    const thousands = ['', 'هزار', 'میلیون', 'میلیارد'];
+
+    String convertBelowThousand(int num) {
+      if (num == 0) return '';
+      if (num < 10) return ones[num];
+      if (num < 20) return teens[num - 10];
+      if (num < 100) {
+        int tenPart = num ~/ 10;
+        int onePart = num % 10;
+        return '${tens[tenPart]}${onePart > 0 ? ' و ${ones[onePart]}' : ''}';
+      } else {
+        int hundredPart = num ~/ 100;
+        int restPart = num % 100;
+        return '${hundreds[hundredPart]}${restPart > 0 ? ' و ${convertBelowThousand(restPart)}' : ''}';
+      }
+    }
+
+    String result = '';
+    int unit = 0;
+
+    while (number > 0) {
+      int chunk = number % 1000;
+      if (chunk > 0) {
+        String chunkText = convertBelowThousand(chunk);
+        result = '${chunkText} ${thousands[unit]} ${result}'.trim();
+      }
+      number ~/= 1000;
+      unit++;
+    }
+
+    return result.trim();
+  }
+
+  void _updatePersianWords() {
+    final text = _metragTextController.text;
+    if (text.isNotEmpty) {
+      final number = int.tryParse(text) ?? 0;
+      _persianWords.value = numberToFarsiWords(number);
+    } else {
+      _persianWords.value = '';
+    }
+  }
 
   @override
   void initState() {
     super.initState();
+    _metragTextController.addListener(_updatePersianWords);
 
     _allPriceTextController.addListener(_checkFields);
-    _metragbanaTextController.addListener(_checkFields);
+    _metragTextController.addListener(_checkFields);
+    _buildRoomsCountController.addListener(_checkFields);
+    _buildFloorController.addListener(_checkFields);
   }
 
   void _checkFields() {
-    if (_allPriceTextController.text.isNotEmpty) {
+    if (_allPriceTextController.text.isNotEmpty &&
+        _metragTextController.text.isNotEmpty &&
+        _buildFloorController.text.isNotEmpty &&
+        _buildRoomsCountController.text.isNotEmpty) {
       submit.value = true;
     } else {
       submit.value = false;
@@ -128,6 +210,8 @@ class _VilaAdvPageState extends State<VilaAdvPage> {
   void dispose() {
     _allPriceTextController.dispose();
     _metragTextController.dispose();
+    _buildFloorController.dispose();
+    _persianWords.dispose();
 
     super.dispose();
   }
@@ -137,16 +221,104 @@ class _VilaAdvPageState extends State<VilaAdvPage> {
       backgroundColor: Colors.white,
       appBar: buildaAppBar(),
       body: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
           child: Column(children: [
-            route([" خرید و فروش ویلا", "فروش مسکونی", "  ثبت آگهی اکونومی"]),
+            route(["ثبت آگهی اکونومی", "فروش مسکونی", "خرید و فروش ویلا"]),
+            const SizedBox(
+              height: 30,
+            ),
+            const Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Text(
+                  "*",
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Color.fromRGBO(156, 64, 64, 1),
+                    fontFamily: MAIN_FONT_FAMILY,
+                  ),
+                ),
+                SizedBox(
+                  width: 5,
+                ),
+                Padding(
+                  padding: EdgeInsets.only(right: 7),
+                  child: Text(
+                    "(تومان) قیمت کل",
+                    style: TextStyle(
+                        color: Color.fromRGBO(99, 99, 99, 1),
+                        fontFamily: MAIN_FONT_FAMILY,
+                        fontSize: 13),
+                    textAlign: TextAlign.start,
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(
+              height: 50,
+              width: MediaQuery.of(context).size.width * 0.95,
+              child: TextField(
+                textAlign: TextAlign.right,
+                controller: _metragTextController,
+                keyboardType: TextInputType.number,
+                decoration: InputDecoration(
+                  hintText: '120',
+                  hintStyle: const TextStyle(
+                    color: Color(0xFFA6A6A6),
+                  ),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide: const BorderSide(
+                      color: Color.fromRGBO(23, 102, 175, 1),
+                    ),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide: const BorderSide(
+                      color: Color.fromRGBO(23, 102, 175, 1),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(height: 20),
+            Align(
+              alignment: Alignment.centerRight,
+              child: ValueListenableBuilder<String>(
+                valueListenable: _persianWords,
+                builder: (context, value, child) {
+                  return Text(
+                    "قیمت به حروف: $value  تومان",
+                    style: const TextStyle(
+                      fontSize: 14,
+                      fontFamily: MAIN_FONT_FAMILY,
+                      color: Color.fromRGBO(166, 166, 166, 1),
+                    ),
+                  );
+                },
+              ),
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            const Divider(
+              color: Color.fromRGBO(
+                226,
+                226,
+                226,
+                1,
+              ),
+              endIndent: 6,
+              indent: 6,
+            ),
             const SizedBox(
               height: 20,
             ),
             TwoItemInRow1(
               label1: "قیمت هر متر مربع (تومان)",
-              label2: "قیمت کل (تومان)",
+              label2: "متراژ",
               widget1: Obx(
                 () => Container(
                   decoration: BoxDecoration(
@@ -186,107 +358,19 @@ class _VilaAdvPageState extends State<VilaAdvPage> {
                     ),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
+                      borderSide: const BorderSide(
+                        color: Color.fromRGBO(23, 102, 175, 1),
+                      ),
                     ),
-                  ),
-                ),
-              ),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            const Align(
-              alignment: Alignment.centerRight,
-              child: Text(
-                ":قیمت به حروف ",
-                style: TextStyle(
-                    fontSize: 14,
-                    fontFamily: MAIN_FONT_FAMILY,
-                    color: Color.fromRGBO(166, 166, 166, 1)),
-              ),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            const Divider(
-              color: Color.fromRGBO(
-                226,
-                226,
-                226,
-                1,
-              ),
-              endIndent: 6,
-              indent: 6,
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            TwoItemInRow2(
-              label1: " متراژ بنا",
-              label2: "متراژ زمین",
-              widget1: SizedBox(
-                height: 41,
-                child: TextField(
-                  textAlign: TextAlign.right,
-                  keyboardType: TextInputType.number,
-                  onChanged: (m) {
-                    _onePrice.value = m.isNotEmpty
-                        ? int.parse(_buildAllFloorsCountController.text) /
-                            int.parse(m)
-                        : 0;
-                  },
-                  decoration: InputDecoration(
-                    hintText: "0",
-                    hintStyle: const TextStyle(
-                      fontSize: 13,
-                      fontFamily: 'Iran Sans',
-                      fontWeight: FontWeight.w400,
-                      color: Color(0xFFA6A6A6),
-                    ),
-                    border: OutlineInputBorder(
+                    focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
+                      borderSide: const BorderSide(
+                        color: Color.fromRGBO(23, 102, 175, 1),
+                      ),
                     ),
                   ),
                 ),
               ),
-              widget2: SizedBox(
-                height: 41,
-                width: getPageWidth(),
-                child: TextField(
-                  textAlign: TextAlign.right,
-                  keyboardType: TextInputType.number,
-                  controller: _metragbanaTextController,
-                  onChanged: (m) {
-                    _onePrice.value = m.isNotEmpty
-                        ? int.parse(_allPriceTextController.text) / int.parse(m)
-                        : 0;
-                  },
-                  decoration: InputDecoration(
-                    hintText: "0",
-                    hintStyle: const TextStyle(
-                      fontSize: 13,
-                      fontFamily: 'Iran Sans',
-                      fontWeight: FontWeight.w400,
-                      color: Color(0xFFA6A6A6),
-                    ),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            const Divider(
-              color: Color.fromRGBO(
-                226,
-                226,
-                226,
-                1,
-              ),
-              endIndent: 6,
-              indent: 6,
             ),
             const SizedBox(
               height: 20,
@@ -762,8 +846,9 @@ class _VilaAdvPageState extends State<VilaAdvPage> {
                     child: Text(
                       "تعداد اقساط (هر ماه)  ",
                       style: TextStyle(
-                          color: Color.fromRGBO(166, 166, 166, 1),
-                          fontFamily: MAIN_FONT_FAMILY),
+                          color: Color.fromRGBO(99, 99, 99, 1),
+                          fontFamily: MAIN_FONT_FAMILY,
+                          fontSize: 13),
                       textAlign: TextAlign.start,
                     ),
                   ),

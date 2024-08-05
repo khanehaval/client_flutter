@@ -22,8 +22,9 @@ class _AdvInfoState extends State<AdvInfo> {
   @override
   void initState() {
     super.initState();
-    _titleController =
-        TextEditingController(text: "آپارتمان 120 متری به صورت اقساطی");
+    _titleController = TextEditingController(
+      text: "آپارتمان 120 متری به صورت اقساطی",
+    );
     _descriptionController =
         TextEditingController(text: widget.advInfoModel.description);
   }
@@ -43,9 +44,12 @@ class _AdvInfoState extends State<AdvInfo> {
           "عنوان و توضیحات آگهی",
           style: TextStyle(fontFamily: MAIN_FONT_FAMILY),
         ),
-        const SizedBox(height: 10),
-        switchable(proposalTitle, "عنوان پیشنهادی خانه اول"),
-        const SizedBox(height: 5),
+        const SizedBox(height: 20),
+        switchable(
+          proposalTitle,
+          "عنوان پیشنهادی خانه اول",
+        ),
+        const SizedBox(height: 20),
         Obx(() {
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -74,6 +78,7 @@ class _AdvInfoState extends State<AdvInfo> {
                           style: TextStyle(
                             fontFamily: 'Iran Sans',
                             fontWeight: FontWeight.w600,
+                            fontSize: 13,
                             color: Color.fromRGBO(166, 166, 166, 1),
                           ),
                         ),
@@ -82,11 +87,13 @@ class _AdvInfoState extends State<AdvInfo> {
                   ),
                 ),
               Container(
+                height: 50,
                 width: Get.width,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: TextField(
+                  style: const TextStyle(fontSize: 13),
                   decoration: InputDecoration(
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
@@ -123,13 +130,17 @@ class _AdvInfoState extends State<AdvInfo> {
                       Text(
                         " عنوان آگهی",
                         style: TextStyle(
-                          fontFamily: 'Iran Sans',
+                          fontFamily: MAIN_FONT_FAMILY,
                           fontWeight: FontWeight.w600,
-                          color: Color.fromRGBO(166, 166, 166, 1),
+                          fontSize: 13,
+                          color: Color.fromRGBO(99, 99, 99, 1),
                         ),
                       ),
                     ],
                   ),
+                ),
+                const SizedBox(
+                  height: 5,
                 ),
                 _buildTextField(
                   hintText: "تایپ کنید",
@@ -145,14 +156,18 @@ class _AdvInfoState extends State<AdvInfo> {
                   child: Text(
                     "توضیحات آگهی",
                     style: TextStyle(
-                      fontFamily: 'Iran Sans',
+                      fontFamily: MAIN_FONT_FAMILY,
                       fontWeight: FontWeight.w600,
-                      color: Color.fromRGBO(166, 166, 166, 1),
+                      fontSize: 13,
+                      color: Color.fromRGBO(99, 99, 99, 1),
                     ),
                   ),
                 ),
               ),
-              _buildTextField(
+              const SizedBox(
+                height: 5,
+              ),
+              _buildTextField_tozih(
                 hintText: "تایپ کنید",
                 maxLines: 5,
                 onChanged: (value) => widget.advInfoModel.description = value,
@@ -173,28 +188,72 @@ class _AdvInfoState extends State<AdvInfo> {
     required bool enabled,
     TextEditingController? controller,
   }) {
-    return TextField(
-      textAlign: TextAlign.right,
-      maxLines: maxLines,
-      onChanged: onChanged,
-      enabled: enabled,
-      controller: controller,
-      decoration: InputDecoration(
-        hintText: hintText,
-        hintStyle: const TextStyle(
-          fontFamily: 'Iran Sans',
-          fontWeight: FontWeight.w400,
-        ),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10),
-          borderSide: const BorderSide(
-            color: Color.fromRGBO(23, 102, 175, 1),
+    return SizedBox(
+      height: 50,
+      child: TextField(
+        textAlign: TextAlign.right,
+        maxLines: maxLines,
+        onChanged: onChanged,
+        enabled: enabled,
+        controller: controller,
+        decoration: InputDecoration(
+          hintText: hintText,
+          hintStyle: const TextStyle(
+            fontFamily: 'Iran Sans',
+            fontWeight: FontWeight.w400,
+            color: Color(0xFFA6A6A6),
+            fontSize: 13,
+          ),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10),
+            borderSide: const BorderSide(
+              color: Color.fromRGBO(23, 102, 175, 1),
+            ),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10),
+            borderSide: const BorderSide(
+              color: Color.fromRGBO(23, 102, 175, 1),
+            ),
           ),
         ),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10),
-          borderSide: const BorderSide(
-            color: Color.fromRGBO(23, 102, 175, 1),
+      ),
+    );
+  }
+
+  Widget _buildTextField_tozih({
+    required String hintText,
+    int? maxLines,
+    required ValueChanged<String> onChanged,
+    required bool enabled,
+    TextEditingController? controller,
+  }) {
+    return SizedBox(
+      child: TextField(
+        textAlign: TextAlign.right,
+        maxLines: maxLines,
+        onChanged: onChanged,
+        enabled: enabled,
+        controller: controller,
+        decoration: InputDecoration(
+          hintText: hintText,
+          hintStyle: const TextStyle(
+            fontFamily: 'Iran Sans',
+            fontWeight: FontWeight.w400,
+            fontSize: 13,
+            color: Color(0xFFA6A6A6),
+          ),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10),
+            borderSide: const BorderSide(
+              color: Color.fromRGBO(23, 102, 175, 1),
+            ),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10),
+            borderSide: const BorderSide(
+              color: Color.fromRGBO(23, 102, 175, 1),
+            ),
           ),
         ),
       ),

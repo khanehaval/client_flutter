@@ -15,6 +15,7 @@ import 'package:flutter_application_1/pages/category/shared/number_piacker.dart'
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
 import 'package:flutter_application_1/pages/category/shared/switchItem.dart';
 import 'package:flutter_application_1/pages/category/shared/twoItemInRow.dart';
+import 'package:flutter_application_1/pages/category/shared/widget/route_widget.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/submit_row.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/text_field.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -78,18 +79,118 @@ class _ForoshDaftarPageState extends State<ForoshDaftarPage> {
   final _countOfInstallmentsController = TextEditingController();
 
   final _advInfo = AdvInfoModel();
+  final ValueNotifier<String> _persianWords = ValueNotifier<String>('');
+
+  String numberToFarsiWords(int number) {
+    if (number == 0) return 'صفر';
+
+    const ones = [
+      'صفر',
+      'یک',
+      'دو',
+      'سه',
+      'چهار',
+      'پنج',
+      'شش',
+      'هفت',
+      'هشت',
+      'نه'
+    ];
+    const teens = [
+      'ده',
+      'یازده',
+      'دوازده',
+      'سیزده',
+      'چهارده',
+      'پانزده',
+      'شانزده',
+      'هفده',
+      'هجده',
+      'نوزده'
+    ];
+    const tens = [
+      '',
+      '',
+      'بیست',
+      'سی',
+      'چهل',
+      'پنجاه',
+      'شصت',
+      'هفتاد',
+      'هشتاد',
+      'نود'
+    ];
+    const hundreds = [
+      '',
+      'صد',
+      'دویست',
+      'سیصد',
+      'چهارصد',
+      'پانصد',
+      'ششصد',
+      'هفتصد',
+      'هشتصد',
+      'نهصد'
+    ];
+    const thousands = ['', 'هزار', 'میلیون', 'میلیارد'];
+
+    String convertBelowThousand(int num) {
+      if (num == 0) return '';
+      if (num < 10) return ones[num];
+      if (num < 20) return teens[num - 10];
+      if (num < 100) {
+        int tenPart = num ~/ 10;
+        int onePart = num % 10;
+        return '${tens[tenPart]}${onePart > 0 ? ' و ${ones[onePart]}' : ''}';
+      } else {
+        int hundredPart = num ~/ 100;
+        int restPart = num % 100;
+        return '${hundreds[hundredPart]}${restPart > 0 ? ' و ${convertBelowThousand(restPart)}' : ''}';
+      }
+    }
+
+    String result = '';
+    int unit = 0;
+
+    while (number > 0) {
+      int chunk = number % 1000;
+      if (chunk > 0) {
+        String chunkText = convertBelowThousand(chunk);
+        result = '${chunkText} ${thousands[unit]} ${result}'.trim();
+      }
+      number ~/= 1000;
+      unit++;
+    }
+
+    return result.trim();
+  }
+
+  void _updatePersianWords() {
+    final text = _metragTextController.text;
+    if (text.isNotEmpty) {
+      final number = int.tryParse(text) ?? 0;
+      _persianWords.value = numberToFarsiWords(number);
+    } else {
+      _persianWords.value = '';
+    }
+  }
 
   @override
   void initState() {
     super.initState();
+    _metragTextController.addListener(_updatePersianWords);
 
     _allPriceTextController.addListener(_checkFields);
     _metragTextController.addListener(_checkFields);
+    _buildRoomsCountController.addListener(_checkFields);
+    _buildFloorController.addListener(_checkFields);
   }
 
   void _checkFields() {
     if (_allPriceTextController.text.isNotEmpty &&
-        _metragTextController.text.isNotEmpty) {
+        _metragTextController.text.isNotEmpty &&
+        _buildFloorController.text.isNotEmpty &&
+        _buildRoomsCountController.text.isNotEmpty) {
       submit.value = true;
     } else {
       submit.value = false;
@@ -100,6 +201,9 @@ class _ForoshDaftarPageState extends State<ForoshDaftarPage> {
   void dispose() {
     _allPriceTextController.dispose();
     _metragTextController.dispose();
+    _buildFloorController.dispose();
+    _persianWords.dispose();
+
     super.dispose();
   }
 
@@ -108,52 +212,108 @@ class _ForoshDaftarPageState extends State<ForoshDaftarPage> {
         backgroundColor: Colors.white,
         appBar: buildaAppBar(),
         body: SingleChildScrollView(
+          scrollDirection: Axis.vertical,
           child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
               child: Column(children: [
+                route([
+                  "ثبت آگهی اکونومی",
+                  "فروش مسکونی",
+                  "خرید و فروش آپارتمان"
+                ]),
+                const SizedBox(
+                  height: 30,
+                ),
                 const Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     Text(
-                      " خرید و فروش آپارتمان",
+                      "*",
                       style: TextStyle(
-                        fontSize: 10,
+                        fontSize: 20,
+                        color: Color.fromRGBO(156, 64, 64, 1),
                         fontFamily: MAIN_FONT_FAMILY,
                       ),
                     ),
-                    Icon(
-                      Icons.arrow_back,
-                      color: Colors.green,
-                      size: 18,
+                    SizedBox(
+                      width: 5,
                     ),
-                    Text(
-                      "فروش مسکونی",
-                      style: TextStyle(
-                        fontSize: 10,
-                        fontFamily: MAIN_FONT_FAMILY,
-                      ),
-                    ),
-                    Icon(
-                      Icons.arrow_back,
-                      color: Colors.green,
-                      size: 18,
-                    ),
-                    Text(
-                      "  ثبت آگهی اکونومی",
-                      style: TextStyle(
-                        fontSize: 10,
-                        fontFamily: MAIN_FONT_FAMILY,
+                    Padding(
+                      padding: EdgeInsets.only(right: 7),
+                      child: Text(
+                        "(تومان) قیمت کل",
+                        style: TextStyle(
+                          color: Color.fromRGBO(166, 166, 166, 1),
+                          fontFamily: MAIN_FONT_FAMILY,
+                        ),
+                        textAlign: TextAlign.start,
                       ),
                     ),
                   ],
                 ),
+                SizedBox(
+                  height: 50,
+                  width: MediaQuery.of(context).size.width * 0.95,
+                  child: TextField(
+                    textAlign: TextAlign.right,
+                    controller: _metragTextController,
+                    keyboardType: TextInputType.number,
+                    decoration: InputDecoration(
+                      hintText: '120',
+                      hintStyle: const TextStyle(
+                        color: Color(0xFFA6A6A6),
+                      ),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                        borderSide: const BorderSide(
+                          color: Color.fromRGBO(23, 102, 175, 1),
+                        ),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                        borderSide: const BorderSide(
+                          color: Color.fromRGBO(23, 102, 175, 1),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 20),
+                Align(
+                  alignment: Alignment.centerRight,
+                  child: ValueListenableBuilder<String>(
+                    valueListenable: _persianWords,
+                    builder: (context, value, child) {
+                      return Text(
+                        "قیمت به حروف: $value  تومان",
+                        style: const TextStyle(
+                          fontSize: 14,
+                          fontFamily: MAIN_FONT_FAMILY,
+                          color: Color.fromRGBO(166, 166, 166, 1),
+                        ),
+                      );
+                    },
+                  ),
+                ),
                 const SizedBox(
-                  height: 30,
+                  height: 20,
+                ),
+                const Divider(
+                  color: Color.fromRGBO(
+                    226,
+                    226,
+                    226,
+                    1,
+                  ),
+                  endIndent: 6,
+                  indent: 6,
+                ),
+                const SizedBox(
+                  height: 20,
                 ),
                 TwoItemInRow1(
                   label1: "قیمت هر متر مربع (تومان)",
-                  label2: "  قیمت کل (تومان)",
+                  label2: "متراژ",
                   widget1: Obx(
                     () => Container(
                       decoration: BoxDecoration(
@@ -194,88 +354,16 @@ class _ForoshDaftarPageState extends State<ForoshDaftarPage> {
                         ),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
+                          borderSide: const BorderSide(
+                            color: Color.fromRGBO(23, 102, 175, 1),
+                          ),
                         ),
-                      ),
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                const Align(
-                  alignment: Alignment.centerRight,
-                  child: Text(
-                    ":قیمت به حروف ",
-                    style: TextStyle(
-                        fontSize: 14,
-                        fontFamily: MAIN_FONT_FAMILY,
-                        color: Color.fromRGBO(166, 166, 166, 1)),
-                  ),
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                const Divider(
-                  color: Color.fromRGBO(
-                    226,
-                    226,
-                    226,
-                    1,
-                  ),
-                  endIndent: 6,
-                  indent: 6,
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                const Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Text(
-                      "*",
-                      style: TextStyle(
-                          fontSize: 20,
-                          color: Color.fromRGBO(156, 64, 64, 1),
-                          fontFamily: MAIN_FONT_FAMILY),
-                    ),
-                    SizedBox(
-                      width: 5,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(right: 7),
-                      child: Text(
-                        "متراژ",
-                        style: TextStyle(
-                            color: Color.fromRGBO(166, 166, 166, 1),
-                            fontFamily: MAIN_FONT_FAMILY),
-                        textAlign: TextAlign.start,
-                      ),
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  height: 50,
-                  width: MediaQuery.of(context).size.width * 0.95,
-                  child: TextField(
-                    textAlign: TextAlign.right,
-                    controller: _metragTextController,
-                    keyboardType: TextInputType.number,
-                    onChanged: (m) {
-                      _onePrice.value = m.isNotEmpty
-                          ? int.parse(_allPriceTextController.text) /
-                              int.parse(m)
-                          : 0;
-                    },
-                    decoration: InputDecoration(
-                      hintText: '120',
-                      hintStyle: const TextStyle(
-                        fontSize: 13,
-                        fontFamily: 'Iran Sans',
-                        fontWeight: FontWeight.w400,
-                        color: Color(0xFFA6A6A6),
-                      ),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                          borderSide: const BorderSide(
+                            color: Color.fromRGBO(23, 102, 175, 1),
+                          ),
+                        ),
                       ),
                     ),
                   ),

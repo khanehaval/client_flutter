@@ -36,7 +36,7 @@ class _CategoryAdvertisementState extends State<CategoryAdvertisement> {
             Column(
               children: [
                 const Text(
-                  "انتخاب دسته بندی",
+                 "انتخاب نوع واگذاری",
                   style: TextStyle(
                     fontFamily: MAIN_FONT_FAMILY,
                     color: Color.fromRGBO(99, 99, 99, 1),

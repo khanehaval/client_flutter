@@ -1,9 +1,7 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_application_1/db/dao/user_dao.dart';
 import 'package:flutter_application_1/db/entities/user.dart';
 import 'package:flutter_application_1/db/entities/user_type.dart';
 import 'package:flutter_application_1/services/acount_service.dart';
-import 'package:flutter_application_1/services/models/list-aghahi.dart';
 import 'package:flutter_application_1/services/models/login_res.dart';
 import 'package:get_it/get_it.dart';
 
@@ -40,23 +38,38 @@ class AccountRepo {
     return false;
   }
 
-  Future<bool> personal(
-      {required String firstName,
-      required String lastName,
-      required String userName,
-      required String nationalCardImg,
-      required String nationalCode,
-      required String cellphone // Added missing parameter
-      }) async {
+  Future<bool> personal({
+    required String firstName,
+    required String lastName,
+    required String userName,
+    required String nationalCardImg,
+    required String nationalCode,
+  }) async {
     try {
+      // چاپ مقادیر ورودی برای بررسی
+      print('First Name: $firstName');
+      print('Last Name: $lastName');
+      print('User Name: $userName');
+      print('National Card Img: $nationalCardImg');
+      print('National Code: $nationalCode');
+
       var result = await _accountService.personal(
-          firstName: firstName,
-          lastName: lastName,
-          userName: userName,
-          nationalCardImg: nationalCardImg,
-          nationalCode: nationalCode);
+        firstName: firstName,
+        lastName: lastName,
+        userName: userName,
+        nationalCardImg: nationalCardImg,
+        nationalCode: nationalCode,
+      );
+
+      // بررسی اینکه آیا نتیجه null است
+      if (result != null) {
+        print('Result: $result');
+        return true;
+      } else {
+        print('Invalid response from the API.');
+      }
     } catch (e) {
-      print('اطلاعات نادرست است: $e');
+      print('The information is incorrect: $e');
     }
     return false;
   }

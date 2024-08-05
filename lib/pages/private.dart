@@ -1,19 +1,23 @@
 import 'dart:async';
-import 'dart:io';
-import 'dart:math';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
-import 'package:flutter_application_1/pages/category/pages/home.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/app_bar.dart';
-import 'package:flutter_application_1/pages/register/register.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_application_1/repo/acount_repo.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
-import 'package:get/get_connect/http/src/utils/utils.dart';
+import 'package:get_it/get_it.dart';
 import 'package:image_picker/image_picker.dart';
 
 class Private extends StatelessWidget {
   Private({super.key});
+  final _nametextfield = TextEditingController();
+  final _lastnametextfield = TextEditingController();
+  final _nationalCode = TextEditingController();
+  final _usernametextfield = TextEditingController();
+  final _accountRepo = GetIt.I.get<AccountRepo>();
+  final _buttonIsPressed = false.obs;
+  final _sendinformation = false.obs;
 
   final show = true.obs;
   final imagePath = ''.obs;
@@ -28,8 +32,55 @@ class Private extends StatelessWidget {
     }
   }
 
+  Future<void> _personal() async {
+    if (_nametextfield.text.isEmpty ||
+        _lastnametextfield.text.isEmpty ||
+        _usernametextfield.text.isEmpty ||
+        imagePath.value.isEmpty ||
+        _nationalCode.text.isEmpty) {
+      Fluttertoast.showToast(
+        msg: "لطفا همه فیلدها را پر کنید",
+        toastLength: Toast.LENGTH_LONG,
+        gravity: ToastGravity.CENTER,
+        backgroundColor: Colors.red,
+        textColor: Colors.white,
+        fontSize: 16.0,
+      );
+      return;
+    }
+
+    _buttonIsPressed.value = true;
+    final success = await _accountRepo.personal(
+        firstName: _nametextfield.text,
+        lastName: _lastnametextfield.text,
+        userName: _usernametextfield.text,
+        nationalCardImg: imagePath.value,
+        nationalCode: _nationalCode.text);
+    _buttonIsPressed.value = false;
+
+    if (success) {
+      Fluttertoast.showToast(
+        msg: "اطلاعات با موفقیت ارسال شد",
+        toastLength: Toast.LENGTH_LONG,
+        gravity: ToastGravity.CENTER,
+        backgroundColor: Colors.green,
+        textColor: Colors.white,
+        fontSize: 16.0,
+      );
+    } else {
+      Fluttertoast.showToast(
+        msg: "خطا در ارسال اطلاعات",
+        toastLength: Toast.LENGTH_LONG,
+        gravity: ToastGravity.CENTER,
+        backgroundColor: Colors.red,
+        textColor: Colors.white,
+        fontSize: 16.0,
+      );
+    }
+  }
+
   void deleteImage() {
-    imagePath.value = ''; // Clear the image path to delete the image
+    imagePath.value = '';
   }
 
   @override
@@ -80,6 +131,7 @@ class Private extends StatelessWidget {
                         height: 48,
                         width: _getTextFieldWidth(context),
                         child: TextField(
+                          controller: _lastnametextfield,
                           textAlign: TextAlign.right,
                           decoration: InputDecoration(
                             hintText: '* نام خانوادگی ',
@@ -106,7 +158,7 @@ class Private extends StatelessWidget {
                         height: 48,
                         width: _getTextFieldWidth(context),
                         child: TextField(
-                          onTap: () => show.value = false,
+                          controller: _nametextfield,
                           textAlign: TextAlign.right,
                           decoration: InputDecoration(
                             hintText: ' *نام ',
@@ -205,6 +257,7 @@ class Private extends StatelessWidget {
                         height: 48,
                         width: _getTextFieldWidth(context),
                         child: TextField(
+                          controller: _nationalCode,
                           textAlign: TextAlign.right,
                           decoration: InputDecoration(
                             hintText: '* کد ملی ',
@@ -234,6 +287,7 @@ class Private extends StatelessWidget {
                     width: 360,
                     height: 41,
                     child: TextField(
+                      controller: _usernametextfield,
                       scrollPadding: EdgeInsets.only(
                         bottom: MediaQuery.of(context).viewInsets.bottom,
                       ),
@@ -275,9 +329,7 @@ class Private extends StatelessWidget {
                         width: 160,
                         height: 50,
                         child: ElevatedButton(
-                          onPressed: () {
-                            Get.to(() => Home());
-                          },
+                          onPressed: _personal,
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.transparent,
                             shadowColor: Colors.transparent,

@@ -24,12 +24,12 @@ class TwoItemInRow extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             Padding(
-              padding: const EdgeInsets.only(right: 5),
+              padding: const EdgeInsets.only(right: 5, top: 5),
               child: Text(
                 label1,
                 style: const TextStyle(
                     color: Color.fromRGBO(99, 99, 99, 1),
-                    fontSize: 12,
+                    fontSize: 13,
                     fontFamily: MAIN_FONT_FAMILY),
               ),
             ),
@@ -44,12 +44,12 @@ class TwoItemInRow extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             Padding(
-              padding: const EdgeInsets.only(right: 5),
+              padding: const EdgeInsets.only(right: 5, top: 5),
               child: Text(
                 label2,
                 style: const TextStyle(
                     color: Color.fromRGBO(99, 99, 99, 1),
-                    fontSize: 12,
+                    fontSize: 13,
                     fontFamily: MAIN_FONT_FAMILY),
               ),
             ),
@@ -115,7 +115,7 @@ class TwoItemInRow1 extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               Padding(
-                padding: const EdgeInsets.only(right: 5),
+                padding: const EdgeInsets.only(right: 5, top: 5),
                 child: RichText(
                   text: TextSpan(
                     children: [
@@ -203,7 +203,7 @@ class TwoItemInRow2 extends StatelessWidget {
                         text: label1,
                         style: const TextStyle(
                             fontFamily: MAIN_FONT_FAMILY,
-                            fontSize: 13,
+                            fontSize: 14,
                             color: Color.fromRGBO(
                               99,
                               99,
@@ -242,7 +242,7 @@ class TwoItemInRow2 extends StatelessWidget {
                               1,
                             ),
                             fontFamily: MAIN_FONT_FAMILY,
-                            fontSize: 14),
+                            fontSize: 13),
                       ),
                       TextSpan(
                         text: label2,

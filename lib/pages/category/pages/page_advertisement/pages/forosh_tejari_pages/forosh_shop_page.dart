@@ -15,6 +15,7 @@ import 'package:flutter_application_1/pages/category/shared/number_piacker.dart'
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
 import 'package:flutter_application_1/pages/category/shared/switchItem.dart';
 import 'package:flutter_application_1/pages/category/shared/twoItemInRow.dart';
+import 'package:flutter_application_1/pages/category/shared/widget/route_widget.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/submit_row.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/text_field.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -64,16 +65,116 @@ class _SaleShopState extends State<SaleShop> {
   final _buildRoomsCountController = TextEditingController();
 
   final _advInfo = AdvInfoModel();
+  final ValueNotifier<String> _persianWords = ValueNotifier<String>('');
+
+  String numberToFarsiWords(int number) {
+    if (number == 0) return 'صفر';
+
+    const ones = [
+      'صفر',
+      'یک',
+      'دو',
+      'سه',
+      'چهار',
+      'پنج',
+      'شش',
+      'هفت',
+      'هشت',
+      'نه'
+    ];
+    const teens = [
+      'ده',
+      'یازده',
+      'دوازده',
+      'سیزده',
+      'چهارده',
+      'پانزده',
+      'شانزده',
+      'هفده',
+      'هجده',
+      'نوزده'
+    ];
+    const tens = [
+      '',
+      '',
+      'بیست',
+      'سی',
+      'چهل',
+      'پنجاه',
+      'شصت',
+      'هفتاد',
+      'هشتاد',
+      'نود'
+    ];
+    const hundreds = [
+      '',
+      'صد',
+      'دویست',
+      'سیصد',
+      'چهارصد',
+      'پانصد',
+      'ششصد',
+      'هفتصد',
+      'هشتصد',
+      'نهصد'
+    ];
+    const thousands = ['', 'هزار', 'میلیون', 'میلیارد'];
+
+    String convertBelowThousand(int num) {
+      if (num == 0) return '';
+      if (num < 10) return ones[num];
+      if (num < 20) return teens[num - 10];
+      if (num < 100) {
+        int tenPart = num ~/ 10;
+        int onePart = num % 10;
+        return '${tens[tenPart]}${onePart > 0 ? ' و ${ones[onePart]}' : ''}';
+      } else {
+        int hundredPart = num ~/ 100;
+        int restPart = num % 100;
+        return '${hundreds[hundredPart]}${restPart > 0 ? ' و ${convertBelowThousand(restPart)}' : ''}';
+      }
+    }
+
+    String result = '';
+    int unit = 0;
+
+    while (number > 0) {
+      int chunk = number % 1000;
+      if (chunk > 0) {
+        String chunkText = convertBelowThousand(chunk);
+        result = '${chunkText} ${thousands[unit]} ${result}'.trim();
+      }
+      number ~/= 1000;
+      unit++;
+    }
+
+    return result.trim();
+  }
+
+  void _updatePersianWords() {
+    final text = _metragTextController.text;
+    if (text.isNotEmpty) {
+      final number = int.tryParse(text) ?? 0;
+      _persianWords.value = numberToFarsiWords(number);
+    } else {
+      _persianWords.value = '';
+    }
+  }
 
   @override
   void initState() {
     super.initState();
+    _metragTextController.addListener(_updatePersianWords);
 
     _allPriceTextController.addListener(_checkFields);
+    _metragTextController.addListener(_checkFields);
+    _buildRoomsCountController.addListener(_checkFields);
   }
 
   void _checkFields() {
-    if (_allPriceTextController.text.isNotEmpty) {
+    if (_allPriceTextController.text.isNotEmpty &&
+        _metragTextController.text.isNotEmpty &&
+        _buildRoomsCountController.text.isNotEmpty) {
       submit.value = true;
     } else {
       submit.value = false;
@@ -83,6 +184,9 @@ class _SaleShopState extends State<SaleShop> {
   @override
   void dispose() {
     _allPriceTextController.dispose();
+    _metragTextController.dispose();
+    _persianWords.dispose();
+
     super.dispose();
   }
 
@@ -91,239 +195,214 @@ class _SaleShopState extends State<SaleShop> {
         backgroundColor: Colors.white,
         appBar: buildaAppBar(),
         body: SingleChildScrollView(
+            scrollDirection: Axis.vertical,
             child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-          child: Column(children: [
-            const Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Text(
-                  "خرید و فروش مغازه  ",
-                  style: TextStyle(
-                    fontSize: 10,
-                    fontFamily: MAIN_FONT_FAMILY,
-                  ),
-                ),
-                Icon(
-                  Icons.arrow_back,
-                  color: Colors.green,
-                  size: 18,
-                ),
-                Text(
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+              child: Column(children: [
+                route([
+                  "ثبت آگهی اکونومی",
                   "فروش مسکونی",
-                  style: TextStyle(
-                    fontSize: 10,
-                    fontFamily: MAIN_FONT_FAMILY,
-                  ),
+                  "خرید و فروش آپارتمان"
+                ]),
+                const SizedBox(
+                  height: 30,
                 ),
-                Icon(
-                  Icons.arrow_back,
-                  color: Colors.green,
-                  size: 18,
-                ),
-                Text(
-                  "  ثبت آگهی اکونومی",
-                  style: TextStyle(
-                    fontSize: 10,
-                    fontFamily: MAIN_FONT_FAMILY,
-                  ),
-                ),
-              ],
-            ),
-            const SizedBox(
-              height: 30,
-            ),
-            TwoItemInRow1(
-              label1: "قیمت هر متر مربع (تومان)",
-              label2: "قیمت کل (تومان)",
-              widget1: Obx(
-                () => Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    border: Border.all(
-                        width: 1, //
-                        color: Theme.of(context)
-                            .hintColor //  <--- border width here
+                const Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Text(
+                      "*",
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: Color.fromRGBO(156, 64, 64, 1),
+                        fontFamily: MAIN_FONT_FAMILY,
+                      ),
+                    ),
+                    SizedBox(
+                      width: 5,
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(right: 7),
+                      child: Text(
+                        "(تومان) قیمت کل",
+                        style: TextStyle(
+                          color: Color.fromRGBO(166, 166, 166, 1),
+                          fontFamily: MAIN_FONT_FAMILY,
                         ),
-                  ),
-                  height: 41,
-                  width: getPageWidth(),
-                  child: Center(
-                    child: Text(_onePrice.string),
-                  ),
-                ),
-              ),
-              widget2: SizedBox(
-                height: 41,
-                width: getPageWidth(),
-                child: TextField(
-                  textAlign: TextAlign.right,
-                  keyboardType: TextInputType.number,
-                  controller: _allPriceTextController,
-                  onChanged: (_) {
-                    _onePrice.value = _.isNotEmpty
-                        ? int.parse(_) / int.parse(_metragTextController.text)
-                        : 0;
-                  },
-                  decoration: InputDecoration(
-                    hintText: "0",
-                    hintStyle: const TextStyle(
-                      fontSize: 13,
-                      fontFamily: 'Iran Sans',
-                      fontWeight: FontWeight.w400,
-                      color: Color(0xFFA6A6A6),
+                        textAlign: TextAlign.start,
+                      ),
                     ),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                  ),
+                  ],
                 ),
-              ),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            const Align(
-              alignment: Alignment.centerRight,
-              child: Text(
-                ":قیمت به حروف ",
-                style: TextStyle(
-                    fontSize: 14,
-                    fontFamily: MAIN_FONT_FAMILY,
-                    color: Color.fromRGBO(166, 166, 166, 1)),
-              ),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            const Divider(
-              endIndent: 20,
-              indent: 20,
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            const Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Text(
-                  "*",
-                  style: TextStyle(
-                      fontSize: 20,
-                      color: Color.fromRGBO(156, 64, 64, 1),
-                      fontFamily: MAIN_FONT_FAMILY),
-                ),
-                Text(
-                  "متراژ",
-                  style: TextStyle(
-                      color: Color.fromRGBO(166, 166, 166, 1),
-                      fontFamily: MAIN_FONT_FAMILY),
-                  textAlign: TextAlign.start,
-                ),
-              ],
-            ),
-            SizedBox(
-              height: 50,
-              width: MediaQuery.of(context).size.width * 0.95,
-              child: TextField(
-                textAlign: TextAlign.right,
-                controller: _metragTextController,
-                keyboardType: TextInputType.number,
-                onChanged: (m) {
-                  _onePrice.value = m.isNotEmpty
-                      ? int.parse(_allPriceTextController.text) / int.parse(m)
-                      : 0;
-                },
-                decoration: InputDecoration(
-                  hintText: '120',
-                  hintStyle: const TextStyle(
-                    fontSize: 13,
-                    fontFamily: 'Iran Sans',
-                    fontWeight: FontWeight.w400,
-                    color: Color(0xFFA6A6A6),
-                  ),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                ),
-              ),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            const Divider(
-              endIndent: 20,
-              indent: 20,
-            ),
-            aghsatiForoshWidget(context),
-            const SizedBox(
-              height: 20,
-            ),
-            const Divider(
-              endIndent: 20,
-              indent: 20,
-            ),
-            TwoItemInRow(
-                label1: "تعداد اتاق ",
-                label2: "سن بنا ",
-                widget1: ReadOnlyTextField(_buildRoomsCountController, () {
-                  showNumberPicker((_) {
-                    _buildRoomsCountController.text = _;
-                  });
-                }, width: getPageWidth()),
-                widget2: ReadOnlyTextField(_buildDateController, () {
-                  persianDataPicker((date) => _buildDateController.text = date);
-                }, width: getPageWidth(), fontSize: 13)),
-            const SizedBox(
-              height: 20,
-            ),
-            TwoItemInRow(
-                label1: "طیقه",
-                label2: "موقیعت",
-                widget1:
-                    ReadOnlyTextField(_buildUnitOfAnyFloorCountController, () {
-                  showNumberPicker((_) {
-                    _buildUnitOfAnyFloorCountController.text = _;
-                  });
-                }, width: getPageWidth()),
-                widget2: ReadOnlyTextField(_buildDirectionController, () {
-                  jahatSakhteman((_) {
-                    _buildDirectionController.text = _;
-                  });
-                }, width: getPageWidth())),
-            const SizedBox(
-              height: 15,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Text(
-                  "انباری",
-                  style: TextStyle(
-                      fontFamily: MAIN_FONT_FAMILY,
-                      fontSize: 14,
-                      color: Color.fromRGBO(99, 99, 99, 1)),
-                ),
-                Container(
-                  child: Transform.scale(
-                    scale: 0.80,
-                    child: Obx(
-                      () => Switch(
-                          onChanged: (_) => hasAnbari.value = _,
-                          value: hasAnbari.value,
-                          activeColor: Colors.white,
-                          activeTrackColor: Color.fromRGBO(54, 216, 89, 1),
-                          inactiveThumbColor: Color.fromRGBO(11, 8, 8, 0.2),
-                          inactiveTrackColor: Color.fromRGBO(255, 255, 255, 1)),
+                SizedBox(
+                  height: 50,
+                  width: MediaQuery.of(context).size.width * 0.95,
+                  child: TextField(
+                    textAlign: TextAlign.right,
+                    controller: _metragTextController,
+                    keyboardType: TextInputType.number,
+                    decoration: InputDecoration(
+                      hintText: '120',
+                      hintStyle: const TextStyle(
+                        color: Color(0xFFA6A6A6),
+                      ),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                        borderSide: const BorderSide(
+                          color: Color.fromRGBO(23, 102, 175, 1),
+                        ),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                        borderSide: const BorderSide(
+                          color: Color.fromRGBO(23, 102, 175, 1),
+                        ),
+                      ),
                     ),
                   ),
+                ),
+                const SizedBox(height: 20),
+                Align(
+                  alignment: Alignment.centerRight,
+                  child: ValueListenableBuilder<String>(
+                    valueListenable: _persianWords,
+                    builder: (context, value, child) {
+                      return Text(
+                        "قیمت به حروف: $value  تومان",
+                        style: const TextStyle(
+                          fontSize: 14,
+                          fontFamily: MAIN_FONT_FAMILY,
+                          color: Color.fromRGBO(166, 166, 166, 1),
+                        ),
+                      );
+                    },
+                  ),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                const Divider(
+                  color: Color.fromRGBO(
+                    226,
+                    226,
+                    226,
+                    1,
+                  ),
+                  endIndent: 6,
+                  indent: 6,
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                TwoItemInRow1(
+                  label1: "قیمت هر متر مربع (تومان)",
+                  label2: "متراژ",
+                  widget1: Obx(
+                    () => Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        border: Border.all(
+                            width: 1, //
+                            color: Theme.of(context)
+                                .hintColor //  <--- border width here
+                            ),
+                      ),
+                      height: 41,
+                      width: getPageWidth(),
+                      child: Center(
+                        child: Text(_onePrice.string),
+                      ),
+                    ),
+                  ),
+                  widget2: SizedBox(
+                    height: 41,
+                    width: getPageWidth(),
+                    child: TextField(
+                      textAlign: TextAlign.right,
+                      keyboardType: TextInputType.number,
+                      controller: _allPriceTextController,
+                      onChanged: (_) {
+                        _onePrice.value = _.isNotEmpty
+                            ? int.parse(_) /
+                                int.parse(_metragTextController.text)
+                            : 0;
+                      },
+                      decoration: InputDecoration(
+                        hintText: "0",
+                        hintStyle: const TextStyle(
+                          fontSize: 13,
+                          fontFamily: 'Iran Sans',
+                          fontWeight: FontWeight.w400,
+                          color: Color(0xFFA6A6A6),
+                        ),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                          borderSide: const BorderSide(
+                            color: Color.fromRGBO(23, 102, 175, 1),
+                          ),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                          borderSide: const BorderSide(
+                            color: Color.fromRGBO(23, 102, 175, 1),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                const Divider(
+                  endIndent: 20,
+                  indent: 20,
+                ),
+                aghsatiForoshWidget(context),
+                const SizedBox(
+                  height: 20,
+                ),
+                const Divider(
+                  endIndent: 20,
+                  indent: 20,
+                ),
+                TwoItemInRow(
+                    label1: "تعداد اتاق ",
+                    label2: "سن بنا ",
+                    widget1: ReadOnlyTextField(_buildRoomsCountController, () {
+                      showNumberPicker((_) {
+                        _buildRoomsCountController.text = _;
+                      });
+                    }, width: getPageWidth()),
+                    widget2: ReadOnlyTextField(_buildDateController, () {
+                      persianDataPicker(
+                          (date) => _buildDateController.text = date);
+                    }, width: getPageWidth(), fontSize: 13)),
+                const SizedBox(
+                  height: 20,
+                ),
+                TwoItemInRow(
+                    label1: "طیقه",
+                    label2: "موقیعت",
+                    widget1: ReadOnlyTextField(
+                        _buildUnitOfAnyFloorCountController, () {
+                      showNumberPicker((_) {
+                        _buildUnitOfAnyFloorCountController.text = _;
+                      });
+                    }, width: getPageWidth()),
+                    widget2: ReadOnlyTextField(_buildDirectionController, () {
+                      jahatSakhteman((_) {
+                        _buildDirectionController.text = _;
+                      });
+                    }, width: getPageWidth())),
+                const SizedBox(
+                  height: 15,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     const Text(
-                      "آسانسور",
+                      "انباری",
                       style: TextStyle(
                           fontFamily: MAIN_FONT_FAMILY,
                           fontSize: 14,
@@ -334,8 +413,8 @@ class _SaleShopState extends State<SaleShop> {
                         scale: 0.80,
                         child: Obx(
                           () => Switch(
-                              onChanged: (_) => hasAsansor.value = _,
-                              value: hasAsansor.value,
+                              onChanged: (_) => hasAnbari.value = _,
+                              value: hasAnbari.value,
                               activeColor: Colors.white,
                               activeTrackColor: Color.fromRGBO(54, 216, 89, 1),
                               inactiveThumbColor: Color.fromRGBO(11, 8, 8, 0.2),
@@ -348,7 +427,7 @@ class _SaleShopState extends State<SaleShop> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         const Text(
-                          "پارکینگ",
+                          "آسانسور",
                           style: TextStyle(
                               fontFamily: MAIN_FONT_FAMILY,
                               fontSize: 14,
@@ -359,177 +438,176 @@ class _SaleShopState extends State<SaleShop> {
                             scale: 0.80,
                             child: Obx(
                               () => Switch(
-                                  onChanged: (_) => hasParking.value = _,
-                                  value: hasParking.value,
+                                  onChanged: (_) => hasAsansor.value = _,
+                                  value: hasAsansor.value,
                                   activeColor: Colors.white,
                                   activeTrackColor:
-                                      const Color.fromRGBO(54, 216, 89, 1),
+                                      Color.fromRGBO(54, 216, 89, 1),
                                   inactiveThumbColor:
-                                      const Color.fromRGBO(11, 8, 8, 0.2),
+                                      Color.fromRGBO(11, 8, 8, 0.2),
                                   inactiveTrackColor:
-                                      const Color.fromRGBO(255, 255, 255, 1)),
+                                      Color.fromRGBO(255, 255, 255, 1)),
                             ),
                           ),
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const Text(
+                              "پارکینگ",
+                              style: TextStyle(
+                                  fontFamily: MAIN_FONT_FAMILY,
+                                  fontSize: 14,
+                                  color: Color.fromRGBO(99, 99, 99, 1)),
+                            ),
+                            Container(
+                              child: Transform.scale(
+                                scale: 0.80,
+                                child: Obx(
+                                  () => Switch(
+                                      onChanged: (_) => hasParking.value = _,
+                                      value: hasParking.value,
+                                      activeColor: Colors.white,
+                                      activeTrackColor:
+                                          const Color.fromRGBO(54, 216, 89, 1),
+                                      inactiveThumbColor:
+                                          const Color.fromRGBO(11, 8, 8, 0.2),
+                                      inactiveTrackColor: const Color.fromRGBO(
+                                          255, 255, 255, 1)),
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
                       ],
                     ),
                   ],
                 ),
-              ],
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            const Divider(
-              endIndent: 20,
-              indent: 20,
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            const Text(
-              "سایر ویژگی ها",
-              style: TextStyle(fontFamily: MAIN_FONT_FAMILY, fontSize: 15),
-            ),
-            const SizedBox(
-              height: 15,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
+                const SizedBox(
+                  height: 10,
+                ),
+                const Divider(
+                  endIndent: 20,
+                  indent: 20,
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                const Text(
+                  "سایر ویژگی ها",
+                  style: TextStyle(fontFamily: MAIN_FONT_FAMILY, fontSize: 15),
+                ),
+                const SizedBox(
+                  height: 15,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Container(
+                      child: const Text(
+                        "بازسازی ",
+                        style: TextStyle(
+                            color: Color.fromRGBO(99, 99, 99, 1),
+                            fontFamily: MAIN_FONT_FAMILY),
+                        textAlign: TextAlign.start,
+                      ),
+                    ),
+                  ],
+                ),
                 Container(
-                  child: const Text(
-                    "بازسازی ",
-                    style: TextStyle(
-                        color: Color.fromRGBO(99, 99, 99, 1),
-                        fontFamily: MAIN_FONT_FAMILY),
-                    textAlign: TextAlign.start,
-                  ),
-                ),
-              ],
-            ),
-            Container(
-              height: 41,
-              width: 372,
-              child: TextField(
-                readOnly: true,
-                textAlign: TextAlign.right,
-                decoration: InputDecoration(
-                  hintText: 'انتخاب نشده',
-                  hintStyle: TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  prefixIcon: IconButton(
-                    icon: SvgPicture.asset("assets/images/Vector-20.svg"),
-                    onPressed: () {
-                      // _show_item_1.value = !_show_item_1.isTrue;
-                    },
-                  ),
-                ),
-              ),
-            ),
-            const SizedBox(
-              height: 15,
-            ),
-            const SizedBox(
-              height: 15,
-            ),
-            Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-              Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                const Text("سند تجاری"),
-                Transform.scale(
-                  scale: 0.80,
-                  child: Obx(
-                    () => Switch(
-                        onChanged: (_) => hasSanad.value = _,
-                        value: hasSanad.value,
-                        activeColor: Colors.white,
-                        activeTrackColor: const Color.fromRGBO(54, 216, 89, 1),
-                        inactiveThumbColor: const Color.fromRGBO(11, 8, 8, 0.2),
-                        inactiveTrackColor:
-                            const Color.fromRGBO(255, 255, 255, 1)),
-                  ),
-                ),
-              ]),
-              const SizedBox(
-                height: 20,
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              const Divider(
-                endIndent: 20,
-                indent: 20,
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              const Text(
-                "امکانات",
-                style: TextStyle(fontFamily: MAIN_FONT_FAMILY, fontSize: 16),
-              ),
-              const SizedBox(
-                height: 15,
-              ),
-              const SizedBox(
-                height: 15,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Container(
-                    child: const Text(
-                      "جنس کف ",
-                      style: TextStyle(
-                          color: Color.fromRGBO(99, 99, 99, 1),
-                          fontFamily: MAIN_FONT_FAMILY),
-                      textAlign: TextAlign.start,
-                    ),
-                  ),
-                ],
-              ),
-              Container(
-                height: 41,
-                width: 372,
-                child: TextField(
-                  readOnly: true,
-                  textAlign: TextAlign.right,
-                  decoration: InputDecoration(
-                    hintText: 'انتخاب نشده',
-                    hintStyle: TextStyle(
-                      fontSize: 13,
-                      fontFamily: 'Iran Sans',
-                      fontWeight: FontWeight.w400,
-                      color: Color(0xFFA6A6A6),
-                    ),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    prefixIcon: IconButton(
-                      icon: SvgPicture.asset("assets/images/Vector-20.svg"),
-                      onPressed: () {
-                        // _show_item_1.value = !_show_item_1.isTrue;
-                      },
-                    ),
-                  ),
-                ),
-              ),
-              const SizedBox(
-                height: 15,
-              ),
-              TwoItemInRow(
-                label1: "نوع سیستم گرمایش",
-                label2: "نوع سیستم سرمایش",
-                widget1: Container(
                   height: 41,
-                  width: getPageWidth(),
+                  width: 372,
                   child: TextField(
                     readOnly: true,
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
+                      hintText: 'انتخاب نشده',
+                      hintStyle:
+                          TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      prefixIcon: IconButton(
+                        icon: SvgPicture.asset("assets/images/Vector-20.svg"),
+                        onPressed: () {
+                          // _show_item_1.value = !_show_item_1.isTrue;
+                        },
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  height: 15,
+                ),
+                const SizedBox(
+                  height: 15,
+                ),
+                Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+                  Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                    const Text("سند تجاری"),
+                    Transform.scale(
+                      scale: 0.80,
+                      child: Obx(
+                        () => Switch(
+                            onChanged: (_) => hasSanad.value = _,
+                            value: hasSanad.value,
+                            activeColor: Colors.white,
+                            activeTrackColor:
+                                const Color.fromRGBO(54, 216, 89, 1),
+                            inactiveThumbColor:
+                                const Color.fromRGBO(11, 8, 8, 0.2),
+                            inactiveTrackColor:
+                                const Color.fromRGBO(255, 255, 255, 1)),
+                      ),
+                    ),
+                  ]),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  const Divider(
+                    endIndent: 20,
+                    indent: 20,
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  const Text(
+                    "امکانات",
+                    style:
+                        TextStyle(fontFamily: MAIN_FONT_FAMILY, fontSize: 16),
+                  ),
+                  const SizedBox(
+                    height: 15,
+                  ),
+                  const SizedBox(
+                    height: 15,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Container(
+                        child: const Text(
+                          "جنس کف ",
+                          style: TextStyle(
+                              color: Color.fromRGBO(99, 99, 99, 1),
+                              fontFamily: MAIN_FONT_FAMILY),
+                          textAlign: TextAlign.start,
+                        ),
+                      ),
+                    ],
+                  ),
+                  Container(
+                    height: 41,
+                    width: 372,
+                    child: TextField(
+                      readOnly: true,
+                      textAlign: TextAlign.right,
+                      decoration: InputDecoration(
                         hintText: 'انتخاب نشده',
-                        hintStyle: const TextStyle(
+                        hintStyle: TextStyle(
                           fontSize: 13,
                           fontFamily: 'Iran Sans',
                           fontWeight: FontWeight.w400,
@@ -543,119 +621,154 @@ class _SaleShopState extends State<SaleShop> {
                           onPressed: () {
                             // _show_item_1.value = !_show_item_1.isTrue;
                           },
-                        )),
-                  ),
-                ),
-                widget2: Container(
-                  height: 41,
-                  width: getPageWidth(),
-                  child: TextField(
-                    readOnly: true,
-                    textAlign: TextAlign.right,
-                    decoration: InputDecoration(
-                      hintText: 'انتخاب نشده',
-                      hintStyle: TextStyle(
-                        fontSize: 13,
-                        fontFamily: 'Iran Sans',
-                        fontWeight: FontWeight.w400,
-                        color: Color(0xFFA6A6A6),
-                      ),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      prefixIcon: IconButton(
-                        icon: SvgPicture.asset("assets/images/Vector-20.svg"),
-                        onPressed: () {
-                          // _show_item_1.value = !_show_item_1.isTrue;
-                        },
+                        ),
                       ),
                     ),
                   ),
-                ),
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              FacilitiesSelectorWidget(
-                selectable: [
-                  Lift(),
-                  Categorizing(),
-                  BurglarAlarm(),
-                  CCTV(),
-                  FireExtinguishing(),
-                  ElectricShutters(),
-                  Guard(),
-                  DinningSalon(),
-                  Internet(),
-                  Office(),
-                  WaterWell(),
-                  Weighbridge(),
-                ],
-                selected: _facilities,
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              const Divider(
-                endIndent: 20,
-                indent: 20,
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              ImagesPicker(selectedImagesPath: _selectedImagesPath),
-              const Divider(),
-              const SizedBox(
-                height: 15,
-              ),
-              AdvInfo(_advInfo),
-              const SizedBox(
-                height: 30,
-              ),
-              GestureDetector(
-                onTap: () {
-                  if (submit.value) {
-                    Get.to(() => NamayeshAgahi());
-                  }
-                },
-                child: Obx(() => Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Center(
-                          child: Text(
-                            "... تایید و ادامه",
-                            style: !submit.value
-                                ? const TextStyle(
-                                    fontSize: 20,
-                                    fontFamily: MAIN_FONT_FAMILY,
-                                    color: Colors.black38,
-                                  )
-                                : const TextStyle(
-                                    fontSize: 20, fontFamily: MAIN_FONT_FAMILY),
-                            textAlign: TextAlign.center,
+                  const SizedBox(
+                    height: 15,
+                  ),
+                  TwoItemInRow(
+                    label1: "نوع سیستم گرمایش",
+                    label2: "نوع سیستم سرمایش",
+                    widget1: Container(
+                      height: 41,
+                      width: getPageWidth(),
+                      child: TextField(
+                        readOnly: true,
+                        textAlign: TextAlign.right,
+                        decoration: InputDecoration(
+                            hintText: 'انتخاب نشده',
+                            hintStyle: const TextStyle(
+                              fontSize: 13,
+                              fontFamily: 'Iran Sans',
+                              fontWeight: FontWeight.w400,
+                              color: Color(0xFFA6A6A6),
+                            ),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            prefixIcon: IconButton(
+                              icon: SvgPicture.asset(
+                                  "assets/images/Vector-20.svg"),
+                              onPressed: () {
+                                // _show_item_1.value = !_show_item_1.isTrue;
+                              },
+                            )),
+                      ),
+                    ),
+                    widget2: Container(
+                      height: 41,
+                      width: getPageWidth(),
+                      child: TextField(
+                        readOnly: true,
+                        textAlign: TextAlign.right,
+                        decoration: InputDecoration(
+                          hintText: 'انتخاب نشده',
+                          hintStyle: TextStyle(
+                            fontSize: 13,
+                            fontFamily: 'Iran Sans',
+                            fontWeight: FontWeight.w400,
+                            color: Color(0xFFA6A6A6),
+                          ),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          prefixIcon: IconButton(
+                            icon:
+                                SvgPicture.asset("assets/images/Vector-20.svg"),
+                            onPressed: () {
+                              // _show_item_1.value = !_show_item_1.isTrue;
+                            },
                           ),
                         ),
-                        const SizedBox(
-                          width: 3,
-                        ),
-                        GradientIcon(
-                          icon: Icons.double_arrow,
-                          gradient: LinearGradient(
-                            colors: submit.value
-                                ? GRADIANT_COLOR1
-                                : BLACK_12_GRADIANT_COLOR,
-                            begin: Alignment.topLeft,
-                            end: Alignment.bottomRight,
-                          ),
-                          offset: const Offset(0, 0),
-                          size: 34,
-                        )
-                      ],
-                    )),
-              )
-            ]),
-          ]),
-        )));
+                      ),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  FacilitiesSelectorWidget(
+                    selectable: [
+                      Lift(),
+                      Categorizing(),
+                      BurglarAlarm(),
+                      CCTV(),
+                      FireExtinguishing(),
+                      ElectricShutters(),
+                      Guard(),
+                      DinningSalon(),
+                      Internet(),
+                      Office(),
+                      WaterWell(),
+                      Weighbridge(),
+                    ],
+                    selected: _facilities,
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  const Divider(
+                    endIndent: 20,
+                    indent: 20,
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  ImagesPicker(selectedImagesPath: _selectedImagesPath),
+                  const Divider(),
+                  const SizedBox(
+                    height: 15,
+                  ),
+                  AdvInfo(_advInfo),
+                  const SizedBox(
+                    height: 30,
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      if (submit.value) {
+                        Get.to(() => NamayeshAgahi());
+                      }
+                    },
+                    child: Obx(() => Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Center(
+                              child: Text(
+                                "... تایید و ادامه",
+                                style: !submit.value
+                                    ? const TextStyle(
+                                        fontSize: 20,
+                                        fontFamily: MAIN_FONT_FAMILY,
+                                        color: Colors.black38,
+                                      )
+                                    : const TextStyle(
+                                        fontSize: 20,
+                                        fontFamily: MAIN_FONT_FAMILY),
+                                textAlign: TextAlign.center,
+                              ),
+                            ),
+                            const SizedBox(
+                              width: 3,
+                            ),
+                            GradientIcon(
+                              icon: Icons.double_arrow,
+                              gradient: LinearGradient(
+                                colors: submit.value
+                                    ? GRADIANT_COLOR1
+                                    : BLACK_12_GRADIANT_COLOR,
+                                begin: Alignment.topLeft,
+                                end: Alignment.bottomRight,
+                              ),
+                              offset: const Offset(0, 0),
+                              size: 34,
+                            )
+                          ],
+                        )),
+                  )
+                ]),
+              ]),
+            )));
   }
 }
 

@@ -751,7 +751,7 @@ class _EjaraShanatiPageState extends State<EjaraShanatiPage> {
                 children: [
                   TwoItemInRow2(
                       label1: "سن بنا",
-                      label2: "متراژ",
+                      label2: " متراژ بنا",
                       widget2: InputTextField(_buildAllFloorsCountController,
                           width: getPageWidth()),
                       widget1: ReadOnlyTextField(_buildDateController, () {

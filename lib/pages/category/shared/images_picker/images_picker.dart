@@ -202,7 +202,7 @@ class ImagesPicker extends StatelessWidget {
           strokeWidth: 2,
           radius: const Radius.circular(10),
           child: SizedBox(
-            width: Get.mediaQuery.size.width * 0.4,
+            width: Get.mediaQuery.size.width * 0.5,
             height: 200,
             child: const Center(
               child: Icon(Icons.add, size: 30, color: Colors.black26),

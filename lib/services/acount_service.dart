@@ -1,6 +1,5 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/services/models/list-aghahi.dart';
 import 'package:flutter_application_1/services/models/login_res.dart';
 import 'package:flutter_application_1/services/models/personal_req.dart';
 import 'package:flutter_application_1/services/models/personal_res.dart';
@@ -8,6 +7,7 @@ import 'package:flutter_application_1/services/models/send_verification_req.dart
 import 'package:flutter_application_1/services/models/send_verification_res.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:logger/logger.dart';
+
 import 'models/login_req.dart';
 
 class AccountService {

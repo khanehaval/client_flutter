@@ -1,4 +1,3 @@
-import 'package:flutter_application_1/db/entities/user.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'login_res.g.dart';
