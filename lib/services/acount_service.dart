@@ -46,8 +46,9 @@ class AccountService {
       required String nationalCardImg,
       required String nationalCode}) async {
     try {
-      final result = await Dio().post('/api/v1/user/personal',
-          options: Options(headers: {"Api-Key": API_Token_personal}),
+      final result = await _dio.post("api/v1/user/personal",
+          options:
+              Options(headers: {"Authorization": "Bearer $API_Token_personal"}),
           data: PersonalReq(
               firstName: firstName,
               lastName: lastName,

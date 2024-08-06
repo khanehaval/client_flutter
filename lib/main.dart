@@ -70,7 +70,7 @@ class _MyAppState extends State<MyApp> {
             future: _userRepo.isLogin(),
             builder: (c, s) {
               if (s.hasData && s.data != null && s.data!) {
-                return Advertisements();
+                return LoginSecondlyPage();
               } else {
                 if (s.connectionState == ConnectionState.active ||
                     s.connectionState == ConnectionState.done) {
