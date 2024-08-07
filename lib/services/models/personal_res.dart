@@ -4,7 +4,7 @@ part 'personal_res.g.dart';
 
 @JsonSerializable(includeIfNull: false)
 class PersonalRes {
-  String status;
+  bool status;
   String message;
 
   PersonalRes({required this.status, required this.message});

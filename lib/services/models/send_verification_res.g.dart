@@ -29,26 +29,13 @@ Map<String, dynamic> _$DataToJson(Data instance) => <String, dynamic>{
       'user': instance.user,
     };
 
-User _$UserFromJson(Map<String, dynamic> json) {
-  try {
-    return User(
-      id: (json['id'] ?? "") as String,
-      createdAt: (json['createdAt'] ?? "") as String,
-      updatedAt: (json['updatedAt'] ?? "") as String,
-      cellphone: (json['cellphone'] ?? "") as String,
-      subscriberType: (json['subscriberType'] ?? "") as String,
+User _$UserFromJson(Map<String, dynamic> json) => User(
+      id: json['id'] as String,
+      createdAt: json['createdAt'] as String,
+      updatedAt: json['updatedAt'] as String,
+      cellphone: json['cellphone'] as String,
+      subscriberType: json['subscriberType'] as String,
     );
-  } catch (e) {
-    print("erorrrrrrrrrrrrrrrrrrrrrr \t ${e.toString()}");
-    return User(
-      id: "",
-      createdAt: "",
-      updatedAt: "",
-      cellphone: "",
-      subscriberType: "",
-    );
-  }
-}
 
 Map<String, dynamic> _$UserToJson(User instance) => <String, dynamic>{
       'id': instance.id,

@@ -50,11 +50,12 @@ class AccountService {
           options:
               Options(headers: {"Authorization": "Bearer $API_Token_personal"}),
           data: PersonalReq(
-              firstName: firstName,
-              lastName: lastName,
-              userName: userName,
-              nationalCode: nationalCode,
-              nationalCardImg: nationalCardImg));
+                  firstName: firstName,
+                  lastName: lastName,
+                  userName: userName,
+                  nationalCode: nationalCode,
+                  nationalCardImg: nationalCardImg)
+              .toJson());
       return PersonalRes.fromJson(result.data);
     } catch (_) {
       Fluttertoast.showToast(

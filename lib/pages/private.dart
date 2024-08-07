@@ -57,7 +57,6 @@ class Private extends StatelessWidget {
         nationalCardImg: imagePath.value,
         nationalCode: _nationalCode.text);
     _buttonIsPressed.value = false;
-
     if (success) {
       Fluttertoast.showToast(
         msg: "اطلاعات با موفقیت ارسال شد",
