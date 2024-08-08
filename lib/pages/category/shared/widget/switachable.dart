@@ -4,6 +4,7 @@ import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:get/get.dart';
 
 Widget switchable(RxBool rValue, String title, [Container? container]) {
+  //onchabged
   return Row(
     mainAxisAlignment: MainAxisAlignment.center,
     children: [

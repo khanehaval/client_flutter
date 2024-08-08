@@ -1,9 +1,11 @@
 import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/pages/category/pages/Advertisements/Advertisements.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/app_bar.dart';
-import 'package:flutter_application_1/repo/acount_repo.dart';
+import 'package:flutter_application_1/repo/account_repo.dart';
+
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:get_it/get_it.dart';
@@ -66,6 +68,7 @@ class Private extends StatelessWidget {
         textColor: Colors.white,
         fontSize: 16.0,
       );
+      Get.to(() => Advertisements());
     } else {
       Fluttertoast.showToast(
         msg: "خطا در ارسال اطلاعات",
@@ -238,7 +241,8 @@ class Private extends StatelessWidget {
                                             '* تصویر کارت ملی',
                                             style: TextStyle(
                                               fontSize: 12,
-                                              color: Color(0xFFA6A6A6),
+                                              color: Color.fromARGB(
+                                                  255, 215, 42, 42),
                                             ),
                                           ),
                                         )

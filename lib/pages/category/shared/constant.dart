@@ -38,3 +38,7 @@ double getPageWidth() => Get.width * 0.42;
 double getPageWidthlocation() => Get.width * 0.40;
 
 scaffoldKey() => GlobalKey<ScaffoldState>();
+
+//db key
+
+String SHARED_TOKEN_KEY = "SHARED_TOKEN_KEY";

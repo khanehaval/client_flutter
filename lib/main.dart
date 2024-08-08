@@ -16,9 +16,10 @@ import 'package:flutter_application_1/pages/register/register.dart';
 import 'package:flutter_application_1/pages/screens/screen1.dart';
 import 'package:flutter_application_1/pages/screens/screen3.dart';
 import 'package:flutter_application_1/pages/screens/screens2.dart';
-import 'package:flutter_application_1/repo/acount_repo.dart';
+import 'package:flutter_application_1/repo/account_repo.dart';
 import 'package:flutter_application_1/repo/advRepo.dart';
 import 'package:flutter_application_1/services/acount_service.dart';
+import 'package:flutter_application_1/services/http_service.dart';
 import 'package:get/get.dart';
 import 'package:get_it/get_it.dart';
 import 'package:hive_flutter/adapters.dart';
@@ -38,6 +39,7 @@ void main() async {
 }
 
 void initServicesAndRepo() {
+  GetIt.instance.registerSingleton<Httpservice>(Httpservice());
   GetIt.instance.registerSingleton<AdvisorDao>(AdvisorDao());
   GetIt.instance.registerSingleton<UserDao>(UserDao());
   GetIt.instance.registerSingleton<CustomerDao>(CustomerDao());

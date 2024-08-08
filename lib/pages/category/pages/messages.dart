@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/repo/acount_repo.dart';
+import 'package:flutter_application_1/repo/account_repo.dart';
+
 import 'package:flutter_application_1/services/models/list-aghahi.dart';
 import 'package:get_it/get_it.dart';
 

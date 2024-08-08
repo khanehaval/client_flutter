@@ -4,10 +4,10 @@ part 'login_res.g.dart';
 
 @JsonSerializable(includeIfNull: false)
 class LoginRes {
-  String status;
+  bool state;
   String message;
 
-  LoginRes({required this.status, required this.message});
+  LoginRes({required this.state, required this.message});
 
   static LoginRes fromJson(dynamic data) => _$LoginResFromJson(data);
 }

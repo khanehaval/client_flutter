@@ -1,37 +1,43 @@
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/services/http_service.dart';
 import 'package:flutter_application_1/services/models/login_res.dart';
 import 'package:flutter_application_1/services/models/personal_req.dart';
 import 'package:flutter_application_1/services/models/personal_res.dart';
 import 'package:flutter_application_1/services/models/send_verification_req.dart';
 import 'package:flutter_application_1/services/models/send_verification_res.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:get_it/get_it.dart';
 import 'package:logger/logger.dart';
-
 import 'models/login_req.dart';
 
 class AccountService {
-  String API_Token_personal =
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjJkMDg0ZjU5LWFjZGQtNDI5ZS1hOWQyLTA2NzAzMWI5OTIxOCIsImlhdCI6MTcyMjc4ODcxN30.aVENBNdJ0kAd2ba_bPXiiQg_Ud97WXBohxVkHA0iFYU";
-
-  final Logger _logger = Logger();
-  final Dio _dio = Dio(BaseOptions(baseUrl: "https://api.khaneaval.com/"));
-  Future<LoginRes?> login(String phoneNumber) async {
+  final _logger = Logger();
+  final _httpService = GetIt.I.get<Httpservice>();
+  Future<bool> login(String phoneNumber) async {
     try {
-      var result = await _dio.post("api/v1/auth/login",
-          data: LoginReq(phoneNumber).toJson());
-      return LoginRes.fromJson(result.data);
+      var result = await _httpService.post(
+          "api/v1/auth/login", LoginReq(phoneNumber).toJson());
+      final response = LoginRes.fromJson(result.data);
+      Fluttertoast.showToast(
+        msg: response.message,
+        toastLength: Toast.LENGTH_LONG,
+        gravity: ToastGravity.CENTER,
+        backgroundColor: Colors.red,
+        textColor: const Color.fromARGB(255, 14, 8, 8),
+        fontSize: 16.0,
+      );
+      return true;
     } catch (e) {
       _logger.e(e);
-      return null;
+      return false;
     }
   }
 
   Future<SendVerificationRes?> sendVerificationCode(
       {required String code, required String cellphone}) async {
     try {
-      final result = await _dio.post("api/v1/auth/verify",
-          data: SendVerificationReq(cellphone: cellphone, code: code).toJson());
+      final result = await _httpService.post("api/v1/auth/verify",
+          SendVerificationReq(cellphone: cellphone, code: code).toJson());
       return SendVerificationRes.fromJson(result.data);
     } catch (e) {
       _logger.e(e);
@@ -39,27 +45,50 @@ class AccountService {
     }
   }
 
-  Future<PersonalRes?> personal(
+  Future<bool> savePersonal(
       {required String firstName,
       required String lastName,
       required String userName,
       required String nationalCardImg,
       required String nationalCode}) async {
     try {
-      final result = await _dio.post("api/v1/user/personal",
-          options:
-              Options(headers: {"Authorization": "Bearer $API_Token_personal"}),
-          data: PersonalReq(
-                  firstName: firstName,
-                  lastName: lastName,
-                  userName: userName,
-                  nationalCode: nationalCode,
-                  nationalCardImg: nationalCardImg)
-              .toJson());
-      return PersonalRes.fromJson(result.data);
+      final nationalCardImguri =
+          await _httpService.uploadFile("api/v1/upload/melli", nationalCardImg);
+
+      if (nationalCardImguri != null) {
+        final result = await _httpService.post(
+            "api/v1/user/personal",
+            PersonalReq(
+                    firstName: firstName,
+                    lastName: lastName,
+                    userName: userName,
+                    nationalCode: nationalCode,
+                    nationalCardImg: nationalCardImguri)
+                .toJson());
+
+        var response = PersonalRes.fromJson(result.data);
+        Fluttertoast.showToast(
+          msg: response.message,
+          toastLength: Toast.LENGTH_LONG,
+          gravity: ToastGravity.CENTER,
+          backgroundColor: Colors.red,
+          textColor: const Color.fromARGB(255, 14, 8, 8),
+          fontSize: 16.0,
+        );
+        return response.status;
+      } else {
+        Fluttertoast.showToast(
+          msg: "خطایی رخ داده است",
+          toastLength: Toast.LENGTH_LONG,
+          gravity: ToastGravity.CENTER,
+          backgroundColor: Colors.red,
+          textColor: Colors.white,
+          fontSize: 16.0,
+        );
+      }
     } catch (_) {
       Fluttertoast.showToast(
-        msg: "اطلاعات را کامل وارد کنید",
+        msg: "خطایی رخ داده است",
         toastLength: Toast.LENGTH_LONG,
         gravity: ToastGravity.CENTER,
         backgroundColor: Colors.red,
@@ -67,6 +96,6 @@ class AccountService {
         fontSize: 16.0,
       );
     }
-    return null;
+    return false;
   }
 }

@@ -7,7 +7,7 @@ part of 'personal_res.dart';
 // **************************************************************************
 
 PersonalRes _$PersonalResFromJson(Map<String, dynamic> json) => PersonalRes(
-      status: json['state'] as bool,
+      status: json['status'] as bool,
       message: json['message'] as String,
     );
 

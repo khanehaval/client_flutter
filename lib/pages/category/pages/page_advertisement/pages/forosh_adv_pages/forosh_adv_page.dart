@@ -15,18 +15,26 @@ import 'package:flutter_application_1/pages/category/shared/twoItemInRow.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/route_widget.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/switachable.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/text_field.dart';
+import 'package:flutter_application_1/services/models/server_model/sale_aparteman.dart';
 import 'package:get/get.dart';
 import 'package:gradient_icon/gradient_icon.dart';
 
 import '../../../../models/FacilitiesModel.dart';
 
 class ForoshAdvPage extends StatefulWidget {
+  Location location;
+
+  ForoshAdvPage({required this.location});
+
+  //todo
   @override
   State<ForoshAdvPage> createState() => _ForoshAdvPageState();
 }
 
 class _ForoshAdvPageState extends State<ForoshAdvPage> {
   final ImageController imageController = Get.put(ImageController());
+  SaleApartemanServerModel saleApartemanServerModel =
+      SaleApartemanServerModel();
 
   final aghsatType = "".obs;
 
@@ -184,6 +192,7 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
 
   @override
   void initState() {
+    saleApartemanServerModel.location = widget.location;
     super.initState();
     _metragTextController.addListener(_updatePersianWords);
 
@@ -264,6 +273,9 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
                 child: TextField(
                   textAlign: TextAlign.right,
                   controller: _metragTextController,
+                  onChanged: (_) {
+                    saleApartemanServerModel.totalPrice = int.parse(_);
+                  },
                   keyboardType: TextInputType.number,
                   decoration: InputDecoration(
                     hintText: 'تایپ کنید',
@@ -350,6 +362,7 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
                       _onePrice.value = _.isNotEmpty
                           ? int.parse(_) / int.parse(_metragTextController.text)
                           : 0;
+                      saleApartemanServerModel.meterage = int.parse(_);
                     },
                     decoration: InputDecoration(
                       hintText: "0",
@@ -429,6 +442,7 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
                   widget1: ReadOnlyTextField(_buildRoomsCountController, () {
                     showNumberPicker((_) {
                       _buildRoomsCountController.text = _;
+                      //
                     });
                   }, width: getPageWidth()),
                   widget2: ReadOnlyTextField(
@@ -520,6 +534,7 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
                   widget1: ReadOnlyTextField(_buildFloorsCountController, () {
                     showNumberPicker((_) {
                       _buildFloorsCountController.text = _;
+                      saleApartemanServerModel.floorNumber = _;
                     });
                   }, width: getPageWidth()),
                   widget2: ReadOnlyTextField(_buildDocumentController, () {
@@ -674,6 +689,9 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
               GestureDetector(
                 onTap: () {
                   if (submit.value) {
+                    saleApartemanServerModel.wc = _wcController.text;
+                    saleApartemanServerModel.hasLobby =
+                        _facilities.contains(Labi());
                     Get.to(() => NamayeshAgahi());
                   }
                 },

@@ -64,7 +64,9 @@ class ForshAdvLocationPage extends StatelessWidget {
               ),
               GestureDetector(
                   onTap: () {
-                    Get.to(() => ForoshAdvPage());
+                    Get.to(() => ForoshAdvPage(
+                          location: null,
+                        ));
                   },
                   child: Center(child: submit_row1()))
             ],

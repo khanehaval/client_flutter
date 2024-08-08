@@ -5,7 +5,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/intro_screen.dart';
 import 'package:flutter_application_1/pages/login_secondly_page.dart';
-import 'package:flutter_application_1/repo/acount_repo.dart';
+import 'package:flutter_application_1/repo/account_repo.dart';
+
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -14,7 +15,6 @@ import 'package:get_it/get_it.dart';
 
 class Register extends StatefulWidget {
   const Register({super.key});
-
   @override
   State<Register> createState() => _RegisterState();
 }
