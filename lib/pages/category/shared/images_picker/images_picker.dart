@@ -7,7 +7,7 @@ import 'package:get/get.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
-import 'image_croped.dart';
+import 'image_croped.dart'; // Ensure this file is properly implemented for cropping
 
 class ImagesPicker extends StatelessWidget {
   final RxList<dynamic> selectedImagesPath;
@@ -142,35 +142,6 @@ class ImagesPicker extends StatelessWidget {
     );
   }
 
-  Widget _buildCropper(String path) {
-    return Container(
-      width: 40,
-      height: 40,
-      decoration: BoxDecoration(
-        border: const GradientBoxBorder(
-          gradient: LinearGradient(colors: GRADIANT_COLOR),
-          width: 1,
-        ),
-        borderRadius: BorderRadius.circular(10),
-        color: Colors.white38,
-      ),
-      child: IconButton(
-        icon: const Icon(Icons.crop, size: 20),
-        onPressed: () async {
-          try {
-            var result = await Cropper.cropImage(path);
-            if (result != null) {
-              var i = selectedImagesPath.indexOf(path);
-              selectedImagesPath[i] = result;
-            }
-          } catch (e) {
-            Get.snackbar('Error', 'Failed to crop image: $e');
-          }
-        },
-      ),
-    );
-  }
-
   Widget _buildRemoveIcon(String path, {double size = 40}) {
     return Container(
       width: size,
@@ -282,12 +253,8 @@ class ImagesPicker extends StatelessWidget {
     try {
       final pickedFile = await ImagePicker().pickImage(source: source);
       if (pickedFile != null) {
-        var croppedFile = await Cropper.cropImage(pickedFile.path);
-        if (croppedFile != null) {
-          selectedImagesPath.add(croppedFile);
-        } else {
-          selectedImagesPath.add(pickedFile.path);
-        }
+        final croppedFile = await Cropper.cropImage(pickedFile.path);
+        selectedImagesPath.add(croppedFile ?? pickedFile.path);
       }
     } catch (e) {
       Get.snackbar('Error', 'Failed to pick image: $e');

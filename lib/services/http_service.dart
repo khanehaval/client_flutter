@@ -49,4 +49,41 @@ class Httpservice {
     }
     return null;
   }
+
+  Future<List<String?>> uploadFileList(
+      String address, List<String> paths) async {
+    List<String?> uploadedFilePaths = [];
+
+    try {
+      // Creating a list of MultipartFile objects from the provided paths
+      List<MultipartFile> files = await Future.wait(
+        paths.map((path) async {
+          String fileName = path.split('/').last;
+          return await MultipartFile.fromFile(path, filename: fileName);
+        }).toList(),
+      );
+      // Creating FormData with the list of files
+      FormData formData = FormData.fromMap({
+        "files": files,
+      });
+      var response = await _dio.post(
+        address,
+        data: formData,
+        options: Options(headers: {"Authorization": "Bearer ${_getToken()}"}),
+      );
+      if (response.data?["status"] == true) {
+        // Assuming the server returns a list of file paths in the "data" field
+        List<dynamic> paths = response.data!["data"];
+        uploadedFilePaths = paths.map((e) => e as String?).toList();
+      } else {
+        _logger.e("Upload failed: ${response.data}");
+      }
+    } on DioError catch (e) {
+      _logger.e("DioError: ${e.message}");
+    } catch (e) {
+      _logger.e("Unexpected error: $e");
+    }
+
+    return uploadedFilePaths;
+  }
 }

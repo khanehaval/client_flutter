@@ -19,7 +19,6 @@ class Private extends StatelessWidget {
   final _usernametextfield = TextEditingController();
   final _accountRepo = GetIt.I.get<AccountRepo>();
   final _buttonIsPressed = false.obs;
-  final _sendinformation = false.obs;
 
   final show = true.obs;
   final imagePath = ''.obs;
