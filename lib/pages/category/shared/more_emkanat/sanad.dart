@@ -1,5 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/widget_filter/taeedvaemalefilter.dart';
+import 'package:flutter_application_1/pages/category/shared/widget/enseraf.dart';
+import 'package:flutter_application_1/pages/category/shared/widget/taeed.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
@@ -15,18 +18,15 @@ void Sanad(Function(String) onSelected) {
   Get.bottomSheet(
     Container(
       width: double.infinity,
-      decoration: BoxDecoration(
-        gradient: const LinearGradient(
+      decoration: const BoxDecoration(
+        gradient: LinearGradient(
           colors: GRADIANT_COLOR,
         ),
-        border: Border.all(
-          width: 1,
-        ),
-        borderRadius: const BorderRadius.only(
+        borderRadius: BorderRadius.only(
             topLeft: Radius.circular(10), topRight: Radius.circular(10)),
       ),
       child: Padding(
-          padding: const EdgeInsets.all(2.0),
+          padding: const EdgeInsets.only(top: 2.0, left: 2, right: 2),
           child: Container(
             decoration: const BoxDecoration(
               color: Colors.white,
@@ -92,29 +92,19 @@ void Sanad(Function(String) onSelected) {
                       },
                       itemCount: values.length,
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(bottom: 20, top: 30),
-                      child: Container(
-                        decoration: BoxDecoration(
-                            gradient:
-                                const LinearGradient(colors: GRADIANT_COLOR),
-                            borderRadius: BorderRadius.circular(50)),
-                        child: IconButton(
-                          icon: Padding(
-                            padding: const EdgeInsets.only(top: 5.0),
-                            child: SvgPicture.asset(
-                              'assets/images/tic.svg',
-                              width: 33,
-                              height: 26,
-                            ),
-                          ),
-                          onPressed: () {
-                            onSelected(selected.value);
-                            Get.back();
-                          },
-                        ),
-                      ),
+                    const SizedBox(
+                      height: 50,
                     ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Enseraf(),
+                        taeed(),
+                        const SizedBox(
+                          width: 10,
+                        ),
+                      ],
+                    )
                   ],
                 ),
               ),

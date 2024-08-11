@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/forosh_adv_pages/forosh_adv_page.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/sanad.dart';
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/app_bar.dart';
 import 'package:flutter_application_1/pages/category/shared/map_pages/location_Info.dart';
 import 'package:flutter_application_1/pages/category/shared/map_pages/map_info_page.dart';
 import 'package:flutter_application_1/pages/category/shared/switchItem.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/submit_row.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 
@@ -31,31 +33,66 @@ class ForshAdvLocationPage extends StatelessWidget {
             children: [
               MapInfoPage(locationInfo),
               const SizedBox(
-                height: 10,
+                height: 20,
               ),
-              const Align(
-                alignment: Alignment.centerRight,
-                child: Text(
-                  "نوع ملک شما",
-                  style: TextStyle(
-                    color: Color.fromRGBO(
-                      166,
-                      166,
-                      166,
-                      1,
-                    ),
-                    fontSize: 12,
-                    fontFamily: MAIN_FONT_FAMILY,
+              const Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Text("*",
+                      style: TextStyle(
+                          fontFamily: MAIN_FONT_FAMILY,
+                          fontWeight: FontWeight.w600,
+                          fontSize: 13,
+                          color: Color.fromRGBO(156, 64, 64, 1))),
+                  SizedBox(
+                    width: 5,
                   ),
-                ),
+                  Padding(
+                    padding: EdgeInsets.only(right: 5.0),
+                    child: Text(
+                      "انتخاب نوع ملک ",
+                      style: TextStyle(
+                        fontFamily: MAIN_FONT_FAMILY,
+                        fontWeight: FontWeight.w600,
+                        fontSize: 13,
+                        color: Color.fromRGBO(99, 99, 99, 1),
+                      ),
+                    ),
+                  )
+                ],
               ),
-              Padding(
-                padding: const EdgeInsets.only(left: 75.0),
-                child: SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: SwitchItems(
-                    items: const ["سوئیت", "برج", "پنت هاوس"],
-                    onSelected: (_) {},
+              SizedBox(
+                height: 41,
+                child: Center(
+                  child: TextField(
+                    readOnly: true,
+                    textAlign: TextAlign.right,
+                    decoration: InputDecoration(
+                      hintText: 'انتخاب نشده',
+                      hintStyle: const TextStyle(
+                          fontFamily: 'Iran Sans',
+                          fontWeight: FontWeight.w400,
+                          color: Color(0xFFA6A6A6),
+                          fontSize: 12),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                        borderSide: const BorderSide(
+                          color: Color.fromRGBO(23, 102, 175, 1),
+                        ),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                        borderSide: const BorderSide(
+                          color: Color.fromRGBO(23, 102, 175, 1),
+                        ),
+                      ),
+                      prefixIcon: IconButton(
+                        icon: SvgPicture.asset("assets/images/Vector-20.svg"),
+                        onPressed: () {
+                          Sanad((_) {});
+                        },
+                      ),
+                    ),
                   ),
                 ),
               ),
