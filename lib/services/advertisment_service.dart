@@ -29,11 +29,6 @@ class AdvertisementService {
         );
         return false;
       }
-
-      final response = await _httpService.post(
-        "api/v1/sale-aparteman",
-        saleApartemanData.toJson(),
-      );
     } catch (e) {
       Fluttertoast.showToast(
         msg: "An error occurred: ${e.toString()}",

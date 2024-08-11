@@ -193,7 +193,6 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
     // saleApartemanServerModel.location = widget.location;
     super.initState();
     _metragTextController.addListener(_updatePersianWords);
-
     _allPriceTextController.addListener(_checkFields);
     _metragTextController.addListener(_checkFields);
     _buildRoomsCountController.addListener(_checkFields);
@@ -701,7 +700,9 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
               GestureDetector(
                 onTap: () {
                   if (submit.value) {
-                    saleApartemanServerModel.images = _selectedImagesPath.first;
+                    saleApartemanServerModel.images = [
+                      _selectedImagesPath.first
+                    ];
                     saleApartemanServerModel.wc = _wcController.text;
                     saleApartemanServerModel.hasLobby =
                         _facilities.contains(Labi());
