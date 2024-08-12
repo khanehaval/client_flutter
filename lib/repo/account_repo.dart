@@ -4,6 +4,7 @@ import 'package:flutter_application_1/db/entities/user.dart';
 import 'package:flutter_application_1/db/entities/user_type.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/services/acount_service.dart';
+import 'package:flutter_application_1/services/advertisment_service.dart';
 import 'package:flutter_application_1/services/http_service.dart';
 import 'package:flutter_application_1/services/models/server_model/sale_aparteman.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -14,6 +15,7 @@ class AccountRepo {
   final _accountService = GetIt.I.get<AccountService>();
   final _httpService = GetIt.I.get<Httpservice>();
   final _userDao = GetIt.I.get<UserDao>();
+  final _advetismentService = GetIt.I.get<AdvertisementService>();
 
   Future<bool> login(String phoneNumber) async {
     return await _accountService.login(phoneNumber);
@@ -74,7 +76,10 @@ class AccountRepo {
   Future<bool?> saleAparteman({
     required SaleApartemanServerModel saleApartemanData,
   }) async {
-    try {} catch (e) {
+    try {
+      var response = await _advetismentService.saveSaleAparteman(
+          saleAparteman: saleApartemanData);
+    } catch (e) {
       Fluttertoast.showToast(
         msg: "An error occurred: ${e.toString()}",
         toastLength: Toast.LENGTH_LONG,

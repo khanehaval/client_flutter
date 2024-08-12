@@ -15,8 +15,11 @@ import 'package:flutter_application_1/pages/category/shared/twoItemInRow.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/route_widget.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/switachable.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/text_field.dart';
+import 'package:flutter_application_1/repo/account_repo.dart';
 import 'package:flutter_application_1/services/models/server_model/sale_aparteman.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
+import 'package:get_it/get_it.dart';
 import 'package:gradient_icon/gradient_icon.dart';
 
 import '../../../../models/FacilitiesModel.dart';
@@ -30,6 +33,8 @@ class ForoshAdvPage extends StatefulWidget {
 }
 
 class _ForoshAdvPageState extends State<ForoshAdvPage> {
+  final _accountRepo = GetIt.I.get<AccountRepo>();
+
   final ImageController imageController = Get.put(ImageController());
   SaleApartemanServerModel saleApartemanServerModel =
       SaleApartemanServerModel();
@@ -89,6 +94,7 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
   final _heatTypeController = TextEditingController();
 
   final _heatWaterController = TextEditingController();
+  final _buttonIsPressed = false.obs;
 
   final _wcController = TextEditingController();
   final ValueNotifier<String> _persianWords = ValueNotifier<String>('');
@@ -218,6 +224,47 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
     _persianWords.dispose();
 
     super.dispose();
+  }
+
+  Future<void> _aparteman() async {
+    if (_allPriceTextController.text.isEmpty ||
+        _metragTextController.text.isEmpty ||
+        _buildFloorController.text.isEmpty ||
+        _buildRoomsCountController.text.isEmpty) {
+      Fluttertoast.showToast(
+        msg: "لطفا همه فیلدها را پر کنید",
+        toastLength: Toast.LENGTH_LONG,
+        gravity: ToastGravity.CENTER,
+        backgroundColor: Colors.red,
+        textColor: Colors.white,
+        fontSize: 16.0,
+      );
+      return;
+    }
+
+    _buttonIsPressed.value = true;
+    final success = await _accountRepo.saleAparteman(
+        saleApartemanData: saleApartemanServerModel);
+    _buttonIsPressed.value = false;
+    if (success!) {
+      Fluttertoast.showToast(
+        msg: "اطلاعات با موفقیت ارسال شد",
+        toastLength: Toast.LENGTH_LONG,
+        gravity: ToastGravity.CENTER,
+        backgroundColor: Colors.green,
+        textColor: Colors.white,
+        fontSize: 16.0,
+      );
+    } else {
+      Fluttertoast.showToast(
+        msg: "خطا در ارسال اطلاعات",
+        toastLength: Toast.LENGTH_LONG,
+        gravity: ToastGravity.CENTER,
+        backgroundColor: Colors.red,
+        textColor: Colors.white,
+        fontSize: 16.0,
+      );
+    }
   }
 
   Widget build(BuildContext context) {
