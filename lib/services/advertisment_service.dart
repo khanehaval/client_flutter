@@ -14,12 +14,12 @@ class AdvertisementService {
     try {
       final uploadImages = await _httpService.uploadFileList(
         "api/v1/upload/advertise",
-        saleAparteman.images ?? [],
+        saleAparteman.images!  
       );
       if (uploadImages.isNotEmpty) {
-        saleAparteman.images = uploadImages.cast<String>();
+        saleAparteman.images = uploadImages;
         final result = await _httpService.post(
-            "api/v1/user/personal", saleAparteman.toJson());
+            "api/v1/advertise/sale-apartment", saleAparteman.toJson());
 
         var response = SaleApartemanRes.fromJson(result.data);
         Fluttertoast.showToast(

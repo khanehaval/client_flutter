@@ -50,9 +50,9 @@ class Httpservice {
     return null;
   }
 
-  Future<List<String?>> uploadFileList(
+  Future<List<String>> uploadFileList(
       String address, List<String> paths) async {
-    List<String?> uploadedFilePaths = [];
+    List<String> uploadedFilePaths = [];
 
     try {
       // Creating a list of MultipartFile objects from the provided paths
@@ -74,7 +74,7 @@ class Httpservice {
       if (response.data?["status"] == true) {
         // Assuming the server returns a list of file paths in the "data" field
         List<dynamic> paths = response.data!["data"];
-        uploadedFilePaths = paths.map((e) => e as String?).toList();
+        uploadedFilePaths = paths.map((e) => e as String).toList();
       } else {
         _logger.e("Upload failed: ${response.data}");
       }

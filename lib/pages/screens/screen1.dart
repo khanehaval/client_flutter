@@ -23,8 +23,8 @@ class Screen1 extends StatelessWidget {
                   alignment: Alignment.center,
                   children: [
                     SizedBox(
-                      height: 450,
-                      width: MediaQuery.of(context).size.width / 1.0,
+                      height: Get.height / 2,
+                      width: MediaQuery.of(context).size.width,
                       child: Image.asset(
                         'assets/images/BG 3.png',
                         fit: BoxFit.cover,
