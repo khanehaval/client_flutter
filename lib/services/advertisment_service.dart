@@ -7,20 +7,16 @@ import 'package:get_it/get_it.dart';
 
 class AdvertisementService {
   final _httpService = GetIt.I.get<Httpservice>();
-
   Future<bool> saveSaleAparteman({
     required SaleApartemanServerModel saleAparteman,
   }) async {
     try {
       final uploadImages = await _httpService.uploadFileList(
-        "api/v1/upload/advertise",
-        saleAparteman.images!  
-      );
+          "api/v1/upload/advertise", saleAparteman.images!);
       if (uploadImages.isNotEmpty) {
         saleAparteman.images = uploadImages;
         final result = await _httpService.post(
             "api/v1/advertise/sale-apartment", saleAparteman.toJson());
-
         var response = SaleApartemanRes.fromJson(result.data);
         Fluttertoast.showToast(
           msg: response.message,

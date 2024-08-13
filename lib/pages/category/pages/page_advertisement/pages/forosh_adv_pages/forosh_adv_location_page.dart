@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/forosh_adv_pages/forosh_adv_page.dart';
-import 'package:flutter_application_1/pages/category/shared/more_emkanat/sanad.dart';
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/app_bar.dart';
 import 'package:flutter_application_1/pages/category/shared/map_pages/location_Info.dart';
 import 'package:flutter_application_1/pages/category/shared/map_pages/map_info_page.dart';
-import 'package:flutter_application_1/pages/category/shared/switchItem.dart';
-import 'package:flutter_application_1/pages/category/shared/widget/submit_row.dart';
+
+import 'package:flutter_application_1/pages/category/shared/widget/widget_select_noemelk.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
@@ -15,8 +14,6 @@ class ForshAdvLocationPage extends StatelessWidget {
   LocationInfo locationInfo;
 
   ForshAdvLocationPage({required this.locationInfo, super.key});
-
-  final _submit = false.obs;
 
   final type = "".obs;
 
@@ -89,7 +86,7 @@ class ForshAdvLocationPage extends StatelessWidget {
                       prefixIcon: IconButton(
                         icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                         onPressed: () {
-                          Sanad((_) {});
+                          showSelectNoeMelk((_) {});
                         },
                       ),
                     ),

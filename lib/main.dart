@@ -8,7 +8,6 @@ import 'package:flutter_application_1/db/entities/customer.dart';
 import 'package:flutter_application_1/db/entities/estate.dart';
 import 'package:flutter_application_1/db/entities/user.dart';
 import 'package:flutter_application_1/db/entities/user_type.dart';
-import 'package:flutter_application_1/pages/category/pages/Advertisements/Advertisements.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/intro_screen.dart';
 import 'package:flutter_application_1/pages/login_secondly_page.dart';
@@ -19,6 +18,7 @@ import 'package:flutter_application_1/pages/screens/screens2.dart';
 import 'package:flutter_application_1/repo/account_repo.dart';
 import 'package:flutter_application_1/repo/advRepo.dart';
 import 'package:flutter_application_1/services/acount_service.dart';
+import 'package:flutter_application_1/services/advertisment_service.dart';
 import 'package:flutter_application_1/services/http_service.dart';
 import 'package:get/get.dart';
 import 'package:get_it/get_it.dart';
@@ -45,8 +45,9 @@ void initServicesAndRepo() {
   GetIt.instance.registerSingleton<CustomerDao>(CustomerDao());
   GetIt.instance.registerSingleton<EstateDao>(EstateDao());
   GetIt.instance.registerSingleton<AdvRepo>(AdvRepo());
-
   GetIt.instance.registerSingleton<AccountService>(AccountService());
+  GetIt.instance
+      .registerSingleton<AdvertisementService>(AdvertisementService());
   GetIt.instance.registerSingleton<AccountRepo>(AccountRepo());
 }
 

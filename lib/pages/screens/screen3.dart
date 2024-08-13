@@ -21,7 +21,7 @@ class Screen3 extends StatelessWidget {
               child: Stack(children: [
                 Image.asset(
                   'assets/images/BG 1.png',
-                  height: 450,
+                  height: Get.height / 1.685,
                   width: MediaQuery.of(context).size.width / 1.0,
                   fit: BoxFit.cover,
                 ),

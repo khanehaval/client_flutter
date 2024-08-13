@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
+import 'package:flutter_application_1/services/models/server_model/sale_aparteman_res.dart';
 import 'package:logger/logger.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -55,28 +56,32 @@ class Httpservice {
     List<String> uploadedFilePaths = [];
 
     try {
-      // Creating a list of MultipartFile objects from the provided paths
-      List<MultipartFile> files = await Future.wait(
-        paths.map((path) async {
-          String fileName = path.split('/').last;
-          return await MultipartFile.fromFile(path, filename: fileName);
-        }).toList(),
-      );
-      // Creating FormData with the list of files
-      FormData formData = FormData.fromMap({
-        "files": files,
-      });
-      var response = await _dio.post(
-        address,
-        data: formData,
-        options: Options(headers: {"Authorization": "Bearer ${_getToken()}"}),
-      );
-      if (response.data?["status"] == true) {
-        // Assuming the server returns a list of file paths in the "data" field
-        List<dynamic> paths = response.data!["data"];
-        uploadedFilePaths = paths.map((e) => e as String).toList();
-      } else {
-        _logger.e("Upload failed: ${response.data}");
+      for (String path in paths) {
+        String fileName = path.split('/').last;
+
+        MultipartFile file =
+            await MultipartFile.fromFile(path, filename: fileName);
+        FormData formData = FormData.fromMap({
+          "file": file,
+        });
+
+        var response = await _dio.post(
+          address,
+          data: formData,
+          options: Options(headers: {"Authorization": "Bearer ${_getToken()}"}),
+        );
+
+        if (response.statusCode == 200) {
+          SaleApartemanRes res = SaleApartemanRes.fromJson(response.data);
+
+          if (res.status) {
+            uploadedFilePaths.add(res.message);
+          } else {
+            _logger.e("Upload failed for $fileName: ${res.message}");
+          }
+        } else {
+          _logger.e("Server error: ${response.statusCode}");
+        }
       }
     } on DioError catch (e) {
       _logger.e("DioError: ${e.message}");

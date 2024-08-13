@@ -24,7 +24,7 @@ class Screen2 extends StatelessWidget {
                 children: [
                   Image.asset(
                     'assets/images/BG 2.png',
-                    height: 450,
+                    height: Get.height / 1.695,
                     width: MediaQuery.of(context).size.width / 1.0,
                     fit: BoxFit.cover,
                   ),
@@ -37,7 +37,7 @@ class Screen2 extends StatelessWidget {
                 ],
               ),
               const SizedBox(
-                height: 30,
+                height: 15,
               ),
               const Stack(
                 children: [

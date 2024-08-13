@@ -79,16 +79,7 @@ class AccountRepo {
     try {
       var response = await _advetismentService.saveSaleAparteman(
           saleAparteman: saleApartemanData);
-    } catch (e) {
-      Fluttertoast.showToast(
-        msg: "An error occurred: ${e.toString()}",
-        toastLength: Toast.LENGTH_LONG,
-        gravity: ToastGravity.CENTER,
-        backgroundColor: Colors.red,
-        textColor: Colors.white,
-        fontSize: 16.0,
-      );
-    }
+    } catch (e) {}
     return false;
   }
 }

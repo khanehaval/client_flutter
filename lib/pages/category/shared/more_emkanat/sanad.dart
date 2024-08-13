@@ -99,7 +99,7 @@ void Sanad(Function(String) onSelected) {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Enseraf(),
-                        taeed(),
+                        taeed(onSelected),
                         const SizedBox(
                           width: 10,
                         ),
