@@ -223,7 +223,7 @@ class NamayeshAgahi extends StatelessWidget {
           ],
         ),
         const SizedBox(
-          height: 10,
+          height: 50,
         ),
         Container(
           width: 324,
@@ -269,124 +269,7 @@ class NamayeshAgahi extends StatelessWidget {
           ),
         ),
         const SizedBox(
-          height: 5,
-        ),
-        Container(
-          width: 324,
-          height: 23,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              SvgPicture.asset('assets/images/export.svg'),
-              const Row(
-                children: [
-                  Text(
-                    '.................................................................................',
-                    style: TextStyle(
-                      color: Color.fromRGBO(
-                        244,
-                        244,
-                        244,
-                        1,
-                      ),
-                      fontSize: 8,
-                      fontFamily: MAIN_FONT_FAMILY,
-                    ),
-                  ),
-                  Text(
-                    'نردبان',
-                    style: TextStyle(
-                      color: Color(0xFF303030),
-                      fontSize: 14,
-                      fontFamily: MAIN_FONT_FAMILY,
-                    ),
-                  ),
-                ],
-              ),
-            ],
-          ),
-        ),
-        const SizedBox(
-          height: 5,
-        ),
-        Container(
-          width: 324,
-          height: 23,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              SvgPicture.asset('assets/images/export.svg'),
-              const Row(
-                children: [
-                  Text(
-                    '.................................................................................',
-                    style: TextStyle(
-                      color: Color.fromRGBO(
-                        244,
-                        244,
-                        244,
-                        1,
-                      ),
-                      fontSize: 8,
-                      fontFamily: MAIN_FONT_FAMILY,
-                    ),
-                  ),
-                  Text(
-                    'فوری',
-                    style: TextStyle(
-                      color: Color(0xFF303030),
-                      fontSize: 14,
-                      fontFamily: MAIN_FONT_FAMILY,
-                    ),
-                  ),
-                ],
-              ),
-            ],
-          ),
-        ),
-        const SizedBox(
-          height: 5,
-        ),
-        Container(
-          width: 324,
-          height: 23,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              SvgPicture.asset('assets/images/export.svg'),
-              const Row(
-                children: [
-                  Text(
-                    '........................................................................',
-                    style: TextStyle(
-                      color: Color.fromRGBO(
-                        244,
-                        244,
-                        244,
-                        1,
-                      ),
-                      fontSize: 8,
-                      fontFamily: MAIN_FONT_FAMILY,
-                    ),
-                  ),
-                  Text(
-                    'فروش ویژه',
-                    style: TextStyle(
-                      color: Color(0xFF303030),
-                      fontSize: 14,
-                      fontFamily: MAIN_FONT_FAMILY,
-                    ),
-                  ),
-                ],
-              ),
-            ],
-          ),
-        ),
-        const SizedBox(
-          height: 10,
+          height: 50,
         ),
         Row(
           children: [

@@ -14,7 +14,7 @@ class ForoshTejariAdv extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      bottomNavigationBar: bottomNavigationBar2(3),
+      bottomNavigationBar: bottomNavigationBar2(2),
       appBar: buildaAppBar(),
       body: Column(
           mainAxisAlignment: MainAxisAlignment.start,
