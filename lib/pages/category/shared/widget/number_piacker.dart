@@ -49,7 +49,7 @@ void showNumberPicker(Function(String) onSelected) {
                           child: const GradientIcon(
                             icon: Icons.keyboard_arrow_up,
                             gradient: LinearGradient(
-                              colors: GRADIANT_COLOR,
+                              colors: GRADIANT_COLOR1,
                               begin: Alignment.topLeft,
                               end: Alignment.bottomRight,
                             ),
@@ -88,7 +88,7 @@ void showNumberPicker(Function(String) onSelected) {
                           child: const GradientIcon(
                             icon: Icons.keyboard_arrow_down_sharp,
                             gradient: LinearGradient(
-                              colors: GRADIANT_COLOR,
+                              colors: GRADIANT_COLOR1,
                               begin: Alignment.topLeft,
                               end: Alignment.bottomRight,
                             ),
