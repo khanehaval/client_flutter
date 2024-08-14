@@ -2,6 +2,7 @@ import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
+import 'package:flutter_application_1/pages/category/shared/widget/selector_taeed_enseraf.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import '../models/FacilitiesModel.dart';
@@ -171,30 +172,7 @@ void FacilitiesSelector(
                   ),
                 ),
                 const SizedBox(height: 10),
-                GestureDetector(
-                  child: Padding(
-                    padding: const EdgeInsets.only(top: 2),
-                    child: Container(
-                      decoration: BoxDecoration(
-                        gradient: const LinearGradient(colors: GRADIANT_COLOR),
-                        borderRadius: BorderRadius.circular(50),
-                      ),
-                      child: IconButton(
-                        icon: Padding(
-                          padding: const EdgeInsets.only(top: 5.0),
-                          child: SvgPicture.asset(
-                            'assets/images/tic.svg',
-                            width: 33,
-                            height: 26,
-                          ),
-                        ),
-                        onPressed: () {
-                          Get.back();
-                        },
-                      ),
-                    ),
-                  ),
-                ),
+                SelectorTaeedEnseraf()
               ],
             ),
           ),

@@ -4,18 +4,19 @@ import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
-class SwitchItems extends StatefulWidget {
+class SwitchItemsLocation extends StatefulWidget {
   final Function(List<String>) onSelected;
   final List<String> items;
 
-  const SwitchItems({required this.onSelected, required this.items, Key? key})
+  const SwitchItemsLocation(
+      {required this.onSelected, required this.items, Key? key})
       : super(key: key);
 
   @override
   _SwitchItemsState createState() => _SwitchItemsState();
 }
 
-class _SwitchItemsState extends State<SwitchItems> {
+class _SwitchItemsState extends State<SwitchItemsLocation> {
   final selectedItems = <String>[].obs;
 
   @override
@@ -37,24 +38,31 @@ class _SwitchItemsState extends State<SwitchItems> {
 
   Widget _buildRow(String item) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
+      padding: const EdgeInsets.symmetric(vertical: 4.0, horizontal: 125.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(
-            item,
-            style: const TextStyle(
-              fontSize: 16,
-              fontFamily: MAIN_FONT_FAMILY,
-            ),
+          Flexible(
+            child: Align(
+                alignment: Alignment.centerRight,
+                child: Text(item,
+                    textAlign: TextAlign
+                        .right, // این بخش متن را درون Text راست‌چین می‌کند
+                    style: const TextStyle(
+                      fontSize: 16,
+                      fontFamily: MAIN_FONT_FAMILY,
+                    ))),
           ),
           IconButton(
             onPressed: () {
               setState(() {
                 if (selectedItems.contains(item)) {
-                  selectedItems.remove(item);
+                  selectedItems
+                      .clear(); // Clear the selection if the item is already selected
                 } else {
-                  selectedItems.add(item);
+                  selectedItems
+                    ..clear() // Clear previous selections
+                    ..add(item); // Add the newly selected item
                 }
               });
               widget.onSelected(selectedItems.toList());

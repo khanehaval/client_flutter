@@ -1,10 +1,10 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:numberpicker/numberpicker.dart';
+import 'package:flutter_application_1/pages/category/shared/widget/taeed_enseraf_numberpicker.dart';
 import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:gradient_icon/gradient_icon.dart';
+import 'package:numberpicker/numberpicker.dart';
 
 void showNumberPicker(Function(String) onSelected) {
   final index = 6.obs;
@@ -97,30 +97,15 @@ void showNumberPicker(Function(String) onSelected) {
                         ),
                       ],
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(bottom: 20, top: 40),
-                      child: Container(
-                        decoration: BoxDecoration(
-                            gradient: const LinearGradient(
-                              colors: GRADIANT_COLOR,
-                            ),
-                            color: Colors.cyan,
-                            borderRadius: BorderRadius.circular(50)),
-                        child: IconButton(
-                          icon: Padding(
-                            padding: const EdgeInsets.only(top: 5.0),
-                            child: SvgPicture.asset(
-                              'assets/images/tic.svg',
-                              width: 33,
-                              height: 26,
-                            ),
-                          ),
-                          onPressed: () {
-                            onSelected(index.value.toString());
-                            Get.back();
-                          },
-                        ),
-                      ),
+                    const SizedBox(
+                      height: 35,
+                    ),
+                    TaeedEnserafNumberPicker(
+                      selectedNumber: index.value.toString(),
+                      onConfirm: () {
+                        onSelected(index.value.toString());
+                        Get.back();
+                      },
                     )
                   ],
                 ),

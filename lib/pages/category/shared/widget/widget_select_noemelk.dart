@@ -1,15 +1,12 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
-import 'package:flutter_application_1/pages/category/shared/switchItem.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/enseraf.dart';
+import 'package:flutter_application_1/pages/category/shared/widget/switchItem_location.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/taeed.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:numberpicker/numberpicker.dart';
 import 'package:get/get.dart';
-import 'package:gradient_icon/gradient_icon.dart';
 
 void showSelectNoeMelk(Function(String) onSelected) {
+  String? selectedMelk;
   Get.bottomSheet(
     Container(
       width: double.infinity,
@@ -18,60 +15,61 @@ void showSelectNoeMelk(Function(String) onSelected) {
           colors: GRADIANT_COLOR,
         ),
         borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(10), topRight: Radius.circular(10)),
+            topLeft: Radius.circular(30), topRight: Radius.circular(30)),
       ),
       child: Padding(
-        padding: const EdgeInsets.only(
-          top: 1.3,
-          left: 1.3,
-          right: 1.3,
-        ),
+        padding: const EdgeInsets.only(top: 1.3, left: 1.3, right: 1.3),
         child: Container(
           decoration: const BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(10), topRight: Radius.circular(10)),
+                topLeft: Radius.circular(30), topRight: Radius.circular(30)),
           ),
           child: Column(
             children: [
-              SizedBox(
-                height: 20,
-              ),
+              const SizedBox(height: 40),
               const Text(
                 "نوع مـلـک شمــا",
-                style: TextStyle(fontFamily: MAIN_FONT_FAMILY, fontSize: 20),
+                style: TextStyle(fontFamily: MAIN_FONT_FAMILY, fontSize: 16),
               ),
-              const SizedBox(
-                height: 10,
-              ),
+              const SizedBox(height: 10),
               const Text(
                 "یک مورد را انتخاب کنید",
                 style: TextStyle(
                     fontFamily: MAIN_FONT_FAMILY,
-                    fontSize: 15,
-                    color: Color.fromRGBO(
-                      156,
-                      64,
-                      64,
-                      1,
-                    )),
+                    fontSize: 12,
+                    color: Color.fromRGBO(156, 64, 64, 1)),
               ),
-              const SizedBox(
-                height: 20,
-              ),
+              const SizedBox(height: 50),
               Column(
                 children: [
-                  SwitchItems(
-                      onSelected: (_) {},
-                      items: const ["باغ ویلا", "باغ", "خانه ویلایی"]),
-                  const SizedBox(
-                    height: 30,
+                  SwitchItemsLocation(
+                    onSelected: (selectedItems) {
+                      if (selectedItems.isNotEmpty) {
+                        selectedMelk = selectedItems.first;
+                      }
+                    },
+                    items: const [
+                      "خانه ویلایی",
+                      "باغ ویلا",
+                      "باغ",
+                    ],
                   ),
+                  const SizedBox(height: 55),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Enseraf(),
-                      taeed(onSelected),
+                      taeed(
+                        onPressed: () {
+                          if (selectedMelk != null) {
+                            onSelected(selectedMelk!);
+                            Get.back();
+                          } else {
+                            Get.snackbar("خطا", "لطفاً یک مورد را انتخاب کنید");
+                          }
+                        },
+                      ),
                       const SizedBox(width: 10),
                     ],
                   ),

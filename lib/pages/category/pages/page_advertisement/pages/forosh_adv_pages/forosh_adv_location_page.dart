@@ -12,11 +12,10 @@ import 'package:flutter_application_1/pages/category/shared/constant.dart';
 
 class ForshAdvLocationPage extends StatelessWidget {
   LocationInfo locationInfo;
+  final TextEditingController _controller = TextEditingController();
 
   ForshAdvLocationPage({required this.locationInfo, super.key});
-
   final type = "".obs;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -62,6 +61,7 @@ class ForshAdvLocationPage extends StatelessWidget {
                 height: 41,
                 child: Center(
                   child: TextField(
+                    controller: _controller,
                     readOnly: true,
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
@@ -84,11 +84,14 @@ class ForshAdvLocationPage extends StatelessWidget {
                         ),
                       ),
                       prefixIcon: IconButton(
-                        icon: SvgPicture.asset("assets/images/Vector-20.svg"),
-                        onPressed: () {
-                          showSelectNoeMelk((_) {});
-                        },
-                      ),
+                          icon: SvgPicture.asset("assets/images/Vector-20.svg"),
+                          onPressed: () {
+                            // Show the bottom sheet to select an item
+                            showSelectNoeMelk((selectedMelk) {
+                              _controller.text =
+                                  selectedMelk; // Update TextField with selected option
+                            });
+                          }),
                     ),
                   ),
                 ),

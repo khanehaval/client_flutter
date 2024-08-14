@@ -491,15 +491,11 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
                       //
                     });
                   }, width: getPageWidth()),
-                  widget2: ReadOnlyTextField(
-                    _buildDateController,
-                    () {
-                      persianDataPicker(
-                          (date) => _buildDateController.text = date);
-                      saleApartemanServerModel.age = _buildDateController.text;
-                    },
-                    width: getPageWidth(),
-                  )),
+                  widget2: ReadOnlyTextField(_buildDateController, () {
+                    persianDataPicker(
+                        (date) => _buildDateController.text = date);
+                    saleApartemanServerModel.age = _buildDateController.text;
+                  }, width: getPageWidth(), fontSize: 12)),
               const SizedBox(
                 height: 20,
               ),

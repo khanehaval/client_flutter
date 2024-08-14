@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 Widget ReadOnlyTextField(TextEditingController controller, Function onTap,
     {double? width, double? fontSize}) {
   return SizedBox(
-    height: 41,
+    height: 42,
     width: width,
     child: Center(
       child: TextField(
@@ -46,7 +46,7 @@ Widget ReadOnlyTextField(TextEditingController controller, Function onTap,
 
 Widget InputTextField(TextEditingController controller, {double? width}) {
   return Container(
-    height: 41,
+    height: 42,
     width: width,
     child: TextField(
       keyboardType: TextInputType.number,

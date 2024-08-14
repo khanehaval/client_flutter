@@ -1,9 +1,9 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
+import 'package:flutter_application_1/pages/category/shared/widget/taeed_datepicker.dart';
 import 'package:flutter_linear_datepicker/flutter_datepicker.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 
 void persianDataPicker(Function(String) onDateSelected) {
   String selectedDate = "1400/03/03";
@@ -38,7 +38,7 @@ void persianDataPicker(Function(String) onDateSelected) {
                   showDay: true,
                   labelStyle: const TextStyle(
                     fontFamily: MAIN_FONT_FAMILY,
-                    fontSize: 16.0,
+                    fontSize: 15.0,
                     color: Colors.black26,
                   ),
                   selectedRowStyle: const TextStyle(
@@ -59,36 +59,10 @@ void persianDataPicker(Function(String) onDateSelected) {
                   showMonthName: true,
                   isJalaali: true),
             ),
-            Padding(
-              padding: const EdgeInsets.only(bottom: 20),
-              child: Container(
-                decoration: BoxDecoration(
-                    gradient: const LinearGradient(colors: GRADIANT_COLOR),
-                    borderRadius: BorderRadius.circular(50),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.1),
-                        spreadRadius: 2,
-                        blurRadius: 8,
-                        offset: const Offset(0, 1),
-                      ),
-                    ]),
-                child: IconButton(
-                  icon: Padding(
-                    padding: const EdgeInsets.only(top: 5.0),
-                    child: SvgPicture.asset(
-                      'assets/images/tic.svg',
-                      width: 33,
-                      height: 26,
-                    ),
-                  ),
-                  onPressed: () {
-                    onDateSelected(selectedDate);
-                    Get.back();
-                  },
-                ),
-              ),
-            ),
+            TaeedDatePicker(),
+            const SizedBox(
+              height: 20,
+            )
           ],
         ),
       ),
