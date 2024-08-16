@@ -64,6 +64,7 @@ class Httpservice {
         FormData formData = FormData.fromMap({
           "file": file,
         });
+
         var response = await _dio.post(
           address,
           data: formData,
