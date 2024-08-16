@@ -54,33 +54,11 @@ class Httpservice {
   Future<List<String>> uploadFileList(
       String address, List<String> paths) async {
     List<String> uploadedFilePaths = [];
-
     try {
       for (String path in paths) {
-        String fileName = path.split('/').last;
-
-        MultipartFile file =
-            await MultipartFile.fromFile(path, filename: fileName);
-        FormData formData = FormData.fromMap({
-          "file": file,
-        });
-
-        var response = await _dio.post(
-          address,
-          data: formData,
-          options: Options(headers: {"Authorization": "Bearer ${_getToken()}"}),
-        );
-
-        if (response.statusCode == 200) {
-          SaleApartemanRes res = SaleApartemanRes.fromJson(response.data);
-
-          if (res.status) {
-            uploadedFilePaths.add(res.message);
-          } else {
-            _logger.e("Upload failed for $fileName: ${res.message}");
-          }
-        } else {
-          _logger.e("Server error: ${response.statusCode}");
+        var uri = await uploadFile(address,path);
+        if(uri != null){
+          uploadedFilePaths.add(uri);
         }
       }
     } on DioError catch (e) {
