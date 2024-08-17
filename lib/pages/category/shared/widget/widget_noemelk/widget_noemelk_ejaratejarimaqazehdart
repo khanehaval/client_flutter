@@ -5,7 +5,7 @@ import 'package:flutter_application_1/pages/category/shared/widget/switchItem_lo
 import 'package:flutter_application_1/pages/category/shared/widget/taeed.dart';
 import 'package:get/get.dart';
 
-void showSelectNoeMelk(Function(String) onSelected) {
+void showNoeMelkEjarTejariamaqazeh(Function(String) onSelected) {
   String? selectedMelk;
   Get.bottomSheet(
     Container(
@@ -50,9 +50,8 @@ void showSelectNoeMelk(Function(String) onSelected) {
                       }
                     },
                     items: const [
-                      "خانه ویلایی",
-                      "باغ ویلا",
-                      "باغ",
+                      " مغازه",
+                      "غرفه",
                     ],
                   ),
                   const SizedBox(height: 55),

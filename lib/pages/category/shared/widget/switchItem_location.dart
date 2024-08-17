@@ -49,7 +49,7 @@ class _SwitchItemsState extends State<SwitchItemsLocation> {
                     textAlign: TextAlign
                         .right, // این بخش متن را درون Text راست‌چین می‌کند
                     style: const TextStyle(
-                      fontSize: 16,
+                      fontSize: 13,
                       fontFamily: MAIN_FONT_FAMILY,
                     ))),
           ),

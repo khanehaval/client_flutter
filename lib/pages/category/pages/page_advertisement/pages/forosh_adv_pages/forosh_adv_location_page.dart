@@ -5,7 +5,7 @@ import 'package:flutter_application_1/pages/category/shared/widget/app_bar.dart'
 import 'package:flutter_application_1/pages/category/shared/map_pages/location_Info.dart';
 import 'package:flutter_application_1/pages/category/shared/map_pages/map_info_page.dart';
 
-import 'package:flutter_application_1/pages/category/shared/widget/widget_select_noemelk.dart';
+import 'package:flutter_application_1/pages/category/shared/widget/widget_noemelk/widget_select_noemelk.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';

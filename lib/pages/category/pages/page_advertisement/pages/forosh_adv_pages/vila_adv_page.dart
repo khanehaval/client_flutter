@@ -318,7 +318,7 @@ class _VilaAdvPageState extends State<VilaAdvPage> {
             ),
             TwoItemInRow1(
               label1: "قیمت هر متر مربع (تومان)",
-              label2: "متراژ",
+              label2: "متراژ زمین",
               widget1: Obx(
                 () => Container(
                   decoration: BoxDecoration(
@@ -351,11 +351,15 @@ class _VilaAdvPageState extends State<VilaAdvPage> {
                   decoration: InputDecoration(
                     hintText: "0",
                     hintStyle: const TextStyle(
-                      fontSize: 13,
-                      fontFamily: 'Iran Sans',
-                      fontWeight: FontWeight.w400,
-                      color: Color(0xFFA6A6A6),
-                    ),
+                        fontSize: 13,
+                        fontFamily: 'Iran Sans',
+                        fontWeight: FontWeight.w400,
+                        color: Color.fromRGBO(
+                          48,
+                          48,
+                          48,
+                          1,
+                        )),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
                       borderSide: const BorderSide(
@@ -375,7 +379,58 @@ class _VilaAdvPageState extends State<VilaAdvPage> {
             const SizedBox(
               height: 20,
             ),
+            Padding(
+              padding: const EdgeInsets.only(right: 5.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Container(
+                    child: const Text(
+                      "قیمت هر متر مربع (تومان)",
+                      style: TextStyle(
+                          fontSize: 13,
+                          fontFamily: MAIN_FONT_FAMILY,
+                          color: Color.fromRGBO(166, 166, 166, 1)),
+                      textAlign: TextAlign.start,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                border: Border.all(
+                    width: 1, //
+                    color:
+                        Theme.of(context).hintColor //  <--- border width here
+                    ),
+              ),
+              height: 41,
+              width: 350,
+              child: Padding(
+                padding: const EdgeInsets.only(right: 10.0),
+                child: Align(
+                    alignment: Alignment.centerRight,
+                    child: Text(
+                      _onePrice.string,
+                      style: const TextStyle(
+                          color: Color.fromRGBO(
+                        166,
+                        166,
+                        166,
+                        1,
+                      )),
+                    )),
+              ),
+            ),
+            const SizedBox(
+              height: 20,
+            ),
             aghsatiForoshWidget(context),
+            const SizedBox(
+              height: 20,
+            ),
             const Divider(
               color: Color.fromRGBO(
                 226,
@@ -420,24 +475,28 @@ class _VilaAdvPageState extends State<VilaAdvPage> {
             const SizedBox(
               height: 20,
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                const Text(
-                  "*",
-                  style: TextStyle(
-                      fontSize: 20, color: Color.fromRGBO(156, 64, 64, 1)),
-                ),
-                Container(
-                  child: const Text(
-                    "تعداد طبقات ویلا",
+            Padding(
+              padding: const EdgeInsets.only(right: 5.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  const Text(
+                    "*",
                     style: TextStyle(
-                        fontFamily: MAIN_FONT_FAMILY,
-                        color: Color.fromRGBO(99, 99, 99, 1)),
-                    textAlign: TextAlign.start,
+                        fontSize: 20, color: Color.fromRGBO(156, 64, 64, 1)),
                   ),
-                ),
-              ],
+                  Container(
+                    child: const Text(
+                      "تعداد طبقات ویلا",
+                      style: TextStyle(
+                          fontSize: 13,
+                          fontFamily: MAIN_FONT_FAMILY,
+                          color: Color.fromRGBO(99, 99, 99, 1)),
+                      textAlign: TextAlign.start,
+                    ),
+                  ),
+                ],
+              ),
             ),
             ReadOnlyTextField(_buildFloorsCountController, () {
               showNumberPicker((_) {
@@ -477,12 +536,16 @@ class _VilaAdvPageState extends State<VilaAdvPage> {
             const Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                Text(
-                  "نوع سند",
-                  style: TextStyle(
-                      color: Color.fromRGBO(166, 166, 166, 1),
-                      fontFamily: MAIN_FONT_FAMILY),
-                  textAlign: TextAlign.start,
+                Padding(
+                  padding: EdgeInsets.only(right: 5.0),
+                  child: Text(
+                    "نوع سند",
+                    style: TextStyle(
+                        fontSize: 13,
+                        color: Color(0xff636363),
+                        fontFamily: MAIN_FONT_FAMILY),
+                    textAlign: TextAlign.start,
+                  ),
                 ),
               ],
             ),
@@ -583,7 +646,7 @@ class _VilaAdvPageState extends State<VilaAdvPage> {
               selected: _facilities,
             ),
             const SizedBox(
-              height: 20,
+              height: 40,
             ),
             const Divider(
               color: Color.fromRGBO(
@@ -600,6 +663,9 @@ class _VilaAdvPageState extends State<VilaAdvPage> {
             ),
             ImagesPicker(selectedImagesPath: _selectedImagesPath),
             const Divider(),
+            const SizedBox(
+              height: 20,
+            ),
             AdvInfo(_advInfo),
             const SizedBox(
               height: 30,
