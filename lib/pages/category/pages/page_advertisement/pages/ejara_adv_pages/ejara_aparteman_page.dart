@@ -234,27 +234,36 @@ class _EjaraApartemanPageState extends State<EjaraApartemanPage> {
                 height: 20,
               ),
               aghsatiForoshWidget(context),
-              const Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Text(
-                    "*",
-                    style: TextStyle(
-                        fontSize: 20,
-                        color: Color.fromRGBO(156, 64, 64, 1),
-                        fontFamily: MAIN_FONT_FAMILY),
-                  ),
-                  Text(
-                    "متراژ",
-                    style: TextStyle(
-                        color: Color.fromRGBO(166, 166, 166, 1),
-                        fontFamily: MAIN_FONT_FAMILY),
-                    textAlign: TextAlign.start,
-                  ),
-                ],
+              const Padding(
+                padding: EdgeInsets.only(right: 5.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Text(
+                      "*",
+                      style: TextStyle(
+                          fontSize: 14,
+                          color: Color.fromRGBO(156, 64, 64, 1),
+                          fontFamily: MAIN_FONT_FAMILY),
+                    ),
+                    SizedBox(
+                      width: 5,
+                    ),
+                    Text(
+                      "متراژ",
+                      style: TextStyle(
+                          color: Color(0xff636363),
+                          fontFamily: MAIN_FONT_FAMILY),
+                      textAlign: TextAlign.start,
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(
+                height: 5,
               ),
               SizedBox(
-                height: 50,
+                height: 41,
                 width: MediaQuery.of(context).size.width * 0.95,
                 child: TextField(
                   textAlign: TextAlign.right,
@@ -289,7 +298,7 @@ class _EjaraApartemanPageState extends State<EjaraApartemanPage> {
                 ),
               ),
               const SizedBox(
-                height: 20,
+                height: 30,
               ),
               const Divider(
                 color: Color.fromRGBO(
@@ -367,7 +376,7 @@ class _EjaraApartemanPageState extends State<EjaraApartemanPage> {
                 ),
               ),
               const SizedBox(
-                height: 15,
+                height: 20,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -455,7 +464,7 @@ class _EjaraApartemanPageState extends State<EjaraApartemanPage> {
                 ],
               ),
               const SizedBox(
-                height: 10,
+                height: 20,
               ),
               const Divider(
                 color: Color.fromRGBO(
@@ -468,7 +477,7 @@ class _EjaraApartemanPageState extends State<EjaraApartemanPage> {
                 indent: 6,
               ),
               const SizedBox(
-                height: 10,
+                height: 20,
               ),
               const Text(
                 "سایر ویژگی ها",
@@ -528,7 +537,7 @@ class _EjaraApartemanPageState extends State<EjaraApartemanPage> {
                 ),
               ),
               const SizedBox(
-                height: 15,
+                height: 20,
               ),
               TwoItemInRow(
                   label1: "تعداد کل واحد ها",
@@ -542,7 +551,7 @@ class _EjaraApartemanPageState extends State<EjaraApartemanPage> {
                     });
                   }, width: getPageWidth())),
               const SizedBox(
-                height: 15,
+                height: 20,
               ),
               TwoItemInRow(
                   label1: "بازسازی",
@@ -569,7 +578,7 @@ class _EjaraApartemanPageState extends State<EjaraApartemanPage> {
                 indent: 6,
               ),
               const SizedBox(
-                height: 10,
+                height: 20,
               ),
               const Text(
                 "امکانات",
@@ -771,7 +780,7 @@ class _EjaraApartemanPageState extends State<EjaraApartemanPage> {
                 selected: _facilities,
               ),
               const SizedBox(
-                height: 30,
+                height: 40,
               ),
               const Divider(
                 color: Color.fromRGBO(
@@ -798,7 +807,7 @@ class _EjaraApartemanPageState extends State<EjaraApartemanPage> {
                 indent: 6,
               ),
               const SizedBox(
-                height: 5,
+                height: 20,
               ),
               AdvInfo(_advInfo),
               const SizedBox(

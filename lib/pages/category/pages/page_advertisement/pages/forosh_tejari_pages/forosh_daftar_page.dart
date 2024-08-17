@@ -218,8 +218,8 @@ class _ForoshDaftarPageState extends State<ForoshDaftarPage> {
               child: Column(children: [
                 route([
                   "ثبت آگهی اکونومی",
-                  "فروش مسکونی",
-                  "خرید و فروش آپارتمان"
+                  "فروش تجاری اداری",
+                  "خرید و فروش دفترکار"
                 ]),
                 const SizedBox(
                   height: 30,
@@ -319,15 +319,19 @@ class _ForoshDaftarPageState extends State<ForoshDaftarPage> {
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
                         border: Border.all(
-                            width: 1, //
-                            color: Theme.of(context)
-                                .hintColor //  <--- border width here
-                            ),
+                          width: 1, //
+                          color: const Color(0xffA6A6A6),
+                        ),
                       ),
                       height: 41,
                       width: getPageWidth(),
                       child: Center(
-                        child: Text(_onePrice.string),
+                        child: Text(
+                          _onePrice.string,
+                          style: TextStyle(
+                            color: Color(0xffA6A6A6),
+                          ),
+                        ),
                       ),
                     ),
                   ),
@@ -372,6 +376,9 @@ class _ForoshDaftarPageState extends State<ForoshDaftarPage> {
                   height: 20,
                 ),
                 aghsatiForoshWidget(context),
+                const SizedBox(
+                  height: 20,
+                ),
                 const Divider(
                   color: Color.fromRGBO(
                     226,
@@ -381,6 +388,9 @@ class _ForoshDaftarPageState extends State<ForoshDaftarPage> {
                   ),
                   endIndent: 6,
                   indent: 6,
+                ),
+                const SizedBox(
+                  height: 20,
                 ),
                 melkByVamBanki(context),
                 const SizedBox(
@@ -411,22 +421,26 @@ class _ForoshDaftarPageState extends State<ForoshDaftarPage> {
                 const SizedBox(
                   height: 20,
                 ),
-                const Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Text(
-                      "*",
-                      style: TextStyle(
-                          fontSize: 20, color: Color.fromRGBO(156, 64, 64, 1)),
-                    ),
-                    Text(
-                      "طبقه ",
-                      style: TextStyle(
-                          color: Color.fromRGBO(99, 99, 99, 1),
-                          fontFamily: MAIN_FONT_FAMILY),
-                      textAlign: TextAlign.start,
-                    ),
-                  ],
+                const Padding(
+                  padding: EdgeInsets.only(right: 5.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Text(
+                        "*",
+                        style: TextStyle(
+                            fontSize: 20,
+                            color: Color.fromRGBO(156, 64, 64, 1)),
+                      ),
+                      Text(
+                        "طبقه ",
+                        style: TextStyle(
+                            color: Color.fromRGBO(99, 99, 99, 1),
+                            fontFamily: MAIN_FONT_FAMILY),
+                        textAlign: TextAlign.start,
+                      ),
+                    ],
+                  ),
                 ),
                 ReadOnlyTextField(_buildFloorController, () {
                   showNumberPicker((_) {
@@ -448,7 +462,7 @@ class _ForoshDaftarPageState extends State<ForoshDaftarPage> {
                   endIndent: 20,
                   indent: 20,
                 ),
-                TwoItemInRow(
+                TwoItemInRow2(
                     label1: "تعداد اتاق ",
                     label2: "سن بنا ",
                     widget1: ReadOnlyTextField(_buildRoomsCountController, () {
@@ -463,22 +477,26 @@ class _ForoshDaftarPageState extends State<ForoshDaftarPage> {
                 const SizedBox(
                   height: 20,
                 ),
-                const Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Text(
-                      "*",
-                      style: TextStyle(
-                          fontSize: 20, color: Color.fromRGBO(156, 64, 64, 1)),
-                    ),
-                    Text(
-                      "طبقه ",
-                      style: TextStyle(
-                          color: Color.fromRGBO(99, 99, 99, 1),
-                          fontFamily: MAIN_FONT_FAMILY),
-                      textAlign: TextAlign.start,
-                    ),
-                  ],
+                const Padding(
+                  padding: EdgeInsets.only(right: 5.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Text(
+                        "*",
+                        style: TextStyle(
+                            fontSize: 20,
+                            color: Color.fromRGBO(156, 64, 64, 1)),
+                      ),
+                      Text(
+                        "طبقه ",
+                        style: TextStyle(
+                            color: Color.fromRGBO(99, 99, 99, 1),
+                            fontFamily: MAIN_FONT_FAMILY),
+                        textAlign: TextAlign.start,
+                      ),
+                    ],
+                  ),
                 ),
                 ReadOnlyTextField(_buildFloorController, () {
                   showNumberPicker((_) {
@@ -574,14 +592,14 @@ class _ForoshDaftarPageState extends State<ForoshDaftarPage> {
                   ],
                 ),
                 const SizedBox(
-                  height: 10,
+                  height: 20,
                 ),
                 const Divider(
                   endIndent: 20,
                   indent: 20,
                 ),
                 const SizedBox(
-                  height: 10,
+                  height: 20,
                 ),
                 const Text(
                   "سایر ویژگی ها",
@@ -632,7 +650,7 @@ class _ForoshDaftarPageState extends State<ForoshDaftarPage> {
                       });
                     }, width: getPageWidth())),
                 const SizedBox(
-                  height: 15,
+                  height: 30,
                 ),
                 Column(mainAxisAlignment: MainAxisAlignment.center, children: [
                   Row(mainAxisAlignment: MainAxisAlignment.center, children: [
@@ -672,7 +690,7 @@ class _ForoshDaftarPageState extends State<ForoshDaftarPage> {
                         TextStyle(fontFamily: MAIN_FONT_FAMILY, fontSize: 16),
                   ),
                   const SizedBox(
-                    height: 15,
+                    height: 20,
                   ),
                   TwoItemInRow(
                     label1: "نوع کابینت",
@@ -732,7 +750,7 @@ class _ForoshDaftarPageState extends State<ForoshDaftarPage> {
                     ),
                   ),
                   const SizedBox(
-                    height: 15,
+                    height: 20,
                   ),
                   TwoItemInRow(
                     label1: "نوع سیستم گرمایش",
@@ -793,7 +811,7 @@ class _ForoshDaftarPageState extends State<ForoshDaftarPage> {
                     ),
                   ),
                   const SizedBox(
-                    height: 15,
+                    height: 20,
                   ),
                   TwoItemInRow(
                     label1: "سرویس بهداشتی",
@@ -869,23 +887,41 @@ class _ForoshDaftarPageState extends State<ForoshDaftarPage> {
                     selected: _facilities,
                   ),
                   const SizedBox(
-                    height: 20,
+                    height: 40,
                   ),
                   const Divider(
-                    endIndent: 20,
-                    indent: 20,
+                    color: Color.fromRGBO(
+                      226,
+                      226,
+                      226,
+                      1,
+                    ),
+                    endIndent: 6,
+                    indent: 6,
                   ),
                   const SizedBox(
                     height: 20,
                   ),
                   ImagesPicker(selectedImagesPath: _selectedImagesPath),
                   const SizedBox(
-                    height: 10,
+                    height: 20,
                   ),
-                  const Divider(),
+                  const Divider(
+                    color: Color.fromRGBO(
+                      226,
+                      226,
+                      226,
+                      1,
+                    ),
+                    endIndent: 6,
+                    indent: 6,
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
                   AdvInfo(_advInfo),
                   const SizedBox(
-                    height: 30,
+                    height: 40,
                   ),
                   GestureDetector(
                     onTap: () {
@@ -1224,16 +1260,18 @@ class _ForoshDaftarPageState extends State<ForoshDaftarPage> {
                           readOnly: true,
                           focusNode: FocusNode(canRequestFocus: false),
                           decoration: InputDecoration(
-                              hintText: 'انتخاب نشده',
-                              hintStyle: const TextStyle(
-                                  color: Color(0xFFA6A6A6), fontSize: 13),
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              prefixIcon: IconButton(
-                                icon: const Icon(CupertinoIcons.chevron_left_2),
-                                onPressed: () {},
-                              )),
+                            hintText: 'انتخاب نشده',
+                            hintStyle: const TextStyle(
+                                color: Color(0xFFA6A6A6), fontSize: 13),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            prefixIcon: IconButton(
+                              icon: SvgPicture.asset(
+                                  "assets/images/Vector-20.svg"),
+                              onPressed: () {},
+                            ),
+                          ),
                         ),
                       ),
                       widget2: SizedBox(
@@ -1251,7 +1289,8 @@ class _ForoshDaftarPageState extends State<ForoshDaftarPage> {
                               borderRadius: BorderRadius.circular(10),
                             ),
                             prefixIcon: IconButton(
-                              icon: const Icon(CupertinoIcons.chevron_left_2),
+                              icon: SvgPicture.asset(
+                                  "assets/images/Vector-20.svg"),
                               onPressed: () {},
                             ),
                           ),
@@ -1281,10 +1320,8 @@ class _ForoshDaftarPageState extends State<ForoshDaftarPage> {
                           borderRadius: BorderRadius.circular(10),
                         ),
                         prefixIcon: IconButton(
-                          icon: const Icon(CupertinoIcons.chevron_left_2),
-                          onPressed: () {
-                            // _show_item_1.value = !_show_item_1.isTrue;
-                          },
+                          icon: SvgPicture.asset("assets/images/Vector-20.svg"),
+                          onPressed: () {},
                         ),
                       ),
                     ),

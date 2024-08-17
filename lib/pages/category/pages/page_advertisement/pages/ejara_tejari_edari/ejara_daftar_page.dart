@@ -101,7 +101,7 @@ class _EjaraDafterPageState extends State<EjaraDafterPage> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Text(
-                  "دفتر کار",
+                  " رهن و اجاره دفتر کار",
                   style: TextStyle(
                     fontSize: 10,
                     fontFamily: MAIN_FONT_FAMILY,
@@ -113,7 +113,7 @@ class _EjaraDafterPageState extends State<EjaraDafterPage> {
                   size: 18,
                 ),
                 Text(
-                  "اجاره تجاری و اداری",
+                  "اجاره تجاری اداری",
                   style: TextStyle(
                     fontSize: 10,
                     fontFamily: MAIN_FONT_FAMILY,
@@ -260,9 +260,6 @@ class _EjaraDafterPageState extends State<EjaraDafterPage> {
                   )
                 ],
               ),
-            ),
-            const SizedBox(
-              height: 5,
             ),
             SizedBox(
               height: 41,
@@ -470,7 +467,7 @@ class _EjaraDafterPageState extends State<EjaraDafterPage> {
               ],
             ),
             const SizedBox(
-              height: 10,
+              height: 20,
             ),
             const Divider(
               color: Color.fromRGBO(
@@ -483,7 +480,7 @@ class _EjaraDafterPageState extends State<EjaraDafterPage> {
               indent: 6,
             ),
             const SizedBox(
-              height: 10,
+              height: 20,
             ),
             const Text(
               "سایر ویژگی ها",
@@ -536,7 +533,7 @@ class _EjaraDafterPageState extends State<EjaraDafterPage> {
               ),
             ),
             const SizedBox(
-              height: 15,
+              height: 20,
             ),
             TwoItemInRow(
                 label1: "تعداد کل واحد ها",
@@ -550,7 +547,7 @@ class _EjaraDafterPageState extends State<EjaraDafterPage> {
                   });
                 }, width: getPageWidth())),
             const SizedBox(
-              height: 15,
+              height: 10,
             ),
             TwoItemInRow(
                 label1: "بازسازی",
@@ -577,7 +574,7 @@ class _EjaraDafterPageState extends State<EjaraDafterPage> {
               indent: 6,
             ),
             const SizedBox(
-              height: 10,
+              height: 20,
             ),
             const Text(
               "امکانات",
@@ -642,7 +639,7 @@ class _EjaraDafterPageState extends State<EjaraDafterPage> {
               ),
             ),
             const SizedBox(
-              height: 15,
+              height: 20,
             ),
             TwoItemInRow(
               label1: "نوع سیستم گرمایش",
@@ -701,7 +698,7 @@ class _EjaraDafterPageState extends State<EjaraDafterPage> {
               ),
             ),
             SizedBox(
-              height: 15,
+              height: 20,
             ),
             TwoItemInRow(
               label1: "سرویس بهداشتی",
@@ -759,7 +756,7 @@ class _EjaraDafterPageState extends State<EjaraDafterPage> {
               ),
             ),
             const SizedBox(
-              height: 20,
+              height: 40,
             ),
             FacilitiesSelectorWidget(
               selectable: [
@@ -788,7 +785,7 @@ class _EjaraDafterPageState extends State<EjaraDafterPage> {
               indent: 6,
             ),
             const SizedBox(
-              height: 20,
+              height: 40,
             ),
             ImagesPicker(selectedImagesPath: _selectedImagesPath),
             const Divider(
@@ -952,10 +949,15 @@ Widget aghsatiForoshWidget(BuildContext context) {
                 width: getPageWidth(),
                 child: TextField(
                   textAlign: TextAlign.right,
+                  keyboardType: TextInputType.number,
                   decoration: InputDecoration(
-                    hintText: 'مبلغ را وارد کنید', //todo
-                    hintStyle:
-                        const TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
+                    hintText: "0",
+                    hintStyle: const TextStyle(
+                      fontSize: 13,
+                      fontFamily: 'Iran Sans',
+                      fontWeight: FontWeight.w400,
+                      color: Color(0xFFA6A6A6),
+                    ),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
                       borderSide: const BorderSide(
@@ -967,10 +969,6 @@ Widget aghsatiForoshWidget(BuildContext context) {
                       borderSide: const BorderSide(
                         color: Color.fromRGBO(23, 102, 175, 1),
                       ),
-                    ),
-                    prefixIcon: IconButton(
-                      icon: SvgPicture.asset("assets/images/Vector-20.svg"),
-                      onPressed: () {},
                     ),
                   ),
                 ),
@@ -980,10 +978,15 @@ Widget aghsatiForoshWidget(BuildContext context) {
                 width: getPageWidth(),
                 child: TextField(
                   textAlign: TextAlign.right,
+                  keyboardType: TextInputType.number,
                   decoration: InputDecoration(
-                    hintText: 'مبلغ را وارد کنید', //todo
-                    hintStyle:
-                        const TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
+                    hintText: "0",
+                    hintStyle: const TextStyle(
+                      fontSize: 13,
+                      fontFamily: 'Iran Sans',
+                      fontWeight: FontWeight.w400,
+                      color: Color(0xFFA6A6A6),
+                    ),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
                       borderSide: const BorderSide(
@@ -995,10 +998,6 @@ Widget aghsatiForoshWidget(BuildContext context) {
                       borderSide: const BorderSide(
                         color: Color.fromRGBO(23, 102, 175, 1),
                       ),
-                    ),
-                    prefixIcon: IconButton(
-                      icon: SvgPicture.asset("assets/images/Vector-20.svg"),
-                      onPressed: () {},
                     ),
                   ),
                 ),

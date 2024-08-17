@@ -106,7 +106,7 @@ class EjaraApartemanLocationPage extends StatelessWidget {
               ),
               GestureDetector(
                   onTap: () {
-                    Get.to(() => EjaraVilaPage());
+                    Get.to(() => EjaraApartemanPage());
                   },
                   child: Center(child: submit_row1()))
             ],

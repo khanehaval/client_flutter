@@ -103,7 +103,7 @@ class _EjaraShanatiPageState extends State<EjaraShanatiPage> {
                     size: 15,
                   ),
                   Text(
-                    "فروش مسکونی",
+                    "فروش تجاری اداری",
                     style: TextStyle(
                       fontSize: 9.5,
                       fontFamily: MAIN_FONT_FAMILY,
@@ -128,7 +128,7 @@ class _EjaraShanatiPageState extends State<EjaraShanatiPage> {
               ),
               TwoItemInRow1(
                 label1: "میزان اجاره (تومان)",
-                label2: "قیمت کل (تومان)",
+                label2: " میزان رهن (تومان)",
                 widget1: SizedBox(
                   height: 41,
                   width: getPageWidth(),
@@ -199,24 +199,31 @@ class _EjaraShanatiPageState extends State<EjaraShanatiPage> {
               const SizedBox(
                 height: 20,
               ),
-              const Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Text(
-                    "*",
-                    style: TextStyle(
-                        fontSize: 20,
-                        color: Color.fromRGBO(156, 64, 64, 1),
-                        fontFamily: MAIN_FONT_FAMILY),
-                  ),
-                  Text(
-                    "متراژ زمین",
-                    style: TextStyle(
-                        color: Color.fromRGBO(166, 166, 166, 1),
-                        fontFamily: MAIN_FONT_FAMILY),
-                    textAlign: TextAlign.start,
-                  ),
-                ],
+              const Padding(
+                padding: EdgeInsets.only(right: 5.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Text(
+                      "*",
+                      style: TextStyle(
+                          fontSize: 14,
+                          color: Color.fromRGBO(156, 64, 64, 1),
+                          fontFamily: MAIN_FONT_FAMILY),
+                    ),
+                    Text(
+                      "متراژ زمین",
+                      style: TextStyle(
+                          color: Color(0xff636363),
+                          fontSize: 13,
+                          fontFamily: MAIN_FONT_FAMILY),
+                      textAlign: TextAlign.start,
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(
+                height: 5,
               ),
               SizedBox(
                 height: 50,
@@ -477,7 +484,7 @@ class _EjaraShanatiPageState extends State<EjaraShanatiPage> {
                 height: 15,
               ),
               const SizedBox(
-                height: 20,
+                height: 40,
               ),
               FacilitiesSelectorWidget(
                 selectable: [
@@ -497,7 +504,7 @@ class _EjaraShanatiPageState extends State<EjaraShanatiPage> {
                 selected: _facilities,
               ),
               const SizedBox(
-                height: 20,
+                height: 40,
               ),
               const Divider(
                 endIndent: 20,
@@ -507,7 +514,16 @@ class _EjaraShanatiPageState extends State<EjaraShanatiPage> {
                 height: 20,
               ),
               ImagesPicker(selectedImagesPath: _selectedImagesPath),
-              const Divider(),
+              const Divider(
+                color: Color.fromRGBO(
+                  226,
+                  226,
+                  226,
+                  1,
+                ),
+                endIndent: 6,
+                indent: 6,
+              ),
               const SizedBox(
                 height: 15,
               ),
@@ -660,7 +676,7 @@ class _EjaraShanatiPageState extends State<EjaraShanatiPage> {
                     height: 20,
                   ),
                   TwoItemInRow1(
-                    label1: "میزان اجاره",
+                    label1: "میزان اجاره (تومان)",
                     label2: "میزان رهن (تومان)  ",
                     widget1: SizedBox(
                       height: 41,

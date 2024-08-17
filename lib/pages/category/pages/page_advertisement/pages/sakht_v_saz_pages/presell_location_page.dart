@@ -35,7 +35,7 @@ class SelectLocationEjaraPresell extends StatelessWidget {
             children: [
               MapInfoPage(locationInfo),
               const SizedBox(
-                height: 10,
+                height: 20,
               ),
               const Row(
                 mainAxisAlignment: MainAxisAlignment.end,
@@ -103,7 +103,7 @@ class SelectLocationEjaraPresell extends StatelessWidget {
                 ),
               ),
               const SizedBox(
-                height: 5,
+                height: 40,
               ),
               GestureDetector(
                   onTap: () {

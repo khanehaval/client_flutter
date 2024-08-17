@@ -27,6 +27,7 @@ class ForoshSanatiPage extends StatefulWidget {
 
 class _ForoshSanatiPageState extends State<ForoshSanatiPage> {
   final aghsatType = "".obs;
+  final _buildFloorController = TextEditingController();
 
   final onvan = "".obs;
 
@@ -192,8 +193,11 @@ class _ForoshSanatiPageState extends State<ForoshSanatiPage> {
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
             child: Column(children: [
-              route(
-                  ["ثبت آگهی اکونومی", "فروش مسکونی", "خرید و فروش آپارتمان"]),
+              route([
+                "ثبت آگهی اکونومی",
+                "فروش تجاری اداری",
+                "خرید و فروش دفاتر صنعتی"
+              ]),
               const SizedBox(
                 height: 30,
               ),
@@ -203,7 +207,7 @@ class _ForoshSanatiPageState extends State<ForoshSanatiPage> {
                   Text(
                     "*",
                     style: TextStyle(
-                      fontSize: 20,
+                      fontSize: 14,
                       color: Color.fromRGBO(156, 64, 64, 1),
                       fontFamily: MAIN_FONT_FAMILY,
                     ),
@@ -216,7 +220,8 @@ class _ForoshSanatiPageState extends State<ForoshSanatiPage> {
                     child: Text(
                       "(تومان) قیمت کل",
                       style: TextStyle(
-                        color: Color.fromRGBO(166, 166, 166, 1),
+                        color: Color(0xff636363),
+                        fontSize: 13,
                         fontFamily: MAIN_FONT_FAMILY,
                       ),
                       textAlign: TextAlign.start,
@@ -344,47 +349,15 @@ class _ForoshSanatiPageState extends State<ForoshSanatiPage> {
                 height: 20,
               ),
               const Divider(
-                endIndent: 20,
-                indent: 20,
+                color: Color.fromRGBO(
+                  226,
+                  226,
+                  226,
+                  1,
+                ),
+                endIndent: 6,
+                indent: 6,
               ),
-              const SizedBox(
-                height: 20,
-              ),
-              TwoItemInRow1(
-                  label1: "نوع سند ",
-                  label2: "متراژ زمین ",
-                  widget2: SizedBox(
-                    height: 41,
-                    width: getPageWidth(),
-                    child: TextField(
-                      controller: _metragTextController,
-                      onChanged: (_) {
-                        _onePrice.value = _.isNotEmpty
-                            ? int.parse(_) /
-                                int.parse(_metragTextController.text)
-                            : 0;
-                      },
-                      textAlign: TextAlign.right,
-                      keyboardType: TextInputType.number,
-                      decoration: InputDecoration(
-                        hintText: "0",
-                        hintStyle: const TextStyle(
-                          fontSize: 13,
-                          fontFamily: 'Iran Sans',
-                          fontWeight: FontWeight.w400,
-                          color: Color(0xFFA6A6A6),
-                        ),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                      ),
-                    ),
-                  ),
-                  widget1: ReadOnlyTextField(_buildDocumentController, () {
-                    Sanad((_) {
-                      _buildDocumentController.text = _;
-                    });
-                  }, width: getPageWidth())),
               const SizedBox(
                 height: 20,
               ),
@@ -435,9 +408,47 @@ class _ForoshSanatiPageState extends State<ForoshSanatiPage> {
               const SizedBox(
                 height: 20,
               ),
+              const Padding(
+                padding: EdgeInsets.only(right: 5.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Text(
+                      "*",
+                      style: TextStyle(
+                          fontSize: 13, color: Color.fromRGBO(156, 64, 64, 1)),
+                    ),
+                    SizedBox(
+                      width: 5,
+                    ),
+                    Text(
+                      "نوع سند ",
+                      style: TextStyle(
+                          fontSize: 13,
+                          color: Color.fromRGBO(99, 99, 99, 1),
+                          fontFamily: MAIN_FONT_FAMILY),
+                      textAlign: TextAlign.start,
+                    ),
+                  ],
+                ),
+              ),
+              ReadOnlyTextField(_buildFloorController, () {
+                showNumberPicker((_) {
+                  _buildFloorController.text = _;
+                });
+              }),
+              const SizedBox(
+                height: 20,
+              ),
               const Divider(
-                endIndent: 20,
-                indent: 20,
+                color: Color.fromRGBO(
+                  226,
+                  226,
+                  226,
+                  1,
+                ),
+                endIndent: 6,
+                indent: 6,
               ),
               const SizedBox(
                 height: 20,
@@ -455,7 +466,7 @@ class _ForoshSanatiPageState extends State<ForoshSanatiPage> {
                 style: TextStyle(fontFamily: MAIN_FONT_FAMILY, fontSize: 16),
               ),
               const SizedBox(
-                height: 15,
+                height: 20,
               ),
               TwoItemInRow(
                 label1: "جنس دیواره",
@@ -513,7 +524,7 @@ class _ForoshSanatiPageState extends State<ForoshSanatiPage> {
                 ),
               ),
               const SizedBox(
-                height: 15,
+                height: 20,
               ),
               TwoItemInRow(
                 label1: "نوع سیستم گرمایش",
@@ -572,7 +583,7 @@ class _ForoshSanatiPageState extends State<ForoshSanatiPage> {
                 ),
               ),
               const SizedBox(
-                height: 10,
+                height: 20,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
@@ -615,17 +626,17 @@ class _ForoshSanatiPageState extends State<ForoshSanatiPage> {
                 ),
               ),
               const SizedBox(
-                height: 15,
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              const SizedBox(
                 height: 20,
               ),
               const Divider(
-                endIndent: 20,
-                indent: 20,
+                color: Color.fromRGBO(
+                  226,
+                  226,
+                  226,
+                  1,
+                ),
+                endIndent: 6,
+                indent: 6,
               ),
               const SizedBox(
                 height: 20,
@@ -655,7 +666,7 @@ class _ForoshSanatiPageState extends State<ForoshSanatiPage> {
                 ],
               ),
               const SizedBox(
-                height: 20,
+                height: 40,
               ),
               FacilitiesSelectorWidget(
                 selectable: [
@@ -675,11 +686,17 @@ class _ForoshSanatiPageState extends State<ForoshSanatiPage> {
                 selected: _facilities,
               ),
               const SizedBox(
-                height: 20,
+                height: 40,
               ),
               const Divider(
-                endIndent: 20,
-                indent: 20,
+                color: Color.fromRGBO(
+                  226,
+                  226,
+                  226,
+                  1,
+                ),
+                endIndent: 6,
+                indent: 6,
               ),
               const SizedBox(
                 height: 20,
@@ -687,7 +704,19 @@ class _ForoshSanatiPageState extends State<ForoshSanatiPage> {
               ImagesPicker(
                 selectedImagesPath: _selectedImagesPath,
               ),
-              const Divider(),
+              const Divider(
+                color: Color.fromRGBO(
+                  226,
+                  226,
+                  226,
+                  1,
+                ),
+                endIndent: 6,
+                indent: 6,
+              ),
+              const SizedBox(
+                height: 20,
+              ),
               AdvInfo(_advInfo),
               const SizedBox(
                 height: 30,

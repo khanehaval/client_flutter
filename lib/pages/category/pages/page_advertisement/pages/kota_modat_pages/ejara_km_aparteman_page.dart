@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/models/AdvInfoModel.dart';
 import 'package:flutter_application_1/pages/category/models/FacilitiesModel.dart';
-import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/ejara_adv_pages/ejara_vila_page.dart';
 import 'package:flutter_application_1/pages/category/shared/adv_info/advInfo.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/category/shared/facilities_selector.dart';
@@ -10,10 +9,9 @@ import 'package:flutter_application_1/pages/category/shared/namayesh.dart';
 import 'package:flutter_application_1/pages/category/shared/number_piacker.dart';
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
 import 'package:flutter_application_1/pages/category/shared/twoItemInRow.dart';
-import 'package:flutter_application_1/pages/category/shared/widget/submit_row.dart';
-import 'package:flutter_application_1/pages/category/shared/widget/text_field.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/route_widget.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/switachable.dart';
+import 'package:flutter_application_1/pages/category/shared/widget/text_field.dart';
 import 'package:get/get.dart';
 import 'package:gradient_icon/gradient_icon.dart';
 
@@ -133,9 +131,9 @@ class _EjaraKmApartemanPageState extends State<EjaraKmApartemanPage> {
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
           child: Column(children: [
             route([
+              " ثبت آگهی اکونومی",
               "اجاره کوتاه مدت آپارتمان",
               "اجاره کوتاه مدت",
-              " ثبت آگهی اکونومی"
             ]),
             const SizedBox(
               height: 30,
@@ -237,33 +235,48 @@ class _EjaraKmApartemanPageState extends State<EjaraKmApartemanPage> {
             ),
             switchable(_agreement, "توافقی"),
             const Divider(
-              endIndent: 20,
-              indent: 20,
+              color: Color.fromRGBO(
+                226,
+                226,
+                226,
+                1,
+              ),
+              endIndent: 6,
+              indent: 6,
             ),
             const SizedBox(
               height: 30,
             ),
-            const Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Text(
-                  "*",
-                  style: TextStyle(
-                      fontSize: 20,
-                      color: Color.fromRGBO(156, 64, 64, 1),
-                      fontFamily: MAIN_FONT_FAMILY),
-                ),
-                Text(
-                  "متراژ",
-                  style: TextStyle(
-                      color: Color.fromRGBO(166, 166, 166, 1),
-                      fontFamily: MAIN_FONT_FAMILY),
-                  textAlign: TextAlign.start,
-                ),
-              ],
+            const Padding(
+              padding: EdgeInsets.only(right: 5.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Text(
+                    "*",
+                    style: TextStyle(
+                        fontSize: 14,
+                        color: Color.fromRGBO(156, 64, 64, 1),
+                        fontFamily: MAIN_FONT_FAMILY),
+                  ),
+                  SizedBox(
+                    width: 5,
+                  ),
+                  Text(
+                    "متراژ",
+                    style: TextStyle(
+                        color: Color.fromRGBO(166, 166, 166, 1),
+                        fontFamily: MAIN_FONT_FAMILY),
+                    textAlign: TextAlign.start,
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(
+              height: 5,
             ),
             SizedBox(
-              height: 50,
+              height: 41,
               width: MediaQuery.of(context).size.width * 0.95,
               child: TextField(
                 textAlign: TextAlign.right,
@@ -292,8 +305,14 @@ class _EjaraKmApartemanPageState extends State<EjaraKmApartemanPage> {
               height: 30,
             ),
             const Divider(
-              endIndent: 20,
-              indent: 20,
+              color: Color.fromRGBO(
+                226,
+                226,
+                226,
+                1,
+              ),
+              endIndent: 6,
+              indent: 6,
             ),
             const SizedBox(
               height: 30,
@@ -309,8 +328,14 @@ class _EjaraKmApartemanPageState extends State<EjaraKmApartemanPage> {
               height: 30,
             ),
             const Divider(
-              endIndent: 20,
-              indent: 20,
+              color: Color.fromRGBO(
+                226,
+                226,
+                226,
+                1,
+              ),
+              endIndent: 6,
+              indent: 6,
             ),
             const SizedBox(
               height: 30,
@@ -360,8 +385,14 @@ class _EjaraKmApartemanPageState extends State<EjaraKmApartemanPage> {
               height: 30,
             ),
             const Divider(
-              endIndent: 20,
-              indent: 20,
+              color: Color.fromRGBO(
+                226,
+                226,
+                226,
+                1,
+              ),
+              endIndent: 6,
+              indent: 6,
             ),
             const SizedBox(
               height: 30,
@@ -387,6 +418,22 @@ class _EjaraKmApartemanPageState extends State<EjaraKmApartemanPage> {
             const SizedBox(
               height: 20,
             ),
+            const Padding(
+              padding: EdgeInsets.only(right: 5.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Text(
+                    "مدارک محرمیت",
+                    style: TextStyle(
+                      fontFamily: MAIN_FONT_FAMILY,
+                      fontSize: 13,
+                      color: Color.fromRGBO(99, 99, 99, 1),
+                    ),
+                  ),
+                ],
+              ),
+            ),
             ReadOnlyTextField(
               _buildDeprivationController,
               () {},
@@ -402,8 +449,14 @@ class _EjaraKmApartemanPageState extends State<EjaraKmApartemanPage> {
               height: 30,
             ),
             const Divider(
-              endIndent: 20,
-              indent: 20,
+              color: Color.fromRGBO(
+                226,
+                226,
+                226,
+                1,
+              ),
+              endIndent: 6,
+              indent: 6,
             ),
             const SizedBox(
               height: 30,
@@ -445,8 +498,14 @@ class _EjaraKmApartemanPageState extends State<EjaraKmApartemanPage> {
               height: 30,
             ),
             const Divider(
-              endIndent: 20,
-              indent: 20,
+              color: Color.fromRGBO(
+                226,
+                226,
+                226,
+                1,
+              ),
+              endIndent: 6,
+              indent: 6,
             ),
             const SizedBox(
               height: 30,
@@ -502,8 +561,14 @@ class _EjaraKmApartemanPageState extends State<EjaraKmApartemanPage> {
               height: 30,
             ),
             const Divider(
-              endIndent: 20,
-              indent: 20,
+              color: Color.fromRGBO(
+                226,
+                226,
+                226,
+                1,
+              ),
+              endIndent: 6,
+              indent: 6,
             ),
             const SizedBox(
               height: 30,
@@ -526,11 +591,17 @@ class _EjaraKmApartemanPageState extends State<EjaraKmApartemanPage> {
               selected: _facilities,
             ),
             const SizedBox(
-              height: 30,
+              height: 40,
             ),
             const Divider(
-              endIndent: 20,
-              indent: 20,
+              color: Color.fromRGBO(
+                226,
+                226,
+                226,
+                1,
+              ),
+              endIndent: 6,
+              indent: 6,
             ),
             const SizedBox(
               height: 30,
@@ -554,8 +625,14 @@ class _EjaraKmApartemanPageState extends State<EjaraKmApartemanPage> {
               height: 30,
             ),
             const Divider(
-              endIndent: 20,
-              indent: 20,
+              color: Color.fromRGBO(
+                226,
+                226,
+                226,
+                1,
+              ),
+              endIndent: 6,
+              indent: 6,
             ),
             const SizedBox(
               height: 30,
@@ -576,8 +653,14 @@ class _EjaraKmApartemanPageState extends State<EjaraKmApartemanPage> {
               height: 30,
             ),
             const Divider(
-              endIndent: 20,
-              indent: 20,
+              color: Color.fromRGBO(
+                226,
+                226,
+                226,
+                1,
+              ),
+              endIndent: 6,
+              indent: 6,
             ),
             const SizedBox(
               height: 30,
@@ -598,8 +681,14 @@ class _EjaraKmApartemanPageState extends State<EjaraKmApartemanPage> {
               height: 30,
             ),
             const Divider(
-              endIndent: 20,
-              indent: 20,
+              color: Color.fromRGBO(
+                226,
+                226,
+                226,
+                1,
+              ),
+              endIndent: 6,
+              indent: 6,
             ),
             const SizedBox(
               height: 30,
@@ -621,14 +710,29 @@ class _EjaraKmApartemanPageState extends State<EjaraKmApartemanPage> {
               height: 30,
             ),
             const Divider(
-              endIndent: 20,
-              indent: 20,
+              color: Color.fromRGBO(
+                226,
+                226,
+                226,
+                1,
+              ),
+              endIndent: 6,
+              indent: 6,
             ),
             const SizedBox(
               height: 30,
             ),
             ImagesPicker(selectedImagesPath: _selectedImagesPath),
-            const Divider(),
+            const Divider(
+              color: Color.fromRGBO(
+                226,
+                226,
+                226,
+                1,
+              ),
+              endIndent: 6,
+              indent: 6,
+            ),
             const SizedBox(
               height: 15,
             ),

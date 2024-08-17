@@ -201,8 +201,8 @@ class _SaleShopState extends State<SaleShop> {
               child: Column(children: [
                 route([
                   "ثبت آگهی اکونومی",
-                  "فروش مسکونی",
-                  "خرید و فروش آپارتمان"
+                  " فروش تجاری اداری",
+                  "خرید و فروش مغازه  "
                 ]),
                 const SizedBox(
                   height: 30,
@@ -292,7 +292,7 @@ class _SaleShopState extends State<SaleShop> {
                   indent: 6,
                 ),
                 const SizedBox(
-                  height: 20,
+                  height: 30,
                 ),
                 TwoItemInRow1(
                   label1: "قیمت هر متر مربع (تومان)",
@@ -302,15 +302,19 @@ class _SaleShopState extends State<SaleShop> {
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
                         border: Border.all(
-                            width: 1, //
-                            color: Theme.of(context)
-                                .hintColor //  <--- border width here
-                            ),
+                          width: 1, //
+                          color: const Color(0xffA6A6A6),
+                        ),
                       ),
                       height: 41,
                       width: getPageWidth(),
                       child: Center(
-                        child: Text(_onePrice.string),
+                        child: Text(
+                          _onePrice.string,
+                          style: const TextStyle(
+                            color: Color(0xffA6A6A6),
+                          ),
+                        ),
                       ),
                     ),
                   ),
@@ -352,19 +356,37 @@ class _SaleShopState extends State<SaleShop> {
                   ),
                 ),
                 const SizedBox(
-                  height: 20,
+                  height: 30,
                 ),
                 const Divider(
-                  endIndent: 20,
-                  indent: 20,
+                  color: Color.fromRGBO(
+                    226,
+                    226,
+                    226,
+                    1,
+                  ),
+                  endIndent: 6,
+                  indent: 6,
+                ),
+                const SizedBox(
+                  height: 20,
                 ),
                 aghsatiForoshWidget(context),
                 const SizedBox(
                   height: 20,
                 ),
                 const Divider(
-                  endIndent: 20,
-                  indent: 20,
+                  color: Color.fromRGBO(
+                    226,
+                    226,
+                    226,
+                    1,
+                  ),
+                  endIndent: 6,
+                  indent: 6,
+                ),
+                const SizedBox(
+                  height: 20,
                 ),
                 TwoItemInRow(
                     label1: "تعداد اتاق ",
@@ -396,7 +418,7 @@ class _SaleShopState extends State<SaleShop> {
                       });
                     }, width: getPageWidth())),
                 const SizedBox(
-                  height: 15,
+                  height: 30,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -484,14 +506,20 @@ class _SaleShopState extends State<SaleShop> {
                   ],
                 ),
                 const SizedBox(
-                  height: 10,
+                  height: 20,
                 ),
                 const Divider(
-                  endIndent: 20,
-                  indent: 20,
+                  color: Color.fromRGBO(
+                    226,
+                    226,
+                    226,
+                    1,
+                  ),
+                  endIndent: 6,
+                  indent: 6,
                 ),
                 const SizedBox(
-                  height: 10,
+                  height: 20,
                 ),
                 const Text(
                   "سایر ویژگی ها",
@@ -537,10 +565,7 @@ class _SaleShopState extends State<SaleShop> {
                   ),
                 ),
                 const SizedBox(
-                  height: 15,
-                ),
-                const SizedBox(
-                  height: 15,
+                  height: 20,
                 ),
                 Column(mainAxisAlignment: MainAxisAlignment.center, children: [
                   Row(mainAxisAlignment: MainAxisAlignment.center, children: [
@@ -564,12 +589,15 @@ class _SaleShopState extends State<SaleShop> {
                   const SizedBox(
                     height: 20,
                   ),
-                  const SizedBox(
-                    height: 20,
-                  ),
                   const Divider(
-                    endIndent: 20,
-                    indent: 20,
+                    color: Color.fromRGBO(
+                      226,
+                      226,
+                      226,
+                      1,
+                    ),
+                    endIndent: 6,
+                    indent: 6,
                   ),
                   const SizedBox(
                     height: 20,
@@ -578,9 +606,6 @@ class _SaleShopState extends State<SaleShop> {
                     "امکانات",
                     style:
                         TextStyle(fontFamily: MAIN_FONT_FAMILY, fontSize: 16),
-                  ),
-                  const SizedBox(
-                    height: 15,
                   ),
                   const SizedBox(
                     height: 15,
@@ -626,7 +651,7 @@ class _SaleShopState extends State<SaleShop> {
                     ),
                   ),
                   const SizedBox(
-                    height: 15,
+                    height: 20,
                   ),
                   TwoItemInRow(
                     label1: "نوع سیستم گرمایش",
@@ -686,7 +711,7 @@ class _SaleShopState extends State<SaleShop> {
                     ),
                   ),
                   const SizedBox(
-                    height: 20,
+                    height: 30,
                   ),
                   FacilitiesSelectorWidget(
                     selectable: [
@@ -706,7 +731,7 @@ class _SaleShopState extends State<SaleShop> {
                     selected: _facilities,
                   ),
                   const SizedBox(
-                    height: 20,
+                    height: 40,
                   ),
                   const Divider(
                     endIndent: 20,

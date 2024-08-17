@@ -342,15 +342,19 @@ class _KolangiAdvPageState extends State<KolangiAdvPage> {
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
                       border: Border.all(
-                          width: 1, //
-                          color: Theme.of(context)
-                              .hintColor //  <--- border width here
-                          ),
+                        width: 1, //
+                        color: const Color(0xFFA6A6A6),
+                      ),
                     ),
                     height: 41,
                     width: getPageWidth(),
                     child: Center(
-                      child: Text(_onePrice.string),
+                      child: Text(
+                        _onePrice.string,
+                        style: const TextStyle(
+                          color: Color(0xFFA6A6A6),
+                        ),
+                      ),
                     ),
                   ),
                 ),
@@ -457,6 +461,9 @@ class _KolangiAdvPageState extends State<KolangiAdvPage> {
                 height: 20,
               ),
               aghsatiForoshWidget(context),
+              const SizedBox(
+                height: 20,
+              ),
               const Divider(
                 color: Color.fromRGBO(
                   226,
@@ -466,6 +473,9 @@ class _KolangiAdvPageState extends State<KolangiAdvPage> {
                 ),
                 endIndent: 6,
                 indent: 6,
+              ),
+              const SizedBox(
+                height: 20,
               ),
               melkByVamBanki(context),
               const SizedBox(
@@ -483,6 +493,9 @@ class _KolangiAdvPageState extends State<KolangiAdvPage> {
                 ),
                 endIndent: 6,
                 indent: 6,
+              ),
+              const SizedBox(
+                height: 20,
               ),
               const Text(
                 "سایر ویژگی ها",
@@ -544,6 +557,9 @@ class _KolangiAdvPageState extends State<KolangiAdvPage> {
                 ),
                 endIndent: 6,
                 indent: 6,
+              ),
+              const SizedBox(
+                height: 20,
               ),
               const Text(
                 "امکانات",
@@ -608,7 +624,7 @@ class _KolangiAdvPageState extends State<KolangiAdvPage> {
                 selected: _facilities,
               ),
               const SizedBox(
-                height: 20,
+                height: 40,
               ),
               const Divider(
                 color: Color.fromRGBO(
@@ -635,6 +651,9 @@ class _KolangiAdvPageState extends State<KolangiAdvPage> {
                 ),
                 endIndent: 6,
                 indent: 6,
+              ),
+              const SizedBox(
+                height: 20,
               ),
               AdvInfo(_advInfo),
               const SizedBox(
@@ -856,7 +875,7 @@ class _KolangiAdvPageState extends State<KolangiAdvPage> {
                         });
                       }, width: getPageWidth())),
                   const SizedBox(
-                    height: 20,
+                    height: 40,
                   ),
                   const Text(
                     "قیمت نهایی ملک (پیش پرداخت + اقساط ) : 13.200.000.000 تومان",

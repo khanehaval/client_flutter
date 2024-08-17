@@ -56,8 +56,8 @@ class Httpservice {
     List<String> uploadedFilePaths = [];
     try {
       for (String path in paths) {
-        var uri = await uploadFile(address,path);
-        if(uri != null){
+        var uri = await uploadFile(address, path);
+        if (uri != null) {
           uploadedFilePaths.add(uri);
         }
       }

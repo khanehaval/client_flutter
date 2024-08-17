@@ -102,7 +102,7 @@ class SelectLocationPartbership extends StatelessWidget {
                 ),
               ),
               const SizedBox(
-                height: 35,
+                height: 40,
               ),
               GestureDetector(
                   onTap: () {

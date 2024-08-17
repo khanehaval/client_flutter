@@ -1,7 +1,7 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/models/AdvInfoModel.dart';
 import 'package:flutter_application_1/pages/category/models/FacilitiesModel.dart';
-import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/ejara_adv_pages/ejara_vila_page.dart';
 import 'package:flutter_application_1/pages/category/shared/adv_info/advInfo.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/category/shared/date.dart';
@@ -14,11 +14,10 @@ import 'package:flutter_application_1/pages/category/shared/number_piacker.dart'
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
 import 'package:flutter_application_1/pages/category/shared/switchItem.dart';
 import 'package:flutter_application_1/pages/category/shared/twoItemInRow.dart';
-import 'package:flutter_application_1/pages/category/shared/widget/submit_row.dart';
-import 'package:flutter_application_1/pages/category/shared/widget/text_field.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/route_widget.dart';
+import 'package:flutter_application_1/pages/category/shared/widget/submit_row.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/switachable.dart';
-
+import 'package:flutter_application_1/pages/category/shared/widget/text_field.dart';
 import 'package:get/get.dart';
 
 class Presell extends StatefulWidget {
@@ -72,20 +71,119 @@ class _PresellState extends State<Presell> {
   final _countController = TextEditingController();
 
   final _buildStepController = TextEditingController();
+  final ValueNotifier<String> _persianWords = ValueNotifier<String>('');
+  final _timeController = TextEditingController();
 
   final _progressController = TextEditingController();
+  String numberToFarsiWords(int number) {
+    if (number == 0) return 'صفر';
 
-  final _timeController = TextEditingController();
+    const ones = [
+      'صفر',
+      'یک',
+      'دو',
+      'سه',
+      'چهار',
+      'پنج',
+      'شش',
+      'هفت',
+      'هشت',
+      'نه'
+    ];
+    const teens = [
+      'ده',
+      'یازده',
+      'دوازده',
+      'سیزده',
+      'چهارده',
+      'پانزده',
+      'شانزده',
+      'هفده',
+      'هجده',
+      'نوزده'
+    ];
+    const tens = [
+      '',
+      '',
+      'بیست',
+      'سی',
+      'چهل',
+      'پنجاه',
+      'شصت',
+      'هفتاد',
+      'هشتاد',
+      'نود'
+    ];
+    const hundreds = [
+      '',
+      'صد',
+      'دویست',
+      'سیصد',
+      'چهارصد',
+      'پانصد',
+      'ششصد',
+      'هفتصد',
+      'هشتصد',
+      'نهصد'
+    ];
+    const thousands = ['', 'هزار', 'میلیون', 'میلیارد'];
+
+    String convertBelowThousand(int num) {
+      if (num == 0) return '';
+      if (num < 10) return ones[num];
+      if (num < 20) return teens[num - 10];
+      if (num < 100) {
+        int tenPart = num ~/ 10;
+        int onePart = num % 10;
+        return '${tens[tenPart]}${onePart > 0 ? ' و ${ones[onePart]}' : ''}';
+      } else {
+        int hundredPart = num ~/ 100;
+        int restPart = num % 100;
+        return '${hundreds[hundredPart]}${restPart > 0 ? ' و ${convertBelowThousand(restPart)}' : ''}';
+      }
+    }
+
+    String result = '';
+    int unit = 0;
+
+    while (number > 0) {
+      int chunk = number % 1000;
+      if (chunk > 0) {
+        String chunkText = convertBelowThousand(chunk);
+        result = '${chunkText} ${thousands[unit]} ${result}'.trim();
+      }
+      number ~/= 1000;
+      unit++;
+    }
+
+    return result.trim();
+  }
+
+  void _updatePersianWords() {
+    final text = _metragTextController.text;
+    if (text.isNotEmpty) {
+      final number = int.tryParse(text) ?? 0;
+      _persianWords.value = numberToFarsiWords(number);
+    } else {
+      _persianWords.value = '';
+    }
+  }
 
   @override
   void initState() {
     super.initState();
-
+    _metragTextController.addListener(_updatePersianWords);
     _allPriceTextController.addListener(_checkFields);
+    _metragTextController.addListener(_checkFields);
+    _buildRoomsCountController.addListener(_checkFields);
+    _buildFloorController.addListener(_checkFields);
   }
 
   void _checkFields() {
-    if (_allPriceTextController.text.isNotEmpty) {
+    if (_allPriceTextController.text.isNotEmpty &&
+        _metragTextController.text.isNotEmpty &&
+        _buildFloorController.text.isNotEmpty &&
+        _buildRoomsCountController.text.isNotEmpty) {
       submit.value = true;
     } else {
       submit.value = false;
@@ -95,9 +193,13 @@ class _PresellState extends State<Presell> {
   @override
   void dispose() {
     _allPriceTextController.dispose();
+    _metragTextController.dispose();
+    _buildFloorController.dispose();
+    _persianWords.dispose();
     super.dispose();
   }
 
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
@@ -106,95 +208,153 @@ class _PresellState extends State<Presell> {
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
           child: Column(children: [
-            route(["پیش فروش", "ساخت وساز", "ثبت آگهی اکونومی"]),
+            route([
+              "ثبت آگهی اکونومی",
+              "ساخت وساز",
+              "پیش فروش",
+            ]),
             const SizedBox(
               height: 30,
             ),
-            TwoItemInRow1(
-              label1: "قیمت هر متر مربع (تومان)",
-              label2: "قیمت کل (تومان)",
-              widget1: Obx(
-                () => Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    border: Border.all(
-                        width: 1, //
-                        color: Theme.of(context)
-                            .hintColor //  <--- border width here
-                        ),
-                  ),
-                  height: 41,
-                  width: getPageWidth(),
-                  child: Center(
-                    child: Text(_onePrice.string),
+            const Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Text(
+                  "*",
+                  style: TextStyle(
+                    fontSize: 13,
+                    color: Color.fromRGBO(156, 64, 64, 1),
+                    fontFamily: MAIN_FONT_FAMILY,
                   ),
                 ),
-              ),
-              widget2: SizedBox(
-                height: 41,
-                width: getPageWidth(),
-                child: TextField(
-                  textAlign: TextAlign.right,
-                  keyboardType: TextInputType.number,
-                  controller: _allPriceTextController,
-                  decoration: InputDecoration(
-                    hintText: "0",
-                    hintStyle: const TextStyle(
-                      fontSize: 13,
-                      fontFamily: 'Iran Sans',
-                      fontWeight: FontWeight.w400,
-                      color: Color(0xFFA6A6A6),
-                    ),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
+                SizedBox(
+                  width: 5,
+                ),
+                Padding(
+                  padding: EdgeInsets.only(right: 7),
+                  child: Text(
+                    "(تومان) قیمت کل",
+                    style: TextStyle(
+                        color: Color.fromRGBO(99, 99, 99, 1),
+                        fontFamily: MAIN_FONT_FAMILY,
+                        fontSize: 13),
+                    textAlign: TextAlign.start,
                   ),
                 ),
-              ),
+              ],
             ),
             const SizedBox(
-              height: 20,
+              height: 5,
             ),
-            const Align(
+            SizedBox(
+              height: 41,
+              width: MediaQuery.of(context).size.width * 0.95,
+              child: TextField(
+                textAlign: TextAlign.right,
+                controller: _metragTextController,
+                onChanged: (_) {},
+                keyboardType: TextInputType.number,
+                decoration: InputDecoration(
+                  hintText: 'تایپ کنید',
+                  hintStyle: const TextStyle(
+                    fontSize: 13,
+                    color: Color(0xFFA6A6A6),
+                  ),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide: const BorderSide(
+                      color: Color.fromRGBO(23, 102, 175, 1),
+                    ),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide: const BorderSide(
+                      color: Color.fromRGBO(23, 102, 175, 1),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(height: 20),
+            Align(
               alignment: Alignment.centerRight,
-              child: Text(
-                ":قیمت به حروف ",
-                style: TextStyle(
-                    fontSize: 14,
-                    fontFamily: MAIN_FONT_FAMILY,
-                    color: Color.fromRGBO(166, 166, 166, 1)),
+              child: ValueListenableBuilder<String>(
+                valueListenable: _persianWords,
+                builder: (context, value, child) {
+                  return Text(
+                    "قیمت به حروف: $value  تومان",
+                    style: const TextStyle(
+                      fontSize: 14,
+                      fontFamily: MAIN_FONT_FAMILY,
+                      color: Color.fromRGBO(99, 99, 99, 1),
+                    ),
+                  );
+                },
               ),
             ),
             const SizedBox(
               height: 20,
             ),
             const Divider(
-              endIndent: 20,
-              indent: 20,
+              color: Color.fromRGBO(
+                226,
+                226,
+                226,
+                1,
+              ),
+              endIndent: 6,
+              indent: 6,
             ),
             const SizedBox(
               height: 20,
             ),
             aghsatiForoshWidget(context),
+            const SizedBox(
+              height: 20,
+            ),
             const Divider(
-              endIndent: 20,
-              indent: 20,
+              color: Color.fromRGBO(
+                226,
+                226,
+                226,
+                1,
+              ),
+              endIndent: 6,
+              indent: 6,
+            ),
+            const SizedBox(
+              height: 20,
             ),
             melkByVamBanki(context),
             const SizedBox(
               height: 20,
             ),
             const Divider(
-              endIndent: 20,
-              indent: 20,
+              color: Color.fromRGBO(
+                226,
+                226,
+                226,
+                1,
+              ),
+              endIndent: 6,
+              indent: 6,
+            ),
+            const SizedBox(
+              height: 20,
             ),
             zamin(context),
             const SizedBox(
-              height: 10,
+              height: 20,
             ),
             const Divider(
-              endIndent: 20,
-              indent: 20,
+              color: Color.fromRGBO(
+                226,
+                226,
+                226,
+                1,
+              ),
+              endIndent: 6,
+              indent: 6,
             ),
             const SizedBox(
               height: 20,
@@ -204,16 +364,31 @@ class _PresellState extends State<Presell> {
               height: 20,
             ),
             const Divider(
-              endIndent: 20,
-              indent: 20,
+              color: Color.fromRGBO(
+                226,
+                226,
+                226,
+                1,
+              ),
+              endIndent: 6,
+              indent: 6,
+            ),
+            const SizedBox(
+              height: 20,
             ),
             _vila(context),
             const SizedBox(
               height: 20,
             ),
             const Divider(
-              endIndent: 20,
-              indent: 20,
+              color: Color.fromRGBO(
+                226,
+                226,
+                226,
+                1,
+              ),
+              endIndent: 6,
+              indent: 6,
             ),
             const SizedBox(
               height: 20,
@@ -223,8 +398,14 @@ class _PresellState extends State<Presell> {
               height: 20,
             ),
             const Divider(
-              endIndent: 20,
-              indent: 20,
+              color: Color.fromRGBO(
+                226,
+                226,
+                226,
+                1,
+              ),
+              endIndent: 6,
+              indent: 6,
             ),
             const SizedBox(
               height: 25,
@@ -283,8 +464,14 @@ class _PresellState extends State<Presell> {
               height: 20,
             ),
             const Divider(
-              endIndent: 20,
-              indent: 20,
+              color: Color.fromRGBO(
+                226,
+                226,
+                226,
+                1,
+              ),
+              endIndent: 6,
+              indent: 6,
             ),
             const SizedBox(
               height: 20,
@@ -307,19 +494,34 @@ class _PresellState extends State<Presell> {
               selected: _facilities,
             ),
             const SizedBox(
-              height: 30,
+              height: 40,
             ),
             const Divider(
-              endIndent: 20,
-              indent: 20,
+              color: Color.fromRGBO(
+                226,
+                226,
+                226,
+                1,
+              ),
+              endIndent: 6,
+              indent: 6,
             ),
             const SizedBox(
               height: 20,
             ),
             ImagesPicker(selectedImagesPath: _selectedImagesPath),
-            const Divider(),
+            const Divider(
+              color: Color.fromRGBO(
+                226,
+                226,
+                226,
+                1,
+              ),
+              endIndent: 6,
+              indent: 6,
+            ),
             const SizedBox(
-              height: 15,
+              height: 20,
             ),
             AdvInfo(_advInfo),
             const SizedBox(
@@ -942,6 +1144,12 @@ class _PresellState extends State<Presell> {
             : const SizedBox.shrink()),
       ],
     );
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty<AdvInfoModel>('_advInfo', _advInfo));
   }
 }
 
