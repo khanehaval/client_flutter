@@ -244,7 +244,6 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
     if (_allPriceTextController.text.isEmpty ||
         _metragTextController.text.isEmpty ||
         _buildFloorController.text.isEmpty ||
-        _selectedImagesPath.value.isEmpty ||
         _buildRoomsCountController.text.isEmpty) {
       Fluttertoast.showToast(
         msg: "لطفا همه فیلدهای داری * را پر کنید",
