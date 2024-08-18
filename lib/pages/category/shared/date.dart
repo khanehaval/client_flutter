@@ -31,10 +31,12 @@ void persianDataPicker(Function(String) onDateSelected) {
               height: 300,
               child: LinearDatePicker(
                   startDate: "1370/01/01",
-                  endDate: "1440/03/0",
+                  endDate: "1440/03/01",
                   initialDate: selectedDate,
                   addLeadingZero: true,
-                  dateChangeListener: (date) => selectedDate = date,
+                  dateChangeListener: (date) {
+                    selectedDate = date;
+                  },
                   showDay: true,
                   labelStyle: const TextStyle(
                     fontFamily: MAIN_FONT_FAMILY,
@@ -59,7 +61,10 @@ void persianDataPicker(Function(String) onDateSelected) {
                   showMonthName: true,
                   isJalaali: true),
             ),
-            TaeedDatePicker(),
+            TaeedDatePicker(onConfirm: () {
+              onDateSelected(selectedDate);
+              Get.back(); // Close the bottom sheet after confirming
+            }),
             const SizedBox(
               height: 20,
             )

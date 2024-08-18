@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/models/AdvInfoModel.dart';
+import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/filters_widgets/tedad_koletabaghat_filter.dart';
 import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/forosh_adv_pages/kolangi_adv_page.dart';
 import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/kota_modat_pages/ejara_km_vila_page.dart';
 import 'package:flutter_application_1/pages/category/shared/adv_info/advInfo.dart';
@@ -7,14 +8,24 @@ import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/category/shared/date.dart';
 import 'package:flutter_application_1/pages/category/shared/facilities_selector.dart';
 import 'package:flutter_application_1/pages/category/shared/images_picker/images_picker.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/Widget_NoeSanad.dart';
 import 'package:flutter_application_1/pages/category/shared/more_emkanat/jahat_sakhteman.dart';
 import 'package:flutter_application_1/pages/category/shared/more_emkanat/sanad.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/servises_wc.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_bazsazi.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_jenskaf.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_kabinet.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_system_garm.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_tamin_abe_garm.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_tedad_koletabagheh.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_tedad_vahed_dar%20tabagheh.dart';
 import 'package:flutter_application_1/pages/category/shared/namayesh.dart';
 import 'package:flutter_application_1/pages/category/shared/number_piacker.dart';
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
 import 'package:flutter_application_1/pages/category/shared/twoItemInRow.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/submit_row.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/text_field.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_system_sarmayesh.dart';
 import 'package:flutter_application_1/pages/login_secondly_page.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
@@ -45,7 +56,7 @@ class _EjaraApartemanPageState extends State<EjaraApartemanPage> {
   final _buildDirectionController = TextEditingController();
   final _buildUnitOfAnyFloorCountController = TextEditingController();
   final _buildFloorsCountController = TextEditingController();
-  final _buildDateController = TextEditingController();
+  final TextEditingController _buildDateController = TextEditingController();
   final _buildRoomsCountController = TextEditingController();
   final _buildDocumentController = TextEditingController();
   final _buildAllFloorsCountController = TextEditingController();
@@ -53,6 +64,20 @@ class _EjaraApartemanPageState extends State<EjaraApartemanPage> {
   final _countOfInstallmentsController = TextEditingController();
   final _advInfo = AdvInfoModel();
   final _formKey = GlobalKey<FormState>();
+  final TextEditingController _textController = TextEditingController();
+  final TextEditingController _GarmController = TextEditingController();
+  final TextEditingController _JenskafController = TextEditingController();
+  final TextEditingController _kabinetController = TextEditingController();
+  final TextEditingController _WcController = TextEditingController();
+  final TextEditingController _AbeGarmController = TextEditingController();
+  final TextEditingController _BazSaziController = TextEditingController();
+  final TextEditingController _JahatSakhtemanController =
+      TextEditingController();
+  final TextEditingController _TedadVahedTabaghehController =
+      TextEditingController();
+  final TextEditingController _TedadKoleTabaghehController =
+      TextEditingController();
+  final TextEditingController _NoeSanadController = TextEditingController();
 
   @override
   void initState() {
@@ -493,6 +518,7 @@ class _EjaraApartemanPageState extends State<EjaraApartemanPage> {
                     height: 41,
                     width: getPageWidth(),
                     child: TextField(
+                      controller: _TedadKoleTabaghehController,
                       textAlign: TextAlign.right,
                       decoration: InputDecoration(
                         hintText: 'انتخاب نشده',
@@ -505,9 +531,9 @@ class _EjaraApartemanPageState extends State<EjaraApartemanPage> {
                           borderRadius: BorderRadius.circular(10),
                         ),
                         prefixIcon:
-                            ReadOnlyTextField(_buildFloorsCountController, () {
-                          showNumberPicker((_) {
-                            _buildFloorsCountController.text = _;
+                            ReadOnlyTextField(_TedadKoleTabaghehController, () {
+                          TedadKoleTabagheh((selectedOption) {
+                            _TedadKoleTabaghehController.text = selectedOption;
                           });
                         }),
                       ),
@@ -528,9 +554,10 @@ class _EjaraApartemanPageState extends State<EjaraApartemanPage> {
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
-                      prefixIcon:
-                          ReadOnlyTextField(_buildDocumentController, () {
-                        Sanad((p0) => _buildDocumentController.text = p0);
+                      prefixIcon: ReadOnlyTextField(_NoeSanadController, () {
+                        NoeSanad((selectedOption) {
+                          _NoeSanadController.text = selectedOption;
+                        });
                       }),
                     ),
                   ),
@@ -544,10 +571,9 @@ class _EjaraApartemanPageState extends State<EjaraApartemanPage> {
                   label2: "تعداد واحد در طبقه",
                   widget1: InputTextField(_buildAllFloorsCountController,
                       width: getPageWidth()),
-                  widget2: ReadOnlyTextField(
-                      _buildUnitOfAnyFloorCountController, () {
-                    showNumberPicker((_) {
-                      _buildUnitOfAnyFloorCountController.text = _;
+                  widget2: ReadOnlyTextField(_TedadVahedTabaghehController, () {
+                    TedadVahedTabagheh((selectedOption) {
+                      _TedadVahedTabaghehController.text = selectedOption;
                     });
                   }, width: getPageWidth())),
               const SizedBox(
@@ -556,12 +582,18 @@ class _EjaraApartemanPageState extends State<EjaraApartemanPage> {
               TwoItemInRow(
                   label1: "بازسازی",
                   label2: "جهت ساختمان",
-                  widget1: ReadOnlyTextField(_reBuildController, () {
-                    //todo
-                  }, width: getPageWidth()),
-                  widget2: ReadOnlyTextField(_buildDirectionController, () {
-                    jahatSakhteman((_) {
-                      _buildDirectionController.text = _;
+                  widget1: ReadOnlyTextField(
+                    _BazSaziController,
+                    () {
+                      BazSazi((selectedOption) {
+                        _BazSaziController.text = selectedOption;
+                      });
+                    },
+                    width: getPageWidth(),
+                  ),
+                  widget2: ReadOnlyTextField(_JahatSakhtemanController, () {
+                    jahatSakhteman((selectedOption) {
+                      _JahatSakhtemanController.text = selectedOption;
                     });
                   }, width: getPageWidth())),
               const SizedBox(
@@ -594,6 +626,7 @@ class _EjaraApartemanPageState extends State<EjaraApartemanPage> {
                   height: 41,
                   width: getPageWidth(),
                   child: TextField(
+                    controller: _kabinetController,
                     readOnly: true,
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
@@ -610,7 +643,9 @@ class _EjaraApartemanPageState extends State<EjaraApartemanPage> {
                         prefixIcon: IconButton(
                           icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                           onPressed: () {
-                            // _show_item_1.value = !_show_item_1.isTrue;
+                            Kabinet((selectedOption) {
+                              _kabinetController.text = selectedOption;
+                            });
                           },
                         )),
                   ),
@@ -619,6 +654,7 @@ class _EjaraApartemanPageState extends State<EjaraApartemanPage> {
                   height: 41,
                   width: getPageWidth(),
                   child: TextField(
+                    controller: _JenskafController,
                     readOnly: true,
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
@@ -635,7 +671,9 @@ class _EjaraApartemanPageState extends State<EjaraApartemanPage> {
                       prefixIcon: IconButton(
                         icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                         onPressed: () {
-                          // _show_item_1.value = !_show_item_1.isTrue;
+                          JensKaf((selectedOption) {
+                            _JenskafController.text = selectedOption;
+                          });
                         },
                       ),
                     ),
@@ -652,6 +690,7 @@ class _EjaraApartemanPageState extends State<EjaraApartemanPage> {
                   height: 41,
                   width: getPageWidth(),
                   child: TextField(
+                    controller: _GarmController,
                     readOnly: true,
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
@@ -668,7 +707,10 @@ class _EjaraApartemanPageState extends State<EjaraApartemanPage> {
                       prefixIcon: IconButton(
                         icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                         onPressed: () {
-                          // _show_item_1.value = !_show_item_1.isTrue;
+                          Garmayesh((selectedOption) {
+                            // Update the TextField with the selected option
+                            _GarmController.text = selectedOption;
+                          });
                         },
                       ),
                     ),
@@ -678,6 +720,7 @@ class _EjaraApartemanPageState extends State<EjaraApartemanPage> {
                   height: 41,
                   width: getPageWidth(),
                   child: TextField(
+                    controller: _textController,
                     readOnly: true,
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
@@ -694,7 +737,10 @@ class _EjaraApartemanPageState extends State<EjaraApartemanPage> {
                       prefixIcon: IconButton(
                         icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                         onPressed: () {
-                          // _show_item_1.value = !_show_item_1.isTrue;
+                          Sarmayesh((selectedOption) {
+                            // Update the TextField with the selected option
+                            _textController.text = selectedOption;
+                          });
                         },
                       ),
                     ),
@@ -711,6 +757,7 @@ class _EjaraApartemanPageState extends State<EjaraApartemanPage> {
                   height: 41,
                   width: getPageWidth(),
                   child: TextField(
+                    controller: _WcController,
                     readOnly: true,
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
@@ -727,7 +774,9 @@ class _EjaraApartemanPageState extends State<EjaraApartemanPage> {
                         prefixIcon: IconButton(
                           icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                           onPressed: () {
-                            // _show_item_1.value = !_show_item_1.isTrue;
+                            Wc((selectedOption) {
+                              _WcController.text = selectedOption;
+                            });
                           },
                         )),
                   ),
@@ -736,6 +785,7 @@ class _EjaraApartemanPageState extends State<EjaraApartemanPage> {
                   height: 41,
                   width: getPageWidth(),
                   child: TextField(
+                    controller: _AbeGarmController,
                     readOnly: true,
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
@@ -752,7 +802,9 @@ class _EjaraApartemanPageState extends State<EjaraApartemanPage> {
                       prefixIcon: IconButton(
                         icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                         onPressed: () {
-                          // _show_item_1.value = !_show_item_1.isTrue;
+                          AbeGarm((selectedOption) {
+                            _AbeGarmController.text = selectedOption;
+                          });
                         },
                       ),
                     ),

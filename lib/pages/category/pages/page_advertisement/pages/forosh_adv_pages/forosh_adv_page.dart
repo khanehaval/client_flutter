@@ -1,12 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/models/AdvInfoModel.dart';
+import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/widget_filter/jahatsakhteman.dart';
 import 'package:flutter_application_1/pages/category/shared/adv_info/advInfo.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/category/shared/date.dart';
 import 'package:flutter_application_1/pages/category/shared/facilities_selector.dart';
 import 'package:flutter_application_1/pages/category/shared/images_picker/images_picker.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/Widget_NoeSanad.dart';
 import 'package:flutter_application_1/pages/category/shared/more_emkanat/jahat_sakhteman.dart';
 import 'package:flutter_application_1/pages/category/shared/more_emkanat/sanad.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/servises_wc.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_bazsazi.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_jenskaf.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_kabinet.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_sen_bana.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_system_garm.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_system_sarmayesh.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_tamin_abe_garm.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_tedad_aghsat.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_tedad_koletabagheh.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_tedad_vahed_dar%20tabagheh.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_time_aghsat.dart';
 import 'package:flutter_application_1/pages/category/shared/namayesh.dart';
 import 'package:flutter_application_1/pages/category/shared/number_piacker.dart';
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
@@ -65,7 +79,7 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
 
   final _buildDirectionController = TextEditingController();
 
-  final _buildUnitOfAnyFloorCountController = TextEditingController();
+  final _TedadVahedTabaghehController = TextEditingController();
 
   final _buildFloorsCountController = TextEditingController();
 
@@ -90,9 +104,9 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
   final _cabinetController = TextEditingController();
 
   final _coldTypeController = TextEditingController();
+  final _SenBanaController = TextEditingController();
 
   final _heatTypeController = TextEditingController();
-
   final _heatWaterController = TextEditingController();
   final _buttonIsPressed = false.obs;
 
@@ -491,9 +505,10 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
                       //
                     });
                   }, width: getPageWidth()),
-                  widget2: ReadOnlyTextField(_buildDateController, () {
-                    persianDataPicker(
-                        (date) => _buildDateController.text = date);
+                  widget2: ReadOnlyTextField(_SenBanaController, () {
+                    SenBana((selectedOption) {
+                      _SenBanaController.text = selectedOption;
+                    });
                     saleApartemanServerModel.age = _buildDateController.text;
                   }, width: getPageWidth(), fontSize: 12)),
               const SizedBox(
@@ -576,15 +591,15 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
                   label1: "تعداد کل طبقات",
                   label2: "نوع سند",
                   widget1: ReadOnlyTextField(_buildFloorsCountController, () {
-                    showNumberPicker((_) {
-                      _buildFloorsCountController.text = _;
-                      saleApartemanServerModel.floorNumber = _;
+                    TedadKoleTabagheh((selectedOption) {
+                      _buildFloorsCountController.text = selectedOption;
+                      saleApartemanServerModel.floorNumber;
                     });
                   }, width: getPageWidth()),
                   widget2: ReadOnlyTextField(_buildDocumentController, () {
-                    Sanad((_) {
-                      _buildDocumentController.text = _;
-                      saleApartemanServerModel.docType = _;
+                    NoeSanad((selectedOption) {
+                      _buildDocumentController.text = selectedOption;
+                      saleApartemanServerModel.docType;
                     });
                   }, width: getPageWidth())),
               const SizedBox(
@@ -595,12 +610,10 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
                   label2: "تعداد واحد در طبقه",
                   widget1: InputTextField(_buildAllFloorsCountController,
                       width: getPageWidth()),
-                  widget2: ReadOnlyTextField(
-                      _buildUnitOfAnyFloorCountController, (_) {
-                    saleApartemanServerModel.totalUnits = int.parse(_);
-                    showNumberPicker((_) {
-                      _buildUnitOfAnyFloorCountController.text = _;
-                      saleApartemanServerModel.unitInFloor = _;
+                  widget2: ReadOnlyTextField(_TedadVahedTabaghehController, () {
+                    TedadVahedTabagheh((selectedOption) {
+                      _TedadVahedTabaghehController.text = selectedOption;
+                      saleApartemanServerModel.unitInFloor;
                     });
                   }, width: getPageWidth())),
               const SizedBox(
@@ -609,14 +622,16 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
               TwoItemInRow(
                   label1: "بازسازی",
                   label2: "جهت ساختمان",
-                  widget1: ReadOnlyTextField(_reBuildController, (_) {
-                    //todo
-                    saleApartemanServerModel.reconstruct = _;
+                  widget1: ReadOnlyTextField(_reBuildController, () {
+                    BazSazi((selectedOption) {
+                      _reBuildController.text = selectedOption;
+                      saleApartemanServerModel.reconstruct;
+                    });
                   }, width: getPageWidth()),
                   widget2: ReadOnlyTextField(_buildDirectionController, () {
-                    jahatSakhteman((_) {
-                      _buildDirectionController.text = _;
-                      saleApartemanServerModel.buildingSide = _;
+                    jahatSakhteman((selectedOption) {
+                      _buildDirectionController.text = selectedOption;
+                      saleApartemanServerModel.buildingSide;
                     });
                   }, width: getPageWidth())),
               const SizedBox(
@@ -645,13 +660,17 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
               TwoItemInRow(
                 label1: "نوع کابینت",
                 label2: "جنس کف",
-                widget1: ReadOnlyTextField(_floorMaterialController, (_) {
-                  //todo
-                  saleApartemanServerModel.flooringMaterialType = _;
+                widget1: ReadOnlyTextField(_cabinetController, () {
+                  Kabinet((selectedOption) {
+                    _cabinetController.text = selectedOption;
+                    saleApartemanServerModel.cabinetType;
+                  });
                 }, width: getPageWidth()),
-                widget2: ReadOnlyTextField(_cabinetController, (_) {
-                  //todo
-                  saleApartemanServerModel.cabinetType = _;
+                widget2: ReadOnlyTextField(_floorMaterialController, () {
+                  JensKaf((selectedOption) {
+                    _floorMaterialController.text = selectedOption;
+                    saleApartemanServerModel.flooringMaterialType;
+                  });
                 }, width: getPageWidth()),
               ),
               const SizedBox(
@@ -660,13 +679,17 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
               TwoItemInRow(
                 label1: "نوع سیستم گرمایش",
                 label2: "نوع سیستم سرمایش",
-                widget1: ReadOnlyTextField(_heatTypeController, (_) {
-                  //todo
-                  saleApartemanServerModel.heatingSystemType = _;
+                widget1: ReadOnlyTextField(_heatTypeController, () {
+                  Garmayesh((selectedOption) {
+                    _heatTypeController.text = selectedOption;
+                    saleApartemanServerModel.heatingSystemType;
+                  });
                 }, width: getPageWidth()),
-                widget2: ReadOnlyTextField(_coldTypeController, (_) {
-                  //todo
-                  saleApartemanServerModel.coolingSystemType = _;
+                widget2: ReadOnlyTextField(_coldTypeController, () {
+                  Sarmayesh((selectedOption) {
+                    _coldTypeController.text = selectedOption;
+                    saleApartemanServerModel.coolingSystemType;
+                  });
                 }, width: getPageWidth()),
               ),
               const SizedBox(
@@ -675,16 +698,20 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
               TwoItemInRow(
                   label1: "سرویس بهداشتی",
                   label2: "تامین کننده آب گرم",
-                  widget1: ReadOnlyTextField(_wcController, (_) {
-                    //todo
-                    saleApartemanServerModel.wc = _;
+                  widget1: ReadOnlyTextField(_wcController, () {
+                    Wc((selectedOption) {
+                      _wcController.text = selectedOption;
+                      saleApartemanServerModel.wc;
+                    });
                   }, width: getPageWidth()),
-                  widget2: ReadOnlyTextField(_heatWaterController, (_) {
-                    //todo
-                    saleApartemanServerModel.heatWaterSystemType = _;
+                  widget2: ReadOnlyTextField(_heatWaterController, () {
+                    AbeGarm((selectedOption) {
+                      _heatWaterController.text = selectedOption;
+                      saleApartemanServerModel.heatWaterSystemType;
+                    });
                   }, width: getPageWidth())),
               const SizedBox(
-                height: 20,
+                height: 40,
               ),
               Stack(
                 children: [
@@ -881,6 +908,7 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
                       height: 41,
                       width: getPageWidth(),
                       child: TextField(
+                        keyboardType: TextInputType.number,
                         onChanged: (_) {
                           saleApartemanServerModel.loanInstallmentAmount =
                               int.parse(_);
@@ -896,6 +924,15 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
                           ),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10),
+                            borderSide: const BorderSide(
+                              color: Color.fromRGBO(23, 102, 175, 1),
+                            ),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10),
+                            borderSide: const BorderSide(
+                              color: Color.fromRGBO(23, 102, 175, 1),
+                            ),
                           ),
                         ),
                       ),
@@ -904,6 +941,7 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
                       height: 41,
                       width: getPageWidth(),
                       child: TextField(
+                        keyboardType: TextInputType.number,
                         onChanged: (_) {
                           saleApartemanServerModel.prepayment = int.parse(_);
                         },
@@ -918,6 +956,15 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
                           ),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10),
+                            borderSide: const BorderSide(
+                              color: Color.fromRGBO(23, 102, 175, 1),
+                            ),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10),
+                            borderSide: const BorderSide(
+                              color: Color.fromRGBO(23, 102, 175, 1),
+                            ),
                           ),
                         ),
                       ),
@@ -930,17 +977,19 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
                       label1: "زمان دریافت اقساط",
                       label2: "تعداد اقساط",
                       widget1:
-                          ReadOnlyTextField(_timeOfInstallmentsController, (_) {
-                        persianDataPicker((date) {
-                          _timeOfInstallmentsController.text = date;
-                          saleApartemanServerModel.installmentPaybackTime = _;
+                          ReadOnlyTextField(_timeOfInstallmentsController, () {
+                        TimeAghsat((selectedOption) {
+                          _timeOfInstallmentsController.text = selectedOption;
+                          saleApartemanServerModel.installmentPaybackTime =
+                              selectedOption;
                         });
                       }, width: getPageWidth(), fontSize: 13),
                       widget2:
                           ReadOnlyTextField(_countOfInstallmentsController, () {
-                        showNumberPicker((_) {
-                          _countOfInstallmentsController.text = _;
-                          saleApartemanServerModel.installmentNumber = _;
+                        TedadAghsat((selectedOption) {
+                          _countOfInstallmentsController.text = selectedOption;
+                          saleApartemanServerModel.installmentNumber =
+                              selectedOption;
                         });
                       }, width: getPageWidth())),
                   const SizedBox(
@@ -1039,6 +1088,15 @@ Widget melkByVamBanki(BuildContext context) {
                         ),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
+                          borderSide: const BorderSide(
+                            color: Color.fromRGBO(23, 102, 175, 1),
+                          ),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                          borderSide: const BorderSide(
+                            color: Color.fromRGBO(23, 102, 175, 1),
+                          ),
                         ),
                       ),
                     ),
@@ -1063,6 +1121,15 @@ Widget melkByVamBanki(BuildContext context) {
                         ),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
+                          borderSide: const BorderSide(
+                            color: Color.fromRGBO(23, 102, 175, 1),
+                          ),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                          borderSide: const BorderSide(
+                            color: Color.fromRGBO(23, 102, 175, 1),
+                          ),
                         ),
                       ),
                     ),
@@ -1082,7 +1149,7 @@ Widget melkByVamBanki(BuildContext context) {
                     textAlign: TextAlign.start,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 5,
                 ),
                 SizedBox(
@@ -1102,8 +1169,9 @@ Widget melkByVamBanki(BuildContext context) {
                       prefixIcon: ReadOnlyTextField(
                         _countOfInstallmentsController,
                         () {
-                          showNumberPicker((_) {
-                            _countOfInstallmentsController.text = _;
+                          TedadAghsat((selectedOption) {
+                            _countOfInstallmentsController.text =
+                                selectedOption;
                           });
                         },
                       ),

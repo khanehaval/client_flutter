@@ -1,135 +1,142 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:flutter_application_1/pages/category/shared/widget/taeed_enseraf_numberpicker.dart';
 import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:gradient_icon/gradient_icon.dart';
 
 void jahatSakhteman(Function(String) onSelected) {
-  final selected = "".obs;
-
-  final values = ["شمالی", "جنوبی", "شرقی", "غربی"];
+  final RxInt index = 2.obs; // Default index set to "Not Selected"
+  final List<String> options = [
+    "شمالی",
+    "جنوبی",
+    "شرقی",
+    "غربی",
+    "انتخاب نشده"
+  ];
   Get.bottomSheet(
     Container(
-      height: double.infinity, // Set height to occupy the full screen height
-      width: double.infinity,
       decoration: const BoxDecoration(
         gradient: LinearGradient(
           colors: GRADIANT_COLOR,
         ),
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(10),
-          topRight: Radius.circular(10),
-        ),
+        borderRadius: BorderRadius.vertical(top: Radius.circular(10)),
       ),
       child: Padding(
         padding: const EdgeInsets.all(2.0),
         child: Container(
+          height: 800,
           decoration: const BoxDecoration(
             color: Colors.white,
-            borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(10),
-              topRight: Radius.circular(10),
-            ),
+            borderRadius: BorderRadius.vertical(top: Radius.circular(10)),
           ),
-          child: Container(
-            decoration: const BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(20),
-                topRight: Radius.circular(20),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              _buildNavigationRow(index, options),
+              const SizedBox(height: 130),
+              TaeedEnserafNumberPicker(
+                selectedNumber: index.value.toString(),
+                onConfirm: () {
+                  onSelected(options[index.value]);
+                  Get.back();
+                },
               ),
-            ),
-            child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 30),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  ListView.builder(
-                    shrinkWrap: true,
-                    itemBuilder: (c, i) {
-                      String value = values[i];
-                      return GestureDetector(
-                        onTap: () {
-                          selected.value = value;
-                        },
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Center(
-                            child: Obx(
-                              () => Container(
-                                width: 150,
-                                height: 40,
-                                decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  gradient: selected.value == value
-                                      ? const LinearGradient(
-                                          colors: GRADIANT_COLOR,
-                                        )
-                                      : const LinearGradient(
-                                          colors: [
-                                            Colors.black26,
-                                            Colors.black26
-                                          ],
-                                        ),
-                                  borderRadius: BorderRadius.circular(10),
-                                ),
-                                child: Padding(
-                                  padding: selected.value == value
-                                      ? const EdgeInsets.all(1.0)
-                                      : const EdgeInsets.all(1.0),
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                      color: Colors.white,
-                                      borderRadius: BorderRadius.circular(10),
-                                    ),
-                                    child: Center(
-                                      child: Text(
-                                        value,
-                                        style: const TextStyle(
-                                          fontSize: 15,
-                                          fontFamily: MAIN_FONT_FAMILY,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      );
-                    },
-                    itemCount: 4,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 20, top: 50),
-                    child: Container(
-                      decoration: BoxDecoration(
-                        gradient: const LinearGradient(colors: GRADIANT_COLOR),
-                        borderRadius: BorderRadius.circular(50),
-                      ),
-                      child: IconButton(
-                        icon: Padding(
-                          padding: const EdgeInsets.only(top: 5.0),
-                          child: SvgPicture.asset(
-                            'assets/images/tic.svg',
-                            width: 33,
-                            height: 26,
-                          ),
-                        ),
-                        onPressed: () {
-                          onSelected(selected.value);
-                          Get.back();
-                        },
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
+            ],
           ),
         ),
       ),
     ),
+  );
+}
+
+Widget _buildNavigationRow(RxInt index, List<String> options) {
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.center,
+    children: [
+      GestureDetector(
+        onTap: () {
+          if (index.value > 0) {
+            index.value--;
+          }
+        },
+        child: const GradientIcon(
+          icon: Icons.keyboard_arrow_up,
+          gradient: LinearGradient(
+            colors: GRADIANT_COLOR1,
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+          ),
+          size: 50,
+        ),
+      ),
+      const SizedBox(width: 50),
+      SizedBox(
+        width: 130, // Fixed width for texts
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Obx(
+              () => Text(
+                index.value > 0 ? options[index.value - 1] : '',
+                style: const TextStyle(
+                  fontSize: 13,
+                  color: Colors.black38,
+                  fontFamily: MAIN_FONT_FAMILY,
+                  fontWeight: FontWeight.normal,
+                ),
+                textAlign: TextAlign.center,
+              ),
+            ),
+            Obx(
+              () => Padding(
+                padding: const EdgeInsets.symmetric(vertical: 30),
+                child: Text(
+                  options[index.value],
+                  style: const TextStyle(
+                    fontSize: 18,
+                    color: Colors.black,
+                    fontFamily: MAIN_FONT_FAMILY,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+              ),
+            ),
+            Obx(
+              () => Text(
+                index.value < options.length - 1
+                    ? options[index.value + 1]
+                    : '',
+                style: const TextStyle(
+                  fontSize: 13,
+                  color: Colors.black38,
+                  fontFamily: MAIN_FONT_FAMILY,
+                  fontWeight: FontWeight.normal,
+                ),
+                textAlign: TextAlign.center,
+              ),
+            ),
+          ],
+        ),
+      ),
+      const SizedBox(width: 50),
+      GestureDetector(
+        onTap: () {
+          if (index.value < options.length - 1) {
+            index.value++;
+          }
+        },
+        child: const GradientIcon(
+          icon: Icons.keyboard_arrow_down,
+          gradient: LinearGradient(
+            colors: GRADIANT_COLOR1,
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+          ),
+          size: 50,
+        ),
+      ),
+    ],
   );
 }

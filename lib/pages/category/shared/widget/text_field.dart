@@ -58,7 +58,7 @@ Widget InputTextField(TextEditingController controller, {double? width}) {
             fontFamily: 'Iran Sans',
             fontWeight: FontWeight.w400,
             color: Color(0xFFA6A6A6),
-            fontSize: 13),
+            fontSize: 11),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
           borderSide: const BorderSide(

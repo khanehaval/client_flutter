@@ -5,12 +5,40 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:gradient_icon/gradient_icon.dart';
 
-void Wc(Function(String) onSelected) {
+void TedadKoleTabagheh(Function(String) onSelected) {
   final RxInt index = 2.obs; // Default index set to "Not Selected"
   final List<String> options = [
-    'ایرانی',
-    'فرنگی',
-    'ایرانی فرنگی',
+    '1',
+    '2',
+    '3',
+    '4',
+    '5',
+    '6',
+    '7',
+    '8',
+    '9',
+    '10',
+    '11',
+    '12',
+    '13',
+    '14',
+    '15',
+    '16',
+    '17',
+    '18',
+    '19',
+    '20',
+    '21',
+    '22',
+    '23',
+    '24',
+    '25',
+    '26',
+    '27',
+    '28',
+    '29',
+    '30',
+    'بیشتر از 30',
     'انتخاب نشده',
   ];
 

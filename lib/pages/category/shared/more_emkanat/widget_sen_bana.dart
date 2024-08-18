@@ -5,13 +5,28 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:gradient_icon/gradient_icon.dart';
 
-void Wc(Function(String) onSelected) {
+void SenBana(Function(String) onSelected) {
   final RxInt index = 2.obs; // Default index set to "Not Selected"
   final List<String> options = [
-    'ایرانی',
-    'فرنگی',
-    'ایرانی فرنگی',
-    'انتخاب نشده',
+    '1403',
+    '1402',
+    '1401',
+    '1400',
+    '1399',
+    '1398',
+    '1397',
+    '1396',
+    '1395',
+    '1394',
+    '1393',
+    '1392',
+    '1391',
+    '1390',
+    '1389',
+    '1388',
+    '1387',
+    '1386',
+    'قبل از 1370',
   ];
 
   Get.bottomSheet(

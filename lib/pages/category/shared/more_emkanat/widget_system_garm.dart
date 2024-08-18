@@ -5,12 +5,16 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:gradient_icon/gradient_icon.dart';
 
-void Wc(Function(String) onSelected) {
+void Garmayesh(Function(String) onSelected) {
   final RxInt index = 2.obs; // Default index set to "Not Selected"
   final List<String> options = [
-    'ایرانی',
-    'فرنگی',
-    'ایرانی فرنگی',
+    'بخاری',
+    'شوفاژ',
+    'فن کوئل',
+    'داکت اسپلیت',
+    'اسپلیت',
+    'شومینه',
+    'چیلر',
     'انتخاب نشده',
   ];
 

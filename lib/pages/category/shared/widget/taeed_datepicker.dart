@@ -1,10 +1,12 @@
-import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 
 class TaeedDatePicker extends StatelessWidget {
+  final VoidCallback onConfirm;
+
+  const TaeedDatePicker({required this.onConfirm});
+
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -50,6 +52,7 @@ class TaeedDatePicker extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: GestureDetector(
+            onTap: onConfirm, // اتصال تابع تایید به این دکمه
             child: Container(
               width: 83,
               height: 38,
