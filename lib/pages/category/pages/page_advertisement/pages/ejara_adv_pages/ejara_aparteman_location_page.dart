@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/ejara_adv_pages/ejara_aparteman_page.dart';
-import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/ejara_adv_pages/ejara_vila_page.dart';
 import 'package:flutter_application_1/pages/category/shared/map_pages/location_Info.dart';
 import 'package:flutter_application_1/pages/category/shared/map_pages/map_info_page.dart';
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
-import 'package:flutter_application_1/pages/category/shared/switchItem.dart';
-import 'package:flutter_application_1/pages/category/shared/widget/submit_row.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/widget_noemelk/widget_noemelk_ejaraaparteman.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
@@ -91,10 +88,8 @@ class EjaraApartemanLocationPage extends StatelessWidget {
                       prefixIcon: IconButton(
                           icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                           onPressed: () {
-                            // Show the bottom sheet to select an item
                             showNoeMelkEjaraAparteman((selectedMelk) {
-                              _controller.text =
-                                  selectedMelk; // Update TextField with selected option
+                              _controller.text = selectedMelk;
                             });
                           }),
                     ),
@@ -106,7 +101,7 @@ class EjaraApartemanLocationPage extends StatelessWidget {
               ),
               GestureDetector(
                   onTap: () {
-                    Get.to(() => EjaraApartemanPage());
+                    Get.to(() => const EjaraApartemanPage());
                   },
                   child: Center(child: submit_row1()))
             ],

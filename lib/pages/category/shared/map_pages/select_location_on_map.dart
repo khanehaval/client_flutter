@@ -294,8 +294,8 @@ class _SelectLocationMapState extends State<SelectLocationMap> {
               borderRadius: BorderRadius.circular(10),
             ),
             child: SizedBox(
-              width: getPageWidthlocation(),
               height: 40,
+              width: getPageWidthlocation(),
               child: Center(
                 child: Padding(
                   padding: const EdgeInsets.only(right: 10.0),
@@ -306,9 +306,9 @@ class _SelectLocationMapState extends State<SelectLocationMap> {
                       child: Text(
                         locationInfo.locationName,
                         style: const TextStyle(
-                          fontFamily: 'Iran Sans',
+                          fontFamily: MAIN_FONT_FAMILY,
+                          fontSize: 12,
                           color: Color.fromRGBO(48, 48, 48, 1),
-                          fontWeight: FontWeight.w400,
                         ),
                         textAlign: TextAlign.right,
                       ),
@@ -333,7 +333,7 @@ class _SelectLocationMapState extends State<SelectLocationMap> {
               '*',
               style: TextStyle(
                 color: Color.fromRGBO(156, 64, 64, 1),
-                fontSize: 16,
+                fontSize: 14,
               ),
             ),
             SizedBox(width: 5),
@@ -415,13 +415,10 @@ class _SelectLocationMapState extends State<SelectLocationMap> {
                         // Get.back();
                       },
                       icon: SizedBox(
-                          height: 65,
-                          width: 65,
-                          child: Positioned(
-                            right: 20,
-                            child: Image.asset(
-                              "assets/images/Ok.png",
-                            ),
+                          height: 60,
+                          width: 60,
+                          child: Image.asset(
+                            "assets/images/Ok.png",
                           )))
                 ],
               ),
