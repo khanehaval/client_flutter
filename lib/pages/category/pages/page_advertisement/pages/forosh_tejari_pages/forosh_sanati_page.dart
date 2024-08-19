@@ -7,7 +7,16 @@ import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/category/shared/date.dart';
 import 'package:flutter_application_1/pages/category/shared/facilities_selector.dart';
 import 'package:flutter_application_1/pages/category/shared/images_picker/images_picker.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/Widget_NoeSanad.dart';
 import 'package:flutter_application_1/pages/category/shared/more_emkanat/sanad.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_jens_divareh.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_jenskaf.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_sen_bana.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_system_garm.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_system_sarmayesh.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_tamin_abe_garm.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_tedad_Otagh.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_tedad_koletabagheh.dart';
 import 'package:flutter_application_1/pages/category/shared/namayesh.dart';
 import 'package:flutter_application_1/pages/category/shared/number_piacker.dart';
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
@@ -57,7 +66,11 @@ class _ForoshSanatiPageState extends State<ForoshSanatiPage> {
 
   final _buildRoomsCountController = TextEditingController();
 
-  final _buildDocumentController = TextEditingController();
+  final TextEditingController _SarmayeshController = TextEditingController();
+  final TextEditingController _GarmController = TextEditingController();
+  final TextEditingController _JenskafController = TextEditingController();
+  final TextEditingController _JensDivarehController = TextEditingController();
+  final TextEditingController _AbeGarmController = TextEditingController();
 
   final _advInfo = AdvInfoModel();
   final ValueNotifier<String> _persianWords = ValueNotifier<String>('');
@@ -433,8 +446,8 @@ class _ForoshSanatiPageState extends State<ForoshSanatiPage> {
                 ),
               ),
               ReadOnlyTextField(_buildFloorController, () {
-                showNumberPicker((_) {
-                  _buildFloorController.text = _;
+                NoeSanad((selectedOption) {
+                  _buildFloorController.text = selectedOption;
                 });
               }),
               const SizedBox(
@@ -475,6 +488,7 @@ class _ForoshSanatiPageState extends State<ForoshSanatiPage> {
                   height: 41,
                   width: getPageWidth(),
                   child: TextField(
+                    controller: _JensDivarehController,
                     readOnly: true,
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
@@ -491,7 +505,9 @@ class _ForoshSanatiPageState extends State<ForoshSanatiPage> {
                         prefixIcon: IconButton(
                           icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                           onPressed: () {
-                            // _show_item_1.value = !_show_item_1.isTrue;
+                            JensDivareh((selectedOption) {
+                              _JensDivarehController.text = selectedOption;
+                            });
                           },
                         )),
                   ),
@@ -500,6 +516,7 @@ class _ForoshSanatiPageState extends State<ForoshSanatiPage> {
                   height: 41,
                   width: getPageWidth(),
                   child: TextField(
+                    controller: _JenskafController,
                     readOnly: true,
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
@@ -516,15 +533,17 @@ class _ForoshSanatiPageState extends State<ForoshSanatiPage> {
                       prefixIcon: IconButton(
                         icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                         onPressed: () {
-                          // _show_item_1.value = !_show_item_1.isTrue;
+                          JensKaf((selectedOption) {
+                            _JenskafController.text = selectedOption;
+                          });
                         },
                       ),
                     ),
                   ),
                 ),
               ),
-              const SizedBox(
-                height: 20,
+              SizedBox(
+                height: 15,
               ),
               TwoItemInRow(
                 label1: "نوع سیستم گرمایش",
@@ -533,6 +552,7 @@ class _ForoshSanatiPageState extends State<ForoshSanatiPage> {
                   height: 41,
                   width: getPageWidth(),
                   child: TextField(
+                    controller: _GarmController,
                     readOnly: true,
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
@@ -549,7 +569,9 @@ class _ForoshSanatiPageState extends State<ForoshSanatiPage> {
                       prefixIcon: IconButton(
                         icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                         onPressed: () {
-                          // _show_item_1.value = !_show_item_1.isTrue;
+                          Garmayesh((selectedOption) {
+                            _GarmController.text = selectedOption;
+                          });
                         },
                       ),
                     ),
@@ -559,6 +581,7 @@ class _ForoshSanatiPageState extends State<ForoshSanatiPage> {
                   height: 41,
                   width: getPageWidth(),
                   child: TextField(
+                    controller: _SarmayeshController,
                     readOnly: true,
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
@@ -575,7 +598,9 @@ class _ForoshSanatiPageState extends State<ForoshSanatiPage> {
                       prefixIcon: IconButton(
                         icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                         onPressed: () {
-                          // _show_item_1.value = !_show_item_1.isTrue;
+                          Sarmayesh((selectedOption) {
+                            _SarmayeshController.text = selectedOption;
+                          });
                         },
                       ),
                     ),
@@ -603,6 +628,7 @@ class _ForoshSanatiPageState extends State<ForoshSanatiPage> {
                 height: 41,
                 width: 372,
                 child: TextField(
+                  controller: _AbeGarmController,
                   readOnly: true,
                   textAlign: TextAlign.right,
                   decoration: InputDecoration(
@@ -619,7 +645,9 @@ class _ForoshSanatiPageState extends State<ForoshSanatiPage> {
                     prefixIcon: IconButton(
                       icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                       onPressed: () {
-                        // _show_item_1.value = !_show_item_1.isTrue;
+                        AbeGarm((selectedOption) {
+                          _AbeGarmController.text = selectedOption;
+                        });
                       },
                     ),
                   ),
@@ -639,34 +667,7 @@ class _ForoshSanatiPageState extends State<ForoshSanatiPage> {
                 indent: 6,
               ),
               const SizedBox(
-                height: 20,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                    height: 41,
-                    width: MediaQuery.of(context).size.width * 1 / 1.117,
-                    child: TextField(
-                      textAlign: TextAlign.right,
-                      decoration: InputDecoration(
-                        hintText: 'تایپ کنید',
-                        hintStyle: const TextStyle(
-                          fontSize: 13,
-                          fontFamily: 'Iran Sans',
-                          fontWeight: FontWeight.w400,
-                          color: Color(0xFFA6A6A6),
-                        ),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(
-                height: 40,
+                height: 30,
               ),
               FacilitiesSelectorWidget(
                 selectable: [
@@ -866,36 +867,28 @@ class _ForoshSanatiPageState extends State<ForoshSanatiPage> {
                     height: 20,
                   ),
                   TwoItemInRow2(
-                    label1: "سن بنا ",
-                    label2: "متراژ بنا ",
-                    widget1: SizedBox(
-                      height: 41,
-                      width: getPageWidth(),
-                      child: TextField(
-                        keyboardType: TextInputType.number,
-                        textAlign: TextAlign.right,
-                        decoration: InputDecoration(
-                          hintText: ' را وارد کنید', //todo
-                          hintStyle: const TextStyle(
-                            fontSize: 13,
-                            fontFamily: 'Iran Sans',
-                            fontWeight: FontWeight.w400,
-                            color: Color(0xFFA6A6A6),
-                          ),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                        ),
-                      ),
-                    ),
+                    label1: "سن بنا",
+                    label2: "متراژ بنا",
+                    widget1: ReadOnlyTextField(_buildRoomsCountController, () {
+                      SenBana((selectedOption) {
+                        _buildRoomsCountController.text = selectedOption;
+                      });
+                    }, width: getPageWidth()),
                     widget2: SizedBox(
                       height: 41,
                       width: getPageWidth(),
                       child: TextField(
-                        keyboardType: TextInputType.number,
                         textAlign: TextAlign.right,
+                        keyboardType: TextInputType.number,
+                        controller: _allPriceTextController,
+                        onChanged: (_) {
+                          _onePrice.value = _.isNotEmpty
+                              ? int.parse(_) /
+                                  int.parse(_metragTextController.text)
+                              : 0;
+                        },
                         decoration: InputDecoration(
-                          hintText: 'مبلغ را وارد کنید', //todo
+                          hintText: "0",
                           hintStyle: const TextStyle(
                             fontSize: 13,
                             fontFamily: 'Iran Sans',
@@ -904,6 +897,15 @@ class _ForoshSanatiPageState extends State<ForoshSanatiPage> {
                           ),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10),
+                            borderSide: const BorderSide(
+                              color: Color.fromRGBO(23, 102, 175, 1),
+                            ),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10),
+                            borderSide: const BorderSide(
+                              color: Color.fromRGBO(23, 102, 175, 1),
+                            ),
                           ),
                         ),
                       ),
@@ -917,13 +919,14 @@ class _ForoshSanatiPageState extends State<ForoshSanatiPage> {
                       label2: "تعداد طبقات ",
                       widget1:
                           ReadOnlyTextField(_buildRoomsCountController, () {
-                        showNumberPicker((_) {
-                          _buildRoomsCountController.text = _;
+                        TedadOtagh((selectedOption) {
+                          _buildRoomsCountController.text = selectedOption;
                         });
                       }, width: getPageWidth()),
                       widget2: ReadOnlyTextField(_buildDateController, () {
-                        persianDataPicker(
-                            (date) => _buildDateController.text = date);
+                        showNumberPicker((selectedOption) {
+                          _buildDateController.text = selectedOption;
+                        });
                       }, width: getPageWidth(), fontSize: 13)),
                   const SizedBox(
                     height: 20,

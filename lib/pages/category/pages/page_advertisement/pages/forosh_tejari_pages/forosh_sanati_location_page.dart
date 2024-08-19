@@ -34,7 +34,7 @@ class ForoshSanatiLocationPage extends StatelessWidget {
             children: [
               MapInfoPage(locationInfo),
               const SizedBox(
-                height: 10,
+                height: 20,
               ),
               const Row(
                 mainAxisAlignment: MainAxisAlignment.end,
@@ -61,6 +61,9 @@ class ForoshSanatiLocationPage extends StatelessWidget {
                     ),
                   )
                 ],
+              ),
+              const SizedBox(
+                height: 5,
               ),
               SizedBox(
                 height: 41,
@@ -102,7 +105,7 @@ class ForoshSanatiLocationPage extends StatelessWidget {
                 ),
               ),
               const SizedBox(
-                height: 45,
+                height: 30,
               ),
               GestureDetector(
                   onTap: () {

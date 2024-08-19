@@ -5,14 +5,9 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:gradient_icon/gradient_icon.dart';
 
-void AbeGarm(Function(String) onSelected) {
-  final RxInt index = 2.obs; // Default index set to "Not Selected"
-  final List<String> options = [
-    'آبگرم‌کن',
-    'موتورخانه',
-    'پکیج',
-    'انتخاب نشده',
-  ];
+void Location(Function(String) onSelected) {
+  final RxInt index = 1.obs; // Default index set to "Not Selected"
+  final List<String> options = ['مرکز تجاری', 'خیابان', 'انتخاب نشده'];
 
   Get.bottomSheet(
     Container(
@@ -20,15 +15,15 @@ void AbeGarm(Function(String) onSelected) {
         gradient: LinearGradient(
           colors: GRADIANT_COLOR,
         ),
-        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+        borderRadius: BorderRadius.vertical(top: Radius.circular(10)),
       ),
       child: Padding(
-        padding: const EdgeInsets.only(top: 1.2, right: 1.2, left: 1.2),
+        padding: const EdgeInsets.all(2.0),
         child: Container(
           height: 800,
           decoration: const BoxDecoration(
             color: Colors.white,
-            borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+            borderRadius: BorderRadius.vertical(top: Radius.circular(10)),
           ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,

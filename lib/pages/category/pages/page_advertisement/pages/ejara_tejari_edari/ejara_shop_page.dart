@@ -8,6 +8,11 @@ import 'package:flutter_application_1/pages/category/shared/date.dart';
 import 'package:flutter_application_1/pages/category/shared/facilities_selector.dart';
 import 'package:flutter_application_1/pages/category/shared/images_picker/images_picker.dart';
 import 'package:flutter_application_1/pages/category/shared/more_emkanat/jahat_sakhteman.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_jenskaf.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_location.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_sen_bana.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_system_garm.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_system_sarmayesh.dart';
 import 'package:flutter_application_1/pages/category/shared/namayesh.dart';
 import 'package:flutter_application_1/pages/category/shared/number_piacker.dart';
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
@@ -55,7 +60,9 @@ class _EjaraShopPageState extends State<EjaraShopPage> {
   final _buildDateController = TextEditingController();
 
   final _buildRoomsCountController = TextEditingController();
-
+  final _JensKafCountController = TextEditingController();
+  final TextEditingController _GarmController = TextEditingController();
+  final TextEditingController _SarmayeshController = TextEditingController();
   final submit = false.obs;
 
   final _advInfo = AdvInfoModel();
@@ -245,10 +252,11 @@ class _EjaraShopPageState extends State<EjaraShopPage> {
                     showNumberPicker((_) {
                       _buildRoomsCountController.text = _;
                     });
-                  }, width: getPageWidth()),
+                  }, width: getPageWidth(), fontSize: 13),
                   widget2: ReadOnlyTextField(_buildDateController, () {
-                    persianDataPicker(
-                        (date) => _buildDateController.text = date);
+                    SenBana((selectedOption) {
+                      _buildDateController.text = selectedOption;
+                    });
                   }, width: getPageWidth(), fontSize: 13)),
               const SizedBox(
                 height: 15,
@@ -263,8 +271,8 @@ class _EjaraShopPageState extends State<EjaraShopPage> {
                     });
                   }, width: getPageWidth()),
                   widget2: ReadOnlyTextField(_buildDirectionController, () {
-                    jahatSakhteman((_) {
-                      _buildDirectionController.text = _;
+                    Location((selectedOption) {
+                      _buildDirectionController.text = selectedOption;
                     });
                   }, width: getPageWidth())),
               const SizedBox(
@@ -393,6 +401,7 @@ class _EjaraShopPageState extends State<EjaraShopPage> {
                 height: 41,
                 width: 372,
                 child: TextField(
+                  controller: _JensKafCountController,
                   readOnly: true,
                   textAlign: TextAlign.right,
                   decoration: InputDecoration(
@@ -409,7 +418,9 @@ class _EjaraShopPageState extends State<EjaraShopPage> {
                     prefixIcon: IconButton(
                       icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                       onPressed: () {
-                        // _show_item_1.value = !_show_item_1.isTrue;
+                        JensKaf((selectedOption) {
+                          _JensKafCountController.text = selectedOption;
+                        });
                       },
                     ),
                   ),
@@ -425,6 +436,7 @@ class _EjaraShopPageState extends State<EjaraShopPage> {
                   height: 41,
                   width: getPageWidth(),
                   child: TextField(
+                    controller: _GarmController,
                     readOnly: true,
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
@@ -441,7 +453,9 @@ class _EjaraShopPageState extends State<EjaraShopPage> {
                       prefixIcon: IconButton(
                         icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                         onPressed: () {
-                          // _show_item_1.value = !_show_item_1.isTrue;
+                          Garmayesh((selectedOption) {
+                            _GarmController.text = selectedOption;
+                          });
                         },
                       ),
                     ),
@@ -451,6 +465,7 @@ class _EjaraShopPageState extends State<EjaraShopPage> {
                   height: 41,
                   width: getPageWidth(),
                   child: TextField(
+                    controller: _SarmayeshController,
                     readOnly: true,
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
@@ -467,7 +482,9 @@ class _EjaraShopPageState extends State<EjaraShopPage> {
                       prefixIcon: IconButton(
                         icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                         onPressed: () {
-                          // _show_item_1.value = !_show_item_1.isTrue;
+                          Sarmayesh((selectedOption) {
+                            _SarmayeshController.text = selectedOption;
+                          });
                         },
                       ),
                     ),

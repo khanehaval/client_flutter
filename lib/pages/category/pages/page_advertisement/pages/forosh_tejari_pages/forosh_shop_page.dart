@@ -10,6 +10,15 @@ import 'package:flutter_application_1/pages/category/shared/emkanat5.dart';
 import 'package:flutter_application_1/pages/category/shared/facilities_selector.dart';
 import 'package:flutter_application_1/pages/category/shared/images_picker/images_picker.dart';
 import 'package:flutter_application_1/pages/category/shared/more_emkanat/jahat_sakhteman.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_bazsazi.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_jenskaf.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_location.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_sen_bana.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_system_garm.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_system_sarmayesh.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_tedad_Otagh.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_tedad_aghsat.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_time_aghsat.dart';
 import 'package:flutter_application_1/pages/category/shared/namayesh.dart';
 import 'package:flutter_application_1/pages/category/shared/number_piacker.dart';
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
@@ -63,6 +72,10 @@ class _SaleShopState extends State<SaleShop> {
   final _buildDateController = TextEditingController();
 
   final _buildRoomsCountController = TextEditingController();
+  final TextEditingController _SarmayeshController = TextEditingController();
+  final TextEditingController _GarmController = TextEditingController();
+  final TextEditingController _JenskafController = TextEditingController();
+  final _reBuildController = TextEditingController();
 
   final _advInfo = AdvInfoModel();
   final ValueNotifier<String> _persianWords = ValueNotifier<String>('');
@@ -388,23 +401,24 @@ class _SaleShopState extends State<SaleShop> {
                 const SizedBox(
                   height: 20,
                 ),
-                TwoItemInRow(
+                TwoItemInRow2(
                     label1: "تعداد اتاق ",
                     label2: "سن بنا ",
                     widget1: ReadOnlyTextField(_buildRoomsCountController, () {
-                      showNumberPicker((_) {
-                        _buildRoomsCountController.text = _;
+                      TedadOtagh((selectedOption) {
+                        _buildRoomsCountController.text = selectedOption;
                       });
                     }, width: getPageWidth()),
                     widget2: ReadOnlyTextField(_buildDateController, () {
-                      persianDataPicker(
-                          (date) => _buildDateController.text = date);
+                      SenBana((selectedOption) {
+                        _buildDateController.text = selectedOption;
+                      });
                     }, width: getPageWidth(), fontSize: 13)),
                 const SizedBox(
                   height: 20,
                 ),
-                TwoItemInRow(
-                    label1: "طیقه",
+                TwoItemInRow1(
+                    label1: "طبقه",
                     label2: "موقیعت",
                     widget1: ReadOnlyTextField(
                         _buildUnitOfAnyFloorCountController, () {
@@ -413,8 +427,8 @@ class _SaleShopState extends State<SaleShop> {
                       });
                     }, width: getPageWidth()),
                     widget2: ReadOnlyTextField(_buildDirectionController, () {
-                      jahatSakhteman((_) {
-                        _buildDirectionController.text = _;
+                      Location((selectedOption) {
+                        _buildDirectionController.text = selectedOption;
                       });
                     }, width: getPageWidth())),
                 const SizedBox(
@@ -546,6 +560,7 @@ class _SaleShopState extends State<SaleShop> {
                   height: 41,
                   width: 372,
                   child: TextField(
+                    controller: _reBuildController,
                     readOnly: true,
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
@@ -558,7 +573,9 @@ class _SaleShopState extends State<SaleShop> {
                       prefixIcon: IconButton(
                         icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                         onPressed: () {
-                          // _show_item_1.value = !_show_item_1.isTrue;
+                          BazSazi((selectedOption) {
+                            _reBuildController.text = selectedOption;
+                          });
                         },
                       ),
                     ),
@@ -628,11 +645,12 @@ class _SaleShopState extends State<SaleShop> {
                     height: 41,
                     width: 372,
                     child: TextField(
+                      controller: _JenskafController,
                       readOnly: true,
                       textAlign: TextAlign.right,
                       decoration: InputDecoration(
                         hintText: 'انتخاب نشده',
-                        hintStyle: TextStyle(
+                        hintStyle: const TextStyle(
                           fontSize: 13,
                           fontFamily: 'Iran Sans',
                           fontWeight: FontWeight.w400,
@@ -644,7 +662,9 @@ class _SaleShopState extends State<SaleShop> {
                         prefixIcon: IconButton(
                           icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                           onPressed: () {
-                            // _show_item_1.value = !_show_item_1.isTrue;
+                            JensKaf((selectedOption) {
+                              _JenskafController.text = selectedOption;
+                            });
                           },
                         ),
                       ),
@@ -660,6 +680,7 @@ class _SaleShopState extends State<SaleShop> {
                       height: 41,
                       width: getPageWidth(),
                       child: TextField(
+                        controller: _GarmController,
                         readOnly: true,
                         textAlign: TextAlign.right,
                         decoration: InputDecoration(
@@ -677,7 +698,9 @@ class _SaleShopState extends State<SaleShop> {
                               icon: SvgPicture.asset(
                                   "assets/images/Vector-20.svg"),
                               onPressed: () {
-                                // _show_item_1.value = !_show_item_1.isTrue;
+                                Garmayesh((selectedOption) {
+                                  _GarmController.text = selectedOption;
+                                });
                               },
                             )),
                       ),
@@ -686,11 +709,12 @@ class _SaleShopState extends State<SaleShop> {
                       height: 41,
                       width: getPageWidth(),
                       child: TextField(
+                        controller: _SarmayeshController,
                         readOnly: true,
                         textAlign: TextAlign.right,
                         decoration: InputDecoration(
                           hintText: 'انتخاب نشده',
-                          hintStyle: TextStyle(
+                          hintStyle: const TextStyle(
                             fontSize: 13,
                             fontFamily: 'Iran Sans',
                             fontWeight: FontWeight.w400,
@@ -703,7 +727,9 @@ class _SaleShopState extends State<SaleShop> {
                             icon:
                                 SvgPicture.asset("assets/images/Vector-20.svg"),
                             onPressed: () {
-                              // _show_item_1.value = !_show_item_1.isTrue;
+                              Sarmayesh((selectedOption) {
+                                _SarmayeshController.text = selectedOption;
+                              });
                             },
                           ),
                         ),
@@ -949,14 +975,14 @@ Widget aghsatiForoshWidget(BuildContext context) {
                     label2: "تعداد اقساط",
                     widget1:
                         ReadOnlyTextField(_timeOfInstallmentsController, () {
-                      persianDataPicker((date) {
-                        _timeOfInstallmentsController.text = date;
+                      TimeAghsat((selectedOption) {
+                        _timeOfInstallmentsController.text = selectedOption;
                       });
                     }, width: getPageWidth(), fontSize: 13),
                     widget2:
                         ReadOnlyTextField(_countOfInstallmentsController, () {
-                      showNumberPicker((_) {
-                        _countOfInstallmentsController.text = _;
+                      TedadAghsat((selectedOption) {
+                        _countOfInstallmentsController.text = selectedOption;
                       });
                     }, width: getPageWidth())),
                 const SizedBox(

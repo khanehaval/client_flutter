@@ -2,20 +2,30 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/models/AdvInfoModel.dart';
 import 'package:flutter_application_1/pages/category/models/FacilitiesModel.dart';
-import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/ejara_adv_pages/ejara_vila_page.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/category/shared/date.dart';
 import 'package:flutter_application_1/pages/category/shared/facilities_selector.dart';
 import 'package:flutter_application_1/pages/category/shared/images_picker/images_picker.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/Widget_NoeSanad.dart';
 import 'package:flutter_application_1/pages/category/shared/more_emkanat/sanad.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/servises_wc.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_bazsazi.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_jenskaf.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_kabinet.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_sen_bana.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_system_garm.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_system_sarmayesh.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_tamin_abe_garm.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_tedad_aghsat.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_tedad_koletabagheh.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_tedad_vahed_dar%20tabagheh.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_time_aghsat.dart';
 import 'package:flutter_application_1/pages/category/shared/namayesh.dart';
 import 'package:flutter_application_1/pages/category/shared/number_piacker.dart';
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
 import 'package:flutter_application_1/pages/category/shared/twoItemInRow.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/route_widget.dart';
-import 'package:flutter_application_1/pages/category/shared/widget/submit_row.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/switachable.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:gradient_icon/gradient_icon.dart';
 
@@ -56,6 +66,7 @@ class _KolangiAdvPageState extends State<KolangiAdvPage> {
   final _buildDirectionController = TextEditingController();
 
   final _buildUnitOfAnyFloorCountController = TextEditingController();
+  final _senBanaController = TextEditingController();
 
   final _buildFloorsCountController = TextEditingController();
 
@@ -508,13 +519,13 @@ class _KolangiAdvPageState extends State<KolangiAdvPage> {
                   label1: "تعداد کل طبقات",
                   label2: "نوع سند",
                   widget1: ReadOnlyTextField(_buildFloorsCountController, () {
-                    showNumberPicker((_) {
-                      _buildFloorsCountController.text = _;
+                    TedadKoleTabagheh((selectedOption) {
+                      _buildFloorsCountController.text = selectedOption;
                     });
                   }, width: getPageWidth()),
                   widget2: ReadOnlyTextField(_buildDocumentController, () {
-                    Sanad((_) {
-                      _buildDocumentController.text = _;
+                    NoeSanad((selectedOption) {
+                      _buildDocumentController.text = selectedOption;
                     });
                   }, width: getPageWidth())),
               const SizedBox(
@@ -527,8 +538,8 @@ class _KolangiAdvPageState extends State<KolangiAdvPage> {
                       width: getPageWidth()),
                   widget2: ReadOnlyTextField(
                       _buildUnitOfAnyFloorCountController, () {
-                    showNumberPicker((_) {
-                      _buildUnitOfAnyFloorCountController.text = _;
+                    TedadVahedTabagheh((selectedOption) {
+                      _buildUnitOfAnyFloorCountController.text = selectedOption;
                     });
                   }, width: getPageWidth())),
               const SizedBox(
@@ -538,11 +549,13 @@ class _KolangiAdvPageState extends State<KolangiAdvPage> {
                   label1: "بازسازی",
                   label2: "جهت ساختمان",
                   widget1: ReadOnlyTextField(_reBuildController, () {
-                    //todo
+                    BazSazi((selectedOption) {
+                      _reBuildController.text = selectedOption;
+                    });
                   }, width: getPageWidth()),
                   widget2: ReadOnlyTextField(_buildDirectionController, () {
-                    jahatSakhteman((_) {
-                      _buildDirectionController.text = _;
+                    jahatSakhteman((selectedOption) {
+                      _buildDirectionController.text = selectedOption;
                     });
                   }, width: getPageWidth())),
               const SizedBox(
@@ -571,11 +584,15 @@ class _KolangiAdvPageState extends State<KolangiAdvPage> {
               TwoItemInRow(
                 label1: "نوع کابینت",
                 label2: "جنس کف",
-                widget1: ReadOnlyTextField(_floorMaterialController, () {
-                  //todo
+                widget1: ReadOnlyTextField(_cabinetController, () {
+                  Kabinet((selectedOption) {
+                    _cabinetController.text = selectedOption;
+                  });
                 }, width: getPageWidth()),
-                widget2: ReadOnlyTextField(_cabinetController, () {
-                  //todo
+                widget2: ReadOnlyTextField(_floorMaterialController, () {
+                  JensKaf((selectedOption) {
+                    _floorMaterialController.text = selectedOption;
+                  });
                 }, width: getPageWidth()),
               ),
               const SizedBox(
@@ -585,10 +602,14 @@ class _KolangiAdvPageState extends State<KolangiAdvPage> {
                 label1: "نوع سیستم گرمایش",
                 label2: "نوع سیستم سرمایش",
                 widget1: ReadOnlyTextField(_heatTypeController, () {
-                  //todo
+                  Garmayesh((selectedOption) {
+                    _heatTypeController.text = selectedOption;
+                  });
                 }, width: getPageWidth()),
                 widget2: ReadOnlyTextField(_coldTypeController, () {
-                  //todo
+                  Sarmayesh((selectedOption) {
+                    _coldTypeController.text = selectedOption;
+                  });
                 }, width: getPageWidth()),
               ),
               const SizedBox(
@@ -598,13 +619,17 @@ class _KolangiAdvPageState extends State<KolangiAdvPage> {
                   label1: "سرویس بهداشتی",
                   label2: "تامین کننده آب گرم",
                   widget1: ReadOnlyTextField(_wcController, () {
-                    //todo
+                    Wc((selectedOption) {
+                      _wcController.text = selectedOption;
+                    });
                   }, width: getPageWidth()),
                   widget2: ReadOnlyTextField(_heatWaterController, () {
-                    //todo
+                    AbeGarm((selectedOption) {
+                      _heatWaterController.text = selectedOption;
+                    });
                   }, width: getPageWidth())),
               const SizedBox(
-                height: 20,
+                height: 40,
               ),
               FacilitiesSelectorWidget(
                 selectable: [
@@ -719,10 +744,9 @@ class _KolangiAdvPageState extends State<KolangiAdvPage> {
                   TwoItemInRow2(
                     label1: "سن بنا ",
                     label2: "متراژ بنا ",
-                    widget1: ReadOnlyTextField(
-                        _buildUnitOfAnyFloorCountController, () {
-                      showNumberPicker((_) {
-                        _buildUnitOfAnyFloorCountController.text = _;
+                    widget1: ReadOnlyTextField(_senBanaController, () {
+                      SenBana((selectedOption) {
+                        _senBanaController.text = selectedOption;
                       });
                     }, width: getPageWidth()),
                     widget2: SizedBox(
@@ -864,14 +888,14 @@ class _KolangiAdvPageState extends State<KolangiAdvPage> {
                       label2: "تعداد اقساط",
                       widget1:
                           ReadOnlyTextField(_timeOfInstallmentsController, () {
-                        persianDataPicker((date) {
-                          _timeOfInstallmentsController.text = date;
+                        TimeAghsat((selectedOption) {
+                          _timeOfInstallmentsController.text = selectedOption;
                         });
                       }, width: getPageWidth(), fontSize: 13),
                       widget2:
                           ReadOnlyTextField(_countOfInstallmentsController, () {
-                        showNumberPicker((_) {
-                          _countOfInstallmentsController.text = _;
+                        TedadAghsat((selectedOption) {
+                          _countOfInstallmentsController.text = selectedOption;
                         });
                       }, width: getPageWidth())),
                   const SizedBox(

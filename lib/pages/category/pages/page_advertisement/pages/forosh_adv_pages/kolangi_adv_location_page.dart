@@ -38,7 +38,7 @@ class _SelectLocationOnMapState extends State<KolangiAdvLocationPage> {
             children: [
               MapInfoPage(widget.locationInfo),
               const SizedBox(
-                height: 10,
+                height: 20,
               ),
               const Row(
                 mainAxisAlignment: MainAxisAlignment.end,
@@ -65,6 +65,9 @@ class _SelectLocationOnMapState extends State<KolangiAdvLocationPage> {
                     ),
                   )
                 ],
+              ),
+              const SizedBox(
+                height: 5,
               ),
               SizedBox(
                 height: 41,
@@ -106,7 +109,7 @@ class _SelectLocationOnMapState extends State<KolangiAdvLocationPage> {
                 ),
               ),
               const SizedBox(
-                height: 30,
+                height: 40,
               ),
               GestureDetector(
                   onTap: () {

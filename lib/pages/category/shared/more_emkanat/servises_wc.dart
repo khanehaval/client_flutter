@@ -20,15 +20,15 @@ void Wc(Function(String) onSelected) {
         gradient: LinearGradient(
           colors: GRADIANT_COLOR,
         ),
-        borderRadius: BorderRadius.vertical(top: Radius.circular(10)),
+        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
       ),
       child: Padding(
-        padding: const EdgeInsets.all(2.0),
+        padding: const EdgeInsets.only(top: 1.2, right: 1.2, left: 1.2),
         child: Container(
           height: 800,
           decoration: const BoxDecoration(
             color: Colors.white,
-            borderRadius: BorderRadius.vertical(top: Radius.circular(10)),
+            borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
           ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,

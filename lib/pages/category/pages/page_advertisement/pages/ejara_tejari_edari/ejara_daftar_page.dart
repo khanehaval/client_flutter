@@ -9,6 +9,16 @@ import 'package:flutter_application_1/pages/category/shared/date.dart';
 import 'package:flutter_application_1/pages/category/shared/facilities_selector.dart';
 import 'package:flutter_application_1/pages/category/shared/images_picker/images_picker.dart';
 import 'package:flutter_application_1/pages/category/shared/more_emkanat/jahat_sakhteman.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/servises_wc.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_bazsazi.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_jenskaf.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_kabinet.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_sen_bana.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_system_garm.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_system_sarmayesh.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_tamin_abe_garm.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_tedad_koletabagheh.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_tedad_vahed_dar%20tabagheh.dart';
 import 'package:flutter_application_1/pages/category/shared/namayesh.dart';
 import 'package:flutter_application_1/pages/category/shared/number_piacker.dart';
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
@@ -62,6 +72,13 @@ class _EjaraDafterPageState extends State<EjaraDafterPage> {
   final _reBuildController = TextEditingController();
 
   final _countOfInstallmentsController = TextEditingController();
+  final _countOfInstallmentsKoleTABAGHController = TextEditingController();
+  final TextEditingController _kabinetController = TextEditingController();
+  final TextEditingController _JenskafController = TextEditingController();
+  final TextEditingController _GarmController = TextEditingController();
+  final TextEditingController _SarmayeshController = TextEditingController();
+  final TextEditingController _WcController = TextEditingController();
+  final TextEditingController _AbeGarmController = TextEditingController();
 
   final submit = false.obs;
 
@@ -320,13 +337,15 @@ class _EjaraDafterPageState extends State<EjaraDafterPage> {
                   });
                 }, width: getPageWidth(), fontSize: 13),
                 widget2: ReadOnlyTextField(_buildDateController, () {
-                  persianDataPicker((date) => _buildDateController.text = date);
+                  SenBana((selectedOption) {
+                    _buildDateController.text = selectedOption;
+                  });
                 }, width: getPageWidth(), fontSize: 13)),
             const SizedBox(
               height: 20,
             ),
             Padding(
-              padding: EdgeInsets.only(right: 5.0),
+              padding: const EdgeInsets.only(right: 5.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
@@ -522,10 +541,11 @@ class _EjaraDafterPageState extends State<EjaraDafterPage> {
                     borderRadius: BorderRadius.circular(10),
                   ),
                   prefixIcon: ReadOnlyTextField(
-                    _countOfInstallmentsController,
+                    _countOfInstallmentsKoleTABAGHController,
                     () {
-                      showNumberPicker((_) {
-                        _countOfInstallmentsController.text = _;
+                      TedadKoleTabagheh((selectedOption) {
+                        _countOfInstallmentsKoleTABAGHController.text =
+                            selectedOption;
                       });
                     },
                   ),
@@ -542,8 +562,8 @@ class _EjaraDafterPageState extends State<EjaraDafterPage> {
                     width: getPageWidth()),
                 widget2:
                     ReadOnlyTextField(_buildUnitOfAnyFloorCountController, () {
-                  showNumberPicker((_) {
-                    _buildUnitOfAnyFloorCountController.text = _;
+                  TedadVahedTabagheh((selectedOption) {
+                    _buildUnitOfAnyFloorCountController.text = selectedOption;
                   });
                 }, width: getPageWidth())),
             const SizedBox(
@@ -553,7 +573,9 @@ class _EjaraDafterPageState extends State<EjaraDafterPage> {
                 label1: "بازسازی",
                 label2: "جهت ساختمان",
                 widget1: ReadOnlyTextField(_reBuildController, () {
-                  //todo
+                  BazSazi((selectedOption) {
+                    _reBuildController.text = selectedOption;
+                  });
                 }, width: getPageWidth()),
                 widget2: ReadOnlyTextField(_buildDirectionController, () {
                   jahatSakhteman((_) {
@@ -590,23 +612,25 @@ class _EjaraDafterPageState extends State<EjaraDafterPage> {
                 height: 41,
                 width: getPageWidth(),
                 child: TextField(
+                  controller: _kabinetController,
                   readOnly: true,
                   textAlign: TextAlign.right,
                   decoration: InputDecoration(
                       hintText: 'انتخاب نشده',
-                      hintStyle: TextStyle(
-                        fontSize: 13,
-                        fontFamily: 'Iran Sans',
-                        fontWeight: FontWeight.w400,
-                        color: Color(0xFFA6A6A6),
-                      ),
+                      hintStyle: const TextStyle(
+                          fontFamily: 'Iran Sans',
+                          fontWeight: FontWeight.w400,
+                          color: Color(0xFFA6A6A6),
+                          fontSize: 13),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
                       prefixIcon: IconButton(
                         icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                         onPressed: () {
-                          // _show_item_1.value = !_show_item_1.isTrue;
+                          Kabinet((selectedOption) {
+                            _kabinetController.text = selectedOption;
+                          });
                         },
                       )),
                 ),
@@ -615,23 +639,25 @@ class _EjaraDafterPageState extends State<EjaraDafterPage> {
                 height: 41,
                 width: getPageWidth(),
                 child: TextField(
+                  controller: _JenskafController,
                   readOnly: true,
                   textAlign: TextAlign.right,
                   decoration: InputDecoration(
                     hintText: 'انتخاب نشده',
-                    hintStyle: TextStyle(
-                      fontSize: 13,
-                      fontFamily: 'Iran Sans',
-                      fontWeight: FontWeight.w400,
-                      color: Color(0xFFA6A6A6),
-                    ),
+                    hintStyle: const TextStyle(
+                        fontFamily: 'Iran Sans',
+                        fontWeight: FontWeight.w400,
+                        color: Color(0xFFA6A6A6),
+                        fontSize: 13),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
                     prefixIcon: IconButton(
                       icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                       onPressed: () {
-                        // _show_item_1.value = !_show_item_1.isTrue;
+                        JensKaf((selectedOption) {
+                          _JenskafController.text = selectedOption;
+                        });
                       },
                     ),
                   ),
@@ -639,7 +665,7 @@ class _EjaraDafterPageState extends State<EjaraDafterPage> {
               ),
             ),
             const SizedBox(
-              height: 20,
+              height: 15,
             ),
             TwoItemInRow(
               label1: "نوع سیستم گرمایش",
@@ -648,23 +674,25 @@ class _EjaraDafterPageState extends State<EjaraDafterPage> {
                 height: 41,
                 width: getPageWidth(),
                 child: TextField(
+                  controller: _GarmController,
                   readOnly: true,
                   textAlign: TextAlign.right,
                   decoration: InputDecoration(
                     hintText: 'انتخاب نشده',
-                    hintStyle: TextStyle(
-                      fontSize: 13,
-                      fontFamily: 'Iran Sans',
-                      fontWeight: FontWeight.w400,
-                      color: Color(0xFFA6A6A6),
-                    ),
+                    hintStyle: const TextStyle(
+                        fontFamily: 'Iran Sans',
+                        fontWeight: FontWeight.w400,
+                        color: Color(0xFFA6A6A6),
+                        fontSize: 13),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
                     prefixIcon: IconButton(
                       icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                       onPressed: () {
-                        // _show_item_1.value = !_show_item_1.isTrue;
+                        Garmayesh((selectedOption) {
+                          _GarmController.text = selectedOption;
+                        });
                       },
                     ),
                   ),
@@ -674,31 +702,33 @@ class _EjaraDafterPageState extends State<EjaraDafterPage> {
                 height: 41,
                 width: getPageWidth(),
                 child: TextField(
+                  controller: _SarmayeshController,
                   readOnly: true,
                   textAlign: TextAlign.right,
                   decoration: InputDecoration(
                     hintText: 'انتخاب نشده',
                     hintStyle: const TextStyle(
-                      fontSize: 13,
-                      fontFamily: 'Iran Sans',
-                      fontWeight: FontWeight.w400,
-                      color: Color(0xFFA6A6A6),
-                    ),
+                        fontFamily: 'Iran Sans',
+                        fontWeight: FontWeight.w400,
+                        color: Color(0xFFA6A6A6),
+                        fontSize: 13),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
                     prefixIcon: IconButton(
                       icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                       onPressed: () {
-                        // _show_item_1.value = !_show_item_1.isTrue;
+                        Sarmayesh((selectedOption) {
+                          _SarmayeshController.text = selectedOption;
+                        });
                       },
                     ),
                   ),
                 ),
               ),
             ),
-            SizedBox(
-              height: 20,
+            const SizedBox(
+              height: 15,
             ),
             TwoItemInRow(
               label1: "سرویس بهداشتی",
@@ -707,23 +737,25 @@ class _EjaraDafterPageState extends State<EjaraDafterPage> {
                 height: 41,
                 width: getPageWidth(),
                 child: TextField(
+                  controller: _WcController,
                   readOnly: true,
                   textAlign: TextAlign.right,
                   decoration: InputDecoration(
                       hintText: 'انتخاب نشده',
                       hintStyle: const TextStyle(
-                        fontSize: 13,
-                        fontFamily: 'Iran Sans',
-                        fontWeight: FontWeight.w400,
-                        color: Color(0xFFA6A6A6),
-                      ),
+                          fontFamily: 'Iran Sans',
+                          fontWeight: FontWeight.w400,
+                          color: Color(0xFFA6A6A6),
+                          fontSize: 13),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
                       prefixIcon: IconButton(
                         icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                         onPressed: () {
-                          // _show_item_1.value = !_show_item_1.isTrue;
+                          Wc((selectedOption) {
+                            _WcController.text = selectedOption;
+                          });
                         },
                       )),
                 ),
@@ -732,23 +764,25 @@ class _EjaraDafterPageState extends State<EjaraDafterPage> {
                 height: 41,
                 width: getPageWidth(),
                 child: TextField(
+                  controller: _AbeGarmController,
                   readOnly: true,
                   textAlign: TextAlign.right,
                   decoration: InputDecoration(
                     hintText: 'انتخاب نشده',
                     hintStyle: const TextStyle(
-                      fontSize: 13,
-                      fontFamily: 'Iran Sans',
-                      fontWeight: FontWeight.w400,
-                      color: Color(0xFFA6A6A6),
-                    ),
+                        fontFamily: 'Iran Sans',
+                        fontWeight: FontWeight.w400,
+                        color: Color(0xFFA6A6A6),
+                        fontSize: 13),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
                     prefixIcon: IconButton(
                       icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                       onPressed: () {
-                        // _show_item_1.value = !_show_item_1.isTrue;
+                        AbeGarm((selectedOption) {
+                          _AbeGarmController.text = selectedOption;
+                        });
                       },
                     ),
                   ),

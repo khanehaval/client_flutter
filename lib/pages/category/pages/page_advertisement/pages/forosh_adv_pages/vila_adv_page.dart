@@ -1,24 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/models/AdvInfoModel.dart';
 import 'package:flutter_application_1/pages/category/models/FacilitiesModel.dart';
-import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/ejara_adv_pages/ejara_vila_page.dart';
 import 'package:flutter_application_1/pages/category/shared/adv_info/advInfo.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/category/shared/date.dart';
 import 'package:flutter_application_1/pages/category/shared/facilities_selector.dart';
 import 'package:flutter_application_1/pages/category/shared/images_picker/images_picker.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/Widget_NoeSanad.dart';
 import 'package:flutter_application_1/pages/category/shared/more_emkanat/jahat_sakhteman.dart';
 import 'package:flutter_application_1/pages/category/shared/more_emkanat/sanad.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/servises_wc.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_bazsazi.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_jenskaf.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_kabinet.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_sen_bana.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_system_garm.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_system_sarmayesh.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_tamin_abe_garm.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_tedad_aghsat.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_time_aghsat.dart';
 import 'package:flutter_application_1/pages/category/shared/namayesh.dart';
 import 'package:flutter_application_1/pages/category/shared/number_piacker.dart';
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
-
 import 'package:flutter_application_1/pages/category/shared/twoItemInRow.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/route_widget.dart';
-import 'package:flutter_application_1/pages/category/shared/widget/submit_row.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/switachable.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/text_field.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:gradient_icon/gradient_icon.dart';
 
@@ -59,6 +66,7 @@ class _VilaAdvPageState extends State<VilaAdvPage> {
   final _buildFloorsCountController = TextEditingController();
 
   final _timeOfInstallmentsController = TextEditingController();
+  final _timeOfInstallments_vamBankiController = TextEditingController();
 
   final _buildDateController = TextEditingController();
 
@@ -69,12 +77,16 @@ class _VilaAdvPageState extends State<VilaAdvPage> {
   final _buildFloorController = TextEditingController();
   final _metragbanaTextController = TextEditingController();
   final _metrajzaminTextController = TextEditingController();
+  final _TedadOtaghTextController = TextEditingController();
 
   final _buildAllFloorsCountController = TextEditingController();
 
   final _reBuildController = TextEditingController();
 
   final _countOfInstallmentsController = TextEditingController();
+  final _tedadaghsat_monthController = TextEditingController();
+
+  final _countOfInstallments_VamBankiController = TextEditingController();
 
   final _floorMaterialController = TextEditingController();
 
@@ -464,13 +476,15 @@ class _VilaAdvPageState extends State<VilaAdvPage> {
             TwoItemInRow2(
                 label1: "تعداد اتاق ",
                 label2: "سن بنا ",
-                widget1: ReadOnlyTextField(_buildRoomsCountController, () {
-                  showNumberPicker((_) {
-                    _buildRoomsCountController.text = _;
+                widget1: ReadOnlyTextField(_TedadOtaghTextController, () {
+                  showNumberPicker((selectedOption) {
+                    _TedadOtaghTextController.text = selectedOption;
                   });
                 }, width: getPageWidth()),
                 widget2: ReadOnlyTextField(_buildDateController, () {
-                  persianDataPicker((date) => _buildDateController.text = date);
+                  SenBana((selectedOption) {
+                    _buildDateController.text = selectedOption;
+                  });
                 }, width: getPageWidth(), fontSize: 13)),
             const SizedBox(
               height: 20,
@@ -550,7 +564,9 @@ class _VilaAdvPageState extends State<VilaAdvPage> {
               ],
             ),
             ReadOnlyTextField(_buildDocumentController, () {
-              Sanad((p0) => _buildDocumentController.text = p0);
+              NoeSanad((selectedOption) {
+                _buildDocumentController.text = selectedOption;
+              });
             }),
             const SizedBox(
               height: 15,
@@ -559,10 +575,14 @@ class _VilaAdvPageState extends State<VilaAdvPage> {
                 label1: "بازسازی",
                 label2: "جهت ساختمان",
                 widget1: ReadOnlyTextField(_reBuildController, () {
-                  //todo
+                  BazSazi((selectedOption) {
+                    _reBuildController.text = selectedOption;
+                  });
                 }, width: getPageWidth()),
                 widget2: ReadOnlyTextField(_buildDirectionController, () {
-                  jahatSakhteman((p0) => _buildDirectionController.text = p0);
+                  jahatSakhteman((selectedOption) {
+                    _buildDirectionController.text = selectedOption;
+                  });
                 }, width: getPageWidth())),
             const SizedBox(
               height: 30,
@@ -590,11 +610,15 @@ class _VilaAdvPageState extends State<VilaAdvPage> {
             TwoItemInRow(
               label1: "نوع کابینت",
               label2: "جنس کف",
-              widget1: ReadOnlyTextField(_floorMaterialController, () {
-                //todo
+              widget1: ReadOnlyTextField(_cabinetController, () {
+                Kabinet((selectedOption) {
+                  _cabinetController.text = selectedOption;
+                });
               }, width: getPageWidth()),
-              widget2: ReadOnlyTextField(_cabinetController, () {
-                //todo
+              widget2: ReadOnlyTextField(_floorMaterialController, () {
+                JensKaf((selectedOption) {
+                  _floorMaterialController.text = selectedOption;
+                });
               }, width: getPageWidth()),
             ),
             const SizedBox(
@@ -604,10 +628,14 @@ class _VilaAdvPageState extends State<VilaAdvPage> {
               label1: "نوع سیستم گرمایش",
               label2: "نوع سیستم سرمایش",
               widget1: ReadOnlyTextField(_heatTypeController, () {
-                //todo
+                Garmayesh((selectedOption) {
+                  _heatTypeController.text = selectedOption;
+                });
               }, width: getPageWidth()),
               widget2: ReadOnlyTextField(_coldTypeController, () {
-                //todo
+                Sarmayesh((selectedOption) {
+                  _coldTypeController.text = selectedOption;
+                });
               }, width: getPageWidth()),
             ),
             const SizedBox(
@@ -617,10 +645,14 @@ class _VilaAdvPageState extends State<VilaAdvPage> {
                 label1: "سرویس بهداشتی",
                 label2: "تامین کننده آب گرم",
                 widget1: ReadOnlyTextField(_wcController, () {
-                  //todo
+                  Wc((selectedOption) {
+                    _wcController.text = selectedOption;
+                  });
                 }, width: getPageWidth()),
                 widget2: ReadOnlyTextField(_heatWaterController, () {
-                  //todo
+                  AbeGarm((selectedOption) {
+                    _heatWaterController.text = selectedOption;
+                  });
                 }, width: getPageWidth())),
             const SizedBox(
               height: 20,
@@ -784,16 +816,17 @@ class _VilaAdvPageState extends State<VilaAdvPage> {
                   TwoItemInRow(
                       label1: "زمان دریافت اقساط",
                       label2: "تعداد اقساط",
-                      widget1:
-                          ReadOnlyTextField(_timeOfInstallmentsController, () {
-                        persianDataPicker((date) {
-                          _timeOfInstallmentsController.text = date;
+                      widget1: ReadOnlyTextField(
+                          _timeOfInstallments_vamBankiController, () {
+                        TimeAghsat((selectedOption) {
+                          _timeOfInstallments_vamBankiController.text =
+                              selectedOption;
                         });
                       }, width: getPageWidth(), fontSize: 13),
                       widget2:
                           ReadOnlyTextField(_countOfInstallmentsController, () {
-                        showNumberPicker((_) {
-                          _countOfInstallmentsController.text = _;
+                        TedadAghsat((selectedOption) {
+                          _countOfInstallmentsController.text = selectedOption;
                         });
                       }, width: getPageWidth())),
                   const SizedBox(
@@ -896,14 +929,15 @@ class _VilaAdvPageState extends State<VilaAdvPage> {
                       label2: "تعداد اقساط",
                       widget1:
                           ReadOnlyTextField(_timeOfInstallmentsController, () {
-                        persianDataPicker((date) {
+                        TimeAghsat((date) {
                           _timeOfInstallmentsController.text = date;
                         });
                       }, width: getPageWidth(), fontSize: 13),
-                      widget2:
-                          ReadOnlyTextField(_countOfInstallmentsController, () {
-                        showNumberPicker((_) {
-                          _countOfInstallmentsController.text = _;
+                      widget2: ReadOnlyTextField(
+                          _countOfInstallments_VamBankiController, () {
+                        TedadAghsat((selectedOption) {
+                          _countOfInstallments_VamBankiController.text =
+                              selectedOption;
                         });
                       }, width: getPageWidth())),
                   const SizedBox(height: 25),
@@ -930,10 +964,11 @@ class _VilaAdvPageState extends State<VilaAdvPage> {
                           borderRadius: BorderRadius.circular(10),
                         ),
                         prefixIcon: ReadOnlyTextField(
-                          _countOfInstallmentsController,
+                          _tedadaghsat_monthController,
                           () {
-                            showNumberPicker((_) {
-                              _countOfInstallmentsController.text = _;
+                            TedadAghsat((selectedOption) {
+                              _tedadaghsat_monthController.text =
+                                  selectedOption;
                             });
                           },
                         ),

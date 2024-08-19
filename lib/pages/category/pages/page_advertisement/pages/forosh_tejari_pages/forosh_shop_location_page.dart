@@ -33,7 +33,7 @@ class ForoshShopLocationPage extends StatelessWidget {
             children: [
               MapInfoPage(locationInfo),
               const SizedBox(
-                height: 15,
+                height: 20,
               ),
               const Row(
                 mainAxisAlignment: MainAxisAlignment.end,
@@ -60,6 +60,9 @@ class ForoshShopLocationPage extends StatelessWidget {
                     ),
                   )
                 ],
+              ),
+              const SizedBox(
+                height: 5,
               ),
               SizedBox(
                 height: 41,
@@ -101,7 +104,7 @@ class ForoshShopLocationPage extends StatelessWidget {
                 ),
               ),
               const SizedBox(
-                height: 5,
+                height: 25,
               ),
               GestureDetector(
                   onTap: () {

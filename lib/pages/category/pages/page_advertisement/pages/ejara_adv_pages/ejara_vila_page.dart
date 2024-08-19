@@ -7,6 +7,14 @@ import 'package:flutter_application_1/pages/category/shared/date.dart';
 import 'package:flutter_application_1/pages/category/shared/facilities_selector.dart';
 import 'package:flutter_application_1/pages/category/shared/images_picker/images_picker.dart';
 import 'package:flutter_application_1/pages/category/shared/more_emkanat/jahat_sakhteman.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/servises_wc.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_bazsazi.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_jenskaf.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_kabinet.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_sen_bana.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_system_garm.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_system_sarmayesh.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_tamin_abe_garm.dart';
 import 'package:flutter_application_1/pages/category/shared/namayesh.dart';
 import 'package:flutter_application_1/pages/category/shared/number_piacker.dart';
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
@@ -59,6 +67,12 @@ class _EjaraVilaPageState extends State<EjaraVilaPage> {
   final _countOfInstallmentsController = TextEditingController();
 
   final _advInfo = AdvInfoModel();
+  final TextEditingController _kabinetController = TextEditingController();
+  final TextEditingController _JenskafController = TextEditingController();
+  final TextEditingController _GarmController = TextEditingController();
+  final TextEditingController _WcController = TextEditingController();
+  final TextEditingController _AbeGarmController = TextEditingController();
+  final TextEditingController _SarmayeshController = TextEditingController();
 
   @override
   void initState() {
@@ -234,7 +248,7 @@ class _EjaraVilaPageState extends State<EjaraVilaPage> {
                 ),
               ),
               const SizedBox(
-                height: 10,
+                height: 20,
               ),
               aghsatiForoshWidget(context),
               const SizedBox(
@@ -346,8 +360,9 @@ class _EjaraVilaPageState extends State<EjaraVilaPage> {
                     });
                   }, width: getPageWidth()),
                   widget2: ReadOnlyTextField(_buildDateController, () {
-                    persianDataPicker(
-                        (date) => _buildDateController.text = date);
+                    SenBana((selectedOption) {
+                      _buildDateController.text = selectedOption;
+                    });
                   }, width: getPageWidth(), fontSize: 13)),
               const SizedBox(
                 height: 20,
@@ -462,7 +477,7 @@ class _EjaraVilaPageState extends State<EjaraVilaPage> {
                 ],
               ),
               const SizedBox(
-                height: 10,
+                height: 20,
               ),
               const Divider(
                 color: Color.fromRGBO(
@@ -475,21 +490,23 @@ class _EjaraVilaPageState extends State<EjaraVilaPage> {
                 indent: 6,
               ),
               const SizedBox(
-                height: 10,
+                height: 20,
               ),
               const Text(
                 "سایر ویژگی ها",
                 style: TextStyle(fontFamily: MAIN_FONT_FAMILY, fontSize: 15),
               ),
               const SizedBox(
-                height: 15,
+                height: 20,
               ),
               TwoItemInRow(
                   label1: "بازسازی",
                   label2: "جهت ساختمان",
                   widget1: ReadOnlyTextField(_reBuildController, () {
-                    //todo
-                  }, width: getPageWidth(), fontSize: 13),
+                    BazSazi((selectedOption) {
+                      _reBuildController.text = selectedOption;
+                    });
+                  }, width: getPageWidth(), fontSize: 11),
                   widget2: ReadOnlyTextField(_buildDirectionController, () {
                     jahatSakhteman((_) {
                       _buildDirectionController.text = _;
@@ -525,6 +542,7 @@ class _EjaraVilaPageState extends State<EjaraVilaPage> {
                   height: 41,
                   width: getPageWidth(),
                   child: TextField(
+                    controller: _kabinetController,
                     readOnly: true,
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
@@ -540,7 +558,9 @@ class _EjaraVilaPageState extends State<EjaraVilaPage> {
                         prefixIcon: IconButton(
                           icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                           onPressed: () {
-                            // _show_item_1.value = !_show_item_1.isTrue;
+                            Kabinet((selectedOption) {
+                              _kabinetController.text = selectedOption;
+                            });
                           },
                         )),
                   ),
@@ -549,6 +569,7 @@ class _EjaraVilaPageState extends State<EjaraVilaPage> {
                   height: 41,
                   width: getPageWidth(),
                   child: TextField(
+                    controller: _JenskafController,
                     readOnly: true,
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
@@ -564,7 +585,9 @@ class _EjaraVilaPageState extends State<EjaraVilaPage> {
                       prefixIcon: IconButton(
                         icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                         onPressed: () {
-                          // _show_item_1.value = !_show_item_1.isTrue;
+                          JensKaf((selectedOption) {
+                            _JenskafController.text = selectedOption;
+                          });
                         },
                       ),
                     ),
@@ -581,6 +604,7 @@ class _EjaraVilaPageState extends State<EjaraVilaPage> {
                   height: 41,
                   width: getPageWidth(),
                   child: TextField(
+                    controller: _GarmController,
                     readOnly: true,
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
@@ -596,7 +620,9 @@ class _EjaraVilaPageState extends State<EjaraVilaPage> {
                       prefixIcon: IconButton(
                         icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                         onPressed: () {
-                          // _show_item_1.value = !_show_item_1.isTrue;
+                          Garmayesh((selectedOption) {
+                            _GarmController.text = selectedOption;
+                          });
                         },
                       ),
                     ),
@@ -606,6 +632,7 @@ class _EjaraVilaPageState extends State<EjaraVilaPage> {
                   height: 41,
                   width: getPageWidth(),
                   child: TextField(
+                    controller: _SarmayeshController,
                     readOnly: true,
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
@@ -621,7 +648,9 @@ class _EjaraVilaPageState extends State<EjaraVilaPage> {
                       prefixIcon: IconButton(
                         icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                         onPressed: () {
-                          // _show_item_1.value = !_show_item_1.isTrue;
+                          Sarmayesh((selectedOption) {
+                            _SarmayeshController.text = selectedOption;
+                          });
                         },
                       ),
                     ),
@@ -638,6 +667,7 @@ class _EjaraVilaPageState extends State<EjaraVilaPage> {
                   height: 41,
                   width: getPageWidth(),
                   child: TextField(
+                    controller: _WcController,
                     readOnly: true,
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
@@ -653,7 +683,9 @@ class _EjaraVilaPageState extends State<EjaraVilaPage> {
                         prefixIcon: IconButton(
                           icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                           onPressed: () {
-                            // _show_item_1.value = !_show_item_1.isTrue;
+                            Wc((selectedOption) {
+                              _WcController.text = selectedOption;
+                            });
                           },
                         )),
                   ),
@@ -662,6 +694,7 @@ class _EjaraVilaPageState extends State<EjaraVilaPage> {
                   height: 41,
                   width: getPageWidth(),
                   child: TextField(
+                    controller: _AbeGarmController,
                     readOnly: true,
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
@@ -677,7 +710,9 @@ class _EjaraVilaPageState extends State<EjaraVilaPage> {
                       prefixIcon: IconButton(
                         icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                         onPressed: () {
-                          // _show_item_1.value = !_show_item_1.isTrue;
+                          AbeGarm((selectedOption) {
+                            _AbeGarmController.text = selectedOption;
+                          });
                         },
                       ),
                     ),

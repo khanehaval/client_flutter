@@ -6,7 +6,7 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:gradient_icon/gradient_icon.dart';
 
 void BazSazi(Function(String) onSelected) {
-  final RxInt index = 2.obs; // Default index set to "Not Selected"
+  final RxInt index = 1.obs; // Default index set to "Not Selected"
   final List<String> options = [
     'باز سازی شده',
     'نیاز به بازسازی دارد',

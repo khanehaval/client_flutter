@@ -69,6 +69,9 @@ class EjaraDaftarLocationPage extends StatelessWidget {
                               )
                             ],
                           ),
+                          const SizedBox(
+                            height: 5,
+                          ),
                           SizedBox(
                             height: 41,
                             child: Center(

@@ -3,7 +3,10 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-const MAIN_FONT_FAMILY = 'Iran Sans Bold';
+const MAIN_FONT_FAMILY = 'IRANSansWeb_Bold';
+const MAIN_FONT_FAMILY_MEDIUM = 'IRANSansWeb_Medium';
+const MAIN_FONT_FAMILY_LIGHT = 'IRANSansWeb_Light';
+const MAIN_FONT_FAMILY_UltraLight = 'IRANSansWeb_UltraLight';
 const GRADIANT_COLOR = [
   Color.fromRGBO(144, 199, 255, 1),
   Color.fromRGBO(144, 236, 218, 1),

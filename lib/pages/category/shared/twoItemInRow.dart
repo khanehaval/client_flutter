@@ -197,13 +197,13 @@ class TwoItemInRow2 extends StatelessWidget {
                               1,
                             ),
                             fontFamily: MAIN_FONT_FAMILY,
-                            fontSize: 14),
+                            fontSize: 13),
                       ),
                       TextSpan(
                         text: label1,
                         style: const TextStyle(
                             fontFamily: MAIN_FONT_FAMILY,
-                            fontSize: 14,
+                            fontSize: 13,
                             color: Color.fromRGBO(
                               99,
                               99,

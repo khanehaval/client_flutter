@@ -119,6 +119,7 @@ flutter:
   assets:
     - assets/images/
     - assets/icons/
+    - assets/fonts/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
@@ -132,9 +133,20 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-    - family: Iran Sans Bold
+    - family: IRANSansWeb_Bold
       fonts:
-        - asset: assets/fonts/Iran Sans Bold.ttf
+        - asset: assets/fonts/IRANSansWeb_Bold.ttf
+          weight: 700
+    - family: IRANSansWeb_Medium
+      fonts:
+        - asset: assets/fonts/IRANSansWeb_Medium.ttf
+    - family: IRANSansWeb_Light
+      fonts:
+        - asset: assets/fonts/IRANSansWeb_Light.ttf
+          weight: 700
+    - family: IRANSansWeb_UltraLight
+      fonts:
+        - asset: assets/fonts/IRANSansWeb_UltraLight.ttf
           weight: 700
           
     # - family: Trajan Pro

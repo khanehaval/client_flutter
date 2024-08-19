@@ -31,7 +31,7 @@ class EjaraApartemanLocationPage extends StatelessWidget {
             children: [
               MapInfoPage(locationInfo),
               const SizedBox(
-                height: 10,
+                height: 20,
               ),
               const Row(
                 mainAxisAlignment: MainAxisAlignment.end,
@@ -58,6 +58,9 @@ class EjaraApartemanLocationPage extends StatelessWidget {
                     ),
                   )
                 ],
+              ),
+              const SizedBox(
+                height: 5,
               ),
               SizedBox(
                 height: 41,
@@ -97,7 +100,7 @@ class EjaraApartemanLocationPage extends StatelessWidget {
                 ),
               ),
               const SizedBox(
-                height: 55,
+                height: 40,
               ),
               GestureDetector(
                   onTap: () {

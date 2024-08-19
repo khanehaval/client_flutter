@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/models/AdvInfoModel.dart';
-import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/filters_widgets/tedad_koletabaghat_filter.dart';
-import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/forosh_adv_pages/kolangi_adv_page.dart';
-import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/kota_modat_pages/ejara_km_vila_page.dart';
 import 'package:flutter_application_1/pages/category/shared/adv_info/advInfo.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/category/shared/date.dart';
@@ -10,12 +7,12 @@ import 'package:flutter_application_1/pages/category/shared/facilities_selector.
 import 'package:flutter_application_1/pages/category/shared/images_picker/images_picker.dart';
 import 'package:flutter_application_1/pages/category/shared/more_emkanat/Widget_NoeSanad.dart';
 import 'package:flutter_application_1/pages/category/shared/more_emkanat/jahat_sakhteman.dart';
-import 'package:flutter_application_1/pages/category/shared/more_emkanat/sanad.dart';
 import 'package:flutter_application_1/pages/category/shared/more_emkanat/servises_wc.dart';
 import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_bazsazi.dart';
 import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_jenskaf.dart';
 import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_kabinet.dart';
 import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_system_garm.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_system_sarmayesh.dart';
 import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_tamin_abe_garm.dart';
 import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_tedad_koletabagheh.dart';
 import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_tedad_vahed_dar%20tabagheh.dart';
@@ -23,10 +20,7 @@ import 'package:flutter_application_1/pages/category/shared/namayesh.dart';
 import 'package:flutter_application_1/pages/category/shared/number_piacker.dart';
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
 import 'package:flutter_application_1/pages/category/shared/twoItemInRow.dart';
-import 'package:flutter_application_1/pages/category/shared/widget/submit_row.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/text_field.dart';
-import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_system_sarmayesh.dart';
-import 'package:flutter_application_1/pages/login_secondly_page.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:gradient_icon/gradient_icon.dart';
@@ -64,7 +58,7 @@ class _EjaraApartemanPageState extends State<EjaraApartemanPage> {
   final _countOfInstallmentsController = TextEditingController();
   final _advInfo = AdvInfoModel();
   final _formKey = GlobalKey<FormState>();
-  final TextEditingController _textController = TextEditingController();
+  final TextEditingController _SarmayeshController = TextEditingController();
   final TextEditingController _GarmController = TextEditingController();
   final TextEditingController _JenskafController = TextEditingController();
   final TextEditingController _kabinetController = TextEditingController();
@@ -547,8 +541,7 @@ class _EjaraApartemanPageState extends State<EjaraApartemanPage> {
                       hintText: 'انتخاب نشده',
                       hintStyle: const TextStyle(
                         fontSize: 13,
-                        fontFamily: 'Iran Sans',
-                        fontWeight: FontWeight.w400,
+                        fontFamily: MAIN_FONT_FAMILY_LIGHT,
                         color: Color(0xFFA6A6A6),
                       ),
                       border: OutlineInputBorder(
@@ -720,7 +713,7 @@ class _EjaraApartemanPageState extends State<EjaraApartemanPage> {
                   height: 41,
                   width: getPageWidth(),
                   child: TextField(
-                    controller: _textController,
+                    controller: _SarmayeshController,
                     readOnly: true,
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
@@ -739,7 +732,7 @@ class _EjaraApartemanPageState extends State<EjaraApartemanPage> {
                         onPressed: () {
                           Sarmayesh((selectedOption) {
                             // Update the TextField with the selected option
-                            _textController.text = selectedOption;
+                            _SarmayeshController.text = selectedOption;
                           });
                         },
                       ),

@@ -5,6 +5,10 @@ import 'package:flutter_application_1/pages/category/shared/adv_info/advInfo.dar
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/category/shared/facilities_selector.dart';
 import 'package:flutter_application_1/pages/category/shared/images_picker/images_picker.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_arrival%20time.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_nafar_ezafe.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_tedad_Otagh.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_zarfiat_paye.dart';
 import 'package:flutter_application_1/pages/category/shared/namayesh.dart';
 import 'package:flutter_application_1/pages/category/shared/number_piacker.dart';
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
@@ -320,10 +324,16 @@ class _EjaraKmApartemanPageState extends State<EjaraKmApartemanPage> {
             TwoItemInRow(
                 label1: "ساعت خروج",
                 label2: "ساعت ورود",
-                widget1: ReadOnlyTextField(_outTimeController, () {},
-                    width: getPageWidth()),
-                widget2: ReadOnlyTextField(_incomingTimeController, () {},
-                    width: getPageWidth())),
+                widget1: ReadOnlyTextField(_outTimeController, () {
+                  ArrivalTime((selectedOption) {
+                    _outTimeController.text = selectedOption;
+                  });
+                }, width: getPageWidth()),
+                widget2: ReadOnlyTextField(_incomingTimeController, () {
+                  ArrivalTime((selectedOption) {
+                    _incomingTimeController.text = selectedOption;
+                  });
+                }, width: getPageWidth())),
             const SizedBox(
               height: 30,
             ),
@@ -344,13 +354,13 @@ class _EjaraKmApartemanPageState extends State<EjaraKmApartemanPage> {
               label1: "نفر اضافه تا ",
               label2: "ظرفیت پایه",
               widget1: ReadOnlyTextField(_buildMaxCapacityController, () {
-                showNumberPicker((_) {
-                  _buildMaxCapacityController.text = _;
+                NafarEzafe((selectedOption) {
+                  _buildMaxCapacityController.text = selectedOption;
                 });
               }, width: getPageWidth()),
               widget2: ReadOnlyTextField(_buildBaseCapacityController, () {
-                showNumberPicker((_) {
-                  _buildBaseCapacityController.text = _;
+                ZarfiatPaye((selectedOption) {
+                  _buildBaseCapacityController.text = selectedOption;
                 });
               }, width: getPageWidth()),
             ),
@@ -361,8 +371,8 @@ class _EjaraKmApartemanPageState extends State<EjaraKmApartemanPage> {
                 label2: "تعداد اتاق ",
                 label1: " طبقه ",
                 widget1: ReadOnlyTextField(_buildRoomsCountController, () {
-                  showNumberPicker((_) {
-                    _buildRoomsCountController.text = _;
+                  TedadOtagh((selectedOption) {
+                    _buildRoomsCountController.text = selectedOption;
                   });
                 }, width: getPageWidth()),
                 widget2: ReadOnlyTextField(_buildDateController, () {
