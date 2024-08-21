@@ -2,13 +2,23 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/models/AdvInfoModel.dart';
 import 'package:flutter_application_1/pages/category/models/FacilitiesModel.dart';
+import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/widget_filter/marhalehsakht.dart';
 import 'package:flutter_application_1/pages/category/shared/adv_info/advInfo.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/category/shared/date.dart';
 import 'package:flutter_application_1/pages/category/shared/facilities_selector.dart';
 import 'package:flutter_application_1/pages/category/shared/images_picker/images_picker.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/Widget_NoeSanad.dart';
 import 'package:flutter_application_1/pages/category/shared/more_emkanat/jahat_sakhteman.dart';
 import 'package:flutter_application_1/pages/category/shared/more_emkanat/sanad.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_build_step.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_location.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_mizanPishraft_physical.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_tedad_Otagh.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_tedad_aghsat.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_tedad_type.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_time_aghsat.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_time_tahvil.dart';
 import 'package:flutter_application_1/pages/category/shared/namayesh.dart';
 import 'package:flutter_application_1/pages/category/shared/number_piacker.dart';
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
@@ -71,6 +81,7 @@ class _PresellState extends State<Presell> {
   final _countController = TextEditingController();
 
   final _buildStepController = TextEditingController();
+  final _tedadTypeController = TextEditingController();
   final ValueNotifier<String> _persianWords = ValueNotifier<String>('');
   final _timeController = TextEditingController();
 
@@ -421,8 +432,8 @@ class _PresellState extends State<Presell> {
               ),
             ),
             ReadOnlyTextField(_buildDocumentController, () {
-              Sanad((_) {
-                _buildDocumentController.text = _;
+              NoeSanad((selectedOption) {
+                _buildDocumentController.text = selectedOption;
               });
             }, width: getPageWidth1()),
             const SizedBox(
@@ -431,34 +442,32 @@ class _PresellState extends State<Presell> {
             TwoItemInRow(
                 label1: "تعداد تیپ ",
                 label2: "مرحله ساخت ",
-                widget1: Container(
-                  height: 41,
-                  width: getPageWidth(),
-                  child: TextField(
-                    keyboardType: TextInputType.number,
-                    textAlign: TextAlign.right,
-                    decoration: InputDecoration(
-                      hintText: 'تایپ کنید',
-                      hintStyle: const TextStyle(
-                          color: Color(0xFFA6A6A6), fontSize: 13),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                    ),
-                  ),
-                ),
-                widget2: ReadOnlyTextField(_buildStepController, () {},
-                    width: getPageWidth())),
+                widget1: ReadOnlyTextField(_tedadTypeController, () {
+                  TedadType((selectedOption) {
+                    _tedadTypeController.text = selectedOption;
+                  });
+                }, width: getPageWidth()),
+                widget2: ReadOnlyTextField(_buildStepController, () {
+                  BuildStep((selectedOption) {
+                    _buildStepController.text = selectedOption;
+                  });
+                }, width: getPageWidth())),
             const SizedBox(
               height: 15,
             ),
             TwoItemInRow(
               label1: "میزان پیشرفت فیزیکی",
               label2: "زمان تحویل ",
-              widget1: ReadOnlyTextField(_progressController, () {},
-                  width: getPageWidth()),
-              widget2: ReadOnlyTextField(_timeController, () {},
-                  width: getPageWidth()),
+              widget1: ReadOnlyTextField(_progressController, () {
+                MizanPishraft((selectedOption) {
+                  _progressController.text = selectedOption;
+                });
+              }, width: getPageWidth()),
+              widget2: ReadOnlyTextField(_timeController, () {
+                TimeTahvil((selectedOption) {
+                  _timeController.text = selectedOption;
+                });
+              }, width: getPageWidth()),
             ),
             const SizedBox(
               height: 20,
@@ -474,7 +483,7 @@ class _PresellState extends State<Presell> {
               indent: 6,
             ),
             const SizedBox(
-              height: 20,
+              height: 30,
             ),
             FacilitiesSelectorWidget(
               selectable: [
@@ -521,7 +530,7 @@ class _PresellState extends State<Presell> {
               indent: 6,
             ),
             const SizedBox(
-              height: 20,
+              height: 30,
             ),
             AdvInfo(_advInfo),
             const SizedBox(
@@ -680,20 +689,20 @@ class _PresellState extends State<Presell> {
                   const SizedBox(
                     height: 17,
                   ),
-                  //numberOfInstallments
                   TwoItemInRow(
                       label1: "زمان دریافت اقساط",
                       label2: "تعداد اقساط",
                       widget1: ReadOnlyTextField(
                           _timeToReceiveInstallmentsController, () {
-                        persianDataPicker((date) {
-                          _timeToReceiveInstallmentsController.text = date;
+                        TimeAghsat((selectedOption) {
+                          _timeToReceiveInstallmentsController.text =
+                              selectedOption;
                         });
                       }, width: getPageWidth(), fontSize: 13),
                       widget2: ReadOnlyTextField(
                           _numberOfInstallmentsController, () {
-                        showNumberPicker((_) {
-                          _numberOfInstallmentsController.text = _;
+                        TedadAghsat((selectedOption) {
+                          _numberOfInstallmentsController.text = selectedOption;
                         });
                       }, width: getPageWidth(), fontSize: 13)),
                   const SizedBox(
@@ -803,8 +812,8 @@ class _PresellState extends State<Presell> {
                     ),
                   ),
                   ReadOnlyTextField(_countController, () {
-                    showNumberPicker((_) {
-                      _countController.text = _;
+                    TedadAghsat((selectedOption) {
+                      _countController.text = selectedOption;
                     });
                   }),
                   const SizedBox(
@@ -831,7 +840,7 @@ class _PresellState extends State<Presell> {
                     child: Text(
                       "متراژ زمین  ",
                       style: TextStyle(
-                          color: Color.fromRGBO(166, 166, 166, 1),
+                          color: Color.fromRGBO(99, 99, 99, 1),
                           fontSize: 13,
                           fontFamily: MAIN_FONT_FAMILY),
                       textAlign: TextAlign.start,
@@ -843,7 +852,7 @@ class _PresellState extends State<Presell> {
                       keyboardType: TextInputType.number,
                       textAlign: TextAlign.right,
                       decoration: InputDecoration(
-                        hintText: '120',
+                        hintText: 'تایپ کنید', //todo
                         hintStyle: const TextStyle(
                           fontSize: 13,
                           fontFamily: 'Iran Sans',
@@ -858,8 +867,8 @@ class _PresellState extends State<Presell> {
                   ),
                   const SizedBox(height: 25),
                   TwoItemInRow(
-                    label1: "مبلغ اقساط",
-                    label2: "میزان وام (تومان)",
+                    label1: "عرض زمین",
+                    label2: "طول زمین",
                     widget1: SizedBox(
                       height: 41,
                       width: getPageWidth(),
@@ -867,7 +876,7 @@ class _PresellState extends State<Presell> {
                         keyboardType: TextInputType.number,
                         textAlign: TextAlign.right,
                         decoration: InputDecoration(
-                          hintText: '3,6000000', //todo
+                          hintText: 'تایپ کنید', //todo
                           hintStyle: const TextStyle(
                             fontSize: 13,
                             fontFamily: 'Iran Sans',
@@ -887,7 +896,7 @@ class _PresellState extends State<Presell> {
                         keyboardType: TextInputType.number,
                         textAlign: TextAlign.right,
                         decoration: InputDecoration(
-                          hintText: '400000000', //todo
+                          hintText: 'تایپ کنید', //todo
                           hintStyle: const TextStyle(
                             fontSize: 13,
                             fontFamily: 'Iran Sans',
@@ -924,8 +933,8 @@ class _PresellState extends State<Presell> {
                     height: 20,
                   ),
                   TwoItemInRow2(
-                      label1: "تعداد اتاق",
-                      label2: "سن بنا ",
+                      label1: "طبقه",
+                      label2: "متراژ ",
                       widget2: Container(
                         height: 41,
                         width: getPageWidth(),
@@ -934,7 +943,7 @@ class _PresellState extends State<Presell> {
                           textAlign: TextAlign.right,
                           decoration: InputDecoration(
                             hintText: 'تایپ کنید',
-                            hintStyle: TextStyle(
+                            hintStyle: const TextStyle(
                               fontSize: 13,
                               fontFamily: 'Iran Sans',
                               fontWeight: FontWeight.w400,
@@ -957,19 +966,40 @@ class _PresellState extends State<Presell> {
                   ),
                   const Align(
                     alignment: Alignment.bottomRight,
-                    child: Text(
-                      "تعداد اتاق",
-                      style: TextStyle(
-                          color: Color.fromRGBO(99, 99, 99, 1),
-                          fontFamily: MAIN_FONT_FAMILY),
-                      textAlign: TextAlign.start,
+                    child: Padding(
+                      padding: EdgeInsets.only(right: 5.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Text("*",
+                              style: TextStyle(
+                                  color: Color.fromRGBO(
+                                    156,
+                                    64,
+                                    64,
+                                    1,
+                                  ),
+                                  fontFamily: MAIN_FONT_FAMILY,
+                                  fontSize: 13)),
+                          SizedBox(
+                            width: 5,
+                          ),
+                          Text(
+                            "تعداد اتاق",
+                            style: TextStyle(
+                                color: Color.fromRGBO(99, 99, 99, 1),
+                                fontFamily: MAIN_FONT_FAMILY),
+                            textAlign: TextAlign.start,
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                   ReadOnlyTextField(
                     _countOfInstallmentsController,
                     () {
-                      showNumberPicker((_) {
-                        _countOfInstallmentsController.text = _;
+                      TedadOtagh((selectedOption) {
+                        _countOfInstallmentsController.text = selectedOption;
                       });
                     },
                   ),
@@ -1014,7 +1044,7 @@ class _PresellState extends State<Presell> {
                           textAlign: TextAlign.right,
                           decoration: InputDecoration(
                             hintText: 'تایپ کنید',
-                            hintStyle: TextStyle(
+                            hintStyle: const TextStyle(
                               fontSize: 13,
                               fontFamily: 'Iran Sans',
                               fontWeight: FontWeight.w400,
@@ -1027,8 +1057,9 @@ class _PresellState extends State<Presell> {
                         ),
                       ),
                       widget1: ReadOnlyTextField(_buildFloorController, () {
-                        showNumberPicker(
-                            (p0) => _buildFloorController.text = p0);
+                        TedadOtagh((selectedOption) {
+                          _buildFloorController.text = selectedOption;
+                        });
                       }, width: getPageWidth())),
                   const SizedBox(
                     height: 20,
@@ -1096,7 +1127,7 @@ class _PresellState extends State<Presell> {
                       keyboardType: TextInputType.number,
                       textAlign: TextAlign.right,
                       decoration: InputDecoration(
-                        hintText: '120',
+                        hintText: 'تایپ کنید', //todo
                         hintStyle: const TextStyle(
                           fontSize: 13,
                           fontFamily: 'Iran Sans',
@@ -1116,8 +1147,9 @@ class _PresellState extends State<Presell> {
                       label1: "موقعیت",
                       label2: "طبقه ",
                       widget1: ReadOnlyTextField(_buildDirectionController, () {
-                        jahatSakhteman(
-                            (p0) => _buildDirectionController.text = p0);
+                        Location((selectedOption) {
+                          _buildDirectionController.text = selectedOption;
+                        });
                       }, width: getPageWidth()),
                       widget2: ReadOnlyTextField(
                           _buildUnitOfAnyFloorCountController, () {

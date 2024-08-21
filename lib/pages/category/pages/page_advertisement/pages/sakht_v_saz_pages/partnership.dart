@@ -5,6 +5,17 @@ import 'package:flutter_application_1/pages/category/shared/adv_info/advInfo.dar
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/category/shared/date.dart';
 import 'package:flutter_application_1/pages/category/shared/images_picker/images_picker.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/Widget_NoeSanad.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_GamAvari.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_eskelet.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_sen_bana.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_tabaghat_VilaTa.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_tabaghat_vilaAz.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_tafkik.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_takhrib_tavasot.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_tedad_Maqazeh.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_tedad_Otagh.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_tedad_vahed_dar%20tabagheh.dart';
 import 'package:flutter_application_1/pages/category/shared/namayesh.dart';
 import 'package:flutter_application_1/pages/category/shared/number_piacker.dart';
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
@@ -35,6 +46,14 @@ class _PartnerShipState extends State<PartnerShip> {
   final _allPriceTextController = TextEditingController();
 
   final _metragTextController = TextEditingController();
+  final _NoeSanadTextController = TextEditingController();
+  final _SenBanaTextController = TextEditingController();
+  final _TedadTabaghatController = TextEditingController();
+  final _TakhribController = TextEditingController();
+  final _gamAvariController = TextEditingController();
+  final _NoeSkeletController = TextEditingController();
+  final _tafkikNokhaleController = TextEditingController();
+  final _TabaghController = TextEditingController();
 
   final _selectedImagesPath = [].obs;
 
@@ -48,9 +67,8 @@ class _PartnerShipState extends State<PartnerShip> {
 
   final _onePrice = 0.0.obs;
   final ValueNotifier<String> _persianWords = ValueNotifier<String>('');
-  final _timeController = TextEditingController();
 
-  final _progressController = TextEditingController();
+  final _TedadVahedController = TextEditingController();
   String numberToFarsiWords(int number) {
     if (number == 0) return 'صفر';
 
@@ -322,6 +340,7 @@ class _PartnerShipState extends State<PartnerShip> {
                 height: 41,
                 width: getPageWidth(),
                 child: TextField(
+                  controller: _NoeSanadTextController,
                   textAlign: TextAlign.right,
                   decoration: InputDecoration(
                       hintText: 'انتخاب نشده',
@@ -336,7 +355,11 @@ class _PartnerShipState extends State<PartnerShip> {
                       ),
                       prefixIcon: IconButton(
                         icon: SvgPicture.asset("assets/images/Vector-20.svg"),
-                        onPressed: () {},
+                        onPressed: () {
+                          NoeSanad((selectedOption) {
+                            _NoeSanadTextController.text = selectedOption;
+                          });
+                        },
                       )),
                 ),
               ),
@@ -699,6 +722,7 @@ class _PartnerShipState extends State<PartnerShip> {
                       height: 41,
                       width: getPageWidth(),
                       child: TextField(
+                        controller: _SenBanaTextController,
                         textAlign: TextAlign.right,
                         decoration: InputDecoration(
                           hintText: 'انتخاب نشده',
@@ -715,8 +739,8 @@ class _PartnerShipState extends State<PartnerShip> {
                             icon:
                                 SvgPicture.asset("assets/images/Vector-20.svg"),
                             onPressed: () {
-                              persianDataPicker((date) {
-                                print(date);
+                              SenBana((selectedOption) {
+                                _SenBanaTextController.text = selectedOption;
                               });
                             },
                           ),
@@ -734,6 +758,7 @@ class _PartnerShipState extends State<PartnerShip> {
                       height: 41,
                       width: getPageWidth(),
                       child: TextField(
+                        controller: _TedadTabaghatController,
                         readOnly: true,
                         textAlign: TextAlign.right,
                         decoration: InputDecoration(
@@ -751,7 +776,9 @@ class _PartnerShipState extends State<PartnerShip> {
                             icon:
                                 SvgPicture.asset("assets/images/Vector-20.svg"),
                             onPressed: () {
-                              showNumberPicker((_) {});
+                              TedadVahedTabagheh((selectedOption) {
+                                _TedadTabaghatController.text = selectedOption;
+                              });
                             },
                           ),
                         ),
@@ -761,6 +788,7 @@ class _PartnerShipState extends State<PartnerShip> {
                       height: 41,
                       width: getPageWidth(),
                       child: TextField(
+                        controller: _TedadVahedController,
                         readOnly: true,
                         textAlign: TextAlign.right,
                         decoration: InputDecoration(
@@ -778,7 +806,9 @@ class _PartnerShipState extends State<PartnerShip> {
                             icon:
                                 SvgPicture.asset("assets/images/Vector-20.svg"),
                             onPressed: () {
-                              showNumberPicker((_) {});
+                              TedadVahedTabagheh((selectedOption) {
+                                _TedadVahedController.text = selectedOption;
+                              });
                             },
                           ),
                         ),
@@ -876,6 +906,7 @@ class _PartnerShipState extends State<PartnerShip> {
                       height: 41,
                       width: getPageWidth(),
                       child: TextField(
+                        controller: _TakhribController,
                         readOnly: true,
                         textAlign: TextAlign.right,
                         decoration: InputDecoration(
@@ -893,7 +924,9 @@ class _PartnerShipState extends State<PartnerShip> {
                             icon:
                                 SvgPicture.asset("assets/images/Vector-20.svg"),
                             onPressed: () {
-                              // _show_item_1.value = !_show_item_1.isTrue;
+                              Takhrib((selectedOption) {
+                                _TakhribController.text = selectedOption;
+                              });
                             },
                           ),
                         ),
@@ -903,6 +936,7 @@ class _PartnerShipState extends State<PartnerShip> {
                       height: 41,
                       width: getPageWidth(),
                       child: TextField(
+                        controller: _gamAvariController,
                         readOnly: true,
                         textAlign: TextAlign.right,
                         decoration: InputDecoration(
@@ -920,7 +954,9 @@ class _PartnerShipState extends State<PartnerShip> {
                             icon:
                                 SvgPicture.asset("assets/images/Vector-20.svg"),
                             onPressed: () {
-                              // _show_item_1.value = !_show_item_1.isTrue;
+                              GamAvari((selectedOption) {
+                                _gamAvariController.text = selectedOption;
+                              });
                             },
                           ),
                         ),
@@ -937,6 +973,7 @@ class _PartnerShipState extends State<PartnerShip> {
                       height: 41,
                       width: getPageWidth(),
                       child: TextField(
+                        controller: _tafkikNokhaleController,
                         readOnly: true,
                         textAlign: TextAlign.right,
                         decoration: InputDecoration(
@@ -954,7 +991,9 @@ class _PartnerShipState extends State<PartnerShip> {
                             icon:
                                 SvgPicture.asset("assets/images/Vector-20.svg"),
                             onPressed: () {
-                              // _show_item_1.value = !_show_item_1.isTrue;
+                              Tafkik((selectedOption) {
+                                _tafkikNokhaleController.text = selectedOption;
+                              });
                             },
                           ),
                         ),
@@ -964,6 +1003,7 @@ class _PartnerShipState extends State<PartnerShip> {
                       height: 41,
                       width: getPageWidth(),
                       child: TextField(
+                        controller: _NoeSkeletController,
                         readOnly: true,
                         textAlign: TextAlign.right,
                         decoration: InputDecoration(
@@ -981,7 +1021,9 @@ class _PartnerShipState extends State<PartnerShip> {
                             icon:
                                 SvgPicture.asset("assets/images/Vector-20.svg"),
                             onPressed: () {
-                              // _show_item_1.value = !_show_item_1.isTrue;
+                              Eskelet((selectedOption) {
+                                _NoeSkeletController.text = selectedOption;
+                              });
                             },
                           ),
                         ),
@@ -1118,6 +1160,10 @@ Widget Aparteman(BuildContext context) {
   final hasAnbari = false.obs;
   final hasAsansor = false.obs;
   final hasParking = false.obs;
+  final _TedadVahedController = TextEditingController();
+  final _TedadOtaghsmallController = TextEditingController();
+  final _TedadOtaghBigController = TextEditingController();
+  final _TabaghController = TextEditingController();
 
   return Column(
     children: [
@@ -1138,7 +1184,7 @@ Widget Aparteman(BuildContext context) {
                       textAlign: TextAlign.right,
                       decoration: InputDecoration(
                         hintText: 'تایپ کنید',
-                        hintStyle: TextStyle(
+                        hintStyle: const TextStyle(
                           fontSize: 13,
                           fontFamily: 'Iran Sans',
                           fontWeight: FontWeight.w400,
@@ -1154,6 +1200,7 @@ Widget Aparteman(BuildContext context) {
                     height: 41,
                     width: getPageWidth(),
                     child: TextField(
+                      controller: _TabaghController,
                       readOnly: true,
                       textAlign: TextAlign.right,
                       decoration: InputDecoration(
@@ -1170,7 +1217,9 @@ Widget Aparteman(BuildContext context) {
                         prefixIcon: IconButton(
                           icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                           onPressed: () {
-                            showNumberPicker((_) {});
+                            showNumberPicker((_) {
+                              _TabaghController.text = _;
+                            });
                           },
                         ),
                       ),
@@ -1206,6 +1255,7 @@ Widget Aparteman(BuildContext context) {
                     height: 41,
                     width: getPageWidth(),
                     child: TextField(
+                      controller: _TedadVahedController,
                       readOnly: true,
                       textAlign: TextAlign.right,
                       decoration: InputDecoration(
@@ -1222,7 +1272,9 @@ Widget Aparteman(BuildContext context) {
                         prefixIcon: IconButton(
                           icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                           onPressed: () {
-                            showNumberPicker((_) {});
+                            showNumberPicker((_) {
+                              _TedadVahedController.text = _;
+                            });
                           },
                         ),
                       ),
@@ -1258,6 +1310,7 @@ Widget Aparteman(BuildContext context) {
                     height: 41,
                     width: getPageWidth(),
                     child: TextField(
+                      controller: _TedadOtaghsmallController,
                       readOnly: true,
                       textAlign: TextAlign.right,
                       decoration: InputDecoration(
@@ -1274,7 +1327,9 @@ Widget Aparteman(BuildContext context) {
                         prefixIcon: IconButton(
                           icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                           onPressed: () {
-                            showNumberPicker((_) {});
+                            showNumberPicker((_) {
+                              _TedadOtaghsmallController.text = _;
+                            });
                           },
                         ),
                       ),
@@ -1310,6 +1365,7 @@ Widget Aparteman(BuildContext context) {
                     height: 41,
                     width: getPageWidth(),
                     child: TextField(
+                      controller: _TedadOtaghBigController,
                       readOnly: true,
                       textAlign: TextAlign.right,
                       decoration: InputDecoration(
@@ -1326,7 +1382,9 @@ Widget Aparteman(BuildContext context) {
                         prefixIcon: IconButton(
                           icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                           onPressed: () {
-                            showNumberPicker((_) {});
+                            showNumberPicker((_) {
+                              _TedadOtaghBigController.text = _;
+                            });
                           },
                         ),
                       ),
@@ -1444,7 +1502,10 @@ Widget Vila(BuildContext context) {
 
   final _onePrice = 0.0.obs;
   final _allPriceTextController = TextEditingController();
-  final _metragTextController = TextEditingController();
+  final _TabaghatVilaAzController = TextEditingController();
+  final _TabaghatVilaTaController = TextEditingController();
+  final _TedadOtaghVilaBigTaController = TextEditingController();
+  final _TedadOtaghVilaSmallTaController = TextEditingController();
   return Column(
     children: [
       Row(
@@ -1531,11 +1592,12 @@ Widget Vila(BuildContext context) {
                     height: 41,
                     width: getPageWidth(),
                     child: TextField(
+                      controller: _TabaghatVilaAzController,
                       readOnly: true,
                       textAlign: TextAlign.right,
                       decoration: InputDecoration(
                         hintText: 'انتخاب نشده',
-                        hintStyle: TextStyle(
+                        hintStyle: const TextStyle(
                           fontSize: 13,
                           fontFamily: 'Iran Sans',
                           fontWeight: FontWeight.w400,
@@ -1547,7 +1609,9 @@ Widget Vila(BuildContext context) {
                         prefixIcon: IconButton(
                           icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                           onPressed: () {
-                            showNumberPicker((_) {});
+                            TabaghatVilaAz((selectedOption) {
+                              _TabaghatVilaAzController.text = selectedOption;
+                            });
                           },
                         ),
                       ),
@@ -1557,6 +1621,7 @@ Widget Vila(BuildContext context) {
                     height: 41,
                     width: getPageWidth(),
                     child: TextField(
+                      controller: _TabaghatVilaTaController,
                       readOnly: true,
                       textAlign: TextAlign.right,
                       decoration: InputDecoration(
@@ -1573,7 +1638,9 @@ Widget Vila(BuildContext context) {
                         prefixIcon: IconButton(
                           icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                           onPressed: () {
-                            showNumberPicker((_) {});
+                            TabaghatVilaTa((selectedOption) {
+                              _TabaghatVilaTaController.text = selectedOption;
+                            });
                           },
                         ),
                       ),
@@ -1609,11 +1676,12 @@ Widget Vila(BuildContext context) {
                     height: 41,
                     width: getPageWidth(),
                     child: TextField(
+                      controller: _TedadOtaghVilaSmallTaController,
                       readOnly: true,
                       textAlign: TextAlign.right,
                       decoration: InputDecoration(
                         hintText: 'انتخاب نشده',
-                        hintStyle: TextStyle(
+                        hintStyle: const TextStyle(
                           fontSize: 13,
                           fontFamily: 'Iran Sans',
                           fontWeight: FontWeight.w400,
@@ -1625,7 +1693,10 @@ Widget Vila(BuildContext context) {
                         prefixIcon: IconButton(
                           icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                           onPressed: () {
-                            showNumberPicker((_) {});
+                            TedadOtagh((selectedOption) {
+                              _TedadOtaghVilaSmallTaController.text =
+                                  selectedOption;
+                            });
                           },
                         ),
                       ),
@@ -1661,11 +1732,12 @@ Widget Vila(BuildContext context) {
                     height: 41,
                     width: getPageWidth(),
                     child: TextField(
+                      controller: _TedadOtaghVilaBigTaController,
                       readOnly: true,
                       textAlign: TextAlign.right,
                       decoration: InputDecoration(
                         hintText: 'انتخاب نشده',
-                        hintStyle: TextStyle(
+                        hintStyle: const TextStyle(
                           fontSize: 13,
                           fontFamily: 'Iran Sans',
                           fontWeight: FontWeight.w400,
@@ -1677,7 +1749,10 @@ Widget Vila(BuildContext context) {
                         prefixIcon: IconButton(
                           icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                           onPressed: () {
-                            showNumberPicker((_) {});
+                            TedadOtagh((selectedOption) {
+                              _TedadOtaghVilaBigTaController.text =
+                                  selectedOption;
+                            });
                           },
                         ),
                       ),
@@ -1762,8 +1837,8 @@ Widget Edari(BuildContext context) {
   final hasParking = false.obs;
 
   final _onePrice = 0.0.obs;
-  final _allPriceTextController = TextEditingController();
-  final _metragTextController = TextEditingController();
+  final _TedadMaqazehTextController = TextEditingController();
+  final _tedadTabaghatTextController = TextEditingController();
   return Column(
     children: [
       Row(
@@ -1822,6 +1897,7 @@ Widget Edari(BuildContext context) {
                     height: 41,
                     width: getPageWidth(),
                     child: TextField(
+                      controller: _tedadTabaghatTextController,
                       readOnly: true,
                       textAlign: TextAlign.right,
                       decoration: InputDecoration(
@@ -1838,7 +1914,9 @@ Widget Edari(BuildContext context) {
                         prefixIcon: IconButton(
                           icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                           onPressed: () {
-                            showNumberPicker((_) {});
+                            showNumberPicker((_) {
+                              _tedadTabaghatTextController.text = _;
+                            });
                           },
                         ),
                       ),
@@ -1872,6 +1950,7 @@ Widget Edari(BuildContext context) {
                     height: 41,
                     width: getPageWidth(),
                     child: TextField(
+                      controller: _TedadMaqazehTextController,
                       readOnly: true,
                       textAlign: TextAlign.right,
                       decoration: InputDecoration(
@@ -1888,7 +1967,9 @@ Widget Edari(BuildContext context) {
                         prefixIcon: IconButton(
                           icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                           onPressed: () {
-                            showNumberPicker((_) {});
+                            TedadMaqazeh((selectedOption) {
+                              _TedadMaqazehTextController.text = selectedOption;
+                            });
                           },
                         ),
                       ),

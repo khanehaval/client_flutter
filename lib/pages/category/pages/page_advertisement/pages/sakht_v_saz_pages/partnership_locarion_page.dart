@@ -5,8 +5,6 @@ import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/category/shared/map_pages/location_Info.dart';
 import 'package:flutter_application_1/pages/category/shared/map_pages/map_info_page.dart';
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
-import 'package:flutter_application_1/pages/category/shared/widget/submit_row.dart';
-import 'package:flutter_application_1/pages/category/shared/widget/widget_noemelk/widget_noemelk_ejaratekotamodat_vila.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/widget_noemelk/widget_noemelk_sakh_mosharekat.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
@@ -62,6 +60,9 @@ class SelectLocationPartbership extends StatelessWidget {
                   )
                 ],
               ),
+              const SizedBox(
+                height: 5,
+              ),
               SizedBox(
                 height: 41,
                 child: Center(
@@ -102,7 +103,7 @@ class SelectLocationPartbership extends StatelessWidget {
                 ),
               ),
               const SizedBox(
-                height: 40,
+                height: 30,
               ),
               GestureDetector(
                   onTap: () {

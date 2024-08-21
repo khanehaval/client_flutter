@@ -63,6 +63,9 @@ class SelectLocationEjaraPresell extends StatelessWidget {
                   )
                 ],
               ),
+              const SizedBox(
+                height: 5,
+              ),
               SizedBox(
                 height: 41,
                 child: Center(
@@ -103,7 +106,7 @@ class SelectLocationEjaraPresell extends StatelessWidget {
                 ),
               ),
               const SizedBox(
-                height: 40,
+                height: 30,
               ),
               GestureDetector(
                   onTap: () {
