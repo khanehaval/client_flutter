@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/taeed_enseraf_numberpicker.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:gradient_icon/gradient_icon.dart';
 
 void SenBana(Function(String) onSelected) {
-  final RxInt index = 2.obs; // Default index set to "Not Selected"
+  final RxInt index = 2.obs; // Default index set to "1401"
+  final FixedExtentScrollController scrollController =
+      FixedExtentScrollController(initialItem: index.value);
+
   final List<String> options = [
     '1403',
     '1402',
@@ -48,10 +50,10 @@ void SenBana(Function(String) onSelected) {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              _buildNavigationRow(index, options),
+              _buildNavigationRow(index, options, scrollController),
               const SizedBox(height: 130),
               TaeedEnserafNumberPicker(
-                selectedNumber: index.value.toString(),
+                selectedNumber: options[index.value],
                 onConfirm: () {
                   onSelected(options[index.value]);
                   Get.back();
@@ -65,7 +67,8 @@ void SenBana(Function(String) onSelected) {
   );
 }
 
-Widget _buildNavigationRow(RxInt index, List<String> options) {
+Widget _buildNavigationRow(
+    RxInt index, List<String> options, FixedExtentScrollController controller) {
   return Row(
     mainAxisAlignment: MainAxisAlignment.center,
     children: [
@@ -73,6 +76,11 @@ Widget _buildNavigationRow(RxInt index, List<String> options) {
         onTap: () {
           if (index.value > 0) {
             index.value--;
+            controller.animateToItem(
+              index.value,
+              duration: const Duration(milliseconds: 300),
+              curve: Curves.easeInOut,
+            );
           }
         },
         child: const GradientIcon(
@@ -88,51 +96,37 @@ Widget _buildNavigationRow(RxInt index, List<String> options) {
       const SizedBox(width: 50),
       SizedBox(
         width: 130, // Fixed width for texts
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Obx(
-              () => Text(
-                index.value > 0 ? options[index.value - 1] : '',
-                style: const TextStyle(
-                  fontSize: 13,
-                  color: Colors.black38,
-                  fontFamily: MAIN_FONT_FAMILY,
-                  fontWeight: FontWeight.normal,
-                ),
-                textAlign: TextAlign.center,
-              ),
-            ),
-            Obx(
-              () => Padding(
-                padding: const EdgeInsets.symmetric(vertical: 30),
-                child: Text(
-                  options[index.value],
-                  style: const TextStyle(
-                    fontSize: 18,
-                    color: Colors.black,
-                    fontFamily: MAIN_FONT_FAMILY,
-                    fontWeight: FontWeight.bold,
+        height: 130, // Fixed height for scroll area
+        child: ListWheelScrollView.useDelegate(
+          controller: controller,
+          itemExtent: 50,
+          diameterRatio: 2.0,
+          onSelectedItemChanged: (i) {
+            index.value = i;
+          },
+          physics: const FixedExtentScrollPhysics(),
+          childDelegate: ListWheelChildBuilderDelegate(
+            builder: (context, i) {
+              return Center(
+                child: Obx(
+                  () => Text(
+                    options[i],
+                    style: TextStyle(
+                      fontSize: 14,
+                      color: index.value == i
+                          ? Colors.black
+                          : Colors.grey, // Selected item is black, others are grey
+                      fontFamily: MAIN_FONT_FAMILY,
+                      fontWeight: index.value == i
+                          ? FontWeight.bold
+                          : FontWeight.normal,
+                    ),
                   ),
-                  textAlign: TextAlign.center,
                 ),
-              ),
-            ),
-            Obx(
-              () => Text(
-                index.value < options.length - 1
-                    ? options[index.value + 1]
-                    : '',
-                style: const TextStyle(
-                  fontSize: 13,
-                  color: Colors.black38,
-                  fontFamily: MAIN_FONT_FAMILY,
-                  fontWeight: FontWeight.normal,
-                ),
-                textAlign: TextAlign.center,
-              ),
-            ),
-          ],
+              );
+            },
+            childCount: options.length,
+          ),
         ),
       ),
       const SizedBox(width: 50),
@@ -140,6 +134,11 @@ Widget _buildNavigationRow(RxInt index, List<String> options) {
         onTap: () {
           if (index.value < options.length - 1) {
             index.value++;
+            controller.animateToItem(
+              index.value,
+              duration: const Duration(milliseconds: 300),
+              curve: Curves.easeInOut,
+            );
           }
         },
         child: const GradientIcon(
