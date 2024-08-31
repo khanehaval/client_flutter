@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/taeed_enseraf_numberpicker.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:gradient_icon/gradient_icon.dart';
 
 void TedadAghsat(Function(String) onSelected) {
-  final RxInt index = 2.obs; // Default index set to "Not Selected"
+  final RxInt selectedIndex = 0.obs; // Default index set to "1401"
+
+  final RxInt index = 0.obs; // Default index set to "Not Selected"
   final List<String> options = [
     '2',
     '3',
@@ -29,6 +30,10 @@ void TedadAghsat(Function(String) onSelected) {
     'انتخاب نشده',
   ];
 
+  // Define the scroll controller
+  final FixedExtentScrollController scrollController =
+      FixedExtentScrollController(initialItem: index.value);
+
   Get.bottomSheet(
     Container(
       decoration: const BoxDecoration(
@@ -40,7 +45,7 @@ void TedadAghsat(Function(String) onSelected) {
       child: Padding(
         padding: const EdgeInsets.all(2.0),
         child: Container(
-          height: 800,
+          height: 400, // Adjusted height to better fit five items
           decoration: const BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.vertical(top: Radius.circular(10)),
@@ -48,12 +53,12 @@ void TedadAghsat(Function(String) onSelected) {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              _buildNavigationRow(index, options),
-              const SizedBox(height: 130),
+              _buildNavigationRow(selectedIndex, options, scrollController),
+              const SizedBox(height: 20),
               TaeedEnserafNumberPicker(
-                selectedNumber: index.value.toString(),
+                selectedNumber: options[selectedIndex.value],
                 onConfirm: () {
-                  onSelected(options[index.value]);
+                  onSelected(options[selectedIndex.value]);
                   Get.back();
                 },
               ),
@@ -65,14 +70,20 @@ void TedadAghsat(Function(String) onSelected) {
   );
 }
 
-Widget _buildNavigationRow(RxInt index, List<String> options) {
+Widget _buildNavigationRow(RxInt selectedIndex, List<String> options,
+    FixedExtentScrollController controller) {
   return Row(
     mainAxisAlignment: MainAxisAlignment.center,
     children: [
       GestureDetector(
         onTap: () {
-          if (index.value > 0) {
-            index.value--;
+          if (selectedIndex.value > 0) {
+            selectedIndex.value--;
+            controller.animateToItem(
+              selectedIndex.value,
+              duration: const Duration(milliseconds: 300),
+              curve: Curves.easeInOut,
+            );
           }
         },
         child: const GradientIcon(
@@ -87,59 +98,52 @@ Widget _buildNavigationRow(RxInt index, List<String> options) {
       ),
       const SizedBox(width: 50),
       SizedBox(
-        width: 130, // Fixed width for texts
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Obx(
-              () => Text(
-                index.value > 0 ? options[index.value - 1] : '',
-                style: const TextStyle(
-                  fontSize: 13,
-                  color: Colors.black38,
-                  fontFamily: MAIN_FONT_FAMILY,
-                  fontWeight: FontWeight.normal,
-                ),
-                textAlign: TextAlign.center,
-              ),
-            ),
-            Obx(
-              () => Padding(
-                padding: const EdgeInsets.symmetric(vertical: 30),
-                child: Text(
-                  options[index.value],
-                  style: const TextStyle(
-                    fontSize: 18,
-                    color: Colors.black,
-                    fontFamily: MAIN_FONT_FAMILY,
-                    fontWeight: FontWeight.bold,
+        width: 130,
+        height: 200,
+        child: ListWheelScrollView.useDelegate(
+          controller: controller,
+          itemExtent: 50,
+          diameterRatio: 2.0,
+          onSelectedItemChanged: (i) {
+            selectedIndex.value = i;
+          },
+          physics: const FixedExtentScrollPhysics(),
+          childDelegate: ListWheelChildBuilderDelegate(
+            builder: (context, i) {
+              final distance = (i - selectedIndex.value).abs();
+              final opacity = distance == 0 ? 1.0 : 0.4;
+              return Center(
+                child: Obx(
+                  () => Text(
+                    options[i],
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: selectedIndex.value == i
+                          ? Colors.black
+                          : Colors.black.withOpacity(opacity),
+                      fontFamily: MAIN_FONT_FAMILY,
+                      fontWeight: selectedIndex.value == i
+                          ? FontWeight.bold
+                          : FontWeight.w100,
+                    ),
                   ),
-                  textAlign: TextAlign.center,
                 ),
-              ),
-            ),
-            Obx(
-              () => Text(
-                index.value < options.length - 1
-                    ? options[index.value + 1]
-                    : '',
-                style: const TextStyle(
-                  fontSize: 13,
-                  color: Colors.black38,
-                  fontFamily: MAIN_FONT_FAMILY,
-                  fontWeight: FontWeight.normal,
-                ),
-                textAlign: TextAlign.center,
-              ),
-            ),
-          ],
+              );
+            },
+            childCount: options.length,
+          ),
         ),
       ),
       const SizedBox(width: 50),
       GestureDetector(
         onTap: () {
-          if (index.value < options.length - 1) {
-            index.value++;
+          if (selectedIndex.value < options.length - 1) {
+            selectedIndex.value++;
+            controller.animateToItem(
+              selectedIndex.value,
+              duration: const Duration(milliseconds: 300),
+              curve: Curves.easeInOut,
+            );
           }
         },
         child: const GradientIcon(

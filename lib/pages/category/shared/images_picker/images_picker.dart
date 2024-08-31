@@ -62,7 +62,7 @@ class ImagesPicker extends StatelessWidget {
   Widget _buildImagePicker(BuildContext context) {
     return Column(
       children: [
-        _buildMainImage(selectedImagesPath.first),
+        _buildMainImage(selectedImagesPath.first), // نمایش عکس اصلی
         const SizedBox(height: 30),
         GridView.builder(
           shrinkWrap: true,
@@ -73,14 +73,18 @@ class ImagesPicker extends StatelessWidget {
             mainAxisSpacing: 10,
             childAspectRatio: 190 / 119,
           ),
+          // تعداد آیتم‌ها را به تعداد بقیه تصاویر تنظیم کنید و برای آیکون اضافه کردن یکی اضافه کنید
           itemCount: selectedImagesPath.length < 5
-              ? selectedImagesPath.length + 1
-              : selectedImagesPath.length,
+              ? selectedImagesPath.length
+              : selectedImagesPath.length - 1,
           itemBuilder: (context, index) {
-            if (index == selectedImagesPath.length) {
+            if (index == selectedImagesPath.length - 1 &&
+                selectedImagesPath.length < 5) {
+              // نمایش آیکون اضافه کردن در آخرین آیتم
               return _buildAddMoreButton(context);
             } else {
-              return _buildImageGridItem(index);
+              // index + 1 برای نادیده گرفتن عکس اول
+              return _buildImageGridItem(index + 1);
             }
           },
         ),

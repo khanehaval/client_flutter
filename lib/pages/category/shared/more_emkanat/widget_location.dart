@@ -8,6 +8,8 @@ import 'package:gradient_icon/gradient_icon.dart';
 void Location(Function(String) onSelected) {
   final RxInt index = 1.obs; // Default index set to "Not Selected"
   final List<String> options = ['مرکز تجاری', 'خیابان', 'انتخاب نشده'];
+  final FixedExtentScrollController scrollController =
+      FixedExtentScrollController(initialItem: index.value);
 
   Get.bottomSheet(
     Container(
@@ -15,20 +17,20 @@ void Location(Function(String) onSelected) {
         gradient: LinearGradient(
           colors: GRADIANT_COLOR,
         ),
-        borderRadius: BorderRadius.vertical(top: Radius.circular(10)),
+        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
       ),
       child: Padding(
-        padding: const EdgeInsets.all(2.0),
+        padding: const EdgeInsets.only(top: 1.2, right: 1.2, left: 1.2),
         child: Container(
           height: 800,
           decoration: const BoxDecoration(
             color: Colors.white,
-            borderRadius: BorderRadius.vertical(top: Radius.circular(10)),
+            borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
           ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              _buildNavigationRow(index, options),
+              _buildNavigationRow(index, options, scrollController),
               const SizedBox(height: 130),
               TaeedEnserafNumberPicker(
                 selectedNumber: index.value.toString(),
@@ -45,7 +47,8 @@ void Location(Function(String) onSelected) {
   );
 }
 
-Widget _buildNavigationRow(RxInt index, List<String> options) {
+Widget _buildNavigationRow(RxInt index, List<String> options,
+    FixedExtentScrollController scrollController) {
   return Row(
     mainAxisAlignment: MainAxisAlignment.center,
     children: [
@@ -53,6 +56,11 @@ Widget _buildNavigationRow(RxInt index, List<String> options) {
         onTap: () {
           if (index.value > 0) {
             index.value--;
+            scrollController.animateToItem(
+              index.value,
+              duration: const Duration(milliseconds: 300),
+              curve: Curves.easeInOut,
+            );
           }
         },
         child: const GradientIcon(
@@ -68,51 +76,35 @@ Widget _buildNavigationRow(RxInt index, List<String> options) {
       const SizedBox(width: 50),
       SizedBox(
         width: 130, // Fixed width for texts
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Obx(
-              () => Text(
-                index.value > 0 ? options[index.value - 1] : '',
-                style: const TextStyle(
-                  fontSize: 13,
-                  color: Colors.black38,
-                  fontFamily: MAIN_FONT_FAMILY,
-                  fontWeight: FontWeight.normal,
-                ),
-                textAlign: TextAlign.center,
-              ),
-            ),
-            Obx(
-              () => Padding(
-                padding: const EdgeInsets.symmetric(vertical: 30),
-                child: Text(
-                  options[index.value],
-                  style: const TextStyle(
-                    fontSize: 18,
-                    color: Colors.black,
-                    fontFamily: MAIN_FONT_FAMILY,
-                    fontWeight: FontWeight.bold,
-                  ),
-                  textAlign: TextAlign.center,
-                ),
-              ),
-            ),
-            Obx(
-              () => Text(
-                index.value < options.length - 1
-                    ? options[index.value + 1]
-                    : '',
-                style: const TextStyle(
-                  fontSize: 13,
-                  color: Colors.black38,
-                  fontFamily: MAIN_FONT_FAMILY,
-                  fontWeight: FontWeight.normal,
-                ),
-                textAlign: TextAlign.center,
-              ),
-            ),
-          ],
+        height: 150, // Limit the height for scrollable view
+        child: ListWheelScrollView.useDelegate(
+          controller: scrollController,
+          itemExtent: 50, // Height of each item
+          physics: const FixedExtentScrollPhysics(),
+          onSelectedItemChanged: (selectedIndex) {
+            index.value = selectedIndex;
+          },
+          childDelegate: ListWheelChildBuilderDelegate(
+            builder: (context, i) {
+              return Center(
+                child: Obx(() {
+                  return Text(
+                    options[i],
+                    style: TextStyle(
+                      fontFamily: MAIN_FONT_FAMILY,
+                      fontSize: i == index.value ? 15 : 13,
+                      fontWeight: i == index.value
+                          ? FontWeight.bold
+                          : FontWeight.normal,
+                      color: i == index.value ? Colors.black : Colors.black38,
+                    ),
+                    textAlign: TextAlign.center,
+                  );
+                }),
+              );
+            },
+            childCount: options.length,
+          ),
         ),
       ),
       const SizedBox(width: 50),
@@ -120,6 +112,11 @@ Widget _buildNavigationRow(RxInt index, List<String> options) {
         onTap: () {
           if (index.value < options.length - 1) {
             index.value++;
+            scrollController.animateToItem(
+              index.value,
+              duration: const Duration(milliseconds: 300),
+              curve: Curves.easeInOut,
+            );
           }
         },
         child: const GradientIcon(

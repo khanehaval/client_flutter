@@ -69,11 +69,11 @@ void showNumberPicker(Function(String) onSelected) {
                             axis: Axis.vertical,
                             onChanged: (value) => index.value = value,
                             textStyle: const TextStyle(
-                                fontSize: 20,
+                                fontSize: 14,
                                 color: Color.fromARGB(137, 179, 171, 171),
                                 fontFamily: MAIN_FONT_FAMILY),
                             selectedTextStyle: const TextStyle(
-                                fontFamily: MAIN_FONT_FAMILY, fontSize: 35),
+                                fontFamily: MAIN_FONT_FAMILY, fontSize: 18),
                           ),
                         ),
                         const SizedBox(

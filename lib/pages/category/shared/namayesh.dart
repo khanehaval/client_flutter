@@ -179,7 +179,7 @@ class NamayeshAgahi extends StatelessWidget {
         Column(
           children: [
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const Text(
                   'ویرایش مجدد آگهی',
@@ -193,12 +193,23 @@ class NamayeshAgahi extends StatelessWidget {
                         1,
                       )),
                 ),
+                const SizedBox(
+                  width: 10,
+                ),
                 SizedBox(
                   height: 22,
                   width: 22,
-                  child: SvgPicture.asset(
-                    'assets/images/edit.svg',
+                  child: GestureDetector(
+                    onTap: () {
+                      Get.back();
+                    },
+                    child: SvgPicture.asset(
+                      'assets/images/edit.svg',
+                    ),
                   ),
+                ),
+                const SizedBox(
+                  width: 20,
                 ),
                 Container(
                   child: const Text(
@@ -206,6 +217,9 @@ class NamayeshAgahi extends StatelessWidget {
                     style:
                         TextStyle(fontFamily: MAIN_FONT_FAMILY, fontSize: 12),
                   ),
+                ),
+                const SizedBox(
+                  width: 10,
                 ),
                 Row(
                   children: [

@@ -5,9 +5,9 @@ import 'package:get/get.dart';
 import 'package:gradient_icon/gradient_icon.dart';
 
 void SenBana(Function(String) onSelected) {
-  final RxInt index = 2.obs; // Default index set to "1401"
+  final RxInt selectedIndex = 0.obs; // Default index set to "1401"
   final FixedExtentScrollController scrollController =
-      FixedExtentScrollController(initialItem: index.value);
+      FixedExtentScrollController(initialItem: selectedIndex.value);
 
   final List<String> options = [
     '1403',
@@ -42,7 +42,7 @@ void SenBana(Function(String) onSelected) {
       child: Padding(
         padding: const EdgeInsets.all(2.0),
         child: Container(
-          height: 800,
+          height: 400, // Adjusted height to better fit five items
           decoration: const BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.vertical(top: Radius.circular(10)),
@@ -50,12 +50,12 @@ void SenBana(Function(String) onSelected) {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              _buildNavigationRow(index, options, scrollController),
-              const SizedBox(height: 130),
+              _buildNavigationRow(selectedIndex, options, scrollController),
+              const SizedBox(height: 20),
               TaeedEnserafNumberPicker(
-                selectedNumber: options[index.value],
+                selectedNumber: options[selectedIndex.value],
                 onConfirm: () {
-                  onSelected(options[index.value]);
+                  onSelected(options[selectedIndex.value]);
                   Get.back();
                 },
               ),
@@ -67,17 +67,17 @@ void SenBana(Function(String) onSelected) {
   );
 }
 
-Widget _buildNavigationRow(
-    RxInt index, List<String> options, FixedExtentScrollController controller) {
+Widget _buildNavigationRow(RxInt selectedIndex, List<String> options,
+    FixedExtentScrollController controller) {
   return Row(
     mainAxisAlignment: MainAxisAlignment.center,
     children: [
       GestureDetector(
         onTap: () {
-          if (index.value > 0) {
-            index.value--;
+          if (selectedIndex.value > 0) {
+            selectedIndex.value--;
             controller.animateToItem(
-              index.value,
+              selectedIndex.value,
               duration: const Duration(milliseconds: 300),
               curve: Curves.easeInOut,
             );
@@ -95,29 +95,33 @@ Widget _buildNavigationRow(
       ),
       const SizedBox(width: 50),
       SizedBox(
-        width: 130, // Fixed width for texts
-        height: 130, // Fixed height for scroll area
+        width: 130,
+        height: 200, // Adjusted height to show five items
         child: ListWheelScrollView.useDelegate(
           controller: controller,
-          itemExtent: 50,
+          itemExtent: 50, // Adjust item extent to fit well
           diameterRatio: 2.0,
           onSelectedItemChanged: (i) {
-            index.value = i;
+            selectedIndex.value = i;
           },
           physics: const FixedExtentScrollPhysics(),
           childDelegate: ListWheelChildBuilderDelegate(
             builder: (context, i) {
+              // Calculate the distance to the selected item
+              final distance = (i - selectedIndex.value).abs();
+              final opacity =
+                  distance == 0 ? 1.0 : 0.4; // Full opacity for selected item
               return Center(
                 child: Obx(
                   () => Text(
                     options[i],
                     style: TextStyle(
-                      fontSize: 14,
-                      color: index.value == i
+                      fontSize: 16,
+                      color: selectedIndex.value == i
                           ? Colors.black
-                          : Colors.grey, // Selected item is black, others are grey
+                          : Colors.black.withOpacity(opacity),
                       fontFamily: MAIN_FONT_FAMILY,
-                      fontWeight: index.value == i
+                      fontWeight: selectedIndex.value == i
                           ? FontWeight.bold
                           : FontWeight.normal,
                     ),
@@ -132,10 +136,10 @@ Widget _buildNavigationRow(
       const SizedBox(width: 50),
       GestureDetector(
         onTap: () {
-          if (index.value < options.length - 1) {
-            index.value++;
+          if (selectedIndex.value < options.length - 1) {
+            selectedIndex.value++;
             controller.animateToItem(
-              index.value,
+              selectedIndex.value,
               duration: const Duration(milliseconds: 300),
               curve: Curves.easeInOut,
             );

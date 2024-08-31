@@ -17,6 +17,7 @@ import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_
 import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_system_garm.dart';
 import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_system_sarmayesh.dart';
 import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_tamin_abe_garm.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_tedad_Otagh.dart';
 import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_tedad_aghsat.dart';
 import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_tedad_koletabagheh.dart';
 import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_tedad_vahed_dar%20tabagheh.dart';
@@ -498,7 +499,7 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
                   label1: "تعداد اتاق ",
                   label2: "سن بنا",
                   widget1: ReadOnlyTextField(_buildRoomsCountController, () {
-                    showNumberPicker((_) {
+                    TedadOtagh((_) {
                       _buildRoomsCountController.text = _;
                       saleApartemanServerModel.room = _;
                       //
@@ -750,6 +751,9 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
                 height: 20,
               ),
               ImagesPicker(selectedImagesPath: _selectedImagesPath),
+              const SizedBox(
+                height: 30,
+              ),
               const Divider(
                 color: Color.fromRGBO(
                   226,
@@ -769,6 +773,10 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
               ),
               GestureDetector(
                 onTap: () {
+                  if (submit.value) {
+                    _aparteman();
+                    Get.to(() => NamayeshAgahi());
+                  }
                   if (submit.value) {
                     saleApartemanServerModel.images = [
                       _selectedImagesPath.first
@@ -801,6 +809,7 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
                     saleApartemanServerModel.hasSaunaJacuzzi =
                         _facilities.contains(Sona());
                     _aparteman();
+                    Get.to(() => NamayeshAgahi());
                   }
                 },
                 child: Obx(() => Row(
