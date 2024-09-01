@@ -1,8 +1,10 @@
 import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_application_1/pages/category/pages/Advertisements/shared/widget_detail_call.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
@@ -136,19 +138,6 @@ class NamayeshAgahi1 extends StatelessWidget {
                             ),
                             const SizedBox(height: 10),
                             Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 10.0),
-                              child:
-                                  Image.asset('assets/images/convertable.png'),
-                            ),
-                            const SizedBox(height: 10),
-                            const Divider(
-                              indent: 7,
-                              endIndent: 10,
-                              color: Color.fromRGBO(226, 226, 226, 1),
-                            ),
-                            const SizedBox(height: 10),
-                            Padding(
                               padding: const EdgeInsets.all(10.0),
                               child:
                                   SvgPicture.asset('assets/images/detail.svg'),
@@ -229,8 +218,121 @@ class NamayeshAgahi1 extends StatelessWidget {
                               padding:
                                   const EdgeInsets.symmetric(horizontal: 5.0),
                               child: SvgPicture.asset(
-                                  'assets/images/Contact us.svg'),
+                                  'assets/images/Component 2.svg'),
                             ),
+                            const SizedBox(height: 50),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: [
+                                SvgPicture.asset('assets/images/pm.svg'),
+                                GestureDetector(
+                                    onTap: () {
+                                      DetailCall((selectedMelk) {
+                                        selectedMelk; // Update TextField with selected option
+                                      });
+                                    },
+                                    child: SvgPicture.asset(
+                                        'assets/images/tamas.svg'))
+                              ],
+                            ),
+                            const SizedBox(height: 30),
+                            Padding(
+                                padding: const EdgeInsets.all(2.0),
+                                child: Row(
+                                  children: [
+                                    Container(
+                                      height: 45,
+                                      width: 177,
+                                      decoration: ShapeDecoration(
+                                        color: Colors.white,
+                                        shape: RoundedRectangleBorder(
+                                          side: const BorderSide(
+                                              width: 1,
+                                              color: Color(0xFFB7B7B7)),
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                        ),
+                                      ),
+                                      child: Padding(
+                                        padding:
+                                            const EdgeInsets.only(right: 5.0),
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.end,
+                                          children: [
+                                            SvgPicture.asset(
+                                              'assets/images/left_icon.svg',
+                                              width: 10,
+                                              height: 20,
+                                            ),
+                                            const SizedBox(
+                                              width: 10,
+                                            ),
+                                            const Text(
+                                              'زنگ خطرهای قبل از معامله',
+                                              style: TextStyle(
+                                                  fontFamily: MAIN_FONT_FAMILY,
+                                                  fontSize: 10),
+                                            ),
+                                            const SizedBox(
+                                              width: 5,
+                                            ),
+                                            SvgPicture.asset(
+                                              'assets/images/Alarm Icon.svg',
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                    const SizedBox(
+                                      width: 5,
+                                    ),
+                                    Container(
+                                      height: 45,
+                                      width: 177,
+                                      decoration: ShapeDecoration(
+                                        color: Colors.white,
+                                        shape: RoundedRectangleBorder(
+                                          side: const BorderSide(
+                                              width: 1,
+                                              color: Color(0xFFB7B7B7)),
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                        ),
+                                      ),
+                                      child: Padding(
+                                        padding:
+                                            const EdgeInsets.only(right: 5.0),
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.end,
+                                          children: [
+                                            SvgPicture.asset(
+                                              'assets/images/left_icon.svg',
+                                              width: 10,
+                                              height: 20,
+                                            ),
+                                            const SizedBox(
+                                              width: 10,
+                                            ),
+                                            const Text(
+                                              'زنگ خطرهای قبل از معامله',
+                                              style: TextStyle(
+                                                  fontFamily: MAIN_FONT_FAMILY,
+                                                  fontSize: 10),
+                                            ),
+                                            const SizedBox(
+                                              width: 5,
+                                            ),
+                                            SvgPicture.asset(
+                                              'assets/images/Alarm Icon.svg',
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                )),
                             const SizedBox(height: 50),
                           ],
                         ),
