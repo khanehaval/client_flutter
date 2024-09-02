@@ -330,6 +330,7 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
                 height: 41,
                 width: MediaQuery.of(context).size.width * 0.95,
                 child: TextField(
+                  style: const TextStyle(fontFamily: MAIN_FONT_FAMILY),
                   textAlign: TextAlign.right,
                   controller: _metragTextController,
                   onChanged: (_) {
@@ -340,6 +341,7 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
                     hintText: 'تایپ کنید',
                     hintStyle: const TextStyle(
                       fontSize: 13,
+                      fontFamily: MAIN_FONT_FAMILY,
                       color: Color(0xFFA6A6A6),
                     ),
                     border: OutlineInputBorder(
@@ -406,7 +408,10 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
                     height: 41,
                     width: getPageWidth(),
                     child: Center(
-                      child: Text(_onePrice.string),
+                      child: Text(
+                        _onePrice.string,
+                        style: const TextStyle(fontFamily: MAIN_FONT_FAMILY),
+                      ),
                     ),
                   ),
                 ),
@@ -414,6 +419,7 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
                   height: 41,
                   width: getPageWidth(),
                   child: TextField(
+                    style: const TextStyle(fontFamily: MAIN_FONT_FAMILY),
                     textAlign: TextAlign.right,
                     keyboardType: TextInputType.number,
                     controller: _allPriceTextController,
