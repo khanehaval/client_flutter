@@ -408,7 +408,8 @@ class _SelectLocationMapState extends State<SelectLocationMap> {
                       icon: SizedBox(
                           height: 50,
                           width: 50,
-                          child: Image.asset("assets/images/icon zoom.png"))),
+                          child:
+                              SvgPicture.asset("assets/images/icon zoom.svg"))),
                   IconButton(
                       onPressed: () {
                         widget.onSelect(locationInfo);
@@ -417,8 +418,8 @@ class _SelectLocationMapState extends State<SelectLocationMap> {
                       icon: SizedBox(
                           height: 60,
                           width: 60,
-                          child: Image.asset(
-                            "assets/images/Ok.png",
+                          child: SvgPicture.asset(
+                            "assets/images/Ok.svg",
                           )))
                 ],
               ),
@@ -431,7 +432,7 @@ class _SelectLocationMapState extends State<SelectLocationMap> {
                       icon: SizedBox(
                           width: 50,
                           height: 50,
-                          child: Image.asset("assets/images/icon -.png"))),
+                          child: SvgPicture.asset("assets/images/icon -.svg"))),
                   IconButton(
                       onPressed: () {
                         zoomIn();
@@ -439,7 +440,7 @@ class _SelectLocationMapState extends State<SelectLocationMap> {
                       icon: SizedBox(
                           width: 50,
                           height: 50,
-                          child: Image.asset("assets/images/icon +.png")))
+                          child: SvgPicture.asset("assets/images/icon +.svg")))
                 ],
               )
             ],

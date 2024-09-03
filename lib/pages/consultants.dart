@@ -46,16 +46,9 @@ class Consultants extends StatelessWidget {
               padding: const EdgeInsets.only(left: 15, right: 15),
               child: Column(
                 children: [
-                  Container(
-                    width: 152,
-                    height: 131,
-                    decoration: const BoxDecoration(
-                      image: DecorationImage(
-                        image: AssetImage(
-                          'assets/images/Rectangle 1.png',
-                        ),
-                      ),
-                    ),
+                  SvgPicture.asset(
+                    'assets/images/logo-farsi.svg',
+                    width: MediaQuery.of(context).size.width - 220,
                   ),
                   const Padding(
                     padding: EdgeInsets.all(20),

@@ -44,14 +44,9 @@ class Realestateagency extends StatelessWidget {
       appBar: buildAppBar(),
       body: Column(
         children: [
-          Container(
-            width: MediaQuery.of(context).size.width * 1 / 1.2,
-            height: 131,
-            decoration: const BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage('assets/images/Rectangle 1.png'),
-              ),
-            ),
+          SvgPicture.asset(
+            'assets/images/logo-farsi.svg',
+            width: MediaQuery.of(context).size.width - 220,
           ),
           const SizedBox(
             height: 20,

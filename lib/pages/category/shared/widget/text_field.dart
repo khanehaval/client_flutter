@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
@@ -12,11 +13,11 @@ Widget ReadOnlyTextField(TextEditingController controller, Function onTap,
         readOnly: true,
         textAlign: TextAlign.right,
         controller: controller,
-        style: TextStyle(fontSize: fontSize),
+        style: TextStyle(fontSize: fontSize, fontFamily: MAIN_FONT_FAMILY),
         decoration: InputDecoration(
           hintText: 'انتخاب نشده',
           hintStyle: const TextStyle(
-              fontFamily: 'Iran Sans',
+              fontFamily: MAIN_FONT_FAMILY_LIGHT,
               fontWeight: FontWeight.w400,
               color: Color(0xFFA6A6A6),
               fontSize: 12),
@@ -49,13 +50,14 @@ Widget InputTextField(TextEditingController controller, {double? width}) {
     height: 42,
     width: width,
     child: TextField(
+      style: const TextStyle(fontFamily: MAIN_FONT_FAMILY),
       keyboardType: TextInputType.number,
       controller: controller,
       textAlign: TextAlign.right,
       decoration: InputDecoration(
         hintText: 'تایپ کنید',
         hintStyle: const TextStyle(
-            fontFamily: 'Iran Sans',
+            fontFamily: MAIN_FONT_FAMILY_LIGHT,
             fontWeight: FontWeight.w400,
             color: Color(0xFFA6A6A6),
             fontSize: 11),

@@ -267,13 +267,16 @@ class _MapInfoPageState extends State<MapInfoPage> {
         Directionality(
           textDirection: TextDirection.rtl,
           child: TextField(
+            style: const TextStyle(
+              fontFamily: MAIN_FONT_FAMILY,
+            ),
+            focusNode: FocusNode(),
             controller: _addressController,
             maxLines: 3,
             decoration: InputDecoration(
               hintText: 'برای مثال: خیابان گلستان،کوچه احمدی،پلاک 2',
               hintStyle: const TextStyle(
-                  fontFamily: 'Iran Sans',
-                  fontWeight: FontWeight.w400,
+                  fontFamily: MAIN_FONT_FAMILY,
                   fontSize: 12,
                   color: Color.fromRGBO(166, 166, 166, 1)),
               border: OutlineInputBorder(

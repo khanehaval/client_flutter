@@ -181,7 +181,7 @@ class _AdvMapState extends State<AdvMap> {
           icon: SizedBox(
             height: 60,
             width: 60,
-            child: Image.asset("assets/images/icon zoom.png"),
+            child: SvgPicture.asset("assets/images/icon zoom.svg"),
           ),
         ),
       ),

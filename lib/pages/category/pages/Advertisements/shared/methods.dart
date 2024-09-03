@@ -27,7 +27,7 @@ Widget showAdvertisment(
                 children: [
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 30)
-                        .copyWith(top: 130, bottom: 30),
+                        .copyWith(top: 100, bottom: 30),
                     child: GestureDetector(
                       onTap: () {
                         Get.to(() => const NamayeshAgahi1());
@@ -134,7 +134,7 @@ Widget showAdvertisment(
                                   ),
                                 ],
                               ),
-                              const SizedBox(height: 10),
+                              const SizedBox(height: 5),
                               Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
@@ -174,7 +174,7 @@ Widget showAdvertisment(
                   ),
                   Positioned(
                     left: 160,
-                    top: 115,
+                    top: 90,
                     child: GestureDetector(
                       onTap: () {
                         onTap();

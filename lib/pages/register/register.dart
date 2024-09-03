@@ -165,7 +165,7 @@ class _RegisterState extends State<Register> {
         controller: _phoneNumberTextField,
         onChanged: (_) => _phoneNumberSended.value = false,
         onFieldSubmitted: (_) => _sendPhoneNumber(),
-        style: const TextStyle(fontSize: 14),
+        style: const TextStyle(fontSize: 14, fontFamily: MAIN_FONT_FAMILY),
         inputFormatters: [FilteringTextInputFormatter.digitsOnly],
         decoration: InputDecoration(
           hintText: "۰۹۱۲   ۱۲۳   ۴۵۶۷",
@@ -218,6 +218,7 @@ class _RegisterState extends State<Register> {
             onSubmitted: (_) => _sendVerificationCode(),
             style: const TextStyle(
               fontSize: 17,
+              fontFamily: MAIN_FONT_FAMILY,
               decoration: TextDecoration.underline,
               decorationStyle: TextDecorationStyle.dashed,
             ),

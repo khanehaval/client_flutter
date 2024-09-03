@@ -433,7 +433,7 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
                       hintText: "0",
                       hintStyle: const TextStyle(
                         fontSize: 13,
-                        fontFamily: 'Iran Sans',
+                        fontFamily: MAIN_FONT_FAMILY,
                         fontWeight: FontWeight.w400,
                         color: Color(0xFFA6A6A6),
                       ),
@@ -922,6 +922,10 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
                       height: 41,
                       width: getPageWidth(),
                       child: TextField(
+                        focusNode: FocusNode(),
+                        style: const TextStyle(
+                          fontFamily: MAIN_FONT_FAMILY,
+                        ),
                         keyboardType: TextInputType.number,
                         onChanged: (_) {
                           saleApartemanServerModel.loanInstallmentAmount =
@@ -932,7 +936,7 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
                           hintText: 'تایپ کنید', //todo
                           hintStyle: const TextStyle(
                             fontSize: 13,
-                            fontFamily: 'Iran Sans',
+                            fontFamily: MAIN_FONT_FAMILY,
                             fontWeight: FontWeight.w400,
                             color: Color(0xFFA6A6A6),
                           ),
@@ -955,6 +959,10 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
                       height: 41,
                       width: getPageWidth(),
                       child: TextField(
+                        focusNode: FocusNode(),
+                        style: const TextStyle(
+                          fontFamily: MAIN_FONT_FAMILY,
+                        ),
                         keyboardType: TextInputType.number,
                         onChanged: (_) {
                           saleApartemanServerModel.prepayment = int.parse(_);
@@ -964,7 +972,7 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
                           hintText: 'تایپ کنید', //todo
                           hintStyle: const TextStyle(
                             fontSize: 13,
-                            fontFamily: 'Iran Sans',
+                            fontFamily: MAIN_FONT_FAMILY,
                             fontWeight: FontWeight.w400,
                             color: Color(0xFFA6A6A6),
                           ),
@@ -1086,6 +1094,9 @@ Widget melkByVamBanki(BuildContext context) {
                     height: 41,
                     width: getPageWidth(),
                     child: TextField(
+                      style: const TextStyle(
+                        fontFamily: MAIN_FONT_FAMILY,
+                      ),
                       onChanged: (_) {
                         saleApartemanServerModel.installmentAmount =
                             int.parse(_);
@@ -1096,8 +1107,7 @@ Widget melkByVamBanki(BuildContext context) {
                         hintText: 'تایپ کنید', //todo
                         hintStyle: const TextStyle(
                           fontSize: 13,
-                          fontFamily: 'Iran Sans',
-                          fontWeight: FontWeight.w400,
+                          fontFamily: MAIN_FONT_FAMILY,
                           color: Color(0xFFA6A6A6),
                         ),
                         border: OutlineInputBorder(
@@ -1119,6 +1129,9 @@ Widget melkByVamBanki(BuildContext context) {
                     height: 41,
                     width: getPageWidth(),
                     child: TextField(
+                      style: const TextStyle(
+                        fontFamily: MAIN_FONT_FAMILY,
+                      ),
                       onChanged: (_) {
                         saleApartemanServerModel.loanInstallmentAmount =
                             int.parse(_);
@@ -1129,8 +1142,7 @@ Widget melkByVamBanki(BuildContext context) {
                         hintText: 'تایپ کنید', //todo
                         hintStyle: const TextStyle(
                           fontSize: 13,
-                          fontFamily: 'Iran Sans',
-                          fontWeight: FontWeight.w400,
+                          fontFamily: MAIN_FONT_FAMILY,
                           color: Color(0xFFA6A6A6),
                         ),
                         border: OutlineInputBorder(

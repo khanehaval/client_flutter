@@ -5,6 +5,7 @@ import 'package:flutter_application_1/pages/category/pages/Advertisements/Advert
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/app_bar.dart';
 import 'package:flutter_application_1/repo/account_repo.dart';
+import 'package:flutter_svg/svg.dart';
 
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
@@ -96,14 +97,9 @@ class Private extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 14),
               child: Column(
                 children: [
-                  Container(
-                    width: 200,
-                    height: 131,
-                    decoration: const BoxDecoration(
-                      image: DecorationImage(
-                        image: AssetImage('assets/images/Rectangle 1.png'),
-                      ),
-                    ),
+                  SvgPicture.asset(
+                    'assets/images/logo-farsi.svg',
+                    width: MediaQuery.of(context).size.width - 220,
                   ),
                   const Padding(
                     padding: EdgeInsets.all(20),
@@ -240,8 +236,7 @@ class Private extends StatelessWidget {
                                             '* تصویر کارت ملی',
                                             style: TextStyle(
                                               fontSize: 12,
-                                              color: Color.fromARGB(
-                                                  255, 215, 42, 42),
+                                              color: Color(0xFFA6A6A6),
                                             ),
                                           ),
                                         )
