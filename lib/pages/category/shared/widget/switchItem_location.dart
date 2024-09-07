@@ -38,7 +38,7 @@ class _SwitchItemsState extends State<SwitchItemsLocation> {
 
   Widget _buildRow(String item) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 4.0, horizontal: 125.0),
+      padding: const EdgeInsets.symmetric(horizontal: 125.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [

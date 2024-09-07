@@ -114,7 +114,7 @@ class Private extends StatelessWidget {
                             48,
                             48,
                             1,
-                          )),
+                          ),),
                     ),
                   ),
                   const SizedBox(

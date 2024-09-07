@@ -44,70 +44,70 @@ class NamayeshAgahi extends StatelessWidget {
             ),
             Column(
               children: [
-                Stack(
-                  children: [
-                    SizedBox(
-                      width: 350,
-                      height: 175,
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 5.0),
+                Padding(
+                  padding: const EdgeInsets.only(left: 5.0),
+                  child: Stack(
+                    children: [
+                      SizedBox(
+                        width: MediaQuery.of(context).size.width * .9,
+                        height: 175,
                         child: Image.asset(
                           "assets/images/pic.png",
                         ),
                       ),
-                    ),
-                    Align(
-                      alignment: Alignment.centerRight,
-                      child: Padding(
-                        padding: const EdgeInsets.only(right: 10.0, top: 5),
-                        child: SvgPicture.asset(
-                          "assets/images/Score.svg",
+                      Align(
+                        alignment: Alignment.centerRight,
+                        child: Padding(
+                          padding: const EdgeInsets.only(right: 10.0, top: 5),
+                          child: SvgPicture.asset(
+                            "assets/images/Score.svg",
+                          ),
                         ),
                       ),
-                    ),
-                    Align(
-                      alignment: Alignment.centerLeft,
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 5.0, top: 5),
-                        child: SvgPicture.asset(
-                          "assets/images/Pic Number.svg",
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 5.0, top: 5),
+                          child: SvgPicture.asset(
+                            "assets/images/Pic Number.svg",
+                          ),
                         ),
                       ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 150, right: 10),
-                      child: Align(
-                        alignment: Alignment.bottomRight,
-                        child: SvgPicture.asset(
-                          "assets/images/save.svg",
-                          width: 15,
-                          height: 15,
+                      Padding(
+                        padding: const EdgeInsets.only(top: 150, right: 10),
+                        child: Align(
+                          alignment: Alignment.bottomRight,
+                          child: SvgPicture.asset(
+                            "assets/images/save1.svg",
+                            width: 15,
+                            height: 15,
+                          ),
                         ),
                       ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 150, right: 30),
-                      child: Align(
-                        alignment: Alignment.bottomRight,
-                        child: SvgPicture.asset(
-                          "assets/images/loc and cam.svg",
-                          width: 15,
-                          height: 15,
+                      Padding(
+                        padding: const EdgeInsets.only(top: 150, right: 30),
+                        child: Align(
+                          alignment: Alignment.bottomRight,
+                          child: SvgPicture.asset(
+                            "assets/images/loc and cam.svg",
+                            width: 15,
+                            height: 15,
+                          ),
                         ),
                       ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 150, left: 10),
-                      child: Align(
-                        alignment: Alignment.bottomLeft,
-                        child: SvgPicture.asset(
-                          "assets/images/announcement.svg",
-                          width: 20,
-                          height: 15,
+                      Padding(
+                        padding: const EdgeInsets.only(top: 150, left: 10),
+                        child: Align(
+                          alignment: Alignment.bottomLeft,
+                          child: SvgPicture.asset(
+                            "assets/images/announcement.svg",
+                            width: 20,
+                            height: 15,
+                          ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
                 const SizedBox(height: 10),
                 Row(
@@ -240,11 +240,9 @@ class NamayeshAgahi extends StatelessWidget {
           height: 50,
         ),
         Container(
-          width: 324,
           height: 23,
+          width: MediaQuery.of(context).size.width * 0.9,
           child: const Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Text(
                 'امتیاز 5',
@@ -257,7 +255,7 @@ class NamayeshAgahi extends StatelessWidget {
               Row(
                 children: [
                   Text(
-                    '..........................................................',
+                    '.................................................................',
                     style: TextStyle(
                       color: Color.fromRGBO(
                         244,
@@ -283,24 +281,21 @@ class NamayeshAgahi extends StatelessWidget {
           ),
         ),
         const SizedBox(
-          height: 50,
+          height: 20,
         ),
         Row(
           children: [
-            Padding(
-              padding: const EdgeInsets.only(left: 15.0),
-              child: SwitchItems(
-                  onSelected: (_) {
-                    submit.value = true;
-                  },
-                  items: const [
-                    "",
-                  ]),
-            ),
+            SwitchItems(
+                onSelected: (_) {
+                  submit.value = true;
+                },
+                items: const [
+                  "",
+                ]),
             const Row(
               children: [
                 Text(
-                  '.................................................................',
+                  '.......................................................................',
                   style: TextStyle(
                     color: Color.fromRGBO(
                       244,
@@ -324,22 +319,22 @@ class NamayeshAgahi extends StatelessWidget {
             ),
           ],
         ),
+        const SizedBox(
+          height: 20,
+        ),
         Row(
           children: [
-            Padding(
-              padding: const EdgeInsets.only(left: 15.0),
-              child: SwitchItems(
-                  onSelected: (_) {
-                    submit.value = true;
-                  },
-                  items: const [
-                    "",
-                  ]),
-            ),
+            SwitchItems(
+                onSelected: (_) {
+                  submit.value = true;
+                },
+                items: const [
+                  "",
+                ]),
             const Row(
               children: [
                 Text(
-                  '.........................................................................',
+                  '...............................................................................',
                   style: TextStyle(
                     color: Color.fromRGBO(
                       244,
@@ -363,47 +358,8 @@ class NamayeshAgahi extends StatelessWidget {
             ),
           ],
         ),
-        Row(
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(left: 15.0),
-              child: SwitchItems(
-                  onSelected: (_) {
-                    submit.value = true;
-                  },
-                  items: const [
-                    "",
-                  ]),
-            ),
-            const Row(
-              children: [
-                Text(
-                  '............................................',
-                  style: TextStyle(
-                    color: Color.fromRGBO(
-                      244,
-                      244,
-                      244,
-                      1,
-                    ),
-                    fontSize: 8,
-                    fontFamily: MAIN_FONT_FAMILY,
-                  ),
-                ),
-                Text(
-                  ' ارسال به مشاور و آژانس',
-                  style: TextStyle(
-                    color: Color(0xFF303030),
-                    fontSize: 14,
-                    fontFamily: MAIN_FONT_FAMILY,
-                  ),
-                ),
-              ],
-            ),
-          ],
-        ),
         const SizedBox(
-          height: 20,
+          height: 70,
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,

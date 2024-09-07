@@ -17,8 +17,12 @@ class _CityState extends State<City> {
   final List<String> cityList = [
     'تهران',
     'مشهد',
-    'قزوین ',
+    'قزوین',
     'کرج',
+    'اصفهان',
+    'شیراز',
+    'تبریز',
+    'اهواز',
   ];
   final searchController = TextEditingController();
   final filteredCity = <String>[].obs;
@@ -51,47 +55,82 @@ class _CityState extends State<City> {
       ),
       body: Column(
         children: [
-          const Center(
-            child: Text(
-              'انتخاب شهر',
-              style: TextStyle(fontFamily: MAIN_FONT_FAMILY, fontSize: 22),
+          const SizedBox(height: 20), // فاصله بالای صفحه
+          const Text(
+            'انتخاب شهر',
+            style: TextStyle(
+              fontFamily: MAIN_FONT_FAMILY,
+              fontSize: 22,
+              color: Colors.black,
             ),
           ),
           const SizedBox(height: 50),
+
           Obx(() => selectedCity.isEmpty
               ? Container()
               : Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20.0),
                   child: Align(
                     alignment: Alignment.center,
+                    child: Text(
+                      selectedCity.join(
+                          ', '), // نمایش شهرهای انتخاب‌شده با کاما جدا شده
+                      textAlign: TextAlign.center,
+                      style: const TextStyle(
+                        fontFamily: MAIN_FONT_FAMILY,
+                        fontSize: 16,
+                        color: Colors.black,
+                      ),
+                    ),
+                  ),
+                )),
+
+          const SizedBox(height: 10), // فاصله بین اسم شهرها و Chips
+
+          Obx(() => selectedCity.isEmpty
+              ? Container()
+              : Padding(
+                  padding: const EdgeInsets.only(right: 20.0, left: 10.0),
+                  child: Align(
+                    alignment: Alignment.centerRight,
                     child: Wrap(
                       direction: Axis.horizontal,
-                      spacing: 15.0,
+                      spacing: 5.0,
                       children: selectedCity
-                          .map((neighborhood) => Text(
-                                neighborhood,
-                                style: const TextStyle(
-                                  fontFamily: MAIN_FONT_FAMILY,
-                                  fontSize: 20,
-                                  color: Colors.black,
+                          .map((city) => Chip(
+                                deleteIconColor:
+                                    const Color.fromARGB(255, 168, 11, 0),
+                                backgroundColor: Colors.white,
+                                label: Text(
+                                  city,
+                                  style: const TextStyle(
+                                      fontFamily: MAIN_FONT_FAMILY,
+                                      fontSize: 10),
                                 ),
+                                onDeleted: () {
+                                  // حذف شهر از لیست انتخاب‌شده‌ها و بروزرسانی تیک SwitchItem
+                                  selectedCity.remove(city);
+                                },
                               ))
                           .toList(),
                     ),
                   ),
                 )),
-          const SizedBox(height: 20),
-          Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 20.0,
-            ),
+
+          const SizedBox(height: 10), // فاصله بین Chips و TextField
+
+          // TextField برای جستجو
+          SizedBox(
+            height: 51,
+            width: MediaQuery.of(context).size.width * 0.9,
             child: TextField(
               controller: searchController,
               textAlign: TextAlign.end,
               decoration: InputDecoration(
                 hintText: 'جستجو در همه شهر ها',
                 hintStyle: const TextStyle(
-                    fontFamily: 'Iran Sans', fontWeight: FontWeight.w400),
+                  fontFamily: 'YourFontFamily_Light',
+                ),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10),
                   borderSide: const BorderSide(
@@ -108,36 +147,10 @@ class _CityState extends State<City> {
               ),
             ),
           ),
-          Obx(() => selectedCity.isEmpty
-              ? Container()
-              : Padding(
-                  padding: const EdgeInsets.only(right: 20.0),
-                  child: Align(
-                    alignment: Alignment.centerRight,
-                    child: Wrap(
-                      direction: Axis.horizontal,
-                      spacing: 5.0,
-                      children: selectedCity
-                          .map((city) => Chip(
-                                deleteIconColor: Colors.red,
-                                backgroundColor: Colors.white,
-                                label: Text(
-                                  city,
-                                  style: const TextStyle(
-                                      fontFamily: MAIN_FONT_FAMILY,
-                                      fontSize: 10),
-                                ),
-                                onDeleted: () {
-                                  selectedCity.remove(city);
-                                },
-                              ))
-                          .toList(),
-                    ),
-                  ),
-                )),
-          const SizedBox(
-            height: 10,
-          ),
+
+          const SizedBox(height: 10), // فاصله بین TextField و لیست شهرها
+
+          // نمایش لیست شهرها
           Container(
             decoration: const BoxDecoration(
               color: Color.fromRGBO(99, 99, 99, 1),
@@ -146,7 +159,7 @@ class _CityState extends State<City> {
             child: Padding(
               padding: const EdgeInsets.all(0.6),
               child: Container(
-                width: 346,
+                width: MediaQuery.of(context).size.width * 0.9,
                 height: 280,
                 decoration: const BoxDecoration(
                   color: Colors.white,
@@ -157,7 +170,7 @@ class _CityState extends State<City> {
                       itemBuilder: (context, index) {
                         return Column(
                           children: [
-                            _buildNeighborhoodRow(filteredCity[index]),
+                            _buildCityRow(filteredCity[index]),
                             if (index < filteredCity.length - 1)
                               _buildDivider(),
                           ],
@@ -167,26 +180,27 @@ class _CityState extends State<City> {
               ),
             ),
           ),
-          const SizedBox(
-            height: 50,
-          ),
-          FiltersTaeedEnseraf()
+
+          const SizedBox(height: 50), // فاصله انتهای صفحه
+
+          // دکمه‌های تایید و انصراف
+          FiltersTaeedEnseraf(),
         ],
       ),
     );
   }
 
-  Widget _buildNeighborhoodRow(String neighborhood) {
+  Widget _buildCityRow(String city) {
     return SwitchItem(
-      IsSelected: selectedCity.contains(neighborhood),
+      IsSelected: selectedCity.contains(city),
       onSelected: (_) {
-        if (selectedCity.contains(neighborhood)) {
-          selectedCity.remove(neighborhood);
+        if (selectedCity.contains(city)) {
+          selectedCity.remove(city);
         } else {
-          selectedCity.add(neighborhood);
+          selectedCity.add(city);
         }
       },
-      item: neighborhood,
+      item: city,
     );
   }
 
@@ -194,6 +208,7 @@ class _CityState extends State<City> {
     return const Divider(
       endIndent: 30,
       indent: 30,
+      color: Color.fromRGBO(226, 226, 226, 1),
     );
   }
 }

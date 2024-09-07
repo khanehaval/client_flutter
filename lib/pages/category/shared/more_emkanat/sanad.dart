@@ -23,7 +23,7 @@ void Sanad(Function(String) onSelected) {
           colors: GRADIANT_COLOR,
         ),
         borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(10), topRight: Radius.circular(10)),
+            topLeft: Radius.circular(10), topRight: Radius.circular(30)),
       ),
       child: Padding(
           padding: const EdgeInsets.only(top: 2.0, left: 2, right: 2),
@@ -31,7 +31,7 @@ void Sanad(Function(String) onSelected) {
             decoration: const BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(10), topRight: Radius.circular(10)),
+                  topLeft: Radius.circular(10), topRight: Radius.circular(30)),
             ),
             child: Container(
               decoration: const BoxDecoration(

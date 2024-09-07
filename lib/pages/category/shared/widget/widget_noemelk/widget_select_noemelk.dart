@@ -40,8 +40,9 @@ void showSelectNoeMelk(Function(String) onSelected) {
                     fontSize: 12,
                     color: Color.fromRGBO(156, 64, 64, 1)),
               ),
-              const SizedBox(height: 40),
+              const SizedBox(height: 30),
               Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   SwitchItemsLocation(
                     onSelected: (selectedItems) {
@@ -56,7 +57,7 @@ void showSelectNoeMelk(Function(String) onSelected) {
                       "سوئیت",
                     ],
                   ),
-                  const SizedBox(height: 20),
+                  const SizedBox(height: 30),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [

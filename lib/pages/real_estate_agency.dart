@@ -111,8 +111,10 @@ class Realestateagency extends StatelessWidget {
                                 ),
                               ),
                             ),
-                            Padding(
-                              padding: const EdgeInsets.only(left: 270.0),
+                            Positioned(
+                              left: MediaQuery.of(context).size.width *
+                                  0.70, // 65% of screen width
+
                               child: Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
@@ -163,13 +165,13 @@ class Realestateagency extends StatelessWidget {
                 Expanded(
                   child: SizedBox(
                     height: 40,
-                    width: MediaQuery.of(context).size.width * 1 / 1,
+                    width: MediaQuery.of(context).size.width * 1 / 5,
                     child: TextField(
-                      textAlign: TextAlign.right,
+                      textAlign: TextAlign.center,
                       decoration: InputDecoration(
                         hintText: '* کد شهر ',
                         hintStyle: const TextStyle(
-                            color: Color(0xFFA6A6A6), fontSize: 13),
+                            color: Color(0xFFA6A6A6), fontSize: 11.5),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                           borderSide: const BorderSide(
@@ -598,19 +600,26 @@ class Realestateagency extends StatelessWidget {
                                         colors: GRADIANT_COLOR3)),
                                 child: Padding(
                                   padding: const EdgeInsets.all(1.2),
-                                  child: Container(
-                                    width: 80,
-                                    height: 25,
-                                    padding:
-                                        const EdgeInsets.only(left: 8, top: 1),
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(7),
-                                        color: Colors.white),
-                                    child: const Text(
-                                      'Agancy /',
-                                      style: TextStyle(
-                                        fontSize: 14,
-                                        color: Colors.black,
+                                  child: Center(
+                                    child: Container(
+                                      width: 80,
+                                      height:
+                                          MediaQuery.of(context).size.height,
+                                      padding: const EdgeInsets.only(
+                                        left: 8,
+                                      ),
+                                      decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(7),
+                                          color: Colors.white),
+                                      child: const Center(
+                                        child: Text(
+                                          'Agancy /',
+                                          style: TextStyle(
+                                            fontSize: 14,
+                                            color: Colors.black,
+                                          ),
+                                        ),
                                       ),
                                     ),
                                   ),

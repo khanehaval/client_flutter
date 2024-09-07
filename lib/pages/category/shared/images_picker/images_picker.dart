@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
@@ -39,19 +40,22 @@ class ImagesPicker extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 30),
       child: GestureDetector(
         onTap: () => _showImageSourceActionSheet(context),
-        child: DottedBorder(
-          dashPattern: const [5, 5],
-          radius: const Radius.circular(10),
-          borderType: BorderType.RRect,
-          color: const Color.fromARGB(115, 172, 172, 172),
-          strokeWidth: 2,
-          child: const SizedBox(
-            width: 63,
-            height: 63,
-            child: Icon(
-              Icons.add,
-              size: 35,
-              color: Colors.black26,
+        child: Align(
+          alignment: Alignment.centerLeft,
+          child: DottedBorder(
+            dashPattern: const [5, 5],
+            radius: const Radius.circular(10),
+            borderType: BorderType.RRect,
+            color: const Color.fromARGB(115, 172, 172, 172),
+            strokeWidth: 2,
+            child: const SizedBox(
+              width: 160,
+              height: 63,
+              child: Icon(
+                Icons.add,
+                size: 35,
+                color: Colors.black26,
+              ),
             ),
           ),
         ),
@@ -96,26 +100,20 @@ class ImagesPicker extends StatelessWidget {
     return ClipRRect(
       borderRadius: BorderRadius.circular(10),
       child: Stack(
-        alignment: Alignment.bottomCenter,
+        alignment: Alignment.centerLeft,
         children: [
           Image.file(
             File(path),
-            height: 200,
-            width: double.infinity,
+            height: 100,
+            width: 168,
             fit: BoxFit.cover,
           ),
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: Padding(
-              padding: const EdgeInsets.only(bottom: 20),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  _buildRemoveIcon(path),
-                  const SizedBox(width: 20),
-                  _buildMainImageLabel(),
-                ],
-              ),
+          Padding(
+            padding: const EdgeInsets.only(left: 70),
+            child: Row(
+              children: [
+                _buildRemoveIcon(path),
+              ],
             ),
           ),
         ],
@@ -146,22 +144,28 @@ class ImagesPicker extends StatelessWidget {
     );
   }
 
-  Widget _buildRemoveIcon(String path, {double size = 40}) {
+  Widget _buildRemoveIcon(String path, {double size = 50}) {
     return Container(
       width: size,
       height: size,
-      decoration: BoxDecoration(
-        border: const GradientBoxBorder(
-          gradient: LinearGradient(colors: GRADIANT_COLOR),
-          width: 1,
+      child: Stack(children: [
+        IconButton(
+          icon: Image.asset(
+            'assets/images/Vector-43.png',
+            width: 40,
+            height: 40,
+          ),
+          onPressed: () => selectedImagesPath.remove(path),
         ),
-        borderRadius: BorderRadius.circular(10),
-        color: Colors.white70,
-      ),
-      child: IconButton(
-        icon: Icon(CupertinoIcons.clear_circled, size: size / 1.83),
-        onPressed: () => selectedImagesPath.remove(path),
-      ),
+        Padding(
+          padding: const EdgeInsets.only(top: 15.0, left: 16),
+          child: SvgPicture.asset(
+            'assets/images/plus.svg',
+            width: 20,
+            height: 20,
+          ),
+        )
+      ]),
     );
   }
 
@@ -207,11 +211,8 @@ class ImagesPicker extends StatelessWidget {
               fit: BoxFit.cover,
             ),
             Align(
-              alignment: Alignment.topLeft,
-              child: Padding(
-                padding: const EdgeInsets.all(5),
-                child: _buildRemoveIcon(selectedImagesPath[index], size: 34),
-              ),
+              alignment: Alignment.center,
+              child: _buildRemoveIcon(selectedImagesPath[index], size: 50),
             ),
           ],
         ),
