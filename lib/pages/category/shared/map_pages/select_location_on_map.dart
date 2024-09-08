@@ -393,58 +393,63 @@ class _SelectLocationMapState extends State<SelectLocationMap> {
 
   Widget _buildZoomControls() {
     return Align(
-        alignment: Alignment.bottomLeft,
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Row(
-                children: [
-                  IconButton(
-                      onPressed: () {
-                        getUserCurrentLocation();
-                      },
-                      icon: SizedBox(
-                          height: 50,
-                          width: 50,
-                          child:
-                              SvgPicture.asset("assets/images/icon zoom.svg"))),
-                  IconButton(
-                      onPressed: () {
-                        widget.onSelect(locationInfo);
-                        // Get.back();
-                      },
-                      icon: SizedBox(
-                          height: 60,
-                          width: 60,
-                          child: SvgPicture.asset(
-                            "assets/images/Ok.svg",
-                          )))
-                ],
-              ),
-              Row(
-                children: [
-                  IconButton(
-                      onPressed: () {
-                        zoomOut();
-                      },
-                      icon: SizedBox(
-                          width: 50,
-                          height: 50,
-                          child: SvgPicture.asset("assets/images/icon -.svg"))),
-                  IconButton(
-                      onPressed: () {
-                        zoomIn();
-                      },
-                      icon: SizedBox(
-                          width: 50,
-                          height: 50,
-                          child: SvgPicture.asset("assets/images/icon +.svg")))
-                ],
-              )
-            ],
-          ),
-        ));
+      alignment: Alignment.bottomLeft,
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Row(
+              children: [
+                IconButton(
+                  onPressed: () {
+                    getUserCurrentLocation();
+                  },
+                  icon: SizedBox(
+                    height: 50,
+                    width: 50,
+                    child: SvgPicture.asset("assets/images/icon zoom.svg"),
+                  ),
+                ),
+                IconButton(
+                  onPressed: () {
+                    widget.onSelect(locationInfo);
+                  },
+                  icon: SizedBox(
+                    height: 65,
+                    width: 65,
+                    child: SvgPicture.asset("assets/images/Ok.svg"),
+                  ),
+                ),
+              ],
+            ),
+            Row(
+              children: [
+                IconButton(
+                  onPressed: () {
+                    zoomOut();
+                  },
+                  icon: SizedBox(
+                    width: 50,
+                    height: 50,
+                    child: SvgPicture.asset("assets/images/icon -.svg"),
+                  ),
+                ),
+                IconButton(
+                  onPressed: () {
+                    zoomIn();
+                  },
+                  icon: SizedBox(
+                    width: 50,
+                    height: 50,
+                    child: SvgPicture.asset("assets/images/icon +.svg"),
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }

@@ -1,17 +1,19 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'login_res.dart';
+part of 'sale_old_house_res.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-LoginRes _$LoginResFromJson(Map<String, dynamic> json) => LoginRes(
-      state: json['state'] as bool,
+SaleOldHouseRes _$SaleOldHouseResFromJson(Map<String, dynamic> json) =>
+    SaleOldHouseRes(
+      status: json['status'] as bool,
       message: json['message'] as String,
     );
 
-Map<String, dynamic> _$LoginResToJson(LoginRes instance) => <String, dynamic>{
-      'state': instance.state,
+Map<String, dynamic> _$SaleOldHouseResToJson(SaleOldHouseRes instance) =>
+    <String, dynamic>{
+      'status': instance.status,
       'message': instance.message,
     };

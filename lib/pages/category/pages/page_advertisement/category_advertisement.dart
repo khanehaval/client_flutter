@@ -6,7 +6,6 @@ import 'package:flutter_application_1/pages/category/pages/page_advertisement/pa
 import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/kota_modat_pages/ejara_kota_modat_page.dart';
 import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/sakht_v_saz_pages/sakht_v_saz_adv.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
 class CategoryAdvertisement extends StatefulWidget {
@@ -36,7 +35,7 @@ class _CategoryAdvertisementState extends State<CategoryAdvertisement> {
             Column(
               children: [
                 const Text(
-                 "انتخاب نوع واگذاری",
+                  "انتخاب نوع واگذاری",
                   style: TextStyle(
                     fontFamily: MAIN_FONT_FAMILY,
                     color: Color.fromRGBO(99, 99, 99, 1),
@@ -44,8 +43,8 @@ class _CategoryAdvertisementState extends State<CategoryAdvertisement> {
                   ),
                 ),
                 const SizedBox(height: 20),
-                SvgPicture.asset(
-                  'assets/images/key and home1.svg',
+                Image.asset(
+                  'assets/images/key and home1.png',
                   height: Get.height / 4,
                   width: Get.height / 4,
                 ),

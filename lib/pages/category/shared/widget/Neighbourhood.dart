@@ -21,18 +21,19 @@ class _NeighbourhoodState extends State<Neighbourhood> {
     'محله 1',
     'محله 2',
     'محله 3',
+    'شهران',
+    'محله 1',
+    'محله 2',
+    'محله 3',
   ];
   final searchController = TextEditingController();
   final filteredNeighborhoods = <String>[].obs;
 
-  final _advRepo = GetIt.I.get<AdvRepo>();
-
   @override
   void initState() {
     super.initState();
-    selectedNeighborhoods.addAll(_advRepo.selectedCity);
     filteredNeighborhoods.addAll(neighborhoods);
-    searchController.addListener(_filterNeighborhoods);
+    searchController.addListener(_filterCity);
   }
 
   @override
@@ -41,10 +42,10 @@ class _NeighbourhoodState extends State<Neighbourhood> {
     super.dispose();
   }
 
-  void _filterNeighborhoods() {
+  void _filterCity() {
     final query = searchController.text.toLowerCase();
     filteredNeighborhoods.value = neighborhoods
-        .where((neighborhood) => neighborhood.toLowerCase().contains(query))
+        .where((city) => city.toLowerCase().contains(query))
         .toList();
   }
 
@@ -57,47 +58,78 @@ class _NeighbourhoodState extends State<Neighbourhood> {
       ),
       body: Column(
         children: [
-          const Center(
-            child: Text(
-              'انتخاب محله',
-              style: TextStyle(fontFamily: MAIN_FONT_FAMILY, fontSize: 22),
+          const SizedBox(height: 20), // فاصله بالای صفحه
+          const Text(
+            'انتخاب محله',
+            style: TextStyle(
+              fontFamily: MAIN_FONT_FAMILY,
+              fontSize: 22,
+              color: Colors.black,
             ),
           ),
           const SizedBox(height: 50),
+
           Obx(() => selectedNeighborhoods.isEmpty
               ? Container()
               : Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20.0),
                   child: Align(
                     alignment: Alignment.center,
+                    child: Text(
+                      selectedNeighborhoods.join(
+                          ', '), // نمایش شهرهای انتخاب‌شده با کاما جدا شده
+                      textAlign: TextAlign.center,
+                      style: const TextStyle(
+                        fontFamily: MAIN_FONT_FAMILY,
+                        fontSize: 16,
+                        color: Colors.black,
+                      ),
+                    ),
+                  ),
+                )),
+
+          const SizedBox(height: 20), // فاصله بین اسم شهرها و Chips
+
+          Obx(() => selectedNeighborhoods.isEmpty
+              ? Container()
+              : Padding(
+                  padding: const EdgeInsets.only(right: 20.0, left: 10.0),
+                  child: Align(
+                    alignment: Alignment.centerRight,
                     child: Wrap(
                       direction: Axis.horizontal,
                       spacing: 5.0,
                       children: selectedNeighborhoods
-                          .map((neighborhood) => Text(
-                                neighborhood,
-                                style: const TextStyle(
-                                  fontFamily: MAIN_FONT_FAMILY,
-                                  fontSize: 20,
-                                  color: Colors.black,
+                          .map((city) => Chip(
+                                deleteIconColor:
+                                    const Color.fromARGB(255, 168, 11, 0),
+                                backgroundColor: Colors.white,
+                                label: Text(
+                                  city,
+                                  style: const TextStyle(
+                                      fontFamily: MAIN_FONT_FAMILY,
+                                      fontSize: 10),
                                 ),
+                                onDeleted: () {
+                                  selectedNeighborhoods.remove(city);
+                                },
                               ))
                           .toList(),
                     ),
                   ),
                 )),
           const SizedBox(height: 20),
-          Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 20.0,
-            ),
+          SizedBox(
+            height: 51,
+            width: MediaQuery.of(context).size.width * 0.9,
             child: TextField(
               controller: searchController,
               textAlign: TextAlign.end,
               decoration: InputDecoration(
                 hintText: 'جستجو در همه شهر ها',
                 hintStyle: const TextStyle(
-                    fontFamily: 'Iran Sans', fontWeight: FontWeight.w400),
+                  fontFamily: 'YourFontFamily_Light',
+                ),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10),
                   borderSide: const BorderSide(
@@ -114,36 +146,7 @@ class _NeighbourhoodState extends State<Neighbourhood> {
               ),
             ),
           ),
-          Obx(() => selectedNeighborhoods.isEmpty
-              ? Container()
-              : Padding(
-                  padding: const EdgeInsets.only(right: 20.0),
-                  child: Align(
-                    alignment: Alignment.centerRight,
-                    child: Wrap(
-                      direction: Axis.horizontal,
-                      spacing: 5.0,
-                      children: selectedNeighborhoods
-                          .map((city) => Chip(
-                                deleteIconColor: Colors.red,
-                                backgroundColor: Colors.white,
-                                label: Text(
-                                  city,
-                                  style: const TextStyle(
-                                      fontFamily: MAIN_FONT_FAMILY,
-                                      fontSize: 10),
-                                ),
-                                onDeleted: () {
-                                  selectedNeighborhoods.remove(city);
-                                },
-                              ))
-                          .toList(),
-                    ),
-                  ),
-                )),
-          const SizedBox(
-            height: 10,
-          ),
+          const SizedBox(height: 20),
           Container(
             decoration: const BoxDecoration(
               color: Color.fromRGBO(99, 99, 99, 1),
@@ -152,7 +155,7 @@ class _NeighbourhoodState extends State<Neighbourhood> {
             child: Padding(
               padding: const EdgeInsets.all(0.6),
               child: Container(
-                width: 346,
+                width: MediaQuery.of(context).size.width * 0.9,
                 height: 280,
                 decoration: const BoxDecoration(
                   color: Colors.white,
@@ -163,7 +166,7 @@ class _NeighbourhoodState extends State<Neighbourhood> {
                       itemBuilder: (context, index) {
                         return Column(
                           children: [
-                            _buildNeighborhoodRow(filteredNeighborhoods[index]),
+                            _buildCityRow(filteredNeighborhoods[index]),
                             if (index < filteredNeighborhoods.length - 1)
                               _buildDivider(),
                           ],
@@ -173,26 +176,27 @@ class _NeighbourhoodState extends State<Neighbourhood> {
               ),
             ),
           ),
-          const SizedBox(
-            height: 50,
-          ),
-          FiltersTaeedEnseraf()
+
+          const SizedBox(height: 50), // فاصله انتهای صفحه
+
+          // دکمه‌های تایید و انصراف
+          FiltersTaeedEnseraf(),
         ],
       ),
     );
   }
 
-  Widget _buildNeighborhoodRow(String neighborhood) {
+  Widget _buildCityRow(String city) {
     return SwitchItem(
-      IsSelected: selectedNeighborhoods.contains(neighborhood),
+      IsSelected: selectedNeighborhoods.contains(city),
       onSelected: (_) {
-        if (selectedNeighborhoods.contains(neighborhood)) {
-          selectedNeighborhoods.remove(neighborhood);
+        if (selectedNeighborhoods.contains(city)) {
+          selectedNeighborhoods.remove(city);
         } else {
-          selectedNeighborhoods.add(neighborhood);
+          selectedNeighborhoods.add(city);
         }
       },
-      item: neighborhood,
+      item: city,
     );
   }
 
@@ -200,6 +204,7 @@ class _NeighbourhoodState extends State<Neighbourhood> {
     return const Divider(
       endIndent: 30,
       indent: 30,
+      color: Color.fromRGBO(226, 226, 226, 1),
     );
   }
 }

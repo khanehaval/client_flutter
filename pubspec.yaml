@@ -82,6 +82,7 @@ dependencies:
   draggable_home: 1.0.5
   onboarding: 4.0.2
   smooth_page_indicator: 1.1.0
+  sms_autofill: ^2.4.0
 
   # mapir_raster: 0.0.1
 

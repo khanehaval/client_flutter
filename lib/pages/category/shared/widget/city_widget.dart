@@ -108,7 +108,6 @@ class _CityState extends State<City> {
                                       fontSize: 10),
                                 ),
                                 onDeleted: () {
-                                  // حذف شهر از لیست انتخاب‌شده‌ها و بروزرسانی تیک SwitchItem
                                   selectedCity.remove(city);
                                 },
                               ))
@@ -116,10 +115,7 @@ class _CityState extends State<City> {
                     ),
                   ),
                 )),
-
-          const SizedBox(height: 10), // فاصله بین Chips و TextField
-
-          // TextField برای جستجو
+          const SizedBox(height: 10),
           SizedBox(
             height: 51,
             width: MediaQuery.of(context).size.width * 0.9,

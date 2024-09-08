@@ -22,8 +22,8 @@ Widget AdvTitleWidget() {
         height: 25,
       ),
       Center(
-        child: SvgPicture.asset(
-          'assets/images/key and home1.svg',
+        child: Image.asset(
+          'assets/images/key and home1.png',
           height: Get.height / 4,
           width: Get.height / 4,
         ),

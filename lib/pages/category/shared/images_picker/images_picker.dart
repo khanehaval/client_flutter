@@ -2,12 +2,9 @@ import 'dart:io';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'image_croped.dart'; // Ensure this file is properly implemented for cropping
 
 class ImagesPicker extends StatelessWidget {
@@ -28,164 +25,96 @@ class ImagesPicker extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 20),
-        Obx(() => selectedImagesPath.isEmpty
-            ? _buildEmptyPicker(context)
-            : _buildImagePicker(context)),
+        Obx(() => _buildImagePicker(context)),
       ],
-    );
-  }
-
-  Widget _buildEmptyPicker(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 30),
-      child: GestureDetector(
-        onTap: () => _showImageSourceActionSheet(context),
-        child: Align(
-          alignment: Alignment.centerLeft,
-          child: DottedBorder(
-            dashPattern: const [5, 5],
-            radius: const Radius.circular(10),
-            borderType: BorderType.RRect,
-            color: const Color.fromARGB(115, 172, 172, 172),
-            strokeWidth: 2,
-            child: const SizedBox(
-              width: 160,
-              height: 63,
-              child: Icon(
-                Icons.add,
-                size: 35,
-                color: Colors.black26,
-              ),
-            ),
-          ),
-        ),
-      ),
     );
   }
 
   Widget _buildImagePicker(BuildContext context) {
     return Column(
       children: [
-        _buildMainImage(selectedImagesPath.first), // نمایش عکس اصلی
-        const SizedBox(height: 30),
-        GridView.builder(
-          shrinkWrap: true,
-          physics: const NeverScrollableScrollPhysics(),
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
-            crossAxisSpacing: 10,
-            mainAxisSpacing: 10,
-            childAspectRatio: 190 / 119,
-          ),
-          // تعداد آیتم‌ها را به تعداد بقیه تصاویر تنظیم کنید و برای آیکون اضافه کردن یکی اضافه کنید
-          itemCount: selectedImagesPath.length < 5
-              ? selectedImagesPath.length
-              : selectedImagesPath.length - 1,
-          itemBuilder: (context, index) {
-            if (index == selectedImagesPath.length - 1 &&
-                selectedImagesPath.length < 5) {
-              // نمایش آیکون اضافه کردن در آخرین آیتم
-              return _buildAddMoreButton(context);
-            } else {
-              // index + 1 برای نادیده گرفتن عکس اول
-              return _buildImageGridItem(index + 1);
-            }
-          },
-        ),
+        // نمایش سه گزینه یا عکس در اولین خط
+        _buildImageGridRow(context, 0, 3),
+        const SizedBox(height: 20),
+        // نمایش سه گزینه یا عکس در دومین خط
+        _buildImageGridRow(context, 3, 6),
       ],
     );
   }
 
-  Widget _buildMainImage(String path) {
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(10),
-      child: Stack(
-        alignment: Alignment.centerLeft,
-        children: [
-          Image.file(
-            File(path),
-            height: 100,
-            width: 168,
-            fit: BoxFit.cover,
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 70),
-            child: Row(
-              children: [
-                _buildRemoveIcon(path),
-              ],
-            ),
-          ),
-        ],
-      ),
+  Widget _buildImageGridRow(
+      BuildContext context, int startIndex, int endIndex) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: List.generate(3, (index) {
+        final imageIndex = startIndex + index;
+        if (imageIndex < selectedImagesPath.length) {
+          return _buildImageGridItem(imageIndex);
+        } else {
+          return _buildAddMoreButton(context, isMain: false);
+        }
+      }),
     );
   }
 
-  Widget _buildMainImageLabel() {
-    return Container(
-      height: 40,
-      decoration: BoxDecoration(
-        border: const GradientBoxBorder(
-          gradient: LinearGradient(colors: GRADIANT_COLOR),
-          width: 1,
-        ),
+  Widget _buildMainImage(BuildContext context) {
+    if (selectedImagesPath.isEmpty) {
+      return _buildAddMoreButton(context,
+          isMain: true); // دکمه اضافه کردن عکس اصلی
+    } else {
+      return ClipRRect(
         borderRadius: BorderRadius.circular(10),
-        color: Colors.white70,
-      ),
-      child: const Padding(
-        padding: EdgeInsets.all(8.0),
-        child: Center(
-          child: Text(
-            "عکس اصلی",
-            style: TextStyle(fontFamily: MAIN_FONT_FAMILY),
-          ),
+        child: Stack(
+          alignment: Alignment.centerLeft,
+          children: [
+            Image.file(
+              File(selectedImagesPath.first),
+              height: 70, // سایز بزرگتر برای عکس اصلی
+              width: 150,
+              fit: BoxFit.cover,
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 10.0),
+              child: Row(
+                children: [
+                  _buildRemoveIcon(selectedImagesPath.first),
+                ],
+              ),
+            ),
+          ],
         ),
+      );
+    }
+  }
+
+  Widget _buildRemoveIcon(String path, {double size = 40}) {
+    return Padding(
+      padding: const EdgeInsets.only(left: 27.0, top: 10),
+      child: IconButton(
+        icon: SvgPicture.asset(
+          'assets/images/Vector-43.svg',
+          width: 30,
+          height: 30,
+        ),
+        onPressed: () => selectedImagesPath.remove(path),
       ),
     );
   }
 
-  Widget _buildRemoveIcon(String path, {double size = 50}) {
-    return Container(
-      width: size,
-      height: size,
-      child: Stack(children: [
-        IconButton(
-          icon: Image.asset(
-            'assets/images/Vector-43.png',
-            width: 40,
-            height: 40,
-          ),
-          onPressed: () => selectedImagesPath.remove(path),
-        ),
-        Padding(
-          padding: const EdgeInsets.only(top: 15.0, left: 16),
-          child: SvgPicture.asset(
-            'assets/images/plus.svg',
-            width: 20,
-            height: 20,
-          ),
-        )
-      ]),
-    );
-  }
-
-  Widget _buildAddMoreButton(BuildContext context) {
+  Widget _buildAddMoreButton(BuildContext context, {bool isMain = false}) {
     return GestureDetector(
       behavior: HitTestBehavior.translucent,
       onTap: () => _showImageSourceActionSheet(context),
-      child: Padding(
-        padding: const EdgeInsets.only(right: 65, top: 20),
-        child: DottedBorder(
-          borderType: BorderType.RRect,
-          color: Colors.black26,
-          strokeWidth: 2,
-          radius: const Radius.circular(10),
-          child: SizedBox(
-            width: Get.mediaQuery.size.width * 0.5,
-            height: 200,
-            child: const Center(
-              child: Icon(Icons.add, size: 30, color: Colors.black26),
-            ),
+      child: DottedBorder(
+        borderType: BorderType.RRect,
+        color: Colors.black26,
+        strokeWidth: 2,
+        radius: const Radius.circular(10),
+        child: SizedBox(
+          height: isMain ? 70 : 70, // سایز متفاوت برای عکس اصلی
+          width: isMain ? 100 : 100, // سایز متفاوت برای عکس اصلی
+          child: const Center(
+            child: Icon(Icons.add, size: 30, color: Colors.black26),
           ),
         ),
       ),
@@ -193,29 +122,24 @@ class ImagesPicker extends StatelessWidget {
   }
 
   Widget _buildImageGridItem(int index) {
-    return SizedBox(
-      height: 200,
-      width: 130,
-      child: Container(
-        decoration: BoxDecoration(
-          color: Get.theme.focusColor,
-          border: Border.all(color: Colors.black12),
-          borderRadius: BorderRadius.circular(4),
-        ),
-        child: Stack(
-          children: [
-            Image.file(
-              File(selectedImagesPath[index]),
-              height: 119,
-              width: 190,
-              fit: BoxFit.cover,
-            ),
-            Align(
-              alignment: Alignment.center,
-              child: _buildRemoveIcon(selectedImagesPath[index], size: 50),
-            ),
-          ],
-        ),
+    return Container(
+      decoration: BoxDecoration(
+        border: Border.all(color: Colors.black12),
+        borderRadius: BorderRadius.circular(10),
+      ),
+      child: Stack(
+        children: [
+          Image.file(
+            File(selectedImagesPath[index]),
+            height: 70,
+            width: 100,
+            fit: BoxFit.cover,
+          ),
+          Align(
+            alignment: Alignment.center,
+            child: _buildRemoveIcon(selectedImagesPath[index], size: 40),
+          ),
+        ],
       ),
     );
   }
@@ -251,8 +175,8 @@ class ImagesPicker extends StatelessWidget {
   }
 
   Future<void> _pickImage(ImageSource source) async {
-    if (selectedImagesPath.length >= 5) {
-      Get.snackbar('Error', 'You cannot add more than 5 images');
+    if (selectedImagesPath.length >= 6) {
+      Get.snackbar('Error', 'You cannot add more than 6 images');
       return;
     }
     try {
