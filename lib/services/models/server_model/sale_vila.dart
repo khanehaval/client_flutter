@@ -1,169 +1,175 @@
-class RealEstate {
-  String id;
-  String cityId;
-  String districtId;
-  Location location;
-  String thumbnail;
-  List<String> images;
-  String subject;
-  String title;
-  String description;
-  bool showContactInfo;
-  bool canChat;
-  bool sendToAgencyAndConsultUser;
-  double totalPrice;
-  String buildingType; // Consider using an enum for fixed values
-  double landMeterage;
-  double buildingMeterage;
-  bool saleAsInstallment;
-  int prepaymentPercent;
-  double prepayment;
-  double installmentAmount;
-  String installmentNumber;
-  String installmentPaybackTime;
-  String installmentPledge;
-  bool hasLoan;
-  double totalLoanAmount;
-  double loanInstallmentAmount;
-  String loanInstallmentNumber;
-  String age;
-  String room;
-  bool hasGarage;
-  bool hasStoreHouse;
-  String docType;
-  String villaTotalFloors;
-  String buildingSide;
-  String reconstruct;
-  String flooringMaterialType;
-  String cabinetType;
-  String wc;
-  String coolingSystemType;
-  String heatingSystemType;
-  String heatWaterSystemType;
-  bool hasCentralAnthena;
-  bool hasConferenceHall;
-  bool hasBathTub;
-  bool hasMasterRoom;
-  bool hasBalcony;
-  bool hasGazebo;
-  bool hasSwimmingPool;
-  bool hasRoofGarden;
-  bool hasLobby;
-  bool hasGamingRoom;
-  bool hasSportingHall;
-  bool hasSaunaJacuzzi;
+import 'package:flutter_application_1/services/models/server_model/sale_aparteman.dart';
 
-  RealEstate({
-    required this.id,
-    required this.cityId,
-    required this.districtId,
-    required this.location,
-    required this.thumbnail,
-    required this.images,
-    required this.subject,
-    required this.title,
-    required this.description,
-    required this.showContactInfo,
-    required this.canChat,
-    required this.sendToAgencyAndConsultUser,
-    required this.totalPrice,
-    required this.buildingType,
-    required this.landMeterage,
-    required this.buildingMeterage,
-    required this.saleAsInstallment,
-    required this.prepaymentPercent,
-    required this.prepayment,
-    required this.installmentAmount,
-    required this.installmentNumber,
-    required this.installmentPaybackTime,
-    required this.installmentPledge,
-    required this.hasLoan,
-    required this.totalLoanAmount,
-    required this.loanInstallmentAmount,
-    required this.loanInstallmentNumber,
-    required this.age,
-    required this.room,
-    required this.hasGarage,
-    required this.hasStoreHouse,
-    required this.docType,
-    required this.villaTotalFloors,
-    required this.buildingSide,
-    required this.reconstruct,
-    required this.flooringMaterialType,
-    required this.cabinetType,
-    required this.wc,
-    required this.coolingSystemType,
-    required this.heatingSystemType,
-    required this.heatWaterSystemType,
-    required this.hasCentralAnthena,
-    required this.hasConferenceHall,
-    required this.hasBathTub,
-    required this.hasMasterRoom,
-    required this.hasBalcony,
-    required this.hasGazebo,
-    required this.hasSwimmingPool,
-    required this.hasRoofGarden,
-    required this.hasLobby,
-    required this.hasGamingRoom,
-    required this.hasSportingHall,
-    required this.hasSaunaJacuzzi,
+class SaleVilaServerModel {
+  String? id;
+  String? cityId;
+  String? districtId;
+  Location? location;
+  String? thumbnail;
+  List<String>? images;
+  String? subject;
+  String? title;
+  String? description;
+  bool? showContactInfo;
+  bool? canChat;
+  bool? sendToAgencyAndConsultUser;
+  double? totalPrice;
+  String? buildingType;
+  double? landMeterage;
+  double? buildingMeterage;
+  bool? saleAsInstallment;
+  int? prepaymentPercent;
+  double? prepayment;
+  double? installmentAmount;
+  String? installmentNumber;
+  String? installmentPaybackTime;
+  String? installmentPledge;
+  bool? hasLoan;
+  double? totalLoanAmount;
+  double? loanInstallmentAmount;
+  String? loanInstallmentNumber;
+  String? age;
+  String? room;
+  bool? hasGarage;
+  bool? hasStoreHouse;
+  String? docType;
+  String? villaTotalFloors;
+  String? buildingSide;
+  String? reconstruct;
+  String? flooringMaterialType;
+  String? cabinetType;
+  String? wc;
+  String? coolingSystemType;
+  String? heatingSystemType;
+  String? heatWaterSystemType;
+  bool? hasCentralAnthena;
+  bool? hasConferenceHall;
+  bool? hasBathTub;
+  bool? hasMasterRoom;
+  bool? hasBalcony;
+  bool? hasGazebo;
+  bool? hasSwimmingPool;
+  bool? hasRoofGarden;
+  bool? hasLobby;
+  bool? hasGamingRoom;
+  bool? hasSportingHall;
+  bool? hasSaunaJacuzzi;
+
+  SaleVilaServerModel({
+    this.id,
+    this.cityId,
+    this.districtId,
+    this.location,
+    this.thumbnail,
+    this.images,
+    this.subject,
+    this.title,
+    this.description,
+    this.showContactInfo,
+    this.canChat,
+    this.sendToAgencyAndConsultUser,
+    this.totalPrice,
+    this.buildingType,
+    this.landMeterage,
+    this.buildingMeterage,
+    this.saleAsInstallment,
+    this.prepaymentPercent,
+    this.prepayment,
+    this.installmentAmount,
+    this.installmentNumber,
+    this.installmentPaybackTime,
+    this.installmentPledge,
+    this.hasLoan,
+    this.totalLoanAmount,
+    this.loanInstallmentAmount,
+    this.loanInstallmentNumber,
+    this.age,
+    this.room,
+    this.hasGarage,
+    this.hasStoreHouse,
+    this.docType,
+    this.villaTotalFloors,
+    this.buildingSide,
+    this.reconstruct,
+    this.flooringMaterialType,
+    this.cabinetType,
+    this.wc,
+    this.coolingSystemType,
+    this.heatingSystemType,
+    this.heatWaterSystemType,
+    this.hasCentralAnthena,
+    this.hasConferenceHall,
+    this.hasBathTub,
+    this.hasMasterRoom,
+    this.hasBalcony,
+    this.hasGazebo,
+    this.hasSwimmingPool,
+    this.hasRoofGarden,
+    this.hasLobby,
+    this.hasGamingRoom,
+    this.hasSportingHall,
+    this.hasSaunaJacuzzi,
   });
 
-  factory RealEstate.fromJson(Map<String, dynamic> json) {
-    return RealEstate(
-      id: json['id'],
-      cityId: json['cityId'],
-      districtId: json['districtId'],
-      location: Location.fromJson(json['location']),
-      thumbnail: json['thumbnail'],
-      images: List<String>.from(json['images']),
-      subject: json['subject'],
-      title: json['title'],
-      description: json['description'],
-      showContactInfo: json['showContactInfo'],
-      canChat: json['canChat'],
-      sendToAgencyAndConsultUser: json['sendToAgencyAndConsultUser'],
-      totalPrice: json['totalPrice'].toDouble(),
-      buildingType: json['buildingType'],
-      landMeterage: json['landMeterage'].toDouble(),
-      buildingMeterage: json['buildingMeterage'].toDouble(),
-      saleAsInstallment: json['saleAsInstallment'],
-      prepaymentPercent: json['prepaymentPercent'],
-      prepayment: json['prepayment'].toDouble(),
-      installmentAmount: json['installmentAmount'].toDouble(),
-      installmentNumber: json['installmentNumber'],
-      installmentPaybackTime: json['installmentPaybackTime'],
-      installmentPledge: json['installmentPledge'],
-      hasLoan: json['hasLoan'],
-      totalLoanAmount: json['totalLoanAmount'].toDouble(),
-      loanInstallmentAmount: json['loanInstallmentAmount'].toDouble(),
-      loanInstallmentNumber: json['loanInstallmentNumber'],
-      age: json['age'],
-      room: json['room'],
-      hasGarage: json['hasGarage'],
-      hasStoreHouse: json['hasStoreHouse'],
-      docType: json['docType'],
-      villaTotalFloors: json['villaTotalFloors'],
-      buildingSide: json['buildingSide'],
-      reconstruct: json['reconstruct'],
-      flooringMaterialType: json['flooringMaterialType'],
-      cabinetType: json['cabinetType'],
-      wc: json['wc'],
-      coolingSystemType: json['coolingSystemType'],
-      heatingSystemType: json['heatingSystemType'],
-      heatWaterSystemType: json['heatWaterSystemType'],
-      hasCentralAnthena: json['hasCentralAnthena'],
-      hasConferenceHall: json['hasConferenceHall'],
-      hasBathTub: json['hasBathTub'],
-      hasMasterRoom: json['hasMasterRoom'],
-      hasBalcony: json['hasBalcony'],
-      hasGazebo: json['hasGazebo'],
-      hasSwimmingPool: json['hasSwimmingPool'],
-      hasRoofGarden: json['hasRoofGarden'],
-      hasLobby: json['hasLobby'],
-      hasGamingRoom: json['hasGamingRoom'],
-      hasSportingHall: json['hasSportingHall'],
-      hasSaunaJacuzzi: json['hasSaunaJacuzzi'],
+  factory SaleVilaServerModel.fromJson(Map<String, dynamic> json) {
+    return SaleVilaServerModel(
+      id: json['id'] as String?,
+      cityId: json['cityId'] as String?,
+      districtId: json['districtId'] as String?,
+      location: json['location'] != null
+          ? Location.fromJson(json['location'] as Map<String, dynamic>)
+          : null,
+      thumbnail: json['thumbnail'] as String?,
+      images:
+          (json['images'] as List<dynamic>?)?.map((e) => e as String).toList(),
+      subject: json['subject'] as String?,
+      title: json['title'] as String?,
+      description: json['description'] as String?,
+      showContactInfo: json['showContactInfo'] as bool?,
+      canChat: json['canChat'] as bool?,
+      sendToAgencyAndConsultUser: json['sendToAgencyAndConsultUser'] as bool?,
+      totalPrice: (json['totalPrice'] as num?)?.toDouble(),
+      buildingType: json['buildingType'] as String?,
+      landMeterage: (json['landMeterage'] as num?)?.toDouble(),
+      buildingMeterage: (json['buildingMeterage'] as num?)?.toDouble(),
+      saleAsInstallment: json['saleAsInstallment'] as bool?,
+      prepaymentPercent: json['prepaymentPercent'] as int?,
+      prepayment: (json['prepayment'] as num?)?.toDouble(),
+      installmentAmount: (json['installmentAmount'] as num?)?.toDouble(),
+      installmentNumber: json['installmentNumber'] as String?,
+      installmentPaybackTime: json['installmentPaybackTime'] as String?,
+      installmentPledge: json['installmentPledge'] as String?,
+      hasLoan: json['hasLoan'] as bool?,
+      totalLoanAmount: (json['totalLoanAmount'] as num?)?.toDouble(),
+      loanInstallmentAmount:
+          (json['loanInstallmentAmount'] as num?)?.toDouble(),
+      loanInstallmentNumber: json['loanInstallmentNumber'] as String?,
+      age: json['age'] as String?,
+      room: json['room'] as String?,
+      hasGarage: json['hasGarage'] as bool?,
+      hasStoreHouse: json['hasStoreHouse'] as bool?,
+      docType: json['docType'] as String?,
+      villaTotalFloors: json['villaTotalFloors'] as String?,
+      buildingSide: json['buildingSide'] as String?,
+      reconstruct: json['reconstruct'] as String?,
+      flooringMaterialType: json['flooringMaterialType'] as String?,
+      cabinetType: json['cabinetType'] as String?,
+      wc: json['wc'] as String?,
+      coolingSystemType: json['coolingSystemType'] as String?,
+      heatingSystemType: json['heatingSystemType'] as String?,
+      heatWaterSystemType: json['heatWaterSystemType'] as String?,
+      hasCentralAnthena: json['hasCentralAnthena'] as bool?,
+      hasConferenceHall: json['hasConferenceHall'] as bool?,
+      hasBathTub: json['hasBathTub'] as bool?,
+      hasMasterRoom: json['hasMasterRoom'] as bool?,
+      hasBalcony: json['hasBalcony'] as bool?,
+      hasGazebo: json['hasGazebo'] as bool?,
+      hasSwimmingPool: json['hasSwimmingPool'] as bool?,
+      hasRoofGarden: json['hasRoofGarden'] as bool?,
+      hasLobby: json['hasLobby'] as bool?,
+      hasGamingRoom: json['hasGamingRoom'] as bool?,
+      hasSportingHall: json['hasSportingHall'] as bool?,
+      hasSaunaJacuzzi: json['hasSaunaJacuzzi'] as bool?,
     );
   }
 
@@ -172,7 +178,7 @@ class RealEstate {
       'id': id,
       'cityId': cityId,
       'districtId': districtId,
-      'location': location.toJson(),
+      'location': location?.toJson(),
       'thumbnail': thumbnail,
       'images': images,
       'subject': subject,
@@ -222,48 +228,6 @@ class RealEstate {
       'hasGamingRoom': hasGamingRoom,
       'hasSportingHall': hasSportingHall,
       'hasSaunaJacuzzi': hasSaunaJacuzzi,
-    };
-  }
-}
-
-class Location {
-  String address;
-  LngLat lngLat;
-
-  Location({required this.address, required this.lngLat});
-
-  factory Location.fromJson(Map<String, dynamic> json) {
-    return Location(
-      address: json['address'],
-      lngLat: LngLat.fromJson(json['lngLat']),
-    );
-  }
-
-  Map<String, dynamic> toJson() {
-    return {
-      'address': address,
-      'lngLat': lngLat.toJson(),
-    };
-  }
-}
-
-class LngLat {
-  double lng;
-  double lat;
-
-  LngLat({required this.lng, required this.lat});
-
-  factory LngLat.fromJson(Map<String, dynamic> json) {
-    return LngLat(
-      lng: json['lng'],
-      lat: json['lat'],
-    );
-  }
-
-  Map<String, dynamic> toJson() {
-    return {
-      'lng': lng,
-      'lat': lat,
     };
   }
 }

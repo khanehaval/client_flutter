@@ -51,7 +51,7 @@ void DetailCall(Function(String) onSelected) {
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         Image.asset('assets/images/detail_icon_contact.png',
-                            width: 40, height: 40),
+                            width: 40, height: 50),
                         Column(
                           mainAxisSize: MainAxisSize.min,
                           crossAxisAlignment: CrossAxisAlignment.center,
@@ -68,21 +68,12 @@ void DetailCall(Function(String) onSelected) {
                               child: const Text(
                                 '091212312356',
                                 style: TextStyle(
-                                  fontFamily: MAIN_FONT_FAMILY,
-                                  color: Colors.white,
-                                ),
+                                    fontFamily: MAIN_FONT_FAMILY,
+                                    color: Colors.white,
+                                    fontSize: 13),
                               ),
                             ),
-                            const SizedBox(height: 10),
-                            const Text(
-                              'کد آگهی انتخاب شده را لطفا اعلام بفرمائید',
-                              style: TextStyle(
-                                fontSize: 12,
-                                fontFamily: MAIN_FONT_FAMILY_MEDIUM,
-                                color: Color.fromRGBO(166, 166, 166, 1),
-                              ),
-                            ),
-                            const SizedBox(height: 10),
+                            const SizedBox(height: 20),
                             Row(
                               children: [
                                 SizedBox(width: 10),
@@ -101,7 +92,7 @@ void DetailCall(Function(String) onSelected) {
                                     style: TextStyle(
                                       fontFamily: MAIN_FONT_FAMILY,
                                       color: Colors.white,
-                                      fontSize: 11,
+                                      fontSize: 13,
                                     ),
                                   ),
                                 ),
@@ -125,7 +116,7 @@ void DetailCall(Function(String) onSelected) {
                           ],
                         ),
                         Image.asset('assets/images/detail_icon_Message.png',
-                            width: 40, height: 40),
+                            width: 50, height: 50),
                       ],
                     ),
                     const SizedBox(height: 55),

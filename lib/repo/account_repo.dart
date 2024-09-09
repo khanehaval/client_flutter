@@ -7,6 +7,8 @@ import 'package:flutter_application_1/services/acount_service.dart';
 import 'package:flutter_application_1/services/advertisment_service.dart';
 import 'package:flutter_application_1/services/http_service.dart';
 import 'package:flutter_application_1/services/models/server_model/sale_aparteman.dart';
+import 'package:flutter_application_1/services/models/server_model/sale_old_house.dart';
+import 'package:flutter_application_1/services/models/server_model/sale_vila.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -79,6 +81,26 @@ class AccountRepo {
     try {
       var response = await _advetismentService.saveSaleAparteman(
           saleAparteman: saleApartemanData);
+    } catch (e) {}
+    return false;
+  }
+
+  Future<bool?> saleVila({
+    required SaleVilaServerModel saleVilaData,
+  }) async {
+    try {
+      var response =
+          await _advetismentService.SaveSalevila(SaleVila: saleVilaData);
+    } catch (e) {}
+    return false;
+  }
+
+  Future<bool?> saleOldHouse({
+    required SaleOldHouseServerModel saleOldHouseData,
+  }) async {
+    try {
+      var response = await _advetismentService.SaveSaleOldHouse(
+          SaleOldHouse: saleOldHouseData);
     } catch (e) {}
     return false;
   }

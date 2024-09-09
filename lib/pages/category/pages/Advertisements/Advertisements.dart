@@ -185,7 +185,8 @@ class _SelectLocationMapState extends State<Advertisements> {
                       child: Obx(() => Container(
                             decoration: BoxDecoration(
                                 border: Border.all(
-                                    color: Color.fromARGB(255, 160, 179, 161)),
+                                    color: const Color.fromARGB(
+                                        255, 160, 179, 161)),
                                 color: Colors.white,
                                 borderRadius: BorderRadius.circular(10)),
                             child: SizedBox(
@@ -250,12 +251,13 @@ class _SelectLocationMapState extends State<Advertisements> {
                     Obx(
                       () => GestureDetector(
                         onTap: () {
-                          Get.to(()=> City());
+                          Get.to(() => City());
                         },
                         child: Container(
                           decoration: BoxDecoration(
                               border: Border.all(
-                                  color: const Color.fromRGBO(166, 166, 166, 1)),
+                                  color:
+                                      const Color.fromRGBO(166, 166, 166, 1)),
                               color: _advRepo.filters.isEmpty
                                   ? Colors.white
                                   : Colors.white,

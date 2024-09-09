@@ -1,13 +1,10 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/models/AdvInfoModel.dart';
 import 'package:flutter_application_1/pages/category/models/FacilitiesModel.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
-import 'package:flutter_application_1/pages/category/shared/date.dart';
 import 'package:flutter_application_1/pages/category/shared/facilities_selector.dart';
 import 'package:flutter_application_1/pages/category/shared/images_picker/images_picker.dart';
 import 'package:flutter_application_1/pages/category/shared/more_emkanat/Widget_NoeSanad.dart';
-import 'package:flutter_application_1/pages/category/shared/more_emkanat/sanad.dart';
 import 'package:flutter_application_1/pages/category/shared/more_emkanat/servises_wc.dart';
 import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_bazsazi.dart';
 import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_jenskaf.dart';
@@ -26,7 +23,11 @@ import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
 import 'package:flutter_application_1/pages/category/shared/twoItemInRow.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/route_widget.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/switachable.dart';
+import 'package:flutter_application_1/repo/account_repo.dart';
+import 'package:flutter_application_1/services/models/server_model/sale_old_house.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
+import 'package:get_it/get_it.dart';
 import 'package:gradient_icon/gradient_icon.dart';
 
 import '../../../../shared/adv_info/advInfo.dart';
@@ -41,82 +42,40 @@ class KolangiAdvPage extends StatefulWidget {
 }
 
 class _KolangiAdvPageState extends State<KolangiAdvPage> {
+  final _buttonIsPressed = false.obs;
+  final _accountRepo = GetIt.I.get<AccountRepo>();
+
+  SaleOldHouseServerModel saleOldHouseServerModel = SaleOldHouseServerModel();
   final aghsatType = "".obs;
-
   final onvan = "".obs;
-
   final submit = false.obs;
-
   final hasAnbari = false.obs;
-
   final hasAsansor = false.obs;
-
   final _allPriceTextController = TextEditingController();
-
   final _metragTextController = TextEditingController();
-
   final _selectedImagesPath = [].obs;
-
   final _onePrice = 0.0.obs;
-
   final _advInfo = AdvInfoModel();
-
   final _facilities = <FacilitiesModel>[].obs;
-
   final _buildDirectionController = TextEditingController();
-
   final _buildUnitOfAnyFloorCountController = TextEditingController();
   final _senBanaController = TextEditingController();
-
   final _buildFloorsCountController = TextEditingController();
-
   final _timeOfInstallmentsController = TextEditingController();
-
   final _buildDateController = TextEditingController();
-
   final _buildRoomsCountController = TextEditingController();
-
   final _buildDocumentController = TextEditingController();
-
   final _buildFloorController = TextEditingController();
-
   final _buildAllFloorsCountController = TextEditingController();
-
   final _reBuildController = TextEditingController();
-
   final _countOfInstallmentsController = TextEditingController();
-
-  final _buildMaxCapacityController = TextEditingController();
-
-  final _buildRiteController = TextEditingController();
-
-  final _buildAnimalController = TextEditingController();
-
-  final _buildSmokingController = TextEditingController();
-
-  final _buildShoesController = TextEditingController();
-
-  final _buildDeprivationController = TextEditingController();
-
-  final _buildSleepServiceCountController = TextEditingController();
-
-  final _oneBedCountController = TextEditingController();
-
-  final _twoBedCountController = TextEditingController();
-
   final _floorMaterialController = TextEditingController();
-
   final _cabinetController = TextEditingController();
-
   final _coldTypeController = TextEditingController();
-
   final _heatTypeController = TextEditingController();
-
   final _heatWaterController = TextEditingController();
-
   final _wcController = TextEditingController();
   final ValueNotifier<String> _persianWords = ValueNotifier<String>('');
-
   final _numberOfInstallmentsController = TextEditingController();
   String numberToFarsiWords(int number) {
     if (number == 0) return 'صفر';
@@ -244,6 +203,47 @@ class _KolangiAdvPageState extends State<KolangiAdvPage> {
     super.dispose();
   }
 
+  Future<void> _saleOldHouse() async {
+    if (_allPriceTextController.text.isEmpty ||
+        _metragTextController.text.isEmpty ||
+        _buildFloorController.text.isEmpty ||
+        _buildRoomsCountController.text.isEmpty) {
+      Fluttertoast.showToast(
+        msg: "لطفا همه فیلدهای داری * را پر کنید",
+        toastLength: Toast.LENGTH_LONG,
+        gravity: ToastGravity.CENTER,
+        backgroundColor: Colors.red,
+        textColor: Colors.white,
+        fontSize: 16.0,
+      );
+      return;
+    }
+
+    _buttonIsPressed.value = true;
+    final success = await _accountRepo.saleOldHouse(
+        saleOldHouseData: saleOldHouseServerModel);
+    _buttonIsPressed.value = false;
+    if (success!) {
+      Fluttertoast.showToast(
+        msg: "اطلاعات با موفقیت ارسال شد",
+        toastLength: Toast.LENGTH_LONG,
+        gravity: ToastGravity.CENTER,
+        backgroundColor: Colors.green,
+        textColor: Colors.white,
+        fontSize: 16.0,
+      );
+    } else {
+      Fluttertoast.showToast(
+        msg: "خطا در ارسال اطلاعات",
+        toastLength: Toast.LENGTH_LONG,
+        gravity: ToastGravity.CENTER,
+        backgroundColor: Colors.red,
+        textColor: Colors.white,
+        fontSize: 16.0,
+      );
+    }
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Colors.white,
@@ -289,6 +289,9 @@ class _KolangiAdvPageState extends State<KolangiAdvPage> {
                 height: 50,
                 width: MediaQuery.of(context).size.width * 0.95,
                 child: TextField(
+                  onChanged: (_) {
+                    saleOldHouseServerModel.totalPrice = int.parse(_);
+                  },
                   textAlign: TextAlign.right,
                   controller: _metragTextController,
                   keyboardType: TextInputType.number,

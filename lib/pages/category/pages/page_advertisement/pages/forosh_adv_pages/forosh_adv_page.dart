@@ -547,7 +547,8 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
               ReadOnlyTextField(_buildFloorController, () {
                 showNumberPicker((_) {
                   _buildFloorController.text = _;
-                  saleApartemanServerModel.floorNumber = _;
+                  saleApartemanServerModel.floorNumber =
+                      _buildFloorController.text;
                 });
               }),
               const SizedBox(
@@ -707,7 +708,7 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
                   widget1: ReadOnlyTextField(_wcController, () {
                     Wc((selectedOption) {
                       _wcController.text = selectedOption;
-                      saleApartemanServerModel.wc;
+                      saleApartemanServerModel.wc = _wcController.text;
                     });
                   }, width: getPageWidth()),
                   widget2: ReadOnlyTextField(_heatWaterController, () {

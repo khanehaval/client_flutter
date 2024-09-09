@@ -26,7 +26,12 @@ import 'package:flutter_application_1/pages/category/shared/twoItemInRow.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/route_widget.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/switachable.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/text_field.dart';
+import 'package:flutter_application_1/repo/account_repo.dart';
+import 'package:flutter_application_1/services/models/server_model/sale_aparteman_res.dart';
+import 'package:flutter_application_1/services/models/server_model/sale_vila.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
+import 'package:get_it/get_it.dart';
 import 'package:gradient_icon/gradient_icon.dart';
 
 import '../../../../shared/switchItem.dart';
@@ -38,14 +43,15 @@ class VilaAdvPage extends StatefulWidget {
 
 class _VilaAdvPageState extends State<VilaAdvPage> {
   final aghsatType = "".obs;
-
+  final _accountRepo = GetIt.I.get<AccountRepo>();
+  SaleVilaServerModel saleVilaServerModel = SaleVilaServerModel();
   final _onePrice = 0.0.obs;
-
   final submit = false.obs;
 
   final hasAnbari = false.obs;
 
   final hasAsansor = false.obs;
+  final _buttonIsPressed = false.obs;
 
   final hasParking = false.obs;
 
@@ -228,6 +234,47 @@ class _VilaAdvPageState extends State<VilaAdvPage> {
     super.dispose();
   }
 
+  Future<void> _SaleVila() async {
+    if (_allPriceTextController.text.isEmpty ||
+        _metragTextController.text.isEmpty ||
+        _buildFloorController.text.isEmpty ||
+        _buildRoomsCountController.text.isEmpty) {
+      Fluttertoast.showToast(
+        msg: "لطفا همه فیلدهای داری * را پر کنید",
+        toastLength: Toast.LENGTH_LONG,
+        gravity: ToastGravity.CENTER,
+        backgroundColor: Colors.red,
+        textColor: Colors.white,
+        fontSize: 16.0,
+      );
+      return;
+    }
+
+    _buttonIsPressed.value = true;
+    final success =
+        await _accountRepo.saleVila(saleVilaData: saleVilaServerModel);
+    _buttonIsPressed.value = false;
+    if (success!) {
+      Fluttertoast.showToast(
+        msg: "اطلاعات با موفقیت ارسال شد",
+        toastLength: Toast.LENGTH_LONG,
+        gravity: ToastGravity.CENTER,
+        backgroundColor: Colors.green,
+        textColor: Colors.white,
+        fontSize: 16.0,
+      );
+    } else {
+      Fluttertoast.showToast(
+        msg: "خطا در ارسال اطلاعات",
+        toastLength: Toast.LENGTH_LONG,
+        gravity: ToastGravity.CENTER,
+        backgroundColor: Colors.red,
+        textColor: Colors.white,
+        fontSize: 16.0,
+      );
+    }
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
@@ -272,6 +319,9 @@ class _VilaAdvPageState extends State<VilaAdvPage> {
               height: 50,
               width: MediaQuery.of(context).size.width * 0.95,
               child: TextField(
+                onChanged: (_) {
+                  saleVilaServerModel.totalPrice = double.parse(_);
+                },
                 textAlign: TextAlign.right,
                 controller: _metragTextController,
                 keyboardType: TextInputType.number,
@@ -356,6 +406,7 @@ class _VilaAdvPageState extends State<VilaAdvPage> {
                   keyboardType: TextInputType.number,
                   controller: _allPriceTextController,
                   onChanged: (_) {
+                    saleVilaServerModel.buildingMeterage = double.parse(_);
                     _onePrice.value = _.isNotEmpty
                         ? int.parse(_) / int.parse(_metragTextController.text)
                         : 0;
@@ -479,11 +530,13 @@ class _VilaAdvPageState extends State<VilaAdvPage> {
                 widget1: ReadOnlyTextField(_TedadOtaghTextController, () {
                   showNumberPicker((selectedOption) {
                     _TedadOtaghTextController.text = selectedOption;
+                    saleVilaServerModel.room = selectedOption;
                   });
                 }, width: getPageWidth()),
                 widget2: ReadOnlyTextField(_buildDateController, () {
                   SenBana((selectedOption) {
                     _buildDateController.text = selectedOption;
+                    saleVilaServerModel.age = selectedOption;
                   });
                 }, width: getPageWidth(), fontSize: 13)),
             const SizedBox(
@@ -515,6 +568,8 @@ class _VilaAdvPageState extends State<VilaAdvPage> {
             ReadOnlyTextField(_buildFloorsCountController, () {
               showNumberPicker((_) {
                 _buildFloorsCountController.text = _;
+                saleVilaServerModel.villaTotalFloors =
+                    _buildFloorsCountController.text;
               });
             }),
             const SizedBox(
@@ -566,6 +621,7 @@ class _VilaAdvPageState extends State<VilaAdvPage> {
             ReadOnlyTextField(_buildDocumentController, () {
               NoeSanad((selectedOption) {
                 _buildDocumentController.text = selectedOption;
+                saleVilaServerModel.docType = selectedOption;
               });
             }),
             const SizedBox(
@@ -577,11 +633,13 @@ class _VilaAdvPageState extends State<VilaAdvPage> {
                 widget1: ReadOnlyTextField(_reBuildController, () {
                   BazSazi((selectedOption) {
                     _reBuildController.text = selectedOption;
+                    saleVilaServerModel.reconstruct = selectedOption;
                   });
                 }, width: getPageWidth()),
                 widget2: ReadOnlyTextField(_buildDirectionController, () {
                   jahatSakhteman((selectedOption) {
                     _buildDirectionController.text = selectedOption;
+                    saleVilaServerModel.buildingSide = selectedOption;
                   });
                 }, width: getPageWidth())),
             const SizedBox(
@@ -613,11 +671,13 @@ class _VilaAdvPageState extends State<VilaAdvPage> {
               widget1: ReadOnlyTextField(_cabinetController, () {
                 Kabinet((selectedOption) {
                   _cabinetController.text = selectedOption;
+                  saleVilaServerModel.cabinetType = selectedOption;
                 });
               }, width: getPageWidth()),
               widget2: ReadOnlyTextField(_floorMaterialController, () {
                 JensKaf((selectedOption) {
                   _floorMaterialController.text = selectedOption;
+                  saleVilaServerModel.flooringMaterialType = selectedOption;
                 });
               }, width: getPageWidth()),
             ),
@@ -630,11 +690,13 @@ class _VilaAdvPageState extends State<VilaAdvPage> {
               widget1: ReadOnlyTextField(_heatTypeController, () {
                 Garmayesh((selectedOption) {
                   _heatTypeController.text = selectedOption;
+                  saleVilaServerModel.heatingSystemType = selectedOption;
                 });
               }, width: getPageWidth()),
               widget2: ReadOnlyTextField(_coldTypeController, () {
                 Sarmayesh((selectedOption) {
                   _coldTypeController.text = selectedOption;
+                  saleVilaServerModel.coolingSystemType = selectedOption;
                 });
               }, width: getPageWidth()),
             ),
@@ -647,11 +709,13 @@ class _VilaAdvPageState extends State<VilaAdvPage> {
                 widget1: ReadOnlyTextField(_wcController, () {
                   Wc((selectedOption) {
                     _wcController.text = selectedOption;
+                    saleVilaServerModel.wc = selectedOption;
                   });
                 }, width: getPageWidth()),
                 widget2: ReadOnlyTextField(_heatWaterController, () {
                   AbeGarm((selectedOption) {
                     _heatWaterController.text = selectedOption;
+                    saleVilaServerModel.heatWaterSystemType = selectedOption;
                   });
                 }, width: getPageWidth())),
             const SizedBox(
@@ -706,6 +770,32 @@ class _VilaAdvPageState extends State<VilaAdvPage> {
               onTap: () {
                 if (submit.value) {
                   Get.to(() => NamayeshAgahi());
+                }
+                if (submit.value) {
+                  saleVilaServerModel.images = _selectedImagesPath.first;
+                  saleVilaServerModel.wc = _wcController.text;
+                  saleVilaServerModel.hasBalcony =
+                      _facilities.contains(Teras());
+                  saleVilaServerModel.hasBathTub =
+                      _facilities.contains(Bathtub());
+                  saleVilaServerModel.hasCentralAnthena =
+                      _facilities.contains(CenterAntenna());
+                  saleVilaServerModel.hasConferenceHall =
+                      _facilities.contains(ConferenceHall());
+                  saleVilaServerModel.hasGamingRoom =
+                      _facilities.contains(GameRoom());
+                  saleVilaServerModel.hasGazebo =
+                      _facilities.contains(AlAchiq());
+                  saleVilaServerModel.hasMasterRoom =
+                      _facilities.contains(MasterRoom());
+                  saleVilaServerModel.hasRoofGarden =
+                      _facilities.contains(RoofGarden());
+                  saleVilaServerModel.hasSaunaJacuzzi =
+                      _facilities.contains(Sona());
+                  saleVilaServerModel.hasSportingHall =
+                      _facilities.contains(Gym());
+                  saleVilaServerModel.hasSwimmingPool =
+                      _facilities.contains(SwimmingPool());
                 }
               },
               child: Obx(() => Row(
@@ -775,13 +865,17 @@ class _VilaAdvPageState extends State<VilaAdvPage> {
                       height: 41,
                       width: getPageWidth(),
                       child: TextField(
+                        keyboardType: TextInputType.number,
+                        onChanged: (_) {
+                          saleVilaServerModel.loanInstallmentAmount =
+                              double.parse(_);
+                        },
                         textAlign: TextAlign.right,
                         decoration: InputDecoration(
                           hintText: 'مبلغ را وارد کنید',
                           hintStyle: const TextStyle(
                             fontSize: 13,
-                            fontFamily: 'Iran Sans',
-                            fontWeight: FontWeight.w400,
+                            fontFamily: MAIN_FONT_FAMILY,
                             color: Color(0xFFA6A6A6),
                           ),
                           border: OutlineInputBorder(
@@ -794,13 +888,16 @@ class _VilaAdvPageState extends State<VilaAdvPage> {
                       height: 41,
                       width: getPageWidth(),
                       child: TextField(
+                        keyboardType: TextInputType.number,
+                        onChanged: (_) {
+                          saleVilaServerModel.prepayment = double.parse(_);
+                        },
                         textAlign: TextAlign.right,
                         decoration: InputDecoration(
                           hintText: 'مبلغ را وارد کنید',
                           hintStyle: const TextStyle(
                             fontSize: 13,
-                            fontFamily: 'Iran Sans',
-                            fontWeight: FontWeight.w400,
+                            fontFamily: MAIN_FONT_FAMILY,
                             color: Color(0xFFA6A6A6),
                           ),
                           border: OutlineInputBorder(
@@ -821,12 +918,16 @@ class _VilaAdvPageState extends State<VilaAdvPage> {
                         TimeAghsat((selectedOption) {
                           _timeOfInstallments_vamBankiController.text =
                               selectedOption;
+                          saleVilaServerModel.installmentPaybackTime =
+                              selectedOption;
                         });
                       }, width: getPageWidth(), fontSize: 13),
                       widget2:
                           ReadOnlyTextField(_countOfInstallmentsController, () {
                         TedadAghsat((selectedOption) {
                           _countOfInstallmentsController.text = selectedOption;
+                          saleVilaServerModel.installmentNumber =
+                              selectedOption;
                         });
                       }, width: getPageWidth())),
                   const SizedBox(
@@ -886,6 +987,11 @@ class _VilaAdvPageState extends State<VilaAdvPage> {
                       height: 41,
                       width: getPageWidth(),
                       child: TextField(
+                        keyboardType: TextInputType.number,
+                        onChanged: (_) {
+                          saleVilaServerModel.installmentAmount =
+                              double.parse(_);
+                        },
                         textAlign: TextAlign.right,
                         decoration: InputDecoration(
                           hintText: '3,6000000', //todo
@@ -905,6 +1011,11 @@ class _VilaAdvPageState extends State<VilaAdvPage> {
                       height: 41,
                       width: getPageWidth(),
                       child: TextField(
+                        keyboardType: TextInputType.number,
+                        onChanged: (_) {
+                          saleVilaServerModel.loanInstallmentAmount =
+                              double.parse(_);
+                        },
                         textAlign: TextAlign.right,
                         decoration: InputDecoration(
                           hintText: '400000000', //todo
@@ -931,12 +1042,15 @@ class _VilaAdvPageState extends State<VilaAdvPage> {
                           ReadOnlyTextField(_timeOfInstallmentsController, () {
                         TimeAghsat((date) {
                           _timeOfInstallmentsController.text = date;
+                          saleVilaServerModel.installmentPaybackTime = date;
                         });
                       }, width: getPageWidth(), fontSize: 13),
                       widget2: ReadOnlyTextField(
                           _countOfInstallments_VamBankiController, () {
                         TedadAghsat((selectedOption) {
                           _countOfInstallments_VamBankiController.text =
+                              selectedOption;
+                          saleVilaServerModel.installmentNumber =
                               selectedOption;
                         });
                       }, width: getPageWidth())),
@@ -955,6 +1069,7 @@ class _VilaAdvPageState extends State<VilaAdvPage> {
                   SizedBox(
                     height: 41,
                     child: TextField(
+                      keyboardType: TextInputType.number,
                       textAlign: TextAlign.right,
                       decoration: InputDecoration(
                         hintText: 'انتخاب نشده',
@@ -968,6 +1083,8 @@ class _VilaAdvPageState extends State<VilaAdvPage> {
                           () {
                             TedadAghsat((selectedOption) {
                               _tedadaghsat_monthController.text =
+                                  selectedOption;
+                              saleVilaServerModel.installmentNumber =
                                   selectedOption;
                             });
                           },
