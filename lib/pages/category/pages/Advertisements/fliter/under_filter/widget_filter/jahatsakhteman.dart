@@ -3,13 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_svg/svg.dart';
 
-
-Widget jahatsakhteman() {
+Widget jahatsakhteman(BuildContext context) {
   return (Column(
     children: [
       Container(
         height: 41,
-        width: 330,
+        width: MediaQuery.of(context).size.width / 1.23,
         child: TextField(
             readOnly: true,
             textAlign: TextAlign.right,
@@ -21,6 +20,15 @@ Widget jahatsakhteman() {
                     fontFamily: MAIN_FONT_FAMILY),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10),
+                  borderSide: const BorderSide(
+                    color: Color.fromRGBO(23, 102, 175, 1),
+                  ),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10),
+                  borderSide: const BorderSide(
+                    color: Color.fromRGBO(23, 102, 175, 1),
+                  ),
                 ),
                 prefixIcon: IconButton(
                   onPressed: () {},

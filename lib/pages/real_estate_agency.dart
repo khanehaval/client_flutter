@@ -90,13 +90,17 @@ class Realestateagency extends StatelessWidget {
                           alignment: Alignment.center,
                           children: [
                             TextField(
+                              style: const TextStyle(
+                                fontFamily: MAIN_FONT_FAMILY,
+                              ),
                               textAlign: TextAlign.center,
                               textDirection: TextDirection.rtl,
                               decoration: InputDecoration(
                                 hintText: 'نام آژانس (برای مثال : آینده)',
                                 hintStyle: const TextStyle(
+                                  fontFamily: MAIN_FONT_FAMILY,
                                   color: Color(0xFFA6A6A6),
-                                  fontSize: 13,
+                                  fontSize: 12,
                                 ),
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10),
@@ -138,7 +142,7 @@ class Realestateagency extends StatelessWidget {
                                           'آژانس املاک',
                                           style: TextStyle(
                                             fontFamily: MAIN_FONT_FAMILY,
-                                            fontSize: 12,
+                                            fontSize: 11,
                                             color: Colors.black,
                                           ),
                                         ),
@@ -167,11 +171,14 @@ class Realestateagency extends StatelessWidget {
                     height: 40,
                     width: MediaQuery.of(context).size.width * 1 / 5,
                     child: TextField(
+                      keyboardType: TextInputType.number,
+                      style: const TextStyle(
+                          fontFamily: MAIN_FONT_FAMILY, fontSize: 10),
                       textAlign: TextAlign.center,
                       decoration: InputDecoration(
                         hintText: '* کد شهر ',
                         hintStyle: const TextStyle(
-                            color: Color(0xFFA6A6A6), fontSize: 11.5),
+                            color: Color(0xFFA6A6A6), fontSize: 10),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                           borderSide: const BorderSide(
@@ -203,11 +210,14 @@ class Realestateagency extends StatelessWidget {
                   height: 40,
                   width: 250,
                   child: TextField(
+                    keyboardType: TextInputType.number,
+                    style: const TextStyle(
+                        fontFamily: MAIN_FONT_FAMILY, fontSize: 10),
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
                       hintText: '* تلفن ثابت ',
                       hintStyle: const TextStyle(
-                          color: Color(0xFFA6A6A6), fontSize: 13),
+                          color: Color(0xFFA6A6A6), fontSize: 11),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
                         borderSide: const BorderSide(
@@ -310,11 +320,14 @@ class Realestateagency extends StatelessWidget {
                     height: 41,
                     width: getWidth3(context),
                     child: TextField(
+                      keyboardType: TextInputType.number,
+                      style: const TextStyle(
+                          fontFamily: MAIN_FONT_FAMILY, fontSize: 10),
                       textAlign: TextAlign.right,
                       decoration: InputDecoration(
                         hintText: '* شماره جواز ',
                         hintStyle: const TextStyle(
-                            color: Color(0xFFA6A6A6), fontSize: 13),
+                            color: Color(0xFFA6A6A6), fontSize: 11),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                           borderSide: const BorderSide(
@@ -377,11 +390,13 @@ class Realestateagency extends StatelessWidget {
                   height: 40,
                   width: getWidth3(context),
                   child: TextField(
+                    style: const TextStyle(
+                        fontFamily: MAIN_FONT_FAMILY, fontSize: 10),
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
                       hintText: '* نام خانوادگی ',
                       hintStyle: const TextStyle(
-                        fontSize: 13,
+                        fontSize: 11,
                         color: Color(0xFFA6A6A6),
                       ),
                       border: OutlineInputBorder(
@@ -406,13 +421,15 @@ class Realestateagency extends StatelessWidget {
                   height: 40,
                   width: getWidth3(context),
                   child: TextField(
+                    style: const TextStyle(
+                        fontFamily: MAIN_FONT_FAMILY, fontSize: 10),
                     onTap: () => show.value = false,
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
                       hintText: ' *نام ',
                       hintStyle: const TextStyle(
                         color: Color(0xFFA6A6A6),
-                        fontSize: 13,
+                        fontSize: 11,
                       ),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
@@ -498,6 +515,8 @@ class Realestateagency extends StatelessWidget {
                 height: 40,
                 width: getWidth3(context),
                 child: TextField(
+                  style: const TextStyle(
+                      fontFamily: MAIN_FONT_FAMILY, fontSize: 10),
                   onTap: () {
                     Get.to(() => City());
                   },
@@ -514,7 +533,7 @@ class Realestateagency extends StatelessWidget {
                     ),
                     hintStyle: const TextStyle(
                       color: Color(0xFFA6A6A6),
-                      fontSize: 13,
+                      fontSize: 11,
                     ),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
@@ -556,6 +575,8 @@ class Realestateagency extends StatelessWidget {
                     child: Stack(
                       children: [
                         TextField(
+                          style: const TextStyle(
+                              fontFamily: MAIN_FONT_FAMILY, fontSize: 10),
                           textAlign: TextAlign.right,
                           textDirection: TextDirection.rtl,
                           decoration: InputDecoration(
@@ -563,7 +584,7 @@ class Realestateagency extends StatelessWidget {
                                 'نام کاربری * ( به انگلیسی) ', // Hint text
                             hintStyle: const TextStyle(
                               color: Color(0xFFA6A6A6), // Hint text color
-                              fontSize: 14, // Hint text font size
+                              fontSize: 11, // Hint text font size
                             ),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10),
@@ -592,7 +613,8 @@ class Realestateagency extends StatelessWidget {
                         Row(
                           children: [
                             Padding(
-                              padding: const EdgeInsets.only(top: 5.0, left: 5),
+                              padding: const EdgeInsets.only(
+                                  top: 5.0, left: 5, bottom: 5),
                               child: Container(
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(10),
@@ -600,25 +622,20 @@ class Realestateagency extends StatelessWidget {
                                         colors: GRADIANT_COLOR3)),
                                 child: Padding(
                                   padding: const EdgeInsets.all(1.2),
-                                  child: Center(
-                                    child: Container(
-                                      width: 80,
-                                      height:
-                                          MediaQuery.of(context).size.height,
-                                      padding: const EdgeInsets.only(
-                                        left: 8,
-                                      ),
-                                      decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(7),
-                                          color: Colors.white),
-                                      child: const Center(
-                                        child: Text(
-                                          'Agancy /',
-                                          style: TextStyle(
-                                            fontSize: 14,
-                                            color: Colors.black,
-                                          ),
+                                  child: Container(
+                                    width: 80,
+                                    padding: const EdgeInsets.only(
+                                      left: 8,
+                                    ),
+                                    decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(7),
+                                        color: Colors.white),
+                                    child: const Center(
+                                      child: Text(
+                                        'Agancy /',
+                                        style: TextStyle(
+                                          fontSize: 12,
+                                          color: Colors.black,
                                         ),
                                       ),
                                     ),
@@ -672,7 +689,9 @@ class Realestateagency extends StatelessWidget {
                   padding: EdgeInsets.only(right: 20.0),
                   child: Text(
                     ":برای مثال ",
-                    style: TextStyle(color: Color.fromRGBO(166, 166, 166, 1)),
+                    style: TextStyle(
+                        fontFamily: MAIN_FONT_FAMILY_LIGHT,
+                        color: Color.fromRGBO(166, 166, 166, 1)),
                   ),
                 ),
               ),

@@ -61,10 +61,6 @@ class _AmlakFilterState extends State<AmlakFilter> {
             child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Divider(),
-                  const SizedBox(
-                    height: 15,
-                  ),
                   SingleChildScrollView(
                     scrollDirection: Axis.vertical,
                     child: Column(children: [

@@ -51,198 +51,234 @@ class _FilterState extends State<Filter> {
           child: Column(
             children: [
               SizedBox(
-                height: 100,
+                height: 98,
                 child: Obx(() => _currentIndex.value == 0
-                    ? ScrollablePositionedList.builder(
-                        reverse: true,
-                        itemScrollController: _controller,
-                        itemCount: 7,
-                        scrollDirection: Axis.horizontal,
-                        initialScrollIndex: widget.index,
-                        itemBuilder: (context, i) => GestureDetector(
-                          onTap: () {
-                            _controller.scrollTo(
-                                index: i,
-                                duration: const Duration(microseconds: 100),
-                                opacityAnimationWeights: [20, 30, 10],
-                                alignment: 0.5);
-                            _currentIndex.value = i;
-                          },
-                          child: Obx(
-                            () => Container(
-                              margin: const EdgeInsets.only(
-                                  right: 10, bottom: 10, top: 40),
-                              padding: const EdgeInsets.all(1.2),
-                              height: 98,
-                              width: 132,
-                              decoration: BoxDecoration(
-                                gradient: _currentIndex.value == i
-                                    ? const LinearGradient(
-                                        colors: GRADIANT_COLOR,
-                                      )
-                                    : const LinearGradient(
-                                        colors: BLACK_12_GRADIANT_COLOR,
-                                      ),
-                                borderRadius: BorderRadius.circular(10),
-                                // border:
-                                //     Border.all(width: _currentIndex.value == i ? 1 : 1),
-                              ),
-                              child: Container(
+                    ? Container(
+                        height: 50,
+                        decoration: const BoxDecoration(
+                          boxShadow: [
+                            BoxShadow(
+                              offset: Offset(0, 1),
+                              blurRadius: 2,
+                              color: Color.fromRGBO(0, 0, 0, 0.25),
+                            ),
+                          ],
+                          color: Color.fromRGBO(255, 255, 255, 1),
+                        ),
+                        child: ScrollablePositionedList.builder(
+                          reverse: true,
+                          itemScrollController: _controller,
+                          itemCount: 7,
+                          scrollDirection: Axis.horizontal,
+                          initialScrollIndex: widget.index,
+                          itemBuilder: (context, i) => GestureDetector(
+                            onTap: () {
+                              _controller.scrollTo(
+                                  index: i,
+                                  duration: const Duration(microseconds: 100),
+                                  opacityAnimationWeights: [20, 30, 10],
+                                  alignment: 0.5);
+                              _currentIndex.value = i;
+                            },
+                            child: Obx(
+                              () => Container(
+                                margin: const EdgeInsets.only(
+                                    right: 10, bottom: 30, top: 25),
+                                padding: const EdgeInsets.all(1.2),
+                                height: 40,
+                                width: 100,
                                 decoration: BoxDecoration(
-                                  color: Colors.white,
+                                  gradient: _currentIndex.value == i
+                                      ? const LinearGradient(
+                                          colors: GRADIANT_COLOR,
+                                        )
+                                      : const LinearGradient(
+                                          colors: BLACK_12_GRADIANT_COLOR,
+                                        ),
                                   borderRadius: BorderRadius.circular(10),
+                                  // border:
+                                  //     Border.all(width: _currentIndex.value == i ? 1 : 1),
                                 ),
-                                child: Image.asset(
-                                  items[i].assetPath,
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
+                                  child: Image.asset(
+                                    items[i].assetPath,
+                                  ),
                                 ),
                               ),
                             ),
                           ),
                         ),
                       )
-                    : Padding(
-                        padding: const EdgeInsets.only(top: 50),
-                        child: ScrollablePositionedList.builder(
-                            reverse: true,
-                            itemScrollController: _controller,
-                            itemCount:
-                                items[_currentIndex.value].subItems.length + 2,
-                            scrollDirection: Axis.horizontal,
-                            initialScrollIndex: widget.index,
-                            itemBuilder: (context, i) {
-                              if (i == 0) {
-                                return GestureDetector(
-                                  child: Row(
-                                    children: [
-                                      Container(
-                                        decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(10),
-                                            color: const Color.fromRGBO(
-                                              226,
-                                              226,
-                                              226,
-                                              1,
-                                            )),
-                                        child: Padding(
-                                          padding: const EdgeInsets.all(1.3),
-                                          child: Container(
-                                            decoration: BoxDecoration(
-                                              color: Colors.white,
+                    : Container(
+                        decoration: const BoxDecoration(
+                          boxShadow: [
+                            BoxShadow(
+                              offset: Offset(0, 1),
+                              blurRadius: 2,
+                              color: Color.fromRGBO(0, 0, 0, 0.25),
+                            ),
+                          ],
+                          color: Color.fromRGBO(255, 255, 255, 1),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.only(
+                              top: 30, bottom: 30, left: 10, right: 5),
+                          child: ScrollablePositionedList.builder(
+                              reverse: true,
+                              itemScrollController: _controller,
+                              itemCount:
+                                  items[_currentIndex.value].subItems.length +
+                                      2,
+                              scrollDirection: Axis.horizontal,
+                              initialScrollIndex: widget.index,
+                              itemBuilder: (context, i) {
+                                if (i == 0) {
+                                  return GestureDetector(
+                                    child: Row(
+                                      children: [
+                                        Container(
+                                          decoration: BoxDecoration(
                                               borderRadius:
                                                   BorderRadius.circular(10),
-                                            ),
-                                            child: const Padding(
-                                              padding: EdgeInsets.all(10.0),
-                                              child: Text(
-                                                "املاک",
-                                                style: TextStyle(
-                                                    fontFamily:
-                                                        MAIN_FONT_FAMILY,
-                                                    fontSize: 14),
+                                              color: const Color.fromRGBO(
+                                                226,
+                                                226,
+                                                226,
+                                                1,
+                                              )),
+                                          child: Padding(
+                                            padding: const EdgeInsets.all(1.3),
+                                            child: Container(
+                                              decoration: BoxDecoration(
+                                                color: Colors.white,
+                                                borderRadius:
+                                                    BorderRadius.circular(10),
+                                              ),
+                                              child: const Padding(
+                                                padding: EdgeInsets.all(10.0),
+                                                child: Text(
+                                                  "املاک",
+                                                  style: TextStyle(
+                                                      fontFamily:
+                                                          MAIN_FONT_FAMILY,
+                                                      fontSize: 12),
+                                                ),
                                               ),
                                             ),
                                           ),
                                         ),
+                                        const Icon(
+                                            Icons.arrow_forward_ios_rounded)
+                                      ],
+                                    ),
+                                    onTap: () {
+                                      _currentIndex.value = 0;
+                                    },
+                                  );
+                                }
+                                if (i == 1) {
+                                  return Row(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      const Icon(Icons.arrow_back_ios),
+                                      const SizedBox(
+                                        width: 5,
                                       ),
-                                      const Icon(
-                                          Icons.arrow_forward_ios_rounded)
-                                    ],
-                                  ),
-                                  onTap: () {
-                                    _currentIndex.value = 0;
-                                  },
-                                );
-                              }
-                              if (i == 1) {
-                                return Row(
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    const Icon(Icons.arrow_back_ios),
-                                    Container(
-                                      margin: const EdgeInsets.only(
-                                        left: 0,
-                                        right: 5,
-                                      ),
-                                      padding: const EdgeInsets.all(0.7),
-                                      width: 130,
-                                      decoration: BoxDecoration(
-                                        gradient: const LinearGradient(
-                                          colors: GRADIANT_COLOR,
+                                      Container(
+                                        margin: const EdgeInsets.only(
+                                          left: 0,
+                                          right: 10,
                                         ),
-                                        borderRadius: BorderRadius.circular(10),
-                                      ),
-                                      child: Container(
+                                        padding: const EdgeInsets.all(0.7),
+                                        width: 120,
                                         decoration: BoxDecoration(
-                                          color: Colors.white,
+                                          gradient: const LinearGradient(
+                                            colors: GRADIANT_COLOR,
+                                          ),
                                           borderRadius:
                                               BorderRadius.circular(10),
                                         ),
-                                        child: Image.asset(
-                                          items[_currentIndex.value].assetPath,
-                                          width: 51,
-                                          height: 51,
+                                        child: Container(
+                                          decoration: BoxDecoration(
+                                            color: Colors.white,
+                                            borderRadius:
+                                                BorderRadius.circular(10),
+                                          ),
+                                          child: Image.asset(
+                                            items[_currentIndex.value]
+                                                .assetPath,
+                                            width: 120,
+                                            height: 51,
+                                          ),
                                         ),
                                       ),
-                                    ),
-                                  ],
-                                );
-                              } else {
-                                return GestureDetector(
-                                  onTap: () {
-                                    _subIndex.value = i;
-                                    _subFilterType.value =
-                                        items[_currentIndex.value]
-                                            .subItems[i - 2]
-                                            .type;
-                                  },
-                                  child: Obx(
-                                    () => Container(
-                                      margin: const EdgeInsets.only(
-                                        left: 5,
-                                        right: 5,
-                                      ),
-                                      padding: const EdgeInsets.all(0.7),
-                                      width: 105,
-                                      decoration: BoxDecoration(
-                                        gradient: _subIndex.value == i
-                                            ? const LinearGradient(
-                                                colors: GRADIANT_COLOR,
-                                              )
-                                            : const LinearGradient(
-                                                colors: BLACK_12_GRADIANT_COLOR,
-                                              ),
-                                        borderRadius: BorderRadius.circular(8),
-                                        border: Border.all(
-                                            width: _currentIndex.value ==
-                                                    _currentIndex.value
-                                                ? .0008
-                                                : 0.1),
-                                      ),
-                                      child: Container(
+                                    ],
+                                  );
+                                } else {
+                                  return GestureDetector(
+                                    onTap: () {
+                                      _subIndex.value = i;
+                                      _subFilterType.value =
+                                          items[_currentIndex.value]
+                                              .subItems[i - 2]
+                                              .type;
+                                    },
+                                    child: Obx(
+                                      () => Container(
+                                        margin: const EdgeInsets.only(
+                                          left: 5,
+                                          right: 5,
+                                        ),
+                                        padding: const EdgeInsets.all(0.7),
+                                        width: 100,
                                         decoration: BoxDecoration(
-                                          color: Colors.white,
+                                          gradient: _subIndex.value == i
+                                              ? const LinearGradient(
+                                                  colors: GRADIANT_COLOR,
+                                                )
+                                              : const LinearGradient(
+                                                  colors:
+                                                      BLACK_12_GRADIANT_COLOR,
+                                                ),
                                           borderRadius:
                                               BorderRadius.circular(8),
+                                          border: Border.all(
+                                              width: _currentIndex.value ==
+                                                      _currentIndex.value
+                                                  ? .0008
+                                                  : 0.1),
                                         ),
-                                        child: Center(
-                                          child: Text(
-                                            items[_currentIndex.value]
-                                                .subItems[i - 2]
-                                                .title,
-                                            style: const TextStyle(
-                                                fontFamily: MAIN_FONT_FAMILY,
-                                                color: Color.fromRGBO(
-                                                    99, 99, 99, 1),
-                                                fontSize: 12),
+                                        child: Container(
+                                          decoration: BoxDecoration(
+                                            color: Colors.white,
+                                            borderRadius:
+                                                BorderRadius.circular(8),
+                                          ),
+                                          child: Center(
+                                            child: Text(
+                                              items[_currentIndex.value]
+                                                  .subItems[i - 2]
+                                                  .title,
+                                              style: const TextStyle(
+                                                  fontFamily:
+                                                      MAIN_FONT_FAMILY_LIGHT,
+                                                  color: Color.fromRGBO(
+                                                      99, 99, 99, 1),
+                                                  fontSize: 11.5),
+                                            ),
                                           ),
                                         ),
                                       ),
                                     ),
-                                  ),
-                                );
-                              }
-                            }),
+                                  );
+                                }
+                              }),
+                        ),
                       )),
               ),
               Obx(() => _pages()[_currentIndex.value]),
@@ -304,7 +340,7 @@ class _FilterState extends State<Filter> {
         assetPath: 'assets/images/kotamodat_filter.png',
         subItems: [
           SubItemModel("آپارتمان", SubFilterType.kotamodataparteman),
-          SubItemModel("ویلا", SubFilterType.kotamodatvila)
+          SubItemModel("ویلا", SubFilterType.kotamodatvila),
         ]),
     FilterModel(
         title: "ساخت وساز",

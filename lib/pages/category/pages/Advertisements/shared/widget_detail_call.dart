@@ -23,6 +23,7 @@ void DetailCall(Function(String) onSelected) {
       child: Stack(
         children: [
           Container(
+            height: 330,
             decoration: BoxDecoration(
               color: Color.fromRGBO(166, 166, 166, 1),
               borderRadius: BorderRadius.circular(borderRadiusValue),
@@ -50,8 +51,13 @@ void DetailCall(Function(String) onSelected) {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        Image.asset('assets/images/detail_icon_contact.png',
-                            width: 40, height: 50),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 15.0),
+                          child: Image.asset(
+                              'assets/images/detail_icon_contact.png',
+                              width: 60,
+                              height: 60),
+                        ),
                         Column(
                           mainAxisSize: MainAxisSize.min,
                           crossAxisAlignment: CrossAxisAlignment.center,
@@ -70,13 +76,13 @@ void DetailCall(Function(String) onSelected) {
                                 style: TextStyle(
                                     fontFamily: MAIN_FONT_FAMILY,
                                     color: Colors.white,
-                                    fontSize: 13),
+                                    fontSize: 18),
                               ),
                             ),
                             const SizedBox(height: 20),
                             Row(
                               children: [
-                                SizedBox(width: 10),
+                                const SizedBox(width: 10),
                                 ShaderMask(
                                   shaderCallback: (bounds) =>
                                       const LinearGradient(
@@ -115,31 +121,24 @@ void DetailCall(Function(String) onSelected) {
                             ),
                           ],
                         ),
-                        Image.asset('assets/images/detail_icon_Message.png',
-                            width: 50, height: 50),
+                        Padding(
+                          padding: const EdgeInsets.only(right: 20.0),
+                          child: Image.asset(
+                              'assets/images/detail_icon_Message.png',
+                              width: 60,
+                              height: 60),
+                        ),
                       ],
                     ),
-                    const SizedBox(height: 55),
+                    const SizedBox(height: 45),
                     const Padding(
                       padding: EdgeInsets.symmetric(horizontal: 50),
-                      child: Text(
-                        'در صورتی که موفق به تماس نشده‌اید می‌توانید از طریق گزینه های زیر با من در ارتباط باشید',
-                        style: TextStyle(
-                            fontFamily: MAIN_FONT_FAMILY_MEDIUM,
-                            fontSize: 12,
-                            color: Color.fromRGBO(
-                              99,
-                              99,
-                              99,
-                              1,
-                            )),
-                      ),
                     ),
-                    const SizedBox(height: 35),
+                    const SizedBox(height: 10),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        Enseraf(),
+                        Enseraftamas(),
                         Container(
                           decoration: BoxDecoration(
                             gradient:
@@ -150,7 +149,7 @@ void DetailCall(Function(String) onSelected) {
                             padding: const EdgeInsets.all(1),
                             child: Container(
                               height: 38,
-                              width: 98,
+                              width: 115,
                               decoration: BoxDecoration(
                                 color: Colors.white,
                                 borderRadius: BorderRadius.circular(20),
@@ -216,25 +215,36 @@ class __NotificationWidgetState extends State<_NotificationWidget> {
         left: 0,
         right: 0,
         child: Padding(
-          padding: const EdgeInsets.all(10.0),
+          padding: const EdgeInsets.symmetric(horizontal: 30.0),
           child: Container(
             decoration: const BoxDecoration(
+                boxShadow: [
+                  BoxShadow(
+                    blurRadius: 8,
+                    offset: Offset(3, 3),
+                    color: Color.fromRGBO(
+                      0,
+                      0,
+                      0,
+                      0.15,
+                    ),
+                  ),
+                ],
                 gradient: LinearGradient(colors: GRADIANT_COLOR),
                 borderRadius: BorderRadius.all(Radius.circular(15))),
             child: Padding(
               padding: const EdgeInsets.all(0.5),
               child: Container(
-                height: 128,
-                width: 336,
+                height: 150,
+                width: 100,
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(15),
                 ),
-                padding: const EdgeInsets.symmetric(vertical: 10),
                 child: Column(
                   children: [
                     Padding(
-                      padding: const EdgeInsets.only(right: 10.0),
+                      padding: const EdgeInsets.only(right: 10.0, top: 20),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
@@ -250,21 +260,23 @@ class __NotificationWidgetState extends State<_NotificationWidget> {
                         ],
                       ),
                     ),
-                    const SizedBox(height: 10),
+                    const SizedBox(
+                      height: 10,
+                    ),
                     const Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 20.0),
+                      padding: EdgeInsets.symmetric(horizontal: 10.6),
                       child: Text(
                         'لطفاً پیش از انجام معامله و هر نوع پرداخت وجه، از صحت کالا یا خدمات ارائه ‌شده، به ‌صورت حضوری اطمینان حاصل نمایید',
-                        textAlign: TextAlign.justify,
+                        textAlign: TextAlign.right,
                         style: TextStyle(
                           color: Color(0xFF636363),
-                          fontSize: 10.6,
+                          fontSize: 10,
                           fontFamily: MAIN_FONT_FAMILY_MEDIUM,
                           fontWeight: FontWeight.w500,
                         ),
                       ),
                     ),
-                    const SizedBox(height: 5),
+                    const SizedBox(height: 10),
                     Padding(
                       padding: const EdgeInsets.only(left: 20.0),
                       child: Row(
@@ -281,10 +293,9 @@ class __NotificationWidgetState extends State<_NotificationWidget> {
                               ),
                               shadows: const [
                                 BoxShadow(
-                                  color: Color(0x7F36D859),
-                                  blurRadius: 7,
+                                  color: Color.fromARGB(93, 54, 216, 89),
+                                  blurRadius: 3,
                                   offset: Offset(0, 1),
-                                  spreadRadius: 0,
                                 ),
                               ],
                             ),

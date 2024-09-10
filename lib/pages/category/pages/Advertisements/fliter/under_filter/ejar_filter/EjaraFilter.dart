@@ -50,12 +50,9 @@ class EjaraFilter extends StatelessWidget {
             padding: const EdgeInsets.all(10.0),
             child: Column(
               children: [
-                const Padding(
-                  padding: EdgeInsets.only(top: 10),
-                  child: SingleChildScrollView(
-                    scrollDirection: Axis.vertical,
-                    child: CityfilterFilterWidget(),
-                  ),
+                const SingleChildScrollView(
+                  scrollDirection: Axis.vertical,
+                  child: CityfilterFilterWidget(),
                 ),
                 const SizedBox(
                   height: 10,

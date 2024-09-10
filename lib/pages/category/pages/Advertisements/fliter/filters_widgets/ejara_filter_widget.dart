@@ -61,7 +61,7 @@ class EjaraFilterWidget extends StatelessWidget {
       height: 50,
       width: 330,
       decoration: BoxDecoration(
-        color: Color.fromARGB(255, 205, 203, 203),
+        color: const Color.fromARGB(255, 225, 225, 225),
         borderRadius: BorderRadius.circular(15),
       ),
       child: Row(
@@ -142,7 +142,7 @@ class EjaraFilterWidget extends StatelessWidget {
       height: 50,
       width: 330,
       decoration: BoxDecoration(
-        color: Color.fromARGB(255, 205, 203, 203),
+        color: const Color.fromARGB(255, 225, 225, 225),
         borderRadius: BorderRadius.circular(15),
       ),
       child: Row(

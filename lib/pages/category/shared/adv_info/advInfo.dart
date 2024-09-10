@@ -87,8 +87,7 @@ class _AdvInfoState extends State<AdvInfo> {
                   ),
                 ),
               Container(
-                height: 50,
-                width: Get.width,
+                height: 41,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                 ),
@@ -188,33 +187,31 @@ class _AdvInfoState extends State<AdvInfo> {
     required bool enabled,
     TextEditingController? controller,
   }) {
-    return SizedBox(
-      height: 50,
-      child: TextField(
-        textAlign: TextAlign.right,
-        maxLines: maxLines,
-        onChanged: onChanged,
-        enabled: enabled,
-        controller: controller,
-        decoration: InputDecoration(
-          hintText: hintText,
-          hintStyle: const TextStyle(
-            fontFamily: 'Iran Sans',
-            fontWeight: FontWeight.w400,
-            color: Color(0xFFA6A6A6),
-            fontSize: 13,
+    return TextField(
+      style: const TextStyle(fontFamily: MAIN_FONT_FAMILY_LIGHT),
+      textAlign: TextAlign.right,
+      maxLines: maxLines,
+      onChanged: onChanged,
+      enabled: enabled,
+      controller: controller,
+      decoration: InputDecoration(
+        hintText: hintText,
+        hintStyle: const TextStyle(
+          fontFamily: MAIN_FONT_FAMILY,
+          fontWeight: FontWeight.w400,
+          color: Color(0xFFA6A6A6),
+          fontSize: 10,
+        ),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
+          borderSide: const BorderSide(
+            color: Color.fromRGBO(23, 102, 175, 1),
           ),
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10),
-            borderSide: const BorderSide(
-              color: Color.fromRGBO(23, 102, 175, 1),
-            ),
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10),
-            borderSide: const BorderSide(
-              color: Color.fromRGBO(23, 102, 175, 1),
-            ),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
+          borderSide: const BorderSide(
+            color: Color.fromRGBO(23, 102, 175, 1),
           ),
         ),
       ),
@@ -230,6 +227,7 @@ class _AdvInfoState extends State<AdvInfo> {
   }) {
     return SizedBox(
       child: TextField(
+        style: const TextStyle(fontFamily: MAIN_FONT_FAMILY_LIGHT),
         textAlign: TextAlign.right,
         maxLines: maxLines,
         onChanged: onChanged,
@@ -238,7 +236,7 @@ class _AdvInfoState extends State<AdvInfo> {
         decoration: InputDecoration(
           hintText: hintText,
           hintStyle: const TextStyle(
-            fontFamily: 'Iran Sans',
+            fontFamily: MAIN_FONT_FAMILY,
             fontWeight: FontWeight.w400,
             fontSize: 13,
             color: Color(0xFFA6A6A6),
