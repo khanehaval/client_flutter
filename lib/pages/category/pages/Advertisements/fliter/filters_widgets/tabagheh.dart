@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/widget_filter/tabagheh.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
@@ -41,23 +40,23 @@ class TabaghehFilterWidget extends StatelessWidget {
             if (_show_item_tabagheh_1.isTrue)
               Column(
                 children: [
-                  tabagheh(),
+                  tabagheh(context),
                   const SizedBox(
                     height: 21,
                   ),
-                  tabagheh2(),
+                  tabagheh2(context),
                 ],
               ),
           ]),
         ));
   }
 
-  Widget tabagheh() {
+  Widget tabagheh(BuildContext context) {
     return Container(
       height: 50,
-      width: 330,
+      width: MediaQuery.of(context).size.width / 1.23,
       decoration: BoxDecoration(
-        color: Color.fromARGB(255, 205, 203, 203),
+        color: const Color.fromARGB(255, 225, 225, 225),
         borderRadius: BorderRadius.circular(15),
       ),
       child: Row(
@@ -133,12 +132,12 @@ class TabaghehFilterWidget extends StatelessWidget {
     );
   }
 
-  Widget tabagheh2() {
+  Widget tabagheh2(BuildContext context) {
     return Container(
       height: 50,
-      width: 330,
+      width: MediaQuery.of(context).size.width / 1.23,
       decoration: BoxDecoration(
-        color: Color.fromARGB(255, 205, 203, 203),
+        color: const Color.fromARGB(255, 225, 225, 225),
         borderRadius: BorderRadius.circular(15),
       ),
       child: Row(

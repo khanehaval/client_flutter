@@ -43,11 +43,11 @@ class EjaraRozanehFilterWidget extends StatelessWidget {
             if (_show_item_ejararozaneh.isTrue)
               Column(
                 children: [
-                  ejararozaneh(),
+                  ejararozaneh(context),
                   const SizedBox(
                     height: 25,
                   ),
-                  ejararozaneh2()
+                  ejararozaneh2(context)
                 ],
               ),
           ],
@@ -56,12 +56,12 @@ class EjaraRozanehFilterWidget extends StatelessWidget {
     );
   }
 
-  Widget ejararozaneh() {
+  Widget ejararozaneh(BuildContext context) {
     return Container(
       height: 50,
-      width: 330,
+      width: MediaQuery.of(context).size.width / 1.23,
       decoration: BoxDecoration(
-        color: Color.fromARGB(255, 205, 203, 203),
+        color: const Color.fromARGB(255, 225, 225, 225),
         borderRadius: BorderRadius.circular(15),
       ),
       child: Row(
@@ -137,12 +137,12 @@ class EjaraRozanehFilterWidget extends StatelessWidget {
     );
   }
 
-  Widget ejararozaneh2() {
+  Widget ejararozaneh2(BuildContext context) {
     return Container(
       height: 50,
-      width: 330,
+      width: MediaQuery.of(context).size.width / 1.23,
       decoration: BoxDecoration(
-        color: Color.fromARGB(255, 205, 203, 203),
+        color: const Color.fromARGB(255, 225, 225, 225),
         borderRadius: BorderRadius.circular(15),
       ),
       child: Row(

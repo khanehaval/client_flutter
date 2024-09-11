@@ -40,18 +40,18 @@ class NoesystemGarmayeshFilterWidget extends StatelessWidget {
             ]),
             if (_show_item_systemGarm_1.isTrue)
               Column(
-                children: [systemgarm()],
+                children: [systemgarm(context)],
               ),
           ]),
         ));
   }
 
-  Widget systemgarm() {
+  Widget systemgarm(BuildContext context) {
     return Column(
       children: [
         Container(
           height: 41,
-          width: 330,
+          width: MediaQuery.of(context).size.width / 1.23,
           child: TextField(
               readOnly: true,
               textAlign: TextAlign.right,

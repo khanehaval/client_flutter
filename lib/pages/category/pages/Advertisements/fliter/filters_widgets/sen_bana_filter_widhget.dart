@@ -42,23 +42,23 @@ class SenBanaFilterWidhget extends StatelessWidget {
             if (_show_item_senbana_1.isTrue)
               Column(
                 children: [
-                  senbana(),
+                  senbana(context),
                   const SizedBox(
                     height: 21,
                   ),
-                  senbana2()
+                  senbana2(context)
                 ],
               ),
           ])),
     );
   }
 
-  Widget senbana() {
+  Widget senbana(BuildContext context) {
     return Container(
       height: 50,
-      width: 330,
+      width: MediaQuery.of(context).size.width / 1.23,
       decoration: BoxDecoration(
-        color: Color.fromARGB(255, 205, 203, 203),
+        color: const Color.fromARGB(255, 225, 225, 225),
         borderRadius: BorderRadius.circular(15),
       ),
       child: Row(
@@ -134,12 +134,12 @@ class SenBanaFilterWidhget extends StatelessWidget {
     );
   }
 
-  Widget senbana2() {
+  Widget senbana2(BuildContext context) {
     return Container(
       height: 50,
-      width: 330,
+      width: MediaQuery.of(context).size.width / 1.23,
       decoration: BoxDecoration(
-        color: Color.fromARGB(255, 205, 203, 203),
+        color: const Color.fromARGB(255, 225, 225, 225),
         borderRadius: BorderRadius.circular(15),
       ),
       child: Row(

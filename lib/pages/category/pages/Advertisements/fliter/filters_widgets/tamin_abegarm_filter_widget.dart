@@ -41,18 +41,18 @@ class TaminAbegarmFilterWidget extends StatelessWidget {
             ]),
             if (_show_item_taminAbeGarm_1.isTrue)
               Column(
-                children: [taminabegarm()],
+                children: [taminabegarm(context)],
               ),
           ]),
         ));
   }
 
-  Widget taminabegarm() {
+  Widget taminabegarm(BuildContext context) {
     return Column(
       children: [
         Container(
           height: 41,
-          width: 330,
+          width: MediaQuery.of(context).size.width / 1.23,
           child: TextField(
               readOnly: true,
               textAlign: TextAlign.right,

@@ -43,11 +43,11 @@ class EjaraFilterWidget extends StatelessWidget {
             if (_show_item_mizanejara.isTrue)
               Column(
                 children: [
-                  ejara(),
+                  ejara(context),
                   const SizedBox(
                     height: 25,
                   ),
-                  ejara2(),
+                  ejara2(context),
                 ],
               ),
           ],
@@ -56,10 +56,10 @@ class EjaraFilterWidget extends StatelessWidget {
     );
   }
 
-  Widget ejara() {
+  Widget ejara(BuildContext context) {
     return Container(
       height: 50,
-      width: 330,
+      width: MediaQuery.of(context).size.width / 1.23,
       decoration: BoxDecoration(
         color: const Color.fromARGB(255, 225, 225, 225),
         borderRadius: BorderRadius.circular(15),
@@ -137,10 +137,10 @@ class EjaraFilterWidget extends StatelessWidget {
     );
   }
 
-  Widget ejara2() {
+  Widget ejara2(BuildContext context) {
     return Container(
       height: 50,
-      width: 330,
+      width: MediaQuery.of(context).size.width / 1.23,
       decoration: BoxDecoration(
         color: const Color.fromARGB(255, 225, 225, 225),
         borderRadius: BorderRadius.circular(15),

@@ -40,18 +40,18 @@ class Noesystemsardayeshfilterwidget extends StatelessWidget {
             ]),
             if (_show_item_systemSard_1.isTrue)
               Column(
-                children: [systemsard()],
+                children: [systemsard(context)],
               ),
           ]),
         ));
   }
 
-  Widget systemsard() {
+  Widget systemsard(BuildContext context) {
     return Column(
       children: [
         Container(
           height: 41,
-          width: 330,
+          width: MediaQuery.of(context).size.width / 1.23,
           child: TextField(
               readOnly: true,
               textAlign: TextAlign.right,

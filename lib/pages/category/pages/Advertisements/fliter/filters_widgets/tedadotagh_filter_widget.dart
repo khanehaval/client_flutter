@@ -40,21 +40,21 @@ class TedadotaghFilterWidget extends StatelessWidget {
                 ),
               ),
             ]),
-            otagh()
+            otagh(context)
           ],
         ),
       ),
     );
   }
 
-  Obx otagh() {
+  Obx otagh(BuildContext context) {
     TextEditingController controller = TextEditingController();
     return Obx(() => _show_item_otagh.value
         ? Column(
             children: [
               Container(
                 height: 41,
-                width: 330,
+                width: MediaQuery.of(context).size.width / 1.23,
                 child: TextField(
                     controller: controller,
                     readOnly: true,

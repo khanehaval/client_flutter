@@ -42,18 +42,18 @@ class LocationMelkFilterWidget extends StatelessWidget {
             ]),
             if (_show_item_locationmelk.isTrue)
               Column(
-                children: [Locationmelk()],
+                children: [Locationmelk(context)],
               ),
           ])),
     );
   }
 
-  Widget Locationmelk() {
+  Widget Locationmelk(BuildContext context) {
     return Column(
       children: [
         Container(
           height: 41,
-          width: 330,
+          width: MediaQuery.of(context).size.width / 1.23,
           child: TextField(
               readOnly: true,
               textAlign: TextAlign.right,

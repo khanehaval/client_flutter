@@ -41,23 +41,23 @@ class QematKoleFilterWidget extends StatelessWidget {
             if (_show_item_qematkol.isTrue)
               Column(
                 children: [
-                  qematkol(),
+                  qematkol(context),
                   const SizedBox(
-                    height: 10,
+                    height: 20,
                   ),
-                  qematkol2()
+                  qematkol2(context)
                 ],
               ),
           ])),
     );
   }
 
-  Widget qematkol() {
+  Widget qematkol(BuildContext context) {
     return Container(
       height: 50,
-      width: 330,
+      width: MediaQuery.of(context).size.width / 1.23,
       decoration: BoxDecoration(
-        color: Color.fromARGB(255, 205, 203, 203),
+        color: const Color.fromARGB(255, 225, 225, 225),
         borderRadius: BorderRadius.circular(15),
       ),
       child: Row(
@@ -133,12 +133,12 @@ class QematKoleFilterWidget extends StatelessWidget {
     );
   }
 
-  Widget qematkol2() {
+  Widget qematkol2(BuildContext context) {
     return Container(
       height: 50,
-      width: 330,
+      width: MediaQuery.of(context).size.width / 1.23,
       decoration: BoxDecoration(
-        color: Color.fromARGB(255, 205, 203, 203),
+        color: const Color.fromARGB(255, 225, 225, 225),
         borderRadius: BorderRadius.circular(15),
       ),
       child: Row(

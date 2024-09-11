@@ -40,18 +40,18 @@ class JensKafFilterWidget extends StatelessWidget {
             ]),
             if (_show_item_jensKaf_1.isTrue)
               Column(
-                children: [jenskaf()],
+                children: [jenskaf(context)],
               ),
           ])),
     );
   }
 
-  Widget jenskaf() {
+  Widget jenskaf(BuildContext context) {
     return Column(
       children: [
         Container(
           height: 41,
-          width: 330,
+          width: MediaQuery.of(context).size.width / 1.23,
           child: TextField(
               readOnly: true,
               textAlign: TextAlign.right,

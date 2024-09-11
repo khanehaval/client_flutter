@@ -42,11 +42,11 @@ class MetrajFilterWidget extends StatelessWidget {
           if (_show_item_mizanmetraj.isTrue)
             Column(
               children: [
-                metraj(),
+                metraj(context),
                 const SizedBox(
                   height: 25,
                 ),
-                metraj2(),
+                metraj2(context),
               ],
             ),
         ]),
@@ -54,12 +54,12 @@ class MetrajFilterWidget extends StatelessWidget {
     );
   }
 
-  Widget metraj() {
+  Widget metraj(BuildContext context) {
     return Container(
       height: 50,
-      width: 330,
+      width: MediaQuery.of(context).size.width / 1.23,
       decoration: BoxDecoration(
-        color: Color.fromARGB(255, 205, 203, 203),
+        color: const Color.fromARGB(255, 225, 225, 225),
         borderRadius: BorderRadius.circular(15),
       ),
       child: Row(
@@ -135,12 +135,12 @@ class MetrajFilterWidget extends StatelessWidget {
     );
   }
 
-  Widget metraj2() {
+  Widget metraj2(BuildContext context) {
     return Container(
       height: 50,
-      width: 330,
+      width: MediaQuery.of(context).size.width / 1.23,
       decoration: BoxDecoration(
-        color: Color.fromARGB(255, 205, 203, 203),
+        color: const Color.fromARGB(255, 225, 225, 225),
         borderRadius: BorderRadius.circular(15),
       ),
       child: Row(

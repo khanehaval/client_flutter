@@ -3,8 +3,8 @@ import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
-class MahalehFilterWidget extends StatelessWidget {
-  MahalehFilterWidget({super.key});
+class MarhalehSakhtFilterWidget extends StatelessWidget {
+  MarhalehSakhtFilterWidget({super.key});
   final _show_item_mahaleh_1 = false.obs;
 
   @override
@@ -31,7 +31,7 @@ class MahalehFilterWidget extends StatelessWidget {
               const Padding(
                 padding: EdgeInsets.only(left: 10, right: 20),
                 child: Text(
-                  'محله',
+                  'مرحله ساخت',
                   style: TextStyle(
                       fontFamily: MAIN_FONT_FAMILY,
                       color: Color.fromRGBO(48, 48, 48, 1),
@@ -41,13 +41,13 @@ class MahalehFilterWidget extends StatelessWidget {
             ]),
             if (_show_item_mahaleh_1.isTrue)
               Column(
-                children: [buildmahaleh(context)],
+                children: [marhalehSakht(context)],
               )
           ])),
     );
   }
 
-  Obx buildmahaleh(BuildContext context) {
+  Obx marhalehSakht(BuildContext context) {
     return Obx(
       () => _show_item_mahaleh_1.isTrue
           ? Column(

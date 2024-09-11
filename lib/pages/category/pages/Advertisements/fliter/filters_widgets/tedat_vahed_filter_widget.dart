@@ -42,23 +42,23 @@ class TedatVahedFilterWidget extends StatelessWidget {
             if (_show_item_vaheddartabageh_1.isTrue)
               Column(
                 children: [
-                  tedadvahed(),
+                  tedadvahed(context),
                   const SizedBox(
                     height: 21,
                   ),
-                  tedadvahed2()
+                  tedadvahed2(context)
                 ],
               ),
           ]),
         ));
   }
 
-  Widget tedadvahed() {
+  Widget tedadvahed(BuildContext context) {
     return Container(
       height: 50,
-      width: 330,
+      width: MediaQuery.of(context).size.width / 1.23,
       decoration: BoxDecoration(
-        color: Color.fromARGB(255, 205, 203, 203),
+        color: const Color.fromARGB(255, 225, 225, 225),
         borderRadius: BorderRadius.circular(15),
       ),
       child: Row(
@@ -134,12 +134,12 @@ class TedatVahedFilterWidget extends StatelessWidget {
     );
   }
 
-  Widget tedadvahed2() {
+  Widget tedadvahed2(BuildContext context) {
     return Container(
       height: 50,
-      width: 330,
+      width: MediaQuery.of(context).size.width / 1.23,
       decoration: BoxDecoration(
-        color: Color.fromARGB(255, 205, 203, 203),
+        color: const Color.fromARGB(255, 225, 225, 225),
         borderRadius: BorderRadius.circular(15),
       ),
       child: Row(
