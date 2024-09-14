@@ -75,16 +75,17 @@ class LoginSecondlyPage extends StatelessWidget {
                     },
                     child: Container(
                       decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
+                          borderRadius: BorderRadius.circular(20),
                           gradient:
                               const LinearGradient(colors: GRADIANT_COLOR1)),
                       child: Padding(
                         padding: const EdgeInsets.all(1.2),
                         child: Container(
                           height: 65,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              color: Colors.white),
+                          decoration: const BoxDecoration(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(19)),
+                              color: Color.fromARGB(255, 255, 255, 255)),
                           child: const Center(
                             child: Text(
                               'شخصی',
@@ -110,7 +111,7 @@ class LoginSecondlyPage extends StatelessWidget {
                     },
                     child: Container(
                       decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
+                          borderRadius: BorderRadius.circular(20),
                           gradient:
                               const LinearGradient(colors: GRADIANT_COLOR1)),
                       child: Padding(
@@ -118,7 +119,7 @@ class LoginSecondlyPage extends StatelessWidget {
                         child: Container(
                           height: 65,
                           decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
+                              borderRadius: BorderRadius.circular(19),
                               color: Colors.white),
                           child: const Center(
                             child: Text(
@@ -145,7 +146,7 @@ class LoginSecondlyPage extends StatelessWidget {
                     },
                     child: Container(
                       decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
+                          borderRadius: BorderRadius.circular(20),
                           gradient:
                               const LinearGradient(colors: GRADIANT_COLOR1)),
                       child: Padding(
@@ -153,7 +154,7 @@ class LoginSecondlyPage extends StatelessWidget {
                         child: Container(
                           height: 65,
                           decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
+                              borderRadius: BorderRadius.circular(19),
                               color: Colors.white),
                           child: const Center(
                             child: Text(

@@ -15,7 +15,7 @@ class Category extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 15),
         child: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Container(
                 decoration: BoxDecoration(
@@ -25,78 +25,18 @@ class Category extends StatelessWidget {
                   padding: const EdgeInsets.all(0.7),
                   child: Stack(
                     children: [
-                      Container(
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: GestureDetector(
-                            onTap: () {
-                              Get.to(() => MainCategory(index: 0),
-                                  transition: Transition.leftToRightWithFade);
-                            },
-                            child: SizedBox(
-                                height: _getHeight(context) / 4.9,
-                                width: _getHeight(context) / 5,
-                                child: Padding(
-                                  padding: const EdgeInsets.only(
-                                      bottom: 50.0,
-                                      left: 20,
-                                      right: 20,
-                                      top: 50),
-                                  child: Image.asset(
-                                    'assets/images/Frame_amlak.png',
-                                    color: const Color.fromRGBO(
-                                      99,
-                                      99,
-                                      99,
-                                      1,
-                                    ),
-                                  ),
-                                )),
+                      GestureDetector(
+                        onTap: () {
+                          Get.to(() => MainCategory(index: 1),
+                              transition: Transition.leftToRightWithFade);
+                        },
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(10),
                           ),
-                        ),
-                      ),
-                      const Padding(
-                        padding: EdgeInsets.only(top: 140, left: 70),
-                        child: Text("امـلاک",
-                            style: TextStyle(
-                              fontSize: 16,
-                              fontFamily: MAIN_FONT_FAMILY,
-                              color: Color.fromRGBO(
-                                99,
-                                99,
-                                99,
-                                1,
-                              ),
-                            )),
-                      )
-                    ],
-                  ),
-                ),
-              ),
-              Container(
-                decoration: BoxDecoration(
-                    gradient: const LinearGradient(colors: GRADIANT_COLOR1),
-                    borderRadius: BorderRadius.circular(10)),
-                child: Padding(
-                  padding: const EdgeInsets.all(0.7),
-                  child: Stack(
-                    children: [
-                      Container(
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: GestureDetector(
-                            onTap: () {
-                              Get.to(() => MainCategory(index: 1),
-                                  transition: Transition.leftToRightWithFade);
-                            },
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
                             child: SizedBox(
                               height: _getHeight(context) / 4.9,
                               width: (_getHeight(context) / 5) * (2 / 3),
@@ -105,12 +45,6 @@ class Category extends StatelessWidget {
                                     bottom: 30.0, left: 20, right: 20, top: 20),
                                 child: Image.asset(
                                   'assets/images/Frame_ejaramaskoni.png',
-                                  color: const Color.fromRGBO(
-                                    99,
-                                    99,
-                                    99,
-                                    1,
-                                  ),
                                 ),
                               ),
                             ),
@@ -122,86 +56,118 @@ class Category extends StatelessWidget {
                         child: Text(
                           "اجاره مسکونی",
                           style: TextStyle(
-                            fontSize: 14,
-                            fontFamily: MAIN_FONT_FAMILY,
-                            color: Color.fromRGBO(
-                              99,
-                              99,
-                              99,
-                              1,
-                            ),
+                              fontSize: 14,
+                              fontFamily: MAIN_FONT_FAMILY,
+                              color: Color.fromRGBO(48, 48, 48, 1)),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              GestureDetector(
+                onTap: () {
+                  Get.to(() => MainCategory(index: 0),
+                      transition: Transition.leftToRightWithFade);
+                },
+                child: Container(
+                  decoration: BoxDecoration(
+                      gradient: const LinearGradient(colors: GRADIANT_COLOR1),
+                      borderRadius: BorderRadius.circular(10)),
+                  child: Padding(
+                    padding: const EdgeInsets.all(0.7),
+                    child: Stack(
+                      children: [
+                        Container(
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: SizedBox(
+                                height: _getHeight(context) / 4.9,
+                                width: _getHeight(context) / 5,
+                                child: Padding(
+                                  padding: const EdgeInsets.only(
+                                      bottom: 50.0,
+                                      left: 20,
+                                      right: 20,
+                                      top: 50),
+                                  child: Image.asset(
+                                    'assets/images/Frame_amlak.png',
+                                  ),
+                                )),
                           ),
                         ),
-                      )
-                    ],
+                        const Padding(
+                          padding: EdgeInsets.only(top: 140, left: 70),
+                          child: Text("امـلاک",
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontFamily: MAIN_FONT_FAMILY,
+                                color: Color.fromRGBO(48, 48, 48, 1),
+                              )),
+                        )
+                      ],
+                    ),
                   ),
                 ),
               ),
             ],
           ),
           const SizedBox(
-            height: 17,
+            height: 20,
           ),
-          Container(
-            decoration: BoxDecoration(
-                gradient: const LinearGradient(colors: GRADIANT_COLOR1),
-                borderRadius: BorderRadius.circular(10)),
-            child: Padding(
-              padding: const EdgeInsets.all(0.7),
-              child: Stack(
-                children: [
-                  Container(
-                    height: _getHeight(context) / 8,
-                    width: 330,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: GestureDetector(
-                      onTap: () {
-                        Get.to(() => MainCategory(index: 2),
-                            transition: Transition.leftToRightWithFade);
-                      },
+          GestureDetector(
+            onTap: () {
+              Get.to(() => MainCategory(index: 2),
+                  transition: Transition.leftToRightWithFade);
+            },
+            child: Container(
+              decoration: BoxDecoration(
+                  gradient: const LinearGradient(colors: GRADIANT_COLOR1),
+                  borderRadius: BorderRadius.circular(10)),
+              child: Padding(
+                padding: const EdgeInsets.all(0.7),
+                child: Stack(
+                  children: [
+                    Container(
+                      height: _getHeight(context) / 8,
+                      width: MediaQuery.of(context).size.width / 1.2,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(10),
+                      ),
                       child: Padding(
                         padding: const EdgeInsets.only(
                             top: 15.0, bottom: 15, left: 125),
                         child: Image.asset(
                           'assets/images/Frame_foroshmaskoni.png',
-                          color: const Color.fromRGBO(
-                            99,
-                            99,
-                            99,
-                            1,
-                          ),
                         ),
                       ),
                     ),
-                  ),
-                  const Padding(
-                    padding: EdgeInsets.only(top: 40.0, left: 70),
-                    child: Text(
-                      "فروش مسکونی",
-                      style: TextStyle(
-                        fontSize: 14,
-                        fontFamily: MAIN_FONT_FAMILY,
-                        color: Color.fromRGBO(
-                          99,
-                          99,
-                          99,
-                          1,
+                    const Padding(
+                      padding: EdgeInsets.only(top: 40.0, left: 70),
+                      child: Text(
+                        "فروش مسکونی",
+                        style: TextStyle(
+                          fontSize: 14,
+                          fontFamily: MAIN_FONT_FAMILY,
+                          color: Color.fromRGBO(48, 48, 48, 1),
                         ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ),
           const SizedBox(
-            height: 17,
+            height: 20,
           ),
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Container(
                 decoration: BoxDecoration(
@@ -231,12 +197,6 @@ class Category extends StatelessWidget {
                                     top: 10.0, bottom: 40, left: 10, right: 10),
                                 child: Image.asset(
                                   'assets/images/Frame_ejaratejari.png',
-                                  color: const Color.fromRGBO(
-                                    99,
-                                    99,
-                                    99,
-                                    1,
-                                  ),
                                 ),
                               ),
                             ),
@@ -250,12 +210,7 @@ class Category extends StatelessWidget {
                           style: TextStyle(
                             fontSize: 13,
                             fontFamily: MAIN_FONT_FAMILY,
-                            color: Color.fromRGBO(
-                              99,
-                              99,
-                              99,
-                              1,
-                            ),
+                            color: Color.fromRGBO(48, 48, 48, 1),
                           ),
                         ),
                       )
@@ -291,12 +246,6 @@ class Category extends StatelessWidget {
                                     top: 15.0, bottom: 40, left: 10, right: 10),
                                 child: Image.asset(
                                   'assets/images/Frame_foroshtejari.png',
-                                  color: const Color.fromRGBO(
-                                    99,
-                                    99,
-                                    99,
-                                    1,
-                                  ),
                                 ),
                               ),
                             ),
@@ -310,12 +259,7 @@ class Category extends StatelessWidget {
                           style: TextStyle(
                             fontSize: 13,
                             fontFamily: MAIN_FONT_FAMILY,
-                            color: Color.fromRGBO(
-                              99,
-                              99,
-                              99,
-                              1,
-                            ),
+                            color: Color.fromRGBO(48, 48, 48, 1),
                           ),
                         ),
                       ),
@@ -329,7 +273,7 @@ class Category extends StatelessWidget {
             height: 17,
           ),
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Container(
                 decoration: BoxDecoration(
@@ -359,12 +303,6 @@ class Category extends StatelessWidget {
                                     top: 10.0, bottom: 40, left: 10, right: 10),
                                 child: Image.asset(
                                   'assets/images/Frame_kotamodat.png',
-                                  color: const Color.fromRGBO(
-                                    99,
-                                    99,
-                                    99,
-                                    1,
-                                  ),
                                 ),
                               ),
                             ),
@@ -378,12 +316,7 @@ class Category extends StatelessWidget {
                           style: TextStyle(
                             fontSize: 14,
                             fontFamily: MAIN_FONT_FAMILY,
-                            color: Color.fromRGBO(
-                              99,
-                              99,
-                              99,
-                              1,
-                            ),
+                            color: Color.fromRGBO(48, 48, 48, 1),
                           ),
                         ),
                       ),
@@ -419,12 +352,6 @@ class Category extends StatelessWidget {
                                     top: 10.0, bottom: 40, left: 10, right: 10),
                                 child: Image.asset(
                                   'assets/images/Frame_sakht va saz.png',
-                                  color: const Color.fromRGBO(
-                                    99,
-                                    99,
-                                    99,
-                                    1,
-                                  ),
                                 ),
                               ),
                             ),
@@ -438,12 +365,7 @@ class Category extends StatelessWidget {
                           style: TextStyle(
                             fontSize: 14,
                             fontFamily: MAIN_FONT_FAMILY,
-                            color: Color.fromRGBO(
-                              99,
-                              99,
-                              99,
-                              1,
-                            ),
+                            color: Color.fromRGBO(48, 48, 48, 1),
                           ),
                         ),
                       ),

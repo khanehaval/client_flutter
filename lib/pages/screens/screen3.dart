@@ -21,12 +21,12 @@ class Screen3 extends StatelessWidget {
               child: Stack(children: [
                 Image.asset(
                   'assets/images/BG 1.png',
-                  height: Get.height / 1.685,
+                  height: Get.height / 1.63,
                   width: MediaQuery.of(context).size.width / 1.0,
                   fit: BoxFit.cover,
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(top: 30, left: 50),
+                  padding: const EdgeInsets.only(top: 40, left: 45),
                   child: SvgPicture.asset(
                     'assets/images/property3.svg',
                   ),
@@ -36,7 +36,7 @@ class Screen3 extends StatelessWidget {
           ],
         ),
         const Padding(
-          padding: EdgeInsets.only(bottom: 170.0, left: 45, right: 45),
+          padding: EdgeInsets.only(bottom: 140.0, left: 45, right: 45),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
@@ -58,7 +58,7 @@ class Screen3 extends StatelessWidget {
                 style: TextStyle(
                     fontWeight: FontWeight.w400,
                     fontSize: 16,
-                    fontFamily: 'Iran Sans'),
+                    fontFamily: MAIN_FONT_FAMILY_UltraLight),
                 textDirection: TextDirection.rtl,
                 textAlign: TextAlign.justify,
               ),

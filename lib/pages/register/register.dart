@@ -156,49 +156,59 @@ class _RegisterState extends State<Register> {
   }
 
   Widget _buildPhoneNumberField() {
-    return SizedBox(
-      height: 50,
-      child: TextFormField(
-        textAlign: TextAlign.center,
-        keyboardType: TextInputType.number,
-        controller: _phoneNumberTextField,
-        onChanged: (_) => _phoneNumberSended.value = false,
-        onFieldSubmitted: (_) => _sendPhoneNumber(),
-        style: const TextStyle(fontSize: 14, fontFamily: MAIN_FONT_FAMILY),
-        inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-        decoration: InputDecoration(
-          hintText: "۰۹۱۲   ۱۲۳   ۴۵۶۷",
-          hintStyle: const TextStyle(
-            color: Color.fromRGBO(222, 222, 222, 1),
-            fontFamily: MAIN_FONT_FAMILY,
-            fontSize: 15,
-          ),
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(15),
-            borderSide: const BorderSide(
-              color: Color.fromRGBO(99, 99, 99, 1),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+      child: SizedBox(
+        height: 50,
+        child: TextFormField(
+          textAlign: TextAlign.center,
+          keyboardType: TextInputType.number,
+          controller: _phoneNumberTextField,
+          onChanged: (_) => _phoneNumberSended.value = false,
+          onFieldSubmitted: (_) => _sendPhoneNumber(),
+          style: const TextStyle(fontSize: 14, fontFamily: MAIN_FONT_FAMILY),
+          inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+          decoration: InputDecoration(
+            contentPadding: const EdgeInsets.symmetric(
+                horizontal: 50, vertical: 10), // فاصله داخلی برای زیبایی بیشتر
+            hintText: "۰۹۱۲   ۱۲۳   ۴۵۶۷", // شماره پیش‌فرض به فارسی
+            hintStyle: const TextStyle(
+              color: Color.fromRGBO(222, 222, 222, 1),
+              fontFamily: MAIN_FONT_FAMILY,
+              fontSize: 12,
             ),
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(15),
-            borderSide: const BorderSide(
-              color: Color.fromRGBO(99, 99, 99, 1),
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(15),
+              borderSide: const BorderSide(
+                color: Color.fromRGBO(99, 99, 99, 1),
+              ),
             ),
-          ),
-          suffix: Obx(
-            () => _phoneNumberSended.value
-                ? GestureDetector(
-                    onTap: () => _phoneNumberSended.value = false,
-                    child: Padding(
-                      padding: const EdgeInsets.only(top: 20),
-                      child: SizedBox(
-                        height: 21,
-                        width: 21,
-                        child: SvgPicture.asset('assets/images/edit.svg'),
+            focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(15),
+              borderSide: const BorderSide(
+                color: Color.fromRGBO(99, 99, 99, 1),
+              ),
+            ),
+            // آیکون در سمت راست داخل فیلد
+            suffixIcon: Obx(
+              () => _phoneNumberSended.value
+                  ? GestureDetector(
+                      onTap: () => _phoneNumberSended.value = false,
+                      child: Padding(
+                        padding: const EdgeInsets.only(
+                            right: 5.0,
+                            left: 10,
+                            top: 10,
+                            bottom: 15), // فاصله آیکون
+                        child: SvgPicture.asset(
+                          'assets/images/edit.svg',
+                          height: 20,
+                          width: 20,
+                        ),
                       ),
-                    ),
-                  )
-                : const SizedBox.shrink(),
+                    )
+                  : const SizedBox.shrink(),
+            ),
           ),
         ),
       ),

@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/models/AdvInfoModel.dart';
-import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/widget_filter/jahatsakhteman.dart';
 import 'package:flutter_application_1/pages/category/shared/adv_info/advInfo.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
-import 'package:flutter_application_1/pages/category/shared/date.dart';
 import 'package:flutter_application_1/pages/category/shared/facilities_selector.dart';
 import 'package:flutter_application_1/pages/category/shared/images_picker/images_picker.dart';
 import 'package:flutter_application_1/pages/category/shared/more_emkanat/Widget_NoeSanad.dart';
 import 'package:flutter_application_1/pages/category/shared/more_emkanat/jahat_sakhteman.dart';
-import 'package:flutter_application_1/pages/category/shared/more_emkanat/sanad.dart';
 import 'package:flutter_application_1/pages/category/shared/more_emkanat/servises_wc.dart';
 import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_bazsazi.dart';
 import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_jenskaf.dart';
@@ -629,12 +626,17 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
               TwoItemInRow(
                   label1: "بازسازی",
                   label2: "جهت ساختمان",
-                  widget1: ReadOnlyTextField(_reBuildController, () {
-                    BazSazi((selectedOption) {
-                      _reBuildController.text = selectedOption;
-                      saleApartemanServerModel.reconstruct;
-                    });
-                  }, width: getPageWidth()),
+                  widget1: ReadOnlyTextField(
+                    _reBuildController,
+                    () {
+                      BazSazi((selectedOption) {
+                        _reBuildController.text = selectedOption;
+                        saleApartemanServerModel.reconstruct;
+                      });
+                    },
+                    width: getPageWidth(),
+                    fontSize: 10,
+                  ),
                   widget2: ReadOnlyTextField(_buildDirectionController, () {
                     jahatSakhteman((selectedOption) {
                       _buildDirectionController.text = selectedOption;
@@ -786,35 +788,35 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
                   }
                   if (submit.value) {
                     saleApartemanServerModel.images = [
-                      _selectedImagesPath.first
+                      _selectedImagesPath.value.first
                     ];
                     saleApartemanServerModel.wc = _wcController.text;
                     saleApartemanServerModel.hasLobby =
-                        _facilities.contains(Labi());
+                        _facilities.value.contains(Labi());
                     saleApartemanServerModel.hasBathTub =
-                        _facilities.contains(Bathtub());
+                        _facilities.value.contains(Bathtub());
                     saleApartemanServerModel.hasMasterRoom =
-                        _facilities.contains(MasterRoom());
+                        _facilities.value.contains(MasterRoom());
                     saleApartemanServerModel.hasBalcony =
-                        _facilities.contains(Teras());
+                        _facilities.value.contains(Teras());
                     saleApartemanServerModel.hasSwimmingPool =
-                        _facilities.contains(SwimmingPool());
+                        _facilities.value.contains(SwimmingPool());
                     saleApartemanServerModel.hasRoofGarden =
-                        _facilities.contains(RoofGarden());
+                        _facilities.value.contains(RoofGarden());
                     saleApartemanServerModel.hasGamingRoom =
-                        _facilities.contains(GameRoom());
+                        _facilities.value.contains(GameRoom());
                     saleApartemanServerModel.hasGazebo =
-                        _facilities.contains(AlAchiq());
+                        _facilities.value.contains(AlAchiq());
                     saleApartemanServerModel.hasGamingRoom =
-                        _facilities.contains(GameRoom());
+                        _facilities.value.contains(GameRoom());
                     saleApartemanServerModel.hasSportingHall =
-                        _facilities.contains(Gym());
+                        _facilities.value.contains(Gym());
                     saleApartemanServerModel.hasConferenceHall =
-                        _facilities.contains(ConferenceHall());
+                        _facilities.value.contains(ConferenceHall());
                     saleApartemanServerModel.hasCentralAntenna =
-                        _facilities.contains(CenterAntenna());
+                        _facilities.value.contains(CenterAntenna());
                     saleApartemanServerModel.hasSaunaJacuzzi =
-                        _facilities.contains(Sona());
+                        _facilities.value.contains(Sona());
                     _aparteman();
                     Get.to(() => NamayeshAgahi());
                   }

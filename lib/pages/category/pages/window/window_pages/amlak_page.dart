@@ -36,16 +36,19 @@ class AmlakPage extends StatelessWidget {
         const SizedBox(
           height: 10,
         ),
-        SingleChildScrollView(
-          reverse: true,
-          scrollDirection: Axis.horizontal,
-          child: Row(
-            children: [
-              _buildRowItem('assets/images/axhans_amlak.svg'),
-              _buildRowItem('assets/images/moshaver_amlak.svg'),
-              _buildRowItem('assets/images/kharid_khaneh.svg'),
-            ],
-          ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            SizedBox(
+              width: 180,
+              child: _buildRowItem(
+                'assets/images/moshaver_amlak.svg',
+              ),
+            ),
+            SizedBox(
+                width: 180,
+                child: _buildRowItem('assets/images/axhans_amlak1.svg')),
+          ],
         ),
         const SizedBox(
           height: 10,
@@ -59,7 +62,7 @@ class AmlakPage extends StatelessWidget {
               _show_item_1.value = !_show_item_1.value;
             },
             child: Padding(
-              padding: const EdgeInsets.all(10.0),
+              padding: const EdgeInsets.symmetric(horizontal: 15.0),
               child: Container(
                   decoration: BoxDecoration(
                       gradient: const LinearGradient(colors: GRADIANT_COLOR3),
@@ -126,7 +129,7 @@ class AmlakPage extends StatelessWidget {
             _show_item_2.value = !_show_item_2.value;
           },
           child: Padding(
-            padding: const EdgeInsets.all(10.0),
+            padding: const EdgeInsets.symmetric(horizontal: 15.0),
             child: Container(
                 decoration: BoxDecoration(
                     gradient: const LinearGradient(colors: GRADIANT_COLOR3),
@@ -212,28 +215,31 @@ class AmlakPage extends StatelessWidget {
                     GestureDetector(
                       onTap: () {},
                       child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Container(
                               height: 90,
-                              width: 170,
                               decoration: BoxDecoration(
                                 color: Colors.white,
                                 borderRadius: BorderRadius.circular(10),
                               ),
                               child: SvgPicture.asset(
                                 'assets/images/Group 768.svg',
+                                width: 179,
                               )),
+                          const SizedBox(
+                            width: 5,
+                          ),
                           Container(
                               height: 90,
-                              width: 170,
+                              width: 179,
                               decoration: BoxDecoration(
                                 color: Colors.white,
                                 borderRadius: BorderRadius.circular(10),
                               ),
                               child: SvgPicture.asset(
                                 'assets/images/Group 767.svg',
+                                width: 179,
                               )),
                         ],
                       ),
@@ -259,75 +265,6 @@ class AmlakPage extends StatelessWidget {
                   width: 360,
                   height: 150,
                 ),
-                Column(
-                  children: [
-                    GestureDetector(
-                      onTap: () {},
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Container(
-                              width: 165,
-                              height: 76,
-                              decoration: BoxDecoration(
-                                  gradient: const LinearGradient(
-                                      colors: GRADIANT_COLOR3),
-                                  borderRadius: BorderRadius.circular(10)),
-                              child: Padding(
-                                padding: const EdgeInsets.all(1.5),
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.circular(10),
-                                  ),
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(10),
-                                    ),
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(14.0),
-                                      child: SvgPicture.asset(
-                                        'assets/images/Group 654.svg',
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              )),
-                          SizedBox(
-                            width: 0,
-                          ),
-                          Container(
-                              width: 165,
-                              height: 76,
-                              decoration: BoxDecoration(
-                                  gradient: const LinearGradient(
-                                      colors: GRADIANT_COLOR3),
-                                  borderRadius: BorderRadius.circular(10)),
-                              child: Padding(
-                                padding: const EdgeInsets.all(1.5),
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.circular(10),
-                                  ),
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(10),
-                                    ),
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(14.0),
-                                      child: SvgPicture.asset(
-                                        'assets/images/Group 654.svg',
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              )),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
               ],
             )
           : const SizedBox.shrink(),
@@ -336,7 +273,7 @@ class AmlakPage extends StatelessWidget {
 
   Padding _buildRowItem(String asset) {
     return Padding(
-        padding: const EdgeInsets.all(8),
+        padding: const EdgeInsets.all(5),
         child: SvgPicture.asset(
           asset,
         ));

@@ -1,8 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
+import 'package:flutter_application_1/pages/category/shared/widget/Neighbourhood.dart';
+import 'package:flutter_application_1/pages/category/shared/widget/city_controller.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/switch_onr_item.dart';
-import 'package:flutter_application_1/pages/category/shared/widget/taeed_enseraf_filters.dart';
 import 'package:get/get.dart';
 
 class City extends StatefulWidget {
@@ -13,7 +13,7 @@ class City extends StatefulWidget {
 }
 
 class _CityState extends State<City> {
-  final selectedCity = <String>[].obs;
+  final CityController cityController = Get.put(CityController());
   final List<String> cityList = [
     'تهران',
     'مشهد',
@@ -46,107 +46,54 @@ class _CityState extends State<City> {
         cityList.where((city) => city.toLowerCase().contains(query)).toList();
   }
 
+  void _onConfirm() {
+    if (cityController.selectedCity.value.isNotEmpty) {
+      // Navigate to Neighbourhood page and pass the selected city
+      Get.to(() => Neighbourhood(),
+          arguments: cityController.selectedCity.value);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.white,
+        title: Text('انتخاب شهر'),
       ),
       body: Column(
         children: [
-          const SizedBox(height: 20), // فاصله بالای صفحه
-          const Text(
-            'انتخاب شهر',
-            style: TextStyle(
-              fontFamily: MAIN_FONT_FAMILY,
-              fontSize: 22,
-              color: Colors.black,
-            ),
-          ),
-          const SizedBox(height: 50),
-
-          Obx(() => selectedCity.isEmpty
-              ? Container()
-              : Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                  child: Align(
-                    alignment: Alignment.center,
-                    child: Text(
-                      selectedCity.join(
-                          ', '), // نمایش شهرهای انتخاب‌شده با کاما جدا شده
-                      textAlign: TextAlign.center,
-                      style: const TextStyle(
-                        fontFamily: MAIN_FONT_FAMILY,
-                        fontSize: 16,
-                        color: Colors.black,
-                      ),
-                    ),
-                  ),
-                )),
-
-          const SizedBox(height: 10), // فاصله بین اسم شهرها و Chips
-
-          Obx(() => selectedCity.isEmpty
-              ? Container()
-              : Padding(
-                  padding: const EdgeInsets.only(right: 20.0, left: 10.0),
-                  child: Align(
-                    alignment: Alignment.centerRight,
-                    child: Wrap(
-                      direction: Axis.horizontal,
-                      spacing: 5.0,
-                      children: selectedCity
-                          .map((city) => Chip(
-                                deleteIconColor:
-                                    const Color.fromARGB(255, 168, 11, 0),
-                                backgroundColor: Colors.white,
-                                label: Text(
-                                  city,
-                                  style: const TextStyle(
-                                      fontFamily: MAIN_FONT_FAMILY,
-                                      fontSize: 10),
-                                ),
-                                onDeleted: () {
-                                  selectedCity.remove(city);
-                                },
-                              ))
-                          .toList(),
-                    ),
-                  ),
-                )),
-          const SizedBox(height: 10),
           SizedBox(
-            height: 51,
-            width: MediaQuery.of(context).size.width * 0.9,
+            height: 45,
+            width: MediaQuery.of(context).size.width * 0.8,
             child: TextField(
               controller: searchController,
               textAlign: TextAlign.end,
               decoration: InputDecoration(
                 hintText: 'جستجو در همه شهر ها',
                 hintStyle: const TextStyle(
-                  fontFamily: 'YourFontFamily_Light',
-                ),
+                    fontFamily: MAIN_FONT_FAMILY_UltraLight,
+                    fontSize: 12,
+                    color: Color.fromRGBO(166, 166, 166, 1)),
                 border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10),
+                  borderRadius: BorderRadius.circular(15),
                   borderSide: const BorderSide(
                     color: Color.fromRGBO(23, 102, 175, 1),
                   ),
                 ),
                 focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10),
+                  borderRadius: BorderRadius.circular(15),
                   borderSide: const BorderSide(
                     color: Color.fromRGBO(23, 102, 175, 1),
                   ),
                 ),
                 prefixIcon: const Icon(Icons.search),
+                contentPadding: const EdgeInsets.only(bottom: 50, right: 15),
               ),
             ),
           ),
-
-          const SizedBox(height: 10), // فاصله بین TextField و لیست شهرها
-
-          // نمایش لیست شهرها
+          const SizedBox(height: 15),
           Container(
             decoration: const BoxDecoration(
               color: Color.fromRGBO(99, 99, 99, 1),
@@ -155,8 +102,8 @@ class _CityState extends State<City> {
             child: Padding(
               padding: const EdgeInsets.all(0.6),
               child: Container(
-                width: MediaQuery.of(context).size.width * 0.9,
-                height: 280,
+                width: MediaQuery.of(context).size.width * 0.8,
+                height: 270,
                 decoration: const BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.all(Radius.circular(15)),
@@ -164,47 +111,47 @@ class _CityState extends State<City> {
                 child: Obx(() => ListView.builder(
                       itemCount: filteredCity.length,
                       itemBuilder: (context, index) {
-                        return Column(
-                          children: [
-                            _buildCityRow(filteredCity[index]),
-                            if (index < filteredCity.length - 1)
-                              _buildDivider(),
-                          ],
-                        );
+                        return _buildCityRow(filteredCity[index]);
                       },
                     )),
               ),
             ),
           ),
-
-          const SizedBox(height: 50), // فاصله انتهای صفحه
-
-          // دکمه‌های تایید و انصراف
-          FiltersTaeedEnseraf(),
+          const SizedBox(height: 30),
+          ElevatedButton(
+            onPressed: _onConfirm,
+            child: Text('تایید'),
+          ),
         ],
       ),
     );
   }
 
   Widget _buildCityRow(String city) {
-    return SwitchItem(
-      IsSelected: selectedCity.contains(city),
-      onSelected: (_) {
-        if (selectedCity.contains(city)) {
-          selectedCity.remove(city);
-        } else {
-          selectedCity.add(city);
-        }
-      },
-      item: city,
-    );
-  }
-
-  Widget _buildDivider() {
-    return const Divider(
-      endIndent: 30,
-      indent: 30,
-      color: Color.fromRGBO(226, 226, 226, 1),
+    return Column(
+      children: [
+        Padding(
+          padding: const EdgeInsets.only(right: 10.0),
+          child: SwitchItem(
+            isSelected: cityController.selectedCity.value == city,
+            onSelected: () {
+              cityController.selectedCity.value = city;
+            },
+            item: city,
+            textStyle: const TextStyle(
+              fontSize: 20,
+              color: Colors.black,
+            ),
+          ),
+        ),
+        if (city != filteredCity.value.last)
+          Container(
+            margin: const EdgeInsets.symmetric(),
+            width: MediaQuery.of(context).size.width * 0.67,
+            height: 1,
+            color: Color.fromARGB(255, 238, 238, 238),
+          ),
+      ],
     );
   }
 }

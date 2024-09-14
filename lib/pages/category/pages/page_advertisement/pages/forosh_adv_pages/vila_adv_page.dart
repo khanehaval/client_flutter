@@ -772,30 +772,30 @@ class _VilaAdvPageState extends State<VilaAdvPage> {
                   Get.to(() => NamayeshAgahi());
                 }
                 if (submit.value) {
-                  saleVilaServerModel.images = _selectedImagesPath.first;
+                  saleVilaServerModel.images = _selectedImagesPath.value.first;
                   saleVilaServerModel.wc = _wcController.text;
                   saleVilaServerModel.hasBalcony =
-                      _facilities.contains(Teras());
+                      _facilities.value.contains(Teras());
                   saleVilaServerModel.hasBathTub =
-                      _facilities.contains(Bathtub());
+                      _facilities.value.contains(Bathtub());
                   saleVilaServerModel.hasCentralAnthena =
-                      _facilities.contains(CenterAntenna());
+                      _facilities.value.contains(CenterAntenna());
                   saleVilaServerModel.hasConferenceHall =
-                      _facilities.contains(ConferenceHall());
+                      _facilities.value.contains(ConferenceHall());
                   saleVilaServerModel.hasGamingRoom =
-                      _facilities.contains(GameRoom());
+                      _facilities.value.contains(GameRoom());
                   saleVilaServerModel.hasGazebo =
-                      _facilities.contains(AlAchiq());
+                      _facilities.value.contains(AlAchiq());
                   saleVilaServerModel.hasMasterRoom =
-                      _facilities.contains(MasterRoom());
+                      _facilities.value.contains(MasterRoom());
                   saleVilaServerModel.hasRoofGarden =
-                      _facilities.contains(RoofGarden());
+                      _facilities.value.contains(RoofGarden());
                   saleVilaServerModel.hasSaunaJacuzzi =
-                      _facilities.contains(Sona());
+                      _facilities.value.contains(Sona());
                   saleVilaServerModel.hasSportingHall =
-                      _facilities.contains(Gym());
+                      _facilities.value.contains(Gym());
                   saleVilaServerModel.hasSwimmingPool =
-                      _facilities.contains(SwimmingPool());
+                      _facilities.value.contains(SwimmingPool());
                 }
               },
               child: Obx(() => Row(

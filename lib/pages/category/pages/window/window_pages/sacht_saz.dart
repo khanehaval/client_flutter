@@ -119,31 +119,26 @@ class SachtSaz extends StatelessWidget {
         ),
         dividerwidget(),
         SingleChildScrollView(
-          reverse: true,
           scrollDirection: Axis.horizontal,
-          child: Row(
-            children: [
-              Container(
-                  margin: EdgeInsets.all(10),
-                  height: 90,
-                  width: 147,
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SizedBox(
+                  width: 179,
                   child: SvgPicture.asset(
-                    'assets/images/Group 649.svg',
-                  )),
-              Container(
-                  height: 90,
-                  width: 147,
-                  child: SvgPicture.asset(
-                    'assets/images/Group 652.svg',
-                  )),
-              Container(
-                  margin: const EdgeInsets.all(10),
-                  height: 90,
-                  width: 147,
-                  child: SvgPicture.asset(
-                    'assets/images/Group 653.svg',
-                  )),
-            ],
+                    'assets/images/moshaver_amlak.svg',
+                  ),
+                ),
+                const SizedBox(
+                  width: 10,
+                ),
+                SizedBox(
+                    width: 179,
+                    child: SvgPicture.asset('assets/images/axhans_amlak1.svg')),
+              ],
+            ),
           ),
         ),
         const SizedBox(

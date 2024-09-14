@@ -23,7 +23,7 @@ class Screen1 extends StatelessWidget {
                   alignment: Alignment.center,
                   children: [
                     SizedBox(
-                      height: Get.height / 1.7,
+                      height: Get.height / 1.65,
                       width: 412,
                       child: Image.asset(
                         'assets/images/BG 3.png',
@@ -44,7 +44,7 @@ class Screen1 extends StatelessWidget {
           const Stack(
             children: [
               Padding(
-                padding: EdgeInsets.only(bottom: 170.0, left: 55, right: 50),
+                padding: EdgeInsets.only(bottom: 140.0, left: 55, right: 50),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
@@ -66,7 +66,7 @@ class Screen1 extends StatelessWidget {
                       style: TextStyle(
                           fontWeight: FontWeight.w400,
                           fontSize: 16,
-                          fontFamily: 'Iran Sans'),
+                          fontFamily: MAIN_FONT_FAMILY_UltraLight),
                       textDirection: TextDirection.rtl,
                       textAlign: TextAlign.justify,
                     )

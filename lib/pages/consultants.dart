@@ -235,12 +235,10 @@ class Consultants extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       GestureDetector(
-                        onDoubleTap: () {
+                        onTap: () {
                           Get.to(
-                              () => Neighbourhood(
-                                    index1: 0,
-                                  ),
-                              transition: Transition.leftToRight);
+                            () => Neighbourhood(),
+                          );
                         },
                         child: SizedBox(
                           height: 50,

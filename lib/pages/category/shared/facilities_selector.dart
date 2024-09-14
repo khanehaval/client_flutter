@@ -1,5 +1,4 @@
 import 'package:dotted_border/dotted_border.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/selector_taeed_enseraf.dart';
@@ -11,7 +10,7 @@ class FacilitiesSelectorWidget extends StatelessWidget {
   final String title;
   final List<FacilitiesModel> selectable;
   final RxList<FacilitiesModel> selected;
-  FacilitiesSelectorWidget({
+  const FacilitiesSelectorWidget({
     Key? key,
     this.title = "سایر امکانات",
     required this.selectable,
@@ -106,7 +105,9 @@ class FacilitiesSelectorWidget extends StatelessWidget {
                 height: 22,
               ),
               onPressed: () {
-                selected.removeAt(index);
+                if (selected.value.isNotEmpty) {
+                  selected.removeWhere((item) => item == selected[index]);
+                }
               },
             ),
           ),
@@ -114,80 +115,81 @@ class FacilitiesSelectorWidget extends StatelessWidget {
       ],
     );
   }
-}
 
-void FacilitiesSelector(
-  List<FacilitiesModel> selectable,
-  RxList<FacilitiesModel> selected,
-) {
-  Get.bottomSheet(
-    Container(
-      height: 600,
-      decoration: const BoxDecoration(
-        gradient: LinearGradient(colors: GRADIANT_COLOR),
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(20),
-          topRight: Radius.circular(20),
-        ),
-      ),
-      child: Padding(
-        padding: const EdgeInsets.all(1.0),
-        child: Container(
-          decoration: BoxDecoration(
-            color: Colors.white.withOpacity(1),
-            borderRadius: const BorderRadius.only(
-              topLeft: Radius.circular(20),
-              topRight: Radius.circular(20),
-            ),
+  void FacilitiesSelector(
+    List<FacilitiesModel> selectable,
+    RxList<FacilitiesModel> selected,
+  ) {
+    Get.bottomSheet(
+      Container(
+        height: 600,
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(colors: GRADIANT_COLOR),
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(20),
+            topRight: Radius.circular(20),
           ),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 30),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                const Text(
-                  "بیش از یک مورد می توانید انتخاب کنید",
-                  style: TextStyle(fontSize: 15, fontFamily: MAIN_FONT_FAMILY),
-                ),
-                const SizedBox(height: 20),
-                SizedBox(
-                  height: Get.height / 3,
-                  child: GridView.builder(
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      childAspectRatio: 1.8,
-                    ),
-                    itemCount: selectable.length,
-                    itemBuilder: (context, index) {
-                      return Padding(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 3, vertical: 5),
-                        child: _FacilityItem(
-                          facilitiesModel: selectable[index],
-                          selected: selected,
-                        ),
-                      );
-                    },
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(1.0),
+          child: Container(
+            decoration: BoxDecoration(
+              color: Colors.white.withOpacity(1),
+              borderRadius: const BorderRadius.only(
+                topLeft: Radius.circular(20),
+                topRight: Radius.circular(20),
+              ),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 30),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  const Text(
+                    "بیش از یک مورد می توانید انتخاب کنید",
+                    style:
+                        TextStyle(fontSize: 15, fontFamily: MAIN_FONT_FAMILY),
                   ),
-                ),
-                const SizedBox(height: 10),
-                SelectorTaeedEnseraf()
-              ],
+                  const SizedBox(height: 20),
+                  SizedBox(
+                    height: Get.height / 3,
+                    child: GridView.builder(
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        childAspectRatio: 1.8,
+                      ),
+                      itemCount: selectable.length,
+                      itemBuilder: (context, index) {
+                        return Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 3, vertical: 5),
+                          child: _FacilityItem(
+                            facilitiesModel: selectable[index],
+                            selected: selected,
+                          ),
+                        );
+                      },
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                  SelectorTaeedEnseraf()
+                ],
+              ),
             ),
           ),
         ),
       ),
-    ),
-    backgroundColor: Colors.white,
-    enableDrag: true,
-    shape: const RoundedRectangleBorder(
-      borderRadius: BorderRadius.only(
-        topLeft: Radius.circular(30.0),
-        topRight: Radius.circular(30.0),
+      backgroundColor: Colors.white,
+      enableDrag: true,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(30.0),
+          topRight: Radius.circular(30.0),
+        ),
       ),
-    ),
-  );
+    );
+  }
 }
 
 class _FacilityItem extends StatelessWidget {
@@ -204,8 +206,8 @@ class _FacilityItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        if (selected.contains(facilitiesModel)) {
-          selected.remove(facilitiesModel);
+        if (selected.value.contains(facilitiesModel)) {
+          selected.value.remove(facilitiesModel);
         } else {
           selected.add(facilitiesModel);
         }
@@ -215,7 +217,7 @@ class _FacilityItem extends StatelessWidget {
         width: 140,
         child: Obx(
           () {
-            bool isSelected = selected.contains(facilitiesModel);
+            bool isSelected = selected.value.contains(facilitiesModel);
             return Container(
               decoration: BoxDecoration(
                 gradient: isSelected

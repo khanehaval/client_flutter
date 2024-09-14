@@ -74,7 +74,7 @@ class EjaraKotaModat extends StatelessWidget {
           height: 10,
         ),
         Padding(
-          padding: const EdgeInsets.only(left: 8, right: 8),
+          padding: const EdgeInsets.symmetric(horizontal: 15),
           child: Container(
             decoration: const BoxDecoration(
                 borderRadius: BorderRadius.all(Radius.circular(10)),
@@ -127,83 +127,30 @@ class EjaraKotaModat extends StatelessWidget {
           height: 10,
         ),
         dividerwidget(),
+        const SizedBox(
+          height: 10,
+        ),
         SingleChildScrollView(
-          reverse: true,
           scrollDirection: Axis.horizontal,
-          child: Row(
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(10),
-                child: Container(
-                    width: 165,
-                    height: 76,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: SvgPicture.asset(
-                      'assets/images/Group 650.svg',
-                    )),
-              ),
-              Container(
-                  width: 140,
-                  height: 76,
-                  decoration: BoxDecoration(
-                      gradient: const LinearGradient(colors: GRADIANT_COLOR3),
-                      borderRadius: BorderRadius.circular(10)),
-                  child: Padding(
-                    padding: const EdgeInsets.all(1.5),
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(14.0),
-                          child: SvgPicture.asset(
-                            'assets/images/Group 654.svg',
-                          ),
-                        ),
-                      ),
-                    ),
-                  )),
-              const SizedBox(
-                width: 10,
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Container(
-                    width: 140,
-                    height: 76,
-                    decoration: BoxDecoration(
-                        gradient: const LinearGradient(colors: GRADIANT_COLOR3),
-                        borderRadius: BorderRadius.circular(10)),
-                    child: Padding(
-                      padding: const EdgeInsets.all(1.5),
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        child: Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.all(14.0),
-                            child: SvgPicture.asset(
-                              'assets/images/Group 654.svg',
-                            ),
-                          ),
-                        ),
-                      ),
-                    )),
-              ),
-            ],
+          child: Padding(
+            padding: const EdgeInsets.only(left: 15.0, right: 5),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SizedBox(
+                  width: 170,
+                  child: SvgPicture.asset(
+                    'assets/images/moshaver_amlak.svg',
+                  ),
+                ),
+                const SizedBox(
+                  width: 10,
+                ),
+                SizedBox(
+                    width: 170,
+                    child: SvgPicture.asset('assets/images/axhans_amlak1.svg')),
+              ],
+            ),
           ),
         ),
         const SizedBox(
@@ -224,11 +171,11 @@ class EjaraKotaModat extends StatelessWidget {
                   height: 10,
                 ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     Container(
                       height: 57,
-                      width: 176,
+                      width: 168,
                       decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(10),
@@ -249,9 +196,12 @@ class EjaraKotaModat extends StatelessWidget {
                         ),
                       ),
                     ),
+                    const SizedBox(
+                      width: 2,
+                    ),
                     Container(
                       height: 57,
-                      width: 176,
+                      width: 168,
                       decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(10),
@@ -274,14 +224,14 @@ class EjaraKotaModat extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(
-                  height: 10,
+                  height: 20,
                 ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     Container(
                       height: 57,
-                      width: 176,
+                      width: 168,
                       decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(10),
@@ -301,9 +251,12 @@ class EjaraKotaModat extends StatelessWidget {
                         ),
                       ),
                     ),
+                    const SizedBox(
+                      width: 2,
+                    ),
                     Container(
                       height: 57,
-                      width: 176,
+                      width: 168,
                       decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(10),
@@ -326,14 +279,14 @@ class EjaraKotaModat extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(
-                  height: 10,
+                  height: 20,
                 ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     Container(
                       height: 57,
-                      width: 176,
+                      width: 168,
                       decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(10),
@@ -353,9 +306,12 @@ class EjaraKotaModat extends StatelessWidget {
                         ),
                       ),
                     ),
+                    const SizedBox(
+                      width: 2,
+                    ),
                     Container(
                       height: 57,
-                      width: 176,
+                      width: 168,
                       decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(10),

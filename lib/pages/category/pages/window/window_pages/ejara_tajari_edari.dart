@@ -78,7 +78,7 @@ class EjaraTagariEdari extends StatelessWidget {
           height: 10,
         ),
         Padding(
-          padding: const EdgeInsets.only(left: 8, right: 8),
+          padding: const EdgeInsets.symmetric(horizontal: 15),
           child: Container(
             decoration: const BoxDecoration(
                 borderRadius: BorderRadius.all(Radius.circular(10)),
@@ -135,7 +135,7 @@ class EjaraTagariEdari extends StatelessWidget {
           height: 10,
         ),
         Padding(
-          padding: const EdgeInsets.only(left: 8, right: 8),
+          padding: const EdgeInsets.symmetric(horizontal: 15),
           child: Container(
             decoration: const BoxDecoration(
                 borderRadius: BorderRadius.all(Radius.circular(10)),
@@ -188,64 +188,30 @@ class EjaraTagariEdari extends StatelessWidget {
           height: 10,
         ),
         dividerwidget(),
+        const SizedBox(
+          height: 10,
+        ),
         SingleChildScrollView(
-          reverse: true,
           scrollDirection: Axis.horizontal,
-          child: Row(
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(8),
-                child: Container(
-                    height: 82,
-                    width: 147,
-                    decoration: BoxDecoration(
-                        gradient: const LinearGradient(colors: GRADIANT_COLOR3),
-                        borderRadius: BorderRadius.circular(10)),
-                    child: Padding(
-                      padding: const EdgeInsets.all(1.5),
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        child: Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.all(14.0),
-                            child: SvgPicture.asset(
-                              'assets/images/Group 654.svg',
-                            ),
-                          ),
-                        ),
-                      ),
-                    )),
-              ),
-              Container(
-                  height: 90,
-                  width: 147,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(10),
-                  ),
+          child: Padding(
+            padding: const EdgeInsets.only(left: 15.0, right: 5),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SizedBox(
+                  width: 170,
                   child: SvgPicture.asset(
-                    'assets/images/Group 649.svg',
-                  )),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Container(
-                    height: 90,
-                    width: 147,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: SvgPicture.asset(
-                      'assets/images/Group 650.svg',
-                    )),
-              ),
-            ],
+                    'assets/images/moshaver_amlak.svg',
+                  ),
+                ),
+                const SizedBox(
+                  width: 10,
+                ),
+                SizedBox(
+                    width: 170,
+                    child: SvgPicture.asset('assets/images/axhans_amlak1.svg')),
+              ],
+            ),
           ),
         ),
         const SizedBox(
@@ -267,11 +233,11 @@ class EjaraTagariEdari extends StatelessWidget {
                 GestureDetector(
                   onTap: () {},
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       Container(
                         height: 57,
-                        width: 176,
+                        width: 168,
                         decoration: BoxDecoration(
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(10),
@@ -291,9 +257,12 @@ class EjaraTagariEdari extends StatelessWidget {
                           ),
                         ),
                       ),
+                      const SizedBox(
+                        width: 2,
+                      ),
                       Container(
                         height: 57,
-                        width: 176,
+                        width: 168,
                         decoration: BoxDecoration(
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(10),
@@ -320,12 +289,11 @@ class EjaraTagariEdari extends StatelessWidget {
                   height: 10,
                 ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     Container(
                       height: 57,
-                      width: 176,
+                      width: 168,
                       decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(10),
@@ -345,9 +313,12 @@ class EjaraTagariEdari extends StatelessWidget {
                         ),
                       ),
                     ),
+                    const SizedBox(
+                      width: 2,
+                    ),
                     Container(
                       height: 57,
-                      width: 176,
+                      width: 168,
                       decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(10),
@@ -373,11 +344,11 @@ class EjaraTagariEdari extends StatelessWidget {
                   height: 10,
                 ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     Container(
                       height: 57,
-                      width: 176,
+                      width: 168,
                       decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(10),
@@ -397,9 +368,12 @@ class EjaraTagariEdari extends StatelessWidget {
                         ),
                       ),
                     ),
+                    const SizedBox(
+                      width: 2,
+                    ),
                     Container(
                       height: 57,
-                      width: 176,
+                      width: 168,
                       decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(10),
@@ -437,9 +411,12 @@ class EjaraTagariEdari extends StatelessWidget {
                   height: 10,
                 ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     _buidText('تا ۵۰ متر مربع'),
+                    const SizedBox(
+                      width: 2,
+                    ),
                     _buidText('تا ۶۰ متر مربع'),
                   ],
                 ),
@@ -447,9 +424,12 @@ class EjaraTagariEdari extends StatelessWidget {
                   height: 10,
                 ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     _buidText('تا ۸۰ متر مربع'),
+                    const SizedBox(
+                      width: 2,
+                    ),
                     _buidText('تا ۷۰ متر مربع'),
                   ],
                 ),
@@ -457,9 +437,12 @@ class EjaraTagariEdari extends StatelessWidget {
                   height: 10,
                 ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     _buidText('تا ۱۰۰ متر مربع'),
+                    const SizedBox(
+                      width: 2,
+                    ),
                     _buidText('تا ۹۰ متر مربع'),
                   ],
                 )
@@ -472,7 +455,7 @@ class EjaraTagariEdari extends StatelessWidget {
   Widget _buidText(String text) {
     return Container(
       height: 57,
-      width: 176,
+      width: 168,
       decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(10),

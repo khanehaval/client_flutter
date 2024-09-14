@@ -95,7 +95,7 @@ class _AdvMapState extends State<AdvMap> {
     return FlutterMap(
       options: MapOptions(
         initialZoom: 13,
-        initialCenter: widget.advertisements.first.location,
+        initialCenter: widget.advertisements.value.first.location,
         maxZoom: 15,
         keepAlive: true,
         interactionOptions: const InteractionOptions(
@@ -109,8 +109,9 @@ class _AdvMapState extends State<AdvMap> {
           userAgentPackageName: 'com.example.app',
         ),
         MarkerLayer(
-          markers:
-              widget.advertisements.map((adv) => _buildMarker(adv)).toList(),
+          markers: widget.advertisements.value
+              .map((adv) => _buildMarker(adv))
+              .toList(),
         ),
       ],
     );
@@ -238,20 +239,22 @@ class _AdvMapState extends State<AdvMap> {
   }
 
   void _onBack() {
-    final int index = widget.advertisements.indexOf(_selectedModel.value!);
+    final int index =
+        widget.advertisements.value.indexOf(_selectedModel.value!);
     if (index > 0) {
       _selectedModel.value = widget.advertisements[index - 1];
     } else {
-      _selectedModel.value = widget.advertisements.last;
+      _selectedModel.value = widget.advertisements.value.last;
     }
   }
 
   void _onNext() {
-    final int index = widget.advertisements.indexOf(_selectedModel.value!);
+    final int index =
+        widget.advertisements.value.indexOf(_selectedModel.value!);
     if (index < widget.advertisements.length - 1) {
       _selectedModel.value = widget.advertisements[index + 1];
     } else {
-      _selectedModel.value = widget.advertisements.first;
+      _selectedModel.value = widget.advertisements.value.first;
     }
   }
 

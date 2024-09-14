@@ -176,10 +176,7 @@ class _SelectLocationMapState extends State<Advertisements> {
                     ),
                     GestureDetector(
                       onTap: () {
-                        Get.to(
-                            () => Neighbourhood(
-                                  index1: 0,
-                                ),
+                        Get.to(() => Neighbourhood(),
                             transition: Transition.leftToRight);
                       },
                       child: Obx(() => Container(
@@ -195,7 +192,7 @@ class _SelectLocationMapState extends State<Advertisements> {
                               child: Row(
                                   mainAxisAlignment: MainAxisAlignment.end,
                                   children: [
-                                    _advRepo.selectedCity.isNotEmpty
+                                    _advRepo.selectedCity.value.isNotEmpty
                                         ? Padding(
                                             padding: const EdgeInsets.symmetric(
                                                 horizontal: 7),

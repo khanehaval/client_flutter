@@ -56,16 +56,16 @@ class _SwitchItemsState extends State<SwitchItemsLocation> {
           IconButton(
             onPressed: () {
               setState(() {
-                if (selectedItems.contains(item)) {
-                  selectedItems
+                if (selectedItems.value.contains(item)) {
+                  selectedItems.value
                       .clear(); // Clear the selection if the item is already selected
                 } else {
                   selectedItems
-                    ..clear() // Clear previous selections
+                    ..value.clear() // Clear previous selections
                     ..add(item); // Add the newly selected item
                 }
               });
-              widget.onSelected(selectedItems.toList());
+              widget.onSelected(selectedItems.value.toList());
             },
             icon: Obx(() => Container(
                   width: 30,
@@ -74,7 +74,7 @@ class _SwitchItemsState extends State<SwitchItemsLocation> {
                     borderRadius: BorderRadius.circular(10),
                     border: Border.all(width: 1, color: Colors.black54),
                   ),
-                  child: selectedItems.contains(item)
+                  child: selectedItems.value.contains(item)
                       ? Padding(
                           padding: const EdgeInsets.all(5.0),
                           child: SvgPicture.asset(

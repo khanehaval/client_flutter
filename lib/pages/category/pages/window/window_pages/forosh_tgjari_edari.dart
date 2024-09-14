@@ -45,7 +45,7 @@ class ForoshTagariEdari extends StatelessWidget {
           height: 10,
         ),
         Padding(
-          padding: const EdgeInsets.only(left: 8, right: 8),
+          padding: const EdgeInsets.symmetric(horizontal: 15),
           child: Container(
             decoration: const BoxDecoration(
                 borderRadius: BorderRadius.all(Radius.circular(10)),
@@ -102,7 +102,7 @@ class ForoshTagariEdari extends StatelessWidget {
           height: 10,
         ),
         Padding(
-          padding: const EdgeInsets.only(left: 8, right: 8),
+          padding: const EdgeInsets.symmetric(horizontal: 15),
           child: Container(
             decoration: const BoxDecoration(
                 borderRadius: BorderRadius.all(Radius.circular(10)),
@@ -159,14 +159,26 @@ class ForoshTagariEdari extends StatelessWidget {
           height: 10,
         ),
         SingleChildScrollView(
-          reverse: true,
           scrollDirection: Axis.horizontal,
-          child: Row(
-            children: [
-              _builrRowItem2('assets/images/Group 653.svg'),
-              _builrRowItem2('assets/images/Group 649.svg'),
-              _builrRowItem2('assets/images/Group 650.svg'),
-            ],
+          child: Padding(
+            padding: const EdgeInsets.only(left: 15.0, right: 5),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SizedBox(
+                  width: 170,
+                  child: SvgPicture.asset(
+                    'assets/images/moshaver_amlak.svg',
+                  ),
+                ),
+                const SizedBox(
+                  width: 10,
+                ),
+                SizedBox(
+                    width: 170,
+                    child: SvgPicture.asset('assets/images/axhans_amlak1.svg')),
+              ],
+            ),
           ),
         ),
         const SizedBox(
@@ -201,11 +213,11 @@ class ForoshTagariEdari extends StatelessWidget {
                 GestureDetector(
                   onTap: () {},
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       Container(
                         height: 57,
-                        width: 176,
+                        width: 168,
                         decoration: BoxDecoration(
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(10),
@@ -225,9 +237,12 @@ class ForoshTagariEdari extends StatelessWidget {
                           ),
                         ),
                       ),
+                      const SizedBox(
+                        width: 2,
+                      ),
                       Container(
                         height: 57,
-                        width: 176,
+                        width: 168,
                         decoration: BoxDecoration(
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(10),
@@ -251,15 +266,15 @@ class ForoshTagariEdari extends StatelessWidget {
                   ),
                 ),
                 SizedBox(
-                  height: 10,
+                  height: 20,
                 ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Container(
                       height: 57,
-                      width: 176,
+                      width: 168,
                       decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(10),
@@ -278,6 +293,9 @@ class ForoshTagariEdari extends StatelessWidget {
                           height: 4,
                         ),
                       ),
+                    ),
+                    const SizedBox(
+                      width: 2,
                     ),
                     Container(
                       height: 57,
@@ -304,14 +322,14 @@ class ForoshTagariEdari extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(
-                  height: 10,
+                  height: 20,
                 ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     Container(
                       height: 57,
-                      width: 176,
+                      width: 168,
                       decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(10),
@@ -331,9 +349,12 @@ class ForoshTagariEdari extends StatelessWidget {
                         ),
                       ),
                     ),
+                    const SizedBox(
+                      width: 2,
+                    ),
                     Container(
                       height: 57,
-                      width: 176,
+                      width: 168,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
                           color: Colors.white,
@@ -364,7 +385,7 @@ class ForoshTagariEdari extends StatelessWidget {
   Widget _buidText(String text) {
     return Container(
       height: 57,
-      width: 176,
+      width: 168,
       decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(10),
@@ -393,12 +414,15 @@ class ForoshTagariEdari extends StatelessWidget {
             child: Column(
               children: [
                 const SizedBox(
-                  height: 17,
+                  height: 10,
                 ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     _buidText('تا ۵۰ متر مربع'),
+                    const SizedBox(
+                      width: 2,
+                    ),
                     _buidText('تا ۶۰ متر مربع'),
                   ],
                 ),
@@ -406,9 +430,12 @@ class ForoshTagariEdari extends StatelessWidget {
                   height: 10,
                 ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     _buidText('تا ۸۰ متر مربع'),
+                    const SizedBox(
+                      width: 2,
+                    ),
                     _buidText('تا ۷۰ متر مربع'),
                   ],
                 ),
@@ -416,9 +443,12 @@ class ForoshTagariEdari extends StatelessWidget {
                   height: 10,
                 ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     _buidText('تا ۱۰۰ متر مربع'),
+                    const SizedBox(
+                      width: 2,
+                    ),
                     _buidText('تا ۹۰ متر مربع'),
                   ],
                 )

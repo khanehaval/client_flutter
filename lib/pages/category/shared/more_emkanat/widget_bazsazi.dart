@@ -88,7 +88,7 @@ Widget _buildNavigationRow(RxInt index, List<String> options,
                     options[i],
                     style: TextStyle(
                       fontFamily: MAIN_FONT_FAMILY,
-                      fontSize: i == index.value ? 18 : 12,
+                      fontSize: i == index.value ? 15 : 12,
                       fontWeight: i == index.value
                           ? FontWeight.bold
                           : FontWeight.normal,

@@ -20,7 +20,7 @@ class AdvRepo {
   }
 
   void mangeCity(List<String> cities) {
-    selectedCity.clear();
+    selectedCity.value.clear();
     selectedCity.addAll(cities);
   }
 

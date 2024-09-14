@@ -8,7 +8,7 @@ class SwitchItems extends StatefulWidget {
   final Function(List<String>) onSelected;
   final List<String> items;
 
-  const SwitchItems({required this.onSelected, required this.items, Key? key})
+  SwitchItems({required this.onSelected, required this.items, Key? key})
       : super(key: key);
 
   @override
@@ -16,7 +16,7 @@ class SwitchItems extends StatefulWidget {
 }
 
 class _SwitchItemsState extends State<SwitchItems> {
-  final selectedItems = <String>[].obs;
+  RxList<String> selectedItems = <String>[].obs;
 
   @override
   Widget build(BuildContext context) {
@@ -60,24 +60,22 @@ class _SwitchItemsState extends State<SwitchItems> {
               fontFamily: MAIN_FONT_FAMILY,
             ),
           ),
-          IconButton(
-            onPressed: () {
-              setState(() {
-                if (selectedItems.contains(text)) {
-                  selectedItems.remove(text);
-                } else {
-                  selectedItems.add(text);
-                }
-              });
-              widget.onSelected(selectedItems.toList());
-            },
-            icon: Obx(() => Container(
+          Obx(() => IconButton(
+                onPressed: () {
+                  if (selectedItems.value.contains(text)) {
+                    selectedItems.value.remove(text);
+                  } else {
+                    selectedItems.add(text);
+                  }
+                  widget.onSelected(selectedItems.value.toList());
+                },
+                icon: Container(
                   width: 30,
                   height: 30,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
                       border: Border.all(width: 1, color: Colors.black54)),
-                  child: selectedItems.contains(text)
+                  child: selectedItems.value.contains(text)
                       ? Padding(
                           padding: const EdgeInsets.all(5.0),
                           child: SvgPicture.asset(
@@ -87,8 +85,8 @@ class _SwitchItemsState extends State<SwitchItems> {
                           ),
                         )
                       : const SizedBox.shrink(),
-                )),
-          )
+                ),
+              ))
         ],
       ),
     );

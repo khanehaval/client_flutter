@@ -24,7 +24,7 @@ class Screen2 extends StatelessWidget {
                 children: [
                   Image.asset(
                     'assets/images/BG 2.png',
-                    height: Get.height / 1.695,
+                    height: Get.height / 1.645,
                     width: MediaQuery.of(context).size.width / 1.0,
                     fit: BoxFit.cover,
                   ),
@@ -44,7 +44,7 @@ class Screen2 extends StatelessWidget {
                   Column(
                     children: [
                       Padding(
-                        padding: EdgeInsets.only(left: 200.0),
+                        padding: EdgeInsets.only(left: 200.0, top: 30),
                         child: Text(
                           'امکانات ویژه',
                           style: TextStyle(
@@ -61,13 +61,13 @@ class Screen2 extends StatelessWidget {
                       ),
                       Padding(
                         padding:
-                            EdgeInsets.only(bottom: 140.0, left: 40, right: 40),
+                            EdgeInsets.only(bottom: 120.0, left: 40, right: 40),
                         child: Text(
                           'دیگه لازم نیست از این بنگاه به اون بنگاه بریو ملکتون رو فایل کنین، ما تمامی ابزارهای خدمات ملک رو اینجا جمع کردیم ',
                           style: TextStyle(
                               fontWeight: FontWeight.w400,
                               fontSize: 16,
-                              fontFamily: 'Iran Sans'),
+                              fontFamily: MAIN_FONT_FAMILY_UltraLight),
                           textDirection: TextDirection.rtl,
                           textAlign: TextAlign.justify,
                         ),

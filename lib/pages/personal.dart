@@ -215,9 +215,7 @@ class _SelectLocationMapState extends State<SelectLocationMap> {
                   ),
                   GestureDetector(
                     onTap: () {
-                      Get.to(() => Neighbourhood(
-                            index1: 0,
-                          ));
+                      Get.to(() => Neighbourhood());
                     },
                     child: Container(
                       decoration: BoxDecoration(

@@ -58,7 +58,7 @@ class ImagesPicker extends StatelessWidget {
   }
 
   Widget _buildMainImage(BuildContext context) {
-    if (selectedImagesPath.isEmpty) {
+    if (selectedImagesPath.value.isEmpty) {
       return _buildAddMoreButton(context,
           isMain: true); // دکمه اضافه کردن عکس اصلی
     } else {
@@ -68,7 +68,7 @@ class ImagesPicker extends StatelessWidget {
           alignment: Alignment.centerLeft,
           children: [
             Image.file(
-              File(selectedImagesPath.first),
+              File(selectedImagesPath.value.first),
               height: 70, // سایز بزرگتر برای عکس اصلی
               width: 150,
               fit: BoxFit.cover,
@@ -77,7 +77,7 @@ class ImagesPicker extends StatelessWidget {
               padding: const EdgeInsets.only(left: 10.0),
               child: Row(
                 children: [
-                  _buildRemoveIcon(selectedImagesPath.first),
+                  _buildRemoveIcon(selectedImagesPath.value.first),
                 ],
               ),
             ),
@@ -96,7 +96,7 @@ class ImagesPicker extends StatelessWidget {
           width: 30,
           height: 30,
         ),
-        onPressed: () => selectedImagesPath.remove(path),
+        onPressed: () => selectedImagesPath.value.remove(path),
       ),
     );
   }

@@ -34,42 +34,44 @@ class ForoshMaskoni extends StatelessWidget {
         SingleChildScrollView(
           reverse: true,
           scrollDirection: Axis.horizontal,
-          child: Row(
-            children: [
-              Container(
-                  height: 90,
-                  width: 176,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: SvgPicture.asset(
-                    'assets/images/Group 759.svg',
-                  )),
-              const SizedBox(
-                height: 10,
-              ),
-              Container(
-                  height: 90,
-                  width: 176,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: SvgPicture.asset(
-                    'assets/images/Group 758.svg',
-                  )),
-              Container(
-                  height: 90,
-                  width: 176,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: SvgPicture.asset(
-                    'assets/images/Group 757.svg',
-                  )),
-            ],
+          child: Padding(
+            padding: const EdgeInsets.only(left: 15.0, right: 15),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Container(
+                    height: 90,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: SvgPicture.asset(
+                      'assets/images/Group 759.svg',
+                    )),
+                const SizedBox(
+                  height: 10,
+                ),
+                Container(
+                    height: 90,
+                    width: 170,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: SvgPicture.asset(
+                      'assets/images/Group 758.svg',
+                    )),
+                Container(
+                    height: 90,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: SvgPicture.asset(
+                      'assets/images/Group 757.svg',
+                    )),
+              ],
+            ),
           ),
         ),
         const SizedBox(
@@ -80,7 +82,7 @@ class ForoshMaskoni extends StatelessWidget {
           height: 10,
         ),
         Padding(
-          padding: const EdgeInsets.all(10.0),
+          padding: const EdgeInsets.symmetric(horizontal: 15.0),
           child: Container(
             decoration: const BoxDecoration(
                 borderRadius: BorderRadius.all(Radius.circular(10)),
@@ -137,7 +139,7 @@ class ForoshMaskoni extends StatelessWidget {
           height: 10,
         ),
         Padding(
-          padding: const EdgeInsets.only(left: 8, right: 8),
+          padding: const EdgeInsets.symmetric(horizontal: 15),
           child: Container(
             decoration: const BoxDecoration(
                 borderRadius: BorderRadius.all(Radius.circular(10)),
@@ -189,7 +191,11 @@ class ForoshMaskoni extends StatelessWidget {
         const SizedBox(
           height: 20,
         ),
-        _buildItem3()
+        dividerwidget(),
+        const SizedBox(
+          height: 20,
+        ),
+        _buildItem3(),
       ],
     );
   }
@@ -203,11 +209,11 @@ class ForoshMaskoni extends StatelessWidget {
                 GestureDetector(
                   onTap: () {},
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       Container(
                         height: 57,
-                        width: 176,
+                        width: 168,
                         decoration: BoxDecoration(
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(10),
@@ -227,9 +233,12 @@ class ForoshMaskoni extends StatelessWidget {
                           ),
                         ),
                       ),
+                      const SizedBox(
+                        width: 2,
+                      ),
                       Container(
                         height: 57,
-                        width: 176,
+                        width: 168,
                         decoration: BoxDecoration(
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(10),
@@ -253,15 +262,15 @@ class ForoshMaskoni extends StatelessWidget {
                   ),
                 ),
                 SizedBox(
-                  height: 10,
+                  height: 20,
                 ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Container(
                       height: 57,
-                      width: 176,
+                      width: 168,
                       decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(10),
@@ -281,9 +290,12 @@ class ForoshMaskoni extends StatelessWidget {
                         ),
                       ),
                     ),
+                    const SizedBox(
+                      width: 2,
+                    ),
                     Container(
                       height: 57,
-                      width: 176,
+                      width: 168,
                       decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(10),
@@ -306,14 +318,14 @@ class ForoshMaskoni extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(
-                  height: 10,
+                  height: 20,
                 ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     Container(
                       height: 57,
-                      width: 176,
+                      width: 168,
                       decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(10),
@@ -333,9 +345,12 @@ class ForoshMaskoni extends StatelessWidget {
                         ),
                       ),
                     ),
+                    const SizedBox(
+                      width: 2,
+                    ),
                     Container(
                       height: 57,
-                      width: 176,
+                      width: 168,
                       decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(10),
@@ -366,7 +381,7 @@ class ForoshMaskoni extends StatelessWidget {
   Widget _buidText(String text) {
     return Container(
       height: 57,
-      width: 176,
+      width: 168,
       decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(10),
@@ -395,30 +410,30 @@ class ForoshMaskoni extends StatelessWidget {
             child: Column(
               children: [
                 const SizedBox(
-                  height: 17,
+                  height: 10,
                 ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     _buidText('تا ۵۰ متر مربع'),
                     _buidText('تا ۶۰ متر مربع'),
                   ],
                 ),
                 const SizedBox(
-                  height: 10,
+                  height: 20,
                 ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     _buidText('تا ۸۰ متر مربع'),
                     _buidText('تا ۷۰ متر مربع'),
                   ],
                 ),
                 const SizedBox(
-                  height: 10,
+                  height: 20,
                 ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     _buidText('تا ۱۰۰ متر مربع'),
                     _buidText('تا ۹۰ متر مربع'),
@@ -430,133 +445,29 @@ class ForoshMaskoni extends StatelessWidget {
         : const SizedBox.shrink());
   }
 
-  Obx _buildItem3() {
-    return Obx(
-      () => _show_item_3.isTrue
-          ? Padding(
-              padding: const EdgeInsets.all(10),
-              child: Column(
-                children: [
-                  Image.asset(
-                    'assets/images/Group 628.png',
-                    width: 372,
-                    height: 150,
-                  ),
-                  SingleChildScrollView(
-                    reverse: true,
-                    scrollDirection: Axis.horizontal,
-                    child: Column(
-                      children: [
-                        GestureDetector(
-                          onTap: () {},
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.all(10.0),
-                                child: Container(
-                                    height: 76,
-                                    width: 134,
-                                    decoration: BoxDecoration(
-                                      color: Colors.white,
-                                      borderRadius: BorderRadius.circular(10),
-                                    ),
-                                    child: SvgPicture.asset(
-                                      'assets/images/Group 755.svg',
-                                      fit: BoxFit.fill,
-                                    )),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.all(10.0),
-                                child: Container(
-                                    height: 76,
-                                    width: 134,
-                                    decoration: BoxDecoration(
-                                      color: Colors.white,
-                                      borderRadius: BorderRadius.circular(10),
-                                    ),
-                                    child: SvgPicture.asset(
-                                      'assets/images/Group 652.svg',
-                                      fit: BoxFit.cover,
-                                    )),
-                              ),
-                              Container(
-                                  height: 76,
-                                  width: 134,
-                                  decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.circular(10),
-                                  ),
-                                  child: SvgPicture.asset(
-                                    'assets/images/Group 653.svg',
-                                    fit: BoxFit.cover,
-                                  ))
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
+  SingleChildScrollView _buildItem3() {
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      child: Padding(
+        padding: const EdgeInsets.only(left: 15.0, right: 5),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            SizedBox(
+              width: 170,
+              child: SvgPicture.asset(
+                'assets/images/moshaver_amlak.svg',
               ),
-            )
-          : Column(
-              children: [
-                Obx(() => _show_item_3.isTrue
-                    ? Column(children: [
-                        Image.asset(
-                          'assets/images/Group 654.png',
-                          width: 372,
-                          height: 150,
-                        ),
-                        Column(
-                          children: [
-                            GestureDetector(
-                              onTap: () {},
-                              child: Row(
-                                children: [
-                                  Container(
-                                    height: 98,
-                                    width: 170,
-                                    decoration: BoxDecoration(
-                                        color: Colors.white,
-                                        borderRadius: BorderRadius.circular(10),
-                                        border: Border.all(
-                                          color: Colors.black,
-                                          // Initial border color
-                                          width: 0.7,
-                                        )),
-                                    child: Image.asset(
-                                        'assets/images/Group 655.png',
-                                        fit: BoxFit.fill),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.all(0),
-                                    child: Container(
-                                      height: 98,
-                                      width: 180,
-                                      decoration: BoxDecoration(
-                                          color: Colors.white,
-                                          borderRadius:
-                                              BorderRadius.circular(10),
-                                          border: Border.all(
-                                            color: Colors.blue,
-                                            // Initial border color
-                                          )),
-                                      child: Image.asset(
-                                          'assets/images/Group 654.png',
-                                          fit: BoxFit.fill),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                      ])
-                    : const SizedBox.shrink())
-              ],
             ),
+            const SizedBox(
+              width: 10,
+            ),
+            SizedBox(
+                width: 170,
+                child: SvgPicture.asset('assets/images/axhans_amlak1.svg')),
+          ],
+        ),
+      ),
     );
   }
 

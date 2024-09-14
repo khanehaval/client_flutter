@@ -455,10 +455,7 @@ class Realestateagency extends StatelessWidget {
             children: [
               GestureDetector(
                 onDoubleTap: () {
-                  Get.to(
-                      () => Neighbourhood(
-                            index1: 0,
-                          ),
+                  Get.to(() => Neighbourhood(),
                       transition: Transition.leftToRight);
                 },
                 child: SizedBox(
