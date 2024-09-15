@@ -1,8 +1,9 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
-import 'package:flutter_application_1/pages/category/shared/widget/Neighbourhood.dart';
-import 'package:flutter_application_1/pages/category/shared/widget/city_controller.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/switch_onr_item.dart';
+import 'package:flutter_application_1/pages/category/shared/widget/taeed_enseraf_filters.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
 class City extends StatefulWidget {
@@ -13,16 +14,17 @@ class City extends StatefulWidget {
 }
 
 class _CityState extends State<City> {
-  final CityController cityController = Get.put(CityController());
+  final selectedCity = Rx<String?>(
+      null); // نگهداری شهر انتخاب شده در اینجا انجام می‌شود (فقط یک شهر)
   final List<String> cityList = [
     'تهران',
     'مشهد',
     'قزوین',
     'کرج',
-    'اصفهان',
     'شیراز',
-    'تبریز',
-    'اهواز',
+    'اصفهان',
+    'رودبار',
+    'رشت',
   ];
   final searchController = TextEditingController();
   final filteredCity = <String>[].obs;
@@ -46,54 +48,56 @@ class _CityState extends State<City> {
         cityList.where((city) => city.toLowerCase().contains(query)).toList();
   }
 
-  void _onConfirm() {
-    if (cityController.selectedCity.value.isNotEmpty) {
-      // Navigate to Neighbourhood page and pass the selected city
-      Get.to(() => Neighbourhood(),
-          arguments: cityController.selectedCity.value);
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.white,
-        title: Text('انتخاب شهر'),
       ),
       body: Column(
         children: [
-          SizedBox(
-            height: 45,
-            width: MediaQuery.of(context).size.width * 0.8,
-            child: TextField(
-              controller: searchController,
-              textAlign: TextAlign.end,
-              decoration: InputDecoration(
-                hintText: 'جستجو در همه شهر ها',
-                hintStyle: const TextStyle(
-                    fontFamily: MAIN_FONT_FAMILY_UltraLight,
+          const Center(
+            child: Text(
+              'انتخاب شهر',
+              style: TextStyle(fontFamily: MAIN_FONT_FAMILY, fontSize: 22),
+            ),
+          ),
+          const SizedBox(height: 10),
+          SvgPicture.asset('assets/images/Iran.svg'),
+          const SizedBox(height: 30),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 40.0),
+            child: SizedBox(
+              height: 40,
+              child: TextField(
+                controller: searchController,
+                textAlign: TextAlign.end,
+                decoration: InputDecoration(
+                  hintText: 'جستجو در همه شهر ها',
+                  hintStyle: const TextStyle(
+                    fontFamily: 'Iran Sans',
+                    fontWeight: FontWeight.w400,
                     fontSize: 12,
-                    color: Color.fromRGBO(166, 166, 166, 1)),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(15),
-                  borderSide: const BorderSide(
-                    color: Color.fromRGBO(23, 102, 175, 1),
                   ),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(15),
-                  borderSide: const BorderSide(
-                    color: Color.fromRGBO(23, 102, 175, 1),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide: const BorderSide(
+                      color: Color.fromRGBO(23, 102, 175, 1),
+                    ),
                   ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide: const BorderSide(
+                      color: Color.fromRGBO(23, 102, 175, 1),
+                    ),
+                  ),
+                  prefixIcon: const Icon(Icons.search),
                 ),
-                prefixIcon: const Icon(Icons.search),
-                contentPadding: const EdgeInsets.only(bottom: 50, right: 15),
               ),
             ),
           ),
-          const SizedBox(height: 15),
+          const SizedBox(height: 10),
           Container(
             decoration: const BoxDecoration(
               color: Color.fromRGBO(99, 99, 99, 1),
@@ -102,8 +106,8 @@ class _CityState extends State<City> {
             child: Padding(
               padding: const EdgeInsets.all(0.6),
               child: Container(
-                width: MediaQuery.of(context).size.width * 0.8,
-                height: 270,
+                width: 300,
+                height: 250,
                 decoration: const BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.all(Radius.circular(15)),
@@ -111,47 +115,44 @@ class _CityState extends State<City> {
                 child: Obx(() => ListView.builder(
                       itemCount: filteredCity.length,
                       itemBuilder: (context, index) {
-                        return _buildCityRow(filteredCity[index]);
+                        return cityRow(filteredCity[index]);
                       },
                     )),
               ),
             ),
           ),
-          const SizedBox(height: 30),
-          ElevatedButton(
-            onPressed: _onConfirm,
-            child: Text('تایید'),
-          ),
+          const SizedBox(height: 50),
+          FiltersTaeedEnseraf(),
         ],
       ),
     );
   }
 
-  Widget _buildCityRow(String city) {
-    return Column(
-      children: [
-        Padding(
-          padding: const EdgeInsets.only(right: 10.0),
-          child: SwitchItem(
-            isSelected: cityController.selectedCity.value == city,
-            onSelected: () {
-              cityController.selectedCity.value = city;
-            },
-            item: city,
-            textStyle: const TextStyle(
-              fontSize: 20,
-              color: Colors.black,
+  Widget cityRow(String city) {
+    return GestureDetector(
+      onTap: () {
+        selectedCity.value = city; // انتخاب شهر در اینجا تنظیم می‌شود
+      },
+      child: Obx(() => Padding(
+            padding: const EdgeInsets.only(left: 10.0, right: 10),
+            child: Container(
+              decoration: const BoxDecoration(
+                border: Border(
+                  bottom: BorderSide(
+                    color: Colors.grey, // رنگ خط زیرین
+                    width: 1.0, // عرض خط زیرین
+                  ),
+                ),
+              ),
+              child: SwitchItem(
+                isSelected: selectedCity.value == city, // بررسی انتخاب
+                item: city,
+                onTap: () {
+                  selectedCity.value = city; // مدیریت انتخاب از بیرون
+                },
+              ),
             ),
-          ),
-        ),
-        if (city != filteredCity.value.last)
-          Container(
-            margin: const EdgeInsets.symmetric(),
-            width: MediaQuery.of(context).size.width * 0.67,
-            height: 1,
-            color: Color.fromARGB(255, 238, 238, 238),
-          ),
-      ],
+          )),
     );
   }
 }

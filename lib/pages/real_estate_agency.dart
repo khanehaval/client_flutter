@@ -96,9 +96,9 @@ class Realestateagency extends StatelessWidget {
                               textAlign: TextAlign.center,
                               textDirection: TextDirection.rtl,
                               decoration: InputDecoration(
-                                hintText: 'نام آژانس (برای مثال : آینده)',
+                                hintText: 'نام آژانس (برای مثال : خانه اول)',
                                 hintStyle: const TextStyle(
-                                  fontFamily: MAIN_FONT_FAMILY,
+                                  fontFamily: MAIN_FONT_FAMILY_UltraLight,
                                   color: Color(0xFFA6A6A6),
                                   fontSize: 12,
                                 ),
@@ -125,7 +125,7 @@ class Realestateagency extends StatelessWidget {
                                 children: [
                                   Container(
                                     decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(10),
+                                        borderRadius: BorderRadius.circular(11),
                                         gradient: const LinearGradient(
                                             colors: GRADIANT_COLOR3)),
                                     child: Padding(
@@ -136,14 +136,18 @@ class Realestateagency extends StatelessWidget {
                                         padding: const EdgeInsets.all(5),
                                         decoration: BoxDecoration(
                                             borderRadius:
-                                                BorderRadius.circular(7),
+                                                BorderRadius.circular(10),
                                             color: Colors.white),
-                                        child: const Text(
-                                          'آژانس املاک',
-                                          style: TextStyle(
-                                            fontFamily: MAIN_FONT_FAMILY,
-                                            fontSize: 11,
-                                            color: Colors.black,
+                                        child: const Padding(
+                                          padding: EdgeInsets.only(left: 3.0),
+                                          child: Text(
+                                            'آژانس املاک',
+                                            style: TextStyle(
+                                              fontFamily:
+                                                  MAIN_FONT_FAMILY_MEDIUM,
+                                              fontSize: 11,
+                                              color: Colors.black,
+                                            ),
                                           ),
                                         ),
                                       ),
@@ -164,7 +168,7 @@ class Realestateagency extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(15.0),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 Expanded(
                   child: SizedBox(
@@ -178,7 +182,9 @@ class Realestateagency extends StatelessWidget {
                       decoration: InputDecoration(
                         hintText: '* کد شهر ',
                         hintStyle: const TextStyle(
-                            color: Color(0xFFA6A6A6), fontSize: 10),
+                            fontFamily: MAIN_FONT_FAMILY_UltraLight,
+                            color: Color(0xFFA6A6A6),
+                            fontSize: 10),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                           borderSide: const BorderSide(
@@ -201,6 +207,8 @@ class Realestateagency extends StatelessWidget {
                             ),
                           ),
                         ),
+                        contentPadding:
+                            const EdgeInsets.only(left: 25, top: 20),
                       ),
                     ),
                   ),
@@ -217,7 +225,9 @@ class Realestateagency extends StatelessWidget {
                     decoration: InputDecoration(
                       hintText: '* تلفن ثابت ',
                       hintStyle: const TextStyle(
-                          color: Color(0xFFA6A6A6), fontSize: 11),
+                          fontFamily: MAIN_FONT_FAMILY_UltraLight,
+                          color: Color(0xFFA6A6A6),
+                          fontSize: 11),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
                         borderSide: const BorderSide(
@@ -240,6 +250,7 @@ class Realestateagency extends StatelessWidget {
                           ),
                         ),
                       ),
+                      contentPadding: const EdgeInsets.only(right: 10, top: 10),
                     ),
                   ),
                 ),
@@ -257,7 +268,7 @@ class Realestateagency extends StatelessWidget {
                   child: Obx(
                     () => Container(
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
+                        borderRadius: BorderRadius.circular(11),
                         gradient: const LinearGradient(
                           colors: GRADIANT_COLOR1,
                         ),
@@ -299,6 +310,7 @@ class Realestateagency extends StatelessWidget {
                                     child: Text(
                                       ' تصویر جواز',
                                       style: TextStyle(
+                                        fontFamily: MAIN_FONT_FAMILY_UltraLight,
                                         fontSize: 12,
                                         color: Color(0xFFA6A6A6),
                                       ),
@@ -327,7 +339,9 @@ class Realestateagency extends StatelessWidget {
                       decoration: InputDecoration(
                         hintText: '* شماره جواز ',
                         hintStyle: const TextStyle(
-                            color: Color(0xFFA6A6A6), fontSize: 11),
+                            fontFamily: MAIN_FONT_FAMILY_UltraLight,
+                            color: Color(0xFFA6A6A6),
+                            fontSize: 11),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                           borderSide: const BorderSide(
@@ -396,6 +410,7 @@ class Realestateagency extends StatelessWidget {
                     decoration: InputDecoration(
                       hintText: '* نام خانوادگی ',
                       hintStyle: const TextStyle(
+                        fontFamily: MAIN_FONT_FAMILY_UltraLight,
                         fontSize: 11,
                         color: Color(0xFFA6A6A6),
                       ),
@@ -428,6 +443,7 @@ class Realestateagency extends StatelessWidget {
                     decoration: InputDecoration(
                       hintText: ' *نام ',
                       hintStyle: const TextStyle(
+                        fontFamily: MAIN_FONT_FAMILY_UltraLight,
                         color: Color(0xFFA6A6A6),
                         fontSize: 11,
                       ),
@@ -465,7 +481,7 @@ class Realestateagency extends StatelessWidget {
                     padding: const EdgeInsets.all(1.2),
                     child: Container(
                       decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
+                          borderRadius: BorderRadius.circular(11),
                           gradient:
                               const LinearGradient(colors: GRADIANT_COLOR1)),
                       child: Padding(
@@ -491,11 +507,12 @@ class Realestateagency extends StatelessWidget {
                                     ),
                                   )),
                               const Padding(
-                                padding: EdgeInsets.only(left: 13.0),
+                                padding: EdgeInsets.only(left: 10.0),
                                 child: Text(
                                   '*  محدوده فعالیت ',
                                   style: TextStyle(
-                                    fontSize: 12,
+                                    fontSize: 11,
+                                    fontFamily: MAIN_FONT_FAMILY_UltraLight,
                                     color: Color(0xFFA6A6A6),
                                   ),
                                 ),
@@ -525,10 +542,11 @@ class Realestateagency extends StatelessWidget {
                       padding: const EdgeInsets.all(11.0),
                       child: SvgPicture.asset(
                         'assets/images/location_moshaver.svg',
-                        color: Color.fromRGBO(48, 48, 48, 1),
+                        color: const Color.fromRGBO(48, 48, 48, 1),
                       ),
                     ),
                     hintStyle: const TextStyle(
+                      fontFamily: MAIN_FONT_FAMILY_UltraLight,
                       color: Color(0xFFA6A6A6),
                       fontSize: 11,
                     ),
@@ -554,6 +572,7 @@ class Realestateagency extends StatelessWidget {
                         ),
                       ),
                     ),
+                    contentPadding: const EdgeInsets.only(right: 10, top: 10),
                   ),
                 ),
               ),
@@ -577,11 +596,11 @@ class Realestateagency extends StatelessWidget {
                           textAlign: TextAlign.right,
                           textDirection: TextDirection.rtl,
                           decoration: InputDecoration(
-                            hintText:
-                                'نام کاربری * ( به انگلیسی) ', // Hint text
+                            hintText: 'نام کاربری * ( به انگلیسی) ',
                             hintStyle: const TextStyle(
-                              color: Color(0xFFA6A6A6), // Hint text color
-                              fontSize: 11, // Hint text font size
+                              fontFamily: MAIN_FONT_FAMILY_UltraLight,
+                              color: Color(0xFFA6A6A6),
+                              fontSize: 11,
                             ),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10),
@@ -605,6 +624,8 @@ class Realestateagency extends StatelessWidget {
                                 ),
                               ),
                             ),
+                            contentPadding:
+                                const EdgeInsets.only(right: 10, top: 20),
                           ),
                         ),
                         Row(
@@ -614,7 +635,7 @@ class Realestateagency extends StatelessWidget {
                                   top: 5.0, left: 5, bottom: 5),
                               child: Container(
                                 decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(10),
+                                    borderRadius: BorderRadius.circular(11),
                                     gradient: const LinearGradient(
                                         colors: GRADIANT_COLOR3)),
                                 child: Padding(
@@ -625,14 +646,17 @@ class Realestateagency extends StatelessWidget {
                                       left: 8,
                                     ),
                                     decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(7),
+                                        borderRadius: BorderRadius.circular(10),
                                         color: Colors.white),
                                     child: const Center(
-                                      child: Text(
-                                        'Agancy /',
-                                        style: TextStyle(
-                                          fontSize: 12,
-                                          color: Colors.black,
+                                      child: Padding(
+                                        padding: EdgeInsets.only(right: 5.0),
+                                        child: Text(
+                                          'Agancy /',
+                                          style: TextStyle(
+                                            fontSize: 12,
+                                            color: Colors.black,
+                                          ),
                                         ),
                                       ),
                                     ),
@@ -659,7 +683,7 @@ class Realestateagency extends StatelessWidget {
                     const SizedBox(width: 5.0),
                     RichText(
                       text: const TextSpan(
-                        text: 'Agency',
+                        text: ' Agency /',
                         style: TextStyle(
                           color: Color.fromRGBO(
                             48,
@@ -670,7 +694,7 @@ class Realestateagency extends StatelessWidget {
                         ),
                         children: <TextSpan>[
                           TextSpan(
-                            text: ' / Ayandeh',
+                            text: '  KhanehAval',
                             style: TextStyle(
                               color: Color.fromRGBO(23, 102, 175, 1),
                             ),
@@ -683,7 +707,7 @@ class Realestateagency extends StatelessWidget {
               ),
               Container(
                 child: const Padding(
-                  padding: EdgeInsets.only(right: 20.0),
+                  padding: EdgeInsets.only(top: 5, right: 20.0),
                   child: Text(
                     ":برای مثال ",
                     style: TextStyle(

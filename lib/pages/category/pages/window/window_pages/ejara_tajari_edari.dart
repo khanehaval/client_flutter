@@ -127,9 +127,6 @@ class EjaraTagariEdari extends StatelessWidget {
           ),
         ),
         buildItem1(),
-        const SizedBox(
-          height: 10,
-        ),
         dividerwidget(),
         const SizedBox(
           height: 10,
@@ -184,9 +181,6 @@ class EjaraTagariEdari extends StatelessWidget {
           ),
         ),
         _buildItem2(),
-        const SizedBox(
-          height: 10,
-        ),
         dividerwidget(),
         const SizedBox(
           height: 10,

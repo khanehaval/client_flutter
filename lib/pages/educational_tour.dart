@@ -4,6 +4,7 @@ import 'package:flutter_application_1/pages/category/pages/Advertisements/advert
 import 'package:flutter_application_1/pages/category/pages/messages.dart';
 import 'package:flutter_application_1/pages/category/pages/home.dart';
 import 'package:flutter_application_1/pages/category/pages/page_advertisement/category_advertisement.dart';
+import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/app_bar.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
@@ -121,7 +122,14 @@ class _EducationalTourState extends State<EducationalTour> {
         child: Obx(
           () => Container(
             child: BottomNavigationBar(
-              showSelectedLabels: false,
+              showSelectedLabels: true,
+              selectedItemColor: Colors.black,
+              selectedFontSize: 11,
+              unselectedFontSize: 9,
+              selectedLabelStyle: const TextStyle(
+                  fontFamily: MAIN_FONT_FAMILY, color: Colors.black),
+              unselectedLabelStyle:
+                  const TextStyle(fontFamily: MAIN_FONT_FAMILY_MEDIUM),
               type: BottomNavigationBarType.fixed,
               backgroundColor: Colors.white,
               onTap: (int index) {
@@ -134,68 +142,22 @@ class _EducationalTourState extends State<EducationalTour> {
                   backgroundColor: Colors.white,
                   icon: Center(
                     child: Padding(
-                      padding: const EdgeInsets.only(top: 8.0),
+                      padding: const EdgeInsets.only(top: 3.0, bottom: 5),
                       child: SvgPicture.asset(
-                        "assets/images/navigation1.svg",
-                        width: 30,
-                        height: 31,
+                        "assets/images/navigation11.svg",
+                        width: 33,
+                        height: 33,
                       ),
                     ),
                   ),
-                  label: '',
-                  activeIcon: Padding(
-                    padding: const EdgeInsets.only(top: 8.0),
-                    child: Center(
+                  label: 'پروفایل',
+                  activeIcon: Center(
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 3.0, bottom: 5),
                       child: SvgPicture.asset(
-                        "assets/images/navigation1-active.svg",
-                        width: 30,
-                        height: 31,
-                      ),
-                    ),
-                  ),
-                ),
-                BottomNavigationBarItem(
-                  icon: Padding(
-                    padding: const EdgeInsets.only(top: 8.0),
-                    child: Center(
-                      child: SvgPicture.asset(
-                        "assets/images/navigation2.svg",
-                        width: 31,
-                        height: 31,
-                      ),
-                    ),
-                  ),
-                  label: '',
-                  activeIcon: Padding(
-                    padding: const EdgeInsets.only(top: 8.0),
-                    child: Center(
-                      child: SvgPicture.asset(
-                        "assets/images/navigation2-active.svg",
-                        width: 31,
-                        height: 31,
-                      ),
-                    ),
-                  ),
-                ),
-                BottomNavigationBarItem(
-                  icon: Padding(
-                    padding: const EdgeInsets.only(top: 8.0),
-                    child: Center(
-                      child: SvgPicture.asset(
-                        "assets/images/navigation3.svg",
-                        width: 34,
-                        height: 32,
-                      ),
-                    ),
-                  ),
-                  label: '',
-                  activeIcon: Padding(
-                    padding: const EdgeInsets.only(top: 8.0),
-                    child: Center(
-                      child: SvgPicture.asset(
-                        "assets/images/navigation3-active.svg",
-                        width: 34,
-                        height: 32,
+                        "assets/images/navigation11-active.svg",
+                        width: 33,
+                        height: 33,
                       ),
                     ),
                   ),
@@ -203,47 +165,87 @@ class _EducationalTourState extends State<EducationalTour> {
                 BottomNavigationBarItem(
                   icon: Center(
                     child: Padding(
-                      padding: const EdgeInsets.only(top: 8.0),
-                      child: Center(
-                        child: SvgPicture.asset(
-                          "assets/images/navigation4.svg",
-                          width: 29,
-                          height: 29,
-                        ),
+                      padding: const EdgeInsets.only(top: 3.0, bottom: 5),
+                      child: SvgPicture.asset(
+                        "assets/images/navigation22.svg",
+                        width: 33,
+                        height: 33,
                       ),
                     ),
                   ),
-                  label: '',
-                  activeIcon: Padding(
-                    padding: const EdgeInsets.only(top: 8.0),
-                    child: Center(
+                  label: 'پیام',
+                  activeIcon: Center(
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 3.0, bottom: 5),
                       child: SvgPicture.asset(
-                        "assets/images/navigation4-active.svg",
-                        width: 29,
-                        height: 29,
+                        "assets/images/navigation22-active.svg",
+                        width: 33,
+                        height: 33,
                       ),
                     ),
                   ),
                 ),
                 BottomNavigationBarItem(
-                  icon: Padding(
-                    padding: const EdgeInsets.only(top: 8.0),
+                  icon: Center(
+                    child: SvgPicture.asset(
+                      "assets/images/navigation33.svg",
+                      width: 44,
+                      height: 44,
+                    ),
+                  ),
+                  label: 'ثبت آگهی',
+                  activeIcon: Center(
+                    child: SvgPicture.asset(
+                      "assets/images/navigation33-active.svg",
+                      width: 44,
+                      height: 44,
+                    ),
+                  ),
+                ),
+                BottomNavigationBarItem(
+                  icon: Center(
                     child: Center(
-                      child: SvgPicture.asset(
-                        "assets/images/navigation5.svg",
-                        width: 32,
-                        height: 32,
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 3.0, bottom: 5),
+                        child: SvgPicture.asset(
+                          "assets/images/navigation44.svg",
+                          width: 33,
+                          height: 33,
+                        ),
                       ),
                     ),
                   ),
-                  label: '',
-                  activeIcon: Padding(
-                    padding: const EdgeInsets.only(top: 8.0),
-                    child: Center(
+                  label: 'دسته بندی',
+                  activeIcon: Center(
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 3.0, bottom: 5),
                       child: SvgPicture.asset(
-                        "assets/images/navigation5-active.svg",
-                        width: 32,
-                        height: 32,
+                        "assets/images/navigation44-active.svg",
+                        width: 33,
+                        height: 33,
+                      ),
+                    ),
+                  ),
+                ),
+                BottomNavigationBarItem(
+                  icon: Center(
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 3.0, bottom: 5),
+                      child: SvgPicture.asset(
+                        "assets/images/navigation55.svg",
+                        width: 33,
+                        height: 33,
+                      ),
+                    ),
+                  ),
+                  label: 'نقشه',
+                  activeIcon: Center(
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 3.0, bottom: 5),
+                      child: SvgPicture.asset(
+                        "assets/images/navigation55-active.svg",
+                        width: 33,
+                        height: 33,
                       ),
                     ),
                   ),

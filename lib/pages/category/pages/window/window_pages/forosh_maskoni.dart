@@ -131,9 +131,6 @@ class ForoshMaskoni extends StatelessWidget {
           ),
         ),
         buildItem1(),
-        const SizedBox(
-          height: 10,
-        ),
         dividerwidget(),
         const SizedBox(
           height: 10,
@@ -188,12 +185,9 @@ class ForoshMaskoni extends StatelessWidget {
           ),
         ),
         _buildItem2(),
-        const SizedBox(
-          height: 20,
-        ),
         dividerwidget(),
         const SizedBox(
-          height: 20,
+          height: 10,
         ),
         _buildItem3(),
       ],
@@ -206,6 +200,9 @@ class ForoshMaskoni extends StatelessWidget {
           ? Padding(
               padding: const EdgeInsets.all(10),
               child: Column(children: [
+                const SizedBox(
+                  height: 10,
+                ),
                 GestureDetector(
                   onTap: () {},
                   child: Row(

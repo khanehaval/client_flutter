@@ -37,9 +37,6 @@ class ForoshTagariEdari extends StatelessWidget {
             ],
           ),
         ),
-        const SizedBox(
-          height: 10,
-        ),
         dividerwidget(),
         const SizedBox(
           height: 10,
@@ -94,9 +91,6 @@ class ForoshTagariEdari extends StatelessWidget {
           ),
         ),
         buildItem1(),
-        const SizedBox(
-          height: 10,
-        ),
         dividerwidget(),
         const SizedBox(
           height: 10,
@@ -151,9 +145,6 @@ class ForoshTagariEdari extends StatelessWidget {
           ),
         ),
         _buildItem2(),
-        const SizedBox(
-          height: 10,
-        ),
         dividerwidget(),
         const SizedBox(
           height: 10,
@@ -210,6 +201,9 @@ class ForoshTagariEdari extends StatelessWidget {
           ? Padding(
               padding: const EdgeInsets.all(10),
               child: Column(children: [
+                const SizedBox(
+                  height: 10,
+                ),
                 GestureDetector(
                   onTap: () {},
                   child: Row(

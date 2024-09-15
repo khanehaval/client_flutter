@@ -39,7 +39,7 @@ class EjaraKotaModat extends StatelessWidget {
         ),
         dividerwidget(),
         const SizedBox(
-          height: 20,
+          height: 10,
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -67,7 +67,7 @@ class EjaraKotaModat extends StatelessWidget {
           ],
         ),
         const SizedBox(
-          height: 20,
+          height: 10,
         ),
         dividerwidget(),
         const SizedBox(
@@ -123,9 +123,6 @@ class EjaraKotaModat extends StatelessWidget {
           ),
         ),
         buildItem1(),
-        const SizedBox(
-          height: 10,
-        ),
         dividerwidget(),
         const SizedBox(
           height: 10,
@@ -166,7 +163,11 @@ class EjaraKotaModat extends StatelessWidget {
             padding: const EdgeInsets.all(10),
             child: Column(
               children: [
-                Image.asset('assets/images/Group shomal kota.png'),
+                Image.asset(
+                  'assets/images/Group shomal kota.png',
+                  width: 370,
+                  height: 111,
+                ),
                 const SizedBox(
                   height: 10,
                 ),

@@ -65,7 +65,7 @@ class SachtSaz extends StatelessWidget {
           height: 10,
         ),
         Padding(
-          padding: const EdgeInsets.only(left: 8, right: 8),
+          padding: const EdgeInsets.symmetric(horizontal: 15),
           child: Container(
             decoration: const BoxDecoration(
                 borderRadius: BorderRadius.all(Radius.circular(10)),
@@ -118,24 +118,27 @@ class SachtSaz extends StatelessWidget {
           height: 10,
         ),
         dividerwidget(),
+        const SizedBox(
+          height: 10,
+        ),
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.only(left: 15, right: 5),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 SizedBox(
-                  width: 179,
+                  width: 170,
                   child: SvgPicture.asset(
                     'assets/images/moshaver_amlak.svg',
                   ),
                 ),
                 const SizedBox(
-                  width: 10,
+                  width: 15,
                 ),
                 SizedBox(
-                    width: 179,
+                    width: 170,
                     child: SvgPicture.asset('assets/images/axhans_amlak1.svg')),
               ],
             ),

@@ -106,15 +106,16 @@ class Private extends StatelessWidget {
                     child: Text(
                       "پنل شخصی",
                       style: TextStyle(
-                          fontSize: 25,
-                          fontWeight: FontWeight.bold,
-                          fontFamily: MAIN_FONT_FAMILY,
-                          color: Color.fromRGBO(
-                            48,
-                            48,
-                            48,
-                            1,
-                          ),),
+                        fontSize: 25,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: MAIN_FONT_FAMILY,
+                        color: Color.fromRGBO(
+                          48,
+                          48,
+                          48,
+                          1,
+                        ),
+                      ),
                     ),
                   ),
                   const SizedBox(
@@ -133,7 +134,8 @@ class Private extends StatelessWidget {
                           decoration: InputDecoration(
                             hintText: '* نام خانوادگی ',
                             hintStyle: const TextStyle(
-                              fontSize: 13,
+                              fontSize: 12,
+                              fontFamily: MAIN_FONT_FAMILY_UltraLight,
                               color: Color(0xFFA6A6A6),
                             ),
                             border: OutlineInputBorder(
@@ -148,6 +150,10 @@ class Private extends StatelessWidget {
                                 color: Color.fromRGBO(99, 99, 99, 1),
                               ),
                             ),
+                            contentPadding: const EdgeInsets.only(
+                                right: 10,
+                                bottom:
+                                    50), // Adjust this to move the text higher
                           ),
                         ),
                       ),
@@ -160,6 +166,7 @@ class Private extends StatelessWidget {
                           decoration: InputDecoration(
                             hintText: ' *نام ',
                             hintStyle: const TextStyle(
+                              fontFamily: MAIN_FONT_FAMILY_UltraLight,
                               color: Color(0xFFA6A6A6),
                               fontSize: 13,
                             ),
@@ -175,6 +182,8 @@ class Private extends StatelessWidget {
                                 color: Color.fromRGBO(99, 99, 99, 1),
                               ),
                             ),
+                            contentPadding:
+                                const EdgeInsets.only(right: 10, bottom: 50),
                           ),
                         ),
                       ),
@@ -236,6 +245,8 @@ class Private extends StatelessWidget {
                                             '* تصویر کارت ملی',
                                             style: TextStyle(
                                               fontSize: 12,
+                                              fontFamily:
+                                                  MAIN_FONT_FAMILY_UltraLight,
                                               color: Color(0xFFA6A6A6),
                                             ),
                                           ),
@@ -259,6 +270,7 @@ class Private extends StatelessWidget {
                           decoration: InputDecoration(
                             hintText: '* کد ملی ',
                             hintStyle: const TextStyle(
+                              fontFamily: MAIN_FONT_FAMILY_UltraLight,
                               color: Color(0xFFA6A6A6),
                               fontSize: 13,
                             ),
@@ -274,6 +286,8 @@ class Private extends StatelessWidget {
                                 color: Color.fromRGBO(99, 99, 99, 1),
                               ),
                             ),
+                            contentPadding:
+                                const EdgeInsets.only(right: 10, bottom: 50),
                           ),
                         ),
                       ),
@@ -294,8 +308,7 @@ class Private extends StatelessWidget {
                         hintStyle: const TextStyle(
                           color: Color(0xFFA5A5A5),
                           fontSize: 12,
-                          fontFamily: 'Iran Sans',
-                          fontWeight: FontWeight.w400,
+                          fontFamily: MAIN_FONT_FAMILY_UltraLight,
                         ),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
@@ -309,6 +322,8 @@ class Private extends StatelessWidget {
                             color: Color.fromRGBO(23, 102, 175, 1),
                           ),
                         ),
+                        contentPadding:
+                            const EdgeInsets.only(right: 10, bottom: 50),
                       ),
                     ),
                   ),

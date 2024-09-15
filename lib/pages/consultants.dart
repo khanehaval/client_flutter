@@ -5,7 +5,6 @@ import 'package:flutter_application_1/pages/category/pages/home.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/Neighbourhood.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/app_bar.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/city_widget.dart';
-import 'package:flutter_application_1/pages/private.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
@@ -72,7 +71,9 @@ class Consultants extends StatelessWidget {
                           decoration: InputDecoration(
                             hintText: '* نام خانوادگی ',
                             hintStyle: const TextStyle(
-                                color: Color(0xFFA6A6A6), fontSize: 13),
+                                fontFamily: MAIN_FONT_FAMILY_UltraLight,
+                                color: Color(0xFFA6A6A6),
+                                fontSize: 13),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10),
                               borderSide: const BorderSide(
@@ -95,6 +96,8 @@ class Consultants extends StatelessWidget {
                                 ),
                               ),
                             ),
+                            contentPadding:
+                                const EdgeInsets.only(right: 10, bottom: 50),
                           ),
                         ),
                       ),
@@ -107,7 +110,9 @@ class Consultants extends StatelessWidget {
                           decoration: InputDecoration(
                             hintText: '* نام ',
                             hintStyle: const TextStyle(
-                                color: Color(0xFFA6A6A6), fontSize: 13),
+                                fontFamily: MAIN_FONT_FAMILY_UltraLight,
+                                color: Color(0xFFA6A6A6),
+                                fontSize: 13),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10),
                               borderSide: const BorderSide(
@@ -130,6 +135,8 @@ class Consultants extends StatelessWidget {
                                 ),
                               ),
                             ),
+                            contentPadding:
+                                const EdgeInsets.only(right: 10, bottom: 50),
                           ),
                         ),
                       ),
@@ -145,7 +152,7 @@ class Consultants extends StatelessWidget {
                         child: Obx(
                           () => Container(
                             decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
+                              borderRadius: BorderRadius.circular(11),
                               gradient: const LinearGradient(
                                 colors: GRADIANT_COLOR1,
                               ),
@@ -188,6 +195,8 @@ class Consultants extends StatelessWidget {
                                             ' تصویر کارت ملی',
                                             style: TextStyle(
                                               fontSize: 12,
+                                              fontFamily:
+                                                  MAIN_FONT_FAMILY_UltraLight,
                                               color: Color(0xFFA6A6A6),
                                             ),
                                           ),
@@ -206,10 +215,12 @@ class Consultants extends StatelessWidget {
                         height: 48,
                         width: getWidth(context),
                         child: TextField(
+                          keyboardType: TextInputType.number,
                           textAlign: TextAlign.right,
                           decoration: InputDecoration(
                             hintText: '* کد ملی ',
                             hintStyle: const TextStyle(
+                              fontFamily: MAIN_FONT_FAMILY_UltraLight,
                               color: Color(0xFFA6A6A6),
                               fontSize: 13,
                             ),
@@ -225,6 +236,8 @@ class Consultants extends StatelessWidget {
                                 color: Color.fromRGBO(99, 99, 99, 1),
                               ),
                             ),
+                            contentPadding:
+                                const EdgeInsets.only(right: 10, bottom: 50),
                           ),
                         ),
                       ),
@@ -247,7 +260,7 @@ class Consultants extends StatelessWidget {
                             padding: const EdgeInsets.all(1.2),
                             child: Container(
                               decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(10),
+                                  borderRadius: BorderRadius.circular(11),
                                   gradient: const LinearGradient(
                                       colors: GRADIANT_COLOR1)),
                               child: Padding(
@@ -277,7 +290,9 @@ class Consultants extends StatelessWidget {
                                         child: Text(
                                           '*  محدوده فعالیت ',
                                           style: TextStyle(
-                                            fontSize: 12,
+                                            fontFamily:
+                                                MAIN_FONT_FAMILY_UltraLight,
+                                            fontSize: 11,
                                             color: Color(0xFFA6A6A6),
                                           ),
                                         ),
@@ -309,8 +324,9 @@ class Consultants extends StatelessWidget {
                               ),
                             ),
                             hintStyle: const TextStyle(
+                              fontFamily: MAIN_FONT_FAMILY_UltraLight,
                               color: Color(0xFFA6A6A6),
-                              fontSize: 13,
+                              fontSize: 12,
                             ),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10),
@@ -334,6 +350,8 @@ class Consultants extends StatelessWidget {
                                 ),
                               ),
                             ),
+                            contentPadding:
+                                const EdgeInsets.only(right: 10, bottom: 50),
                           ),
                         ),
                       ),
@@ -355,8 +373,7 @@ class Consultants extends StatelessWidget {
                         hintStyle: const TextStyle(
                           color: Color(0xFFA5A5A5),
                           fontSize: 12,
-                          fontFamily: 'Iran Sans',
-                          fontWeight: FontWeight.w400,
+                          fontFamily: MAIN_FONT_FAMILY_UltraLight,
                         ),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
@@ -370,6 +387,8 @@ class Consultants extends StatelessWidget {
                             color: Color.fromRGBO(23, 102, 175, 1),
                           ),
                         ),
+                        contentPadding:
+                            const EdgeInsets.only(right: 10, bottom: 50),
                       ),
                     ),
                   ),

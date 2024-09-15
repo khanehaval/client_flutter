@@ -205,13 +205,19 @@ class AmlakPage extends StatelessWidget {
       () => _show_item_1.isTrue
           ? Column(
               children: [
+                const SizedBox(
+                  height: 10,
+                ),
                 Image.asset(
                   'assets/images/Group 778.png',
-                  width: 360,
-                  height: 150,
+                  width: 370,
+                  height: 111,
                 ),
                 Column(
                   children: [
+                    const SizedBox(
+                      height: 10,
+                    ),
                     GestureDetector(
                       onTap: () {},
                       child: Row(
@@ -260,10 +266,13 @@ class AmlakPage extends StatelessWidget {
       () => _show_item_2.isTrue
           ? Column(
               children: [
+                const SizedBox(
+                  height: 10,
+                ),
                 Image.asset(
                   'assets/images/Group 631.png',
-                  width: 360,
-                  height: 150,
+                  width: 370,
+                  height: 111,
                 ),
               ],
             )

@@ -1,13 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/pages/category/pages/Advertisements/Advertisements.dart';
-import 'package:flutter_application_1/pages/category/pages/Advertisements/map/adv_map.dart';
-import 'package:flutter_application_1/pages/category/pages/home.dart';
-import 'package:flutter_application_1/pages/category/pages/messages.dart';
-import 'package:flutter_application_1/pages/category/pages/page_advertisement/category_advertisement.dart';
-import 'package:flutter_application_1/pages/category/pages/window/window.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
-import 'package:flutter_application_1/pages/category/shared/widget/submit_row.dart';
 import 'package:flutter_application_1/pages/educational_tour.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
@@ -30,7 +22,7 @@ Widget bottomNavigationBar2(int currentMainPageIndex) {
         color: Colors.black.withOpacity(0.01),
         spreadRadius: 0,
         blurRadius: 5,
-        offset: Offset(-1, 0),
+        offset: const Offset(-1, 0),
       )
     ]),
     child: ClipRRect(
@@ -41,10 +33,16 @@ Widget bottomNavigationBar2(int currentMainPageIndex) {
       child: Obx(
         () => Container(
           child: BottomNavigationBar(
-            unselectedFontSize: 14,
-            selectedFontSize: 14,
-            showSelectedLabels: false,
-            showUnselectedLabels: false,
+            unselectedFontSize: 10,
+            selectedFontSize: 10,
+            selectedItemColor: Colors.black,
+            selectedLabelStyle: const TextStyle(
+                fontFamily: MAIN_FONT_FAMILY_MEDIUM, color: Colors.black),
+            unselectedLabelStyle:
+                const TextStyle(fontFamily: MAIN_FONT_FAMILY_MEDIUM),
+            showSelectedLabels: true,
+            showUnselectedLabels: true,
+
             type: BottomNavigationBarType.fixed,
             backgroundColor: Colors.white,
             // selectedItemColor: const Color.fromARGB(255, 130, 8, 8),
@@ -62,68 +60,98 @@ Widget bottomNavigationBar2(int currentMainPageIndex) {
             items: <BottomNavigationBarItem>[
               BottomNavigationBarItem(
                 backgroundColor: Colors.white,
-                icon: SvgPicture.asset(
-                  "assets/images/navigation1.svg",
-                  width: 30,
-                  height: 30,
+                icon: Padding(
+                  padding: const EdgeInsets.only(top: 4.0, bottom: 7),
+                  child: SvgPicture.asset(
+                    "assets/images/navigation1.svg",
+                    width: 30,
+                    height: 30,
+                  ),
                 ),
-                label: '',
-                activeIcon: SvgPicture.asset(
-                  "assets/images/navigation1-active.svg",
-                  width: 30,
-                  height: 30,
-                ),
-              ),
-              BottomNavigationBarItem(
-                icon: SvgPicture.asset(
-                  "assets/images/navigation2.svg",
-                  width: 30,
-                  height: 30,
-                ),
-                label: '',
-                activeIcon: SvgPicture.asset(
-                  "assets/images/navigation2-active.svg",
-                  width: 30,
-                  height: 30,
+                label: 'پروفایل',
+                activeIcon: Padding(
+                  padding: const EdgeInsets.only(top: 4.0, bottom: 7),
+                  child: SvgPicture.asset(
+                    "assets/images/navigation1-active.svg",
+                    width: 30,
+                    height: 30,
+                  ),
                 ),
               ),
               BottomNavigationBarItem(
-                icon: SvgPicture.asset(
-                  "assets/images/navigation3.svg",
-                  width: 30,
-                  height: 30,
+                icon: Padding(
+                  padding: const EdgeInsets.only(top: 4.0, bottom: 7),
+                  child: SvgPicture.asset(
+                    "assets/images/navigation2.svg",
+                    width: 30,
+                    height: 30,
+                  ),
                 ),
-                label: '',
-                activeIcon: SvgPicture.asset(
-                  "assets/images/navigation3-active.svg",
-                  width: 30,
-                  height: 30,
-                ),
-              ),
-              BottomNavigationBarItem(
-                icon: SvgPicture.asset(
-                  "assets/images/navigation4.svg",
-                  width: 30,
-                  height: 30,
-                ),
-                label: '',
-                activeIcon: SvgPicture.asset(
-                  "assets/images/navigation4-active.svg",
-                  width: 30,
-                  height: 30,
+                label: 'پیام',
+                activeIcon: Padding(
+                  padding: const EdgeInsets.only(top: 4.0, bottom: 7),
+                  child: SvgPicture.asset(
+                    "assets/images/navigation2-active.svg",
+                    width: 30,
+                    height: 30,
+                  ),
                 ),
               ),
               BottomNavigationBarItem(
-                icon: SvgPicture.asset(
-                  "assets/images/navigation5.svg",
-                  width: 30,
-                  height: 30,
+                icon: Padding(
+                  padding: const EdgeInsets.only(bottom: 7),
+                  child: SvgPicture.asset(
+                    "assets/images/navigation3.svg",
+                    width: 30,
+                    height: 30,
+                  ),
                 ),
-                label: '',
-                activeIcon: SvgPicture.asset(
-                  "assets/images/navigation5-active.svg",
-                  width: 30,
-                  height: 30,
+                label: 'ثبت آگهی',
+                activeIcon: Padding(
+                  padding: const EdgeInsets.only(bottom: 7),
+                  child: SvgPicture.asset(
+                    "assets/images/navigation3-active.svg",
+                    width: 30,
+                    height: 30,
+                  ),
+                ),
+              ),
+              BottomNavigationBarItem(
+                icon: Padding(
+                  padding: const EdgeInsets.only(bottom: 6),
+                  child: SvgPicture.asset(
+                    "assets/images/navigation4.svg",
+                    width: 30,
+                    height: 30,
+                  ),
+                ),
+                label: 'دسته بندی',
+                activeIcon: Padding(
+                  padding: const EdgeInsets.only(bottom: 6),
+                  child: SvgPicture.asset(
+                    "assets/images/navigation4-active.svg",
+                    width: 30,
+                    height: 30,
+                  ),
+                ),
+              ),
+              BottomNavigationBarItem(
+                icon: Padding(
+                  padding: const EdgeInsets.only(top: 4.0, bottom: 7),
+                  child: SvgPicture.asset(
+                    "assets/images/navigation5.svg",
+                    width: 30,
+                    height: 30,
+                  ),
+                ),
+                label: 'نقشه',
+                activeIcon: Padding(
+                  padding: const EdgeInsets.only(top: 4.0, bottom: 7),
+                  child: SvgPicture.asset(
+                    "assets/images/navigation5-active.svg",
+                    width: 30,
+                    height: 30,
+                  ),
                 ),
               ),
             ],
