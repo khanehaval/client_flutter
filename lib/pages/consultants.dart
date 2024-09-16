@@ -4,14 +4,28 @@ import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/category/pages/home.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/Neighbourhood.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/app_bar.dart';
+import 'package:flutter_application_1/pages/category/shared/widget/city_controller.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/city_widget.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 
-class Consultants extends StatelessWidget {
+class Consultants extends StatefulWidget {
+  Consultants({super.key});
+
+  @override
+  State<Consultants> createState() => _ConsultantsState();
+}
+
+class _ConsultantsState extends State<Consultants> {
+  final neighborhoodcontroller =
+      Get.put(NeighborhoodController()); // پیدا کردن کنترلر
+  final cityController = Get.put(CityController()); // پیدا کردن کنترلر
+
   final show = true.obs;
+
   final imagePath = ''.obs;
+
   Future<void> pickImage() async {
     final ImagePicker _picker = ImagePicker();
     final XFile? pickedFile =
@@ -30,8 +44,6 @@ class Consultants extends StatelessWidget {
     // Implement your logic to get the image name from the imagePath
     return imagePath.value.split('/').last;
   }
-
-  Consultants({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -247,113 +259,174 @@ class Consultants extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
+                      // فیلد محدوده فعالیت
                       GestureDetector(
                         onTap: () {
-                          Get.to(
-                            () => Neighbourhood(),
-                          );
+                          if (cityController.selectedCity.value != null) {
+                            Get.to(() => Neighbourhood());
+                          }
                         },
                         child: SizedBox(
                           height: 50,
                           width: getWidth(context),
-                          child: Padding(
-                            padding: const EdgeInsets.all(1.2),
-                            child: Container(
+                          child: Obx(() {
+                            bool isCitySelected =
+                                cityController.selectedCity.value != null;
+
+                            if (neighborhoodcontroller
+                                    .selectedNeighborhood.value !=
+                                null) {
+                              neighborhoodcontroller
+                                      .neighborhoodTextController.text =
+                                  neighborhoodcontroller
+                                      .selectedNeighborhood.value!;
+                            }
+
+                            return Container(
                               decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(11),
-                                  gradient: const LinearGradient(
-                                      colors: GRADIANT_COLOR1)),
-                              child: Padding(
-                                padding: const EdgeInsets.all(1.2),
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.circular(10),
+                                borderRadius: BorderRadius.circular(11),
+                                border: Border.all(
+                                  color: isCitySelected
+                                      ? const Color.fromRGBO(
+                                          166,
+                                          166,
+                                          166,
+                                          1,
+                                        )
+                                      : Colors
+                                          .grey, // بوردر خاکستری تا زمانی که شهر انتخاب نشده است
+                                  width: 1.2,
+                                ),
+                              ),
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
+                                  gradient: isCitySelected
+                                      ? const LinearGradient(
+                                          colors: [
+                                            Color.fromRGBO(23, 102, 175, 1),
+                                            Color.fromRGBO(66, 159, 86, 1),
+                                          ],
+                                        )
+                                      : null, // فعال کردن گرادیانت فقط زمانی که شهر انتخاب شده است
+                                  color: isCitySelected
+                                      ? Colors.transparent
+                                      : Colors.white,
+                                ),
+                                child: TextField(
+                                  style: const TextStyle(
+                                    fontFamily: MAIN_FONT_FAMILY,
+                                    fontSize: 12,
                                   ),
-                                  child: Row(
-                                    children: [
-                                      IconButton(
-                                          onPressed: () {},
-                                          icon: SvgPicture.asset(
-                                            'assets/images/moghay.svg',
-                                            width: 18,
-                                            height: 20,
-                                            color: const Color.fromRGBO(
-                                              48,
-                                              48,
-                                              48,
-                                              1,
-                                            ),
-                                          )),
-                                      const Padding(
-                                        padding: EdgeInsets.only(left: 13.0),
-                                        child: Text(
-                                          '*  محدوده فعالیت ',
-                                          style: TextStyle(
-                                            fontFamily:
-                                                MAIN_FONT_FAMILY_UltraLight,
-                                            fontSize: 11,
-                                            color: Color(0xFFA6A6A6),
-                                          ),
-                                        ),
-                                      )
-                                    ],
+                                  onTap: () {
+                                    if (isCitySelected) {
+                                      Get.to(() => Neighbourhood());
+                                    }
+                                  },
+                                  readOnly: true,
+                                  textAlign: TextAlign.right,
+                                  controller: neighborhoodcontroller
+                                      .neighborhoodTextController,
+                                  decoration: InputDecoration(
+                                    hintText: '*  محدوده فعالیت ',
+                                    prefixIcon: Padding(
+                                      padding: const EdgeInsets.all(14.0),
+                                      child: SvgPicture.asset(
+                                        'assets/images/moghay.svg',
+                                        color:
+                                            const Color.fromRGBO(48, 48, 48, 1),
+                                      ),
+                                    ),
+                                    hintStyle: const TextStyle(
+                                      fontFamily: MAIN_FONT_FAMILY_UltraLight,
+                                      color: Color(0xFFA6A6A6),
+                                      fontSize: 12,
+                                    ),
+                                    border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(10),
+                                      borderSide: BorderSide.none,
+                                    ),
+                                    focusedBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(10),
+                                      borderSide: BorderSide.none,
+                                    ),
+                                    contentPadding: const EdgeInsets.only(
+                                        right: 10, bottom: 20),
                                   ),
                                 ),
                               ),
-                            ),
-                          ),
+                            );
+                          }),
                         ),
                       ),
+
+                      // فیلد انتخاب شهر
                       SizedBox(
                         height: 48,
                         width: getWidth(context),
-                        child: TextField(
-                          onTap: () {
-                            Get.to(() => City());
-                          },
-                          readOnly: true,
-                          textAlign: TextAlign.right,
-                          decoration: InputDecoration(
-                            hintText: ' *  انتخاب شهر',
-                            prefixIcon: Padding(
-                              padding: const EdgeInsets.all(14.0),
-                              child: SvgPicture.asset(
-                                'assets/images/location_moshaver.svg',
-                                color: Color.fromRGBO(48, 48, 48, 1),
+                        child: Obx(() {
+                          if (cityController.selectedCity.value != null) {
+                            cityController.cityTextController.text =
+                                cityController.selectedCity.value!;
+                          }
+
+                          return Container(
+                            padding: const EdgeInsets.all(1.2),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(11),
+                              gradient: const LinearGradient(
+                                colors: [
+                                  Color.fromRGBO(23, 102, 175, 1),
+                                  Color.fromRGBO(66, 159, 86, 1),
+                                ],
                               ),
                             ),
-                            hintStyle: const TextStyle(
-                              fontFamily: MAIN_FONT_FAMILY_UltraLight,
-                              color: Color(0xFFA6A6A6),
-                              fontSize: 12,
-                            ),
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10),
-                              borderSide: const BorderSide(
-                                color: Color.fromRGBO(
-                                  99,
-                                  99,
-                                  99,
-                                  1,
+                            child: Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                color: Colors.white,
+                              ),
+                              child: TextField(
+                                style: const TextStyle(
+                                  fontFamily: MAIN_FONT_FAMILY,
+                                  fontSize: 12,
+                                ),
+                                onTap: () {
+                                  Get.to(() => City());
+                                },
+                                readOnly: true,
+                                textAlign: TextAlign.right,
+                                controller: cityController.cityTextController,
+                                decoration: InputDecoration(
+                                  hintText: ' * انتخاب شهر',
+                                  prefixIcon: Padding(
+                                    padding: const EdgeInsets.all(14.0),
+                                    child: SvgPicture.asset(
+                                      'assets/images/location_moshaver.svg',
+                                      color:
+                                          const Color.fromRGBO(48, 48, 48, 1),
+                                    ),
+                                  ),
+                                  hintStyle: const TextStyle(
+                                    fontFamily: MAIN_FONT_FAMILY_UltraLight,
+                                    color: Color(0xFFA6A6A6),
+                                    fontSize: 12,
+                                  ),
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(10),
+                                    borderSide: BorderSide.none,
+                                  ),
+                                  focusedBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(10),
+                                    borderSide: BorderSide.none,
+                                  ),
+                                  contentPadding: const EdgeInsets.only(
+                                      right: 10, bottom: 20),
                                 ),
                               ),
                             ),
-                            focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10),
-                              borderSide: const BorderSide(
-                                color: Color.fromRGBO(
-                                  99,
-                                  99,
-                                  99,
-                                  1,
-                                ),
-                              ),
-                            ),
-                            contentPadding:
-                                const EdgeInsets.only(right: 10, bottom: 50),
-                          ),
-                        ),
+                          );
+                        }),
                       ),
                     ],
                   ),

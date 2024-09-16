@@ -3,6 +3,7 @@ import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/city_controller.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/switch_onr_item.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/taeed_enseraf_filters.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
 class Neighbourhood extends StatefulWidget {
@@ -24,6 +25,8 @@ class _NeighbourhoodState extends State<Neighbourhood> {
   ];
   final searchController = TextEditingController();
   final filteredNeighborhood = <String>[].obs;
+  final neighborhoodController =
+      Get.put(NeighborhoodController()); // پیدا کردن کنترلر
 
   @override
   void initState() {
@@ -54,48 +57,45 @@ class _NeighbourhoodState extends State<Neighbourhood> {
       ),
       body: Column(
         children: [
-          const Text(
-            'انتخاب محله',
-            style: TextStyle(
-              fontFamily: MAIN_FONT_FAMILY,
-              fontSize: 22,
-              color: Colors.black,
+          const Center(
+            child: Text(
+              'انتخاب محله',
+              style: TextStyle(fontFamily: 'MAIN_FONT_FAMILY', fontSize: 22),
             ),
           ),
-          const SizedBox(height: 70),
-
-          SizedBox(
-            height: 45,
-            width: MediaQuery.of(context).size.width * 0.8,
-            child: TextField(
-              controller: searchController,
-              textAlign: TextAlign.end,
-              decoration: InputDecoration(
-                hintText: 'جستجو در همه محله‌ها',
-                hintStyle: const TextStyle(
-                    fontFamily: MAIN_FONT_FAMILY_UltraLight,
+          const SizedBox(height: 150),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 40.0),
+            child: SizedBox(
+              height: 40,
+              child: TextField(
+                controller: searchController,
+                textAlign: TextAlign.end,
+                decoration: InputDecoration(
+                  hintText: 'جستجو در همه شهر ها',
+                  hintStyle: const TextStyle(
+                    fontFamily: 'Iran Sans',
+                    fontWeight: FontWeight.w400,
                     fontSize: 12,
-                    color: Color.fromRGBO(166, 166, 166, 1)),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(15),
-                  borderSide: const BorderSide(
-                    color: Color.fromRGBO(23, 102, 175, 1),
                   ),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(15),
-                  borderSide: const BorderSide(
-                    color: Color.fromRGBO(23, 102, 175, 1),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide: const BorderSide(
+                      color: Color.fromRGBO(23, 102, 175, 1),
+                    ),
                   ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide: const BorderSide(
+                      color: Color.fromRGBO(23, 102, 175, 1),
+                    ),
+                  ),
+                  prefixIcon: const Icon(Icons.search),
                 ),
-                prefixIcon: const Icon(Icons.search),
-                contentPadding: const EdgeInsets.only(bottom: 50, right: 15),
               ),
             ),
           ),
-
-          const SizedBox(height: 20), // فاصله بین TextField و لیست محله‌ها
-
+          const SizedBox(height: 20),
           Container(
             decoration: const BoxDecoration(
               color: Color.fromRGBO(99, 99, 99, 1),
@@ -104,7 +104,7 @@ class _NeighbourhoodState extends State<Neighbourhood> {
             child: Padding(
               padding: const EdgeInsets.all(0.6),
               child: Container(
-                width: MediaQuery.of(context).size.width * 0.8,
+                width: 300,
                 height: 270,
                 decoration: const BoxDecoration(
                   color: Colors.white,
@@ -113,23 +113,30 @@ class _NeighbourhoodState extends State<Neighbourhood> {
                 child: Obx(() => ListView.builder(
                       itemCount: filteredNeighborhood.length,
                       itemBuilder: (context, index) {
-                        return buildNeighborhood(filteredNeighborhood[index]);
+                        return cityRow(filteredNeighborhood[index]);
                       },
                     )),
               ),
             ),
           ),
-          const SizedBox(height: 30),
-          FiltersTaeedEnseraf(),
+          const SizedBox(height: 50),
+          FiltersTaeedEnseraf(
+            onTaeed: () {
+              Get.back(
+                  result: neighborhoodController.selectedNeighborhood
+                      .value); // بازگشت به صفحه قبلی با نتیجه انتخاب‌شده
+            },
+          ),
         ],
       ),
     );
   }
 
-  Widget buildNeighborhood(String neighborhood) {
+  Widget cityRow(String city) {
     return GestureDetector(
       onTap: () {
-        selectedNeighborhood.value = neighborhood; // تنظیم محله انتخاب شده
+        neighborhoodController.selectedNeighborhood.value =
+            city; // بلافاصله آپدیت کردن شهر انتخاب‌شده
       },
       child: Obx(() => Padding(
             padding: const EdgeInsets.only(left: 10.0, right: 10),
@@ -143,12 +150,12 @@ class _NeighbourhoodState extends State<Neighbourhood> {
                 ),
               ),
               child: SwitchItem(
-                isSelected:
-                    selectedNeighborhood.value == neighborhood, // بررسی انتخاب
-                item: neighborhood,
+                isSelected: neighborhoodController.selectedNeighborhood.value ==
+                    city, // بررسی انتخاب
+                item: city,
                 onTap: () {
-                  selectedNeighborhood.value =
-                      neighborhood; // مدیریت انتخاب از بیرون
+                  neighborhoodController.selectedNeighborhood.value =
+                      city; // مدیریت انتخاب
                 },
               ),
             ),

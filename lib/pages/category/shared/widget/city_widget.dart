@@ -1,10 +1,9 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/pages/category/shared/constant.dart';
-import 'package:flutter_application_1/pages/category/shared/widget/switch_onr_item.dart';
-import 'package:flutter_application_1/pages/category/shared/widget/taeed_enseraf_filters.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'city_controller.dart';
+import 'switch_onr_item.dart';
+import 'taeed_enseraf_filters.dart';
 
 class City extends StatefulWidget {
   City({super.key});
@@ -14,8 +13,7 @@ class City extends StatefulWidget {
 }
 
 class _CityState extends State<City> {
-  final selectedCity = Rx<String?>(
-      null); // نگهداری شهر انتخاب شده در اینجا انجام می‌شود (فقط یک شهر)
+  final cityController = Get.put(CityController()); // پیدا کردن کنترلر
   final List<String> cityList = [
     'تهران',
     'مشهد',
@@ -60,7 +58,7 @@ class _CityState extends State<City> {
           const Center(
             child: Text(
               'انتخاب شهر',
-              style: TextStyle(fontFamily: MAIN_FONT_FAMILY, fontSize: 22),
+              style: TextStyle(fontFamily: 'MAIN_FONT_FAMILY', fontSize: 22),
             ),
           ),
           const SizedBox(height: 10),
@@ -122,7 +120,13 @@ class _CityState extends State<City> {
             ),
           ),
           const SizedBox(height: 50),
-          FiltersTaeedEnseraf(),
+          FiltersTaeedEnseraf(
+            onTaeed: () {
+              Get.back(
+                  result: cityController.selectedCity
+                      .value); // بازگشت به صفحه قبلی با نتیجه انتخاب‌شده
+            },
+          ),
         ],
       ),
     );
@@ -131,7 +135,8 @@ class _CityState extends State<City> {
   Widget cityRow(String city) {
     return GestureDetector(
       onTap: () {
-        selectedCity.value = city; // انتخاب شهر در اینجا تنظیم می‌شود
+        cityController.selectedCity.value =
+            city; // بلافاصله آپدیت کردن شهر انتخاب‌شده
       },
       child: Obx(() => Padding(
             padding: const EdgeInsets.only(left: 10.0, right: 10),
@@ -145,10 +150,11 @@ class _CityState extends State<City> {
                 ),
               ),
               child: SwitchItem(
-                isSelected: selectedCity.value == city, // بررسی انتخاب
+                isSelected:
+                    cityController.selectedCity.value == city, // بررسی انتخاب
                 item: city,
                 onTap: () {
-                  selectedCity.value = city; // مدیریت انتخاب از بیرون
+                  cityController.selectedCity.value = city; // مدیریت انتخاب
                 },
               ),
             ),

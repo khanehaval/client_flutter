@@ -1,29 +1,27 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/models/AdvertismentMoidel.dart';
-import 'package:flutter_application_1/pages/category/pages/Advertisements/Advertisements.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/widget_filter/aghahi.dart';
-import 'package:flutter_application_1/pages/category/pages/Advertisements/map/map_axans_amlak.dart/advertismets_axans.dart';
-import 'package:flutter_application_1/pages/category/pages/Advertisements/map/map_axans_amlak.dart/mapaxazns_.dart';
+import 'package:flutter_application_1/pages/category/pages/Advertisements/map/map_axans_amlak.dart/methods_axans.dart';
+import 'package:flutter_application_1/pages/category/pages/Advertisements/map/map_axans_amlak.dart/widget_view_agahahi_axans.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/shared/methods.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:get/get.dart';
 import 'package:get/get_rx/src/rx_types/rx_types.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 
-class AdvMap extends StatefulWidget {
+class MapAxans extends StatefulWidget {
   final RxList<AdvertismentModel> advertisements;
   final RxList<AdvertismentModel> advertisements1;
-  const AdvMap(this.advertisements, this.advertisements1, {Key? key})
+  const MapAxans(this.advertisements, this.advertisements1, {Key? key})
       : super(key: key);
   @override
   _AdvMapState createState() => _AdvMapState();
 }
 
-class _AdvMapState extends State<AdvMap> {
+class _AdvMapState extends State<MapAxans> {
   final Rxn<AdvertismentModel> _selectedModel = Rxn<AdvertismentModel>();
 
   late StreamController<bool> _notificationStreamController;
@@ -233,7 +231,7 @@ class _AdvMapState extends State<AdvMap> {
 
   Widget _buildAdvertismentOverlay() {
     return Align(
-      child: showAdvertisment(
+      child: methodsAxans(
         advertismentModel: _selectedModel.value!,
         onTap: () => _selectedModel.value = null,
         onBack: _onBack,
@@ -268,11 +266,7 @@ class _AdvMapState extends State<AdvMap> {
       child: Padding(
         padding: const EdgeInsets.only(bottom: 75, left: 295),
         child: IconButton(
-          onPressed: () {
-            Get.to(() => AdvertismetsAxans(),
-                duration: const Duration(microseconds: 900),
-                transition: Transition.rightToLeft);
-          },
+          onPressed: () {},
           icon: SizedBox(
             height: 65,
             width: 65,
@@ -286,7 +280,7 @@ class _AdvMapState extends State<AdvMap> {
                 ],
               ),
               child: SvgPicture.asset(
-                "assets/images/list - consultant.svg",
+                "assets/images/list - consultant_axans.svg",
               ),
             ),
           ),
@@ -361,7 +355,7 @@ class _AdvMapState extends State<AdvMap> {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text(
-          "خرید و فروش، رهن و اجاره انواع املاک در تهران",
+          "آژانس های املاک در تهران",
           style: TextStyle(
             fontFamily: MAIN_FONT_FAMILY,
             fontSize: 14,
@@ -374,7 +368,7 @@ class _AdvMapState extends State<AdvMap> {
 
   Widget _buildAdvertisementsList() {
     return Stack(
-      children: [viewaghahi()],
+      children: [WidgetViewAghahiAxans()],
     );
   }
 }
