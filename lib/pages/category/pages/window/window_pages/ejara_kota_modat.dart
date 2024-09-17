@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/pages/category/shared/constant.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:flutter_application_1/pages/category/shared/constant.dart';
 
 class EjaraKotaModat extends StatelessWidget {
   final _show_item_1 = false.obs;
@@ -10,12 +11,12 @@ class EjaraKotaModat extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return ListView(
       children: [
-        const Divider(
-          endIndent: 20,
-          indent: 20,
+        const SizedBox(
+          height: 10,
         ),
+        dividerwidget(),
         Container(
           margin: const EdgeInsets.all(10),
           padding: const EdgeInsets.all(5),
@@ -36,174 +37,121 @@ class EjaraKotaModat extends StatelessWidget {
             fit: BoxFit.fill,
           ),
         ),
-        const Divider(
-          endIndent: 20,
-          indent: 20,
+        dividerwidget(),
+        const SizedBox(
+          height: 10,
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Container(
-              height: 90,
-          width: MediaQuery.of(context).size.width * 1 / 2.4,
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(10),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey.withOpacity(.01),
-                    blurRadius: 5,
-                  )
-                ],
-              ),
-              child: Image.asset(
-                'assets/images/Group 7621.png',
-                fit: BoxFit.fill,
-              ),
-            ),
+                height: 90,
+                width: MediaQuery.of(context).size.width * 1 / 2.2,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: Image.asset(
+                  'assets/images/Group kjotavila.png',
+                )),
             Container(
-              height: 90,
-          width: MediaQuery.of(context).size.width * 1 / 2.4,
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(10),
-                boxShadow: [
-                  BoxShadow(
-                                    color: Colors.grey.withOpacity(.01),
-                    blurRadius: 5,
-                  )
-                ],
-              ),
-              child: Image.asset(
-                'assets/images/Group 7601.png',
-                fit: BoxFit.fill,
-              ),
-            ),
+                height: 90,
+                width: MediaQuery.of(context).size.width * 1 / 2.2,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: Image.asset(
+                  'assets/images/Group kjotaparteman.png',
+                )),
           ],
         ),
-        const Divider(
-          endIndent: 20,
-          indent: 20,
+        const SizedBox(
+          height: 10,
         ),
+        dividerwidget(),
         const SizedBox(
           height: 10,
         ),
         Padding(
-          padding: const EdgeInsets.only(left: 8, right: 8),
+          padding: const EdgeInsets.symmetric(horizontal: 15),
           child: Container(
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10), border: Border.all()),
-            child: Column(
-              children: [
-                Row(
+            decoration: const BoxDecoration(
+                borderRadius: BorderRadius.all(Radius.circular(10)),
+                gradient: LinearGradient(colors: GRADIANT_COLOR3)),
+            child: Padding(
+              padding: const EdgeInsets.all(1.2),
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Obx(
-                      () => IconButton(
-                        icon: _show_item_1.value
-                            ? const Icon(
-                                Icons.keyboard_double_arrow_down_outlined,
-                                size: 25,
-                              )
-                            : const Icon(CupertinoIcons.chevron_left_2),
-                        onPressed: () {
-                          _show_item_1.value = !_show_item_1.value;
-                        },
+                    Obx(() => IconButton(
+                          icon: _show_item_1.value
+                              ? SvgPicture.asset('assets/images/down.svg')
+                              : SvgPicture.asset(
+                                  'assets/images/=.svg',
+                                ),
+                          style: const ButtonStyle(),
+                          onPressed: () {
+                            _show_item_1.value = !_show_item_1.value;
+                          },
+                        )),
+                    const Padding(
+                      padding: EdgeInsets.only(right: 15.0),
+                      child: Text(
+                        'اجاره کوتاه مدت ویلا در شمال',
+                        style: TextStyle(
+                            fontSize: 14,
+                            color: Color.fromRGBO(
+                              48,
+                              48,
+                              48,
+                              1,
+                            ),
+                            fontWeight: FontWeight.bold,
+                            fontFamily: MAIN_FONT_FAMILY),
                       ),
-                    ),
-                    Divider(
-                      endIndent: 20,
-                      indent: 20,
-                    ),
-                    const Column(
-                      children: [
-                        Text(
-                          'اجاره کوتاه مدت ویلا در شمال',
-                          style: TextStyle(
-                              fontSize: 16,
-                              color: Colors.black,
-                              fontWeight: FontWeight.bold,
-                              fontFamily: MAIN_FONT_FAMILY),
-                        ),
-                      ],
                     ),
                   ],
                 ),
-              ],
+              ),
             ),
           ),
         ),
         buildItem1(),
+        dividerwidget(),
         const SizedBox(
           height: 10,
         ),
         SingleChildScrollView(
-          reverse: true,
           scrollDirection: Axis.horizontal,
-          child: Row(
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(15),
-                child: Container(
-                  height: 90,
-                  width: 147,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(10),
-                    boxShadow: [
-                      BoxShadow(
-                                    color: Colors.grey.withOpacity(.01),
-                        blurRadius: 5,
-                      )
-                    ],
-                  ),
-                  child: Image.asset(
-                    'assets/images/Group 650.png',
-                    fit: BoxFit.fill,
+          child: Padding(
+            padding: const EdgeInsets.only(left: 15.0, right: 5),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SizedBox(
+                  width: 170,
+                  child: SvgPicture.asset(
+                    'assets/images/moshaver_amlak.svg',
                   ),
                 ),
-              ),
-              Container(
-                height: 90,
-                width: 147,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(10),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.3),
-                      blurRadius: 5,
-                    )
-                  ],
+                const SizedBox(
+                  width: 10,
                 ),
-                child: Image.asset(
-                  'assets/images/Group 655.png',
-                  fit: BoxFit.fill,
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Container(
-                  height: 90,
-                  width: 147,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(10),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.3),
-                        blurRadius: 5,
-                      )
-                    ],
-                  ),
-                  child: Image.asset(
-                    'assets/images/Group 654.png',
-                    fit: BoxFit.fill,
-                  ),
-                ),
-              ),
-            ],
+                SizedBox(
+                    width: 170,
+                    child: SvgPicture.asset('assets/images/axhans_amlak1.svg')),
+              ],
+            ),
           ),
+        ),
+        const SizedBox(
+          height: 10,
         ),
       ],
     );
@@ -215,26 +163,25 @@ class EjaraKotaModat extends StatelessWidget {
             padding: const EdgeInsets.all(10),
             child: Column(
               children: [
-                Image.asset('assets/images/Group 628.png'),
-                SizedBox(height: 10,),
+                Image.asset(
+                  'assets/images/Group shomal kota.png',
+                  width: 370,
+                  height: 111,
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     Container(
                       height: 57,
-                      width: 176,
+                      width: 168,
                       decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(10),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withOpacity(0.1),
-                            spreadRadius: 1,
-                            blurRadius: 5,
-                          )
-                        ],
                         border: Border.all(
-                          color: Colors.black45,
+                          color: const Color.fromRGBO(183, 183, 183, 1),
                           width: 0.3,
                         ),
                       ),
@@ -250,21 +197,17 @@ class EjaraKotaModat extends StatelessWidget {
                         ),
                       ),
                     ),
+                    const SizedBox(
+                      width: 2,
+                    ),
                     Container(
                       height: 57,
-                      width: 176,
+                      width: 168,
                       decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(10),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(0.1),
-                              spreadRadius: 1,
-                              blurRadius: 10,
-                            )
-                          ],
                           border: Border.all(
-                            color: Colors.black45,
+                            color: const Color.fromRGBO(183, 183, 183, 1),
                             width: 0.3,
                           )),
                       child: const Text(
@@ -281,25 +224,20 @@ class EjaraKotaModat extends StatelessWidget {
                     )
                   ],
                 ),
-                SizedBox(height: 10,),
+                const SizedBox(
+                  height: 20,
+                ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     Container(
                       height: 57,
-                      width: 176,
+                      width: 168,
                       decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(10),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(0.1),
-                              spreadRadius: 1,
-                              blurRadius: 5,
-                            )
-                          ],
                           border: Border.all(
-                            color: Colors.black45,
+                            color: const Color.fromRGBO(183, 183, 183, 1),
                             width: 0.3,
                           )),
                       child: const Text(
@@ -314,21 +252,17 @@ class EjaraKotaModat extends StatelessWidget {
                         ),
                       ),
                     ),
+                    const SizedBox(
+                      width: 2,
+                    ),
                     Container(
                       height: 57,
-                      width: 176,
+                      width: 168,
                       decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(10),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(0.1),
-                              spreadRadius: 1,
-                              blurRadius: 10,
-                            )
-                          ],
                           border: Border.all(
-                            color: Colors.black45,
+                            color: const Color.fromRGBO(183, 183, 183, 1),
                             width: 0.3,
                           )),
                       child: const Text(
@@ -345,28 +279,23 @@ class EjaraKotaModat extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(height: 10,),
+                const SizedBox(
+                  height: 20,
+                ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     Container(
                       height: 57,
-                      width: 176,
+                      width: 168,
                       decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(10),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(0.1),
-                              spreadRadius: 1,
-                              blurRadius: 5,
-                            )
-                          ],
                           border: Border.all(
-                            color: Colors.black45,
+                            color: const Color.fromRGBO(183, 183, 183, 1),
                             width: 0.3,
                           )),
-                      child: Text(
+                      child: const Text(
                         'چالوس',
                         textAlign: TextAlign.center,
                         style: TextStyle(
@@ -378,21 +307,17 @@ class EjaraKotaModat extends StatelessWidget {
                         ),
                       ),
                     ),
+                    const SizedBox(
+                      width: 2,
+                    ),
                     Container(
                       height: 57,
-                      width: 176,
+                      width: 168,
                       decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(10),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(0.1),
-                              spreadRadius: 1,
-                              blurRadius: 10,
-                            )
-                          ],
                           border: Border.all(
-                            color: Colors.black45,
+                            color: const Color.fromRGBO(183, 183, 183, 1),
                             width: 0.3,
                           )),
                       child: const Text(
@@ -413,5 +338,13 @@ class EjaraKotaModat extends StatelessWidget {
             ),
           )
         : const SizedBox.shrink());
+  }
+
+  Divider dividerwidget() {
+    return const Divider(
+      endIndent: 20,
+      indent: 20,
+      color: Color.fromRGBO(236, 236, 236, 1),
+    );
   }
 }

@@ -8,26 +8,26 @@ part of 'user_type.dart';
 
 class UserTypeAdapter extends TypeAdapter<UserType> {
   @override
-  final int typeId = 4;
+  final int typeId = 6;
 
   @override
   UserType read(BinaryReader reader) {
     switch (reader.readByte()) {
       case 1:
-        return UserType.advisor;
+        return UserType.personal;
       case 2:
         return UserType.customer;
       case 3:
         return UserType.state;
       default:
-        return UserType.advisor;
+        return UserType.personal;
     }
   }
 
   @override
   void write(BinaryWriter writer, UserType obj) {
     switch (obj) {
-      case UserType.advisor:
+      case UserType.personal:
         writer.writeByte(1);
         break;
       case UserType.customer:

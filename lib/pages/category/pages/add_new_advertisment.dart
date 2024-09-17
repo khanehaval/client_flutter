@@ -18,7 +18,7 @@ class AddNewAdvertisement extends StatelessWidget {
         Center(
           child: GestureDetector(
               onTap: () {
-                Get.to(() => CategoryAdvertisement());
+                Get.to(() => const CategoryAdvertisement());
               },
               child: Image.asset(
                 "assets/images/economy.png",

@@ -1,27 +1,25 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
-import 'package:numberpicker/numberpicker.dart';
+import 'package:flutter_application_1/pages/category/shared/widget/taeed_enseraf_numberpicker.dart';
 import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:gradient_icon/gradient_icon.dart';
+import 'package:numberpicker/numberpicker.dart';
 
 void showNumberPicker(Function(String) onSelected) {
   final index = 6.obs;
   Get.bottomSheet(
     Container(
       width: double.infinity,
-      decoration: BoxDecoration(
-        gradient: const LinearGradient(
+      decoration: const BoxDecoration(
+        gradient: LinearGradient(
           colors: GRADIANT_COLOR,
         ),
-        border: Border.all(
-          width: 1,
-        ),
-        borderRadius: const BorderRadius.only(
+        borderRadius: BorderRadius.only(
             topLeft: Radius.circular(10), topRight: Radius.circular(10)),
       ),
       child: Padding(
-          padding: const EdgeInsets.all(2.0),
+          padding: const EdgeInsets.only(top: 2, left: 2, right: 2),
           child: Container(
             decoration: const BoxDecoration(
               color: Colors.white,
@@ -51,7 +49,7 @@ void showNumberPicker(Function(String) onSelected) {
                           child: const GradientIcon(
                             icon: Icons.keyboard_arrow_up,
                             gradient: LinearGradient(
-                              colors: GRADIANT_COLOR,
+                              colors: GRADIANT_COLOR_Number,
                               begin: Alignment.topLeft,
                               end: Alignment.bottomRight,
                             ),
@@ -71,11 +69,11 @@ void showNumberPicker(Function(String) onSelected) {
                             axis: Axis.vertical,
                             onChanged: (value) => index.value = value,
                             textStyle: const TextStyle(
-                                fontSize: 20,
-                                color: Colors.black38,
+                                fontSize: 14,
+                                color: Color.fromARGB(137, 179, 171, 171),
                                 fontFamily: MAIN_FONT_FAMILY),
                             selectedTextStyle: const TextStyle(
-                                fontFamily: MAIN_FONT_FAMILY, fontSize: 35),
+                                fontFamily: MAIN_FONT_FAMILY, fontSize: 18),
                           ),
                         ),
                         const SizedBox(
@@ -90,7 +88,7 @@ void showNumberPicker(Function(String) onSelected) {
                           child: const GradientIcon(
                             icon: Icons.keyboard_arrow_down_sharp,
                             gradient: LinearGradient(
-                              colors: GRADIANT_COLOR,
+                              colors: GRADIANT_COLOR_Number,
                               begin: Alignment.topLeft,
                               end: Alignment.bottomRight,
                             ),
@@ -99,30 +97,15 @@ void showNumberPicker(Function(String) onSelected) {
                         ),
                       ],
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(bottom: 20, top: 40),
-                      child: Container(
-                        decoration: BoxDecoration(
-                            gradient: const LinearGradient(
-                              colors: GRADIANT_COLOR,
-                            ),
-                            color: Colors.cyan,
-                            borderRadius: BorderRadius.circular(50)),
-                        child: IconButton(
-                          icon: const Icon(
-                            Icons.check,
-                            color: Colors.white,
-                            weight: 10,
-                            size: 30,
-                            grade: 20,
-                            fill: 0.8,
-                          ),
-                          onPressed: () {
-                            onSelected(index.value.toString());
-                            Get.back();
-                          },
-                        ),
-                      ),
+                    const SizedBox(
+                      height: 35,
+                    ),
+                    TaeedEnserafNumberPicker(
+                      selectedNumber: index.value.toString(),
+                      onConfirm: () {
+                        onSelected(index.value.toString());
+                        Get.back();
+                      },
                     )
                   ],
                 ),

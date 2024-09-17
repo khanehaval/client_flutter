@@ -7,25 +7,11 @@ part of 'login_res.dart';
 // **************************************************************************
 
 LoginRes _$LoginResFromJson(Map<String, dynamic> json) => LoginRes(
-      code: json['code'] as int,
-      status: json['status'] as int,
-      userToken: json['userToken'] as String?,
-      userId: json['userId'] as int,
+      state: json['state'] as bool,
+      message: json['message'] as String,
     );
 
-Map<String, dynamic> _$LoginResToJson(LoginRes instance) {
-  final val = <String, dynamic>{
-    'status': instance.status,
-  };
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('userToken', instance.userToken);
-  val['userId'] = instance.userId;
-  val['code'] = instance.code;
-  return val;
-}
+Map<String, dynamic> _$LoginResToJson(LoginRes instance) => <String, dynamic>{
+      'state': instance.state,
+      'message': instance.message,
+    };

@@ -1,18 +1,19 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/pages/Advertisements.dart';
+import 'package:flutter_application_1/pages/category/pages/Advertisements/advertisements.dart';
 import 'package:flutter_application_1/pages/category/pages/messages.dart';
-
 import 'package:flutter_application_1/pages/category/pages/home.dart';
-import 'package:flutter_application_1/pages/category/pages/add_new_advertisment.dart';
-import 'package:flutter_application_1/pages/profile.dart';
+import 'package:flutter_application_1/pages/category/pages/page_advertisement/category_advertisement.dart';
+import 'package:flutter_application_1/pages/category/shared/constant.dart';
+import 'package:flutter_application_1/pages/category/shared/widget/app_bar.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-
 import 'category/pages/window/window.dart';
 
 class EducationalTour extends StatefulWidget {
   int index;
   bool showEducation;
+  int mycurrentindex = 0;
 
   EducationalTour({super.key, this.index = 0, this.showEducation = true});
 
@@ -33,141 +34,225 @@ class _EducationalTourState extends State<EducationalTour> {
 
   var pages = [
     Home(),
-    const Messages(),
-    AddNewAdvertisement(),
+    Messages(),
+    const CategoryAdvertisement(),
     const Category(),
-    const Advertisements()
+    Advertisements(),
   ];
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(
-        leading: IconButton(
-          icon: const Icon(CupertinoIcons.back),
-          onPressed: () => Get.back(),
-        ),
-        actions: [
-          GestureDetector(
-            onTap: () {
-              openProfile();
-            },
-            child: Container(
-              decoration: BoxDecoration(
-                  color: Colors.black12,
-                  borderRadius: BorderRadius.circular(60)),
-              child: const Padding(
-                padding: EdgeInsets.all(5.0),
-                child: Icon(
-                  Icons.person_2_rounded,
-                  size: 30,
-                ),
+    return Obx(() => Scaffold(
+          backgroundColor: Colors.white,
+          appBar: currentPageIndex.value == 4 ? null : buildAppBar(),
+          body: Stack(
+            children: [
+              Obx(() => showEducation.value
+                  ? Padding(
+                      padding: const EdgeInsets.only(left: 25.0),
+                      child: Container(
+                        color: Colors.white,
+                        child: SingleChildScrollView(
+                          child: Column(
+                            children: [
+                              GestureDetector(
+                                  onTap: () {
+                                    Get.to(() => ());
+                                  },
+                                  child: SvgPicture.asset(
+                                      width: 350,
+                                      height: 185,
+                                      'assets/images/Personal user panel.svg')),
+                              const SizedBox(
+                                height: 20,
+                              ),
+                              GestureDetector(
+                                  onTap: () {
+                                    Get.to(() => ());
+                                  },
+                                  child: SvgPicture.asset(
+                                      width: 350,
+                                      height: 185,
+                                      'assets/images/Consultants user panel.svg')),
+                              const SizedBox(
+                                height: 20,
+                              ),
+                              GestureDetector(
+                                  onTap: () {
+                                    Get.to(() => ());
+                                  },
+                                  child: SvgPicture.asset(
+                                      width: 350,
+                                      height: 185,
+                                      'assets/images/Real estate agency user panel.svg')),
+                            ],
+                          ),
+                        ),
+                      ),
+                    )
+                  : pages[currentPageIndex.value]),
+              Align(
+                alignment: Alignment.bottomCenter,
+                child: bottomNavigationBar1(),
               ),
-            ),
+            ],
+          ),
+        ));
+  }
+
+  Widget bottomNavigationBar1() {
+    return Container(
+      height: 75,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.15),
+            spreadRadius: 0,
+            blurRadius: 5,
+            offset: Offset(-1, 0), // changes position of shadow
           ),
         ],
       ),
-      body: Obx(() => showEducation.value
-          ? Container(
-              color: Colors.white60,
-              child: Padding(
-                padding: const EdgeInsets.all(10),
-                child: SingleChildScrollView(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: GestureDetector(
-                          onTap: () {
-                            Get.to(() => ());
-                          },
-                          child: Image.asset(
-                            'assets/images/Personal user panel.png',
-                          ),
-                        ),
+      child: ClipRRect(
+        borderRadius: const BorderRadius.only(
+          topLeft: Radius.circular(20),
+          topRight: Radius.circular(20),
+        ),
+        child: Obx(
+          () => Container(
+            child: BottomNavigationBar(
+              showSelectedLabels: true,
+              selectedItemColor: Colors.black,
+              selectedFontSize: 11,
+              unselectedFontSize: 9,
+              selectedLabelStyle: const TextStyle(
+                  fontFamily: MAIN_FONT_FAMILY, color: Colors.black),
+              unselectedLabelStyle:
+                  const TextStyle(fontFamily: MAIN_FONT_FAMILY_MEDIUM),
+              type: BottomNavigationBarType.fixed,
+              backgroundColor: Colors.white,
+              onTap: (int index) {
+                currentPageIndex.value = index;
+                showEducation.value = false;
+              },
+              currentIndex: currentPageIndex.value,
+              items: <BottomNavigationBarItem>[
+                BottomNavigationBarItem(
+                  backgroundColor: Colors.white,
+                  icon: Center(
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 3.0, bottom: 5),
+                      child: SvgPicture.asset(
+                        "assets/images/navigation11.svg",
+                        width: 33,
+                        height: 33,
                       ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: GestureDetector(
-                          onTap: () {
-                            Get.to(() => ());
-                          },
-                          child: Image.asset(
-                            "assets/images/Consultants user panel.png",
-                          ),
-                        ),
+                    ),
+                  ),
+                  label: 'پروفایل',
+                  activeIcon: Center(
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 3.0, bottom: 5),
+                      child: SvgPicture.asset(
+                        "assets/images/navigation11-active.svg",
+                        width: 33,
+                        height: 33,
                       ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: GestureDetector(
-                          onTap: () {
-                            Get.to(() => ());
-                          },
-                          child: Image.asset(
-                            "assets/images/Real estate agency user panel.png",
-                          ),
-                        ),
-                      ),
-                    ],
+                    ),
                   ),
                 ),
-              ),
-            )
-          : pages[currentPageIndex.value]),
-      bottomNavigationBar: Obx(
-        () => NavigationBar(
-          backgroundColor: Colors.white,
-          onDestinationSelected: (int index) {
-            currentPageIndex.value = index;
-            showEducation.value = false;
-          },
-          indicatorColor: Color(0x0036d859),
-          selectedIndex: currentPageIndex.value,
-          destinations: <Widget>[
-            NavigationDestination(
-              icon: Image.asset(
-                'assets/images/home navigator.png',
-                width: 24,
-                height: 24,
-              ),
-              label: '',
+                BottomNavigationBarItem(
+                  icon: Center(
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 3.0, bottom: 5),
+                      child: SvgPicture.asset(
+                        "assets/images/navigation22.svg",
+                        width: 33,
+                        height: 33,
+                      ),
+                    ),
+                  ),
+                  label: 'پیام',
+                  activeIcon: Center(
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 3.0, bottom: 5),
+                      child: SvgPicture.asset(
+                        "assets/images/navigation22-active.svg",
+                        width: 33,
+                        height: 33,
+                      ),
+                    ),
+                  ),
+                ),
+                BottomNavigationBarItem(
+                  icon: Center(
+                    child: SvgPicture.asset(
+                      "assets/images/navigation33.svg",
+                      width: 44,
+                      height: 44,
+                    ),
+                  ),
+                  label: 'ثبت آگهی',
+                  activeIcon: Center(
+                    child: SvgPicture.asset(
+                      "assets/images/navigation33-active.svg",
+                      width: 44,
+                      height: 44,
+                    ),
+                  ),
+                ),
+                BottomNavigationBarItem(
+                  icon: Center(
+                    child: Center(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 3.0, bottom: 5),
+                        child: SvgPicture.asset(
+                          "assets/images/navigation44.svg",
+                          width: 33,
+                          height: 33,
+                        ),
+                      ),
+                    ),
+                  ),
+                  label: 'دسته بندی',
+                  activeIcon: Center(
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 3.0, bottom: 5),
+                      child: SvgPicture.asset(
+                        "assets/images/navigation44-active.svg",
+                        width: 33,
+                        height: 33,
+                      ),
+                    ),
+                  ),
+                ),
+                BottomNavigationBarItem(
+                  icon: Center(
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 3.0, bottom: 5),
+                      child: SvgPicture.asset(
+                        "assets/images/navigation55.svg",
+                        width: 33,
+                        height: 33,
+                      ),
+                    ),
+                  ),
+                  label: 'نقشه',
+                  activeIcon: Center(
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 3.0, bottom: 5),
+                      child: SvgPicture.asset(
+                        "assets/images/navigation55-active.svg",
+                        width: 33,
+                        height: 33,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
             ),
-            NavigationDestination(
-              icon: Image.asset(
-                'assets/images/messages.png',
-                width: 24,
-                height: 24,
-              ),
-              label: '',
-            ),
-            NavigationDestination(
-              icon: Image.asset(
-                'assets/images/add.png',
-                width: 24,
-                height: 24,
-              ),
-              label: '',
-            ),
-            NavigationDestination(
-              icon: Image.asset(
-                'assets/images/Category.png',
-                width: 24,
-                height: 24,
-              ),
-              label: '',
-            ),
-            NavigationDestination(
-              icon: Image.asset(
-                'assets/images/viw.png',
-                width: 24,
-                height: 24,
-              ),
-              label: '',
-            ),
-          ],
+          ),
         ),
       ),
     );

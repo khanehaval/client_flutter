@@ -1,36 +1,196 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/models/AdvInfoModel.dart';
+import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/ejara_adv_pages/ejara_vila_page.dart';
 import 'package:flutter_application_1/pages/category/shared/adv_info/advInfo.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/category/shared/date.dart';
 import 'package:flutter_application_1/pages/category/shared/images_picker/images_picker.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/Widget_NoeSanad.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_GamAvari.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_eskelet.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_sen_bana.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_tabaghat_VilaTa.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_tabaghat_vilaAz.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_tafkik.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_takhrib_tavasot.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_tedad_Maqazeh.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_tedad_Otagh.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_tedad_vahed_dar%20tabagheh.dart';
+import 'package:flutter_application_1/pages/category/shared/namayesh.dart';
 import 'package:flutter_application_1/pages/category/shared/number_piacker.dart';
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
 import 'package:flutter_application_1/pages/category/shared/twoItemInRow.dart';
+import 'package:flutter_application_1/pages/category/shared/widget/submit_row.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/switachable.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 
-class PartnerShip extends StatelessWidget {
+class PartnerShip extends StatefulWidget {
+  @override
+  State<PartnerShip> createState() => _PartnerShipState();
+}
+
+class _PartnerShipState extends State<PartnerShip> {
   final aghsatType = "".obs;
+
   final onvan = "".obs;
+
   final _advInfo = AdvInfoModel();
+
   ItemScrollController scrollController = ItemScrollController();
+
   final ItemScrollController itemScrollController = ItemScrollController();
+
   final _allPriceTextController = TextEditingController();
+
   final _metragTextController = TextEditingController();
+  final _NoeSanadTextController = TextEditingController();
+  final _SenBanaTextController = TextEditingController();
+  final _TedadTabaghatController = TextEditingController();
+  final _TakhribController = TextEditingController();
+  final _gamAvariController = TextEditingController();
+  final _NoeSkeletController = TextEditingController();
+  final _tafkikNokhaleController = TextEditingController();
+  final _TabaghController = TextEditingController();
+
   final _selectedImagesPath = [].obs;
+
   final hasAnbari = false.obs;
+
   final hasAsansor = false.obs;
+
   final hasParking = false.obs;
 
+  final submit = false.obs;
+
   final _onePrice = 0.0.obs;
+  final ValueNotifier<String> _persianWords = ValueNotifier<String>('');
+
+  final _TedadVahedController = TextEditingController();
+  String numberToFarsiWords(int number) {
+    if (number == 0) return 'صفر';
+
+    const ones = [
+      'صفر',
+      'یک',
+      'دو',
+      'سه',
+      'چهار',
+      'پنج',
+      'شش',
+      'هفت',
+      'هشت',
+      'نه'
+    ];
+    const teens = [
+      'ده',
+      'یازده',
+      'دوازده',
+      'سیزده',
+      'چهارده',
+      'پانزده',
+      'شانزده',
+      'هفده',
+      'هجده',
+      'نوزده'
+    ];
+    const tens = [
+      '',
+      '',
+      'بیست',
+      'سی',
+      'چهل',
+      'پنجاه',
+      'شصت',
+      'هفتاد',
+      'هشتاد',
+      'نود'
+    ];
+    const hundreds = [
+      '',
+      'صد',
+      'دویست',
+      'سیصد',
+      'چهارصد',
+      'پانصد',
+      'ششصد',
+      'هفتصد',
+      'هشتصد',
+      'نهصد'
+    ];
+    const thousands = ['', 'هزار', 'میلیون', 'میلیارد'];
+
+    String convertBelowThousand(int num) {
+      if (num == 0) return '';
+      if (num < 10) return ones[num];
+      if (num < 20) return teens[num - 10];
+      if (num < 100) {
+        int tenPart = num ~/ 10;
+        int onePart = num % 10;
+        return '${tens[tenPart]}${onePart > 0 ? ' و ${ones[onePart]}' : ''}';
+      } else {
+        int hundredPart = num ~/ 100;
+        int restPart = num % 100;
+        return '${hundreds[hundredPart]}${restPart > 0 ? ' و ${convertBelowThousand(restPart)}' : ''}';
+      }
+    }
+
+    String result = '';
+    int unit = 0;
+
+    while (number > 0) {
+      int chunk = number % 1000;
+      if (chunk > 0) {
+        String chunkText = convertBelowThousand(chunk);
+        result = '${chunkText} ${thousands[unit]} ${result}'.trim();
+      }
+      number ~/= 1000;
+      unit++;
+    }
+
+    return result.trim();
+  }
+
+  void _updatePersianWords() {
+    final text = _metragTextController.text;
+    if (text.isNotEmpty) {
+      final number = int.tryParse(text) ?? 0;
+      _persianWords.value = numberToFarsiWords(number);
+    } else {
+      _persianWords.value = '';
+    }
+  }
 
   @override
+  void initState() {
+    super.initState();
+    _metragTextController.addListener(_updatePersianWords);
+    _allPriceTextController.addListener(_checkFields);
+    _metragTextController.addListener(_checkFields);
+  }
+
+  void _checkFields() {
+    if (_allPriceTextController.text.isNotEmpty &&
+        _metragTextController.text.isNotEmpty) {
+      submit.value = true;
+    } else {
+      submit.value = false;
+    }
+  }
+
+  @override
+  void dispose() {
+    _allPriceTextController.dispose();
+    _metragTextController.dispose();
+    _persianWords.dispose();
+    super.dispose();
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: buildaAppBar(),
       body: SingleChildScrollView(
         child: Padding(
@@ -81,91 +241,125 @@ class PartnerShip extends StatelessWidget {
             const SizedBox(
               height: 30,
             ),
-            TwoItemInRow(
-              label1: "قیمت هر متر مربع (تومان)",
-              label2: " ارزش ملک  (تومان)",
-              widget1: Obx(
-                () => Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    border: Border.all(
-                        width: 1, //
-                        color: Theme.of(context)
-                            .hintColor //  <--- border width here
-                        ),
-                  ),
-                  height: 41,
-                  width: getPageWidth(),
-                  child: Center(
-                    child: Text(_onePrice.string),
+            const Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Text(
+                  "*",
+                  style: TextStyle(
+                    fontSize: 13,
+                    color: Color.fromRGBO(156, 64, 64, 1),
+                    fontFamily: MAIN_FONT_FAMILY,
                   ),
                 ),
-              ),
-              widget2: SizedBox(
-                height: 41,
-                width: getPageWidth(),
-                child: TextField(
-                  textAlign: TextAlign.right,
-                  keyboardType: TextInputType.number,
-                  controller: _allPriceTextController,
-                  onChanged: (_) {
-                    _onePrice.value = _.isNotEmpty
-                        ? int.parse(_) / int.parse(_metragTextController.text)
-                        : 0;
-                  },
-                  decoration: InputDecoration(
-                    hintText: "0",
-                    hintStyle: const TextStyle(
-                      color: Color(0xFFA6A6A6),
-                    ),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
+                SizedBox(
+                  width: 5,
+                ),
+                Padding(
+                  padding: EdgeInsets.only(right: 7),
+                  child: Text(
+                    "(تومان) قیمت کل",
+                    style: TextStyle(
+                        color: Color.fromRGBO(99, 99, 99, 1),
+                        fontFamily: MAIN_FONT_FAMILY,
+                        fontSize: 13),
+                    textAlign: TextAlign.start,
                   ),
                 ),
-              ),
+              ],
             ),
             const SizedBox(
-              height: 20,
+              height: 5,
             ),
-            const Align(
+            SizedBox(
+              height: 41,
+              width: MediaQuery.of(context).size.width * 0.95,
+              child: TextField(
+                textAlign: TextAlign.right,
+                controller: _metragTextController,
+                onChanged: (_) {},
+                keyboardType: TextInputType.number,
+                decoration: InputDecoration(
+                  hintText: 'تایپ کنید',
+                  hintStyle: const TextStyle(
+                    fontSize: 13,
+                    color: Color(0xFFA6A6A6),
+                  ),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide: const BorderSide(
+                      color: Color.fromRGBO(23, 102, 175, 1),
+                    ),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide: const BorderSide(
+                      color: Color.fromRGBO(23, 102, 175, 1),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(height: 20),
+            Align(
               alignment: Alignment.centerRight,
-              child: Text(
-                ":قیمت به حروف ",
-                style: TextStyle(
-                    fontSize: 14,
-                    fontFamily: MAIN_FONT_FAMILY,
-                    color: Color.fromRGBO(166, 166, 166, 1)),
+              child: ValueListenableBuilder<String>(
+                valueListenable: _persianWords,
+                builder: (context, value, child) {
+                  return Text(
+                    "قیمت به حروف: $value  تومان",
+                    style: const TextStyle(
+                      fontSize: 14,
+                      fontFamily: MAIN_FONT_FAMILY,
+                      color: Color.fromRGBO(99, 99, 99, 1),
+                    ),
+                  );
+                },
               ),
             ),
             const SizedBox(
               height: 20,
             ),
             const Divider(
-              endIndent: 20,
-              indent: 20,
+              color: Color.fromRGBO(
+                226,
+                226,
+                226,
+                1,
+              ),
+              endIndent: 6,
+              indent: 6,
             ),
             const SizedBox(
               height: 20,
             ),
-            TwoItemInRow(
+            TwoItemInRow1(
               label1: "نوع سند ",
               label2: "متراژ زمین ",
               widget1: SizedBox(
                 height: 41,
                 width: getPageWidth(),
                 child: TextField(
+                  controller: _NoeSanadTextController,
                   textAlign: TextAlign.right,
                   decoration: InputDecoration(
                       hintText: 'انتخاب نشده',
                       hintStyle: const TextStyle(
-                          color: Color(0xFFA6A6A6), fontSize: 13),
+                        fontSize: 13,
+                        fontFamily: 'Iran Sans',
+                        fontWeight: FontWeight.w400,
+                        color: Color(0xFFA6A6A6),
+                      ),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
                       prefixIcon: IconButton(
                         icon: SvgPicture.asset("assets/images/Vector-20.svg"),
-                        onPressed: () {},
+                        onPressed: () {
+                          NoeSanad((selectedOption) {
+                            _NoeSanadTextController.text = selectedOption;
+                          });
+                        },
                       )),
                 ),
               ),
@@ -178,6 +372,9 @@ class PartnerShip extends StatelessWidget {
                   decoration: InputDecoration(
                     hintText: "0",
                     hintStyle: const TextStyle(
+                      fontSize: 13,
+                      fontFamily: 'Iran Sans',
+                      fontWeight: FontWeight.w400,
                       color: Color(0xFFA6A6A6),
                     ),
                     border: OutlineInputBorder(
@@ -202,6 +399,9 @@ class PartnerShip extends StatelessWidget {
                   decoration: InputDecoration(
                     hintText: "0",
                     hintStyle: const TextStyle(
+                      fontSize: 13,
+                      fontFamily: 'Iran Sans',
+                      fontWeight: FontWeight.w400,
                       color: Color(0xFFA6A6A6),
                     ),
                     border: OutlineInputBorder(
@@ -219,6 +419,9 @@ class PartnerShip extends StatelessWidget {
                   decoration: InputDecoration(
                     hintText: "0",
                     hintStyle: const TextStyle(
+                      fontSize: 13,
+                      fontFamily: 'Iran Sans',
+                      fontWeight: FontWeight.w400,
                       color: Color(0xFFA6A6A6),
                     ),
                     border: OutlineInputBorder(
@@ -232,16 +435,31 @@ class PartnerShip extends StatelessWidget {
               height: 20,
             ),
             const Divider(
-              endIndent: 20,
-              indent: 20,
+              color: Color.fromRGBO(
+                226,
+                226,
+                226,
+                1,
+              ),
+              endIndent: 6,
+              indent: 6,
             ),
             const SizedBox(
               height: 20,
             ),
             aghsatiForoshWidget(context),
+            const SizedBox(
+              height: 20,
+            ),
             const Divider(
-              endIndent: 20,
-              indent: 20,
+              color: Color.fromRGBO(
+                226,
+                226,
+                226,
+                1,
+              ),
+              endIndent: 6,
+              indent: 6,
             ),
             const SizedBox(
               height: 20,
@@ -250,14 +468,23 @@ class PartnerShip extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
+            const SizedBox(
+              height: 20,
+            ),
             const Divider(
-              endIndent: 20,
-              indent: 20,
+              color: Color.fromRGBO(
+                226,
+                226,
+                226,
+                1,
+              ),
+              endIndent: 6,
+              indent: 6,
             ),
             const SizedBox(
               height: 20,
             ),
-            Text("ساختمان جدید (حداقل یک مورد انتخاب شود)",
+            const Text("ساختمان جدید (حداقل یک مورد انتخاب شود)",
                 style: TextStyle(
                     color: Colors.black,
                     fontSize: 14,
@@ -270,16 +497,31 @@ class PartnerShip extends StatelessWidget {
               height: 20,
             ),
             const Divider(
-              endIndent: 20,
-              indent: 20,
+              color: Color.fromRGBO(
+                226,
+                226,
+                226,
+                1,
+              ),
+              endIndent: 6,
+              indent: 6,
+            ),
+            const SizedBox(
+              height: 20,
             ),
             Vila(context),
             const SizedBox(
               height: 20,
             ),
             const Divider(
-              endIndent: 20,
-              indent: 20,
+              color: Color.fromRGBO(
+                226,
+                226,
+                226,
+                1,
+              ),
+              endIndent: 6,
+              indent: 6,
             ),
             const SizedBox(
               height: 20,
@@ -289,8 +531,14 @@ class PartnerShip extends StatelessWidget {
               height: 20,
             ),
             const Divider(
-              endIndent: 20,
-              indent: 20,
+              color: Color.fromRGBO(
+                226,
+                226,
+                226,
+                1,
+              ),
+              endIndent: 6,
+              indent: 6,
             ),
             const SizedBox(
               height: 25,
@@ -303,8 +551,14 @@ class PartnerShip extends StatelessWidget {
               height: 20,
             ),
             const Divider(
-              endIndent: 20,
-              indent: 20,
+              color: Color.fromRGBO(
+                226,
+                226,
+                226,
+                1,
+              ),
+              endIndent: 6,
+              indent: 6,
             ),
             const SizedBox(
               height: 20,
@@ -313,19 +567,34 @@ class PartnerShip extends StatelessWidget {
               height: 30,
             ),
             ImagesPicker(selectedImagesPath: _selectedImagesPath),
-            const Divider(),
+            const SizedBox(
+              height: 20,
+            ),
+            const Divider(
+              color: Color.fromRGBO(
+                226,
+                226,
+                226,
+                1,
+              ),
+              endIndent: 6,
+              indent: 6,
+            ),
             const SizedBox(
               height: 15,
             ),
-            AdvInfo(_advInfo)
+            AdvInfo(_advInfo),
+            const SizedBox(
+              height: 30,
+            ),
+            SubmitRow(submit: submit, nextPage: NamayeshAgahi())
           ]),
         ),
       ),
     );
   }
 
-  double getPageWidth_2(BuildContext context) =>
-      getPageWidth();
+  double getPageWidth_2(BuildContext context) => getPageWidth();
 
   Widget onvanWidget(BuildContext context) {
     final isSwitched = true.obs;
@@ -426,7 +695,7 @@ class PartnerShip extends StatelessWidget {
                   const SizedBox(
                     height: 20,
                   ),
-                  TwoItemInRow(
+                  TwoItemInRow2(
                     label1: " سن بنا",
                     label2: "متراژ بنا",
                     widget2: SizedBox(
@@ -438,7 +707,11 @@ class PartnerShip extends StatelessWidget {
                         decoration: InputDecoration(
                           hintText: 'مبلغ را وارد کنید', //todo
                           hintStyle: const TextStyle(
-                              color: Color(0xFFA6A6A6), fontSize: 13),
+                            fontSize: 13,
+                            fontFamily: 'Iran Sans',
+                            fontWeight: FontWeight.w400,
+                            color: Color(0xFFA6A6A6),
+                          ),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10),
                           ),
@@ -449,11 +722,16 @@ class PartnerShip extends StatelessWidget {
                       height: 41,
                       width: getPageWidth(),
                       child: TextField(
+                        controller: _SenBanaTextController,
                         textAlign: TextAlign.right,
                         decoration: InputDecoration(
                           hintText: 'انتخاب نشده',
-                          hintStyle:
-                              TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
+                          hintStyle: const TextStyle(
+                            fontSize: 13,
+                            fontFamily: 'Iran Sans',
+                            fontWeight: FontWeight.w400,
+                            color: Color(0xFFA6A6A6),
+                          ),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10),
                           ),
@@ -461,8 +739,8 @@ class PartnerShip extends StatelessWidget {
                             icon:
                                 SvgPicture.asset("assets/images/Vector-20.svg"),
                             onPressed: () {
-                              persianDataPicker((date) {
-                                print(date);
+                              SenBana((selectedOption) {
+                                _SenBanaTextController.text = selectedOption;
                               });
                             },
                           ),
@@ -473,19 +751,24 @@ class PartnerShip extends StatelessWidget {
                   const SizedBox(
                     height: 17,
                   ),
-                  TwoItemInRow(
+                  TwoItemInRow2(
                     label1: "تعداد واحد در طبقه",
                     label2: "تعداد طبقات ",
                     widget2: Container(
                       height: 41,
                       width: getPageWidth(),
                       child: TextField(
+                        controller: _TedadTabaghatController,
                         readOnly: true,
                         textAlign: TextAlign.right,
                         decoration: InputDecoration(
                           hintText: 'انتخاب نشده',
-                          hintStyle:
-                              TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
+                          hintStyle: const TextStyle(
+                            fontSize: 13,
+                            fontFamily: 'Iran Sans',
+                            fontWeight: FontWeight.w400,
+                            color: Color(0xFFA6A6A6),
+                          ),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10),
                           ),
@@ -493,7 +776,9 @@ class PartnerShip extends StatelessWidget {
                             icon:
                                 SvgPicture.asset("assets/images/Vector-20.svg"),
                             onPressed: () {
-                              showNumberPicker((_) {});
+                              TedadVahedTabagheh((selectedOption) {
+                                _TedadTabaghatController.text = selectedOption;
+                              });
                             },
                           ),
                         ),
@@ -503,12 +788,17 @@ class PartnerShip extends StatelessWidget {
                       height: 41,
                       width: getPageWidth(),
                       child: TextField(
+                        controller: _TedadVahedController,
                         readOnly: true,
                         textAlign: TextAlign.right,
                         decoration: InputDecoration(
                           hintText: 'انتخاب نشده',
-                          hintStyle:
-                              TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
+                          hintStyle: const TextStyle(
+                            fontSize: 13,
+                            fontFamily: 'Iran Sans',
+                            fontWeight: FontWeight.w400,
+                            color: Color(0xFFA6A6A6),
+                          ),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10),
                           ),
@@ -516,7 +806,9 @@ class PartnerShip extends StatelessWidget {
                             icon:
                                 SvgPicture.asset("assets/images/Vector-20.svg"),
                             onPressed: () {
-                              showNumberPicker((_) {});
+                              TedadVahedTabagheh((selectedOption) {
+                                _TedadVahedController.text = selectedOption;
+                              });
                             },
                           ),
                         ),
@@ -528,13 +820,16 @@ class PartnerShip extends StatelessWidget {
                   ),
                   const Align(
                     alignment: Alignment.centerRight,
-                    child: Text(
-                      "تعداد کل واحد ها",
-                      style: TextStyle(
-                          color: Color.fromRGBO(166, 166, 166, 1),
-                          fontSize: 13,
-                          fontFamily: MAIN_FONT_FAMILY),
-                      textAlign: TextAlign.start,
+                    child: Padding(
+                      padding: EdgeInsets.only(right: 5.0),
+                      child: Text(
+                        "تعداد کل واحد ها",
+                        style: TextStyle(
+                            color: Color.fromRGBO(99, 99, 99, 1),
+                            fontSize: 13,
+                            fontFamily: MAIN_FONT_FAMILY),
+                        textAlign: TextAlign.start,
+                      ),
                     ),
                   ),
                   SizedBox(
@@ -545,7 +840,11 @@ class PartnerShip extends StatelessWidget {
                       decoration: InputDecoration(
                         hintText: 'تایپ کنید',
                         hintStyle: const TextStyle(
-                            color: Color(0xFFA6A6A6), fontSize: 13),
+                          fontSize: 13,
+                          fontFamily: 'Iran Sans',
+                          fontWeight: FontWeight.w400,
+                          color: Color(0xFFA6A6A6),
+                        ),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
@@ -607,12 +906,17 @@ class PartnerShip extends StatelessWidget {
                       height: 41,
                       width: getPageWidth(),
                       child: TextField(
+                        controller: _TakhribController,
                         readOnly: true,
                         textAlign: TextAlign.right,
                         decoration: InputDecoration(
                           hintText: 'انتخاب نشده',
-                          hintStyle:
-                              TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
+                          hintStyle: TextStyle(
+                            fontSize: 13,
+                            fontFamily: 'Iran Sans',
+                            fontWeight: FontWeight.w400,
+                            color: Color(0xFFA6A6A6),
+                          ),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10),
                           ),
@@ -620,7 +924,9 @@ class PartnerShip extends StatelessWidget {
                             icon:
                                 SvgPicture.asset("assets/images/Vector-20.svg"),
                             onPressed: () {
-                              // _show_item_1.value = !_show_item_1.isTrue;
+                              Takhrib((selectedOption) {
+                                _TakhribController.text = selectedOption;
+                              });
                             },
                           ),
                         ),
@@ -630,12 +936,17 @@ class PartnerShip extends StatelessWidget {
                       height: 41,
                       width: getPageWidth(),
                       child: TextField(
+                        controller: _gamAvariController,
                         readOnly: true,
                         textAlign: TextAlign.right,
                         decoration: InputDecoration(
                           hintText: 'انتخاب نشده',
-                          hintStyle:
-                              TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
+                          hintStyle: const TextStyle(
+                            fontSize: 13,
+                            fontFamily: 'Iran Sans',
+                            fontWeight: FontWeight.w400,
+                            color: Color(0xFFA6A6A6),
+                          ),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10),
                           ),
@@ -643,7 +954,9 @@ class PartnerShip extends StatelessWidget {
                             icon:
                                 SvgPicture.asset("assets/images/Vector-20.svg"),
                             onPressed: () {
-                              // _show_item_1.value = !_show_item_1.isTrue;
+                              GamAvari((selectedOption) {
+                                _gamAvariController.text = selectedOption;
+                              });
                             },
                           ),
                         ),
@@ -660,12 +973,17 @@ class PartnerShip extends StatelessWidget {
                       height: 41,
                       width: getPageWidth(),
                       child: TextField(
+                        controller: _tafkikNokhaleController,
                         readOnly: true,
                         textAlign: TextAlign.right,
                         decoration: InputDecoration(
                           hintText: 'انتخاب نشده',
-                          hintStyle:
-                              TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
+                          hintStyle: const TextStyle(
+                            fontSize: 13,
+                            fontFamily: 'Iran Sans',
+                            fontWeight: FontWeight.w400,
+                            color: Color(0xFFA6A6A6),
+                          ),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10),
                           ),
@@ -673,7 +991,9 @@ class PartnerShip extends StatelessWidget {
                             icon:
                                 SvgPicture.asset("assets/images/Vector-20.svg"),
                             onPressed: () {
-                              // _show_item_1.value = !_show_item_1.isTrue;
+                              Tafkik((selectedOption) {
+                                _tafkikNokhaleController.text = selectedOption;
+                              });
                             },
                           ),
                         ),
@@ -683,12 +1003,17 @@ class PartnerShip extends StatelessWidget {
                       height: 41,
                       width: getPageWidth(),
                       child: TextField(
+                        controller: _NoeSkeletController,
                         readOnly: true,
                         textAlign: TextAlign.right,
                         decoration: InputDecoration(
                           hintText: 'انتخاب نشده',
-                          hintStyle:
-                              TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
+                          hintStyle: const TextStyle(
+                            fontSize: 13,
+                            fontFamily: 'Iran Sans',
+                            fontWeight: FontWeight.w400,
+                            color: Color(0xFFA6A6A6),
+                          ),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10),
                           ),
@@ -696,7 +1021,9 @@ class PartnerShip extends StatelessWidget {
                             icon:
                                 SvgPicture.asset("assets/images/Vector-20.svg"),
                             onPressed: () {
-                              // _show_item_1.value = !_show_item_1.isTrue;
+                              Eskelet((selectedOption) {
+                                _NoeSkeletController.text = selectedOption;
+                              });
                             },
                           ),
                         ),
@@ -762,7 +1089,11 @@ Widget zamin(BuildContext context) {
                     decoration: InputDecoration(
                       hintText: '120',
                       hintStyle: const TextStyle(
-                          color: Color(0xFFA6A6A6), fontSize: 13),
+                        fontSize: 13,
+                        fontFamily: 'Iran Sans',
+                        fontWeight: FontWeight.w400,
+                        color: Color(0xFFA6A6A6),
+                      ),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
@@ -782,7 +1113,11 @@ Widget zamin(BuildContext context) {
                       decoration: InputDecoration(
                         hintText: '3,6000000', //todo
                         hintStyle: const TextStyle(
-                            color: Color(0xFFA6A6A6), fontSize: 13),
+                          fontSize: 13,
+                          fontFamily: 'Iran Sans',
+                          fontWeight: FontWeight.w400,
+                          color: Color(0xFFA6A6A6),
+                        ),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
@@ -798,7 +1133,11 @@ Widget zamin(BuildContext context) {
                       decoration: InputDecoration(
                         hintText: '400000000', //todo
                         hintStyle: const TextStyle(
-                            color: Color(0xFFA6A6A6), fontSize: 13),
+                          fontSize: 13,
+                          fontFamily: 'Iran Sans',
+                          fontWeight: FontWeight.w400,
+                          color: Color(0xFFA6A6A6),
+                        ),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
@@ -821,6 +1160,10 @@ Widget Aparteman(BuildContext context) {
   final hasAnbari = false.obs;
   final hasAsansor = false.obs;
   final hasParking = false.obs;
+  final _TedadVahedController = TextEditingController();
+  final _TedadOtaghsmallController = TextEditingController();
+  final _TedadOtaghBigController = TextEditingController();
+  final _TabaghController = TextEditingController();
 
   return Column(
     children: [
@@ -831,7 +1174,7 @@ Widget Aparteman(BuildContext context) {
                 const SizedBox(
                   height: 20,
                 ),
-                TwoItemInRow(
+                TwoItemInRow2(
                   label1: "تعداد طبقات ",
                   label2: "متراژ زیر بنای ساختمان ",
                   widget2: Container(
@@ -841,8 +1184,12 @@ Widget Aparteman(BuildContext context) {
                       textAlign: TextAlign.right,
                       decoration: InputDecoration(
                         hintText: 'تایپ کنید',
-                        hintStyle:
-                            TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
+                        hintStyle: const TextStyle(
+                          fontSize: 13,
+                          fontFamily: 'Iran Sans',
+                          fontWeight: FontWeight.w400,
+                          color: Color(0xFFA6A6A6),
+                        ),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
@@ -853,19 +1200,26 @@ Widget Aparteman(BuildContext context) {
                     height: 41,
                     width: getPageWidth(),
                     child: TextField(
+                      controller: _TabaghController,
                       readOnly: true,
                       textAlign: TextAlign.right,
                       decoration: InputDecoration(
                         hintText: 'انتخاب نشده',
-                        hintStyle:
-                            TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
+                        hintStyle: TextStyle(
+                          fontSize: 13,
+                          fontFamily: 'Iran Sans',
+                          fontWeight: FontWeight.w400,
+                          color: Color(0xFFA6A6A6),
+                        ),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
                         prefixIcon: IconButton(
                           icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                           onPressed: () {
-                            showNumberPicker((_) {});
+                            showNumberPicker((_) {
+                              _TabaghController.text = _;
+                            });
                           },
                         ),
                       ),
@@ -885,8 +1239,12 @@ Widget Aparteman(BuildContext context) {
                       textAlign: TextAlign.right,
                       decoration: InputDecoration(
                         hintText: 'تایپ کنید',
-                        hintStyle:
-                            TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
+                        hintStyle: TextStyle(
+                          fontSize: 13,
+                          fontFamily: 'Iran Sans',
+                          fontWeight: FontWeight.w400,
+                          color: Color(0xFFA6A6A6),
+                        ),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
@@ -897,19 +1255,26 @@ Widget Aparteman(BuildContext context) {
                     height: 41,
                     width: getPageWidth(),
                     child: TextField(
+                      controller: _TedadVahedController,
                       readOnly: true,
                       textAlign: TextAlign.right,
                       decoration: InputDecoration(
                         hintText: 'انتخاب نشده',
-                        hintStyle:
-                            TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
+                        hintStyle: TextStyle(
+                          fontSize: 13,
+                          fontFamily: 'Iran Sans',
+                          fontWeight: FontWeight.w400,
+                          color: Color(0xFFA6A6A6),
+                        ),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
                         prefixIcon: IconButton(
                           icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                           onPressed: () {
-                            showNumberPicker((_) {});
+                            showNumberPicker((_) {
+                              _TedadVahedController.text = _;
+                            });
                           },
                         ),
                       ),
@@ -929,8 +1294,12 @@ Widget Aparteman(BuildContext context) {
                       textAlign: TextAlign.right,
                       decoration: InputDecoration(
                         hintText: 'تایپ کنید',
-                        hintStyle:
-                            TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
+                        hintStyle: TextStyle(
+                          fontSize: 13,
+                          fontFamily: 'Iran Sans',
+                          fontWeight: FontWeight.w400,
+                          color: Color(0xFFA6A6A6),
+                        ),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
@@ -941,19 +1310,26 @@ Widget Aparteman(BuildContext context) {
                     height: 41,
                     width: getPageWidth(),
                     child: TextField(
+                      controller: _TedadOtaghsmallController,
                       readOnly: true,
                       textAlign: TextAlign.right,
                       decoration: InputDecoration(
                         hintText: 'انتخاب نشده',
-                        hintStyle:
-                            TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
+                        hintStyle: TextStyle(
+                          fontSize: 13,
+                          fontFamily: 'Iran Sans',
+                          fontWeight: FontWeight.w400,
+                          color: Color(0xFFA6A6A6),
+                        ),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
                         prefixIcon: IconButton(
                           icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                           onPressed: () {
-                            showNumberPicker((_) {});
+                            showNumberPicker((_) {
+                              _TedadOtaghsmallController.text = _;
+                            });
                           },
                         ),
                       ),
@@ -973,8 +1349,12 @@ Widget Aparteman(BuildContext context) {
                       textAlign: TextAlign.right,
                       decoration: InputDecoration(
                         hintText: 'تایپ کنید',
-                        hintStyle:
-                            TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
+                        hintStyle: TextStyle(
+                          fontSize: 13,
+                          fontFamily: 'Iran Sans',
+                          fontWeight: FontWeight.w400,
+                          color: Color(0xFFA6A6A6),
+                        ),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
@@ -985,19 +1365,26 @@ Widget Aparteman(BuildContext context) {
                     height: 41,
                     width: getPageWidth(),
                     child: TextField(
+                      controller: _TedadOtaghBigController,
                       readOnly: true,
                       textAlign: TextAlign.right,
                       decoration: InputDecoration(
                         hintText: 'انتخاب نشده',
-                        hintStyle:
-                            TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
+                        hintStyle: TextStyle(
+                          fontSize: 13,
+                          fontFamily: 'Iran Sans',
+                          fontWeight: FontWeight.w400,
+                          color: Color(0xFFA6A6A6),
+                        ),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
                         prefixIcon: IconButton(
                           icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                           onPressed: () {
-                            showNumberPicker((_) {});
+                            showNumberPicker((_) {
+                              _TedadOtaghBigController.text = _;
+                            });
                           },
                         ),
                       ),
@@ -1115,7 +1502,10 @@ Widget Vila(BuildContext context) {
 
   final _onePrice = 0.0.obs;
   final _allPriceTextController = TextEditingController();
-  final _metragTextController = TextEditingController();
+  final _TabaghatVilaAzController = TextEditingController();
+  final _TabaghatVilaTaController = TextEditingController();
+  final _TedadOtaghVilaBigTaController = TextEditingController();
+  final _TedadOtaghVilaSmallTaController = TextEditingController();
   return Column(
     children: [
       Row(
@@ -1148,9 +1538,9 @@ Widget Vila(BuildContext context) {
                 const SizedBox(
                   height: 20,
                 ),
-                TwoItemInRow(
+                TwoItemInRow2(
                   label1: "تعداد ویلاها",
-                  label2: " بنای کل شهرک",
+                  label2: " متراژ زیر بنای شهرک ",
                   widget1: SizedBox(
                     height: 41,
                     width: getPageWidth(),
@@ -1160,6 +1550,9 @@ Widget Vila(BuildContext context) {
                       decoration: InputDecoration(
                         hintText: "تایپ کنید",
                         hintStyle: const TextStyle(
+                          fontSize: 13,
+                          fontFamily: 'Iran Sans',
+                          fontWeight: FontWeight.w400,
                           color: Color(0xFFA6A6A6),
                         ),
                         border: OutlineInputBorder(
@@ -1177,6 +1570,9 @@ Widget Vila(BuildContext context) {
                       decoration: InputDecoration(
                         hintText: "تایپ کنید",
                         hintStyle: const TextStyle(
+                          fontSize: 13,
+                          fontFamily: 'Iran Sans',
+                          fontWeight: FontWeight.w400,
                           color: Color(0xFFA6A6A6),
                         ),
                         border: OutlineInputBorder(
@@ -1196,19 +1592,26 @@ Widget Vila(BuildContext context) {
                     height: 41,
                     width: getPageWidth(),
                     child: TextField(
+                      controller: _TabaghatVilaAzController,
                       readOnly: true,
                       textAlign: TextAlign.right,
                       decoration: InputDecoration(
                         hintText: 'انتخاب نشده',
-                        hintStyle:
-                            TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
+                        hintStyle: const TextStyle(
+                          fontSize: 13,
+                          fontFamily: 'Iran Sans',
+                          fontWeight: FontWeight.w400,
+                          color: Color(0xFFA6A6A6),
+                        ),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
                         prefixIcon: IconButton(
                           icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                           onPressed: () {
-                            showNumberPicker((_) {});
+                            TabaghatVilaAz((selectedOption) {
+                              _TabaghatVilaAzController.text = selectedOption;
+                            });
                           },
                         ),
                       ),
@@ -1218,19 +1621,26 @@ Widget Vila(BuildContext context) {
                     height: 41,
                     width: getPageWidth(),
                     child: TextField(
+                      controller: _TabaghatVilaTaController,
                       readOnly: true,
                       textAlign: TextAlign.right,
                       decoration: InputDecoration(
                         hintText: 'انتخاب نشده',
-                        hintStyle:
-                            TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
+                        hintStyle: TextStyle(
+                          fontSize: 13,
+                          fontFamily: 'Iran Sans',
+                          fontWeight: FontWeight.w400,
+                          color: Color(0xFFA6A6A6),
+                        ),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
                         prefixIcon: IconButton(
                           icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                           onPressed: () {
-                            showNumberPicker((_) {});
+                            TabaghatVilaTa((selectedOption) {
+                              _TabaghatVilaTaController.text = selectedOption;
+                            });
                           },
                         ),
                       ),
@@ -1250,8 +1660,12 @@ Widget Vila(BuildContext context) {
                       textAlign: TextAlign.right,
                       decoration: InputDecoration(
                         hintText: 'تایپ کنید',
-                        hintStyle:
-                            TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
+                        hintStyle: TextStyle(
+                          fontSize: 13,
+                          fontFamily: 'Iran Sans',
+                          fontWeight: FontWeight.w400,
+                          color: Color(0xFFA6A6A6),
+                        ),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
@@ -1262,19 +1676,27 @@ Widget Vila(BuildContext context) {
                     height: 41,
                     width: getPageWidth(),
                     child: TextField(
+                      controller: _TedadOtaghVilaSmallTaController,
                       readOnly: true,
                       textAlign: TextAlign.right,
                       decoration: InputDecoration(
                         hintText: 'انتخاب نشده',
-                        hintStyle:
-                            TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
+                        hintStyle: const TextStyle(
+                          fontSize: 13,
+                          fontFamily: 'Iran Sans',
+                          fontWeight: FontWeight.w400,
+                          color: Color(0xFFA6A6A6),
+                        ),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
                         prefixIcon: IconButton(
                           icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                           onPressed: () {
-                            showNumberPicker((_) {});
+                            TedadOtagh((selectedOption) {
+                              _TedadOtaghVilaSmallTaController.text =
+                                  selectedOption;
+                            });
                           },
                         ),
                       ),
@@ -1294,8 +1716,12 @@ Widget Vila(BuildContext context) {
                       textAlign: TextAlign.right,
                       decoration: InputDecoration(
                         hintText: 'تایپ کنید',
-                        hintStyle:
-                            TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
+                        hintStyle: TextStyle(
+                          fontSize: 13,
+                          fontFamily: 'Iran Sans',
+                          fontWeight: FontWeight.w400,
+                          color: Color(0xFFA6A6A6),
+                        ),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
@@ -1306,19 +1732,27 @@ Widget Vila(BuildContext context) {
                     height: 41,
                     width: getPageWidth(),
                     child: TextField(
+                      controller: _TedadOtaghVilaBigTaController,
                       readOnly: true,
                       textAlign: TextAlign.right,
                       decoration: InputDecoration(
                         hintText: 'انتخاب نشده',
-                        hintStyle:
-                            TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
+                        hintStyle: const TextStyle(
+                          fontSize: 13,
+                          fontFamily: 'Iran Sans',
+                          fontWeight: FontWeight.w400,
+                          color: Color(0xFFA6A6A6),
+                        ),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
                         prefixIcon: IconButton(
                           icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                           onPressed: () {
-                            showNumberPicker((_) {});
+                            TedadOtagh((selectedOption) {
+                              _TedadOtaghVilaBigTaController.text =
+                                  selectedOption;
+                            });
                           },
                         ),
                       ),
@@ -1403,8 +1837,8 @@ Widget Edari(BuildContext context) {
   final hasParking = false.obs;
 
   final _onePrice = 0.0.obs;
-  final _allPriceTextController = TextEditingController();
-  final _metragTextController = TextEditingController();
+  final _TedadMaqazehTextController = TextEditingController();
+  final _tedadTabaghatTextController = TextEditingController();
   return Column(
     children: [
       Row(
@@ -1437,7 +1871,7 @@ Widget Edari(BuildContext context) {
                 const SizedBox(
                   height: 20,
                 ),
-                TwoItemInRow(
+                TwoItemInRow2(
                   label1: "تعداد طبقات ",
                   label2: "متراژ زیر بنای کل",
                   widget2: Container(
@@ -1448,7 +1882,11 @@ Widget Edari(BuildContext context) {
                       decoration: InputDecoration(
                         hintText: 'تایپ کنید',
                         hintStyle: const TextStyle(
-                            color: Color(0xFFA6A6A6), fontSize: 13),
+                          fontSize: 13,
+                          fontFamily: 'Iran Sans',
+                          fontWeight: FontWeight.w400,
+                          color: Color(0xFFA6A6A6),
+                        ),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
@@ -1459,19 +1897,26 @@ Widget Edari(BuildContext context) {
                     height: 41,
                     width: getPageWidth(),
                     child: TextField(
+                      controller: _tedadTabaghatTextController,
                       readOnly: true,
                       textAlign: TextAlign.right,
                       decoration: InputDecoration(
                         hintText: 'انتخاب نشده',
                         hintStyle: const TextStyle(
-                            color: Color(0xFFA6A6A6), fontSize: 13),
+                          fontSize: 13,
+                          fontFamily: 'Iran Sans',
+                          fontWeight: FontWeight.w400,
+                          color: Color(0xFFA6A6A6),
+                        ),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
                         prefixIcon: IconButton(
                           icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                           onPressed: () {
-                            showNumberPicker((_) {});
+                            showNumberPicker((_) {
+                              _tedadTabaghatTextController.text = _;
+                            });
                           },
                         ),
                       ),
@@ -1479,7 +1924,7 @@ Widget Edari(BuildContext context) {
                   ),
                 ),
                 SizedBox(height: 20),
-                TwoItemInRow(
+                TwoItemInRow2(
                   label1: "تعداد کل مغازه ها ",
                   label2: "تعداد مغازه در طبقه",
                   widget1: Container(
@@ -1490,7 +1935,11 @@ Widget Edari(BuildContext context) {
                       decoration: InputDecoration(
                         hintText: 'تایپ کنید',
                         hintStyle: const TextStyle(
-                            color: Color(0xFFA6A6A6), fontSize: 13),
+                          fontSize: 13,
+                          fontFamily: 'Iran Sans',
+                          fontWeight: FontWeight.w400,
+                          color: Color(0xFFA6A6A6),
+                        ),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
@@ -1501,19 +1950,26 @@ Widget Edari(BuildContext context) {
                     height: 41,
                     width: getPageWidth(),
                     child: TextField(
+                      controller: _TedadMaqazehTextController,
                       readOnly: true,
                       textAlign: TextAlign.right,
                       decoration: InputDecoration(
                         hintText: 'انتخاب نشده',
                         hintStyle: const TextStyle(
-                            color: Color(0xFFA6A6A6), fontSize: 13),
+                          fontSize: 13,
+                          fontFamily: 'Iran Sans',
+                          fontWeight: FontWeight.w400,
+                          color: Color(0xFFA6A6A6),
+                        ),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
                         prefixIcon: IconButton(
                           icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                           onPressed: () {
-                            showNumberPicker((_) {});
+                            TedadMaqazeh((selectedOption) {
+                              _TedadMaqazehTextController.text = selectedOption;
+                            });
                           },
                         ),
                       ),
@@ -1535,6 +1991,9 @@ Widget Edari(BuildContext context) {
                       decoration: InputDecoration(
                         hintText: "تایپ کنید",
                         hintStyle: const TextStyle(
+                          fontSize: 13,
+                          fontFamily: 'Iran Sans',
+                          fontWeight: FontWeight.w400,
                           color: Color(0xFFA6A6A6),
                         ),
                         border: OutlineInputBorder(
@@ -1552,6 +2011,9 @@ Widget Edari(BuildContext context) {
                       decoration: InputDecoration(
                         hintText: "تایپ کنید",
                         hintStyle: const TextStyle(
+                          fontSize: 13,
+                          fontFamily: 'Iran Sans',
+                          fontWeight: FontWeight.w400,
                           color: Color(0xFFA6A6A6),
                         ),
                         border: OutlineInputBorder(

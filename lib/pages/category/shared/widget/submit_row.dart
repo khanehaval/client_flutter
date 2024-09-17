@@ -26,7 +26,6 @@ class SubmitRow extends StatelessWidget {
                   style: !submit.value
                       ? const TextStyle(
                           fontSize: 20,
-
                           fontFamily: MAIN_FONT_FAMILY,
                           color: Colors.black38,
                         )
@@ -35,7 +34,9 @@ class SubmitRow extends StatelessWidget {
                   textAlign: TextAlign.center,
                 ),
               ),
-              const SizedBox(width: 3,),
+              const SizedBox(
+                width: 3,
+              ),
               GradientIcon(
                 icon: Icons.double_arrow,
                 gradient: LinearGradient(
@@ -44,7 +45,7 @@ class SubmitRow extends StatelessWidget {
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
                 ),
-                offset: const Offset(0,0),
+                offset: const Offset(0, 0),
                 size: 34,
               )
             ],

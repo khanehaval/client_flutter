@@ -2,134 +2,356 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/models/AdvInfoModel.dart';
 import 'package:flutter_application_1/pages/category/models/FacilitiesModel.dart';
+import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/ejara_adv_pages/ejara_vila_page.dart';
 import 'package:flutter_application_1/pages/category/shared/adv_info/advInfo.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/category/shared/date.dart';
 import 'package:flutter_application_1/pages/category/shared/facilities_selector.dart';
 import 'package:flutter_application_1/pages/category/shared/images_picker/images_picker.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/Widget_NoeSanad.dart';
 import 'package:flutter_application_1/pages/category/shared/more_emkanat/jahat_sakhteman.dart';
 import 'package:flutter_application_1/pages/category/shared/more_emkanat/sanad.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/servises_wc.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_bazsazi.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_jenskaf.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_kabinet.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_sen_bana.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_system_garm.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_system_sarmayesh.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_tamin_abe_garm.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_tedad_Otagh.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_tedad_aghsat.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_tedad_koletabagheh.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_tedad_vahed_dar%20tabagheh.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_time_aghsat.dart';
+import 'package:flutter_application_1/pages/category/shared/namayesh.dart';
 import 'package:flutter_application_1/pages/category/shared/number_piacker.dart';
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
 import 'package:flutter_application_1/pages/category/shared/switchItem.dart';
 import 'package:flutter_application_1/pages/category/shared/twoItemInRow.dart';
+import 'package:flutter_application_1/pages/category/shared/widget/route_widget.dart';
+import 'package:flutter_application_1/pages/category/shared/widget/submit_row.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/text_field.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:gradient_icon/gradient_icon.dart';
 
-class ForoshDaftarPage extends StatelessWidget {
+class ForoshDaftarPage extends StatefulWidget {
+  ForoshDaftarPage({super.key});
+
+  @override
+  State<ForoshDaftarPage> createState() => _ForoshDaftarPageState();
+}
+
+class _ForoshDaftarPageState extends State<ForoshDaftarPage> {
   final aghsatType = "".obs;
+
   final onvan = "".obs;
+
   final _facilities = <FacilitiesModel>[].obs;
 
   final hasAnbari = false.obs;
+
   final hasAsansor = false.obs;
+
   final hasParking = false.obs;
+
   final hasSanad = true.obs;
+
   int selectedIndex = 0;
 
+  final submit = false.obs;
+
   final _onePrice = 0.0.obs;
+
   final _allPriceTextController = TextEditingController();
+
   final _metragTextController = TextEditingController();
+
   final _selectedImagesPath = [].obs;
 
   final _buildDirectionController = TextEditingController();
+
   final _buildUnitOfAnyFloorCountController = TextEditingController();
+
   final _buildFloorsCountController = TextEditingController();
+
   final _timeOfInstallmentsController = TextEditingController();
+  final _timeOfInstallments_vamBankiController = TextEditingController();
+
   final _buildDateController = TextEditingController();
+
   final _buildRoomsCountController = TextEditingController();
+
   final _buildDocumentController = TextEditingController();
+
   final _buildFloorController = TextEditingController();
   final _buildAllFloorsCountController = TextEditingController();
   final _reBuildController = TextEditingController();
   final _countOfInstallmentsController = TextEditingController();
-  final _buildMaxCapacityController = TextEditingController();
-  final _buildRiteController = TextEditingController();
-  final _buildAnimalController = TextEditingController();
-  final _buildSmokingController = TextEditingController();
-  final _buildShoesController = TextEditingController();
-  final _buildDeprivationController = TextEditingController();
-  final _buildSleepServiceCountController = TextEditingController();
-  final _oneBedCountController = TextEditingController();
-  final _twoBedCountController = TextEditingController();
-  final _floorMaterialController = TextEditingController();
-  final _cabinetController = TextEditingController();
-  final _coldTypeController = TextEditingController();
-  final _heatTypeController = TextEditingController();
-  final _heatWaterController = TextEditingController();
-  final _wcController = TextEditingController();
-  final _numberOfInstallmentsController = TextEditingController();
+  final _countOfInstallmentsVamBankiController = TextEditingController();
+  final _tedadaghsat_month_VamBankiController = TextEditingController();
+  final TextEditingController _SarmayeshController = TextEditingController();
+  final TextEditingController _GarmController = TextEditingController();
+  final TextEditingController _JenskafController = TextEditingController();
+  final TextEditingController _kabinetController = TextEditingController();
+  final TextEditingController _WcController = TextEditingController();
+  final TextEditingController _AbeGarmController = TextEditingController();
 
   final _advInfo = AdvInfoModel();
+  final ValueNotifier<String> _persianWords = ValueNotifier<String>('');
 
-  ForoshDaftarPage({super.key});
+  String numberToFarsiWords(int number) {
+    if (number == 0) return 'صفر';
+
+    const ones = [
+      'صفر',
+      'یک',
+      'دو',
+      'سه',
+      'چهار',
+      'پنج',
+      'شش',
+      'هفت',
+      'هشت',
+      'نه'
+    ];
+    const teens = [
+      'ده',
+      'یازده',
+      'دوازده',
+      'سیزده',
+      'چهارده',
+      'پانزده',
+      'شانزده',
+      'هفده',
+      'هجده',
+      'نوزده'
+    ];
+    const tens = [
+      '',
+      '',
+      'بیست',
+      'سی',
+      'چهل',
+      'پنجاه',
+      'شصت',
+      'هفتاد',
+      'هشتاد',
+      'نود'
+    ];
+    const hundreds = [
+      '',
+      'صد',
+      'دویست',
+      'سیصد',
+      'چهارصد',
+      'پانصد',
+      'ششصد',
+      'هفتصد',
+      'هشتصد',
+      'نهصد'
+    ];
+    const thousands = ['', 'هزار', 'میلیون', 'میلیارد'];
+
+    String convertBelowThousand(int num) {
+      if (num == 0) return '';
+      if (num < 10) return ones[num];
+      if (num < 20) return teens[num - 10];
+      if (num < 100) {
+        int tenPart = num ~/ 10;
+        int onePart = num % 10;
+        return '${tens[tenPart]}${onePart > 0 ? ' و ${ones[onePart]}' : ''}';
+      } else {
+        int hundredPart = num ~/ 100;
+        int restPart = num % 100;
+        return '${hundreds[hundredPart]}${restPart > 0 ? ' و ${convertBelowThousand(restPart)}' : ''}';
+      }
+    }
+
+    String result = '';
+    int unit = 0;
+
+    while (number > 0) {
+      int chunk = number % 1000;
+      if (chunk > 0) {
+        String chunkText = convertBelowThousand(chunk);
+        result = '${chunkText} ${thousands[unit]} ${result}'.trim();
+      }
+      number ~/= 1000;
+      unit++;
+    }
+
+    return result.trim();
+  }
+
+  void _updatePersianWords() {
+    final text = _metragTextController.text;
+    if (text.isNotEmpty) {
+      final number = int.tryParse(text) ?? 0;
+      _persianWords.value = numberToFarsiWords(number);
+    } else {
+      _persianWords.value = '';
+    }
+  }
 
   @override
+  void initState() {
+    super.initState();
+    _metragTextController.addListener(_updatePersianWords);
+
+    _allPriceTextController.addListener(_checkFields);
+    _metragTextController.addListener(_checkFields);
+    _buildRoomsCountController.addListener(_checkFields);
+    _buildFloorController.addListener(_checkFields);
+  }
+
+  void _checkFields() {
+    if (_allPriceTextController.text.isNotEmpty &&
+        _metragTextController.text.isNotEmpty &&
+        _buildFloorController.text.isNotEmpty &&
+        _buildRoomsCountController.text.isNotEmpty) {
+      submit.value = true;
+    } else {
+      submit.value = false;
+    }
+  }
+
+  @override
+  void dispose() {
+    _allPriceTextController.dispose();
+    _metragTextController.dispose();
+    _buildFloorController.dispose();
+    _persianWords.dispose();
+
+    super.dispose();
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Colors.white,
         appBar: buildaAppBar(),
         body: SingleChildScrollView(
+          scrollDirection: Axis.vertical,
           child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
               child: Column(children: [
+                route([
+                  "ثبت آگهی اکونومی",
+                  "فروش تجاری اداری",
+                  "خرید و فروش دفترکار"
+                ]),
+                const SizedBox(
+                  height: 30,
+                ),
                 const Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     Text(
-                      " خرید و فروش آپارتمان",
+                      "*",
                       style: TextStyle(
-                        fontSize: 10,
+                        fontSize: 20,
+                        color: Color.fromRGBO(156, 64, 64, 1),
                         fontFamily: MAIN_FONT_FAMILY,
                       ),
                     ),
-                    Icon(
-                      Icons.arrow_back,
-                      color: Colors.green,
-                      size: 18,
+                    SizedBox(
+                      width: 5,
                     ),
-                    Text(
-                      "فروش مسکونی",
-                      style: TextStyle(
-                        fontSize: 10,
-                        fontFamily: MAIN_FONT_FAMILY,
-                      ),
-                    ),
-                    Icon(
-                      Icons.arrow_back,
-                      color: Colors.green,
-                      size: 18,
-                    ),
-                    Text(
-                      "  ثبت آگهی اکونومی",
-                      style: TextStyle(
-                        fontSize: 10,
-                        fontFamily: MAIN_FONT_FAMILY,
+                    Padding(
+                      padding: EdgeInsets.only(right: 7),
+                      child: Text(
+                        "(تومان) قیمت کل",
+                        style: TextStyle(
+                          color: Color.fromRGBO(166, 166, 166, 1),
+                          fontFamily: MAIN_FONT_FAMILY,
+                        ),
+                        textAlign: TextAlign.start,
                       ),
                     ),
                   ],
                 ),
-                const SizedBox(
-                  height: 30,
+                SizedBox(
+                  height: 50,
+                  width: MediaQuery.of(context).size.width * 0.95,
+                  child: TextField(
+                    textAlign: TextAlign.right,
+                    controller: _metragTextController,
+                    keyboardType: TextInputType.number,
+                    decoration: InputDecoration(
+                      hintText: '120',
+                      hintStyle: const TextStyle(
+                        color: Color(0xFFA6A6A6),
+                      ),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                        borderSide: const BorderSide(
+                          color: Color.fromRGBO(23, 102, 175, 1),
+                        ),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                        borderSide: const BorderSide(
+                          color: Color.fromRGBO(23, 102, 175, 1),
+                        ),
+                      ),
+                    ),
+                  ),
                 ),
-                TwoItemInRow(
+                const SizedBox(height: 20),
+                Align(
+                  alignment: Alignment.centerRight,
+                  child: ValueListenableBuilder<String>(
+                    valueListenable: _persianWords,
+                    builder: (context, value, child) {
+                      return Text(
+                        "قیمت به حروف: $value  تومان",
+                        style: const TextStyle(
+                          fontSize: 14,
+                          fontFamily: MAIN_FONT_FAMILY,
+                          color: Color.fromRGBO(166, 166, 166, 1),
+                        ),
+                      );
+                    },
+                  ),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                const Divider(
+                  color: Color.fromRGBO(
+                    226,
+                    226,
+                    226,
+                    1,
+                  ),
+                  endIndent: 6,
+                  indent: 6,
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                TwoItemInRow1(
                   label1: "قیمت هر متر مربع (تومان)",
-                  label2: "قیمت کل (تومان)",
+                  label2: "متراژ",
                   widget1: Obx(
                     () => Container(
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
                         border: Border.all(
-                            width: 1, //
-                            color: Theme.of(context)
-                                .hintColor //  <--- border width here
-                            ),
+                          width: 1, //
+                          color: const Color(0xffA6A6A6),
+                        ),
                       ),
                       height: 41,
                       width: getPageWidth(),
                       child: Center(
-                        child: Text(_onePrice.string),
+                        child: Text(
+                          _onePrice.string,
+                          style: TextStyle(
+                            color: Color(0xffA6A6A6),
+                          ),
+                        ),
                       ),
                     ),
                   ),
@@ -149,10 +371,22 @@ class ForoshDaftarPage extends StatelessWidget {
                       decoration: InputDecoration(
                         hintText: "0",
                         hintStyle: const TextStyle(
+                          fontSize: 13,
+                          fontFamily: 'Iran Sans',
+                          fontWeight: FontWeight.w400,
                           color: Color(0xFFA6A6A6),
                         ),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
+                          borderSide: const BorderSide(
+                            color: Color.fromRGBO(23, 102, 175, 1),
+                          ),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                          borderSide: const BorderSide(
+                            color: Color.fromRGBO(23, 102, 175, 1),
+                          ),
                         ),
                       ),
                     ),
@@ -160,116 +394,60 @@ class ForoshDaftarPage extends StatelessWidget {
                 ),
                 const SizedBox(
                   height: 20,
-                ),
-                const Align(
-                  alignment: Alignment.centerRight,
-                  child: Text(
-                    ":قیمت به حروف ",
-                    style: TextStyle(
-                        fontSize: 14,
-                        fontFamily: MAIN_FONT_FAMILY,
-                        color: Color.fromRGBO(166, 166, 166, 1)),
-                  ),
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                const Divider(
-                  endIndent: 20,
-                  indent: 20,
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                const Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Text(
-                      "*",
-                      style: TextStyle(
-                          fontSize: 20,
-                          color: Color.fromRGBO(156, 64, 64, 1),
-                          fontFamily: MAIN_FONT_FAMILY),
-                    ),
-                    Text(
-                      "متراژ",
-                      style: TextStyle(
-                          color: Color.fromRGBO(166, 166, 166, 1),
-                          fontFamily: MAIN_FONT_FAMILY),
-                      textAlign: TextAlign.start,
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  height: 50,
-                  width: MediaQuery.of(context).size.width * 0.95,
-                  child: TextField(
-                    textAlign: TextAlign.right,
-                    controller: _metragTextController,
-                    keyboardType: TextInputType.number,
-                    onChanged: (m) {
-                      _onePrice.value = m.isNotEmpty
-                          ? int.parse(_allPriceTextController.text) /
-                              int.parse(m)
-                          : 0;
-                    },
-                    decoration: InputDecoration(
-                      hintText: '120',
-                      hintStyle: const TextStyle(
-                        color: Color(0xFFA6A6A6),
-                      ),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                const Divider(
-                  endIndent: 20,
-                  indent: 20,
                 ),
                 aghsatiForoshWidget(context),
                 const SizedBox(
                   height: 20,
                 ),
                 const Divider(
-                  endIndent: 20,
-                  indent: 20,
+                  color: Color.fromRGBO(
+                    226,
+                    226,
+                    226,
+                    1,
+                  ),
+                  endIndent: 6,
+                  indent: 6,
                 ),
-                TwoItemInRow(
-                    label1: "تعداد اتاق ",
-                    label2: "سن بنا ",
-                    widget1: ReadOnlyTextField(_buildRoomsCountController, () {
-                      showNumberPicker((_) {
-                        _buildRoomsCountController.text = _;
-                      });
-                    }, width: getPageWidth()),
-                    widget2: ReadOnlyTextField(_buildDateController, () {
-                      persianDataPicker(
-                          (date) => _buildDateController.text = date);
-                    }, width: getPageWidth(),fontSize: 13)),
                 const SizedBox(
                   height: 20,
                 ),
-                const Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Text(
-                      "*",
-                      style: TextStyle(
-                          fontSize: 20, color: Color.fromRGBO(156, 64, 64, 1)),
-                    ),
-                    Text(
-                      "طبقه ",
-                      style: TextStyle(
-                          color: Color.fromRGBO(99, 99, 99, 1),
-                          fontFamily: MAIN_FONT_FAMILY),
-                      textAlign: TextAlign.start,
-                    ),
-                  ],
+                TwoItemInRow2(
+                    label1: "تعداد اتاق ",
+                    label2: "سن بنا",
+                    widget1: ReadOnlyTextField(_buildRoomsCountController, () {
+                      TedadOtagh((selectedOption) {
+                        _buildRoomsCountController.text = selectedOption;
+                      });
+                    }, width: getPageWidth()),
+                    widget2: ReadOnlyTextField(_buildDateController, () {
+                      SenBana((selectedOption) {
+                        _buildDateController.text = selectedOption;
+                      });
+                    }, width: getPageWidth(), fontSize: 13)),
+                const SizedBox(
+                  height: 20,
+                ),
+                const Padding(
+                  padding: EdgeInsets.only(right: 5.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Text(
+                        "*",
+                        style: TextStyle(
+                            fontSize: 20,
+                            color: Color.fromRGBO(156, 64, 64, 1)),
+                      ),
+                      Text(
+                        "طبقه ",
+                        style: TextStyle(
+                            color: Color.fromRGBO(99, 99, 99, 1),
+                            fontFamily: MAIN_FONT_FAMILY),
+                        textAlign: TextAlign.start,
+                      ),
+                    ],
+                  ),
                 ),
                 ReadOnlyTextField(_buildFloorController, () {
                   showNumberPicker((_) {
@@ -277,7 +455,7 @@ class ForoshDaftarPage extends StatelessWidget {
                   });
                 }),
                 const SizedBox(
-                  height: 15,
+                  height: 20,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -365,14 +543,14 @@ class ForoshDaftarPage extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(
-                  height: 10,
+                  height: 20,
                 ),
                 const Divider(
                   endIndent: 20,
                   indent: 20,
                 ),
                 const SizedBox(
-                  height: 10,
+                  height: 20,
                 ),
                 const Text(
                   "سایر ویژگی ها",
@@ -385,13 +563,13 @@ class ForoshDaftarPage extends StatelessWidget {
                     label1: "تعداد کل طبقات",
                     label2: "نوع سند",
                     widget1: ReadOnlyTextField(_buildFloorsCountController, () {
-                      showNumberPicker((_) {
-                        _buildFloorsCountController.text = _;
+                      TedadKoleTabagheh((selectedOption) {
+                        _buildFloorsCountController.text = selectedOption;
                       });
                     }, width: getPageWidth()),
                     widget2: ReadOnlyTextField(_buildDocumentController, () {
-                      Sanad((_) {
-                        _buildDocumentController.text = _;
+                      NoeSanad((selectedOption) {
+                        _buildDocumentController.text = selectedOption;
                       });
                     }, width: getPageWidth())),
                 const SizedBox(
@@ -404,8 +582,9 @@ class ForoshDaftarPage extends StatelessWidget {
                         width: getPageWidth()),
                     widget2: ReadOnlyTextField(
                         _buildUnitOfAnyFloorCountController, () {
-                      showNumberPicker((_) {
-                        _buildUnitOfAnyFloorCountController.text = _;
+                      TedadVahedTabagheh((selectedOption) {
+                        _buildUnitOfAnyFloorCountController.text =
+                            selectedOption;
                       });
                     }, width: getPageWidth())),
                 const SizedBox(
@@ -415,15 +594,17 @@ class ForoshDaftarPage extends StatelessWidget {
                     label1: "بازسازی",
                     label2: "جهت ساختمان",
                     widget1: ReadOnlyTextField(_reBuildController, () {
-                      //todo
+                      BazSazi((selectedOption) {
+                        _reBuildController.text = selectedOption;
+                      });
                     }, width: getPageWidth()),
                     widget2: ReadOnlyTextField(_buildDirectionController, () {
-                      jahatSakhteman((_) {
-                        _buildDirectionController.text = _;
+                      jahatSakhteman((selectedOption) {
+                        _buildDirectionController.text = selectedOption;
                       });
                     }, width: getPageWidth())),
                 const SizedBox(
-                  height: 15,
+                  height: 30,
                 ),
                 Column(mainAxisAlignment: MainAxisAlignment.center, children: [
                   Row(mainAxisAlignment: MainAxisAlignment.center, children: [
@@ -447,9 +628,6 @@ class ForoshDaftarPage extends StatelessWidget {
                   const SizedBox(
                     height: 20,
                   ),
-                  const SizedBox(
-                    height: 20,
-                  ),
                   const Divider(
                     endIndent: 20,
                     indent: 20,
@@ -463,7 +641,7 @@ class ForoshDaftarPage extends StatelessWidget {
                         TextStyle(fontFamily: MAIN_FONT_FAMILY, fontSize: 16),
                   ),
                   const SizedBox(
-                    height: 15,
+                    height: 20,
                   ),
                   TwoItemInRow(
                     label1: "نوع کابینت",
@@ -472,12 +650,16 @@ class ForoshDaftarPage extends StatelessWidget {
                       height: 41,
                       width: getPageWidth(),
                       child: TextField(
+                        controller: _kabinetController,
                         readOnly: true,
                         textAlign: TextAlign.right,
                         decoration: InputDecoration(
                             hintText: 'انتخاب نشده',
                             hintStyle: const TextStyle(
-                                color: Color(0xFFA6A6A6), fontSize: 13),
+                                fontFamily: 'Iran Sans',
+                                fontWeight: FontWeight.w400,
+                                color: Color(0xFFA6A6A6),
+                                fontSize: 13),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10),
                             ),
@@ -485,7 +667,9 @@ class ForoshDaftarPage extends StatelessWidget {
                               icon: SvgPicture.asset(
                                   "assets/images/Vector-20.svg"),
                               onPressed: () {
-                                // _show_item_1.value = !_show_item_1.isTrue;
+                                Kabinet((selectedOption) {
+                                  _kabinetController.text = selectedOption;
+                                });
                               },
                             )),
                       ),
@@ -494,12 +678,16 @@ class ForoshDaftarPage extends StatelessWidget {
                       height: 41,
                       width: getPageWidth(),
                       child: TextField(
+                        controller: _JenskafController,
                         readOnly: true,
                         textAlign: TextAlign.right,
                         decoration: InputDecoration(
                           hintText: 'انتخاب نشده',
                           hintStyle: const TextStyle(
-                              color: Color(0xFFA6A6A6), fontSize: 13),
+                              fontFamily: 'Iran Sans',
+                              fontWeight: FontWeight.w400,
+                              color: Color(0xFFA6A6A6),
+                              fontSize: 13),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10),
                           ),
@@ -507,7 +695,9 @@ class ForoshDaftarPage extends StatelessWidget {
                             icon:
                                 SvgPicture.asset("assets/images/Vector-20.svg"),
                             onPressed: () {
-                              // _show_item_1.value = !_show_item_1.isTrue;
+                              JensKaf((selectedOption) {
+                                _JenskafController.text = selectedOption;
+                              });
                             },
                           ),
                         ),
@@ -524,12 +714,16 @@ class ForoshDaftarPage extends StatelessWidget {
                       height: 41,
                       width: getPageWidth(),
                       child: TextField(
+                        controller: _GarmController,
                         readOnly: true,
                         textAlign: TextAlign.right,
                         decoration: InputDecoration(
                           hintText: 'انتخاب نشده',
                           hintStyle: const TextStyle(
-                              color: Color(0xFFA6A6A6), fontSize: 13),
+                              fontFamily: 'Iran Sans',
+                              fontWeight: FontWeight.w400,
+                              color: Color(0xFFA6A6A6),
+                              fontSize: 13),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10),
                           ),
@@ -537,7 +731,9 @@ class ForoshDaftarPage extends StatelessWidget {
                             icon:
                                 SvgPicture.asset("assets/images/Vector-20.svg"),
                             onPressed: () {
-                              // _show_item_1.value = !_show_item_1.isTrue;
+                              Garmayesh((selectedOption) {
+                                _GarmController.text = selectedOption;
+                              });
                             },
                           ),
                         ),
@@ -547,12 +743,16 @@ class ForoshDaftarPage extends StatelessWidget {
                       height: 41,
                       width: getPageWidth(),
                       child: TextField(
+                        controller: _SarmayeshController,
                         readOnly: true,
                         textAlign: TextAlign.right,
                         decoration: InputDecoration(
                           hintText: 'انتخاب نشده',
                           hintStyle: const TextStyle(
-                              color: Color(0xFFA6A6A6), fontSize: 13),
+                              fontFamily: 'Iran Sans',
+                              fontWeight: FontWeight.w400,
+                              color: Color(0xFFA6A6A6),
+                              fontSize: 13),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10),
                           ),
@@ -560,7 +760,9 @@ class ForoshDaftarPage extends StatelessWidget {
                             icon:
                                 SvgPicture.asset("assets/images/Vector-20.svg"),
                             onPressed: () {
-                              // _show_item_1.value = !_show_item_1.isTrue;
+                              Sarmayesh((selectedOption) {
+                                _SarmayeshController.text = selectedOption;
+                              });
                             },
                           ),
                         ),
@@ -577,12 +779,16 @@ class ForoshDaftarPage extends StatelessWidget {
                       height: 41,
                       width: getPageWidth(),
                       child: TextField(
+                        controller: _WcController,
                         readOnly: true,
                         textAlign: TextAlign.right,
                         decoration: InputDecoration(
                             hintText: 'انتخاب نشده',
                             hintStyle: const TextStyle(
-                                color: Color(0xFFA6A6A6), fontSize: 13),
+                                fontFamily: 'Iran Sans',
+                                fontWeight: FontWeight.w400,
+                                color: Color(0xFFA6A6A6),
+                                fontSize: 13),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10),
                             ),
@@ -590,21 +796,27 @@ class ForoshDaftarPage extends StatelessWidget {
                               icon: SvgPicture.asset(
                                   "assets/images/Vector-20.svg"),
                               onPressed: () {
-                                // _show_item_1.value = !_show_item_1.isTrue;
+                                Wc((selectedOption) {
+                                  _WcController.text = selectedOption;
+                                });
                               },
                             )),
                       ),
                     ),
                     widget2: Container(
                       height: 41,
-                      width: 176,
+                      width: getPageWidth(),
                       child: TextField(
+                        controller: _AbeGarmController,
                         readOnly: true,
                         textAlign: TextAlign.right,
                         decoration: InputDecoration(
                           hintText: 'انتخاب نشده',
                           hintStyle: const TextStyle(
-                              color: Color(0xFFA6A6A6), fontSize: 13),
+                              fontFamily: 'Iran Sans',
+                              fontWeight: FontWeight.w400,
+                              color: Color(0xFFA6A6A6),
+                              fontSize: 13),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10),
                           ),
@@ -612,7 +824,9 @@ class ForoshDaftarPage extends StatelessWidget {
                             icon:
                                 SvgPicture.asset("assets/images/Vector-20.svg"),
                             onPressed: () {
-                              // _show_item_1.value = !_show_item_1.isTrue;
+                              AbeGarm((selectedOption) {
+                                _AbeGarmController.text = selectedOption;
+                              });
                             },
                           ),
                         ),
@@ -636,28 +850,90 @@ class ForoshDaftarPage extends StatelessWidget {
                     selected: _facilities,
                   ),
                   const SizedBox(
-                    height: 20,
+                    height: 40,
                   ),
                   const Divider(
-                    endIndent: 20,
-                    indent: 20,
+                    color: Color.fromRGBO(
+                      226,
+                      226,
+                      226,
+                      1,
+                    ),
+                    endIndent: 6,
+                    indent: 6,
                   ),
                   const SizedBox(
                     height: 20,
                   ),
                   ImagesPicker(selectedImagesPath: _selectedImagesPath),
                   const SizedBox(
-                    height: 10,
+                    height: 20,
                   ),
-                  const Divider(),
-                  AdvInfo(_advInfo)
+                  const Divider(
+                    color: Color.fromRGBO(
+                      226,
+                      226,
+                      226,
+                      1,
+                    ),
+                    endIndent: 6,
+                    indent: 6,
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  AdvInfo(_advInfo),
+                  const SizedBox(
+                    height: 40,
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      if (submit.value) {
+                        Get.to(() => NamayeshAgahi());
+                      }
+                    },
+                    child: Obx(() => Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Center(
+                              child: Text(
+                                "... تایید و ادامه",
+                                style: !submit.value
+                                    ? const TextStyle(
+                                        fontSize: 20,
+                                        fontFamily: MAIN_FONT_FAMILY,
+                                        color: Colors.black38,
+                                      )
+                                    : const TextStyle(
+                                        fontSize: 20,
+                                        fontFamily: MAIN_FONT_FAMILY),
+                                textAlign: TextAlign.center,
+                              ),
+                            ),
+                            const SizedBox(
+                              width: 3,
+                            ),
+                            GradientIcon(
+                              icon: Icons.double_arrow,
+                              gradient: LinearGradient(
+                                colors: submit.value
+                                    ? GRADIANT_COLOR1
+                                    : BLACK_12_GRADIANT_COLOR,
+                                begin: Alignment.topLeft,
+                                end: Alignment.bottomRight,
+                              ),
+                              offset: const Offset(0, 0),
+                              size: 34,
+                            )
+                          ],
+                        )),
+                  )
                 ]),
               ])),
         ));
   }
 
-  double getPageWidth_2(BuildContext context) =>
-      getPageWidth();
+  double getPageWidth_2(BuildContext context) => getPageWidth();
 
   Widget onvanWidget(BuildContext context) {
     final isSwitched = true.obs;
@@ -771,7 +1047,11 @@ class ForoshDaftarPage extends StatelessWidget {
                         decoration: InputDecoration(
                           hintText: 'مبلغ را وارد کنید', //todo
                           hintStyle: const TextStyle(
-                              color: Color(0xFFA6A6A6), fontSize: 13),
+                            fontSize: 13,
+                            fontFamily: 'Iran Sans',
+                            fontWeight: FontWeight.w400,
+                            color: Color(0xFFA6A6A6),
+                          ),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10),
                           ),
@@ -787,7 +1067,11 @@ class ForoshDaftarPage extends StatelessWidget {
                         decoration: InputDecoration(
                           hintText: 'مبلغ را وارد کنید', //todo
                           hintStyle: const TextStyle(
-                              color: Color(0xFFA6A6A6), fontSize: 13),
+                            fontSize: 13,
+                            fontFamily: 'Iran Sans',
+                            fontWeight: FontWeight.w400,
+                            color: Color(0xFFA6A6A6),
+                          ),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10),
                           ),
@@ -803,21 +1087,21 @@ class ForoshDaftarPage extends StatelessWidget {
                       label2: "تعداد اقساط",
                       widget1:
                           ReadOnlyTextField(_timeOfInstallmentsController, () {
-                        persianDataPicker((date) {
-                          _timeOfInstallmentsController.text = date;
+                        TimeAghsat((selectedOption) {
+                          _timeOfInstallmentsController.text = selectedOption;
                         });
-                      }, width: getPageWidth(),fontSize: 13),
+                      }, width: getPageWidth(), fontSize: 13),
                       widget2:
                           ReadOnlyTextField(_countOfInstallmentsController, () {
-                        showNumberPicker((_) {
-                          _countOfInstallmentsController.text = _;
+                        TedadAghsat((selectedOption) {
+                          _countOfInstallmentsController.text = selectedOption;
                         });
                       }, width: getPageWidth())),
                   const SizedBox(
                     width: 25,
                     height: 10,
                   ),
-                  SwitchItem(
+                  SwitchItems(
                       onSelected: (_) {}, items: const ["ضامن", "سفته", "چک"]),
                   const SizedBox(
                     height: 10,
@@ -894,7 +1178,11 @@ class ForoshDaftarPage extends StatelessWidget {
                         decoration: InputDecoration(
                           hintText: '3,6000000', //todo
                           hintStyle: const TextStyle(
-                              color: Color(0xFFA6A6A6), fontSize: 13),
+                            fontSize: 13,
+                            fontFamily: 'Iran Sans',
+                            fontWeight: FontWeight.w400,
+                            color: Color(0xFFA6A6A6),
+                          ),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10),
                           ),
@@ -909,7 +1197,11 @@ class ForoshDaftarPage extends StatelessWidget {
                         decoration: InputDecoration(
                           hintText: '400000000', //todo
                           hintStyle: const TextStyle(
-                              color: Color(0xFFA6A6A6), fontSize: 13),
+                            fontSize: 13,
+                            fontFamily: 'Iran Sans',
+                            fontWeight: FontWeight.w400,
+                            color: Color(0xFFA6A6A6),
+                          ),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10),
                           ),
@@ -927,26 +1219,7 @@ class ForoshDaftarPage extends StatelessWidget {
                         height: 41,
                         width: getPageWidth(),
                         child: TextField(
-                          textAlign: TextAlign.right,
-                          readOnly: true,
-                          focusNode: FocusNode(canRequestFocus: false),
-                          decoration: InputDecoration(
-                              hintText: 'انتخاب نشده',
-                              hintStyle: const TextStyle(
-                                  color: Color(0xFFA6A6A6), fontSize: 13),
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              prefixIcon: IconButton(
-                                icon: const Icon(CupertinoIcons.chevron_left_2),
-                                onPressed: () {},
-                              )),
-                        ),
-                      ),
-                      widget2: SizedBox(
-                        height: 41,
-                        width: getPageWidth(),
-                        child: TextField(
+                          controller: _timeOfInstallments_vamBankiController,
                           textAlign: TextAlign.right,
                           readOnly: true,
                           focusNode: FocusNode(canRequestFocus: false),
@@ -958,8 +1231,42 @@ class ForoshDaftarPage extends StatelessWidget {
                               borderRadius: BorderRadius.circular(10),
                             ),
                             prefixIcon: IconButton(
-                              icon: const Icon(CupertinoIcons.chevron_left_2),
-                              onPressed: () {},
+                              icon: SvgPicture.asset(
+                                  "assets/images/Vector-20.svg"),
+                              onPressed: () {
+                                TimeAghsat((selectedOption) {
+                                  _timeOfInstallments_vamBankiController.text =
+                                      selectedOption;
+                                });
+                              },
+                            ),
+                          ),
+                        ),
+                      ),
+                      widget2: SizedBox(
+                        height: 41,
+                        width: getPageWidth(),
+                        child: TextField(
+                          controller: _countOfInstallmentsVamBankiController,
+                          textAlign: TextAlign.right,
+                          readOnly: true,
+                          focusNode: FocusNode(canRequestFocus: false),
+                          decoration: InputDecoration(
+                            hintText: 'انتخاب نشده',
+                            hintStyle: const TextStyle(
+                                color: Color(0xFFA6A6A6), fontSize: 13),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            prefixIcon: IconButton(
+                              icon: SvgPicture.asset(
+                                  "assets/images/Vector-20.svg"),
+                              onPressed: () {
+                                TedadAghsat((selectedOption) {
+                                  _countOfInstallmentsVamBankiController.text =
+                                      selectedOption;
+                                });
+                              },
                             ),
                           ),
                         ),
@@ -979,6 +1286,7 @@ class ForoshDaftarPage extends StatelessWidget {
                   SizedBox(
                     height: 41,
                     child: TextField(
+                      controller: _tedadaghsat_month_VamBankiController,
                       textAlign: TextAlign.right,
                       decoration: InputDecoration(
                         hintText: 'انتخاب نشده',
@@ -988,9 +1296,12 @@ class ForoshDaftarPage extends StatelessWidget {
                           borderRadius: BorderRadius.circular(10),
                         ),
                         prefixIcon: IconButton(
-                          icon: const Icon(CupertinoIcons.chevron_left_2),
+                          icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                           onPressed: () {
-                            // _show_item_1.value = !_show_item_1.isTrue;
+                            TedadAghsat((selectedOption) {
+                              _tedadaghsat_month_VamBankiController.text =
+                                  selectedOption;
+                            });
                           },
                         ),
                       ),

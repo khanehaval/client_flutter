@@ -1,68 +1,96 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/models/AdvInfoModel.dart';
 import 'package:flutter_application_1/pages/category/models/FacilitiesModel.dart';
+import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/ejara_adv_pages/ejara_vila_page.dart';
 import 'package:flutter_application_1/pages/category/shared/adv_info/advInfo.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/category/shared/date.dart';
-import 'package:flutter_application_1/pages/category/shared/emkanat5.dart';
 import 'package:flutter_application_1/pages/category/shared/facilities_selector.dart';
 import 'package:flutter_application_1/pages/category/shared/images_picker/images_picker.dart';
 import 'package:flutter_application_1/pages/category/shared/more_emkanat/jahat_sakhteman.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_jenskaf.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_location.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_sen_bana.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_system_garm.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_system_sarmayesh.dart';
+import 'package:flutter_application_1/pages/category/shared/namayesh.dart';
 import 'package:flutter_application_1/pages/category/shared/number_piacker.dart';
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
 import 'package:flutter_application_1/pages/category/shared/twoItemInRow.dart';
+import 'package:flutter_application_1/pages/category/shared/widget/submit_row.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/text_field.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:gradient_icon/gradient_icon.dart';
 
-class EjaraShopPage extends StatelessWidget {
-  final aghsatType = "".obs;
-  final onvan = "".obs;
-  int selectedIndex = 0;
-  final hasAnbari = false.obs;
-  final hasAsansor = false.obs;
-  final hasParking = false.obs;
-  final _onePrice = 0.0.obs;
-  final _allPriceTextController = TextEditingController();
-  final _metragTextController = TextEditingController();
-  final _selectedImagesPath = [].obs;
-  final _facilities = <FacilitiesModel>[].obs;
-
-  final _buildDirectionController = TextEditingController();
-  final _buildUnitOfAnyFloorCountController = TextEditingController();
-  final _buildFloorsCountController = TextEditingController();
-  final _timeOfInstallmentsController = TextEditingController();
-  final _buildDateController = TextEditingController();
-  final _buildRoomsCountController = TextEditingController();
-  final _buildDocumentController = TextEditingController();
-  final _buildFloorController = TextEditingController();
-  final _buildAllFloorsCountController = TextEditingController();
-  final _reBuildController = TextEditingController();
-  final _countOfInstallmentsController = TextEditingController();
-  final _buildMaxCapacityController = TextEditingController();
-  final _buildRiteController = TextEditingController();
-  final _buildAnimalController = TextEditingController();
-  final _buildSmokingController = TextEditingController();
-  final _buildShoesController = TextEditingController();
-  final _buildDeprivationController = TextEditingController();
-  final _buildSleepServiceCountController = TextEditingController();
-  final _oneBedCountController = TextEditingController();
-  final _twoBedCountController = TextEditingController();
-  final _floorMaterialController = TextEditingController();
-  final _cabinetController = TextEditingController();
-  final _coldTypeController = TextEditingController();
-  final _heatTypeController = TextEditingController();
-  final _heatWaterController = TextEditingController();
-  final _wcController = TextEditingController();
-  final _numberOfInstallmentsController = TextEditingController();
-
-  final _advInfo = AdvInfoModel();
-
+class EjaraShopPage extends StatefulWidget {
   EjaraShopPage({super.key});
 
   @override
+  State<EjaraShopPage> createState() => _EjaraShopPageState();
+}
+
+class _EjaraShopPageState extends State<EjaraShopPage> {
+  final aghsatType = "".obs;
+
+  final onvan = "".obs;
+
+  int selectedIndex = 0;
+
+  final hasAnbari = false.obs;
+
+  final hasAsansor = false.obs;
+
+  final hasParking = false.obs;
+
+  final _onePrice = 0.0.obs;
+
+  final _allPriceTextController = TextEditingController();
+
+  final _metragTextController = TextEditingController();
+
+  final _selectedImagesPath = [].obs;
+
+  final _facilities = <FacilitiesModel>[].obs;
+
+  final _buildDirectionController = TextEditingController();
+
+  final _buildUnitOfAnyFloorCountController = TextEditingController();
+
+  final _buildDateController = TextEditingController();
+
+  final _buildRoomsCountController = TextEditingController();
+  final _JensKafCountController = TextEditingController();
+  final TextEditingController _GarmController = TextEditingController();
+  final TextEditingController _SarmayeshController = TextEditingController();
+  final submit = false.obs;
+
+  final _advInfo = AdvInfoModel();
+
+  @override
+  void initState() {
+    super.initState();
+
+    _allPriceTextController.addListener(_checkFields);
+  }
+
+  void _checkFields() {
+    if (_allPriceTextController.text.isNotEmpty) {
+      submit.value = true;
+    } else {
+      submit.value = false;
+    }
+  }
+
+  @override
+  void dispose() {
+    _allPriceTextController.dispose();
+    super.dispose();
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Colors.white,
         appBar: buildaAppBar(),
         body: SingleChildScrollView(
           child: Padding(
@@ -103,7 +131,7 @@ class EjaraShopPage extends StatelessWidget {
               const SizedBox(
                 height: 30,
               ),
-              TwoItemInRow(
+              TwoItemInRow1(
                 label1: "میزان اجاره (تومان)",
                 label2: "میزان رهن (تومان) ",
                 widget1: SizedBox(
@@ -115,6 +143,9 @@ class EjaraShopPage extends StatelessWidget {
                     decoration: InputDecoration(
                       hintText: "0",
                       hintStyle: const TextStyle(
+                        fontSize: 13,
+                        fontFamily: 'Iran Sans',
+                        fontWeight: FontWeight.w400,
                         color: Color(0xFFA6A6A6),
                       ),
                       border: OutlineInputBorder(
@@ -127,11 +158,15 @@ class EjaraShopPage extends StatelessWidget {
                   height: 41,
                   width: getPageWidth(),
                   child: TextField(
+                    controller: _allPriceTextController,
                     textAlign: TextAlign.right,
                     keyboardType: TextInputType.number,
                     decoration: InputDecoration(
                       hintText: "0",
                       hintStyle: const TextStyle(
+                        fontSize: 13,
+                        fontFamily: 'Iran Sans',
+                        fontWeight: FontWeight.w400,
                         color: Color(0xFFA6A6A6),
                       ),
                       border: OutlineInputBorder(
@@ -189,6 +224,9 @@ class EjaraShopPage extends StatelessWidget {
                   decoration: InputDecoration(
                     hintText: '120',
                     hintStyle: const TextStyle(
+                      fontSize: 13,
+                      fontFamily: 'Iran Sans',
+                      fontWeight: FontWeight.w400,
                       color: Color(0xFFA6A6A6),
                     ),
                     border: OutlineInputBorder(
@@ -207,23 +245,24 @@ class EjaraShopPage extends StatelessWidget {
               const SizedBox(
                 height: 20,
               ),
-              TwoItemInRow(
+              TwoItemInRow2(
                   label1: "تعداد اتاق ",
                   label2: "سن بنا ",
                   widget1: ReadOnlyTextField(_buildRoomsCountController, () {
                     showNumberPicker((_) {
                       _buildRoomsCountController.text = _;
                     });
-                  }, width: getPageWidth()),
+                  }, width: getPageWidth(), fontSize: 13),
                   widget2: ReadOnlyTextField(_buildDateController, () {
-                    persianDataPicker(
-                        (date) => _buildDateController.text = date);
-                  }, width: getPageWidth(),fontSize: 13)),
+                    SenBana((selectedOption) {
+                      _buildDateController.text = selectedOption;
+                    });
+                  }, width: getPageWidth(), fontSize: 13)),
               const SizedBox(
                 height: 15,
               ),
-              TwoItemInRow(
-                  label1: "طیقه",
+              TwoItemInRow1(
+                  label1: "طبقه",
                   label2: "موقیعت",
                   widget1: ReadOnlyTextField(
                       _buildUnitOfAnyFloorCountController, () {
@@ -232,8 +271,8 @@ class EjaraShopPage extends StatelessWidget {
                     });
                   }, width: getPageWidth()),
                   widget2: ReadOnlyTextField(_buildDirectionController, () {
-                    jahatSakhteman((_) {
-                      _buildDirectionController.text = _;
+                    Location((selectedOption) {
+                      _buildDirectionController.text = selectedOption;
                     });
                   }, width: getPageWidth())),
               const SizedBox(
@@ -362,19 +401,26 @@ class EjaraShopPage extends StatelessWidget {
                 height: 41,
                 width: 372,
                 child: TextField(
+                  controller: _JensKafCountController,
                   readOnly: true,
                   textAlign: TextAlign.right,
                   decoration: InputDecoration(
                     hintText: 'انتخاب نشده',
-                    hintStyle:
-                        TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
+                    hintStyle: TextStyle(
+                      fontSize: 13,
+                      fontFamily: 'Iran Sans',
+                      fontWeight: FontWeight.w400,
+                      color: Color(0xFFA6A6A6),
+                    ),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
                     prefixIcon: IconButton(
                       icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                       onPressed: () {
-                        // _show_item_1.value = !_show_item_1.isTrue;
+                        JensKaf((selectedOption) {
+                          _JensKafCountController.text = selectedOption;
+                        });
                       },
                     ),
                   ),
@@ -390,19 +436,26 @@ class EjaraShopPage extends StatelessWidget {
                   height: 41,
                   width: getPageWidth(),
                   child: TextField(
+                    controller: _GarmController,
                     readOnly: true,
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
                       hintText: 'انتخاب نشده',
-                      hintStyle:
-                          TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
+                      hintStyle: TextStyle(
+                        fontSize: 13,
+                        fontFamily: 'Iran Sans',
+                        fontWeight: FontWeight.w400,
+                        color: Color(0xFFA6A6A6),
+                      ),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
                       prefixIcon: IconButton(
                         icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                         onPressed: () {
-                          // _show_item_1.value = !_show_item_1.isTrue;
+                          Garmayesh((selectedOption) {
+                            _GarmController.text = selectedOption;
+                          });
                         },
                       ),
                     ),
@@ -412,19 +465,26 @@ class EjaraShopPage extends StatelessWidget {
                   height: 41,
                   width: getPageWidth(),
                   child: TextField(
+                    controller: _SarmayeshController,
                     readOnly: true,
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
                       hintText: 'انتخاب نشده',
-                      hintStyle:
-                          TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
+                      hintStyle: TextStyle(
+                        fontSize: 13,
+                        fontFamily: 'Iran Sans',
+                        fontWeight: FontWeight.w400,
+                        color: Color(0xFFA6A6A6),
+                      ),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
                       prefixIcon: IconButton(
                         icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                         onPressed: () {
-                          // _show_item_1.value = !_show_item_1.isTrue;
+                          Sarmayesh((selectedOption) {
+                            _SarmayeshController.text = selectedOption;
+                          });
                         },
                       ),
                     ),
@@ -479,7 +539,51 @@ class EjaraShopPage extends StatelessWidget {
               const SizedBox(
                 height: 15,
               ),
-              AdvInfo(_advInfo)
+              AdvInfo(_advInfo),
+              const SizedBox(
+                height: 30,
+              ),
+              GestureDetector(
+                onTap: () {
+                  if (submit.value) {
+                    Get.to(() => NamayeshAgahi());
+                  }
+                },
+                child: Obx(() => Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Center(
+                          child: Text(
+                            "... تایید و ادامه",
+                            style: !submit.value
+                                ? const TextStyle(
+                                    fontSize: 20,
+                                    fontFamily: MAIN_FONT_FAMILY,
+                                    color: Colors.black38,
+                                  )
+                                : const TextStyle(
+                                    fontSize: 20, fontFamily: MAIN_FONT_FAMILY),
+                            textAlign: TextAlign.center,
+                          ),
+                        ),
+                        const SizedBox(
+                          width: 3,
+                        ),
+                        GradientIcon(
+                          icon: Icons.double_arrow,
+                          gradient: LinearGradient(
+                            colors: submit.value
+                                ? GRADIANT_COLOR1
+                                : BLACK_12_GRADIANT_COLOR,
+                            begin: Alignment.topLeft,
+                            end: Alignment.bottomRight,
+                          ),
+                          offset: const Offset(0, 0),
+                          size: 34,
+                        )
+                      ],
+                    )),
+              )
             ]),
           ),
         ));
@@ -518,7 +622,7 @@ Widget aghsatiForoshWidget(BuildContext context) {
             const SizedBox(
               height: 20,
             ),
-            TwoItemInRow(
+            TwoItemInRow2(
               label1: "میزان اجاره (تومان)",
               label2: "میزان رهن (تومان) ",
               widget1: SizedBox(
@@ -528,8 +632,12 @@ Widget aghsatiForoshWidget(BuildContext context) {
                   textAlign: TextAlign.right,
                   decoration: InputDecoration(
                     hintText: 'مبلغ را وارد کنید', //todo
-                    hintStyle:
-                        const TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
+                    hintStyle: const TextStyle(
+                      fontSize: 13,
+                      fontFamily: 'Iran Sans',
+                      fontWeight: FontWeight.w400,
+                      color: Color(0xFFA6A6A6),
+                    ),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
@@ -543,8 +651,12 @@ Widget aghsatiForoshWidget(BuildContext context) {
                   textAlign: TextAlign.right,
                   decoration: InputDecoration(
                     hintText: 'مبلغ را وارد کنید', //todo
-                    hintStyle:
-                        const TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
+                    hintStyle: const TextStyle(
+                      fontSize: 13,
+                      fontFamily: 'Iran Sans',
+                      fontWeight: FontWeight.w400,
+                      color: Color(0xFFA6A6A6),
+                    ),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),

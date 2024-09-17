@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/ejara_adv_pages/ejara_adv.dart';
 import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/ejara_tejari_edari/ejara_tejari_edari_adv.dart';
@@ -7,178 +6,135 @@ import 'package:flutter_application_1/pages/category/pages/page_advertisement/pa
 import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/kota_modat_pages/ejara_kota_modat_page.dart';
 import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/sakht_v_saz_pages/sakht_v_saz_adv.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
-import 'package:flutter_application_1/pages/educational_tour.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
-import '../../shared/app_bar.dart';
+class CategoryAdvertisement extends StatefulWidget {
+  const CategoryAdvertisement({super.key});
 
-class CategoryAdvertisement extends StatelessWidget {
-  const CategoryAdvertisement({
-    super.key,
-  });
+  @override
+  _CategoryAdvertisementState createState() => _CategoryAdvertisementState();
+}
+
+class _CategoryAdvertisementState extends State<CategoryAdvertisement> {
+  String? _selectedItem;
+
+  void _onItemTapped(String itemKey, Widget nextPage) {
+    setState(() {
+      _selectedItem = itemKey;
+    });
+    Get.to(() => nextPage);
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: buildAppBar(),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Column(
-            children: [
-              const Text(
-                "انتخاب دسته بندی",
-                style: TextStyle(
-                  fontFamily: MAIN_FONT_FAMILY,
-                  color: Color.fromRGBO(
-                    99,
-                    99,
-                    99,
-                    1,
-                  ),
-                  fontSize: 25,
-                ),
-              ),
-              const SizedBox(
-                height: 5,
-              ),
-              SvgPicture.asset(
-                'assets/images/key and home1.svg',height: Get.height/4,width: Get.height/4,
-              ),
-            ],
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 20),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      backgroundColor: Colors.white,
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Column(
               children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    _buildItem(
-                      'assets/images/Frame_rentstore.png',
-                      EjaraAdv(),
-                    ),
-                    const SizedBox(
-                      width: 20,
-                    ),
-                    _buildItem(
-                        'assets/images/Frame_salehome.png', const ForoshAdv()),
-                  ],
+                const Text(
+                  "انتخاب نوع واگذاری",
+                  style: TextStyle(
+                    fontFamily: MAIN_FONT_FAMILY,
+                    color: Color.fromRGBO(99, 99, 99, 1),
+                    fontSize: 25,
+                  ),
                 ),
-                SizedBox(
-                  height: 10,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    _buildItem(
-                        'assets/images/Frame_rent.png', EjaraTejariAdv()),
-                    const SizedBox(
-                      width: 20,
-                    ),
-                    _buildItem(
-                        'assets/images/Frame_salestore.png', ForoshTejariAdv()),
-                  ],
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    _buildItem(
-                        'assets/images/Frame_Daily.png', EjaraKotaModatPage()),
-                    const SizedBox(
-                      width: 20,
-                    ),
-                    _buildItem(
-                        'assets/images/Frame_Construction.png', SakhVaSaz()),
-                  ],
-                ),
-                SizedBox(
-                  height: 7,
+                const SizedBox(height: 20),
+                Image.asset(
+                  'assets/images/key and home1.png',
+                  height: Get.height / 4,
+                  width: Get.height / 4,
                 ),
               ],
             ),
-          )
-        ],
-      ),
-      bottomNavigationBar: NavigationBar(
-        backgroundColor: Colors.white,
-        onDestinationSelected: (int index) {
-          Get.to(() => EducationalTour(
-                index: index,
-                showEducation: false,
-              ));
-        },
-        indicatorColor: const Color(0x36D859),
-        // selectedIndex: currentPageIndex.value,
-        destinations: <Widget>[
-          NavigationDestination(
-            icon: Image.asset(
-              'assets/images/home navigator.png',
-              width: 24,
-              height: 24,
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 30),
+              child: Column(
+                children: [
+                  _buildRow([
+                    _buildItem('rentstore', 'assets/images/Frame_rentstore.png',
+                        EjaraAdv()),
+                    _buildItem('salehome', 'assets/images/Frame_salehome.png',
+                        const ForoshAdv()),
+                  ]),
+                  const SizedBox(height: 10),
+                  _buildRow([
+                    _buildItem('rent', 'assets/images/Frame_rent.png',
+                        EjaraTejariAdv()),
+                    _buildItem('salestore', 'assets/images/Frame_salestore.png',
+                        const ForoshTejariAdv()),
+                  ]),
+                  const SizedBox(height: 10),
+                  _buildRow([
+                    _buildItem('daily', 'assets/images/Frame_Daily.png',
+                        EjaraKotaModatPage()),
+                    _buildItem('construction',
+                        'assets/images/Frame_Construction.png', SakhVaSaz()),
+                  ]),
+                  const SizedBox(height: 7),
+                ],
+              ),
             ),
-            label: '',
-          ),
-          NavigationDestination(
-            icon: Image.asset(
-              'assets/images/messages.png',
-              width: 24,
-              height: 24,
-            ),
-            label: '',
-          ),
-          NavigationDestination(
-            icon: Image.asset(
-              'assets/images/add.png',
-              width: 24,
-              height: 24,
-            ),
-            label: '',
-          ),
-          NavigationDestination(
-            icon: Image.asset(
-              'assets/images/Category.png',
-              width: 24,
-              height: 24,
-            ),
-            label: '',
-          ),
-          NavigationDestination(
-            icon: Image.asset(
-              'assets/images/viw.png',
-              width: 24,
-              height: 24,
-            ),
-            label: '',
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
 
-  Widget _buildItem(
-    String assetPath,
-    Widget nextPage,
-  ) {
+  Widget _buildRow(List<Widget> items) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children:
+          items.expand((item) => [item, const SizedBox(width: 10)]).toList()
+            ..removeLast(),
+    );
+  }
+
+  Widget _buildItem(String key, String assetPath, Widget nextPage) {
+    bool isSelected = _selectedItem == key;
+
     return GestureDetector(
-      onTap: () {
-        Get.to(() => nextPage);
-      },
+      onTap: () => _onItemTapped(key, nextPage),
       child: Container(
         decoration: BoxDecoration(
-            border: Border.all(style: BorderStyle.solid),
-            borderRadius: BorderRadius.circular(10)),
-        child: SizedBox(
-          height: 90,
-          width: 140,
-          child: Padding(
-            padding: const EdgeInsets.all(2.0),
-            child: Image.asset(assetPath),
+          gradient: const LinearGradient(colors: GRADIANT_COLOR3),
+          borderRadius: BorderRadius.circular(7),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(0.7),
+          child: Container(
+            width: 144,
+            height: 96,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(7),
+              border: isSelected
+                  ? Border.all(
+                      color: const Color.fromARGB(0, 179, 177, 177),
+                    )
+                  : null,
+              gradient: isSelected
+                  ? const LinearGradient(
+                      colors: GRADIANT_COLOR,
+                    )
+                  : null,
+            ),
+            child: Container(
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(7),
+              ),
+              child: SizedBox(
+                height: 80,
+                width: 140,
+                child: Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Image.asset(assetPath),
+                ),
+              ),
+            ),
           ),
         ),
       ),

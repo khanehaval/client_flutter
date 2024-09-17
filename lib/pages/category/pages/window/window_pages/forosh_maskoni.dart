@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
 class ForoshMaskoni extends StatelessWidget {
@@ -12,218 +14,182 @@ class ForoshMaskoni extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return ListView(
       children: [
-        const Divider(
-          endIndent: 20,
-          indent: 20,
+        const SizedBox(
+          height: 10,
         ),
+        dividerwidget(),
         Container(
           margin: const EdgeInsets.all(10),
           padding: const EdgeInsets.all(5),
           height: 149,
           width: 372,
-          decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(10),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.grey.withOpacity(0.2),
-                  spreadRadius: 1,
-                  blurRadius: 1,
-                ),
-              ]),
           child: Image.asset('assets/images/Group 667.png'),
         ),
-        const Divider(
-          endIndent: 20,
-          indent: 20,
+        dividerwidget(),
+        const SizedBox(
+          height: 10,
         ),
         SingleChildScrollView(
           reverse: true,
           scrollDirection: Axis.horizontal,
-          child: Row(
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(15),
-                child: Container(
-                  height: 90,
-                  width: 147,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(10),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.3),
-                        blurRadius: 5,
-                      )
-                    ],
-                  ),
-                  child: Image.asset(
-                    'assets/images/kolang.png',
-                    fit: BoxFit.fill,
-                  ),
+          child: Padding(
+            padding: const EdgeInsets.only(left: 15.0, right: 15),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Container(
+                    height: 90,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: SvgPicture.asset(
+                      'assets/images/Group 759.svg',
+                    )),
+                const SizedBox(
+                  height: 10,
                 ),
-              ),
-              Container(
-                height: 90,
-                width: 147,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(10),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.3),
-                      blurRadius: 5,
-                    )
-                  ],
-                ),
-                child: Image.asset(
-                  'assets/images/vila.png',
-                  fit: BoxFit.fill,
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Container(
-                  height: 90,
-                  width: 147,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(10),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.3),
-                        blurRadius: 5,
-                      )
-                    ],
-                  ),
-                  child: Image.asset(
-                    'assets/images/Group 648.png',
-                    fit: BoxFit.fill,
-                  ),
-                ),
-              ),
-            ],
+                Container(
+                    height: 90,
+                    width: 170,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: SvgPicture.asset(
+                      'assets/images/Group 758.svg',
+                    )),
+                Container(
+                    height: 90,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: SvgPicture.asset(
+                      'assets/images/Group 757.svg',
+                    )),
+              ],
+            ),
           ),
-        ),
-        const Divider(
-          endIndent: 20,
-          indent: 20,
         ),
         const SizedBox(
           height: 10,
         ),
+        dividerwidget(),
+        const SizedBox(
+          height: 10,
+        ),
         Padding(
-          padding: const EdgeInsets.only(left: 8, right: 8),
+          padding: const EdgeInsets.symmetric(horizontal: 15.0),
           child: Container(
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10), border: Border.all()),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Obx(() => IconButton(
-                      icon: _show_item_1.value
-                          ? const Icon(
-                              Icons.keyboard_double_arrow_down_outlined,
-                              size: 25,
-                            )
-                          : const Icon(CupertinoIcons.chevron_left_2),
-                      onPressed: () {
-                        _show_item_1.value = !_show_item_1.value;
-                      },
-                    )),
-                const Text(
-                  'فروش آپارتمان بر اساس قیمت',
-                  style: TextStyle(
-                      fontSize: 18,
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold,
-                      fontFamily: 'Iran Sans Bold,'),
+            decoration: const BoxDecoration(
+                borderRadius: BorderRadius.all(Radius.circular(10)),
+                gradient: LinearGradient(colors: GRADIANT_COLOR3)),
+            child: Padding(
+              padding: const EdgeInsets.all(1.2),
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(10),
                 ),
-              ],
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Obx(() => IconButton(
+                          icon: _show_item_1.value
+                              ? SvgPicture.asset('assets/images/down.svg')
+                              : SvgPicture.asset(
+                                  'assets/images/=.svg',
+                                ),
+                          style: const ButtonStyle(),
+                          onPressed: () {
+                            _show_item_1.value = !_show_item_1.value;
+                          },
+                        )),
+                    const Padding(
+                      padding: EdgeInsets.only(right: 15.0),
+                      child: Text(
+                        'فروش آپارتمان بر اساس قیمت',
+                        style: TextStyle(
+                            fontSize: 14,
+                            color: Color.fromRGBO(
+                              48,
+                              48,
+                              48,
+                              1,
+                            ),
+                            fontWeight: FontWeight.bold,
+                            fontFamily: MAIN_FONT_FAMILY),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             ),
           ),
         ),
         buildItem1(),
-        const SizedBox(
-          height: 10,
-        ),
-        const Divider(
-          endIndent: 20,
-          indent: 20,
-        ),
+        dividerwidget(),
         const SizedBox(
           height: 10,
         ),
         Padding(
-          padding: const EdgeInsets.only(left: 8, right: 8),
+          padding: const EdgeInsets.symmetric(horizontal: 15),
           child: Container(
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10), border: Border.all()),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Obx(() => IconButton(
-                      icon: _show_item_2.value
-                          ? const Icon(
-                              Icons.keyboard_double_arrow_down_outlined,
-                              size: 25,
-                            )
-                          : const Icon(CupertinoIcons.chevron_left_2),
-                      onPressed: () {
-                        _show_item_2.value = !_show_item_2.value;
-                      },
-                    )),
-                const Text(
-                  'فروش آپارتمان بر اساس متراژ',
-                  style: TextStyle(
-                      fontSize: 18,
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold,
-                      fontFamily: 'Iran Sans Bold,'),
+            decoration: const BoxDecoration(
+                borderRadius: BorderRadius.all(Radius.circular(10)),
+                gradient: LinearGradient(colors: GRADIANT_COLOR3)),
+            child: Padding(
+              padding: const EdgeInsets.all(1.2),
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(10),
                 ),
-              ],
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Obx(() => IconButton(
+                          icon: _show_item_2.value
+                              ? SvgPicture.asset('assets/images/down.svg')
+                              : SvgPicture.asset(
+                                  'assets/images/=.svg',
+                                ),
+                          style: const ButtonStyle(),
+                          onPressed: () {
+                            _show_item_2.value = !_show_item_2.value;
+                          },
+                        )),
+                    const Padding(
+                      padding: EdgeInsets.only(right: 15.0),
+                      child: Text(
+                        'خرید ویلا در شمال',
+                        style: TextStyle(
+                            fontSize: 14,
+                            color: Color.fromRGBO(
+                              48,
+                              48,
+                              48,
+                              1,
+                            ),
+                            fontWeight: FontWeight.bold,
+                            fontFamily: MAIN_FONT_FAMILY),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             ),
           ),
         ),
         _buildItem2(),
+        dividerwidget(),
         const SizedBox(
-          height: 20,
+          height: 10,
         ),
-        const Divider(),
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Container(
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10), border: Border.all()),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Obx(() => IconButton(
-                      icon: _show_item_3.value
-                          ? const Icon(
-                              Icons.keyboard_double_arrow_down_outlined,
-                              size: 25,
-                            )
-                          : const Icon(CupertinoIcons.chevron_left_2),
-                      onPressed: () {
-                        _show_item_3.value = !_show_item_3.value;
-                      },
-                    )),
-                const Text(
-                  'خرید ویلا در شمال',
-                  style: TextStyle(
-                      fontSize: 18,
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold,
-                      fontFamily: 'Iran Sans Bold,'),
-                ),
-              ],
-            ),
-          ),
-        ),
-        _buildItem3()
+        _buildItem3(),
       ],
     );
   }
@@ -234,30 +200,26 @@ class ForoshMaskoni extends StatelessWidget {
           ? Padding(
               padding: const EdgeInsets.all(10),
               child: Column(children: [
+                const SizedBox(
+                  height: 10,
+                ),
                 GestureDetector(
                   onTap: () {},
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       Container(
                         height: 57,
-                        width: 176,
+                        width: 168,
                         decoration: BoxDecoration(
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(10),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.grey.withOpacity(0.1),
-                                spreadRadius: 1,
-                                blurRadius: 5,
-                              )
-                            ],
                             border: Border.all(
                               color: Colors.black45,
                               width: 0.3,
                             )),
                         child: const Text(
-                          'تا 500 میلیون تومان',
+                          'تا ۵۰۰ میلیون تومان',
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             color: Color(0xFF303030),
@@ -268,25 +230,21 @@ class ForoshMaskoni extends StatelessWidget {
                           ),
                         ),
                       ),
+                      const SizedBox(
+                        width: 2,
+                      ),
                       Container(
                         height: 57,
-                        width: 176,
+                        width: 168,
                         decoration: BoxDecoration(
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(10),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.grey.withOpacity(0.1),
-                                spreadRadius: 1,
-                                blurRadius: 10,
-                              )
-                            ],
                             border: Border.all(
                               color: Colors.black45,
                               width: 0.3,
                             )),
                         child: const Text(
-                          'تا 100 میلیون تومان',
+                          'تا ۱۰۰ میلیون تومان',
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             color: Color(0xFF303030),
@@ -301,31 +259,24 @@ class ForoshMaskoni extends StatelessWidget {
                   ),
                 ),
                 SizedBox(
-                  height: 10,
+                  height: 20,
                 ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Container(
                       height: 57,
-                      width: 176,
+                      width: 168,
                       decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(10),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(0.1),
-                              spreadRadius: 1,
-                              blurRadius: 5,
-                            )
-                          ],
                           border: Border.all(
                             color: Colors.black45,
                             width: 0.3,
                           )),
                       child: const Text(
-                        'تا 2 میلیارد تومان',
+                        'تا ۲ میلیارد تومان',
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           color: Color(0xFF303030),
@@ -336,25 +287,21 @@ class ForoshMaskoni extends StatelessWidget {
                         ),
                       ),
                     ),
+                    const SizedBox(
+                      width: 2,
+                    ),
                     Container(
                       height: 57,
-                      width: 176,
+                      width: 168,
                       decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(10),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(0.1),
-                              spreadRadius: 1,
-                              blurRadius: 10,
-                            )
-                          ],
                           border: Border.all(
                             color: Colors.black45,
                             width: 0.3,
                           )),
                       child: const Text(
-                        'تا 1 میلیارد تومان',
+                        'تا ۱ میلیارد تومان',
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           color: Color(0xFF303030),
@@ -368,30 +315,23 @@ class ForoshMaskoni extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(
-                  height: 10,
+                  height: 20,
                 ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     Container(
                       height: 57,
-                      width: 176,
+                      width: 168,
                       decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(10),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(0.1),
-                              spreadRadius: 1,
-                              blurRadius: 5,
-                            )
-                          ],
                           border: Border.all(
                             color: Colors.black45,
                             width: 0.3,
                           )),
                       child: const Text(
-                        'تا 4 میلیارد تومان',
+                        'تا ۴ میلیارد تومان',
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           color: Color(0xFF303030),
@@ -402,25 +342,21 @@ class ForoshMaskoni extends StatelessWidget {
                         ),
                       ),
                     ),
+                    const SizedBox(
+                      width: 2,
+                    ),
                     Container(
                       height: 57,
-                      width: 176,
+                      width: 168,
                       decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(10),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(0.1),
-                              spreadRadius: 1,
-                              blurRadius: 10,
-                            )
-                          ],
                           border: Border.all(
                             color: Colors.black45,
                             width: 0.3,
                           )),
                       child: const Text(
-                        'تا 3 میلیارد تومان',
+                        'تا ۳ میلیارد تومان',
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           color: Color(0xFF303030),
@@ -439,360 +375,104 @@ class ForoshMaskoni extends StatelessWidget {
     );
   }
 
+  Widget _buidText(String text) {
+    return Container(
+      height: 57,
+      width: 168,
+      decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(10),
+          border: Border.all(
+            color: Colors.black45,
+            width: 0.3,
+          )),
+      child: Text(
+        text,
+        textAlign: TextAlign.center,
+        style: const TextStyle(
+          color: Color(0xFF303030),
+          fontSize: 14,
+          fontFamily: MAIN_FONT_FAMILY,
+          fontWeight: FontWeight.w300,
+          height: 4,
+        ),
+      ),
+    );
+  }
+
   Obx _buildItem2() {
     return Obx(() => _show_item_2.isTrue
         ? Padding(
-            padding: const EdgeInsets.all(10),
-            child: Column(children: [
-              GestureDetector(
-                onTap: () {},
-                child: Column(children: [
-                  GestureDetector(
-                    onTap: () {},
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Container(
-                          height: 57,
-                          width: 176,
-                          decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(10),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.grey.withOpacity(0.1),
-                                  spreadRadius: 1,
-                                  blurRadius: 5,
-                                )
-                              ],
-                              border: Border.all(
-                                color: Colors.black45,
-                                width: 0.3,
-                              )),
-                          child: const Text(
-                            'تا 100 متر مربع',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              color: Color(0xFF303030),
-                              fontSize: 14,
-                              fontFamily: MAIN_FONT_FAMILY,
-                              fontWeight: FontWeight.w300,
-                              height: 4,
-                            ),
-                          ),
-                        ),
-                        Container(
-                          height: 57,
-                          width: 176,
-                          decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(10),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.grey.withOpacity(0.1),
-                                  spreadRadius: 1,
-                                  blurRadius: 10,
-                                )
-                              ],
-                              border: Border.all(
-                                color: Colors.black45,
-                                width: 0.3,
-                              )),
-                          child: const Text(
-                            'تا 50 متر مربع',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              color: Color(0xFF303030),
-                              fontSize: 14,
-                              fontFamily: MAIN_FONT_FAMILY,
-                              fontWeight: FontWeight.w300,
-                              height: 4,
-                            ),
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Container(
-                        height: 57,
-                        width: 176,
-                        decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(10),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.grey.withOpacity(0.1),
-                                spreadRadius: 1,
-                                blurRadius: 5,
-                              )
-                            ],
-                            border: Border.all(
-                              color: Colors.black45,
-                              width: 0.3,
-                            )),
-                        child: const Text(
-                          'تا 200 متر مربع',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            color: Color(0xFF303030),
-                            fontSize: 14,
-                            fontFamily: MAIN_FONT_FAMILY,
-                            fontWeight: FontWeight.w300,
-                            height: 4,
-                          ),
-                        ),
-                      ),
-                      Container(
-                        height: 57,
-                        width: 176,
-                        decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(10),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.grey.withOpacity(0.1),
-                                spreadRadius: 1,
-                                blurRadius: 10,
-                              )
-                            ],
-                            border: Border.all(
-                              color: Colors.black45,
-                              width: 0.3,
-                            )),
-                        child: const Text(
-                          'تا 150 متر مربع',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            color: Color(0xFF303030),
-                            fontSize: 14,
-                            fontFamily: MAIN_FONT_FAMILY,
-                            fontWeight: FontWeight.w300,
-                            height: 4,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Container(
-                        height: 57,
-                        width: 176,
-                        decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(10),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.grey.withOpacity(0.1),
-                                spreadRadius: 1,
-                                blurRadius: 5,
-                              )
-                            ],
-                            border: Border.all(
-                              color: Colors.black45,
-                              width: 0.3,
-                            )),
-                        child: const Text(
-                          'تا 300 متر مربع',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            color: Color(0xFF303030),
-                            fontSize: 14,
-                            fontFamily: MAIN_FONT_FAMILY,
-                            fontWeight: FontWeight.w300,
-                            height: 4,
-                          ),
-                        ),
-                      ),
-                      Container(
-                        height: 57,
-                        width: 176,
-                        decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(10),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.grey.withOpacity(0.1),
-                                spreadRadius: 1,
-                                blurRadius: 10,
-                              )
-                            ],
-                            border: Border.all(
-                              color: Colors.black45,
-                              width: 0.3,
-                            )),
-                        child: const Text(
-                          'تا 250 متر مربع',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            color: Color(0xFF303030),
-                            fontSize: 14,
-                            fontFamily: MAIN_FONT_FAMILY,
-                            fontWeight: FontWeight.w300,
-                            height: 4,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ]),
-              ),
-            ]),
+            padding: const EdgeInsets.all(10.0),
+            child: Column(
+              children: [
+                const SizedBox(
+                  height: 10,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    _buidText('تا ۵۰ متر مربع'),
+                    _buidText('تا ۶۰ متر مربع'),
+                  ],
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    _buidText('تا ۸۰ متر مربع'),
+                    _buidText('تا ۷۰ متر مربع'),
+                  ],
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    _buidText('تا ۱۰۰ متر مربع'),
+                    _buidText('تا ۹۰ متر مربع'),
+                  ],
+                )
+              ],
+            ),
           )
         : const SizedBox.shrink());
   }
 
-  Obx _buildItem3() {
-    return Obx(
-      () => _show_item_3.isTrue
-          ? Padding(
-              padding: const EdgeInsets.all(10),
-              child: Column(
-                children: [
-                  Image.asset(
-                    'assets/images/Group 631.png',
-                    width: 372,
-                    height: 150,
-                  ),
-                  Column(
-                    children: [
-                      GestureDetector(
-                        onTap: () {},
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Container(
-                              height: 98,
-                              width: 175,
-                              decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(10),
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Colors.grey.withOpacity(0.1),
-                                      spreadRadius: 1,
-                                      blurRadius: 10,
-                                    )
-                                  ],
-                                  border: Border.all(
-                                    color: Colors.black,
-                                    // Initial border color
-                                    width: 0.01,
-                                  )),
-                              child: Image.asset('assets/images/Group 655.png',
-                                  fit: BoxFit.fill),
-                            ),
-                            Container(
-                              height: 98,
-                              width: 175,
-                              decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(10),
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Colors.grey.withOpacity(.01),
-                                      spreadRadius: 1,
-                                      blurRadius: 10,
-                                    )
-                                  ],
-                                  border: Border.all(
-                                    color: Colors.black,
-                                    // Initial border color
-                                    width: 0.01,
-                                  )),
-                              child: Image.asset('assets/images/Group 654.png',
-                                  fit: BoxFit.fill),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
+  SingleChildScrollView _buildItem3() {
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      child: Padding(
+        padding: const EdgeInsets.only(left: 15.0, right: 5),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            SizedBox(
+              width: 170,
+              child: SvgPicture.asset(
+                'assets/images/moshaver_amlak.svg',
               ),
-            )
-          : Column(
-              children: [
-                Obx(() => _show_item_3.isTrue
-                    ? Column(children: [
-                        Image.asset(
-                          'assets/images/Group 654.png',
-                          width: 372,
-                          height: 150,
-                        ),
-                        Column(
-                          children: [
-                            GestureDetector(
-                              onTap: () {},
-                              child: Row(
-                                children: [
-                                  Container(
-                                    height: 98,
-                                    width: 170,
-                                    decoration: BoxDecoration(
-                                        color: Colors.white,
-                                        borderRadius: BorderRadius.circular(10),
-                                        boxShadow: [
-                                          BoxShadow(
-                                            color: Colors.grey.withOpacity(.01),
-                                            spreadRadius: 1,
-                                            blurRadius: 10,
-                                          )
-                                        ],
-                                        border: Border.all(
-                                          color: Colors.black,
-                                          // Initial border color
-                                          width: 0.7,
-                                        )),
-                                    child: Image.asset(
-                                        'assets/images/Group 655.png',
-                                        fit: BoxFit.fill),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.all(0),
-                                    child: Container(
-                                      height: 98,
-                                      width: 180,
-                                      decoration: BoxDecoration(
-                                          color: Colors.white,
-                                          borderRadius:
-                                              BorderRadius.circular(10),
-                                          boxShadow: [
-                                            BoxShadow(
-                                              color:
-                                                  Colors.grey.withOpacity(0.1),
-                                              spreadRadius: 1,
-                                              blurRadius: 10,
-                                            )
-                                          ],
-                                          border: Border.all(
-                                            color: Colors.blue,
-                                            // Initial border color
-                                          )),
-                                      child: Image.asset(
-                                          'assets/images/Group 654.png',
-                                          fit: BoxFit.fill),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                      ])
-                    : const SizedBox.shrink())
-              ],
             ),
+            const SizedBox(
+              width: 10,
+            ),
+            SizedBox(
+                width: 170,
+                child: SvgPicture.asset('assets/images/axhans_amlak1.svg')),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Divider dividerwidget() {
+    return const Divider(
+      endIndent: 20,
+      indent: 20,
+      color: Color.fromRGBO(236, 236, 236, 1),
     );
   }
 }

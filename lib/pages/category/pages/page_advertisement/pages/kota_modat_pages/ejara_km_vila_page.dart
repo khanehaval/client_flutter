@@ -1,69 +1,145 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/models/AdvInfoModel.dart';
 import 'package:flutter_application_1/pages/category/models/FacilitiesModel.dart';
-import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/forosh_adv_pages/kolangi_adv_page.dart';
+import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/ejara_adv_pages/ejara_vila_page.dart';
 import 'package:flutter_application_1/pages/category/shared/adv_info/advInfo.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
-
 import 'package:flutter_application_1/pages/category/shared/facilities_selector.dart';
 import 'package:flutter_application_1/pages/category/shared/images_picker/images_picker.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/servises_wc.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_arrival%20time.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_jenskaf.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_kabinet.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_nafar_ezafe.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_service_sleep.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_system_garm.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_system_sarmayesh.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_tamin_abe_garm.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_tedad_Otagh.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_tedad_takht_one_nafare.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_tedad_takht_tow_nafare.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_zarfiat_paye.dart';
+import 'package:flutter_application_1/pages/category/shared/namayesh.dart';
 import 'package:flutter_application_1/pages/category/shared/number_piacker.dart';
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
-import 'package:flutter_application_1/pages/category/shared/tabageh_sale.dart';
 import 'package:flutter_application_1/pages/category/shared/twoItemInRow.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/text_field.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/route_widget.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:flutter_application_1/pages/category/shared/widget/widget_sowich_kotamodat.dart';
 import 'package:get/get.dart';
+import 'package:gradient_icon/gradient_icon.dart';
 
+import '../../../../shared/widget/submit_row.dart';
 import '../../../../shared/widget/switachable.dart';
 
-class EjaraKmVilaPage extends StatelessWidget {
+class EjaraKmVilaPage extends StatefulWidget {
+  @override
+  State<EjaraKmVilaPage> createState() => _EjaraKmVilaPageState();
+}
+
+class _EjaraKmVilaPageState extends State<EjaraKmVilaPage> {
   final fullTime = false.obs;
+
   final _advInfo = AdvInfoModel();
+
   final hasParking = false.obs;
+
   final hasmeli = false.obs;
+
   final _agreement = false.obs;
+
   final hasshenase = false.obs;
+
   final _onePrice = 0.0.obs;
+
   final _facilities = <FacilitiesModel>[].obs;
+
   final _recreation = <FacilitiesModel>[].obs;
+
   final _homeAppliances = <FacilitiesModel>[].obs;
+
   final _kitchenAppliances = <FacilitiesModel>[].obs;
+
   final _securityAppliances = <FacilitiesModel>[].obs;
+
   final _allPriceTextController = TextEditingController();
+
   final _metragTextController = TextEditingController();
+
+  final submit = false.obs;
 
   final _selectedImagesPath = [].obs;
 
   final _incomingTimeController = TextEditingController();
+
   final _outTimeController = TextEditingController();
+
   final _buildRoomsCountController = TextEditingController();
+
   final _buildFloorController = TextEditingController();
+
   final _buildBaseCapacityController = TextEditingController();
+
   final _buildMaxCapacityController = TextEditingController();
+
   final _buildRiteController = TextEditingController();
+
   final _buildAnimalController = TextEditingController();
+
   final _buildSmokingController = TextEditingController();
+
   final _buildShoesController = TextEditingController();
+
   final _buildDeprivationController = TextEditingController();
+
   final _buildSleepServiceCountController = TextEditingController();
+
   final _oneBedCountController = TextEditingController();
+
   final _twoBedCountController = TextEditingController();
+
   final _floorMaterialController = TextEditingController();
+
   final _cabinetController = TextEditingController();
+
   final _coldTypeController = TextEditingController();
+
   final _heatTypeController = TextEditingController();
+
   final _heatWaterController = TextEditingController();
+
   final _wcController = TextEditingController();
 
   @override
+  void initState() {
+    super.initState();
+
+    _allPriceTextController.addListener(_checkFields);
+  }
+
+  void _checkFields() {
+    if (_allPriceTextController.text.isNotEmpty) {
+      submit.value = true;
+    } else {
+      submit.value = false;
+    }
+  }
+
+  @override
+  void dispose() {
+    _allPriceTextController.dispose();
+    super.dispose();
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: buildaAppBar(),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+          padding: const EdgeInsets.symmetric(
+            horizontal: 20,
+          ),
           child: Column(children: [
             route([
               "اجاره کوتاه مدت ویلا",
@@ -73,7 +149,7 @@ class EjaraKmVilaPage extends StatelessWidget {
             const SizedBox(
               height: 30,
             ),
-            TwoItemInRow(
+            TwoItemInRow2(
               label1: " اجاره روز خاص (تومان)",
               label2: "اجاره روز عادی (تومان) ",
               widget1: SizedBox(
@@ -85,6 +161,9 @@ class EjaraKmVilaPage extends StatelessWidget {
                   decoration: InputDecoration(
                     hintText: "0",
                     hintStyle: const TextStyle(
+                      fontSize: 13,
+                      fontFamily: 'Iran Sans',
+                      fontWeight: FontWeight.w400,
                       color: Color(0xFFA6A6A6),
                     ),
                     border: OutlineInputBorder(
@@ -97,11 +176,15 @@ class EjaraKmVilaPage extends StatelessWidget {
                 height: 41,
                 width: getPageWidth(),
                 child: TextField(
+                  controller: _allPriceTextController,
                   textAlign: TextAlign.right,
                   keyboardType: TextInputType.number,
                   decoration: InputDecoration(
                     hintText: "0",
                     hintStyle: const TextStyle(
+                      fontSize: 13,
+                      fontFamily: 'Iran Sans',
+                      fontWeight: FontWeight.w400,
                       color: Color(0xFFA6A6A6),
                     ),
                     border: OutlineInputBorder(
@@ -114,7 +197,7 @@ class EjaraKmVilaPage extends StatelessWidget {
             const SizedBox(
               height: 15,
             ),
-            TwoItemInRow(
+            TwoItemInRow2(
               label1: " هزینه نفر اضافه (تومان)",
               label2: "   (تومان)اجاره روز تعطیل",
               widget1: SizedBox(
@@ -126,6 +209,9 @@ class EjaraKmVilaPage extends StatelessWidget {
                   decoration: InputDecoration(
                     hintText: "0",
                     hintStyle: const TextStyle(
+                      fontSize: 13,
+                      fontFamily: 'Iran Sans',
+                      fontWeight: FontWeight.w400,
                       color: Color(0xFFA6A6A6),
                     ),
                     border: OutlineInputBorder(
@@ -143,6 +229,9 @@ class EjaraKmVilaPage extends StatelessWidget {
                   decoration: InputDecoration(
                     hintText: "0",
                     hintStyle: const TextStyle(
+                      fontSize: 13,
+                      fontFamily: 'Iran Sans',
+                      fontWeight: FontWeight.w400,
                       color: Color(0xFFA6A6A6),
                     ),
                     border: OutlineInputBorder(
@@ -163,44 +252,46 @@ class EjaraKmVilaPage extends StatelessWidget {
             const SizedBox(
               height: 30,
             ),
-            const Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Text(
-                  "*",
-                  style: TextStyle(
-                      fontSize: 20,
-                      color: Color.fromRGBO(156, 64, 64, 1),
-                      fontFamily: MAIN_FONT_FAMILY),
-                ),
-                Text(
-                  "متراژ",
-                  style: TextStyle(
-                      color: Color.fromRGBO(166, 166, 166, 1),
-                      fontFamily: MAIN_FONT_FAMILY),
-                  textAlign: TextAlign.start,
-                ),
-              ],
-            ),
-            SizedBox(
-              height: 50,
-              width: MediaQuery.of(context).size.width * 0.95,
-              child: TextField(
-                textAlign: TextAlign.right,
-                controller: _metragTextController,
-                keyboardType: TextInputType.number,
-                onChanged: (m) {
-                  _onePrice.value = m.isNotEmpty
-                      ? int.parse(_allPriceTextController.text) / int.parse(m)
-                      : 0;
-                },
-                decoration: InputDecoration(
-                  hintText: '120',
-                  hintStyle: const TextStyle(
-                    color: Color(0xFFA6A6A6),
+            TwoItemInRow2(
+              label1: "متراژ بنا ",
+              label2: "متراژ زمین",
+              widget1: SizedBox(
+                height: 41,
+                width: getPageWidth(),
+                child: TextField(
+                  textAlign: TextAlign.right,
+                  keyboardType: TextInputType.number,
+                  decoration: InputDecoration(
+                    hintText: "0",
+                    hintStyle: const TextStyle(
+                      fontSize: 13,
+                      fontFamily: 'Iran Sans',
+                      fontWeight: FontWeight.w400,
+                      color: Color(0xFFA6A6A6),
+                    ),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
                   ),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
+                ),
+              ),
+              widget2: SizedBox(
+                height: 41,
+                width: getPageWidth(),
+                child: TextField(
+                  textAlign: TextAlign.right,
+                  keyboardType: TextInputType.number,
+                  decoration: InputDecoration(
+                    hintText: "0",
+                    hintStyle: const TextStyle(
+                      fontSize: 13,
+                      fontFamily: 'Iran Sans',
+                      fontWeight: FontWeight.w400,
+                      color: Color(0xFFA6A6A6),
+                    ),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
                   ),
                 ),
               ),
@@ -215,13 +306,19 @@ class EjaraKmVilaPage extends StatelessWidget {
             const SizedBox(
               height: 30,
             ),
-            TwoItemInRow(
+            TwoItemInRow2(
                 label1: "ساعت خروج",
                 label2: "ساعت ورود",
-                widget1: ReadOnlyTextField(_outTimeController, () {},
-                    width: getPageWidth()),
-                widget2: ReadOnlyTextField(_incomingTimeController, () {},
-                    width: getPageWidth())),
+                widget1: ReadOnlyTextField(_outTimeController, () {
+                  ArrivalTime((selectedOption) {
+                    _outTimeController.text = selectedOption;
+                  });
+                }, width: getPageWidth()),
+                widget2: ReadOnlyTextField(_incomingTimeController, () {
+                  ArrivalTime((selectedOption) {
+                    _outTimeController.text = selectedOption;
+                  });
+                }, width: getPageWidth())),
             const SizedBox(
               height: 30,
             ),
@@ -232,29 +329,29 @@ class EjaraKmVilaPage extends StatelessWidget {
             const SizedBox(
               height: 30,
             ),
-            TwoItemInRow(
+            TwoItemInRow2(
               label1: "نفر اضافه تا ",
               label2: "ظرفیت پایه",
               widget1: ReadOnlyTextField(_buildMaxCapacityController, () {
-                showNumberPicker((_) {
-                  _buildMaxCapacityController.text = _;
+                NafarEzafe((selectedOption) {
+                  _buildMaxCapacityController.text = selectedOption;
                 });
               }, width: getPageWidth()),
               widget2: ReadOnlyTextField(_buildBaseCapacityController, () {
-                showNumberPicker((_) {
-                  _buildBaseCapacityController.text = _;
+                ZarfiatPaye((selectedOption) {
+                  _buildBaseCapacityController.text = selectedOption;
                 });
               }, width: getPageWidth()),
             ),
             const SizedBox(
               height: 30,
             ),
-            TwoItemInRow(
+            TwoItemInRow2(
               label2: "تعداد اتاق ",
               label1: " طبقه ",
               widget1: ReadOnlyTextField(_buildRoomsCountController, () {
-                showNumberPicker((_) {
-                  _buildRoomsCountController.text = _;
+                TedadOtagh((selectedOption) {
+                  _buildRoomsCountController.text = selectedOption;
                 });
               }, width: getPageWidth()),
               widget2: ReadOnlyTextField(_buildFloorController, () {
@@ -283,50 +380,7 @@ class EjaraKmVilaPage extends StatelessWidget {
             const SizedBox(
               height: 30,
             ),
-            TwoItemInRow(
-              label1: "شرایط برگزاری مراسم",
-              label2: "شرایط حیوانات خانگی",
-              widget1: ReadOnlyTextField(_buildRiteController, () {},
-                  width: getPageWidth()),
-              widget2: ReadOnlyTextField(_buildAnimalController, () {},
-                  width: getPageWidth()),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            TwoItemInRow(
-                label1: "استعمال دخانیات",
-                label2: "تردد با کفش",
-                widget1: ReadOnlyTextField(_buildSmokingController, () {},
-                    width: getPageWidth()),
-                widget2: ReadOnlyTextField(_buildShoesController, () {},
-                    width: getPageWidth())),
-            const SizedBox(
-              height: 20,
-            ),
-            const Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Text(
-                  "مدارک محرمیت",
-                  style: TextStyle(
-                      color: Color.fromRGBO(99, 99, 99, 1),
-                      fontFamily: MAIN_FONT_FAMILY),
-                  textAlign: TextAlign.start,
-                ),
-              ],
-            ),
-            ReadOnlyTextField(
-              _buildDeprivationController,
-              () {},
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-              switchable(hasshenase, "شناسنامه"),
-              switchable(hasmeli, "کارت ملی")
-            ]),
+            SwitchKotaModat(),
             const SizedBox(
               height: 30,
             ),
@@ -350,8 +404,8 @@ class EjaraKmVilaPage extends StatelessWidget {
               ],
             ),
             ReadOnlyTextField(_buildSleepServiceCountController, () {
-              showNumberPicker((_) {
-                _buildSleepServiceCountController.text = _;
+              ServiceSleep((selectedOption) {
+                _buildSleepServiceCountController.text = selectedOption;
               });
             }),
             const SizedBox(
@@ -361,13 +415,13 @@ class EjaraKmVilaPage extends StatelessWidget {
                 label1: "تعداد تخت دو نفره",
                 label2: "تعداد تخت یک نفره",
                 widget1: ReadOnlyTextField(_twoBedCountController, () {
-                  showNumberPicker((_) {
-                    _twoBedCountController.text = _;
+                  TedadTakhtTowNafare((selectedOption) {
+                    _twoBedCountController.text = selectedOption;
                   });
                 }, width: getPageWidth()),
                 widget2: ReadOnlyTextField(_oneBedCountController, () {
-                  showNumberPicker((_) {
-                    _oneBedCountController.text = _;
+                  TedadTakhtOneNafare((selectedOption) {
+                    _oneBedCountController.text = selectedOption;
                   });
                 }, width: getPageWidth())),
             const SizedBox(
@@ -391,15 +445,14 @@ class EjaraKmVilaPage extends StatelessWidget {
               label1: "نوع کابینت",
               label2: "جنس کف",
               widget1: ReadOnlyTextField(_cabinetController, () {
-                //todo
-                // showNumberPicker((_) {
-                //   _oneBedCountController.text = _;
-                // });
+                Kabinet((selectedOption) {
+                  _cabinetController.text = selectedOption;
+                });
               }, width: getPageWidth()),
               widget2: ReadOnlyTextField(_floorMaterialController, () {
-                // showNumberPicker((_) {
-                //   _oneBedCountController.text = _;
-                // });
+                JensKaf((selectedOption) {
+                  _floorMaterialController.text = selectedOption;
+                });
               }, width: getPageWidth()),
             ),
             const SizedBox(
@@ -409,12 +462,15 @@ class EjaraKmVilaPage extends StatelessWidget {
               label1: "نوع سیستم گرمایش",
               label2: "نوع سیستم سرمایش",
               widget1: ReadOnlyTextField(_heatTypeController, () {
-                // showNumberPicker((_) {
-                //   _oneBedCountController.text = _;
-                // });
+                Garmayesh((selectedOption) {
+                  _heatTypeController.text = selectedOption;
+                });
               }, width: getPageWidth()),
-              widget2: ReadOnlyTextField(_coldTypeController, () {},
-                  width: getPageWidth()),
+              widget2: ReadOnlyTextField(_coldTypeController, () {
+                Sarmayesh((selectedOption) {
+                  _coldTypeController.text = selectedOption;
+                });
+              }, width: getPageWidth()),
             ),
             const SizedBox(
               height: 10,
@@ -422,17 +478,29 @@ class EjaraKmVilaPage extends StatelessWidget {
             TwoItemInRow(
               label1: "سرویس بهداشتی",
               label2: "تامین کننده آب گرم",
-              widget1: ReadOnlyTextField(_wcController, () {},
-                  width: getPageWidth()),
-              widget2: ReadOnlyTextField(_heatWaterController, () {},
-                  width: getPageWidth()),
+              widget1: ReadOnlyTextField(_wcController, () {
+                Wc((selectedOption) {
+                  _wcController.text = selectedOption;
+                });
+              }, width: getPageWidth()),
+              widget2: ReadOnlyTextField(_heatWaterController, () {
+                AbeGarm((selectedOption) {
+                  _heatWaterController.text = selectedOption;
+                });
+              }, width: getPageWidth()),
             ),
             const SizedBox(
               height: 30,
             ),
             const Divider(
-              endIndent: 20,
-              indent: 20,
+              color: Color.fromRGBO(
+                226,
+                226,
+                226,
+                1,
+              ),
+              endIndent: 6,
+              indent: 6,
             ),
             const SizedBox(
               height: 30,
@@ -561,7 +629,51 @@ class EjaraKmVilaPage extends StatelessWidget {
             const SizedBox(
               height: 15,
             ),
-            AdvInfo(_advInfo)
+            AdvInfo(_advInfo),
+            const SizedBox(
+              height: 30,
+            ),
+            GestureDetector(
+              onTap: () {
+                if (submit.value) {
+                  Get.to(() => NamayeshAgahi());
+                }
+              },
+              child: Obx(() => Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Center(
+                        child: Text(
+                          "... تایید و ادامه",
+                          style: !submit.value
+                              ? const TextStyle(
+                                  fontSize: 20,
+                                  fontFamily: MAIN_FONT_FAMILY,
+                                  color: Colors.black38,
+                                )
+                              : const TextStyle(
+                                  fontSize: 20, fontFamily: MAIN_FONT_FAMILY),
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                      const SizedBox(
+                        width: 3,
+                      ),
+                      GradientIcon(
+                        icon: Icons.double_arrow,
+                        gradient: LinearGradient(
+                          colors: submit.value
+                              ? GRADIANT_COLOR1
+                              : BLACK_12_GRADIANT_COLOR,
+                          begin: Alignment.topLeft,
+                          end: Alignment.bottomRight,
+                        ),
+                        offset: const Offset(0, 0),
+                        size: 34,
+                      )
+                    ],
+                  )),
+            )
           ]),
         ),
       ),

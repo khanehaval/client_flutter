@@ -1,10 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/pages/category/shared/constant.dart';
+import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/widget_filter/taeedvaemalefilter.dart';
+import 'package:flutter_application_1/pages/category/shared/widget/enseraf.dart';
+import 'package:flutter_application_1/pages/category/shared/widget/taeed.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:gradient_icon/gradient_icon.dart';
+import 'package:flutter_application_1/pages/category/shared/constant.dart';
 
 void Sanad(Function(String) onSelected) {
   final selected = "".obs;
@@ -14,23 +18,20 @@ void Sanad(Function(String) onSelected) {
   Get.bottomSheet(
     Container(
       width: double.infinity,
-      decoration: BoxDecoration(
-        gradient: const LinearGradient(
+      decoration: const BoxDecoration(
+        gradient: LinearGradient(
           colors: GRADIANT_COLOR,
         ),
-        border: Border.all(
-          width: 1,
-        ),
-        borderRadius: const BorderRadius.only(
-            topLeft: Radius.circular(10), topRight: Radius.circular(10)),
+        borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(10), topRight: Radius.circular(30)),
       ),
       child: Padding(
-          padding: const EdgeInsets.all(2.0),
+          padding: const EdgeInsets.only(top: 2.0, left: 2, right: 2),
           child: Container(
             decoration: const BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(10), topRight: Radius.circular(10)),
+                  topLeft: Radius.circular(10), topRight: Radius.circular(30)),
             ),
             child: Container(
               decoration: const BoxDecoration(
@@ -63,15 +64,14 @@ void Sanad(Function(String) onSelected) {
                                         ? const LinearGradient(
                                             colors: GRADIANT_COLOR)
                                         : const LinearGradient(colors: [
-                                            Colors.black,
-                                            Colors.black,
-                                            Colors.black
+                                            Colors.black26,
+                                            Colors.black26,
                                           ]),
                                     borderRadius: BorderRadius.circular(10),
                                   ),
                                   child: Padding(
                                     padding: selected.value == value
-                                        ? const EdgeInsets.all(3.0)
+                                        ? const EdgeInsets.all(1.0)
                                         : const EdgeInsets.all(1.0),
                                     child: Container(
                                       decoration: BoxDecoration(
@@ -92,26 +92,19 @@ void Sanad(Function(String) onSelected) {
                       },
                       itemCount: values.length,
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(bottom: 20, top: 30),
-                      child: Container(
-                        decoration: BoxDecoration(
-                            gradient:
-                                const LinearGradient(colors: GRADIANT_COLOR),
-                            borderRadius: BorderRadius.circular(50)),
-                        child: IconButton(
-                          icon: const Icon(
-                            CupertinoIcons.check_mark,
-                            color: Colors.white,
-                            weight: 20,
-                          ),
-                          onPressed: () {
-                            onSelected(selected.value);
-                            Get.back();
-                          },
-                        ),
-                      ),
+                    const SizedBox(
+                      height: 50,
                     ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Enseraf(),
+                        taeed(onPressed: () {}),
+                        const SizedBox(
+                          width: 10,
+                        ),
+                      ],
+                    )
                   ],
                 ),
               ),
