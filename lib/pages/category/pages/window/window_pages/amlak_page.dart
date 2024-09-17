@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/pages/category/pages/Advertisements/consultants.dart/map_agency/list_agency.dart';
+import 'package:flutter_application_1/pages/category/pages/Advertisements/consultants.dart/list_consultants.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
@@ -41,13 +43,22 @@ class AmlakPage extends StatelessWidget {
           children: [
             SizedBox(
               width: 180,
-              child: _buildRowItem(
-                'assets/images/moshaver_amlak.svg',
+              child: GestureDetector(
+                onTap: () {
+                  Get.to(() => const ListAgency());
+                },
+                child: _buildRowItem(
+                  'assets/images/moshaver_amlak.svg',
+                ),
               ),
             ),
             SizedBox(
                 width: 180,
-                child: _buildRowItem('assets/images/axhans_amlak1.svg')),
+                child: GestureDetector(
+                    onTap: () {
+                      Get.to(() => const ListConsultants());
+                    },
+                    child: _buildRowItem('assets/images/axhans_amlak1.svg'))),
           ],
         ),
         const SizedBox(

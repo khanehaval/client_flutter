@@ -145,6 +145,10 @@ flutter:
       fonts:
         - asset: assets/fonts/IRANSansWeb_UltraLight.ttf
           weight: 700
+    - family: Aban Bold
+      fonts:
+        - asset: assets/fonts/Aban Bold.ttf
+          weight: 700
           
     # - family: Trajan Pro
     #   fonts:
