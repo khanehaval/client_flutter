@@ -2,7 +2,10 @@ import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/namayesh_agahi.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/shared/widget_detail_call.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/app_bar.dart';
@@ -15,9 +18,10 @@ class NamayeshListAgency extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.white,
-        appBar: buildAppBar1(),
-        body: Stack(children: [
+      backgroundColor: Colors.white,
+      appBar: buildAppBar1(),
+      body: Stack(
+        children: [
           Column(
             children: [
               Stack(
@@ -209,263 +213,951 @@ class NamayeshListAgency extends StatelessWidget {
                       ),
                       child: Padding(
                         padding: const EdgeInsets.all(10.0),
-                        child: Column(
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.only(top: 10.0),
-                              child: SvgPicture.asset(
-                                  'assets/images/swipe up.svg'),
-                            ),
-                            const SizedBox(height: 15),
-                            const Align(
-                              alignment: Alignment.centerRight,
-                              child: Padding(
-                                padding: EdgeInsets.only(right: 20.0),
-                                child: Text(
-                                  'ویلا 100 متری در زمین 250 متری، لوکیشن عالی',
-                                  style: TextStyle(
-                                    fontFamily: MAIN_FONT_FAMILY,
-                                    fontSize: 14,
-                                    color: Color.fromRGBO(48, 48, 48, 1),
-                                  ),
-                                ),
-                              ),
-                            ),
-                            Align(
-                              alignment: Alignment.centerLeft,
-                              child: Padding(
-                                padding: const EdgeInsets.only(left: 10.0),
-                                child:
-                                    SvgPicture.asset('assets/images/Villa.svg'),
-                              ),
-                            ),
-                            const Divider(
-                              indent: 10,
-                              endIndent: 10,
-                              color: Color.fromRGBO(226, 226, 226, 1),
-                            ),
-                            const SizedBox(height: 20),
-                            Column(
+                        child: Column(children: [
+                          Padding(
+                            padding: const EdgeInsets.only(top: 10.0),
+                            child:
+                                SvgPicture.asset('assets/images/swipe up.svg'),
+                          ),
+                          const SizedBox(height: 15),
+                          Center(
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
-                                Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 10.0),
-                                  child: SvgPicture.asset(
-                                      'assets/images/Main feature.svg'),
-                                ),
-                                const Divider(
-                                  indent: 10,
-                                  endIndent: 10,
-                                  color: Color.fromRGBO(226, 226, 226, 1),
-                                ),
-                                const SizedBox(height: 10),
-                                Padding(
-                                  padding: const EdgeInsets.all(10.0),
-                                  child: SvgPicture.asset(
-                                      'assets/images/detail.svg'),
-                                ),
-                                const SizedBox(height: 10),
-                                Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 10.0),
-                                  child: SvgPicture.asset(
-                                      'assets/images/facilit.svg'),
-                                ),
-                                const SizedBox(height: 20),
                                 const Text(
-                                  ' .........................................................  ویژگی های آگهی  ',
+                                  'درخواست همکاری',
                                   style: TextStyle(
-                                    fontFamily: MAIN_FONT_FAMILY,
-                                    fontSize: 12,
-                                    color: Color.fromRGBO(99, 99, 99, 1),
-                                  ),
+                                      fontFamily: 'Aban Bold', fontSize: 12),
                                 ),
-                                const SizedBox(height: 20),
-                                Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 10.0),
-                                  child: SvgPicture.asset(
-                                      'assets/images/detail2.svg'),
+                                SvgPicture.asset(
+                                  'assets/images/req.svg',
+                                  width: 20,
+                                  height: 20,
                                 ),
-                                const SizedBox(height: 30),
                                 const Text(
-                                  ' ............................................................  امکانات آگهی ',
+                                  'ارســال پــیــام',
                                   style: TextStyle(
-                                    fontFamily: MAIN_FONT_FAMILY,
-                                    fontSize: 12,
-                                    color: Color.fromRGBO(99, 99, 99, 1),
-                                  ),
+                                      fontFamily: 'Aban Bold', fontSize: 12),
                                 ),
-                                const SizedBox(height: 30),
-                                Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 8.0),
-                                  child: SvgPicture.asset(
-                                      'assets/images/detail3.svg'),
+                                SvgPicture.asset(
+                                  'assets/images/Message_blue.svg',
+                                  width: 20,
+                                  height: 20,
                                 ),
-                                const SizedBox(height: 30),
                                 const Text(
-                                  ' .........................................................  توضیحات آگهی ',
+                                  'تـمـاس بـا مـا',
                                   style: TextStyle(
-                                    fontFamily: MAIN_FONT_FAMILY,
-                                    fontSize: 12,
-                                    color: Color.fromRGBO(99, 99, 99, 1),
-                                  ),
+                                      fontFamily: 'Aban Bold', fontSize: 12),
                                 ),
-                                const SizedBox(height: 30),
-                                const Align(
-                                  alignment: Alignment.centerRight,
-                                  child: Padding(
-                                    padding: EdgeInsets.only(right: 20.0),
-                                    child: Text(
-                                      'نورگیر عالی\nدر بهترین لوکیشن منطقه\nفاصله با دریا تنها 5 دقیقه\nنزدیک به سوپر مارکت و فروشگاه های بزرگ منطقه\nمحوطه ویلا درخت کاری شده\nاستخر با امکانات روز\nمعماری مدرن و بهترین متریال',
-                                      textAlign: TextAlign.right,
-                                      style: TextStyle(
-                                        color: Color(0xFF303030),
-                                        fontSize: 14,
-                                        fontFamily: 'Iran Sans',
-                                        fontWeight: FontWeight.w400,
+                                SvgPicture.asset(
+                                  'assets/images/Call_green.svg',
+                                  width: 20,
+                                  height: 20,
+                                ),
+                              ],
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 20,
+                          ),
+                          const Text(
+                            'خانه اول به عنوان اولین سایت فروش اینترنتی املاک امکان فروش گسترده بهترین و مطمئن ترین فروش های ویژه املاک را که توسط شرکت های بزرگ ساختمانی و انبوه سازان توانمند را فراهم می کند.',
+                            style: TextStyle(
+                              fontFamily: MAIN_FONT_FAMILY_LIGHT,
+                            ),
+                            textAlign: TextAlign.justify,
+                            textDirection: TextDirection.rtl,
+                          ),
+                          const SizedBox(
+                            height: 20,
+                          ),
+                          // const Text(
+                          //   'هدف اصلی خانه اول عرضه پروژه های بزرگ و کاملا اقتصادی در موقیت های بسیار عالی و با تکنولوژی بالا در سراسر کشور توسط انبوه سازان صنعتی ساختمان راه اندازی شده است. از این طریق متقاضیان واقعی مسکن می توانند با بررسی اطلاعات جامع و کامل پروژه ها نسبت به انتخاب و خرید بی واسطه با فروشندگان اقدام نمایند و در موعد مقرر واحدهای مسکونی خود را تحویل بگیرند. امیدواریم این اقدام منجر به حذف واسطه های غیرضروری بین انبوه سازان صنعتی مسکن و متقاضیان واقعی آن در سراسر ایران اسلامی مان باشد.',
+                          //   style: TextStyle(
+                          //     fontFamily: MAIN_FONT_FAMILY_LIGHT,
+                          //   ),
+                          //   textAlign: TextAlign.justify,
+                          //   textDirection: TextDirection.rtl,
+                          // ),
+                          const SizedBox(height: 20),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Column(children: [
+                              Container(
+                                width: 371,
+                                height: 50,
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Container(
+                                      child: const Column(
+                                        mainAxisSize: MainAxisSize.min,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        children: [
+                                          Text(
+                                            'تعداد آگهی',
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(
+                                              color: Color(0xFF303030),
+                                              fontSize: 14,
+                                              fontFamily: 'Aban Bold',
+                                              fontWeight: FontWeight.w400,
+                                              height: 0.10,
+                                            ),
+                                          ),
+                                          SizedBox(height: 30),
+                                          Text(
+                                            '125',
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(
+                                              color: Color(0xFF303030),
+                                              fontSize: 14,
+                                              fontFamily: 'Aban Bold',
+                                              fontWeight: FontWeight.w400,
+                                              height: 0.10,
+                                            ),
+                                          ),
+                                        ],
                                       ),
                                     ),
-                                  ),
-                                ),
-                                const SizedBox(height: 30),
-                                const Divider(
-                                  indent: 7,
-                                  endIndent: 10,
-                                  color: Color.fromRGBO(226, 226, 226, 1),
-                                ),
-                                const SizedBox(height: 30),
-                                Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 5.0),
-                                  child: SvgPicture.asset(
-                                      'assets/images/Component 2.svg'),
-                                ),
-                                const SizedBox(height: 30),
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceAround,
-                                  children: [
-                                    SvgPicture.asset('assets/images/pm.svg'),
-                                    const SizedBox(
-                                      width: 70,
+                                    const SizedBox(width: 25),
+                                    Container(
+                                      child: const Column(
+                                        mainAxisSize: MainAxisSize.min,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        children: [
+                                          Text(
+                                            'میزان رضایت مندی',
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(
+                                              color: Color(0xFF303030),
+                                              fontSize: 14,
+                                              fontFamily: 'Aban Bold',
+                                              fontWeight: FontWeight.w400,
+                                              height: 0.10,
+                                            ),
+                                          ),
+                                          SizedBox(height: 30),
+                                          Text(
+                                            '% 89',
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(
+                                              color: Color(0xFF303030),
+                                              fontSize: 14,
+                                              fontFamily: 'Aban Bold',
+                                              fontWeight: FontWeight.w400,
+                                              height: 0.10,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
                                     ),
-                                    GestureDetector(
-                                        onTap: () {
-                                          DetailCall((selectedMelk) {
-                                            selectedMelk; // Update TextField with selected option
-                                          });
-                                        },
-                                        child: SvgPicture.asset(
-                                            'assets/images/tamas.svg'))
+                                    const SizedBox(width: 25),
+                                    Container(
+                                      child: const Column(
+                                        mainAxisSize: MainAxisSize.min,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        children: [
+                                          Text(
+                                            'محدوده فعالیت',
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(
+                                              color: Color(0xFF303030),
+                                              fontSize: 14,
+                                              fontFamily: 'Aban Bold',
+                                              fontWeight: FontWeight.w400,
+                                              height: 0.10,
+                                            ),
+                                          ),
+                                          SizedBox(height: 30),
+                                          Text(
+                                            '4.7',
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(
+                                              color: Color(0xFF303030),
+                                              fontSize: 14,
+                                              fontFamily: 'Aban Bold',
+                                              fontWeight: FontWeight.w400,
+                                              height: 0.10,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    const SizedBox(width: 25),
+                                    Container(
+                                      child: const Column(
+                                        mainAxisSize: MainAxisSize.min,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        children: [
+                                          Text(
+                                            'امتیاز',
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(
+                                              color: Color(0xFF303030),
+                                              fontSize: 14,
+                                              fontFamily: 'Aban Bold',
+                                              fontWeight: FontWeight.w400,
+                                              height: 0.10,
+                                            ),
+                                          ),
+                                          SizedBox(height: 30),
+                                          Text(
+                                            '4.7',
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(
+                                              color: Color(0xFF303030),
+                                              fontSize: 14,
+                                              fontFamily: 'Aban Bold',
+                                              fontWeight: FontWeight.w400,
+                                              height: 0.10,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
                                   ],
                                 ),
-                                const SizedBox(height: 30),
-                                Padding(
-                                    padding: const EdgeInsets.all(2.0),
-                                    child: Row(
+                              ),
+                            ]),
+                          ),
+                          const SizedBox(
+                            height: 20,
+                          ),
+                          Column(
+                            children: [
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
+                                children: [
+                                  const Text(
+                                    'مشاهده نظرات',
+                                    style: TextStyle(
+                                      color: Color(0xFF303030),
+                                      fontSize: 14,
+                                      fontFamily: 'Aban Bold',
+                                    ),
+                                  ),
+                                  Container(
+                                    width: 73,
+                                    height: 30,
+                                    decoration: ShapeDecoration(
+                                      color: Colors.white,
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(8)),
+                                      shadows: const [
+                                        BoxShadow(
+                                          color: Color(0x26000000),
+                                          blurRadius: 3,
+                                        )
+                                      ],
+                                    ),
+                                    child: const Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceAround,
                                       children: [
-                                        Container(
-                                          height: 45,
-                                          width: 150,
-                                          decoration: ShapeDecoration(
-                                            color: Colors.white,
-                                            shape: RoundedRectangleBorder(
-                                              side: const BorderSide(
-                                                  width: 1,
-                                                  color: Color(0xFFB7B7B7)),
-                                              borderRadius:
-                                                  BorderRadius.circular(10),
-                                            ),
-                                          ),
-                                          child: Padding(
-                                            padding: const EdgeInsets.only(
-                                                right: 10.0),
-                                            child: Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.end,
-                                              children: [
-                                                SvgPicture.asset(
-                                                  'assets/images/left_icon.svg',
-                                                  width: 10,
-                                                  height: 15,
-                                                ),
-                                                const SizedBox(
-                                                  width: 15,
-                                                ),
-                                                const Text(
-                                                  'گزارش مشکل آگهی',
-                                                  style: TextStyle(
-                                                      fontFamily:
-                                                          MAIN_FONT_FAMILY,
-                                                      fontSize: 9),
-                                                ),
-                                                const SizedBox(
-                                                  width: 10,
-                                                ),
-                                                SvgPicture.asset(
-                                                  'assets/images/Vector-51.svg',
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                        ),
-                                        const SizedBox(
-                                          width: 20,
-                                        ),
-                                        Container(
-                                          height: 45,
-                                          width: 177,
-                                          decoration: ShapeDecoration(
-                                            color: Colors.white,
-                                            shape: RoundedRectangleBorder(
-                                              side: const BorderSide(
-                                                  width: 1,
-                                                  color: Color(0xFFB7B7B7)),
-                                              borderRadius:
-                                                  BorderRadius.circular(10),
-                                            ),
-                                          ),
-                                          child: Padding(
-                                            padding: const EdgeInsets.only(
-                                                right: 10.0),
-                                            child: Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.end,
-                                              children: [
-                                                SvgPicture.asset(
-                                                  'assets/images/left_icon.svg',
-                                                  width: 10,
-                                                  height: 15,
-                                                ),
-                                                const SizedBox(
-                                                  width: 10,
-                                                ),
-                                                const Text(
-                                                  'زنگ خطرهای قبل از معامله',
-                                                  style: TextStyle(
-                                                      fontFamily:
-                                                          MAIN_FONT_FAMILY,
-                                                      fontSize: 9),
-                                                ),
-                                                const SizedBox(
-                                                  width: 10,
-                                                ),
-                                                SvgPicture.asset(
-                                                  'assets/images/Alarm Icon.svg',
-                                                ),
-                                              ],
-                                            ),
+                                        Text(
+                                          'پاسخگو',
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                            color: Color(0xFF303030),
+                                            fontSize: 14,
+                                            fontFamily: 'Aban Bold',
                                           ),
                                         ),
                                       ],
-                                    )),
-                                const SizedBox(height: 50),
-                              ],
-                            ),
-                          ],
-                        ),
+                                    ),
+                                  ),
+                                  Container(
+                                    width: 73,
+                                    height: 30,
+                                    decoration: ShapeDecoration(
+                                      color: Colors.white,
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(8)),
+                                      shadows: const [
+                                        BoxShadow(
+                                          color: Color(0x26000000),
+                                          blurRadius: 3,
+                                        )
+                                      ],
+                                    ),
+                                    child: const Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Text(
+                                          'تنوع آگهی',
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                            color: Color(0xFF303030),
+                                            fontSize: 14,
+                                            fontFamily: 'Aban Bold',
+                                            fontWeight: FontWeight.w400,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  Container(
+                                    width: 73,
+                                    height: 30,
+                                    decoration: ShapeDecoration(
+                                      color: Colors.white,
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(8)),
+                                      shadows: const [
+                                        BoxShadow(
+                                          color: Color(0x26000000),
+                                          blurRadius: 3,
+                                        )
+                                      ],
+                                    ),
+                                    child: const Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Text(
+                                          'کادر مجرب',
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                            color: Color(0xFF303030),
+                                            fontSize: 14,
+                                            fontFamily: 'Aban Bold',
+                                            fontWeight: FontWeight.w400,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                          const SizedBox(
+                            height: 30,
+                          ),
+                          const Column(
+                            children: [
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                children: [
+                                  Expanded(
+                                    child: Divider(
+                                      indent: 5,
+                                      endIndent: 5,
+                                      color: Colors.black54,
+                                      thickness: 1, // ضخامت دیوایدر
+                                    ),
+                                  ),
+                                  Text(
+                                    'مشخصات آژانس',
+                                    textAlign: TextAlign.justify,
+                                    style: TextStyle(
+                                      color: Color(0xFF303030),
+                                      fontSize: 14,
+                                      fontFamily: MAIN_FONT_FAMILY,
+                                    ),
+                                  ),
+                                  SizedBox(width: 8),
+                                ],
+                              ),
+                            ],
+                          ),
+                          const SizedBox(
+                            height: 20,
+                          ),
+                          const Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              Text('صادق قلی زاده',
+                                  style: TextStyle(
+                                      fontFamily: MAIN_FONT_FAMILY_UltraLight)),
+                              Expanded(
+                                child: Divider(
+                                  indent: 10,
+                                  endIndent: 5,
+                                  color: Color.fromRGBO(226, 226, 226, 1),
+                                  thickness: 1,
+                                ),
+                              ),
+                              Text(
+                                'مدیر آژانس',
+                                textAlign: TextAlign.justify,
+                                style: TextStyle(
+                                  color: Color(0xFF303030),
+                                  fontSize: 14,
+                                  fontFamily: MAIN_FONT_FAMILY_LIGHT,
+                                ),
+                              ),
+                              SizedBox(width: 8),
+                            ],
+                          ),
+                          const SizedBox(
+                            height: 20,
+                          ),
+                          const Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              Text('جلال آل احمد، پلاک 417',
+                                  style: TextStyle(
+                                      fontFamily: MAIN_FONT_FAMILY_UltraLight)),
+                              Expanded(
+                                child: Divider(
+                                  indent: 20,
+                                  endIndent: 5,
+                                  color: Color.fromRGBO(226, 226, 226, 1),
+                                  thickness: 1,
+                                ),
+                              ),
+                              Text(
+                                'آدرس',
+                                textAlign: TextAlign.justify,
+                                style: TextStyle(
+                                  color: Color(0xFF303030),
+                                  fontSize: 14,
+                                  fontFamily: MAIN_FONT_FAMILY_LIGHT,
+                                ),
+                              ),
+                              SizedBox(width: 8),
+                            ],
+                          ),
+                          const SizedBox(
+                            height: 20,
+                          ),
+                          const Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              Text(' 157945621 ق ',
+                                  style: TextStyle(
+                                      fontFamily: MAIN_FONT_FAMILY_UltraLight)),
+                              Expanded(
+                                child: Divider(
+                                  indent: 20,
+                                  endIndent: 5,
+                                  color: Color.fromRGBO(226, 226, 226, 1),
+                                  thickness: 1, // ضخامت دیوایدر
+                                ),
+                              ),
+                              Text(
+                                ' شماره مجوز',
+                                textAlign: TextAlign.justify,
+                                style: TextStyle(
+                                  color: Color(0xFF303030),
+                                  fontSize: 14,
+                                  fontFamily: MAIN_FONT_FAMILY_LIGHT,
+                                ),
+                              ),
+                              SizedBox(width: 8),
+                            ],
+                          ),
+                          const SizedBox(
+                            height: 20,
+                          ),
+                          const Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              Text('انجام شده',
+                                  style: TextStyle(
+                                      fontFamily: MAIN_FONT_FAMILY_UltraLight)),
+                              Expanded(
+                                child: Divider(
+                                  indent: 20,
+                                  endIndent: 5,
+                                  color: Color.fromRGBO(226, 226, 226, 1),
+                                  thickness: 1, // ضخامت دیوایدر
+                                ),
+                              ),
+                              Text(
+                                'تائید هویت',
+                                textAlign: TextAlign.justify,
+                                style: TextStyle(
+                                  color: Color(0xFF303030),
+                                  fontSize: 14,
+                                  fontFamily: MAIN_FONT_FAMILY_LIGHT,
+                                ),
+                              ),
+                              SizedBox(width: 8),
+                            ],
+                          ),
+                          const SizedBox(
+                            height: 20,
+                          ),
+                          const Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              Text(' 3 سال',
+                                  style: TextStyle(
+                                      fontFamily: MAIN_FONT_FAMILY_UltraLight)),
+                              Expanded(
+                                child: Divider(
+                                  indent: 20,
+                                  endIndent: 5,
+                                  color: Color.fromRGBO(226, 226, 226, 1),
+                                  thickness: 1, // ضخامت دیوایدر
+                                ),
+                              ),
+                              Text(
+                                'مدت فعالیت در خانه اول',
+                                textAlign: TextAlign.justify,
+                                style: TextStyle(
+                                  color: Color(0xFF303030),
+                                  fontSize: 14,
+                                  fontFamily: MAIN_FONT_FAMILY_LIGHT,
+                                ),
+                              ),
+                              SizedBox(width: 8),
+                            ],
+                          ),
+                          const SizedBox(
+                            height: 30,
+                          ),
+                          const Column(
+                            children: [
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                children: [
+                                  Expanded(
+                                    child: Divider(
+                                      indent: 5,
+                                      endIndent: 5,
+                                      color: Color.fromRGBO(166, 166, 166, 1),
+                                      thickness: 1, // ضخامت دیوایدر
+                                    ),
+                                  ),
+                                  Text(
+                                    'مشاورین برتر آژانس',
+                                    textAlign: TextAlign.justify,
+                                    style: TextStyle(
+                                      color: Color(0xFF303030),
+                                      fontSize: 14,
+                                      fontFamily: MAIN_FONT_FAMILY,
+                                    ),
+                                  ),
+                                  SizedBox(width: 8),
+                                ],
+                              ),
+                            ],
+                          ),
+                          const SizedBox(
+                            height: 20,
+                          ),
+                          Column(
+                            children: [
+                              Container(
+                                width: 390,
+                                height: 100,
+                                child: Stack(
+                                  children: [
+                                    GestureDetector(
+                                      onTap: () {
+                                        Get.to(() => const NamayeshAgahi1());
+                                      },
+                                      child: Container(
+                                        width: 390,
+                                        height: 100,
+                                        decoration: BoxDecoration(
+                                          boxShadow: const [
+                                            BoxShadow(
+                                              offset: Offset(0, 0),
+                                              blurRadius: 3,
+                                              color:
+                                                  Color.fromRGBO(0, 0, 0, 0.15),
+                                            )
+                                          ],
+                                          borderRadius:
+                                              BorderRadius.circular(15),
+                                          color: Colors.white,
+                                        ),
+                                        child: Stack(
+                                          children: [
+                                            Column(
+                                              children: [
+                                                Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceBetween,
+                                                  children: [
+                                                    Padding(
+                                                      padding:
+                                                          const EdgeInsets.only(
+                                                              left: 20.0,
+                                                              bottom: 10),
+                                                      child: SvgPicture.asset(
+                                                          'assets/images/vitrinaxans.svg'),
+                                                    ),
+                                                    const Padding(
+                                                      padding: EdgeInsets.only(
+                                                          right: 30.0,
+                                                          bottom: 10),
+                                                      child: Text(
+                                                        'ویترین',
+                                                        style: TextStyle(
+                                                            fontFamily:
+                                                                MAIN_FONT_FAMILY,
+                                                            fontSize: 12),
+                                                      ),
+                                                    ),
+                                                    Stack(
+                                                      children: [
+                                                        Padding(
+                                                          padding:
+                                                              const EdgeInsets
+                                                                  .only(
+                                                                  top: 20.0,
+                                                                  right: 10),
+                                                          child:
+                                                              SvgPicture.asset(
+                                                            "assets/images/Agancy & consultant.svg",
+                                                            width: 69,
+                                                            height: 63,
+                                                          ),
+                                                        ),
+                                                        Padding(
+                                                          padding:
+                                                              const EdgeInsets
+                                                                  .only(
+                                                                  left: 85.0,
+                                                                  top: 30),
+                                                          child:
+                                                              SvgPicture.asset(
+                                                            'assets/images/logo-farsi.svg',
+                                                            width: 30,
+                                                            height: 30,
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ],
+                                                ),
+                                              ],
+                                            ),
+                                            Padding(
+                                              padding: const EdgeInsets.only(
+                                                  top: 60.0, left: 22),
+                                              child: Row(
+                                                children: [
+                                                  SvgPicture.asset(
+                                                    'assets/images/locationaxans.svg',
+                                                    width: 20,
+                                                    height: 20,
+                                                  ),
+                                                  const SizedBox(
+                                                    width: 45,
+                                                  ),
+                                                  const Text(
+                                                    'تــهـران',
+                                                    style: TextStyle(
+                                                        fontFamily:
+                                                            MAIN_FONT_FAMILY,
+                                                        fontSize: 11),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              const SizedBox(
+                                height: 20,
+                              ),
+                              Container(
+                                width: 390,
+                                height: 100,
+                                child: Stack(
+                                  children: [
+                                    GestureDetector(
+                                      onTap: () {
+                                        Get.to(() => const NamayeshAgahi1());
+                                      },
+                                      child: Container(
+                                        width: 390,
+                                        height: 100,
+                                        decoration: BoxDecoration(
+                                          boxShadow: const [
+                                            BoxShadow(
+                                              offset: Offset(0, 0),
+                                              blurRadius: 3,
+                                              color:
+                                                  Color.fromRGBO(0, 0, 0, 0.15),
+                                            )
+                                          ],
+                                          borderRadius:
+                                              BorderRadius.circular(15),
+                                          color: Colors.white,
+                                        ),
+                                        child: Stack(
+                                          children: [
+                                            Column(
+                                              children: [
+                                                Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceBetween,
+                                                  children: [
+                                                    Padding(
+                                                      padding:
+                                                          const EdgeInsets.only(
+                                                              left: 20.0,
+                                                              bottom: 10),
+                                                      child: SvgPicture.asset(
+                                                          'assets/images/vitrinaxans.svg'),
+                                                    ),
+                                                    const Padding(
+                                                      padding: EdgeInsets.only(
+                                                          right: 30.0,
+                                                          bottom: 10),
+                                                      child: Text(
+                                                        'ویترین',
+                                                        style: TextStyle(
+                                                            fontFamily:
+                                                                MAIN_FONT_FAMILY,
+                                                            fontSize: 12),
+                                                      ),
+                                                    ),
+                                                    Stack(
+                                                      children: [
+                                                        Padding(
+                                                          padding:
+                                                              const EdgeInsets
+                                                                  .only(
+                                                                  top: 20.0,
+                                                                  right: 10),
+                                                          child:
+                                                              SvgPicture.asset(
+                                                            "assets/images/Agancy & consultant.svg",
+                                                            width: 69,
+                                                            height: 63,
+                                                          ),
+                                                        ),
+                                                        Padding(
+                                                          padding:
+                                                              const EdgeInsets
+                                                                  .only(
+                                                                  left: 85.0,
+                                                                  top: 30),
+                                                          child:
+                                                              SvgPicture.asset(
+                                                            'assets/images/logo-farsi.svg',
+                                                            width: 30,
+                                                            height: 30,
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ],
+                                                ),
+                                              ],
+                                            ),
+                                            Padding(
+                                              padding: const EdgeInsets.only(
+                                                  top: 60.0, left: 22),
+                                              child: Row(
+                                                children: [
+                                                  SvgPicture.asset(
+                                                    'assets/images/locationaxans.svg',
+                                                    width: 20,
+                                                    height: 20,
+                                                  ),
+                                                  const SizedBox(
+                                                    width: 45,
+                                                  ),
+                                                  const Text(
+                                                    'تــهـران',
+                                                    style: TextStyle(
+                                                        fontFamily:
+                                                            MAIN_FONT_FAMILY,
+                                                        fontSize: 11),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              const SizedBox(
+                                height: 20,
+                              ),
+                              Container(
+                                width: 390,
+                                height: 100,
+                                child: Stack(
+                                  children: [
+                                    GestureDetector(
+                                      onTap: () {
+                                        Get.to(() => const NamayeshAgahi1());
+                                      },
+                                      child: Container(
+                                        width: 390,
+                                        height: 100,
+                                        decoration: BoxDecoration(
+                                          boxShadow: const [
+                                            BoxShadow(
+                                              offset: Offset(0, 0),
+                                              blurRadius: 3,
+                                              color:
+                                                  Color.fromRGBO(0, 0, 0, 0.15),
+                                            )
+                                          ],
+                                          borderRadius:
+                                              BorderRadius.circular(15),
+                                          color: Colors.white,
+                                        ),
+                                        child: Stack(
+                                          children: [
+                                            Column(
+                                              children: [
+                                                Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceBetween,
+                                                  children: [
+                                                    Padding(
+                                                      padding:
+                                                          const EdgeInsets.only(
+                                                              left: 20.0,
+                                                              bottom: 10),
+                                                      child: SvgPicture.asset(
+                                                          'assets/images/vitrinaxans.svg'),
+                                                    ),
+                                                    const Padding(
+                                                      padding: EdgeInsets.only(
+                                                          right: 30.0,
+                                                          bottom: 10),
+                                                      child: Text(
+                                                        'ویترین',
+                                                        style: TextStyle(
+                                                            fontFamily:
+                                                                MAIN_FONT_FAMILY,
+                                                            fontSize: 12),
+                                                      ),
+                                                    ),
+                                                    Stack(
+                                                      children: [
+                                                        Padding(
+                                                          padding:
+                                                              const EdgeInsets
+                                                                  .only(
+                                                                  top: 20.0,
+                                                                  right: 10),
+                                                          child:
+                                                              SvgPicture.asset(
+                                                            "assets/images/Agancy & consultant.svg",
+                                                            width: 69,
+                                                            height: 63,
+                                                          ),
+                                                        ),
+                                                        Padding(
+                                                          padding:
+                                                              const EdgeInsets
+                                                                  .only(
+                                                                  left: 85.0,
+                                                                  top: 30),
+                                                          child:
+                                                              SvgPicture.asset(
+                                                            'assets/images/logo-farsi.svg',
+                                                            width: 30,
+                                                            height: 30,
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ],
+                                                ),
+                                              ],
+                                            ),
+                                            Padding(
+                                              padding: const EdgeInsets.only(
+                                                  top: 60.0, left: 22),
+                                              child: Row(
+                                                children: [
+                                                  SvgPicture.asset(
+                                                    'assets/images/locationaxans.svg',
+                                                    width: 20,
+                                                    height: 20,
+                                                  ),
+                                                  const SizedBox(
+                                                    width: 45,
+                                                  ),
+                                                  const Text(
+                                                    'تــهـران',
+                                                    style: TextStyle(
+                                                        fontFamily:
+                                                            MAIN_FONT_FAMILY,
+                                                        fontSize: 11),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              const SizedBox(
+                                height: 30,
+                              ),
+                              const Column(
+                                children: [
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    children: [
+                                      Expanded(
+                                        child: Divider(
+                                          indent: 5,
+                                          endIndent: 5,
+                                          color:
+                                              Color.fromRGBO(166, 166, 166, 1),
+                                          thickness: 1, // ضخامت دیوایدر
+                                        ),
+                                      ),
+                                      Text(
+                                        'مشاورین برتر آژانس',
+                                        textAlign: TextAlign.justify,
+                                        style: TextStyle(
+                                          color: Color(0xFF303030),
+                                          fontSize: 14,
+                                          fontFamily: MAIN_FONT_FAMILY,
+                                        ),
+                                      ),
+                                      SizedBox(width: 8),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                              const SizedBox(
+                                height: 20,
+                              ),
+                            ],
+                          )
+                        ]),
                       ),
                     ),
                   ),
@@ -473,6 +1165,8 @@ class NamayeshListAgency extends StatelessWidget {
               );
             },
           ),
-        ]));
+        ],
+      ),
+    );
   }
 }

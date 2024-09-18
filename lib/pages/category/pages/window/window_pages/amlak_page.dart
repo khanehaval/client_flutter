@@ -45,7 +45,9 @@ class AmlakPage extends StatelessWidget {
               width: 180,
               child: GestureDetector(
                 onTap: () {
-                  Get.to(() => const ListAgency());
+                  Get.to(() => const ListConsultants(),
+                      duration: const Duration(milliseconds: 300),
+                      transition: Transition.leftToRight);
                 },
                 child: _buildRowItem(
                   'assets/images/moshaver_amlak.svg',
@@ -56,7 +58,9 @@ class AmlakPage extends StatelessWidget {
                 width: 180,
                 child: GestureDetector(
                     onTap: () {
-                      Get.to(() => const ListConsultants());
+                      Get.to(() => const ListAgency(),
+                          duration: const Duration(milliseconds: 300),
+                          transition: Transition.leftToRight);
                     },
                     child: _buildRowItem('assets/images/axhans_amlak1.svg'))),
           ],
