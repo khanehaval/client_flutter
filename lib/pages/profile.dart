@@ -1,87 +1,117 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
-import 'package:flutter_application_1/pages/category/shared/widget/switachable.dart';
 import 'package:flutter_application_1/pages/educational_tour.dart';
-import 'package:flutter_application_1/pages/login_secondly_page.dart';
 import 'package:flutter_application_1/pages/register/register.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
 openProfile() {
-  showGeneralDialog(
-    context: Get.context!,
-    barrierColor: Colors.black54,
-    barrierDismissible: true,
-    barrierLabel: 'Label',
-    pageBuilder: (_, __, ___) {
-      return Align(
-        alignment: Alignment.centerRight,
+  return Padding(
+    padding: const EdgeInsets.only(top: 5.0, right: 10),
+    child: Align(
+      alignment: Alignment.topRight,
+      child: Container(
+        decoration: const BoxDecoration(
+            color: Color.fromRGBO(255, 255, 255, 1),
+            borderRadius: BorderRadius.all(
+              Radius.circular(11),
+            ),
+            boxShadow: [
+              BoxShadow(color: Color.fromRGBO(0, 0, 0, 0.15), blurRadius: 2)
+            ]),
         child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 50, horizontal: 10),
+          padding: const EdgeInsets.all(1.0),
           child: SizedBox(
-            width: Get.width / 1.5,
+            height: 610,
+            width: Get.width / 1.8,
             child: Material(
+              color: Colors.white,
               borderRadius: BorderRadius.circular(10),
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
+                    SvgPicture.asset(
+                      'assets/images/arrow right.svg',
+                      width: 50,
+                      height: 18,
+                    ),
                     Column(
                       children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            Container(
-                              width: 60,
-                              height: 60,
-                              decoration: BoxDecoration(
-                                border: Border.all(
-                                    width: 3, color: Colors.yellowAccent),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.black.withOpacity(0.1),
-                                  )
+                        Align(
+                          alignment: Alignment.centerLeft,
+                          child: Row(
+                            children: [
+                              const Column(
+                                children: [
+                                  Text(
+                                    "آژانش املاک",
+                                    style: TextStyle(
+                                        fontSize: 18,
+                                        fontFamily: MAIN_FONT_FAMILY,
+                                        color: Colors.black54),
+                                  ),
+                                  Row(
+                                    children: [
+                                      Icon(
+                                        Icons.verified,
+                                        color: Colors.blue,
+                                      ),
+                                      Text(
+                                        "خانه اول",
+                                        style: TextStyle(
+                                            fontSize: 18,
+                                            fontFamily: MAIN_FONT_FAMILY),
+                                      ),
+                                    ],
+                                  ),
                                 ],
-                                shape: BoxShape.circle,
                               ),
-                              child: Padding(
-                                padding: const EdgeInsets.all(4.0),
-                                child: Image.asset(
-                                  'assets/images/logo-fa-photoshop.png',
-                                  width: 55,
-                                  height: 55,
-                                  fit: BoxFit.contain,
-                                ),
+                              const SizedBox(
+                                width: 30,
                               ),
-                            ),
-                            const Column(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                Text(
-                                  "آژانش املاک",
-                                  style: TextStyle(
-                                      fontSize: 18,
-                                      fontFamily: MAIN_FONT_FAMILY,
-                                      color: Colors.black54),
-                                ),
-                                Row(
-                                  children: [
-                                    Icon(
-                                      Icons.verified,
-                                      color: Colors.blue,
+                              Stack(
+                                children: [
+                                  Container(
+                                    width: 60,
+                                    height: 60,
+                                    decoration: BoxDecoration(
+                                      border: Border.all(
+                                          width: 2,
+                                          color: const Color.fromRGBO(
+                                              229, 222, 41, 1)),
+                                      boxShadow: [
+                                        BoxShadow(
+                                          color: Colors.black.withOpacity(0.0),
+                                        )
+                                      ],
+                                      shape: BoxShape.circle,
                                     ),
-                                    Text(
-                                      "خانه اول",
-                                      style: TextStyle(
-                                          fontSize: 18,
-                                          fontFamily: MAIN_FONT_FAMILY),
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(5.0),
+                                      child: Image.asset(
+                                        'assets/images/logo-fa-photoshop.png',
+                                        width: 65,
+                                        height: 65,
+                                        fit: BoxFit.contain,
+                                      ),
                                     ),
-                                  ],
-                                ),
-                              ],
-                            )
-                          ],
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(left: 40.0),
+                                    child: SvgPicture.asset(
+                                      'assets/images/edit_icon_profile.svg',
+                                      width: 50,
+                                      height: 20,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
                         ),
                         const SizedBox(
                           height: 20,
@@ -110,7 +140,7 @@ openProfile() {
                                 color: Colors.black12),
                             child: Padding(
                               padding: const EdgeInsets.symmetric(
-                                  vertical: 3, horizontal: 7),
+                                  vertical: 3, horizontal: 20),
                               child: GestureDetector(
                                 onTap: () {},
                                 child: const Row(
@@ -119,7 +149,7 @@ openProfile() {
                                   children: [
                                     Icon(
                                       Icons.add_circle,
-                                      color: Colors.black26,
+                                      color: Colors.white,
                                     ),
                                     Text(
                                       "ثبت آگهی",
@@ -138,7 +168,6 @@ openProfile() {
                         ),
                         GestureDetector(
                           onTap: () {
-
                             Get.offAll(() => const Register());
                           },
                           child: SvgPicture.asset(
@@ -155,131 +184,9 @@ openProfile() {
             ),
           ),
         ),
-      );
-    },
+      ),
+    ),
   );
-  // showDialog(
-  //     // useSafeArea: false,
-  //     context: Get.context!,
-  //     builder: (c) {
-  //       return SizedBox(
-  //         width: 40,
-  //         child: Material(
-  //           child: SizedBox(
-  //             width: 40,
-  //             child: Align(
-  //               alignment: Alignment(0, 1),
-  //               child: Material(
-  //                 shape:
-  //                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
-  //                 child: Padding(
-  //                   padding: const EdgeInsets.all(32.0),
-  //                   child: Column(
-  //                     mainAxisSize: MainAxisSize.min,
-  //                     children: <Widget>[
-  //                       Text(
-  //                         'Number Already Exists',
-  //                         style: TextStyle(color: Colors.red),
-  //                         textAlign: TextAlign.center,
-  //                       ),
-  //                       Text(
-  //                         'Use another number',
-  //                         textAlign: TextAlign.center,
-  //                       ),
-  //                     ],
-  //                   ),
-  //                 ),
-  //               ),
-  //             )
-  //           ),
-  //         ),
-  //       );
-  //     });
-
-  Widget build(BuildContext context) {
-    return Scaffold(
-        backgroundColor: Colors.white,
-        appBar: AppBar(
-            leading: IconButton(
-              icon: const Icon(Icons.close),
-              onPressed: () => Get.to(() => EducationalTour()),
-            ),
-            actions: [
-              GestureDetector(
-                  onTap: () {
-                    openProfile();
-                  },
-                  child: Padding(
-                    padding: const EdgeInsets.only(right: 20),
-                    child: Container(
-                        decoration: BoxDecoration(
-                            color: Colors.black12,
-                            borderRadius: BorderRadius.circular(60)),
-                        child: const Padding(
-                          padding: EdgeInsets.all(3),
-                          child: Icon(
-                            Icons.person_2_rounded,
-                            size: 30,
-                          ),
-                        )),
-                  )),
-            ]),
-        body: Row(mainAxisAlignment: MainAxisAlignment.end, children: [
-          SizedBox(
-              width: 218,
-              height: 700,
-              child: Padding(
-                padding: const EdgeInsets.only(
-                  right: 20,
-                ),
-                child: Stack(
-                  children: [
-                    Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        // border: Border.all(
-                        //   width: _selected.value == index ? 2 : 1.5,
-                        // )
-                      ),
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(10),
-                          border: Border.all(
-                            color: const Color.fromRGBO(0, 0, 0, 0.25),
-                          ),
-                        ),
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    Padding(
-                      padding:
-                          const EdgeInsets.only(left: 10, top: 40, right: 10),
-                      child: Column(children: [
-                        Align(
-                          alignment: Alignment.topCenter,
-                          child: Obx(
-                            () => IconButton(
-                              onPressed: () {},
-                              icon: IconButton(
-                                icon:
-                                    SvgPicture.asset("assets/images/menu.svg"),
-                                onPressed: () {
-                                  BuildProfile();
-                                },
-                              ),
-                            ),
-                          ),
-                        )
-                      ]),
-                    ),
-                  ],
-                ),
-              ))
-        ]));
-  }
 }
 
 Widget _item(String assetPath, String title) {
