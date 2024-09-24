@@ -148,6 +148,10 @@ flutter:
     - family: Aban Bold
       fonts:
         - asset: assets/fonts/Aban Bold.ttf
+          weight: 700 
+    - family: Aban Light
+      fonts:
+        - asset: assets/fonts/Aban Light.ttf
           weight: 700
           
     # - family: Trajan Pro

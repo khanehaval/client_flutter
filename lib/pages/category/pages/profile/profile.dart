@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter_application_1/pages/category/pages/profile/profile_home.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
-import 'package:flutter_application_1/pages/educational_tour.dart';
 import 'package:flutter_application_1/pages/register/register.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_svg/svg.dart';
@@ -121,49 +120,79 @@ openProfile() {
                     ),
                     Column(
                       children: [
+                        GestureDetector(
+                            onTap: () {
+                              Get.to(() => const ProfileHome(),
+                                  duration: const Duration(milliseconds: 100),
+                                  transition: Transition.leftToRight);
+                            },
+                            child: _item('assets/images/Home.svg', "خانه")),
+                        const SizedBox(
+                          height: 10,
+                        ),
                         _item('assets/images/profile_category.svg', "میزکار"),
+                        const SizedBox(
+                          height: 10,
+                        ),
                         _item('assets/images/profile_message.svg', "پیام ها"),
+                        const SizedBox(
+                          height: 10,
+                        ),
                         _item('assets/images/profile_moshavere.svg', "همکاران"),
+                        const SizedBox(
+                          height: 10,
+                        ),
                         _item('assets/images/profile_category.svg', "ویترین"),
+                        const SizedBox(
+                          height: 10,
+                        ),
                         _item('assets/images/profile_vahed.svg', "واحد های من"),
+                        const SizedBox(
+                          height: 10,
+                        ),
                         _item('assets/images/profile_setting.svg', " تنظیمات"),
                       ],
                     ),
-                    Column(
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         const Divider(),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Container(
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(25),
-                                color: Colors.black12),
-                            child: Padding(
-                              padding: const EdgeInsets.symmetric(
-                                  vertical: 3, horizontal: 20),
-                              child: GestureDetector(
-                                onTap: () {},
-                                child: const Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Icon(
-                                      Icons.add_circle,
-                                      color: Colors.white,
-                                    ),
-                                    Text(
-                                      "ثبت آگهی",
-                                      style: TextStyle(
-                                          fontFamily: MAIN_FONT_FAMILY),
-                                    ),
-                                  ],
+                        Container(
+                          width: 35,
+                          height: 35,
+                          child: Stack(
+                            children: [
+                              Container(
+                                width: 35,
+                                height: 35,
+                                decoration: ShapeDecoration(
+                                  color: Colors.white,
+                                  shape: RoundedRectangleBorder(
+                                    side: const BorderSide(
+                                        width: 1, color: Color(0xFFA5A5A5)),
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
                                 ),
                               ),
-                            ),
+                              Container(
+                                width: 18.67,
+                                height: 18.78,
+                                child: Center(
+                                  child: Container(
+                                    width: 7,
+                                    height: 7.04,
+                                    child: const Icon(
+                                      Icons.add_circle_outline,
+                                      color: Color.fromRGBO(99, 99, 99, 1),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
                         ),
                         // switchable(, title)
-                        SizedBox(
+                        const SizedBox(
                           height: 19,
                         ),
                         GestureDetector(
