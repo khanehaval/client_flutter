@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_application_1/pages/category/pages/profile/profile_detail.dart';
 import 'package:flutter_application_1/pages/category/pages/profile/under_profile/profile_my_desk.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
@@ -12,44 +13,6 @@ class ProfileHome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const SizedBox(
-      width: 95,
-      height: 30,
-      child: Text.rich(
-        TextSpan(
-          children: [
-            TextSpan(
-              text: 'ثبت آگهی',
-              style: TextStyle(
-                color: Color(0xFF3E3E3E),
-                fontSize: 18,
-                fontFamily: 'Aban Light',
-                height: 0,
-              ),
-            ),
-            TextSpan(
-              text: ' ',
-              style: TextStyle(
-                color: Color(0xFF3E3E3E),
-                fontSize: 15,
-                fontFamily: 'Aban Light',
-                height: 0,
-              ),
-            ),
-            TextSpan(
-              text: '(رایگان)',
-              style: TextStyle(
-                color: Color(0xFF36D859),
-                fontSize: 14,
-                fontFamily: 'Aban Light',
-                height: 0,
-              ),
-            ),
-          ],
-        ),
-        textAlign: TextAlign.center,
-      ),
-    );
     return Scaffold(
       bottomNavigationBar: bottomNavigationBar2(0),
       backgroundColor: Colors.white,
@@ -161,92 +124,97 @@ class ProfileHome extends StatelessWidget {
                       ),
                     ),
                   ),
-                  Container(
-                    width: 220,
-                    height: 74,
-                    decoration: ShapeDecoration(
-                      color: Colors.white,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15),
+                  GestureDetector(
+                    onTap: () {
+                      Get.to(() => const ProfileDetail());
+                    },
+                    child: Container(
+                      width: 220,
+                      height: 74,
+                      decoration: ShapeDecoration(
+                        color: Colors.white,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(15),
+                        ),
+                        shadows: const [
+                          BoxShadow(
+                            color: Color(0x26000000),
+                            blurRadius: 3,
+                            offset: Offset(0, 0),
+                            spreadRadius: 0,
+                          )
+                        ],
                       ),
-                      shadows: const [
-                        BoxShadow(
-                          color: Color(0x26000000),
-                          blurRadius: 3,
-                          offset: Offset(0, 0),
-                          spreadRadius: 0,
-                        )
-                      ],
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        Stack(
-                          children: [
-                            Container(
-                              width: 58,
-                              height: 50,
-                              decoration: const BoxDecoration(
-                                  gradient:
-                                      LinearGradient(colors: GRADIANT_COLOR1),
-                                  shape: BoxShape.circle),
-                              child: Padding(
-                                padding: const EdgeInsets.all(1.0),
-                                child: Container(
-                                  height: 50,
-                                  width: 58,
-                                  decoration: const BoxDecoration(
-                                      color: Colors.white,
-                                      shape: BoxShape.circle),
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Image.asset(
-                                      'assets/images/logo-fa-photoshop.png',
-                                      width: 50,
-                                      height: 50,
-                                      fit: BoxFit.contain,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          Stack(
+                            children: [
+                              Container(
+                                width: 58,
+                                height: 50,
+                                decoration: const BoxDecoration(
+                                    gradient:
+                                        LinearGradient(colors: GRADIANT_COLOR1),
+                                    shape: BoxShape.circle),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(1.0),
+                                  child: Container(
+                                    height: 50,
+                                    width: 58,
+                                    decoration: const BoxDecoration(
+                                        color: Colors.white,
+                                        shape: BoxShape.circle),
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Image.asset(
+                                        'assets/images/logo-fa-photoshop.png',
+                                        width: 50,
+                                        height: 50,
+                                        fit: BoxFit.contain,
+                                      ),
                                     ),
                                   ),
                                 ),
                               ),
-                            ),
-                            Padding(
-                              padding:
-                                  const EdgeInsets.only(left: 45.0, top: 15),
-                              child: SvgPicture.asset(
-                                'assets/images/edit_icon_profile.svg',
-                                width: 50,
-                                height: 20,
-                              ),
-                            ),
-                          ],
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 10.0),
-                          child: Column(
-                            children: [
-                              Image.asset(
-                                'assets/images/Score_axansbartar.png',
-                                width: 70,
-                              ),
-                              const Row(
-                                children: [
-                                  Icon(
-                                    Icons.verified,
-                                    color: Colors.blue,
-                                  ),
-                                  Text(
-                                    "خانه اول",
-                                    style: TextStyle(
-                                        fontSize: 14,
-                                        fontFamily: MAIN_FONT_FAMILY),
-                                  ),
-                                ],
+                              Padding(
+                                padding:
+                                    const EdgeInsets.only(left: 45.0, top: 15),
+                                child: SvgPicture.asset(
+                                  'assets/images/edit_icon_profile.svg',
+                                  width: 50,
+                                  height: 20,
+                                ),
                               ),
                             ],
                           ),
-                        ),
-                      ],
+                          Padding(
+                            padding: const EdgeInsets.only(top: 10.0),
+                            child: Column(
+                              children: [
+                                Image.asset(
+                                  'assets/images/Score_axansbartar.png',
+                                  width: 70,
+                                ),
+                                const Row(
+                                  children: [
+                                    Icon(
+                                      Icons.verified,
+                                      color: Colors.blue,
+                                    ),
+                                    Text(
+                                      "خانه اول",
+                                      style: TextStyle(
+                                          fontSize: 14,
+                                          fontFamily: MAIN_FONT_FAMILY),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ],
@@ -1033,9 +1001,6 @@ class ProfileHome extends StatelessWidget {
                   ],
                 ),
               ),
-              const SizedBox(
-                height: 30,
-              )
             ],
           ),
         ),
