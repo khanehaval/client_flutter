@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_application_1/pages/category/pages/profile/profile_detail.dart';
+import 'package:flutter_application_1/pages/category/pages/profile/under_profile/category_Profile.dart';
 import 'package:flutter_application_1/pages/category/pages/profile/under_profile/profile_my_desk.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
@@ -233,71 +234,78 @@ class ProfileHome extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Container(
-                    width: 160,
-                    height: 100,
-                    decoration: ShapeDecoration(
-                      color: Colors.white,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
+                  GestureDetector(
+                    onTap: () {
+                      Get.to(() => const CategoryProfile(
+                            index: 0,
+                          ));
+                    },
+                    child: Container(
+                      width: 160,
+                      height: 100,
+                      decoration: ShapeDecoration(
+                        color: Colors.white,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        shadows: const [
+                          BoxShadow(
+                            color: Color(0x26000000),
+                            blurRadius: 3,
+                            offset: Offset(0, 0),
+                            spreadRadius: 0,
+                          )
+                        ],
                       ),
-                      shadows: const [
-                        BoxShadow(
-                          color: Color(0x26000000),
-                          blurRadius: 3,
-                          offset: Offset(0, 0),
-                          spreadRadius: 0,
-                        )
-                      ],
-                    ),
-                    child: Column(
-                      children: [
-                        const SizedBox(
-                          height: 15,
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(
-                            left: 100.0,
+                      child: Column(
+                        children: [
+                          const SizedBox(
+                            height: 15,
                           ),
-                          child: SvgPicture.asset(
-                            'assets/images/Agahi_man_profile_home.svg',
-                            width: 24,
-                            height: 24,
+                          Padding(
+                            padding: const EdgeInsets.only(
+                              left: 100.0,
+                            ),
+                            child: SvgPicture.asset(
+                              'assets/images/Agahi_man_profile_home.svg',
+                              width: 24,
+                              height: 24,
+                            ),
                           ),
-                        ),
-                        const Padding(
-                          padding: EdgeInsets.only(right: 20.0),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: [
-                              Text(
-                                'آگهی های من',
-                                style: TextStyle(
-                                  color: Color(0xFF626262),
-                                  fontSize: 18,
-                                  fontFamily: 'Aban Light',
+                          const Padding(
+                            padding: EdgeInsets.only(right: 20.0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                Text(
+                                  'آگهی های من',
+                                  style: TextStyle(
+                                    color: Color(0xFF626262),
+                                    fontSize: 18,
+                                    fontFamily: 'Aban Light',
+                                  ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
-                        ),
-                        const Padding(
-                          padding: EdgeInsets.only(right: 20.0),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: [
-                              Text(
-                                'آگهی های ثبت شده',
-                                style: TextStyle(
-                                  color: Color(0xFFA5A5A5),
-                                  fontSize: 10,
-                                  fontFamily: MAIN_FONT_FAMILY_LIGHT,
+                          const Padding(
+                            padding: EdgeInsets.only(right: 20.0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                Text(
+                                  'آگهی های ثبت شده',
+                                  style: TextStyle(
+                                    color: Color(0xFFA5A5A5),
+                                    fontSize: 10,
+                                    fontFamily: MAIN_FONT_FAMILY_LIGHT,
+                                  ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                   GestureDetector(
