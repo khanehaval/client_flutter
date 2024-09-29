@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_application_1/pages/category/pages/profile/category_window/Profile_ADs_Seen.dart';
 import 'package:flutter_application_1/pages/category/pages/profile/profile_detail.dart';
+import 'package:flutter_application_1/pages/category/pages/profile/under_profile/Profile_Notification.dart';
 import 'package:flutter_application_1/pages/category/pages/profile/under_profile/category_Profile.dart';
+import 'package:flutter_application_1/pages/category/pages/profile/under_profile/main_category_profile.dart';
 import 'package:flutter_application_1/pages/category/pages/profile/under_profile/profile_my_desk.dart';
+import 'package:flutter_application_1/pages/category/pages/profile/under_profile/req_melk_profile.dart';
+import 'package:flutter_application_1/pages/category/pages/profile/vitrin_profile/vitrin.dart';
+import 'package:flutter_application_1/pages/category/pages/window/window_item_builder.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/app_bar.dart';
@@ -390,138 +396,152 @@ class ProfileHome extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Container(
-                    width: 160,
-                    height: 100,
-                    decoration: ShapeDecoration(
-                      color: Colors.white,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
+                  GestureDetector(
+                    onTap: () {
+                      Get.to(() => MainCategoryProfile(
+                            index: 1,
+                          ));
+                    },
+                    child: Container(
+                      width: 160,
+                      height: 100,
+                      decoration: ShapeDecoration(
+                        color: Colors.white,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        shadows: const [
+                          BoxShadow(
+                            color: Color(0x26000000),
+                            blurRadius: 3,
+                            offset: Offset(0, 0),
+                            spreadRadius: 0,
+                          )
+                        ],
                       ),
-                      shadows: const [
-                        BoxShadow(
-                          color: Color(0x26000000),
-                          blurRadius: 3,
-                          offset: Offset(0, 0),
-                          spreadRadius: 0,
-                        )
-                      ],
-                    ),
-                    child: Column(
-                      children: [
-                        const SizedBox(
-                          height: 15,
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(
-                            left: 100.0,
+                      child: Column(
+                        children: [
+                          const SizedBox(
+                            height: 15,
                           ),
-                          child: SvgPicture.asset(
-                            'assets/images/favoraite_profile.svg',
-                            width: 24,
-                            height: 24,
+                          Padding(
+                            padding: const EdgeInsets.only(
+                              left: 100.0,
+                            ),
+                            child: SvgPicture.asset(
+                              'assets/images/favoraite_profile.svg',
+                              width: 24,
+                              height: 24,
+                            ),
                           ),
-                        ),
-                        const Padding(
-                          padding: EdgeInsets.only(right: 20.0),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: [
-                              Text(
-                                'نشان شده ها',
-                                style: TextStyle(
-                                  color: Color(0xFF626262),
-                                  fontSize: 18,
-                                  fontFamily: 'Aban Light',
+                          const Padding(
+                            padding: EdgeInsets.only(right: 20.0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                Text(
+                                  'نشان شده ها',
+                                  style: TextStyle(
+                                    color: Color(0xFF626262),
+                                    fontSize: 18,
+                                    fontFamily: 'Aban Light',
+                                  ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
-                        ),
-                        const Padding(
-                          padding: EdgeInsets.only(right: 20.0),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: [
-                              Text(
-                                'آگهی های مورد علاقه شما',
-                                style: TextStyle(
-                                  color: Color(0xFFA5A5A5),
-                                  fontSize: 10,
-                                  fontFamily: MAIN_FONT_FAMILY_LIGHT,
+                          const Padding(
+                            padding: EdgeInsets.only(right: 20.0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                Text(
+                                  'آگهی های مورد علاقه شما',
+                                  style: TextStyle(
+                                    color: Color(0xFFA5A5A5),
+                                    fontSize: 10,
+                                    fontFamily: MAIN_FONT_FAMILY_LIGHT,
+                                  ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
-                  Container(
-                    width: 160,
-                    height: 100,
-                    decoration: ShapeDecoration(
-                      color: Colors.white,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
+                  GestureDetector(
+                    onTap: () {
+                      Get.to(() => MainCategoryProfile(
+                            index: 2,
+                          ));
+                    },
+                    child: Container(
+                      width: 160,
+                      height: 100,
+                      decoration: ShapeDecoration(
+                        color: Colors.white,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        shadows: const [
+                          BoxShadow(
+                            color: Color(0x26000000),
+                            blurRadius: 3,
+                            offset: Offset(0, 0),
+                            spreadRadius: 0,
+                          )
+                        ],
                       ),
-                      shadows: const [
-                        BoxShadow(
-                          color: Color(0x26000000),
-                          blurRadius: 3,
-                          offset: Offset(0, 0),
-                          spreadRadius: 0,
-                        )
-                      ],
-                    ),
-                    child: Column(
-                      children: [
-                        const SizedBox(
-                          height: 15,
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(
-                            left: 90.0,
+                      child: Column(
+                        children: [
+                          const SizedBox(
+                            height: 15,
                           ),
-                          child: SvgPicture.asset(
-                            'assets/images/see_profile.svg',
-                            width: 24,
-                            height: 24,
+                          Padding(
+                            padding: const EdgeInsets.only(
+                              left: 90.0,
+                            ),
+                            child: SvgPicture.asset(
+                              'assets/images/see_profile.svg',
+                              width: 24,
+                              height: 24,
+                            ),
                           ),
-                        ),
-                        const Padding(
-                          padding: EdgeInsets.only(right: 20.0),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: [
-                              Text(
-                                'دیده شده ها',
-                                style: TextStyle(
-                                  color: Color(0xFF626262),
-                                  fontSize: 18,
-                                  fontFamily: 'Aban Light',
+                          const Padding(
+                            padding: EdgeInsets.only(right: 20.0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                Text(
+                                  'دیده شده ها',
+                                  style: TextStyle(
+                                    color: Color(0xFF626262),
+                                    fontSize: 18,
+                                    fontFamily: 'Aban Light',
+                                  ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
-                        ),
-                        const Padding(
-                          padding: EdgeInsets.only(right: 20.0),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: [
-                              Text(
-                                'آگهی های دیده شده شما',
-                                style: TextStyle(
-                                  color: Color(0xFFA5A5A5),
-                                  fontSize: 10,
-                                  fontFamily: MAIN_FONT_FAMILY_LIGHT,
+                          const Padding(
+                            padding: EdgeInsets.only(right: 20.0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                Text(
+                                  'آگهی های دیده شده شما',
+                                  style: TextStyle(
+                                    color: Color(0xFFA5A5A5),
+                                    fontSize: 10,
+                                    fontFamily: MAIN_FONT_FAMILY_LIGHT,
+                                  ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                 ],
@@ -532,71 +552,78 @@ class ProfileHome extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Container(
-                    width: 160,
-                    height: 100,
-                    decoration: ShapeDecoration(
-                      color: Colors.white,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
+                  GestureDetector(
+                    onTap: () {
+                      Get.to(() => const ProfileNotification(),
+                          duration: const Duration(milliseconds: 100),
+                          transition: Transition.leftToRight);
+                    },
+                    child: Container(
+                      width: 160,
+                      height: 100,
+                      decoration: ShapeDecoration(
+                        color: Colors.white,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        shadows: const [
+                          BoxShadow(
+                            color: Color(0x26000000),
+                            blurRadius: 3,
+                            offset: Offset(0, 0),
+                            spreadRadius: 0,
+                          )
+                        ],
                       ),
-                      shadows: const [
-                        BoxShadow(
-                          color: Color(0x26000000),
-                          blurRadius: 3,
-                          offset: Offset(0, 0),
-                          spreadRadius: 0,
-                        )
-                      ],
-                    ),
-                    child: Column(
-                      children: [
-                        const SizedBox(
-                          height: 15,
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(
-                            left: 100.0,
+                      child: Column(
+                        children: [
+                          const SizedBox(
+                            height: 15,
                           ),
-                          child: SvgPicture.asset(
-                            'assets/images/rington.svg',
-                            width: 24,
-                            height: 24,
+                          Padding(
+                            padding: const EdgeInsets.only(
+                              left: 100.0,
+                            ),
+                            child: SvgPicture.asset(
+                              'assets/images/rington.svg',
+                              width: 24,
+                              height: 24,
+                            ),
                           ),
-                        ),
-                        const Padding(
-                          padding: EdgeInsets.only(right: 15.0),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: [
-                              Text(
-                                'اطلاع رسانی',
-                                style: TextStyle(
-                                  color: Color(0xFF626262),
-                                  fontSize: 18,
-                                  fontFamily: 'Aban Light',
+                          const Padding(
+                            padding: EdgeInsets.only(right: 15.0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                Text(
+                                  'اطلاع رسانی',
+                                  style: TextStyle(
+                                    color: Color(0xFF626262),
+                                    fontSize: 18,
+                                    fontFamily: 'Aban Light',
+                                  ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
-                        ),
-                        const Padding(
-                          padding: EdgeInsets.only(right: 15.0),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: [
-                              Text(
-                                'ذخیره جستجو و اطلاع رسانی ملک',
-                                style: TextStyle(
-                                  color: Color(0xFFA5A5A5),
-                                  fontSize: 9,
-                                  fontFamily: MAIN_FONT_FAMILY_LIGHT,
+                          const Padding(
+                            padding: EdgeInsets.only(right: 15.0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                Text(
+                                  'ذخیره جستجو و اطلاع رسانی ملک',
+                                  style: TextStyle(
+                                    color: Color(0xFFA5A5A5),
+                                    fontSize: 9,
+                                    fontFamily: MAIN_FONT_FAMILY_LIGHT,
+                                  ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                   Container(
@@ -664,6 +691,162 @@ class ProfileHome extends StatelessWidget {
                           ),
                         ),
                       ],
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  GestureDetector(
+                    onTap: () {
+                      Get.to(() => const Vitrin(),
+                          duration: const Duration(milliseconds: 100),
+                          transition: Transition.leftToRight);
+                    },
+                    child: Container(
+                      width: 160,
+                      height: 100,
+                      decoration: ShapeDecoration(
+                        color: Colors.white,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        shadows: const [
+                          BoxShadow(
+                            color: Color(0x26000000),
+                            blurRadius: 3,
+                            offset: Offset(0, 0),
+                            spreadRadius: 0,
+                          )
+                        ],
+                      ),
+                      child: Column(
+                        children: [
+                          const SizedBox(
+                            height: 15,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(
+                              left: 100.0,
+                            ),
+                            child: SvgPicture.asset(
+                              'assets/images/vitrin_profile_icon.svg',
+                              width: 24,
+                              height: 24,
+                            ),
+                          ),
+                          const Padding(
+                            padding: EdgeInsets.only(right: 15.0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                Text(
+                                  'ویترین',
+                                  style: TextStyle(
+                                    color: Color(0xFF626262),
+                                    fontSize: 18,
+                                    fontFamily: 'Aban Light',
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          const Padding(
+                            padding: EdgeInsets.only(right: 15.0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                Text(
+                                  'در ویترین دیده شوید',
+                                  style: TextStyle(
+                                    color: Color(0xFFA5A5A5),
+                                    fontSize: 9,
+                                    fontFamily: MAIN_FONT_FAMILY_LIGHT,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      Get.to(() => ReqMelkProfile(),
+                          duration: const Duration(milliseconds: 100),
+                          transition: Transition.leftToRight);
+                    },
+                    child: Container(
+                      width: 160,
+                      height: 100,
+                      decoration: ShapeDecoration(
+                        color: Colors.white,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        shadows: const [
+                          BoxShadow(
+                            color: Color(0x26000000),
+                            blurRadius: 3,
+                            offset: Offset(0, 0),
+                            spreadRadius: 0,
+                          )
+                        ],
+                      ),
+                      child: Column(
+                        children: [
+                          const SizedBox(
+                            height: 15,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(
+                              left: 100.0,
+                            ),
+                            child: SvgPicture.asset(
+                              'assets/images/home_icon_profile.svg',
+                              width: 24,
+                              height: 24,
+                            ),
+                          ),
+                          const Padding(
+                            padding: EdgeInsets.only(right: 20.0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                Text(
+                                  'درخواست ملک',
+                                  style: TextStyle(
+                                    color: Color(0xFF626262),
+                                    fontSize: 18,
+                                    fontFamily: 'Aban Light',
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          const Padding(
+                            padding: EdgeInsets.only(right: 20.0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                Text(
+                                  'درخواست های ملک',
+                                  style: TextStyle(
+                                    color: Color(0xFFA5A5A5),
+                                    fontSize: 10,
+                                    fontFamily: MAIN_FONT_FAMILY_LIGHT,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ],

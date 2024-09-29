@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/pages/category/pages/profile/category_window/Profile_ADs_Save.dart';
+import 'package:flutter_application_1/pages/category/pages/profile/category_window/Profile_ADs_Seen.dart';
 import 'package:flutter_application_1/pages/category/pages/profile/category_window/Profile_My_ADs.dart';
 import 'package:flutter_application_1/pages/category/pages/window/window_pages/amlak_page.dart';
 import 'package:flutter_application_1/pages/category/pages/window/window_pages/ejara_maskoni.dart';
@@ -23,6 +25,12 @@ class CategoryProfile extends StatefulWidget {
 class _CategoryProfileState extends State<CategoryProfile> {
   final _controller = ItemScrollController();
   final _currentIndex = 0.obs;
+  @override
+  void initState() {
+    _currentIndex.value = widget.index;
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -213,6 +221,6 @@ Widget _buildImageWithText(
 
 final List<Widget> _pages = [
   const ProfileMyAds(),
-  EjaraMaskoni(),
-  ForoshMaskoni(),
+  const ProfileAdsSave(),
+  const ProfileAdsSeen(),
 ];
