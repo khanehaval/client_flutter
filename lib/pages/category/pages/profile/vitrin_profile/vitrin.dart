@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/pages/category/pages/profile/vitrin_profile/edit_vitrin.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 
 class Vitrin extends StatelessWidget {
   const Vitrin({super.key});
@@ -103,7 +105,7 @@ class Vitrin extends StatelessWidget {
                 color: Color.fromRGBO(226, 226, 226, 1),
               ),
               const SizedBox(
-                height: 20,
+                height: 10,
               ),
               Padding(
                 padding: const EdgeInsets.all(20.0),
@@ -257,6 +259,241 @@ class Vitrin extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.center,
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
+                              GestureDetector(
+                                onTap: () {
+                                  Get.to(() => EditVitrin(),
+                                      duration:
+                                          const Duration(milliseconds: 100),
+                                      transition: Transition.leftToRight);
+                                },
+                                child: Container(
+                                  width: 145,
+                                  height: 32,
+                                  decoration: ShapeDecoration(
+                                    color: Colors.white,
+                                    shape: RoundedRectangleBorder(
+                                      side: const BorderSide(
+                                          width: 1, color: Color(0xFF4C8CED)),
+                                      borderRadius: BorderRadius.circular(15),
+                                    ),
+                                    shadows: const [
+                                      BoxShadow(
+                                        color: Color(0x7F36D859),
+                                        blurRadius: 5,
+                                        offset: Offset(0, 1),
+                                        spreadRadius: 0,
+                                      )
+                                    ],
+                                  ),
+                                  child: const Text(
+                                    'ویرایش ویترین',
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                      color: Color(0xFF636363),
+                                      fontSize: 12,
+                                      fontFamily: MAIN_FONT_FAMILY,
+                                      fontWeight: FontWeight.w700,
+                                      height: 2,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: Container(
+                  width: 372,
+                  height: 337,
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 23, vertical: 22),
+                  clipBehavior: Clip.antiAlias,
+                  decoration: ShapeDecoration(
+                    color: Colors.white,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    shadows: const [
+                      BoxShadow(
+                        color: Color(0x26000000),
+                        blurRadius: 3,
+                        offset: Offset(0, 0),
+                        spreadRadius: 0,
+                      )
+                    ],
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Column(
+                        children: [
+                          const SizedBox(height: 15),
+                          Container(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Row(
+                                  children: [
+                                    Column(
+                                      children: [
+                                        SvgPicture.asset(
+                                          'assets/images/Axans_montakhab.svg',
+                                          width: 90,
+                                        ),
+                                        Row(
+                                          children: [
+                                            Icon(
+                                              Icons.verified,
+                                              color: Colors.blue,
+                                            ),
+                                            Text(
+                                              "خانه اول",
+                                              style: TextStyle(
+                                                  fontSize: 18,
+                                                  color: Color.fromRGBO(
+                                                      99, 99, 99, 1),
+                                                  fontFamily: MAIN_FONT_FAMILY),
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                    const SizedBox(
+                                      width: 30,
+                                    ),
+                                    Stack(
+                                      children: [
+                                        Container(
+                                          width: 60,
+                                          height: 60,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(
+                                                width: 2,
+                                                color: const Color.fromRGBO(
+                                                    229, 222, 41, 1)),
+                                            boxShadow: [
+                                              BoxShadow(
+                                                color: Colors.black
+                                                    .withOpacity(0.0),
+                                              )
+                                            ],
+                                            shape: BoxShape.circle,
+                                          ),
+                                          child: Padding(
+                                            padding: const EdgeInsets.all(5.0),
+                                            child: Image.asset(
+                                              'assets/images/logo-fa-photoshop.png',
+                                              width: 65,
+                                              height: 65,
+                                              fit: BoxFit.contain,
+                                            ),
+                                          ),
+                                        ),
+                                        Padding(
+                                          padding:
+                                              const EdgeInsets.only(left: 40.0),
+                                          child: SvgPicture.asset(
+                                            'assets/images/edit_icon_profile.svg',
+                                            width: 50,
+                                            height: 20,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                                const SizedBox(height: 20),
+                                const Text.rich(
+                                  TextSpan(
+                                    children: [
+                                      TextSpan(
+                                          text: 'مدیر آژانس : ',
+                                          style: TextStyle(
+                                            color: Color.fromRGBO(0, 0, 0, 1),
+                                            fontSize: 16,
+                                            fontFamily: 'Aban Bold',
+                                          )),
+                                      TextSpan(
+                                        text: 'زنگنه',
+                                        style: TextStyle(
+                                          color: Color.fromRGBO(0, 0, 0, 1),
+                                          fontSize: 14,
+                                          fontFamily: MAIN_FONT_FAMILY_MEDIUM,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  textAlign: TextAlign.right,
+                                ),
+                                const SizedBox(height: 10),
+                                Container(
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      const Text(
+                                        'آدرس : جلال آل احمد، پلاک 417',
+                                        textAlign: TextAlign.right,
+                                        style: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 12,
+                                          fontFamily: MAIN_FONT_FAMILY_LIGHT,
+                                        ),
+                                      ),
+                                      const SizedBox(height: 10),
+                                      const Text(
+                                        'شماره مجوز : 12458963',
+                                        textAlign: TextAlign.right,
+                                        style: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 12,
+                                          fontFamily: MAIN_FONT_FAMILY_LIGHT,
+                                        ),
+                                      ),
+                                      SizedBox(height: 10),
+                                      RichText(
+                                        textAlign: TextAlign.right,
+                                        text: const TextSpan(
+                                          text: 'تائید هویت : ',
+                                          style: TextStyle(
+                                            color: Colors.black,
+                                            fontSize: 12,
+                                            fontFamily: MAIN_FONT_FAMILY_LIGHT,
+                                          ),
+                                          children: <TextSpan>[
+                                            TextSpan(
+                                              text: 'انجام شده',
+                                              style: TextStyle(
+                                                  fontFamily: MAIN_FONT_FAMILY,
+                                                  color: Color.fromRGBO(
+                                                      76, 140, 237, 1)),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          const SizedBox(height: 30),
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
                               Container(
                                 width: 145,
                                 height: 32,
@@ -270,21 +507,20 @@ class Vitrin extends StatelessWidget {
                                   shadows: const [
                                     BoxShadow(
                                       color: Color(0x7F36D859),
-                                      blurRadius: 5,
-                                      offset: Offset(0, 1),
-                                      spreadRadius: 0,
+                                      blurRadius: 7,
+                                      offset: Offset(0, 2),
                                     )
                                   ],
                                 ),
                                 child: const Text(
-                                  'ویرایش ویترین',
+                                  'ویرایش اطلاعات',
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
                                     color: Color(0xFF636363),
                                     fontSize: 12,
                                     fontFamily: MAIN_FONT_FAMILY,
                                     fontWeight: FontWeight.w700,
-                                    height: 2,
+                                    height: 2.5,
                                   ),
                                 ),
                               ),
@@ -295,7 +531,7 @@ class Vitrin extends StatelessWidget {
                     ],
                   ),
                 ),
-              )
+              ),
             ],
           ),
         ),
