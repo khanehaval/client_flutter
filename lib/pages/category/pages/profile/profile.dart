@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/pages/category/pages/profile/Colleagues_profile.dart';
 import 'package:flutter_application_1/pages/category/pages/profile/profile_home.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/register/register.dart';
@@ -138,7 +139,12 @@ openProfile() {
                         const SizedBox(
                           height: 10,
                         ),
-                        _item('assets/images/profile_moshavere.svg', "همکاران"),
+                        GestureDetector(
+                            onTap: () {
+                              Get.to(() => ColleaguesProfile());
+                            },
+                            child: _item('assets/images/profile_moshavere.svg',
+                                "همکاران")),
                         const SizedBox(
                           height: 10,
                         ),

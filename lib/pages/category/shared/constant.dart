@@ -35,10 +35,26 @@ const GRADIANT_COLOR5 = [
   Color.fromRGBO(255, 255, 255, 0.5),
   Color.fromRGBO(255, 254, 254, 1),
 ];
+const GRADIANT_COLOR_Colleagues = [
+  Color.fromRGBO(248, 248, 248, 1),
+  Color.fromRGBO(239, 239, 239, 1),
+];
 const BLACK_12_GRADIANT_COLOR = [
   Colors.black12,
   Colors.black12,
   Colors.black12,
+];
+const GRADIANT_vitrin = [
+  Color.fromRGBO(253, 152, 1, 1),
+  Color.fromRGBO(102, 102, 102, 1),
+];
+const GRADIANT_message = [
+  Color.fromRGBO(23, 102, 175, 1),
+  Color.fromRGBO(102, 102, 102, 1),
+];
+const GRADIANT_call = [
+  Color.fromRGBO(66, 159, 86, 1),
+  Color.fromRGBO(102, 102, 102, 1),
 ];
 
 double getPageWidth() => Get.width * 0.42;
