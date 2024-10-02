@@ -231,14 +231,14 @@ class EditVitrin extends StatelessWidget {
               const SizedBox(
                 height: 20,
               ),
-              WidgetWebVitrin(),
-              const SizedBox(
-                height: 20,
-              ),
-              WidgetShabakeVitrin(),
-              const SizedBox(
-                height: 20,
-              ),
+              // WidgetWebVitrin(),
+              // const SizedBox(
+              //   height: 20,
+              // ),
+              // WidgetShabakeVitrin(),
+              // const SizedBox(
+              //   height: 20,
+              // ),
               WidgetPhotoProfileVitrin(),
               const SizedBox(
                 height: 20,
@@ -251,10 +251,10 @@ class EditVitrin extends StatelessWidget {
               const SizedBox(
                 height: 20,
               ),
-              WidgetSpecialAd(),
-              const SizedBox(
-                height: 20,
-              ),
+              // WidgetSpecialAd(),
+              // const SizedBox(
+              //   height: 20,
+              // ),
               WidgetMaqalehAmozeshi(),
               const SizedBox(
                 height: 20,

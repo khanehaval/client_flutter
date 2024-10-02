@@ -1,3 +1,4 @@
+import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_svg/svg.dart';
@@ -34,7 +35,7 @@ class _WidgetPhotoProfileVitrinState extends State<WidgetPhotoProfileVitrin> {
       () => Container(
         width: 343,
         height: _About_me_1.value
-            ? 130
+            ? 300
             : 50, // تغییر ارتفاع باکس بر اساس باز یا بسته بودن
         decoration: BoxDecoration(
           color: const Color.fromRGBO(250, 250, 250, 1),
@@ -134,44 +135,80 @@ class _WidgetPhotoProfileVitrinState extends State<WidgetPhotoProfileVitrin> {
                 ),
               ],
             ),
-            if (_About_me_1.value) buildMahaleh(context),
+            if (_About_me_1.value)
+              Column(
+                children: [
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  buildPhotoProfileVitrin(context),
+                ],
+              ),
           ],
         ),
       ),
     );
   }
 
-  Widget buildMahaleh(BuildContext context) {
+  Widget buildPhotoProfileVitrin(BuildContext context) {
     return Container(
-      height: 41,
-      width: MediaQuery.of(context).size.width / 1.23,
-      child: TextField(
-        style: const TextStyle(
-          fontFamily: MAIN_FONT_FAMILY_MEDIUM,
-          color: Color.fromRGBO(99, 99, 99, 1),
+      width: 300,
+      height: 140,
+      decoration: ShapeDecoration(
+        color: Colors.white,
+        shape: RoundedRectangleBorder(
+          side: const BorderSide(width: 1, color: Color(0xFFB7B7B7)),
+          borderRadius: BorderRadius.circular(10),
         ),
-        controller: _textController,
-        textAlign: TextAlign.right,
-        decoration: InputDecoration(
-          hintText: 'تایپ کنید',
-          hintStyle: const TextStyle(
-            color: Color.fromRGBO(99, 99, 99, 1),
-            fontSize: 13,
-            fontFamily: MAIN_FONT_FAMILY_MEDIUM,
-          ),
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10),
-            borderSide: const BorderSide(
-              color: Color.fromRGBO(23, 102, 175, 1),
+        shadows: const [
+          BoxShadow(
+            color: Color(0x11000000),
+            blurRadius: 3.40,
+            offset: Offset(-1, 1),
+            spreadRadius: 0,
+          )
+        ],
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          DottedBorder(
+            borderType: BorderType.RRect,
+            color: Colors.black26,
+            strokeWidth: 2,
+            radius: const Radius.circular(35),
+            child: const SizedBox(
+              height: 31, // سایز متفاوت برای عکس اصلی
+              width: 80, // سایز متفاوت برای عکس اصلی
+              child: Center(
+                child: Icon(Icons.add, size: 30, color: Colors.black26),
+              ),
             ),
           ),
-          focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10),
-            borderSide: const BorderSide(
-              color: Color.fromRGBO(23, 102, 175, 1),
+          const Text.rich(
+            TextSpan(
+              children: [
+                TextSpan(
+                  text: 'تصویر پروفایل خود را انتخاب کنید\n',
+                  style: TextStyle(
+                    color: Color(0xFF626262),
+                    fontSize: 10,
+                    fontFamily: MAIN_FONT_FAMILY,
+                  ),
+                ),
+                TextSpan(
+                  text: 'فرمت JPEG - حداکثر 5MB ',
+                  style: TextStyle(
+                    color: Color(0xFFA5A5A5),
+                    fontSize: 8,
+                    fontFamily: MAIN_FONT_FAMILY_LIGHT,
+                  ),
+                ),
+              ],
             ),
+            textAlign: TextAlign.center,
           ),
-        ),
+        ],
       ),
     );
   }

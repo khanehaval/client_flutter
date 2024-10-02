@@ -1,12 +1,6 @@
 import 'dart:ui';
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/namayesh_agahi.dart';
-import 'package:flutter_application_1/pages/category/pages/Advertisements/shared/widget_detail_call.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/app_bar.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -14,7 +8,6 @@ import 'package:get/get.dart';
 
 class NamayeshListAgency extends StatelessWidget {
   const NamayeshListAgency({super.key});
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(

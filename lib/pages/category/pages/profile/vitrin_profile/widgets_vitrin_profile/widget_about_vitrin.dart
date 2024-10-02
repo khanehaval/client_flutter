@@ -33,7 +33,7 @@ class _AboutMeWidgetState extends State<WidgetAboutVitrin> {
       () => Container(
         width: 343,
         height: _About_me_1.value
-            ? 130
+            ? 300
             : 50, // تغییر ارتفاع باکس بر اساس باز یا بسته بودن
         decoration: BoxDecoration(
           color: const Color.fromRGBO(250, 250, 250, 1),
@@ -134,41 +134,42 @@ class _AboutMeWidgetState extends State<WidgetAboutVitrin> {
                 ),
               ],
             ),
-            if (_About_me_1.value) buildMahaleh(context),
+            if (_About_me_1.value) buildAboutVitrin(context),
           ],
         ),
       ),
     );
   }
 
-  Widget buildMahaleh(BuildContext context) {
-    return Container(
-      height: 41,
-      width: MediaQuery.of(context).size.width / 1.23,
-      child: TextField(
-        style: const TextStyle(
-          fontFamily: MAIN_FONT_FAMILY_MEDIUM,
-          color: Color.fromRGBO(99, 99, 99, 1),
-        ),
-        controller: _textController,
-        textAlign: TextAlign.right,
-        decoration: InputDecoration(
-          hintText: 'تایپ کنید',
-          hintStyle: const TextStyle(
-            color: Color.fromRGBO(99, 99, 99, 1),
-            fontSize: 13,
-            fontFamily: MAIN_FONT_FAMILY_MEDIUM,
+  Widget buildAboutVitrin(BuildContext context) {
+    return Directionality(
+      textDirection: TextDirection.rtl,
+      child: Padding(
+        padding: const EdgeInsets.all(20.0),
+        child: TextField(
+          style: const TextStyle(
+            fontFamily: MAIN_FONT_FAMILY_LIGHT,
           ),
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10),
-            borderSide: const BorderSide(
-              color: Color.fromRGBO(23, 102, 175, 1),
+          focusNode: FocusNode(),
+          maxLines: 5,
+          decoration: InputDecoration(
+            hintText: 'تایپ کنید',
+            hintStyle: const TextStyle(
+              color: Color.fromRGBO(99, 99, 99, 1),
+              fontSize: 13,
+              fontFamily: MAIN_FONT_FAMILY_MEDIUM,
             ),
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10),
-            borderSide: const BorderSide(
-              color: Color.fromRGBO(23, 102, 175, 1),
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10),
+              borderSide: const BorderSide(
+                color: Color.fromRGBO(23, 102, 175, 1),
+              ),
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10),
+              borderSide: const BorderSide(
+                color: Color.fromRGBO(23, 102, 175, 1),
+              ),
             ),
           ),
         ),

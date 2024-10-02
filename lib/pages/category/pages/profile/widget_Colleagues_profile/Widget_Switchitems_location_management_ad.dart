@@ -28,6 +28,7 @@ class _WidgetSwitchitemsLocationManagementAdState
 
   Widget buildMelkTypeItem() {
     return Container(
+      height: 270,
       margin: const EdgeInsets.symmetric(horizontal: 20), // فاصله بیرونی
       decoration: BoxDecoration(
         border: Border.all(width: 1, color: Colors.black54), // تعریف بُردر
@@ -41,15 +42,7 @@ class _WidgetSwitchitemsLocationManagementAdState
             itemCount: widget.items.length + 1,
             itemBuilder: (context, index) {
               if (index == 0) {
-                return Column(
-                  children: [
-                    _buildRow("همه آگهی های من"),
-                    const Divider(
-                        indent: 10,
-                        endIndent: 10,
-                        color: Color.fromRGBO(226, 226, 226, 1)),
-                  ],
-                );
+                return Column();
               } else {
                 return _buildRow(widget.items[index - 1]);
               }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/pages/category/pages/profile/widget_Colleagues_profile/Widget_Switchitems_location_management_ad.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
@@ -12,6 +13,8 @@ class WidgetExpertiseAndSkill extends StatefulWidget {
 class _WidgetExpertiseAndSkillState extends State<WidgetExpertiseAndSkill> {
   final RxBool _About_me_1 = false.obs; // وضعیت باز یا بسته بودن باکس
   final RxBool _isTyping = false.obs; // وضعیت تایپ کردن
+  final RxString selectedText = ''.obs; // متن انتخاب شده
+  final RxBool _isDeleted = false.obs; // وضعیت نشان دادن آیکون delete
   final TextEditingController _textController =
       TextEditingController(); // کنترلر برای TextField
   final RxString _aboutMeText =
@@ -30,19 +33,17 @@ class _WidgetExpertiseAndSkillState extends State<WidgetExpertiseAndSkill> {
 
   @override
   Widget build(BuildContext context) {
-    return Obx(
-      () => Container(
-        width: 343,
-        height: _About_me_1.value
-            ? 130
-            : 50, // تغییر ارتفاع باکس بر اساس باز یا بسته بودن
-        decoration: BoxDecoration(
-          color: const Color.fromRGBO(250, 250, 250, 1),
-          border: Border.all(color: const Color.fromRGBO(166, 166, 166, 1)),
-          borderRadius: BorderRadius.circular(15),
-        ),
-        child: Column(
-          children: [
+    return Obx(() => Container(
+          width: 343,
+          height: _About_me_1.value
+              ? 350
+              : 50, // تغییر ارتفاع باکس بر اساس باز یا بسته بودن
+          decoration: BoxDecoration(
+            color: const Color.fromRGBO(250, 250, 250, 1),
+            border: Border.all(color: const Color.fromRGBO(166, 166, 166, 1)),
+            borderRadius: BorderRadius.circular(15),
+          ),
+          child: Column(children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -135,45 +136,34 @@ class _WidgetExpertiseAndSkillState extends State<WidgetExpertiseAndSkill> {
                 ),
               ],
             ),
-            if (_About_me_1.value) buildMahaleh(context),
-          ],
-        ),
-      ),
-    );
+            if (_About_me_1.value)
+              Column(
+                children: [
+                  SizedBox(
+                    height: 10,
+                  ),
+                  buildExpertiseAndSkill(context),
+                ],
+              ),
+          ]),
+        ));
   }
 
-  Widget buildMahaleh(BuildContext context) {
-    return Container(
-      height: 41,
-      width: MediaQuery.of(context).size.width / 1.23,
-      child: TextField(
-        style: const TextStyle(
-          fontFamily: MAIN_FONT_FAMILY_MEDIUM,
-          color: Color.fromRGBO(99, 99, 99, 1),
-        ),
-        controller: _textController,
-        textAlign: TextAlign.right,
-        decoration: InputDecoration(
-          hintText: 'تایپ کنید',
-          hintStyle: const TextStyle(
-            color: Color.fromRGBO(99, 99, 99, 1),
-            fontSize: 13,
-            fontFamily: MAIN_FONT_FAMILY_MEDIUM,
-          ),
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10),
-            borderSide: const BorderSide(
-              color: Color.fromRGBO(23, 102, 175, 1),
-            ),
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10),
-            borderSide: const BorderSide(
-              color: Color.fromRGBO(23, 102, 175, 1),
-            ),
-          ),
-        ),
-      ),
+  Widget buildExpertiseAndSkill(BuildContext context) {
+    return WidgetSwitchitemsLocationManagementAd(
+      onSelected: (selectedItems) {
+        if (selectedItems.isNotEmpty) {
+          selectedText.value = selectedItems.first; // ذخیره متن انتخاب شده
+          _isChecked.value = true; // نمایش آیکون چک
+          _isDeleted.value = false; // اطمینان از عدم نمایش delete در این حالت
+        } else {}
+      },
+      items: const [
+        "مشارکت در ساخت",
+        "خرید و فروش",
+        "خرید و فروش پروژه های انبوه",
+        "فروش اقساطی",
+      ],
     );
   }
 }

@@ -33,7 +33,7 @@ class _WidgetUsersConsultantsState extends State<WidgetUsersConsultants> {
       () => Container(
         width: 343,
         height: _About_me_1.value
-            ? 130
+            ? 400
             : 50, // تغییر ارتفاع باکس بر اساس باز یا بسته بودن
         decoration: BoxDecoration(
           color: const Color.fromRGBO(250, 250, 250, 1),
@@ -141,37 +141,161 @@ class _WidgetUsersConsultantsState extends State<WidgetUsersConsultants> {
   }
 
   Widget buildMahaleh(BuildContext context) {
-    return Container(
-      height: 41,
-      width: MediaQuery.of(context).size.width / 1.23,
-      child: TextField(
-        style: const TextStyle(
-          fontFamily: MAIN_FONT_FAMILY_MEDIUM,
-          color: Color.fromRGBO(99, 99, 99, 1),
-        ),
-        controller: _textController,
-        textAlign: TextAlign.right,
-        decoration: InputDecoration(
-          hintText: 'تایپ کنید',
-          hintStyle: const TextStyle(
-            color: Color.fromRGBO(99, 99, 99, 1),
-            fontSize: 13,
-            fontFamily: MAIN_FONT_FAMILY_MEDIUM,
-          ),
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10),
-            borderSide: const BorderSide(
-              color: Color.fromRGBO(23, 102, 175, 1),
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Transform(
+          transform: Matrix4.identity()
+            ..translate(20.0, 65.0)
+            ..rotateZ(-1.57),
+          child: Container(
+            width: 91,
+            height: 45,
+            decoration: ShapeDecoration(
+              color: Colors.white,
+              shape: RoundedRectangleBorder(
+                side: const BorderSide(width: 1, color: Color(0xFFF2F2F2)),
+                borderRadius: BorderRadius.circular(35),
+              ),
+              shadows: const [
+                BoxShadow(
+                  color: Color(0x11000000),
+                  blurRadius: 3.40,
+                  offset: Offset(-1, 1),
+                  spreadRadius: 0,
+                )
+              ],
+            ),
+            child: Row(
+              children: [
+                Container(
+                  child: Row(
+                    children: [
+                      const Text(
+                        'حذف',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: Color(0xFF626262),
+                          fontSize: 14,
+                          fontFamily: 'IRANSansWeb(FaNum)',
+                        ),
+                      ),
+                      const SizedBox(width: 10),
+                      Container(
+                        decoration: const BoxDecoration(
+                          boxShadow: [
+                            BoxShadow(
+                              color: Color(0x3F000000),
+                              blurRadius: 2,
+                              offset: Offset(0, 1),
+                              spreadRadius: 0,
+                            )
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
             ),
           ),
-          focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10),
-            borderSide: const BorderSide(
-              color: Color.fromRGBO(23, 102, 175, 1),
-            ),
+        ),
+        Container(
+          width: 250,
+          height: 85,
+          child: Stack(
+            children: [
+              Container(
+                width: 250,
+                height: 85,
+                decoration: BoxDecoration(
+                  boxShadow: const [
+                    BoxShadow(
+                      offset: Offset(0, 0),
+                      blurRadius: 3,
+                      color: Color.fromRGBO(0, 0, 0, 0.15),
+                    )
+                  ],
+                  borderRadius: BorderRadius.circular(15),
+                  color: Colors.white,
+                ),
+                child: Stack(
+                  children: [
+                    Column(
+                      children: [
+                        const SizedBox(
+                          height: 5,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Padding(
+                              padding:
+                                  const EdgeInsets.only(left: 20.0, bottom: 10),
+                              child: SvgPicture.asset(
+                                  'assets/images/vitrinaxans.svg'),
+                            ),
+                            const Padding(
+                              padding: EdgeInsets.only(right: 10.0, bottom: 10),
+                              child: Text(
+                                'ویترین',
+                                style: TextStyle(
+                                    fontFamily: MAIN_FONT_FAMILY, fontSize: 10),
+                              ),
+                            ),
+                            Stack(
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                      top: 10.0, right: 10),
+                                  child: SvgPicture.asset(
+                                    "assets/images/consultant_list_moshaver.svg",
+                                    width: 50,
+                                    height: 50,
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                      left: 76.9, top: 12.5),
+                                  child: Image.asset(
+                                    'assets/images/Ellipse 222.png',
+                                    width: 40,
+                                    height: 40,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 45.0, left: 22),
+                      child: Row(
+                        children: [
+                          SvgPicture.asset(
+                            'assets/images/locationaxans.svg',
+                            width: 20,
+                            height: 20,
+                          ),
+                          const SizedBox(
+                            width: 18,
+                          ),
+                          const Text(
+                            'تـهـران',
+                            style: TextStyle(
+                                fontFamily: MAIN_FONT_FAMILY, fontSize: 10),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
           ),
         ),
-      ),
+      ],
     );
   }
 }
