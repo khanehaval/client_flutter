@@ -38,63 +38,66 @@ class _CategoryProfileState extends State<CategoryProfile> {
       bottomNavigationBar: bottomNavigationBar2(0),
       body: Padding(
         padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
-        child: Column(
-          children: [
-            SizedBox(
-              height: 120,
-              child: ScrollablePositionedList.builder(
-                itemScrollController: _controller,
-                itemCount: items.length,
-                scrollDirection: Axis.horizontal,
-                initialScrollIndex: widget.index,
-                itemBuilder: (context, i) => GestureDetector(
-                  onTap: () {
-                    _controller.scrollTo(
-                      index: i,
-                      duration: const Duration(milliseconds: 100),
-                      alignment: 0.0, // Align to the start of the list
-                    );
-                    _currentIndex.value = i;
-                  },
-                  child: Obx(
-                    () => Container(
-                      margin: const EdgeInsets.symmetric(
-                          horizontal: 10, vertical: 7),
-                      padding: const EdgeInsets.all(1.0),
-                      height: 120,
-                      width: 176,
-                      decoration: BoxDecoration(
-                        color: const Color.fromRGBO(225, 225, 225, 1),
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: Stack(
-                        children: [
-                          Container(
-                            height: 120,
-                            width: 176,
-                            decoration: BoxDecoration(
-                              boxShadow: const [
-                                BoxShadow(
-                                    color: Color.fromRGBO(0, 0, 0, 0.15),
-                                    offset: Offset(0, 0),
-                                    blurRadius: 3),
-                              ],
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(10),
+        child: Padding(
+          padding: const EdgeInsets.all(5.0),
+          child: Column(
+            children: [
+              SizedBox(
+                height: 120,
+                child: ScrollablePositionedList.builder(
+                  itemScrollController: _controller,
+                  itemCount: items.length,
+                  scrollDirection: Axis.horizontal,
+                  initialScrollIndex: widget.index,
+                  itemBuilder: (context, i) => GestureDetector(
+                    onTap: () {
+                      _controller.scrollTo(
+                        index: i,
+                        duration: const Duration(milliseconds: 100),
+                        alignment: 0.0, // Align to the start of the list
+                      );
+                      _currentIndex.value = i;
+                    },
+                    child: Obx(
+                      () => Container(
+                        margin: const EdgeInsets.symmetric(
+                            horizontal: 15, vertical: 7),
+                        padding: const EdgeInsets.all(1.0),
+                        height: 120,
+                        width: Get.width / 2.2,
+                        decoration: BoxDecoration(
+                          color: const Color.fromRGBO(225, 225, 225, 1),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: Stack(
+                          children: [
+                            Container(
+                              height: 120,
+                              width: Get.width / 2.2,
+                              decoration: BoxDecoration(
+                                boxShadow: const [
+                                  BoxShadow(
+                                      color: Color.fromRGBO(0, 0, 0, 0.15),
+                                      offset: Offset(0, 0),
+                                      blurRadius: 3),
+                                ],
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              child: items[i](_currentIndex.value == i, i),
                             ),
-                            child: items[i](_currentIndex.value == i, i),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                   ),
                 ),
               ),
-            ),
-            Obx(
-              () => Expanded(child: _pages[_currentIndex.value]),
-            ),
-          ],
+              Obx(
+                () => Expanded(child: _pages[_currentIndex.value]),
+              ),
+            ],
+          ),
         ),
       ),
     );

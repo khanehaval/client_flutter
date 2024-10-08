@@ -31,119 +31,123 @@ class _WidgetBackGroundVitrinState extends State<WidgetBackGroundVitrin> {
   @override
   Widget build(BuildContext context) {
     return Obx(
-      () => Container(
-        width: 343,
-        height: _About_me_1.value
-            ? 300
-            : 50, // تغییر ارتفاع باکس بر اساس باز یا بسته بودن
-        decoration: BoxDecoration(
-          color: const Color.fromRGBO(250, 250, 250, 1),
-          border: Border.all(color: const Color.fromRGBO(166, 166, 166, 1)),
-          borderRadius: BorderRadius.circular(15),
-        ),
-        child: Column(
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                // آیکون چک
-                IconButton(
-                  icon: _isChecked.value
-                      ? SvgPicture.asset(
-                          'assets/images/check_icon.svg', // آیکون تیک
-                        )
-                      : (_isTyping.value
-                          ? SvgPicture.asset(
-                              'assets/images/check_icon.svg', // آیکون تیک وقتی تایپ شده
-                            )
-                          : SvgPicture.asset(
-                              _About_me_1.value
-                                  ? 'assets/images/edit and ok.svg'
-                                  : 'assets/images/Arrow_list_agency.svg',
-                              width: _About_me_1.value
-                                  ? 30
-                                  : 11, // سایز بزرگتر برای edit and ok
-                              height: _About_me_1.value
-                                  ? 25
-                                  : 14, // سایز بزرگتر برای edit and ok
-                            )),
-                  onPressed: () {
-                    if (_isTyping.value) {
-                      // وقتی کاربر روی آیکون چک کلیک کرد و تایپ کرده بود، متن را ذخیره کن
-                      _aboutMeText.value = _textController.text;
-                      _isTyping.value = false; // ریست وضعیت تایپ
-                      _isChecked.value = true; // نمایش آیکون چک
-                      _About_me_1.value = false; // بستن باکس
-                    } else {
-                      // باز یا بسته کردن باکس
-                      _About_me_1.value = !_About_me_1.value;
-                      _isChecked.value = false; // ریست آیکون چک
-                    }
-                  },
-                ),
-                // چیدمان متن
-                Expanded(
-                  child: Row(
-                    mainAxisAlignment: _isChecked.value
-                        ? MainAxisAlignment.spaceBetween
-                        : MainAxisAlignment.center,
-                    children: [
-                      // نمایش متن تایپ شده در سمت چپ در حالت تایید
-                      if (_isChecked.value) ...[
-                        Text(
-                          _aboutMeText.value, // نمایش متن وارد شده توسط کاربر
-                          style: const TextStyle(
-                            fontFamily: MAIN_FONT_FAMILY,
-                            color: Color.fromRGBO(
-                                99, 99, 99, 1), // رنگ سیاه برای متن وارد شده
-                            fontSize: 12,
-                          ),
-                        ),
-                      ],
-                      // متن "درباره من" در سمت راست در حالت تایید
-                      if (_isChecked.value) ...[
-                        const Padding(
-                          padding: EdgeInsets.only(right: 10.0),
-                          child: Text(
-                            'تصویر پس زمینه',
-                            style: TextStyle(
+      () => Padding(
+        padding: const EdgeInsets.only(left: 20.0, right: 20),
+        child: Container(
+          width: double.infinity,
+          height: _About_me_1.value
+              ? 240
+              : 50, // تغییر ارتفاع باکس بر اساس باز یا بسته بودن
+          decoration: BoxDecoration(
+            color: const Color.fromRGBO(250, 250, 250, 1),
+            border: Border.all(color: const Color.fromRGBO(166, 166, 166, 1)),
+            borderRadius: BorderRadius.circular(15),
+          ),
+          child: Column(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  // آیکون چک
+                  IconButton(
+                    icon: _isChecked.value
+                        ? SvgPicture.asset(
+                            'assets/images/check_icon.svg', // آیکون تیک
+                          )
+                        : (_isTyping.value
+                            ? SvgPicture.asset(
+                                'assets/images/check_icon.svg', // آیکون تیک وقتی تایپ شده
+                              )
+                            : SvgPicture.asset(
+                                _About_me_1.value
+                                    ? 'assets/images/edit and ok.svg'
+                                    : 'assets/images/Arrow_list_agency.svg',
+                                width: _About_me_1.value
+                                    ? 30
+                                    : 11, // سایز بزرگتر برای edit and ok
+                                height: _About_me_1.value
+                                    ? 25
+                                    : 14, // سایز بزرگتر برای edit and ok
+                              )),
+                    onPressed: () {
+                      if (_isTyping.value) {
+                        // وقتی کاربر روی آیکون چک کلیک کرد و تایپ کرده بود، متن را ذخیره کن
+                        _aboutMeText.value = _textController.text;
+                        _isTyping.value = false; // ریست وضعیت تایپ
+                        _isChecked.value = true; // نمایش آیکون چک
+                        _About_me_1.value = false; // بستن باکس
+                      } else {
+                        // باز یا بسته کردن باکس
+                        _About_me_1.value = !_About_me_1.value;
+                        _isChecked.value = false; // ریست آیکون چک
+                      }
+                    },
+                  ),
+                  // چیدمان متن
+                  Expanded(
+                    child: Row(
+                      mainAxisAlignment: _isChecked.value
+                          ? MainAxisAlignment.spaceBetween
+                          : MainAxisAlignment.center,
+                      children: [
+                        // نمایش متن تایپ شده در سمت چپ در حالت تایید
+                        if (_isChecked.value) ...[
+                          Text(
+                            _aboutMeText.value, // نمایش متن وارد شده توسط کاربر
+                            style: const TextStyle(
                               fontFamily: MAIN_FONT_FAMILY,
                               color: Color.fromRGBO(
-                                  99, 99, 99, 1), // رنگ متن "درباره من"
+                                  99, 99, 99, 1), // رنگ سیاه برای متن وارد شده
                               fontSize: 12,
                             ),
                           ),
-                        ),
-                      ] else ...[
-                        // نمایش متن "درباره من" در وسط در حالت پیش‌فرض
-                        const Text(
-                          'تصویر پس زمینه',
-                          style: TextStyle(
-                            fontFamily: MAIN_FONT_FAMILY,
-                            color: Color.fromRGBO(166, 166, 166, 1),
-                            fontSize: 12,
+                        ],
+                        // متن "درباره من" در سمت راست در حالت تایید
+                        if (_isChecked.value) ...[
+                          const Padding(
+                            padding: EdgeInsets.only(right: 10.0),
+                            child: Text(
+                              'تصویر پس زمینه',
+                              style: TextStyle(
+                                fontFamily: MAIN_FONT_FAMILY,
+                                color: Color.fromRGBO(
+                                    99, 99, 99, 1), // رنگ متن "درباره من"
+                                fontSize: 12,
+                              ),
+                            ),
                           ),
-                        ),
+                        ] else ...[
+                          // نمایش متن "درباره من" در وسط در حالت پیش‌فرض
+                          const Text(
+                            'تصویر پس زمینه',
+                            style: TextStyle(
+                              fontFamily: MAIN_FONT_FAMILY,
+                              color: Color.fromRGBO(117, 117, 117, 1),
+                              fontSize: 12,
+                            ),
+                          ),
+                        ],
                       ],
-                    ],
+                    ),
                   ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(right: 16),
-                  child: SvgPicture.asset('assets/images/background_photo.svg'),
-                ),
-              ],
-            ),
-            if (_About_me_1.value)
-              Column(
-                children: [
-                  const SizedBox(
-                    height: 20,
+                  Padding(
+                    padding: const EdgeInsets.only(right: 16),
+                    child:
+                        SvgPicture.asset('assets/images/background_photo.svg'),
                   ),
-                  buildBackGroundVitrin(context),
                 ],
               ),
-          ],
+              if (_About_me_1.value)
+                Column(
+                  children: [
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    buildBackGroundVitrin(context),
+                  ],
+                ),
+            ],
+          ),
         ),
       ),
     );
@@ -151,7 +155,7 @@ class _WidgetBackGroundVitrinState extends State<WidgetBackGroundVitrin> {
 
   Widget buildBackGroundVitrin(BuildContext context) {
     return Container(
-      width: 300,
+      width: Get.width / 1.30,
       height: 140,
       decoration: ShapeDecoration(
         color: Colors.white,

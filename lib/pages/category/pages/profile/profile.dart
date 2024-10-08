@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/pages/profile/Colleagues_profile.dart';
 import 'package:flutter_application_1/pages/category/pages/profile/profile_home.dart';
+import 'package:flutter_application_1/pages/category/pages/profile/under_profile/profile_my_desk.dart';
+import 'package:flutter_application_1/pages/category/pages/profile/vitrin_profile/vitrin.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/register/register.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -9,7 +11,7 @@ import 'package:get/get.dart';
 
 openProfile() {
   return Padding(
-    padding: const EdgeInsets.only(top: 5.0, right: 10),
+    padding: const EdgeInsets.only(top: 2, right: 20),
     child: Align(
       alignment: Alignment.topRight,
       child: Container(
@@ -24,15 +26,14 @@ openProfile() {
         child: Padding(
           padding: const EdgeInsets.all(1.0),
           child: SizedBox(
-            height: 610,
-            width: Get.width / 1.8,
+            height: Get.height / 1.4,
+            width: Get.width / 1.9,
             child: Material(
               color: Colors.white,
               borderRadius: BorderRadius.circular(10),
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     SvgPicture.asset(
                       'assets/images/arrow right.svg',
@@ -50,7 +51,7 @@ openProfile() {
                                   Text(
                                     "آژانش املاک",
                                     style: TextStyle(
-                                        fontSize: 18,
+                                        fontSize: 16,
                                         fontFamily: MAIN_FONT_FAMILY,
                                         color: Colors.black54),
                                   ),
@@ -63,7 +64,7 @@ openProfile() {
                                       Text(
                                         "خانه اول",
                                         style: TextStyle(
-                                            fontSize: 18,
+                                            fontSize: 16,
                                             fontFamily: MAIN_FONT_FAMILY),
                                       ),
                                     ],
@@ -116,7 +117,11 @@ openProfile() {
                         const SizedBox(
                           height: 20,
                         ),
-                        const Divider(),
+                        const Divider(
+                          endIndent: 5,
+                          indent: 10,
+                          color: Color.fromRGBO(226, 226, 226, 1),
+                        ),
                       ],
                     ),
                     Column(
@@ -124,49 +129,51 @@ openProfile() {
                         GestureDetector(
                             onTap: () {
                               Get.to(() => const ProfileHome(),
-                                  duration: const Duration(milliseconds: 100),
                                   transition: Transition.leftToRight);
                             },
                             child: _item('assets/images/Home.svg', "خانه")),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        _item('assets/images/profile_category.svg', "میزکار"),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        _item('assets/images/profile_message.svg', "پیام ها"),
-                        const SizedBox(
-                          height: 10,
-                        ),
                         GestureDetector(
                             onTap: () {
-                              Get.to(() => ColleaguesProfile());
+                              Get.to(() => const ProfileMyDesk(),
+                                  transition: Transition.leftToRight);
+                            },
+                            child: _item('assets/images/profile_category.svg',
+                                "میزکار")),
+                        _item('assets/images/profile_message.svg', "پیام ها"),
+                        GestureDetector(
+                            onTap: () {
+                              Get.to(() => const ColleaguesProfile());
                             },
                             child: _item('assets/images/profile_moshavere.svg',
                                 "همکاران")),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        _item('assets/images/profile_category.svg', "ویترین"),
-                        const SizedBox(
-                          height: 10,
-                        ),
+                        GestureDetector(
+                            onTap: () {
+                              Get.to(() => const Vitrin(),
+                                  transition: Transition.leftToRight);
+                            },
+                            child: _item('assets/images/profile_category.svg',
+                                "ویترین")),
                         _item('assets/images/profile_vahed.svg', "واحد های من"),
-                        const SizedBox(
-                          height: 10,
-                        ),
                         _item('assets/images/profile_setting.svg', " تنظیمات"),
                       ],
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        const Divider(),
-                        Container(
-                          width: 35,
-                          height: 35,
-                          child: Stack(
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    const Divider(
+                      endIndent: 20,
+                      indent: 20,
+                      color: Color.fromRGBO(226, 226, 226, 1),
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Stack(
                             children: [
                               Container(
                                 width: 35,
@@ -196,22 +203,22 @@ openProfile() {
                               ),
                             ],
                           ),
-                        ),
-                        // switchable(, title)
-                        const SizedBox(
-                          height: 19,
-                        ),
-                        GestureDetector(
-                          onTap: () {
-                            Get.offAll(() => const Register());
-                          },
-                          child: SvgPicture.asset(
-                            "assets/images/exit.svg",
-                            width: 40,
-                            height: 40,
+                          // switchable(, title)
+                          const SizedBox(
+                            height: 19,
                           ),
-                        )
-                      ],
+                          GestureDetector(
+                            onTap: () {
+                              Get.offAll(() => const Register());
+                            },
+                            child: SvgPicture.asset(
+                              "assets/images/exit.svg",
+                              width: 40,
+                              height: 40,
+                            ),
+                          )
+                        ],
+                      ),
                     )
                   ],
                 ),
@@ -226,21 +233,21 @@ openProfile() {
 
 Widget _item(String assetPath, String title) {
   return Padding(
-    padding: const EdgeInsets.all(8.0),
+    padding: const EdgeInsets.all(10.0),
     child: Row(
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
         Text(
           title,
-          style: const TextStyle(fontFamily: MAIN_FONT_FAMILY),
+          style: const TextStyle(fontFamily: MAIN_FONT_FAMILY, fontSize: 12),
         ),
         const SizedBox(
           width: 20,
         ),
         SvgPicture.asset(
           assetPath,
-          width: 30,
-          height: 30,
+          width: 22,
+          height: 22,
         ),
       ],
     ),
