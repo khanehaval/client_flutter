@@ -19,15 +19,15 @@ class Vitrin extends StatelessWidget {
           child: Column(
             children: [
               const SizedBox(
-                height: 20,
+                height: 10,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   Padding(
-                    padding: const EdgeInsets.only(right: 20.0),
+                    padding: const EdgeInsets.only(right: 20, left: 20),
                     child: Container(
-                      width: 160,
+                      width: Get.width / 2.5,
                       height: 100,
                       decoration: ShapeDecoration(
                         color: Colors.white,
@@ -105,12 +105,12 @@ class Vitrin extends StatelessWidget {
                 color: Color.fromRGBO(226, 226, 226, 1),
               ),
               const SizedBox(
-                height: 10,
+                height: 20,
               ),
               Padding(
-                padding: const EdgeInsets.all(20.0),
+                padding: const EdgeInsets.only(left: 20.0, right: 20),
                 child: Container(
-                  width: 372,
+                  width: double.infinity,
                   height: 337,
                   padding:
                       const EdgeInsets.symmetric(horizontal: 23, vertical: 22),
@@ -285,16 +285,19 @@ class Vitrin extends StatelessWidget {
                                       )
                                     ],
                                   ),
-                                  child: const Text(
-                                    'ویرایش ویترین',
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                      color: Color(0xFF636363),
-                                      fontSize: 12,
-                                      fontFamily: MAIN_FONT_FAMILY,
-                                      fontWeight: FontWeight.w700,
-                                      height: 2,
-                                    ),
+                                  child: const Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                        'ویرایش ویترین',
+                                        style: TextStyle(
+                                          color: Color(0xFF636363),
+                                          fontSize: 12,
+                                          fontFamily: MAIN_FONT_FAMILY,
+                                          fontWeight: FontWeight.w700,
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                 ),
                               ),
@@ -310,9 +313,9 @@ class Vitrin extends StatelessWidget {
                 height: 20,
               ),
               Padding(
-                padding: const EdgeInsets.all(20.0),
+                padding: const EdgeInsets.only(right: 20.0, left: 20),
                 child: Container(
-                  width: 372,
+                  width: double.infinity,
                   height: 337,
                   padding:
                       const EdgeInsets.symmetric(horizontal: 23, vertical: 22),
@@ -351,7 +354,7 @@ class Vitrin extends StatelessWidget {
                                           'assets/images/Axans_montakhab.svg',
                                           width: 90,
                                         ),
-                                        Row(
+                                        const Row(
                                           children: [
                                             Icon(
                                               Icons.verified,
@@ -507,21 +510,23 @@ class Vitrin extends StatelessWidget {
                                   shadows: const [
                                     BoxShadow(
                                       color: Color(0x7F36D859),
-                                      blurRadius: 7,
-                                      offset: Offset(0, 2),
+                                      blurRadius: 4,
+                                      offset: Offset(0, 0),
                                     )
                                   ],
                                 ),
-                                child: const Text(
-                                  'ویرایش اطلاعات',
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                    color: Color(0xFF636363),
-                                    fontSize: 12,
-                                    fontFamily: MAIN_FONT_FAMILY,
-                                    fontWeight: FontWeight.w700,
-                                    height: 2.5,
-                                  ),
+                                child: const Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      'ویرایش اطلاعات',
+                                      style: TextStyle(
+                                        color: Color(0xFF636363),
+                                        fontSize: 12,
+                                        fontFamily: MAIN_FONT_FAMILY,
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ),
                             ],
@@ -531,6 +536,9 @@ class Vitrin extends StatelessWidget {
                     ],
                   ),
                 ),
+              ),
+              const SizedBox(
+                height: 50,
               ),
             ],
           ),

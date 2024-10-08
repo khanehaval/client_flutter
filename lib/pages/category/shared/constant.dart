@@ -59,6 +59,7 @@ const GRADIANT_call = [
 
 double getPageWidth() => Get.width * 0.42;
 double getPageWidthlocation() => Get.width * 0.40;
+double getProfileWidth() => Get.width * 0.42;
 
 scaffoldKey() => GlobalKey<ScaffoldState>();
 

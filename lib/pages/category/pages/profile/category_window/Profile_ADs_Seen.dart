@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 
 class ProfileAdsSeen extends StatelessWidget {
   const ProfileAdsSeen({super.key});
@@ -19,7 +20,7 @@ class ProfileAdsSeen extends StatelessWidget {
       Padding(
         padding: const EdgeInsets.all(20.0),
         child: Container(
-          width: 200,
+          width: Get.width,
           height: 141,
           decoration: ShapeDecoration(
             color: Colors.white,
@@ -46,7 +47,7 @@ class ProfileAdsSeen extends StatelessWidget {
                   Row(
                     children: [
                       Container(
-                        width: 90,
+                        width: Get.width / 4,
                         height: 13,
                         child: Row(
                           children: [
@@ -125,7 +126,7 @@ class ProfileAdsSeen extends StatelessWidget {
                     child: Row(
                       children: [
                         Container(
-                          width: 40,
+                          width: Get.width / 9,
                           height: 13,
                           child: Row(
                             children: [
@@ -157,7 +158,7 @@ class ProfileAdsSeen extends StatelessWidget {
                           width: 5,
                         ),
                         Container(
-                          width: 40,
+                          width: Get.width / 9,
                           height: 15,
                           child: Row(
                             children: [
@@ -208,7 +209,7 @@ class ProfileAdsSeen extends StatelessWidget {
                       Row(
                         children: [
                           Container(
-                            width: 202,
+                            width: Get.width / 1.9,
                             height: 54,
                             decoration: ShapeDecoration(
                               gradient: const LinearGradient(

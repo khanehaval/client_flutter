@@ -39,7 +39,7 @@ class EditVitrin extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Container(
-                    width: 176,
+                    width: Get.width / 2.15,
                     height: 100,
                     decoration: ShapeDecoration(
                       color: Colors.white,
@@ -62,7 +62,7 @@ class EditVitrin extends StatelessWidget {
                           height: 50,
                         ),
                         const Padding(
-                          padding: EdgeInsets.only(right: 15.0),
+                          padding: EdgeInsets.only(right: 10.0),
                           child: Column(
                             children: [
                               SizedBox(
@@ -124,7 +124,7 @@ class EditVitrin extends StatelessWidget {
                     ),
                   ),
                   Container(
-                    width: 155,
+                    width: Get.width / 2.7,
                     height: 100,
                     decoration: ShapeDecoration(
                       color: Colors.white,
@@ -147,7 +147,7 @@ class EditVitrin extends StatelessWidget {
                         ),
                         Padding(
                           padding: const EdgeInsets.only(
-                            left: 110.0,
+                            left: 90.0,
                           ),
                           child: SvgPicture.asset(
                             'assets/images/vitrin_profile_icon.svg',
@@ -156,7 +156,7 @@ class EditVitrin extends StatelessWidget {
                           ),
                         ),
                         const Padding(
-                          padding: EdgeInsets.only(right: 10.0),
+                          padding: EdgeInsets.only(right: 15.0),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: [
@@ -172,7 +172,7 @@ class EditVitrin extends StatelessWidget {
                           ),
                         ),
                         const Padding(
-                          padding: EdgeInsets.only(right: 10.0),
+                          padding: EdgeInsets.only(right: 15.0),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: [
