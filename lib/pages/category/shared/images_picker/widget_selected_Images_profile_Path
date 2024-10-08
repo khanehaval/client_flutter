@@ -9,7 +9,7 @@ class ProfileImagePicker extends StatelessWidget {
   final RxString selectedImagePath = ''.obs;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) { 
     return Column(
       children: [
         Obx(() => buildPhotoProfileVitrin(context)),

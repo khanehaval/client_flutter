@@ -259,6 +259,34 @@ class EditVitrin extends StatelessWidget {
               const SizedBox(
                 height: 20,
               ),
+              Container(
+                width: 119,
+                height: 32,
+                decoration: ShapeDecoration(
+                  color: Colors.white,
+                  shape: RoundedRectangleBorder(
+                    side: const BorderSide(width: 1, color: Color(0xFF4C8CED)),
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                  shadows: const [
+                    BoxShadow(
+                      color: Color(0x7F36D859),
+                      blurRadius: 4 ,
+                      offset: Offset(0, 1),
+                      spreadRadius: 0,
+                    )
+                  ],
+                ),
+                child: const Center(
+                  child: Text(
+                    'ذخیره',
+                    style: TextStyle(fontFamily: MAIN_FONT_FAMILY,fontSize: 12,color: Color.fromRGBO(99, 99, 99, 1)),
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
             ],
           ),
         ),

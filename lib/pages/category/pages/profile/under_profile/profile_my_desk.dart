@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
+import 'package:flutter_application_1/pages/category/shared/widget/widget_JalaliHomePage%20.dart';
+import 'package:flutter_application_1/pages/category/shared/widget_date_picker_persian.dart';
 import 'package:flutter_svg/svg.dart';
 
 class ProfileMyDesk extends StatelessWidget {
@@ -1006,26 +1008,9 @@ class ProfileMyDesk extends StatelessWidget {
                 children: [
                   Container(
                     width: 350,
-                    height: 380,
-                    decoration: ShapeDecoration(
-                      color: Colors.white,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      shadows: const [
-                        BoxShadow(
-                          color: Color(0x26000000),
-                          blurRadius: 3,
-                          offset: Offset(0, 0),
-                        )
-                      ],
-                    ),
-                    child: Column(children: [
-                      SvgPicture.asset(
-                        'assets/images/Calender.svg',
-                        fit: BoxFit.cover,
-                      )
-                    ]),
+                    height: 500,
+              
+                    child: const JalaliHomePage()
                   )
                 ],
               ),

@@ -146,7 +146,7 @@ class _WidgetUsersConsultantsState extends State<WidgetUsersConsultants> {
       children: [
         Transform(
           transform: Matrix4.identity()
-            ..translate(20.0, 65.0)
+            ..translate(30.0, 65.0)
             ..rotateZ(-1.57),
           child: Container(
             width: 91,
@@ -162,25 +162,17 @@ class _WidgetUsersConsultantsState extends State<WidgetUsersConsultants> {
                   color: Color(0x11000000),
                   blurRadius: 3.40,
                   offset: Offset(-1, 1),
-                  spreadRadius: 0,
                 )
               ],
             ),
             child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Container(
                   child: Row(
                     children: [
-                      const Text(
-                        'حذف',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: Color(0xFF626262),
-                          fontSize: 14,
-                          fontFamily: 'IRANSansWeb(FaNum)',
-                        ),
-                      ),
-                      const SizedBox(width: 10),
+                      SvgPicture.asset('assets/images/Frame 1000004493.svg'),
+                      SvgPicture.asset('assets/images/Frame 1000004494.svg'),
                       Container(
                         decoration: const BoxDecoration(
                           boxShadow: [
@@ -188,7 +180,6 @@ class _WidgetUsersConsultantsState extends State<WidgetUsersConsultants> {
                               color: Color(0x3F000000),
                               blurRadius: 2,
                               offset: Offset(0, 1),
-                              spreadRadius: 0,
                             )
                           ],
                         ),

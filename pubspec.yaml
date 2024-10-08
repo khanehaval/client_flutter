@@ -74,7 +74,7 @@ dependencies:
   gradient_borders: 1.0.0
   flutter_svg: 2.0.9
   json_annotation: 4.8.1
-  persian_datetime_picker: 2.6.0
+  persian_datetime_picker: ^2.7.0
   flutter_map: 6.1.0
   badges: 3.1.2
   animate_do: 2.1.0
@@ -83,6 +83,7 @@ dependencies:
   onboarding: 4.0.2
   smooth_page_indicator: 1.1.0
   sms_autofill: ^2.4.0
+  jalali_flutter_datepicker: ^1.0.9
 
   # mapir_raster: 0.0.1
 
