@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_application_1/pages/category/pages/profile/category_window/Profile_ADs_Seen.dart';
-import 'package:flutter_application_1/pages/category/pages/profile/profile_detail.dart';
+import 'package:flutter_application_1/pages/category/pages/profile/profile_detail/profile_detail.dart';
 import 'package:flutter_application_1/pages/category/pages/profile/under_profile/Profile_Notification.dart';
 import 'package:flutter_application_1/pages/category/pages/profile/under_profile/category_Profile.dart';
 import 'package:flutter_application_1/pages/category/pages/profile/under_profile/main_category_profile.dart';
-import 'package:flutter_application_1/pages/category/pages/profile/under_profile/profile_my_desk.dart';
+import 'package:flutter_application_1/pages/category/pages/profile/under_profile/widget_profile_my_desk/profile_my_desk.dart';
 import 'package:flutter_application_1/pages/category/pages/profile/under_profile/req_melk_profile.dart';
 import 'package:flutter_application_1/pages/category/pages/profile/vitrin_profile/vitrin.dart';
 import 'package:flutter_application_1/pages/category/pages/profile/widget_profile_home/WidgetProfileAdsAndMyDesk.dart';

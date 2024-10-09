@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 
 class ProfileNotification extends StatelessWidget {
   const ProfileNotification({super.key});
@@ -20,10 +21,10 @@ class ProfileNotification extends StatelessWidget {
                 height: 20,
               ),
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   Container(
-                    width: 138,
+                    width: Get.width / 2.8,
                     height: 100,
                     padding:
                         const EdgeInsets.symmetric(horizontal: 5, vertical: 13),
@@ -60,57 +61,56 @@ class ProfileNotification extends StatelessWidget {
                             fontFamily: 'Aban Bold',
                           ),
                         ),
-                        Container(
-                          width: 94,
-                          height: 22,
-                          decoration: ShapeDecoration(
-                            color: const Color(0xFFF9F9F9),
-                            shape: RoundedRectangleBorder(
-                              side: const BorderSide(
-                                width: 1,
-                                strokeAlign: BorderSide.strokeAlignOutside,
-                                color: Color(0xFFAEAEAE),
-                              ),
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                          ),
-                          child: const Row(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text.rich(
-                                TextSpan(
-                                  children: [
-                                    TextSpan(
-                                      text: '!',
-                                      style: TextStyle(
-                                        color: Color(0xFF303030),
-                                        fontSize: 12,
-                                        fontFamily: MAIN_FONT_FAMILY,
-                                      ),
-                                    ),
-                                    TextSpan(
-                                      text: 'هنوز شروع نکردید',
-                                      style: TextStyle(
-                                        color: Color(0xFF303030),
-                                        fontSize: 11,
-                                        fontFamily: 'Aban Bold',
-                                      ),
-                                    ),
-                                  ],
+                        Padding(
+                          padding: const EdgeInsets.only(left: 20.0, right: 20),
+                          child: Container(
+                            height: 22,
+                            decoration: ShapeDecoration(
+                              color: const Color(0xFFF9F9F9),
+                              shape: RoundedRectangleBorder(
+                                side: const BorderSide(
+                                  width: 1,
+                                  strokeAlign: BorderSide.strokeAlignOutside,
+                                  color: Color(0xFFAEAEAE),
                                 ),
+                                borderRadius: BorderRadius.circular(10),
                               ),
-                            ],
+                            ),
+                            child: const Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text.rich(
+                                  TextSpan(
+                                    children: [
+                                      TextSpan(
+                                        text: '!',
+                                        style: TextStyle(
+                                          color: Color(0xFF303030),
+                                          fontSize: 12,
+                                          fontFamily: MAIN_FONT_FAMILY,
+                                        ),
+                                      ),
+                                      TextSpan(
+                                        text: 'هنوز شروع نکردید',
+                                        style: TextStyle(
+                                          color: Color(0xFF303030),
+                                          fontSize: 11,
+                                          fontFamily: 'Aban Bold',
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       ],
                     ),
                   ),
-                  const SizedBox(
-                    width: 10,
-                  ),
                   Container(
-                    width: 160,
+                    width: Get.width / 2.4,
                     height: 100,
                     decoration: ShapeDecoration(
                       color: Colors.white,
@@ -195,7 +195,7 @@ class ProfileNotification extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(20.0),
                 child: Container(
-                  width: 372,
+                  width: Get.width / 1.1,
                   height: 172,
                   padding:
                       const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
@@ -246,8 +246,8 @@ class ProfileNotification extends StatelessWidget {
                       Row(
                         children: [
                           Container(
-                            width: 145,
-                            height: 32,
+                            width: Get.width / 2.7,
+                            height: 31,
                             decoration: ShapeDecoration(
                               color: Colors.white,
                               shape: RoundedRectangleBorder(

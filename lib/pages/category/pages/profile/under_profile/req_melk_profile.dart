@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/pages/category/pages/profile/under_profile/widget_req_melk_profile.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 
 class ReqMelkProfile extends StatelessWidget {
   ReqMelkProfile({super.key});
@@ -24,7 +27,7 @@ class ReqMelkProfile extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Container(
-                    width: 138,
+                    width: Get.width / 2.8,
                     height: 100,
                     padding:
                         const EdgeInsets.symmetric(horizontal: 5, vertical: 13),
@@ -111,7 +114,7 @@ class ReqMelkProfile extends StatelessWidget {
                     width: 10,
                   ),
                   Container(
-                    width: 160,
+                    width: Get.width / 2.4,
                     height: 100,
                     decoration: ShapeDecoration(
                       color: Colors.white,
@@ -191,7 +194,7 @@ class ReqMelkProfile extends StatelessWidget {
                 height: 20,
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 23.0),
+                padding: const EdgeInsets.only(right: 20.0, left: 20),
                 child: SizedBox(
                   height: 40,
                   child: TextField(
@@ -221,1211 +224,244 @@ class ReqMelkProfile extends StatelessWidget {
                 ),
               ),
               const SizedBox(
-                height: 10,
+                height: 20,
               ),
               Padding(
-                padding: const EdgeInsets.all(10.0),
+                padding: const EdgeInsets.only(right: 20.0, left: 20),
                 child: SingleChildScrollView(
                   reverse: true,
                   scrollDirection: Axis.horizontal,
-                  child: Padding(
-                    padding: const EdgeInsets.only(right: 10.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Container(
-                          width: 100,
-                          height: 41,
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 10, vertical: 6),
-                          decoration: ShapeDecoration(
-                            color: Colors.white,
-                            shape: RoundedRectangleBorder(
-                              side: BorderSide(
-                                  width: 1, color: Color(0xFFA5A5A5)),
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            shadows: const [
-                              BoxShadow(
-                                color: Color(0x26000000),
-                                blurRadius: 4,
-                              )
-                            ],
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Container(
+                        width: Get.width / 4,
+                        height: 41,
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 10, vertical: 6),
+                        decoration: ShapeDecoration(
+                          color: Colors.white,
+                          shape: RoundedRectangleBorder(
+                            side:
+                                BorderSide(width: 1, color: Color(0xFFA5A5A5)),
+                            borderRadius: BorderRadius.circular(10),
                           ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              SvgPicture.asset(
-                                  'assets/images/Arrow_list_agency.svg'),
-                              const SizedBox(width: 5),
-                              const Text(
-                                'قیمت',
-                                textAlign: TextAlign.right,
-                                style: TextStyle(
-                                  color: Color(0xFF636363),
-                                  fontSize: 11,
-                                  fontFamily: MAIN_FONT_FAMILY,
-                                ),
+                          shadows: const [
+                            BoxShadow(
+                              color: Color(0x26000000),
+                              blurRadius: 4,
+                            )
+                          ],
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            SvgPicture.asset(
+                                'assets/images/Arrow_list_agency.svg'),
+                            const SizedBox(width: 5),
+                            const Text(
+                              'قیمت',
+                              textAlign: TextAlign.right,
+                              style: TextStyle(
+                                color: Color(0xFF636363),
+                                fontSize: 11,
+                                fontFamily: MAIN_FONT_FAMILY,
                               ),
-                            ],
-                          ),
-                        ),
-                        const SizedBox(
-                          width: 10,
-                        ),
-                        Container(
-                          width: 100,
-                          height: 41,
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 10, vertical: 6),
-                          decoration: ShapeDecoration(
-                            color: Colors.white,
-                            shape: RoundedRectangleBorder(
-                              side: BorderSide(
-                                  width: 1, color: Color(0xFFA5A5A5)),
-                              borderRadius: BorderRadius.circular(10),
                             ),
-                            shadows: const [
-                              BoxShadow(
-                                color: Color(0x26000000),
-                                blurRadius: 4,
-                              )
-                            ],
+                          ],
+                        ),
+                      ),
+                      const SizedBox(
+                        width: 10,
+                      ),
+                      Container(
+                        width: Get.width / 4,
+                        height: 41,
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 10, vertical: 6),
+                        decoration: ShapeDecoration(
+                          color: Colors.white,
+                          shape: RoundedRectangleBorder(
+                            side:
+                                BorderSide(width: 1, color: Color(0xFFA5A5A5)),
+                            borderRadius: BorderRadius.circular(10),
                           ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              SvgPicture.asset(
-                                  'assets/images/Arrow_list_agency.svg'),
-                              const SizedBox(width: 5),
-                              const Text(
-                                'متراژ',
-                                textAlign: TextAlign.right,
-                                style: TextStyle(
-                                  color: Color(0xFF636363),
-                                  fontSize: 11,
-                                  fontFamily: MAIN_FONT_FAMILY,
-                                ),
+                          shadows: const [
+                            BoxShadow(
+                              color: Color(0x26000000),
+                              blurRadius: 4,
+                            )
+                          ],
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            SvgPicture.asset(
+                                'assets/images/Arrow_list_agency.svg'),
+                            const SizedBox(width: 5),
+                            const Text(
+                              'متراژ',
+                              textAlign: TextAlign.right,
+                              style: TextStyle(
+                                color: Color(0xFF636363),
+                                fontSize: 11,
+                                fontFamily: MAIN_FONT_FAMILY,
                               ),
-                            ],
-                          ),
-                        ),
-                        const SizedBox(
-                          width: 10,
-                        ),
-                        Container(
-                          width: 100,
-                          height: 41,
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 10, vertical: 6),
-                          decoration: ShapeDecoration(
-                            color: Colors.white,
-                            shape: RoundedRectangleBorder(
-                              side: BorderSide(
-                                  width: 1, color: Color(0xFFA5A5A5)),
-                              borderRadius: BorderRadius.circular(10),
                             ),
-                            shadows: const [
-                              BoxShadow(
-                                color: Color(0x26000000),
-                                blurRadius: 4,
-                              )
-                            ],
+                          ],
+                        ),
+                      ),
+                      const SizedBox(
+                        width: 10,
+                      ),
+                      Container(
+                        width: Get.width / 4,
+                        height: 41,
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 10, vertical: 6),
+                        decoration: ShapeDecoration(
+                          color: Colors.white,
+                          shape: RoundedRectangleBorder(
+                            side:
+                                BorderSide(width: 1, color: Color(0xFFA5A5A5)),
+                            borderRadius: BorderRadius.circular(10),
                           ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              SvgPicture.asset(
-                                  'assets/images/Arrow_list_agency.svg'),
-                              const SizedBox(width: 15),
-                              const Text(
-                                'محله',
-                                textAlign: TextAlign.right,
-                                style: TextStyle(
-                                  color: Color(0xFF636363),
-                                  fontSize: 12,
-                                  fontFamily: MAIN_FONT_FAMILY,
-                                ),
+                          shadows: const [
+                            BoxShadow(
+                              color: Color(0x26000000),
+                              blurRadius: 4,
+                            )
+                          ],
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            SvgPicture.asset(
+                                'assets/images/Arrow_list_agency.svg'),
+                            const SizedBox(width: 15),
+                            const Text(
+                              'محله',
+                              textAlign: TextAlign.right,
+                              style: TextStyle(
+                                color: Color(0xFF636363),
+                                fontSize: 12,
+                                fontFamily: MAIN_FONT_FAMILY,
                               ),
-                            ],
-                          ),
-                        ),
-                        const SizedBox(
-                          width: 10,
-                        ),
-                        Container(
-                          width: 100,
-                          height: 41,
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 10, vertical: 6),
-                          decoration: ShapeDecoration(
-                            color: Colors.white,
-                            shape: RoundedRectangleBorder(
-                              side: const BorderSide(
-                                  width: 1, color: Color(0xFFA5A5A5)),
-                              borderRadius: BorderRadius.circular(10),
                             ),
-                            shadows: const [
-                              BoxShadow(
-                                color: Color(0x26000000),
-                                blurRadius: 4,
-                              )
-                            ],
+                          ],
+                        ),
+                      ),
+                      const SizedBox(
+                        width: 10,
+                      ),
+                      Container(
+                        width: Get.width / 4,
+                        height: 41,
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 10, vertical: 6),
+                        decoration: ShapeDecoration(
+                          color: Colors.white,
+                          shape: RoundedRectangleBorder(
+                            side: const BorderSide(
+                                width: 1, color: Color(0xFFA5A5A5)),
+                            borderRadius: BorderRadius.circular(10),
                           ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              SvgPicture.asset(
-                                  'assets/images/Arrow_list_agency.svg'),
-                              const SizedBox(width: 10),
-                              const Text(
-                                'شهر',
-                                textAlign: TextAlign.right,
-                                style: TextStyle(
-                                  color: Color(0xFF636363),
-                                  fontSize: 11.5,
-                                  fontFamily: MAIN_FONT_FAMILY,
-                                  height: 0,
-                                ),
+                          shadows: const [
+                            BoxShadow(
+                              color: Color(0x26000000),
+                              blurRadius: 4,
+                            )
+                          ],
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            SvgPicture.asset(
+                                'assets/images/Arrow_list_agency.svg'),
+                            const SizedBox(width: 10),
+                            const Text(
+                              'شهر',
+                              textAlign: TextAlign.right,
+                              style: TextStyle(
+                                color: Color(0xFF636363),
+                                fontSize: 11.5,
+                                fontFamily: MAIN_FONT_FAMILY,
+                                height: 0,
                               ),
-                            ],
-                          ),
-                        ),
-                        const SizedBox(
-                          width: 10,
-                        ),
-                        Container(
-                          width: 100,
-                          height: 41,
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 10, vertical: 6),
-                          decoration: ShapeDecoration(
-                            color: Colors.white,
-                            shape: RoundedRectangleBorder(
-                              side: const BorderSide(
-                                  width: 1, color: Color(0xFFA5A5A5)),
-                              borderRadius: BorderRadius.circular(10),
                             ),
-                            shadows: const [
-                              BoxShadow(
-                                color: Color(0x26000000),
-                                blurRadius: 4,
-                              )
-                            ],
-                          ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              SvgPicture.asset(
-                                  'assets/images/Arrow_list_agency.svg'),
-                              const SizedBox(width: 10),
-                              const Text(
-                                'نوع ملک',
-                                textAlign: TextAlign.right,
-                                style: TextStyle(
-                                  color: Color(0xFF636363),
-                                  fontSize: 11.5,
-                                  fontFamily: MAIN_FONT_FAMILY,
-                                  height: 0,
-                                ),
-                              ),
-                            ],
-                          ),
+                          ],
                         ),
-                      ],
-                    ),
+                      ),
+                      const SizedBox(
+                        width: 10,
+                      ),
+                      Container(
+                        width: Get.width / 4,
+                        height: 41,
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 10, vertical: 6),
+                        decoration: ShapeDecoration(
+                          color: Colors.white,
+                          shape: RoundedRectangleBorder(
+                            side: const BorderSide(
+                                width: 1, color: Color(0xFFA5A5A5)),
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          shadows: const [
+                            BoxShadow(
+                              color: Color(0x26000000),
+                              blurRadius: 4,
+                            )
+                          ],
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            SvgPicture.asset(
+                                'assets/images/Arrow_list_agency.svg'),
+                            const SizedBox(width: 10),
+                            const Text(
+                              'نوع ملک',
+                              textAlign: TextAlign.right,
+                              style: TextStyle(
+                                color: Color(0xFF636363),
+                                fontSize: 11.5,
+                                fontFamily: MAIN_FONT_FAMILY,
+                                height: 0,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ),
               const SizedBox(
                 height: 20,
               ),
-              Container(
-                width: 343,
-                height: 100,
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 22, vertical: 12),
-                decoration: ShapeDecoration(
-                  color: Colors.white,
-                  shape: RoundedRectangleBorder(
-                    side: const BorderSide(width: 1, color: Color(0xFFB7B7B7)),
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                ),
-                child: Column(
-                  children: [
-                    Container(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Container(
-                            width: 26,
-                            height: 21,
-                            decoration: ShapeDecoration(
-                              shape: RoundedRectangleBorder(
-                                side: const BorderSide(
-                                    width: 0.50, color: Color(0xFF296FE2)),
-                                borderRadius: BorderRadius.circular(5),
-                              ),
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.all(3.0),
-                              child: SvgPicture.asset(
-                                'assets/images/Call_icon_profile.svg',
-                              ),
-                            ),
-                          ),
-                          const SizedBox(
-                            width: 5,
-                          ),
-                          Container(
-                            width: 26,
-                            height: 21,
-                            decoration: ShapeDecoration(
-                              shape: RoundedRectangleBorder(
-                                side: const BorderSide(
-                                    width: 0.50, color: Color(0xFF00BD61)),
-                                borderRadius: BorderRadius.circular(5),
-                              ),
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.all(3.0),
-                              child: SvgPicture.asset(
-                                'assets/images/Message_icon_profile.svg',
-                              ),
-                            ),
-                          ),
-                          const SizedBox(
-                            width: 25,
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              Container(
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 5, vertical: 3),
-                                decoration: ShapeDecoration(
-                                  shape: RoundedRectangleBorder(
-                                    side: const BorderSide(
-                                        width: 0.20, color: Color(0xFF303030)),
-                                    borderRadius: BorderRadius.circular(5),
-                                  ),
-                                ),
-                                child: const Text(
-                                  '80 - 120',
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                    color: Color(0xFF636363),
-                                    fontSize: 10,
-                                    fontFamily: MAIN_FONT_FAMILY_MEDIUM,
-                                  ),
-                                ),
-                              ),
-                              const SizedBox(width: 5),
-                              Container(
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 5, vertical: 3),
-                                decoration: ShapeDecoration(
-                                  shape: RoundedRectangleBorder(
-                                    side: const BorderSide(
-                                        width: 0.20, color: Color(0xFF303030)),
-                                    borderRadius: BorderRadius.circular(5),
-                                  ),
-                                ),
-                                child: const Column(
-                                  mainAxisSize: MainAxisSize.min,
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    Text(
-                                      'جنت آباد ',
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                        color: Color(0xFF636363),
-                                        fontSize: 10,
-                                        fontFamily: MAIN_FONT_FAMILY_MEDIUM,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              const SizedBox(width: 5),
-                              Container(
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 5, vertical: 3),
-                                decoration: ShapeDecoration(
-                                  shape: RoundedRectangleBorder(
-                                    side: const BorderSide(
-                                        width: 0.20, color: Color(0xFF303030)),
-                                    borderRadius: BorderRadius.circular(5),
-                                  ),
-                                ),
-                                child: const Column(
-                                  children: [
-                                    Text(
-                                      'تهران',
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                        color: Color(0xFF636363),
-                                        fontSize: 10,
-                                        fontFamily: MAIN_FONT_FAMILY_MEDIUM,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              const SizedBox(width: 5),
-                              Container(
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 6, vertical: 3),
-                                decoration: ShapeDecoration(
-                                  shape: RoundedRectangleBorder(
-                                    side: const BorderSide(
-                                        width: 0.20, color: Color(0xFF303030)),
-                                    borderRadius: BorderRadius.circular(5),
-                                  ),
-                                ),
-                                child: const Column(
-                                  children: [
-                                    Text(
-                                      'آپارتمان',
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                        color: Color(0xFF636363),
-                                        fontSize: 10,
-                                        fontFamily: MAIN_FONT_FAMILY_MEDIUM,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Container(
-                          width: 75,
-                          height: 25,
-                          decoration: ShapeDecoration(
-                            shape: RoundedRectangleBorder(
-                              side: const BorderSide(
-                                  width: 0.20, color: Color(0xFF303030)),
-                              borderRadius: BorderRadius.circular(5),
-                            ),
-                          ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              SvgPicture.asset(
-                                'assets/images/down.svg',
-                                width: 10,
-                                height: 10,
-                              ),
-                              const Text(
-                                'توضیحات',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  color: Color(0xFF303030),
-                                  fontSize: 10,
-                                  fontFamily: MAIN_FONT_FAMILY,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        Container(
-                          width: 118,
-                          height: 25,
-                          decoration: ShapeDecoration(
-                            shape: RoundedRectangleBorder(
-                              side: const BorderSide(
-                                  width: 0.20, color: Color(0xFF303030)),
-                              borderRadius: BorderRadius.circular(5),
-                            ),
-                          ),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              ShaderMask(
-                                shaderCallback: (bounds) =>
-                                    const LinearGradient(
-                                  colors: [
-                                    Color(0xFF4C8CED),
-                                    Color(0xFF36D859),
-                                  ],
-                                  begin: Alignment.topLeft,
-                                  end: Alignment.bottomRight,
-                                ).createShader(
-                                  Rect.fromLTWH(
-                                      0, 0, bounds.width, bounds.height),
-                                ),
-                                child: const Text(
-                                  'قیمت تا 12 میلیارد تومان',
-                                  style: TextStyle(
-                                    fontSize: 10,
-                                    fontFamily: MAIN_FONT_FAMILY,
-                                    color: Colors.white,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
+              const WidgetReqMelkProfile(),
               const SizedBox(
                 height: 20,
               ),
-              Container(
-                width: 343,
-                height: 100,
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 22, vertical: 12),
-                decoration: ShapeDecoration(
-                  color: Colors.white,
-                  shape: RoundedRectangleBorder(
-                    side: const BorderSide(width: 1, color: Color(0xFFB7B7B7)),
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                ),
-                child: Column(
-                  children: [
-                    Container(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Container(
-                            width: 26,
-                            height: 21,
-                            decoration: ShapeDecoration(
-                              shape: RoundedRectangleBorder(
-                                side: const BorderSide(
-                                    width: 0.50, color: Color(0xFF296FE2)),
-                                borderRadius: BorderRadius.circular(5),
-                              ),
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.all(3.0),
-                              child: SvgPicture.asset(
-                                'assets/images/Call_icon_profile.svg',
-                              ),
-                            ),
-                          ),
-                          const SizedBox(
-                            width: 5,
-                          ),
-                          Container(
-                            width: 26,
-                            height: 21,
-                            decoration: ShapeDecoration(
-                              shape: RoundedRectangleBorder(
-                                side: const BorderSide(
-                                    width: 0.50, color: Color(0xFF00BD61)),
-                                borderRadius: BorderRadius.circular(5),
-                              ),
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.all(3.0),
-                              child: SvgPicture.asset(
-                                'assets/images/Message_icon_profile.svg',
-                              ),
-                            ),
-                          ),
-                          const SizedBox(
-                            width: 25,
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              Container(
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 5, vertical: 3),
-                                decoration: ShapeDecoration(
-                                  shape: RoundedRectangleBorder(
-                                    side: const BorderSide(
-                                        width: 0.20, color: Color(0xFF303030)),
-                                    borderRadius: BorderRadius.circular(5),
-                                  ),
-                                ),
-                                child: const Text(
-                                  '80 - 120',
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                    color: Color(0xFF636363),
-                                    fontSize: 10,
-                                    fontFamily: MAIN_FONT_FAMILY_MEDIUM,
-                                  ),
-                                ),
-                              ),
-                              const SizedBox(width: 5),
-                              Container(
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 5, vertical: 3),
-                                decoration: ShapeDecoration(
-                                  shape: RoundedRectangleBorder(
-                                    side: const BorderSide(
-                                        width: 0.20, color: Color(0xFF303030)),
-                                    borderRadius: BorderRadius.circular(5),
-                                  ),
-                                ),
-                                child: const Column(
-                                  mainAxisSize: MainAxisSize.min,
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    Text(
-                                      'جنت آباد ',
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                        color: Color(0xFF636363),
-                                        fontSize: 10,
-                                        fontFamily: MAIN_FONT_FAMILY_MEDIUM,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              const SizedBox(width: 5),
-                              Container(
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 5, vertical: 3),
-                                decoration: ShapeDecoration(
-                                  shape: RoundedRectangleBorder(
-                                    side: const BorderSide(
-                                        width: 0.20, color: Color(0xFF303030)),
-                                    borderRadius: BorderRadius.circular(5),
-                                  ),
-                                ),
-                                child: const Column(
-                                  children: [
-                                    Text(
-                                      'تهران',
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                        color: Color(0xFF636363),
-                                        fontSize: 10,
-                                        fontFamily: MAIN_FONT_FAMILY_MEDIUM,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              const SizedBox(width: 5),
-                              Container(
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 6, vertical: 3),
-                                decoration: ShapeDecoration(
-                                  shape: RoundedRectangleBorder(
-                                    side: const BorderSide(
-                                        width: 0.20, color: Color(0xFF303030)),
-                                    borderRadius: BorderRadius.circular(5),
-                                  ),
-                                ),
-                                child: const Column(
-                                  children: [
-                                    Text(
-                                      'آپارتمان',
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                        color: Color(0xFF636363),
-                                        fontSize: 10,
-                                        fontFamily: MAIN_FONT_FAMILY_MEDIUM,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Container(
-                          width: 75,
-                          height: 25,
-                          decoration: ShapeDecoration(
-                            shape: RoundedRectangleBorder(
-                              side: const BorderSide(
-                                  width: 0.20, color: Color(0xFF303030)),
-                              borderRadius: BorderRadius.circular(5),
-                            ),
-                          ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              SvgPicture.asset(
-                                'assets/images/down.svg',
-                                width: 10,
-                                height: 10,
-                              ),
-                              const Text(
-                                'توضیحات',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  color: Color(0xFF303030),
-                                  fontSize: 10,
-                                  fontFamily: MAIN_FONT_FAMILY,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        Container(
-                          width: 118,
-                          height: 25,
-                          decoration: ShapeDecoration(
-                            shape: RoundedRectangleBorder(
-                              side: const BorderSide(
-                                  width: 0.20, color: Color(0xFF303030)),
-                              borderRadius: BorderRadius.circular(5),
-                            ),
-                          ),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              ShaderMask(
-                                shaderCallback: (bounds) =>
-                                    const LinearGradient(
-                                  colors: [
-                                    Color(0xFF4C8CED),
-                                    Color(0xFF36D859),
-                                  ],
-                                  begin: Alignment.topLeft,
-                                  end: Alignment.bottomRight,
-                                ).createShader(
-                                  Rect.fromLTWH(
-                                      0, 0, bounds.width, bounds.height),
-                                ),
-                                child: const Text(
-                                  'قیمت تا 12 میلیارد تومان',
-                                  style: TextStyle(
-                                    fontSize: 10,
-                                    fontFamily: MAIN_FONT_FAMILY,
-                                    color: Colors.white,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
+              const WidgetReqMelkProfile(),
               const SizedBox(
                 height: 20,
               ),
-              Container(
-                width: 343,
-                height: 100,
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 22, vertical: 12),
-                decoration: ShapeDecoration(
-                  color: Colors.white,
-                  shape: RoundedRectangleBorder(
-                    side: const BorderSide(width: 1, color: Color(0xFFB7B7B7)),
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                ),
-                child: Column(
-                  children: [
-                    Container(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Container(
-                            width: 26,
-                            height: 21,
-                            decoration: ShapeDecoration(
-                              shape: RoundedRectangleBorder(
-                                side: const BorderSide(
-                                    width: 0.50, color: Color(0xFF296FE2)),
-                                borderRadius: BorderRadius.circular(5),
-                              ),
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.all(3.0),
-                              child: SvgPicture.asset(
-                                'assets/images/Call_icon_profile.svg',
-                              ),
-                            ),
-                          ),
-                          const SizedBox(
-                            width: 5,
-                          ),
-                          Container(
-                            width: 26,
-                            height: 21,
-                            decoration: ShapeDecoration(
-                              shape: RoundedRectangleBorder(
-                                side: const BorderSide(
-                                    width: 0.50, color: Color(0xFF00BD61)),
-                                borderRadius: BorderRadius.circular(5),
-                              ),
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.all(3.0),
-                              child: SvgPicture.asset(
-                                'assets/images/Message_icon_profile.svg',
-                              ),
-                            ),
-                          ),
-                          const SizedBox(
-                            width: 25,
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              Container(
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 5, vertical: 3),
-                                decoration: ShapeDecoration(
-                                  shape: RoundedRectangleBorder(
-                                    side: const BorderSide(
-                                        width: 0.20, color: Color(0xFF303030)),
-                                    borderRadius: BorderRadius.circular(5),
-                                  ),
-                                ),
-                                child: const Text(
-                                  '80 - 120',
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                    color: Color(0xFF636363),
-                                    fontSize: 10,
-                                    fontFamily: MAIN_FONT_FAMILY_MEDIUM,
-                                  ),
-                                ),
-                              ),
-                              const SizedBox(width: 5),
-                              Container(
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 5, vertical: 3),
-                                decoration: ShapeDecoration(
-                                  shape: RoundedRectangleBorder(
-                                    side: const BorderSide(
-                                        width: 0.20, color: Color(0xFF303030)),
-                                    borderRadius: BorderRadius.circular(5),
-                                  ),
-                                ),
-                                child: const Column(
-                                  mainAxisSize: MainAxisSize.min,
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    Text(
-                                      'جنت آباد ',
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                        color: Color(0xFF636363),
-                                        fontSize: 10,
-                                        fontFamily: MAIN_FONT_FAMILY_MEDIUM,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              const SizedBox(width: 5),
-                              Container(
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 5, vertical: 3),
-                                decoration: ShapeDecoration(
-                                  shape: RoundedRectangleBorder(
-                                    side: const BorderSide(
-                                        width: 0.20, color: Color(0xFF303030)),
-                                    borderRadius: BorderRadius.circular(5),
-                                  ),
-                                ),
-                                child: const Column(
-                                  children: [
-                                    Text(
-                                      'تهران',
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                        color: Color(0xFF636363),
-                                        fontSize: 10,
-                                        fontFamily: MAIN_FONT_FAMILY_MEDIUM,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              const SizedBox(width: 5),
-                              Container(
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 6, vertical: 3),
-                                decoration: ShapeDecoration(
-                                  shape: RoundedRectangleBorder(
-                                    side: const BorderSide(
-                                        width: 0.20, color: Color(0xFF303030)),
-                                    borderRadius: BorderRadius.circular(5),
-                                  ),
-                                ),
-                                child: const Column(
-                                  children: [
-                                    Text(
-                                      'آپارتمان',
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                        color: Color(0xFF636363),
-                                        fontSize: 10,
-                                        fontFamily: MAIN_FONT_FAMILY_MEDIUM,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Container(
-                          width: 75,
-                          height: 25,
-                          decoration: ShapeDecoration(
-                            shape: RoundedRectangleBorder(
-                              side: const BorderSide(
-                                  width: 0.20, color: Color(0xFF303030)),
-                              borderRadius: BorderRadius.circular(5),
-                            ),
-                          ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              SvgPicture.asset(
-                                'assets/images/down.svg',
-                                width: 10,
-                                height: 10,
-                              ),
-                              const Text(
-                                'توضیحات',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  color: Color(0xFF303030),
-                                  fontSize: 10,
-                                  fontFamily: MAIN_FONT_FAMILY,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        Container(
-                          width: 118,
-                          height: 25,
-                          decoration: ShapeDecoration(
-                            shape: RoundedRectangleBorder(
-                              side: const BorderSide(
-                                  width: 0.20, color: Color(0xFF303030)),
-                              borderRadius: BorderRadius.circular(5),
-                            ),
-                          ),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              ShaderMask(
-                                shaderCallback: (bounds) =>
-                                    const LinearGradient(
-                                  colors: [
-                                    Color(0xFF4C8CED),
-                                    Color(0xFF36D859),
-                                  ],
-                                  begin: Alignment.topLeft,
-                                  end: Alignment.bottomRight,
-                                ).createShader(
-                                  Rect.fromLTWH(
-                                      0, 0, bounds.width, bounds.height),
-                                ),
-                                child: const Text(
-                                  'قیمت تا 12 میلیارد تومان',
-                                  style: TextStyle(
-                                    fontSize: 10,
-                                    fontFamily: MAIN_FONT_FAMILY,
-                                    color: Colors.white,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
+              const WidgetReqMelkProfile(),
               const SizedBox(
                 height: 20,
               ),
-              Container(
-                width: 343,
-                height: 100,
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 22, vertical: 12),
-                decoration: ShapeDecoration(
-                  color: Colors.white,
-                  shape: RoundedRectangleBorder(
-                    side: const BorderSide(width: 1, color: Color(0xFFB7B7B7)),
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                ),
-                child: Column(
-                  children: [
-                    Container(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Container(
-                            width: 26,
-                            height: 21,
-                            decoration: ShapeDecoration(
-                              shape: RoundedRectangleBorder(
-                                side: const BorderSide(
-                                    width: 0.50, color: Color(0xFF296FE2)),
-                                borderRadius: BorderRadius.circular(5),
-                              ),
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.all(3.0),
-                              child: SvgPicture.asset(
-                                'assets/images/Call_icon_profile.svg',
-                              ),
-                            ),
-                          ),
-                          const SizedBox(
-                            width: 5,
-                          ),
-                          Container(
-                            width: 26,
-                            height: 21,
-                            decoration: ShapeDecoration(
-                              shape: RoundedRectangleBorder(
-                                side: const BorderSide(
-                                    width: 0.50, color: Color(0xFF00BD61)),
-                                borderRadius: BorderRadius.circular(5),
-                              ),
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.all(3.0),
-                              child: SvgPicture.asset(
-                                'assets/images/Message_icon_profile.svg',
-                              ),
-                            ),
-                          ),
-                          const SizedBox(
-                            width: 25,
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              Container(
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 5, vertical: 3),
-                                decoration: ShapeDecoration(
-                                  shape: RoundedRectangleBorder(
-                                    side: const BorderSide(
-                                        width: 0.20, color: Color(0xFF303030)),
-                                    borderRadius: BorderRadius.circular(5),
-                                  ),
-                                ),
-                                child: const Text(
-                                  '80 - 120',
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                    color: Color(0xFF636363),
-                                    fontSize: 10,
-                                    fontFamily: MAIN_FONT_FAMILY_MEDIUM,
-                                  ),
-                                ),
-                              ),
-                              const SizedBox(width: 5),
-                              Container(
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 5, vertical: 3),
-                                decoration: ShapeDecoration(
-                                  shape: RoundedRectangleBorder(
-                                    side: const BorderSide(
-                                        width: 0.20, color: Color(0xFF303030)),
-                                    borderRadius: BorderRadius.circular(5),
-                                  ),
-                                ),
-                                child: const Column(
-                                  mainAxisSize: MainAxisSize.min,
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    Text(
-                                      'جنت آباد ',
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                        color: Color(0xFF636363),
-                                        fontSize: 10,
-                                        fontFamily: MAIN_FONT_FAMILY_MEDIUM,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              const SizedBox(width: 5),
-                              Container(
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 5, vertical: 3),
-                                decoration: ShapeDecoration(
-                                  shape: RoundedRectangleBorder(
-                                    side: const BorderSide(
-                                        width: 0.20, color: Color(0xFF303030)),
-                                    borderRadius: BorderRadius.circular(5),
-                                  ),
-                                ),
-                                child: const Column(
-                                  children: [
-                                    Text(
-                                      'تهران',
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                        color: Color(0xFF636363),
-                                        fontSize: 10,
-                                        fontFamily: MAIN_FONT_FAMILY_MEDIUM,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              const SizedBox(width: 5),
-                              Container(
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 6, vertical: 3),
-                                decoration: ShapeDecoration(
-                                  shape: RoundedRectangleBorder(
-                                    side: const BorderSide(
-                                        width: 0.20, color: Color(0xFF303030)),
-                                    borderRadius: BorderRadius.circular(5),
-                                  ),
-                                ),
-                                child: const Column(
-                                  children: [
-                                    Text(
-                                      'آپارتمان',
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                        color: Color(0xFF636363),
-                                        fontSize: 10,
-                                        fontFamily: MAIN_FONT_FAMILY_MEDIUM,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Container(
-                          width: 75,
-                          height: 25,
-                          decoration: ShapeDecoration(
-                            shape: RoundedRectangleBorder(
-                              side: const BorderSide(
-                                  width: 0.20, color: Color(0xFF303030)),
-                              borderRadius: BorderRadius.circular(5),
-                            ),
-                          ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              SvgPicture.asset(
-                                'assets/images/down.svg',
-                                width: 10,
-                                height: 10,
-                              ),
-                              const Text(
-                                'توضیحات',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  color: Color(0xFF303030),
-                                  fontSize: 10,
-                                  fontFamily: MAIN_FONT_FAMILY,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        Container(
-                          width: 118,
-                          height: 25,
-                          decoration: ShapeDecoration(
-                            shape: RoundedRectangleBorder(
-                              side: const BorderSide(
-                                  width: 0.20, color: Color(0xFF303030)),
-                              borderRadius: BorderRadius.circular(5),
-                            ),
-                          ),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              ShaderMask(
-                                shaderCallback: (bounds) =>
-                                    const LinearGradient(
-                                  colors: [
-                                    Color(0xFF4C8CED),
-                                    Color(0xFF36D859),
-                                  ],
-                                  begin: Alignment.topLeft,
-                                  end: Alignment.bottomRight,
-                                ).createShader(
-                                  Rect.fromLTWH(
-                                      0, 0, bounds.width, bounds.height),
-                                ),
-                                child: const Text(
-                                  'قیمت تا 12 میلیارد تومان',
-                                  style: TextStyle(
-                                    fontSize: 10,
-                                    fontFamily: MAIN_FONT_FAMILY,
-                                    color: Colors.white,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
+              const WidgetReqMelkProfile(),
+              const SizedBox(
+                height: 20,
               ),
+              const WidgetReqMelkProfile(),
               const SizedBox(
                 height: 50,
               ),

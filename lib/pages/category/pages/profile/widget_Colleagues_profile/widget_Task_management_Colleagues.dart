@@ -41,7 +41,7 @@ class _WidgetTaskManagementColleaguesState
           padding: const EdgeInsets.all(1.0),
           child: SingleChildScrollView(
             child: Container(
-              width: 295,
+              width: Get.width / 1.3,
               height: _About_me_1.value ? 310 : 50,
               decoration: BoxDecoration(
                 color: const Color.fromRGBO(253, 253, 253, 1),

@@ -48,46 +48,34 @@ class _EducationalTourState extends State<EducationalTour> {
           body: Stack(
             children: [
               Obx(() => showEducation.value
-                  ? Padding(
-                      padding: const EdgeInsets.only(left: 25.0),
-                      child: Container(
-                        color: Colors.white,
-                        child: SingleChildScrollView(
-                          child: Column(
-                            children: [
-                              GestureDetector(
-                                  onTap: () {
-                                    Get.to(() => ());
-                                  },
-                                  child: SvgPicture.asset(
-                                      width: 350,
-                                      height: 185,
-                                      'assets/images/Personal user panel.svg')),
-                              const SizedBox(
-                                height: 20,
-                              ),
-                              GestureDetector(
-                                  onTap: () {
-                                    Get.to(() => ());
-                                  },
-                                  child: SvgPicture.asset(
-                                      width: 350,
-                                      height: 185,
-                                      'assets/images/Consultants user panel.svg')),
-                              const SizedBox(
-                                height: 20,
-                              ),
-                              GestureDetector(
-                                  onTap: () {
-                                    Get.to(() => ());
-                                  },
-                                  child: SvgPicture.asset(
-                                      width: 350,
-                                      height: 185,
-                                      'assets/images/Real estate agency user panel.svg')),
-                            ],
+                  ? Center(
+                      child: Column(
+                        children: [
+                          const SizedBox(
+                            height: 30,
                           ),
-                        ),
+                          SvgPicture.asset(
+                            'assets/images/Personal user panel.svg',
+                            width: Get.width / 1.3,
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(20.0),
+                            child: SvgPicture.asset(
+                              'assets/images/Consultants user panel.svg',
+                              width: Get.width / 1.3,
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          SvgPicture.asset(
+                            'assets/images/Real estate agency user panel.svg',
+                            width: Get.width / 1.3,
+                          ),
+                        ],
                       ),
                     )
                   : pages[currentPageIndex.value]),

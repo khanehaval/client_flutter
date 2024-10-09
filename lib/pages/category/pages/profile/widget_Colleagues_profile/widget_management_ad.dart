@@ -39,8 +39,8 @@ class _WidgetManagementAdState extends State<WidgetManagementAd> {
           padding: const EdgeInsets.all(1.0),
           child: SingleChildScrollView(
             child: Container(
-              width: 295,
-              height: _About_me_1.value ? 310 : 50,
+              width: Get.width / 1.3,
+              height: _About_me_1.value ? 330 : 50,
               decoration: BoxDecoration(
                 color: const Color.fromRGBO(253, 253, 253, 1),
                 borderRadius: BorderRadius.circular(15),
