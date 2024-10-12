@@ -42,7 +42,7 @@ class _WidgetTaskManagementColleaguesState
           child: SingleChildScrollView(
             child: Container(
               width: Get.width / 1.3,
-              height: _About_me_1.value ? 310 : 50,
+              height: _About_me_1.value ? 355 : 50,
               decoration: BoxDecoration(
                 color: const Color.fromRGBO(253, 253, 253, 1),
                 borderRadius: BorderRadius.circular(15),

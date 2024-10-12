@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/pages/profile/vitrin_profile/widgets_vitrin_profile/widget_Expertise_and_skill.dart';
-import 'package:flutter_application_1/pages/category/pages/profile/vitrin_profile/widgets_vitrin_profile/widget_Special_ad.dart';
 import 'package:flutter_application_1/pages/category/pages/profile/vitrin_profile/widgets_vitrin_profile/widget_The_main_slogan.dart';
 import 'package:flutter_application_1/pages/category/pages/profile/vitrin_profile/widgets_vitrin_profile/widget_about_vitrin.dart';
 import 'package:flutter_application_1/pages/category/pages/profile/vitrin_profile/widgets_vitrin_profile/widget_back_ground_vitrin.dart';
@@ -10,9 +9,7 @@ import 'package:flutter_application_1/pages/category/pages/profile/vitrin_profil
 import 'package:flutter_application_1/pages/category/pages/profile/vitrin_profile/widgets_vitrin_profile/widget_moarefi_targert.dart';
 import 'package:flutter_application_1/pages/category/pages/profile/vitrin_profile/widgets_vitrin_profile/widget_name_axans.dart';
 import 'package:flutter_application_1/pages/category/pages/profile/vitrin_profile/widgets_vitrin_profile/widget_photo_profile_vitrin.dart';
-import 'package:flutter_application_1/pages/category/pages/profile/vitrin_profile/widgets_vitrin_profile/widget_shabake_vitrin.dart';
 import 'package:flutter_application_1/pages/category/pages/profile/vitrin_profile/widgets_vitrin_profile/widget_users_consultants.dart';
-import 'package:flutter_application_1/pages/category/pages/profile/vitrin_profile/widgets_vitrin_profile/widget_web_vitrin.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
 import 'package:flutter_svg/svg.dart';

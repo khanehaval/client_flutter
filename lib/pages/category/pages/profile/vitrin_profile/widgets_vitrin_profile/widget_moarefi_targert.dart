@@ -9,13 +9,13 @@ class WidgetMoarefiTargert extends StatefulWidget {
 }
 
 class _WidgetMoarefiTargertState extends State<WidgetMoarefiTargert> {
-  final RxBool _About_me_1 = false.obs; // وضعیت باز یا بسته بودن باکس
+  final RxBool _isExpanded = false.obs; // وضعیت باز یا بسته بودن باکس
   final RxBool _isTyping = false.obs; // وضعیت تایپ کردن
   final TextEditingController _textController =
       TextEditingController(); // کنترلر برای TextField
-  final RxString _aboutMeText =
-      'معرفی و اهداف'.obs; // متن نمایش داده شده در جای "درباره من"
+  final RxString _typedText = ''.obs; // متن وارد شده
   final RxBool _isChecked = false.obs; // وضعیت نشان دادن آیکون چک
+  final RxBool _isEditable = false.obs; // وضعیت ویرایش
 
   @override
   void initState() {
@@ -34,7 +34,7 @@ class _WidgetMoarefiTargertState extends State<WidgetMoarefiTargert> {
         padding: const EdgeInsets.only(left: 20.0, right: 20),
         child: Container(
           width: double.infinity,
-          height: _About_me_1.value
+          height: _isExpanded.value
               ? 280
               : 50, // تغییر ارتفاع باکس بر اساس باز یا بسته بودن
           decoration: BoxDecoration(
@@ -47,76 +47,59 @@ class _WidgetMoarefiTargertState extends State<WidgetMoarefiTargert> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  // آیکون چک
+                  // آیکون ها: چک، ویرایش، فلش پایین یا بالا
                   IconButton(
                     icon: _isChecked.value
                         ? SvgPicture.asset(
-                            'assets/images/check_icon.svg', // آیکون تیک
-                          )
-                        : (_isTyping.value
+                            'assets/images/edit and ok.svg') // آیکون ویرایش
+                        : (_isTyping
+                                .value // نمایش آیکون چک وقتی در حال تایپ است
                             ? SvgPicture.asset(
-                                'assets/images/check_icon.svg', // آیکون تیک وقتی تایپ شده
-                              )
-                            : SvgPicture.asset(
-                                _About_me_1.value
-                                    ? 'assets/images/edit and ok.svg'
-                                    : 'assets/images/Arrow_list_agency.svg',
-                                width: _About_me_1.value
-                                    ? 30
-                                    : 11, // سایز بزرگتر برای edit and ok
-                                height: _About_me_1.value
-                                    ? 25
-                                    : 14, // سایز بزرگتر برای edit and ok
-                              )),
+                                'assets/images/check_icon.svg') // آیکون چک
+                            : (_isExpanded.value
+                                ? SvgPicture.asset(
+                                    'assets/images/=.svg') // آیکون =
+                                : SvgPicture.asset(
+                                    'assets/images/Arrow_list_agency.svg', // آیکون فلش پایین
+                                    width: 11,
+                                    height: 14,
+                                  ))),
                     onPressed: () {
                       if (_isTyping.value) {
-                        // وقتی کاربر روی آیکون چک کلیک کرد و تایپ کرده بود، متن را ذخیره کن
-                        _aboutMeText.value = _textController.text;
-                        _isTyping.value = false; // ریست وضعیت تایپ
-                        _isChecked.value = true; // نمایش آیکون چک
-                        _About_me_1.value = false; // بستن باکس
+                        // وقتی کاربر تایپ کرده و روی چک کلیک کرده
+                        _typedText.value = _textController.text;
+                        _isTyping.value = false;
+                        _isChecked.value = true;
+                        _isExpanded.value = false;
+                        _isEditable.value = true; // فعال کردن حالت ویرایش
                       } else {
-                        // باز یا بسته کردن باکس
-                        _About_me_1.value = !_About_me_1.value;
-                        _isChecked.value = false; // ریست آیکون چک
+                        _isExpanded.value = !_isExpanded.value;
+                        _isChecked.value = false;
                       }
                     },
                   ),
-                  // چیدمان متن
                   Expanded(
                     child: Row(
-                      mainAxisAlignment: _isChecked.value
-                          ? MainAxisAlignment.spaceBetween
-                          : MainAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        // نمایش متن تایپ شده در سمت چپ در حالت تایید
                         if (_isChecked.value) ...[
-                          Text(
-                            _aboutMeText.value, // نمایش متن وارد شده توسط کاربر
-                            style: const TextStyle(
-                              fontFamily: MAIN_FONT_FAMILY,
-                              color: Color.fromRGBO(
-                                  99, 99, 99, 1), // رنگ سیاه برای متن وارد شده
-                              fontSize: 12,
-                            ),
-                          ),
-                        ],
-                        // متن "درباره من" در سمت راست در حالت تایید
-                        if (_isChecked.value) ...[
-                          const Padding(
-                            padding: EdgeInsets.only(right: 10.0),
+                          // نمایش متن با برش در صورت نیاز
+                          Container(
+                            constraints:
+                                const BoxConstraints(maxWidth: 180), // عرض باکس
                             child: Text(
-                              'معرفی و اهداف',
-                              style: TextStyle(
+                              _typedText.value, // متن وارد شده
+                              maxLines: 1, // حداکثر یک خط
+                              overflow: TextOverflow
+                                  .ellipsis, // نمایش ... در صورت اضافه بودن متن
+                              style: const TextStyle(
                                 fontFamily: MAIN_FONT_FAMILY,
-                                color: Color.fromRGBO(
-                                    99, 99, 99, 1), // رنگ متن "درباره من"
+                                color: Color.fromRGBO(99, 99, 99, 1),
                                 fontSize: 12,
                               ),
                             ),
                           ),
                         ] else ...[
-                          // نمایش متن "درباره من" در وسط در حالت پیش‌فرض
                           const Text(
                             'معرفی و اهداف',
                             style: TextStyle(
@@ -135,7 +118,7 @@ class _WidgetMoarefiTargertState extends State<WidgetMoarefiTargert> {
                   ),
                 ],
               ),
-              if (_About_me_1.value) buildMoarefiTargert(context),
+              if (_isExpanded.value) buildTextField(context),
             ],
           ),
         ),
@@ -143,19 +126,19 @@ class _WidgetMoarefiTargertState extends State<WidgetMoarefiTargert> {
     );
   }
 
-  Widget buildMoarefiTargert(BuildContext context) {
+  Widget buildTextField(BuildContext context) {
     return Directionality(
       textDirection: TextDirection.rtl,
       child: Padding(
         padding: const EdgeInsets.all(20.0),
         child: TextField(
           style: const TextStyle(
-            fontFamily: MAIN_FONT_FAMILY_LIGHT,
+            fontFamily: 'MAIN_FONT_FAMILY_LIGHT',
           ),
-          focusNode: FocusNode(),
+          controller: _textController,
           maxLines: 6,
           decoration: InputDecoration(
-            hintText: 'تایپ کنید',
+            hintText: 'متن خود را وارد کنید',
             hintStyle: const TextStyle(
               color: Color.fromRGBO(99, 99, 99, 1),
               fontSize: 13,

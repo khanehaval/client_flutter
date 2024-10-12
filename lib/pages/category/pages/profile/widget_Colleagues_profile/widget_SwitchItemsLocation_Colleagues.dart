@@ -27,35 +27,38 @@ class _WidgetSwitchitemslocationColleaguesState
   }
 
   Widget buildMelkTypeItem() {
-    return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 20), // فاصله بیرونی
-      decoration: BoxDecoration(
-        border: Border.all(width: 1, color: Colors.black54), // تعریف بُردر
-        borderRadius: BorderRadius.circular(10),
-      ),
-      child: Column(
-        children: [
-          ListView.builder(
-            shrinkWrap: true,
-            physics: const NeverScrollableScrollPhysics(),
-            itemCount: widget.items.length + 1,
-            itemBuilder: (context, index) {
-              if (index == 0) {
-                return Column(
-                  children: [
-                    _buildRow("همه تخصص ها"),
-                    const Divider(
-                        indent: 10,
-                        endIndent: 10,
-                        color: Color.fromRGBO(226, 226, 226, 1)),
-                  ],
-                );
-              } else {
-                return _buildRow(widget.items[index - 1]);
-              }
-            },
-          ),
-        ],
+    return Padding(
+      padding: const EdgeInsets.all(20.0),
+      child: Container(
+        height: 260,
+        decoration: BoxDecoration(
+          border: Border.all(width: 1, color: Colors.black54), // تعریف بُردر
+          borderRadius: BorderRadius.circular(10),
+        ),
+        child: Column(
+          children: [
+            ListView.builder(
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              itemCount: widget.items.length + 1,
+              itemBuilder: (context, index) {
+                if (index == 0) {
+                  return Column(
+                    children: [
+                      _buildRow("همه تخصص ها"),
+                      const Divider(
+                          indent: 10,
+                          endIndent: 10,
+                          color: Color.fromRGBO(226, 226, 226, 1)),
+                    ],
+                  );
+                } else {
+                  return _buildRow(widget.items[index - 1]);
+                }
+              },
+            ),
+          ],
+        ),
       ),
     );
   }

@@ -158,7 +158,6 @@ class _WidgetPhotoProfileVitrinState extends State<WidgetPhotoProfileVitrin> {
     );
   }
 
-  // ساخت بخش تصویر پروفایل
   Widget buildPhotoProfileVitrin(BuildContext context) {
     return Container(
       width: Get.width / 1.30,
@@ -203,19 +202,68 @@ class _WidgetPhotoProfileVitrinState extends State<WidgetPhotoProfileVitrin> {
                           ),
                         ),
                       )
-                    : ClipOval(
-                        child: Image.file(
-                          File(_selectedImagePath.value),
-                          width: 80,
-                          height: 80,
-                          fit: BoxFit.cover,
-                        ),
+                    : Row(
+                        children: [
+                          Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20),
+                              color: const Color.fromRGBO(243, 243, 243, 1),
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.all(1.0),
+                              child: Container(
+                                width: 110,
+                                height: 40,
+                                decoration: BoxDecoration(
+                                  color: const Color.fromRGBO(255, 255, 255, 1),
+                                  borderRadius:
+                                      BorderRadius.circular(20), // رادیوس 20
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.black
+                                          .withOpacity(0.1), // رنگ سایه
+                                      blurRadius: 5, // شدت محو شدن سایه
+                                      offset: const Offset(0, 2), // موقعیت سایه
+                                    ),
+                                  ],
+                                ),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                  children: [
+                                    SvgPicture.asset(
+                                      'assets/images/Frame refresh.svg',
+                                    ),
+                                    GestureDetector(
+                                      onTap: () {
+                                        // وقتی روی آیکون حذف کلیک شود، مسیر تصویر به رشته خالی تغییر می‌کند
+                                        _selectedImagePath.value = '';
+                                      },
+                                      child: SvgPicture.asset(
+                                        'assets/images/new_remove_profile.svg',
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+
+                          const SizedBox(
+                              width: 10), // فاصله بین کانتینر زرد و تصویر
+                          ClipOval(
+                            child: Image.file(
+                              File(_selectedImagePath.value),
+                              width: 80,
+                              height: 80,
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        ],
                       ),
               ),
             ),
-            SizedBox(
-              width: 40,
-            ),
+            const SizedBox(width: 40), // فاصله بین تصویر و متن
             // نمایش متن فقط اگر تصویری انتخاب نشده باشد
             Obx(
               () => _selectedImagePath.value.isEmpty

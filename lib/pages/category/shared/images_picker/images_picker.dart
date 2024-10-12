@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
-import 'image_croped.dart'; // Ensure this file is properly implemented for cropping
 
 class ImagesPicker extends StatelessWidget {
   final RxList<dynamic> selectedImagesPath;
@@ -17,14 +16,14 @@ class ImagesPicker extends StatelessWidget {
     return Column(
       children: [
         Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(20.0),
           child: SvgPicture.asset(
             'assets/images/Group 1223.svg',
             fit: BoxFit.fitWidth,
           ),
         ),
         const SizedBox(height: 20),
-        Obx(() => _buildImagePicker(context)),
+        Obx(() => _buildImagePicker(context)), // Obx برای به‌روزرسانی UI
       ],
     );
   }
@@ -56,34 +55,27 @@ class ImagesPicker extends StatelessWidget {
     );
   }
 
-  Widget _buildMainImage(BuildContext context) {
-    if (selectedImagesPath.value.isEmpty) {
-      return _buildAddMoreButton(context,
-          isMain: true); // دکمه اضافه کردن عکس اصلی
-    } else {
-      return ClipRRect(
+  Widget _buildImageGridItem(int index) {
+    return Container(
+      decoration: BoxDecoration(
+        border: Border.all(color: Colors.black12),
         borderRadius: BorderRadius.circular(10),
-        child: Stack(
-          alignment: Alignment.centerLeft,
-          children: [
-            Image.file(
-              File(selectedImagesPath.value.first),
-              height: 70, // سایز بزرگتر برای عکس اصلی
-              width: 150,
-              fit: BoxFit.cover,
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 10.0),
-              child: Row(
-                children: [
-                  _buildRemoveIcon(selectedImagesPath.value.first),
-                ],
-              ),
-            ),
-          ],
-        ),
-      );
-    }
+      ),
+      child: Stack(
+        children: [
+          Image.file(
+            File(selectedImagesPath[index]),
+            height: 70,
+            width: 100,
+            fit: BoxFit.cover,
+          ),
+          Align(
+            alignment: Alignment.center,
+            child: _buildRemoveIcon(selectedImagesPath[index]), // آیکون حذف عکس
+          ),
+        ],
+      ),
+    );
   }
 
   Widget _buildRemoveIcon(String path, {double size = 40}) {
@@ -91,11 +83,14 @@ class ImagesPicker extends StatelessWidget {
       padding: const EdgeInsets.only(left: 27.0, top: 10),
       child: IconButton(
         icon: SvgPicture.asset(
-          'assets/images/Vector-43.svg',
+          'assets/images/Vector-43.svg', // آیکون حذف
           width: 30,
           height: 30,
         ),
-        onPressed: () => selectedImagesPath.value.remove(path),
+        onPressed: () {
+          selectedImagesPath..value.remove(path); // حذف عکس از لیست
+          selectedImagesPath.refresh(); // به‌روزرسانی UI پس از حذف
+        },
       ),
     );
   }
@@ -116,29 +111,6 @@ class ImagesPicker extends StatelessWidget {
             child: Icon(Icons.add, size: 30, color: Colors.black26),
           ),
         ),
-      ),
-    );
-  }
-
-  Widget _buildImageGridItem(int index) {
-    return Container(
-      decoration: BoxDecoration(
-        border: Border.all(color: Colors.black12),
-        borderRadius: BorderRadius.circular(10),
-      ),
-      child: Stack(
-        children: [
-          Image.file(
-            File(selectedImagesPath[index]),
-            height: 70,
-            width: 100,
-            fit: BoxFit.cover,
-          ),
-          Align(
-            alignment: Alignment.center,
-            child: _buildRemoveIcon(selectedImagesPath[index], size: 40),
-          ),
-        ],
       ),
     );
   }
@@ -181,8 +153,7 @@ class ImagesPicker extends StatelessWidget {
     try {
       final pickedFile = await ImagePicker().pickImage(source: source);
       if (pickedFile != null) {
-        final croppedFile = await Cropper.cropImage(pickedFile.path);
-        selectedImagesPath.add(croppedFile ?? pickedFile.path);
+        selectedImagesPath.add(pickedFile.path);
       }
     } catch (e) {
       Get.snackbar('Error', 'Failed to pick image: $e');

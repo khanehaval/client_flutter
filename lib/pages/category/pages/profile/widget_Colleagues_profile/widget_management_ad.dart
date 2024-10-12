@@ -40,7 +40,7 @@ class _WidgetManagementAdState extends State<WidgetManagementAd> {
           child: SingleChildScrollView(
             child: Container(
               width: Get.width / 1.3,
-              height: _About_me_1.value ? 330 : 50,
+              height: _About_me_1.value ? 300 : 50,
               decoration: BoxDecoration(
                 color: const Color.fromRGBO(253, 253, 253, 1),
                 borderRadius: BorderRadius.circular(15),

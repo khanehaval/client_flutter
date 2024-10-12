@@ -9,12 +9,12 @@ class WidgetTheMainSlogan extends StatefulWidget {
 }
 
 class _WidgetTheMainSloganState extends State<WidgetTheMainSlogan> {
-  final RxBool _About_me_1 = false.obs; // وضعیت باز یا بسته بودن باکس
+  final RxBool _isExpanded = false.obs; // وضعیت باز یا بسته بودن باکس
   final RxBool _isTyping = false.obs; // وضعیت تایپ کردن
   final TextEditingController _textController =
       TextEditingController(); // کنترلر برای TextField
-  final RxString _aboutMeText =
-      'شعار اصلی'.obs; // متن نمایش داده شده در جای "درباره من"
+  final RxString _sloganText =
+      'شعار اصلی'.obs; // متن نمایش داده شده در جای "شعار اصلی"
   final RxBool _isChecked = false.obs; // وضعیت نشان دادن آیکون چک
 
   @override
@@ -34,7 +34,7 @@ class _WidgetTheMainSloganState extends State<WidgetTheMainSlogan> {
         padding: const EdgeInsets.only(left: 20.0, right: 20),
         child: Container(
           width: double.infinity,
-          height: _About_me_1.value
+          height: _isExpanded.value
               ? 150
               : 50, // تغییر ارتفاع باکس بر اساس باز یا بسته بودن
           decoration: BoxDecoration(
@@ -51,33 +51,32 @@ class _WidgetTheMainSloganState extends State<WidgetTheMainSlogan> {
                   IconButton(
                     icon: _isChecked.value
                         ? SvgPicture.asset(
-                            'assets/images/check_icon.svg', // آیکون تیک
+                            'assets/images/edit and ok.svg',
                           )
                         : (_isTyping.value
                             ? SvgPicture.asset(
-                                'assets/images/check_icon.svg', // آیکون تیک وقتی تایپ شده
-                              )
+                                'assets/images/check_icon.svg') // آیکون چک وقتی تایپ شده
                             : SvgPicture.asset(
-                                _About_me_1.value
-                                    ? 'assets/images/edit and ok.svg'
+                                _isExpanded.value
+                                    ? 'assets/images/=.svg'
                                     : 'assets/images/Arrow_list_agency.svg',
-                                width: _About_me_1.value
+                                width: _isExpanded.value
                                     ? 30
                                     : 11, // سایز بزرگتر برای edit and ok
-                                height: _About_me_1.value
-                                    ? 25
+                                height: _isExpanded.value
+                                    ? 10
                                     : 14, // سایز بزرگتر برای edit and ok
                               )),
                     onPressed: () {
                       if (_isTyping.value) {
                         // وقتی کاربر روی آیکون چک کلیک کرد و تایپ کرده بود، متن را ذخیره کن
-                        _aboutMeText.value = _textController.text;
+                        _sloganText.value = _textController.text;
                         _isTyping.value = false; // ریست وضعیت تایپ
                         _isChecked.value = true; // نمایش آیکون چک
-                        _About_me_1.value = false; // بستن باکس
+                        _isExpanded.value = false; // بستن باکس
                       } else {
                         // باز یا بسته کردن باکس
-                        _About_me_1.value = !_About_me_1.value;
+                        _isExpanded.value = !_isExpanded.value;
                         _isChecked.value = false; // ریست آیکون چک
                       }
                     },
@@ -86,37 +85,29 @@ class _WidgetTheMainSloganState extends State<WidgetTheMainSlogan> {
                   Expanded(
                     child: Row(
                       mainAxisAlignment: _isChecked.value
-                          ? MainAxisAlignment.spaceBetween
+                          ? MainAxisAlignment.center
                           : MainAxisAlignment.center,
                       children: [
                         // نمایش متن تایپ شده در سمت چپ در حالت تایید
                         if (_isChecked.value) ...[
-                          Text(
-                            _aboutMeText.value, // نمایش متن وارد شده توسط کاربر
-                            style: const TextStyle(
-                              fontFamily: MAIN_FONT_FAMILY,
-                              color: Color.fromRGBO(
-                                  99, 99, 99, 1), // رنگ سیاه برای متن وارد شده
-                              fontSize: 12,
-                            ),
-                          ),
-                        ],
-                        // متن "درباره من" در سمت راست در حالت تایید
-                        if (_isChecked.value) ...[
-                          const Padding(
-                            padding: EdgeInsets.only(right: 10.0),
+                          Container(
+                            constraints:
+                                const BoxConstraints(maxWidth: 100), // عرض باکس
                             child: Text(
-                              'شعار اصلی',
-                              style: TextStyle(
+                              _sloganText
+                                  .value, // نمایش متن وارد شده توسط کاربر
+                              maxLines: 1, // حداکثر یک خط
+                              overflow: TextOverflow
+                                  .ellipsis, // نمایش ... در صورت اضافه بودن متن
+                              style: const TextStyle(
                                 fontFamily: MAIN_FONT_FAMILY,
-                                color: Color.fromRGBO(
-                                    99, 99, 99, 1), // رنگ متن "درباره من"
+                                color: Color.fromRGBO(99, 99, 99, 1), // رنگ متن
                                 fontSize: 12,
                               ),
                             ),
                           ),
                         ] else ...[
-                          // نمایش متن "درباره من" در وسط در حالت پیش‌فرض
+                          // نمایش متن "شعار اصلی" در وسط در حالت پیش‌فرض
                           const Text(
                             'شعار اصلی',
                             style: TextStyle(
@@ -136,7 +127,7 @@ class _WidgetTheMainSloganState extends State<WidgetTheMainSlogan> {
                   ),
                 ],
               ),
-              if (_About_me_1.value) buildTheMainSlogan(context),
+              if (_isExpanded.value) buildSloganInput(context),
             ],
           ),
         ),
@@ -144,16 +135,16 @@ class _WidgetTheMainSloganState extends State<WidgetTheMainSlogan> {
     );
   }
 
-  Widget buildTheMainSlogan(BuildContext context) {
+  Widget buildSloganInput(BuildContext context) {
     return Directionality(
       textDirection: TextDirection.rtl,
       child: Padding(
         padding: const EdgeInsets.all(20.0),
         child: TextField(
+          controller: _textController,
           style: const TextStyle(
             fontFamily: MAIN_FONT_FAMILY_LIGHT,
           ),
-          focusNode: FocusNode(),
           maxLines: 1,
           decoration: InputDecoration(
             hintText: 'تایپ کنید',

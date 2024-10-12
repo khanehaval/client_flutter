@@ -14,7 +14,7 @@ class _WidgetNameAxansState extends State<WidgetNameAxans> {
   final TextEditingController _textController =
       TextEditingController(); // کنترلر برای TextField
   final RxString _aboutMeText =
-      'نام آژانس'.obs; // متن نمایش داده شده در جای "درباره من"
+      'نام آژانس'.obs; // متن نمایش داده شده در جای "نام آژانس"
   final RxBool _isChecked = false.obs; // وضعیت نشان دادن آیکون چک
 
   @override
@@ -35,7 +35,7 @@ class _WidgetNameAxansState extends State<WidgetNameAxans> {
         child: Container(
           width: double.infinity,
           height: _About_me_1.value
-              ? 160
+              ? 150
               : 50, // تغییر ارتفاع باکس بر اساس باز یا بسته بودن
           decoration: BoxDecoration(
             color: const Color.fromRGBO(250, 250, 250, 1),
@@ -51,7 +51,7 @@ class _WidgetNameAxansState extends State<WidgetNameAxans> {
                   IconButton(
                     icon: _isChecked.value
                         ? SvgPicture.asset(
-                            'assets/images/check_icon.svg', // آیکون تیک
+                            'assets/images/edit and ok.svg', // آیکون تیک
                           )
                         : (_isTyping.value
                             ? SvgPicture.asset(
@@ -59,13 +59,13 @@ class _WidgetNameAxansState extends State<WidgetNameAxans> {
                               )
                             : SvgPicture.asset(
                                 _About_me_1.value
-                                    ? 'assets/images/edit and ok.svg'
+                                    ? 'assets/images/=.svg'
                                     : 'assets/images/Arrow_list_agency.svg',
                                 width: _About_me_1.value
                                     ? 30
                                     : 11, // سایز بزرگتر برای edit and ok
                                 height: _About_me_1.value
-                                    ? 25
+                                    ? 10
                                     : 14, // سایز بزرگتر برای edit and ok
                               )),
                     onPressed: () {
@@ -86,7 +86,7 @@ class _WidgetNameAxansState extends State<WidgetNameAxans> {
                   Expanded(
                     child: Row(
                       mainAxisAlignment: _isChecked.value
-                          ? MainAxisAlignment.spaceBetween
+                          ? MainAxisAlignment.center
                           : MainAxisAlignment.center,
                       children: [
                         // نمایش متن تایپ شده در سمت چپ در حالت تایید
@@ -101,22 +101,11 @@ class _WidgetNameAxansState extends State<WidgetNameAxans> {
                             ),
                           ),
                         ],
-                        // متن "درباره من" در سمت راست در حالت تایید
-                        if (_isChecked.value) ...[
-                          const Padding(
-                            padding: EdgeInsets.only(right: 10.0),
-                            child: Text(
-                              'نام آژانس',
-                              style: TextStyle(
-                                fontFamily: MAIN_FONT_FAMILY,
-                                color: Color.fromRGBO(
-                                    99, 99, 99, 1), // رنگ متن "درباره من"
-                                fontSize: 12,
-                              ),
-                            ),
-                          ),
-                        ] else ...[
-                          // نمایش متن "درباره من" در وسط در حالت پیش‌فرض
+                        // متن "نام آژانس" در سمت راست در حالت تایید
+                        if (_isChecked.value)
+                          ...[]
+                        else ...[
+                          // نمایش متن "نام آژانس" در وسط در حالت پیش‌فرض
                           const Text(
                             'نام آژانس',
                             style: TextStyle(
@@ -130,7 +119,7 @@ class _WidgetNameAxansState extends State<WidgetNameAxans> {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(right: 16),
+                    padding: const EdgeInsets.only(right: 17),
                     child: SvgPicture.asset('assets/images/name_axans.svg'),
                   ),
                 ],
@@ -149,10 +138,10 @@ class _WidgetNameAxansState extends State<WidgetNameAxans> {
       child: Padding(
         padding: const EdgeInsets.all(20.0),
         child: TextField(
+          controller: _textController,
           style: const TextStyle(
             fontFamily: MAIN_FONT_FAMILY_LIGHT,
           ),
-          focusNode: FocusNode(),
           maxLines: 1,
           decoration: InputDecoration(
             hintText: 'تایپ کنید',

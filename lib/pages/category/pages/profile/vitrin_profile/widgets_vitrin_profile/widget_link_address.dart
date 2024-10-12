@@ -14,7 +14,7 @@ class _WidgetLinkAddressState extends State<WidgetLinkAddress> {
   final TextEditingController _textController =
       TextEditingController(); // کنترلر برای TextField
   final RxString _aboutMeText =
-      'لینک آدرس'.obs; // متن نمایش داده شده در جای "درباره من"
+      'لینک آدرس'.obs; // متن نمایش داده شده در جای "لینک آدرس"
   final RxBool _isChecked = false.obs; // وضعیت نشان دادن آیکون چک
 
   @override
@@ -51,7 +51,7 @@ class _WidgetLinkAddressState extends State<WidgetLinkAddress> {
                   IconButton(
                     icon: _isChecked.value
                         ? SvgPicture.asset(
-                            'assets/images/check_icon.svg', // آیکون تیک
+                            'assets/images/edit and ok.svg', // آیکون تیک
                           )
                         : (_isTyping.value
                             ? SvgPicture.asset(
@@ -59,13 +59,13 @@ class _WidgetLinkAddressState extends State<WidgetLinkAddress> {
                               )
                             : SvgPicture.asset(
                                 _About_me_1.value
-                                    ? 'assets/images/edit and ok.svg'
+                                    ? 'assets/images/=.svg'
                                     : 'assets/images/Arrow_list_agency.svg',
                                 width: _About_me_1.value
                                     ? 30
                                     : 11, // سایز بزرگتر برای edit and ok
                                 height: _About_me_1.value
-                                    ? 25
+                                    ? 10
                                     : 14, // سایز بزرگتر برای edit and ok
                               )),
                     onPressed: () {
@@ -86,7 +86,7 @@ class _WidgetLinkAddressState extends State<WidgetLinkAddress> {
                   Expanded(
                     child: Row(
                       mainAxisAlignment: _isChecked.value
-                          ? MainAxisAlignment.spaceBetween
+                          ? MainAxisAlignment.center
                           : MainAxisAlignment.center,
                       children: [
                         // نمایش متن تایپ شده در سمت چپ در حالت تایید
@@ -101,22 +101,22 @@ class _WidgetLinkAddressState extends State<WidgetLinkAddress> {
                             ),
                           ),
                         ],
-                        // متن "درباره من" در سمت راست در حالت تایید
+                        // متن "لینک آدرس" در سمت راست در حالت تایید
                         if (_isChecked.value) ...[
-                          const Padding(
-                            padding: EdgeInsets.only(right: 10.0),
-                            child: Text(
-                              'لینک آدرس',
-                              style: TextStyle(
-                                fontFamily: MAIN_FONT_FAMILY,
-                                color: Color.fromRGBO(
-                                    99, 99, 99, 1), // رنگ متن "درباره من"
-                                fontSize: 12,
-                              ),
-                            ),
-                          ),
+                          // const Padding(
+                          //   padding: EdgeInsets.only(right: 10.0),
+                          //   child: Text(
+                          //     'لینک آدرس',
+                          //     style: TextStyle(
+                          //       fontFamily: MAIN_FONT_FAMILY,
+                          //       color: Color.fromRGBO(
+                          //           99, 99, 99, 1), // رنگ متن "لینک آدرس"
+                          //       fontSize: 12,
+                          //     ),
+                          //   ),
+                          // ),
                         ] else ...[
-                          // نمایش متن "درباره من" در وسط در حالت پیش‌فرض
+                          // نمایش متن "لینک آدرس" در وسط در حالت پیش‌فرض
                           const Text(
                             'لینک آدرس',
                             style: TextStyle(
@@ -150,13 +150,14 @@ class _WidgetLinkAddressState extends State<WidgetLinkAddress> {
       child: Padding(
         padding: const EdgeInsets.all(20.0),
         child: TextField(
+          controller: _textController,
           style: const TextStyle(
             fontFamily: MAIN_FONT_FAMILY_LIGHT,
           ),
           focusNode: FocusNode(),
           maxLines: 1,
           decoration: InputDecoration(
-            hintText: 'برای مثال:  https://nshn.ir/7bvXFr0xMLrt ',
+            hintText: 'برای مثال: https://nshn.ir/7bvXFr0xMLrt',
             hintStyle: const TextStyle(
               color: Color.fromRGBO(99, 99, 99, 1),
               fontSize: 12,

@@ -20,6 +20,8 @@ class _WidgetExpertiseAndSkillState extends State<WidgetExpertiseAndSkill> {
   final RxString _aboutMeText =
       'تخصص و مهارت'.obs; // متن نمایش داده شده در جای "درباره من"
   final RxBool _isChecked = false.obs; // وضعیت نشان دادن آیکون چک
+  final RxBool _isArrowDown = true.obs; // شروع با آیکون فلش پایین
+  final RxBool _isEditable = false.obs; // وضعیت ویرایش
 
   @override
   void initState() {
@@ -34,12 +36,10 @@ class _WidgetExpertiseAndSkillState extends State<WidgetExpertiseAndSkill> {
   @override
   Widget build(BuildContext context) {
     return Obx(() => Padding(
-          padding: const EdgeInsets.only(left: 20.0, right: 20),
+          padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Container(
             width: double.infinity,
-            height: _About_me_1.value
-                ? 350
-                : 50, // تغییر ارتفاع باکس بر اساس باز یا بسته بودن
+            height: _About_me_1.value ? 380 : 50, // تغییر ارتفاع باکس
             decoration: BoxDecoration(
               color: const Color.fromRGBO(250, 250, 250, 1),
               border: Border.all(color: const Color.fromRGBO(166, 166, 166, 1)),
@@ -47,91 +47,97 @@ class _WidgetExpertiseAndSkillState extends State<WidgetExpertiseAndSkill> {
             ),
             child: Column(
               mainAxisAlignment:
-                  MainAxisAlignment.start, // چسباندن آیتم‌ها به بالا
+                  MainAxisAlignment.spaceBetween, // چسباندن آیتم‌ها به بالا
               crossAxisAlignment:
                   CrossAxisAlignment.start, // چسباندن آیتم‌ها به چپ
-              mainAxisSize: MainAxisSize.min, // تنظیم ارتفاع ستون بر اساس محتوا
               children: [
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    // آیکون چک
+                    // مدیریت آیکون‌ها: فلش پایین، فلش بالا، چک، ویرایش
                     IconButton(
                       icon: _isChecked.value
-                          ? SvgPicture.asset(
-                              'assets/images/check_icon.svg', // آیکون تیک
-                            )
-                          : (_isTyping.value
+                          ? (_isEditable.value
                               ? SvgPicture.asset(
-                                  'assets/images/check_icon.svg', // آیکون تیک وقتی تایپ شده
+                                  'assets/images/edit and ok.svg', // آیکون ویرایش
+                                  width: 24, // سایز آیکون
+                                  height: 24, // سایز آیکون
                                 )
                               : SvgPicture.asset(
-                                  _About_me_1.value
-                                      ? 'assets/images/edit and ok.svg'
-                                      : 'assets/images/Arrow_list_agency.svg',
-                                  width: _About_me_1.value
-                                      ? 30
-                                      : 11, // سایز بزرگتر برای edit and ok
-                                  height: _About_me_1.value
-                                      ? 25
-                                      : 14, // سایز بزرگتر برای edit and ok
+                                  'assets/images/check_icon.svg', // آیکون چک
+                                  width: 24, // سایز آیکون
+                                  height: 24, // سایز آیکون
+                                ))
+                          : (_isArrowDown.value
+                              ? SvgPicture.asset(
+                                  'assets/images/Arrow_list_agency.svg',
+                                  width: 15, // سایز آیکون فلش پایین
+                                  height: 15,
+                                )
+                              : SvgPicture.asset(
+                                  'assets/images/=.svg', // آیکون فلش بالا
+                                  width: 15, // سایز آیکون فلش بالا
+                                  height: 15,
                                 )),
                       onPressed: () {
                         if (_isTyping.value) {
-                          // وقتی کاربر روی آیکون چک کلیک کرد و تایپ کرده بود، متن را ذخیره کن
+                          // وقتی متن وارد شده است
                           _aboutMeText.value = _textController.text;
                           _isTyping.value = false; // ریست وضعیت تایپ
                           _isChecked.value = true; // نمایش آیکون چک
                           _About_me_1.value = false; // بستن باکس
+                          _isEditable.value = true; // فعال کردن حالت ویرایش
                         } else {
-                          // باز یا بسته کردن باکس
-                          _About_me_1.value = !_About_me_1.value;
-                          _isChecked.value = false; // ریست آیکون چک
+                          if (selectedText.value.isNotEmpty) {
+                            // وقتی آیتمی انتخاب شده باشد
+                            _aboutMeText.value =
+                                selectedText.value; // ذخیره متن انتخابی
+                            _isChecked.value = true; // نمایش آیکون چک
+                            _About_me_1.value = false; // بستن باکس
+                            _isEditable.value = true; // فعال کردن حالت ویرایش
+                          } else {
+                            _isArrowDown.value =
+                                !_isArrowDown.value; // تغییر وضعیت آیکون فلش
+                            _About_me_1.value =
+                                !_About_me_1.value; // باز یا بسته کردن باکس
+                            _isChecked.value = false; // ریست آیکون چک
+                          }
                         }
                       },
                     ),
-                    // چیدمان متن
                     Expanded(
                       child: Row(
                         mainAxisAlignment: _isChecked.value
-                            ? MainAxisAlignment.spaceBetween
+                            ? MainAxisAlignment.spaceAround
                             : MainAxisAlignment.center,
                         children: [
-                          // نمایش متن تایپ شده در سمت چپ در حالت تایید
                           if (_isChecked.value) ...[
                             Text(
-                              _aboutMeText
-                                  .value, // نمایش متن وارد شده توسط کاربر
+                              selectedText.value.isNotEmpty
+                                  ? selectedText.value
+                                  : _aboutMeText.value,
                               style: const TextStyle(
                                 fontFamily: MAIN_FONT_FAMILY,
-                                color: Color.fromRGBO(99, 99, 99,
+                                color: Color.fromRGBO(15, 15, 15,
                                     1), // رنگ سیاه برای متن وارد شده
-                                fontSize: 12,
+                                fontSize: 11,
                               ),
                             ),
-                          ],
-                          // متن "تخصص و مهارت" در سمت راست در حالت تایید
-                          if (_isChecked.value) ...[
-                            const Padding(
-                              padding: EdgeInsets.only(right: 10.0),
-                              child: Text(
-                                'تخصص و مهارت',
-                                style: TextStyle(
-                                  fontFamily: MAIN_FONT_FAMILY,
-                                  color: Color.fromRGBO(
-                                      99, 99, 99, 1), // رنگ متن "درباره من"
-                                  fontSize: 12,
-                                ),
+                            const Text(
+                              'تخصص و مهارت',
+                              style: TextStyle(
+                                fontFamily: MAIN_FONT_FAMILY,
+                                color: Color.fromRGBO(99, 99, 99, 1),
+                                fontSize: 11,
                               ),
                             ),
                           ] else ...[
-                            // نمایش متن "تخصص و مهارت" در وسط در حالت پیش‌فرض
                             const Text(
                               'تخصص و مهارت',
                               style: TextStyle(
                                 fontFamily: MAIN_FONT_FAMILY,
                                 color: Color.fromRGBO(117, 117, 117, 1),
-                                fontSize: 12,
+                                fontSize: 11,
                               ),
                             ),
                           ],
@@ -145,15 +151,10 @@ class _WidgetExpertiseAndSkillState extends State<WidgetExpertiseAndSkill> {
                     ),
                   ],
                 ),
-                if (_About_me_1.value)
-                  Column(
-                    children: [
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      buildExpertiseAndSkill(context),
-                    ],
-                  ),
+                if (_About_me_1.value) ...[
+                  const SizedBox(height: 10),
+                  buildExpertiseAndSkill(context),
+                ],
               ],
             ),
           ),

@@ -77,7 +77,8 @@ class _MyAppState extends State<MyApp> {
               } else {
                 if (s.connectionState == ConnectionState.active ||
                     s.connectionState == ConnectionState.done) {
-                  return sliderWidget();
+                  return const LoginSecondlyPage();
+                  // sliderWidget();
                 }
                 return Container();
               }

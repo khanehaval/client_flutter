@@ -174,31 +174,28 @@ class _WidgetUsersConsultantsState extends State<WidgetUsersConsultants> {
               children: [
                 Container(
                   child: Row(
-                    children: [
-                      const Text(
-                        'حذف',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: Color(0xFF626262),
-                          fontSize: 14,
-                          fontFamily: 'IRANSansWeb(FaNum)',
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        SvgPicture.asset(
+                          'assets/images/Frame refresh.svg',
                         ),
-                      ),
-                      const SizedBox(width: 10),
-                      Container(
-                        decoration: const BoxDecoration(
-                          boxShadow: [
-                            BoxShadow(
-                              color: Color(0x3F000000),
-                              blurRadius: 2,
-                              offset: Offset(0, 1),
-                              spreadRadius: 0,
-                            )
-                          ],
+                        const SizedBox(width: 20),
+                        SvgPicture.asset(
+                          'assets/images/new_remove_profile.svg',
                         ),
-                      ),
-                    ],
-                  ),
+                        Container(
+                          decoration: const BoxDecoration(
+                            boxShadow: [
+                              BoxShadow(
+                                color: Color(0x3F000000),
+                                blurRadius: 2,
+                                offset: Offset(0, 1),
+                                spreadRadius: 0,
+                              )
+                            ],
+                          ),
+                        ),
+                      ]),
                 ),
               ],
             ),

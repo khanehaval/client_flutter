@@ -27,28 +27,30 @@ class _WidgetSwitchitemsLocationManagementAdState
   }
 
   Widget buildMelkTypeItem() {
-    return Container(
-      height: Get.height / 4,
-      margin: const EdgeInsets.symmetric(horizontal: 20), // فاصله بیرونی
-      decoration: BoxDecoration(
-        border: Border.all(width: 1, color: Colors.black54), // تعریف بُردر
-        borderRadius: BorderRadius.circular(10),
-      ),
-      child: Column(
-        children: [
-          ListView.builder(
-            shrinkWrap: true,
-            physics: const NeverScrollableScrollPhysics(),
-            itemCount: widget.items.length + 1,
-            itemBuilder: (context, index) {
-              if (index == 0) {
-                return const Column();
-              } else {
-                return _buildRow(widget.items[index - 1]);
-              }
-            },
-          ),
-        ],
+    return Padding(
+      padding: const EdgeInsets.all(20.0),
+      child: Container(
+        height: Get.height / 3,
+        decoration: BoxDecoration(
+          border: Border.all(width: 1, color: Colors.black54), // تعریف بُردر
+          borderRadius: BorderRadius.circular(10),
+        ),
+        child: Column(
+          children: [
+            ListView.builder(
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              itemCount: widget.items.length + 1,
+              itemBuilder: (context, index) {
+                if (index == 0) {
+                  return const Column();
+                } else {
+                  return _buildRow(widget.items[index - 1]);
+                }
+              },
+            ),
+          ],
+        ),
       ),
     );
   }

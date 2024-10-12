@@ -130,23 +130,23 @@ openProfile() {
                         ),
                         Column(
                           children: [
-                            GestureDetector(
+                            InkWell(
                                 onTap: () {
                                   Get.to(() => const ProfileHome(),
                                       transition: Transition.leftToRight);
                                 },
                                 child: _item('assets/images/Home.svg', "خانه")),
-                            GestureDetector(
-                                onTap: () {
-                                  Get.to(() => const ProfileMyDesk(),
-                                      transition: Transition.leftToRight);
-                                },
-                                child: _item(
-                                    'assets/images/profile_category.svg',
-                                    "میزکار")),
+                            InkWell(
+                              onTap: () {
+                                Get.to(() => ProfileMyDesk(),
+                                    transition: Transition.leftToRight);
+                              },
+                              child: _item('assets/images/profile_category.svg',
+                                  "میزکار"),
+                            ),
                             _item(
                                 'assets/images/profile_message.svg', "پیام ها"),
-                            GestureDetector(
+                            InkWell(
                               onTap: () {
                                 Get.to(() => ColleaguesProfile(),
                                     transition: Transition.leftToRight);
@@ -155,14 +155,14 @@ openProfile() {
                                   'assets/images/profile_moshavere.svg',
                                   "همکاران"),
                             ),
-                            GestureDetector(
-                                onTap: () {
-                                  Get.to(() => const Vitrin(),
-                                      transition: Transition.leftToRight);
-                                },
-                                child: _item(
-                                    'assets/images/profile_category.svg',
-                                    "ویترین")),
+                            InkWell(
+                              onTap: () {
+                                Get.to(() => const Vitrin(),
+                                    transition: Transition.leftToRight);
+                              },
+                              child: _item('assets/images/profile_category.svg',
+                                  "ویترین"),
+                            ),
                             _item('assets/images/profile_vahed.svg',
                                 "واحد های من"),
                             _item('assets/images/profile_setting.svg',
