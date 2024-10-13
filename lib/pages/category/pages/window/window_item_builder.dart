@@ -11,7 +11,6 @@ class MainCategory extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: buildaAppBar(),
       body: CategoryItems(
         index: index,
       ),

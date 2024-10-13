@@ -14,9 +14,6 @@ class AmlakPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView(
       children: [
-        const SizedBox(
-          height: 10,
-        ),
         dividerwidget(),
         Container(
             margin: const EdgeInsets.all(10),
@@ -38,32 +35,35 @@ class AmlakPage extends StatelessWidget {
         const SizedBox(
           height: 10,
         ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            SizedBox(
-              width: 180,
-              child: GestureDetector(
-                onTap: () {
-                  Get.to(() => const ListConsultants(),
-                      duration: const Duration(milliseconds: 300),
-                      transition: Transition.leftToRight);
-                },
-                child: _buildRowItem(
-                  'assets/images/moshaver_amlak.svg',
+        Padding(
+          padding: const EdgeInsets.only(left: 10.0, right: 10),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              SizedBox(
+                width: Get.width / 2.2,
+                child: GestureDetector(
+                  onTap: () {
+                    Get.to(() => const ListConsultants(),
+                        duration: const Duration(milliseconds: 300),
+                        transition: Transition.leftToRight);
+                  },
+                  child: _buildRowItem(
+                    'assets/images/moshaver_amlak.svg',
+                  ),
                 ),
               ),
-            ),
-            SizedBox(
-                width: 180,
-                child: GestureDetector(
-                    onTap: () {
-                      Get.to(() => const ListAgency(),
-                          duration: const Duration(milliseconds: 300),
-                          transition: Transition.leftToRight);
-                    },
-                    child: _buildRowItem('assets/images/axhans_amlak1.svg'))),
-          ],
+              SizedBox(
+                  width: Get.width / 2.2,
+                  child: GestureDetector(
+                      onTap: () {
+                        Get.to(() => const ListAgency(),
+                            duration: const Duration(milliseconds: 300),
+                            transition: Transition.leftToRight);
+                      },
+                      child: _buildRowItem('assets/images/axhans_amlak1.svg'))),
+            ],
+          ),
         ),
         const SizedBox(
           height: 10,
@@ -225,13 +225,12 @@ class AmlakPage extends StatelessWidget {
                 ),
                 Image.asset(
                   'assets/images/Group 778.png',
-                  width: 370,
-                  height: 111,
+                  width: Get.width / 1.1,
                 ),
                 Column(
                   children: [
                     const SizedBox(
-                      height: 10,
+                      height: 20,
                     ),
                     GestureDetector(
                       onTap: () {},
@@ -239,28 +238,27 @@ class AmlakPage extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Container(
-                              height: 90,
+                              height: 80,
+                              width: Get.width / 2.2,
                               decoration: BoxDecoration(
                                 color: Colors.white,
                                 borderRadius: BorderRadius.circular(10),
                               ),
                               child: SvgPicture.asset(
                                 'assets/images/Group 768.svg',
-                                width: 179,
                               )),
                           const SizedBox(
                             width: 5,
                           ),
                           Container(
-                              height: 90,
-                              width: 179,
+                              height: 80,
+                              width: Get.width / 2.2,
                               decoration: BoxDecoration(
                                 color: Colors.white,
                                 borderRadius: BorderRadius.circular(10),
                               ),
                               child: SvgPicture.asset(
                                 'assets/images/Group 767.svg',
-                                width: 179,
                               )),
                         ],
                       ),
@@ -286,8 +284,7 @@ class AmlakPage extends StatelessWidget {
                 ),
                 Image.asset(
                   'assets/images/Group 631.png',
-                  width: 370,
-                  height: 111,
+                  width: Get.width / 1.1,
                 ),
               ],
             )

@@ -13,9 +13,6 @@ class EjaraMaskoni extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView(
       children: [
-        const SizedBox(
-          height: 10,
-        ),
         dividerwidget(),
         Container(
             margin: const EdgeInsets.all(10),
@@ -42,7 +39,7 @@ class EjaraMaskoni extends StatelessWidget {
           children: [
             Container(
                 height: 90,
-                width: 170,
+                width: Get.width / 2.3,
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(10),
@@ -55,7 +52,7 @@ class EjaraMaskoni extends StatelessWidget {
                 child: Image.asset('assets/images/Group 753.png')),
             Container(
                 height: 90,
-                width: 170,
+                width: Get.width / 2.3,
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(10),
@@ -82,9 +79,9 @@ class EjaraMaskoni extends StatelessWidget {
           child: Container(
             decoration: BoxDecoration(
                 gradient: const LinearGradient(colors: GRADIANT_COLOR3),
-                borderRadius: BorderRadius.circular(10)),
+                borderRadius: BorderRadius.circular(11)),
             child: Padding(
-              padding: const EdgeInsets.all(1.5),
+              padding: const EdgeInsets.all(1.1),
               child: Container(
                 decoration: BoxDecoration(
                   color: Colors.white,
@@ -138,28 +135,19 @@ class EjaraMaskoni extends StatelessWidget {
         const SizedBox(
           height: 10,
         ),
-        SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
-          child: Padding(
-            padding: const EdgeInsets.only(left: 15.0, right: 5),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SizedBox(
-                  width: 170,
-                  child: SvgPicture.asset(
-                    'assets/images/moshaver_amlak.svg',
-                  ),
-                ),
-                const SizedBox(
-                  width: 10,
-                ),
-                SizedBox(
-                    width: 170,
-                    child: SvgPicture.asset('assets/images/axhans_amlak1.svg')),
-              ],
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            SizedBox(
+              width: Get.width / 2.3,
+              child: SvgPicture.asset(
+                'assets/images/moshaver_amlak.svg',
+              ),
             ),
-          ),
+            SizedBox(
+                width: Get.width / 2.3,
+                child: SvgPicture.asset('assets/images/axhans_amlak1.svg')),
+          ],
         ),
         const SizedBox(
           height: 10,
@@ -171,7 +159,7 @@ class EjaraMaskoni extends StatelessWidget {
   Obx buildItem1() {
     return Obx(() => _show_item_1.isTrue
         ? Padding(
-            padding: const EdgeInsets.all(10.0),
+            padding: const EdgeInsets.all(15.0),
             child: Column(
               children: [
                 const SizedBox(
@@ -194,9 +182,7 @@ class EjaraMaskoni extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     _buidText('تا ۸۰ متر مربع'),
-                    const SizedBox(
-                      width: 2,
-                    ),
+                    const SizedBox(),
                     _buidText('تا ۷۰ متر مربع'),
                   ],
                 ),
@@ -221,8 +207,8 @@ class EjaraMaskoni extends StatelessWidget {
 
   Widget _buidText(String text) {
     return Container(
-      height: 57,
-      width: 168,
+      height: 47,
+      width: Get.width / 2.3,
       decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(10),
@@ -230,16 +216,20 @@ class EjaraMaskoni extends StatelessWidget {
             color: Colors.black45,
             width: 0.3,
           )),
-      child: Text(
-        text,
-        textAlign: TextAlign.center,
-        style: const TextStyle(
-          color: Color(0xFF303030),
-          fontSize: 14,
-          fontFamily: MAIN_FONT_FAMILY,
-          fontWeight: FontWeight.w300,
-          height: 4,
-        ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(
+            text,
+            textAlign: TextAlign.center,
+            style: const TextStyle(
+              color: Color(0xFF303030),
+              fontSize: 14,
+              fontFamily: MAIN_FONT_FAMILY,
+              fontWeight: FontWeight.w300,
+            ),
+          ),
+        ],
       ),
     );
   }

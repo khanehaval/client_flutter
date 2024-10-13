@@ -31,59 +31,63 @@ class _CategoryItemsState extends State<CategoryItems> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        SizedBox(
-          height: 130,
-          child: ScrollablePositionedList.builder(
-            itemScrollController: _controller,
-            itemCount: items.length,
-            scrollDirection: Axis.horizontal,
-            initialScrollIndex: widget.index,
-            itemBuilder: (context, i) => GestureDetector(
-              onTap: () {
-                _controller.scrollTo(
-                  index: i,
-                  duration: const Duration(milliseconds: 100),
-                  alignment: 0.0, // Align to the start of the list
-                );
-                _currentIndex.value = i;
-              },
-              child: Obx(
-                () => Container(
-                  margin:
-                      const EdgeInsets.symmetric(horizontal: 10, vertical: 7),
-                  padding: const EdgeInsets.all(1.3),
-                  height: 98,
-                  width: 130,
-                  decoration: BoxDecoration(
-                    gradient: _currentIndex.value == i
-                        ? const LinearGradient(colors: GRADIANT_COLOR)
-                        : const LinearGradient(colors: BLACK_12_GRADIANT_COLOR),
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: Stack(
-                    children: [
-                      Container(
-                        height: 120,
-                        width: 130,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(10),
+    return Padding(
+      padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
+      child: Column(
+        children: [
+          SizedBox(
+            height: Get.height / 6.98,
+            child: ScrollablePositionedList.builder(
+              itemScrollController: _controller,
+              itemCount: items.length,
+              scrollDirection: Axis.horizontal,
+              initialScrollIndex: widget.index,
+              itemBuilder: (context, i) => GestureDetector(
+                onTap: () {
+                  _controller.scrollTo(
+                    index: i,
+                    duration: const Duration(milliseconds: 100),
+                    alignment: 0.0, // Align to the start of the list
+                  );
+                  _currentIndex.value = i;
+                },
+                child: Obx(
+                  () => Container(
+                    margin:
+                        const EdgeInsets.symmetric(horizontal: 10, vertical: 7),
+                    padding: const EdgeInsets.all(1.3),
+                    height: 98,
+                    width: 130,
+                    decoration: BoxDecoration(
+                      gradient: _currentIndex.value == i
+                          ? const LinearGradient(colors: GRADIANT_COLOR)
+                          : const LinearGradient(
+                              colors: BLACK_12_GRADIANT_COLOR),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Stack(
+                      children: [
+                        Container(
+                          height: 120,
+                          width: 130,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: items[i](_currentIndex.value == i),
                         ),
-                        child: items[i](_currentIndex.value == i),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
               ),
             ),
           ),
-        ),
-        Obx(
-          () => Expanded(child: _pages[_currentIndex.value]),
-        ),
-      ],
+          Obx(
+            () => Expanded(child: _pages[_currentIndex.value]),
+          ),
+        ],
+      ),
     );
   }
 
@@ -106,31 +110,28 @@ class _CategoryItemsState extends State<CategoryItems> {
 
   static Widget _buildImageWithText(
       String assetPath, String text, bool isSelected) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 12),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Image.asset(
-            assetPath,
-            color:
-                isSelected ? Colors.black : const Color.fromRGBO(99, 99, 99, 1),
-            width: 51,
-            height: 51,
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Image.asset(
+          assetPath,
+          color:
+              isSelected ? Colors.black : const Color.fromRGBO(99, 99, 99, 1),
+          width: 41,
+          height: 41,
+        ),
+        const SizedBox(height: 15),
+        Text(
+          text,
+          style: TextStyle(
+            fontFamily: MAIN_FONT_FAMILY,
+            fontSize: 11,
+            color: isSelected
+                ? Colors.black
+                : const Color.fromARGB(255, 129, 128, 128),
           ),
-          const SizedBox(height: 5),
-          Text(
-            text,
-            style: TextStyle(
-              fontFamily: MAIN_FONT_FAMILY,
-              fontSize: 12,
-              color: isSelected
-                  ? Colors.black
-                  : const Color.fromARGB(255, 129, 128, 128),
-            ),
-          ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 

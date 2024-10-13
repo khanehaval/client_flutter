@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/pages/category/pages/Advertisements/consultants.dart/list_consultants.dart';
+import 'package:flutter_application_1/pages/category/pages/Advertisements/consultants.dart/map_agency/list_agency.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
@@ -14,28 +16,47 @@ class ForoshTagariEdari extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView(
       children: [
-        const SizedBox(
-          height: 10,
-        ),
         dividerwidget(),
         Container(
           margin: const EdgeInsets.all(10),
           padding: const EdgeInsets.all(5),
           height: 153,
-          width: 372,
+          width: Get.width / 1.1,
           child: Image.asset('assets/images/Group 720.png'),
         ),
+        const SizedBox(
+          height: 10,
+        ),
         dividerwidget(),
+        const SizedBox(
+          height: 10,
+        ),
         SingleChildScrollView(
           reverse: true,
           scrollDirection: Axis.horizontal,
           child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              _buildRowItem('assets/images/Group 762.svg'),
-              _buildRowItem('assets/images/Group 761.svg'),
-              _buildRowItem('assets/images/Group 760.svg'),
+              const SizedBox(
+                width: 20,
+              ),
+              _buildRowItem1('assets/images/Group 762.svg'),
+              const SizedBox(
+                width: 10,
+              ),
+              _buildRowItem1('assets/images/Group 761.svg'),
+              const SizedBox(
+                width: 10,
+              ),
+              _buildRowItem1('assets/images/Group 760.svg'),
+              const SizedBox(
+                width: 20,
+              ),
             ],
           ),
+        ),
+        const SizedBox(
+          height: 10,
         ),
         dividerwidget(),
         const SizedBox(
@@ -145,32 +166,39 @@ class ForoshTagariEdari extends StatelessWidget {
           ),
         ),
         _buildItem2(),
+        const SizedBox(
+          height: 10,
+        ),
         dividerwidget(),
         const SizedBox(
           height: 10,
         ),
-        SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
-          child: Padding(
-            padding: const EdgeInsets.only(left: 15.0, right: 5),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SizedBox(
-                  width: 170,
-                  child: SvgPicture.asset(
-                    'assets/images/moshaver_amlak.svg',
-                  ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            SizedBox(
+              width: Get.width / 2.3,
+              child: GestureDetector(
+                onTap: () {
+                  Get.to(() => const ListConsultants(),
+                      duration: const Duration(milliseconds: 300),
+                      transition: Transition.leftToRight);
+                },
+                child: _buildRowItem(
+                  'assets/images/moshaver_amlak.svg',
                 ),
-                const SizedBox(
-                  width: 10,
-                ),
-                SizedBox(
-                    width: 170,
-                    child: SvgPicture.asset('assets/images/axhans_amlak1.svg')),
-              ],
+              ),
             ),
-          ),
+            SizedBox(
+                width: Get.width / 2.3,
+                child: GestureDetector(
+                    onTap: () {
+                      Get.to(() => const ListAgency(),
+                          duration: const Duration(milliseconds: 300),
+                          transition: Transition.leftToRight);
+                    },
+                    child: _buildRowItem('assets/images/axhans_amlak1.svg'))),
+          ],
         ),
         const SizedBox(
           height: 10,
@@ -187,12 +215,26 @@ class ForoshTagariEdari extends StatelessWidget {
         ));
   }
 
-  Padding _buildRowItem(String asset) {
-    return Padding(
-        padding: const EdgeInsets.all(10),
-        child: SvgPicture.asset(
+  _buildRowItem(String asset) {
+    return Row(
+      children: [
+        SvgPicture.asset(
           asset,
-        ));
+          width: Get.width / 2.3,
+        ),
+      ],
+    );
+  }
+
+  _buildRowItem1(String asset) {
+    return Row(
+      children: [
+        SvgPicture.asset(
+          asset,
+          width: Get.width / 2.6,
+        ),
+      ],
+    );
   }
 
   Obx buildItem1() {
@@ -207,11 +249,11 @@ class ForoshTagariEdari extends StatelessWidget {
                 GestureDetector(
                   onTap: () {},
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       Container(
                         height: 57,
-                        width: 168,
+                        width: Get.width / 2.3,
                         decoration: BoxDecoration(
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(10),
@@ -219,16 +261,19 @@ class ForoshTagariEdari extends StatelessWidget {
                               color: Colors.black45,
                               width: 0.3,
                             )),
-                        child: const Text(
-                          'تا ۵۰۰ میلیون تومان',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            color: Color(0xFF303030),
-                            fontSize: 14,
-                            fontFamily: MAIN_FONT_FAMILY,
-                            fontWeight: FontWeight.w300,
-                            height: 4,
-                          ),
+                        child: const Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              'تا ۵۰۰ میلیون تومان',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                color: Color(0xFF303030),
+                                fontSize: 12,
+                                fontFamily: MAIN_FONT_FAMILY,
+                              ),
+                            ),
+                          ],
                         ),
                       ),
                       const SizedBox(
@@ -236,7 +281,7 @@ class ForoshTagariEdari extends StatelessWidget {
                       ),
                       Container(
                         height: 57,
-                        width: 168,
+                        width: Get.width / 2.3,
                         decoration: BoxDecoration(
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(10),
@@ -244,31 +289,34 @@ class ForoshTagariEdari extends StatelessWidget {
                               color: Colors.black45,
                               width: 0.3,
                             )),
-                        child: const Text(
-                          'تا ۱۰۰ میلیون تومان',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            color: Color(0xFF303030),
-                            fontSize: 14,
-                            fontFamily: MAIN_FONT_FAMILY,
-                            fontWeight: FontWeight.w300,
-                            height: 4,
-                          ),
+                        child: const Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              'تا ۱۰۰ میلیون تومان',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                color: Color(0xFF303030),
+                                fontSize: 12,
+                                fontFamily: MAIN_FONT_FAMILY,
+                              ),
+                            ),
+                          ],
                         ),
                       )
                     ],
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Container(
                       height: 57,
-                      width: 168,
+                      width: Get.width / 2.3,
                       decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(10),
@@ -276,16 +324,19 @@ class ForoshTagariEdari extends StatelessWidget {
                             color: Colors.black45,
                             width: 0.3,
                           )),
-                      child: const Text(
-                        'تا ۲ میلیارد تومان',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: Color(0xFF303030),
-                          fontSize: 14,
-                          fontFamily: MAIN_FONT_FAMILY,
-                          fontWeight: FontWeight.w300,
-                          height: 4,
-                        ),
+                      child: const Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            'تا ۲ میلیارد تومان',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              color: Color(0xFF303030),
+                              fontSize: 12,
+                              fontFamily: MAIN_FONT_FAMILY,
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                     const SizedBox(
@@ -293,7 +344,7 @@ class ForoshTagariEdari extends StatelessWidget {
                     ),
                     Container(
                       height: 57,
-                      width: 176,
+                      width: Get.width / 2.3,
                       decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(10),
@@ -301,16 +352,19 @@ class ForoshTagariEdari extends StatelessWidget {
                             color: Colors.black45,
                             width: 0.3,
                           )),
-                      child: const Text(
-                        'تا ۱ میلیارد تومان',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: Color(0xFF303030),
-                          fontSize: 14,
-                          fontFamily: MAIN_FONT_FAMILY,
-                          fontWeight: FontWeight.w300,
-                          height: 4,
-                        ),
+                      child: const Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            'تا ۱ میلیارد تومان',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              color: Color(0xFF303030),
+                              fontSize: 12,
+                              fontFamily: MAIN_FONT_FAMILY,
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                   ],
@@ -319,11 +373,11 @@ class ForoshTagariEdari extends StatelessWidget {
                   height: 20,
                 ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Container(
                       height: 57,
-                      width: 168,
+                      width: Get.width / 2.3,
                       decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(10),
@@ -331,16 +385,19 @@ class ForoshTagariEdari extends StatelessWidget {
                             color: Colors.black45,
                             width: 0.3,
                           )),
-                      child: const Text(
-                        'تا ۴ میلیارد تومان',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: Color(0xFF303030),
-                          fontSize: 14,
-                          fontFamily: MAIN_FONT_FAMILY,
-                          fontWeight: FontWeight.w300,
-                          height: 4,
-                        ),
+                      child: const Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            'تا ۴ میلیارد تومان',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              color: Color(0xFF303030),
+                              fontSize: 12,
+                              fontFamily: MAIN_FONT_FAMILY,
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                     const SizedBox(
@@ -348,7 +405,7 @@ class ForoshTagariEdari extends StatelessWidget {
                     ),
                     Container(
                       height: 57,
-                      width: 168,
+                      width: Get.width / 2.3,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
                           color: Colors.white,
@@ -356,16 +413,19 @@ class ForoshTagariEdari extends StatelessWidget {
                             color: Colors.black45,
                             width: 0.3,
                           )),
-                      child: const Text(
-                        'تا ۳ میلیارد تومان',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: Color(0xFF303030),
-                          fontSize: 14,
-                          fontFamily: MAIN_FONT_FAMILY,
-                          fontWeight: FontWeight.w300,
-                          height: 4,
-                        ),
+                      child: const Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            'تا ۳ میلیارد تومان',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              color: Color(0xFF303030),
+                              fontSize: 12,
+                              fontFamily: MAIN_FONT_FAMILY,
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                   ],
@@ -379,7 +439,7 @@ class ForoshTagariEdari extends StatelessWidget {
   Widget _buidText(String text) {
     return Container(
       height: 57,
-      width: 168,
+      width: Get.width / 2.3,
       decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(10),
@@ -387,16 +447,19 @@ class ForoshTagariEdari extends StatelessWidget {
             color: Colors.black45,
             width: 0.3,
           )),
-      child: Text(
-        text,
-        textAlign: TextAlign.center,
-        style: const TextStyle(
-          color: Color(0xFF303030),
-          fontSize: 14,
-          fontFamily: MAIN_FONT_FAMILY,
-          fontWeight: FontWeight.w300,
-          height: 4,
-        ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(
+            text,
+            textAlign: TextAlign.center,
+            style: const TextStyle(
+              color: Color(0xFF303030),
+              fontSize: 12,
+              fontFamily: MAIN_FONT_FAMILY,
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -411,7 +474,7 @@ class ForoshTagariEdari extends StatelessWidget {
                   height: 10,
                 ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     _buidText('تا ۵۰ متر مربع'),
                     const SizedBox(
@@ -424,7 +487,7 @@ class ForoshTagariEdari extends StatelessWidget {
                   height: 10,
                 ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     _buidText('تا ۸۰ متر مربع'),
                     const SizedBox(
@@ -437,7 +500,7 @@ class ForoshTagariEdari extends StatelessWidget {
                   height: 10,
                 ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     _buidText('تا ۱۰۰ متر مربع'),
                     const SizedBox(

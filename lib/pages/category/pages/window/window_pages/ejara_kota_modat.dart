@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/pages/category/pages/Advertisements/consultants.dart/list_consultants.dart';
+import 'package:flutter_application_1/pages/category/pages/Advertisements/consultants.dart/map_agency/list_agency.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
@@ -13,9 +15,6 @@ class EjaraKotaModat extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView(
       children: [
-        const SizedBox(
-          height: 10,
-        ),
         dividerwidget(),
         Container(
           margin: const EdgeInsets.all(10),
@@ -46,7 +45,7 @@ class EjaraKotaModat extends StatelessWidget {
           children: [
             Container(
                 height: 90,
-                width: MediaQuery.of(context).size.width * 1 / 2.2,
+                width: MediaQuery.of(context).size.width * 1 / 2.3,
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(10),
@@ -56,7 +55,7 @@ class EjaraKotaModat extends StatelessWidget {
                 )),
             Container(
                 height: 90,
-                width: MediaQuery.of(context).size.width * 1 / 2.2,
+                width: MediaQuery.of(context).size.width * 1 / 2.3,
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(10),
@@ -122,32 +121,45 @@ class EjaraKotaModat extends StatelessWidget {
             ),
           ),
         ),
+        const SizedBox(
+          height: 10,
+        ),
         buildItem1(),
+        const SizedBox(
+          height: 10,
+        ),
         dividerwidget(),
         const SizedBox(
           height: 10,
         ),
-        SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
-          child: Padding(
-            padding: const EdgeInsets.only(left: 15.0, right: 5),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SizedBox(
-                  width: 170,
-                  child: SvgPicture.asset(
+        Padding(
+          padding: const EdgeInsets.only(left: 10.0, right: 10),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              SizedBox(
+                width: Get.width / 2.2,
+                child: GestureDetector(
+                  onTap: () {
+                    Get.to(() => const ListConsultants(),
+                        duration: const Duration(milliseconds: 300),
+                        transition: Transition.leftToRight);
+                  },
+                  child: _buildRowItem(
                     'assets/images/moshaver_amlak.svg',
                   ),
                 ),
-                const SizedBox(
-                  width: 10,
-                ),
-                SizedBox(
-                    width: 170,
-                    child: SvgPicture.asset('assets/images/axhans_amlak1.svg')),
-              ],
-            ),
+              ),
+              SizedBox(
+                  width: Get.width / 2.2,
+                  child: GestureDetector(
+                      onTap: () {
+                        Get.to(() => const ListAgency(),
+                            duration: const Duration(milliseconds: 300),
+                            transition: Transition.leftToRight);
+                      },
+                      child: _buildRowItem('assets/images/axhans_amlak1.svg'))),
+            ],
           ),
         ),
         const SizedBox(
@@ -165,18 +177,18 @@ class EjaraKotaModat extends StatelessWidget {
               children: [
                 Image.asset(
                   'assets/images/Group shomal kota.png',
-                  width: 370,
+                  width: Get.width / 1.1,
                   height: 111,
                 ),
                 const SizedBox(
-                  height: 10,
+                  height: 20,
                 ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Container(
                       height: 57,
-                      width: 168,
+                      width: Get.width / 2.3,
                       decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(10),
@@ -185,16 +197,19 @@ class EjaraKotaModat extends StatelessWidget {
                           width: 0.3,
                         ),
                       ),
-                      child: const Text(
-                        'نوشهر',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: Color(0xFF303030),
-                          fontSize: 14,
-                          fontFamily: MAIN_FONT_FAMILY,
-                          fontWeight: FontWeight.w300,
-                          height: 4,
-                        ),
+                      child: const Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            'نوشهر',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              color: Color(0xFF303030),
+                              fontSize: 12,
+                              fontFamily: MAIN_FONT_FAMILY,
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                     const SizedBox(
@@ -202,7 +217,7 @@ class EjaraKotaModat extends StatelessWidget {
                     ),
                     Container(
                       height: 57,
-                      width: 168,
+                      width: Get.width / 2.3,
                       decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(10),
@@ -210,16 +225,19 @@ class EjaraKotaModat extends StatelessWidget {
                             color: const Color.fromRGBO(183, 183, 183, 1),
                             width: 0.3,
                           )),
-                      child: const Text(
-                        'رامسر',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: Color(0xFF303030),
-                          fontSize: 14,
-                          fontFamily: MAIN_FONT_FAMILY,
-                          fontWeight: FontWeight.w300,
-                          height: 4,
-                        ),
+                      child: const Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            'رامسر',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              color: Color(0xFF303030),
+                              fontSize: 12,
+                              fontFamily: MAIN_FONT_FAMILY,
+                            ),
+                          ),
+                        ],
                       ),
                     )
                   ],
@@ -228,11 +246,11 @@ class EjaraKotaModat extends StatelessWidget {
                   height: 20,
                 ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Container(
                       height: 57,
-                      width: 168,
+                      width: Get.width / 2.3,
                       decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(10),
@@ -240,16 +258,19 @@ class EjaraKotaModat extends StatelessWidget {
                             color: const Color.fromRGBO(183, 183, 183, 1),
                             width: 0.3,
                           )),
-                      child: const Text(
-                        'کلاردشت',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: Color(0xFF303030),
-                          fontSize: 14,
-                          fontFamily: MAIN_FONT_FAMILY,
-                          fontWeight: FontWeight.w300,
-                          height: 4,
-                        ),
+                      child: const Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            'کلاردشت',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              color: Color(0xFF303030),
+                              fontSize: 12,
+                              fontFamily: MAIN_FONT_FAMILY,
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                     const SizedBox(
@@ -257,7 +278,7 @@ class EjaraKotaModat extends StatelessWidget {
                     ),
                     Container(
                       height: 57,
-                      width: 168,
+                      width: Get.width / 2.3,
                       decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(10),
@@ -265,16 +286,19 @@ class EjaraKotaModat extends StatelessWidget {
                             color: const Color.fromRGBO(183, 183, 183, 1),
                             width: 0.3,
                           )),
-                      child: const Text(
-                        'گیلان',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: Color(0xFF303030),
-                          fontSize: 14,
-                          fontFamily: MAIN_FONT_FAMILY,
-                          fontWeight: FontWeight.w300,
-                          height: 4,
-                        ),
+                      child: const Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            'گیلان',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              color: Color(0xFF303030),
+                              fontSize: 12,
+                              fontFamily: MAIN_FONT_FAMILY,
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                   ],
@@ -283,11 +307,11 @@ class EjaraKotaModat extends StatelessWidget {
                   height: 20,
                 ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Container(
                       height: 57,
-                      width: 168,
+                      width: Get.width / 2.3,
                       decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(10),
@@ -295,16 +319,19 @@ class EjaraKotaModat extends StatelessWidget {
                             color: const Color.fromRGBO(183, 183, 183, 1),
                             width: 0.3,
                           )),
-                      child: const Text(
-                        'چالوس',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: Color(0xFF303030),
-                          fontSize: 14,
-                          fontFamily: MAIN_FONT_FAMILY,
-                          fontWeight: FontWeight.w300,
-                          height: 4,
-                        ),
+                      child: const Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            'چالوس',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              color: Color(0xFF303030),
+                              fontSize: 12,
+                              fontFamily: MAIN_FONT_FAMILY,
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                     const SizedBox(
@@ -312,7 +339,7 @@ class EjaraKotaModat extends StatelessWidget {
                     ),
                     Container(
                       height: 57,
-                      width: 168,
+                      width: Get.width / 2.3,
                       decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(10),
@@ -320,16 +347,19 @@ class EjaraKotaModat extends StatelessWidget {
                             color: const Color.fromRGBO(183, 183, 183, 1),
                             width: 0.3,
                           )),
-                      child: const Text(
-                        'رشت',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: Color(0xFF303030),
-                          fontSize: 14,
-                          fontFamily: MAIN_FONT_FAMILY,
-                          fontWeight: FontWeight.w300,
-                          height: 4,
-                        ),
+                      child: const Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            'رشت',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              color: Color(0xFF303030),
+                              fontSize: 12,
+                              fontFamily: MAIN_FONT_FAMILY,
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                   ],
@@ -347,4 +377,12 @@ class EjaraKotaModat extends StatelessWidget {
       color: Color.fromRGBO(236, 236, 236, 1),
     );
   }
+}
+
+Padding _buildRowItem(String asset) {
+  return Padding(
+      padding: const EdgeInsets.all(5),
+      child: SvgPicture.asset(
+        asset,
+      ));
 }

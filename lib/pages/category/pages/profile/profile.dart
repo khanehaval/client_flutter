@@ -12,7 +12,7 @@ import 'package:get/get.dart';
 openProfile() {
   return SingleChildScrollView(
     child: Padding(
-      padding: const EdgeInsets.only(top: 2, right: 20),
+      padding: const EdgeInsets.only(top: 2, right: 30),
       child: SingleChildScrollView(
         child: Align(
           alignment: Alignment.topRight,
@@ -28,7 +28,7 @@ openProfile() {
             child: Padding(
               padding: const EdgeInsets.all(1.0),
               child: SizedBox(
-                height: Get.height / 1.28,
+                height: Get.height / 1.45,
                 width: Get.width / 1.9,
                 child: Material(
                   color: Colors.white,
