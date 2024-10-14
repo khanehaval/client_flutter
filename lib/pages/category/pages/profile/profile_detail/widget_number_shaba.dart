@@ -14,7 +14,7 @@ class WidgetNumberShaba extends StatelessWidget {
         Container(
           width: Get.width / 1.12,
           height: 85,
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 15),
           decoration: ShapeDecoration(
             color: Colors.white,
             shape: RoundedRectangleBorder(
@@ -37,11 +37,11 @@ class WidgetNumberShaba extends StatelessWidget {
                 textAlign: TextAlign.right,
                 style: TextStyle(
                   color: Color.fromRGBO(48, 48, 48, 1),
-                  fontSize: 12,
+                  fontSize: 13,
                   fontFamily: MAIN_FONT_FAMILY,
                 ),
               ),
-              const SizedBox(height: 10),
+              const SizedBox(height: 6),
               Container(
                 decoration: const BoxDecoration(
                   border: Border(
@@ -52,7 +52,6 @@ class WidgetNumberShaba extends StatelessWidget {
                   ),
                 ),
               ),
-              const SizedBox(height: 10),
               const SizedBox(
                 width: 320,
                 child: Row(
@@ -60,7 +59,7 @@ class WidgetNumberShaba extends StatelessWidget {
                     Text(
                       'IR', // متن ثابت سمت چپ
                       style: TextStyle(
-                        fontSize: 11,
+                        fontSize: 12,
                         color: Color(0xFF626262),
                         fontFamily: MAIN_FONT_FAMILY,
                       ),
@@ -69,7 +68,6 @@ class WidgetNumberShaba extends StatelessWidget {
                       child: TextField(
                         textAlign: TextAlign.right,
                         decoration: InputDecoration(
-                          contentPadding: EdgeInsets.symmetric(horizontal: 8),
                           isDense: true,
                           border: InputBorder.none,
                           hintText: 'وارد کنید',
@@ -80,7 +78,7 @@ class WidgetNumberShaba extends StatelessWidget {
                           ),
                         ),
                         style: TextStyle(
-                          fontSize: 11,
+                          fontSize: 12,
                           color: Color(0xFF626262),
                           fontFamily: MAIN_FONT_FAMILY,
                         ),

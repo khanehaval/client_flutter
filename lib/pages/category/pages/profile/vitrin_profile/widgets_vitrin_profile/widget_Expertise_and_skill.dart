@@ -39,7 +39,7 @@ class _WidgetExpertiseAndSkillState extends State<WidgetExpertiseAndSkill> {
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Container(
             width: double.infinity,
-            height: _About_me_1.value ? 380 : 50, // تغییر ارتفاع باکس
+            height: _About_me_1.value ? 395 : 50, // تغییر ارتفاع باکس
             decoration: BoxDecoration(
               color: const Color.fromRGBO(250, 250, 250, 1),
               border: Border.all(color: const Color.fromRGBO(166, 166, 166, 1)),
@@ -75,9 +75,9 @@ class _WidgetExpertiseAndSkillState extends State<WidgetExpertiseAndSkill> {
                                   height: 15,
                                 )
                               : SvgPicture.asset(
-                                  'assets/images/=.svg', // آیکون فلش بالا
-                                  width: 15, // سایز آیکون فلش بالا
-                                  height: 15,
+                                  'assets/images/=gold.svg', // آیکون فلش بالا
+                                  width: 10, // سایز آیکون فلش بالا
+                                  height: 10,
                                 )),
                       onPressed: () {
                         if (_isTyping.value) {
@@ -152,7 +152,6 @@ class _WidgetExpertiseAndSkillState extends State<WidgetExpertiseAndSkill> {
                   ],
                 ),
                 if (_About_me_1.value) ...[
-                  const SizedBox(height: 10),
                   buildExpertiseAndSkill(context),
                 ],
               ],

@@ -82,8 +82,8 @@ class _WidgetSwitchitemslocationColleaguesState
             widget.onSelected(selectedItems.value.toList());
           },
           icon: Obx(() => Container(
-                width: 30,
-                height: 30,
+                width: 25,
+                height: 25,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   border: Border.all(width: 1, color: Colors.black54),
@@ -106,7 +106,7 @@ class _WidgetSwitchitemslocationColleaguesState
               textAlign:
                   TextAlign.right, // این بخش متن را درون Text راست‌چین می‌کند
               style: const TextStyle(
-                fontSize: 13,
+                fontSize: 10,
                 fontFamily: MAIN_FONT_FAMILY,
               )),
         )

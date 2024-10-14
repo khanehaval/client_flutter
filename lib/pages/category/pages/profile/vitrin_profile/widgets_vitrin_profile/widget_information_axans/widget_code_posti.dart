@@ -34,42 +34,39 @@ class WidgetCodePosti extends StatelessWidget {
               textAlign: TextAlign.right,
               style: TextStyle(
                 color: Color.fromRGBO(48, 48, 48, 1),
-                fontSize: 12,
+                fontSize: 13,
                 fontFamily: MAIN_FONT_FAMILY, // تغییر به فونت مورد نظر
               ),
             ),
-            const SizedBox(height: 8),
+            const SizedBox(height: 10),
             Container(
               width: 340,
               decoration: const ShapeDecoration(
                 shape: RoundedRectangleBorder(
                   side: BorderSide(
-                    width: 0.5,
+                    width: 0.0,
                     strokeAlign: BorderSide.strokeAlignCenter,
                     color: Color(0xFFE2E2E2),
                   ),
                 ),
               ),
             ),
-            const SizedBox(height: 8),
             Container(
               width: 137,
               child: const TextField(
                 textAlign: TextAlign.right,
                 decoration: InputDecoration(
-                  contentPadding:
-                      EdgeInsets.symmetric(vertical: 0, horizontal: 8),
                   isDense: true,
                   border: InputBorder.none,
                   hintText: 'وارد کنید',
                   hintStyle: TextStyle(
-                    fontSize: 11,
+                    fontSize: 12,
                     color: Color(0xFF626262),
                     fontFamily: MAIN_FONT_FAMILY,
                   ),
                 ),
                 style: TextStyle(
-                  fontSize: 11,
+                  fontSize: 12,
                   color: Color(0xFF626262),
                   fontFamily: MAIN_FONT_FAMILY,
                 ),

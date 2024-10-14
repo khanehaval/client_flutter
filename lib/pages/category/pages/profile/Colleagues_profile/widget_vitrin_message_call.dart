@@ -41,15 +41,13 @@ class WidgetVitrinMessageCall extends StatelessWidget {
                     style: TextStyle(
                       color: Color(0xFF626262),
                       fontSize: 12,
-                      fontFamily: MAIN_FONT_FAMILY_LIGHT,
-                      fontWeight: FontWeight.w500,
-                      height: 0,
+                      fontFamily: MAIN_FONT_FAMILY,
                     ),
                   ),
                   SvgPicture.asset(
                     'assets/images/Call_icon_profile.svg',
-                    width: 17,
-                    height: 18,
+                    width: 22,
+                    height: 22,
                   ),
                 ],
               ),
@@ -86,15 +84,13 @@ class WidgetVitrinMessageCall extends StatelessWidget {
                     style: TextStyle(
                       color: Color(0xFF626262),
                       fontSize: 12,
-                      fontFamily: MAIN_FONT_FAMILY_LIGHT,
-                      fontWeight: FontWeight.w500,
-                      height: 0,
+                      fontFamily: MAIN_FONT_FAMILY,
                     ),
                   ),
                   SvgPicture.asset(
                     'assets/images/Message_icon_profile.svg',
-                    width: 17,
-                    height: 18,
+                    width: 22,
+                    height: 22,
                   ),
                 ],
               ),
@@ -123,7 +119,7 @@ class WidgetVitrinMessageCall extends StatelessWidget {
                 ],
               ),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   const Text(
                     'ویترین',
@@ -131,15 +127,13 @@ class WidgetVitrinMessageCall extends StatelessWidget {
                     style: TextStyle(
                       color: Color(0xFF626262),
                       fontSize: 12,
-                      fontFamily: MAIN_FONT_FAMILY_LIGHT,
-                      fontWeight: FontWeight.w500,
-                      height: 0,
+                      fontFamily: MAIN_FONT_FAMILY,
                     ),
                   ),
                   SvgPicture.asset(
                     'assets/images/Vitrin_off_icon.svg',
-                    width: 17,
-                    height: 18,
+                    width: 22,
+                    height: 22,
                   ),
                 ],
               ),

@@ -40,7 +40,7 @@ class _WidgetManagementAdState extends State<WidgetManagementAd> {
           child: SingleChildScrollView(
             child: Container(
               width: Get.width / 1.3,
-              height: _About_me_1.value ? 300 : 50,
+              height: _About_me_1.value ? 360 : 50,
               decoration: BoxDecoration(
                 color: const Color.fromRGBO(253, 253, 253, 1),
                 borderRadius: BorderRadius.circular(15),
@@ -54,7 +54,7 @@ class _WidgetManagementAdState extends State<WidgetManagementAd> {
                         icon: SvgPicture.asset(
                           _getIconAsset(), // دریافت آیکون مناسب
                           width: 20,
-                          height: _About_me_1.value ? 25 : 20,
+                          height: _About_me_1.value ? 20 : 15,
                         ),
                         onPressed: () {
                           if (!_isChecked.value && !_isDeleted.value) {

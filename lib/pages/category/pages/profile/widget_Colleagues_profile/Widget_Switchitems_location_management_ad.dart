@@ -1,4 +1,3 @@
-import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -23,7 +22,18 @@ class _WidgetSwitchitemsLocationManagementAdState
 
   @override
   Widget build(BuildContext context) {
-    return buildMelkTypeItem();
+    return Column(
+      children: [
+        const Text(
+          'تخصصی که در آن مهارت دارید انتخاب کنید',
+          style: TextStyle(
+            fontFamily: MAIN_FONT_FAMILY,
+            fontSize: 12,
+          ),
+        ),
+        buildMelkTypeItem(),
+      ],
+    );
   }
 
   Widget buildMelkTypeItem() {
@@ -59,46 +69,49 @@ class _WidgetSwitchitemsLocationManagementAdState
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        IconButton(
-          onPressed: () {
-            setState(() {
-              if (selectedItems.value.contains(item)) {
-                selectedItems.value
-                    .clear(); // Clear the selection if the item is already selected
-              } else {
-                selectedItems
-                  ..value.clear() // Clear previous selections
-                  ..add(item); // Add the newly selected item
-              }
-            });
-            widget.onSelected(selectedItems.value.toList());
-          },
-          icon: Obx(() => Container(
-                width: 30,
-                height: 30,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  border: Border.all(width: 1, color: Colors.black54),
-                ),
-                child: selectedItems.value.contains(item)
-                    ? Padding(
-                        padding: const EdgeInsets.all(5.0),
-                        child: SvgPicture.asset(
-                          'assets/images/check.svg',
-                          width: 10,
-                          height: 10,
-                        ),
-                      )
-                    : const SizedBox.shrink(),
-              )),
+        Padding(
+          padding: const EdgeInsets.only(left: 20.0),
+          child: IconButton(
+            onPressed: () {
+              setState(() {
+                if (selectedItems.value.contains(item)) {
+                  selectedItems.value
+                      .clear(); // Clear the selection if the item is already selected
+                } else {
+                  selectedItems
+                    ..value.clear() // Clear previous selections
+                    ..add(item); // Add the newly selected item
+                }
+              });
+              widget.onSelected(selectedItems.value.toList());
+            },
+            icon: Obx(() => Container(
+                  width: 25,
+                  height: 25,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    border: Border.all(width: 1, color: Colors.black54),
+                  ),
+                  child: selectedItems.value.contains(item)
+                      ? Padding(
+                          padding: const EdgeInsets.all(5.0),
+                          child: SvgPicture.asset(
+                            'assets/images/check.svg',
+                            width: 10,
+                            height: 10,
+                          ),
+                        )
+                      : const SizedBox.shrink(),
+                )),
+          ),
         ),
         Padding(
-          padding: const EdgeInsets.only(right: 10.0),
+          padding: const EdgeInsets.only(right: 20.0),
           child: Text(item,
               textAlign:
                   TextAlign.right, // این بخش متن را درون Text راست‌چین می‌کند
               style: const TextStyle(
-                fontSize: 12,
+                fontSize: 10,
                 fontFamily: MAIN_FONT_FAMILY,
               )),
         )

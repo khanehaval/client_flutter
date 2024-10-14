@@ -35,26 +35,25 @@ class WidgetrUploadPhotoId extends StatelessWidget {
                     textAlign: TextAlign.left,
                     style: TextStyle(
                       color: Color.fromRGBO(48, 48, 48, 1),
-                      fontSize: 11,
+                      fontSize: 12,
                       fontFamily: MAIN_FONT_FAMILY,
                     ),
                   ),
-                  const SizedBox(height: 5),
                   Expanded(
                     child: TextField(
                       readOnly: true,
-                      textAlign: TextAlign.center,
+                      textAlign: TextAlign.right,
                       decoration: InputDecoration(
                         isDense: true,
                         border: InputBorder.none,
                         hintText: 'انتخاب کنید',
                         hintStyle: const TextStyle(
-                            fontSize: 10,
+                            fontSize: 12,
                             color: Color(0xFF626262),
                             fontFamily: MAIN_FONT_FAMILY,
-                            height: 6),
+                            height: 5),
                         prefixIcon: Padding(
-                          padding: const EdgeInsets.only(top: 8.0, right: 30),
+                          padding: const EdgeInsets.only(top: 6, right: 30),
                           child: SvgPicture.asset(
                             'assets/images/Del.svg',
                             width: 20,
@@ -62,7 +61,7 @@ class WidgetrUploadPhotoId extends StatelessWidget {
                         ),
                       ),
                       style: const TextStyle(
-                        fontSize: 11,
+                        fontSize: 12,
                         color: Color(0xFF626262),
                         fontFamily: MAIN_FONT_FAMILY,
                       ),
@@ -80,18 +79,18 @@ class WidgetrUploadPhotoId extends StatelessWidget {
                     textAlign: TextAlign.right,
                     style: TextStyle(
                       color: Color.fromRGBO(48, 48, 48, 1),
-                      fontSize: 12,
+                      fontSize: 13,
                       fontFamily: MAIN_FONT_FAMILY,
                     ),
                   ),
-                  const SizedBox(height: 8),
+                  const SizedBox(height: 5),
                   const Divider(
                     color: Color(0xFFE2E2E2),
                     height: 1,
-                    thickness: 1,
+                    thickness: 0,
                     indent: 50,
                   ),
-                  const SizedBox(height: 8),
+                  const SizedBox(height: 6),
                   Container(
                     width: 137,
                     child: const TextField(
@@ -101,13 +100,13 @@ class WidgetrUploadPhotoId extends StatelessWidget {
                         border: InputBorder.none,
                         hintText: 'وارد کنید',
                         hintStyle: TextStyle(
-                          fontSize: 11,
+                          fontSize: 12,
                           color: Color(0xFF626262),
                           fontFamily: MAIN_FONT_FAMILY,
                         ),
                       ),
                       style: TextStyle(
-                        fontSize: 11,
+                        fontSize: 12,
                         color: Color(0xFF626262),
                         fontFamily: MAIN_FONT_FAMILY,
                       ),

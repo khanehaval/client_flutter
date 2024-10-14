@@ -58,7 +58,7 @@ class _WidgetMoarefiTargertState extends State<WidgetMoarefiTargert> {
                                 'assets/images/check_icon.svg') // آیکون چک
                             : (_isExpanded.value
                                 ? SvgPicture.asset(
-                                    'assets/images/=.svg') // آیکون =
+                                    'assets/images/=gold.svg') // آیکون =
                                 : SvgPicture.asset(
                                     'assets/images/Arrow_list_agency.svg', // آیکون فلش پایین
                                     width: 11,

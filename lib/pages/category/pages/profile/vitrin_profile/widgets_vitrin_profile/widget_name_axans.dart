@@ -59,7 +59,7 @@ class _WidgetNameAxansState extends State<WidgetNameAxans> {
                               )
                             : SvgPicture.asset(
                                 _About_me_1.value
-                                    ? 'assets/images/=.svg'
+                                    ? 'assets/images/=gold.svg'
                                     : 'assets/images/Arrow_list_agency.svg',
                                 width: _About_me_1.value
                                     ? 30

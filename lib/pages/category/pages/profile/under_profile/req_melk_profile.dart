@@ -30,7 +30,7 @@ class ReqMelkProfile extends StatelessWidget {
                     width: Get.width / 2.8,
                     height: 100,
                     padding:
-                        const EdgeInsets.symmetric(horizontal: 5, vertical: 13),
+                        const EdgeInsets.symmetric(horizontal: 5, vertical: 10),
                     decoration: ShapeDecoration(
                       color: Colors.white,
                       shape: RoundedRectangleBorder(
@@ -55,18 +55,29 @@ class ReqMelkProfile extends StatelessWidget {
                             fontFamily: 'Aban Bold',
                           ),
                         ),
-                        const Text(
-                          '4',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 18,
-                            fontFamily: MAIN_FONT_FAMILY_MEDIUM,
-                          ),
+                        const SizedBox(
+                          height: 5,
+                        ),
+                        const Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              '4',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 14,
+                                fontFamily: MAIN_FONT_FAMILY_MEDIUM,
+                              ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(
+                          height: 5,
                         ),
                         Container(
-                          width: 94,
-                          height: 22,
+                          width: Get.width / 3.7,
+                          height: 25,
                           decoration: ShapeDecoration(
                             color: const Color(0xFFF9F9F9),
                             shape: RoundedRectangleBorder(
@@ -133,17 +144,23 @@ class ReqMelkProfile extends StatelessWidget {
                     child: Column(
                       children: [
                         const SizedBox(
-                          height: 15,
+                          height: 10,
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(
-                            left: 110.0,
+                          padding: const EdgeInsets.only(right: 10.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              SvgPicture.asset(
+                                'assets/images/home_icon_profile.svg',
+                                width: 24,
+                                height: 24,
+                              ),
+                            ],
                           ),
-                          child: SvgPicture.asset(
-                            'assets/images/home_icon_profile.svg',
-                            width: 24,
-                            height: 24,
-                          ),
+                        ),
+                        SizedBox(
+                          height: 5,
                         ),
                         const Padding(
                           padding: EdgeInsets.only(right: 10.0),
@@ -170,7 +187,7 @@ class ReqMelkProfile extends StatelessWidget {
                                 'دنبال چه ملکی میگردی؟',
                                 style: TextStyle(
                                   color: Color(0xFFA5A5A5),
-                                  fontSize: 9,
+                                  fontSize: 12,
                                   fontFamily: MAIN_FONT_FAMILY_LIGHT,
                                 ),
                               ),

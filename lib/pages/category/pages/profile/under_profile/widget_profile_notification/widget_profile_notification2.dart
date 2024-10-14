@@ -61,13 +61,13 @@ class WidgetProfileNotification2 extends StatelessWidget {
                     ),
                     const SizedBox(width: 20),
                     SizedBox(
-                      width: Get.width / 3.5,
+                      width: Get.width / 3.0,
                       child: Padding(
                         padding: const EdgeInsets.all(10.0),
                         child: DottedBorder(
                           borderType: BorderType.RRect,
-                          color: Colors.black26,
-                          strokeWidth: 2,
+                          color: Color.fromARGB(255, 168, 167, 167),
+                          strokeWidth: 1,
                           radius: const Radius.circular(10),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -75,7 +75,7 @@ class WidgetProfileNotification2 extends StatelessWidget {
                               Icon(
                                 Icons.add,
                                 color: Color.fromRGBO(166, 166, 166, 1),
-                                size: 20,
+                                size: 18,
                               ),
                             ],
                           ),
@@ -135,8 +135,7 @@ class WidgetProfileNotification2 extends StatelessWidget {
                                 style: TextStyle(
                                   color: Color(0xFF303030),
                                   fontSize: 9,
-                                  fontFamily: 'Aban Bold',
-                                  fontWeight: FontWeight.w400,
+                                  fontFamily: MAIN_FONT_FAMILY,
                                 ),
                               ),
                             ],
@@ -153,7 +152,7 @@ class WidgetProfileNotification2 extends StatelessWidget {
                                 style: TextStyle(
                                   color: Color(0xFF303030),
                                   fontSize: 9,
-                                  fontFamily: 'Aban Bold',
+                                  fontFamily: MAIN_FONT_FAMILY,
                                 ),
                               ),
                             ],
@@ -170,8 +169,7 @@ class WidgetProfileNotification2 extends StatelessWidget {
                                 style: TextStyle(
                                   color: Color(0xFF303030),
                                   fontSize: 9,
-                                  fontFamily: 'Aban Bold',
-                                  fontWeight: FontWeight.w400,
+                                  fontFamily: MAIN_FONT_FAMILY,
                                 ),
                               ),
                             ],
@@ -188,7 +186,7 @@ class WidgetProfileNotification2 extends StatelessWidget {
                                 style: TextStyle(
                                   color: Color(0xFF303030),
                                   fontSize: 9,
-                                  fontFamily: 'Aban Bold',
+                                  fontFamily: MAIN_FONT_FAMILY,
                                   fontWeight: FontWeight.w400,
                                 ),
                               ),
@@ -206,8 +204,7 @@ class WidgetProfileNotification2 extends StatelessWidget {
                                 style: TextStyle(
                                   color: Color(0xFF303030),
                                   fontSize: 9,
-                                  fontFamily: 'Aban Bold',
-                                  fontWeight: FontWeight.w400,
+                                  fontFamily: MAIN_FONT_FAMILY,
                                 ),
                               ),
                             ],
@@ -225,9 +222,8 @@ class WidgetProfileNotification2 extends StatelessWidget {
                     height: 10,
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(left: 10.0, right: 10),
+                    padding: const EdgeInsets.only(left: 20.0, right: 10),
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
                       children: const [
                         Expanded(
                           child: Text(
@@ -236,7 +232,7 @@ class WidgetProfileNotification2 extends StatelessWidget {
                             style: TextStyle(
                               color: Color(0xFF303030),
                               fontSize: 8,
-                              fontFamily: 'Aban Bold',
+                              fontFamily: MAIN_FONT_FAMILY_UltraLight,
                               fontWeight: FontWeight.w400,
                             ),
                           ),
@@ -248,7 +244,7 @@ class WidgetProfileNotification2 extends StatelessWidget {
                             style: TextStyle(
                               color: Color(0xFF303030),
                               fontSize: 8,
-                              fontFamily: 'Aban Bold',
+                              fontFamily: MAIN_FONT_FAMILY_UltraLight,
                             ),
                           ),
                         ),
@@ -259,7 +255,7 @@ class WidgetProfileNotification2 extends StatelessWidget {
                             style: TextStyle(
                               color: Color(0xFF303030),
                               fontSize: 8,
-                              fontFamily: 'Aban Bold',
+                              fontFamily: MAIN_FONT_FAMILY_UltraLight,
                               fontWeight: FontWeight.w400,
                             ),
                           ),
@@ -271,7 +267,7 @@ class WidgetProfileNotification2 extends StatelessWidget {
                             style: TextStyle(
                               color: Color(0xFF303030),
                               fontSize: 8,
-                              fontFamily: 'Aban Bold',
+                              fontFamily: MAIN_FONT_FAMILY_UltraLight,
                             ),
                           ),
                         ),
@@ -282,7 +278,7 @@ class WidgetProfileNotification2 extends StatelessWidget {
                             style: TextStyle(
                               color: Color(0xFF303030),
                               fontSize: 8,
-                              fontFamily: 'Aban Bold',
+                              fontFamily: MAIN_FONT_FAMILY_UltraLight,
                             ),
                           ),
                         ),
@@ -293,7 +289,7 @@ class WidgetProfileNotification2 extends StatelessWidget {
                     height: 20,
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(right: 15.0, left: 10),
+                    padding: const EdgeInsets.only(right: 20.0, left: 20),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -304,24 +300,23 @@ class WidgetProfileNotification2 extends StatelessWidget {
                           children: [
                             SvgPicture.asset(
                               'assets/images/delete_icon_rington.svg',
-                              width: 15,
-                              height: 15,
+                              width: 18,
+                              height: 18,
                             ),
-                            const SizedBox(width: 20),
+                            const SizedBox(width: 30),
                             SvgPicture.asset(
                               'assets/images/edit.svg',
-                              width: 15,
-                              height: 15,
+                              width: 18,
+                              height: 18,
                             ),
-                            const SizedBox(width: 20),
+                            const SizedBox(width: 30),
                             SvgPicture.asset(
                               'assets/images/see_icon_rington.svg',
-                              width: 15,
-                              height: 15,
+                              width: 18,
+                              height: 18,
                             ),
                           ],
                         ),
-                        const SizedBox(width: 30),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.center,
@@ -331,7 +326,7 @@ class WidgetProfileNotification2 extends StatelessWidget {
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                 color: Color(0xFF626262),
-                                fontSize: 10,
+                                fontSize: 12,
                                 fontFamily: MAIN_FONT_FAMILY_MEDIUM,
                               ),
                             ),
@@ -364,7 +359,7 @@ class WidgetProfileNotification2 extends StatelessWidget {
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                 color: Color(0xFF626262),
-                                fontSize: 10,
+                                fontSize: 12,
                                 fontFamily: MAIN_FONT_FAMILY,
                               ),
                             ),
@@ -378,21 +373,20 @@ class WidgetProfileNotification2 extends StatelessWidget {
               SizedBox(
                 height: 20,
               ),
-              Divider(
-                indent: 40,
-                endIndent: 45,
-                color: Color.fromRGBO(183, 183, 183, 1),
-              ),
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
+                  Divider(
+                    indent: 40,
+                    endIndent: 45,
+                    color: Color.fromRGBO(183, 183, 183, 1),
+                  ),
                   SizedBox(
                     height: 10,
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(left: 10.0, right: 10),
+                    padding: const EdgeInsets.only(left: 20.0, right: 10),
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
                       children: const [
                         Expanded(
                           child: Text(
@@ -401,7 +395,7 @@ class WidgetProfileNotification2 extends StatelessWidget {
                             style: TextStyle(
                               color: Color(0xFF303030),
                               fontSize: 8,
-                              fontFamily: 'Aban Bold',
+                              fontFamily: MAIN_FONT_FAMILY_UltraLight,
                               fontWeight: FontWeight.w400,
                             ),
                           ),
@@ -413,7 +407,7 @@ class WidgetProfileNotification2 extends StatelessWidget {
                             style: TextStyle(
                               color: Color(0xFF303030),
                               fontSize: 8,
-                              fontFamily: 'Aban Bold',
+                              fontFamily: MAIN_FONT_FAMILY_UltraLight,
                             ),
                           ),
                         ),
@@ -424,7 +418,7 @@ class WidgetProfileNotification2 extends StatelessWidget {
                             style: TextStyle(
                               color: Color(0xFF303030),
                               fontSize: 8,
-                              fontFamily: 'Aban Bold',
+                              fontFamily: MAIN_FONT_FAMILY_UltraLight,
                               fontWeight: FontWeight.w400,
                             ),
                           ),
@@ -436,7 +430,7 @@ class WidgetProfileNotification2 extends StatelessWidget {
                             style: TextStyle(
                               color: Color(0xFF303030),
                               fontSize: 8,
-                              fontFamily: 'Aban Bold',
+                              fontFamily: MAIN_FONT_FAMILY_UltraLight,
                             ),
                           ),
                         ),
@@ -447,7 +441,7 @@ class WidgetProfileNotification2 extends StatelessWidget {
                             style: TextStyle(
                               color: Color(0xFF303030),
                               fontSize: 8,
-                              fontFamily: 'Aban Bold',
+                              fontFamily: MAIN_FONT_FAMILY_UltraLight,
                             ),
                           ),
                         ),
@@ -458,7 +452,7 @@ class WidgetProfileNotification2 extends StatelessWidget {
                     height: 20,
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(right: 15.0, left: 10),
+                    padding: const EdgeInsets.only(right: 20.0, left: 20),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -469,24 +463,23 @@ class WidgetProfileNotification2 extends StatelessWidget {
                           children: [
                             SvgPicture.asset(
                               'assets/images/delete_icon_rington.svg',
-                              width: 15,
-                              height: 15,
+                              width: 18,
+                              height: 18,
                             ),
-                            const SizedBox(width: 20),
+                            const SizedBox(width: 30),
                             SvgPicture.asset(
                               'assets/images/edit.svg',
-                              width: 15,
-                              height: 15,
+                              width: 18,
+                              height: 18,
                             ),
-                            const SizedBox(width: 20),
+                            const SizedBox(width: 30),
                             SvgPicture.asset(
                               'assets/images/see_icon_rington.svg',
-                              width: 15,
-                              height: 15,
+                              width: 18,
+                              height: 18,
                             ),
                           ],
                         ),
-                        const SizedBox(width: 30),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.center,
@@ -496,7 +489,7 @@ class WidgetProfileNotification2 extends StatelessWidget {
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                 color: Color(0xFF626262),
-                                fontSize: 10,
+                                fontSize: 12,
                                 fontFamily: MAIN_FONT_FAMILY_MEDIUM,
                               ),
                             ),
@@ -529,7 +522,7 @@ class WidgetProfileNotification2 extends StatelessWidget {
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                 color: Color(0xFF626262),
-                                fontSize: 10,
+                                fontSize: 12,
                                 fontFamily: MAIN_FONT_FAMILY,
                               ),
                             ),
@@ -544,8 +537,8 @@ class WidgetProfileNotification2 extends StatelessWidget {
                 height: 20,
               ),
               Divider(
-                indent: 40,
-                endIndent: 45,
+                indent: 25,
+                endIndent: 30,
                 color: Color.fromRGBO(183, 183, 183, 1),
               ),
               SizedBox(

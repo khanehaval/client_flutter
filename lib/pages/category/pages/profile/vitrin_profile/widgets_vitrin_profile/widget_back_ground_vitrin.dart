@@ -81,13 +81,13 @@ class _WidgetBackGroundVitrinState extends State<WidgetBackGroundVitrin> {
                     )
                   : SvgPicture.asset(
                       _About_me_1.value
-                          ? 'assets/images/edit and ok.svg'
+                          ? 'assets/images/=gold.svg'
                           : 'assets/images/Arrow_list_agency.svg',
                       width: _About_me_1.value
                           ? 30
                           : 11, // سایز بزرگتر برای edit and ok
                       height: _About_me_1.value
-                          ? 25
+                          ? 10
                           : 14, // سایز بزرگتر برای edit and ok
                     )),
           onPressed: () {
@@ -190,11 +190,11 @@ class _WidgetBackGroundVitrinState extends State<WidgetBackGroundVitrin> {
                 () => _selectedImagePath.value.isEmpty
                     ? DottedBorder(
                         borderType: BorderType.RRect,
-                        color: Colors.black26,
-                        strokeWidth: 2,
+                        color: const Color.fromRGBO(212, 212, 212, 1),
+                        strokeWidth: 1,
                         radius: const Radius.circular(35),
                         child: const SizedBox(
-                          height: 31,
+                          height: 35,
                           width: 80,
                           child: Center(
                             child: Icon(Icons.add,
@@ -250,7 +250,7 @@ class _WidgetBackGroundVitrinState extends State<WidgetBackGroundVitrin> {
                           ),
 
                           const SizedBox(
-                              width: 10), // فاصله بین کانتینر زرد و تصویر
+                              width: 40), // فاصله بین کانتینر زرد و تصویر
                           ClipOval(
                             child: Image.file(
                               File(_selectedImagePath.value),
@@ -263,7 +263,7 @@ class _WidgetBackGroundVitrinState extends State<WidgetBackGroundVitrin> {
                       ),
               ),
             ),
-            const SizedBox(width: 30), // فاصله بین تصویر و متن
+            const SizedBox(width: 10), // فاصله بین تصویر و متن
             // نمایش متن فقط اگر تصویری انتخاب نشده باشد
             Obx(
               () => _selectedImagePath.value.isEmpty
@@ -274,7 +274,7 @@ class _WidgetBackGroundVitrinState extends State<WidgetBackGroundVitrin> {
                             text: 'تصویر پس زمینه خود را انتخاب کنید\n',
                             style: TextStyle(
                               color: Color(0xFF626262),
-                              fontSize: 10,
+                              fontSize: 12,
                               fontFamily: 'MAIN_FONT_FAMILY',
                             ),
                           ),
@@ -282,7 +282,7 @@ class _WidgetBackGroundVitrinState extends State<WidgetBackGroundVitrin> {
                             text: 'فرمت JPEG - حداکثر 5MB',
                             style: TextStyle(
                               color: Color(0xFFA5A5A5),
-                              fontSize: 8,
+                              fontSize: 10,
                               fontFamily: 'MAIN_FONT_FAMILY_LIGHT',
                             ),
                           ),

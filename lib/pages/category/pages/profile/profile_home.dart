@@ -1,23 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:flutter_application_1/pages/category/pages/profile/category_window/Profile_ADs_Seen.dart';
 import 'package:flutter_application_1/pages/category/pages/profile/profile_detail/profile_detail.dart';
-import 'package:flutter_application_1/pages/category/pages/profile/under_profile/widget_profile_notification/Profile_Notification.dart';
-import 'package:flutter_application_1/pages/category/pages/profile/under_profile/category_Profile.dart';
-import 'package:flutter_application_1/pages/category/pages/profile/under_profile/main_category_profile.dart';
-import 'package:flutter_application_1/pages/category/pages/profile/under_profile/widget_profile_my_desk/profile_my_desk.dart';
-import 'package:flutter_application_1/pages/category/pages/profile/under_profile/req_melk_profile.dart';
-import 'package:flutter_application_1/pages/category/pages/profile/vitrin_profile/vitrin.dart';
 import 'package:flutter_application_1/pages/category/pages/profile/widget_profile_home/WidgetProfileAdsAndMyDesk.dart';
 import 'package:flutter_application_1/pages/category/pages/profile/widget_profile_home/Widget_profile_see_and_save.dart';
 import 'package:flutter_application_1/pages/category/pages/profile/widget_profile_home/widget_profile_home_axans_consultants.dart';
 import 'package:flutter_application_1/pages/category/pages/profile/widget_profile_home/widget_profile_home_melk_and_vitrin.dart';
 import 'package:flutter_application_1/pages/category/pages/profile/widget_profile_home/widget_profile_home_setting_khanehaval.dart';
 import 'package:flutter_application_1/pages/category/pages/profile/widget_profile_home/widget_profile_home_tour_rington.dart';
-import 'package:flutter_application_1/pages/category/pages/window/window_item_builder.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
-import 'package:flutter_application_1/pages/category/shared/widget/app_bar.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
@@ -89,40 +79,8 @@ class ProfileHome extends StatelessWidget {
                                 height: 5,
                               ),
                               Row(
+                                mainAxisAlignment: MainAxisAlignment.end,
                                 children: [
-                                  Container(
-                                    decoration: BoxDecoration(
-                                        gradient: const LinearGradient(
-                                            colors: GRADIANT_COLOR3),
-                                        borderRadius:
-                                            BorderRadius.circular(20)),
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(1.0),
-                                      child: Container(
-                                        width: 65,
-                                        height: 23,
-                                        decoration: const BoxDecoration(
-                                            color: Colors.white,
-                                            borderRadius: BorderRadius.all(
-                                                Radius.circular(20))),
-                                        child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceAround,
-                                          children: [
-                                            const Text(
-                                              'ثبت آگهی',
-                                              style: TextStyle(
-                                                  fontFamily:
-                                                      MAIN_FONT_FAMILY_MEDIUM,
-                                                  fontSize: 8),
-                                            ),
-                                            SvgPicture.asset(
-                                                'assets/images/Group 571.svg'),
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                  ),
                                   const SizedBox(
                                     width: 5,
                                   ),
@@ -235,7 +193,7 @@ class ProfileHome extends StatelessWidget {
                 ),
               ),
               const SizedBox(
-                height: 20,
+                height: 1,
               ),
               const Divider(
                 endIndent: 25,
@@ -283,7 +241,7 @@ class ProfileHome extends StatelessWidget {
 
 Widget sabtAds() {
   return Container(
-    width: 372,
+    width: Get.width / 1.1,
     height: 60,
     child: Row(
       mainAxisAlignment: MainAxisAlignment.center,
@@ -291,7 +249,7 @@ Widget sabtAds() {
       children: [
         Container(
           height: 60,
-          width: Get.width / 1.3,
+          width: Get.width / 1.12,
           decoration: ShapeDecoration(
             color: Colors.white,
             shape: RoundedRectangleBorder(

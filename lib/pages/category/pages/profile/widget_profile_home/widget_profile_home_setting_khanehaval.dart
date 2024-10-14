@@ -32,7 +32,7 @@ class WidgetProfileHomeSettingKhanehaval extends StatelessWidget {
           child: Column(
             children: [
               const SizedBox(
-                height: 15,
+                height: 10,
               ),
               Padding(
                 padding: const EdgeInsets.only(
@@ -44,6 +44,9 @@ class WidgetProfileHomeSettingKhanehaval extends StatelessWidget {
                   height: 24,
                 ),
               ),
+              const SizedBox(
+                height: 5,
+              ),
               const Padding(
                 padding: EdgeInsets.only(right: 20.0),
                 child: Row(
@@ -52,13 +55,16 @@ class WidgetProfileHomeSettingKhanehaval extends StatelessWidget {
                     Text(
                       'تنظیمات',
                       style: TextStyle(
-                        color: Color(0xFF626262),
+                        color: Color(0xFF303030),
                         fontSize: 18,
                         fontFamily: 'Aban Light',
                       ),
                     ),
                   ],
                 ),
+              ),
+              const SizedBox(
+                height: 5,
               ),
               const Padding(
                 padding: EdgeInsets.only(right: 20.0),
@@ -69,7 +75,7 @@ class WidgetProfileHomeSettingKhanehaval extends StatelessWidget {
                       'تنظیمات اپلیکیشن',
                       style: TextStyle(
                         color: Color(0xFFA5A5A5),
-                        fontSize: 10,
+                        fontSize: 12,
                         fontFamily: MAIN_FONT_FAMILY_LIGHT,
                       ),
                     ),
@@ -99,7 +105,7 @@ class WidgetProfileHomeSettingKhanehaval extends StatelessWidget {
           child: Column(
             children: [
               const SizedBox(
-                height: 15,
+                height: 10,
               ),
               Padding(
                 padding: const EdgeInsets.only(
@@ -111,21 +117,8 @@ class WidgetProfileHomeSettingKhanehaval extends StatelessWidget {
                   height: 24,
                 ),
               ),
-              const Padding(
-                padding: EdgeInsets.only(right: 20.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Text(
-                      'آژآنس املاک خانه اول',
-                      style: TextStyle(
-                        color: Color(0xFF626262),
-                        fontSize: 16,
-                        fontFamily: 'Aban Light',
-                      ),
-                    ),
-                  ],
-                ),
+              const SizedBox(
+                height: 5,
               ),
               const Padding(
                 padding: EdgeInsets.only(right: 20.0),
@@ -133,10 +126,29 @@ class WidgetProfileHomeSettingKhanehaval extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     Text(
-                      'آگهی های املاک و آموزش',
+                      'آژانس املاک خانه اول',
+                      style: TextStyle(
+                        color: Color(0xFF303030),
+                        fontSize: 16,
+                        fontFamily: 'Aban Light',
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(
+                height: 5,
+              ),
+              const Padding(
+                padding: EdgeInsets.only(right: 20.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Text(
+                      'آگهی های املاک',
                       style: TextStyle(
                         color: Color(0xFFA5A5A5),
-                        fontSize: 10,
+                        fontSize: 12,
                         fontFamily: MAIN_FONT_FAMILY_LIGHT,
                       ),
                     ),

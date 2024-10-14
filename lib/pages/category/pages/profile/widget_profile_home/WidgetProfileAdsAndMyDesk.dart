@@ -40,7 +40,7 @@ class WidgetProfileAdsAndMyDesk extends StatelessWidget {
             child: Column(
               children: [
                 const SizedBox(
-                  height: 15,
+                  height: 10,
                 ),
                 Padding(
                   padding: const EdgeInsets.only(
@@ -52,6 +52,9 @@ class WidgetProfileAdsAndMyDesk extends StatelessWidget {
                     height: 24,
                   ),
                 ),
+                const SizedBox(
+                  height: 5,
+                ),
                 const Padding(
                   padding: EdgeInsets.only(right: 20.0),
                   child: Row(
@@ -60,13 +63,16 @@ class WidgetProfileAdsAndMyDesk extends StatelessWidget {
                       Text(
                         'آگهی های من',
                         style: TextStyle(
-                          color: Color(0xFF626262),
+                          color: Color(0xFF303030),
                           fontSize: 18,
                           fontFamily: 'Aban Light',
                         ),
                       ),
                     ],
                   ),
+                ),
+                const SizedBox(
+                  height: 5,
                 ),
                 const Padding(
                   padding: EdgeInsets.only(right: 20.0),
@@ -77,7 +83,7 @@ class WidgetProfileAdsAndMyDesk extends StatelessWidget {
                         'آگهی های ثبت شده',
                         style: TextStyle(
                           color: Color(0xFFA5A5A5),
-                          fontSize: 10,
+                          fontSize: 12,
                           fontFamily: MAIN_FONT_FAMILY_LIGHT,
                         ),
                       ),
@@ -114,7 +120,7 @@ class WidgetProfileAdsAndMyDesk extends StatelessWidget {
             child: Column(
               children: [
                 const SizedBox(
-                  height: 15,
+                  height: 10,
                 ),
                 Padding(
                   padding: const EdgeInsets.only(
@@ -126,6 +132,9 @@ class WidgetProfileAdsAndMyDesk extends StatelessWidget {
                     height: 24,
                   ),
                 ),
+                const SizedBox(
+                  height: 5,
+                ),
                 const Padding(
                   padding: EdgeInsets.only(right: 20.0),
                   child: Row(
@@ -134,7 +143,7 @@ class WidgetProfileAdsAndMyDesk extends StatelessWidget {
                       Text(
                         'میزکـار مـن',
                         style: TextStyle(
-                          color: Color(0xFF626262),
+                          color: Color(0xFF303030),
                           fontSize: 18,
                           fontFamily: 'Aban Light',
                         ),
@@ -142,16 +151,19 @@ class WidgetProfileAdsAndMyDesk extends StatelessWidget {
                     ],
                   ),
                 ),
+                const SizedBox(
+                  height: 5,
+                ),
                 const Padding(
                   padding: EdgeInsets.only(right: 20.0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       Text(
-                        'توضیحات در ادامه ...',
+                        'توضیحات در ادامه',
                         style: TextStyle(
                           color: Color(0xFFA5A5A5),
-                          fontSize: 10,
+                          fontSize: 12,
                           fontFamily: MAIN_FONT_FAMILY_LIGHT,
                         ),
                       ),

@@ -32,7 +32,7 @@ class WidgetProfileHomeAxansConsultants extends StatelessWidget {
           child: Column(
             children: [
               const SizedBox(
-                height: 15,
+                height: 10,
               ),
               Padding(
                 padding: const EdgeInsets.only(
@@ -41,8 +41,11 @@ class WidgetProfileHomeAxansConsultants extends StatelessWidget {
                 child: SvgPicture.asset(
                   'assets/images/agant_profile.svg',
                   width: 24,
-                  height: 24,
+                  height: 29,
                 ),
+              ),
+              const SizedBox(
+                height: 5,
               ),
               const Padding(
                 padding: EdgeInsets.only(right: 15.0),
@@ -52,13 +55,16 @@ class WidgetProfileHomeAxansConsultants extends StatelessWidget {
                     Text(
                       'مشاورین املاک',
                       style: TextStyle(
-                        color: Color(0xFF626262),
+                        color: Color(0xFF303030),
                         fontSize: 18,
                         fontFamily: 'Aban Light',
                       ),
                     ),
                   ],
                 ),
+              ),
+              const SizedBox(
+                height: 5,
               ),
               const Padding(
                 padding: EdgeInsets.only(right: 15.0),
@@ -69,7 +75,7 @@ class WidgetProfileHomeAxansConsultants extends StatelessWidget {
                       'برترین های املاک',
                       style: TextStyle(
                         color: Color(0xFFA5A5A5),
-                        fontSize: 9,
+                        fontSize: 12,
                         fontFamily: MAIN_FONT_FAMILY_LIGHT,
                       ),
                     ),
@@ -99,7 +105,7 @@ class WidgetProfileHomeAxansConsultants extends StatelessWidget {
           child: Column(
             children: [
               const SizedBox(
-                height: 15,
+                height: 10,
               ),
               Padding(
                 padding: const EdgeInsets.only(
@@ -107,9 +113,12 @@ class WidgetProfileHomeAxansConsultants extends StatelessWidget {
                 ),
                 child: SvgPicture.asset(
                   'assets/images/Agancy_profile.svg',
-                  width: 24,
-                  height: 24,
+                  width: 27,
+                  height: 28,
                 ),
+              ),
+              const SizedBox(
+                height: 5,
               ),
               const Padding(
                 padding: EdgeInsets.only(right: 20.0),
@@ -119,13 +128,16 @@ class WidgetProfileHomeAxansConsultants extends StatelessWidget {
                     Text(
                       'آژانس املاک',
                       style: TextStyle(
-                        color: Color(0xFF626262),
+                        color: Color(0xFF303030),
                         fontSize: 18,
                         fontFamily: 'Aban Light',
                       ),
                     ),
                   ],
                 ),
+              ),
+              const SizedBox(
+                height: 5,
               ),
               const Padding(
                 padding: EdgeInsets.only(right: 20.0),
@@ -136,7 +148,7 @@ class WidgetProfileHomeAxansConsultants extends StatelessWidget {
                       'برترین های املاک',
                       style: TextStyle(
                         color: Color(0xFFA5A5A5),
-                        fontSize: 10,
+                        fontSize: 12,
                         fontFamily: MAIN_FONT_FAMILY_LIGHT,
                       ),
                     ),

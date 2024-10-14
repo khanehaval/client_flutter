@@ -125,8 +125,8 @@ Widget hamkar() {
                     height: 20,
                   ),
                   Container(
-                    width: Get.width / 2.4,
-                    height: 30,
+                    width: Get.width / 2.3,
+                    height: Get.height / 24,
                     decoration: ShapeDecoration(
                       color: Colors.white,
                       shape: RoundedRectangleBorder(
@@ -165,6 +165,9 @@ Widget hamkar() {
                     color: Color.fromRGBO(226, 226, 226, 1),
                   ),
                   const WidgetInformationRow(),
+                  const SizedBox(
+                    height: 20,
+                  ),
                   const WidgetVitrinMessageCall()
                 ],
               ),

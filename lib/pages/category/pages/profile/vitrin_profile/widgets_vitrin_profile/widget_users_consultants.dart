@@ -1,7 +1,9 @@
+import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:get/get_core/get_core.dart';
 
 class WidgetUsersConsultants extends StatefulWidget {
   @override
@@ -35,7 +37,7 @@ class _WidgetUsersConsultantsState extends State<WidgetUsersConsultants> {
         child: Container(
           width: double.infinity,
           height: _About_me_1.value
-              ? 400
+              ? 500
               : 50, // تغییر ارتفاع باکس بر اساس باز یا بسته بودن
           decoration: BoxDecoration(
             color: const Color.fromRGBO(250, 250, 250, 1),
@@ -59,13 +61,13 @@ class _WidgetUsersConsultantsState extends State<WidgetUsersConsultants> {
                               )
                             : SvgPicture.asset(
                                 _About_me_1.value
-                                    ? 'assets/images/edit and ok.svg'
+                                    ? 'assets/images/=gold.svg'
                                     : 'assets/images/Arrow_list_agency.svg',
                                 width: _About_me_1.value
                                     ? 30
                                     : 11, // سایز بزرگتر برای edit and ok
                                 height: _About_me_1.value
-                                    ? 25
+                                    ? 10
                                     : 14, // سایز بزرگتر برای edit and ok
                               )),
                     onPressed: () {
@@ -136,7 +138,46 @@ class _WidgetUsersConsultantsState extends State<WidgetUsersConsultants> {
                   ),
                 ],
               ),
-              if (_About_me_1.value) buildMahaleh(context),
+              if (_About_me_1.value)
+                Column(
+                  children: [
+                    buildMahaleh(context),
+                    buildMahaleh2(context),
+                    const SizedBox(
+                      height: 30,
+                    ),
+                    SizedBox(
+                      width: Get.width / 1.3,
+                      height: 60,
+                      child: DottedBorder(
+                        borderType: BorderType.RRect,
+                        color: const Color.fromRGBO(166, 166, 166, 1),
+                        strokeWidth: 0.5,
+                        radius: const Radius.circular(10),
+                        child: const Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              'اضافه کردن مشاور',
+                              style: TextStyle(
+                                  fontFamily: MAIN_FONT_FAMILY, fontSize: 12),
+                            ),
+                            SizedBox(
+                              width: 20,
+                            ),
+                            Center(
+                              child: Icon(
+                                Icons.add_circle_outline,
+                                size: 30,
+                                color: Color.fromRGBO(41, 111, 226, 1),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    )
+                  ],
+                ),
             ],
           ),
         ),
@@ -145,162 +186,325 @@ class _WidgetUsersConsultantsState extends State<WidgetUsersConsultants> {
   }
 
   Widget buildMahaleh(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    return Column(
       children: [
-        Transform(
-          transform: Matrix4.identity()
-            ..translate(20.0, 65.0)
-            ..rotateZ(-1.57),
-          child: Container(
-            width: 91,
-            height: 45,
-            decoration: ShapeDecoration(
-              color: Colors.white,
-              shape: RoundedRectangleBorder(
-                side: const BorderSide(width: 1, color: Color(0xFFF2F2F2)),
-                borderRadius: BorderRadius.circular(35),
-              ),
-              shadows: const [
-                BoxShadow(
-                  color: Color(0x11000000),
-                  blurRadius: 3.40,
-                  offset: Offset(-1, 1),
-                  spreadRadius: 0,
-                )
-              ],
-            ),
-            child: Row(
-              children: [
-                Container(
-                  child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        SvgPicture.asset(
-                          'assets/images/Frame refresh.svg',
-                        ),
-                        const SizedBox(width: 20),
-                        SvgPicture.asset(
-                          'assets/images/new_remove_profile.svg',
-                        ),
-                        Container(
-                          decoration: const BoxDecoration(
-                            boxShadow: [
-                              BoxShadow(
-                                color: Color(0x3F000000),
-                                blurRadius: 2,
-                                offset: Offset(0, 1),
-                                spreadRadius: 0,
-                              )
-                            ],
-                          ),
-                        ),
-                      ]),
-                ),
-              ],
-            ),
-          ),
-        ),
-        Container(
-          width: 250,
-          height: 85,
-          child: Stack(
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(right: 20.0, left: 10),
-                child: Container(
-                  width: 250,
-                  height: 85,
-                  decoration: BoxDecoration(
-                    boxShadow: const [
-                      BoxShadow(
-                        offset: Offset(0, 0),
-                        blurRadius: 3,
-                        color: Color.fromRGBO(0, 0, 0, 0.15),
-                      )
-                    ],
-                    borderRadius: BorderRadius.circular(15),
-                    color: Colors.white,
+        Row(
+          children: [
+            Transform(
+              transform: Matrix4.identity()
+                ..translate(20.0, 135.0)
+                ..rotateZ(-1.57),
+              child: Container(
+                width: 100,
+                height: 45,
+                decoration: ShapeDecoration(
+                  color: Colors.white,
+                  shape: RoundedRectangleBorder(
+                    side: const BorderSide(width: 1, color: Color(0xFFF2F2F2)),
+                    borderRadius: BorderRadius.circular(35),
                   ),
-                  child: Stack(
+                  shadows: const [
+                    BoxShadow(
+                      color: Color(0x11000000),
+                      blurRadius: 3.40,
+                      offset: Offset(-1, 1),
+                      spreadRadius: 0,
+                    )
+                  ],
+                ),
+                child: Row(
+                  children: [
+                    Container(
+                      child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            SvgPicture.asset(
+                              'assets/images/Frame refresh.svg',
+                            ),
+                            const SizedBox(width: 30),
+                            SvgPicture.asset(
+                              'assets/images/new_remove_profile.svg',
+                            ),
+                            Container(
+                              decoration: const BoxDecoration(
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Color(0x3F000000),
+                                    blurRadius: 2,
+                                    offset: Offset(0, 1),
+                                    spreadRadius: 0,
+                                  )
+                                ],
+                              ),
+                            ),
+                          ]),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            Container(
+              width: 250,
+              height: 85,
+              margin: const EdgeInsets.symmetric(
+                  horizontal: 20), // فاصله از کناره‌ها
+              decoration: BoxDecoration(
+                boxShadow: const [
+                  BoxShadow(
+                    offset: Offset(0, 0),
+                    blurRadius: 3,
+                    color: Color.fromRGBO(0, 0, 0, 0.15),
+                  )
+                ],
+                borderRadius: BorderRadius.circular(15),
+                color: Colors.white,
+              ),
+              child: Stack(
+                alignment: Alignment.center, // تراز کانتینر به مرکز
+                children: [
+                  Column(
                     children: [
-                      Column(
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          const SizedBox(
-                            height: 5,
+                          Padding(
+                            padding:
+                                const EdgeInsets.only(left: 20.0, bottom: 10),
+                            child: SvgPicture.asset(
+                                'assets/images/vitrinaxans.svg'),
                           ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          const Padding(
+                            padding: EdgeInsets.only(right: 5.0, bottom: 10),
+                            child: Text(
+                              'ویترین',
+                              style: TextStyle(
+                                fontFamily: MAIN_FONT_FAMILY,
+                                fontSize: 10,
+                              ),
+                            ),
+                          ),
+                          Stack(
                             children: [
                               Padding(
-                                padding: const EdgeInsets.only(
-                                    left: 20.0, bottom: 10),
-                                child: SvgPicture.asset(
-                                    'assets/images/vitrinaxans.svg'),
-                              ),
-                              const Padding(
                                 padding:
-                                    EdgeInsets.only(right: 5.0, bottom: 10),
-                                child: Text(
-                                  'ویترین',
-                                  style: TextStyle(
-                                      fontFamily: MAIN_FONT_FAMILY,
-                                      fontSize: 10),
+                                    const EdgeInsets.only(top: 10.0, right: 10),
+                                child: SvgPicture.asset(
+                                  "assets/images/consultant_list_moshaver.svg",
+                                  width: 55,
+                                  height: 55,
                                 ),
                               ),
-                              Stack(
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsets.only(
-                                        top: 10.0, right: 10),
-                                    child: SvgPicture.asset(
-                                      "assets/images/consultant_list_moshaver.svg",
-                                      width: 50,
-                                      height: 50,
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(
-                                        left: 76.9, top: 12.5),
-                                    child: Image.asset(
-                                      'assets/images/Ellipse 222.png',
-                                      width: 40,
-                                      height: 40,
-                                    ),
-                                  ),
-                                ],
+                              Positioned(
+                                left:
+                                    84, // تنظیم موقعیت برای نزدیکی بیشتر به داخل باکس
+                                top: 12, // کمی بالاتر از حالت قبلی
+                                child: Image.asset(
+                                  'assets/images/Ellipse 222.png',
+                                  width: 45,
+                                  height: 45,
+                                ),
                               ),
                             ],
                           ),
                         ],
                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 50.0, left: 22),
-                        child: Row(
+                    ],
+                  ),
+                  Positioned(
+                    bottom: 15, // فاصله از پایین
+                    left: 25, // فاصله از چپ
+                    child: Row(
+                      children: [
+                        SvgPicture.asset(
+                          'assets/images/locationaxans.svg',
+                          width: 20,
+                          height: 20,
+                        ),
+                        const SizedBox(
+                          width: 12,
+                        ),
+                        const Text(
+                          'تـهـران',
+                          style: TextStyle(
+                            fontFamily: MAIN_FONT_FAMILY,
+                            fontSize: 10,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        )
+      ],
+    );
+  }
+
+  Widget buildMahaleh2(BuildContext context) {
+    return Column(
+      children: [
+        Row(
+          children: [
+            Transform(
+              transform: Matrix4.identity()
+                ..translate(20.0, 135.0)
+                ..rotateZ(-1.57),
+              child: Container(
+                width: 100,
+                height: 45,
+                decoration: ShapeDecoration(
+                  color: Colors.white,
+                  shape: RoundedRectangleBorder(
+                    side: const BorderSide(width: 1, color: Color(0xFFF2F2F2)),
+                    borderRadius: BorderRadius.circular(35),
+                  ),
+                  shadows: const [
+                    BoxShadow(
+                      color: Color(0x11000000),
+                      blurRadius: 3.40,
+                      offset: Offset(-1, 1),
+                      spreadRadius: 0,
+                    )
+                  ],
+                ),
+                child: Row(
+                  children: [
+                    Container(
+                      child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             SvgPicture.asset(
-                              'assets/images/locationaxans.svg',
-                              width: 20,
-                              height: 20,
+                              'assets/images/Frame refresh.svg',
                             ),
-                            const SizedBox(
-                              width: 7,
+                            const SizedBox(width: 30),
+                            SvgPicture.asset(
+                              'assets/images/new_remove_profile.svg',
                             ),
-                            const Text(
-                              'تـهـران',
+                            Container(
+                              decoration: const BoxDecoration(
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Color(0x3F000000),
+                                    blurRadius: 2,
+                                    offset: Offset(0, 1),
+                                    spreadRadius: 0,
+                                  )
+                                ],
+                              ),
+                            ),
+                          ]),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            Container(
+              width: 250,
+              height: 85,
+              margin: const EdgeInsets.symmetric(
+                  horizontal: 20), // فاصله از کناره‌ها
+              decoration: BoxDecoration(
+                boxShadow: const [
+                  BoxShadow(
+                    offset: Offset(0, 0),
+                    blurRadius: 3,
+                    color: Color.fromRGBO(0, 0, 0, 0.15),
+                  )
+                ],
+                borderRadius: BorderRadius.circular(15),
+                color: Colors.white,
+              ),
+              child: Stack(
+                alignment: Alignment.center, // تراز کانتینر به مرکز
+                children: [
+                  Column(
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Padding(
+                            padding:
+                                const EdgeInsets.only(left: 20.0, bottom: 10),
+                            child: SvgPicture.asset(
+                                'assets/images/vitrinaxans.svg'),
+                          ),
+                          const Padding(
+                            padding: EdgeInsets.only(right: 5.0, bottom: 10),
+                            child: Text(
+                              'ویترین',
                               style: TextStyle(
-                                  fontFamily: MAIN_FONT_FAMILY, fontSize: 10),
+                                fontFamily: MAIN_FONT_FAMILY,
+                                fontSize: 10,
+                              ),
                             ),
-                          ],
-                        ),
+                          ),
+                          Stack(
+                            children: [
+                              Padding(
+                                padding:
+                                    const EdgeInsets.only(top: 10.0, right: 10),
+                                child: SvgPicture.asset(
+                                  "assets/images/consultant_list_moshaver.svg",
+                                  width: 55,
+                                  height: 55,
+                                ),
+                              ),
+                              Positioned(
+                                left:
+                                    84, // تنظیم موقعیت برای نزدیکی بیشتر به داخل باکس
+                                top: 12, // کمی بالاتر از حالت قبلی
+                                child: Image.asset(
+                                  'assets/images/Ellipse 222.png',
+                                  width: 45,
+                                  height: 45,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
                       ),
                     ],
                   ),
-                ),
+                  Positioned(
+                    bottom: 15, // فاصله از پایین
+                    left: 25, // فاصله از چپ
+                    child: Row(
+                      children: [
+                        SvgPicture.asset(
+                          'assets/images/locationaxans.svg',
+                          width: 20,
+                          height: 20,
+                        ),
+                        const SizedBox(
+                          width: 12,
+                        ),
+                        const Text(
+                          'تـهـران',
+                          style: TextStyle(
+                            fontFamily: MAIN_FONT_FAMILY,
+                            fontSize: 10,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
               ),
-            ],
-          ),
-        ),
+            ),
+          ],
+        )
       ],
     );
   }

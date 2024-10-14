@@ -54,7 +54,7 @@ class _AboutMeWidgetState extends State<WidgetAboutVitrin> {
                                 'assets/images/check_icon.svg') // آیکون چک
                             : SvgPicture.asset(
                                 _isExpanded.value
-                                    ? 'assets/images/=.svg'
+                                    ? 'assets/images/=gold.svg'
                                     : 'assets/images/Arrow_list_agency.svg',
                                 width: _isExpanded.value ? 25 : 11,
                                 height: _isExpanded.value ? 10 : 14,

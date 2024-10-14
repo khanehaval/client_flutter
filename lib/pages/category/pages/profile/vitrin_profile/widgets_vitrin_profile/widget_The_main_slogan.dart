@@ -58,7 +58,7 @@ class _WidgetTheMainSloganState extends State<WidgetTheMainSlogan> {
                                 'assets/images/check_icon.svg') // آیکون چک وقتی تایپ شده
                             : SvgPicture.asset(
                                 _isExpanded.value
-                                    ? 'assets/images/=.svg'
+                                    ? 'assets/images/=gold.svg'
                                     : 'assets/images/Arrow_list_agency.svg',
                                 width: _isExpanded.value
                                     ? 30

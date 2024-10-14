@@ -41,9 +41,8 @@ class ProfileNotification extends StatelessWidget {
                 padding: const EdgeInsets.all(20.0),
                 child: Container(
                   width: Get.width / 1.1,
-                  height: 175,
                   padding:
-                      const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                      const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                   decoration: ShapeDecoration(
                     color: Colors.white,
                     shape: RoundedRectangleBorder(

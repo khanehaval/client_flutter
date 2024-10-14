@@ -56,7 +56,7 @@ class _WidgetTaskManagementColleaguesState
                         icon: SvgPicture.asset(
                           _getIconAsset(), // دریافت آیکون مناسب
                           width: 20,
-                          height: _About_me_1.value ? 25 : 20,
+                          height: _About_me_1.value ? 25 : 15,
                         ),
                         onPressed: () {
                           if (!_isChecked.value && !_isDeleted.value) {

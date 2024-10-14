@@ -34,7 +34,7 @@ class WidgetNameFamily extends StatelessWidget {
               textAlign: TextAlign.right,
               style: TextStyle(
                 color: Color.fromRGBO(48, 48, 48, 1),
-                fontSize: 12,
+                fontSize: 13,
                 fontFamily: MAIN_FONT_FAMILY, // تغییر به فونت مورد نظر
               ),
             ),
@@ -44,7 +44,7 @@ class WidgetNameFamily extends StatelessWidget {
               decoration: const ShapeDecoration(
                 shape: RoundedRectangleBorder(
                   side: BorderSide(
-                    width: 0.5,
+                    width: 0.0,
                     strokeAlign: BorderSide.strokeAlignCenter,
                     color: Color(0xFFE2E2E2),
                   ),
@@ -57,13 +57,11 @@ class WidgetNameFamily extends StatelessWidget {
               child: const TextField(
                 textAlign: TextAlign.right,
                 decoration: InputDecoration(
-                  contentPadding:
-                      EdgeInsets.symmetric(vertical: 0, horizontal: 8),
                   isDense: true,
                   border: InputBorder.none,
                   hintText: 'وارد کنید',
                   hintStyle: TextStyle(
-                    fontSize: 11,
+                    fontSize: 12,
                     color: Color(0xFF626262),
                     fontFamily: MAIN_FONT_FAMILY,
                   ),

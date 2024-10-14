@@ -295,47 +295,66 @@ class ProfileDetail extends StatelessWidget {
               SizedBox(
                 height: 30,
               ),
-              Padding(
-                padding: EdgeInsets.only(right: 15),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Expanded(
-                      child: Divider(
-                        indent: 20,
-                        endIndent: 15,
-                        color: Color.fromRGBO(226, 226, 226, 1),
-                        thickness: 1,
-                      ),
-                    ),
-                    SizedBox(
-                      width: 5,
-                    ),
-                    Text(
-                      'تغییر رمز عبور',
-                      textAlign: TextAlign.justify,
-                      style: TextStyle(
-                        color: Color.fromRGBO(159, 159, 159, 1),
-                        fontSize: 14,
-                        fontFamily: MAIN_FONT_FAMILY,
-                      ),
-                    ),
-                    SizedBox(width: 8),
-                  ],
-                ),
-              ),
+              // Padding(
+              //   padding: EdgeInsets.only(right: 15),
+              //   child: Row(
+              //     mainAxisAlignment: MainAxisAlignment.end,
+              //     children: [
+              //       Expanded(
+              //         child: Divider(
+              //           indent: 20,
+              //           endIndent: 15,
+              //           color: Color.fromRGBO(226, 226, 226, 1),
+              //           thickness: 1,
+              //         ),
+              //       ),
+              //       SizedBox(
+              //         width: 5,
+              //       ),
+              //       Text(
+              //         'تغییر رمز عبور',
+              //         textAlign: TextAlign.justify,
+              //         style: TextStyle(
+              //           color: Color.fromRGBO(159, 159, 159, 1),
+              //           fontSize: 14,
+              //           fontFamily: MAIN_FONT_FAMILY,
+              //         ),
+              //       ),
+              //       SizedBox(width: 8),
+              //     ],
+              //   ),
+              // ),
               SizedBox(
                 height: 30,
               ),
-              WidgetPasswordNow(),
-              SizedBox(
-                height: 20,
+              // WidgetPasswordNow(),
+              // SizedBox(
+              //   height: 20,
+              // ),
+              // WidgetNewPassword(),
+              // SizedBox(
+              //   height: 20,
+              // ),
+              // WidgetTryPassword(),
+              // SizedBox(
+              //   height: 20,
+              // ),
+              Padding(
+                padding: EdgeInsets.only(right: 20.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Text(
+                      'وارد کردن کد اعتبار سنجی',
+                      style: TextStyle(
+                        fontFamily: MAIN_FONT_FAMILY,
+                        fontSize: 12,
+                        color: Color(0xFF303030),
+                      ),
+                    ),
+                  ],
+                ),
               ),
-              WidgetNewPassword(),
-              SizedBox(
-                height: 20,
-              ),
-              WidgetTryPassword(),
               SizedBox(
                 height: 20,
               ),

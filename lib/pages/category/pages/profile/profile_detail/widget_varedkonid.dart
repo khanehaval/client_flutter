@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 
@@ -57,7 +58,7 @@ class WidgetVaredkonid extends StatelessWidget {
             ),
           ),
           Container(
-            width: Get.width / 2.4,
+            width: Get.width / 3.5,
             height: 41,
             decoration: ShapeDecoration(
               color: Colors.white,
@@ -87,7 +88,8 @@ class WidgetVaredkonid extends StatelessWidget {
                 )
               ],
             ),
-          )
+          ),
+          SvgPicture.asset('assets/images/refresh_icon_profile_detail.svg')
         ],
       ),
     );

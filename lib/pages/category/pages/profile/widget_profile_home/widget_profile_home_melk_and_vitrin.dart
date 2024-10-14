@@ -41,7 +41,7 @@ class WidgetProfileHomeMelkAndVitrin extends StatelessWidget {
             child: Column(
               children: [
                 const SizedBox(
-                  height: 15,
+                  height: 10,
                 ),
                 Padding(
                   padding: const EdgeInsets.only(
@@ -53,6 +53,9 @@ class WidgetProfileHomeMelkAndVitrin extends StatelessWidget {
                     height: 24,
                   ),
                 ),
+                const SizedBox(
+                  height: 5,
+                ),
                 const Padding(
                   padding: EdgeInsets.only(right: 15.0),
                   child: Row(
@@ -61,13 +64,16 @@ class WidgetProfileHomeMelkAndVitrin extends StatelessWidget {
                       Text(
                         'ویترین',
                         style: TextStyle(
-                          color: Color(0xFF626262),
+                          color: Color(0xFF303030),
                           fontSize: 18,
                           fontFamily: 'Aban Light',
                         ),
                       ),
                     ],
                   ),
+                ),
+                const SizedBox(
+                  height: 5,
                 ),
                 const Padding(
                   padding: EdgeInsets.only(right: 15.0),
@@ -78,7 +84,7 @@ class WidgetProfileHomeMelkAndVitrin extends StatelessWidget {
                         'در ویترین دیده شوید',
                         style: TextStyle(
                           color: Color(0xFFA5A5A5),
-                          fontSize: 9,
+                          fontSize: 12,
                           fontFamily: MAIN_FONT_FAMILY_LIGHT,
                         ),
                       ),
@@ -115,7 +121,7 @@ class WidgetProfileHomeMelkAndVitrin extends StatelessWidget {
             child: Column(
               children: [
                 const SizedBox(
-                  height: 15,
+                  height: 10,
                 ),
                 Padding(
                   padding: const EdgeInsets.only(
@@ -127,6 +133,9 @@ class WidgetProfileHomeMelkAndVitrin extends StatelessWidget {
                     height: 24,
                   ),
                 ),
+                const SizedBox(
+                  height: 5,
+                ),
                 const Padding(
                   padding: EdgeInsets.only(right: 20.0),
                   child: Row(
@@ -135,13 +144,16 @@ class WidgetProfileHomeMelkAndVitrin extends StatelessWidget {
                       Text(
                         'درخواست ملک',
                         style: TextStyle(
-                          color: Color(0xFF626262),
+                          color: Color(0xFF303030),
                           fontSize: 18,
                           fontFamily: 'Aban Light',
                         ),
                       ),
                     ],
                   ),
+                ),
+                const SizedBox(
+                  height: 5,
                 ),
                 const Padding(
                   padding: EdgeInsets.only(right: 20.0),
@@ -152,7 +164,7 @@ class WidgetProfileHomeMelkAndVitrin extends StatelessWidget {
                         'درخواست های ملک',
                         style: TextStyle(
                           color: Color(0xFFA5A5A5),
-                          fontSize: 10,
+                          fontSize: 12,
                           fontFamily: MAIN_FONT_FAMILY_LIGHT,
                         ),
                       ),

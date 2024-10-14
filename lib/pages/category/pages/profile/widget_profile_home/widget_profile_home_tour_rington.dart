@@ -39,7 +39,7 @@ class WidgetProfileHomeTourRington extends StatelessWidget {
             child: Column(
               children: [
                 const SizedBox(
-                  height: 15,
+                  height: 10,
                 ),
                 Padding(
                   padding: const EdgeInsets.only(
@@ -51,6 +51,9 @@ class WidgetProfileHomeTourRington extends StatelessWidget {
                     height: 24,
                   ),
                 ),
+                const SizedBox(
+                  height: 5,
+                ),
                 const Padding(
                   padding: EdgeInsets.only(right: 15.0),
                   child: Row(
@@ -59,7 +62,7 @@ class WidgetProfileHomeTourRington extends StatelessWidget {
                       Text(
                         'اطلاع رسانی',
                         style: TextStyle(
-                          color: Color(0xFF626262),
+                          color: Color(0xFF303030),
                           fontSize: 18,
                           fontFamily: 'Aban Light',
                         ),
@@ -67,16 +70,19 @@ class WidgetProfileHomeTourRington extends StatelessWidget {
                     ],
                   ),
                 ),
+                const SizedBox(
+                  height: 5,
+                ),
                 const Padding(
                   padding: EdgeInsets.only(right: 15.0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       Text(
-                        'ذخیره جستجو و اطلاع رسانی ملک',
+                        'جستجو و اطلاع رسانی ',
                         style: TextStyle(
                           color: Color(0xFFA5A5A5),
-                          fontSize: 9,
+                          fontSize: 12,
                           fontFamily: MAIN_FONT_FAMILY_LIGHT,
                         ),
                       ),
@@ -107,7 +113,7 @@ class WidgetProfileHomeTourRington extends StatelessWidget {
           child: Column(
             children: [
               const SizedBox(
-                height: 15,
+                height: 10,
               ),
               Padding(
                 padding: const EdgeInsets.only(
@@ -119,6 +125,9 @@ class WidgetProfileHomeTourRington extends StatelessWidget {
                   height: 24,
                 ),
               ),
+              const SizedBox(
+                height: 5,
+              ),
               const Padding(
                 padding: EdgeInsets.only(right: 20.0),
                 child: Row(
@@ -127,13 +136,16 @@ class WidgetProfileHomeTourRington extends StatelessWidget {
                     Text(
                       'تورها',
                       style: TextStyle(
-                        color: Color(0xFF626262),
+                        color: Color(0xFF303030),
                         fontSize: 18,
                         fontFamily: 'Aban Light',
                       ),
                     ),
                   ],
                 ),
+              ),
+              const SizedBox(
+                height: 5,
               ),
               const Padding(
                 padding: EdgeInsets.only(right: 20.0),
@@ -144,7 +156,7 @@ class WidgetProfileHomeTourRington extends StatelessWidget {
                       'تور آموزشی خانه اول',
                       style: TextStyle(
                         color: Color(0xFFA5A5A5),
-                        fontSize: 10,
+                        fontSize: 12,
                         fontFamily: MAIN_FONT_FAMILY_LIGHT,
                       ),
                     ),
