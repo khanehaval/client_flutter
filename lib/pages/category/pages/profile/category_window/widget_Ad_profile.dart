@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
+import 'package:flutter_inner_shadow/flutter_inner_shadow.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -29,7 +30,6 @@ class WidgetAdProfile extends StatelessWidget {
           ],
         ),
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Column(
               children: [
@@ -41,33 +41,37 @@ class WidgetAdProfile extends StatelessWidget {
                     Container(
                       width: 65,
                       height: 13,
-                      child: Row(
-                        children: [
-                          Container(
-                            padding: const EdgeInsets.symmetric(horizontal: 5),
-                            decoration: ShapeDecoration(
-                              color: Colors.white,
-                              shape: RoundedRectangleBorder(
-                                side: const BorderSide(
-                                    width: 0.50, color: Color(0xFFA6A6A6)),
-                                borderRadius: BorderRadius.circular(5),
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 5.0),
+                        child: Row(
+                          children: [
+                            Container(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 1),
+                              decoration: ShapeDecoration(
+                                color: Colors.white,
+                                shape: RoundedRectangleBorder(
+                                  side: const BorderSide(
+                                      width: 0.50, color: Color(0xFFA6A6A6)),
+                                  borderRadius: BorderRadius.circular(5),
+                                ),
+                              ),
+                              child: const Text(
+                                'خراسان شمالی',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  color: Color(0xFF636363),
+                                  fontSize: 8,
+                                  fontFamily: MAIN_FONT_FAMILY_UltraLight,
+                                ),
                               ),
                             ),
-                            child: const Text(
-                              'خراسان شمالی',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                color: Color(0xFF636363),
-                                fontSize: 8,
-                                fontFamily: MAIN_FONT_FAMILY_UltraLight,
-                              ),
-                            ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                     Container(
-                      width: Get.width / 10,
+                      width: Get.width / 12,
                       height: 13,
                       child: Row(
                         children: [
@@ -95,15 +99,15 @@ class WidgetAdProfile extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(
-                      width: 50,
+                      width: 70,
                     ),
                     SvgPicture.asset(
                       "assets/images/total price.svg",
-                      width: 40,
-                      height: 18,
+                      width: 30,
+                      height: 13,
                     ),
                     const SizedBox(
-                      width: 10,
+                      width: 30,
                     ),
                   ],
                 ),
@@ -113,13 +117,13 @@ class WidgetAdProfile extends StatelessWidget {
                   child: Row(
                     children: [
                       Container(
-                        width: Get.width / 9,
+                        width: Get.width / 14,
                         height: 13,
                         child: Row(
                           children: [
                             Container(
                               padding:
-                                  const EdgeInsets.symmetric(horizontal: 8),
+                                  const EdgeInsets.symmetric(horizontal: 2),
                               decoration: ShapeDecoration(
                                 color: Colors.white,
                                 shape: RoundedRectangleBorder(
@@ -133,7 +137,7 @@ class WidgetAdProfile extends StatelessWidget {
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                   color: Color(0xFF636363),
-                                  fontSize: 8,
+                                  fontSize: 7,
                                   fontFamily: MAIN_FONT_FAMILY_UltraLight,
                                 ),
                               ),
@@ -171,15 +175,24 @@ class WidgetAdProfile extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(
-                        width: 40,
+                        width: 30,
                       ),
-                      const Text(
-                        '12.000.000.000',
-                        style: TextStyle(
-                            fontSize: 10,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black,
-                            fontFamily: MAIN_FONT_FAMILY),
+                      Row(
+                        children: [
+                          SvgPicture.asset(
+                            "assets/images/toman_profile.svg",
+                            height: 15,
+                            width: 15,
+                          ),
+                          const Text(
+                            '12.000.000.000',
+                            style: TextStyle(
+                                fontSize: 9,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black,
+                                fontFamily: MAIN_FONT_FAMILY),
+                          ),
+                        ],
                       ),
                     ],
                   ),
@@ -187,19 +200,24 @@ class WidgetAdProfile extends StatelessWidget {
                 const SizedBox(
                   height: 10,
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 5.0, right: 10),
+                InnerShadow(
+                  shadows: [
+                    Shadow(
+                      color: Colors.black.withOpacity(0.15),
+                      blurRadius: 3,
+                      offset: const Offset(2, 2),
+                    ),
+                  ],
                   child: Container(
-                    width: Get.width / 1.9,
-                    height: 54,
-                    clipBehavior: Clip.antiAlias,
+                    width: Get.width / 1.89,
+                    height: 51,
                     decoration: ShapeDecoration(
                       gradient: const LinearGradient(
                         begin: Alignment(0.99, 0.10),
                         end: Alignment(-0.99, -0.1),
                         colors: [
                           Color(0xFFF8F8F8),
-                          Color.fromARGB(255, 255, 253, 253)
+                          Color(0xFFFFFDFD),
                         ],
                       ),
                       shape: RoundedRectangleBorder(
@@ -212,147 +230,77 @@ class WidgetAdProfile extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Container(
-                          height: double.infinity,
-                          child: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Container(
-                                width: 50,
-                                height: 24,
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 5, vertical: 3),
-                                decoration: ShapeDecoration(
-                                  shape: RoundedRectangleBorder(
-                                    side: const BorderSide(
-                                        width: 0.70, color: Color(0xFFEAEAEA)),
-                                    borderRadius: BorderRadius.circular(5),
-                                  ),
-                                ),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceAround,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    SvgPicture.asset(
-                                      'assets/images/request_see.svg',
-                                      width: 15,
-                                      height: 15,
-                                    ),
-                                    const SizedBox(
-                                      width: 2,
-                                    ),
-                                    const Text(
-                                      '3',
-                                      textAlign: TextAlign.end,
-                                      style: TextStyle(
-                                        color: Colors.black,
-                                        fontSize: 10,
-                                        fontFamily: MAIN_FONT_FAMILY,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              const SizedBox(
-                                width: 5,
-                              ),
-                              Container(
-                                width: 50,
-                                height: 24,
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 5, vertical: 3),
-                                decoration: ShapeDecoration(
-                                  shape: RoundedRectangleBorder(
-                                    side: const BorderSide(
-                                        width: 0.70, color: Color(0xFFEAEAEA)),
-                                    borderRadius: BorderRadius.circular(5),
-                                  ),
-                                ),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceAround,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    SvgPicture.asset(
-                                      'assets/images/see_profile.svg',
-                                      width: 15,
-                                      height: 15,
-                                    ),
-                                    const SizedBox(
-                                      width: 2,
-                                    ),
-                                    const Text(
-                                      '32',
-                                      textAlign: TextAlign.end,
-                                      style: TextStyle(
-                                        color: Colors.black,
-                                        fontSize: 10,
-                                        fontFamily: MAIN_FONT_FAMILY,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              const SizedBox(width: 12),
-                              Container(
-                                width: 50,
-                                height: 24,
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 5, vertical: 3),
-                                decoration: ShapeDecoration(
-                                  shape: RoundedRectangleBorder(
-                                    side: const BorderSide(
-                                        width: 0.70, color: Color(0xFFEAEAEA)),
-                                    borderRadius: BorderRadius.circular(5),
-                                  ),
-                                ),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceAround,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    SvgPicture.asset(
-                                      'assets/images/favoraite_profile.svg',
-                                      width: 15,
-                                      height: 15,
-                                    ),
-                                    const SizedBox(
-                                      width: 2,
-                                    ),
-                                    const Text(
-                                      '15',
-                                      textAlign: TextAlign.end,
-                                      style: TextStyle(
-                                        color: Colors.black,
-                                        fontSize: 10,
-                                        fontFamily: MAIN_FONT_FAMILY,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
+                        _buildInfoContainer(
+                            'assets/images/request_see.svg', '3'),
+                        const SizedBox(width: 5),
+                        _buildInfoContainer(
+                            'assets/images/see_profile.svg', '32'),
+                        const SizedBox(width: 12),
+                        _buildInfoContainer(
+                            'assets/images/favoraite_profile.svg', '15'),
                       ],
                     ),
                   ),
-                )
+                ),
               ],
             ),
-            Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-              Image.asset(
-                'assets/images/Ellipse 519.png',
-                width: 110,
-                height: 110,
-              ),
-            ])
+            Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  InnerShadow(
+                    shadows: [
+                      Shadow(
+                        color: Colors.black.withOpacity(0.15),
+                        blurRadius: 3,
+                        offset: const Offset(2, 2),
+                      ),
+                    ],
+                    child: Image.asset(
+                      'assets/images/Ellipse 519.png',
+                      width: Get.width / 4.5,
+                      height: 85,
+                    ),
+                  ),
+                ])
           ],
         ),
       ),
     );
   }
+}
+
+Widget _buildInfoContainer(String assetPath, String text) {
+  return Container(
+    width: 50,
+    height: 24,
+    padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 3),
+    decoration: ShapeDecoration(
+      shape: RoundedRectangleBorder(
+        side: const BorderSide(width: 0.70, color: Color(0xFFEAEAEA)),
+        borderRadius: BorderRadius.circular(5),
+      ),
+    ),
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        SvgPicture.asset(
+          assetPath,
+          width: 15,
+          height: 15,
+        ),
+        const SizedBox(width: 2),
+        Text(
+          text,
+          textAlign: TextAlign.end,
+          style: const TextStyle(
+            color: Colors.black,
+            fontSize: 10,
+            fontFamily: MAIN_FONT_FAMILY,
+          ),
+        ),
+      ],
+    ),
+  );
 }

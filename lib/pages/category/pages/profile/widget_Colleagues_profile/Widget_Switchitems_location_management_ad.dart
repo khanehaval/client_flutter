@@ -40,7 +40,7 @@ class _WidgetSwitchitemsLocationManagementAdState
     return Padding(
       padding: const EdgeInsets.all(20.0),
       child: Container(
-        height: Get.height / 3,
+        height: Get.height / 4,
         decoration: BoxDecoration(
           border: Border.all(width: 1, color: Colors.black54), // تعریف بُردر
           borderRadius: BorderRadius.circular(10),

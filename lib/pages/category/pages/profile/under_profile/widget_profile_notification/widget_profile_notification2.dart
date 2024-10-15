@@ -90,7 +90,7 @@ class WidgetProfileNotification2 extends StatelessWidget {
               ),
               Container(
                 width: Get.width / 1.12,
-                height: 44,
+                height: 41,
                 decoration: ShapeDecoration(
                   gradient: LinearGradient(colors: GRADIANT_COLOR1),
                   shape: RoundedRectangleBorder(
@@ -99,9 +99,9 @@ class WidgetProfileNotification2 extends StatelessWidget {
                   ),
                 ),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.end,
                   crossAxisAlignment: CrossAxisAlignment.center,
-                  children: const [
+                  children: [
                     Text(
                       'ذخیره جستجو',
                       textAlign: TextAlign.center,
@@ -109,6 +109,37 @@ class WidgetProfileNotification2 extends StatelessWidget {
                         color: Color.fromRGBO(255, 255, 255, 1),
                         fontSize: 12,
                         fontFamily: MAIN_FONT_FAMILY,
+                      ),
+                    ),
+                    SizedBox(
+                      width: 100,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(right: 10.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Container(
+                            width: 17.93,
+                            height: 18,
+                            decoration: ShapeDecoration(
+                              color: Color(0xFFFDFDFD),
+                              shape: OvalBorder(),
+                            ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Text(
+                                  '2',
+                                  style: TextStyle(
+                                    fontFamily: MAIN_FONT_FAMILY,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                   ],

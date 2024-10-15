@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
+import 'package:flutter_inner_shadow/flutter_inner_shadow.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
@@ -208,45 +209,54 @@ class ProfileAdsSeen extends StatelessWidget {
                     children: [
                       Row(
                         children: [
-                          Container(
-                            width: Get.width / 1.9,
-                            height: 54,
-                            decoration: ShapeDecoration(
-                              gradient: const LinearGradient(
-                                begin: Alignment(0.99, 0.10),
-                                end: Alignment(-0.99, -0.1),
-                                colors: [
-                                  Color(0xFFF8F8F8),
-                                  Color.fromARGB(255, 255, 253, 253),
+                          InnerShadow(
+                            shadows: [
+                              Shadow(
+                                color: Colors.black.withOpacity(0.15),
+                                blurRadius: 3,
+                                offset: const Offset(2, 2),
+                              ),
+                            ],
+                            child: Container(
+                              width: Get.width / 1.9,
+                              height: 54,
+                              decoration: ShapeDecoration(
+                                gradient: const LinearGradient(
+                                  begin: Alignment(0.99, 0.10),
+                                  end: Alignment(-0.99, -0.1),
+                                  colors: [
+                                    Color(0xFFF8F8F8),
+                                    Color.fromARGB(255, 255, 253, 253),
+                                  ],
+                                ),
+                                shape: RoundedRectangleBorder(
+                                  side: const BorderSide(
+                                    width: 1,
+                                    color: Color(0xFFE8E8E8),
+                                  ),
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                              ),
+                              child: Row(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(left: 10.0),
+                                    child: SvgPicture.asset(
+                                      'assets/images/delete.svg',
+                                      width: 15,
+                                      height: 15,
+                                    ),
+                                  ),
+                                  const SizedBox(
+                                    width: 30,
+                                  ),
+                                  const Text(
+                                    'دیـده شــده',
+                                    style: TextStyle(
+                                        fontFamily: 'Aban Bold', fontSize: 15),
+                                  ),
                                 ],
                               ),
-                              shape: RoundedRectangleBorder(
-                                side: const BorderSide(
-                                  width: 1,
-                                  color: Color(0xFFE8E8E8),
-                                ),
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                            ),
-                            child: Row(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.only(left: 10.0),
-                                  child: SvgPicture.asset(
-                                    'assets/images/delete.svg',
-                                    width: 15,
-                                    height: 15,
-                                  ),
-                                ),
-                                const SizedBox(
-                                  width: 30,
-                                ),
-                                const Text(
-                                  'دیـده شــده',
-                                  style: TextStyle(
-                                      fontFamily: 'Aban Bold', fontSize: 15),
-                                ),
-                              ],
                             ),
                           ),
                         ],
@@ -265,10 +275,19 @@ class ProfileAdsSeen extends StatelessWidget {
                 ],
               ),
               Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-                Image.asset(
-                  'assets/images/Ellipse 519.png',
-                  width: 110,
-                  height: 110,
+                InnerShadow(
+                  shadows: [
+                    Shadow(
+                      color: Colors.black.withOpacity(0.15),
+                      blurRadius: 3,
+                      offset: const Offset(2, 2),
+                    ),
+                  ],
+                  child: Image.asset(
+                    'assets/images/Ellipse 519.png',
+                    width: 110,
+                    height: 110,
+                  ),
                 ),
               ])
             ],
@@ -466,45 +485,54 @@ class ProfileAdsSeen extends StatelessWidget {
                     children: [
                       Row(
                         children: [
-                          Container(
-                            width: 202,
-                            height: 54,
-                            decoration: ShapeDecoration(
-                              gradient: const LinearGradient(
-                                begin: Alignment(0.99, 0.10),
-                                end: Alignment(-0.99, -0.1),
-                                colors: [
-                                  Color(0xFFF8F8F8),
-                                  Color.fromARGB(255, 255, 253, 253),
+                          InnerShadow(
+                            shadows: [
+                              Shadow(
+                                color: Colors.black.withOpacity(0.15),
+                                blurRadius: 3,
+                                offset: const Offset(2, 2),
+                              ),
+                            ],
+                            child: Container(
+                              width: 202,
+                              height: 54,
+                              decoration: ShapeDecoration(
+                                gradient: const LinearGradient(
+                                  begin: Alignment(0.99, 0.10),
+                                  end: Alignment(-0.99, -0.1),
+                                  colors: [
+                                    Color(0xFFF8F8F8),
+                                    Color.fromARGB(255, 255, 253, 253),
+                                  ],
+                                ),
+                                shape: RoundedRectangleBorder(
+                                  side: const BorderSide(
+                                    width: 1,
+                                    color: Color(0xFFE8E8E8),
+                                  ),
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                              ),
+                              child: Row(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(left: 10.0),
+                                    child: SvgPicture.asset(
+                                      'assets/images/delete.svg',
+                                      width: 15,
+                                      height: 15,
+                                    ),
+                                  ),
+                                  const SizedBox(
+                                    width: 30,
+                                  ),
+                                  const Text(
+                                    'دیـده شــده',
+                                    style: TextStyle(
+                                        fontFamily: 'Aban Bold', fontSize: 15),
+                                  ),
                                 ],
                               ),
-                              shape: RoundedRectangleBorder(
-                                side: const BorderSide(
-                                  width: 1,
-                                  color: Color(0xFFE8E8E8),
-                                ),
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                            ),
-                            child: Row(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.only(left: 10.0),
-                                  child: SvgPicture.asset(
-                                    'assets/images/delete.svg',
-                                    width: 15,
-                                    height: 15,
-                                  ),
-                                ),
-                                const SizedBox(
-                                  width: 30,
-                                ),
-                                const Text(
-                                  'دیـده شــده',
-                                  style: TextStyle(
-                                      fontFamily: 'Aban Bold', fontSize: 15),
-                                ),
-                              ],
                             ),
                           ),
                         ],
@@ -523,10 +551,19 @@ class ProfileAdsSeen extends StatelessWidget {
                 ],
               ),
               Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-                Image.asset(
-                  'assets/images/Ellipse 519.png',
-                  width: 110,
-                  height: 110,
+                InnerShadow(
+                  shadows: [
+                    Shadow(
+                      color: Colors.black.withOpacity(0.15),
+                      blurRadius: 3,
+                      offset: const Offset(2, 2),
+                    ),
+                  ],
+                  child: Image.asset(
+                    'assets/images/Ellipse 519.png',
+                    width: 110,
+                    height: 110,
+                  ),
                 ),
               ])
             ],

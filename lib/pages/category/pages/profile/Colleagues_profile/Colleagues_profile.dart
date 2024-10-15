@@ -7,6 +7,7 @@ import 'package:flutter_application_1/pages/category/pages/profile/widget_Collea
 import 'package:flutter_application_1/pages/category/pages/profile/widget_Colleagues_profile/widget_management_ad.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
+import 'package:flutter_inner_shadow/flutter_inner_shadow.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
@@ -85,91 +86,94 @@ Widget hamkar() {
     child: Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        SingleChildScrollView(
-          child: Container(
-            width: Get.width / 1.1,
-            height: 390,
-            decoration: ShapeDecoration(
-              gradient: const LinearGradient(colors: GRADIANT_COLOR_Colleagues),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10),
-              ),
-              shadows: const [
-                BoxShadow(
-                  color: Color(0x26000000),
-                  blurRadius: 3.0,
-                  offset: Offset(2, 2),
+        InnerShadow(
+          child: SingleChildScrollView(
+            child: Container(
+              width: Get.width / 1.1,
+              height: 390,
+              decoration: ShapeDecoration(
+                gradient:
+                    const LinearGradient(colors: GRADIANT_COLOR_Colleagues),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
                 ),
-              ],
-            ),
-            child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  const SizedBox(
-                    height: 10,
+                shadows: const [
+                  BoxShadow(
+                    color: Color(0x26000000),
+                    blurRadius: 3.0,
+                    offset: Offset(2, 2),
                   ),
-                  WidgetTaskManagementColleagues(),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  WidgetManagementAd(),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  const Divider(
-                    indent: 25,
-                    endIndent: 25,
-                    color: Color.fromRGBO(226, 226, 226, 1),
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  Container(
-                    width: Get.width / 2.3,
-                    height: Get.height / 24,
-                    decoration: ShapeDecoration(
-                      color: Colors.white,
-                      shape: RoundedRectangleBorder(
-                        side: const BorderSide(
-                            width: 1, color: Color(0xFF9C4040)),
-                        borderRadius: BorderRadius.circular(15),
-                      ),
-                      shadows: const [
-                        BoxShadow(
-                          color: Color(0x7F9C4040),
-                          blurRadius: 7,
-                          offset: Offset(0, 1),
-                        )
-                      ],
-                    ),
-                    child: const Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          'لغو همکاری',
-                          style: TextStyle(
-                            color: Color(0xFF626262),
-                            fontSize: 12,
-                            fontFamily: MAIN_FONT_FAMILY,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  const Divider(
-                    indent: 25,
-                    endIndent: 25,
-                    color: Color.fromRGBO(226, 226, 226, 1),
-                  ),
-                  const WidgetInformationRow(),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  const WidgetVitrinMessageCall()
                 ],
+              ),
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    WidgetTaskManagementColleagues(),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    WidgetManagementAd(),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    const Divider(
+                      indent: 25,
+                      endIndent: 25,
+                      color: Color.fromRGBO(226, 226, 226, 1),
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    Container(
+                      width: Get.width / 2.3,
+                      height: Get.height / 24,
+                      decoration: ShapeDecoration(
+                        color: Colors.white,
+                        shape: RoundedRectangleBorder(
+                          side: const BorderSide(
+                              width: 1, color: Color(0xFF9C4040)),
+                          borderRadius: BorderRadius.circular(15),
+                        ),
+                        shadows: const [
+                          BoxShadow(
+                            color: Color(0x7F9C4040),
+                            blurRadius: 7,
+                            offset: Offset(0, 1),
+                          )
+                        ],
+                      ),
+                      child: const Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            'لغو همکاری',
+                            style: TextStyle(
+                              color: Color(0xFF626262),
+                              fontSize: 12,
+                              fontFamily: MAIN_FONT_FAMILY,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    const Divider(
+                      indent: 25,
+                      endIndent: 25,
+                      color: Color.fromRGBO(226, 226, 226, 1),
+                    ),
+                    const WidgetInformationRow(),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    const WidgetVitrinMessageCall()
+                  ],
+                ),
               ),
             ),
           ),

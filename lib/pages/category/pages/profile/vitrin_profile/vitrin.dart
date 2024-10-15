@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/pages/category/pages/profile/profile_detail/profile_detail.dart';
 import 'package:flutter_application_1/pages/category/pages/profile/vitrin_profile/edit_vitrin.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
@@ -497,36 +498,44 @@ class Vitrin extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.center,
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              Container(
-                                width: 145,
-                                height: 32,
-                                decoration: ShapeDecoration(
-                                  color: Colors.white,
-                                  shape: RoundedRectangleBorder(
-                                    side: const BorderSide(
-                                        width: 1, color: Color(0xFF4C8CED)),
-                                    borderRadius: BorderRadius.circular(15),
-                                  ),
-                                  shadows: const [
-                                    BoxShadow(
-                                      color: Color(0x7F36D859),
-                                      blurRadius: 4,
-                                      offset: Offset(0, 0),
-                                    )
-                                  ],
-                                ),
-                                child: const Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text(
-                                      'ویرایش اطلاعات',
-                                      style: TextStyle(
-                                        color: Color(0xFF636363),
-                                        fontSize: 12,
-                                        fontFamily: MAIN_FONT_FAMILY,
-                                      ),
+                              GestureDetector(
+                                onTap: () {
+                                  Get.to(() => const ProfileDetail(),
+                                      duration:
+                                          const Duration(milliseconds: 300),
+                                      transition: Transition.leftToRight);
+                                },
+                                child: Container(
+                                  width: 145,
+                                  height: 32,
+                                  decoration: ShapeDecoration(
+                                    color: Colors.white,
+                                    shape: RoundedRectangleBorder(
+                                      side: const BorderSide(
+                                          width: 1, color: Color(0xFF4C8CED)),
+                                      borderRadius: BorderRadius.circular(15),
                                     ),
-                                  ],
+                                    shadows: const [
+                                      BoxShadow(
+                                        color: Color(0x7F36D859),
+                                        blurRadius: 4,
+                                        offset: Offset(0, 0),
+                                      )
+                                    ],
+                                  ),
+                                  child: const Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                        'ویرایش اطلاعات',
+                                        style: TextStyle(
+                                          color: Color(0xFF636363),
+                                          fontSize: 12,
+                                          fontFamily: MAIN_FONT_FAMILY,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
                             ],
