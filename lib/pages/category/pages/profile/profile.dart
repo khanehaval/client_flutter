@@ -50,11 +50,10 @@ class _ProfilePageState extends State<ProfilePage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.transparent,
+      backgroundColor: Colors.white,
       body: Stack(
         children: [
           // محتوای دیگر صفحه مثل تصویر زمینه
-
           // اضافه کردن انیمیشن کشویی به کانتینر پروفایل
           SlideTransition(
             position: _offsetAnimation,
@@ -81,7 +80,7 @@ class _ProfilePageState extends State<ProfilePage>
               padding: const EdgeInsets.all(8.0),
               child: SizedBox(
                 height: Get.height / 1.35,
-                width: Get.width / 1.7,
+                width: Get.width / 1.8,
                 child: Material(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(10),
@@ -105,8 +104,9 @@ class _ProfilePageState extends State<ProfilePage>
                       Expanded(child: _buildMenuItems()),
                       const SizedBox(height: 20),
                       const Divider(color: Color.fromRGBO(226, 226, 226, 1)),
-                      const SizedBox(height: 10),
+                      const SizedBox(height: 20),
                       _buildFooter(),
+                      const SizedBox(height: 20),
                     ],
                   ),
                 ),
@@ -194,7 +194,6 @@ class _ProfilePageState extends State<ProfilePage>
 
   Widget _buildMenuItems() {
     return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
         InkWell(
           onTap: () {
@@ -203,7 +202,7 @@ class _ProfilePageState extends State<ProfilePage>
           },
           child: _item('assets/images/Home.svg', "خانه"),
         ),
-        const SizedBox(height: 5),
+        const SizedBox(height: 10),
         InkWell(
           onTap: () {
             Get.to(() => const ProfileMyDesk(),
@@ -211,9 +210,9 @@ class _ProfilePageState extends State<ProfilePage>
           },
           child: _item('assets/images/profile_category.svg', "میزکار"),
         ),
-        const SizedBox(height: 5),
+        const SizedBox(height: 10),
         _item('assets/images/profile_message.svg', "پیام ها"),
-        const SizedBox(height: 5),
+        const SizedBox(height: 10),
         Padding(
           padding: const EdgeInsets.only(right: 5.0),
           child: InkWell(
@@ -224,14 +223,14 @@ class _ProfilePageState extends State<ProfilePage>
             child: _item('assets/images/profile_moshavere.svg', "همکاران"),
           ),
         ),
-        const SizedBox(height: 5),
+        const SizedBox(height: 10),
         InkWell(
           onTap: () {
             Get.to(() => const Vitrin(), transition: Transition.leftToRight);
           },
           child: _item('assets/images/vitrin_profile_icon_off.svg', "ویترین"),
         ),
-        const SizedBox(height: 5),
+        const SizedBox(height: 10),
         InkWell(
           onTap: () {
             Get.to(() => const CategoryProfile(index: 0),
@@ -240,51 +239,51 @@ class _ProfilePageState extends State<ProfilePage>
           child: _item(
               'assets/images/Agahi_man_profile_home_off.svg', "آگهی های من"),
         ),
-        const SizedBox(height: 5),
+        const SizedBox(height: 10),
         InkWell(
           onTap: () {
             Get.to(() => const ProfileNotification(),
                 transition: Transition.leftToRight);
           },
-          child: _item('assets/images/rington_off.svg', "اطلاع رسانی"),
+          child: Padding(
+            padding: const EdgeInsets.only(right: 5.0),
+            child: _item('assets/images/rington_off.svg', "اطلاع رسانی"),
+          ),
         ),
       ],
     );
   }
 
   Widget _buildFooter() {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Container(
-            width: 35,
-            height: 35,
-            decoration: ShapeDecoration(
-              color: Colors.white,
-              shape: RoundedRectangleBorder(
-                side: const BorderSide(
-                    width: 1, color: Color.fromRGBO(166, 166, 166, 1)),
-                borderRadius: BorderRadius.circular(10),
-              ),
-            ),
-            child: const Icon(Icons.add_circle_outline,
-                color: Color.fromRGBO(99, 99, 99, 1)),
-          ),
-          const SizedBox(width: 20),
-          GestureDetector(
-            onTap: () {
-              Get.offAll(() => const Register());
-            },
-            child: SvgPicture.asset(
-              "assets/images/exit.svg",
-              width: 30,
-              height: 37,
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Container(
+          width: 35,
+          height: 35,
+          decoration: ShapeDecoration(
+            color: Colors.white,
+            shape: RoundedRectangleBorder(
+              side: const BorderSide(
+                  width: 1, color: Color.fromRGBO(166, 166, 166, 1)),
+              borderRadius: BorderRadius.circular(10),
             ),
           ),
-        ],
-      ),
+          child: const Icon(Icons.add_circle_outline,
+              color: Color.fromRGBO(99, 99, 99, 1)),
+        ),
+        const SizedBox(width: 20),
+        GestureDetector(
+          onTap: () {
+            Get.offAll(() => const Register());
+          },
+          child: SvgPicture.asset(
+            "assets/images/exit.svg",
+            width: 30,
+            height: 37,
+          ),
+        ),
+      ],
     );
   }
 
@@ -300,7 +299,7 @@ class _ProfilePageState extends State<ProfilePage>
             textAlign: TextAlign.right,
             textDirection: TextDirection.rtl,
             style: const TextStyle(
-                fontFamily: MAIN_FONT_FAMILY_MEDIUM, fontSize: 13),
+                fontFamily: MAIN_FONT_FAMILY_MEDIUM, fontSize: 12),
           ),
         ),
         const SizedBox(width: 20),
@@ -313,252 +312,3 @@ class _ProfilePageState extends State<ProfilePage>
     );
   }
 }
-
-
-// class BuildProfile extends StatelessWidget {
-//   final _show_item_1 = false.obs;
-
-//   BuildProfile({
-//     super.key,
-//   });
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Obx(
-//       () => _show_item_1.isTrue
-//           ? Column(
-//               children: [
-//                 Container(
-//                   decoration: BoxDecoration(
-//                     borderRadius: BorderRadius.circular(10),
-//                     // border: Border.all(
-//                     //   width: _selected.value == index ? 2 : 1.5,
-//                     // )
-//                   ),
-//                   child: Container(
-//                     decoration: BoxDecoration(
-//                       color: Colors.white,
-//                       borderRadius: BorderRadius.circular(10),
-//                       border: Border.all(
-//                         color: const Color.fromRGBO(0, 0, 0, 0.25),
-//                       ),
-//                     ),
-//                   ),
-//                 ),
-//                 const SizedBox(
-//                   height: 20,
-//                 ),
-//                 Padding(
-//                   padding: const EdgeInsets.only(left: 10, top: 40, right: 10),
-//                   child: Column(
-//                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-//                     children: [
-//                       Stack(
-//                         children: [
-//                           Align(
-//                             alignment: Alignment.centerLeft,
-//                             child: Container(
-//                               width: 70,
-//                               height: 70.45,
-//                               decoration: BoxDecoration(
-//                                 border:
-//                                     Border.all(width: 1, color: Colors.white),
-//                                 boxShadow: [
-//                                   BoxShadow(
-//                                     color: Colors.black.withOpacity(0.1),
-//                                   )
-//                                 ],
-//                                 shape: BoxShape.circle,
-//                               ),
-//                               child: SizedBox(
-//                                 width: 28,
-//                                 height: 24,
-//                                 child: Image.asset(
-//                                   'assets/images/logo-fa-photoshop.png',
-//                                   fit: BoxFit.contain,
-//                                 ),
-//                               ),
-//                             ),
-//                           ),
-//                           Positioned(
-//                             bottom: 40,
-//                             left: 50,
-//                             child: Container(
-//                               width: 25,
-//                               height: 25,
-//                               decoration: BoxDecoration(
-//                                   shape: BoxShape.circle,
-//                                   border:
-//                                       Border.all(width: 1, color: Colors.white),
-//                                   color: Colors.white),
-//                               child: const Icon(Icons.edit),
-//                             ),
-//                           ),
-//                         ],
-//                       ),
-//                       const Divider(
-//                         indent: 20,
-//                       ),
-//                       const SizedBox(
-//                         height: 30,
-//                       ),
-//                       Row(
-//                         mainAxisAlignment: MainAxisAlignment.end,
-//                         children: [
-//                           SvgPicture.asset(
-//                             'assets/images/profile_category.svg',
-//                             width: 19,
-//                             height: 19,
-//                           ),
-//                         ],
-//                       ),
-//                       const SizedBox(
-//                         height: 30,
-//                       ),
-//                       Row(
-//                         mainAxisAlignment: MainAxisAlignment.end,
-//                         children: [
-//                           SvgPicture.asset(
-//                             'assets/images/profile_message.svg',
-//                             width: 19,
-//                             height: 19,
-//                           ),
-//                         ],
-//                       ),
-//                       const SizedBox(
-//                         height: 30,
-//                       ),
-//                       Row(
-//                         mainAxisAlignment: MainAxisAlignment.end,
-//                         children: [
-//                           SvgPicture.asset(
-//                             'assets/images/profile_moshavere.svg',
-//                             width: 19,
-//                             height: 19,
-//                           ),
-//                         ],
-//                       ),
-//                       const SizedBox(
-//                         height: 30,
-//                       ),
-//                       Row(
-//                         mainAxisAlignment: MainAxisAlignment.end,
-//                         children: [
-//                           SvgPicture.asset(
-//                             'assets/images/profile_sabt aghahi.svg',
-//                             width: 19,
-//                             height: 19,
-//                           ),
-//                         ],
-//                       ),
-//                       const SizedBox(
-//                         height: 30,
-//                       ),
-//                       Row(
-//                         mainAxisAlignment: MainAxisAlignment.end,
-//                         children: [
-//                           SvgPicture.asset(
-//                             'assets/images/profile_vahed.svg',
-//                             width: 19,
-//                             height: 19,
-//                           ),
-//                         ],
-//                       ),
-//                       const SizedBox(
-//                         height: 30,
-//                       ),
-//                       Row(
-//                         mainAxisAlignment: MainAxisAlignment.end,
-//                         children: [
-//                           SvgPicture.asset(
-//                             'assets/images/profile_setting.svg',
-//                             width: 19,
-//                             height: 19,
-//                           ),
-//                         ],
-//                       ),
-//                       const SizedBox(
-//                         height: 30,
-//                       ),
-//                       const Divider(
-//                         indent: 20,
-//                       ),
-//                       const SizedBox(
-//                         height: 30,
-//                       ),
-//                       Padding(
-//                         padding: const EdgeInsets.only(left: 20),
-//                         child: Container(
-//                           height: 41,
-//                           width: 372,
-//                           child: TextField(
-//                             readOnly: true,
-//                             focusNode: FocusNode(canRequestFocus: false),
-//                             decoration: InputDecoration(
-//                               hintText: 'انتخاب نشده',
-//                               hintStyle: const TextStyle(
-//                                   color: Color(0xFF626262),
-//                                   fontSize: 16,
-//                                   fontWeight: FontWeight.w400),
-//                               border: OutlineInputBorder(
-//                                 borderRadius: BorderRadius.circular(20),
-//                               ),
-//                               prefixIcon: IconButton(
-//                                 icon: SvgPicture.asset(
-//                                     "assets/images/profile_Add.svg"),
-//                                 onPressed: () {},
-//                               ),
-//                             ),
-//                           ),
-//                         ),
-//                       ),
-//                       const SizedBox(
-//                         height: 25,
-//                       ),
-//                       Padding(
-//                         padding: const EdgeInsets.only(left: 20),
-//                         child: Container(
-//                           height: 41,
-//                           width: 372,
-//                           child: TextField(
-//                             readOnly: true,
-//                             focusNode: FocusNode(canRequestFocus: false),
-//                             decoration: InputDecoration(
-//                               hintText: 'انتخاب نشده',
-//                               hintStyle: const TextStyle(
-//                                   color: Color(0xFF626262),
-//                                   fontSize: 16,
-//                                   fontWeight: FontWeight.w400),
-//                               border: OutlineInputBorder(
-//                                 borderRadius: BorderRadius.circular(20),
-//                               ),
-//                               prefixIcon: IconButton(
-//                                 icon: SvgPicture.asset(
-//                                     "assets/images/profile_inbox.svg"),
-//                                 onPressed: () {},
-//                               ),
-//                             ),
-//                           ),
-//                         ),
-//                       ),
-//                       const SizedBox(
-//                         height: 10,
-//                       ),
-//                       Padding(
-//                         padding: const EdgeInsets.only(left: 20),
-//                         child: IconButton(
-//                           onPressed: () {
-//                             Get.off(() => Register());
-//                           },
-//                           icon: SvgPicture.asset("assets/images/exit.svg"),
-//                         ),
-//                       )
-//                     ],
-//                   ),
-//                 ),
-//               ],
-//             )
-//           : const SizedBox.shrink(),
-//     );
-//   }
-// }

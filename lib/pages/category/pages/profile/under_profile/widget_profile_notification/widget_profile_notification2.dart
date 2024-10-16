@@ -152,7 +152,7 @@ class WidgetProfileNotification2 extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Padding(
-                    padding: const EdgeInsets.only(left: 10.0, right: 10),
+                    padding: const EdgeInsets.only(left: 20.0, right: 10),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.start,

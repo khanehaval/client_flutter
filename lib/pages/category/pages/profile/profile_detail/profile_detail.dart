@@ -34,7 +34,7 @@ class ProfileDetail extends StatelessWidget {
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
-          child: const Column(
+          child: Column(
             children: [
               SizedBox(
                 height: 20,
@@ -51,7 +51,7 @@ class ProfileDetail extends StatelessWidget {
               SizedBox(
                 height: 20,
               ),
-              Padding(
+              const Padding(
                 padding: EdgeInsets.only(right: 20),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,

@@ -3,21 +3,19 @@ import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
-class WidgetSwitchitemsLocationManagementAd extends StatefulWidget {
+class WidgetSwitchItemsSkiil extends StatefulWidget {
   final Function(List<String>) onSelected;
   final List<String> items;
 
-  const WidgetSwitchitemsLocationManagementAd(
+  const WidgetSwitchItemsSkiil(
       {required this.onSelected, required this.items, Key? key})
       : super(key: key);
 
   @override
-  _WidgetSwitchitemsLocationManagementAdState createState() =>
-      _WidgetSwitchitemsLocationManagementAdState();
+  _WidgetSwitchItemsSkiilState createState() => _WidgetSwitchItemsSkiilState();
 }
 
-class _WidgetSwitchitemsLocationManagementAdState
-    extends State<WidgetSwitchitemsLocationManagementAd> {
+class _WidgetSwitchItemsSkiilState extends State<WidgetSwitchItemsSkiil> {
   final selectedItems = <String>[].obs;
 
   @override
@@ -33,7 +31,7 @@ class _WidgetSwitchitemsLocationManagementAdState
     return Padding(
       padding: const EdgeInsets.all(20.0),
       child: Container(
-        height: Get.height / 4,
+        height: Get.height / 3,
         decoration: BoxDecoration(
           border: Border.all(width: 1, color: Colors.black54), // تعریف بُردر
           borderRadius: BorderRadius.circular(10),

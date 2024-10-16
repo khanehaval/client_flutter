@@ -1,12 +1,20 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
+import 'package:flutter_application_1/pages/category/shared/date.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 
-class WidgetFothornameBirthday extends StatelessWidget {
-  const WidgetFothornameBirthday({super.key});
+class WidgetFothornameBirthday extends StatefulWidget {
+  WidgetFothornameBirthday({super.key});
+
+  @override
+  State<WidgetFothornameBirthday> createState() =>
+      _WidgetFothornameBirthdayState();
+}
+
+class _WidgetFothornameBirthdayState extends State<WidgetFothornameBirthday> {
+  final TextEditingController _dateController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -77,37 +85,49 @@ class WidgetFothornameBirthday extends StatelessWidget {
                 height: 5,
               ),
               Expanded(
-                child: Container(
-                  width: 140,
-                  child: TextField(
-                    textAlign: TextAlign.right,
-                    decoration: InputDecoration(
-                        isDense: true,
-                        border: InputBorder.none,
-                        hintText: 'وارد کنید',
-                        hintStyle: const TextStyle(
-                          fontSize: 12,
+                  child: Container(
+                      width: 140,
+                      child: TextField(
+                        controller:
+                            _dateController, // Assign the controller to the TextField
+                        textAlign: TextAlign.right,
+                        decoration: InputDecoration(
+                          isDense: true,
+                          border: InputBorder.none,
+                          hintText: 'وارد کنید',
+                          hintStyle: const TextStyle(
+                            fontSize: 12,
+                            color: Color(0xFF626262),
+                            fontFamily: MAIN_FONT_FAMILY,
+                          ),
+                          prefixIcon: Expanded(
+                            child: Padding(
+                              padding:
+                                  const EdgeInsets.only(bottom: 5.0, right: 30),
+                              child: GestureDetector(
+                                onTap: () {
+                                  // Call the persianDataPicker when the calendar icon is tapped
+                                  persianDataPicker((selectedDate) {
+                                    setState(() {
+                                      // Update the TextField with the selected date
+                                      _dateController.text = selectedDate;
+                                    });
+                                  });
+                                },
+                                child: SvgPicture.asset(
+                                  'assets/images/calender_birthday.svg',
+                                  width: 20,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                        style: const TextStyle(
+                          fontSize: 11,
                           color: Color(0xFF626262),
                           fontFamily: MAIN_FONT_FAMILY,
                         ),
-                        prefixIcon: Expanded(
-                          child: Padding(
-                            padding:
-                                const EdgeInsets.only(bottom: 5.0, right: 30),
-                            child: SvgPicture.asset(
-                              'assets/images/calender_birthday.svg',
-                              width: 20,
-                            ),
-                          ),
-                        )),
-                    style: const TextStyle(
-                      fontSize: 11,
-                      color: Color(0xFF626262),
-                      fontFamily: MAIN_FONT_FAMILY,
-                    ),
-                  ),
-                ),
-              ),
+                      )))
             ],
           ),
         ),

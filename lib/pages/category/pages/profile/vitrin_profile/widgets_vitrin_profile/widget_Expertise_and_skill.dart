@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/pages/category/pages/profile/vitrin_profile/widgets_vitrin_profile/Widget_Switch_items_skiil.dart';
 import 'package:flutter_application_1/pages/category/pages/profile/widget_Colleagues_profile/Widget_Switchitems_location_management_ad.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_svg/svg.dart';
@@ -161,7 +162,7 @@ class _WidgetExpertiseAndSkillState extends State<WidgetExpertiseAndSkill> {
   }
 
   Widget buildExpertiseAndSkill(BuildContext context) {
-    return WidgetSwitchitemsLocationManagementAd(
+    return WidgetSwitchItemsSkiil(
       onSelected: (selectedItems) {
         if (selectedItems.isNotEmpty) {
           selectedText.value = selectedItems.first; // ذخیره متن انتخاب شده

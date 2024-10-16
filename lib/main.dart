@@ -8,6 +8,8 @@ import 'package:flutter_application_1/db/entities/customer.dart';
 import 'package:flutter_application_1/db/entities/estate.dart';
 import 'package:flutter_application_1/db/entities/user.dart';
 import 'package:flutter_application_1/db/entities/user_type.dart';
+import 'package:flutter_application_1/pages/category/pages/Advertisements/Advertisements.dart';
+import 'package:flutter_application_1/pages/category/pages/Advertisements/map/adv_map.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/intro_screen.dart';
 import 'package:flutter_application_1/pages/login_secondly_page.dart';
@@ -73,12 +75,11 @@ class _MyAppState extends State<MyApp> {
             future: _userRepo.isLogin(),
             builder: (c, s) {
               if (s.hasData && s.data != null && s.data!) {
-                return LoginSecondlyPage();
+                return Advertisements();
               } else {
                 if (s.connectionState == ConnectionState.active ||
                     s.connectionState == ConnectionState.done) {
-                  return const LoginSecondlyPage();
-                  // sliderWidget();
+                  return sliderWidget();
                 }
                 return Container();
               }

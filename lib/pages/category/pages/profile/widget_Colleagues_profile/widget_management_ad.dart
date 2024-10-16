@@ -11,20 +11,29 @@ class WidgetManagementAd extends StatefulWidget {
 }
 
 class _WidgetManagementAdState extends State<WidgetManagementAd> {
-  final RxBool _About_me_1 = false.obs; // وضعیت باز یا بسته بودن باکس
-  final RxBool _isTyping = false.obs; // وضعیت تایپ کردن
+  final RxBool _isExpanded = false.obs; // وضعیت باز یا بسته بودن باکس
   final TextEditingController _textController =
       TextEditingController(); // کنترلر برای TextField
-  final RxBool _isChecked = false.obs; // وضعیت نشان دادن آیکون چک
   final RxString selectedText = ''.obs; // متن انتخاب شده
+  final RxBool _isChecked = false.obs; // وضعیت نشان دادن آیکون چک
   final RxBool _isDeleted = false.obs; // وضعیت نشان دادن آیکون delete
 
   @override
   void initState() {
     super.initState();
     _textController.addListener(() {
-      _isTyping.value = _textController.text.isNotEmpty;
+      if (_textController.text.isNotEmpty) {
+        selectedText.value = _textController.text; // متن انتخاب شده
+      } else {
+        selectedText.value = ''; // در صورتی که متن خالی باشد
+      }
     });
+  }
+
+  @override
+  void dispose() {
+    _textController.dispose(); // Dispose controller
+    super.dispose();
   }
 
   @override
@@ -40,56 +49,15 @@ class _WidgetManagementAdState extends State<WidgetManagementAd> {
           child: SingleChildScrollView(
             child: Container(
               width: Get.width / 1.3,
-              height: _About_me_1.value ? 360 : 50,
+              height: _isExpanded.value ? 355 : 50,
               decoration: BoxDecoration(
                 color: const Color.fromRGBO(253, 253, 253, 1),
                 borderRadius: BorderRadius.circular(15),
               ),
               child: Column(
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      IconButton(
-                        icon: SvgPicture.asset(
-                          _getIconAsset(), // دریافت آیکون مناسب
-                          width: 20,
-                          height: _About_me_1.value ? 20 : 15,
-                        ),
-                        onPressed: () {
-                          if (!_isChecked.value && !_isDeleted.value) {
-                            // وقتی روی آیکون فلش پایین کلیک شد
-                            _isChecked.value = true; // نمایش آیکون چک
-                            _About_me_1.value = true; // باز کردن باکس
-                          } else if (_isChecked.value && !_isDeleted.value) {
-                            // وقتی آیکون چک زده شد
-                            _isDeleted.value = true; // نمایش آیکون delete
-                            _About_me_1.value = false; // بستن باکس
-                          } else if (_isDeleted.value) {
-                            // وقتی آیکون delete زده شد
-                            _resetState(); // بازگشت به حالت اولیه
-                          }
-                        },
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(right: 10.0),
-                        child: Text(
-                          selectedText.value.isNotEmpty
-                              ? selectedText.value // نمایش متن انتخاب شده
-                              : 'مدیریت آگهی',
-                          textAlign: TextAlign.right,
-                          style: const TextStyle(
-                            color: Color(0xFF303030),
-                            fontSize: 12,
-                            fontFamily: MAIN_FONT_FAMILY,
-                          ),
-                        ),
-                      )
-                    ],
-                  ),
-                  if (_About_me_1.value) ...[
-                    buildMahaleh(context),
-                  ],
+                  buildHeader(),
+                  if (_isExpanded.value) buildMahaleh(context),
                 ],
               ),
             ),
@@ -99,22 +67,78 @@ class _WidgetManagementAdState extends State<WidgetManagementAd> {
     );
   }
 
+  Widget buildHeader() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        IconButton(
+          icon: SvgPicture.asset(
+            _getIconAsset(),
+            width: _getIconSize(),
+            height: _getIconSize(),
+          ),
+          onPressed: () {
+            // مدیریت وضعیت آیکون و باکس
+            if (!_isChecked.value && !_isDeleted.value) {
+              _isChecked.value = true; // نمایش آیکون چک
+              _isExpanded.value = true; // باز کردن باکس
+            } else if (_isChecked.value && !_isDeleted.value) {
+              _isDeleted.value = true; // نمایش آیکون delete
+              _isExpanded.value = false; // بستن باکس
+            } else if (_isDeleted.value) {
+              _resetState(); // بازگشت به حالت اولیه
+            }
+          },
+        ),
+        Padding(
+          padding: const EdgeInsets.only(right: 10.0),
+          child: Text(
+            selectedText.value.isNotEmpty
+                ? selectedText.value // نمایش متن انتخاب شده
+                : 'مدیریت آگهی',
+            textAlign: TextAlign.right,
+            style: const TextStyle(
+              color: Color(0xFF303030),
+              fontSize: 12,
+              fontFamily: MAIN_FONT_FAMILY,
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
   void _resetState() {
     // بازگشت به حالت اولیه
     _isChecked.value = false; // آیکون چک را غیرفعال می‌کند
     _isDeleted.value = false; // آیکون حذف را غیرفعال می‌کند
     selectedText.value = ''; // متن انتخاب شده را پاک می‌کند
-    _About_me_1.value = false; // باکس را می‌بندد
+    _isExpanded.value = false; // باکس را می‌بندد
   }
 
   String _getIconAsset() {
     // تغییر آیکون بر اساس وضعیت
     if (_isDeleted.value) {
-      return 'assets/images/delete.svg'; // آیکون delete بعد از زدن چک
-    } else if (_isChecked.value) {
-      return 'assets/images/ok_Colleagues.svg'; // آیکون چک بعد از باز شدن باکس
+      return 'assets/images/edit_and_ok.svg'; // آیکون ادیت بعد از زدن چک
+    } else if (_isChecked.value && selectedText.value.isNotEmpty) {
+      return 'assets/images/check_icon.svg'; // آیکون چک بعد از انتخاب آیتم
+    } else if (_isChecked.value && selectedText.value.isEmpty) {
+      return 'assets/images/=gold.svg'; // آیکون ویرایش زمانی که چک زده شده ولی متنی انتخاب نشده
     }
-    return 'assets/images/down.svg'; // آیکون فلش پایین در حالت عادی
+    return 'assets/images/Arrow_list_agency.svg'; // آیکون فلش پایین در حالت عادی
+  }
+
+  double _getIconSize() {
+    // تعیین اندازه آیکون بر اساس وضعیت
+    if (_isDeleted.value) {
+      return 15; // اندازه بزرگتر برای آیکون delete
+    }
+    if (_isChecked.value) {
+      return selectedText.value.isNotEmpty
+          ? 15
+          : 10; // اندازه برای چک یا ویرایش
+    }
+    return 15; // اندازه پیش فرض برای حالت عادی
   }
 
   Widget buildMahaleh(BuildContext context) {

@@ -18,14 +18,15 @@ class Messages extends StatelessWidget {
         future: downloadData(),
         builder: (BuildContext, AsyncSnapshot<String> snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(
+            return const Center(
               child: Text('p;ease wait its loading...'),
             );
           } else {
-            if (snapshot.hasError)
+            if (snapshot.hasError) {
               return Center(child: Text('error:${snapshot.error}'));
-            else
+            } else {
               return Center(child: Text('${snapshot.data}'));
+            }
           }
         });
   }
