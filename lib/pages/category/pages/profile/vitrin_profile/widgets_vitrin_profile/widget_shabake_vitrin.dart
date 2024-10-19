@@ -146,7 +146,7 @@ class _WidgetShabakeVitrinState extends State<WidgetShabakeVitrin> {
 
   Widget buildMahaleh(BuildContext context) {
     return Container(
-      height: 41,
+      height: 70,
       width: MediaQuery.of(context).size.width / 1.23,
       child: TextField(
         style: const TextStyle(
@@ -156,10 +156,11 @@ class _WidgetShabakeVitrinState extends State<WidgetShabakeVitrin> {
         controller: _textController,
         textAlign: TextAlign.right,
         decoration: InputDecoration(
-          hintText: 'تایپ کنید',
+          hintText:
+              'https://www.instagram.com/khanehaval_best            : برای مثال',
           hintStyle: const TextStyle(
             color: Color.fromRGBO(99, 99, 99, 1),
-            fontSize: 13,
+            fontSize: 8,
             fontFamily: MAIN_FONT_FAMILY_MEDIUM,
           ),
           border: OutlineInputBorder(

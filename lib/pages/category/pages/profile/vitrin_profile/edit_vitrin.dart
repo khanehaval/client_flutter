@@ -9,6 +9,7 @@ import 'package:flutter_application_1/pages/category/pages/profile/vitrin_profil
 import 'package:flutter_application_1/pages/category/pages/profile/vitrin_profile/widgets_vitrin_profile/widget_moarefi_targert.dart';
 import 'package:flutter_application_1/pages/category/pages/profile/vitrin_profile/widgets_vitrin_profile/widget_name_axans.dart';
 import 'package:flutter_application_1/pages/category/pages/profile/vitrin_profile/widgets_vitrin_profile/widget_photo_profile_vitrin.dart';
+import 'package:flutter_application_1/pages/category/pages/profile/vitrin_profile/widgets_vitrin_profile/widget_shabake_vitrin.dart';
 import 'package:flutter_application_1/pages/category/pages/profile/vitrin_profile/widgets_vitrin_profile/widget_users_consultants.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
@@ -198,9 +199,7 @@ class EditVitrin extends StatelessWidget {
             ),
             Expanded(
               child: ListView(
-                padding: const EdgeInsets.symmetric(vertical: 20.0),
                 children: [
-                  const SizedBox(height: 20),
                   WidgetInformationAxans(),
                   const SizedBox(height: 20),
                   WidgetExpertiseAndSkill(),
@@ -214,6 +213,8 @@ class EditVitrin extends StatelessWidget {
                   WidgetNameAxans(),
                   const SizedBox(height: 20),
                   WidgetLinkAddress(),
+                  // const SizedBox(height: 20),
+                  // WidgetShabakeVitrin(),
                   const SizedBox(height: 20),
                   WidgetPhotoProfileVitrin(),
                   const SizedBox(height: 20),
