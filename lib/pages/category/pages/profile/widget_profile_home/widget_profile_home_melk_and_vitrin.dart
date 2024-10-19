@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/pages/category/pages/profile/under_profile/req_melk_profile.dart';
+import 'package:flutter_application_1/pages/category/pages/profile/under_profile/req_melk/req_melk_profile.dart';
 import 'package:flutter_application_1/pages/category/pages/profile/vitrin_profile/vitrin.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_svg/svg.dart';

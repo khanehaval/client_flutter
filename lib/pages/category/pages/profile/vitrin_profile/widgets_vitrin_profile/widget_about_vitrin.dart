@@ -15,13 +15,16 @@ class _AboutMeWidgetState extends State<WidgetAboutVitrin> {
       TextEditingController(); // کنترلر برای TextField
   final RxString _typedText = 'درباره من'.obs; // متن نمایش داده شده
   final RxBool _isChecked = false.obs; // وضعیت نشان دادن آیکون چک
+  final RxInt _charCount = 0.obs; // تعداد کاراکترهای تایپ شده
+  final int _maxChars = 180; // حداکثر تعداد کاراکتر
 
   @override
   void initState() {
     super.initState();
-    // لیسنر برای تشخیص شروع تایپ
+    // Listener برای به‌روزرسانی شمارش کاراکترها هنگام تغییر متن
     _textController.addListener(() {
-      _isTyping.value = _textController.text.isNotEmpty;
+      _charCount.value = _textController.text.length;
+      _isTyping.value = _charCount.value > 0;
     });
   }
 
@@ -43,12 +46,11 @@ class _AboutMeWidgetState extends State<WidgetAboutVitrin> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  // آیکون چک یا ویرایش
                   IconButton(
                     icon: _isChecked.value
                         ? SvgPicture.asset(
                             'assets/images/edit and ok.svg', // آیکون ویرایش
-                          ) // آیکون چک
+                          )
                         : (_isTyping.value
                             ? SvgPicture.asset(
                                 'assets/images/check_icon.svg') // آیکون چک
@@ -61,35 +63,27 @@ class _AboutMeWidgetState extends State<WidgetAboutVitrin> {
                               )),
                     onPressed: () {
                       if (_isTyping.value) {
-                        // ذخیره متن تایپ شده
                         _typedText.value = _textController.text;
-                        _isTyping.value = false; // ریست وضعیت تایپ
-                        _isChecked.value = true; // نمایش آیکون چک
-                        _isExpanded.value = false; // بستن باکس
+                        _isTyping.value = false;
+                        _isChecked.value = true;
+                        _isExpanded.value = false;
                       } else {
-                        // باز یا بسته کردن باکس
                         _isExpanded.value = !_isExpanded.value;
-                        _isChecked.value = false; // ریست آیکون چک
+                        _isChecked.value = false;
                       }
                     },
                   ),
-                  // متن
                   Expanded(
                     child: Row(
-                      mainAxisAlignment: _isChecked.value
-                          ? MainAxisAlignment.center
-                          : MainAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         if (_isChecked.value) ...[
-                          // نمایش متن تایپ شده
                           Container(
-                            constraints:
-                                BoxConstraints(maxWidth: 150), // عرض باکس
+                            constraints: const BoxConstraints(maxWidth: 180),
                             child: Text(
-                              _typedText.value, // نمایش متن وارد شده
-                              maxLines: 1, // حداکثر یک خط
-                              overflow: TextOverflow
-                                  .ellipsis, // نمایش ... در صورت اضافه بودن متن
+                              _typedText.value,
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
                               style: const TextStyle(
                                 fontFamily: MAIN_FONT_FAMILY,
                                 color: Color.fromRGBO(99, 99, 99, 1),
@@ -98,15 +92,42 @@ class _AboutMeWidgetState extends State<WidgetAboutVitrin> {
                             ),
                           ),
                         ] else ...[
-                          // نمایش متن "درباره من" در حالت پیش‌فرض
-                          const Text(
-                            'درباره من',
-                            style: TextStyle(
-                              fontFamily: MAIN_FONT_FAMILY,
-                              color: Color.fromRGBO(117, 117, 117, 1),
-                              fontSize: 12,
+                          // فقط در صورت باز بودن باکس شمارنده نمایش داده شود
+                          if (_isExpanded.value) ...[
+                            Row(
+                              children: [
+                                Obx(
+                                  () => Text(
+                                    '($_charCount/$_maxChars)', // شمارنده کاراکتر
+                                    style: const TextStyle(
+                                      fontFamily: MAIN_FONT_FAMILY,
+                                      color: Color.fromRGBO(117, 117, 117, 1),
+                                      fontSize: 12,
+                                    ),
+                                  ),
+                                ),
+                                const SizedBox(
+                                    width: 5), // فاصله بین شمارنده و متن
+                                const Text(
+                                  'درباره من',
+                                  style: TextStyle(
+                                    fontFamily: MAIN_FONT_FAMILY,
+                                    color: Color.fromRGBO(117, 117, 117, 1),
+                                    fontSize: 12,
+                                  ),
+                                ),
+                              ],
                             ),
-                          ),
+                          ] else ...[
+                            const Text(
+                              'درباره من',
+                              style: TextStyle(
+                                fontFamily: MAIN_FONT_FAMILY,
+                                color: Color.fromRGBO(117, 117, 117, 1),
+                                fontSize: 12,
+                              ),
+                            ),
+                          ],
                         ],
                       ],
                     ),
@@ -132,10 +153,8 @@ class _AboutMeWidgetState extends State<WidgetAboutVitrin> {
       child: Padding(
         padding: const EdgeInsets.all(20.0),
         child: TextField(
-          style: const TextStyle(
-            fontFamily: MAIN_FONT_FAMILY_LIGHT,
-          ),
           controller: _textController,
+          maxLength: _maxChars, // محدودیت به ۱۸۰ کاراکتر
           maxLines: 5,
           decoration: InputDecoration(
             hintText: 'تایپ کنید',
@@ -156,6 +175,7 @@ class _AboutMeWidgetState extends State<WidgetAboutVitrin> {
                 color: Color.fromRGBO(23, 102, 175, 1),
               ),
             ),
+            counterText: "", // حذف شمارنده پیش‌فرض زیر TextField
           ),
         ),
       ),

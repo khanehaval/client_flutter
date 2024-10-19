@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
 class WidgetMoarefiTargert extends StatefulWidget {
@@ -15,7 +15,6 @@ class _WidgetMoarefiTargertState extends State<WidgetMoarefiTargert> {
       TextEditingController(); // کنترلر برای TextField
   final RxString _typedText = ''.obs; // متن وارد شده
   final RxBool _isChecked = false.obs; // وضعیت نشان دادن آیکون چک
-  final RxBool _isEditable = false.obs; // وضعیت ویرایش
 
   @override
   void initState() {
@@ -24,6 +23,7 @@ class _WidgetMoarefiTargertState extends State<WidgetMoarefiTargert> {
     // لیسنر برای تشخیص شروع تایپ
     _textController.addListener(() {
       _isTyping.value = _textController.text.isNotEmpty;
+      _typedText.value = _textController.text; // بروزرسانی متن تایپ شده
     });
   }
 
@@ -34,9 +34,7 @@ class _WidgetMoarefiTargertState extends State<WidgetMoarefiTargert> {
         padding: const EdgeInsets.only(left: 20.0, right: 20),
         child: Container(
           width: double.infinity,
-          height: _isExpanded.value
-              ? 280
-              : 50, // تغییر ارتفاع باکس بر اساس باز یا بسته بودن
+          height: _isExpanded.value ? 280 : 50,
           decoration: BoxDecoration(
             color: const Color.fromRGBO(250, 250, 250, 1),
             border: Border.all(color: const Color.fromRGBO(166, 166, 166, 1)),
@@ -47,13 +45,12 @@ class _WidgetMoarefiTargertState extends State<WidgetMoarefiTargert> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  // آیکون ها: چک، ویرایش، فلش پایین یا بالا
+                  // آیکون‌ها: چک، ویرایش، فلش پایین یا بالا
                   IconButton(
                     icon: _isChecked.value
                         ? SvgPicture.asset(
                             'assets/images/edit and ok.svg') // آیکون ویرایش
-                        : (_isTyping
-                                .value // نمایش آیکون چک وقتی در حال تایپ است
+                        : (_isTyping.value
                             ? SvgPicture.asset(
                                 'assets/images/check_icon.svg') // آیکون چک
                             : (_isExpanded.value
@@ -67,13 +64,11 @@ class _WidgetMoarefiTargertState extends State<WidgetMoarefiTargert> {
                     onPressed: () {
                       if (_isTyping.value) {
                         // وقتی کاربر تایپ کرده و روی چک کلیک کرده
-                        _typedText.value = _textController.text;
                         _isTyping.value = false;
                         _isChecked.value = true;
-                        _isExpanded.value = false;
-                        _isEditable.value = true; // فعال کردن حالت ویرایش
                       } else {
-                        _isExpanded.value = !_isExpanded.value;
+                        _isExpanded.value =
+                            !_isExpanded.value; // تغییر وضعیت باز یا بسته
                         _isChecked.value = false;
                       }
                     },
@@ -82,30 +77,45 @@ class _WidgetMoarefiTargertState extends State<WidgetMoarefiTargert> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        if (_isChecked.value) ...[
-                          // نمایش متن با برش در صورت نیاز
+                        if (_isExpanded.value) ...[
+                          // نمایش متن "درباره من" و شمارش کاراکتر
                           Container(
                             constraints:
                                 const BoxConstraints(maxWidth: 180), // عرض باکس
-                            child: Text(
-                              _typedText.value, // متن وارد شده
-                              maxLines: 1, // حداکثر یک خط
-                              overflow: TextOverflow
-                                  .ellipsis, // نمایش ... در صورت اضافه بودن متن
-                              style: const TextStyle(
-                                fontFamily: MAIN_FONT_FAMILY,
-                                color: Color.fromRGBO(99, 99, 99, 1),
-                                fontSize: 12,
-                              ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                // شمارش کاراکتر
+                                Text(
+                                  '(${_typedText.value.length}/180)',
+                                  style: const TextStyle(
+                                    fontFamily: MAIN_FONT_FAMILY,
+                                    color: Color.fromRGBO(99, 99, 99, 1),
+                                    fontSize: 12,
+                                  ),
+                                ),
+                                const Text(
+                                  'درباره من',
+                                  style: TextStyle(
+                                    fontFamily: MAIN_FONT_FAMILY,
+                                    color: Color.fromRGBO(99, 99, 99, 1),
+                                    fontSize: 12,
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
                         ] else ...[
-                          const Text(
-                            'معرفی و اهداف',
-                            style: TextStyle(
-                              fontFamily: MAIN_FONT_FAMILY,
-                              color: Color.fromRGBO(117, 117, 117, 1),
-                              fontSize: 12,
+                          // نمایش متن پیش‌فرض در حالت جمع شده
+                          Container(
+                            constraints: const BoxConstraints(maxWidth: 180),
+                            child: const Text(
+                              'معرفی و اهداف',
+                              style: TextStyle(
+                                fontFamily: MAIN_FONT_FAMILY,
+                                color: Color.fromRGBO(117, 117, 117, 1),
+                                fontSize: 12,
+                              ),
                             ),
                           ),
                         ],
@@ -133,7 +143,7 @@ class _WidgetMoarefiTargertState extends State<WidgetMoarefiTargert> {
         padding: const EdgeInsets.all(20.0),
         child: TextField(
           style: const TextStyle(
-            fontFamily: 'MAIN_FONT_FAMILY_LIGHT',
+            fontFamily: MAIN_FONT_FAMILY_MEDIUM,
           ),
           controller: _textController,
           maxLines: 6,
