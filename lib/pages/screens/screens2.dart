@@ -44,7 +44,7 @@ class Screen2 extends StatelessWidget {
                   Column(
                     children: [
                       Padding(
-                        padding: EdgeInsets.only(left: 200.0, top: 30),
+                        padding: EdgeInsets.only(left: 200.0, top: 20),
                         child: Text(
                           'امکانات ویژه',
                           style: TextStyle(

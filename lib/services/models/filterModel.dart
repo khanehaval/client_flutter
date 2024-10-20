@@ -7,6 +7,7 @@ abstract class AdvretismentFilter {
 class SwitchFilter extends AdvretismentFilter {
   String title;
   SwitchFilter(this.title);
+
   @override
   String getTitle() {
     return title;

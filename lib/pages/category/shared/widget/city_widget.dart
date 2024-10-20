@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/repo/advRepo.dart';
+import 'package:flutter_application_1/services/models/filterModel.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:get_it/get_it.dart';
 import 'city_controller.dart';
 import 'switch_onr_item.dart';
 import 'taeed_enseraf_filters.dart';
@@ -11,6 +14,11 @@ class City extends StatefulWidget {
   @override
   State<City> createState() => _CityState();
 }
+
+Map<String, AdvretismentFilter> CityFilter = Map();
+final _advRepo = GetIt.I.get<AdvRepo>();
+
+List<AdvretismentFilter> _CityFilter = [];
 
 class _CityState extends State<City> {
   final cityController = Get.put(CityController()); // پیدا کردن کنترلر
@@ -44,6 +52,18 @@ class _CityState extends State<City> {
     final query = searchController.text.toLowerCase();
     filteredCity.value =
         cityList.where((city) => city.toLowerCase().contains(query)).toList();
+  }
+
+  void addFilters(List<AdvretismentFilter> filter) {
+    for (var f in filter) {
+      CityFilter[f.key()] = f;
+    }
+  }
+
+  void removeFilters(List<AdvretismentFilter> filter) {
+    for (var f in filter) {
+      CityFilter.remove(f.key());
+    }
   }
 
   @override
@@ -122,9 +142,12 @@ class _CityState extends State<City> {
           const SizedBox(height: 50),
           FiltersTaeedEnseraf(
             onTaeed: () {
-              Get.back(
-                  result: cityController.selectedCity
-                      .value); // بازگشت به صفحه قبلی با نتیجه انتخاب‌شده
+              if (cityController.selectedCity.isNotEmpty) {
+                // افزودن شهر انتخاب‌شده به فیلترها
+                _advRepo.filters[cityController.selectedCity.value];
+                // بازگشت به صفحه قبلی
+                Get.back();
+              }
             },
           ),
         ],

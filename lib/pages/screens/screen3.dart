@@ -36,7 +36,7 @@ class Screen3 extends StatelessWidget {
           ],
         ),
         const Padding(
-          padding: EdgeInsets.only(bottom: 140.0, left: 45, right: 45),
+          padding: EdgeInsets.only(bottom: 147.0, left: 45, right: 45),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [

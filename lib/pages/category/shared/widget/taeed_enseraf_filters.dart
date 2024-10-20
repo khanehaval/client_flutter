@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
+import 'package:flutter_application_1/services/models/filterModel.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 
 Widget FiltersTaeedEnseraf({required Function onTaeed}) {
+  List<AdvretismentFilter> _filters = [];
   return Row(mainAxisAlignment: MainAxisAlignment.center, children: [
     Padding(
       padding: const EdgeInsets.all(8.0),

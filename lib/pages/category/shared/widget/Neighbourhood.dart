@@ -3,6 +3,7 @@ import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/city_controller.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/switch_onr_item.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/taeed_enseraf_filters.dart';
+import 'package:flutter_application_1/repo/advRepo.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
@@ -25,8 +26,8 @@ class _NeighbourhoodState extends State<Neighbourhood> {
   ];
   final searchController = TextEditingController();
   final filteredNeighborhood = <String>[].obs;
-  final neighborhoodController =
-      Get.put(NeighborhoodController()); // پیدا کردن کنترلر
+  final neighborhoodController = Get.put(NeighborhoodController());
+  final _advRepo = Get.put(AdvRepo()); // پیدا کردن کنترلر
 
   @override
   void initState() {
@@ -72,7 +73,7 @@ class _NeighbourhoodState extends State<Neighbourhood> {
                 controller: searchController,
                 textAlign: TextAlign.end,
                 decoration: InputDecoration(
-                  hintText: 'جستجو در همه شهر ها',
+                  hintText: 'جستجو در همه محله‌ها',
                   hintStyle: const TextStyle(
                     fontFamily: 'Iran Sans',
                     fontWeight: FontWeight.w400,
@@ -122,9 +123,11 @@ class _NeighbourhoodState extends State<Neighbourhood> {
           const SizedBox(height: 50),
           FiltersTaeedEnseraf(
             onTaeed: () {
-              Get.back(
-                  result: neighborhoodController.selectedNeighborhood
-                      .value); // بازگشت به صفحه قبلی با نتیجه انتخاب‌شده
+              if (neighborhoodController.selectedNeighborhood.value != null) {
+                Get.back(
+                    result: neighborhoodController.selectedNeighborhood
+                        .value); // Go back and pass the selected neighborhood.
+              }
             },
           ),
         ],
@@ -136,7 +139,7 @@ class _NeighbourhoodState extends State<Neighbourhood> {
     return GestureDetector(
       onTap: () {
         neighborhoodController.selectedNeighborhood.value =
-            city; // بلافاصله آپدیت کردن شهر انتخاب‌شده
+            city; // بلافاصله آپدیت کردن محله انتخاب‌شده
       },
       child: Obx(() => Padding(
             padding: const EdgeInsets.only(left: 10.0, right: 10),
