@@ -29,16 +29,25 @@ class _SelectLocationMapState extends State<Advertisements> {
   final cityController = Get.put(CityController()); // پیدا کردن کنترلر
   final neighborhoodController =
       Get.put(NeighborhoodController()); // پیدا کردن کنترلر
+  final Rx<int> selectedNeighborhoodCount = 0.obs;
 
   MapController mapController = MapController();
-  double initZoom = 16;
+  double initZoom = 14;
   final _controller = ItemScrollController();
   final _currentIndex = 0.obs;
   final _subIndex = 0.obs;
   final advertisments = [
     AdvertismentModel(
       location: const LatLng(35.73, 51.40),
-      title: "شخصی",
+      title: "12 میلیارد",
+    ),
+    AdvertismentModel(
+      location: const LatLng(35.90, 55.54),
+      title: "12 میلیارد",
+    ),
+    AdvertismentModel(
+      location: const LatLng(35.73, 51.40),
+      title: "12 میلیارد",
     ),
     AdvertismentModel(
         location: const LatLng(35.74, 51.40),
@@ -155,42 +164,28 @@ class _SelectLocationMapState extends State<Advertisements> {
                                 color: const Color.fromRGBO(166, 166, 166, 1)),
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(10)),
-                        child: SizedBox(
+                        child: const SizedBox(
                           height: 40,
-                          width: 110,
-                          child: Stack(children: [
-                            const Padding(
-                              padding: EdgeInsets.only(left: 50, top: 10),
-                              child: Text(
-                                "تعداد اتاق",
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
+                          width: 100,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Stack(children: [
+                                Text(
+                                  "تعداد اتاق",
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
                                     fontSize: 11,
-                                    fontFamily: MAIN_FONT_FAMILY,
-                                    color: Color.fromRGBO(99, 99, 99, 1)),
-                              ),
-                            ),
-                            const SizedBox(
-                              width: 15,
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(right: 30),
-                              child: IconButton(
-                                icon: SvgPicture.asset(
-                                  "assets/images/Vector-20.svg",
-                                  color: const Color.fromRGBO(
-                                    166,
-                                    166,
-                                    166,
-                                    1,
+                                    fontFamily: MAIN_FONT_FAMILY_LIGHT,
+                                    color: Color.fromRGBO(166, 166, 166, 1),
                                   ),
                                 ),
-                                onPressed: () {
-                                  FocusScope.of(Get.context!).unfocus();
-                                },
-                              ),
-                            ),
-                          ]),
+                                SizedBox(
+                                  width: 15,
+                                ),
+                              ]),
+                            ],
+                          ),
                         ),
                       ),
                       const SizedBox(
@@ -216,7 +211,7 @@ class _SelectLocationMapState extends State<Advertisements> {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
-                                    if (_advRepo.filters.isNotEmpty) ...[
+                                    if (_advRepo.filters1.isNotEmpty) ...[
                                       Padding(
                                         padding: const EdgeInsets.symmetric(
                                             horizontal: 6),
@@ -229,7 +224,7 @@ class _SelectLocationMapState extends State<Advertisements> {
                                           ),
                                           child: Center(
                                             child: Text(
-                                              _advRepo.filters.length
+                                              _advRepo.filters1.length
                                                   .toString(),
                                               style: const TextStyle(
                                                 fontFamily:
@@ -244,21 +239,14 @@ class _SelectLocationMapState extends State<Advertisements> {
                                     const Padding(
                                       padding: EdgeInsets.only(left: 8.0),
                                       child: Text(
-                                        "محله",
+                                        "انتخاب محله",
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
-                                          fontFamily: MAIN_FONT_FAMILY,
-                                          color: Color.fromRGBO(99, 99, 99, 1),
-                                          fontSize: 12,
+                                          fontFamily: MAIN_FONT_FAMILY_LIGHT,
+                                          color: const Color.fromRGBO(
+                                              166, 166, 166, 1),
+                                          fontSize: 10,
                                         ),
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.only(left: 8),
-                                      child: SvgPicture.asset(
-                                        "assets/images/Vector-20.svg",
-                                        color: const Color.fromRGBO(
-                                            166, 166, 166, 1),
                                       ),
                                     ),
                                   ],
@@ -301,8 +289,9 @@ class _SelectLocationMapState extends State<Advertisements> {
                                             : "انتخاب شهر",
                                         textAlign: TextAlign.center,
                                         style: const TextStyle(
-                                          fontFamily: MAIN_FONT_FAMILY,
-                                          color: Color.fromRGBO(99, 99, 99, 1),
+                                          fontFamily: MAIN_FONT_FAMILY_LIGHT,
+                                          color: const Color.fromRGBO(
+                                              166, 166, 166, 1),
                                           fontSize: 10,
                                         ),
                                       ),
@@ -311,8 +300,10 @@ class _SelectLocationMapState extends State<Advertisements> {
                                       padding: const EdgeInsets.only(left: 8),
                                       child: SvgPicture.asset(
                                         'assets/images/location1.svg',
-                                        width: 20,
-                                        height: 20,
+                                        width: 15,
+                                        height: 15,
+                                        color: const Color.fromRGBO(
+                                            166, 166, 166, 1),
                                       ),
                                     ),
                                   ],

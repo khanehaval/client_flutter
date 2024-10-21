@@ -98,7 +98,7 @@ class _EducationalTourState extends State<EducationalTour> {
             color: Colors.black.withOpacity(0.15),
             spreadRadius: 0,
             blurRadius: 5,
-            offset: Offset(-1, 0), // changes position of shadow
+            offset: const Offset(-1, 0), // changes position of shadow
           ),
         ],
       ),
@@ -116,8 +116,9 @@ class _EducationalTourState extends State<EducationalTour> {
               unselectedFontSize: 9,
               selectedLabelStyle: const TextStyle(
                   fontFamily: MAIN_FONT_FAMILY, color: Colors.black),
-              unselectedLabelStyle:
-                  const TextStyle(fontFamily: MAIN_FONT_FAMILY_MEDIUM),
+              unselectedLabelStyle: const TextStyle(
+                  fontFamily: MAIN_FONT_FAMILY_MEDIUM,
+                  color: Color.fromRGBO(166, 166, 166, 1)),
               type: BottomNavigationBarType.fixed,
               backgroundColor: Colors.white,
               onTap: (int index) {

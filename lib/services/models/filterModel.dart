@@ -4,6 +4,12 @@ abstract class AdvretismentFilter {
   String key();
 }
 
+abstract class AdvretismentFilter1 {
+  String getTitle();
+
+  String key();
+}
+
 class SwitchFilter extends AdvretismentFilter {
   String title;
   SwitchFilter(this.title);

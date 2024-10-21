@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/city_controller.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/switch_onr_item.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/taeed_enseraf_filters.dart';
 import 'package:flutter_application_1/repo/advRepo.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
 class Neighbourhood extends StatefulWidget {

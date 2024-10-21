@@ -4,6 +4,7 @@ import 'package:get/get_rx/get_rx.dart';
 
 class AdvRepo {
   RxMap<String, AdvretismentFilter> filters = RxMap();
+  RxMap<String, AdvretismentFilter1> filters1 = RxMap();
 
   RxList<String> selectedCity = RxList();
   var selectedCityCount = 0.obs; // تعداد شهرهای انتخاب‌شده
@@ -13,8 +14,10 @@ class AdvRepo {
     }
   }
 
-  void addFilter1(String key, AdvretismentFilter value) {
-    filters[key] = value; // Add or update the filter with the correct type
+  void addFilters1(List<AdvretismentFilter1> filter) {
+    for (var f in filter) {
+      filters[f.key()] = f as AdvretismentFilter;
+    }
   }
 
   void removeFilters(List<AdvretismentFilter> filter) {

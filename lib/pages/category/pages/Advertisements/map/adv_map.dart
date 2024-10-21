@@ -100,7 +100,7 @@ class _AdvMapState extends State<AdvMap> {
       options: MapOptions(
         initialZoom: 13,
         initialCenter: widget.advertisements.value.first.location,
-        maxZoom: 15,
+        maxZoom: 20,
         keepAlive: true,
         interactionOptions: const InteractionOptions(
           enableMultiFingerGestureRace: true,
@@ -157,8 +157,8 @@ class _AdvMapState extends State<AdvMap> {
     }
     return SvgPicture.asset(
       assetName,
-      width: 98,
-      height: 50,
+      width: 110,
+      height: 55,
     );
   }
 
@@ -184,8 +184,8 @@ class _AdvMapState extends State<AdvMap> {
         child: IconButton(
           onPressed: () {},
           icon: SizedBox(
-            height: 60,
-            width: 60,
+            height: 50,
+            width: 50,
             child: SvgPicture.asset("assets/images/icon zoom.svg"),
           ),
         ),
@@ -274,16 +274,18 @@ class _AdvMapState extends State<AdvMap> {
                 transition: Transition.rightToLeft);
           },
           icon: SizedBox(
-            height: 65,
-            width: 65,
+            height: 60,
+            width: 60,
             child: Container(
               decoration: BoxDecoration(
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey.withOpacity(0.15),
-                    blurRadius: 5,
-                  ),
-                ],
+                borderRadius: BorderRadius.circular(30),
+                // boxShadow: [
+                //   BoxShadow(
+                //     offset: const Offset(0, 0.5),
+                //     color: Colors.grey.withOpacity(0.10),
+                //     blurRadius: 1,
+                //   ),
+                // ],
               ),
               child: SvgPicture.asset(
                 "assets/images/list - consultant.svg",
@@ -326,7 +328,7 @@ class _AdvMapState extends State<AdvMap> {
                   child: Column(
                     children: [
                       _buildTopDivider(),
-                      const SizedBox(height: 10),
+                      const SizedBox(height: 15),
                       _buildHeaderText(),
                       _buildAdvertisementsList(),
                     ],
@@ -345,11 +347,12 @@ class _AdvMapState extends State<AdvMap> {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Padding(
-          padding: const EdgeInsets.only(top: 20.0),
+          padding: const EdgeInsets.only(top: 15.0),
           child: SvgPicture.asset(
             'assets/images/divider.svg',
-            width: 5,
-            height: 5,
+            // width: 5,
+            // height: 5,
+            color: Color.fromRGBO(217, 217, 217, 1),
           ),
         )
       ],
@@ -363,8 +366,8 @@ class _AdvMapState extends State<AdvMap> {
         Text(
           "خرید و فروش، رهن و اجاره انواع املاک در تهران",
           style: TextStyle(
-            fontFamily: MAIN_FONT_FAMILY,
-            fontSize: 14,
+            fontFamily: MAIN_FONT_FAMILY_MEDIUM,
+            fontSize: 12,
             color: Color.fromRGBO(99, 99, 99, 1),
           ),
         ),
@@ -374,7 +377,7 @@ class _AdvMapState extends State<AdvMap> {
 
   Widget _buildAdvertisementsList() {
     return Stack(
-      children: [viewaghahi()],
+      children: [ViewAghahi()],
     );
   }
 }
