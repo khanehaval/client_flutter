@@ -7,7 +7,7 @@ import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
-Widget showAdvertisment(
+Widget methodsejara(
     {required advertismentModel,
     required onTap,
     required Function onNext,
@@ -16,7 +16,7 @@ Widget showAdvertisment(
     child: Column(
       children: [
         Transform.translate(
-          offset: const Offset(20, 110),
+          offset: const Offset(20, 100),
           child: Padding(
             padding: const EdgeInsets.only(top: 110, right: 40, bottom: 70),
             child: Container(
@@ -123,20 +123,17 @@ Widget showAdvertisment(
                                       children: [
                                         SizedBox(
                                           child: SvgPicture.asset(
-                                            "assets/images/total price.svg",
+                                            "assets/images/mizan_rahn.svg",
                                             width: 15,
                                             height: 15,
                                           ),
-                                        ),
-                                        const SizedBox(
-                                          width: 30,
                                         ),
                                         const Padding(
                                           padding: EdgeInsets.only(right: 5.0),
                                           child: Text(
                                             "...ویلا 100 متری در زمین 250 متری",
                                             style: TextStyle(
-                                                fontSize: 11,
+                                                fontSize: 10,
                                                 fontFamily: MAIN_FONT_FAMILY,
                                                 color: Color.fromRGBO(
                                                     99, 99, 99, 1)),
@@ -167,7 +164,7 @@ Widget showAdvertisment(
                                                   99, 99, 99, 1)),
                                         ),
                                         const SizedBox(
-                                          width: 76,
+                                          width: 75,
                                         ),
                                         Row(
                                           children: [
@@ -374,7 +371,7 @@ Widget showAdvertisment(
             ),
           ),
         ),
-        const SizedBox(
+        SizedBox(
           height: 20,
         ),
         Row(

@@ -90,61 +90,68 @@ class _SelectLocationMapState extends State<Advertisements> {
         ),
         Column(
           children: [
-            SizedBox(
-              height: 98,
-              child: ScrollablePositionedList.builder(
-                reverse: true,
-                itemScrollController: _controller,
-                itemCount: 7,
-                scrollDirection: Axis.horizontal,
-                initialScrollIndex: widget.index,
-                itemBuilder: (context, i) => GestureDetector(
-                  onTap: () {
-                    _controller.scrollTo(
-                        index: i,
-                        duration: const Duration(microseconds: 100),
-                        opacityAnimationWeights: [10, 30, 10],
-                        alignment: 0.5);
-                    _currentIndex.value = i;
-                  },
-                  child: Obx(
-                    () => Container(
-                      margin: const EdgeInsets.only(
-                          left: 0, right: 10, bottom: 15, top: 45),
-                      padding: const EdgeInsets.all(1.2),
-                      height: 98,
-                      width: 140,
-                      decoration: BoxDecoration(
-                        gradient: _currentIndex.value == i
-                            ? const LinearGradient(colors: GRADIANT_COLOR)
-                            : const LinearGradient(
-                                colors: BLACK_12_GRADIANT_COLOR),
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: Container(
+            const SizedBox(
+              height: 20,
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 10.0, right: 2),
+              child: SizedBox(
+                height: 95,
+                child: ScrollablePositionedList.builder(
+                  reverse: true,
+                  itemScrollController: _controller,
+                  itemCount: 7,
+                  scrollDirection: Axis.horizontal,
+                  initialScrollIndex: widget.index,
+                  itemBuilder: (context, i) => GestureDetector(
+                    onTap: () {
+                      _controller.scrollTo(
+                          index: i,
+                          duration: const Duration(microseconds: 100),
+                          opacityAnimationWeights: [10, 30, 10],
+                          alignment: 0.5);
+                      _currentIndex.value = i;
+                    },
+                    child: Obx(
+                      () => Container(
+                        margin: const EdgeInsets.only(
+                            left: 0, right: 10, bottom: 15, top: 45),
+                        padding: const EdgeInsets.all(1.2),
+                        height: 98,
+                        width: 140,
                         decoration: BoxDecoration(
-                          color: Colors.white,
+                          gradient: _currentIndex.value == i
+                              ? const LinearGradient(colors: GRADIANT_COLOR)
+                              : const LinearGradient(
+                                  colors: BLACK_12_GRADIANT_COLOR),
                           borderRadius: BorderRadius.circular(10),
                         ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              titles[i],
-                              style: TextStyle(
-                                  fontSize: 14,
-                                  color: _currentIndex.value == i
-                                      ? Colors.black // متن مشکی برای انتخاب شده
-                                      : Colors
-                                          .grey, // متن طوسی برای انتخاب نشده
-                                  fontWeight: _currentIndex.value == i
-                                      ? FontWeight
-                                          .bold // متن بولد برای انتخاب شده
-                                      : FontWeight
-                                          .w300, // متن عادی برای انتخاب نشده
-                                  fontFamily: MAIN_FONT_FAMILY_LIGHT),
-                            ),
-                          ],
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                titles[i],
+                                style: TextStyle(
+                                    fontSize: 14,
+                                    color: _currentIndex.value == i
+                                        ? Colors
+                                            .black // متن مشکی برای انتخاب شده
+                                        : Colors
+                                            .grey, // متن طوسی برای انتخاب نشده
+                                    fontWeight: _currentIndex.value == i
+                                        ? FontWeight
+                                            .bold // متن بولد برای انتخاب شده
+                                        : FontWeight
+                                            .w300, // متن عادی برای انتخاب نشده
+                                    fontFamily: MAIN_FONT_FAMILY_LIGHT),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ),
@@ -152,248 +159,246 @@ class _SelectLocationMapState extends State<Advertisements> {
                 ),
               ),
             ),
-            SingleChildScrollView(
-                reverse: true,
-                scrollDirection: Axis.horizontal,
-                child: Padding(
-                    padding: const EdgeInsets.only(right: 6.0),
-                    child: Row(children: [
-                      Container(
-                        decoration: BoxDecoration(
-                            border: Border.all(
-                                color: const Color.fromRGBO(166, 166, 166, 1)),
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(10)),
-                        child: const SizedBox(
-                          height: 40,
-                          width: 100,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Stack(children: [
-                                Text(
-                                  "تعداد اتاق",
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                    fontSize: 11,
-                                    fontFamily: MAIN_FONT_FAMILY_LIGHT,
-                                    color: Color.fromRGBO(166, 166, 166, 1),
-                                  ),
+            Padding(
+              padding: const EdgeInsets.only(left: 10.0, right: 6),
+              child: SingleChildScrollView(
+                  reverse: true,
+                  scrollDirection: Axis.horizontal,
+                  child: Row(children: [
+                    Container(
+                      decoration: BoxDecoration(
+                          border: Border.all(
+                              color: const Color.fromRGBO(166, 166, 166, 1)),
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(10)),
+                      child: const SizedBox(
+                        height: 32,
+                        width: 100,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Stack(children: [
+                              Text(
+                                "تعداد اتاق",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontSize: 11,
+                                  fontFamily: MAIN_FONT_FAMILY_LIGHT,
+                                  color: Color.fromRGBO(166, 166, 166, 1),
                                 ),
-                                SizedBox(
-                                  width: 15,
-                                ),
-                              ]),
-                            ],
-                          ),
+                              ),
+                              SizedBox(
+                                width: 15,
+                              ),
+                            ]),
+                          ],
                         ),
                       ),
-                      const SizedBox(
-                        width: 10,
-                      ),
-                      GestureDetector(
-                        onTap: () {
-                          Get.to(() => Neighbourhood(),
-                              transition: Transition.leftToRight);
-                        },
-                        child: Obx(() => Container(
-                              decoration: BoxDecoration(
-                                border: Border.all(
-                                  color: const Color.fromRGBO(166, 166, 166, 1),
-                                ),
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(10),
+                    ),
+                    const SizedBox(
+                      width: 5,
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        Get.to(() => Neighbourhood(),
+                            transition: Transition.leftToRight);
+                      },
+                      child: Obx(() => Container(
+                            decoration: BoxDecoration(
+                              border: Border.all(
+                                color: const Color.fromRGBO(166, 166, 166, 1),
                               ),
-                              child: SizedBox(
-                                height: 40,
-                                width: _advRepo.filters.isNotEmpty ? 130 : 100,
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: SizedBox(
+                              height: 32,
+                              width: _advRepo.filters.isNotEmpty ? 130 : 100,
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  if (_advRepo.filters1.isNotEmpty) ...[
+                                    Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 6),
+                                      child: Container(
+                                        width: 25,
+                                        height: 25,
+                                        decoration: const BoxDecoration(
+                                          color: Colors.green,
+                                          shape: BoxShape.circle,
+                                        ),
+                                        child: Center(
+                                          child: Text(
+                                            _advRepo.filters1.length.toString(),
+                                            style: const TextStyle(
+                                              fontFamily:
+                                                  MAIN_FONT_FAMILY_MEDIUM,
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                  const Padding(
+                                    padding: EdgeInsets.only(left: 8.0),
+                                    child: Text(
+                                      "انتخاب محله",
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                        fontFamily: MAIN_FONT_FAMILY_LIGHT,
+                                        color: const Color.fromRGBO(
+                                            166, 166, 166, 1),
+                                        fontSize: 10,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          )),
+                    ),
+                    const SizedBox(
+                      width: 5,
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        Get.to(
+                          () => City(),
+                          transition: Transition.leftToRight,
+                        );
+                      },
+                      child: Obx(() => Container(
+                            decoration: BoxDecoration(
+                              border: Border.all(
+                                  color:
+                                      const Color.fromRGBO(166, 166, 166, 1)),
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: SizedBox(
+                              height: 32,
+                              width: _advRepo.filters.isNotEmpty ? 130 : 100,
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(left: 10.0),
+                                    child: Text(
+                                      cityController
+                                              .selectedCity.value.isNotEmpty
+                                          ? cityController.selectedCity.value
+                                          : "انتخاب شهر",
+                                      textAlign: TextAlign.center,
+                                      style: const TextStyle(
+                                        fontFamily: MAIN_FONT_FAMILY_LIGHT,
+                                        color: const Color.fromRGBO(
+                                            166, 166, 166, 1),
+                                        fontSize: 10,
+                                      ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(left: 8),
+                                    child: SvgPicture.asset(
+                                      'assets/images/location1.svg',
+                                      width: 15,
+                                      height: 15,
+                                      color: const Color.fromRGBO(
+                                          166, 166, 166, 1),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          )),
+                    ),
+                    const SizedBox(
+                      width: 5,
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        Get.to(
+                          () => Filter(index: 0),
+                          transition: Transition.leftToRight,
+                        );
+                      },
+                      child: Obx(() => Container(
+                            decoration: BoxDecoration(
+                              border: Border.all(
+                                  color:
+                                      const Color.fromRGBO(166, 166, 166, 1)),
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: SizedBox(
+                              height: 32,
+                              width: _advRepo.filters.isNotEmpty
+                                  ? 130
+                                  : 100, // تغییر عرض
+                              child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.center, // مرکز چیدمان
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
-                                    if (_advRepo.filters1.isNotEmpty) ...[
+                                    // دایره تنها زمانی نمایش داده می‌شود که فیلترها وجود داشته باشند
+                                    if (_advRepo.filters.isNotEmpty) ...[
                                       Padding(
                                         padding: const EdgeInsets.symmetric(
                                             horizontal: 6),
                                         child: Container(
                                           width: 25,
-                                          height: 25,
                                           decoration: const BoxDecoration(
-                                            color: Colors.green,
-                                            shape: BoxShape.circle,
-                                          ),
+                                              color: Colors.green,
+                                              shape: BoxShape.circle),
                                           child: Center(
                                             child: Text(
-                                              _advRepo.filters1.length
+                                              _advRepo.filters.keys.length
                                                   .toString(),
                                               style: const TextStyle(
-                                                fontFamily:
-                                                    MAIN_FONT_FAMILY_MEDIUM,
-                                                color: Colors.white,
-                                              ),
+                                                  fontFamily:
+                                                      MAIN_FONT_FAMILY_MEDIUM,
+                                                  color: Colors.white),
                                             ),
                                           ),
                                         ),
                                       ),
                                     ],
+                                    // متن فیلتر (همیشه نمایش داده می‌شود)
                                     const Padding(
-                                      padding: EdgeInsets.only(left: 8.0),
+                                      padding: EdgeInsets.only(
+                                          left: 8.0), // فضای بین دایره و متن
                                       child: Text(
-                                        "انتخاب محله",
+                                        "فیلتر",
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
-                                          fontFamily: MAIN_FONT_FAMILY_LIGHT,
-                                          color: const Color.fromRGBO(
-                                              166, 166, 166, 1),
-                                          fontSize: 10,
-                                        ),
+                                            fontFamily: MAIN_FONT_FAMILY,
+                                            color:
+                                                Color.fromRGBO(99, 99, 99, 1),
+                                            fontSize: 12),
                                       ),
                                     ),
-                                  ],
-                                ),
-                              ),
-                            )),
-                      ),
-                      const SizedBox(
-                        width: 10,
-                      ),
-                      GestureDetector(
-                        onTap: () {
-                          Get.to(
-                            () => City(),
-                            transition: Transition.leftToRight,
-                          );
-                        },
-                        child: Obx(() => Container(
-                              decoration: BoxDecoration(
-                                border: Border.all(
-                                    color:
-                                        const Color.fromRGBO(166, 166, 166, 1)),
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              child: SizedBox(
-                                height: 40,
-                                width: _advRepo.filters.isNotEmpty ? 130 : 100,
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    Padding(
-                                      padding:
-                                          const EdgeInsets.only(left: 10.0),
-                                      child: Text(
-                                        cityController
-                                                .selectedCity.value.isNotEmpty
-                                            ? cityController.selectedCity.value
-                                            : "انتخاب شهر",
-                                        textAlign: TextAlign.center,
-                                        style: const TextStyle(
-                                          fontFamily: MAIN_FONT_FAMILY_LIGHT,
-                                          color: const Color.fromRGBO(
-                                              166, 166, 166, 1),
-                                          fontSize: 10,
-                                        ),
-                                      ),
-                                    ),
+                                    // آیکن فیلتر (همیشه نمایش داده می‌شود)
                                     Padding(
                                       padding: const EdgeInsets.only(left: 8),
                                       child: SvgPicture.asset(
-                                        'assets/images/location1.svg',
-                                        width: 15,
-                                        height: 15,
-                                        color: const Color.fromRGBO(
-                                            166, 166, 166, 1),
+                                        "assets/images/filter.svg",
+                                        width: 20,
+                                        height: 20,
                                       ),
                                     ),
-                                  ],
-                                ),
-                              ),
-                            )),
-                      ),
-                      const SizedBox(
-                        width: 10,
-                      ),
-                      GestureDetector(
-                        onTap: () {
-                          Get.to(
-                            () => Filter(index: 0),
-                            transition: Transition.leftToRight,
-                          );
-                        },
-                        child: Obx(() => Container(
-                              decoration: BoxDecoration(
-                                border: Border.all(
-                                    color:
-                                        const Color.fromRGBO(166, 166, 166, 1)),
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              child: SizedBox(
-                                height: 40,
-                                width: _advRepo.filters.isNotEmpty
-                                    ? 130
-                                    : 100, // تغییر عرض
-                                child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.center, // مرکز چیدمان
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
-                                    children: [
-                                      // دایره تنها زمانی نمایش داده می‌شود که فیلترها وجود داشته باشند
-                                      if (_advRepo.filters.isNotEmpty) ...[
-                                        Padding(
-                                          padding: const EdgeInsets.symmetric(
-                                              horizontal: 6),
-                                          child: Container(
-                                            width: 25,
-                                            decoration: const BoxDecoration(
-                                                color: Colors.green,
-                                                shape: BoxShape.circle),
-                                            child: Center(
-                                              child: Text(
-                                                _advRepo.filters.keys.length
-                                                    .toString(),
-                                                style: const TextStyle(
-                                                    fontFamily:
-                                                        MAIN_FONT_FAMILY_MEDIUM,
-                                                    color: Colors.white),
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                      // متن فیلتر (همیشه نمایش داده می‌شود)
-                                      const Padding(
-                                        padding: EdgeInsets.only(
-                                            left: 8.0), // فضای بین دایره و متن
-                                        child: Text(
-                                          "فیلتر",
-                                          textAlign: TextAlign.center,
-                                          style: TextStyle(
-                                              fontFamily: MAIN_FONT_FAMILY,
-                                              color:
-                                                  Color.fromRGBO(99, 99, 99, 1),
-                                              fontSize: 12),
-                                        ),
-                                      ),
-                                      // آیکن فیلتر (همیشه نمایش داده می‌شود)
-                                      Padding(
-                                        padding: const EdgeInsets.only(left: 8),
-                                        child: SvgPicture.asset(
-                                          "assets/images/filter.svg",
-                                          width: 20,
-                                          height: 20,
-                                        ),
-                                      ),
-                                    ]),
-                              ),
-                            )),
-                      ),
-                      const SizedBox(
-                        width: 5,
-                      ),
-                    ])))
+                                  ]),
+                            ),
+                          )),
+                    ),
+                    const SizedBox(
+                      width: 5,
+                    ),
+                  ])),
+            )
           ],
         ),
       ]),

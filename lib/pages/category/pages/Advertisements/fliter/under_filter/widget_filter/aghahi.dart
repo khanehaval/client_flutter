@@ -1,4 +1,7 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/widget_filter/Detail_view_agahi_ejara.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/widget_filter/detail_view_agahi.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -16,20 +19,45 @@ class _ViewAghahiState extends State<ViewAghahi> {
   Widget build(BuildContext context) {
     return Container(
       decoration: const BoxDecoration(
-        color: Colors.white,
         borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(40),
-          topRight: Radius.circular(40),
+          topLeft: Radius.circular(20),
+          topRight: Radius.circular(20),
         ),
       ),
-      child: const SingleChildScrollView(
-        child: Column(
-          children: [
-            DetailViewAgahi(),
-            SizedBox(height: 50),
-          ],
+      child: SingleChildScrollView(
+        child: BackdropFilter(
+          filter: ImageFilter.blur(sigmaX: 2.0, sigmaY: 2.0), // اعمال بلور
+          child: Column(
+            children: [
+              _buildHeaderText(),
+              const DetailViewAgahi(),
+              SizedBox(height: 20),
+              DetailViewAgahiEjara(),
+              SizedBox(height: 50),
+              DetailViewAgahi(),
+              SizedBox(height: 20),
+              DetailViewAgahiEjara(),
+              SizedBox(height: 50),
+            ],
+          ),
         ),
       ),
     );
   }
+}
+
+Widget _buildHeaderText() {
+  return const Row(
+    mainAxisAlignment: MainAxisAlignment.center,
+    children: [
+      Text(
+        "خرید و فروش، رهن و اجاره انواع املاک در تهران",
+        style: TextStyle(
+          fontFamily: MAIN_FONT_FAMILY_MEDIUM,
+          fontSize: 12,
+          color: Color.fromRGBO(99, 99, 99, 1),
+        ),
+      ),
+    ],
+  );
 }

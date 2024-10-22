@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/models/AdvertismentMoidel.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/Advertisements.dart';
@@ -6,6 +7,7 @@ import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter
 import 'package:flutter_application_1/pages/category/pages/Advertisements/consultants.dart/map_consultants.dart/advertismets_consultants.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/consultants.dart/map_consultants.dart/mapconsultants_.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/shared/methods.dart';
+import 'package:flutter_application_1/pages/category/pages/Advertisements/shared/methods_ejara.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
 import 'package:flutter_map/flutter_map.dart';
@@ -13,6 +15,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:get/get_rx/src/rx_types/rx_types.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
+import 'package:jalali_flutter_datepicker/jalali_flutter_datepicker.dart';
 
 class AdvMap extends StatefulWidget {
   final RxList<AdvertismentModel> advertisements;
@@ -25,6 +28,7 @@ class AdvMap extends StatefulWidget {
 
 class _AdvMapState extends State<AdvMap> {
   final Rxn<AdvertismentModel> _selectedModel = Rxn<AdvertismentModel>();
+  bool _isContainerVisible = false; // متغیر برای کنترل نمایش کانتینر
 
   late StreamController<bool> _notificationStreamController;
   late Stream<bool> _notificationStream;
@@ -89,7 +93,7 @@ class _AdvMapState extends State<AdvMap> {
               ? _buildAdvertismentOverlay()
               : const SizedBox.shrink()),
           _buildListButton(),
-          _buildDraggableScrollableSheet(),
+          Container(child: _buildDraggableScrollableSheet()),
         ],
       ),
     );
@@ -146,10 +150,10 @@ class _AdvMapState extends State<AdvMap> {
     String assetName;
     switch (adv.type) {
       case AdvertismentType.PERSONAL:
-        assetName = 'assets/images/LOCATION.svg';
+        assetName = 'assets/images/axans_location.svg';
         break;
       case AdvertismentType.AMALAK:
-        assetName = 'assets/images/LOCATION2.svg';
+        assetName = 'assets/images/moshaver_location.svg';
         break;
       case AdvertismentType.REAL_ESTATE:
         assetName = 'assets/images/LOCATION3.svg';
@@ -165,14 +169,14 @@ class _AdvMapState extends State<AdvMap> {
   Widget _buildMarkerTitle(AdvertismentModel adv) {
     return Container(
       padding: const EdgeInsets.only(bottom: 15, left: 30),
-      child: Text(
-        adv.title,
-        style: const TextStyle(
-          fontFamily: MAIN_FONT_FAMILY,
-          color: Color.fromRGBO(48, 48, 48, 1),
-          fontSize: 10,
-        ),
-      ),
+      // child: Text(
+      //   adv.title,
+      //   style: const TextStyle(
+      //     fontFamily: MAIN_FONT_FAMILY,
+      //     color: Color.fromRGBO(48, 48, 48, 1),
+      //     fontSize: 10,
+      //   ),
+      // ),
     );
   }
 
@@ -232,15 +236,65 @@ class _AdvMapState extends State<AdvMap> {
   }
 
   Widget _buildAdvertismentOverlay() {
+    final AdvertismentModel selectedAd = _selectedModel.value!;
+
+    switch (selectedAd.type) {
+      case AdvertismentType.PERSONAL:
+        return _buildPersonalAdvertismentOverlay(selectedAd);
+      case AdvertismentType.AMALAK:
+        return _buildAmalakAdvertismentOverlay(selectedAd);
+      case AdvertismentType.REAL_ESTATE:
+        return _buildRealEstateAdvertismentOverlay(selectedAd);
+      default:
+        return const SizedBox.shrink();
+    }
+  }
+
+  Widget _buildPersonalAdvertismentOverlay(AdvertismentModel ad) {
     return Align(
       child: showAdvertisment(
-        advertismentModel: _selectedModel.value!,
+        advertismentModel: ad,
         onTap: () => _selectedModel.value = null,
         onBack: _onBack,
         onNext: _onNext,
+        // افزودن جزئیات خاص برای PERSONAL
       ),
     );
   }
+
+  Widget _buildAmalakAdvertismentOverlay(AdvertismentModel ad) {
+    return Align(
+      child: showAdvertisment(
+        advertismentModel: ad,
+        onTap: () => _selectedModel.value = null,
+        onBack: _onBack,
+        onNext: _onNext,
+        // افزودن جزئیات خاص برای AMALAK
+      ),
+    );
+  }
+
+  Widget _buildRealEstateAdvertismentOverlay(AdvertismentModel ad) {
+    return Align(
+      child: methodsejara(
+        advertismentModel: ad,
+        onTap: () => _selectedModel.value = null,
+        onBack: _onBack,
+        onNext: _onNext,
+        // افزودن جزئیات خاص برای REAL ESTATE
+      ),
+    );
+  }
+  // Widget _buildAdvertismentOverlay() {
+  //   return Align(
+  //     child: showAdvertisment(
+  //       advertismentModel: _selectedModel.value!,
+  //       onTap: () => _selectedModel.value = null,
+  //       onBack: _onBack,
+  //       onNext: _onNext,
+  //     ),
+  //   );
+  // }
 
   void _onBack() {
     final int index =
@@ -301,41 +355,58 @@ class _AdvMapState extends State<AdvMap> {
     return DraggableScrollableSheet(
       initialChildSize: 0.10,
       minChildSize: 0.10,
-      maxChildSize: 0.81,
+      maxChildSize: 1.0,
       builder: (context, scrollController) {
-        return Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(20),
-          ),
-          child: Container(
-            decoration: const BoxDecoration(
-              borderRadius: BorderRadius.all(
-                Radius.circular(20),
-              ),
-              gradient: LinearGradient(colors: GRADIANT_COLOR),
-            ),
-            child: Padding(
-              padding: const EdgeInsets.only(top: 1.2),
-              child: Container(
+        return SingleChildScrollView(
+          child: Column(
+            children: [
+              // لبه مشکی
+              Container(
+                width: double.infinity,
                 decoration: const BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.vertical(
-                    top: Radius.circular(20),
-                  ),
+                  color: Colors.black,
+                  borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(0),
+                      topRight: Radius.circular(0)),
                 ),
-                child: SingleChildScrollView(
-                  controller: scrollController,
-                  child: Column(
-                    children: [
-                      _buildTopDivider(),
-                      const SizedBox(height: 15),
-                      _buildHeaderText(),
-                      _buildAdvertisementsList(),
-                    ],
+              ),
+              // باکس با افکت بلور
+              Container(
+                decoration: const BoxDecoration(
+                  borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(20),
+                      topRight: Radius.circular(20)),
+                ),
+                child: BackdropFilter(
+                  filter:
+                      ImageFilter.blur(sigmaX: 0.0, sigmaY: 0.0), // افکت بلور
+                  child: Container(
+                    decoration: const BoxDecoration(
+                      gradient: LinearGradient(
+                        begin: Alignment.topCenter,
+                        colors: [
+                          Color.fromARGB(216, 255, 255, 255),
+                          Color.fromARGB(255, 255, 255, 255),
+                        ],
+                      ),
+                      borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(20),
+                          topRight: Radius.circular(20)),
+                    ),
+                    child: SingleChildScrollView(
+                      controller: scrollController,
+                      child: Column(
+                        children: [
+                          _buildTopDivider(),
+                          const SizedBox(height: 20),
+                          _buildAdvertisementsList(),
+                        ],
+                      ),
+                    ),
                   ),
                 ),
               ),
-            ),
+            ],
           ),
         );
       },
@@ -352,25 +423,9 @@ class _AdvMapState extends State<AdvMap> {
             'assets/images/divider.svg',
             // width: 5,
             // height: 5,
-            color: Color.fromRGBO(217, 217, 217, 1),
+            color: const Color.fromRGBO(217, 217, 217, 1),
           ),
         )
-      ],
-    );
-  }
-
-  Widget _buildHeaderText() {
-    return const Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Text(
-          "خرید و فروش، رهن و اجاره انواع املاک در تهران",
-          style: TextStyle(
-            fontFamily: MAIN_FONT_FAMILY_MEDIUM,
-            fontSize: 12,
-            color: Color.fromRGBO(99, 99, 99, 1),
-          ),
-        ),
       ],
     );
   }
