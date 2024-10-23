@@ -2,19 +2,14 @@ import 'dart:async';
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/models/AdvertismentMoidel.dart';
-import 'package:flutter_application_1/pages/category/pages/Advertisements/Advertisements.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/widget_filter/aghahi.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/consultants.dart/map_consultants.dart/advertismets_consultants.dart';
-import 'package:flutter_application_1/pages/category/pages/Advertisements/consultants.dart/map_consultants.dart/mapconsultants_.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/shared/methods.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/shared/methods_ejara.dart';
-import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:get/get_rx/src/rx_types/rx_types.dart';
-import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:jalali_flutter_datepicker/jalali_flutter_datepicker.dart';
 
 class AdvMap extends StatefulWidget {
@@ -156,7 +151,7 @@ class _AdvMapState extends State<AdvMap> {
         assetName = 'assets/images/moshaver_location.svg';
         break;
       case AdvertismentType.REAL_ESTATE:
-        assetName = 'assets/images/LOCATION3.svg';
+        assetName = 'assets/images/shakhsi_location.svg';
         break;
     }
     return SvgPicture.asset(
@@ -320,7 +315,7 @@ class _AdvMapState extends State<AdvMap> {
     return Align(
       alignment: Alignment.bottomLeft,
       child: Padding(
-        padding: const EdgeInsets.only(bottom: 75, left: 295),
+        padding: const EdgeInsets.only(bottom: 77, left: 300),
         child: IconButton(
           onPressed: () {
             Get.to(() => AdvertismetsAxans(),
@@ -328,8 +323,8 @@ class _AdvMapState extends State<AdvMap> {
                 transition: Transition.rightToLeft);
           },
           icon: SizedBox(
-            height: 60,
-            width: 60,
+            height: 55,
+            width: 55,
             child: Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(30),
@@ -358,51 +353,58 @@ class _AdvMapState extends State<AdvMap> {
       maxChildSize: 1.0,
       builder: (context, scrollController) {
         return SingleChildScrollView(
+          controller: scrollController,
           child: Column(
             children: [
-              // لبه مشکی
+              // باکس با بوردر و radius که خارج از بلور است
               Container(
-                width: double.infinity,
-                decoration: const BoxDecoration(
-                  color: Colors.black,
-                  borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(0),
-                      topRight: Radius.circular(0)),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20), // radius برای بوردر
+                  border: Border.all(
+                    color: const Color.fromRGBO(166, 166, 166, 1),
+                    width: 1.0, // ضخامت بوردر
+                  ),
                 ),
-              ),
-              // باکس با افکت بلور
-              Container(
-                decoration: const BoxDecoration(
-                  borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(20),
-                      topRight: Radius.circular(20)),
-                ),
-                child: BackdropFilter(
-                  filter:
-                      ImageFilter.blur(sigmaX: 0.0, sigmaY: 0.0), // افکت بلور
-                  child: Container(
-                    decoration: const BoxDecoration(
-                      gradient: LinearGradient(
-                        begin: Alignment.topCenter,
-                        colors: [
-                          Color.fromARGB(216, 255, 255, 255),
-                          Color.fromARGB(255, 255, 255, 255),
-                        ],
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(20), // هماهنگی radius
+                  child: Stack(
+                    // استفاده از Stack برای لایه‌بندی
+                    children: [
+                      BackdropFilter(
+                        filter: ImageFilter.blur(
+                            sigmaX: 1.0, sigmaY: 1.0), // افکت بلور
+                        child: Container(
+                          decoration: const BoxDecoration(
+                            gradient: LinearGradient(
+                              begin: Alignment.topCenter,
+                              colors: [
+                                Color.fromARGB(216, 255, 255, 255),
+                                Color.fromARGB(255, 255, 255, 255),
+                              ],
+                            ),
+                          ),
+                          child: SingleChildScrollView(
+                            child: Column(
+                              children: [
+                                const SizedBox(
+                                    height:
+                                        40), // فضای خالی برای قرارگیری Divider در بالا
+                                SingleChildScrollView(
+                                    child:
+                                        _buildAdvertisementsList()), // محتوای لیست آگهی
+                              ],
+                            ),
+                          ),
+                        ),
                       ),
-                      borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(20),
-                          topRight: Radius.circular(20)),
-                    ),
-                    child: SingleChildScrollView(
-                      controller: scrollController,
-                      child: Column(
-                        children: [
-                          _buildTopDivider(),
-                          const SizedBox(height: 20),
-                          _buildAdvertisementsList(),
-                        ],
+                      // Divider در بالای بلور قرار می‌گیرد
+                      Positioned(
+                        top: 0,
+                        left: 0,
+                        right: 0,
+                        child: _buildTopDivider(),
                       ),
-                    ),
+                    ],
                   ),
                 ),
               ),
@@ -419,12 +421,10 @@ class _AdvMapState extends State<AdvMap> {
       children: [
         Padding(
           padding: const EdgeInsets.only(top: 15.0),
-          child: SvgPicture.asset(
-            'assets/images/divider.svg',
-            // width: 5,
-            // height: 5,
-            color: const Color.fromRGBO(217, 217, 217, 1),
-          ),
+          child: SvgPicture.asset('assets/images/divider.svg',
+              // width: 5,
+              // height: 5,
+              color: const Color.fromRGBO(166, 166, 166, 1)),
         )
       ],
     );

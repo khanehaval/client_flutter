@@ -17,28 +17,36 @@ class _ViewAghahiState extends State<ViewAghahi> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: const BoxDecoration(
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(20),
-          topRight: Radius.circular(20),
+    return SingleChildScrollView(
+      child: Container(
+        decoration: const BoxDecoration(
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(20),
+            topRight: Radius.circular(20),
+          ),
         ),
-      ),
-      child: SingleChildScrollView(
-        child: BackdropFilter(
-          filter: ImageFilter.blur(sigmaX: 2.0, sigmaY: 2.0), // اعمال بلور
-          child: Column(
-            children: [
-              _buildHeaderText(),
-              const DetailViewAgahi(),
-              SizedBox(height: 20),
-              DetailViewAgahiEjara(),
-              SizedBox(height: 50),
-              DetailViewAgahi(),
-              SizedBox(height: 20),
-              DetailViewAgahiEjara(),
-              SizedBox(height: 50),
-            ],
+        child: SingleChildScrollView(
+          child: BackdropFilter(
+            filter: ImageFilter.blur(sigmaX: 2.0, sigmaY: 2.0), // اعمال بلور
+            child: Column(
+              children: [
+                _buildHeaderText(),
+                const DetailViewAgahi(),
+                const DetailViewAgahiEjara(),
+                const DetailViewAgahi(),
+                const DetailViewAgahiEjara(),
+                const DetailViewAgahiEjara(),
+                const DetailViewAgahi(),
+                const DetailViewAgahiEjara(),
+                const DetailViewAgahiEjara(),
+                const DetailViewAgahiEjara(),
+                const DetailViewAgahiEjara(),
+                const DetailViewAgahi(),
+                const DetailViewAgahiEjara(),
+                const DetailViewAgahiEjara(),
+                const SizedBox(height: 50),
+              ],
+            ),
           ),
         ),
       ),

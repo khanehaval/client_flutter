@@ -144,13 +144,13 @@ class _AdvMapState extends State<MapAxans> {
     String assetName;
     switch (adv.type) {
       case AdvertismentType.PERSONAL:
-        assetName = 'assets/images/LOCATION.svg';
+        assetName = 'assets/images/moshaver_location.svg';
         break;
       case AdvertismentType.AMALAK:
-        assetName = 'assets/images/LOCATION2.svg';
+        assetName = 'assets/images/moshaver_location.svg';
         break;
       case AdvertismentType.REAL_ESTATE:
-        assetName = 'assets/images/LOCATION3.svg';
+        assetName = 'assets/images/moshaver_location.svg';
         break;
     }
     return SvgPicture.asset(
@@ -163,14 +163,14 @@ class _AdvMapState extends State<MapAxans> {
   Widget _buildMarkerTitle(AdvertismentModel adv) {
     return Container(
       padding: const EdgeInsets.only(bottom: 15, left: 30),
-      child: Text(
-        adv.title,
-        style: const TextStyle(
-          fontFamily: MAIN_FONT_FAMILY,
-          color: Color.fromRGBO(48, 48, 48, 1),
-          fontSize: 10,
-        ),
-      ),
+      // child: Text(
+      //   adv.title,
+      //   style: const TextStyle(
+      //     fontFamily: MAIN_FONT_FAMILY,
+      //     color: Color.fromRGBO(48, 48, 48, 1),
+      //     fontSize: 10,
+      //   ),
+      // ),
     );
   }
 
@@ -358,7 +358,7 @@ class _AdvMapState extends State<MapAxans> {
           "آژانس های املاک در تهران",
           style: TextStyle(
             fontFamily: MAIN_FONT_FAMILY,
-            fontSize: 14,
+            fontSize: 12,
             color: Color.fromRGBO(99, 99, 99, 1),
           ),
         ),

@@ -16,7 +16,7 @@ Widget methodsAxans(
     child: Column(
       children: [
         Transform.translate(
-          offset: const Offset(20, 60),
+          offset: const Offset(20, 80),
           child: Padding(
             padding: const EdgeInsets.only(top: 140, right: 40, bottom: 10),
             child: Container(
@@ -27,7 +27,7 @@ Widget methodsAxans(
                 children: [
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 2)
-                        .copyWith(top: 200, bottom: 10),
+                        .copyWith(top: 220, bottom: 10),
                     child: GestureDetector(
                       onTap: () {
                         Get.to(() => const NamayeshAgahi1());
@@ -61,7 +61,7 @@ Widget methodsAxans(
                                     ),
                                     const Padding(
                                       padding: EdgeInsets.only(
-                                          right: 30.0, bottom: 10),
+                                          right: 50.0, bottom: 10),
                                       child: Text(
                                         'ویترین',
                                         style: TextStyle(
@@ -69,28 +69,7 @@ Widget methodsAxans(
                                             fontSize: 12),
                                       ),
                                     ),
-                                    Stack(
-                                      children: [
-                                        Padding(
-                                          padding: const EdgeInsets.only(
-                                              top: 20.0, right: 10),
-                                          child: SvgPicture.asset(
-                                            "assets/images/Agancy & consultant.svg",
-                                            width: 69,
-                                            height: 63,
-                                          ),
-                                        ),
-                                        Padding(
-                                          padding: const EdgeInsets.only(
-                                              left: 85.0, top: 30),
-                                          child: SvgPicture.asset(
-                                            'assets/images/logo-farsi.svg',
-                                            width: 30,
-                                            height: 30,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
+                                    _profileHeader(),
                                   ],
                                 ),
                               ],
@@ -106,7 +85,7 @@ Widget methodsAxans(
                                     height: 20,
                                   ),
                                   const SizedBox(
-                                    width: 45,
+                                    width: 20,
                                   ),
                                   const Text(
                                     'تــهـران',
@@ -124,15 +103,15 @@ Widget methodsAxans(
                   ),
                   Positioned(
                     left: 160,
-                    top: 185,
+                    top: 210,
                     child: GestureDetector(
                       onTap: () {
                         onTap();
                       },
                       child: SvgPicture.asset(
                         "assets/images/delete.svg",
-                        width: 30,
-                        height: 30,
+                        width: 25,
+                        height: 25,
                       ),
                     ),
                   ),
@@ -140,6 +119,9 @@ Widget methodsAxans(
               ),
             ),
           ),
+        ),
+        const SizedBox(
+          height: 10,
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -152,7 +134,7 @@ Widget methodsAxans(
                 },
                 child: Container(
                   width: 89,
-                  height: 42,
+                  height: 35,
                   decoration: const BoxDecoration(
                       borderRadius: BorderRadius.all(Radius.circular(10)),
                       color: Color.fromRGBO(0, 189, 97, 1)),
@@ -184,7 +166,7 @@ Widget methodsAxans(
                 },
                 child: Container(
                   width: 89,
-                  height: 42,
+                  height: 35,
                   decoration: const BoxDecoration(
                       borderRadius: BorderRadius.all(Radius.circular(10)),
                       color: Color.fromRGBO(
@@ -232,7 +214,7 @@ Widget showAdvertisment1(
     child: Column(
       children: [
         Transform.translate(
-          offset: const Offset(20, 60),
+          offset: const Offset(20, 80),
           child: Padding(
             padding: const EdgeInsets.only(top: 75, right: 40, bottom: 70),
             child: Container(
@@ -468,4 +450,73 @@ Widget showAdvertisment1(
 
 void deleteAdvertsment1() {
   return null;
+}
+
+Widget _profileHeader() {
+  return Column(
+    children: [
+      const SizedBox(
+        height: 20,
+      ),
+      Padding(
+        padding: const EdgeInsets.only(right: 20.0),
+        child: Row(
+          children: [
+            const Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                Text(
+                  "آژانس املاک",
+                  style: TextStyle(
+                      fontSize: 15,
+                      fontFamily: 'Aban Bold',
+                      color: Colors.black54),
+                ),
+                Row(
+                  children: [
+                    Icon(
+                      Icons.verified,
+                      color: Colors.blue,
+                      size: 20,
+                    ),
+                    const SizedBox(
+                      width: 5,
+                    ),
+                    Text(
+                      "خانه اول",
+                      style:
+                          TextStyle(fontSize: 14, fontFamily: MAIN_FONT_FAMILY),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+            const SizedBox(width: 10),
+            Stack(
+              children: [
+                Container(
+                  width: 60,
+                  height: 60,
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                        width: 2, color: const Color.fromRGBO(229, 222, 41, 1)),
+                    shape: BoxShape.circle,
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(5.0),
+                    child: Image.asset(
+                      'assets/images/logo-fa-photoshop.png',
+                      width: 65,
+                      height: 65,
+                      fit: BoxFit.contain,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    ],
+  );
 }

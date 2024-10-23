@@ -90,11 +90,8 @@ class _SelectLocationMapState extends State<Advertisements> {
         ),
         Column(
           children: [
-            const SizedBox(
-              height: 20,
-            ),
             Padding(
-              padding: const EdgeInsets.only(left: 10.0, right: 2),
+              padding: const EdgeInsets.only(left: 10.0, right: 7),
               child: SizedBox(
                 height: 95,
                 child: ScrollablePositionedList.builder(
@@ -106,19 +103,22 @@ class _SelectLocationMapState extends State<Advertisements> {
                   itemBuilder: (context, i) => GestureDetector(
                     onTap: () {
                       _controller.scrollTo(
-                          index: i,
-                          duration: const Duration(microseconds: 100),
-                          opacityAnimationWeights: [10, 30, 10],
-                          alignment: 0.5);
+                        index: i,
+                        duration: const Duration(microseconds: 100),
+                        opacityAnimationWeights: [10, 30, 10],
+                        alignment: 0.5,
+                      );
                       _currentIndex.value = i;
                     },
                     child: Obx(
                       () => Container(
                         margin: const EdgeInsets.only(
-                            left: 0, right: 10, bottom: 15, top: 45),
+                            left: 0, right: 7, bottom: 15, top: 45),
                         padding: const EdgeInsets.all(1.2),
                         height: 98,
-                        width: 140,
+                        width: titles[i] == "املاک"
+                            ? 80
+                            : 140, // عرض املاک برابر 60
                         decoration: BoxDecoration(
                           gradient: _currentIndex.value == i
                               ? const LinearGradient(colors: GRADIANT_COLOR)
@@ -135,20 +135,18 @@ class _SelectLocationMapState extends State<Advertisements> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Text(
-                                titles[i],
+                                items[i].title, // Display the title text
+                                textAlign: TextAlign.center,
                                 style: TextStyle(
-                                    fontSize: 14,
-                                    color: _currentIndex.value == i
-                                        ? Colors
-                                            .black // متن مشکی برای انتخاب شده
-                                        : Colors
-                                            .grey, // متن طوسی برای انتخاب نشده
-                                    fontWeight: _currentIndex.value == i
-                                        ? FontWeight
-                                            .bold // متن بولد برای انتخاب شده
-                                        : FontWeight
-                                            .w300, // متن عادی برای انتخاب نشده
-                                    fontFamily: MAIN_FONT_FAMILY_LIGHT),
+                                  fontFamily: _currentIndex.value == i
+                                      ? MAIN_FONT_FAMILY_MEDIUM // فونت برای انتخاب شده
+                                      : MAIN_FONT_FAMILY_LIGHT, // فونت برای غیر انتخاب شده
+                                  fontSize: 12, // Set text size
+                                  color: _currentIndex.value == i
+                                      ? Colors.black
+                                      : Colors
+                                          .grey, // Change text color based on selection
+                                ),
                               ),
                             ],
                           ),
@@ -167,10 +165,11 @@ class _SelectLocationMapState extends State<Advertisements> {
                   child: Row(children: [
                     Container(
                       decoration: BoxDecoration(
-                          border: Border.all(
-                              color: const Color.fromRGBO(166, 166, 166, 1)),
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(10)),
+                        border: Border.all(
+                            color: const Color.fromRGBO(166, 166, 166, 1)),
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(10),
+                      ),
                       child: const SizedBox(
                         height: 32,
                         width: 100,
@@ -196,7 +195,73 @@ class _SelectLocationMapState extends State<Advertisements> {
                       ),
                     ),
                     const SizedBox(
-                      width: 5,
+                      width: 7,
+                    ),
+                    Container(
+                      decoration: BoxDecoration(
+                          border: Border.all(
+                              color: const Color.fromRGBO(166, 166, 166, 1)),
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(10)),
+                      child: const SizedBox(
+                        height: 32,
+                        width: 100,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Stack(children: [
+                              Text(
+                                "محدوده متراژ",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontSize: 11,
+                                  fontFamily: MAIN_FONT_FAMILY_LIGHT,
+                                  color: Color.fromRGBO(166, 166, 166, 1),
+                                ),
+                              ),
+                              SizedBox(
+                                width: 15,
+                              ),
+                            ]),
+                          ],
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 7,
+                    ),
+                    Container(
+                      decoration: BoxDecoration(
+                          border: Border.all(
+                              color: const Color.fromRGBO(166, 166, 166, 1)),
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(10)),
+                      child: const SizedBox(
+                        height: 32,
+                        width: 100,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Stack(children: [
+                              Text(
+                                "محدوده قیمت",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontSize: 11,
+                                  fontFamily: MAIN_FONT_FAMILY_LIGHT,
+                                  color: Color.fromRGBO(166, 166, 166, 1),
+                                ),
+                              ),
+                              SizedBox(
+                                width: 15,
+                              ),
+                            ]),
+                          ],
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 7,
                     ),
                     GestureDetector(
                       onTap: () {
@@ -261,7 +326,7 @@ class _SelectLocationMapState extends State<Advertisements> {
                           )),
                     ),
                     const SizedBox(
-                      width: 5,
+                      width: 7,
                     ),
                     GestureDetector(
                       onTap: () {
@@ -317,7 +382,7 @@ class _SelectLocationMapState extends State<Advertisements> {
                           )),
                     ),
                     const SizedBox(
-                      width: 5,
+                      width: 7,
                     ),
                     GestureDetector(
                       onTap: () {
@@ -395,7 +460,7 @@ class _SelectLocationMapState extends State<Advertisements> {
                           )),
                     ),
                     const SizedBox(
-                      width: 5,
+                      width: 7,
                     ),
                   ])),
             )
