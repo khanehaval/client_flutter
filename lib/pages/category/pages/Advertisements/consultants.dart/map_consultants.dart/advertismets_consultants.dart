@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/models/AdvertismentMoidel.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/filter.dart';
-import 'package:flutter_application_1/pages/category/pages/Advertisements/map/adv_map.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/consultants.dart/map_consultants.dart/mapconsultants_.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/Neighbourhood.dart';
@@ -16,15 +15,15 @@ import 'package:get_it/get_it.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 
-class AdvertismetsAxans extends StatefulWidget {
+class AdvertismetsConsultants extends StatefulWidget {
   int get index => 0;
   int get index1 => 0;
 
   @override
-  State<AdvertismetsAxans> createState() => _SelectLocationMapState();
+  State<AdvertismetsConsultants> createState() => _SelectLocationMapState();
 }
 
-class _SelectLocationMapState extends State<AdvertismetsAxans> {
+class _SelectLocationMapState extends State<AdvertismetsConsultants> {
   final _advRepo = GetIt.I.get<AdvRepo>();
   MapController mapController = MapController();
   final cityController = Get.put(CityController()); // پیدا کردن کنترلر
@@ -64,7 +63,7 @@ class _SelectLocationMapState extends State<AdvertismetsAxans> {
     return Scaffold(
         backgroundColor: Colors.white,
         body: Stack(children: [
-          MapAxans(advertisments, advertisments),
+          MapConsultants(advertisments, advertisments),
           const Align(
             alignment: Alignment.topRight,
           ),
@@ -415,14 +414,14 @@ class _SelectLocationMapState extends State<AdvertismetsAxans> {
 
   var items = [
     FilterModel(
-        title: "مشاور املاک",
-        assetPath: 'assets/images/moshaveramlak_icon.png',
-        subItems: []),
-    FilterModel(
       title: "آژانس املاک",
       assetPath: 'assets/images/axans_amlak_story.png',
       subItems: [],
     ),
+    FilterModel(
+        title: "مشاور املاک",
+        assetPath: 'assets/images/moshaveramlak_icon.png',
+        subItems: []),
     FilterModel(
       title: "مشاور و آژانس",
       assetPath: 'assets/images/moshaver_axans.png',

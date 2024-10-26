@@ -42,7 +42,19 @@ class _SelectLocationMapState extends State<Advertisements> {
       title: "12 میلیارد",
     ),
     AdvertismentModel(
-      location: const LatLng(35.90, 55.54),
+      location: const LatLng(35.69, 51.44),
+      title: "12 میلیارد",
+    ),
+    AdvertismentModel(
+      location: const LatLng(35.69, 51.42),
+      title: "12 میلیارد",
+    ),
+    AdvertismentModel(
+      location: const LatLng(35.69, 51.50),
+      title: "12 میلیارد",
+    ),
+    AdvertismentModel(
+      location: const LatLng(35.69, 51.34),
       title: "12 میلیارد",
     ),
     AdvertismentModel(
@@ -50,11 +62,19 @@ class _SelectLocationMapState extends State<Advertisements> {
       title: "12 میلیارد",
     ),
     AdvertismentModel(
-        location: const LatLng(35.74, 51.40),
+        location: const LatLng(35.69, 51.38),
         title: " ",
         type: AdvertismentType.AMALAK),
     AdvertismentModel(
-        location: const LatLng(35.75, 51.41),
+        location: const LatLng(35.69, 51.39),
+        title: "",
+        type: AdvertismentType.REAL_ESTATE),
+    AdvertismentModel(
+        location: const LatLng(35.72, 51.40),
+        title: "",
+        type: AdvertismentType.REAL_ESTATE),
+    AdvertismentModel(
+        location: const LatLng(35.72, 52.40),
         title: "",
         type: AdvertismentType.REAL_ESTATE)
   ].obs;

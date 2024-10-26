@@ -2,10 +2,12 @@ import 'dart:async';
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/models/AdvertismentMoidel.dart';
+import 'package:flutter_application_1/pages/category/pages/Advertisements/consultants.dart/map_consultants.dart/advertismets_axans.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/widget_filter/aghahi.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/consultants.dart/map_consultants.dart/advertismets_consultants.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/shared/methods.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/shared/methods_ejara.dart';
+import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:flutter_svg/svg.dart';
@@ -23,12 +25,12 @@ class AdvMap extends StatefulWidget {
 
 class _AdvMapState extends State<AdvMap> {
   final Rxn<AdvertismentModel> _selectedModel = Rxn<AdvertismentModel>();
-  bool _isContainerVisible = false; // متغیر برای کنترل نمایش کانتینر
 
   late StreamController<bool> _notificationStreamController;
   late Stream<bool> _notificationStream;
   late StreamController<bool> _locationNotificationStreamController;
   late Stream<bool> _locationNotificationStream;
+  double _zoomLevel = 13; // مقدار اولیه برای زوم
 
   @override
   void initState() {
@@ -97,7 +99,8 @@ class _AdvMapState extends State<AdvMap> {
   Widget _buildFlutterMap() {
     return FlutterMap(
       options: MapOptions(
-        initialZoom: 13,
+        initialRotation: 0.0,
+        initialZoom: _zoomLevel,
         initialCenter: widget.advertisements.value.first.location,
         maxZoom: 20,
         keepAlive: true,
@@ -105,6 +108,11 @@ class _AdvMapState extends State<AdvMap> {
           enableMultiFingerGestureRace: true,
           enableScrollWheel: true,
         ),
+        onPositionChanged: (position, hasGesture) {
+          setState(() {
+            _zoomLevel = position.zoom!; // بروزرسانی سطح زوم
+          });
+        },
       ),
       children: [
         TileLayer(
@@ -142,23 +150,48 @@ class _AdvMapState extends State<AdvMap> {
   }
 
   Widget _buildMarkerIcon(AdvertismentModel adv) {
-    String assetName;
-    switch (adv.type) {
-      case AdvertismentType.PERSONAL:
-        assetName = 'assets/images/axans_location.svg';
-        break;
-      case AdvertismentType.AMALAK:
-        assetName = 'assets/images/moshaver_location.svg';
-        break;
-      case AdvertismentType.REAL_ESTATE:
-        assetName = 'assets/images/shakhsi_location.svg';
-        break;
+    if (_zoomLevel > 16) {
+      return Stack(
+        alignment: Alignment.bottomCenter,
+        clipBehavior: Clip.none,
+        children: [
+          // کانتینر اصلی
+          Container(
+            width: 69,
+            height: 36,
+            alignment: Alignment.center,
+            decoration: BoxDecoration(
+              color: const Color.fromRGBO(4, 201, 95, 1), // رنگ کانتینر
+              borderRadius: BorderRadius.circular(10),
+            ),
+            child: const Text(
+              '12 میلیارد',
+              style: TextStyle(
+                fontFamily: MAIN_FONT_FAMILY_MEDIUM,
+                color: Colors.white,
+                fontSize: 12,
+              ),
+            ),
+          ),
+          // اضافه کردن مثلث به پایین کانتینر
+          Positioned(
+            bottom: -10,
+            child: CustomPaint(
+              size: const Size(69, 20),
+              painter: TrianglePainter(const Color.fromRGBO(
+                  4, 201, 95, 1)), // تنظیم رنگ مثلث به رنگ کانتینر
+            ),
+          ),
+        ],
+      );
+    } else {
+      const assetName = 'assets/images/shakhsi_location.svg';
+      return SvgPicture.asset(
+        assetName,
+        width: 110,
+        height: 55,
+      );
     }
-    return SvgPicture.asset(
-      assetName,
-      width: 110,
-      height: 55,
-    );
   }
 
   Widget _buildMarkerTitle(AdvertismentModel adv) {
@@ -435,4 +468,29 @@ class _AdvMapState extends State<AdvMap> {
       children: [ViewAghahi()],
     );
   }
+}
+
+class TrianglePainter extends CustomPainter {
+  final Color color; // رنگ مثلث
+
+  TrianglePainter(this.color);
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final paint = Paint()
+      ..color = color // تنظیم رنگ مثلث به رنگ کانتینر
+      ..style = PaintingStyle.fill;
+
+    // رسم مثلث در وسط پایین کانتینر
+    final path = Path()
+      ..moveTo(size.width / 2, 20) // نقطه وسط پایین مثلث
+      ..lineTo((size.width / 2) - 20, 0) // سمت چپ بالا
+      ..lineTo((size.width / 2) + 20, 0) // سمت راست بالا
+      ..close();
+
+    canvas.drawPath(path, paint);
+  }
+
+  @override
+  bool shouldRepaint(CustomPainter oldDelegate) => false;
 }

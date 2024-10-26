@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/consultants.dart/map_consultants.dart/widget_view_agahi_consultants/view_agahi_axans_amlak.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:get/get.dart';
 
 Widget WidgetViewAghahiAxans() {
   return Container(

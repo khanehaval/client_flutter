@@ -1,16 +1,16 @@
 import 'dart:async';
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/models/AdvertismentMoidel.dart';
+import 'package:flutter_application_1/pages/category/pages/Advertisements/consultants.dart/map_consultants.dart/advertismets_axans.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/widget_filter/aghahi.dart';
-import 'package:flutter_application_1/pages/category/pages/Advertisements/consultants.dart/map_consultants.dart/methods_consultants.dart';
-import 'package:flutter_application_1/pages/category/pages/Advertisements/consultants.dart/map_consultants.dart/widget_view_agahahi_consultants.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/shared/methods.dart';
+import 'package:flutter_application_1/pages/category/pages/Advertisements/shared/methods_ejara.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:get/get_rx/src/rx_types/rx_types.dart';
-import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
+import 'package:get/get.dart';
 
 class MapAxans extends StatefulWidget {
   final RxList<AdvertismentModel> advertisements;
@@ -28,6 +28,7 @@ class _AdvMapState extends State<MapAxans> {
   late Stream<bool> _notificationStream;
   late StreamController<bool> _locationNotificationStreamController;
   late Stream<bool> _locationNotificationStream;
+  double _zoomLevel = 13; // مقدار اولیه برای زوم
 
   @override
   void initState() {
@@ -87,7 +88,7 @@ class _AdvMapState extends State<MapAxans> {
               ? _buildAdvertismentOverlay()
               : const SizedBox.shrink()),
           _buildListButton(),
-          _buildDraggableScrollableSheet(),
+          Container(child: _buildDraggableScrollableSheet()),
         ],
       ),
     );
@@ -96,14 +97,20 @@ class _AdvMapState extends State<MapAxans> {
   Widget _buildFlutterMap() {
     return FlutterMap(
       options: MapOptions(
-        initialZoom: 13,
+        initialRotation: 0.0,
+        initialZoom: _zoomLevel,
         initialCenter: widget.advertisements.value.first.location,
-        maxZoom: 15,
+        maxZoom: 20,
         keepAlive: true,
         interactionOptions: const InteractionOptions(
           enableMultiFingerGestureRace: true,
           enableScrollWheel: true,
         ),
+        onPositionChanged: (position, hasGesture) {
+          setState(() {
+            _zoomLevel = position.zoom!; // بروزرسانی سطح زوم
+          });
+        },
       ),
       children: [
         TileLayer(
@@ -141,23 +148,48 @@ class _AdvMapState extends State<MapAxans> {
   }
 
   Widget _buildMarkerIcon(AdvertismentModel adv) {
-    String assetName;
-    switch (adv.type) {
-      case AdvertismentType.PERSONAL:
-        assetName = 'assets/images/moshaver_location.svg';
-        break;
-      case AdvertismentType.AMALAK:
-        assetName = 'assets/images/moshaver_location.svg';
-        break;
-      case AdvertismentType.REAL_ESTATE:
-        assetName = 'assets/images/moshaver_location.svg';
-        break;
+    if (_zoomLevel > 16) {
+      return Stack(
+        alignment: Alignment.bottomCenter,
+        clipBehavior: Clip.none,
+        children: [
+          // کانتینر اصلی
+          Container(
+            width: 69,
+            height: 36,
+            alignment: Alignment.center,
+            decoration: BoxDecoration(
+              color: const Color.fromRGBO(255, 0, 0, 1), // رنگ کانتینر
+              borderRadius: BorderRadius.circular(10),
+            ),
+            child: const Text(
+              'خانه اول',
+              style: TextStyle(
+                fontFamily: MAIN_FONT_FAMILY_MEDIUM,
+                color: Colors.white,
+                fontSize: 12,
+              ),
+            ),
+          ),
+          // اضافه کردن مثلث به پایین کانتینر
+          Positioned(
+            bottom: -10,
+            child: CustomPaint(
+              size: const Size(69, 20),
+              painter: TrianglePainter(const Color.fromRGBO(
+                  255, 0, 0, 1)), // تنظیم رنگ مثلث به رنگ کانتینر
+            ),
+          ),
+        ],
+      );
+    } else {
+      const assetName = 'assets/images/axans_location.svg';
+      return SvgPicture.asset(
+        assetName,
+        width: 110,
+        height: 55,
+      );
     }
-    return SvgPicture.asset(
-      assetName,
-      width: 98,
-      height: 50,
-    );
   }
 
   Widget _buildMarkerTitle(AdvertismentModel adv) {
@@ -182,8 +214,8 @@ class _AdvMapState extends State<MapAxans> {
         child: IconButton(
           onPressed: () {},
           icon: SizedBox(
-            height: 60,
-            width: 60,
+            height: 50,
+            width: 50,
             child: SvgPicture.asset("assets/images/icon zoom.svg"),
           ),
         ),
@@ -230,15 +262,65 @@ class _AdvMapState extends State<MapAxans> {
   }
 
   Widget _buildAdvertismentOverlay() {
+    final AdvertismentModel selectedAd = _selectedModel.value!;
+
+    switch (selectedAd.type) {
+      case AdvertismentType.PERSONAL:
+        return _buildPersonalAdvertismentOverlay(selectedAd);
+      case AdvertismentType.AMALAK:
+        return _buildAmalakAdvertismentOverlay(selectedAd);
+      case AdvertismentType.REAL_ESTATE:
+        return _buildRealEstateAdvertismentOverlay(selectedAd);
+      default:
+        return const SizedBox.shrink();
+    }
+  }
+
+  Widget _buildPersonalAdvertismentOverlay(AdvertismentModel ad) {
     return Align(
-      child: methodsAxans(
-        advertismentModel: _selectedModel.value!,
+      child: showAdvertisment(
+        advertismentModel: ad,
         onTap: () => _selectedModel.value = null,
         onBack: _onBack,
         onNext: _onNext,
+        // افزودن جزئیات خاص برای PERSONAL
       ),
     );
   }
+
+  Widget _buildAmalakAdvertismentOverlay(AdvertismentModel ad) {
+    return Align(
+      child: showAdvertisment(
+        advertismentModel: ad,
+        onTap: () => _selectedModel.value = null,
+        onBack: _onBack,
+        onNext: _onNext,
+        // افزودن جزئیات خاص برای AMALAK
+      ),
+    );
+  }
+
+  Widget _buildRealEstateAdvertismentOverlay(AdvertismentModel ad) {
+    return Align(
+      child: methodsejara(
+        advertismentModel: ad,
+        onTap: () => _selectedModel.value = null,
+        onBack: _onBack,
+        onNext: _onNext,
+        // افزودن جزئیات خاص برای REAL ESTATE
+      ),
+    );
+  }
+  // Widget _buildAdvertismentOverlay() {
+  //   return Align(
+  //     child: showAdvertisment(
+  //       advertismentModel: _selectedModel.value!,
+  //       onTap: () => _selectedModel.value = null,
+  //       onBack: _onBack,
+  //       onNext: _onNext,
+  //     ),
+  //   );
+  // }
 
   void _onBack() {
     final int index =
@@ -264,23 +346,29 @@ class _AdvMapState extends State<MapAxans> {
     return Align(
       alignment: Alignment.bottomLeft,
       child: Padding(
-        padding: const EdgeInsets.only(bottom: 75, left: 295),
+        padding: const EdgeInsets.only(bottom: 77, left: 300),
         child: IconButton(
-          onPressed: () {},
+          onPressed: () {
+            Get.to(() => AdvertismetsAxans(),
+                duration: const Duration(microseconds: 900),
+                transition: Transition.rightToLeft);
+          },
           icon: SizedBox(
-            height: 65,
-            width: 65,
+            height: 55,
+            width: 55,
             child: Container(
               decoration: BoxDecoration(
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey.withOpacity(0.15),
-                    blurRadius: 5,
-                  ),
-                ],
+                borderRadius: BorderRadius.circular(30),
+                // boxShadow: [
+                //   BoxShadow(
+                //     offset: const Offset(0, 0.5),
+                //     color: Colors.grey.withOpacity(0.10),
+                //     blurRadius: 1,
+                //   ),
+                // ],
               ),
               child: SvgPicture.asset(
-                "assets/images/list - consultant_axans.svg",
+                "assets/images/list - consultant.svg",
               ),
             ),
           ),
@@ -293,41 +381,65 @@ class _AdvMapState extends State<MapAxans> {
     return DraggableScrollableSheet(
       initialChildSize: 0.10,
       minChildSize: 0.10,
-      maxChildSize: 0.81,
+      maxChildSize: 1.0,
       builder: (context, scrollController) {
-        return Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(20),
-          ),
-          child: Container(
-            decoration: const BoxDecoration(
-              borderRadius: BorderRadius.all(
-                Radius.circular(20),
-              ),
-              gradient: LinearGradient(colors: GRADIANT_COLOR),
-            ),
-            child: Padding(
-              padding: const EdgeInsets.only(top: 1.2),
-              child: Container(
-                decoration: const BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.vertical(
-                    top: Radius.circular(20),
+        return SingleChildScrollView(
+          controller: scrollController,
+          child: Column(
+            children: [
+              // باکس با بوردر و radius که خارج از بلور است
+              Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20), // radius برای بوردر
+                  border: Border.all(
+                    color: const Color.fromRGBO(166, 166, 166, 1),
+                    width: 1.0, // ضخامت بوردر
                   ),
                 ),
-                child: SingleChildScrollView(
-                  controller: scrollController,
-                  child: Column(
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(20), // هماهنگی radius
+                  child: Stack(
+                    // استفاده از Stack برای لایه‌بندی
                     children: [
-                      _buildTopDivider(),
-                      const SizedBox(height: 10),
-                      _buildHeaderText(),
-                      _buildAdvertisementsList(),
+                      BackdropFilter(
+                        filter: ImageFilter.blur(
+                            sigmaX: 1.0, sigmaY: 1.0), // افکت بلور
+                        child: Container(
+                          decoration: const BoxDecoration(
+                            gradient: LinearGradient(
+                              begin: Alignment.topCenter,
+                              colors: [
+                                Color.fromARGB(216, 255, 255, 255),
+                                Color.fromARGB(255, 255, 255, 255),
+                              ],
+                            ),
+                          ),
+                          child: SingleChildScrollView(
+                            child: Column(
+                              children: [
+                                const SizedBox(
+                                    height:
+                                        40), // فضای خالی برای قرارگیری Divider در بالا
+                                SingleChildScrollView(
+                                    child:
+                                        _buildAdvertisementsList()), // محتوای لیست آگهی
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                      // Divider در بالای بلور قرار می‌گیرد
+                      Positioned(
+                        top: 0,
+                        left: 0,
+                        right: 0,
+                        child: _buildTopDivider(),
+                      ),
                     ],
                   ),
                 ),
               ),
-            ),
+            ],
           ),
         );
       },
@@ -339,36 +451,44 @@ class _AdvMapState extends State<MapAxans> {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Padding(
-          padding: const EdgeInsets.only(top: 20.0),
-          child: SvgPicture.asset(
-            'assets/images/divider.svg',
-            width: 5,
-            height: 5,
-          ),
+          padding: const EdgeInsets.only(top: 15.0),
+          child: SvgPicture.asset('assets/images/divider.svg',
+              // width: 5,
+              // height: 5,
+              color: const Color.fromRGBO(166, 166, 166, 1)),
         )
-      ],
-    );
-  }
-
-  Widget _buildHeaderText() {
-    return const Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Text(
-          "آژانس های املاک در تهران",
-          style: TextStyle(
-            fontFamily: MAIN_FONT_FAMILY,
-            fontSize: 12,
-            color: Color.fromRGBO(99, 99, 99, 1),
-          ),
-        ),
       ],
     );
   }
 
   Widget _buildAdvertisementsList() {
     return Stack(
-      children: [WidgetViewAghahiAxans()],
+      children: [ViewAghahi()],
     );
   }
+}
+
+class TrianglePainter extends CustomPainter {
+  final Color color; // رنگ مثلث
+
+  TrianglePainter(this.color);
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final paint = Paint()
+      ..color = color // تنظیم رنگ مثلث به رنگ کانتینر
+      ..style = PaintingStyle.fill;
+
+    // رسم مثلث در وسط پایین کانتینر
+    final path = Path()
+      ..moveTo(size.width / 2, 20) // نقطه وسط پایین مثلث
+      ..lineTo((size.width / 2) - 20, 0) // سمت چپ بالا
+      ..lineTo((size.width / 2) + 20, 0) // سمت راست بالا
+      ..close();
+
+    canvas.drawPath(path, paint);
+  }
+
+  @override
+  bool shouldRepaint(CustomPainter oldDelegate) => false;
 }
