@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/models/AdvertismentMoidel.dart';
+import 'package:flutter_application_1/pages/category/pages/Advertisements/consultants.dart/map_consultants.dart/advertismets_consultants.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/consultants.dart/map_consultants.dart/mapaxans_.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/filter.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
@@ -25,7 +26,7 @@ class AdvertismetsAxans extends StatefulWidget {
 class _SelectLocationMapState extends State<AdvertismetsAxans> {
   final _advRepo = GetIt.I.get<AdvRepo>();
   MapController mapController = MapController();
-  final cityController = Get.put(CityController()); // پیدا کردن کنترلر
+  final cityController = Get.put(CityController());
 
   double initZoom = 16;
   final _controller = ItemScrollController();
@@ -46,6 +47,9 @@ class _SelectLocationMapState extends State<AdvertismetsAxans> {
         type: AdvertismentType.REAL_ESTATE)
   ].obs;
   List<LatLng> selectedPins = [];
+
+  int selectedIndex = 0; // ایندکس آیتم انتخاب‌شده
+
   @override
   void initState() {
     _currentIndex.value = widget.index;
@@ -60,81 +64,80 @@ class _SelectLocationMapState extends State<AdvertismetsAxans> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.white,
-        body: Stack(children: [
+      backgroundColor: Colors.white,
+      body: Stack(
+        children: [
           MapAxans(advertisments, advertisments),
-          const Align(
-            alignment: Alignment.topRight,
-          ),
           Column(
             children: [
               SizedBox(
-                  height: 98,
-                  child: ScrollablePositionedList.builder(
-                    reverse: true,
-                    itemScrollController: _controller,
-                    itemCount: items
-                        .length, // تعداد آیتم‌ها را بر اساس تعداد items تنظیم کنید
-                    scrollDirection: Axis.horizontal,
-                    initialScrollIndex: widget.index,
-                    itemBuilder: (context, i) => GestureDetector(
-                      onTap: () {
-                        _controller.scrollTo(
-                          index: i,
-                          duration: const Duration(milliseconds: 1),
-                          opacityAnimationWeights: [10, 30, 10],
-                          alignment: 0.5,
+                height: 95,
+                child: ScrollablePositionedList.builder(
+                  reverse: true,
+                  itemScrollController: _controller,
+                  itemCount: items.length,
+                  scrollDirection: Axis.horizontal,
+                  initialScrollIndex: widget.index,
+                  itemBuilder: (context, i) => GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        selectedIndex = i; // تنظیم آیتم انتخاب‌شده
+                      });
+
+                      // اگر آیتم "مشاور املاک" انتخاب شد، به صفحه جدید هدایت شوید
+                      if (items[i].title == "مشاور املاک") {
+                        Get.to(
+                          () => AdvertismetsConsultants(),
+                          transition:
+                              Transition.noTransition, // غیرفعال کردن انیمیشن
                         );
-                        _currentIndex.value = i; // بروزرسانی ایندکس انتخاب شده
-                      },
-                      child: Obx(() => Container(
-                            margin: const EdgeInsets.only(
-                                left: 0, right: 10, bottom: 10, top: 50),
-                            padding: const EdgeInsets.all(
-                                1.2), // Padding for the outer gradient border
-                            height: 95,
-                            width: 115,
-                            decoration: BoxDecoration(
-                              gradient: _currentIndex.value == i
-                                  ? const LinearGradient(colors: GRADIANT_COLOR)
-                                  : const LinearGradient(
-                                      colors: BLACK_12_GRADIANT_COLOR),
-                              borderRadius: BorderRadius.circular(
-                                  10), // Rounded corners for the outer container
+                      }
+                    },
+                    child: Container(
+                      margin: const EdgeInsets.only(
+                          left: 0, right: 10, bottom: 10, top: 50),
+                      padding: const EdgeInsets.all(1.2),
+                      height: 95,
+                      width: 115,
+                      decoration: BoxDecoration(
+                        gradient: selectedIndex == i
+                            ? const LinearGradient(colors: GRADIANT_COLOR)
+                            : const LinearGradient(
+                                colors: BLACK_12_GRADIANT_COLOR),
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: Center(
+                          child: Text(
+                            items[i].title,
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontFamily: selectedIndex == i
+                                  ? MAIN_FONT_FAMILY_MEDIUM
+                                  : MAIN_FONT_FAMILY_LIGHT,
+                              fontSize: 12,
+                              color: selectedIndex == i
+                                  ? Colors.black
+                                  : Colors.grey,
                             ),
-                            child: Container(
-                              decoration: BoxDecoration(
-                                color:
-                                    Colors.white, // Color inside the container
-                                borderRadius: BorderRadius.circular(
-                                    10), // Rounded corners for the inner container
-                              ),
-                              child: Center(
-                                child: Text(
-                                  items[i].title, // Display the title text
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                    fontFamily: _currentIndex.value == i
-                                        ? MAIN_FONT_FAMILY_MEDIUM // فونت برای انتخاب شده
-                                        : MAIN_FONT_FAMILY_LIGHT, // فونت برای غیر انتخاب شده
-                                    fontSize: 12, // Set text size
-                                    color: _currentIndex.value == i
-                                        ? Colors.black
-                                        : Colors
-                                            .grey, // Change text color based on selection
-                                  ),
-                                ),
-                              ),
-                            ),
-                          )),
+                          ),
+                        ),
+                      ),
                     ),
-                  )),
+                  ),
+                ),
+              ),
               Padding(
                 padding: const EdgeInsets.only(left: 10.0, right: 3),
                 child: SingleChildScrollView(
-                    reverse: true,
-                    scrollDirection: Axis.horizontal,
-                    child: Row(children: [
+                  reverse: true,
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    children: [
                       Container(
                         decoration: BoxDecoration(
                           border: Border.all(
@@ -404,11 +407,15 @@ class _SelectLocationMapState extends State<AdvertismetsAxans> {
                       const SizedBox(
                         width: 7,
                       ),
-                    ])),
-              )
+                    ],
+                  ),
+                ),
+              ),
             ],
           ),
-        ]));
+        ],
+      ),
+    );
   }
 
   var items = [
@@ -418,13 +425,26 @@ class _SelectLocationMapState extends State<AdvertismetsAxans> {
       subItems: [],
     ),
     FilterModel(
-        title: "مشاور املاک",
-        assetPath: 'assets/images/moshaveramlak_icon.png',
-        subItems: []),
+      title: "مشاور املاک",
+      assetPath: 'assets/images/moshaveramlak_icon.png',
+      subItems: [],
+    ),
     FilterModel(
       title: "مشاور و آژانس",
       assetPath: 'assets/images/moshaver_axans.png',
       subItems: [],
     ),
   ];
+}
+
+class FilterModel {
+  final String title;
+  final String assetPath;
+  final List subItems;
+
+  FilterModel({
+    required this.title,
+    required this.assetPath,
+    required this.subItems,
+  });
 }

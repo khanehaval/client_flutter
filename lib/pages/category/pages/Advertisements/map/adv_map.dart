@@ -13,6 +13,7 @@ import 'package:flutter_map/flutter_map.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:jalali_flutter_datepicker/jalali_flutter_datepicker.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class AdvMap extends StatefulWidget {
   final RxList<AdvertismentModel> advertisements;
@@ -30,15 +31,38 @@ class _AdvMapState extends State<AdvMap> {
   late Stream<bool> _notificationStream;
   late StreamController<bool> _locationNotificationStreamController;
   late Stream<bool> _locationNotificationStream;
-  double _zoomLevel = 13; // مقدار اولیه برای زوم
+  double _zoomLevel = 11; // مقدار اولیه برای زوم
+  bool _showNotification = true; // متغیر برای کنترل نمایش نوتیفیکیشن
+  bool _showLocationNotification =
+      true; // متغیر برای کنترل نمایش نوتیفیکیشن مکان
+
+  Future<void> _loadNotificationPreferences() async {
+    final prefs = await SharedPreferences.getInstance();
+    setState(() {
+      _showNotification =
+          prefs.getBool('show_notification') ?? true; // وضعیت نوتیفیکیشن
+      _showLocationNotification = prefs.getBool('show_location_notification') ??
+          true; // وضعیت نوتیفیکیشن مکان
+
+      if (!_showNotification) {
+        _notificationStreamController.add(false);
+      }
+      if (!_showLocationNotification) {
+        _locationNotificationStreamController.add(false);
+      }
+    });
+  }
 
   @override
   void initState() {
     super.initState();
     _notificationStreamController = StreamController<bool>.broadcast();
     _notificationStream = _notificationStreamController.stream;
+    _notificationStreamController = StreamController<bool>.broadcast();
+    _notificationStream = _notificationStreamController.stream;
     _locationNotificationStreamController = StreamController<bool>.broadcast();
     _locationNotificationStream = _locationNotificationStreamController.stream;
+    _loadNotificationPreferences();
 
     _notificationStreamController.add(true);
     _locationNotificationStreamController.add(true);
@@ -62,6 +86,31 @@ class _AdvMapState extends State<AdvMap> {
       body: Stack(
         children: [
           _buildFlutterMap(),
+          if (_showNotification)
+            StreamBuilder<bool>(
+              stream: _notificationStream,
+              initialData: true,
+              builder: (context, snapshot) {
+                if (snapshot.data == true) {
+                  return _notification();
+                } else {
+                  return const SizedBox.shrink();
+                }
+              },
+            ),
+          // بررسی وضعیت نمایش نوتیفیکیشن مکان
+          if (_showLocationNotification)
+            StreamBuilder<bool>(
+              stream: _locationNotificationStream,
+              initialData: true,
+              builder: (context, snapshot) {
+                if (snapshot.data == true) {
+                  return _locationNotification();
+                } else {
+                  return const SizedBox.shrink();
+                }
+              },
+            ),
           StreamBuilder<bool>(
             stream: _notificationStream,
             initialData: true,
@@ -99,12 +148,13 @@ class _AdvMapState extends State<AdvMap> {
   Widget _buildFlutterMap() {
     return FlutterMap(
       options: MapOptions(
-        initialRotation: 0.0,
         initialZoom: _zoomLevel,
         initialCenter: widget.advertisements.value.first.location,
         maxZoom: 20,
         keepAlive: true,
-        interactionOptions: const InteractionOptions(
+        rotation: 0, // تنظیم چرخش اولیه به صفر
+        interactionOptions: InteractionOptions(
+          rotationThreshold: 1000.0, // غیرفعال کردن چرخش با تنظیم مقدار بالا
           enableMultiFingerGestureRace: true,
           enableScrollWheel: true,
         ),
@@ -150,46 +200,77 @@ class _AdvMapState extends State<AdvMap> {
   }
 
   Widget _buildMarkerIcon(AdvertismentModel adv) {
-    if (_zoomLevel > 16) {
+    String text = 'علیرضا احمدی'; // متنی که می‌خواهید نمایش دهید
+
+    // محاسبه عرض متن
+    final textPainter = TextPainter(
+      text: TextSpan(
+        text: text,
+        style: const TextStyle(
+          fontFamily: MAIN_FONT_FAMILY_MEDIUM,
+          color: Colors.white,
+          fontSize: 10,
+        ),
+      ),
+      textDirection: TextDirection.ltr,
+    );
+
+    textPainter.layout(); // انجام محاسبات لازم برای لایه‌بندی
+
+    double textWidth = textPainter.width; // عرض متن را می‌گیریم
+
+    // اگر زوم بیشتر یا مساوی ۱۶ باشد
+    if (_zoomLevel >= 16) {
       return Stack(
         alignment: Alignment.bottomCenter,
         clipBehavior: Clip.none,
         children: [
           // کانتینر اصلی
           Container(
-            width: 69,
-            height: 36,
-            alignment: Alignment.center,
-            decoration: BoxDecoration(
-              color: const Color.fromRGBO(4, 201, 95, 1), // رنگ کانتینر
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: const Text(
-              '12 میلیارد',
-              style: TextStyle(
-                fontFamily: MAIN_FONT_FAMILY_MEDIUM,
-                color: Colors.white,
-                fontSize: 12,
+            decoration: const BoxDecoration(
+                borderRadius: BorderRadius.all(Radius.circular(12)),
+                color: Colors.white),
+            child: Padding(
+              padding: const EdgeInsets.all(2.0),
+              child: Container(
+                width: textWidth + 20, // اضافه کردن مقداری به عرض برای حاشیه
+                height: 30,
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                  color: const Color.fromRGBO(4, 201, 95, 1), // رنگ کانتینر
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 2.0, right: 2),
+                  child: Text(
+                    text,
+                    style: const TextStyle(
+                      fontFamily: MAIN_FONT_FAMILY_MEDIUM,
+                      color: Colors.white,
+                      fontSize: 10,
+                    ),
+                  ),
+                ),
               ),
             ),
           ),
           // اضافه کردن مثلث به پایین کانتینر
           Positioned(
-            bottom: -10,
-            child: CustomPaint(
-              size: const Size(69, 20),
-              painter: TrianglePainter(const Color.fromRGBO(
-                  4, 201, 95, 1)), // تنظیم رنگ مثلث به رنگ کانتینر
-            ),
-          ),
+              bottom: -12.5,
+              child: SvgPicture.asset(
+                'assets/images/locatin slice.svg',
+                width: 15,
+                height: 15,
+              )),
         ],
       );
     } else {
+      // نمایش آیکون پیش‌فرض زمانی که زوم کمتر از ۱۶ است
       const assetName = 'assets/images/shakhsi_location.svg';
       return SvgPicture.asset(
         assetName,
-        width: 110,
-        height: 55,
+        width: _zoomLevel >= 13 ? 35 : 20, // تغییر اندازه آیکون بر اساس سطح زوم
+        height: _zoomLevel >= 13 ? 35 : 20,
       );
     }
   }
@@ -231,8 +312,11 @@ class _AdvMapState extends State<AdvMap> {
       child: Padding(
         padding: const EdgeInsets.only(bottom: 80, left: 90),
         child: IconButton(
-          onPressed: () {
+          onPressed: () async {
             _notificationStreamController.add(false);
+            final prefs = await SharedPreferences.getInstance();
+            await prefs.setBool(
+                'show_notification', false); // ذخیره وضعیت نوتیفیکیشن
           },
           icon: SizedBox(
             height: 33,
@@ -250,8 +334,11 @@ class _AdvMapState extends State<AdvMap> {
       child: Padding(
         padding: const EdgeInsets.only(bottom: 140, left: 30),
         child: IconButton(
-          onPressed: () {
+          onPressed: () async {
             _locationNotificationStreamController.add(false);
+            final prefs = await SharedPreferences.getInstance();
+            await prefs.setBool('show_location_notification',
+                false); // ذخیره وضعیت نوتیفیکیشن مکان
           },
           icon: SizedBox(
             height: 80,

@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/models/AdvertismentMoidel.dart';
+import 'package:flutter_application_1/pages/category/pages/Advertisements/consultants.dart/map_consultants.dart/advertismets_axans.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/filter.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/consultants.dart/map_consultants.dart/mapconsultants_.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
@@ -48,14 +49,15 @@ class _SelectLocationMapState extends State<AdvertismetsConsultants> {
   ].obs;
   List<LatLng> selectedPins = [];
   @override
+  @override
   void initState() {
-    _currentIndex.value = widget.index;
+    super.initState();
+    _currentIndex.value = 1; // مقدار پیش‌فرض را به 1 تغییر دهید
     _currentIndex.listen((p0) {
       if (p0 == 0) {
         _subIndex.value = 0;
       }
     });
-    super.initState();
   }
 
   @override
@@ -80,13 +82,23 @@ class _SelectLocationMapState extends State<AdvertismetsConsultants> {
                     initialScrollIndex: widget.index,
                     itemBuilder: (context, i) => GestureDetector(
                       onTap: () {
-                        _controller.scrollTo(
-                          index: i,
-                          duration: const Duration(milliseconds: 100),
-                          opacityAnimationWeights: [10, 30, 10],
-                          alignment: 0.5,
-                        );
-                        _currentIndex.value = i; // بروزرسانی ایندکس انتخاب شده
+                        if (i == 0) {
+                          // اگر "آژانس املاک" انتخاب شد
+                          Get.to(
+                            () => AdvertismetsAxans(),
+                            transition:
+                                Transition.noTransition, // غیرفعال کردن انیمیشن
+                          );
+                        } else {
+                          _controller.scrollTo(
+                            index: i,
+                            duration: const Duration(milliseconds: 100),
+                            opacityAnimationWeights: [10, 30, 10],
+                            alignment: 0.5,
+                          );
+                          _currentIndex.value =
+                              i; // بروزرسانی ایندکس انتخاب شده
+                        }
                       },
                       child: Obx(() => Container(
                             margin: const EdgeInsets.only(
@@ -428,4 +440,16 @@ class _SelectLocationMapState extends State<AdvertismetsConsultants> {
       subItems: [],
     ),
   ];
+}
+
+class FilterModel {
+  final String title;
+  final String assetPath;
+  final List subItems;
+
+  FilterModel({
+    required this.title,
+    required this.assetPath,
+    required this.subItems,
+  });
 }

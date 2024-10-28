@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/models/AdvertismentMoidel.dart';
+import 'package:flutter_application_1/pages/category/pages/Advertisements/consultants.dart/map_consultants.dart/mapaxans_.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/widget_filter/aghahi.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/consultants.dart/map_consultants.dart/methods_consultants.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/consultants.dart/map_consultants.dart/widget_view_agahahi_consultants.dart';
@@ -30,6 +31,7 @@ class _AdvMapState extends State<MapConsultants> {
   late Stream<bool> _notificationStream;
   late StreamController<bool> _locationNotificationStreamController;
   late Stream<bool> _locationNotificationStream;
+  double _zoomLevel = 11; // مقدار اولیه برای زوم
 
   @override
   void initState() {
@@ -98,14 +100,21 @@ class _AdvMapState extends State<MapConsultants> {
   Widget _buildFlutterMap() {
     return FlutterMap(
       options: MapOptions(
-        initialZoom: 13,
+        initialZoom: _zoomLevel,
         initialCenter: widget.advertisements.value.first.location,
-        maxZoom: 15,
+        maxZoom: 20,
         keepAlive: true,
+        rotation: 0, // تنظیم چرخش اولیه به صفر
         interactionOptions: const InteractionOptions(
+          rotationThreshold: 1000.0, // غیرفعال کردن چرخش با تنظیم مقدار بالا
           enableMultiFingerGestureRace: true,
           enableScrollWheel: true,
         ),
+        onPositionChanged: (position, hasGesture) {
+          setState(() {
+            _zoomLevel = position.zoom!; // بروزرسانی سطح زوم
+          });
+        },
       ),
       children: [
         TileLayer(
@@ -143,23 +152,80 @@ class _AdvMapState extends State<MapConsultants> {
   }
 
   Widget _buildMarkerIcon(AdvertismentModel adv) {
-    String assetName;
-    switch (adv.type) {
-      case AdvertismentType.PERSONAL:
-        assetName = 'assets/images/moshaver_location.svg';
-        break;
-      case AdvertismentType.AMALAK:
-        assetName = 'assets/images/moshaver_location.svg';
-        break;
-      case AdvertismentType.REAL_ESTATE:
-        assetName = 'assets/images/moshaver_location.svg';
-        break;
-    }
-    return SvgPicture.asset(
-      assetName,
-      width: 98,
-      height: 50,
+    String text = 'علی احمدی'; // متنی که می‌خواهید نمایش دهید
+
+    // محاسبه عرض متن
+    final textPainter = TextPainter(
+      text: TextSpan(
+        text: text,
+        style: const TextStyle(
+          fontFamily: MAIN_FONT_FAMILY_MEDIUM,
+          color: Colors.white,
+          fontSize: 10,
+        ),
+      ),
+      textDirection: TextDirection.ltr,
     );
+
+    textPainter.layout(); // انجام محاسبات لازم برای لایه‌بندی
+
+    double textWidth = textPainter.width; // عرض متن را می‌گیریم
+
+    // اگر زوم بیشتر یا مساوی ۱۶ باشد
+    if (_zoomLevel >= 16) {
+      return Stack(
+        alignment: Alignment.bottomCenter,
+        clipBehavior: Clip.none,
+        children: [
+          // کانتینر اصلی
+          Container(
+            decoration: const BoxDecoration(
+                borderRadius: BorderRadius.all(Radius.circular(12)),
+                color: Colors.white),
+            child: Padding(
+              padding: const EdgeInsets.all(2.0),
+              child: Container(
+                width: textWidth + 20, // اضافه کردن مقداری به عرض برای حاشیه
+                height: 30,
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                  color: const Color.fromRGBO(76, 140, 237, 1), // رنگ کانتینر
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 2.0, right: 2),
+                  child: Text(
+                    text,
+                    style: const TextStyle(
+                      fontFamily: MAIN_FONT_FAMILY_MEDIUM,
+                      color: Colors.white,
+                      fontSize: 10,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ),
+          // اضافه کردن مثلث به پایین کانتینر
+          Positioned(
+            bottom: -12.5,
+            child: SvgPicture.asset(
+              'assets/images/locatin slice Blue.svg',
+              width: 15,
+              height: 15,
+            ),
+          ),
+        ],
+      );
+    } else {
+      // نمایش آیکون پیش‌فرض زمانی که زوم کمتر از ۱۶ است
+      const assetName = 'assets/images/moshaver_location.svg';
+      return SvgPicture.asset(
+        assetName,
+        width: _zoomLevel >= 13 ? 35 : 20, // تغییر اندازه آیکون بر اساس سطح زوم
+        height: _zoomLevel >= 13 ? 35 : 20,
+      );
+    }
   }
 
   Widget _buildMarkerTitle(AdvertismentModel adv) {
@@ -205,7 +271,7 @@ class _AdvMapState extends State<MapConsultants> {
           icon: SizedBox(
             height: 33,
             width: 210,
-            child: SvgPicture.asset("assets/images/notification_moshaver.svg"),
+            child: SvgPicture.asset("assets/images/notif_axans_moshaver.svg"),
           ),
         ),
       ),
