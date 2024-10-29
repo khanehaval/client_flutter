@@ -21,7 +21,7 @@ class _EmkanatFilterWidgetState extends State<EmkanatFilterWidget> {
       children: [
         Obx(
           () => Container(
-            height: _show_item_emkanatagahi_1.isTrue ? 200 : 50,
+            height: _show_item_emkanatagahi_1.isTrue ? 160 : 50,
             decoration: BoxDecoration(
                 color: const Color.fromRGBO(250, 250, 250, 1),
                 border:

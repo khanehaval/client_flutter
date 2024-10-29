@@ -44,6 +44,7 @@ const BLACK_12_GRADIANT_COLOR = [
   Colors.black12,
   Colors.black12,
 ];
+const BLACK_114_GRADIANT_COLOR = [Color.fromRGBO(114, 114, 144, 1)];
 const GRADIANT_vitrin = [
   Color.fromRGBO(253, 152, 1, 1),
   Color.fromRGBO(102, 102, 102, 1),

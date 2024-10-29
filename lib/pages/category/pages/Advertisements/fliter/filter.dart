@@ -9,6 +9,7 @@ import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter
 import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/sakht_va_saz/sakht_va_saz_filter.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 
@@ -46,66 +47,84 @@ class _FilterState extends State<Filter> {
       backgroundColor: Colors.white,
       bottomNavigationBar: bottomNavigationBar2(4),
       body: Padding(
-        padding: const EdgeInsets.only(top: 20),
+        padding: const EdgeInsets.only(top: 10),
         child: SingleChildScrollView(
           child: Column(
             children: [
               SizedBox(
-                height: 98,
+                height: 90,
                 child: Obx(() => _currentIndex.value == 0
                     ? Container(
-                        height: 50,
                         decoration: const BoxDecoration(
                           boxShadow: [
                             BoxShadow(
                               offset: Offset(0, 1),
-                              blurRadius: 2,
+                              blurRadius: 1,
                               color: Color.fromRGBO(0, 0, 0, 0.25),
                             ),
                           ],
                           color: Color.fromRGBO(255, 255, 255, 1),
                         ),
-                        child: ScrollablePositionedList.builder(
-                          reverse: true,
-                          itemScrollController: _controller,
-                          itemCount: 7,
-                          scrollDirection: Axis.horizontal,
-                          initialScrollIndex: widget.index,
-                          itemBuilder: (context, i) => GestureDetector(
-                            onTap: () {
-                              _controller.scrollTo(
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 20.0, right: 10),
+                          child: ScrollablePositionedList.builder(
+                            reverse: true,
+                            itemScrollController: _controller,
+                            itemCount: items.length,
+                            scrollDirection: Axis.horizontal,
+                            initialScrollIndex: widget.index,
+                            itemBuilder: (context, i) => GestureDetector(
+                              onTap: () {
+                                _controller.scrollTo(
                                   index: i,
                                   duration: const Duration(microseconds: 100),
-                                  opacityAnimationWeights: [20, 30, 10],
-                                  alignment: 0.5);
-                              _currentIndex.value = i;
-                            },
-                            child: Obx(
-                              () => Container(
-                                margin: const EdgeInsets.only(
-                                    right: 10, bottom: 30, top: 25),
-                                padding: const EdgeInsets.all(1.2),
-                                height: 40,
-                                width: 100,
-                                decoration: BoxDecoration(
-                                  gradient: _currentIndex.value == i
-                                      ? const LinearGradient(
-                                          colors: GRADIANT_COLOR,
-                                        )
-                                      : const LinearGradient(
-                                          colors: BLACK_12_GRADIANT_COLOR,
-                                        ),
-                                  borderRadius: BorderRadius.circular(10),
-                                  // border:
-                                  //     Border.all(width: _currentIndex.value == i ? 1 : 1),
-                                ),
-                                child: Container(
+                                  alignment: 2.8,
+                                );
+                                _currentIndex.value = i;
+                              },
+                              child: Obx(
+                                () => Container(
+                                  margin: const EdgeInsets.only(
+                                      left: 0, right: 7, bottom: 15, top: 40),
+                                  padding: const EdgeInsets.all(1.2),
+                                  height: 98,
+                                  width: titles[i] == "املاک"
+                                      ? 80
+                                      : 140, // عرض املاک برابر 60
                                   decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.circular(10),
+                                    gradient: _currentIndex.value == i
+                                        ? const LinearGradient(
+                                            colors: GRADIANT_COLOR)
+                                        : const LinearGradient(
+                                            colors: BLACK_12_GRADIANT_COLOR),
+                                    borderRadius: BorderRadius.circular(11),
                                   ),
-                                  child: Image.asset(
-                                    items[i].assetPath,
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.circular(10),
+                                    ),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Text(
+                                          items[i]
+                                              .title, // Display the title text
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                            fontFamily: _currentIndex.value == i
+                                                ? MAIN_FONT_FAMILY_MEDIUM // فونت برای انتخاب شده
+                                                : MAIN_FONT_FAMILY_LIGHT, // فونت برای غیر انتخاب شده
+                                            fontSize: 12, // Set text size
+                                            color: _currentIndex.value == i
+                                                ? Colors.black
+                                                : Colors
+                                                    .grey, // Change text color based on selection
+                                          ),
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ),
@@ -125,9 +144,9 @@ class _FilterState extends State<Filter> {
                           color: Color.fromRGBO(255, 255, 255, 1),
                         ),
                         child: Padding(
-                          padding: const EdgeInsets.only(
-                              top: 30, bottom: 30, left: 10, right: 5),
-                          child: ScrollablePositionedList.builder(
+                            padding: const EdgeInsets.only(
+                                top: 40, bottom: 15, left: 10, right: 5),
+                            child: ScrollablePositionedList.builder(
                               reverse: true,
                               itemScrollController: _controller,
                               itemCount:
@@ -137,89 +156,97 @@ class _FilterState extends State<Filter> {
                               initialScrollIndex: widget.index,
                               itemBuilder: (context, i) {
                                 if (i == 0) {
+                                  // دکمه بازگشت به صفحه اصلی
                                   return GestureDetector(
+                                    onTap: () {
+                                      _currentIndex.value = 0;
+                                    },
                                     child: Row(
                                       children: [
                                         Container(
-                                          decoration: BoxDecoration(
-                                              borderRadius:
-                                                  BorderRadius.circular(10),
-                                              color: const Color.fromRGBO(
-                                                226,
-                                                226,
-                                                226,
-                                                1,
-                                              )),
+                                          decoration: const BoxDecoration(
+                                              color: Color.fromRGBO(
+                                                  198, 198, 198, 1),
+                                              borderRadius: BorderRadius.all(
+                                                  Radius.circular(11))),
                                           child: Padding(
-                                            padding: const EdgeInsets.all(1.3),
+                                            padding: const EdgeInsets.all(1.1),
                                             child: Container(
                                               decoration: BoxDecoration(
-                                                color: Colors.white,
                                                 borderRadius:
                                                     BorderRadius.circular(10),
+                                                color: Color.fromARGB(
+                                                    255, 255, 255, 255),
                                               ),
                                               child: const Padding(
-                                                padding: EdgeInsets.all(10.0),
+                                                padding: EdgeInsets.all(8.0),
                                                 child: Text(
-                                                  "املاک",
+                                                  "املاک", // عنوان بخش اصلی
                                                   style: TextStyle(
-                                                      fontFamily:
-                                                          MAIN_FONT_FAMILY,
-                                                      fontSize: 12),
+                                                    fontFamily:
+                                                        MAIN_FONT_FAMILY,
+                                                    fontSize: 12,
+                                                  ),
                                                 ),
                                               ),
                                             ),
                                           ),
                                         ),
-                                        const Icon(
-                                            Icons.arrow_forward_ios_rounded)
+                                        const Padding(
+                                          padding: EdgeInsets.only(right: 5),
+                                          child: Icon(
+                                            Icons.arrow_forward_ios_rounded,
+                                            size: 20,
+                                          ),
+                                        ),
                                       ],
                                     ),
-                                    onTap: () {
-                                      _currentIndex.value = 0;
-                                    },
                                   );
-                                }
-                                if (i == 1) {
+                                } else if (i == 1) {
+                                  // دکمه بازگشت به دسته‌بندی‌های قبلی
                                   return Row(
                                     crossAxisAlignment:
                                         CrossAxisAlignment.center,
                                     children: [
-                                      const Icon(Icons.arrow_back_ios),
-                                      const SizedBox(
-                                        width: 5,
-                                      ),
+                                      SvgPicture.asset(
+                                          'assets/images/arrow.right.filter.svg'),
+                                      const SizedBox(width: 5),
                                       Container(
                                         margin: const EdgeInsets.only(
-                                          left: 0,
-                                          right: 10,
-                                        ),
-                                        padding: const EdgeInsets.all(0.7),
-                                        width: 120,
+                                            left: 0, right: 10),
+                                        padding: const EdgeInsets.all(1.1),
+                                        width: 130,
                                         decoration: BoxDecoration(
                                           gradient: const LinearGradient(
                                             colors: GRADIANT_COLOR,
                                           ),
                                           borderRadius:
-                                              BorderRadius.circular(10),
+                                              BorderRadius.circular(11),
                                         ),
                                         child: Container(
                                           decoration: BoxDecoration(
-                                            color: Colors.white,
+                                            color:
+                                                Colors.white, // پس‌زمینه سفید
                                             borderRadius:
                                                 BorderRadius.circular(10),
                                           ),
-                                          child: Image.asset(
-                                            items[_currentIndex.value]
-                                                .assetPath,
-                                            width: 120,
-                                            height: 51,
+                                          child: Center(
+                                            child: Text(
+                                              items[_currentIndex.value]
+                                                  .title, // نمایش عنوان دسته فعلی
+                                              style: const TextStyle(
+                                                fontFamily: MAIN_FONT_FAMILY,
+                                                fontSize: 12,
+                                                color: Colors.black,
+                                              ),
+                                            ),
                                           ),
                                         ),
                                       ),
                                     ],
                                   );
                                 } else {
+                                  // نمایش زیرمجموعه‌ها بدون عکس و با حاشیه گرادیانت
                                   return GestureDetector(
                                     onTap: () {
                                       _subIndex.value = i;
@@ -231,45 +258,47 @@ class _FilterState extends State<Filter> {
                                     child: Obx(
                                       () => Container(
                                         margin: const EdgeInsets.only(
-                                          left: 5,
-                                          right: 5,
-                                        ),
+                                            left: 5,
+                                            right: 5,
+                                            top: 5,
+                                            bottom: 5),
                                         padding: const EdgeInsets.all(0.7),
-                                        width: 100,
+                                        width: 110,
                                         decoration: BoxDecoration(
-                                          gradient: _subIndex.value == i
-                                              ? const LinearGradient(
-                                                  colors: GRADIANT_COLOR,
-                                                )
-                                              : const LinearGradient(
-                                                  colors:
-                                                      BLACK_12_GRADIANT_COLOR,
-                                                ),
                                           borderRadius:
-                                              BorderRadius.circular(8),
+                                              BorderRadius.circular(11),
                                           border: Border.all(
-                                              width: _currentIndex.value ==
-                                                      _currentIndex.value
-                                                  ? .0008
-                                                  : 0.1),
+                                            color: _subIndex.value == i
+                                                ? const Color.fromRGBO(
+                                                    114, 114, 114, 1)
+                                                : const Color.fromARGB(255, 188,
+                                                    188, 188), // رنگ حاشیه
+                                            width: 1, // عرض حاشیه
+                                          ),
                                         ),
                                         child: Container(
                                           decoration: BoxDecoration(
-                                            color: Colors.white,
+                                            color: Colors
+                                                .white, // پس‌زمینه داخلی سفید
                                             borderRadius:
-                                                BorderRadius.circular(8),
+                                                BorderRadius.circular(10),
                                           ),
                                           child: Center(
                                             child: Text(
                                               items[_currentIndex.value]
                                                   .subItems[i - 2]
-                                                  .title,
-                                              style: const TextStyle(
-                                                  fontFamily:
-                                                      MAIN_FONT_FAMILY_LIGHT,
-                                                  color: Color.fromRGBO(
-                                                      99, 99, 99, 1),
-                                                  fontSize: 11.5),
+                                                  .title, // عنوان زیرمجموعه
+                                              style: TextStyle(
+                                                fontFamily: _subIndex.value == i
+                                                    ? MAIN_FONT_FAMILY_MEDIUM // فونت برای انتخاب شده
+                                                    : MAIN_FONT_FAMILY_LIGHT, // فونت برای غیر انتخاب شده
+                                                fontSize: 12, // Set text size
+                                                color: _subIndex.value == i
+                                                    ? Colors
+                                                        .black // متن مشکی در صورت انتخاب
+                                                    : Colors
+                                                        .grey, // متن طوسی در صورت عدم انتخاب
+                                              ),
                                             ),
                                           ),
                                         ),
@@ -277,8 +306,8 @@ class _FilterState extends State<Filter> {
                                     ),
                                   );
                                 }
-                              }),
-                        ),
+                              },
+                            )),
                       )),
               ),
               Obx(() => _pages()[_currentIndex.value]),
@@ -366,3 +395,13 @@ class SubItemModel {
 
   SubItemModel(this.title, this.type);
 }
+
+final List<String> titles = [
+  "املاک",
+  "فروش مسکونی",
+  "اجاره مسکونی",
+  "فروش تجاری اداری",
+  "اجاره تجاری اداری",
+  "اجاره کوتاه مدت",
+  "ساخت و ساز",
+];

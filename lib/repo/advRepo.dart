@@ -8,15 +8,10 @@ class AdvRepo {
 
   RxList<String> selectedCity = RxList();
   var selectedCityCount = 0.obs; // تعداد شهرهای انتخاب‌شده
+
   void addFilters(List<AdvretismentFilter> filter) {
     for (var f in filter) {
       filters[f.key()] = f;
-    }
-  }
-
-  void addFilters1(List<AdvretismentFilter1> filter) {
-    for (var f in filter) {
-      filters[f.key()] = f as AdvretismentFilter;
     }
   }
 

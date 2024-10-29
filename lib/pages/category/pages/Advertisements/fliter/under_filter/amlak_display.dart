@@ -94,30 +94,31 @@ class _AmlakFilterState extends State<AmlakFilter> {
                   ),
                   AghahiforiFilterWidget(),
                   const SizedBox(
-                    height: 30,
+                    height: 80,
                   ),
                   Row(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         Container(
+                          height: 41,
                           decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(30),
-                            boxShadow: const [
-                              BoxShadow(
-                                color: Color.fromRGBO(0, 0, 0, 0.07),
-                                spreadRadius: 1,
-                                blurRadius: 5,
-                                offset: Offset(0, 2),
-                              )
-                            ],
-                            gradient: GetGradient(),
-                          ),
-                          child: Container(
-                            decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(30),
-                              border: Border.all(
-                                  color: const Color.fromRGBO(99, 99, 99, 1)),
+                              boxShadow: const [
+                                BoxShadow(
+                                  color: Color.fromRGBO(41, 111, 226, 0.5),
+                                  blurRadius: 7,
+                                  offset: Offset(0, 1),
+                                )
+                              ],
+                              color: Colors.white),
+                          child: Container(
+                            decoration: ShapeDecoration(
+                              color: Colors.white,
+                              shape: RoundedRectangleBorder(
+                                side: const BorderSide(
+                                    width: 1.0, color: Color(0xFF296FE2)),
+                                borderRadius: BorderRadius.circular(20),
+                              ),
                             ),
                             child: ElevatedButton(
                               onPressed: () {
@@ -130,7 +131,48 @@ class _AmlakFilterState extends State<AmlakFilter> {
                               child: const Text(
                                 'تائید و اعمال فیلتر',
                                 style: TextStyle(
-                                    color: Color.fromRGBO(48, 48, 48, 1),
+                                    color: Color.fromRGBO(99, 99, 99, 1),
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.bold,
+                                    fontFamily: MAIN_FONT_FAMILY),
+                              ),
+                            ),
+                          ),
+                        ),
+                        Container(
+                          height: 41,
+                          width: 138,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(30),
+                              boxShadow: const [
+                                BoxShadow(
+                                  color: Color.fromRGBO(54, 216, 89, 0.5),
+                                  blurRadius: 7,
+                                  offset: Offset(0, 0),
+                                )
+                              ],
+                              color: Colors.white),
+                          child: Container(
+                            decoration: ShapeDecoration(
+                              color: Colors.white,
+                              shape: RoundedRectangleBorder(
+                                side: const BorderSide(
+                                    width: 1.0, color: Color(0xFF00BD61)),
+                                borderRadius: BorderRadius.circular(20),
+                              ),
+                            ),
+                            child: ElevatedButton(
+                              onPressed: () {
+                                _advRepo.addFilters(_filters);
+                                Get.back();
+                              },
+                              style: ElevatedButton.styleFrom(
+                                  backgroundColor: Colors.transparent,
+                                  shadowColor: Colors.transparent),
+                              child: const Text(
+                                'ذخیره جستجو',
+                                style: TextStyle(
+                                    color: Color.fromRGBO(99, 99, 99, 1),
                                     fontSize: 12,
                                     fontWeight: FontWeight.bold,
                                     fontFamily: MAIN_FONT_FAMILY),

@@ -153,7 +153,7 @@ class _AdvMapState extends State<AdvMap> {
         maxZoom: 20,
         keepAlive: true,
         rotation: 0, // تنظیم چرخش اولیه به صفر
-        interactionOptions: InteractionOptions(
+        interactionOptions: const InteractionOptions(
           rotationThreshold: 1000.0, // غیرفعال کردن چرخش با تنظیم مقدار بالا
           enableMultiFingerGestureRace: true,
           enableScrollWheel: true,

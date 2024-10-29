@@ -19,20 +19,42 @@ import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter
 import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/filters_widgets/tedad_koletabaghat_filter.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/filters_widgets/tedat_vahed_filter_widget.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/widget_filter/taeedvaemalefilter.dart';
+import 'package:flutter_application_1/pages/category/shared/constant.dart';
+import 'package:flutter_application_1/repo/advRepo.dart';
 import 'package:flutter_application_1/services/models/filterModel.dart';
 import 'package:get/get.dart';
 import 'package:get/state_manager.dart';
+import 'package:get_it/get_it.dart';
 
-class EjaraApartemanFilter extends StatelessWidget {
+class EjaraApartemanFilter extends StatefulWidget {
+  @override
+  State<EjaraApartemanFilter> createState() => _EjaraApartemanFilterState();
+}
+
+class _EjaraApartemanFilterState extends State<EjaraApartemanFilter> {
   final shakhsi = false.obs;
 
   final amlak = false.obs;
+
   final moshaver = false.obs;
+
   final aksdar = false.obs;
+
   final videodar = false.obs;
+
   final fori = false.obs;
 
   Map<String, AdvretismentFilter> filters = Map();
+
+  final _advRepo = GetIt.I.get<AdvRepo>();
+
+  List<AdvretismentFilter> _filters = [];
+
+  @override
+  void initState() {
+    filters = _advRepo.filters;
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -129,7 +151,88 @@ class EjaraApartemanFilter extends StatelessWidget {
           const SizedBox(
             height: 30,
           ),
-          taeedvaemalefilter()
+          Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
+            Container(
+              height: 41,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(30),
+                  boxShadow: const [
+                    BoxShadow(
+                      color: Color(0x7F296FE2),
+                      blurRadius: 7,
+                      offset: Offset(0, 1),
+                    )
+                  ],
+                  color: Colors.white),
+              child: Container(
+                decoration: ShapeDecoration(
+                  color: Colors.white,
+                  shape: RoundedRectangleBorder(
+                    side:
+                        const BorderSide(width: 1.0, color: Color(0xFF296FE2)),
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                ),
+                child: ElevatedButton(
+                  onPressed: () {
+                    _advRepo.addFilters(_filters);
+                    Get.back();
+                  },
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.transparent,
+                      shadowColor: Colors.transparent),
+                  child: const Text(
+                    'تائید و اعمال فیلتر',
+                    style: TextStyle(
+                        color: Color.fromRGBO(48, 48, 48, 1),
+                        fontSize: 12,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: MAIN_FONT_FAMILY),
+                  ),
+                ),
+              ),
+            ),
+            Container(
+              height: 41,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(30),
+                  boxShadow: const [
+                    BoxShadow(
+                      color: Color(0xFF00BD61),
+                      blurRadius: 4,
+                      offset: Offset(0, 0),
+                    )
+                  ],
+                  color: Colors.white),
+              child: Container(
+                decoration: ShapeDecoration(
+                  color: Colors.white,
+                  shape: RoundedRectangleBorder(
+                    side:
+                        const BorderSide(width: 1.0, color: Color(0xFF00BD61)),
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                ),
+                child: ElevatedButton(
+                  onPressed: () {
+                    _advRepo.addFilters(_filters);
+                    Get.back();
+                  },
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.transparent,
+                      shadowColor: Colors.transparent),
+                  child: const Text(
+                    'ذخیره جستجو',
+                    style: TextStyle(
+                        color: Color.fromRGBO(48, 48, 48, 1),
+                        fontSize: 12,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: MAIN_FONT_FAMILY),
+                  ),
+                ),
+              ),
+            ),
+          ])
         ]),
       ),
     );

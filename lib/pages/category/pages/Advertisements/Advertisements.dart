@@ -144,31 +144,34 @@ class _SelectLocationMapState extends State<Advertisements> {
                               ? const LinearGradient(colors: GRADIANT_COLOR)
                               : const LinearGradient(
                                   colors: BLACK_12_GRADIANT_COLOR),
-                          borderRadius: BorderRadius.circular(10),
+                          borderRadius: BorderRadius.circular(11),
                         ),
-                        child: Container(
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                items[i].title, // Display the title text
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  fontFamily: _currentIndex.value == i
-                                      ? MAIN_FONT_FAMILY_MEDIUM // فونت برای انتخاب شده
-                                      : MAIN_FONT_FAMILY_LIGHT, // فونت برای غیر انتخاب شده
-                                  fontSize: 12, // Set text size
-                                  color: _currentIndex.value == i
-                                      ? Colors.black
-                                      : Colors
-                                          .grey, // Change text color based on selection
+                        child: Padding(
+                          padding: const EdgeInsets.all(0.5),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  items[i].title, // Display the title text
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    fontFamily: _currentIndex.value == i
+                                        ? MAIN_FONT_FAMILY_MEDIUM // فونت برای انتخاب شده
+                                        : MAIN_FONT_FAMILY_LIGHT, // فونت برای غیر انتخاب شده
+                                    fontSize: 12, // Set text size
+                                    color: _currentIndex.value == i
+                                        ? Colors.black
+                                        : Colors
+                                            .grey, // Change text color based on selection
+                                  ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                         ),
                       ),

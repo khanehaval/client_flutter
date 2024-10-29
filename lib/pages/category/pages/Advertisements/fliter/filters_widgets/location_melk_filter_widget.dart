@@ -52,28 +52,51 @@ class LocationMelkFilterWidget extends StatelessWidget {
     return Column(
       children: [
         Container(
-          height: 41,
-          width: MediaQuery.of(context).size.width / 1.23,
-          child: TextField(
-              readOnly: true,
-              textAlign: TextAlign.right,
-              decoration: InputDecoration(
-                  hintText: 'انتخاب کنید',
-                  hintStyle: const TextStyle(
-                      color: Colors.black,
-                      fontSize: 13,
-                      fontFamily: MAIN_FONT_FAMILY),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  prefixIcon: IconButton(
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(11),
+              color: Color.fromRGBO(183, 183, 183, 1)),
+          child: Padding(
+            padding: const EdgeInsets.all(1.1),
+            child: Container(
+              width: 315,
+              height: 35,
+              decoration: ShapeDecoration(
+                color: Colors.white,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  IconButton(
                     onPressed: () {},
                     icon: SvgPicture.asset(
-                      "assets/images/left.svg",
-                      width: 15,
-                      height: 15,
+                      "assets/images/arrow_down.svg",
+                      width: 10,
+                      height: 10,
+                      color: const Color.fromRGBO(
+                        48,
+                        48,
+                        48,
+                        1,
+                      ),
                     ),
-                  ))),
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.only(right: 10.0),
+                    child: Text(
+                      'انتخاب کنید',
+                      style: TextStyle(
+                          fontFamily: MAIN_FONT_FAMILY_LIGHT,
+                          fontSize: 12,
+                          color: Color.fromRGBO(166, 166, 166, 1)),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
         ),
       ],
     );

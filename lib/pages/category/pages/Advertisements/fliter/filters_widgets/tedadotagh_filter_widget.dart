@@ -14,7 +14,7 @@ class TedadotaghFilterWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Obx(
       () => Container(
-        height: _show_item_otagh.isTrue ? 130 : 50,
+        height: _show_item_otagh.isTrue ? 110 : 50,
         decoration: BoxDecoration(
             color: const Color.fromRGBO(250, 250, 250, 1),
             border: Border.all(color: const Color.fromRGBO(166, 166, 166, 1)),
@@ -50,39 +50,55 @@ class TedadotaghFilterWidget extends StatelessWidget {
   Obx otagh(BuildContext context) {
     TextEditingController controller = TextEditingController();
     return Obx(() => _show_item_otagh.value
-        ? Column(
-            children: [
-              Container(
-                height: 41,
-                width: MediaQuery.of(context).size.width / 1.23,
-                child: TextField(
-                    controller: controller,
-                    readOnly: true,
-                    textAlign: TextAlign.right,
-                    decoration: InputDecoration(
-                        hintText: 'انتخاب کنید',
-                        hintStyle: const TextStyle(
-                            color: Colors.black,
-                            fontSize: 13,
-                            fontFamily: MAIN_FONT_FAMILY),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        prefixIcon: IconButton(
-                          onPressed: () {
-                            showNumberPicker((_) {
-                              controller.text = _;
-                            });
-                          },
-                          icon: SvgPicture.asset(
-                            "assets/images/arrow_down.svg",
-                            width: 10,
-                            height: 10,
+        ? Column(children: [
+            Container(
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(11),
+                  color: Color.fromRGBO(183, 183, 183, 1)),
+              child: Padding(
+                padding: const EdgeInsets.all(1.1),
+                child: Container(
+                  width: 315,
+                  height: 35,
+                  decoration: ShapeDecoration(
+                    color: Colors.white,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      IconButton(
+                        onPressed: () {},
+                        icon: SvgPicture.asset(
+                          "assets/images/arrow_down.svg",
+                          width: 10,
+                          height: 10,
+                          color: const Color.fromRGBO(
+                            48,
+                            48,
+                            48,
+                            1,
                           ),
-                        ))),
+                        ),
+                      ),
+                      const Padding(
+                        padding: EdgeInsets.only(right: 10.0),
+                        child: Text(
+                          'انتخاب کنید',
+                          style: TextStyle(
+                              fontFamily: MAIN_FONT_FAMILY_LIGHT,
+                              fontSize: 12,
+                              color: Color.fromRGBO(166, 166, 166, 1)),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
               ),
-            ],
-          )
+            ),
+          ])
         : const SizedBox.shrink());
   }
 }
