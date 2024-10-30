@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
+import 'package:flutter_application_1/pages/category/shared/widget/Neighbourhood.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
@@ -71,7 +72,9 @@ class MahalehFilterWidget extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           IconButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Get.to(() => Neighbourhood());
+                            },
                             icon: SvgPicture.asset(
                               "assets/images/arrow_down.svg",
                               width: 10,

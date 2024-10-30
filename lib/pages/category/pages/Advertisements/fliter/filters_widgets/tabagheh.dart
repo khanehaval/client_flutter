@@ -1,14 +1,27 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
+import 'package:flutter_application_1/pages/category/shared/number_piacker.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 
-class TabaghehFilterWidget extends StatelessWidget {
+class TabaghehFilterWidget extends StatefulWidget {
   TabaghehFilterWidget({super.key});
+
+  @override
+  State<TabaghehFilterWidget> createState() => _TabaghehFilterWidgetState();
+}
+
+class _TabaghehFilterWidgetState extends State<TabaghehFilterWidget> {
   final _show_item_tabagheh_1 = false.obs;
 
+  final _countOfInstallmentsController = false.obs;
+  final _countOfInstallmentsMaxController = false.obs;
+
+  String _selectedOptionlow = "انتخاب کنید";
+  String _selectedOptionMax = "انتخاب کنید";
+  // Default placeholder text
   @override
   Widget build(BuildContext context) {
     return Obx(() => Container(
@@ -96,7 +109,14 @@ class TabaghehFilterWidget extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           IconButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              showNumberPicker((selectedNumber) {
+                                setState(() {
+                                  _selectedOptionlow =
+                                      selectedNumber; // Update the selected number
+                                });
+                              });
+                            },
                             icon: SvgPicture.asset(
                               "assets/images/arrow_down.svg",
                               width: 10,
@@ -109,14 +129,15 @@ class TabaghehFilterWidget extends StatelessWidget {
                               ),
                             ),
                           ),
-                          const Padding(
-                            padding: EdgeInsets.only(right: 10.0),
+                          Padding(
+                            padding: const EdgeInsets.only(right: 15.0),
                             child: Text(
-                              'انتخاب کنید',
-                              style: TextStyle(
-                                  fontFamily: MAIN_FONT_FAMILY_LIGHT,
-                                  fontSize: 12,
-                                  color: Color.fromRGBO(166, 166, 166, 1)),
+                              _selectedOptionlow, // Display selected number
+                              style: const TextStyle(
+                                fontFamily: MAIN_FONT_FAMILY_LIGHT,
+                                fontSize: 14,
+                                color: Color.fromRGBO(48, 48, 48, 1),
+                              ),
                             ),
                           ),
                         ],
@@ -185,7 +206,14 @@ class TabaghehFilterWidget extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           IconButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              showNumberPicker((selectedNumber) {
+                                setState(() {
+                                  _selectedOptionMax =
+                                      selectedNumber; // Update the selected number
+                                });
+                              });
+                            },
                             icon: SvgPicture.asset(
                               "assets/images/arrow_down.svg",
                               width: 10,
@@ -198,14 +226,15 @@ class TabaghehFilterWidget extends StatelessWidget {
                               ),
                             ),
                           ),
-                          const Padding(
-                            padding: EdgeInsets.only(right: 10.0),
+                          Padding(
+                            padding: const EdgeInsets.only(right: 15.0),
                             child: Text(
-                              'انتخاب کنید',
-                              style: TextStyle(
-                                  fontFamily: MAIN_FONT_FAMILY_LIGHT,
-                                  fontSize: 12,
-                                  color: Color.fromRGBO(166, 166, 166, 1)),
+                              _selectedOptionMax, // نمایش انتخاب
+                              style: const TextStyle(
+                                fontFamily: MAIN_FONT_FAMILY_LIGHT,
+                                fontSize: 14,
+                                color: Color.fromRGBO(48, 48, 48, 1),
+                              ),
                             ),
                           ),
                         ],

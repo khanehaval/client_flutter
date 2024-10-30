@@ -26,89 +26,79 @@ void showNumberPicker(Function(String) onSelected) {
               borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(10), topRight: Radius.circular(10)),
             ),
-            child: Container(
-              decoration: const BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(20),
-                      topRight: Radius.circular(20))),
-              child: Padding(
-                padding: const EdgeInsets.symmetric(vertical: 30),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        GestureDetector(
-                          onTap: () {
-                            if (index.value > 0) {
-                              index.value = index.value - 1;
-                            }
-                          },
-                          child: const GradientIcon(
-                            icon: Icons.keyboard_arrow_up,
-                            gradient: LinearGradient(
-                              colors: GRADIANT_COLOR_Number,
-                              begin: Alignment.topLeft,
-                              end: Alignment.bottomRight,
-                            ),
-                            size: 40,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 30),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      GestureDetector(
+                        onTap: () {
+                          if (index.value > 0) {
+                            index.value = index.value - 1;
+                          }
+                        },
+                        child: const GradientIcon(
+                          icon: Icons.keyboard_arrow_up,
+                          gradient: LinearGradient(
+                            colors: GRADIANT_COLOR_Number,
+                            begin: Alignment.topLeft,
+                            end: Alignment.bottomRight,
+                          ),
+                          size: 40,
+                        ),
+                      ),
+                      const SizedBox(width: 30),
+                      Obx(
+                        () => NumberPicker(
+                          value: index.value,
+                          minValue: 0,
+                          maxValue: 20,
+                          step: 1,
+                          itemHeight: 70,
+                          axis: Axis.vertical,
+                          onChanged: (value) => index.value = value,
+                          textStyle: const TextStyle(
+                            fontSize: 14,
+                            color: Color.fromARGB(137, 179, 171, 171),
+                            fontFamily: MAIN_FONT_FAMILY,
+                          ),
+                          selectedTextStyle: const TextStyle(
+                            fontFamily: MAIN_FONT_FAMILY,
+                            fontSize: 18,
                           ),
                         ),
-                        const SizedBox(
-                          width: 30,
-                        ),
-                        Obx(
-                          () => NumberPicker(
-                            value: index.value,
-                            minValue: 0,
-                            maxValue: 20,
-                            step: 1,
-                            itemHeight: 70,
-                            axis: Axis.vertical,
-                            onChanged: (value) => index.value = value,
-                            textStyle: const TextStyle(
-                                fontSize: 14,
-                                color: Color.fromARGB(137, 179, 171, 171),
-                                fontFamily: MAIN_FONT_FAMILY),
-                            selectedTextStyle: const TextStyle(
-                                fontFamily: MAIN_FONT_FAMILY, fontSize: 18),
+                      ),
+                      const SizedBox(width: 30),
+                      GestureDetector(
+                        onTap: () {
+                          if (index.value < 20) {
+                            index.value = index.value + 1;
+                          }
+                        },
+                        child: const GradientIcon(
+                          icon: Icons.keyboard_arrow_down_sharp,
+                          gradient: LinearGradient(
+                            colors: GRADIANT_COLOR_Number,
+                            begin: Alignment.topLeft,
+                            end: Alignment.bottomRight,
                           ),
+                          size: 40,
                         ),
-                        const SizedBox(
-                          width: 30,
-                        ),
-                        GestureDetector(
-                          onTap: () {
-                            if (index.value < 20) {
-                              index.value = index.value + 1;
-                            }
-                          },
-                          child: const GradientIcon(
-                            icon: Icons.keyboard_arrow_down_sharp,
-                            gradient: LinearGradient(
-                              colors: GRADIANT_COLOR_Number,
-                              begin: Alignment.topLeft,
-                              end: Alignment.bottomRight,
-                            ),
-                            size: 40,
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 35,
-                    ),
-                    TaeedEnserafNumberPicker(
-                      selectedNumber: index.value.toString(),
-                      onConfirm: () {
-                        onSelected(index.value.toString());
-                        Get.back();
-                      },
-                    )
-                  ],
-                ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 35),
+                  TaeedEnserafNumberPicker(
+                    selectedNumber: index.value.toString(),
+                    onConfirm: () {
+                      onSelected(index.value.toString());
+                      Get.back();
+                    },
+                  )
+                ],
               ),
             ),
           )),

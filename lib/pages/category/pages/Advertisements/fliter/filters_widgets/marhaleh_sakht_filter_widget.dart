@@ -55,7 +55,7 @@ class MarhalehSakhtFilterWidget extends StatelessWidget {
                 Container(
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(11),
-                      color: Color.fromRGBO(183, 183, 183, 1)),
+                      color: const Color.fromRGBO(183, 183, 183, 1)),
                   child: Padding(
                     padding: const EdgeInsets.all(1.1),
                     child: Container(

@@ -2,14 +2,27 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/widget_filter/senbana.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_sen_bana.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 
-class SenBanaFilterWidhget extends StatelessWidget {
+class SenBanaFilterWidhget extends StatefulWidget {
   SenBanaFilterWidhget({super.key});
+
+  @override
+  State<SenBanaFilterWidhget> createState() => _SenBanaFilterWidhgetState();
+}
+
+class _SenBanaFilterWidhgetState extends State<SenBanaFilterWidhget> {
   final _show_item_senbana_1 = false.obs;
 
+  final _SenBanaMaxTextController = TextEditingController();
+  final _SenBanaLowTextController = TextEditingController();
+
+  String _selectedOption = 'انتخاب کنید';
+  String _selectedOptionlow = 'انتخاب کنید';
+  // متغیر برای نگهداری انتخاب
   @override
   Widget build(BuildContext context) {
     return Obx(
@@ -81,8 +94,9 @@ class SenBanaFilterWidhget extends StatelessWidget {
                     )),
                 child: Container(
                   decoration: BoxDecoration(
-                      color: const Color.fromRGBO(183, 183, 183, 1),
-                      borderRadius: BorderRadius.circular(16)),
+                    color: const Color.fromRGBO(183, 183, 183, 1),
+                    borderRadius: BorderRadius.circular(15),
+                  ),
                   child: Padding(
                     padding: const EdgeInsets.all(1.1),
                     child: Container(
@@ -98,27 +112,32 @@ class SenBanaFilterWidhget extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           IconButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              SenBana((selectedOption) {
+                                setState(() {
+                                  _selectedOptionlow =
+                                      selectedOption; // بروزرسانی متغیر انتخاب
+                                  _SenBanaLowTextController.text =
+                                      _selectedOptionlow;
+                                });
+                              });
+                            },
                             icon: SvgPicture.asset(
                               "assets/images/arrow_down.svg",
                               width: 10,
                               height: 10,
-                              color: const Color.fromRGBO(
-                                48,
-                                48,
-                                48,
-                                1,
-                              ),
+                              color: const Color.fromRGBO(48, 48, 48, 1),
                             ),
                           ),
-                          const Padding(
-                            padding: EdgeInsets.only(right: 10.0),
+                          Padding(
+                            padding: const EdgeInsets.only(right: 15.0),
                             child: Text(
-                              'انتخاب کنید',
-                              style: TextStyle(
-                                  fontFamily: MAIN_FONT_FAMILY_LIGHT,
-                                  fontSize: 12,
-                                  color: Color.fromRGBO(166, 166, 166, 1)),
+                              _selectedOptionlow, // نمایش انتخاب
+                              style: const TextStyle(
+                                fontFamily: MAIN_FONT_FAMILY_LIGHT,
+                                fontSize: 14,
+                                color: Color.fromRGBO(48, 48, 48, 1),
+                              ),
                             ),
                           ),
                         ],
@@ -161,17 +180,14 @@ class SenBanaFilterWidhget extends StatelessWidget {
             children: [
               Container(
                 decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(9),
-                    color: const Color.fromRGBO(
-                      183,
-                      183,
-                      183,
-                      1,
-                    )),
+                  borderRadius: BorderRadius.circular(9),
+                  color: const Color.fromRGBO(183, 183, 183, 1),
+                ),
                 child: Container(
                   decoration: BoxDecoration(
-                      color: Color.fromRGBO(183, 183, 183, 1),
-                      borderRadius: BorderRadius.circular(15)),
+                    color: const Color.fromRGBO(183, 183, 183, 1),
+                    borderRadius: BorderRadius.circular(15),
+                  ),
                   child: Padding(
                     padding: const EdgeInsets.all(1.1),
                     child: Container(
@@ -187,27 +203,32 @@ class SenBanaFilterWidhget extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           IconButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              SenBana((selectedOption) {
+                                setState(() {
+                                  _selectedOption =
+                                      selectedOption; // بروزرسانی متغیر انتخاب
+                                  _SenBanaMaxTextController.text =
+                                      selectedOption;
+                                });
+                              });
+                            },
                             icon: SvgPicture.asset(
                               "assets/images/arrow_down.svg",
                               width: 10,
                               height: 10,
-                              color: const Color.fromRGBO(
-                                48,
-                                48,
-                                48,
-                                1,
-                              ),
+                              color: const Color.fromRGBO(48, 48, 48, 1),
                             ),
                           ),
-                          const Padding(
-                            padding: EdgeInsets.only(right: 10.0),
+                          Padding(
+                            padding: const EdgeInsets.only(right: 15.0),
                             child: Text(
-                              'انتخاب کنید',
-                              style: TextStyle(
-                                  fontFamily: MAIN_FONT_FAMILY_LIGHT,
-                                  fontSize: 12,
-                                  color: Color.fromRGBO(166, 166, 166, 1)),
+                              _selectedOption, // نمایش انتخاب
+                              style: const TextStyle(
+                                fontFamily: MAIN_FONT_FAMILY_LIGHT,
+                                fontSize: 14,
+                                color: Color.fromRGBO(48, 48, 48, 1),
+                              ),
                             ),
                           ),
                         ],
