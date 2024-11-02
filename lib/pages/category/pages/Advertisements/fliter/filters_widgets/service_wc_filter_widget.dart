@@ -2,12 +2,15 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/widget_filter/wc.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/servises_wc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
 class ServiceWcFilterWidget extends StatelessWidget {
   ServiceWcFilterWidget({super.key});
   final _show_item_wc_1 = false.obs;
+  final RxString _selectedOptionWc =
+      "انتخاب کنید".obs; // تعریف متغیر برای گزینه انتخاب شده
 
   @override
   Widget build(BuildContext context) {
@@ -68,7 +71,12 @@ class ServiceWcFilterWidget extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Wc((selectedOption) {
+                        _selectedOptionWc.value =
+                            selectedOption; // به‌روزرسانی گزینه انتخاب شده
+                      });
+                    },
                     icon: SvgPicture.asset(
                       "assets/images/arrow_down.svg",
                       width: 10,
@@ -81,15 +89,15 @@ class ServiceWcFilterWidget extends StatelessWidget {
                       ),
                     ),
                   ),
-                  const Padding(
-                    padding: EdgeInsets.only(right: 10.0),
-                    child: Text(
-                      'انتخاب کنید',
-                      style: TextStyle(
-                          fontFamily: MAIN_FONT_FAMILY_LIGHT,
-                          fontSize: 12,
-                          color: Color.fromRGBO(166, 166, 166, 1)),
-                    ),
+                  Padding(
+                    padding: const EdgeInsets.only(right: 10.0),
+                    child: Obx(() => Text(
+                          _selectedOptionWc.value, // نمایش گزینه‌ی انتخاب‌شده
+                          style: const TextStyle(
+                              fontFamily: MAIN_FONT_FAMILY_LIGHT,
+                              fontSize: 12,
+                              color: Color.fromRGBO(99, 99, 99, 1)),
+                        )),
                   ),
                 ],
               ),

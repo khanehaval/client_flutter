@@ -2,12 +2,15 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/widget_filter/jenskaf.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_jenskaf.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
 class JensKafFilterWidget extends StatelessWidget {
   JensKafFilterWidget({super.key});
   final _show_item_jensKaf_1 = false.obs;
+  final RxString _selectedOptionJensKaf =
+      "انتخاب کنید".obs; // متغیر برای گزینه انتخاب شده
 
   @override
   Widget build(BuildContext context) {
@@ -68,7 +71,12 @@ class JensKafFilterWidget extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      JensKaf((selectedOption) {
+                        _selectedOptionJensKaf.value =
+                            selectedOption; // به‌روزرسانی گزینه انتخاب شده
+                      });
+                    },
                     icon: SvgPicture.asset(
                       "assets/images/arrow_down.svg",
                       width: 10,
@@ -81,15 +89,16 @@ class JensKafFilterWidget extends StatelessWidget {
                       ),
                     ),
                   ),
-                  const Padding(
-                    padding: EdgeInsets.only(right: 10.0),
-                    child: Text(
-                      'انتخاب کنید',
-                      style: TextStyle(
-                          fontFamily: MAIN_FONT_FAMILY_LIGHT,
-                          fontSize: 12,
-                          color: Color.fromRGBO(166, 166, 166, 1)),
-                    ),
+                  Padding(
+                    padding: const EdgeInsets.only(right: 10.0),
+                    child: Obx(() => Text(
+                          _selectedOptionJensKaf
+                              .value, // نمایش گزینه‌ی انتخاب‌شده
+                          style: const TextStyle(
+                              fontFamily: MAIN_FONT_FAMILY_LIGHT,
+                              fontSize: 12,
+                              color: Color.fromRGBO(99, 99, 99, 1)),
+                        )),
                   ),
                 ],
               ),

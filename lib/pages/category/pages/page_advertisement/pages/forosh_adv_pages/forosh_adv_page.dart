@@ -787,9 +787,10 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
                     Get.to(() => NamayeshAgahi());
                   }
                   if (submit.value) {
-                    saleApartemanServerModel.images = [
-                      _selectedImagesPath.value.first
-                    ];
+                    saleApartemanServerModel.images;
+                    // saleApartemanServerModel.images = [
+                    //   _selectedImagesPath.value.first
+                    // ];
                     saleApartemanServerModel.wc = _wcController.text;
                     saleApartemanServerModel.hasLobby =
                         _facilities.value.contains(Labi());

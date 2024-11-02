@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/widget_filter/tabageh_vila.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
+import 'package:flutter_application_1/pages/category/shared/number_piacker.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
 class TedadTabaghVilaFilterWidget extends StatelessWidget {
   TedadTabaghVilaFilterWidget({super.key});
   final _show_item_tabaghehvila = false.obs;
+  final RxString _selectedTabaghe =
+      "انتخاب کنید".obs; // متغیر برای گزینه انتخاب شده
 
   @override
   Widget build(BuildContext context) {
@@ -69,7 +72,12 @@ class TedadTabaghVilaFilterWidget extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      showNumberPicker((selectedNumber) {
+                        _selectedTabaghe.value =
+                            selectedNumber; // به‌روزرسانی گزینه انتخاب شده
+                      });
+                    },
                     icon: SvgPicture.asset(
                       "assets/images/arrow_down.svg",
                       width: 10,
@@ -82,15 +90,15 @@ class TedadTabaghVilaFilterWidget extends StatelessWidget {
                       ),
                     ),
                   ),
-                  const Padding(
-                    padding: EdgeInsets.only(right: 10.0),
-                    child: Text(
-                      'انتخاب کنید',
-                      style: TextStyle(
-                          fontFamily: MAIN_FONT_FAMILY_LIGHT,
-                          fontSize: 12,
-                          color: Color.fromRGBO(166, 166, 166, 1)),
-                    ),
+                  Padding(
+                    padding: const EdgeInsets.only(right: 10.0),
+                    child: Obx(() => Text(
+                          _selectedTabaghe.value, // نمایش گزینه‌ی انتخاب‌شده
+                          style: const TextStyle(
+                              fontFamily: MAIN_FONT_FAMILY_LIGHT,
+                              fontSize: 12,
+                              color: Color.fromRGBO(99, 99, 99, 1)),
+                        )),
                   ),
                 ],
               ),

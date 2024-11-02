@@ -1,13 +1,31 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/filters_widgets/component_filter/showLocationMelkBottomSheet.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/widget_filter/location_melk.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
-class LocationMelkFilterWidget extends StatelessWidget {
+class LocationMelkFilterWidget extends StatefulWidget {
   LocationMelkFilterWidget({super.key});
+
+  @override
+  State<LocationMelkFilterWidget> createState() =>
+      _LocationMelkFilterWidgetState();
+}
+
+class _LocationMelkFilterWidgetState extends State<LocationMelkFilterWidget> {
   final _show_item_locationmelk = false.obs;
+
+  final TextEditingController _customAmountController = TextEditingController();
+
+  final TextEditingController _MaxAmountController = TextEditingController();
+
+  bool _isFieldEnabled = false;
+
+  final _show_item_mizanrahn = false.obs;
+
+  final RxString _selectedMinAmount = 'انتخاب کنید'.obs;
 
   @override
   Widget build(BuildContext context) {
@@ -70,7 +88,17 @@ class LocationMelkFilterWidget extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      showLocationMelkBottomSheet((selected) {
+                        setState(() {
+                          _selectedMinAmount.value =
+                              selected; // به‌روزرسانی مقدار انتخاب‌شده
+                          _isFieldEnabled = selected == 'وارد کردن مبلغ دلخواه';
+                          _customAmountController.text =
+                              _isFieldEnabled ? '' : selected;
+                        });
+                      });
+                    },
                     icon: SvgPicture.asset(
                       "assets/images/arrow_down.svg",
                       width: 10,
@@ -83,14 +111,17 @@ class LocationMelkFilterWidget extends StatelessWidget {
                       ),
                     ),
                   ),
-                  const Padding(
-                    padding: EdgeInsets.only(right: 10.0),
-                    child: Text(
-                      'انتخاب کنید',
-                      style: TextStyle(
+                  Padding(
+                    padding: const EdgeInsets.only(right: 10.0),
+                    child: Obx(
+                      () => Text(
+                        _selectedMinAmount.value,
+                        style: const TextStyle(
                           fontFamily: MAIN_FONT_FAMILY_LIGHT,
                           fontSize: 12,
-                          color: Color.fromRGBO(166, 166, 166, 1)),
+                          color: Color.fromRGBO(99, 99, 99, 1),
+                        ),
+                      ),
                     ),
                   ),
                 ],

@@ -2,18 +2,19 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/widget_filter/jahatsakhteman.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/jahat_sakhteman.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
 class JahatSakhtemanFilterWidget extends StatelessWidget {
   JahatSakhtemanFilterWidget({super.key});
   final _show_item_jahatsakhteman_1 = false.obs;
+  final RxString _selectedOptionlow = "انتخاب کنید".obs;
 
   @override
   Widget build(BuildContext context) {
     return Obx(
       () {
-        var jahatsakhteman2 = jahatsakhteman;
         return Container(
             height: _show_item_jahatsakhteman_1.isTrue ? 130 : 50,
             decoration: BoxDecoration(
@@ -53,12 +54,12 @@ class JahatSakhtemanFilterWidget extends StatelessWidget {
   }
 
   Widget jahatsakhteman(BuildContext context) {
-    return (Column(
+    return Column(
       children: [
         Container(
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(11),
-              color: Color.fromRGBO(183, 183, 183, 1)),
+              color: const Color.fromRGBO(183, 183, 183, 1)),
           child: Padding(
             padding: const EdgeInsets.all(1.1),
             child: Container(
@@ -74,7 +75,11 @@ class JahatSakhtemanFilterWidget extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      jahatSakhteman((selectedOption) {
+                        _selectedOptionlow.value = selectedOption;
+                      });
+                    },
                     icon: SvgPicture.asset(
                       "assets/images/arrow_down.svg",
                       width: 10,
@@ -87,15 +92,15 @@ class JahatSakhtemanFilterWidget extends StatelessWidget {
                       ),
                     ),
                   ),
-                  const Padding(
-                    padding: EdgeInsets.only(right: 10.0),
-                    child: Text(
-                      'انتخاب کنید',
-                      style: TextStyle(
-                          fontFamily: MAIN_FONT_FAMILY_LIGHT,
-                          fontSize: 12,
-                          color: Color.fromRGBO(166, 166, 166, 1)),
-                    ),
+                  Padding(
+                    padding: const EdgeInsets.only(right: 10.0),
+                    child: Obx(() => Text(
+                          _selectedOptionlow.value,
+                          style: const TextStyle(
+                              fontFamily: MAIN_FONT_FAMILY_LIGHT,
+                              fontSize: 12,
+                              color: Color.fromRGBO(99, 99, 99, 1)),
+                        )),
                   ),
                 ],
               ),
@@ -103,6 +108,6 @@ class JahatSakhtemanFilterWidget extends StatelessWidget {
           ),
         ),
       ],
-    ));
+    );
   }
 }

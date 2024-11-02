@@ -1,14 +1,31 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/filters_widgets/component_filter/showMizanEjaraMaxBottomSheet.dart';
+import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/filters_widgets/component_filter/showMizanEjaralowBottomSheet.dart';
+import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/filters_widgets/component_filter/showMizanRahnLowBottomSheet.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/widget_filter/mizanejara.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 
-class EjaraFilterWidget extends StatelessWidget {
+class EjaraFilterWidget extends StatefulWidget {
   EjaraFilterWidget({super.key});
+
+  @override
+  State<EjaraFilterWidget> createState() => _EjaraFilterWidgetState();
+}
+
+class _EjaraFilterWidgetState extends State<EjaraFilterWidget> {
   final _show_item_mizanejara = false.obs;
+  final TextEditingController _customAmountController = TextEditingController();
+  final TextEditingController _MaxAmountController = TextEditingController();
+
+  bool _isFieldEnabled = false;
+  final _show_item_mizanrahn = false.obs;
+
+  final RxString _selectedMinAmount = 'انتخاب کنید'.obs;
+  final RxString _selectedMaxAmount = 'انتخاب کنید'.obs;
 
   @override
   Widget build(BuildContext context) {
@@ -16,17 +33,16 @@ class EjaraFilterWidget extends StatelessWidget {
       () => Container(
         height: _show_item_mizanejara.isTrue ? 230 : 50,
         decoration: BoxDecoration(
-            color: const Color.fromRGBO(250, 250, 250, 1),
-            border: Border.all(color: const Color.fromRGBO(166, 166, 166, 1)),
-            borderRadius: BorderRadius.circular(15)),
+          color: const Color.fromRGBO(250, 250, 250, 1),
+          border: Border.all(color: const Color.fromRGBO(166, 166, 166, 1)),
+          borderRadius: BorderRadius.circular(15),
+        ),
         child: Column(
           children: [
             Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
               IconButton(
                 icon: _show_item_mizanejara.value
-                    ? SvgPicture.asset(
-                        'assets/images/=.svg',
-                      )
+                    ? SvgPicture.asset('assets/images/=.svg')
                     : SvgPicture.asset('assets/images/down.svg'),
                 onPressed: () {
                   _show_item_mizanejara.value = !_show_item_mizanejara.value;
@@ -44,9 +60,7 @@ class EjaraFilterWidget extends StatelessWidget {
               Column(
                 children: [
                   ejara(context),
-                  const SizedBox(
-                    height: 25,
-                  ),
+                  const SizedBox(height: 25),
                   ejara2(context),
                 ],
               ),
@@ -59,8 +73,9 @@ class EjaraFilterWidget extends StatelessWidget {
   Widget ejara(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-          color: const Color.fromRGBO(183, 183, 183, 1),
-          borderRadius: BorderRadius.circular(16)),
+        color: const Color.fromRGBO(183, 183, 183, 1),
+        borderRadius: BorderRadius.circular(16),
+      ),
       child: Padding(
         padding: const EdgeInsets.all(1.1),
         child: Container(
@@ -75,57 +90,57 @@ class EjaraFilterWidget extends StatelessWidget {
             children: [
               Container(
                 decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: const Color.fromRGBO(
-                      183,
-                      183,
-                      183,
-                      1,
-                    )),
-                child: Container(
-                  decoration: BoxDecoration(
-                      color: const Color.fromRGBO(183, 183, 183, 1),
-                      borderRadius: BorderRadius.circular(16)),
-                  child: Padding(
-                    padding: const EdgeInsets.all(1.1),
-                    child: Container(
-                      width: 250,
-                      height: 35,
-                      decoration: ShapeDecoration(
-                        color: Colors.white,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(9),
-                        ),
+                  borderRadius: BorderRadius.circular(10),
+                  color: const Color.fromRGBO(183, 183, 183, 1),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(1.1),
+                  child: Container(
+                    width: 250,
+                    height: 35,
+                    decoration: ShapeDecoration(
+                      color: Colors.white,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(9),
                       ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          IconButton(
-                            onPressed: () {},
-                            icon: SvgPicture.asset(
-                              "assets/images/arrow_down.svg",
-                              width: 10,
-                              height: 10,
-                              color: const Color.fromRGBO(
-                                48,
-                                48,
-                                48,
-                                1,
-                              ),
-                            ),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        IconButton(
+                          onPressed: () {
+                            showMizanEjaraMaxBottomSheet((selectedAmount) {
+                              setState(() {
+                                if (selectedAmount == 'وارد کردن مبلغ دلخواه') {
+                                  _isFieldEnabled = true;
+                                  _customAmountController.text = '';
+                                } else {
+                                  _isFieldEnabled = false;
+                                  _customAmountController.text = selectedAmount;
+                                }
+                                _selectedMaxAmount.value = selectedAmount;
+                              });
+                            });
+                          },
+                          icon: SvgPicture.asset(
+                            "assets/images/arrow_down.svg",
+                            width: 10,
+                            height: 10,
+                            color: const Color.fromRGBO(48, 48, 48, 1),
                           ),
-                          const Padding(
-                            padding: EdgeInsets.only(right: 10.0),
-                            child: Text(
-                              'انتخاب کنید',
-                              style: TextStyle(
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(right: 10.0),
+                          child: Obx(() => Text(
+                                _selectedMaxAmount.value,
+                                style: const TextStyle(
                                   fontFamily: MAIN_FONT_FAMILY_LIGHT,
                                   fontSize: 12,
-                                  color: Color.fromRGBO(166, 166, 166, 1)),
-                            ),
-                          ),
-                        ],
-                      ),
+                                  color: Color.fromRGBO(99, 99, 99, 1),
+                                ),
+                              )),
+                        ),
+                      ],
                     ),
                   ),
                 ),
@@ -148,8 +163,9 @@ class EjaraFilterWidget extends StatelessWidget {
   Widget ejara2(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-          color: const Color.fromRGBO(183, 183, 183, 1),
-          borderRadius: BorderRadius.circular(16)),
+        color: const Color.fromRGBO(183, 183, 183, 1),
+        borderRadius: BorderRadius.circular(16),
+      ),
       child: Padding(
         padding: const EdgeInsets.all(1.1),
         child: Container(
@@ -164,57 +180,57 @@ class EjaraFilterWidget extends StatelessWidget {
             children: [
               Container(
                 decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(9),
-                    color: const Color.fromRGBO(
-                      183,
-                      183,
-                      183,
-                      1,
-                    )),
-                child: Container(
-                  decoration: BoxDecoration(
-                      color: Color.fromRGBO(183, 183, 183, 1),
-                      borderRadius: BorderRadius.circular(15)),
-                  child: Padding(
-                    padding: const EdgeInsets.all(1.1),
-                    child: Container(
-                      width: 250,
-                      height: 35,
-                      decoration: ShapeDecoration(
-                        color: Colors.white,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(9),
-                        ),
+                  borderRadius: BorderRadius.circular(9),
+                  color: const Color.fromRGBO(183, 183, 183, 1),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(1.1),
+                  child: Container(
+                    width: 250,
+                    height: 35,
+                    decoration: ShapeDecoration(
+                      color: Colors.white,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(9),
                       ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          IconButton(
-                            onPressed: () {},
-                            icon: SvgPicture.asset(
-                              "assets/images/arrow_down.svg",
-                              width: 10,
-                              height: 10,
-                              color: const Color.fromRGBO(
-                                48,
-                                48,
-                                48,
-                                1,
-                              ),
-                            ),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        IconButton(
+                          onPressed: () {
+                            showMizanEjaraLowBottomSheet((selectedAmount) {
+                              setState(() {
+                                if (selectedAmount == 'وارد کردن مبلغ دلخواه') {
+                                  _isFieldEnabled = true;
+                                  _customAmountController.text = '';
+                                } else {
+                                  _isFieldEnabled = false;
+                                  _customAmountController.text = selectedAmount;
+                                }
+                                _selectedMinAmount.value = selectedAmount;
+                              });
+                            });
+                          },
+                          icon: SvgPicture.asset(
+                            "assets/images/arrow_down.svg",
+                            width: 10,
+                            height: 10,
+                            color: const Color.fromRGBO(48, 48, 48, 1),
                           ),
-                          const Padding(
-                            padding: EdgeInsets.only(right: 10.0),
-                            child: Text(
-                              'انتخاب کنید',
-                              style: TextStyle(
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(right: 10.0),
+                          child: Obx(() => Text(
+                                _selectedMinAmount.value,
+                                style: const TextStyle(
                                   fontFamily: MAIN_FONT_FAMILY_LIGHT,
                                   fontSize: 12,
-                                  color: Color.fromRGBO(166, 166, 166, 1)),
-                            ),
-                          ),
-                        ],
-                      ),
+                                  color: Color.fromRGBO(99, 99, 99, 1),
+                                ),
+                              )),
+                        ),
+                      ],
                     ),
                   ),
                 ),

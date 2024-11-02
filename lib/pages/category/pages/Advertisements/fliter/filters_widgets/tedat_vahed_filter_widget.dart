@@ -2,13 +2,24 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/widget_filter/tedadvahed.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
+import 'package:flutter_application_1/pages/category/shared/number_piacker.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 
-class TedatVahedFilterWidget extends StatelessWidget {
+class TedatVahedFilterWidget extends StatefulWidget {
   TedatVahedFilterWidget({super.key});
+
+  @override
+  State<TedatVahedFilterWidget> createState() => _TedatVahedFilterWidgetState();
+}
+
+class _TedatVahedFilterWidgetState extends State<TedatVahedFilterWidget> {
   final _show_item_vaheddartabageh_1 = false.obs;
+
+  String _selectedOptionlow = "انتخاب کنید";
+
+  String _selectedOptionMax = "انتخاب کنید";
 
   @override
   Widget build(BuildContext context) {
@@ -94,7 +105,14 @@ class TedatVahedFilterWidget extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      showNumberPicker((selectedNumber) {
+                        setState(() {
+                          _selectedOptionlow =
+                              selectedNumber; // Update the selected number
+                        });
+                      });
+                    },
                     icon: SvgPicture.asset(
                       "assets/images/arrow_down.svg",
                       width: 10,
@@ -107,14 +125,15 @@ class TedatVahedFilterWidget extends StatelessWidget {
                       ),
                     ),
                   ),
-                  const Padding(
-                    padding: EdgeInsets.only(right: 20.0),
+                  Padding(
+                    padding: const EdgeInsets.only(right: 15.0),
                     child: Text(
-                      'انتخاب کنید',
-                      style: TextStyle(
-                          fontFamily: MAIN_FONT_FAMILY,
-                          fontSize: 12,
-                          color: Color.fromRGBO(166, 166, 166, 1)),
+                      _selectedOptionlow, // Display selected number
+                      style: const TextStyle(
+                        fontFamily: MAIN_FONT_FAMILY_LIGHT,
+                        fontSize: 14,
+                        color: Color.fromRGBO(48, 48, 48, 1),
+                      ),
                     ),
                   ),
                 ],
@@ -175,7 +194,14 @@ class TedatVahedFilterWidget extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      showNumberPicker((selectedNumber) {
+                        setState(() {
+                          _selectedOptionMax =
+                              selectedNumber; // Update the selected number
+                        });
+                      });
+                    },
                     icon: SvgPicture.asset(
                       "assets/images/arrow_down.svg",
                       width: 10,
@@ -188,14 +214,15 @@ class TedatVahedFilterWidget extends StatelessWidget {
                       ),
                     ),
                   ),
-                  const Padding(
-                    padding: EdgeInsets.only(right: 20.0),
+                  Padding(
+                    padding: const EdgeInsets.only(right: 15.0),
                     child: Text(
-                      'انتخاب کنید',
-                      style: TextStyle(
-                          fontFamily: MAIN_FONT_FAMILY,
-                          fontSize: 12,
-                          color: Color.fromRGBO(166, 166, 166, 1)),
+                      _selectedOptionMax, // Display selected number
+                      style: const TextStyle(
+                        fontFamily: MAIN_FONT_FAMILY_LIGHT,
+                        fontSize: 14,
+                        color: Color.fromRGBO(48, 48, 48, 1),
+                      ),
                     ),
                   ),
                 ],

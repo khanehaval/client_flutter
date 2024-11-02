@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/widget_filter/taminabegarm.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_tamin_abe_garm.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
@@ -9,6 +10,7 @@ import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 class TaminAbegarmFilterWidget extends StatelessWidget {
   TaminAbegarmFilterWidget({super.key});
   final _show_item_taminAbeGarm_1 = false.obs;
+  final RxString _selectedOptionlow = "انتخاب کنید".obs;
 
   @override
   Widget build(BuildContext context) {
@@ -69,7 +71,12 @@ class TaminAbegarmFilterWidget extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      AbeGarm((selectedOption) {
+                        _selectedOptionlow.value =
+                            selectedOption; // به‌روزرسانی متن انتخاب‌شده
+                      });
+                    },
                     icon: SvgPicture.asset(
                       "assets/images/arrow_down.svg",
                       width: 10,
@@ -82,15 +89,16 @@ class TaminAbegarmFilterWidget extends StatelessWidget {
                       ),
                     ),
                   ),
-                  const Padding(
-                    padding: EdgeInsets.only(right: 10.0),
-                    child: Text(
-                      'انتخاب کنید',
-                      style: TextStyle(
-                          fontFamily: MAIN_FONT_FAMILY_LIGHT,
-                          fontSize: 12,
-                          color: Color.fromRGBO(166, 166, 166, 1)),
-                    ),
+                  Padding(
+                    padding: const EdgeInsets.only(right: 10.0),
+                    child: Obx(() => Text(
+                          _selectedOptionlow.value, // نمایش گزینه‌ی انتخاب‌شده
+                          style: const TextStyle(
+                            fontFamily: MAIN_FONT_FAMILY_LIGHT,
+                            fontSize: 12,
+                            color: Color.fromRGBO(99, 99, 99, 1),
+                          ),
+                        )),
                   ),
                 ],
               ),
