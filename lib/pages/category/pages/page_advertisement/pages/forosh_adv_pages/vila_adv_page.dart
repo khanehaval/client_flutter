@@ -54,6 +54,8 @@ class _VilaAdvPageState extends State<VilaAdvPage> {
   final _buttonIsPressed = false.obs;
 
   final hasParking = false.obs;
+// In the parent widget or controller
+  final RxList<String> selectedImagesPath = RxList<String>();
 
   final _advInfo = AdvInfoModel();
 
@@ -757,7 +759,7 @@ class _VilaAdvPageState extends State<VilaAdvPage> {
             const SizedBox(
               height: 20,
             ),
-            ImagesPicker(selectedImagesPath: _selectedImagesPath),
+            ImagesPicker(selectedImagesPath: selectedImagesPath),
             const Divider(),
             const SizedBox(
               height: 20,

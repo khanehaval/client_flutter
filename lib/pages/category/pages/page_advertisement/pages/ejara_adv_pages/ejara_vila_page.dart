@@ -35,6 +35,8 @@ class _EjaraVilaPageState extends State<EjaraVilaPage> {
   final aghsatType = "".obs;
 
   final onvan = "".obs;
+// In the parent widget or controller
+  final RxList<String> selectedImagesPath = RxList<String>();
 
   final submit = false.obs;
 
@@ -755,7 +757,7 @@ class _EjaraVilaPageState extends State<EjaraVilaPage> {
               const SizedBox(
                 height: 20,
               ),
-              ImagesPicker(selectedImagesPath: _selectedImagesPath),
+              ImagesPicker(selectedImagesPath: selectedImagesPath),
               const Divider(
                 color: Color.fromRGBO(
                   226,

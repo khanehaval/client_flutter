@@ -71,7 +71,8 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
 
   final _metragTextController = TextEditingController();
 
-  final _selectedImagesPath = [].obs;
+// In the parent widget or controller
+  final RxList<String> selectedImagesPath = RxList<String>();
 
   final _facilities = <FacilitiesModel>[].obs;
 
@@ -239,37 +240,23 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
   }
 
   Future<void> _aparteman() async {
-    if (_allPriceTextController.text.isEmpty ||
-        _metragTextController.text.isEmpty ||
-        _buildFloorController.text.isEmpty ||
-        _buildRoomsCountController.text.isEmpty) {
-      Fluttertoast.showToast(
-        msg: "لطفا همه فیلدهای داری * را پر کنید",
-        toastLength: Toast.LENGTH_LONG,
-        gravity: ToastGravity.CENTER,
-        backgroundColor: Colors.red,
-        textColor: Colors.white,
-        fontSize: 16.0,
-      );
-      return;
-    }
+    if (submit.value) {
+      _buttonIsPressed.value = true;
+      final success = await _accountRepo.saleAparteman(
+          saleApartemanData: saleApartemanServerModel);
+      _buttonIsPressed.value = false;
 
-    _buttonIsPressed.value = true;
-    final success = await _accountRepo.saleAparteman(
-        saleApartemanData: saleApartemanServerModel);
-    _buttonIsPressed.value = false;
-    if (success!) {
       Fluttertoast.showToast(
-        msg: "اطلاعات با موفقیت ارسال شد",
+        msg: success! ? "اطلاعات با موفقیت ارسال شد" : "خطا در ارسال اطلاعات",
         toastLength: Toast.LENGTH_LONG,
         gravity: ToastGravity.CENTER,
-        backgroundColor: Colors.green,
+        backgroundColor: success! ? Colors.green : Colors.red,
         textColor: Colors.white,
         fontSize: 16.0,
       );
     } else {
       Fluttertoast.showToast(
-        msg: "خطا در ارسال اطلاعات",
+        msg: "لطفا همه فیلدهای داری * را پر کنید",
         toastLength: Toast.LENGTH_LONG,
         gravity: ToastGravity.CENTER,
         backgroundColor: Colors.red,
@@ -759,7 +746,7 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
               const SizedBox(
                 height: 20,
               ),
-              ImagesPicker(selectedImagesPath: _selectedImagesPath),
+              ImagesPicker(selectedImagesPath: selectedImagesPath),
               const SizedBox(
                 height: 30,
               ),

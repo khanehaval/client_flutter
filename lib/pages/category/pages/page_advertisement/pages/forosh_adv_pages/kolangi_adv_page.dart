@@ -77,6 +77,9 @@ class _KolangiAdvPageState extends State<KolangiAdvPage> {
   final _wcController = TextEditingController();
   final ValueNotifier<String> _persianWords = ValueNotifier<String>('');
   final _numberOfInstallmentsController = TextEditingController();
+  // In the parent widget or controller
+  final RxList<String> selectedImagesPath = RxList<String>();
+
   String numberToFarsiWords(int number) {
     if (number == 0) return 'صفر';
 
@@ -668,7 +671,7 @@ class _KolangiAdvPageState extends State<KolangiAdvPage> {
                 height: 20,
               ),
               ImagesPicker(
-                selectedImagesPath: _selectedImagesPath,
+                selectedImagesPath: selectedImagesPath,
               ),
               const Divider(
                 color: Color.fromRGBO(

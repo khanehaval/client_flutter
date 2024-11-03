@@ -72,6 +72,8 @@ class _EjaraApartemanPageState extends State<EjaraApartemanPage> {
   final TextEditingController _TedadKoleTabaghehController =
       TextEditingController();
   final TextEditingController _NoeSanadController = TextEditingController();
+// In the parent widget or controller
+  final RxList<String> selectedImagesPath = RxList<String>();
 
   @override
   void initState() {
@@ -840,7 +842,7 @@ class _EjaraApartemanPageState extends State<EjaraApartemanPage> {
               const SizedBox(
                 height: 20,
               ),
-              ImagesPicker(selectedImagesPath: _selectedImagesPath),
+              ImagesPicker(selectedImagesPath: selectedImagesPath),
               const Divider(
                 color: Color.fromRGBO(
                   226,

@@ -42,6 +42,8 @@ class _EjaraDafterPageState extends State<EjaraDafterPage> {
   final onvan = "".obs;
 
   int selectedIndex = 0;
+// In the parent widget or controller
+  final RxList<String> selectedImagesPath = RxList<String>();
 
   final hasAnbari = false.obs;
 
@@ -821,7 +823,7 @@ class _EjaraDafterPageState extends State<EjaraDafterPage> {
             const SizedBox(
               height: 40,
             ),
-            ImagesPicker(selectedImagesPath: _selectedImagesPath),
+            ImagesPicker(selectedImagesPath: selectedImagesPath),
             const Divider(
               color: Color.fromRGBO(
                 226,

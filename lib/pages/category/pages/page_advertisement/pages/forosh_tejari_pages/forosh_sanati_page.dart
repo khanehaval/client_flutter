@@ -41,6 +41,8 @@ class _ForoshSanatiPageState extends State<ForoshSanatiPage> {
   final onvan = "".obs;
 
   final _facilities = <FacilitiesModel>[].obs;
+// In the parent widget or controller
+  final RxList<String> selectedImagesPath = RxList<String>();
 
   final hasAnbari = false.obs;
 
@@ -703,7 +705,7 @@ class _ForoshSanatiPageState extends State<ForoshSanatiPage> {
                 height: 20,
               ),
               ImagesPicker(
-                selectedImagesPath: _selectedImagesPath,
+                selectedImagesPath: selectedImagesPath,
               ),
               const Divider(
                 color: Color.fromRGBO(

@@ -47,6 +47,8 @@ class _ForoshDaftarPageState extends State<ForoshDaftarPage> {
   final aghsatType = "".obs;
 
   final onvan = "".obs;
+// In the parent widget or controller
+  final RxList<String> selectedImagesPath = RxList<String>();
 
   final _facilities = <FacilitiesModel>[].obs;
 
@@ -865,7 +867,7 @@ class _ForoshDaftarPageState extends State<ForoshDaftarPage> {
                   const SizedBox(
                     height: 20,
                   ),
-                  ImagesPicker(selectedImagesPath: _selectedImagesPath),
+                  ImagesPicker(selectedImagesPath: selectedImagesPath),
                   const SizedBox(
                     height: 20,
                   ),

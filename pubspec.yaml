@@ -44,12 +44,12 @@ dependencies:
   numberpicker: 2.1.2
   http: 1.1.2
   gradient_icon: 2.0.9
-  image_picker: 1.0.5
+  image_picker: 1.1.2
   get_it: 7.6.4
   image_cropper: 5.0.1
   intl: any
   shared_preferences: 2.2.2
-  permission_handler: 10.4.5
+  permission_handler: 11.3.1
   circular_countdown_timer: 0.2.3
   flutter_rating_bar: 4.0.1
   linear_progress_bar: 1.1.0

@@ -40,6 +40,8 @@ class SaleShop extends StatefulWidget {
 
 class _SaleShopState extends State<SaleShop> {
   final aghsatType = "".obs;
+// In the parent widget or controller
+  final RxList<String> selectedImagesPath = RxList<String>();
 
   final onvan = "".obs;
 
@@ -766,7 +768,7 @@ class _SaleShopState extends State<SaleShop> {
                   const SizedBox(
                     height: 20,
                   ),
-                  ImagesPicker(selectedImagesPath: _selectedImagesPath),
+                  ImagesPicker(selectedImagesPath: selectedImagesPath),
                   const Divider(),
                   const SizedBox(
                     height: 15,

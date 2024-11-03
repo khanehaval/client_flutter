@@ -42,6 +42,8 @@ class _EjaraKmApartemanPageState extends State<EjaraKmApartemanPage> {
   final onvan = "".obs;
 
   final _advInfo = AdvInfoModel();
+// In the parent widget or controller
+  final RxList<String> selectedImagesPath = RxList<String>();
 
   final hasAnbari = false.obs;
   final hasAsansor = false.obs;
@@ -699,7 +701,7 @@ class _EjaraKmApartemanPageState extends State<EjaraKmApartemanPage> {
             const SizedBox(
               height: 30,
             ),
-            ImagesPicker(selectedImagesPath: _selectedImagesPath),
+            ImagesPicker(selectedImagesPath: selectedImagesPath),
             const Divider(
               color: Color.fromRGBO(
                 226,

@@ -37,6 +37,8 @@ class Presell extends StatefulWidget {
 
 class _PresellState extends State<Presell> {
   final aghsatType = "".obs;
+// In the parent widget or controller
+  final RxList<String> selectedImagesPath = RxList<String>();
 
   final onvan = "".obs;
 
@@ -518,7 +520,7 @@ class _PresellState extends State<Presell> {
             const SizedBox(
               height: 20,
             ),
-            ImagesPicker(selectedImagesPath: _selectedImagesPath),
+            ImagesPicker(selectedImagesPath: selectedImagesPath),
             const Divider(
               color: Color.fromRGBO(
                 226,

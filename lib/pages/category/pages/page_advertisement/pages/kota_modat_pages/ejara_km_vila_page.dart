@@ -39,6 +39,8 @@ class EjaraKmVilaPage extends StatefulWidget {
 
 class _EjaraKmVilaPageState extends State<EjaraKmVilaPage> {
   final fullTime = false.obs;
+// In the parent widget or controller
+  final RxList<String> selectedImagesPath = RxList<String>();
 
   final _advInfo = AdvInfoModel();
 
@@ -624,7 +626,7 @@ class _EjaraKmVilaPageState extends State<EjaraKmVilaPage> {
             const SizedBox(
               height: 30,
             ),
-            ImagesPicker(selectedImagesPath: _selectedImagesPath),
+            ImagesPicker(selectedImagesPath: selectedImagesPath),
             const Divider(),
             const SizedBox(
               height: 15,

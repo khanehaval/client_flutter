@@ -60,6 +60,8 @@ class _PartnerShipState extends State<PartnerShip> {
   final hasAnbari = false.obs;
 
   final hasAsansor = false.obs;
+// In the parent widget or controller
+  final RxList<String> selectedImagesPath = RxList<String>();
 
   final hasParking = false.obs;
 
@@ -566,7 +568,7 @@ class _PartnerShipState extends State<PartnerShip> {
             const SizedBox(
               height: 30,
             ),
-            ImagesPicker(selectedImagesPath: _selectedImagesPath),
+            ImagesPicker(selectedImagesPath: selectedImagesPath),
             const SizedBox(
               height: 20,
             ),

@@ -39,6 +39,8 @@ class _EjaraShanatiPageState extends State<EjaraShanatiPage> {
   int selectedIndex = 0;
 
   final hasAnbari = false.obs;
+// In the parent widget or controller
+  final RxList<String> selectedImagesPath = RxList<String>();
 
   final hasAsansor = false.obs;
 
@@ -540,7 +542,7 @@ class _EjaraShanatiPageState extends State<EjaraShanatiPage> {
               const SizedBox(
                 height: 20,
               ),
-              ImagesPicker(selectedImagesPath: _selectedImagesPath),
+              ImagesPicker(selectedImagesPath: selectedImagesPath),
               const Divider(
                 color: Color.fromRGBO(
                   226,

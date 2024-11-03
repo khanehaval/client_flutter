@@ -1,8 +1,10 @@
 import 'dart:io';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/services/models/server_model/sale_aparteman.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 
 class ImagesPicker extends StatelessWidget {
@@ -128,6 +130,7 @@ class ImagesPicker extends StatelessWidget {
                 onTap: () {
                   _pickImage(ImageSource.gallery);
                   Get.back();
+                  SaleApartemanServerModel;
                 },
               ),
               ListTile(
@@ -146,17 +149,45 @@ class ImagesPicker extends StatelessWidget {
   }
 
   Future<void> _pickImage(ImageSource source) async {
-    if (selectedImagesPath.length >= 6) {
-      Get.snackbar('Error', 'You cannot add more than 6 images');
-      return;
-    }
     try {
+      if (selectedImagesPath.length >= 6) {
+        Get.snackbar('Error', 'You cannot add more than 6 images');
+        return;
+      }
       final pickedFile = await ImagePicker().pickImage(source: source);
       if (pickedFile != null) {
-        selectedImagesPath.add(pickedFile.path);
+        final croppedFile = await _cropImage(pickedFile.path);
+        if (croppedFile != null) {
+          selectedImagesPath.add(croppedFile.path);
+        }
       }
     } catch (e) {
       Get.snackbar('Error', 'Failed to pick image: $e');
     }
+  }
+
+  Future<CroppedFile?> _cropImage(String path) async {
+    return await ImageCropper().cropImage(
+      sourcePath: path,
+      aspectRatioPresets: [
+        CropAspectRatioPreset.square,
+        CropAspectRatioPreset.ratio3x2,
+        CropAspectRatioPreset.original,
+        CropAspectRatioPreset.ratio4x3,
+        CropAspectRatioPreset.ratio16x9,
+      ],
+      uiSettings: [
+        AndroidUiSettings(
+          toolbarTitle: 'Crop Image',
+          toolbarColor: Colors.deepOrange,
+          toolbarWidgetColor: Colors.white,
+          initAspectRatio: CropAspectRatioPreset.original,
+          lockAspectRatio: false,
+        ),
+        IOSUiSettings(
+          minimumAspectRatio: 1.0,
+        ),
+      ],
+    );
   }
 }

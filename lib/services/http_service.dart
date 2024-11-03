@@ -1,6 +1,6 @@
+import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
-import 'package:flutter_application_1/services/models/server_model/sale_aparteman_res.dart';
 import 'package:logger/logger.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -32,6 +32,12 @@ class Httpservice {
   }
 
   Future<String?> uploadFile(String address, String path) async {
+    // Synchronously check if the file exists at the specified path
+    if (!File(path).existsSync()) {
+      print("⛔ فایل در مسیر مشخص شده یافت نشد: $path");
+      return null; // Exit if file does not exist
+    }
+
     String fileName = path.split('/').last;
     try {
       FormData formData = FormData.fromMap({
@@ -45,8 +51,8 @@ class Httpservice {
       if (response.data?["status"]) {
         return response.data!["data"]["path"];
       }
-    } catch (_) {
-      _logger.e(_);
+    } catch (e) {
+      _logger.e("Upload error: $e");
     }
     return null;
   }

@@ -16,7 +16,7 @@ class AdvertisementService {
   }) async {
     try {
       final uploadImages = await _httpService.uploadFileList(
-          "api/v1/upload/advertise", saleAparteman.images!);
+          "api/v1/upload/advertise", saleAparteman.images);
       if (uploadImages.isNotEmpty) {
         saleAparteman.images = uploadImages;
         final result = await _httpService.post(

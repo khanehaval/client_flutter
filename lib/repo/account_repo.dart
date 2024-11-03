@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_application_1/db/dao/user_dao.dart';
 import 'package:flutter_application_1/db/entities/user.dart';
 import 'package:flutter_application_1/db/entities/user_type.dart';
@@ -9,7 +8,6 @@ import 'package:flutter_application_1/services/http_service.dart';
 import 'package:flutter_application_1/services/models/server_model/sale_aparteman.dart';
 import 'package:flutter_application_1/services/models/server_model/sale_old_house.dart';
 import 'package:flutter_application_1/services/models/server_model/sale_vila.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

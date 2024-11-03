@@ -42,6 +42,8 @@ class _EjaraShopPageState extends State<EjaraShopPage> {
   final hasAsansor = false.obs;
 
   final hasParking = false.obs;
+// In the parent widget or controller
+  final RxList<String> selectedImagesPath = RxList<String>();
 
   final _onePrice = 0.0.obs;
 
@@ -534,7 +536,7 @@ class _EjaraShopPageState extends State<EjaraShopPage> {
               const SizedBox(
                 height: 20,
               ),
-              ImagesPicker(selectedImagesPath: _selectedImagesPath),
+              ImagesPicker(selectedImagesPath: selectedImagesPath),
               const Divider(),
               const SizedBox(
                 height: 15,
