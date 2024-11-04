@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/category/shared/map_pages/location_Info.dart';
 import 'package:flutter_application_1/pages/category/shared/map_pages/select_location_on_map.dart';
+import 'package:flutter_application_1/services/models/server_model/sale_old_house.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
@@ -10,7 +11,7 @@ import 'package:latlong2/latlong.dart';
 
 class MapInfoPage extends StatefulWidget {
   LocationInfo locationInfo;
-
+  Location location = Location();
   MapInfoPage(this.locationInfo);
 
   @override
@@ -18,6 +19,7 @@ class MapInfoPage extends StatefulWidget {
 }
 
 class _MapInfoPageState extends State<MapInfoPage> {
+  SaleOldHouseServerModel saleOldHouseServerModel = SaleOldHouseServerModel();
   var locationInfo = LocationInfo(
       location: LatLng(0, 0),
       cityName: "",
@@ -78,7 +80,7 @@ class _MapInfoPageState extends State<MapInfoPage> {
                                       locationInfo.location, 16);
                                   _addressController.text =
                                       locationInfo.formatted_address;
-
+                                  saleOldHouseServerModel.location;
                                   setState(() {});
                                 },
                               ));
@@ -108,6 +110,7 @@ class _MapInfoPageState extends State<MapInfoPage> {
                                               _addressController.text =
                                                   locationInfo
                                                       .formatted_address;
+                                              saleOldHouseServerModel.location;
                                               setState(() {});
                                             },
                                           ));
@@ -267,6 +270,9 @@ class _MapInfoPageState extends State<MapInfoPage> {
         Directionality(
           textDirection: TextDirection.rtl,
           child: TextField(
+            onTap: () {
+              saleOldHouseServerModel.description;
+            },
             style: const TextStyle(
               fontFamily: MAIN_FONT_FAMILY,
             ),

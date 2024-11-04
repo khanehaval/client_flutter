@@ -85,6 +85,7 @@ dependencies:
   sms_autofill: ^2.4.0
   jalali_flutter_datepicker: ^1.0.9
   flutter_inner_shadow: ^0.0.1
+  image: ^4.3.0
 
   # mapir_raster: 0.0.1
 

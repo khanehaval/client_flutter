@@ -6,14 +6,17 @@ import 'package:flutter_application_1/pages/category/shared/map_pages/location_I
 import 'package:flutter_application_1/pages/category/shared/map_pages/map_info_page.dart';
 
 import 'package:flutter_application_1/pages/category/shared/widget/widget_noemelk/widget_select_noemelk.dart';
+import 'package:flutter_application_1/services/models/server_model/sale_aparteman.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 
 class ForshAdvLocationPage extends StatelessWidget {
   LocationInfo locationInfo;
+  Location location = const Location();
   final TextEditingController _controller = TextEditingController();
-
+  SaleApartemanServerModel saleApartemanServerModel =
+      SaleApartemanServerModel();
   ForshAdvLocationPage({required this.locationInfo, super.key});
   final type = "".obs;
   @override

@@ -6,6 +6,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:image/image.dart' as img;
 
 class ImagesPicker extends StatelessWidget {
   final RxList<dynamic> selectedImagesPath;
@@ -158,7 +159,10 @@ class ImagesPicker extends StatelessWidget {
       if (pickedFile != null) {
         final croppedFile = await _cropImage(pickedFile.path);
         if (croppedFile != null) {
-          selectedImagesPath.add(croppedFile.path);
+          // فشرده‌سازی و تغییر اندازه تصویر قبل از افزودن به لیست
+          final compressedFile =
+              await resizeAndCompressImage(File(croppedFile.path));
+          selectedImagesPath.add(compressedFile.path);
         }
       }
     } catch (e) {
@@ -190,4 +194,21 @@ class ImagesPicker extends StatelessWidget {
       ],
     );
   }
+}
+
+Future<File> resizeAndCompressImage(File file) async {
+  final originalImage = img.decodeImage(await file.readAsBytes());
+
+  if (originalImage == null) return file; // در صورتی که تصویر نامعتبر باشد
+
+  // تغییر اندازه تصویر
+  final resizedImage = img.copyResize(originalImage, width: 200, height: 200);
+
+  // فشرده‌سازی و ذخیره در فایل جدید
+  final compressedImageBytes = img.encodeJpg(resizedImage, quality: 70);
+  final compressedFile =
+      File('${file.parent.path}/compressed_${file.uri.pathSegments.last}');
+  await compressedFile.writeAsBytes(compressedImageBytes);
+
+  return compressedFile;
 }

@@ -38,7 +38,7 @@ import '../../../../models/FacilitiesModel.dart';
 
 class ForoshAdvPage extends StatefulWidget {
   // Location location;
-
+  Location location = const Location();
   //todo
   @override
   State<ForoshAdvPage> createState() => _ForoshAdvPageState();
@@ -774,10 +774,7 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
                     Get.to(() => NamayeshAgahi());
                   }
                   if (submit.value) {
-                    saleApartemanServerModel.images;
-                    // saleApartemanServerModel.images = [
-                    //   _selectedImagesPath.value.first
-                    // ];
+                    saleApartemanServerModel.images = selectedImagesPath.value;
                     saleApartemanServerModel.wc = _wcController.text;
                     saleApartemanServerModel.hasLobby =
                         _facilities.value.contains(Labi());
