@@ -162,37 +162,42 @@ class _MapInfoPageState extends State<MapInfoPage> {
                 const SizedBox(
                   height: 5,
                 ),
-                Container(
-                    width: Get.width * 0.42,
-                    height: 41,
-                    decoration: BoxDecoration(
-                        color: Color.fromRGBO(207, 207, 207, 1),
-                        borderRadius: BorderRadius.circular(10)),
-                    child: Padding(
-                      padding: const EdgeInsets.all(1.0),
-                      child: Container(
-                        decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(10)),
-                        child: Align(
-                          alignment: Alignment.centerRight,
-                          child: Padding(
-                            padding: const EdgeInsets.all(3.0),
+                GestureDetector(
+                  onTap: () {
+                    saleOldHouseServerModel.cityId;
+                  },
+                  child: Container(
+                      width: Get.width * 0.42,
+                      height: 41,
+                      decoration: BoxDecoration(
+                          color: Color.fromRGBO(207, 207, 207, 1),
+                          borderRadius: BorderRadius.circular(10)),
+                      child: Padding(
+                        padding: const EdgeInsets.all(1.0),
+                        child: Container(
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(10)),
+                          child: Align(
+                            alignment: Alignment.centerRight,
                             child: Padding(
-                              padding: const EdgeInsets.only(right: 10.0),
-                              child: Text(
-                                style: const TextStyle(
-                                    fontFamily: 'Iran Sans Bold,',
-                                    color: Color.fromRGBO(207, 207, 207, 1),
-                                    fontWeight: FontWeight.w600),
-                                locationInfo.locationName,
-                                textAlign: TextAlign.right,
+                              padding: const EdgeInsets.all(3.0),
+                              child: Padding(
+                                padding: const EdgeInsets.only(right: 10.0),
+                                child: Text(
+                                  style: const TextStyle(
+                                      fontFamily: 'Iran Sans Bold,',
+                                      color: Color.fromRGBO(207, 207, 207, 1),
+                                      fontWeight: FontWeight.w600),
+                                  locationInfo.locationName,
+                                  textAlign: TextAlign.right,
+                                ),
                               ),
                             ),
                           ),
                         ),
-                      ),
-                    )),
+                      )),
+                ),
               ],
             ),
             const SizedBox(

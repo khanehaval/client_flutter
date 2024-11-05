@@ -4,6 +4,7 @@ import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/category/shared/map_pages/location_Info.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/Neighbourhood.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/city_widget.dart';
+import 'package:flutter_application_1/services/models/server_model/sale_aparteman.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -30,7 +31,8 @@ class _SelectLocationMapState extends State<SelectLocationMap> {
   double initZoom = INITIAL_ZOOM;
   final RxBool showLimit = false.obs;
   late LocationInfo locationInfo;
-
+  SaleApartemanServerModel saleApartemanServerModel =
+      SaleApartemanServerModel();
   @override
   void initState() {
     super.initState();
@@ -352,7 +354,10 @@ class _SelectLocationMapState extends State<SelectLocationMap> {
           ],
         ),
         GestureDetector(
-          onTap: () => Get.to(() => City()),
+          onTap: () {
+            saleApartemanServerModel.cityId;
+            Get.to(() => City());
+          },
           child: Container(
             decoration: BoxDecoration(
               color: Colors.white,

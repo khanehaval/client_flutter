@@ -93,6 +93,7 @@ class ForshAdvLocationPage extends StatelessWidget {
                             showSelectNoeMelk((selectedMelk) {
                               _controller.text =
                                   selectedMelk; // Update TextField with selected option
+                              saleApartemanServerModel.buildingType;
                             });
                           }),
                     ),

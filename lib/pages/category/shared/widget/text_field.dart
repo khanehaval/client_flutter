@@ -50,6 +50,7 @@ Widget InputTextField(TextEditingController controller, {double? width}) {
     height: 42,
     width: width,
     child: TextField(
+      onTap: () {},
       style: const TextStyle(fontFamily: MAIN_FONT_FAMILY),
       keyboardType: TextInputType.number,
       controller: controller,

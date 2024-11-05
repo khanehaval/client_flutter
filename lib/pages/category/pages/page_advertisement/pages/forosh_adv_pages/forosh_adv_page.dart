@@ -70,6 +70,8 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
   final _allPriceTextController = TextEditingController();
 
   final _metragTextController = TextEditingController();
+  final loanInstallmentAmount = TextEditingController();
+  final prepayment = TextEditingController();
 
 // In the parent widget or controller
   final RxList<String> selectedImagesPath = RxList<String>();
@@ -210,6 +212,7 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
   @override
   void initState() {
     // saleApartemanServerModel.location = widget.location;
+    saleApartemanServerModel.location = const Location();
     super.initState();
     _metragTextController.addListener(_updatePersianWords);
     _allPriceTextController.addListener(_checkFields);
@@ -250,7 +253,7 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
         msg: success! ? "اطلاعات با موفقیت ارسال شد" : "خطا در ارسال اطلاعات",
         toastLength: Toast.LENGTH_LONG,
         gravity: ToastGravity.CENTER,
-        backgroundColor: success! ? Colors.green : Colors.red,
+        backgroundColor: success ? Colors.green : Colors.red,
         textColor: Colors.white,
         fontSize: 16.0,
       );
@@ -491,15 +494,16 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
                   widget1: ReadOnlyTextField(_buildRoomsCountController, () {
                     TedadOtagh((_) {
                       _buildRoomsCountController.text = _;
-                      saleApartemanServerModel.room = _;
+                      saleApartemanServerModel.room =
+                          _buildRoomsCountController.text;
                       //
                     });
                   }, width: getPageWidth()),
                   widget2: ReadOnlyTextField(_SenBanaController, () {
                     SenBana((selectedOption) {
                       _SenBanaController.text = selectedOption;
+                      saleApartemanServerModel.age = _SenBanaController.text;
                     });
-                    saleApartemanServerModel.age = _buildDateController.text;
                   }, width: getPageWidth(), fontSize: 12)),
               const SizedBox(
                 height: 20,
@@ -584,13 +588,15 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
                   widget1: ReadOnlyTextField(_buildFloorsCountController, () {
                     TedadKoleTabagheh((selectedOption) {
                       _buildFloorsCountController.text = selectedOption;
-                      saleApartemanServerModel.floorNumber;
+                      saleApartemanServerModel.floorNumber =
+                          _buildFloorsCountController.text;
                     });
                   }, width: getPageWidth()),
                   widget2: ReadOnlyTextField(_buildDocumentController, () {
                     NoeSanad((selectedOption) {
                       _buildDocumentController.text = selectedOption;
-                      saleApartemanServerModel.docType;
+                      saleApartemanServerModel.docType =
+                          _buildDocumentController.text;
                     });
                   }, width: getPageWidth())),
               const SizedBox(
@@ -604,7 +610,8 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
                   widget2: ReadOnlyTextField(_TedadVahedTabaghehController, () {
                     TedadVahedTabagheh((selectedOption) {
                       _TedadVahedTabaghehController.text = selectedOption;
-                      saleApartemanServerModel.unitInFloor;
+                      saleApartemanServerModel.unitInFloor =
+                          _TedadVahedTabaghehController.text;
                     });
                   }, width: getPageWidth())),
               const SizedBox(
@@ -618,7 +625,8 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
                     () {
                       BazSazi((selectedOption) {
                         _reBuildController.text = selectedOption;
-                        saleApartemanServerModel.reconstruct;
+                        saleApartemanServerModel.reconstruct =
+                            _reBuildController.text;
                       });
                     },
                     width: getPageWidth(),
@@ -627,7 +635,8 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
                   widget2: ReadOnlyTextField(_buildDirectionController, () {
                     jahatSakhteman((selectedOption) {
                       _buildDirectionController.text = selectedOption;
-                      saleApartemanServerModel.buildingSide;
+                      saleApartemanServerModel.buildingSide =
+                          _buildDirectionController.text;
                     });
                   }, width: getPageWidth())),
               const SizedBox(
@@ -659,13 +668,15 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
                 widget1: ReadOnlyTextField(_cabinetController, () {
                   Kabinet((selectedOption) {
                     _cabinetController.text = selectedOption;
-                    saleApartemanServerModel.cabinetType;
+                    saleApartemanServerModel.cabinetType =
+                        _cabinetController.text;
                   });
                 }, width: getPageWidth()),
                 widget2: ReadOnlyTextField(_floorMaterialController, () {
                   JensKaf((selectedOption) {
                     _floorMaterialController.text = selectedOption;
-                    saleApartemanServerModel.flooringMaterialType;
+                    saleApartemanServerModel.flooringMaterialType =
+                        _floorMaterialController.text;
                   });
                 }, width: getPageWidth()),
               ),
@@ -678,13 +689,15 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
                 widget1: ReadOnlyTextField(_heatTypeController, () {
                   Garmayesh((selectedOption) {
                     _heatTypeController.text = selectedOption;
-                    saleApartemanServerModel.heatingSystemType;
+                    saleApartemanServerModel.heatingSystemType =
+                        _heatTypeController.text;
                   });
                 }, width: getPageWidth()),
                 widget2: ReadOnlyTextField(_coldTypeController, () {
                   Sarmayesh((selectedOption) {
                     _coldTypeController.text = selectedOption;
-                    saleApartemanServerModel.coolingSystemType;
+                    saleApartemanServerModel.coolingSystemType =
+                        _coldTypeController.text;
                   });
                 }, width: getPageWidth()),
               ),
@@ -703,7 +716,8 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
                   widget2: ReadOnlyTextField(_heatWaterController, () {
                     AbeGarm((selectedOption) {
                       _heatWaterController.text = selectedOption;
-                      saleApartemanServerModel.heatWaterSystemType;
+                      saleApartemanServerModel.heatWaterSystemType =
+                          _heatWaterController.text;
                     });
                   }, width: getPageWidth())),
               const SizedBox(
@@ -910,6 +924,7 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
                       height: 41,
                       width: getPageWidth(),
                       child: TextField(
+                        controller: loanInstallmentAmount,
                         focusNode: FocusNode(),
                         style: const TextStyle(
                           fontFamily: MAIN_FONT_FAMILY,
@@ -947,6 +962,7 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
                       height: 41,
                       width: getPageWidth(),
                       child: TextField(
+                        controller: prepayment,
                         focusNode: FocusNode(),
                         style: const TextStyle(
                           fontFamily: MAIN_FONT_FAMILY,
@@ -1007,7 +1023,10 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
                     height: 15,
                   ),
                   SwitchItems(
-                      onSelected: (_) {}, items: const ["ضامن", "سفته", "چک"]),
+                      onSelected: (_) {
+                        saleApartemanServerModel.installmentPledge;
+                      },
+                      items: const ["ضامن", "سفته", "چک"]),
                   const SizedBox(
                     height: 10,
                   ),

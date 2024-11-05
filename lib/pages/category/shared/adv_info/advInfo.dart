@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/switachable.dart';
+import 'package:flutter_application_1/services/models/server_model/sale_aparteman.dart';
 import 'package:get/get.dart';
 import 'package:flutter_application_1/pages/category/models/AdvInfoModel.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
@@ -18,7 +19,8 @@ class _AdvInfoState extends State<AdvInfo> {
   final RxBool proposalTitle = false.obs;
   late TextEditingController _titleController;
   late TextEditingController _descriptionController;
-
+  SaleApartemanServerModel saleApartemanServerModel =
+      SaleApartemanServerModel();
   @override
   void initState() {
     super.initState();
@@ -104,6 +106,7 @@ class _AdvInfoState extends State<AdvInfo> {
                   onChanged: (value) {
                     if (proposalTitle.value) {
                       widget.advInfoModel.title = value;
+                      saleApartemanServerModel.title;
                     }
                   },
                 ),
@@ -192,6 +195,9 @@ class _AdvInfoState extends State<AdvInfo> {
       textAlign: TextAlign.right,
       maxLines: maxLines,
       onChanged: onChanged,
+      onTap: () {
+        saleApartemanServerModel.title;
+      },
       enabled: enabled,
       controller: controller,
       decoration: InputDecoration(
@@ -227,6 +233,9 @@ class _AdvInfoState extends State<AdvInfo> {
   }) {
     return SizedBox(
       child: TextField(
+        onTap: () {
+          saleApartemanServerModel.description;
+        },
         style: const TextStyle(fontFamily: MAIN_FONT_FAMILY_LIGHT),
         textAlign: TextAlign.right,
         maxLines: maxLines,

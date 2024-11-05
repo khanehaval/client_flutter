@@ -2,14 +2,14 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'sale_aparteman_res.g.dart';
 
-@JsonSerializable(includeIfNull: false)
+@JsonSerializable()
 class SaleApartemanRes {
-  bool status;
-  String message;
+  final bool? status; // nullable با علامت ?
+  final String? message; // nullable با علامت ?
 
   SaleApartemanRes({
-    required this.status,
-    required this.message,
+    this.status,
+    this.message,
   });
 
   factory SaleApartemanRes.fromJson(Map<String, dynamic> json) =>
