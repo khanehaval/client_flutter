@@ -11,16 +11,23 @@ import 'package:get_it/get_it.dart';
 
 class AdvertisementService {
   final _httpService = GetIt.I.get<Httpservice>();
+
   Future<bool> saveSaleAparteman({
     required SaleApartemanServerModel saleAparteman,
   }) async {
     try {
+      // Upload images if needed, then update images field in model
       final uploadImages = await _httpService.uploadFileList(
           "api/v1/upload/advertise", saleAparteman.images);
       if (uploadImages.isNotEmpty) {
         saleAparteman.images = uploadImages;
+
+        // Send model data to server
         final result = await _httpService.post(
-            "api/v1/advertise/sale-apartment", saleAparteman.toJson());
+          "api/v1/advertise/sale-apartment",
+          saleAparteman.toJson(), // Use the selective JSON method
+        );
+
         var response = SaleApartemanRes.fromJson(result.data);
         Fluttertoast.showToast(
           msg: response.message!,
@@ -30,6 +37,7 @@ class AdvertisementService {
           textColor: const Color.fromARGB(255, 14, 8, 8),
           fontSize: 16.0,
         );
+
         return response.status!;
       } else {
         Fluttertoast.showToast(

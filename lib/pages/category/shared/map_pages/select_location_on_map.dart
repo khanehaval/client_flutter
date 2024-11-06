@@ -113,6 +113,7 @@ class _SelectLocationMapState extends State<SelectLocationMap> {
               keepAlive: true,
               onPositionChanged: (position, hasGesture) {
                 if (position.center != null) {
+                  saleApartemanServerModel.location;
                   setState(() {
                     locationInfo.location = LatLng(
                       position.center!.latitude,
@@ -286,7 +287,10 @@ class _SelectLocationMapState extends State<SelectLocationMap> {
           ),
         ),
         GestureDetector(
-          onTap: () => Get.to(() => Neighbourhood()),
+          onTap: () {
+            Get.to(() => Neighbourhood());
+            saleApartemanServerModel.districtId;
+          },
           child: Container(
             decoration: BoxDecoration(
               color: Colors.white,

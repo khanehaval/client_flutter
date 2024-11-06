@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/category/shared/map_pages/location_Info.dart';
 import 'package:flutter_application_1/pages/category/shared/map_pages/select_location_on_map.dart';
+import 'package:flutter_application_1/services/models/server_model/sale_aparteman.dart';
 import 'package:flutter_application_1/services/models/server_model/sale_old_house.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:flutter_svg/svg.dart';
@@ -10,8 +11,8 @@ import 'package:get/get.dart';
 import 'package:latlong2/latlong.dart';
 
 class MapInfoPage extends StatefulWidget {
-  LocationInfo locationInfo;
-  Location location = Location();
+  late LocationInfo locationInfo;
+
   MapInfoPage(this.locationInfo);
 
   @override
@@ -19,7 +20,9 @@ class MapInfoPage extends StatefulWidget {
 }
 
 class _MapInfoPageState extends State<MapInfoPage> {
-  SaleOldHouseServerModel saleOldHouseServerModel = SaleOldHouseServerModel();
+  final SaleApartemanServerModel saleApartemanServerModel =
+      SaleApartemanServerModel();
+
   var locationInfo = LocationInfo(
       location: LatLng(0, 0),
       cityName: "",
@@ -33,8 +36,15 @@ class _MapInfoPageState extends State<MapInfoPage> {
   @override
   void initState() {
     locationInfo = widget.locationInfo;
-    _addressController.text = widget.locationInfo.formatted_address;
+    _addressController =
+        TextEditingController(text: locationInfo.formatted_address);
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    _addressController.dispose();
+    super.dispose();
   }
 
   @override
@@ -80,7 +90,7 @@ class _MapInfoPageState extends State<MapInfoPage> {
                                       locationInfo.location, 16);
                                   _addressController.text =
                                       locationInfo.formatted_address;
-                                  saleOldHouseServerModel.location;
+                                  saleApartemanServerModel.location;
                                   setState(() {});
                                 },
                               ));
@@ -110,7 +120,7 @@ class _MapInfoPageState extends State<MapInfoPage> {
                                               _addressController.text =
                                                   locationInfo
                                                       .formatted_address;
-                                              saleOldHouseServerModel.location;
+                                              saleApartemanServerModel.location;
                                               setState(() {});
                                             },
                                           ));
@@ -164,7 +174,7 @@ class _MapInfoPageState extends State<MapInfoPage> {
                 ),
                 GestureDetector(
                   onTap: () {
-                    saleOldHouseServerModel.cityId;
+                    saleApartemanServerModel.cityId;
                   },
                   child: Container(
                       width: Get.width * 0.42,
@@ -229,11 +239,15 @@ class _MapInfoPageState extends State<MapInfoPage> {
                       borderRadius: BorderRadius.circular(10)),
                   child: Padding(
                     padding: const EdgeInsets.all(1.0),
-                    child: Container(
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(10)),
-                      child: Align(
+                    child: GestureDetector(
+                      onTap: () {
+                        saleApartemanServerModel.cityId;
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(10)),
+                        child: Align(
                           alignment: Alignment.centerRight,
                           child: Padding(
                             padding: const EdgeInsets.all(3.0),
@@ -244,11 +258,13 @@ class _MapInfoPageState extends State<MapInfoPage> {
                                     fontFamily: 'Iran Sans Bold,',
                                     color: Color.fromRGBO(207, 207, 207, 1),
                                     fontWeight: FontWeight.w400),
-                                locationInfo.cityName,
+                                locationInfo.cityName, // نمایش نام شهر
                                 textAlign: TextAlign.center,
                               ),
                             ),
-                          )),
+                          ),
+                        ),
+                      ),
                     ),
                   ),
                 ),
@@ -276,7 +292,7 @@ class _MapInfoPageState extends State<MapInfoPage> {
           textDirection: TextDirection.rtl,
           child: TextField(
             onTap: () {
-              saleOldHouseServerModel.description;
+              saleApartemanServerModel.description;
             },
             style: const TextStyle(
               fontFamily: MAIN_FONT_FAMILY,

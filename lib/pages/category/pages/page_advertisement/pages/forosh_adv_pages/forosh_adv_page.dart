@@ -28,6 +28,7 @@ import 'package:flutter_application_1/pages/category/shared/widget/route_widget.
 import 'package:flutter_application_1/pages/category/shared/widget/switachable.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/text_field.dart';
 import 'package:flutter_application_1/repo/account_repo.dart';
+import 'package:flutter_application_1/services/advertisment_service.dart';
 import 'package:flutter_application_1/services/models/server_model/sale_aparteman.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
@@ -72,6 +73,7 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
   final _metragTextController = TextEditingController();
   final loanInstallmentAmount = TextEditingController();
   final prepayment = TextEditingController();
+  final AdvertisementService _advertisementService = AdvertisementService();
 
 // In the parent widget or controller
   final RxList<String> selectedImagesPath = RxList<String>();
@@ -242,8 +244,21 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
     super.dispose();
   }
 
-  Future<void> _aparteman() async {
+  Future<void> _saveAdvertisement() async {
     if (submit.value) {
+      if (saleApartemanServerModel.cityId == null ||
+          saleApartemanServerModel.cityId.isEmpty) {
+        Fluttertoast.showToast(
+          msg: "لطفا شهر را انتخاب کنید",
+          toastLength: Toast.LENGTH_LONG,
+          gravity: ToastGravity.CENTER,
+          backgroundColor: Colors.red,
+          textColor: Colors.white,
+          fontSize: 16.0,
+        );
+        return;
+      }
+
       _buttonIsPressed.value = true;
       final success = await _accountRepo.saleAparteman(
           saleApartemanData: saleApartemanServerModel);
@@ -259,7 +274,7 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
       );
     } else {
       Fluttertoast.showToast(
-        msg: "لطفا همه فیلدهای داری * را پر کنید",
+        msg: "لطفا همه فیلدهای دارای * را پر کنید",
         toastLength: Toast.LENGTH_LONG,
         gravity: ToastGravity.CENTER,
         backgroundColor: Colors.red,
@@ -321,7 +336,7 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
                   textAlign: TextAlign.right,
                   controller: _metragTextController,
                   onChanged: (_) {
-                    saleApartemanServerModel.totalPrice = int.parse(_);
+                    saleApartemanServerModel.totalPrice = int.tryParse(_) ?? 0;
                   },
                   keyboardType: TextInputType.number,
                   decoration: InputDecoration(
@@ -784,7 +799,6 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
               GestureDetector(
                 onTap: () {
                   if (submit.value) {
-                    _aparteman();
                     Get.to(() => NamayeshAgahi());
                   }
                   if (submit.value) {
@@ -816,7 +830,7 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
                         _facilities.value.contains(CenterAntenna());
                     saleApartemanServerModel.hasSaunaJacuzzi =
                         _facilities.value.contains(Sona());
-                    _aparteman();
+                    _saveAdvertisement();
                     Get.to(() => NamayeshAgahi());
                   }
                 },
@@ -877,6 +891,9 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
                     height: 41,
                     width: MediaQuery.of(context).size.width * 1 / 1.117,
                     child: TextField(
+                      onTap: () {
+                        saleApartemanServerModel.title;
+                      },
                       textAlign: TextAlign.right,
                       decoration: InputDecoration(
                         hintText: 'آپارتمان 120 متری به صورت اقساطی',

@@ -64,6 +64,9 @@ class ForshAdvLocationPage extends StatelessWidget {
                 height: 41,
                 child: Center(
                   child: TextField(
+                    onTap: () {
+                      saleApartemanServerModel.buildingType;
+                    },
                     controller: _controller,
                     readOnly: true,
                     textAlign: TextAlign.right,
@@ -91,8 +94,8 @@ class ForshAdvLocationPage extends StatelessWidget {
                           onPressed: () {
                             // Show the bottom sheet to select an item
                             showSelectNoeMelk((selectedMelk) {
-                              _controller.text =
-                                  selectedMelk; // Update TextField with selected option
+                              _controller.text = selectedMelk;
+                              // Update TextField with selected option
                               saleApartemanServerModel.buildingType;
                             });
                           }),
