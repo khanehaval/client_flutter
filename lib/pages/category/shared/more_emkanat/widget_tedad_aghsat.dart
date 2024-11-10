@@ -1,35 +1,50 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/taeed_enseraf_numberpicker.dart';
+import 'package:flutter_application_1/services/advertisment_service.dart';
+import 'package:flutter_application_1/services/models/server_model/sale_aparteman_Get/base_list.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:gradient_icon/gradient_icon.dart';
 
-void TedadAghsat(Function(String) onSelected) {
+void TedadAghsat(Function(String) onSelected) async {
   final RxInt selectedIndex = 0.obs; // Default index set to "1401"
 
   final RxInt index = 0.obs; // Default index set to "Not Selected"
-  final List<String> options = [
-    '2',
-    '3',
-    '4',
-    '5',
-    '6',
-    '7',
-    '8',
-    '9',
-    '10',
-    '11',
-    '12',
-    '18',
-    '24',
-    '30',
-    '36',
-    '48',
-    '60',
-    '144',
-    'انتخاب نشده',
-  ];
+  final advertisementService = AdvertisementService();
+  final Base? baseData = await advertisementService.fetchDataFromServer();
+  final List<String> options = baseData?.data
+          ?.firstWhere(
+            (data) =>
+                data.key ==
+                "total_installments", // Use the actual key name for "rooms"
+            orElse: () => Data(list: []),
+          )
+          .list
+          ?.map((item) => item.label ?? '')
+          .toList() ??
+      [];
+  // final List<String> options = [
+  //   '2',
+  //   '3',
+  //   '4',
+  //   '5',
+  //   '6',
+  //   '7',
+  //   '8',
+  //   '9',
+  //   '10',
+  //   '11',
+  //   '12',
+  //   '18',
+  //   '24',
+  //   '30',
+  //   '36',
+  //   '48',
+  //   '60',
+  //   '144',
+  //   'انتخاب نشده',
+  // ];
 
   // Define the scroll controller
   final FixedExtentScrollController scrollController =

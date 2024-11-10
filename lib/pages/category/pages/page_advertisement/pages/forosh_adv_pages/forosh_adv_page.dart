@@ -20,7 +20,6 @@ import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_
 import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_tedad_vahed_dar%20tabagheh.dart';
 import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_time_aghsat.dart';
 import 'package:flutter_application_1/pages/category/shared/namayesh.dart';
-import 'package:flutter_application_1/pages/category/shared/number_piacker.dart';
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
 import 'package:flutter_application_1/pages/category/shared/switchItem.dart';
 import 'package:flutter_application_1/pages/category/shared/twoItemInRow.dart';
@@ -30,7 +29,6 @@ import 'package:flutter_application_1/pages/category/shared/widget/text_field.da
 import 'package:flutter_application_1/repo/account_repo.dart';
 import 'package:flutter_application_1/services/advertisment_service.dart';
 import 'package:flutter_application_1/services/models/server_model/sale_aparteman.dart';
-import 'package:flutter_application_1/services/models/server_model/sale_aparteman_Get/base_list.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:get_it/get_it.dart';
@@ -507,7 +505,8 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
               TwoItemInRow2(
                   label1: "تعداد اتاق ",
                   label2: "سن بنا",
-                  widget1: ReadOnlyTextField(_buildRoomsCountController, () {
+                  widget1: ReadOnlyTextField(_buildRoomsCountController,
+                      fontSize: 12, () {
                     TedadOtagh((_) {
                       _buildRoomsCountController.text = _;
                       saleApartemanServerModel.room =
@@ -548,8 +547,8 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
                   ],
                 ),
               ),
-              ReadOnlyTextField(_buildFloorController, () {
-                showNumberPicker((_) {
+              ReadOnlyTextField(_buildFloorController, fontSize: 12, () {
+                TedadKoleTabagheh((_) {
                   _buildFloorController.text = _;
                   saleApartemanServerModel.floorNumber =
                       _buildFloorController.text;
@@ -601,14 +600,16 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
               TwoItemInRow(
                   label1: "تعداد کل طبقات",
                   label2: "نوع سند",
-                  widget1: ReadOnlyTextField(_buildFloorsCountController, () {
+                  widget1: ReadOnlyTextField(_buildFloorsCountController,
+                      fontSize: 12, () {
                     TedadKoleTabagheh((selectedOption) {
                       _buildFloorsCountController.text = selectedOption;
                       saleApartemanServerModel.floorNumber =
                           _buildFloorsCountController.text;
                     });
                   }, width: getPageWidth()),
-                  widget2: ReadOnlyTextField(_buildDocumentController, () {
+                  widget2: ReadOnlyTextField(_buildDocumentController,
+                      fontSize: 12, () {
                     NoeSanad((selectedOption) {
                       _buildDocumentController.text = selectedOption;
                       saleApartemanServerModel.docType =
@@ -621,9 +622,12 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
               TwoItemInRow(
                   label1: "تعداد کل واحد ها",
                   label2: "تعداد واحد در طبقه",
-                  widget1: InputTextField(_buildAllFloorsCountController,
-                      width: getPageWidth()),
-                  widget2: ReadOnlyTextField(_TedadVahedTabaghehController, () {
+                  widget1: InputTextField(
+                    _buildAllFloorsCountController,
+                    width: getPageWidth(),
+                  ),
+                  widget2: ReadOnlyTextField(_TedadVahedTabaghehController,
+                      fontSize: 12, () {
                     TedadVahedTabagheh((selectedOption) {
                       _TedadVahedTabaghehController.text = selectedOption;
                       saleApartemanServerModel.unitInFloor =
@@ -646,9 +650,10 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
                       });
                     },
                     width: getPageWidth(),
-                    fontSize: 10,
+                    fontSize: 11,
                   ),
-                  widget2: ReadOnlyTextField(_buildDirectionController, () {
+                  widget2: ReadOnlyTextField(_buildDirectionController,
+                      fontSize: 12, () {
                     jahatSakhteman((selectedOption) {
                       _buildDirectionController.text = selectedOption;
                       saleApartemanServerModel.buildingSide =
@@ -681,14 +686,16 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
               TwoItemInRow(
                 label1: "نوع کابینت",
                 label2: "جنس کف",
-                widget1: ReadOnlyTextField(_cabinetController, () {
+                widget1:
+                    ReadOnlyTextField(_cabinetController, fontSize: 12, () {
                   Kabinet((selectedOption) {
                     _cabinetController.text = selectedOption;
                     saleApartemanServerModel.cabinetType =
                         _cabinetController.text;
                   });
                 }, width: getPageWidth()),
-                widget2: ReadOnlyTextField(_floorMaterialController, () {
+                widget2: ReadOnlyTextField(_floorMaterialController,
+                    fontSize: 12, () {
                   JensKaf((selectedOption) {
                     _floorMaterialController.text = selectedOption;
                     saleApartemanServerModel.flooringMaterialType =
@@ -702,14 +709,16 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
               TwoItemInRow(
                 label1: "نوع سیستم گرمایش",
                 label2: "نوع سیستم سرمایش",
-                widget1: ReadOnlyTextField(_heatTypeController, () {
+                widget1:
+                    ReadOnlyTextField(_heatTypeController, fontSize: 12, () {
                   Garmayesh((selectedOption) {
                     _heatTypeController.text = selectedOption;
                     saleApartemanServerModel.heatingSystemType =
                         _heatTypeController.text;
                   });
                 }, width: getPageWidth()),
-                widget2: ReadOnlyTextField(_coldTypeController, () {
+                widget2:
+                    ReadOnlyTextField(_coldTypeController, fontSize: 12, () {
                   Sarmayesh((selectedOption) {
                     _coldTypeController.text = selectedOption;
                     saleApartemanServerModel.coolingSystemType =
@@ -723,13 +732,14 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
               TwoItemInRow(
                   label1: "سرویس بهداشتی",
                   label2: "تامین کننده آب گرم",
-                  widget1: ReadOnlyTextField(_wcController, () {
+                  widget1: ReadOnlyTextField(_wcController, fontSize: 12, () {
                     Wc((selectedOption) {
                       _wcController.text = selectedOption;
                       saleApartemanServerModel.wc = _wcController.text;
                     });
                   }, width: getPageWidth()),
-                  widget2: ReadOnlyTextField(_heatWaterController, () {
+                  widget2:
+                      ReadOnlyTextField(_heatWaterController, fontSize: 12, () {
                     AbeGarm((selectedOption) {
                       _heatWaterController.text = selectedOption;
                       saleApartemanServerModel.heatWaterSystemType =
@@ -945,7 +955,7 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
                         controller: loanInstallmentAmount,
                         focusNode: FocusNode(),
                         style: const TextStyle(
-                          fontFamily: MAIN_FONT_FAMILY,
+                          fontFamily: MAIN_FONT_FAMILY_MEDIUM,
                         ),
                         keyboardType: TextInputType.number,
                         onChanged: (_) {
@@ -956,8 +966,8 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
                         decoration: InputDecoration(
                           hintText: 'تایپ کنید', //todo
                           hintStyle: const TextStyle(
-                            fontSize: 13,
-                            fontFamily: MAIN_FONT_FAMILY,
+                            fontSize: 12,
+                            fontFamily: MAIN_FONT_FAMILY_MEDIUM,
                             fontWeight: FontWeight.w400,
                             color: Color(0xFFA6A6A6),
                           ),

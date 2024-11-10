@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/taeed_enseraf_numberpicker.dart';
@@ -6,60 +5,65 @@ import 'package:flutter_application_1/services/advertisment_service.dart';
 import 'package:flutter_application_1/services/models/server_model/sale_aparteman_Get/base_list.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:http/http.dart' as http;
 
 void SenBana(Function(String) onSelected) async {
-  // ابتدا اطلاعات از سرور دریافت می‌شود
+  // دریافت داده‌ها از سرور
   final advertisementService = AdvertisementService();
-
   final Base? baseData = await advertisementService.fetchDataFromServer();
 
-  // در صورتی که داده‌ها موجود باشد، لیست تاریخ‌ها را استخراج می‌کنیم
-  final List<String> options =
-      baseData?.data?.first.list?.map((item) => item.label ?? '').toList() ??
-          [
-            '1403',
-            '1402',
-            '1401',
-            '1400',
-            '1399',
-            '1398',
-            '1397',
-            '1396',
-            '1395',
-            '1394',
-            '1393',
-            '1392',
-            '1391',
-            '1390',
-            '1389',
-            '1388',
-            '1387',
-            '1386',
-            '1385',
-            '1384',
-            '1383',
-            '1382',
-            '1381',
-            '1380',
-            '1379',
-            '1378',
-            '1377',
-            '1376',
-            '1375',
-            '1374',
-            '1373',
-            '1372',
-            '1371',
-            '1370',
-            'قبل از 1370',
-          ];
+  // استخراج لیست گزینه‌ها
+  final List<String> options = baseData?.data
+          ?.firstWhere(
+            (data) => data.key == "ages", // Use the actual key name for "rooms"
+            orElse: () => Data(list: []),
+          )
+          .list
+          ?.map((item) => item.label ?? '')
+          .toList() ??
+      [
+        // '1403',
+        // '1402',
+        // '1401',
+        // '1400',
+        // '1399',
+        // '1398',
+        // '1397',
+        // '1396',
+        // '1395',
+        // '1394',
+        // '1393',
+        // '1392',
+        // '1391',
+        // '1390',
+        // '1389',
+        // '1388',
+        // '1387',
+        // '1386',
+        // '1385',
+        // '1384',
+        // '1383',
+        // '1382',
+        // '1381',
+        // '1380',
+        // '1379',
+        // '1378',
+        // '1377',
+        // '1376',
+        // '1375',
+        // '1374',
+        // '1373',
+        // '1372',
+        // '1371',
+        // '1370',
+        // 'قبل از 1370',
+      ];
 
-  final RxInt selectedIndex = 1.obs; // Default index set to "1401"
+  final RxInt selectedIndex = 1.obs; // اندیس پیش‌فرض
+
   final FixedExtentScrollController scrollController =
       FixedExtentScrollController(initialItem: selectedIndex.value);
 
-  // نمایش BottomSheet با داده‌ها
+  // نمایش BottomSheet
   Get.bottomSheet(
     Container(
       decoration: const BoxDecoration(
@@ -71,7 +75,7 @@ void SenBana(Function(String) onSelected) async {
       child: Padding(
         padding: const EdgeInsets.only(top: 1.0),
         child: Container(
-          height: 400, // Adjusted height to better fit five items
+          height: 400,
           decoration: const BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.vertical(top: Radius.circular(30)),
@@ -83,8 +87,9 @@ void SenBana(Function(String) onSelected) async {
               const SizedBox(height: 50),
               TaeedEnserafNumberPicker(
                 selectedNumber: options[selectedIndex.value],
-                onConfirm: () {
-                  onSelected(options[selectedIndex.value]);
+                onConfirm: () async {
+                  final selectedOption = options[selectedIndex.value];
+                  onSelected(selectedOption);
                   Get.back();
                 },
               ),
@@ -96,6 +101,7 @@ void SenBana(Function(String) onSelected) async {
   );
 }
 
+// تابع برای ایجاد دکمه‌های ناوبری
 Widget _buildNavigationRow(RxInt index, List<String> options,
     FixedExtentScrollController scrollController) {
   return Row(
@@ -115,11 +121,11 @@ Widget _buildNavigationRow(RxInt index, List<String> options,
           child: SvgPicture.asset('assets/images/arrow-up.svg')),
       const SizedBox(width: 40),
       SizedBox(
-        width: 130, // Fixed width for texts
-        height: 200, // Limit the height for scrollable view
+        width: 130,
+        height: 200,
         child: ListWheelScrollView.useDelegate(
           controller: scrollController,
-          itemExtent: 50, // Height of each item
+          itemExtent: 50,
           physics: const FixedExtentScrollPhysics(),
           onSelectedItemChanged: (selectedIndex) {
             index.value = selectedIndex;
@@ -165,26 +171,3 @@ Widget _buildNavigationRow(RxInt index, List<String> options,
     ],
   );
 }
-
-// Future<Base?> fetchDataFromServer() async {
-//   // URL سرور را وارد کنید
-//   final url = Uri.parse('https://api.khaneaval.com/api/v1/base');
-//   try {
-//     // ارسال درخواست GET به سرور
-//     final response = await http.get(url);
-//     // بررسی وضعیت پاسخ سرور
-//     if (response.statusCode == 200) {
-//       // اگر درخواست موفقیت‌آمیز بود، داده‌های JSON را به مدل `Base` تبدیل می‌کنیم
-//       final Map<String, dynamic> jsonData = json.decode(response.body);
-//       return Base.fromJson(jsonData);
-//     } else {
-//       // اگر وضعیت پاسخ موفق نبود، یک پیام خطا چاپ کنید
-//       print("Failed to load data: ${response.statusCode}");
-//       return null;
-//     }
-//   } catch (e) {
-//     // مدیریت خطاهای احتمالی
-//     print("Error occurred: $e");
-//     return null;
-//   }
-// }

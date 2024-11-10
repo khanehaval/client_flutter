@@ -35,7 +35,11 @@ void main() async {
   Hive.registerAdapter(EstateAdapter());
   initServicesAndRepo();
 
-  runApp(GetMaterialApp(home: MyApp()));
+  runApp(
+    GetMaterialApp(
+      home: MyApp(),
+    ),
+  );
 }
 
 void initServicesAndRepo() {

@@ -13,6 +13,8 @@ class Base {
     }
     return Base(status: json['status'], data: data);
   }
+
+  Object? toJson() {}
 }
 
 class Data {

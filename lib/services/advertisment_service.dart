@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/services/http_service.dart';
 import 'package:flutter_application_1/services/models/server_model/sale_aparteman.dart';
@@ -12,9 +11,11 @@ import 'package:flutter_application_1/services/models/server_model/sale_vila_res
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get_it/get_it.dart';
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 
 class AdvertisementService {
   final _httpService = GetIt.I.get<Httpservice>();
+  static const String _baseKey = 'base_model';
 
   Future<bool> saveSaleAparteman({
     required SaleApartemanServerModel saleAparteman,
@@ -67,38 +68,23 @@ class AdvertisementService {
   }
 
   Future<Base?> fetchDataFromServer() async {
-    // URL سرور را وارد کنید
     final url = Uri.parse('https://api.khaneaval.com/api/v1/base');
     try {
-      // ارسال درخواست GET به سرور
       final response = await http.get(url);
-      // بررسی وضعیت پاسخ سرور
       if (response.statusCode == 200) {
         // اگر درخواست موفقیت‌آمیز بود، داده‌های JSON را به مدل `Base` تبدیل می‌کنیم
         final Map<String, dynamic> jsonData = json.decode(response.body);
         return Base.fromJson(jsonData);
       } else {
-        // اگر وضعیت پاسخ موفق نبود، یک پیام خطا چاپ کنید
         print("Failed to load data: ${response.statusCode}");
         return null;
       }
     } catch (e) {
-      // مدیریت خطاهای احتمالی
       print("Error occurred: $e");
       return null;
     }
   }
 
-// void loadData() async {
-//   Base? data = await fetchDataFromServer();
-//   if (data != null) {
-//     // اینجا می‌توانید از داده‌ها استفاده کنید
-//     print("Status: ${data.status}");
-//     print("Data List: ${data.data}");
-//   } else {
-//     print("Failed to fetch data");
-//   }
-// }
   Future<bool> SaveSalevila({
     required SaleVilaServerModel SaleVila,
   }) async {
@@ -183,5 +169,35 @@ class AdvertisementService {
       );
     }
     return false;
+  }
+
+  Future<void> saveBaseModel(Base model) async {
+    final prefs = await SharedPreferences.getInstance();
+    final jsonString =
+        json.encode(model.toJson()); // تبدیل مدل به JSON و سپس به رشته
+    await prefs.setString(
+        _baseKey, jsonString); // ذخیره JSON به عنوان رشته در SharedPreferences
+  }
+
+  Future<List> getOptionsFromDatabase() async {
+    final prefs = await SharedPreferences.getInstance();
+    final jsonString = prefs.getString(_baseKey);
+
+    if (jsonString != null) {
+      final jsonData = json.decode(jsonString);
+      final Base baseModel = Base.fromJson(jsonData);
+
+      // Ensure that `data.list` is iterable (List<Item>) and extract labels
+      return baseModel.data?.expand((data) {
+            // Cast `data.list` to a list of items (if not already) and extract labels
+            return (data.list as List<Item>?)
+                    ?.map((item) => item.label ?? '')
+                    .toList() ??
+                [];
+          }).toList() ??
+          [];
+    }
+
+    return [];
   }
 }

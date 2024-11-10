@@ -1,20 +1,35 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/taeed_enseraf_numberpicker.dart';
+import 'package:flutter_application_1/services/advertisment_service.dart';
+import 'package:flutter_application_1/services/models/server_model/sale_aparteman_Get/base_list.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:gradient_icon/gradient_icon.dart';
 
-void TimeAghsat(Function(String) onSelected) {
+void TimeAghsat(Function(String) onSelected) async {
   final RxInt index = 1.obs; // Default index set to "Not Selected"
-  final List<String> options = [
-    'ماهانه',
-    'دوماه یک بار',
-    ' سه ماه یک بار',
-    'چهار ماه یک بار',
-    'انتخاب نشده',
-  ];
+  final advertisementService = AdvertisementService();
+  final Base? baseData = await advertisementService.fetchDataFromServer();
+  final List<String> options = baseData?.data
+          ?.firstWhere(
+            (data) =>
+                data.key ==
+                "installment_payback", // Use the actual key name for "rooms"
+            orElse: () => Data(list: []),
+          )
+          .list
+          ?.map((item) => item.label ?? '')
+          .toList() ??
+      [];
+  // final List<String> options = [
+  //   'ماهانه',
+  //   'دوماه یک بار',
+  //   ' سه ماه یک بار',
+  //   'چهار ماه یک بار',
+  //   'انتخاب نشده',
+  // ];
   final FixedExtentScrollController scrollController =
       FixedExtentScrollController(initialItem: index.value);
 

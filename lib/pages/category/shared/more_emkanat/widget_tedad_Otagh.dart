@@ -1,24 +1,35 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/taeed_enseraf_numberpicker.dart';
+import 'package:flutter_application_1/services/models/server_model/sale_aparteman_Get/base_list.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:gradient_icon/gradient_icon.dart';
+import 'package:flutter_application_1/services/advertisment_service.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
-void TedadOtagh(Function(String) onSelected) {
-  final RxInt selectedIndex = 2.obs;
-  final List<String> options = [
-    'بدون اتاق',
-    '1',
-    '2',
-    '3',
-    '4',
-    'بیشتر از 4',
-  ];
+void TedadOtagh(Function(String) onSelected) async {
+  // دریافت داده‌ها از سرور
+  final advertisementService = AdvertisementService();
+  final Base? baseData = await advertisementService.fetchDataFromServer();
+
+  // فیلتر کردن داده‌ها بر اساس کلید "rooms"
+  final List<String> options = baseData?.data
+          ?.firstWhere(
+            (data) =>
+                data.key == "rooms", // Use the actual key name for "rooms"
+            orElse: () => Data(list: []),
+          )
+          .list
+          ?.map((item) => item.label ?? '')
+          .toList() ??
+      [];
+  // ['بدون اتاق', '1', '2', '3', '4', 'بیشتر از 4'];
+
+  final RxInt selectedIndex = 1.obs;
   final FixedExtentScrollController scrollController =
       FixedExtentScrollController(initialItem: selectedIndex.value);
 
+  // نمایش BottomSheet
   Get.bottomSheet(
     Container(
       decoration: const BoxDecoration(
@@ -28,9 +39,9 @@ void TedadOtagh(Function(String) onSelected) {
         borderRadius: BorderRadius.vertical(top: Radius.circular(30)),
       ),
       child: Padding(
-        padding: const EdgeInsets.all(2.0),
+        padding: const EdgeInsets.only(top: 1.0),
         child: Container(
-          height: 400, // Adjusted height to better fit five items
+          height: 400,
           decoration: const BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.vertical(top: Radius.circular(30)),
@@ -39,11 +50,12 @@ void TedadOtagh(Function(String) onSelected) {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               _buildNavigationRow(selectedIndex, options, scrollController),
-              const SizedBox(height: 20),
+              const SizedBox(height: 50),
               TaeedEnserafNumberPicker(
                 selectedNumber: options[selectedIndex.value],
                 onConfirm: () {
-                  onSelected(options[selectedIndex.value]);
+                  final selectedOption = options[selectedIndex.value];
+                  onSelected(selectedOption);
                   Get.back();
                 },
               ),
@@ -52,9 +64,10 @@ void TedadOtagh(Function(String) onSelected) {
         ),
       ),
     ),
-  ).whenComplete(() => scrollController.dispose());
+  );
 }
 
+// تابع برای ایجاد دکمه‌های ناوبری
 Widget _buildNavigationRow(RxInt index, List<String> options,
     FixedExtentScrollController scrollController) {
   return Row(
@@ -74,11 +87,11 @@ Widget _buildNavigationRow(RxInt index, List<String> options,
           child: SvgPicture.asset('assets/images/arrow-up.svg')),
       const SizedBox(width: 40),
       SizedBox(
-        width: 130, // Fixed width for texts
-        height: 200, // Limit the height for scrollable view
+        width: 130,
+        height: 200,
         child: ListWheelScrollView.useDelegate(
           controller: scrollController,
-          itemExtent: 50, // Height of each item
+          itemExtent: 50,
           physics: const FixedExtentScrollPhysics(),
           onSelectedItemChanged: (selectedIndex) {
             index.value = selectedIndex;

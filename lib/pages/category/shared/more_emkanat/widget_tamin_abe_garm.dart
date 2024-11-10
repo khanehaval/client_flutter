@@ -1,18 +1,33 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/taeed_enseraf_numberpicker.dart';
+import 'package:flutter_application_1/services/advertisment_service.dart';
+import 'package:flutter_application_1/services/models/server_model/sale_aparteman_Get/base_list.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:gradient_icon/gradient_icon.dart';
 
-void AbeGarm(Function(String) onSelected) {
+void AbeGarm(Function(String) onSelected) async {
   final RxInt index = 2.obs; // Default index set to "Not Selected"
-  final List<String> options = [
-    'آبگرم‌کن',
-    'موتورخانه',
-    'پکیج',
-    'انتخاب نشده',
-  ];
+  final advertisementService = AdvertisementService();
+  final Base? baseData = await advertisementService.fetchDataFromServer();
+  final List<String> options = baseData?.data
+          ?.firstWhere(
+            (data) =>
+                data.key ==
+                "heat_water_systems", // Use the actual key name for "rooms"
+            orElse: () => Data(list: []),
+          )
+          .list
+          ?.map((item) => item.label ?? '')
+          .toList() ??
+      [];
+  // final List<String> options = [
+  //   'آبگرم‌کن',
+  //   'موتورخانه',
+  //   'پکیج',
+  //   'انتخاب نشده',
+  // ];
 
   // Define the scroll controller
   final FixedExtentScrollController scrollController =
