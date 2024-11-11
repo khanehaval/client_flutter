@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/repo/advRepo.dart';
+import 'package:flutter_application_1/services/advertisment_service.dart';
 import 'package:flutter_application_1/services/models/filterModel.dart';
+import 'package:flutter_application_1/services/models/server_model/sale_aparteman_Get/base_list.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:get_it/get_it.dart';
@@ -22,6 +24,7 @@ List<AdvretismentFilter> _CityFilter = [];
 
 class _CityState extends State<City> {
   final cityController = Get.put(CityController()); // پیدا کردن کنترلر
+  final advertisementService = AdvertisementService();
   final List<String> cityList = [
     'تهران',
     'مشهد',

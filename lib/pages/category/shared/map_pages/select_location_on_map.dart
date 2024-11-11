@@ -383,7 +383,7 @@ class _SelectLocationMapState extends State<SelectLocationMap> {
                       child: Text(
                         locationInfo.cityName,
                         style: const TextStyle(
-                          fontFamily: 'Iran Sans Bold',
+                          fontFamily: MAIN_FONT_FAMILY,
                           color: Color.fromRGBO(48, 48, 48, 1),
                           fontWeight: FontWeight.w400,
                         ),
