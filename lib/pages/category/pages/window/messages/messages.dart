@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 class Messages extends StatefulWidget {
+  const Messages({super.key});
+
   @override
   _MessagesState createState() => _MessagesState();
 }
@@ -59,10 +61,10 @@ class _MessagesState extends State<Messages> {
                     .blue, // حاشیه قرمز برای پیام‌های ارسالی و آبی برای پیام‌های دریافتی
           ),
           borderRadius: BorderRadius.only(
-            topLeft: isMe ? Radius.circular(15) : Radius.zero,
-            topRight: isMe ? Radius.zero : Radius.circular(15),
-            bottomLeft: Radius.circular(15),
-            bottomRight: Radius.circular(15),
+            topLeft: isMe ? const Radius.circular(15) : Radius.zero,
+            topRight: isMe ? Radius.zero : const Radius.circular(15),
+            bottomLeft: const Radius.circular(15),
+            bottomRight: const Radius.circular(15),
           ),
         ),
         child: Text(
@@ -121,7 +123,7 @@ class _MessagesState extends State<Messages> {
                       height: 38,
                       child: Container(
                         decoration: BoxDecoration(
-                            color: Color.fromRGBO(166, 166, 166, 1),
+                            color: const Color.fromRGBO(166, 166, 166, 1),
                             borderRadius: BorderRadius.circular(15)),
                         child: Padding(
                           padding: const EdgeInsets.all(1.0),
@@ -140,9 +142,7 @@ class _MessagesState extends State<Messages> {
                               prefixIcon: IconButton(
                                 icon: Icon(Icons.emoji_emotions,
                                     color: Colors.grey[700]),
-                                onPressed: () {
-                                  print("Emoji icon tapped");
-                                },
+                                onPressed: () {},
                               ),
                             ),
                             onChanged: (text) {
@@ -155,11 +155,10 @@ class _MessagesState extends State<Messages> {
                       ),
                     ),
                   ),
-                  // دکمه میکروفن یا ارسال
                   IconButton(
                     icon: Icon(
                       isTyping ? Icons.send : Icons.mic,
-                      size: 30, // تغییر آیکون بر اساس تایپ کردن
+                      size: 30,
                       color: Colors.blue,
                     ),
                     onPressed: isTyping ? _sendMessage : _startVoiceRecording,

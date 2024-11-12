@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/advertisements.dart';
-import 'package:flutter_application_1/pages/category/pages/messages.dart';
+import 'package:flutter_application_1/pages/category/pages/window/messages/first_page_messages.dart';
+import 'package:flutter_application_1/pages/category/pages/window/messages/messages.dart';
 import 'package:flutter_application_1/pages/category/pages/home.dart';
 import 'package:flutter_application_1/pages/category/pages/page_advertisement/category_advertisement.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
@@ -34,7 +35,8 @@ class _EducationalTourState extends State<EducationalTour> {
 
   var pages = [
     Home(),
-    Messages(),
+    FirstPageMessages(),
+    // Messages(),
     const CategoryAdvertisement(),
     const Category(),
     Advertisements(),
@@ -44,7 +46,7 @@ class _EducationalTourState extends State<EducationalTour> {
   Widget build(BuildContext context) {
     return Obx(() => Scaffold(
           backgroundColor: Colors.white,
-          appBar: currentPageIndex.value == 4 ? null : buildAppBar(),
+          appBar: currentPageIndex.value == 1 ? null : buildAppBar(),
           body: Stack(
             children: [
               Obx(() => showEducation.value
