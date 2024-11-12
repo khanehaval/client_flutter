@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/pages/category/pages/window/messages/message_Item.dart';
+import 'package:flutter_application_1/pages/category/pages/window/messages/messages.dart';
 import 'package:flutter_application_1/pages/category/pages/window/messages/widgets_messages/widget_titr_messages.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 
 class FirstPageMessages extends StatelessWidget {
   final searchController = TextEditingController();
@@ -18,9 +21,7 @@ class FirstPageMessages extends StatelessWidget {
             padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
             child: Column(
               children: [
-                const SizedBox(
-                  height: 10,
-                ),
+                const SizedBox(height: 10),
                 const WidgetTitrMessages(),
                 const SizedBox(height: 20),
                 const Divider(
@@ -28,29 +29,22 @@ class FirstPageMessages extends StatelessWidget {
                   indent: 25,
                   color: Color.fromRGBO(226, 226, 226, 1),
                 ),
-                const SizedBox(
-                  height: 10,
-                ),
+                const SizedBox(height: 10),
                 Padding(
-                  padding: const EdgeInsets.only(left: 20.0, right: 20),
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: Row(
                     children: [
                       SvgPicture.asset('assets/images/delete_chat.svg'),
-                      const SizedBox(
-                        width: 20,
-                      ),
-                      SvgPicture.asset(
-                        'assets/images/add_chat.svg',
-                      ),
-                      const SizedBox(
-                        width: 190,
-                      ),
+                      const SizedBox(width: 20),
+                      SvgPicture.asset('assets/images/add_chat.svg'),
+                      const Spacer(),
                       const Text(
                         'پیام جدید',
                         style: TextStyle(
-                            fontFamily: 'Aban Bold',
-                            fontSize: 24,
-                            color: Color.fromRGBO(99, 99, 99, 1)),
+                          fontFamily: 'Aban Bold',
+                          fontSize: 24,
+                          color: Color.fromRGBO(99, 99, 99, 1),
+                        ),
                       ),
                     ],
                   ),
@@ -58,9 +52,7 @@ class FirstPageMessages extends StatelessWidget {
               ],
             ),
           ),
-          SizedBox(
-            height: 20,
-          ),
+          const SizedBox(height: 20),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20.0),
             child: SizedBox(
@@ -71,9 +63,10 @@ class FirstPageMessages extends StatelessWidget {
                 decoration: InputDecoration(
                   hintText: 'جستجو',
                   hintStyle: const TextStyle(
-                      fontFamily: MAIN_FONT_FAMILY_MEDIUM,
-                      fontSize: 12,
-                      height: 2),
+                    fontFamily: MAIN_FONT_FAMILY_MEDIUM,
+                    fontSize: 12,
+                    height: 2,
+                  ),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
                     borderSide: const BorderSide(
@@ -88,6 +81,21 @@ class FirstPageMessages extends StatelessWidget {
                   ),
                 ),
               ),
+            ),
+          ),
+          Expanded(
+            child: ListView.builder(
+              itemCount: 20,
+              itemBuilder: (context, index) {
+                return const Padding(
+                  padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                  child: MessageItem(
+                    time: '4:30 ب ظ',
+                    name: 'علیرضا محرمی',
+                    message: 'امروز دفتر هستید؟',
+                  ),
+                );
+              },
             ),
           ),
         ],
