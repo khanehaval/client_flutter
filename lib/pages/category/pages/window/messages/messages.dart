@@ -29,7 +29,7 @@ class _MessagesState extends State<Messages> {
         _controller.clear();
         isTyping = false;
 
-        Future.delayed(Duration(milliseconds: 500), () {
+        Future.delayed(const Duration(milliseconds: 500), () {
           setState(() {
             // تغییر وضعیت به true پس از ارسال پیام
             messages[messages.length - 1]['isSent'] = true;
