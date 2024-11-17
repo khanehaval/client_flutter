@@ -4,12 +4,12 @@ part 'sale_aparteman_res.g.dart';
 
 @JsonSerializable()
 class SaleApartemanRes {
-  final bool? status; // nullable با علامت ?
-  final String? message; // nullable با علامت ?
+  final bool status; // nullable با علامت ?
+  final String message; // nullable با علامت ?
 
   SaleApartemanRes({
-    this.status,
-    this.message,
+    required this.status,
+    required this.message,
   });
 
   factory SaleApartemanRes.fromJson(Map<String, dynamic> json) =>

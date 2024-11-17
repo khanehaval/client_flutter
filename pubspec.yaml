@@ -88,6 +88,7 @@ dependencies:
   image: ^4.3.0
   emoji_picker_flutter: ^2.1.1
   audioplayers: ^5.2.1
+  file_picker: ^8.0.0+1
   
   # mapir_raster: 0.0.1
 
