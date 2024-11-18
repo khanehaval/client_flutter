@@ -6,6 +6,7 @@ import 'package:flutter_application_1/pages/category/pages/window/messages/widge
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:jalali_flutter_datepicker/jalali_flutter_datepicker.dart';
 
 class Messages extends StatefulWidget {
   const Messages({super.key});
@@ -22,6 +23,31 @@ class _MessagesState extends State<Messages> {
   OverlayEntry? _overlayEntry;
   String? selectedImagePath;
   String? selectedFilePath;
+  bool isSelecting = false;
+  Set<int> selectedMessages = {};
+  bool selectAllMessages = false;
+  bool isAllSelected = false;
+  bool isCallIconVisible = false;
+  bool isDeletingHistory = false;
+  void _startSelecting() {
+    setState(() {
+      isSelecting = true;
+      isDeletingHistory = true; // When deleting history, set this to true
+    });
+  }
+
+  void _toggleSelectAllMessages() {
+    setState(() {
+      isAllSelected = !isAllSelected;
+      if (isAllSelected) {
+        selectedMessages =
+            Set<int>.from(List.generate(messages.length, (index) => index));
+      } else {
+        selectedMessages.clear();
+      }
+    });
+  }
+
   void _sendMessage() {
     if (_controller.text.isNotEmpty) {
       setState(() {
@@ -56,6 +82,19 @@ class _MessagesState extends State<Messages> {
     }
   }
 
+  void _deleteSelectedMessages() {
+    setState(() {
+      messages = messages
+          .asMap()
+          .entries
+          .where((entry) => !selectedMessages.contains(entry.key))
+          .map((entry) => entry.value)
+          .toList();
+      selectedMessages.clear(); // لیست پیام‌های انتخاب‌شده را خالی کن
+      isSelecting = false; // خروج از حالت انتخاب
+    });
+  }
+
   Future<void> _pickImage() async {
     final ImagePicker _picker = ImagePicker();
     final XFile? image = await _picker.pickImage(source: ImageSource.gallery);
@@ -73,7 +112,6 @@ class _MessagesState extends State<Messages> {
     }
   }
 
-// متد برای انتخاب فایل
   Future<void> _pickFile() async {
     FilePickerResult? result = await FilePicker.platform.pickFiles();
     if (result != null) {
@@ -130,60 +168,74 @@ class _MessagesState extends State<Messages> {
                     ),
                   ],
                 ),
-                const Padding(
-                  padding: EdgeInsets.only(right: 30.0),
-                  child: Text(
-                    'حذف چت',
-                    style: TextStyle(
-                      fontFamily: MAIN_FONT_FAMILY_MEDIUM,
-                      color: Color.fromRGBO(99, 99, 99, 1),
+                Padding(
+                  padding: const EdgeInsets.only(right: 30.0),
+                  child: InkWell(
+                    onTap: () {
+                      _startSelecting(); // وارد حالت انتخاب می‌شود
+                      _removeOverlay(); // بستن کادر Overlay
+                    },
+                    child: const Text(
+                      'حذف تاریخچه',
+                      style: TextStyle(
+                        fontFamily: MAIN_FONT_FAMILY_MEDIUM,
+                        color: Color.fromRGBO(99, 99, 99, 1),
+                      ),
                     ),
-                    textAlign: TextAlign.right, // راست‌چین کردن متن
                   ),
                 ),
                 const SizedBox(
                   height: 20,
                 ),
-                const Padding(
-                  padding: EdgeInsets.only(right: 30.0),
-                  child: Text(
-                    'پاک کردن تاریخچه',
-                    style: TextStyle(
-                      fontFamily: MAIN_FONT_FAMILY_MEDIUM,
-                      color: Color.fromRGBO(99, 99, 99, 1),
+                Padding(
+                  padding: const EdgeInsets.only(right: 30.0),
+                  child: InkWell(
+                    onTap: () {
+                      _removeOverlay();
+                    },
+                    child: const Text(
+                      'حذف کامل چت',
+                      style: TextStyle(
+                        fontFamily: MAIN_FONT_FAMILY_MEDIUM,
+                        color: Color.fromRGBO(99, 99, 99, 1),
+                      ),
                     ),
-                    textAlign: TextAlign.right, // راست‌چین کردن متن
-                    textDirection: TextDirection.rtl, // متن از راست به چپ
                   ),
                 ),
                 const SizedBox(
                   height: 20,
                 ),
-                const Padding(
-                  padding: EdgeInsets.only(right: 30.0),
-                  child: Text(
-                    'لغو همکاری',
-                    style: TextStyle(
-                      fontFamily: MAIN_FONT_FAMILY_MEDIUM,
-                      color: Color.fromRGBO(99, 99, 99, 1),
+                Padding(
+                  padding: const EdgeInsets.only(right: 30.0),
+                  child: InkWell(
+                    onTap: () {
+                      _removeOverlay();
+                    },
+                    child: const Text(
+                      'لغو همکاری',
+                      style: TextStyle(
+                        fontFamily: MAIN_FONT_FAMILY_MEDIUM,
+                        color: Color.fromRGBO(99, 99, 99, 1),
+                      ),
                     ),
-                    textAlign: TextAlign.right, // راست‌چین کردن متن
-                    textDirection: TextDirection.rtl, // متن از راست به چپ
                   ),
                 ),
                 const SizedBox(
                   height: 20,
                 ),
-                const Padding(
-                  padding: EdgeInsets.only(right: 30.0),
-                  child: Text(
-                    'ویترین',
-                    style: TextStyle(
-                      fontFamily: MAIN_FONT_FAMILY_MEDIUM,
-                      color: Color.fromRGBO(99, 99, 99, 1),
+                Padding(
+                  padding: const EdgeInsets.only(right: 30.0),
+                  child: InkWell(
+                    onTap: () {
+                      _removeOverlay();
+                    },
+                    child: const Text(
+                      'ویترین',
+                      style: TextStyle(
+                        fontFamily: MAIN_FONT_FAMILY_MEDIUM,
+                        color: Color.fromRGBO(99, 99, 99, 1),
+                      ),
                     ),
-                    textAlign: TextAlign.right, // راست‌چین کردن متن
-                    textDirection: TextDirection.rtl, // متن از راست به چپ
                   ),
                 ),
               ],
@@ -209,7 +261,6 @@ class _MessagesState extends State<Messages> {
     );
   }
 
-  // این متد برای اضافه کردن خط جدید در پیام‌هایی که طول آنها به 10 کاراکتر رسید
   String _formatMessage(String text) {
     if (text.length >= 15) {
       List<String> parts = [];
@@ -224,67 +275,124 @@ class _MessagesState extends State<Messages> {
 
   void _showAttachBottomSheet(BuildContext context) {
     showModalBottomSheet(
-      backgroundColor: const Color.fromARGB(255, 235, 234, 234),
+      backgroundColor: Colors.white,
       context: context,
       builder: (context) {
-        return Padding(
-          padding: const EdgeInsets.symmetric(vertical: 30.0),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              // نمایش عکس انتخابی (اگر وجود داشته باشد)
-              if (selectedImagePath != null)
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 10.0),
-                  child: Image.file(
-                    File(selectedImagePath!),
-                    width: 100,
-                    height: 100,
-                  ),
-                ),
-              // نمایش فایل انتخابی (اگر وجود داشته باشد)
-              if (selectedFilePath != null)
-                const Padding(
-                  padding: EdgeInsets.only(bottom: 16.0),
-                  child: Icon(
-                    Icons.insert_drive_file,
-                    size: 40,
-                  ),
-                ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  ElevatedButton(
-                    onPressed: _pickImage,
-                    child: Row(
-                      children: [
-                        SvgPicture.asset(
-                          'assets/images/attach_image.svg', // آیکن تصویر
-                          width: 20,
-                          height: 20,
+        return Container(
+          decoration: const BoxDecoration(
+              gradient: LinearGradient(colors: GRADIANT_COLOR1),
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(20),
+                topRight: Radius.circular(20),
+              )),
+          child: Padding(
+            padding: const EdgeInsets.only(top: 1.0, left: 1, right: 1),
+            child: Container(
+              decoration: const BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(20),
+                      topRight: Radius.circular(20))),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 30.0),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    // نمایش عکس انتخابی (اگر وجود داشته باشد)
+                    if (selectedImagePath != null)
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 10.0),
+                        child: Image.file(
+                          File(selectedImagePath!),
+                          width: 100,
+                          height: 100,
                         ),
-                        const SizedBox(width: 8),
-                        const Text('انتخاب عکس'),
+                      ),
+                    // نمایش فایل انتخابی (اگر وجود داشته باشد)
+                    if (selectedFilePath != null)
+                      const Padding(
+                        padding: EdgeInsets.only(bottom: 16.0),
+                        child: Icon(
+                          Icons.insert_drive_file,
+                          size: 40,
+                        ),
+                      ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Container(
+                          width: 127,
+                          height: 40,
+                          decoration: ShapeDecoration(
+                            color: Colors.white,
+                            shape: RoundedRectangleBorder(
+                              side: const BorderSide(
+                                  width: 1, color: Color(0xFF429F56)),
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                          ),
+                          child: InkWell(
+                            onTap:
+                                _pickImage, // متدی که قبلاً نوشتید برای باز کردن گالری
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                const Text(
+                                  'بارگذاری عکس',
+                                  style: TextStyle(
+                                    color: Color(0xFF303030),
+                                    fontSize: 12,
+                                    fontFamily: MAIN_FONT_FAMILY,
+                                  ),
+                                ),
+                                SvgPicture.asset(
+                                  'assets/images/Gallery.svg',
+                                  width: 19,
+                                  height: 19,
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        Container(
+                          width: 127,
+                          height: 40,
+                          decoration: ShapeDecoration(
+                            color: Colors.white,
+                            shape: RoundedRectangleBorder(
+                              side: const BorderSide(
+                                  width: 1, color: Color(0xFF296FE2)),
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                          ),
+                          child: InkWell(
+                            onTap: _pickFile,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                const Text(
+                                  'بارگذاری فایل',
+                                  style: TextStyle(
+                                    color: Color(0xFF303030),
+                                    fontSize: 12,
+                                    fontFamily: MAIN_FONT_FAMILY,
+                                  ),
+                                ),
+                                SvgPicture.asset(
+                                  'assets/images/File.svg',
+                                  width: 19,
+                                  height: 19,
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
                       ],
                     ),
-                  ),
-                  ElevatedButton(
-                    onPressed: _pickFile,
-                    child: Row(
-                      children: [
-                        SvgPicture.asset(
-                          'assets/images/attach_file.svg', // آیکن فایل
-                          width: 20,
-                          height: 20,
-                        ),
-                        const SizedBox(width: 8),
-                        const Text('انتخاب فایل'),
-                      ],
-                    ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ],
+            ),
           ),
         );
       },
@@ -371,52 +479,107 @@ class _MessagesState extends State<Messages> {
                           icon: const Icon(Icons.more_vert),
                           onPressed: () => _toggleOverlay(context),
                         ),
-                        const SizedBox(
-                          width: 10,
-                        ),
-                        SvgPicture.asset(
-                          'assets/images/Call_chat.svg',
-                          width: 25,
-                          height: 20,
-                        ),
+                        const SizedBox(width: 10),
+                        // اگر در حالت انتخاب باشیم
+                        if (isSelecting)
+                          GestureDetector(
+                            onTap: _toggleSelectAllMessages,
+                            child: Container(
+                              width: 20,
+                              height: 20,
+                              decoration: BoxDecoration(
+                                color: isAllSelected
+                                    ? Colors.red
+                                    : Colors
+                                        .white, // پر شدن دایره وقتی همه پیام‌ها انتخاب شده‌اند
+                                shape: BoxShape.circle, // دایره‌ای بودن
+                                border: Border.all(
+                                  color:
+                                      Colors.grey, // رنگ حاشیه دایره (اختیاری)
+                                  width: 2,
+                                ),
+                              ),
+                              child: isAllSelected
+                                  ? const Icon(
+                                      Icons.check, // علامت تیک درون دایره
+                                      size: 15,
+                                      color: Colors.white, // رنگ تیک سفید
+                                    )
+                                  : null, // اگر پیام‌ها انتخاب نشده‌اند، تیک نباشد
+                            ),
+                          ),
+                        const SizedBox(width: 10),
+
+                        if (isSelecting)
+                          Row(
+                            children: [
+                              // آیکون حذف چت
+                              InkWell(
+                                onTap: _deleteSelectedMessages,
+                                child: SvgPicture.asset(
+                                  'assets/images/delete_chat.svg',
+                                  width: 25,
+                                  height: 20,
+                                ),
+                              ),
+                              const SizedBox(width: 8), // فاصله بین دکمه‌ها
+                              // دکمه لغو
+                            ],
+                          ),
+
                         const SizedBox(
                           width: 15,
                         ),
-                        SvgPicture.asset(
-                          'assets/images/delete_chat.svg',
-                          width: 25,
-                          height: 20,
-                        )
                       ],
                     ),
                     Stack(
-                      alignment: Alignment.center, // تراز کانتینر به مرکز
+                      alignment: Alignment.center, // Center the container
                       children: [
                         Column(
                           children: [
-                            Stack(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                      top: 10.0, right: 10),
-                                  child: SvgPicture.asset(
-                                    "assets/images/consultant_list_moshaver.svg",
-                                    width: 55,
-                                    height: 55,
-                                  ),
+                            // Check if deleting history mode is active
+                            if (isDeletingHistory)
+                              Positioned(
+                                right: 10,
+                                top: 10,
+                                child: IconButton(
+                                  icon: const Icon(Icons.cancel,
+                                      color: Colors.red, size: 20),
+                                  onPressed: () {
+                                    setState(() {
+                                      isDeletingHistory =
+                                          false; // Reset to default mode
+                                      isSelecting =
+                                          false; // Exit selecting mode
+                                    });
+                                  },
                                 ),
-                                Positioned(
-                                  left:
-                                      84, // تنظیم موقعیت برای نزدیکی بیشتر به داخل باکس
-                                  top: 12, // کمی بالاتر از حالت قبلی
-                                  child: Image.asset(
-                                    'assets/images/Ellipse 222.png',
-                                    width: 45,
-                                    height: 45,
+                              )
+                            else
+                              // Default content when not in deleting history mode
+                              Stack(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(
+                                        top: 10.0, right: 10),
+                                    child: SvgPicture.asset(
+                                      "assets/images/consultant_list_moshaver.svg",
+                                      width: 55,
+                                      height: 55,
+                                    ),
                                   ),
-                                ),
-                              ],
-                            ),
+                                  Positioned(
+                                    left: 84, // Adjust position
+                                    top:
+                                        12, // Adjust position for the second image
+                                    child: Image.asset(
+                                      'assets/images/Ellipse 222.png',
+                                      width: 45,
+                                      height: 45,
+                                    ),
+                                  ),
+                                ],
+                              ),
                           ],
                         ),
                       ],
@@ -437,14 +600,134 @@ class _MessagesState extends State<Messages> {
                   color: Colors.white,
                   child: ListView.builder(
                     controller: _scrollController,
-                    reverse: true,
                     itemCount: messages.length,
                     itemBuilder: (context, index) {
-                      final message = messages[messages.length - index - 1];
-                      return _buildMessage(
-                        message['text'],
-                        message['isMe'],
-                        message['isSent'],
+                      return ListTile(
+                        leading: isSelecting
+                            ? Checkbox(
+                                value: selectedMessages.contains(index),
+                                shape: const CircleBorder(),
+                                activeColor: Colors.red,
+                                onChanged: (value) {
+                                  setState(() {
+                                    if (value == true) {
+                                      selectedMessages.add(index);
+                                    } else {
+                                      selectedMessages.remove(index);
+                                    }
+                                  });
+                                },
+                              )
+                            : null,
+                        title: Align(
+                          alignment: messages[index]['isMe']
+                              ? Alignment.centerRight
+                              : Alignment.centerLeft,
+                          child: Row(
+                            mainAxisAlignment: messages[index]['isMe']
+                                ? MainAxisAlignment.end
+                                : MainAxisAlignment.start,
+                            children: [
+                              if (!messages[index]['isMe']) ...[
+                                Container(
+                                  decoration: const BoxDecoration(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(50)),
+                                    gradient: LinearGradient(
+                                      colors: GRADIANT_COLOR1,
+                                    ),
+                                  ),
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(1.0),
+                                    child: Container(
+                                      width: 30,
+                                      height: 30,
+                                      decoration: const ShapeDecoration(
+                                        color: Colors.white,
+                                        shape: OvalBorder(),
+                                      ),
+                                      child: const Icon(
+                                          Icons.add_photo_alternate_rounded),
+                                    ),
+                                  ),
+                                ),
+                                const SizedBox(width: 8),
+                              ],
+                              Stack(
+                                clipBehavior: Clip
+                                    .none, // برای نمایش محتویات خارج از محدوده
+                                children: [
+                                  Container(
+                                    decoration: BoxDecoration(
+                                      color: messages[index]['isMe']
+                                          ? Colors.white
+                                          : Colors.white,
+                                      borderRadius: BorderRadius.only(
+                                        topLeft: messages[index]['isMe']
+                                            ? const Radius.circular(10)
+                                            : const Radius.circular(0),
+                                        topRight: messages[index]['isMe']
+                                            ? const Radius.circular(0)
+                                            : const Radius.circular(5),
+                                        bottomLeft: messages[index]['isMe']
+                                            ? const Radius.circular(10)
+                                            : const Radius.circular(5),
+                                        bottomRight: messages[index]['isMe']
+                                            ? const Radius.circular(5)
+                                            : const Radius.circular(5),
+                                      ),
+                                      border: Border.all(
+                                        color: messages[index]['isMe']
+                                            ? Colors.blue
+                                            : Colors.green,
+                                        width: 1,
+                                      ),
+                                    ),
+                                    child: Text(
+                                      _formatMessage(messages[index]['text']),
+                                      style: const TextStyle(fontSize: 14),
+                                    ),
+                                  ),
+                                  if (messages[index]['isMe'])
+                                    const Positioned(
+                                      bottom: -15, // پایین‌تر از محدوده کانتینر
+                                      left: -10, // خارج از سمت چپ کانتینر
+                                      child: Icon(
+                                        Icons.check,
+                                        color: Colors.green,
+                                        size: 16, // اندازه تیک سبز
+                                      ),
+                                    ),
+                                ],
+                              ),
+                              if (messages[index]['isMe']) ...[
+                                const SizedBox(width: 8),
+                                Container(
+                                  decoration: const BoxDecoration(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(50)),
+                                    gradient: LinearGradient(
+                                      colors: GRADIANT_COLOR1,
+                                    ),
+                                  ),
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(1.0),
+                                    child: Container(
+                                      width: 30,
+                                      height: 30,
+                                      decoration: const ShapeDecoration(
+                                        color: Colors.white,
+                                        shape: OvalBorder(),
+                                      ),
+                                      child: const Icon(
+                                          Icons.add_photo_alternate_rounded),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ],
+                          ),
+                        ),
                       );
                     },
                   ),
@@ -457,7 +740,6 @@ class _MessagesState extends State<Messages> {
                   color: Colors.white,
                   child: Row(
                     children: [
-                      // دکمه Attach
                       Container(
                         width: 35,
                         height: 35,
