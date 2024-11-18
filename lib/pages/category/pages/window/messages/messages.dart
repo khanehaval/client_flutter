@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/pages/window/messages/widgets_messages/widget_titr_messages.dart';
@@ -469,119 +468,88 @@ class _MessagesState extends State<Messages> {
                 color: Color.fromRGBO(226, 226, 226, 1),
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 10.0, right: 10),
+                padding: const EdgeInsets.symmetric(horizontal: 10.0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Row(
                       children: [
+                        // آیکون More
                         IconButton(
                           icon: const Icon(Icons.more_vert),
                           onPressed: () => _toggleOverlay(context),
                         ),
                         const SizedBox(width: 10),
-                        // اگر در حالت انتخاب باشیم
-                        if (isSelecting)
+                        // نمایش آیکون Call فقط زمانی که در حالت حذف تاریخچه نیستیم
+                        if (!isDeletingHistory)
+                          SvgPicture.asset(
+                            'assets/images/Call_chat.svg',
+                            width: 19,
+                            height: 19,
+                          ),
+                        if (!isDeletingHistory) const SizedBox(width: 10),
+                        if (isSelecting) ...[
                           GestureDetector(
                             onTap: _toggleSelectAllMessages,
                             child: Container(
                               width: 20,
                               height: 20,
                               decoration: BoxDecoration(
-                                color: isAllSelected
-                                    ? Colors.red
-                                    : Colors
-                                        .white, // پر شدن دایره وقتی همه پیام‌ها انتخاب شده‌اند
-                                shape: BoxShape.circle, // دایره‌ای بودن
-                                border: Border.all(
-                                  color:
-                                      Colors.grey, // رنگ حاشیه دایره (اختیاری)
-                                  width: 2,
-                                ),
+                                color:
+                                    isAllSelected ? Colors.red : Colors.white,
+                                shape: BoxShape.circle,
+                                border:
+                                    Border.all(color: Colors.grey, width: 2),
                               ),
                               child: isAllSelected
-                                  ? const Icon(
-                                      Icons.check, // علامت تیک درون دایره
-                                      size: 15,
-                                      color: Colors.white, // رنگ تیک سفید
-                                    )
-                                  : null, // اگر پیام‌ها انتخاب نشده‌اند، تیک نباشد
+                                  ? const Icon(Icons.check,
+                                      size: 15, color: Colors.white)
+                                  : null,
                             ),
                           ),
-                        const SizedBox(width: 10),
-
-                        if (isSelecting)
-                          Row(
-                            children: [
-                              // آیکون حذف چت
-                              InkWell(
-                                onTap: _deleteSelectedMessages,
-                                child: SvgPicture.asset(
-                                  'assets/images/delete_chat.svg',
-                                  width: 25,
-                                  height: 20,
-                                ),
-                              ),
-                              const SizedBox(width: 8), // فاصله بین دکمه‌ها
-                              // دکمه لغو
-                            ],
-                          ),
-
-                        const SizedBox(
-                          width: 15,
-                        ),
+                          const SizedBox(width: 10),
+                          InkWell(
+                              onTap: _deleteSelectedMessages,
+                              child: SvgPicture.asset(
+                                  'assets/images/delete_chat.svg')),
+                        ],
                       ],
                     ),
+                    // سمت راست (آواتار یا آیکون لغو)
                     Stack(
-                      alignment: Alignment.center, // Center the container
+                      alignment: Alignment.center,
                       children: [
-                        Column(
-                          children: [
-                            // Check if deleting history mode is active
-                            if (isDeletingHistory)
-                              Positioned(
-                                right: 10,
-                                top: 10,
-                                child: IconButton(
-                                  icon: const Icon(Icons.cancel,
-                                      color: Colors.red, size: 20),
-                                  onPressed: () {
-                                    setState(() {
-                                      isDeletingHistory =
-                                          false; // Reset to default mode
-                                      isSelecting =
-                                          false; // Exit selecting mode
-                                    });
-                                  },
-                                ),
-                              )
-                            else
-                              // Default content when not in deleting history mode
-                              Stack(
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsets.only(
-                                        top: 10.0, right: 10),
-                                    child: SvgPicture.asset(
-                                      "assets/images/consultant_list_moshaver.svg",
-                                      width: 55,
-                                      height: 55,
-                                    ),
-                                  ),
-                                  Positioned(
-                                    left: 84, // Adjust position
-                                    top:
-                                        12, // Adjust position for the second image
-                                    child: Image.asset(
-                                      'assets/images/Ellipse 222.png',
-                                      width: 45,
-                                      height: 45,
-                                    ),
-                                  ),
-                                ],
+                        if (isDeletingHistory)
+                          IconButton(
+                            icon: const Icon(Icons.cancel,
+                                color: Colors.red, size: 20),
+                            onPressed: () {
+                              setState(() {
+                                isDeletingHistory =
+                                    false; // غیرفعال کردن حالت حذف تاریخچه
+                                isSelecting = false; // خروج از حالت انتخاب
+                              });
+                            },
+                          )
+                        else
+                          Stack(
+                            children: [
+                              SvgPicture.asset(
+                                "assets/images/consultant_list_moshaver.svg",
+                                width: 55,
+                                height: 55,
                               ),
-                          ],
-                        ),
+                              Positioned(
+                                left: 84,
+                                top: 2,
+                                child: Image.asset(
+                                  'assets/images/Ellipse 222.png',
+                                  width: 45,
+                                  height: 45,
+                                ),
+                              ),
+                            ],
+                          ),
                       ],
                     ),
                   ],
