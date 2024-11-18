@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/pages/window/messages/message_Item.dart';
-import 'package:flutter_application_1/pages/category/pages/window/messages/messages.dart';
 import 'package:flutter_application_1/pages/category/pages/window/messages/widgets_messages/widget_titr_messages.dart';
-import 'package:flutter_application_1/pages/category/shared/constant.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:get/get.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class FirstPageMessages extends StatelessWidget {
   final searchController = TextEditingController();
@@ -35,52 +32,40 @@ class FirstPageMessages extends StatelessWidget {
                   child: Row(
                     children: [
                       SvgPicture.asset('assets/images/delete_chat.svg'),
-                      const SizedBox(width: 20),
-                      SvgPicture.asset('assets/images/add_chat.svg'),
-                      const Spacer(),
-                      const Text(
-                        'پیام جدید',
-                        style: TextStyle(
-                          fontFamily: 'Aban Bold',
-                          fontSize: 24,
-                          color: Color.fromRGBO(99, 99, 99, 1),
+                      const SizedBox(width: 40),
+                      SizedBox(
+                        height: 38,
+                        width: 280,
+                        child: TextField(
+                          controller: searchController,
+                          textAlign: TextAlign.end,
+                          decoration: InputDecoration(
+                            hintText: 'جستجو',
+                            hintStyle: const TextStyle(
+                              fontFamily:
+                                  'MAIN_FONT_FAMILY_MEDIUM', // تعریف فونت اصلی
+                              fontSize: 12,
+                              height: 2,
+                            ),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10),
+                              borderSide: const BorderSide(
+                                color: Color.fromRGBO(23, 102, 175, 1),
+                              ),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10),
+                              borderSide: const BorderSide(
+                                color: Color.fromRGBO(23, 102, 175, 1),
+                              ),
+                            ),
+                          ),
                         ),
                       ),
                     ],
                   ),
                 ),
               ],
-            ),
-          ),
-          const SizedBox(height: 20),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20.0),
-            child: SizedBox(
-              height: 40,
-              child: TextField(
-                controller: searchController,
-                textAlign: TextAlign.end,
-                decoration: InputDecoration(
-                  hintText: 'جستجو',
-                  hintStyle: const TextStyle(
-                    fontFamily: MAIN_FONT_FAMILY_MEDIUM,
-                    fontSize: 12,
-                    height: 2,
-                  ),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                    borderSide: const BorderSide(
-                      color: Color.fromRGBO(23, 102, 175, 1),
-                    ),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                    borderSide: const BorderSide(
-                      color: Color.fromRGBO(23, 102, 175, 1),
-                    ),
-                  ),
-                ),
-              ),
             ),
           ),
           Expanded(
@@ -99,6 +84,19 @@ class FirstPageMessages extends StatelessWidget {
             ),
           ),
         ],
+      ),
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.only(bottom: 80.0), // تنظیم فاصله از کناره‌ها
+        child: Align(
+          alignment: Alignment.bottomRight, // موقعیت آیکون در پایین سمت راست
+          child: FloatingActionButton(
+            onPressed: () {},
+            backgroundColor: Colors.transparent, // حذف پس‌زمینه
+            elevation: 0, // حذف سایه
+            child: SvgPicture.asset(
+                'assets/images/New message.svg'), // استفاده از آیکون
+          ),
+        ),
       ),
     );
   }
