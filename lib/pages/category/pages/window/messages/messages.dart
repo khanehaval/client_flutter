@@ -1,15 +1,19 @@
-import 'dart:io';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/pages/category/pages/window/messages/first_page_messages.dart';
+import 'package:flutter_application_1/pages/category/pages/window/messages/widgets_messages/input_message.dart';
+import 'package:flutter_application_1/pages/category/pages/window/messages/widgets_messages/widget_Attach.dart';
+import 'package:flutter_application_1/pages/category/pages/window/messages/widgets_messages/widget_call.dart';
+import 'package:flutter_application_1/pages/category/pages/window/messages/widgets_messages/widget_chat_header.dart';
+import 'package:flutter_application_1/pages/category/pages/window/messages/widgets_messages/widget_overlay.dart';
 import 'package:flutter_application_1/pages/category/pages/window/messages/widgets_messages/widget_titr_messages.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:jalali_flutter_datepicker/jalali_flutter_datepicker.dart';
 
 class Messages extends StatefulWidget {
   const Messages({super.key});
-
   @override
   _MessagesState createState() => _MessagesState();
 }
@@ -28,22 +32,12 @@ class _MessagesState extends State<Messages> {
   bool isAllSelected = false;
   bool isCallIconVisible = false;
   bool isDeletingHistory = false;
+  final CustomOverlay customOverlay = CustomOverlay();
+
   void _startSelecting() {
     setState(() {
       isSelecting = true;
-      isDeletingHistory = true; // When deleting history, set this to true
-    });
-  }
-
-  void _toggleSelectAllMessages() {
-    setState(() {
-      isAllSelected = !isAllSelected;
-      if (isAllSelected) {
-        selectedMessages =
-            Set<int>.from(List.generate(messages.length, (index) => index));
-      } else {
-        selectedMessages.clear();
-      }
+      isDeletingHistory = true;
     });
   }
 
@@ -75,9 +69,9 @@ class _MessagesState extends State<Messages> {
 
   void _toggleOverlay(BuildContext context) {
     if (_overlayEntry != null) {
-      _removeOverlay(); // اگر از قبل وجود دارد، حذفش کن
+      _removeOverlay();
     } else {
-      _showOverlay(context); // اگر وجود ندارد، ایجاد کن
+      customOverlay.showOverlay(context, _startSelecting);
     }
   }
 
@@ -89,8 +83,8 @@ class _MessagesState extends State<Messages> {
           .where((entry) => !selectedMessages.contains(entry.key))
           .map((entry) => entry.value)
           .toList();
-      selectedMessages.clear(); // لیست پیام‌های انتخاب‌شده را خالی کن
-      isSelecting = false; // خروج از حالت انتخاب
+      selectedMessages.clear();
+      isSelecting = false;
     });
   }
 
@@ -98,13 +92,11 @@ class _MessagesState extends State<Messages> {
     final ImagePicker _picker = ImagePicker();
     final XFile? image = await _picker.pickImage(source: ImageSource.gallery);
     if (image != null) {
-      // اگر عکسی انتخاب شد، می‌توانید آن را ارسال کنید
-      // مثلا اضافه کردن تصویر به لیست پیام‌ها
       setState(() {
         messages.add({
           'text': 'عکس انتخابی',
           'isMe': true,
-          'image': image.path, // مسیر فایل انتخاب شده
+          'image': image.path,
           'isSent': false,
         });
       });
@@ -114,137 +106,15 @@ class _MessagesState extends State<Messages> {
   Future<void> _pickFile() async {
     FilePickerResult? result = await FilePicker.platform.pickFiles();
     if (result != null) {
-      // نمایش مسیر فایل انتخابی
-      print("Selected file: ${result.files.single.path}");
-
       setState(() {
         messages.add({
           'text': 'فایل انتخابی',
           'isMe': true,
-          'file': result.files.single.path, // مسیر فایل انتخاب شده
+          'file': result.files.single.path,
           'isSent': false,
         });
       });
-    } else {
-      // اگر هیچ فایلی انتخاب نشده است
-      print("No file selected");
-    }
-  }
-
-  void _showOverlay(BuildContext context) {
-    final overlay = Overlay.of(context);
-    _overlayEntry = OverlayEntry(
-      builder: (context) => Positioned(
-        top: 177, // فاصله از بالا
-        right: 190, // فاصله از راست
-        child: Material(
-          elevation: 4,
-          borderRadius: BorderRadius.circular(8),
-          child: Container(
-            width: 172,
-            height: 226,
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(8),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black.withOpacity(0.1),
-                  blurRadius: 6,
-                  offset: const Offset(0, 4),
-                ),
-              ],
-            ),
-            child: Column(
-              crossAxisAlignment:
-                  CrossAxisAlignment.end, // برای راست‌چین کردن تمام عناصر
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    IconButton(
-                      icon: const Icon(Icons.more_horiz),
-                      onPressed: () => _toggleOverlay(context),
-                    ),
-                  ],
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(right: 30.0),
-                  child: InkWell(
-                    onTap: () {
-                      _startSelecting(); // وارد حالت انتخاب می‌شود
-                      _removeOverlay(); // بستن کادر Overlay
-                    },
-                    child: const Text(
-                      'حذف تاریخچه',
-                      style: TextStyle(
-                        fontFamily: MAIN_FONT_FAMILY_MEDIUM,
-                        color: Color.fromRGBO(99, 99, 99, 1),
-                      ),
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(right: 30.0),
-                  child: InkWell(
-                    onTap: () {
-                      _removeOverlay();
-                    },
-                    child: const Text(
-                      'حذف کامل چت',
-                      style: TextStyle(
-                        fontFamily: MAIN_FONT_FAMILY_MEDIUM,
-                        color: Color.fromRGBO(99, 99, 99, 1),
-                      ),
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(right: 30.0),
-                  child: InkWell(
-                    onTap: () {
-                      _removeOverlay();
-                    },
-                    child: const Text(
-                      'لغو همکاری',
-                      style: TextStyle(
-                        fontFamily: MAIN_FONT_FAMILY_MEDIUM,
-                        color: Color.fromRGBO(99, 99, 99, 1),
-                      ),
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(right: 30.0),
-                  child: InkWell(
-                    onTap: () {
-                      _removeOverlay();
-                    },
-                    child: const Text(
-                      'ویترین',
-                      style: TextStyle(
-                        fontFamily: MAIN_FONT_FAMILY_MEDIUM,
-                        color: Color.fromRGBO(99, 99, 99, 1),
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
-
-    overlay?.insert(_overlayEntry!);
+    } else {}
   }
 
   void _removeOverlay() {
@@ -255,7 +125,7 @@ class _MessagesState extends State<Messages> {
   void _scrollToBottom() {
     _scrollController.animateTo(
       _scrollController.position.maxScrollExtent,
-      duration: Duration(milliseconds: 300),
+      duration: const Duration(milliseconds: 300),
       curve: Curves.easeOut,
     );
   }
@@ -267,182 +137,9 @@ class _MessagesState extends State<Messages> {
         parts.add(
             text.substring(i, (i + 15) > text.length ? text.length : i + 15));
       }
-      return parts.join("\n"); // جدا کردن هر 10 کاراکتر با خط جدید
+      return parts.join("\n");
     }
-    return text; // اگر تعداد کاراکتر کمتر از 10 باشد، همانطور که هست باقی می‌ماند
-  }
-
-  void _showAttachBottomSheet(BuildContext context) {
-    showModalBottomSheet(
-      backgroundColor: Colors.white,
-      context: context,
-      builder: (context) {
-        return Container(
-          decoration: const BoxDecoration(
-              gradient: LinearGradient(colors: GRADIANT_COLOR1),
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(20),
-                topRight: Radius.circular(20),
-              )),
-          child: Padding(
-            padding: const EdgeInsets.only(top: 1.0, left: 1, right: 1),
-            child: Container(
-              decoration: const BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(20),
-                      topRight: Radius.circular(20))),
-              child: Padding(
-                padding: const EdgeInsets.symmetric(vertical: 30.0),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    // نمایش عکس انتخابی (اگر وجود داشته باشد)
-                    if (selectedImagePath != null)
-                      Padding(
-                        padding: const EdgeInsets.only(bottom: 10.0),
-                        child: Image.file(
-                          File(selectedImagePath!),
-                          width: 100,
-                          height: 100,
-                        ),
-                      ),
-                    // نمایش فایل انتخابی (اگر وجود داشته باشد)
-                    if (selectedFilePath != null)
-                      const Padding(
-                        padding: EdgeInsets.only(bottom: 16.0),
-                        child: Icon(
-                          Icons.insert_drive_file,
-                          size: 40,
-                        ),
-                      ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Container(
-                          width: 127,
-                          height: 40,
-                          decoration: ShapeDecoration(
-                            color: Colors.white,
-                            shape: RoundedRectangleBorder(
-                              side: const BorderSide(
-                                  width: 1, color: Color(0xFF429F56)),
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                          ),
-                          child: InkWell(
-                            onTap:
-                                _pickImage, // متدی که قبلاً نوشتید برای باز کردن گالری
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                const Text(
-                                  'بارگذاری عکس',
-                                  style: TextStyle(
-                                    color: Color(0xFF303030),
-                                    fontSize: 12,
-                                    fontFamily: MAIN_FONT_FAMILY,
-                                  ),
-                                ),
-                                SvgPicture.asset(
-                                  'assets/images/Gallery.svg',
-                                  width: 19,
-                                  height: 19,
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                        Container(
-                          width: 127,
-                          height: 40,
-                          decoration: ShapeDecoration(
-                            color: Colors.white,
-                            shape: RoundedRectangleBorder(
-                              side: const BorderSide(
-                                  width: 1, color: Color(0xFF296FE2)),
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                          ),
-                          child: InkWell(
-                            onTap: _pickFile,
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                const Text(
-                                  'بارگذاری فایل',
-                                  style: TextStyle(
-                                    color: Color(0xFF303030),
-                                    fontSize: 12,
-                                    fontFamily: MAIN_FONT_FAMILY,
-                                  ),
-                                ),
-                                SvgPicture.asset(
-                                  'assets/images/File.svg',
-                                  width: 19,
-                                  height: 19,
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ),
-        );
-      },
-    );
-  }
-
-  Widget _buildMessage(String text, bool isMe, bool? isSent,
-      {String? image, String? file}) {
-    isSent = isSent ?? false; // مقدار پیش‌فرض false اگر isSent مقدار null باشد
-    return Align(
-      alignment: isMe ? Alignment.centerRight : Alignment.centerLeft,
-      child: Row(
-        mainAxisAlignment:
-            isMe ? MainAxisAlignment.end : MainAxisAlignment.start,
-        children: [
-          if (image != null) // نمایش تصویر
-            Image.file(
-              File(image),
-              width: 100,
-              height: 100,
-            ),
-          if (file != null) // نمایش فایل
-            const Icon(Icons.insert_drive_file, size: 30),
-          // سایر اجزای پیام
-          Container(
-            margin:
-                const EdgeInsets.only(top: 10, bottom: 20, left: 8, right: 8),
-            padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 16),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              border: Border.all(
-                color: isMe ? Colors.red : Colors.blue,
-              ),
-              borderRadius: BorderRadius.only(
-                topLeft: isMe ? const Radius.circular(15) : Radius.zero,
-                topRight: isMe ? Radius.zero : const Radius.circular(15),
-                bottomLeft: const Radius.circular(15),
-                bottomRight: const Radius.circular(15),
-              ),
-            ),
-            child: Text(
-              text,
-              style: TextStyle(
-                color: isMe ? Colors.black : Colors.black87,
-                fontSize: 16,
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
+    return text;
   }
 
   @override
@@ -457,9 +154,6 @@ class _MessagesState extends State<Messages> {
             children: [
               const WidgetTitrMessages(),
               const SizedBox(
-                height: 5,
-              ),
-              const SizedBox(
                 height: 20,
               ),
               const Divider(
@@ -467,93 +161,36 @@ class _MessagesState extends State<Messages> {
                 indent: 20,
                 color: Color.fromRGBO(226, 226, 226, 1),
               ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Row(
-                      children: [
-                        // آیکون More
-                        IconButton(
-                          icon: const Icon(Icons.more_vert),
-                          onPressed: () => _toggleOverlay(context),
-                        ),
-                        const SizedBox(width: 10),
-                        // نمایش آیکون Call فقط زمانی که در حالت حذف تاریخچه نیستیم
-                        if (!isDeletingHistory)
-                          SvgPicture.asset(
-                            'assets/images/Call_chat.svg',
-                            width: 19,
-                            height: 19,
-                          ),
-                        if (!isDeletingHistory) const SizedBox(width: 10),
-                        if (isSelecting) ...[
-                          GestureDetector(
-                            onTap: _toggleSelectAllMessages,
-                            child: Container(
-                              width: 20,
-                              height: 20,
-                              decoration: BoxDecoration(
-                                color:
-                                    isAllSelected ? Colors.red : Colors.white,
-                                shape: BoxShape.circle,
-                                border:
-                                    Border.all(color: Colors.grey, width: 2),
-                              ),
-                              child: isAllSelected
-                                  ? const Icon(Icons.check,
-                                      size: 15, color: Colors.white)
-                                  : null,
-                            ),
-                          ),
-                          const SizedBox(width: 10),
-                          InkWell(
-                              onTap: _deleteSelectedMessages,
-                              child: SvgPicture.asset(
-                                  'assets/images/delete_chat.svg')),
-                        ],
-                      ],
-                    ),
-                    // سمت راست (آواتار یا آیکون لغو)
-                    Stack(
-                      alignment: Alignment.center,
-                      children: [
-                        if (isDeletingHistory)
-                          IconButton(
-                            icon: const Icon(Icons.cancel,
-                                color: Colors.red, size: 20),
-                            onPressed: () {
-                              setState(() {
-                                isDeletingHistory =
-                                    false; // غیرفعال کردن حالت حذف تاریخچه
-                                isSelecting = false; // خروج از حالت انتخاب
-                              });
-                            },
-                          )
-                        else
-                          Stack(
-                            children: [
-                              SvgPicture.asset(
-                                "assets/images/consultant_list_moshaver.svg",
-                                width: 55,
-                                height: 55,
-                              ),
-                              Positioned(
-                                left: 84,
-                                top: 2,
-                                child: Image.asset(
-                                  'assets/images/Ellipse 222.png',
-                                  width: 45,
-                                  height: 45,
-                                ),
-                              ),
-                            ],
-                          ),
-                      ],
-                    ),
-                  ],
-                ),
+              ChatHeader(
+                isSelecting: isSelecting,
+                isDeletingHistory: isDeletingHistory,
+                selectedMessages: selectedMessages,
+                totalMessages: messages.length,
+                onMorePressed: () => _toggleOverlay(context),
+                onCallPressed: () =>
+                    CallBottomSheet.showCallBottomSheet(context),
+                onDeleteSelected: _deleteSelectedMessages,
+                onClosePressed: () {
+                  setState(() {
+                    isSelecting = false;
+                    isDeletingHistory = false;
+                    selectedMessages.clear();
+                  });
+                },
+                onNavigateBack: () {
+                  Get.to(() => FirstPageMessages());
+                },
+                onSelectAllToggle: () {
+                  setState(() {
+                    if (selectedMessages.length == messages.length) {
+                      selectedMessages.clear();
+                    } else {
+                      selectedMessages =
+                          List.generate(messages.length, (index) => index)
+                              .toSet();
+                    }
+                  });
+                },
               ),
               const Divider(
                 endIndent: 20,
@@ -570,210 +207,184 @@ class _MessagesState extends State<Messages> {
                     controller: _scrollController,
                     itemCount: messages.length,
                     itemBuilder: (context, index) {
-                      return ListTile(
-                        leading: isSelecting
-                            ? Checkbox(
-                                value: selectedMessages.contains(index),
-                                shape: const CircleBorder(),
-                                activeColor: Colors.red,
-                                onChanged: (value) {
-                                  setState(() {
-                                    if (value == true) {
-                                      selectedMessages.add(index);
-                                    } else {
-                                      selectedMessages.remove(index);
-                                    }
-                                  });
-                                },
-                              )
-                            : null,
-                        title: Align(
-                          alignment: messages[index]['isMe']
-                              ? Alignment.centerRight
-                              : Alignment.centerLeft,
-                          child: Row(
-                            mainAxisAlignment: messages[index]['isMe']
-                                ? MainAxisAlignment.end
-                                : MainAxisAlignment.start,
-                            children: [
-                              if (!messages[index]['isMe']) ...[
-                                Container(
-                                  decoration: const BoxDecoration(
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(50)),
-                                    gradient: LinearGradient(
-                                      colors: GRADIANT_COLOR1,
-                                    ),
-                                  ),
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(1.0),
+                      return GestureDetector(
+                          onLongPress: () {
+                            setState(() {
+                              isSelecting = true;
+                              selectedMessages.add(index);
+                            });
+                          },
+                          onTap: () {
+                            if (isSelecting) {
+                              setState(() {
+                                if (selectedMessages.contains(index)) {
+                                  selectedMessages.remove(index);
+                                } else {
+                                  selectedMessages.add(index);
+                                }
+                              });
+                            }
+                          },
+                          child: ListTile(
+                            leading: isSelecting
+                                ? GestureDetector(
+                                    onTap: () {
+                                      setState(() {
+                                        if (selectedMessages.contains(index)) {
+                                          selectedMessages.remove(index);
+                                        } else {
+                                          selectedMessages.add(index);
+                                        }
+                                      });
+                                    },
                                     child: Container(
-                                      width: 30,
-                                      height: 30,
-                                      decoration: const ShapeDecoration(
-                                        color: Colors.white,
-                                        shape: OvalBorder(),
+                                      width: 22,
+                                      height: 22,
+                                      decoration: BoxDecoration(
+                                        shape: BoxShape.circle,
+                                        color: selectedMessages.contains(index)
+                                            ? Colors.red
+                                            : Colors.transparent,
+                                        border: Border.all(
+                                          color: Colors.red,
+                                          width: 1,
+                                        ),
                                       ),
-                                      child: const Icon(
-                                          Icons.add_photo_alternate_rounded),
                                     ),
-                                  ),
-                                ),
-                                const SizedBox(width: 8),
-                              ],
-                              Stack(
-                                clipBehavior: Clip
-                                    .none, // برای نمایش محتویات خارج از محدوده
+                                  )
+                                : null,
+                            title: Align(
+                              alignment: messages[index]['isMe']
+                                  ? Alignment.centerRight
+                                  : Alignment.centerLeft,
+                              child: Row(
+                                mainAxisAlignment: messages[index]['isMe']
+                                    ? MainAxisAlignment.end
+                                    : MainAxisAlignment.start,
                                 children: [
-                                  Container(
-                                    decoration: BoxDecoration(
-                                      color: messages[index]['isMe']
-                                          ? Colors.white
-                                          : Colors.white,
-                                      borderRadius: BorderRadius.only(
-                                        topLeft: messages[index]['isMe']
-                                            ? const Radius.circular(10)
-                                            : const Radius.circular(0),
-                                        topRight: messages[index]['isMe']
-                                            ? const Radius.circular(0)
-                                            : const Radius.circular(5),
-                                        bottomLeft: messages[index]['isMe']
-                                            ? const Radius.circular(10)
-                                            : const Radius.circular(5),
-                                        bottomRight: messages[index]['isMe']
-                                            ? const Radius.circular(5)
-                                            : const Radius.circular(5),
+                                  if (!messages[index]['isMe']) ...[
+                                    Container(
+                                      decoration: const BoxDecoration(
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(50)),
+                                        gradient: LinearGradient(
+                                          colors: GRADIANT_COLOR1,
+                                        ),
                                       ),
-                                      border: Border.all(
-                                        color: messages[index]['isMe']
-                                            ? Colors.blue
-                                            : Colors.green,
-                                        width: 1,
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(1.0),
+                                        child: Container(
+                                          width: 30,
+                                          height: 30,
+                                          decoration: const ShapeDecoration(
+                                            color: Colors.white,
+                                            shape: OvalBorder(),
+                                          ),
+                                          child: const Icon(Icons
+                                              .add_photo_alternate_rounded),
+                                        ),
                                       ),
                                     ),
-                                    child: Text(
-                                      _formatMessage(messages[index]['text']),
-                                      style: const TextStyle(fontSize: 14),
-                                    ),
+                                    const SizedBox(width: 8),
+                                  ],
+                                  Stack(
+                                    clipBehavior: Clip.none,
+                                    children: [
+                                      Container(
+                                        decoration: BoxDecoration(
+                                          color: messages[index]['isMe']
+                                              ? Colors.white
+                                              : Colors.white,
+                                          borderRadius: BorderRadius.only(
+                                            topLeft: messages[index]['isMe']
+                                                ? const Radius.circular(10)
+                                                : const Radius.circular(0),
+                                            topRight: messages[index]['isMe']
+                                                ? const Radius.circular(0)
+                                                : const Radius.circular(5),
+                                            bottomLeft: messages[index]['isMe']
+                                                ? const Radius.circular(10)
+                                                : const Radius.circular(5),
+                                            bottomRight: messages[index]['isMe']
+                                                ? const Radius.circular(5)
+                                                : const Radius.circular(5),
+                                          ),
+                                          border: Border.all(
+                                            color: messages[index]['isMe']
+                                                ? Colors.blue
+                                                : Colors.green,
+                                            width: 1,
+                                          ),
+                                        ),
+                                        child: Text(
+                                          _formatMessage(
+                                              messages[index]['text']),
+                                          style: const TextStyle(fontSize: 14),
+                                        ),
+                                      ),
+                                      if (messages[index]['isMe'])
+                                        const Positioned(
+                                          bottom: -15,
+                                          left: -10,
+                                          child: Icon(
+                                            Icons.check,
+                                            color: Colors.green,
+                                            size: 16,
+                                          ),
+                                        ),
+                                    ],
                                   ),
-                                  if (messages[index]['isMe'])
-                                    const Positioned(
-                                      bottom: -15, // پایین‌تر از محدوده کانتینر
-                                      left: -10, // خارج از سمت چپ کانتینر
-                                      child: Icon(
-                                        Icons.check,
-                                        color: Colors.green,
-                                        size: 16, // اندازه تیک سبز
+                                  if (messages[index]['isMe']) ...[
+                                    const SizedBox(width: 8),
+                                    Container(
+                                      decoration: const BoxDecoration(
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(50)),
+                                        gradient: LinearGradient(
+                                          colors: GRADIANT_COLOR1,
+                                        ),
+                                      ),
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(1.0),
+                                        child: Container(
+                                          width: 30,
+                                          height: 30,
+                                          decoration: const ShapeDecoration(
+                                            color: Colors.white,
+                                            shape: OvalBorder(),
+                                          ),
+                                          child: const Icon(Icons
+                                              .add_photo_alternate_rounded),
+                                        ),
                                       ),
                                     ),
+                                  ],
                                 ],
                               ),
-                              if (messages[index]['isMe']) ...[
-                                const SizedBox(width: 8),
-                                Container(
-                                  decoration: const BoxDecoration(
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(50)),
-                                    gradient: LinearGradient(
-                                      colors: GRADIANT_COLOR1,
-                                    ),
-                                  ),
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(1.0),
-                                    child: Container(
-                                      width: 30,
-                                      height: 30,
-                                      decoration: const ShapeDecoration(
-                                        color: Colors.white,
-                                        shape: OvalBorder(),
-                                      ),
-                                      child: const Icon(
-                                          Icons.add_photo_alternate_rounded),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ],
-                          ),
-                        ),
-                      );
+                            ),
+                          ));
                     },
                   ),
                 ),
               ),
-              SafeArea(
-                child: Container(
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 0, horizontal: 8),
-                  color: Colors.white,
-                  child: Row(
-                    children: [
-                      Container(
-                        width: 35,
-                        height: 35,
-                        decoration: ShapeDecoration(
-                          color: Colors.white,
-                          shape: RoundedRectangleBorder(
-                            side: const BorderSide(
-                                width: 1, color: Color(0xFFA5A5A5)),
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                        ),
-                        child: IconButton(
-                          icon: SvgPicture.asset('assets/images/attach.svg'),
-                          onPressed: () => _showAttachBottomSheet(context),
-                        ),
-                      ),
-                      const SizedBox(width: 8),
-                      Expanded(
-                        child: SizedBox(
-                          height: 38,
-                          child: Container(
-                            decoration: BoxDecoration(
-                              color: const Color.fromRGBO(166, 166, 166, 1),
-                              borderRadius: BorderRadius.circular(15),
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.all(1.0),
-                              child: TextField(
-                                controller: _controller,
-                                decoration: InputDecoration(
-                                  hintText: 'پیام خود را بنویسید...',
-                                  filled: true,
-                                  fillColor: Colors.white,
-                                  border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(14),
-                                    borderSide: BorderSide.none,
-                                  ),
-                                  contentPadding: const EdgeInsets.symmetric(
-                                      horizontal: 16),
-                                  prefixIcon: IconButton(
-                                    icon: Icon(Icons.emoji_emotions,
-                                        color: Colors.grey[700]),
-                                    onPressed: () {},
-                                  ),
-                                ),
-                                onChanged: (text) {
-                                  setState(() {
-                                    isTyping = text.isNotEmpty;
-                                  });
-                                },
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                      IconButton(
-                        icon: Icon(
-                          isTyping ? Icons.send : Icons.mic,
-                          size: 30,
-                          color: Colors.blue,
-                        ),
-                        onPressed: isTyping ? _sendMessage : () {},
-                      ),
-                    ],
-                  ),
-                ),
+              MessageInputBar(
+                controller: _controller,
+                isTyping: isTyping,
+                onTextChanged: (text) {
+                  setState(() {
+                    isTyping = text.isNotEmpty;
+                  });
+                },
+                onSendPressed: _sendMessage,
+                onMicPressed: () {},
+                onAttachPressed: () {
+                  AttachBottomSheet(
+                    selectedImagePath: selectedImagePath,
+                    selectedFilePath: selectedFilePath,
+                    pickImage: _pickImage,
+                    pickFile: _pickFile,
+                  ).showAttachBottomSheet(context);
+                },
               ),
             ],
           ),
