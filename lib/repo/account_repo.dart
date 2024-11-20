@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_application_1/db/dao/user_dao.dart';
 import 'package:flutter_application_1/db/entities/user.dart';
 import 'package:flutter_application_1/db/entities/user_type.dart';
@@ -8,6 +9,7 @@ import 'package:flutter_application_1/services/http_service.dart';
 import 'package:flutter_application_1/services/models/server_model/sale_aparteman.dart';
 import 'package:flutter_application_1/services/models/server_model/sale_old_house.dart';
 import 'package:flutter_application_1/services/models/server_model/sale_vila.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -73,14 +75,42 @@ class AccountRepo {
     return false;
   }
 
-  Future<bool?> saleAparteman({
+  Future<bool> saleAparteman({
     required SaleApartemanServerModel saleApartemanData,
   }) async {
     try {
-      var response = await _advetismentService.saveSaleAparteman(
+      // Attempt to call the API and save the data
+      bool success = await _advetismentService.saveSaleAparteman(
           saleAparteman: saleApartemanData);
-    } catch (e) {}
-    return false;
+
+      // If the response is true (operation successful), return true
+      if (success) {
+        return true; // Successfully saved
+      } else {
+        // If the response is false (operation failed), show a failure message
+        Fluttertoast.showToast(
+          msg: "خطا در ارسال اطلاعات",
+          toastLength: Toast.LENGTH_LONG,
+          gravity: ToastGravity.CENTER,
+          backgroundColor: Colors.red,
+          textColor: Colors.white,
+          fontSize: 16.0,
+        );
+        return false; // Operation failed
+      }
+    } catch (e) {
+      // If an error occurs, catch it and display an error message
+      print('Error: $e');
+      Fluttertoast.showToast(
+        msg: "خطا در ارتباط با سرور",
+        toastLength: Toast.LENGTH_LONG,
+        gravity: ToastGravity.CENTER,
+        backgroundColor: Colors.red,
+        textColor: Colors.white,
+        fontSize: 16.0,
+      );
+      return false; // Operation failed
+    }
   }
 
   Future<bool?> saleVila({

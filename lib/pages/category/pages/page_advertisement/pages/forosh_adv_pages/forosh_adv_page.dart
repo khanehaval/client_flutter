@@ -245,6 +245,7 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
 
   Future<void> _saveAdvertisement() async {
     if (submit.value) {
+      // Check if the city is selected
       if (saleApartemanServerModel.cityId == null ||
           saleApartemanServerModel.cityId.isEmpty) {
         Fluttertoast.showToast(
@@ -255,23 +256,55 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
           textColor: Colors.white,
           fontSize: 16.0,
         );
-        return;
+        return; // Exit early if the city is not selected
       }
 
+      // Disable the button to prevent multiple submissions
       _buttonIsPressed.value = true;
-      final success = await _accountRepo.saleAparteman(
-          saleApartemanData: saleApartemanServerModel);
-      _buttonIsPressed.value = false;
 
-      Fluttertoast.showToast(
-        msg: success! ? "اطلاعات با موفقیت ارسال شد" : "خطا در ارسال اطلاعات",
-        toastLength: Toast.LENGTH_LONG,
-        gravity: ToastGravity.CENTER,
-        backgroundColor: success ? Colors.green : Colors.red,
-        textColor: Colors.white,
-        fontSize: 16.0,
-      );
+      try {
+        // Call the saleAparteman method from the repository
+        final success = await _accountRepo.saleAparteman(
+            saleApartemanData: saleApartemanServerModel);
+
+        // Handle success or failure after the request
+        if (success) {
+          Fluttertoast.showToast(
+            msg: "اطلاعات با موفقیت ارسال شد",
+            toastLength: Toast.LENGTH_LONG,
+            gravity: ToastGravity.CENTER,
+            backgroundColor: Colors.green,
+            textColor: Colors.white,
+            fontSize: 16.0,
+          );
+        } else {
+          Fluttertoast.showToast(
+            msg: "خطا در ارسال اطلاعات",
+            toastLength: Toast.LENGTH_LONG,
+            gravity: ToastGravity.CENTER,
+            backgroundColor: Colors.red,
+            textColor: Colors.white,
+            fontSize: 16.0,
+          );
+        }
+      } catch (e) {
+        // Catch any error that occurs during the request
+        Fluttertoast.showToast(
+          msg: "خطا در ارتباط با سرور",
+          toastLength: Toast.LENGTH_LONG,
+          gravity: ToastGravity.CENTER,
+          backgroundColor: Colors.red,
+          textColor: Colors.white,
+          fontSize: 16.0,
+        );
+        print(
+            "Error during advertisement submission: $e"); // Log the error for debugging
+      } finally {
+        // Regardless of success or failure, re-enable the button
+        _buttonIsPressed.value = false;
+      }
     } else {
+      // Show message if all required fields are not filled
       Fluttertoast.showToast(
         msg: "لطفا همه فیلدهای دارای * را پر کنید",
         toastLength: Toast.LENGTH_LONG,
