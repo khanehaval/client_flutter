@@ -450,7 +450,7 @@ class _EjaraDafterPageState extends State<EjaraDafterPage> {
                               inactiveThumbColor:
                                   const Color.fromRGBO(11, 8, 8, 0.2),
                               inactiveTrackColor:
-                                  Color.fromRGBO(255, 255, 255, 1)),
+                                  const Color.fromRGBO(255, 255, 255, 1)),
                         ),
                       ),
                     ),
@@ -533,7 +533,7 @@ class _EjaraDafterPageState extends State<EjaraDafterPage> {
                 textAlign: TextAlign.right,
                 decoration: InputDecoration(
                   hintText: 'انتخاب نشده',
-                  hintStyle: TextStyle(
+                  hintStyle: const TextStyle(
                     fontSize: 13,
                     fontFamily: 'Iran Sans',
                     fontWeight: FontWeight.w400,
@@ -545,10 +545,7 @@ class _EjaraDafterPageState extends State<EjaraDafterPage> {
                   prefixIcon: ReadOnlyTextField(
                     _countOfInstallmentsKoleTABAGHController,
                     () {
-                      TedadKoleTabagheh((selectedOption) {
-                        _countOfInstallmentsKoleTABAGHController.text =
-                            selectedOption;
-                      });
+                      TedadKoleTabagheh((selectedKey, selectedLabel) {});
                     },
                   ),
                 ),
@@ -558,16 +555,18 @@ class _EjaraDafterPageState extends State<EjaraDafterPage> {
               height: 20,
             ),
             TwoItemInRow(
-                label1: "تعداد کل واحد ها",
-                label2: "تعداد واحد در طبقه",
-                widget1: InputTextField(_buildAllFloorsCountController,
-                    width: getPageWidth()),
-                widget2:
-                    ReadOnlyTextField(_buildUnitOfAnyFloorCountController, () {
-                  TedadVahedTabagheh((selectedOption) {
-                    _buildUnitOfAnyFloorCountController.text = selectedOption;
-                  });
-                }, width: getPageWidth())),
+              label1: "تعداد کل واحد ها",
+              label2: "تعداد واحد در طبقه",
+              widget1: InputTextField(_buildAllFloorsCountController,
+                  width: getPageWidth()),
+              widget2: ReadOnlyTextField(
+                _buildUnitOfAnyFloorCountController,
+                () {
+                  TedadVahedTabagheh((selectedKey, selectedLabel) {});
+                },
+                width: getPageWidth(),
+              ),
+            ),
             const SizedBox(
               height: 10,
             ),

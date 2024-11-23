@@ -5,36 +5,19 @@ import 'package:flutter_application_1/services/advertisment_service.dart';
 import 'package:flutter_application_1/services/models/server_model/sale_aparteman_Get/base_list.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:gradient_icon/gradient_icon.dart';
 
-void TedadVahedTabagheh(Function(String) onSelected) async {
+void TedadVahedTabagheh(Function(String key, String label) onSelected) async {
   final RxInt index = 2.obs; // Default index set to "Not Selected"
   final advertisementService = AdvertisementService();
   final Base? baseData = await advertisementService.fetchDataFromServer();
-  final List<String> options = baseData?.data
-          ?.firstWhere(
-            (data) =>
-                data.key ==
-                "unit_in_floor", // Use the actual key name for "rooms"
-            orElse: () => Data(list: []),
-          )
-          .list
-          ?.map((item) => item.label ?? '')
-          .toList() ??
-      [];
-  // final List<String> options = [
-  //   '1',
-  //   '2',
-  //   '3',
-  //   '4',
-  //   '5',
-  //   '6',
-  //   '7',
-  //   '8',
-  //   'بیشتر از 8',
-  //   'انتخاب نشده',
-  // ];
+  final Data? unitInFloor = baseData?.data?.firstWhere(
+    (data) => data.key == "unit_in_floor",
+    orElse: () => Data(key: "", list: []),
+  );
+  final List<Item>? items = unitInFloor?.list;
+  final List<String> option =
+      items?.map((item) => item.label ?? '').toList() ?? [];
+
   final FixedExtentScrollController scrollController =
       FixedExtentScrollController(initialItem: index.value);
 
@@ -57,12 +40,15 @@ void TedadVahedTabagheh(Function(String) onSelected) async {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              _buildNavigationRow(index, options, scrollController),
+              _buildNavigationRow(index, option, scrollController),
               const SizedBox(height: 130),
               TaeedEnserafNumberPicker(
                 selectedNumber: index.value.toString(),
                 onConfirm: () {
-                  onSelected(options[index.value]);
+                  final selectedItem = items?[index.value];
+                  final selectedKey = selectedItem?.value ?? '';
+                  final selectedLabel = selectedItem?.label ?? '';
+                  onSelected(selectedKey, selectedLabel);
                   Get.back();
                 },
               ),

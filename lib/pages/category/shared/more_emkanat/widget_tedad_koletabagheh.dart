@@ -5,22 +5,22 @@ import 'package:flutter_application_1/services/advertisment_service.dart';
 import 'package:flutter_application_1/services/models/server_model/sale_aparteman_Get/base_list.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 
-void TedadKoleTabagheh(Function(String) onSelected) async {
-  final RxInt index = 2.obs;
-
-  final FixedExtentScrollController scrollController =
-      FixedExtentScrollController(initialItem: index.value);
+void TedadKoleTabagheh(Function(String key, String label) onSelected) async {
+  final RxInt index = 2.obs; // Default index set to "Not Selected"
   final advertisementService = AdvertisementService();
   final Base? baseData = await advertisementService.fetchDataFromServer();
   final Data? roomsData = baseData?.data?.firstWhere(
-    (data) => data.key == "rooms",
+    (data) => data.key == 'total_floors',
     orElse: () => Data(key: "", list: []),
   );
+
   final List<Item>? items = roomsData?.list;
-  final List<String> options =
+  final List<String> labels =
       items?.map((item) => item.label ?? '').toList() ?? [];
+
+  final FixedExtentScrollController scrollController =
+      FixedExtentScrollController(initialItem: index.value);
 
   Get.bottomSheet(
     Container(
@@ -41,12 +41,15 @@ void TedadKoleTabagheh(Function(String) onSelected) async {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              _buildNavigationRow(index, options, scrollController),
+              _buildNavigationRow(index, labels, scrollController),
               const SizedBox(height: 130),
               TaeedEnserafNumberPicker(
                 selectedNumber: index.value.toString(),
                 onConfirm: () {
-                  onSelected(options[index.value]);
+                  final selectedItem = items?[index.value];
+                  final selectedKey = selectedItem?.value ?? '';
+                  final selectedLabel = selectedItem?.label ?? '';
+                  onSelected(selectedKey, selectedLabel);
                   Get.back();
                 },
               ),
@@ -58,7 +61,7 @@ void TedadKoleTabagheh(Function(String) onSelected) async {
   );
 }
 
-Widget _buildNavigationRow(RxInt index, List<String> options,
+Widget _buildNavigationRow(RxInt index, List<String> labels,
     FixedExtentScrollController scrollController) {
   return Row(
     mainAxisAlignment: MainAxisAlignment.center,
@@ -91,7 +94,7 @@ Widget _buildNavigationRow(RxInt index, List<String> options,
               return Center(
                 child: Obx(() {
                   return Text(
-                    options[i],
+                    labels[i],
                     style: TextStyle(
                       fontFamily: MAIN_FONT_FAMILY,
                       fontSize: i == index.value ? 18 : 12,
@@ -107,14 +110,14 @@ Widget _buildNavigationRow(RxInt index, List<String> options,
                 }),
               );
             },
-            childCount: options.length,
+            childCount: labels.length,
           ),
         ),
       ),
       const SizedBox(width: 40),
       GestureDetector(
           onTap: () {
-            if (index.value < options.length - 1) {
+            if (index.value < labels.length - 1) {
               index.value++;
               scrollController.animateToItem(
                 index.value,

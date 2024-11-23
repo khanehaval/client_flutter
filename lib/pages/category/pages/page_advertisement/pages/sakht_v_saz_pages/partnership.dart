@@ -778,9 +778,8 @@ class _PartnerShipState extends State<PartnerShip> {
                             icon:
                                 SvgPicture.asset("assets/images/Vector-20.svg"),
                             onPressed: () {
-                              TedadVahedTabagheh((selectedOption) {
-                                _TedadTabaghatController.text = selectedOption;
-                              });
+                              TedadVahedTabagheh(
+                                  (selectedKey, selectedLabel) {});
                             },
                           ),
                         ),
@@ -808,9 +807,8 @@ class _PartnerShipState extends State<PartnerShip> {
                             icon:
                                 SvgPicture.asset("assets/images/Vector-20.svg"),
                             onPressed: () {
-                              TedadVahedTabagheh((selectedOption) {
-                                _TedadVahedController.text = selectedOption;
-                              });
+                              TedadVahedTabagheh(
+                                  (selectedKey, selectedLabel) {});
                             },
                           ),
                         ),

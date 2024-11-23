@@ -566,8 +566,8 @@ class _ForoshDaftarPageState extends State<ForoshDaftarPage> {
                     label1: "تعداد کل طبقات",
                     label2: "نوع سند",
                     widget1: ReadOnlyTextField(_buildFloorsCountController, () {
-                      TedadKoleTabagheh((selectedOption) {
-                        _buildFloorsCountController.text = selectedOption;
+                      TedadKoleTabagheh((selectedKey, selectedLabel) {
+                        _buildFloorController.text = selectedLabel;
                       });
                     }, width: getPageWidth()),
                     widget2: ReadOnlyTextField(_buildDocumentController, () {
@@ -585,10 +585,7 @@ class _ForoshDaftarPageState extends State<ForoshDaftarPage> {
                         width: getPageWidth()),
                     widget2: ReadOnlyTextField(
                         _buildUnitOfAnyFloorCountController, () {
-                      TedadVahedTabagheh((selectedOption) {
-                        _buildUnitOfAnyFloorCountController.text =
-                            selectedOption;
-                      });
+                      TedadVahedTabagheh((selectedKey, selectedLabel) {});
                     }, width: getPageWidth())),
                 const SizedBox(
                   height: 15,

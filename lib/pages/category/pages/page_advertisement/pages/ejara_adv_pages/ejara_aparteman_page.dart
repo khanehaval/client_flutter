@@ -528,9 +528,7 @@ class _EjaraApartemanPageState extends State<EjaraApartemanPage> {
                         ),
                         prefixIcon:
                             ReadOnlyTextField(_TedadKoleTabaghehController, () {
-                          TedadKoleTabagheh((selectedOption) {
-                            _TedadKoleTabaghehController.text = selectedOption;
-                          });
+                          TedadKoleTabagheh((selectedKey, selectedLabel) {});
                         }),
                       ),
                     )),
@@ -567,9 +565,7 @@ class _EjaraApartemanPageState extends State<EjaraApartemanPage> {
                   widget1: InputTextField(_buildAllFloorsCountController,
                       width: getPageWidth()),
                   widget2: ReadOnlyTextField(_TedadVahedTabaghehController, () {
-                    TedadVahedTabagheh((selectedOption) {
-                      _TedadVahedTabaghehController.text = selectedOption;
-                    });
+                    TedadVahedTabagheh((selectedKey, selectedLabel) {});
                   }, width: getPageWidth())),
               const SizedBox(
                 height: 20,

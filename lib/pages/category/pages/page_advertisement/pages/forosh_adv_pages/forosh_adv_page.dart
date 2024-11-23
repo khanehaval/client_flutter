@@ -546,10 +546,9 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
                 ),
               ),
               ReadOnlyTextField(_buildFloorController, fontSize: 12, () {
-                TedadKoleTabagheh((_) {
-                  _buildFloorController.text = _;
-                  saleApartemanServerModel.floorNumber =
-                      _buildFloorController.text;
+                TedadKoleTabagheh((selectedKey, selectedLabel) {
+                  _buildFloorController.text = selectedLabel;
+                  saleApartemanServerModel.floorNumber = selectedKey;
                 });
               }),
               const SizedBox(
@@ -600,10 +599,9 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
                   label2: "نوع سند",
                   widget1: ReadOnlyTextField(_buildFloorsCountController,
                       fontSize: 12, () {
-                    TedadKoleTabagheh((selectedOption) {
-                      _buildFloorsCountController.text = selectedOption;
-                      saleApartemanServerModel.floorNumber =
-                          _buildFloorsCountController.text;
+                    TedadKoleTabagheh((selectedKey, selectedLabel) {
+                      _buildFloorController.text = selectedLabel;
+                      saleApartemanServerModel.floorNumber = selectedKey;
                     });
                   }, width: getPageWidth()),
                   widget2: ReadOnlyTextField(_buildDocumentController,
@@ -626,10 +624,9 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
                   ),
                   widget2: ReadOnlyTextField(_TedadVahedTabaghehController,
                       fontSize: 12, () {
-                    TedadVahedTabagheh((selectedOption) {
-                      _TedadVahedTabaghehController.text = selectedOption;
-                      saleApartemanServerModel.unitInFloor =
-                          _TedadVahedTabaghehController.text;
+                    TedadVahedTabagheh((selectedKey, selectedLabel) {
+                      _TedadVahedTabaghehController.text = selectedLabel;
+                      saleApartemanServerModel.unitInFloor = selectedKey;
                     });
                   }, width: getPageWidth())),
               const SizedBox(
