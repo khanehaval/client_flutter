@@ -1695,10 +1695,7 @@ Widget Vila(BuildContext context) {
                         prefixIcon: IconButton(
                           icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                           onPressed: () {
-                            TedadOtagh((selectedOption) {
-                              _TedadOtaghVilaSmallTaController.text =
-                                  selectedOption;
-                            });
+                            TedadOtagh((selectedKey, selectedLabel) {});
                           },
                         ),
                       ),
@@ -1751,10 +1748,7 @@ Widget Vila(BuildContext context) {
                         prefixIcon: IconButton(
                           icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                           onPressed: () {
-                            TedadOtagh((selectedOption) {
-                              _TedadOtaghVilaBigTaController.text =
-                                  selectedOption;
-                            });
+                            TedadOtagh((selectedKey, selectedLabel) {});
                           },
                         ),
                       ),

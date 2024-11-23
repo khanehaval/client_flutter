@@ -7,29 +7,21 @@ import 'package:get/get.dart';
 import 'package:flutter_application_1/services/advertisment_service.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-void TedadOtagh(Function(String) onSelected) async {
-  // دریافت داده‌ها از سرور
+void TedadOtagh(Function(String, String) onSelected) async {
   final advertisementService = AdvertisementService();
   final Base? baseData = await advertisementService.fetchDataFromServer();
-
-  // فیلتر کردن داده‌ها بر اساس کلید "rooms"
-  final List<String> options = baseData?.data
-          ?.firstWhere(
-            (data) =>
-                data.key == "rooms", // Use the actual key name for "rooms"
-            orElse: () => Data(list: []),
-          )
-          .list
-          ?.map((item) => item.label ?? '')
-          .toList() ??
-      [];
-  // ['بدون اتاق', '1', '2', '3', '4', 'بیشتر از 4'];
-
   final RxInt selectedIndex = 1.obs;
   final FixedExtentScrollController scrollController =
       FixedExtentScrollController(initialItem: selectedIndex.value);
 
-  // نمایش BottomSheet
+  final Data? roomsData = baseData?.data?.firstWhere(
+    (data) => data.key == "rooms",
+    orElse: () => Data(key: "", list: []),
+  );
+  final List<Item>? items = roomsData?.list;
+  final List<String> options =
+      items?.map((item) => item.label ?? '').toList() ?? [];
+
   Get.bottomSheet(
     Container(
       decoration: const BoxDecoration(
@@ -52,10 +44,15 @@ void TedadOtagh(Function(String) onSelected) async {
               _buildNavigationRow(selectedIndex, options, scrollController),
               const SizedBox(height: 50),
               TaeedEnserafNumberPicker(
-                selectedNumber: options[selectedIndex.value],
+                selectedNumber: options[selectedIndex.value], // نمایش label
                 onConfirm: () {
-                  final selectedOption = options[selectedIndex.value];
-                  onSelected(selectedOption);
+                  final selectedItem =
+                      items?[selectedIndex.value]; // دسترسی به داده‌ها
+                  final selectedKey = selectedItem?.value ?? ''; // گرفتن key
+                  final selectedLabel =
+                      selectedItem?.label ?? ''; // گرفتن label
+
+                  onSelected(selectedKey, selectedLabel); // ارسال key و label
                   Get.back();
                 },
               ),

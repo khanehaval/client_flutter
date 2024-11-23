@@ -7,63 +7,20 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
 void SenBana(Function(String) onSelected) async {
-  // دریافت داده‌ها از سرور
   final advertisementService = AdvertisementService();
   final Base? baseData = await advertisementService.fetchDataFromServer();
-
-  // استخراج لیست گزینه‌ها
-  final List<String> options = baseData?.data
-          ?.firstWhere(
-            (data) => data.key == "ages", // Use the actual key name for "rooms"
-            orElse: () => Data(list: []),
-          )
-          .list
-          ?.map((item) => item.label ?? '')
-          .toList() ??
-      [
-        // '1403',
-        // '1402',
-        // '1401',
-        // '1400',
-        // '1399',
-        // '1398',
-        // '1397',
-        // '1396',
-        // '1395',
-        // '1394',
-        // '1393',
-        // '1392',
-        // '1391',
-        // '1390',
-        // '1389',
-        // '1388',
-        // '1387',
-        // '1386',
-        // '1385',
-        // '1384',
-        // '1383',
-        // '1382',
-        // '1381',
-        // '1380',
-        // '1379',
-        // '1378',
-        // '1377',
-        // '1376',
-        // '1375',
-        // '1374',
-        // '1373',
-        // '1372',
-        // '1371',
-        // '1370',
-        // 'قبل از 1370',
-      ];
-
-  final RxInt selectedIndex = 1.obs; // اندیس پیش‌فرض
-
+  final RxInt selectedIndex = 1.obs;
   final FixedExtentScrollController scrollController =
       FixedExtentScrollController(initialItem: selectedIndex.value);
 
-  // نمایش BottomSheet
+  final Data? roomsData = baseData?.data?.firstWhere(
+    (data) => data.key == "ages",
+    orElse: () => Data(key: "", list: []),
+  );
+  final List<Item>? items = roomsData?.list;
+  final List<String> options =
+      items?.map((item) => item.label ?? '').toList() ?? [];
+
   Get.bottomSheet(
     Container(
       decoration: const BoxDecoration(

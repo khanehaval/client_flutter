@@ -79,9 +79,9 @@ class TedadotaghFilterWidget extends StatelessWidget {
                       children: [
                         IconButton(
                           onPressed: () {
-                            TedadOtagh((selectedText) {
-                              _selectedItemText.value =
-                                  selectedText; // Update selected item
+                            TedadOtagh((selectedKey, selectedLabel) {
+                              _buildRoomsCountController.text =
+                                  selectedLabel; // Set the label as the text in the controller
                             });
                           },
                           icon: SvgPicture.asset(

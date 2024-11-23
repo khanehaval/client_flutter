@@ -33,7 +33,6 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:get_it/get_it.dart';
 import 'package:gradient_icon/gradient_icon.dart';
-
 import '../../../../models/FacilitiesModel.dart';
 
 class ForoshAdvPage extends StatefulWidget {
@@ -46,72 +45,41 @@ class ForoshAdvPage extends StatefulWidget {
 
 class _ForoshAdvPageState extends State<ForoshAdvPage> {
   final _accountRepo = GetIt.I.get<AccountRepo>();
-
   final ImageController imageController = Get.put(ImageController());
   SaleApartemanServerModel saleApartemanServerModel =
       SaleApartemanServerModel();
-
   final aghsatType = "".obs;
-
   final onvan = "".obs;
-
   int selectedIndex = 0;
-
   final submit = false.obs;
-
   final hasAnbari = false.obs;
-
   final hasAsansor = false.obs;
-
   final hasParking = false.obs;
-
   final _onePrice = 0.0.obs;
-
   final _allPriceTextController = TextEditingController();
-
   final _metragTextController = TextEditingController();
   final loanInstallmentAmount = TextEditingController();
   final prepayment = TextEditingController();
   final AdvertisementService _advertisementService = AdvertisementService();
-
-// In the parent widget or controller
   final RxList<String> selectedImagesPath = RxList<String>();
-
   final _facilities = <FacilitiesModel>[].obs;
-
   final _buildDirectionController = TextEditingController();
-
   final _TedadVahedTabaghehController = TextEditingController();
-
   final _buildFloorsCountController = TextEditingController();
-
   final _timeOfInstallmentsController = TextEditingController();
-
-  final _buildDateController = TextEditingController();
-
   final _buildRoomsCountController = TextEditingController();
-
   final _buildDocumentController = TextEditingController();
-
   final _buildFloorController = TextEditingController();
-
   final _buildAllFloorsCountController = TextEditingController();
-
   final _reBuildController = TextEditingController();
-
   final _countOfInstallmentsController = TextEditingController();
-
   final _floorMaterialController = TextEditingController();
-
   final _cabinetController = TextEditingController();
-
   final _coldTypeController = TextEditingController();
   final _SenBanaController = TextEditingController();
-
   final _heatTypeController = TextEditingController();
   final _heatWaterController = TextEditingController();
   final _buttonIsPressed = false.obs;
-
   final _wcController = TextEditingController();
   final ValueNotifier<String> _persianWords = ValueNotifier<String>('');
 
@@ -168,7 +136,6 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
       'نهصد'
     ];
     const thousands = ['', 'هزار', 'میلیون', 'میلیارد'];
-
     String convertBelowThousand(int num) {
       if (num == 0) return '';
       if (num < 10) return ones[num];
@@ -186,7 +153,6 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
 
     String result = '';
     int unit = 0;
-
     while (number > 0) {
       int chunk = number % 1000;
       if (chunk > 0) {
@@ -316,6 +282,7 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
     }
   }
 
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Colors.white,
@@ -540,11 +507,9 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
                   label2: "سن بنا",
                   widget1: ReadOnlyTextField(_buildRoomsCountController,
                       fontSize: 12, () {
-                    TedadOtagh((_) {
-                      _buildRoomsCountController.text = _;
-                      saleApartemanServerModel.room =
-                          _buildRoomsCountController.text;
-                      //
+                    TedadOtagh((selectedKey, selectedLabel) {
+                      _buildRoomsCountController.text = selectedLabel;
+                      saleApartemanServerModel.room = selectedKey;
                     });
                   }, width: getPageWidth()),
                   widget2: ReadOnlyTextField(_SenBanaController, () {

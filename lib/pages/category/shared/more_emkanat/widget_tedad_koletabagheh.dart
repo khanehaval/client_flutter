@@ -8,55 +8,19 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 
 void TedadKoleTabagheh(Function(String) onSelected) async {
-  final RxInt index = 2.obs; // Default index set to "Not Selected"
-  final advertisementService = AdvertisementService();
-  final Base? baseData = await advertisementService.fetchDataFromServer();
-  final List<String> options = baseData?.data
-          ?.firstWhere(
-            (data) =>
-                data.key ==
-                "total_floors", // Use the actual key name for "rooms"
-            orElse: () => Data(list: []),
-          )
-          .list
-          ?.map((item) => item.label ?? '')
-          .toList() ??
-      [];
-  // final List<String> options = [
-  //   '1',
-  //   '2',
-  //   '3',
-  //   '4',
-  //   '5',
-  //   '6',
-  //   '7',
-  //   '8',
-  //   '9',
-  //   '10',
-  //   '11',
-  //   '12',
-  //   '13',
-  //   '14',
-  //   '15',
-  //   '16',
-  //   '17',
-  //   '18',
-  //   '19',
-  //   '20',
-  //   '21',
-  //   '22',
-  //   '23',
-  //   '24',
-  //   '25',
-  //   '26',
-  //   '27',
-  //   '28',
-  //   '29',
-  //   '30',
-  //   'بیشتر از 30',
-  // ];
+  final RxInt index = 2.obs;
+
   final FixedExtentScrollController scrollController =
       FixedExtentScrollController(initialItem: index.value);
+  final advertisementService = AdvertisementService();
+  final Base? baseData = await advertisementService.fetchDataFromServer();
+  final Data? roomsData = baseData?.data?.firstWhere(
+    (data) => data.key == "rooms",
+    orElse: () => Data(key: "", list: []),
+  );
+  final List<Item>? items = roomsData?.list;
+  final List<String> options =
+      items?.map((item) => item.label ?? '').toList() ?? [];
 
   Get.bottomSheet(
     Container(

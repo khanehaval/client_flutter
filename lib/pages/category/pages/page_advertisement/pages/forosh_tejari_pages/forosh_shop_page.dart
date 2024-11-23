@@ -407,8 +407,9 @@ class _SaleShopState extends State<SaleShop> {
                     label1: "تعداد اتاق ",
                     label2: "سن بنا ",
                     widget1: ReadOnlyTextField(_buildRoomsCountController, () {
-                      TedadOtagh((selectedOption) {
-                        _buildRoomsCountController.text = selectedOption;
+                      TedadOtagh((selectedKey, selectedLabel) {
+                        _buildRoomsCountController.text =
+                            selectedLabel; // Set the label as the text in the controller
                       });
                     }, width: getPageWidth()),
                     widget2: ReadOnlyTextField(_buildDateController, () {

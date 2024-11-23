@@ -1000,8 +1000,9 @@ class _PresellState extends State<Presell> {
                   ReadOnlyTextField(
                     _countOfInstallmentsController,
                     () {
-                      TedadOtagh((selectedOption) {
-                        _countOfInstallmentsController.text = selectedOption;
+                      TedadOtagh((selectedKey, selectedLabel) {
+                        _buildRoomsCountController.text =
+                            selectedLabel; // Set the label as the text in the controller
                       });
                     },
                   ),
@@ -1059,8 +1060,9 @@ class _PresellState extends State<Presell> {
                         ),
                       ),
                       widget1: ReadOnlyTextField(_buildFloorController, () {
-                        TedadOtagh((selectedOption) {
-                          _buildFloorController.text = selectedOption;
+                        TedadOtagh((selectedKey, selectedLabel) {
+                          _buildRoomsCountController.text =
+                              selectedLabel; // Set the label as the text in the controller
                         });
                       }, width: getPageWidth())),
                   const SizedBox(
