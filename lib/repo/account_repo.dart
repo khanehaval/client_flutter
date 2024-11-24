@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/db/dao/user_dao.dart';
 import 'package:flutter_application_1/db/entities/user.dart';
@@ -79,15 +80,21 @@ class AccountRepo {
     required SaleApartemanServerModel saleApartemanData,
   }) async {
     try {
-      // Attempt to call the API and save the data
       bool success = await _advetismentService.saveSaleAparteman(
-          saleAparteman: saleApartemanData);
+        saleAparteman: saleApartemanData,
+      );
 
-      // If the response is true (operation successful), return true
       if (success) {
+        Fluttertoast.showToast(
+          msg: "اطلاعات با موفقیت ارسال شد",
+          toastLength: Toast.LENGTH_LONG,
+          gravity: ToastGravity.CENTER,
+          backgroundColor: Colors.green,
+          textColor: Colors.white,
+          fontSize: 16.0,
+        );
         return true; // Successfully saved
       } else {
-        // If the response is false (operation failed), show a failure message
         Fluttertoast.showToast(
           msg: "خطا در ارسال اطلاعات",
           toastLength: Toast.LENGTH_LONG,
@@ -99,7 +106,9 @@ class AccountRepo {
         return false; // Operation failed
       }
     } catch (e) {
-      // If an error occurs, catch it and display an error message
+      if (e is DioError) {
+        print('DioError: ${e.message}');
+      }
       print('Error: $e');
       Fluttertoast.showToast(
         msg: "خطا در ارتباط با سرور",

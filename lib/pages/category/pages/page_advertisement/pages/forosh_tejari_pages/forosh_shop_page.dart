@@ -74,9 +74,11 @@ class _SaleShopState extends State<SaleShop> {
   final _buildDateController = TextEditingController();
 
   final _buildRoomsCountController = TextEditingController();
-  final TextEditingController _SarmayeshController = TextEditingController();
-  final TextEditingController _GarmController = TextEditingController();
-  final TextEditingController _JenskafController = TextEditingController();
+  final TextEditingController _coolingSystemController =
+      TextEditingController();
+  final TextEditingController _heatingSystemController =
+      TextEditingController();
+  final TextEditingController _flooringController = TextEditingController();
   final _reBuildController = TextEditingController();
 
   final _advInfo = AdvInfoModel();
@@ -576,8 +578,9 @@ class _SaleShopState extends State<SaleShop> {
                       prefixIcon: IconButton(
                         icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                         onPressed: () {
-                          BazSazi((selectedOption) {
-                            _reBuildController.text = selectedOption;
+                          BazSazi((selectedKey, selectedLabel) {
+                            _reBuildController.text =
+                                selectedLabel; // ذخیره برچسب در کنترلر
                           });
                         },
                       ),
@@ -648,7 +651,7 @@ class _SaleShopState extends State<SaleShop> {
                     height: 41,
                     width: 372,
                     child: TextField(
-                      controller: _JenskafController,
+                      controller: _flooringController,
                       readOnly: true,
                       textAlign: TextAlign.right,
                       decoration: InputDecoration(
@@ -665,8 +668,8 @@ class _SaleShopState extends State<SaleShop> {
                         prefixIcon: IconButton(
                           icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                           onPressed: () {
-                            JensKaf((selectedOption) {
-                              _JenskafController.text = selectedOption;
+                            JensKaf((selectedKey, selectedLabel) {
+                              _flooringController.text = selectedLabel;
                             });
                           },
                         ),
@@ -683,7 +686,7 @@ class _SaleShopState extends State<SaleShop> {
                       height: 41,
                       width: getPageWidth(),
                       child: TextField(
-                        controller: _GarmController,
+                        controller: _heatingSystemController,
                         readOnly: true,
                         textAlign: TextAlign.right,
                         decoration: InputDecoration(
@@ -701,8 +704,8 @@ class _SaleShopState extends State<SaleShop> {
                               icon: SvgPicture.asset(
                                   "assets/images/Vector-20.svg"),
                               onPressed: () {
-                                Garmayesh((selectedOption) {
-                                  _GarmController.text = selectedOption;
+                                Garmayesh((selectedKey, selectedLabel) {
+                                  _heatingSystemController.text = selectedLabel;
                                 });
                               },
                             )),
@@ -712,7 +715,7 @@ class _SaleShopState extends State<SaleShop> {
                       height: 41,
                       width: getPageWidth(),
                       child: TextField(
-                        controller: _SarmayeshController,
+                        controller: _coolingSystemController,
                         readOnly: true,
                         textAlign: TextAlign.right,
                         decoration: InputDecoration(
@@ -730,8 +733,8 @@ class _SaleShopState extends State<SaleShop> {
                             icon:
                                 SvgPicture.asset("assets/images/Vector-20.svg"),
                             onPressed: () {
-                              Sarmayesh((selectedOption) {
-                                _SarmayeshController.text = selectedOption;
+                              Sarmayesh((selectedKey, selectedLabel) {
+                                _coolingSystemController.text = selectedLabel;
                               });
                             },
                           ),
@@ -888,8 +891,8 @@ Widget onvanWidget(BuildContext context) {
 
 Widget aghsatiForoshWidget(BuildContext context) {
   final isSwitched = true.obs;
-  final _timeOfInstallmentsController = TextEditingController();
-  final _countOfInstallmentsController = TextEditingController();
+  final _timeAghsatController = TextEditingController();
+  final _totalInstallmentsController = TextEditingController();
 
   return Column(
     children: [
@@ -976,16 +979,15 @@ Widget aghsatiForoshWidget(BuildContext context) {
                 TwoItemInRow(
                     label1: "زمان دریافت اقساط",
                     label2: "تعداد اقساط",
-                    widget1:
-                        ReadOnlyTextField(_timeOfInstallmentsController, () {
-                      TimeAghsat((selectedOption) {
-                        _timeOfInstallmentsController.text = selectedOption;
+                    widget1: ReadOnlyTextField(_timeAghsatController, () {
+                      TimeAghsat((selectedKey, selectedLabel) {
+                        _timeAghsatController.text = selectedLabel;
                       });
                     }, width: getPageWidth(), fontSize: 13),
                     widget2:
-                        ReadOnlyTextField(_countOfInstallmentsController, () {
-                      TedadAghsat((selectedOption) {
-                        _countOfInstallmentsController.text = selectedOption;
+                        ReadOnlyTextField(_totalInstallmentsController, () {
+                      TedadAghsat((selectedKey, selectedLabel) {
+                        _totalInstallmentsController.text = selectedLabel;
                       });
                     }, width: getPageWidth())),
                 const SizedBox(

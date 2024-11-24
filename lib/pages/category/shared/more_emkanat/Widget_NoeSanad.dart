@@ -5,31 +5,20 @@ import 'package:flutter_application_1/services/advertisment_service.dart';
 import 'package:flutter_application_1/services/models/server_model/sale_aparteman_Get/base_list.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:gradient_icon/gradient_icon.dart';
 
 void NoeSanad(Function(String) onSelected) async {
-  final RxInt index = 2.obs; // Default index set to "Not Selected"
+  final RxInt index = 2.obs;
   final advertisementService = AdvertisementService();
   final Base? baseData = await advertisementService.fetchDataFromServer();
-  final List<String> options = baseData?.data
-          ?.firstWhere(
-            (data) =>
-                data.key == "doc_types", // Use the actual key name for "rooms"
-            orElse: () => Data(list: []),
-          )
-          .list
-          ?.map((item) => item.label ?? '')
-          .toList() ??
-      [];
-  // final List<String> options = [
-  //   'تکبرگ',
-  //   'قولنامه ای',
-  //   'منگوله دار',
-  //   'سایر',
-  // ];
   final FixedExtentScrollController scrollController =
       FixedExtentScrollController(initialItem: index.value);
+  final Data? doctypes = baseData?.data?.firstWhere(
+    (data) => data.key == "doc_types",
+    orElse: () => Data(key: "", list: []),
+  );
+  final List<Item>? items = doctypes?.list;
+  final List<String> options =
+      items?.map((items) => items.label ?? '').toList() ?? [];
 
   Get.bottomSheet(
     Container(

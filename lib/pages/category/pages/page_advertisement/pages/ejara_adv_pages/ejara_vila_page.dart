@@ -58,7 +58,7 @@ class _EjaraVilaPageState extends State<EjaraVilaPage> {
 
   final _facilities = <FacilitiesModel>[].obs;
 
-  final _buildDirectionController = TextEditingController();
+  final _buildingSideController = TextEditingController();
 
   final _buildDateController = TextEditingController();
 
@@ -69,12 +69,14 @@ class _EjaraVilaPageState extends State<EjaraVilaPage> {
   final _countOfInstallmentsController = TextEditingController();
 
   final _advInfo = AdvInfoModel();
-  final TextEditingController _kabinetController = TextEditingController();
-  final TextEditingController _JenskafController = TextEditingController();
-  final TextEditingController _GarmController = TextEditingController();
-  final TextEditingController _WcController = TextEditingController();
-  final TextEditingController _AbeGarmController = TextEditingController();
-  final TextEditingController _SarmayeshController = TextEditingController();
+  final TextEditingController _cabinetController = TextEditingController();
+  final TextEditingController _flooringController = TextEditingController();
+  final TextEditingController _heatingSystemController =
+      TextEditingController();
+  final TextEditingController _wcController = TextEditingController();
+  final TextEditingController _abeGarmController = TextEditingController();
+  final TextEditingController _coolingSystemController =
+      TextEditingController();
 
   @override
   void initState() {
@@ -505,13 +507,13 @@ class _EjaraVilaPageState extends State<EjaraVilaPage> {
                   label1: "بازسازی",
                   label2: "جهت ساختمان",
                   widget1: ReadOnlyTextField(_reBuildController, () {
-                    BazSazi((selectedOption) {
-                      _reBuildController.text = selectedOption;
+                    BazSazi((selectedKey, selectedLabel) {
+                      _reBuildController.text = selectedLabel;
                     });
                   }, width: getPageWidth(), fontSize: 11),
-                  widget2: ReadOnlyTextField(_buildDirectionController, () {
-                    jahatSakhteman((_) {
-                      _buildDirectionController.text = _;
+                  widget2: ReadOnlyTextField(_buildingSideController, () {
+                    jahatSakhteman((selectedKey, selectedLabel) {
+                      _buildingSideController.text = selectedLabel;
                     });
                   }, width: getPageWidth(), fontSize: 13)),
               const SizedBox(
@@ -544,7 +546,7 @@ class _EjaraVilaPageState extends State<EjaraVilaPage> {
                   height: 41,
                   width: getPageWidth(),
                   child: TextField(
-                    controller: _kabinetController,
+                    controller: _cabinetController,
                     readOnly: true,
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
@@ -560,8 +562,8 @@ class _EjaraVilaPageState extends State<EjaraVilaPage> {
                         prefixIcon: IconButton(
                           icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                           onPressed: () {
-                            Kabinet((selectedOption) {
-                              _kabinetController.text = selectedOption;
+                            Kabinet((selectedKey, selectedLabel) {
+                              _cabinetController.text = selectedLabel;
                             });
                           },
                         )),
@@ -571,7 +573,7 @@ class _EjaraVilaPageState extends State<EjaraVilaPage> {
                   height: 41,
                   width: getPageWidth(),
                   child: TextField(
-                    controller: _JenskafController,
+                    controller: _flooringController,
                     readOnly: true,
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
@@ -587,8 +589,8 @@ class _EjaraVilaPageState extends State<EjaraVilaPage> {
                       prefixIcon: IconButton(
                         icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                         onPressed: () {
-                          JensKaf((selectedOption) {
-                            _JenskafController.text = selectedOption;
+                          JensKaf((selectedKey, selectedLabel) {
+                            _flooringController.text = selectedLabel;
                           });
                         },
                       ),
@@ -606,7 +608,7 @@ class _EjaraVilaPageState extends State<EjaraVilaPage> {
                   height: 41,
                   width: getPageWidth(),
                   child: TextField(
-                    controller: _GarmController,
+                    controller: _heatingSystemController,
                     readOnly: true,
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
@@ -622,8 +624,8 @@ class _EjaraVilaPageState extends State<EjaraVilaPage> {
                       prefixIcon: IconButton(
                         icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                         onPressed: () {
-                          Garmayesh((selectedOption) {
-                            _GarmController.text = selectedOption;
+                          Garmayesh((selectedKey, selectedLabel) {
+                            _heatingSystemController.text = selectedLabel;
                           });
                         },
                       ),
@@ -634,7 +636,7 @@ class _EjaraVilaPageState extends State<EjaraVilaPage> {
                   height: 41,
                   width: getPageWidth(),
                   child: TextField(
-                    controller: _SarmayeshController,
+                    controller: _coolingSystemController,
                     readOnly: true,
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
@@ -650,8 +652,8 @@ class _EjaraVilaPageState extends State<EjaraVilaPage> {
                       prefixIcon: IconButton(
                         icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                         onPressed: () {
-                          Sarmayesh((selectedOption) {
-                            _SarmayeshController.text = selectedOption;
+                          Sarmayesh((selectedKey, selectedLabel) {
+                            _coolingSystemController.text = selectedLabel;
                           });
                         },
                       ),
@@ -669,7 +671,7 @@ class _EjaraVilaPageState extends State<EjaraVilaPage> {
                   height: 41,
                   width: getPageWidth(),
                   child: TextField(
-                    controller: _WcController,
+                    controller: _wcController,
                     readOnly: true,
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
@@ -685,8 +687,8 @@ class _EjaraVilaPageState extends State<EjaraVilaPage> {
                         prefixIcon: IconButton(
                           icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                           onPressed: () {
-                            Wc((selectedOption) {
-                              _WcController.text = selectedOption;
+                            Wc((selectedKey, selectedLabel) {
+                              _wcController.text = selectedLabel;
                             });
                           },
                         )),
@@ -696,7 +698,7 @@ class _EjaraVilaPageState extends State<EjaraVilaPage> {
                   height: 41,
                   width: getPageWidth(),
                   child: TextField(
-                    controller: _AbeGarmController,
+                    controller: _abeGarmController,
                     readOnly: true,
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
@@ -712,8 +714,8 @@ class _EjaraVilaPageState extends State<EjaraVilaPage> {
                       prefixIcon: IconButton(
                         icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                         onPressed: () {
-                          AbeGarm((selectedOption) {
-                            _AbeGarmController.text = selectedOption;
+                          AbeGarm((selectedKey, selectedLabel) {
+                            _abeGarmController.text = selectedLabel;
                           });
                         },
                       ),

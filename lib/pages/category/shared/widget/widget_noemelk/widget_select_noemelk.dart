@@ -6,7 +6,15 @@ import 'package:flutter_application_1/pages/category/shared/widget/taeed.dart';
 import 'package:get/get.dart';
 
 void showSelectNoeMelk(Function(String) onSelected) {
-  String? selectedMelk;
+  String? selectedKey;
+
+  const items = [
+    {"key": "apartment", "label": "آپارتمان"},
+    {"key": "tower", "label": "برج"},
+    {"key": "penthouse", "label": "پنت هاوس"},
+    {"key": "suite", "label": "سوئیت"},
+  ];
+
   Get.bottomSheet(
     Container(
       width: double.infinity,
@@ -15,19 +23,24 @@ void showSelectNoeMelk(Function(String) onSelected) {
           colors: GRADIANT_COLOR,
         ),
         borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(30), topRight: Radius.circular(30)),
+          topLeft: Radius.circular(30),
+          topRight: Radius.circular(30),
+        ),
       ),
       child: Padding(
-        padding: const EdgeInsets.only(top: 1.3, left: 1.3, right: 1.3),
+        padding: const EdgeInsets.all(10.0),
         child: Container(
           decoration: const BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(30), topRight: Radius.circular(30)),
+              topLeft: Radius.circular(30),
+              topRight: Radius.circular(30),
+            ),
           ),
           child: Column(
+            mainAxisSize: MainAxisSize.min,
             children: [
-              const SizedBox(height: 40),
+              const SizedBox(height: 20),
               const Text(
                 "نوع مـلـک شمــا",
                 style: TextStyle(fontFamily: MAIN_FONT_FAMILY, fontSize: 16),
@@ -36,44 +49,37 @@ void showSelectNoeMelk(Function(String) onSelected) {
               const Text(
                 "یک مورد را انتخاب کنید",
                 style: TextStyle(
-                    fontFamily: MAIN_FONT_FAMILY,
-                    fontSize: 12,
-                    color: Color.fromRGBO(156, 64, 64, 1)),
+                  fontFamily: MAIN_FONT_FAMILY,
+                  fontSize: 12,
+                  color: Color.fromRGBO(156, 64, 64, 1),
+                ),
               ),
-              const SizedBox(height: 30),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
+              const SizedBox(height: 20),
+              SwitchItemsLocation(
+                items: items.map((e) => e['label'] as String).toList(),
+                onSelected: (selectedItems) {
+                  if (selectedItems.isNotEmpty) {
+                    final selected = items.firstWhere(
+                      (item) => item['label'] == selectedItems.first,
+                    );
+                    selectedKey = selected['key'];
+                  }
+                },
+              ),
+              const SizedBox(height: 20),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  SwitchItemsLocation(
-                    onSelected: (selectedItems) {
-                      if (selectedItems.isNotEmpty) {
-                        selectedMelk = selectedItems.first;
+                  Enseraf(),
+                  taeed(
+                    onPressed: () {
+                      if (selectedKey != null) {
+                        onSelected(selectedKey!); // ارسال `key`
+                        Get.back();
+                      } else {
+                        Get.snackbar("خطا", "لطفاً یک مورد را انتخاب کنید");
                       }
                     },
-                    items: const [
-                      "آپارتمان",
-                      "برج",
-                      "پنت هاوس",
-                      "سوئیت",
-                    ],
-                  ),
-                  const SizedBox(height: 30),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Enseraf(),
-                      taeed(
-                        onPressed: () {
-                          if (selectedMelk != null) {
-                            onSelected(selectedMelk!);
-                            Get.back();
-                          } else {
-                            Get.snackbar("خطا", "لطفاً یک مورد را انتخاب کنید");
-                          }
-                        },
-                      ),
-                      const SizedBox(width: 10),
-                    ],
                   ),
                 ],
               ),

@@ -6,28 +6,21 @@ import 'package:flutter_application_1/services/models/server_model/sale_apartema
 import 'package:get/get.dart';
 import 'package:gradient_icon/gradient_icon.dart';
 
-void jahatSakhteman(Function(String) onSelected) async {
-  final RxInt index = 2.obs; // Default index set to "Not Selected"
+void jahatSakhteman(Function(String key, String label) onSelected) async {
+  final RxInt index = 2.obs; // Default index
   final advertisementService = AdvertisementService();
   final Base? baseData = await advertisementService.fetchDataFromServer();
-  final List<String> options = baseData?.data
-          ?.firstWhere(
-            (data) =>
-                data.key ==
-                "building_sides", // Use the actual key name for "rooms"
-            orElse: () => Data(list: []),
-          )
-          .list
-          ?.map((item) => item.label ?? '')
-          .toList() ??
-      [];
-  // final List<String> options = [
-  //   "شمالی",
-  //   "جنوبی",
-  //   "شرقی",
-  //   "غربی",
-  //   "انتخاب نشده"
-  // ];
+
+  // استخراج داده‌ها
+  final Data? buildingSidesData = baseData?.data?.firstWhere(
+    (data) => data.key == "building_sides",
+    orElse: () => Data(list: []),
+  );
+  final List<Item>? items = buildingSidesData?.list;
+  final List<String> options =
+      items?.map((item) => item.label ?? '').toList() ?? [];
+
+  // کنترلر اسکرول
   final FixedExtentScrollController scrollController =
       FixedExtentScrollController(initialItem: index.value);
 
@@ -55,7 +48,11 @@ void jahatSakhteman(Function(String) onSelected) async {
               TaeedEnserafNumberPicker(
                 selectedNumber: index.value.toString(),
                 onConfirm: () {
-                  onSelected(options[index.value]);
+                  final selectedItem = items?[index.value];
+                  final selectedKey = selectedItem?.value ?? '';
+                  final selectedLabel = selectedItem?.label ?? '';
+                  onSelected(
+                      selectedKey, selectedLabel); // بازگرداندن کلید و برچسب
                   Get.back();
                 },
               ),

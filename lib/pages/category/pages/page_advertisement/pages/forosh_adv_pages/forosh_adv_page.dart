@@ -33,6 +33,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:get_it/get_it.dart';
 import 'package:gradient_icon/gradient_icon.dart';
+
 import '../../../../models/FacilitiesModel.dart';
 
 class ForoshAdvPage extends StatefulWidget {
@@ -63,22 +64,22 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
   final AdvertisementService _advertisementService = AdvertisementService();
   final RxList<String> selectedImagesPath = RxList<String>();
   final _facilities = <FacilitiesModel>[].obs;
-  final _buildDirectionController = TextEditingController();
+  final _buildingSideController = TextEditingController();
   final _TedadVahedTabaghehController = TextEditingController();
   final _buildFloorsCountController = TextEditingController();
-  final _timeOfInstallmentsController = TextEditingController();
+  final _timeAghsatController = TextEditingController();
   final _buildRoomsCountController = TextEditingController();
   final _buildDocumentController = TextEditingController();
   final _buildFloorController = TextEditingController();
   final _buildAllFloorsCountController = TextEditingController();
   final _reBuildController = TextEditingController();
-  final _countOfInstallmentsController = TextEditingController();
-  final _floorMaterialController = TextEditingController();
+  final _totalInstallmentsController = TextEditingController();
+  final _flooringController = TextEditingController();
   final _cabinetController = TextEditingController();
-  final _coldTypeController = TextEditingController();
+  final _coolingSystemController = TextEditingController();
   final _SenBanaController = TextEditingController();
-  final _heatTypeController = TextEditingController();
-  final _heatWaterController = TextEditingController();
+  final _heatingSystemController = TextEditingController();
+  final _abeGarmController = TextEditingController();
   final _buttonIsPressed = false.obs;
   final _wcController = TextEditingController();
   final ValueNotifier<String> _persianWords = ValueNotifier<String>('');
@@ -222,18 +223,15 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
           textColor: Colors.white,
           fontSize: 16.0,
         );
-        return; // Exit early if the city is not selected
+        return;
       }
 
-      // Disable the button to prevent multiple submissions
       _buttonIsPressed.value = true;
 
       try {
-        // Call the saleAparteman method from the repository
         final success = await _accountRepo.saleAparteman(
             saleApartemanData: saleApartemanServerModel);
 
-        // Handle success or failure after the request
         if (success) {
           Fluttertoast.showToast(
             msg: "اطلاعات با موفقیت ارسال شد",
@@ -254,7 +252,6 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
           );
         }
       } catch (e) {
-        // Catch any error that occurs during the request
         Fluttertoast.showToast(
           msg: "خطا در ارتباط با سرور",
           toastLength: Toast.LENGTH_LONG,
@@ -263,14 +260,11 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
           textColor: Colors.white,
           fontSize: 16.0,
         );
-        print(
-            "Error during advertisement submission: $e"); // Log the error for debugging
+        print("Error during advertisement submission: $e");
       } finally {
-        // Regardless of success or failure, re-enable the button
         _buttonIsPressed.value = false;
       }
     } else {
-      // Show message if all required fields are not filled
       Fluttertoast.showToast(
         msg: "لطفا همه فیلدهای دارای * را پر کنید",
         toastLength: Toast.LENGTH_LONG,
@@ -402,9 +396,7 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
                       borderRadius: BorderRadius.circular(10),
                       border: Border.all(
                           width: 1, //
-                          color: Theme.of(context)
-                              .hintColor //  <--- border width here
-                          ),
+                          color: Theme.of(context).hintColor),
                     ),
                     height: 41,
                     width: getPageWidth(),
@@ -638,21 +630,23 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
                   widget1: ReadOnlyTextField(
                     _reBuildController,
                     () {
-                      BazSazi((selectedOption) {
-                        _reBuildController.text = selectedOption;
+                      BazSazi((selectedKey, selectedLabel) {
+                        _reBuildController.text =
+                            selectedLabel; // ذخیره برچسب در کنترلر
                         saleApartemanServerModel.reconstruct =
-                            _reBuildController.text;
+                            selectedKey; // ذخیره کلید در مدل
                       });
                     },
                     width: getPageWidth(),
                     fontSize: 11,
                   ),
-                  widget2: ReadOnlyTextField(_buildDirectionController,
+                  widget2: ReadOnlyTextField(_buildingSideController,
                       fontSize: 12, () {
-                    jahatSakhteman((selectedOption) {
-                      _buildDirectionController.text = selectedOption;
+                    jahatSakhteman((selectedKey, selectedLabel) {
+                      _buildingSideController.text =
+                          selectedLabel; // نمایش برچسب در کنترلر
                       saleApartemanServerModel.buildingSide =
-                          _buildDirectionController.text;
+                          selectedKey; // ذخیره کلید در مدل
                     });
                   }, width: getPageWidth())),
               const SizedBox(
@@ -683,18 +677,16 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
                 label2: "جنس کف",
                 widget1:
                     ReadOnlyTextField(_cabinetController, fontSize: 12, () {
-                  Kabinet((selectedOption) {
-                    _cabinetController.text = selectedOption;
-                    saleApartemanServerModel.cabinetType =
-                        _cabinetController.text;
+                  Kabinet((selectedKey, selectedLabel) {
+                    _cabinetController.text = selectedLabel;
+                    saleApartemanServerModel.cabinetType = selectedKey;
                   });
                 }, width: getPageWidth()),
-                widget2: ReadOnlyTextField(_floorMaterialController,
-                    fontSize: 12, () {
-                  JensKaf((selectedOption) {
-                    _floorMaterialController.text = selectedOption;
-                    saleApartemanServerModel.flooringMaterialType =
-                        _floorMaterialController.text;
+                widget2:
+                    ReadOnlyTextField(_flooringController, fontSize: 12, () {
+                  JensKaf((selectedKey, selectedLabel) {
+                    _flooringController.text = selectedLabel;
+                    saleApartemanServerModel.flooringMaterialType = selectedKey;
                   });
                 }, width: getPageWidth()),
               ),
@@ -704,20 +696,22 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
               TwoItemInRow(
                 label1: "نوع سیستم گرمایش",
                 label2: "نوع سیستم سرمایش",
-                widget1:
-                    ReadOnlyTextField(_heatTypeController, fontSize: 12, () {
-                  Garmayesh((selectedOption) {
-                    _heatTypeController.text = selectedOption;
+                widget1: ReadOnlyTextField(_heatingSystemController,
+                    fontSize: 12, () {
+                  Garmayesh((selectedKey, selectedLabel) {
+                    _heatingSystemController.text =
+                        selectedLabel; // ذخیره برچسب در کنترلر
                     saleApartemanServerModel.heatingSystemType =
-                        _heatTypeController.text;
+                        selectedKey; // ذخیره کلید در مدل
                   });
                 }, width: getPageWidth()),
-                widget2:
-                    ReadOnlyTextField(_coldTypeController, fontSize: 12, () {
-                  Sarmayesh((selectedOption) {
-                    _coldTypeController.text = selectedOption;
+                widget2: ReadOnlyTextField(_coolingSystemController,
+                    fontSize: 12, () {
+                  Sarmayesh((selectedKey, selectedLabel) {
+                    _coolingSystemController.text =
+                        selectedLabel; // ذخیره برچسب در کنترلر
                     saleApartemanServerModel.coolingSystemType =
-                        _coldTypeController.text;
+                        selectedKey; // ذخیره کلید در مدل
                   });
                 }, width: getPageWidth()),
               ),
@@ -728,17 +722,17 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
                   label1: "سرویس بهداشتی",
                   label2: "تامین کننده آب گرم",
                   widget1: ReadOnlyTextField(_wcController, fontSize: 12, () {
-                    Wc((selectedOption) {
-                      _wcController.text = selectedOption;
-                      saleApartemanServerModel.wc = _wcController.text;
+                    Wc((selectedKey, selectedLabel) {
+                      _wcController.text = selectedLabel;
+                      saleApartemanServerModel.wc = selectedKey;
                     });
                   }, width: getPageWidth()),
                   widget2:
-                      ReadOnlyTextField(_heatWaterController, fontSize: 12, () {
-                    AbeGarm((selectedOption) {
-                      _heatWaterController.text = selectedOption;
+                      ReadOnlyTextField(_abeGarmController, fontSize: 12, () {
+                    AbeGarm((selectedKey, selectedLabel) {
+                      _abeGarmController.text = selectedLabel;
                       saleApartemanServerModel.heatWaterSystemType =
-                          _heatWaterController.text;
+                          selectedKey;
                     });
                   }, width: getPageWidth())),
               const SizedBox(
@@ -1025,20 +1019,19 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
                   TwoItemInRow(
                       label1: "زمان دریافت اقساط",
                       label2: "تعداد اقساط",
-                      widget1:
-                          ReadOnlyTextField(_timeOfInstallmentsController, () {
-                        TimeAghsat((selectedOption) {
-                          _timeOfInstallmentsController.text = selectedOption;
+                      widget1: ReadOnlyTextField(_timeAghsatController, () {
+                        TimeAghsat((selectedKey, selectedLabel) {
+                          _timeAghsatController.text = selectedLabel;
                           saleApartemanServerModel.installmentPaybackTime =
-                              selectedOption;
+                              selectedKey;
                         });
                       }, width: getPageWidth(), fontSize: 13),
                       widget2:
-                          ReadOnlyTextField(_countOfInstallmentsController, () {
-                        TedadAghsat((selectedOption) {
-                          _countOfInstallmentsController.text = selectedOption;
+                          ReadOnlyTextField(_totalInstallmentsController, () {
+                        TedadAghsat((selectedKey, selectedLabel) {
+                          _totalInstallmentsController.text = selectedLabel;
                           saleApartemanServerModel.installmentNumber =
-                              selectedOption;
+                              selectedKey;
                         });
                       }, width: getPageWidth())),
                   const SizedBox(
@@ -1072,7 +1065,7 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
 }
 
 Widget melkByVamBanki(BuildContext context) {
-  final _countOfInstallmentsController = TextEditingController();
+  final _totalInstallmentsController = TextEditingController();
   SaleApartemanServerModel saleApartemanServerModel =
       SaleApartemanServerModel();
 
@@ -1223,11 +1216,12 @@ Widget melkByVamBanki(BuildContext context) {
                         borderRadius: BorderRadius.circular(10),
                       ),
                       prefixIcon: ReadOnlyTextField(
-                        _countOfInstallmentsController,
+                        _totalInstallmentsController,
                         () {
-                          TedadAghsat((selectedOption) {
-                            _countOfInstallmentsController.text =
-                                selectedOption;
+                          TedadAghsat((selectedKey, selectedLabel) {
+                            _totalInstallmentsController.text = selectedLabel;
+                            saleApartemanServerModel.installmentNumber =
+                                selectedKey;
                           });
                         },
                       ),

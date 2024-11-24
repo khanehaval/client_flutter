@@ -78,7 +78,7 @@ class JahatSakhtemanFilterWidget extends StatelessWidget {
                     onPressed: () {
                       jahatSakhteman((selectedOption) {
                         _selectedOptionlow.value = selectedOption;
-                      });
+                      } as Function(String key, String label));
                     },
                     icon: SvgPicture.asset(
                       "assets/images/arrow_down.svg",

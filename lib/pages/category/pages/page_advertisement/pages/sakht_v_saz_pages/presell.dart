@@ -64,7 +64,7 @@ class _PresellState extends State<Presell> {
 
   final _buildDirectionController = TextEditingController();
 
-  final _timeToReceiveInstallmentsController = TextEditingController();
+  final _timeAghsatController = TextEditingController();
 
   final _buildFloorsCountController = TextEditingController();
 
@@ -80,7 +80,7 @@ class _PresellState extends State<Presell> {
 
   final _metragTextController = TextEditingController();
 
-  final _countController = TextEditingController();
+  final _totalInstallmentsController = TextEditingController();
 
   final _buildStepController = TextEditingController();
   final _tedadTypeController = TextEditingController();
@@ -694,17 +694,15 @@ class _PresellState extends State<Presell> {
                   TwoItemInRow(
                       label1: "زمان دریافت اقساط",
                       label2: "تعداد اقساط",
-                      widget1: ReadOnlyTextField(
-                          _timeToReceiveInstallmentsController, () {
-                        TimeAghsat((selectedOption) {
-                          _timeToReceiveInstallmentsController.text =
-                              selectedOption;
+                      widget1: ReadOnlyTextField(_timeAghsatController, () {
+                        TimeAghsat((selectedKey, selectedLabel) {
+                          _timeAghsatController.text = selectedLabel;
                         });
                       }, width: getPageWidth(), fontSize: 13),
                       widget2: ReadOnlyTextField(
                           _numberOfInstallmentsController, () {
-                        TedadAghsat((selectedOption) {
-                          _numberOfInstallmentsController.text = selectedOption;
+                        TedadAghsat((selectedKey, selectedLabel) {
+                          _totalInstallmentsController.text = selectedLabel;
                         });
                       }, width: getPageWidth(), fontSize: 13)),
                   const SizedBox(
@@ -813,9 +811,9 @@ class _PresellState extends State<Presell> {
                       textAlign: TextAlign.start,
                     ),
                   ),
-                  ReadOnlyTextField(_countController, () {
-                    TedadAghsat((selectedOption) {
-                      _countController.text = selectedOption;
+                  ReadOnlyTextField(_totalInstallmentsController, () {
+                    TedadAghsat((selectedKey, selectedLabel) {
+                      _totalInstallmentsController.text = selectedLabel;
                     });
                   }),
                   const SizedBox(

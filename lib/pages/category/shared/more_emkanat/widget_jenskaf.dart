@@ -6,31 +6,21 @@ import 'package:flutter_application_1/services/models/server_model/sale_apartema
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
-void JensKaf(Function(String) onSelected) async {
-  final RxInt index = 2.obs; // Default index set to "Not Selected"
+void JensKaf(Function(String key, String label) onSelected) async {
+  final RxInt index = 2.obs; // Default index
   final advertisementService = AdvertisementService();
   final Base? baseData = await advertisementService.fetchDataFromServer();
-  final List<String> options = baseData?.data
-          ?.firstWhere(
-            (data) =>
-                data.key ==
-                "flooring_material", // Use the actual key name for "rooms"
-            orElse: () => Data(list: []),
-          )
-          .list
-          ?.map((item) => item.label ?? '')
-          .toList() ??
-      [];
-  // final List<String> options = [
-  //   'سرامیک',
-  //   'پارکت چوب',
-  //   'پارکت لمینت',
-  //   'سنگ',
-  //   'کف‌پوش PVC',
-  //   'موکت',
-  //   'موزائیک',
-  //   'انتخاب نشده',
-  // ];
+
+  // استخراج داده‌ها
+  final Data? flooringData = baseData?.data?.firstWhere(
+    (data) => data.key == "flooring_material",
+    orElse: () => Data(list: []),
+  );
+  final List<Item>? items = flooringData?.list;
+  final List<String> options =
+      items?.map((item) => item.label ?? '').toList() ?? [];
+
+  // کنترلر اسکرول
   final FixedExtentScrollController scrollController =
       FixedExtentScrollController(initialItem: index.value);
 
@@ -58,7 +48,12 @@ void JensKaf(Function(String) onSelected) async {
               TaeedEnserafNumberPicker(
                 selectedNumber: index.value.toString(),
                 onConfirm: () {
-                  onSelected(options[index.value]);
+                  final selectedItem = items?[index.value];
+                  final selectedKey =
+                      selectedItem?.value ?? ''; // کلید انتخاب‌شده
+                  final selectedLabel =
+                      selectedItem?.label ?? ''; // برچسب انتخاب‌شده
+                  onSelected(selectedKey, selectedLabel); // بازگرداندن مقادیر
                   Get.back();
                 },
               ),

@@ -10,12 +10,12 @@ void TedadKoleTabagheh(Function(String key, String label) onSelected) async {
   final RxInt index = 2.obs; // Default index set to "Not Selected"
   final advertisementService = AdvertisementService();
   final Base? baseData = await advertisementService.fetchDataFromServer();
-  final Data? roomsData = baseData?.data?.firstWhere(
+  final Data? totalFloors = baseData?.data?.firstWhere(
     (data) => data.key == 'total_floors',
     orElse: () => Data(key: "", list: []),
   );
 
-  final List<Item>? items = roomsData?.list;
+  final List<Item>? items = totalFloors?.list;
   final List<String> labels =
       items?.map((item) => item.label ?? '').toList() ?? [];
 

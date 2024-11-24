@@ -62,9 +62,11 @@ class _EjaraShopPageState extends State<EjaraShopPage> {
   final _buildDateController = TextEditingController();
 
   final _buildRoomsCountController = TextEditingController();
-  final _JensKafCountController = TextEditingController();
-  final TextEditingController _GarmController = TextEditingController();
-  final TextEditingController _SarmayeshController = TextEditingController();
+  final _flooringController = TextEditingController();
+  final TextEditingController _heatingSystemController =
+      TextEditingController();
+  final TextEditingController _coolingSystemController =
+      TextEditingController();
   final submit = false.obs;
 
   final _advInfo = AdvInfoModel();
@@ -403,7 +405,7 @@ class _EjaraShopPageState extends State<EjaraShopPage> {
                 height: 41,
                 width: 372,
                 child: TextField(
-                  controller: _JensKafCountController,
+                  controller: _flooringController,
                   readOnly: true,
                   textAlign: TextAlign.right,
                   decoration: InputDecoration(
@@ -420,8 +422,8 @@ class _EjaraShopPageState extends State<EjaraShopPage> {
                     prefixIcon: IconButton(
                       icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                       onPressed: () {
-                        JensKaf((selectedOption) {
-                          _JensKafCountController.text = selectedOption;
+                        JensKaf((selectedKey, selectedLabel) {
+                          _flooringController.text = selectedLabel;
                         });
                       },
                     ),
@@ -438,7 +440,7 @@ class _EjaraShopPageState extends State<EjaraShopPage> {
                   height: 41,
                   width: getPageWidth(),
                   child: TextField(
-                    controller: _GarmController,
+                    controller: _heatingSystemController,
                     readOnly: true,
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
@@ -455,8 +457,8 @@ class _EjaraShopPageState extends State<EjaraShopPage> {
                       prefixIcon: IconButton(
                         icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                         onPressed: () {
-                          Garmayesh((selectedOption) {
-                            _GarmController.text = selectedOption;
+                          Garmayesh((selectedKey, selectedLabel) {
+                            _heatingSystemController.text = selectedLabel;
                           });
                         },
                       ),
@@ -467,12 +469,12 @@ class _EjaraShopPageState extends State<EjaraShopPage> {
                   height: 41,
                   width: getPageWidth(),
                   child: TextField(
-                    controller: _SarmayeshController,
+                    controller: _coolingSystemController,
                     readOnly: true,
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
                       hintText: 'انتخاب نشده',
-                      hintStyle: TextStyle(
+                      hintStyle: const TextStyle(
                         fontSize: 13,
                         fontFamily: 'Iran Sans',
                         fontWeight: FontWeight.w400,
@@ -484,8 +486,8 @@ class _EjaraShopPageState extends State<EjaraShopPage> {
                       prefixIcon: IconButton(
                         icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                         onPressed: () {
-                          Sarmayesh((selectedOption) {
-                            _SarmayeshController.text = selectedOption;
+                          Sarmayesh((selectedKey, selectedLabel) {
+                            _coolingSystemController.text = selectedLabel;
                           });
                         },
                       ),

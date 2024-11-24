@@ -68,11 +68,13 @@ class _ForoshSanatiPageState extends State<ForoshSanatiPage> {
 
   final _buildRoomsCountController = TextEditingController();
 
-  final TextEditingController _SarmayeshController = TextEditingController();
-  final TextEditingController _GarmController = TextEditingController();
-  final TextEditingController _JenskafController = TextEditingController();
+  final TextEditingController _coolingSystemController =
+      TextEditingController();
+  final TextEditingController _heatingSystemController =
+      TextEditingController();
+  final TextEditingController _flooringController = TextEditingController();
   final TextEditingController _JensDivarehController = TextEditingController();
-  final TextEditingController _AbeGarmController = TextEditingController();
+  final TextEditingController _abeGarmController = TextEditingController();
 
   final _advInfo = AdvInfoModel();
   final ValueNotifier<String> _persianWords = ValueNotifier<String>('');
@@ -518,7 +520,7 @@ class _ForoshSanatiPageState extends State<ForoshSanatiPage> {
                   height: 41,
                   width: getPageWidth(),
                   child: TextField(
-                    controller: _JenskafController,
+                    controller: _flooringController,
                     readOnly: true,
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
@@ -535,8 +537,8 @@ class _ForoshSanatiPageState extends State<ForoshSanatiPage> {
                       prefixIcon: IconButton(
                         icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                         onPressed: () {
-                          JensKaf((selectedOption) {
-                            _JenskafController.text = selectedOption;
+                          JensKaf((selectedKey, selectedLabel) {
+                            _flooringController.text = selectedLabel;
                           });
                         },
                       ),
@@ -554,7 +556,7 @@ class _ForoshSanatiPageState extends State<ForoshSanatiPage> {
                   height: 41,
                   width: getPageWidth(),
                   child: TextField(
-                    controller: _GarmController,
+                    controller: _heatingSystemController,
                     readOnly: true,
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
@@ -571,8 +573,8 @@ class _ForoshSanatiPageState extends State<ForoshSanatiPage> {
                       prefixIcon: IconButton(
                         icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                         onPressed: () {
-                          Garmayesh((selectedOption) {
-                            _GarmController.text = selectedOption;
+                          Garmayesh((selectedKey, selectedLabel) {
+                            _heatingSystemController.text = selectedLabel;
                           });
                         },
                       ),
@@ -583,7 +585,7 @@ class _ForoshSanatiPageState extends State<ForoshSanatiPage> {
                   height: 41,
                   width: getPageWidth(),
                   child: TextField(
-                    controller: _SarmayeshController,
+                    controller: _coolingSystemController,
                     readOnly: true,
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
@@ -600,8 +602,8 @@ class _ForoshSanatiPageState extends State<ForoshSanatiPage> {
                       prefixIcon: IconButton(
                         icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                         onPressed: () {
-                          Sarmayesh((selectedOption) {
-                            _SarmayeshController.text = selectedOption;
+                          Sarmayesh((selectedKey, selectedLabel) {
+                            _coolingSystemController.text = selectedLabel;
                           });
                         },
                       ),
@@ -630,7 +632,7 @@ class _ForoshSanatiPageState extends State<ForoshSanatiPage> {
                 height: 41,
                 width: 372,
                 child: TextField(
-                  controller: _AbeGarmController,
+                  controller: _abeGarmController,
                   readOnly: true,
                   textAlign: TextAlign.right,
                   decoration: InputDecoration(
@@ -647,8 +649,8 @@ class _ForoshSanatiPageState extends State<ForoshSanatiPage> {
                     prefixIcon: IconButton(
                       icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                       onPressed: () {
-                        AbeGarm((selectedOption) {
-                          _AbeGarmController.text = selectedOption;
+                        AbeGarm((selectedKey, selectedLabel) {
+                          _abeGarmController.text = selectedLabel;
                         });
                       },
                     ),

@@ -72,13 +72,13 @@ class _ForoshDaftarPageState extends State<ForoshDaftarPage> {
 
   final _selectedImagesPath = [].obs;
 
-  final _buildDirectionController = TextEditingController();
+  final _buildingSideController = TextEditingController();
 
   final _buildUnitOfAnyFloorCountController = TextEditingController();
 
   final _buildFloorsCountController = TextEditingController();
 
-  final _timeOfInstallmentsController = TextEditingController();
+  final _timeAghsatController = TextEditingController();
   final _timeOfInstallments_vamBankiController = TextEditingController();
 
   final _buildDateController = TextEditingController();
@@ -90,15 +90,17 @@ class _ForoshDaftarPageState extends State<ForoshDaftarPage> {
   final _buildFloorController = TextEditingController();
   final _buildAllFloorsCountController = TextEditingController();
   final _reBuildController = TextEditingController();
-  final _countOfInstallmentsController = TextEditingController();
+  final _totalInstallmentsController = TextEditingController();
   final _countOfInstallmentsVamBankiController = TextEditingController();
-  final _tedadaghsat_month_VamBankiController = TextEditingController();
-  final TextEditingController _SarmayeshController = TextEditingController();
-  final TextEditingController _GarmController = TextEditingController();
-  final TextEditingController _JenskafController = TextEditingController();
-  final TextEditingController _kabinetController = TextEditingController();
-  final TextEditingController _WcController = TextEditingController();
-  final TextEditingController _AbeGarmController = TextEditingController();
+  final _countOfInstallmentsController = TextEditingController();
+  final TextEditingController _coolingSystemController =
+      TextEditingController();
+  final TextEditingController _heatingSystemController =
+      TextEditingController();
+  final TextEditingController _flooringController = TextEditingController();
+  final TextEditingController _cabinetController = TextEditingController();
+  final TextEditingController _wcController = TextEditingController();
+  final TextEditingController _abeGarmController = TextEditingController();
 
   final _advInfo = AdvInfoModel();
   final ValueNotifier<String> _persianWords = ValueNotifier<String>('');
@@ -594,13 +596,13 @@ class _ForoshDaftarPageState extends State<ForoshDaftarPage> {
                     label1: "بازسازی",
                     label2: "جهت ساختمان",
                     widget1: ReadOnlyTextField(_reBuildController, () {
-                      BazSazi((selectedOption) {
-                        _reBuildController.text = selectedOption;
+                      BazSazi((selectedKey, selectedLabel) {
+                        _reBuildController.text = selectedLabel;
                       });
                     }, width: getPageWidth()),
-                    widget2: ReadOnlyTextField(_buildDirectionController, () {
-                      jahatSakhteman((selectedOption) {
-                        _buildDirectionController.text = selectedOption;
+                    widget2: ReadOnlyTextField(_buildingSideController, () {
+                      jahatSakhteman((selectedKey, selectedLabel) {
+                        _buildingSideController.text = selectedLabel;
                       });
                     }, width: getPageWidth())),
                 const SizedBox(
@@ -650,7 +652,7 @@ class _ForoshDaftarPageState extends State<ForoshDaftarPage> {
                       height: 41,
                       width: getPageWidth(),
                       child: TextField(
-                        controller: _kabinetController,
+                        controller: _cabinetController,
                         readOnly: true,
                         textAlign: TextAlign.right,
                         decoration: InputDecoration(
@@ -667,8 +669,9 @@ class _ForoshDaftarPageState extends State<ForoshDaftarPage> {
                               icon: SvgPicture.asset(
                                   "assets/images/Vector-20.svg"),
                               onPressed: () {
-                                Kabinet((selectedOption) {
-                                  _kabinetController.text = selectedOption;
+                                Kabinet((selectedKey, selectedLabel) {
+                                  _cabinetController.text =
+                                      selectedLabel; // نمایش برچسب در کنترلر
                                 });
                               },
                             )),
@@ -678,7 +681,7 @@ class _ForoshDaftarPageState extends State<ForoshDaftarPage> {
                       height: 41,
                       width: getPageWidth(),
                       child: TextField(
-                        controller: _JenskafController,
+                        controller: _flooringController,
                         readOnly: true,
                         textAlign: TextAlign.right,
                         decoration: InputDecoration(
@@ -695,8 +698,8 @@ class _ForoshDaftarPageState extends State<ForoshDaftarPage> {
                             icon:
                                 SvgPicture.asset("assets/images/Vector-20.svg"),
                             onPressed: () {
-                              JensKaf((selectedOption) {
-                                _JenskafController.text = selectedOption;
+                              JensKaf((selectedKey, selectedLabel) {
+                                _flooringController.text = selectedLabel;
                               });
                             },
                           ),
@@ -714,7 +717,7 @@ class _ForoshDaftarPageState extends State<ForoshDaftarPage> {
                       height: 41,
                       width: getPageWidth(),
                       child: TextField(
-                        controller: _GarmController,
+                        controller: _heatingSystemController,
                         readOnly: true,
                         textAlign: TextAlign.right,
                         decoration: InputDecoration(
@@ -731,8 +734,8 @@ class _ForoshDaftarPageState extends State<ForoshDaftarPage> {
                             icon:
                                 SvgPicture.asset("assets/images/Vector-20.svg"),
                             onPressed: () {
-                              Garmayesh((selectedOption) {
-                                _GarmController.text = selectedOption;
+                              Garmayesh((selectedKey, selectedLabel) {
+                                _heatingSystemController.text = selectedLabel;
                               });
                             },
                           ),
@@ -743,7 +746,7 @@ class _ForoshDaftarPageState extends State<ForoshDaftarPage> {
                       height: 41,
                       width: getPageWidth(),
                       child: TextField(
-                        controller: _SarmayeshController,
+                        controller: _coolingSystemController,
                         readOnly: true,
                         textAlign: TextAlign.right,
                         decoration: InputDecoration(
@@ -760,8 +763,8 @@ class _ForoshDaftarPageState extends State<ForoshDaftarPage> {
                             icon:
                                 SvgPicture.asset("assets/images/Vector-20.svg"),
                             onPressed: () {
-                              Sarmayesh((selectedOption) {
-                                _SarmayeshController.text = selectedOption;
+                              Sarmayesh((selectedKey, selectedLabel) {
+                                _coolingSystemController.text = selectedLabel;
                               });
                             },
                           ),
@@ -779,7 +782,7 @@ class _ForoshDaftarPageState extends State<ForoshDaftarPage> {
                       height: 41,
                       width: getPageWidth(),
                       child: TextField(
-                        controller: _WcController,
+                        controller: _wcController,
                         readOnly: true,
                         textAlign: TextAlign.right,
                         decoration: InputDecoration(
@@ -796,8 +799,8 @@ class _ForoshDaftarPageState extends State<ForoshDaftarPage> {
                               icon: SvgPicture.asset(
                                   "assets/images/Vector-20.svg"),
                               onPressed: () {
-                                Wc((selectedOption) {
-                                  _WcController.text = selectedOption;
+                                Wc((selectedKey, selectedLabel) {
+                                  _wcController.text = selectedLabel;
                                 });
                               },
                             )),
@@ -807,7 +810,7 @@ class _ForoshDaftarPageState extends State<ForoshDaftarPage> {
                       height: 41,
                       width: getPageWidth(),
                       child: TextField(
-                        controller: _AbeGarmController,
+                        controller: _abeGarmController,
                         readOnly: true,
                         textAlign: TextAlign.right,
                         decoration: InputDecoration(
@@ -824,8 +827,8 @@ class _ForoshDaftarPageState extends State<ForoshDaftarPage> {
                             icon:
                                 SvgPicture.asset("assets/images/Vector-20.svg"),
                             onPressed: () {
-                              AbeGarm((selectedOption) {
-                                _AbeGarmController.text = selectedOption;
+                              AbeGarm((selectedKey, selectedLabel) {
+                                _abeGarmController.text = selectedLabel;
                               });
                             },
                           ),
@@ -1085,16 +1088,15 @@ class _ForoshDaftarPageState extends State<ForoshDaftarPage> {
                   TwoItemInRow(
                       label1: "زمان دریافت اقساط",
                       label2: "تعداد اقساط",
-                      widget1:
-                          ReadOnlyTextField(_timeOfInstallmentsController, () {
-                        TimeAghsat((selectedOption) {
-                          _timeOfInstallmentsController.text = selectedOption;
+                      widget1: ReadOnlyTextField(_timeAghsatController, () {
+                        TimeAghsat((selectedKey, selectedLabel) {
+                          _timeAghsatController.text = selectedLabel;
                         });
                       }, width: getPageWidth(), fontSize: 13),
                       widget2:
-                          ReadOnlyTextField(_countOfInstallmentsController, () {
-                        TedadAghsat((selectedOption) {
-                          _countOfInstallmentsController.text = selectedOption;
+                          ReadOnlyTextField(_totalInstallmentsController, () {
+                        TedadAghsat((selectedKey, selectedLabel) {
+                          _totalInstallmentsController.text = selectedLabel;
                         });
                       }, width: getPageWidth())),
                   const SizedBox(
@@ -1234,9 +1236,8 @@ class _ForoshDaftarPageState extends State<ForoshDaftarPage> {
                               icon: SvgPicture.asset(
                                   "assets/images/Vector-20.svg"),
                               onPressed: () {
-                                TimeAghsat((selectedOption) {
-                                  _timeOfInstallments_vamBankiController.text =
-                                      selectedOption;
+                                TimeAghsat((selectedKey, selectedLabel) {
+                                  _timeAghsatController.text = selectedLabel;
                                 });
                               },
                             ),
@@ -1262,9 +1263,9 @@ class _ForoshDaftarPageState extends State<ForoshDaftarPage> {
                               icon: SvgPicture.asset(
                                   "assets/images/Vector-20.svg"),
                               onPressed: () {
-                                TedadAghsat((selectedOption) {
-                                  _countOfInstallmentsVamBankiController.text =
-                                      selectedOption;
+                                TedadAghsat((selectedKey, selectedLabel) {
+                                  _totalInstallmentsController.text =
+                                      selectedLabel;
                                 });
                               },
                             ),
@@ -1286,7 +1287,7 @@ class _ForoshDaftarPageState extends State<ForoshDaftarPage> {
                   SizedBox(
                     height: 41,
                     child: TextField(
-                      controller: _tedadaghsat_month_VamBankiController,
+                      controller: _totalInstallmentsController,
                       textAlign: TextAlign.right,
                       decoration: InputDecoration(
                         hintText: 'انتخاب نشده',
@@ -1298,9 +1299,8 @@ class _ForoshDaftarPageState extends State<ForoshDaftarPage> {
                         prefixIcon: IconButton(
                           icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                           onPressed: () {
-                            TedadAghsat((selectedOption) {
-                              _tedadaghsat_month_VamBankiController.text =
-                                  selectedOption;
+                            TedadAghsat((selectedKey, selectedLabel) {
+                              _totalInstallmentsController.text = selectedLabel;
                             });
                           },
                         ),

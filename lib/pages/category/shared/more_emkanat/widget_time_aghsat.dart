@@ -8,28 +8,21 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:gradient_icon/gradient_icon.dart';
 
-void TimeAghsat(Function(String) onSelected) async {
+void TimeAghsat(Function(String key, String label) onSelected) async {
   final RxInt index = 1.obs; // Default index set to "Not Selected"
   final advertisementService = AdvertisementService();
   final Base? baseData = await advertisementService.fetchDataFromServer();
-  final List<String> options = baseData?.data
-          ?.firstWhere(
-            (data) =>
-                data.key ==
-                "installment_payback", // Use the actual key name for "rooms"
-            orElse: () => Data(list: []),
-          )
-          .list
-          ?.map((item) => item.label ?? '')
-          .toList() ??
-      [];
-  // final List<String> options = [
-  //   'ماهانه',
-  //   'دوماه یک بار',
-  //   ' سه ماه یک بار',
-  //   'چهار ماه یک بار',
-  //   'انتخاب نشده',
-  // ];
+
+  // استخراج داده‌ها برای سیستم بازپرداخت اقساط
+  final Data? installmentPaybackData = baseData?.data?.firstWhere(
+    (data) => data.key == "installment_payback", // کلید اقساط
+    orElse: () => Data(list: []),
+  );
+  final List<Item>? items = installmentPaybackData?.list;
+  final List<String> options =
+      items?.map((item) => item.label ?? '').toList() ?? [];
+
+  // Define the scroll controller
   final FixedExtentScrollController scrollController =
       FixedExtentScrollController(initialItem: index.value);
 
@@ -56,7 +49,13 @@ void TimeAghsat(Function(String) onSelected) async {
               TaeedEnserafNumberPicker(
                 selectedNumber: index.value.toString(),
                 onConfirm: () {
-                  onSelected(options[index.value]);
+                  final selectedItem = items?[index.value];
+                  final selectedKey =
+                      selectedItem?.value ?? ''; // کلید انتخاب‌شده
+                  final selectedLabel =
+                      selectedItem?.label ?? ''; // برچسب انتخاب‌شده
+                  onSelected(selectedKey,
+                      selectedLabel); // ارسال کلید و برچسب به onSelected
                   Get.back();
                 },
               ),

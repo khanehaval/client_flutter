@@ -75,7 +75,7 @@ class JensKafFilterWidget extends StatelessWidget {
                       JensKaf((selectedOption) {
                         _selectedOptionJensKaf.value =
                             selectedOption; // به‌روزرسانی گزینه انتخاب شده
-                      });
+                      } as Function(String key, String label));
                     },
                     icon: SvgPicture.asset(
                       "assets/images/arrow_down.svg",

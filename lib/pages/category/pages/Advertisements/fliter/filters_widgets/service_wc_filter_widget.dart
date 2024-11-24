@@ -75,7 +75,7 @@ class ServiceWcFilterWidget extends StatelessWidget {
                       Wc((selectedOption) {
                         _selectedOptionWc.value =
                             selectedOption; // به‌روزرسانی گزینه انتخاب شده
-                      });
+                      } as Function(String key, String label));
                     },
                     icon: SvgPicture.asset(
                       "assets/images/arrow_down.svg",

@@ -6,24 +6,19 @@ import 'package:flutter_application_1/services/models/server_model/sale_apartema
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
-void Wc(Function(String) onSelected) async {
+void Wc(Function(String key, String label) onSelected) async {
   final RxInt index = 2.obs; // Default index set to "Not Selected"
   final advertisementService = AdvertisementService();
   final Base? baseData = await advertisementService.fetchDataFromServer();
-  final List<String> options = baseData?.data
-          ?.firstWhere(
-            (data) => data.key == "wc", // Use the actual key name for "rooms"
-            orElse: () => Data(list: []),
-          )
-          .list
-          ?.map((item) => item.label ?? '')
-          .toList() ??
-      [];
-  // final List<String> options = [
-  //   'ایرانی',
-  //   'فرنگی',
-  //   'ایرانی فرنگی',
-  // ];
+
+  // استخراج داده‌ها
+  final Data? wcData = baseData?.data?.firstWhere(
+    (data) => data.key == "wc", // کلید صحیح برای دسترسی به داده‌ها
+    orElse: () => Data(list: []),
+  );
+  final List<Item>? items = wcData?.list;
+  final List<String> options =
+      items?.map((item) => item.label ?? '').toList() ?? [];
 
   // Define the scroll controller
   final FixedExtentScrollController scrollController =
@@ -53,7 +48,13 @@ void Wc(Function(String) onSelected) async {
               TaeedEnserafNumberPicker(
                 selectedNumber: index.value.toString(),
                 onConfirm: () {
-                  onSelected(options[index.value]);
+                  final selectedItem = items?[index.value];
+                  final selectedKey =
+                      selectedItem?.value ?? ''; // کلید انتخاب‌شده
+                  final selectedLabel =
+                      selectedItem?.label ?? ''; // برچسب انتخاب‌شده
+                  onSelected(selectedKey,
+                      selectedLabel); // ارسال کلید و برچسب به onSelected
                   Get.back();
                 },
               ),

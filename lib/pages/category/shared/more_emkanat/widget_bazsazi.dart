@@ -5,31 +5,37 @@ import 'package:flutter_application_1/services/advertisment_service.dart';
 import 'package:flutter_application_1/services/models/server_model/sale_aparteman_Get/base_list.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:gradient_icon/gradient_icon.dart';
 
-void BazSazi(Function(String) onSelected) async {
-  final RxInt index = 1.obs; // Default index set to "Not Selected"
+void BazSazi(Function(String key, String label) onSelected) async {
+  final RxInt index = 0.obs; // Index شروع از 0
   final advertisementService = AdvertisementService();
-  final Base? baseData = await advertisementService.fetchDataFromServer();
-  final List<String> options = baseData?.data
-          ?.firstWhere(
-            (data) =>
-                data.key ==
-                "reconstructions", // Use the actual key name for "rooms"
-            orElse: () => Data(list: []),
-          )
-          .list
-          ?.map((item) => item.label ?? '')
-          .toList() ??
-      [];
-  // final List<String> options = [
-  //   'باز سازی شده',
-  //   'نیاز به بازسازی دارد',
-  // ];
 
-  // Define the scroll controller
+  // بارگیری داده‌ها با مدیریت خطا
+  final Base? baseData;
+  try {
+    baseData = await advertisementService.fetchDataFromServer();
+  } catch (e) {
+    Get.snackbar('Error', 'Failed to fetch data from server');
+    return;
+  }
+
   final FixedExtentScrollController scrollController =
       FixedExtentScrollController(initialItem: index.value);
+
+  // استخراج داده‌های بازسازی
+  final Data? reconstructionsData = baseData?.data?.firstWhere(
+    (data) => data.key == "reconstructions",
+    orElse: () => Data(key: "", list: []),
+  );
+  final List<Item>? items = reconstructionsData?.list;
+
+  // بررسی خالی بودن داده‌ها
+  if (items == null || items.isEmpty) {
+    Get.snackbar('No Data', 'No reconstruction data available');
+    return;
+  }
+
+  final List<String> options = items.map((item) => item.label ?? '').toList();
 
   Get.bottomSheet(
     Container(
@@ -42,7 +48,7 @@ void BazSazi(Function(String) onSelected) async {
       child: Padding(
         padding: const EdgeInsets.all(2.0),
         child: Container(
-          height: 800,
+          height: Get.height * 0.7, // تنظیم ارتفاع پویا
           decoration: const BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.vertical(top: Radius.circular(30)),
@@ -54,7 +60,10 @@ void BazSazi(Function(String) onSelected) async {
               TaeedEnserafNumberPicker(
                 selectedNumber: index.value.toString(),
                 onConfirm: () {
-                  onSelected(options[index.value]);
+                  final selectedItem = items[index.value];
+                  final selectedKey = selectedItem.value ?? '';
+                  final selectedLabel = selectedItem.label ?? '';
+                  onSelected(selectedKey, selectedLabel);
                   Get.back();
                 },
               ),
@@ -66,23 +75,27 @@ void BazSazi(Function(String) onSelected) async {
   );
 }
 
-Widget _buildNavigationRow(RxInt index, List<String> options,
-    FixedExtentScrollController scrollController) {
+Widget _buildNavigationRow(
+  RxInt index,
+  List<String> options,
+  FixedExtentScrollController scrollController,
+) {
   return Row(
     mainAxisAlignment: MainAxisAlignment.center,
     children: [
       GestureDetector(
-          onTap: () {
-            if (index.value > 0) {
-              index.value--;
-              scrollController.animateToItem(
-                index.value,
-                duration: const Duration(milliseconds: 300),
-                curve: Curves.easeInOut,
-              );
-            }
-          },
-          child: SvgPicture.asset('assets/images/arrow-up.svg')),
+        onTap: () {
+          if (index.value > 0) {
+            index.value--;
+            scrollController.animateToItem(
+              index.value,
+              duration: const Duration(milliseconds: 300),
+              curve: Curves.easeInOut,
+            );
+          }
+        },
+        child: SvgPicture.asset('assets/images/arrow-up.svg'),
+      ),
       const SizedBox(width: 40),
       SizedBox(
         width: 130, // Fixed width for texts
@@ -121,17 +134,18 @@ Widget _buildNavigationRow(RxInt index, List<String> options,
       ),
       const SizedBox(width: 40),
       GestureDetector(
-          onTap: () {
-            if (index.value < options.length - 1) {
-              index.value++;
-              scrollController.animateToItem(
-                index.value,
-                duration: const Duration(milliseconds: 300),
-                curve: Curves.easeInOut,
-              );
-            }
-          },
-          child: SvgPicture.asset('assets/images/arrow-down.svg')),
+        onTap: () {
+          if (index.value < options.length - 1) {
+            index.value++;
+            scrollController.animateToItem(
+              index.value,
+              duration: const Duration(milliseconds: 300),
+              curve: Curves.easeInOut,
+            );
+          }
+        },
+        child: SvgPicture.asset('assets/images/arrow-down.svg'),
+      ),
     ],
   );
 }

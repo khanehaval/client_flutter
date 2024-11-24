@@ -74,7 +74,7 @@ class NoesystemGarmayeshFilterWidget extends StatelessWidget {
                       Garmayesh((selectedOption) {
                         _selectedOptionlow.value =
                             selectedOption; // به‌روزرسانی متن انتخاب‌شده
-                      });
+                      } as Function(String key, String label));
                     },
                     icon: SvgPicture.asset(
                       "assets/images/arrow_down.svg",

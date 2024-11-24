@@ -91,11 +91,10 @@ class ForshAdvLocationPage extends StatelessWidget {
                       prefixIcon: IconButton(
                           icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                           onPressed: () {
-                            // Show the bottom sheet to select an item
                             showSelectNoeMelk((selectedMelk) {
                               _controller.text = selectedMelk;
-                              // Update TextField with selected option
-                              saleApartemanServerModel.buildingType;
+                              saleApartemanServerModel.buildingType =
+                                  selectedMelk;
                             });
                           }),
                     ),

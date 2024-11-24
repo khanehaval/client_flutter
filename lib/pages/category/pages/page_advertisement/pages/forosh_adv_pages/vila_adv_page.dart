@@ -67,14 +67,14 @@ class _VilaAdvPageState extends State<VilaAdvPage> {
 
   final _facilities = <FacilitiesModel>[].obs;
 
-  final _buildDirectionController = TextEditingController();
+  final _buildingSideController = TextEditingController();
 
   final _buildUnitOfAnyFloorCountController = TextEditingController();
 
   final _buildFloorsCountController = TextEditingController();
 
   final _timeOfInstallmentsController = TextEditingController();
-  final _timeOfInstallments_vamBankiController = TextEditingController();
+  final _timeAghsatController = TextEditingController();
 
   final _buildDateController = TextEditingController();
 
@@ -94,17 +94,17 @@ class _VilaAdvPageState extends State<VilaAdvPage> {
   final _countOfInstallmentsController = TextEditingController();
   final _tedadaghsat_monthController = TextEditingController();
 
-  final _countOfInstallments_VamBankiController = TextEditingController();
+  final _totalInstallmentsController = TextEditingController();
 
-  final _floorMaterialController = TextEditingController();
+  final _flooringController = TextEditingController();
 
   final _cabinetController = TextEditingController();
 
-  final _coldTypeController = TextEditingController();
+  final _coolingSystemController = TextEditingController();
 
-  final _heatTypeController = TextEditingController();
+  final _heatingSystemController = TextEditingController();
 
-  final _heatWaterController = TextEditingController();
+  final _abeGarmController = TextEditingController();
 
   final _wcController = TextEditingController();
 
@@ -633,15 +633,15 @@ class _VilaAdvPageState extends State<VilaAdvPage> {
                 label1: "بازسازی",
                 label2: "جهت ساختمان",
                 widget1: ReadOnlyTextField(_reBuildController, () {
-                  BazSazi((selectedOption) {
-                    _reBuildController.text = selectedOption;
-                    saleVilaServerModel.reconstruct = selectedOption;
+                  BazSazi((selectedKey, selectedLabel) {
+                    _reBuildController.text =
+                        selectedLabel; // ذخیره برچسب در کنترلر
                   });
                 }, width: getPageWidth()),
-                widget2: ReadOnlyTextField(_buildDirectionController, () {
-                  jahatSakhteman((selectedOption) {
-                    _buildDirectionController.text = selectedOption;
-                    saleVilaServerModel.buildingSide = selectedOption;
+                widget2: ReadOnlyTextField(_buildingSideController, () {
+                  jahatSakhteman((selectedKey, selectedLabel) {
+                    _buildingSideController.text =
+                        selectedLabel; // نمایش برچسب در کنترلر
                   });
                 }, width: getPageWidth())),
             const SizedBox(
@@ -671,15 +671,13 @@ class _VilaAdvPageState extends State<VilaAdvPage> {
               label1: "نوع کابینت",
               label2: "جنس کف",
               widget1: ReadOnlyTextField(_cabinetController, () {
-                Kabinet((selectedOption) {
-                  _cabinetController.text = selectedOption;
-                  saleVilaServerModel.cabinetType = selectedOption;
+                Kabinet((selectedKey, selectedLabel) {
+                  _cabinetController.text = selectedLabel;
                 });
               }, width: getPageWidth()),
-              widget2: ReadOnlyTextField(_floorMaterialController, () {
-                JensKaf((selectedOption) {
-                  _floorMaterialController.text = selectedOption;
-                  saleVilaServerModel.flooringMaterialType = selectedOption;
+              widget2: ReadOnlyTextField(_flooringController, () {
+                JensKaf((selectedKey, selectedLabel) {
+                  _flooringController.text = selectedLabel;
                 });
               }, width: getPageWidth()),
             ),
@@ -689,16 +687,14 @@ class _VilaAdvPageState extends State<VilaAdvPage> {
             TwoItemInRow(
               label1: "نوع سیستم گرمایش",
               label2: "نوع سیستم سرمایش",
-              widget1: ReadOnlyTextField(_heatTypeController, () {
-                Garmayesh((selectedOption) {
-                  _heatTypeController.text = selectedOption;
-                  saleVilaServerModel.heatingSystemType = selectedOption;
+              widget1: ReadOnlyTextField(_heatingSystemController, () {
+                Garmayesh((selectedKey, selectedLabel) {
+                  _heatingSystemController.text = selectedLabel;
                 });
               }, width: getPageWidth()),
-              widget2: ReadOnlyTextField(_coldTypeController, () {
-                Sarmayesh((selectedOption) {
-                  _coldTypeController.text = selectedOption;
-                  saleVilaServerModel.coolingSystemType = selectedOption;
+              widget2: ReadOnlyTextField(_coolingSystemController, () {
+                Sarmayesh((selectedKey, selectedLabel) {
+                  _coolingSystemController.text = selectedLabel;
                 });
               }, width: getPageWidth()),
             ),
@@ -709,15 +705,13 @@ class _VilaAdvPageState extends State<VilaAdvPage> {
                 label1: "سرویس بهداشتی",
                 label2: "تامین کننده آب گرم",
                 widget1: ReadOnlyTextField(_wcController, () {
-                  Wc((selectedOption) {
-                    _wcController.text = selectedOption;
-                    saleVilaServerModel.wc = selectedOption;
+                  Wc((selectedKey, selectedLabel) {
+                    _wcController.text = selectedLabel;
                   });
                 }, width: getPageWidth()),
-                widget2: ReadOnlyTextField(_heatWaterController, () {
-                  AbeGarm((selectedOption) {
-                    _heatWaterController.text = selectedOption;
-                    saleVilaServerModel.heatWaterSystemType = selectedOption;
+                widget2: ReadOnlyTextField(_abeGarmController, () {
+                  AbeGarm((selectedKey, selectedLabel) {
+                    _abeGarmController.text = selectedLabel;
                   });
                 }, width: getPageWidth())),
             const SizedBox(
@@ -915,21 +909,15 @@ class _VilaAdvPageState extends State<VilaAdvPage> {
                   TwoItemInRow(
                       label1: "زمان دریافت اقساط",
                       label2: "تعداد اقساط",
-                      widget1: ReadOnlyTextField(
-                          _timeOfInstallments_vamBankiController, () {
-                        TimeAghsat((selectedOption) {
-                          _timeOfInstallments_vamBankiController.text =
-                              selectedOption;
-                          saleVilaServerModel.installmentPaybackTime =
-                              selectedOption;
+                      widget1: ReadOnlyTextField(_timeAghsatController, () {
+                        TimeAghsat((selectedKey, selectedLabel) {
+                          _timeAghsatController.text = selectedLabel;
                         });
                       }, width: getPageWidth(), fontSize: 13),
                       widget2:
                           ReadOnlyTextField(_countOfInstallmentsController, () {
-                        TedadAghsat((selectedOption) {
-                          _countOfInstallmentsController.text = selectedOption;
-                          saleVilaServerModel.installmentNumber =
-                              selectedOption;
+                        TedadAghsat((selectedKey, selectedLabel) {
+                          _totalInstallmentsController.text = selectedLabel;
                         });
                       }, width: getPageWidth())),
                   const SizedBox(
@@ -1040,20 +1028,15 @@ class _VilaAdvPageState extends State<VilaAdvPage> {
                   TwoItemInRow(
                       label1: "زمان دریافت اقساط",
                       label2: "تعداد اقساط",
-                      widget1:
-                          ReadOnlyTextField(_timeOfInstallmentsController, () {
-                        TimeAghsat((date) {
-                          _timeOfInstallmentsController.text = date;
-                          saleVilaServerModel.installmentPaybackTime = date;
+                      widget1: ReadOnlyTextField(_timeAghsatController, () {
+                        TimeAghsat((selectedKey, selectedLabel) {
+                          _timeAghsatController.text = selectedLabel;
                         });
                       }, width: getPageWidth(), fontSize: 13),
-                      widget2: ReadOnlyTextField(
-                          _countOfInstallments_VamBankiController, () {
-                        TedadAghsat((selectedOption) {
-                          _countOfInstallments_VamBankiController.text =
-                              selectedOption;
-                          saleVilaServerModel.installmentNumber =
-                              selectedOption;
+                      widget2:
+                          ReadOnlyTextField(_totalInstallmentsController, () {
+                        TedadAghsat((selectedKey, selectedLabel) {
+                          _totalInstallmentsController.text = selectedLabel;
                         });
                       }, width: getPageWidth())),
                   const SizedBox(height: 25),
@@ -1083,11 +1066,8 @@ class _VilaAdvPageState extends State<VilaAdvPage> {
                         prefixIcon: ReadOnlyTextField(
                           _tedadaghsat_monthController,
                           () {
-                            TedadAghsat((selectedOption) {
-                              _tedadaghsat_monthController.text =
-                                  selectedOption;
-                              saleVilaServerModel.installmentNumber =
-                                  selectedOption;
+                            TedadAghsat((selectedKey, selectedLabel) {
+                              _totalInstallmentsController.text = selectedLabel;
                             });
                           },
                         ),

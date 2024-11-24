@@ -57,23 +57,23 @@ class _KolangiAdvPageState extends State<KolangiAdvPage> {
   final _onePrice = 0.0.obs;
   final _advInfo = AdvInfoModel();
   final _facilities = <FacilitiesModel>[].obs;
-  final _buildDirectionController = TextEditingController();
+  final _buildingSideController = TextEditingController();
   final _buildUnitOfAnyFloorCountController = TextEditingController();
   final _senBanaController = TextEditingController();
   final _buildFloorsCountController = TextEditingController();
-  final _timeOfInstallmentsController = TextEditingController();
+  final _timeAghsatController = TextEditingController();
   final _buildDateController = TextEditingController();
   final _buildRoomsCountController = TextEditingController();
   final _buildDocumentController = TextEditingController();
   final _buildFloorController = TextEditingController();
   final _buildAllFloorsCountController = TextEditingController();
   final _reBuildController = TextEditingController();
-  final _countOfInstallmentsController = TextEditingController();
-  final _floorMaterialController = TextEditingController();
+  final _totalInstallmentsController = TextEditingController();
+  final _flooringController = TextEditingController();
   final _cabinetController = TextEditingController();
-  final _coldTypeController = TextEditingController();
-  final _heatTypeController = TextEditingController();
-  final _heatWaterController = TextEditingController();
+  final _coolingSystemController = TextEditingController();
+  final _heatingSystemController = TextEditingController();
+  final _abeGarmController = TextEditingController();
   final _wcController = TextEditingController();
   final ValueNotifier<String> _persianWords = ValueNotifier<String>('');
   final _numberOfInstallmentsController = TextEditingController();
@@ -553,13 +553,15 @@ class _KolangiAdvPageState extends State<KolangiAdvPage> {
                   label1: "بازسازی",
                   label2: "جهت ساختمان",
                   widget1: ReadOnlyTextField(_reBuildController, () {
-                    BazSazi((selectedOption) {
-                      _reBuildController.text = selectedOption;
+                    BazSazi((selectedKey, selectedLabel) {
+                      _reBuildController.text =
+                          selectedLabel; // ذخیره برچسب در کنترلر
                     });
                   }, width: getPageWidth()),
-                  widget2: ReadOnlyTextField(_buildDirectionController, () {
-                    jahatSakhteman((selectedOption) {
-                      _buildDirectionController.text = selectedOption;
+                  widget2: ReadOnlyTextField(_buildingSideController, () {
+                    jahatSakhteman((selectedKey, selectedLabel) {
+                      _buildingSideController.text =
+                          selectedLabel; // نمایش برچسب در کنترلر
                     });
                   }, width: getPageWidth())),
               const SizedBox(
@@ -589,13 +591,14 @@ class _KolangiAdvPageState extends State<KolangiAdvPage> {
                 label1: "نوع کابینت",
                 label2: "جنس کف",
                 widget1: ReadOnlyTextField(_cabinetController, () {
-                  Kabinet((selectedOption) {
-                    _cabinetController.text = selectedOption;
+                  Kabinet((selectedKey, selectedLabel) {
+                    _cabinetController.text =
+                        selectedLabel; // نمایش برچسب در کنترلر
                   });
                 }, width: getPageWidth()),
-                widget2: ReadOnlyTextField(_floorMaterialController, () {
-                  JensKaf((selectedOption) {
-                    _floorMaterialController.text = selectedOption;
+                widget2: ReadOnlyTextField(_flooringController, () {
+                  JensKaf((selectedKey, selectedLabel) {
+                    _flooringController.text = selectedLabel;
                   });
                 }, width: getPageWidth()),
               ),
@@ -605,14 +608,14 @@ class _KolangiAdvPageState extends State<KolangiAdvPage> {
               TwoItemInRow(
                 label1: "نوع سیستم گرمایش",
                 label2: "نوع سیستم سرمایش",
-                widget1: ReadOnlyTextField(_heatTypeController, () {
-                  Garmayesh((selectedOption) {
-                    _heatTypeController.text = selectedOption;
+                widget1: ReadOnlyTextField(_heatingSystemController, () {
+                  Garmayesh((selectedKey, selectedLabel) {
+                    _heatingSystemController.text = selectedLabel;
                   });
                 }, width: getPageWidth()),
-                widget2: ReadOnlyTextField(_coldTypeController, () {
-                  Sarmayesh((selectedOption) {
-                    _coldTypeController.text = selectedOption;
+                widget2: ReadOnlyTextField(_coolingSystemController, () {
+                  Sarmayesh((selectedKey, selectedLabel) {
+                    _coolingSystemController.text = selectedLabel;
                   });
                 }, width: getPageWidth()),
               ),
@@ -623,13 +626,13 @@ class _KolangiAdvPageState extends State<KolangiAdvPage> {
                   label1: "سرویس بهداشتی",
                   label2: "تامین کننده آب گرم",
                   widget1: ReadOnlyTextField(_wcController, () {
-                    Wc((selectedOption) {
-                      _wcController.text = selectedOption;
+                    Wc((selectedKey, selectedLabel) {
+                      _wcController.text = selectedLabel;
                     });
                   }, width: getPageWidth()),
-                  widget2: ReadOnlyTextField(_heatWaterController, () {
-                    AbeGarm((selectedOption) {
-                      _heatWaterController.text = selectedOption;
+                  widget2: ReadOnlyTextField(_abeGarmController, () {
+                    AbeGarm((selectedKey, selectedLabel) {
+                      _abeGarmController.text = selectedLabel;
                     });
                   }, width: getPageWidth())),
               const SizedBox(
@@ -890,16 +893,15 @@ class _KolangiAdvPageState extends State<KolangiAdvPage> {
                   TwoItemInRow(
                       label1: "زمان دریافت اقساط",
                       label2: "تعداد اقساط",
-                      widget1:
-                          ReadOnlyTextField(_timeOfInstallmentsController, () {
-                        TimeAghsat((selectedOption) {
-                          _timeOfInstallmentsController.text = selectedOption;
+                      widget1: ReadOnlyTextField(_timeAghsatController, () {
+                        TimeAghsat((selectedKey, selectedLabel) {
+                          _timeAghsatController.text = selectedLabel;
                         });
                       }, width: getPageWidth(), fontSize: 13),
                       widget2:
-                          ReadOnlyTextField(_countOfInstallmentsController, () {
-                        TedadAghsat((selectedOption) {
-                          _countOfInstallmentsController.text = selectedOption;
+                          ReadOnlyTextField(_totalInstallmentsController, () {
+                        TedadAghsat((selectedKey, selectedLabel) {
+                          _totalInstallmentsController.text = selectedLabel;
                         });
                       }, width: getPageWidth())),
                   const SizedBox(

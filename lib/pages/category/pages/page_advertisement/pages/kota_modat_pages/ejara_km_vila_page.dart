@@ -100,15 +100,15 @@ class _EjaraKmVilaPageState extends State<EjaraKmVilaPage> {
 
   final _twoBedCountController = TextEditingController();
 
-  final _floorMaterialController = TextEditingController();
+  final _flooringController = TextEditingController();
 
   final _cabinetController = TextEditingController();
 
-  final _coldTypeController = TextEditingController();
+  final _coolingSystemController = TextEditingController();
 
-  final _heatTypeController = TextEditingController();
+  final _heatingSystemController = TextEditingController();
 
-  final _heatWaterController = TextEditingController();
+  final _abeGarmController = TextEditingController();
 
   final _wcController = TextEditingController();
 
@@ -448,13 +448,13 @@ class _EjaraKmVilaPageState extends State<EjaraKmVilaPage> {
               label1: "نوع کابینت",
               label2: "جنس کف",
               widget1: ReadOnlyTextField(_cabinetController, () {
-                Kabinet((selectedOption) {
-                  _cabinetController.text = selectedOption;
+                Kabinet((selectedKey, selectedLabel) {
+                  _cabinetController.text = selectedLabel;
                 });
               }, width: getPageWidth()),
-              widget2: ReadOnlyTextField(_floorMaterialController, () {
-                JensKaf((selectedOption) {
-                  _floorMaterialController.text = selectedOption;
+              widget2: ReadOnlyTextField(_flooringController, () {
+                JensKaf((selectedKey, selectedLabel) {
+                  _flooringController.text = selectedLabel;
                 });
               }, width: getPageWidth()),
             ),
@@ -464,14 +464,14 @@ class _EjaraKmVilaPageState extends State<EjaraKmVilaPage> {
             TwoItemInRow(
               label1: "نوع سیستم گرمایش",
               label2: "نوع سیستم سرمایش",
-              widget1: ReadOnlyTextField(_heatTypeController, () {
-                Garmayesh((selectedOption) {
-                  _heatTypeController.text = selectedOption;
+              widget1: ReadOnlyTextField(_heatingSystemController, () {
+                Garmayesh((selectedKey, selectedLabel) {
+                  _heatingSystemController.text = selectedLabel;
                 });
               }, width: getPageWidth()),
-              widget2: ReadOnlyTextField(_coldTypeController, () {
-                Sarmayesh((selectedOption) {
-                  _coldTypeController.text = selectedOption;
+              widget2: ReadOnlyTextField(_coolingSystemController, () {
+                Sarmayesh((selectedKey, selectedLabel) {
+                  _coolingSystemController.text = selectedLabel;
                 });
               }, width: getPageWidth()),
             ),
@@ -482,13 +482,13 @@ class _EjaraKmVilaPageState extends State<EjaraKmVilaPage> {
               label1: "سرویس بهداشتی",
               label2: "تامین کننده آب گرم",
               widget1: ReadOnlyTextField(_wcController, () {
-                Wc((selectedOption) {
-                  _wcController.text = selectedOption;
+                Wc((selectedKey, selectedLabel) {
+                  _wcController.text = selectedLabel;
                 });
               }, width: getPageWidth()),
-              widget2: ReadOnlyTextField(_heatWaterController, () {
-                AbeGarm((selectedOption) {
-                  _heatWaterController.text = selectedOption;
+              widget2: ReadOnlyTextField(_abeGarmController, () {
+                AbeGarm((selectedKey, selectedLabel) {
+                  _abeGarmController.text = selectedLabel;
                 });
               }, width: getPageWidth()),
             ),

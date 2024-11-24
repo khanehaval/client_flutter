@@ -9,8 +9,7 @@ part of 'sale_aparteman_res.dart';
 SaleApartemanRes _$SaleApartemanResFromJson(Map<String, dynamic> json) =>
     SaleApartemanRes(
       status: json['status'] as bool,
-      message:
-          json['message'] as String? ?? 'No message available', // مقدار پیش‌فرض
+      message: json['message'] as String? ?? 'No message available',
     );
 
 Map<String, dynamic> _$SaleApartemanResToJson(SaleApartemanRes instance) =>

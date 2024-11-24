@@ -7,48 +7,25 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:gradient_icon/gradient_icon.dart';
 
-void TedadAghsat(Function(String) onSelected) async {
+void TedadAghsat(Function(String key, String label) onSelected) async {
   final RxInt selectedIndex = 0.obs; // Default index set to "1401"
 
-  final RxInt index = 0.obs; // Default index set to "Not Selected"
   final advertisementService = AdvertisementService();
   final Base? baseData = await advertisementService.fetchDataFromServer();
-  final List<String> options = baseData?.data
-          ?.firstWhere(
-            (data) =>
-                data.key ==
-                "total_installments", // Use the actual key name for "rooms"
-            orElse: () => Data(list: []),
-          )
-          .list
-          ?.map((item) => item.label ?? '')
-          .toList() ??
-      [];
-  // final List<String> options = [
-  //   '2',
-  //   '3',
-  //   '4',
-  //   '5',
-  //   '6',
-  //   '7',
-  //   '8',
-  //   '9',
-  //   '10',
-  //   '11',
-  //   '12',
-  //   '18',
-  //   '24',
-  //   '30',
-  //   '36',
-  //   '48',
-  //   '60',
-  //   '144',
-  //   'انتخاب نشده',
-  // ];
 
-  // Define the scroll controller
+  // دریافت داده‌ها برای تعداد اقساط
+  final Data? totalInstallmentsData = baseData?.data?.firstWhere(
+    (data) => data.key == "total_installments", // کلید برای تعداد اقساط
+    orElse: () => Data(list: []),
+  );
+
+  final List<Item>? items = totalInstallmentsData?.list;
+  final List<String> options =
+      items?.map((item) => item.label ?? '').toList() ?? [];
+
+  // تعریف کنترلر اسکرول
   final FixedExtentScrollController scrollController =
-      FixedExtentScrollController(initialItem: index.value);
+      FixedExtentScrollController(initialItem: selectedIndex.value);
 
   Get.bottomSheet(
     Container(
@@ -61,7 +38,7 @@ void TedadAghsat(Function(String) onSelected) async {
       child: Padding(
         padding: const EdgeInsets.all(2.0),
         child: Container(
-          height: 400, // Adjusted height to better fit five items
+          height: 400, // ارتفاع بهینه شده برای نمایش بهتر
           decoration: const BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.vertical(top: Radius.circular(30)),
@@ -74,7 +51,13 @@ void TedadAghsat(Function(String) onSelected) async {
               TaeedEnserafNumberPicker(
                 selectedNumber: options[selectedIndex.value],
                 onConfirm: () {
-                  onSelected(options[selectedIndex.value]);
+                  final selectedItem = items?[selectedIndex.value];
+                  final selectedKey =
+                      selectedItem?.value ?? ''; // کلید انتخاب‌شده
+                  final selectedLabel =
+                      selectedItem?.label ?? ''; // برچسب انتخاب‌شده
+                  onSelected(selectedKey,
+                      selectedLabel); // ارسال کلید و برچسب به تابع onSelected
                   Get.back();
                 },
               ),
@@ -105,11 +88,11 @@ Widget _buildNavigationRow(RxInt index, List<String> options,
           child: SvgPicture.asset('assets/images/arrow-up.svg')),
       const SizedBox(width: 40),
       SizedBox(
-        width: 130, // Fixed width for texts
-        height: 200, // Limit the height for scrollable view
+        width: 130, // عرض ثابت برای متن‌ها
+        height: 200, // محدود کردن ارتفاع برای نمایش درست لیست
         child: ListWheelScrollView.useDelegate(
           controller: scrollController,
-          itemExtent: 50, // Height of each item
+          itemExtent: 50, // ارتفاع هر آیتم
           physics: const FixedExtentScrollPhysics(),
           onSelectedItemChanged: (selectedIndex) {
             index.value = selectedIndex;
