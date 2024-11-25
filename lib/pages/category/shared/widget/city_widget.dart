@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/repo/advRepo.dart';
 import 'package:flutter_application_1/services/advertisment_service.dart';
 import 'package:flutter_application_1/services/models/filterModel.dart';
-import 'package:flutter_application_1/services/models/server_model/sale_aparteman_Get/base_list.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:get_it/get_it.dart';
 import 'city_controller.dart';
@@ -11,10 +10,12 @@ import 'switch_onr_item.dart';
 import 'taeed_enseraf_filters.dart';
 
 class City extends StatefulWidget {
-  City({super.key});
+  final Rx<String> selectedCity; // متغیر برای نگهداری city انتخاب شده
+
+  City(this.selectedCity);
 
   @override
-  State<City> createState() => _CityState();
+  _CityState createState() => _CityState();
 }
 
 Map<String, AdvretismentFilter> CityFilter = Map();
@@ -23,25 +24,17 @@ final _advRepo = GetIt.I.get<AdvRepo>();
 List<AdvretismentFilter> _CityFilter = [];
 
 class _CityState extends State<City> {
-  final cityController = Get.put(CityController()); // پیدا کردن کنترلر
+  final cityController = Get.put(CityController());
   final advertisementService = AdvertisementService();
-  final List<String> cityList = [
-    'تهران',
-    'مشهد',
-    'قزوین',
-    'کرج',
-    'شیراز',
-    'اصفهان',
-    'رودبار',
-    'رشت',
-  ];
   final searchController = TextEditingController();
   final filteredCity = <String>[].obs;
+  late Future<List<String>> citiesFuture;
+  final selectedCity = Rx<String>('');
 
   @override
   void initState() {
     super.initState();
-    filteredCity.addAll(cityList);
+    citiesFuture = fetchCities();
     searchController.addListener(_filterCity);
   }
 
@@ -51,10 +44,42 @@ class _CityState extends State<City> {
     super.dispose();
   }
 
+  Future<List<String>> fetchCities() async {
+    try {
+      final response = await advertisementService.fetchCityFromServer();
+
+      if (response != null &&
+          response.status == true &&
+          response.data != null) {
+        List<String> cityList = [];
+
+        // بررسی null بودن و دسترسی به لیست در داده‌ها
+        if (response.data?.list != null) {
+          for (var item in response.data!.list!) {
+            // دسترسی به list داخل Data
+            cityList.add(item.name ?? ''); // اضافه کردن نام شهر به لیست
+          }
+        }
+
+        // برگشت لیست نهایی از نام شهرها
+        return cityList;
+      }
+
+      // در صورت نادرست بودن پاسخ یا عدم وجود داده‌ها، لیستی خالی برگشت داده می‌شود
+      return [];
+    } catch (e) {
+      // چاپ خطا در صورت بروز مشکل
+      print("Error fetching cities: $e");
+      return [];
+    }
+  }
+
+  // Filter cities based on search query
   void _filterCity() {
     final query = searchController.text.toLowerCase();
-    filteredCity.value =
-        cityList.where((city) => city.toLowerCase().contains(query)).toList();
+    filteredCity.value = filteredCity
+        .where((city) => city.toLowerCase().contains(query))
+        .toList();
   }
 
   void addFilters(List<AdvretismentFilter> filter) {
@@ -133,12 +158,30 @@ class _CityState extends State<City> {
                   color: Colors.white,
                   borderRadius: BorderRadius.all(Radius.circular(15)),
                 ),
-                child: Obx(() => ListView.builder(
-                      itemCount: filteredCity.length,
-                      itemBuilder: (context, index) {
-                        return cityRow(filteredCity[index]);
-                      },
-                    )),
+                child: FutureBuilder<List<String>>(
+                  future: citiesFuture,
+                  builder: (context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return const Center(child: CircularProgressIndicator());
+                    }
+                    if (snapshot.hasError) {
+                      return Center(child: Text('Error: ${snapshot.error}'));
+                    }
+                    if (!snapshot.hasData || snapshot.data!.isEmpty) {
+                      return const Center(child: Text('No cities available.'));
+                    }
+                    filteredCity.value = snapshot.data!;
+
+                    return Obx(() {
+                      return ListView.builder(
+                        itemCount: filteredCity.length,
+                        itemBuilder: (context, index) {
+                          return cityRow(filteredCity[index]);
+                        },
+                      );
+                    });
+                  },
+                ),
               ),
             ),
           ),
@@ -146,9 +189,7 @@ class _CityState extends State<City> {
           FiltersTaeedEnseraf(
             onTaeed: () {
               if (cityController.selectedCity.isNotEmpty) {
-                // افزودن شهر انتخاب‌شده به فیلترها
                 _advRepo.filters[cityController.selectedCity.value];
-                // بازگشت به صفحه قبلی
                 Get.back();
               }
             },
@@ -161,8 +202,9 @@ class _CityState extends State<City> {
   Widget cityRow(String city) {
     return GestureDetector(
       onTap: () {
-        cityController.selectedCity.value =
-            city; // بلافاصله آپدیت کردن شهر انتخاب‌شده
+        // به‌روزرسانی selectedCity
+        widget.selectedCity.value = city; // اگر از متغیر `Rx` استفاده می‌کنید
+        Get.back(); // برگشت به صفحه قبلی
       },
       child: Obx(() => Padding(
             padding: const EdgeInsets.only(left: 10.0, right: 10),
@@ -170,17 +212,16 @@ class _CityState extends State<City> {
               decoration: const BoxDecoration(
                 border: Border(
                   bottom: BorderSide(
-                    color: Colors.grey, // رنگ خط زیرین
-                    width: 1.0, // عرض خط زیرین
+                    color: Colors.grey,
+                    width: 1.0,
                   ),
                 ),
               ),
               child: SwitchItem(
-                isSelected:
-                    cityController.selectedCity.value == city, // بررسی انتخاب
+                isSelected: widget.selectedCity.value == city,
                 item: city,
                 onTap: () {
-                  cityController.selectedCity.value = city; // مدیریت انتخاب
+                  widget.selectedCity.value = city; // انتخاب شهر
                 },
               ),
             ),

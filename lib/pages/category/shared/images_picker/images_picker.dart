@@ -26,7 +26,7 @@ class ImagesPicker extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 20),
-        Obx(() => _buildImagePicker(context)), // Obx برای به‌روزرسانی UI
+        Obx(() => _buildImagePicker(context)),
       ],
     );
   }
@@ -34,10 +34,8 @@ class ImagesPicker extends StatelessWidget {
   Widget _buildImagePicker(BuildContext context) {
     return Column(
       children: [
-        // نمایش سه گزینه یا عکس در اولین خط
         _buildImageGridRow(context, 0, 3),
         const SizedBox(height: 20),
-        // نمایش سه گزینه یا عکس در دومین خط
         _buildImageGridRow(context, 3, 6),
       ],
     );
@@ -74,7 +72,7 @@ class ImagesPicker extends StatelessWidget {
           ),
           Align(
             alignment: Alignment.center,
-            child: _buildRemoveIcon(selectedImagesPath[index]), // آیکون حذف عکس
+            child: _buildRemoveIcon(selectedImagesPath[index]),
           ),
         ],
       ),
@@ -86,13 +84,13 @@ class ImagesPicker extends StatelessWidget {
       padding: const EdgeInsets.only(left: 27.0, top: 10),
       child: IconButton(
         icon: SvgPicture.asset(
-          'assets/images/Vector-43.svg', // آیکون حذف
+          'assets/images/Vector-43.svg',
           width: 30,
           height: 30,
         ),
         onPressed: () {
-          selectedImagesPath..value.remove(path); // حذف عکس از لیست
-          selectedImagesPath.refresh(); // به‌روزرسانی UI پس از حذف
+          selectedImagesPath..value.remove(path);
+          selectedImagesPath.refresh();
         },
       ),
     );
@@ -108,8 +106,8 @@ class ImagesPicker extends StatelessWidget {
         strokeWidth: 2,
         radius: const Radius.circular(10),
         child: SizedBox(
-          height: isMain ? 70 : 70, // سایز متفاوت برای عکس اصلی
-          width: isMain ? 100 : 100, // سایز متفاوت برای عکس اصلی
+          height: isMain ? 70 : 70,
+          width: isMain ? 100 : 100,
           child: const Center(
             child: Icon(Icons.add, size: 30, color: Colors.black26),
           ),
@@ -159,7 +157,6 @@ class ImagesPicker extends StatelessWidget {
       if (pickedFile != null) {
         final croppedFile = await _cropImage(pickedFile.path);
         if (croppedFile != null) {
-          // فشرده‌سازی و تغییر اندازه تصویر قبل از افزودن به لیست
           final compressedFile =
               await resizeAndCompressImage(File(croppedFile.path));
           selectedImagesPath.add(compressedFile.path);
@@ -198,13 +195,8 @@ class ImagesPicker extends StatelessWidget {
 
 Future<File> resizeAndCompressImage(File file) async {
   final originalImage = img.decodeImage(await file.readAsBytes());
-
-  if (originalImage == null) return file; // در صورتی که تصویر نامعتبر باشد
-
-  // تغییر اندازه تصویر
+  if (originalImage == null) return file;
   final resizedImage = img.copyResize(originalImage, width: 200, height: 200);
-
-  // فشرده‌سازی و ذخیره در فایل جدید
   final compressedImageBytes = img.encodeJpg(resizedImage, quality: 70);
   final compressedFile =
       File('${file.parent.path}/compressed_${file.uri.pathSegments.last}');

@@ -391,9 +391,6 @@ class _ConsultantsState extends State<Consultants> {
                                   fontFamily: MAIN_FONT_FAMILY,
                                   fontSize: 12,
                                 ),
-                                onTap: () {
-                                  Get.to(() => City());
-                                },
                                 readOnly: true,
                                 textAlign: TextAlign.right,
                                 controller: cityController.cityTextController,

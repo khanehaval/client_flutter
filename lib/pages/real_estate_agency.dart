@@ -531,9 +531,6 @@ class Realestateagency extends StatelessWidget {
                 child: TextField(
                   style: const TextStyle(
                       fontFamily: MAIN_FONT_FAMILY, fontSize: 10),
-                  onTap: () {
-                    Get.to(() => City());
-                  },
                   readOnly: true,
                   textAlign: TextAlign.right,
                   decoration: InputDecoration(

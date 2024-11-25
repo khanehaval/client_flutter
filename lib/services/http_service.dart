@@ -17,10 +17,7 @@ class Httpservice {
   }
 
   String _getToken() => _prefs.getString(SHARED_TOKEN_KEY) ?? "";
-  Future<Response> post(
-    String address,
-    dynamic body,
-  ) {
+  Future<Response> post(String address, dynamic body) {
     return _dio.post(address,
         data: body,
         options: Options(headers: {"Authorization": "Bearer ${_getToken()}"}));

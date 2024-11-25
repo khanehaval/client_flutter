@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/category/shared/switchItem.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/app_bar.dart';
@@ -10,7 +8,6 @@ import 'package:get/get.dart';
 class NamayeshAgahi extends StatelessWidget {
   NamayeshAgahi({super.key});
   final submit = false.obs;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -211,12 +208,9 @@ class NamayeshAgahi extends StatelessWidget {
                 const SizedBox(
                   width: 20,
                 ),
-                Container(
-                  child: const Text(
-                    'پیش نمایش کامل آگهی',
-                    style:
-                        TextStyle(fontFamily: MAIN_FONT_FAMILY, fontSize: 12),
-                  ),
+                const Text(
+                  'پیش نمایش کامل آگهی',
+                  style: TextStyle(fontFamily: MAIN_FONT_FAMILY, fontSize: 12),
                 ),
                 const SizedBox(
                   width: 10,
@@ -371,9 +365,7 @@ class NamayeshAgahi extends StatelessWidget {
             const SizedBox(
               width: 10,
             ),
-            Container(
-              child: SvgPicture.asset('assets/images/Vector-20 (Stroke).svg'),
-            )
+            SvgPicture.asset('assets/images/Vector-20 (Stroke).svg')
           ],
         )
       ]),

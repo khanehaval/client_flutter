@@ -352,12 +352,7 @@ class _SelectLocationMapState extends State<Advertisements> {
                       width: 7,
                     ),
                     GestureDetector(
-                      onTap: () {
-                        Get.to(
-                          () => City(),
-                          transition: Transition.leftToRight,
-                        );
-                      },
+                      onTap: () {},
                       child: Obx(() => Container(
                             decoration: BoxDecoration(
                               border: Border.all(

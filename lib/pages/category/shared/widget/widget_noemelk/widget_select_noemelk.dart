@@ -28,7 +28,7 @@ void showSelectNoeMelk(Function(String) onSelected) {
         ),
       ),
       child: Padding(
-        padding: const EdgeInsets.all(10.0),
+        padding: const EdgeInsets.all(1.0),
         child: Container(
           decoration: const BoxDecoration(
             color: Colors.white,

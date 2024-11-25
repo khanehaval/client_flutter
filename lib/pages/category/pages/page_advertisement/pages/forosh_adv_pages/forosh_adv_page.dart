@@ -206,7 +206,6 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
     _metragTextController.dispose();
     _buildFloorController.dispose();
     _persianWords.dispose();
-
     super.dispose();
   }
 
@@ -231,7 +230,6 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
       try {
         final success = await _accountRepo.saleAparteman(
             saleApartemanData: saleApartemanServerModel);
-
         if (success) {
           Fluttertoast.showToast(
             msg: "اطلاعات با موفقیت ارسال شد",

@@ -33,6 +33,8 @@ class _SelectLocationMapState extends State<SelectLocationMap> {
   late LocationInfo locationInfo;
   SaleApartemanServerModel saleApartemanServerModel =
       SaleApartemanServerModel();
+  final Rx<String> selectedCity = Rx<String>('');
+
   @override
   void initState() {
     super.initState();
@@ -359,8 +361,7 @@ class _SelectLocationMapState extends State<SelectLocationMap> {
         ),
         GestureDetector(
           onTap: () {
-            saleApartemanServerModel.cityId;
-            Get.to(() => City());
+            Get.to(() => City(selectedCity)); // انتقال به صفحه City
           },
           child: Container(
             decoration: BoxDecoration(
@@ -380,22 +381,27 @@ class _SelectLocationMapState extends State<SelectLocationMap> {
                     alignment: Alignment.centerRight,
                     child: Padding(
                       padding: const EdgeInsets.only(right: 5.0),
-                      child: Text(
-                        locationInfo.cityName,
-                        style: const TextStyle(
-                          fontFamily: MAIN_FONT_FAMILY,
-                          color: Color.fromRGBO(48, 48, 48, 1),
-                          fontWeight: FontWeight.w400,
-                        ),
-                        textAlign: TextAlign.center,
-                      ),
+                      child: Obx(() {
+                        // استفاده از Obx برای رصد تغییرات در selectedCity
+                        return Text(
+                          selectedCity.value.isEmpty
+                              ? "انتخاب شهر"
+                              : selectedCity.value,
+                          style: const TextStyle(
+                            fontFamily: 'MAIN_FONT_FAMILY',
+                            color: Color.fromRGBO(48, 48, 48, 1),
+                            fontWeight: FontWeight.w400,
+                          ),
+                          textAlign: TextAlign.center,
+                        );
+                      }),
                     ),
                   ),
                 ),
               ),
             ),
           ),
-        ),
+        )
       ],
     );
   }
