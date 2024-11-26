@@ -19,13 +19,11 @@ class AccountRepo {
   final _httpService = GetIt.I.get<Httpservice>();
   final _userDao = GetIt.I.get<UserDao>();
   final _advetismentService = GetIt.I.get<AdvertisementService>();
-
   Future<bool> login(String phoneNumber) async {
     return await _accountService.login(phoneNumber);
   }
 
   Future<bool> isLogin() async => (await _userDao.getUser()) != null;
-
   Future<bool> sendVerificationCode(
       {required String code, required String cellphone}) async {
     var result = await _accountService.sendVerificationCode(
@@ -93,7 +91,7 @@ class AccountRepo {
           textColor: Colors.white,
           fontSize: 16.0,
         );
-        return true; // Successfully saved
+        return true;
       } else {
         Fluttertoast.showToast(
           msg: "خطا در ارسال اطلاعات",
@@ -103,7 +101,7 @@ class AccountRepo {
           textColor: Colors.white,
           fontSize: 16.0,
         );
-        return false; // Operation failed
+        return false;
       }
     } catch (e) {
       if (e is DioError) {
@@ -118,7 +116,7 @@ class AccountRepo {
         textColor: Colors.white,
         fontSize: 16.0,
       );
-      return false; // Operation failed
+      return false;
     }
   }
 

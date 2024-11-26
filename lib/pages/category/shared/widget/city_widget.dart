@@ -188,9 +188,9 @@ class _CityState extends State<City> {
           const SizedBox(height: 50),
           FiltersTaeedEnseraf(
             onTaeed: () {
+              Get.back();
               if (cityController.selectedCity.isNotEmpty) {
                 _advRepo.filters[cityController.selectedCity.value];
-                Get.back();
               }
             },
           ),

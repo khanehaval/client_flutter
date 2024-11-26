@@ -5,8 +5,9 @@ import 'package:flutter_application_1/pages/category/shared/widget/switchItem_lo
 import 'package:flutter_application_1/pages/category/shared/widget/taeed.dart';
 import 'package:get/get.dart';
 
-void showSelectNoeMelk(Function(String) onSelected) {
+void showSelectNoeMelk(Function(String key, String label) onSelected) {
   String? selectedKey;
+  String? selectedLabel;
 
   const items = [
     {"key": "apartment", "label": "آپارتمان"},
@@ -63,6 +64,7 @@ void showSelectNoeMelk(Function(String) onSelected) {
                       (item) => item['label'] == selectedItems.first,
                     );
                     selectedKey = selected['key'];
+                    selectedLabel = selected['label'];
                   }
                 },
               ),
@@ -73,8 +75,8 @@ void showSelectNoeMelk(Function(String) onSelected) {
                   Enseraf(),
                   taeed(
                     onPressed: () {
-                      if (selectedKey != null) {
-                        onSelected(selectedKey!); // ارسال `key`
+                      if (selectedKey != null && selectedLabel != null) {
+                        onSelected(selectedKey!, selectedLabel!);
                         Get.back();
                       } else {
                         Get.snackbar("خطا", "لطفاً یک مورد را انتخاب کنید");

@@ -28,7 +28,9 @@ import 'package:flutter_application_1/pages/category/shared/widget/switachable.d
 import 'package:flutter_application_1/pages/category/shared/widget/text_field.dart';
 import 'package:flutter_application_1/repo/account_repo.dart';
 import 'package:flutter_application_1/services/advertisment_service.dart';
+import 'package:flutter_application_1/services/http_service.dart';
 import 'package:flutter_application_1/services/models/server_model/sale_aparteman.dart';
+import 'package:flutter_application_1/services/models/server_model/sale_aparteman_res.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:get_it/get_it.dart';
@@ -49,6 +51,8 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
   final ImageController imageController = Get.put(ImageController());
   SaleApartemanServerModel saleApartemanServerModel =
       SaleApartemanServerModel();
+  final Httpservice _httpService = Httpservice();
+
   final aghsatType = "".obs;
   final onvan = "".obs;
   int selectedIndex = 0;
@@ -211,7 +215,6 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
 
   Future<void> _saveAdvertisement() async {
     if (submit.value) {
-      // Check if the city is selected
       if (saleApartemanServerModel.cityId == null ||
           saleApartemanServerModel.cityId.isEmpty) {
         Fluttertoast.showToast(
@@ -272,6 +275,55 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
         fontSize: 16.0,
       );
     }
+  }
+
+  String? firstImagePath;
+
+  Future<bool> saveSaleAparteman({
+    required SaleApartemanServerModel saleAparteman,
+  }) async {
+    try {
+      final uploadImages = await _httpService.uploadFileList(
+          "api/v1/upload/advertise", saleAparteman.images);
+      if (uploadImages.isNotEmpty) {
+        saleAparteman.images = uploadImages;
+        // ذخیره مسیر اولین تصویر آپلودشده
+        firstImagePath = uploadImages.first;
+        final result = await _httpService.post(
+          "api/v1/advertise/sale-apartment",
+          saleAparteman.toJson(),
+        );
+        var response = SaleApartemanRes.fromJson(result.data);
+        Fluttertoast.showToast(
+          msg: response.message!,
+          toastLength: Toast.LENGTH_LONG,
+          gravity: ToastGravity.CENTER,
+          backgroundColor: Colors.red,
+          textColor: const Color.fromARGB(255, 14, 8, 8),
+          fontSize: 16.0,
+        );
+        return response.status!;
+      } else {
+        Fluttertoast.showToast(
+          msg: "خطایی در آپلود تصاویر رخ داده است",
+          toastLength: Toast.LENGTH_LONG,
+          gravity: ToastGravity.CENTER,
+          backgroundColor: Colors.red,
+          textColor: Colors.white,
+          fontSize: 16.0,
+        );
+      }
+    } catch (_) {
+      Fluttertoast.showToast(
+        msg: "خطایی رخ داده است",
+        toastLength: Toast.LENGTH_LONG,
+        gravity: ToastGravity.CENTER,
+        backgroundColor: Colors.red,
+        textColor: Colors.white,
+        fontSize: 16.0,
+      );
+    }
+    return false;
   }
 
   @override
@@ -797,9 +849,7 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
               GestureDetector(
                 onTap: () {
                   if (submit.value) {
-                    Get.to(() => NamayeshAgahi());
-                  }
-                  if (submit.value) {
+                    // ارسال داده‌ها به صفحه مقصد
                     saleApartemanServerModel.images = selectedImagesPath.value;
                     saleApartemanServerModel.wc = _wcController.text;
                     saleApartemanServerModel.hasLobby =
@@ -828,8 +878,32 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
                         _facilities.value.contains(CenterAntenna());
                     saleApartemanServerModel.hasSaunaJacuzzi =
                         _facilities.value.contains(Sona());
+
+                    // ذخیره آگهی
                     _saveAdvertisement();
-                    Get.to(() => NamayeshAgahi());
+
+                    // ارسال داده‌ها به صفحه نمایش آگهی
+                    Get.to(() => NamayeshAgahi(), arguments: {
+                      'images': saleApartemanServerModel.images,
+                      'wc': saleApartemanServerModel.wc,
+                      'hasLobby': saleApartemanServerModel.hasLobby,
+                      'hasBathTub': saleApartemanServerModel.hasBathTub,
+                      'hasMasterRoom': saleApartemanServerModel.hasMasterRoom,
+                      'hasBalcony': saleApartemanServerModel.hasBalcony,
+                      'hasSwimmingPool':
+                          saleApartemanServerModel.hasSwimmingPool,
+                      'hasRoofGarden': saleApartemanServerModel.hasRoofGarden,
+                      'hasGamingRoom': saleApartemanServerModel.hasGamingRoom,
+                      'hasGazebo': saleApartemanServerModel.hasGazebo,
+                      'hasSportingHall':
+                          saleApartemanServerModel.hasSportingHall,
+                      'hasConferenceHall':
+                          saleApartemanServerModel.hasConferenceHall,
+                      'hasCentralAntenna':
+                          saleApartemanServerModel.hasCentralAntenna,
+                      'hasSaunaJacuzzi':
+                          saleApartemanServerModel.hasSaunaJacuzzi,
+                    });
                   }
                 },
                 child: Obx(() => Row(

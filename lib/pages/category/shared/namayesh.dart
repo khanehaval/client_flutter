@@ -8,8 +8,12 @@ import 'package:get/get.dart';
 class NamayeshAgahi extends StatelessWidget {
   NamayeshAgahi({super.key});
   final submit = false.obs;
+
   @override
   Widget build(BuildContext context) {
+    // دریافت مسیر تصویر ارسال شده از صفحه مبدا
+    final String firstImagePath = Get.arguments['firstImagePath'] ?? '';
+
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: buildAppBar(),
@@ -45,13 +49,16 @@ class NamayeshAgahi extends StatelessWidget {
                   padding: const EdgeInsets.only(left: 5.0),
                   child: Stack(
                     children: [
-                      SizedBox(
-                        width: MediaQuery.of(context).size.width * .9,
-                        height: 175,
-                        child: Image.asset(
-                          "assets/images/pic.png",
-                        ),
-                      ),
+                      // نمایش تصویر ارسال شده در اینجا
+                      firstImagePath.isNotEmpty
+                          ? Image.network(firstImagePath,
+                              width: double.infinity,
+                              height: 175,
+                              fit: BoxFit.cover)
+                          : Image.asset("assets/images/pic.png",
+                              width: double.infinity,
+                              height: 175,
+                              fit: BoxFit.cover),
                       Align(
                         alignment: Alignment.centerRight,
                         child: Padding(

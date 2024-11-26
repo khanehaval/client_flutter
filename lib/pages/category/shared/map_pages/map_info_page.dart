@@ -25,7 +25,8 @@ class _MapInfoPageState extends State<MapInfoPage> {
       location: LatLng(0, 0),
       cityName: "",
       locationName: "",
-      formatted_address: "");
+      formatted_address: "",
+      cityId: "");
 
   final _mapController = MapController();
 
@@ -36,6 +37,10 @@ class _MapInfoPageState extends State<MapInfoPage> {
     locationInfo = widget.locationInfo;
     _addressController =
         TextEditingController(text: locationInfo.formatted_address);
+
+    // انتقال cityId به SaleApartemanServerModel
+    saleApartemanServerModel.cityId = locationInfo.cityId;
+
     super.initState();
   }
 
@@ -229,35 +234,42 @@ class _MapInfoPageState extends State<MapInfoPage> {
                 const SizedBox(
                   height: 5,
                 ),
-                Container(
-                  height: 41,
-                  width: getPageWidth(),
-                  decoration: BoxDecoration(
-                      color: const Color.fromRGBO(207, 207, 207, 1),
-                      borderRadius: BorderRadius.circular(10)),
-                  child: Padding(
-                    padding: const EdgeInsets.all(1.0),
-                    child: GestureDetector(
-                      onTap: () {
-                        saleApartemanServerModel.cityId;
-                      },
-                      child: Container(
-                        decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(10)),
-                        child: Align(
-                          alignment: Alignment.centerRight,
-                          child: Padding(
-                            padding: const EdgeInsets.all(3.0),
+                GestureDetector(
+                  onTap: () {
+                    saleApartemanServerModel.cityId = locationInfo.cityId;
+                    print(saleApartemanServerModel.cityId); // چاپ cityId
+                  },
+                  child: Container(
+                    height: 41,
+                    width: getPageWidth(),
+                    decoration: BoxDecoration(
+                        color: const Color.fromRGBO(207, 207, 207, 1),
+                        borderRadius: BorderRadius.circular(10)),
+                    child: Padding(
+                      padding: const EdgeInsets.all(1.0),
+                      child: GestureDetector(
+                        onTap: () {
+                          // در اینجا cityId را به saleApartemanServerModel منتقل می‌کنید
+                          saleApartemanServerModel.cityId = locationInfo.cityId;
+                        },
+                        child: Container(
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(10)),
+                          child: Align(
+                            alignment: Alignment.centerRight,
                             child: Padding(
-                              padding: const EdgeInsets.only(right: 10.0),
-                              child: Text(
-                                style: const TextStyle(
-                                    fontFamily: 'Iran Sans Bold,',
-                                    color: Color.fromRGBO(207, 207, 207, 1),
-                                    fontWeight: FontWeight.w400),
-                                locationInfo.cityName, // نمایش نام شهر
-                                textAlign: TextAlign.center,
+                              padding: const EdgeInsets.all(3.0),
+                              child: Padding(
+                                padding: const EdgeInsets.only(right: 10.0),
+                                child: Text(
+                                  style: const TextStyle(
+                                      fontFamily: 'Iran Sans Bold,',
+                                      color: Color.fromRGBO(207, 207, 207, 1),
+                                      fontWeight: FontWeight.w400),
+                                  locationInfo.cityName, // نمایش نام شهر
+                                  textAlign: TextAlign.center,
+                                ),
                               ),
                             ),
                           ),
@@ -265,7 +277,7 @@ class _MapInfoPageState extends State<MapInfoPage> {
                       ),
                     ),
                   ),
-                ),
+                )
               ],
             )
           ],

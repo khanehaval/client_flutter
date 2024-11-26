@@ -29,7 +29,8 @@ class _SelectLocationMapState extends State<RealEstate> {
       location: LatLng(35.699287, 51.338028),
       cityName: "تهران",
       locationName: "آزادی",
-      formatted_address: '');
+      formatted_address: '',
+      cityId: '');
 
   @override
   void initState() {

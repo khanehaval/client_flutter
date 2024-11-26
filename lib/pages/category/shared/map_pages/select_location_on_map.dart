@@ -44,7 +44,8 @@ class _SelectLocationMapState extends State<SelectLocationMap> {
             location: LatLng(35.699287, 51.338028),
             cityName: "تهران",
             locationName: "آزادی",
-            formatted_address: '');
+            formatted_address: '',
+            cityId: '');
   }
 
   Future<void> getUserCurrentLocation() async {
@@ -164,7 +165,7 @@ class _SelectLocationMapState extends State<SelectLocationMap> {
                           )
                         ],
                       )
-                    : SizedBox.shrink(),
+                    : const SizedBox.shrink(),
               ),
               MarkerLayer(
                 markers: [
@@ -361,7 +362,8 @@ class _SelectLocationMapState extends State<SelectLocationMap> {
         ),
         GestureDetector(
           onTap: () {
-            Get.to(() => City(selectedCity)); // انتقال به صفحه City
+            saleApartemanServerModel.cityId;
+            Get.to(() => City(selectedCity));
           },
           child: Container(
             decoration: BoxDecoration(

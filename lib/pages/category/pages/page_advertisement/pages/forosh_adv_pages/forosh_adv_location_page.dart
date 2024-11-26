@@ -16,8 +16,10 @@ class ForshAdvLocationPage extends StatelessWidget {
   final TextEditingController _controller = TextEditingController();
   SaleApartemanServerModel saleApartemanServerModel =
       SaleApartemanServerModel();
+
   ForshAdvLocationPage({required this.locationInfo, super.key});
   final type = "".obs;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,21 +32,20 @@ class ForshAdvLocationPage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               MapInfoPage(locationInfo),
-              const SizedBox(
-                height: 20,
-              ),
+              const SizedBox(height: 20),
               const Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  Text("*",
-                      style: TextStyle(
-                          fontFamily: MAIN_FONT_FAMILY,
-                          fontWeight: FontWeight.w600,
-                          fontSize: 13,
-                          color: Color.fromRGBO(156, 64, 64, 1))),
-                  SizedBox(
-                    width: 5,
+                  Text(
+                    "*",
+                    style: TextStyle(
+                      fontFamily: MAIN_FONT_FAMILY,
+                      fontWeight: FontWeight.w600,
+                      fontSize: 13,
+                      color: Color.fromRGBO(156, 64, 64, 1),
+                    ),
                   ),
+                  SizedBox(width: 5),
                   Padding(
                     padding: EdgeInsets.only(right: 5.0),
                     child: Text(
@@ -56,7 +57,7 @@ class ForshAdvLocationPage extends StatelessWidget {
                         color: Color.fromRGBO(99, 99, 99, 1),
                       ),
                     ),
-                  )
+                  ),
                 ],
               ),
               SizedBox(
@@ -64,7 +65,13 @@ class ForshAdvLocationPage extends StatelessWidget {
                 child: Center(
                   child: TextField(
                     onTap: () {
-                      saleApartemanServerModel.buildingType;
+                      showSelectNoeMelk((selectedKey, selectedLabel) {
+                        // متن فارسی را در TextField نمایش بدهید
+                        _controller.text = selectedLabel;
+
+                        // کلید مربوطه را در مدل سرور ذخیره کنید
+                        saleApartemanServerModel.buildingType = selectedKey;
+                      });
                     },
                     controller: _controller,
                     readOnly: true,
@@ -72,10 +79,11 @@ class ForshAdvLocationPage extends StatelessWidget {
                     decoration: InputDecoration(
                       hintText: 'انتخاب نشده',
                       hintStyle: const TextStyle(
-                          fontFamily: 'Iran Sans',
-                          fontWeight: FontWeight.w400,
-                          color: Color(0xFFA6A6A6),
-                          fontSize: 12),
+                        fontFamily: 'Iran Sans',
+                        fontWeight: FontWeight.w400,
+                        color: Color(0xFFA6A6A6),
+                        fontSize: 12,
+                      ),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
                         borderSide: const BorderSide(
@@ -89,26 +97,28 @@ class ForshAdvLocationPage extends StatelessWidget {
                         ),
                       ),
                       prefixIcon: IconButton(
-                          icon: SvgPicture.asset("assets/images/Vector-20.svg"),
-                          onPressed: () {
-                            showSelectNoeMelk((selectedMelk) {
-                              _controller.text = selectedMelk;
-                              saleApartemanServerModel.buildingType =
-                                  selectedMelk;
-                            });
-                          }),
+                        icon: SvgPicture.asset("assets/images/Vector-20.svg"),
+                        onPressed: () {
+                          showSelectNoeMelk((selectedKey, selectedLabel) {
+                            // متن فارسی را در TextField نمایش بدهید
+                            _controller.text = selectedLabel;
+
+                            // کلید مربوطه را در مدل سرور ذخیره کنید
+                            saleApartemanServerModel.buildingType = selectedKey;
+                          });
+                        },
+                      ),
                     ),
                   ),
                 ),
               ),
-              const SizedBox(
-                height: 65,
-              ),
+              const SizedBox(height: 65),
               GestureDetector(
-                  onTap: () {
-                    Get.to(() => ForoshAdvPage());
-                  },
-                  child: Center(child: submit_row1()))
+                onTap: () {
+                  Get.to(() => ForoshAdvPage());
+                },
+                child: Center(child: submit_row1()),
+              ),
             ],
           ),
         ),
