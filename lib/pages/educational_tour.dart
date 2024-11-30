@@ -46,7 +46,7 @@ class _EducationalTourState extends State<EducationalTour> {
   Widget build(BuildContext context) {
     return Obx(() => Scaffold(
           backgroundColor: Colors.white,
-          appBar: currentPageIndex.value == 1 ? null : buildAppBar(),
+          appBar: currentPageIndex.value == 4 ? null : buildAppBar(),
           body: Stack(
             children: [
               Obx(() => showEducation.value

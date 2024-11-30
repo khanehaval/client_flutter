@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/category/shared/map_pages/location_Info.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/Neighbourhood.dart';
-import 'package:flutter_application_1/pages/category/shared/widget/city_widget.dart';
 import 'package:flutter_application_1/services/models/server_model/sale_aparteman.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:flutter_svg/svg.dart';
@@ -33,8 +32,6 @@ class _SelectLocationMapState extends State<SelectLocationMap> {
   late LocationInfo locationInfo;
   SaleApartemanServerModel saleApartemanServerModel =
       SaleApartemanServerModel();
-  final Rx<String> selectedCity = Rx<String>('');
-
   @override
   void initState() {
     super.initState();
@@ -44,8 +41,7 @@ class _SelectLocationMapState extends State<SelectLocationMap> {
             location: LatLng(35.699287, 51.338028),
             cityName: "تهران",
             locationName: "آزادی",
-            formatted_address: '',
-            cityId: '');
+            formatted_address: '');
   }
 
   Future<void> getUserCurrentLocation() async {
@@ -76,7 +72,7 @@ class _SelectLocationMapState extends State<SelectLocationMap> {
     });
   }
 
-  Future<void> _getLocationInfo() async {
+  void _getLocationInfo() async {
     try {
       final response = await Dio().get(
         '$API_URL?lat=${locationInfo.location.latitude}&lng=${locationInfo.location.longitude}',
@@ -116,7 +112,6 @@ class _SelectLocationMapState extends State<SelectLocationMap> {
               keepAlive: true,
               onPositionChanged: (position, hasGesture) {
                 if (position.center != null) {
-                  saleApartemanServerModel.location;
                   setState(() {
                     locationInfo.location = LatLng(
                       position.center!.latitude,
@@ -165,7 +160,7 @@ class _SelectLocationMapState extends State<SelectLocationMap> {
                           )
                         ],
                       )
-                    : const SizedBox.shrink(),
+                    : SizedBox.shrink(),
               ),
               MarkerLayer(
                 markers: [
@@ -290,10 +285,7 @@ class _SelectLocationMapState extends State<SelectLocationMap> {
           ),
         ),
         GestureDetector(
-          onTap: () {
-            Get.to(() => Neighbourhood());
-            saleApartemanServerModel.districtId;
-          },
+          onTap: () => Get.to(() => Neighbourhood()),
           child: Container(
             decoration: BoxDecoration(
               color: Colors.white,
@@ -303,8 +295,8 @@ class _SelectLocationMapState extends State<SelectLocationMap> {
               borderRadius: BorderRadius.circular(10),
             ),
             child: SizedBox(
-              height: 40,
               width: getPageWidthlocation(),
+              height: 40,
               child: Center(
                 child: Padding(
                   padding: const EdgeInsets.only(right: 10.0),
@@ -315,9 +307,9 @@ class _SelectLocationMapState extends State<SelectLocationMap> {
                       child: Text(
                         locationInfo.locationName,
                         style: const TextStyle(
-                          fontFamily: MAIN_FONT_FAMILY,
-                          fontSize: 12,
+                          fontFamily: 'Iran Sans',
                           color: Color.fromRGBO(48, 48, 48, 1),
+                          fontWeight: FontWeight.w400,
                         ),
                         textAlign: TextAlign.right,
                       ),
@@ -342,7 +334,7 @@ class _SelectLocationMapState extends State<SelectLocationMap> {
               '*',
               style: TextStyle(
                 color: Color.fromRGBO(156, 64, 64, 1),
-                fontSize: 14,
+                fontSize: 16,
               ),
             ),
             SizedBox(width: 5),
@@ -361,9 +353,14 @@ class _SelectLocationMapState extends State<SelectLocationMap> {
           ],
         ),
         GestureDetector(
-          onTap: () {
-            saleApartemanServerModel.cityId;
-            Get.to(() => City(selectedCity));
+          onTap: () async {
+            var selectedCity = await Get.to(() => CitySelectionPage());
+            if (selectedCity != null) {
+              setState(() {
+                locationInfo.cityName = selectedCity['cityName'];
+                saleApartemanServerModel.cityId = selectedCity['cityId'];
+              });
+            }
           },
           child: Container(
             decoration: BoxDecoration(
@@ -383,27 +380,22 @@ class _SelectLocationMapState extends State<SelectLocationMap> {
                     alignment: Alignment.centerRight,
                     child: Padding(
                       padding: const EdgeInsets.only(right: 5.0),
-                      child: Obx(() {
-                        // استفاده از Obx برای رصد تغییرات در selectedCity
-                        return Text(
-                          selectedCity.value.isEmpty
-                              ? "انتخاب شهر"
-                              : selectedCity.value,
-                          style: const TextStyle(
-                            fontFamily: 'MAIN_FONT_FAMILY',
-                            color: Color.fromRGBO(48, 48, 48, 1),
-                            fontWeight: FontWeight.w400,
-                          ),
-                          textAlign: TextAlign.center,
-                        );
-                      }),
+                      child: Text(
+                        locationInfo.cityName,
+                        style: const TextStyle(
+                          fontFamily: 'Iran Sans Bold',
+                          color: Color.fromRGBO(48, 48, 48, 1),
+                          fontWeight: FontWeight.w400,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
                     ),
                   ),
                 ),
               ),
             ),
           ),
-        )
+        ),
       ],
     );
   }
@@ -466,6 +458,32 @@ class _SelectLocationMapState extends State<SelectLocationMap> {
             ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class CitySelectionPage extends StatelessWidget {
+  final List<Map<String, dynamic>> cities = [
+    {'cityId': 1, 'cityName': 'تهران'},
+    {'cityId': 2, 'cityName': 'شیراز'},
+    {'cityId': 3, 'cityName': 'مشهد'},
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text("انتخاب شهر")),
+      body: ListView.builder(
+        itemCount: cities.length,
+        itemBuilder: (context, index) {
+          return ListTile(
+            title: Text(cities[index]['cityName']),
+            onTap: () {
+              Get.back(result: cities[index]);
+            },
+          );
+        },
       ),
     );
   }

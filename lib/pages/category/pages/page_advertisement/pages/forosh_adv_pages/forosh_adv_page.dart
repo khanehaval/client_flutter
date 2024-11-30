@@ -215,6 +215,7 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
 
   Future<void> _saveAdvertisement() async {
     if (submit.value) {
+      // بررسی که آیا cityId تنظیم شده است
       if (saleApartemanServerModel.cityId == null ||
           saleApartemanServerModel.cityId.isEmpty) {
         Fluttertoast.showToast(
@@ -231,8 +232,10 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
       _buttonIsPressed.value = true;
 
       try {
+        // ارسال داده‌ها به سرور
         final success = await _accountRepo.saleAparteman(
-            saleApartemanData: saleApartemanServerModel);
+          saleApartemanData: saleApartemanServerModel,
+        );
         if (success) {
           Fluttertoast.showToast(
             msg: "اطلاعات با موفقیت ارسال شد",

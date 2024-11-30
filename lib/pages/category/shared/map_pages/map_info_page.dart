@@ -10,9 +10,7 @@ import 'package:latlong2/latlong.dart';
 
 class MapInfoPage extends StatefulWidget {
   late LocationInfo locationInfo;
-
   MapInfoPage(this.locationInfo);
-
   @override
   State<MapInfoPage> createState() => _MapInfoPageState();
 }
@@ -22,25 +20,18 @@ class _MapInfoPageState extends State<MapInfoPage> {
       SaleApartemanServerModel();
 
   var locationInfo = LocationInfo(
-      location: LatLng(0, 0),
-      cityName: "",
-      locationName: "",
-      formatted_address: "",
-      cityId: "");
-
+    location: const LatLng(0, 0),
+    cityName: "",
+    locationName: "",
+    formatted_address: "",
+  );
   final _mapController = MapController();
-
   TextEditingController _addressController = TextEditingController();
-
   @override
   void initState() {
     locationInfo = widget.locationInfo;
     _addressController =
         TextEditingController(text: locationInfo.formatted_address);
-
-    // انتقال cityId به SaleApartemanServerModel
-    saleApartemanServerModel.cityId = locationInfo.cityId;
-
     super.initState();
   }
 
@@ -73,67 +64,69 @@ class _MapInfoPageState extends State<MapInfoPage> {
             child: Stack(
               children: [
                 ClipRRect(
-                    borderRadius: const BorderRadius.all(Radius.circular(10)),
-                    child: FlutterMap(
-                      mapController: _mapController,
-                      options: MapOptions(
-                        initialCenter: locationInfo.location,
-                        initialZoom: 14,
-                        maxZoom: 18,
-                        interactiveFlags: InteractiveFlag.pinchZoom |
-                            InteractiveFlag.doubleTapZoom |
-                            InteractiveFlag.rotate,
-                        onTap: (tapPosition, point) {
-                          Get.to(() => SelectLocationMap(
-                                lastLocation: locationInfo,
-                                onSelect: (_) {
-                                  Get.back();
-                                  locationInfo = _;
-                                  _mapController.move(
-                                      locationInfo.location, 16);
-                                  _addressController.text =
-                                      locationInfo.formatted_address;
-                                  saleApartemanServerModel.location;
-                                  setState(() {});
-                                },
-                              ));
-                        },
+                  borderRadius: const BorderRadius.all(Radius.circular(10)),
+                  child: FlutterMap(
+                    mapController: _mapController,
+                    options: MapOptions(
+                      initialCenter: locationInfo.location,
+                      initialZoom: 14,
+                      maxZoom: 18,
+                      interactiveFlags: InteractiveFlag.pinchZoom |
+                          InteractiveFlag.doubleTapZoom |
+                          InteractiveFlag.rotate,
+                      onTap: (tapPosition, point) {
+                        Get.to(() => SelectLocationMap(
+                              lastLocation: locationInfo,
+                              onSelect: (_) {
+                                Get.back();
+                                locationInfo = _;
+                                _mapController.move(locationInfo.location, 16);
+                                _addressController.text =
+                                    locationInfo.formatted_address;
+                                saleApartemanServerModel.location;
+                                setState(() {});
+                              },
+                            ));
+                      },
+                    ),
+                    children: [
+                      TileLayer(
+                        urlTemplate:
+                            'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+                        userAgentPackageName: 'com.example.app',
                       ),
-                      children: [
-                        TileLayer(
-                          urlTemplate:
-                              'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
-                          userAgentPackageName: 'com.example.app',
-                        ),
-                        MarkerLayer(
-                          markers: [
-                            Marker(
-                                point: locationInfo.location,
-                                width: 60,
-                                height: 60,
-                                child: IconButton(
-                                    onPressed: () {
-                                      Get.to(() => SelectLocationMap(
-                                            lastLocation: locationInfo,
-                                            onSelect: (_) {
-                                              Get.back();
-                                              locationInfo = _;
-                                              _mapController.move(
-                                                  locationInfo.location, 13);
-                                              _addressController.text =
-                                                  locationInfo
-                                                      .formatted_address;
-                                              saleApartemanServerModel.location;
-                                              setState(() {});
-                                            },
-                                          ));
+                      MarkerLayer(
+                        markers: [
+                          Marker(
+                            point: locationInfo.location,
+                            width: 60,
+                            height: 60,
+                            child: IconButton(
+                              onPressed: () {
+                                Get.to(
+                                  () => SelectLocationMap(
+                                    lastLocation: locationInfo,
+                                    onSelect: (_) {
+                                      Get.back();
+                                      locationInfo = _;
+                                      _mapController.move(
+                                          locationInfo.location, 13);
+                                      _addressController.text =
+                                          locationInfo.formatted_address;
+                                      saleApartemanServerModel.location;
+                                      setState(() {});
                                     },
-                                    icon: Image.asset(
-                                        "assets/images/Group 1279.png"))),
-                          ],
-                        ),
-                      ],
-                    )),
+                                  ),
+                                );
+                              },
+                              icon: Image.asset("assets/images/Group 1279.png"),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
                 Align(
                   alignment: Alignment.bottomCenter,
                   child: GestureDetector(
@@ -235,10 +228,7 @@ class _MapInfoPageState extends State<MapInfoPage> {
                   height: 5,
                 ),
                 GestureDetector(
-                  onTap: () {
-                    saleApartemanServerModel.cityId = locationInfo.cityId;
-                    print(saleApartemanServerModel.cityId); // چاپ cityId
-                  },
+                  onTap: () {},
                   child: Container(
                     height: 41,
                     width: getPageWidth(),
@@ -248,10 +238,7 @@ class _MapInfoPageState extends State<MapInfoPage> {
                     child: Padding(
                       padding: const EdgeInsets.all(1.0),
                       child: GestureDetector(
-                        onTap: () {
-                          // در اینجا cityId را به saleApartemanServerModel منتقل می‌کنید
-                          saleApartemanServerModel.cityId = locationInfo.cityId;
-                        },
+                        onTap: () {},
                         child: Container(
                           decoration: BoxDecoration(
                               color: Colors.white,

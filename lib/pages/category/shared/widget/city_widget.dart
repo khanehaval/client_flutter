@@ -10,7 +10,7 @@ import 'switch_onr_item.dart';
 import 'taeed_enseraf_filters.dart';
 
 class City extends StatefulWidget {
-  final Rx<String> selectedCity; // متغیر برای نگهداری city انتخاب شده
+  final Rx<String> selectedCity;
 
   City(this.selectedCity);
 
@@ -53,28 +53,22 @@ class _CityState extends State<City> {
           response.data != null) {
         List<String> cityList = [];
 
-        // بررسی null بودن و دسترسی به لیست در داده‌ها
         if (response.data?.list != null) {
           for (var item in response.data!.list!) {
-            // دسترسی به list داخل Data
-            cityList.add(item.name ?? ''); // اضافه کردن نام شهر به لیست
+            cityList.add(item.name ?? '');
           }
         }
 
-        // برگشت لیست نهایی از نام شهرها
         return cityList;
       }
 
-      // در صورت نادرست بودن پاسخ یا عدم وجود داده‌ها، لیستی خالی برگشت داده می‌شود
       return [];
     } catch (e) {
-      // چاپ خطا در صورت بروز مشکل
       print("Error fetching cities: $e");
       return [];
     }
   }
 
-  // Filter cities based on search query
   void _filterCity() {
     final query = searchController.text.toLowerCase();
     filteredCity.value = filteredCity

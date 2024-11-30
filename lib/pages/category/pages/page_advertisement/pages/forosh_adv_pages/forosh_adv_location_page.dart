@@ -66,10 +66,7 @@ class ForshAdvLocationPage extends StatelessWidget {
                   child: TextField(
                     onTap: () {
                       showSelectNoeMelk((selectedKey, selectedLabel) {
-                        // متن فارسی را در TextField نمایش بدهید
                         _controller.text = selectedLabel;
-
-                        // کلید مربوطه را در مدل سرور ذخیره کنید
                         saleApartemanServerModel.buildingType = selectedKey;
                       });
                     },

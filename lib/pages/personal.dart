@@ -29,11 +29,11 @@ class _SelectLocationMapState extends State<SelectLocationMap> {
   final showLimit = false.obs;
 
   var locationInfo = LocationInfo(
-      location: LatLng(35.699287, 51.338028),
-      cityName: "تهران",
-      locationName: "آزادی",
-      formatted_address: '',
-      cityId: '');
+    location: LatLng(35.699287, 51.338028),
+    cityName: "تهران",
+    locationName: "آزادی",
+    formatted_address: '',
+  );
 
   @override
   void initState() {
