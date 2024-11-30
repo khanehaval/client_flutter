@@ -129,3 +129,5 @@ class Parent {
     };
   }
 }
+
+nima() {}
