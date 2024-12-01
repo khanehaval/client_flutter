@@ -215,7 +215,6 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
 
   Future<void> _saveAdvertisement() async {
     if (submit.value) {
-      // بررسی که آیا cityId تنظیم شده است
       if (saleApartemanServerModel.cityId == null ||
           saleApartemanServerModel.cityId.isEmpty) {
         Fluttertoast.showToast(
@@ -228,11 +227,20 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
         );
         return;
       }
-
+      if (saleApartemanServerModel.buildingType == null ||
+          saleApartemanServerModel.buildingType!.isEmpty) {
+        Fluttertoast.showToast(
+          msg: "لطفا نوع ملک را انتخاب کنید",
+          toastLength: Toast.LENGTH_LONG,
+          gravity: ToastGravity.CENTER,
+          backgroundColor: Colors.red,
+          textColor: Colors.white,
+          fontSize: 16.0,
+        );
+        return;
+      }
       _buttonIsPressed.value = true;
-
       try {
-        // ارسال داده‌ها به سرور
         final success = await _accountRepo.saleAparteman(
           saleApartemanData: saleApartemanServerModel,
         );
@@ -281,54 +289,6 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
   }
 
   String? firstImagePath;
-
-  Future<bool> saveSaleAparteman({
-    required SaleApartemanServerModel saleAparteman,
-  }) async {
-    try {
-      final uploadImages = await _httpService.uploadFileList(
-          "api/v1/upload/advertise", saleAparteman.images);
-      if (uploadImages.isNotEmpty) {
-        saleAparteman.images = uploadImages;
-        // ذخیره مسیر اولین تصویر آپلودشده
-        firstImagePath = uploadImages.first;
-        final result = await _httpService.post(
-          "api/v1/advertise/sale-apartment",
-          saleAparteman.toJson(),
-        );
-        var response = SaleApartemanRes.fromJson(result.data);
-        Fluttertoast.showToast(
-          msg: response.message!,
-          toastLength: Toast.LENGTH_LONG,
-          gravity: ToastGravity.CENTER,
-          backgroundColor: Colors.red,
-          textColor: const Color.fromARGB(255, 14, 8, 8),
-          fontSize: 16.0,
-        );
-        return response.status!;
-      } else {
-        Fluttertoast.showToast(
-          msg: "خطایی در آپلود تصاویر رخ داده است",
-          toastLength: Toast.LENGTH_LONG,
-          gravity: ToastGravity.CENTER,
-          backgroundColor: Colors.red,
-          textColor: Colors.white,
-          fontSize: 16.0,
-        );
-      }
-    } catch (_) {
-      Fluttertoast.showToast(
-        msg: "خطایی رخ داده است",
-        toastLength: Toast.LENGTH_LONG,
-        gravity: ToastGravity.CENTER,
-        backgroundColor: Colors.red,
-        textColor: Colors.white,
-        fontSize: 16.0,
-      );
-    }
-    return false;
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -852,7 +812,6 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
               GestureDetector(
                 onTap: () {
                   if (submit.value) {
-                    // ارسال داده‌ها به صفحه مقصد
                     saleApartemanServerModel.images = selectedImagesPath.value;
                     saleApartemanServerModel.wc = _wcController.text;
                     saleApartemanServerModel.hasLobby =
@@ -881,11 +840,7 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
                         _facilities.value.contains(CenterAntenna());
                     saleApartemanServerModel.hasSaunaJacuzzi =
                         _facilities.value.contains(Sona());
-
-                    // ذخیره آگهی
                     _saveAdvertisement();
-
-                    // ارسال داده‌ها به صفحه نمایش آگهی
                     Get.to(() => NamayeshAgahi(), arguments: {
                       'images': saleApartemanServerModel.images,
                       'wc': saleApartemanServerModel.wc,

@@ -1,35 +1,36 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/repo/advRepo.dart';
+import 'package:flutter_application_1/pages/category/shared/map_pages/location_Info.dart';
+import 'package:flutter_application_1/pages/category/shared/widget/switch_onr_item.dart';
 import 'package:flutter_application_1/services/advertisment_service.dart';
-import 'package:flutter_application_1/services/models/filterModel.dart';
+import 'package:flutter_application_1/services/models/server_model/sale_aparteman.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:get_it/get_it.dart';
-import 'city_controller.dart';
-import 'switch_onr_item.dart';
+import 'package:latlong2/latlong.dart';
 import 'taeed_enseraf_filters.dart';
 
-class City extends StatefulWidget {
+class CityWidget extends StatefulWidget {
   final Rx<String> selectedCity;
 
-  City(this.selectedCity);
+  CityWidget(this.selectedCity);
 
   @override
   _CityState createState() => _CityState();
 }
 
-Map<String, AdvretismentFilter> CityFilter = Map();
-final _advRepo = GetIt.I.get<AdvRepo>();
-
-List<AdvretismentFilter> _CityFilter = [];
-
-class _CityState extends State<City> {
-  final cityController = Get.put(CityController());
+class _CityState extends State<CityWidget> {
   final advertisementService = AdvertisementService();
   final searchController = TextEditingController();
   final filteredCity = <String>[].obs;
+  final allCities = <String>[].obs;
   late Future<List<String>> citiesFuture;
-  final selectedCity = Rx<String>('');
+  SaleApartemanServerModel saleApartemanServerModel =
+      SaleApartemanServerModel();
+  LocationInfo locationInfo = LocationInfo(
+    location: const LatLng(0.0, 0.0),
+    cityName: "",
+    locationName: "",
+    formatted_address: "",
+  );
 
   @override
   void initState() {
@@ -50,42 +51,28 @@ class _CityState extends State<City> {
 
       if (response != null &&
           response.status == true &&
-          response.data != null) {
-        List<String> cityList = [];
+          response.data != null &&
+          response.data!.list != null) {
+        final cityList =
+            response.data!.list!.map((item) => item.name ?? '').toList();
 
-        if (response.data?.list != null) {
-          for (var item in response.data!.list!) {
-            cityList.add(item.name ?? '');
-          }
-        }
+        // مقداردهی به `allCities` و `filteredCity`
+        allCities.value = cityList;
+        filteredCity.value = cityList;
 
         return cityList;
       }
 
       return [];
     } catch (e) {
-      print("Error fetching cities: $e");
       return [];
     }
   }
 
   void _filterCity() {
     final query = searchController.text.toLowerCase();
-    filteredCity.value = filteredCity
-        .where((city) => city.toLowerCase().contains(query))
-        .toList();
-  }
-
-  void addFilters(List<AdvretismentFilter> filter) {
-    for (var f in filter) {
-      CityFilter[f.key()] = f;
-    }
-  }
-
-  void removeFilters(List<AdvretismentFilter> filter) {
-    for (var f in filter) {
-      CityFilter.remove(f.key());
-    }
+    filteredCity.value =
+        allCities.where((city) => city.toLowerCase().contains(query)).toList();
   }
 
   @override
@@ -164,7 +151,6 @@ class _CityState extends State<City> {
                     if (!snapshot.hasData || snapshot.data!.isEmpty) {
                       return const Center(child: Text('No cities available.'));
                     }
-                    filteredCity.value = snapshot.data!;
 
                     return Obx(() {
                       return ListView.builder(
@@ -183,8 +169,8 @@ class _CityState extends State<City> {
           FiltersTaeedEnseraf(
             onTaeed: () {
               Get.back();
-              if (cityController.selectedCity.isNotEmpty) {
-                _advRepo.filters[cityController.selectedCity.value];
+              if (widget.selectedCity.value.isNotEmpty) {
+                locationInfo.cityName = widget.selectedCity.value;
               }
             },
           ),
@@ -196,9 +182,8 @@ class _CityState extends State<City> {
   Widget cityRow(String city) {
     return GestureDetector(
       onTap: () {
-        // به‌روزرسانی selectedCity
-        widget.selectedCity.value = city; // اگر از متغیر `Rx` استفاده می‌کنید
-        Get.back(); // برگشت به صفحه قبلی
+        widget.selectedCity.value = city; // انتخاب شهر
+        saleApartemanServerModel.cityId = city; // بروزرسانی در مدل
       },
       child: Obx(() => Padding(
             padding: const EdgeInsets.only(left: 10.0, right: 10),
@@ -206,16 +191,17 @@ class _CityState extends State<City> {
               decoration: const BoxDecoration(
                 border: Border(
                   bottom: BorderSide(
-                    color: Colors.grey,
-                    width: 1.0,
+                    color: Colors.grey, // رنگ خط زیرین
+                    width: 1.0, // عرض خط زیرین
                   ),
                 ),
               ),
               child: SwitchItem(
-                isSelected: widget.selectedCity.value == city,
+                isSelected: widget.selectedCity.value == city, // بررسی انتخاب
                 item: city,
                 onTap: () {
-                  widget.selectedCity.value = city; // انتخاب شهر
+                  widget.selectedCity.value = city; // مدیریت انتخاب
+                  saleApartemanServerModel.cityId = city; // بروزرسانی در مدل
                 },
               ),
             ),

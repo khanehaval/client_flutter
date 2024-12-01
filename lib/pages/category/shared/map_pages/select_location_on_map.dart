@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/category/shared/map_pages/location_Info.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/Neighbourhood.dart';
+import 'package:flutter_application_1/pages/category/shared/widget/city_widget.dart';
 import 'package:flutter_application_1/services/models/server_model/sale_aparteman.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:flutter_svg/svg.dart';
@@ -19,7 +20,8 @@ class SelectLocationMap extends StatefulWidget {
   final LocationInfo? lastLocation;
   final Function(LocationInfo) onSelect;
 
-  SelectLocationMap({super.key, required this.onSelect, this.lastLocation});
+  const SelectLocationMap(
+      {super.key, required this.onSelect, this.lastLocation});
 
   @override
   State<SelectLocationMap> createState() => _SelectLocationMapState();
@@ -29,16 +31,19 @@ class _SelectLocationMapState extends State<SelectLocationMap> {
   late MapController mapController;
   double initZoom = INITIAL_ZOOM;
   final RxBool showLimit = false.obs;
+  Rx<String> selectedCity = ''.obs;
+
   late LocationInfo locationInfo;
   SaleApartemanServerModel saleApartemanServerModel =
       SaleApartemanServerModel();
+
   @override
   void initState() {
     super.initState();
     mapController = MapController();
     locationInfo = widget.lastLocation ??
         LocationInfo(
-            location: LatLng(35.699287, 51.338028),
+            location: const LatLng(35.699287, 51.338028),
             cityName: "تهران",
             locationName: "آزادی",
             formatted_address: '');
@@ -160,7 +165,7 @@ class _SelectLocationMapState extends State<SelectLocationMap> {
                           )
                         ],
                       )
-                    : SizedBox.shrink(),
+                    : const SizedBox.shrink(),
               ),
               MarkerLayer(
                 markers: [
@@ -325,69 +330,52 @@ class _SelectLocationMapState extends State<SelectLocationMap> {
   }
 
   Widget _buildCitySelector() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.end,
-      children: [
-        const Row(
-          children: [
-            Text(
-              '*',
-              style: TextStyle(
-                color: Color.fromRGBO(156, 64, 64, 1),
-                fontSize: 16,
-              ),
-            ),
-            SizedBox(width: 5),
-            Padding(
-              padding: EdgeInsets.only(right: 10.0),
-              child: Text(
-                "انتخاب شهر",
-                style: TextStyle(
-                  fontSize: 14,
-                  fontFamily: MAIN_FONT_FAMILY,
-                  color: Color.fromRGBO(99, 99, 99, 1),
+    return Padding(
+      padding: const EdgeInsets.only(top: 20.0),
+      child: Column(
+        children: [
+          GestureDetector(
+            onTap: () async {
+              var selectedCity =
+                  await Get.to(() => CityWidget(this.selectedCity));
+              if (selectedCity != null && selectedCity.isNotEmpty) {
+                setState(() {
+                  locationInfo.cityName = selectedCity;
+                  saleApartemanServerModel.cityId = selectedCity;
+                });
+              }
+            },
+            child: Container(
+              decoration: BoxDecoration(
+                color: Colors.white,
+                border: Border.all(
+                  color: const Color.fromARGB(255, 158, 147, 147),
                 ),
-                textAlign: TextAlign.start,
+                borderRadius: BorderRadius.circular(10),
               ),
-            ),
-          ],
-        ),
-        GestureDetector(
-          onTap: () async {
-            var selectedCity = await Get.to(() => CitySelectionPage());
-            if (selectedCity != null) {
-              setState(() {
-                locationInfo.cityName = selectedCity['cityName'];
-                saleApartemanServerModel.cityId = selectedCity['cityId'];
-              });
-            }
-          },
-          child: Container(
-            decoration: BoxDecoration(
-              color: Colors.white,
-              border: Border.all(
-                color: const Color.fromARGB(255, 158, 147, 147),
-              ),
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: SizedBox(
-              height: 40,
-              width: getPageWidthlocation(),
-              child: Center(
-                child: Padding(
-                  padding: const EdgeInsets.only(right: 10.0),
-                  child: Align(
-                    alignment: Alignment.centerRight,
-                    child: Padding(
-                      padding: const EdgeInsets.only(right: 5.0),
-                      child: Text(
-                        locationInfo.cityName,
-                        style: const TextStyle(
-                          fontFamily: 'Iran Sans Bold',
-                          color: Color.fromRGBO(48, 48, 48, 1),
-                          fontWeight: FontWeight.w400,
+              child: SizedBox(
+                height: 40,
+                width: getPageWidthlocation(),
+                child: Center(
+                  child: Padding(
+                    padding: const EdgeInsets.only(right: 10.0),
+                    child: Align(
+                      alignment: Alignment.centerRight,
+                      child: Padding(
+                        padding: const EdgeInsets.only(right: 5.0),
+                        child: Obx(
+                          () => Text(
+                            selectedCity.value.isEmpty
+                                ? 'شهر را انتخاب کنید'
+                                : selectedCity.value,
+                            style: const TextStyle(
+                              fontFamily: 'Iran Sans Bold',
+                              color: Color.fromRGBO(48, 48, 48, 1),
+                              fontWeight: FontWeight.w400,
+                            ),
+                            textAlign: TextAlign.center,
+                          ),
                         ),
-                        textAlign: TextAlign.center,
                       ),
                     ),
                   ),
@@ -395,8 +383,8 @@ class _SelectLocationMapState extends State<SelectLocationMap> {
               ),
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 
@@ -458,32 +446,6 @@ class _SelectLocationMapState extends State<SelectLocationMap> {
             ),
           ],
         ),
-      ),
-    );
-  }
-}
-
-class CitySelectionPage extends StatelessWidget {
-  final List<Map<String, dynamic>> cities = [
-    {'cityId': 1, 'cityName': 'تهران'},
-    {'cityId': 2, 'cityName': 'شیراز'},
-    {'cityId': 3, 'cityName': 'مشهد'},
-  ];
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text("انتخاب شهر")),
-      body: ListView.builder(
-        itemCount: cities.length,
-        itemBuilder: (context, index) {
-          return ListTile(
-            title: Text(cities[index]['cityName']),
-            onTap: () {
-              Get.back(result: cities[index]);
-            },
-          );
-        },
       ),
     );
   }

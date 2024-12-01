@@ -30,15 +30,8 @@ class AdvertisementService {
           "api/v1/advertise/sale-apartment",
           saleAparteman.toJson(),
         );
+
         var response = SaleApartemanRes.fromJson(result.data);
-        Fluttertoast.showToast(
-          msg: response.message!,
-          toastLength: Toast.LENGTH_LONG,
-          gravity: ToastGravity.CENTER,
-          backgroundColor: Colors.red,
-          textColor: const Color.fromARGB(255, 14, 8, 8),
-          fontSize: 16.0,
-        );
         return response.status!;
       } else {
         Fluttertoast.showToast(
@@ -60,6 +53,7 @@ class AdvertisementService {
         fontSize: 16.0,
       );
     }
+
     return false;
   }
 

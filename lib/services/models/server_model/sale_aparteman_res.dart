@@ -5,10 +5,8 @@ part 'sale_aparteman_res.g.dart';
 @JsonSerializable()
 class SaleApartemanRes {
   final bool status;
-  final String? message;
   SaleApartemanRes({
     required this.status,
-    this.message,
   });
 
   factory SaleApartemanRes.fromJson(Map<String, dynamic> json) =>

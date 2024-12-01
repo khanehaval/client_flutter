@@ -81,7 +81,6 @@ class AccountRepo {
       bool success = await _advetismentService.saveSaleAparteman(
         saleAparteman: saleApartemanData,
       );
-
       if (success) {
         Fluttertoast.showToast(
           msg: "اطلاعات با موفقیت ارسال شد",
@@ -106,16 +105,25 @@ class AccountRepo {
     } catch (e) {
       if (e is DioError) {
         print('DioError: ${e.message}');
+        Fluttertoast.showToast(
+          msg: "خطا در ارتباط با سرور: ${e.message}",
+          toastLength: Toast.LENGTH_LONG,
+          gravity: ToastGravity.CENTER,
+          backgroundColor: Colors.red,
+          textColor: Colors.white,
+          fontSize: 16.0,
+        );
+      } else {
+        print('Error: $e');
+        Fluttertoast.showToast(
+          msg: "خطای غیرمنتظره رخ داده است",
+          toastLength: Toast.LENGTH_LONG,
+          gravity: ToastGravity.CENTER,
+          backgroundColor: Colors.red,
+          textColor: Colors.white,
+          fontSize: 16.0,
+        );
       }
-      print('Error: $e');
-      Fluttertoast.showToast(
-        msg: "خطا در ارتباط با سرور",
-        toastLength: Toast.LENGTH_LONG,
-        gravity: ToastGravity.CENTER,
-        backgroundColor: Colors.red,
-        textColor: Colors.white,
-        fontSize: 16.0,
-      );
       return false;
     }
   }

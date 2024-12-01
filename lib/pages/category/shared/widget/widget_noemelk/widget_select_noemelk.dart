@@ -4,9 +4,9 @@ import 'package:flutter_application_1/pages/category/shared/widget/enseraf.dart'
 import 'package:flutter_application_1/pages/category/shared/widget/switchItem_location.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/taeed.dart';
 import 'package:get/get.dart';
+import 'dart:convert';
 
-void showSelectNoeMelk(Function(String key, String label) onSelected) {
-  String? selectedKey;
+void showSelectNoeMelk(Function(String label) onSelected) {
   String? selectedLabel;
 
   const items = [
@@ -60,11 +60,7 @@ void showSelectNoeMelk(Function(String key, String label) onSelected) {
                 items: items.map((e) => e['label'] as String).toList(),
                 onSelected: (selectedItems) {
                   if (selectedItems.isNotEmpty) {
-                    final selected = items.firstWhere(
-                      (item) => item['label'] == selectedItems.first,
-                    );
-                    selectedKey = selected['key'];
-                    selectedLabel = selected['label'];
+                    selectedLabel = selectedItems.first;
                   }
                 },
               ),
@@ -74,9 +70,10 @@ void showSelectNoeMelk(Function(String key, String label) onSelected) {
                 children: [
                   Enseraf(),
                   taeed(
-                    onPressed: () {
-                      if (selectedKey != null && selectedLabel != null) {
-                        onSelected(selectedKey!, selectedLabel!);
+                    onPressed: () async {
+                      if (selectedLabel != null) {
+                        jsonEncode({"label": selectedLabel});
+                        onSelected(selectedLabel!);
                         Get.back();
                       } else {
                         Get.snackbar("خطا", "لطفاً یک مورد را انتخاب کنید");

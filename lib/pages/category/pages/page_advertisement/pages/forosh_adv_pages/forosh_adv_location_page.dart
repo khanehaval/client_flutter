@@ -49,7 +49,7 @@ class ForshAdvLocationPage extends StatelessWidget {
                   Padding(
                     padding: EdgeInsets.only(right: 5.0),
                     child: Text(
-                      "انتخاب نوع ملک ",
+                      "انتخاب نوع ملک",
                       style: TextStyle(
                         fontFamily: MAIN_FONT_FAMILY,
                         fontWeight: FontWeight.w600,
@@ -65,9 +65,9 @@ class ForshAdvLocationPage extends StatelessWidget {
                 child: Center(
                   child: TextField(
                     onTap: () {
-                      showSelectNoeMelk((selectedKey, selectedLabel) {
+                      showSelectNoeMelk((selectedLabel) {
                         _controller.text = selectedLabel;
-                        saleApartemanServerModel.buildingType = selectedKey;
+                        saleApartemanServerModel.buildingType = selectedLabel;
                       });
                     },
                     controller: _controller,
@@ -96,12 +96,10 @@ class ForshAdvLocationPage extends StatelessWidget {
                       prefixIcon: IconButton(
                         icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                         onPressed: () {
-                          showSelectNoeMelk((selectedKey, selectedLabel) {
-                            // متن فارسی را در TextField نمایش بدهید
+                          showSelectNoeMelk((selectedLabel) {
                             _controller.text = selectedLabel;
-
-                            // کلید مربوطه را در مدل سرور ذخیره کنید
-                            saleApartemanServerModel.buildingType = selectedKey;
+                            saleApartemanServerModel.buildingType =
+                                selectedLabel;
                           });
                         },
                       ),
