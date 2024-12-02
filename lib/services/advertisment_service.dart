@@ -30,7 +30,6 @@ class AdvertisementService {
           "api/v1/advertise/sale-apartment",
           saleAparteman.toJson(),
         );
-
         var response = SaleApartemanRes.fromJson(result.data);
         return response.status!;
       } else {

@@ -90,6 +90,9 @@ class _SelectLocationMapState extends State<SelectLocationMap> {
         locationInfo.locationName =
             data["neighbourhood"] ?? data["place"] ?? data["route_name"] ?? '';
         locationInfo.formatted_address = data["formatted_address"] ?? '';
+
+        // به‌روزرسانی selectedCity با نام شهر جدید
+        selectedCity.value = locationInfo.cityName;
       });
     } catch (_) {
       Fluttertoast.showToast(
@@ -336,12 +339,12 @@ class _SelectLocationMapState extends State<SelectLocationMap> {
         children: [
           GestureDetector(
             onTap: () async {
-              var selectedCity =
+              var selectedCityValue =
                   await Get.to(() => CityWidget(this.selectedCity));
-              if (selectedCity != null && selectedCity.isNotEmpty) {
+              if (selectedCityValue != null && selectedCityValue.isNotEmpty) {
                 setState(() {
-                  locationInfo.cityName = selectedCity;
-                  saleApartemanServerModel.cityId = selectedCity;
+                  locationInfo.cityName = selectedCityValue;
+                  saleApartemanServerModel.cityId = selectedCityValue;
                 });
               }
             },
@@ -367,7 +370,7 @@ class _SelectLocationMapState extends State<SelectLocationMap> {
                           () => Text(
                             selectedCity.value.isEmpty
                                 ? 'شهر را انتخاب کنید'
-                                : selectedCity.value,
+                                : selectedCity.value, // استفاده از selectedCity
                             style: const TextStyle(
                               fontFamily: 'Iran Sans Bold',
                               color: Color.fromRGBO(48, 48, 48, 1),

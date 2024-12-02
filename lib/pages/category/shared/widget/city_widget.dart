@@ -55,8 +55,8 @@ class _CityState extends State<CityWidget> {
           response.data!.list != null) {
         final cityList =
             response.data!.list!.map((item) => item.name ?? '').toList();
-
-        // مقداردهی به `allCities` و `filteredCity`
+        final cityIds =
+            response.data!.list!.map((item) => item.id ?? '').toList();
         allCities.value = cityList;
         filteredCity.value = cityList;
 
@@ -182,30 +182,34 @@ class _CityState extends State<CityWidget> {
   Widget cityRow(String city) {
     return GestureDetector(
       onTap: () {
-        widget.selectedCity.value = city; // انتخاب شهر
-        saleApartemanServerModel.cityId = city; // بروزرسانی در مدل
+        final cityIndex = allCities.value.indexOf(city);
+        widget.selectedCity.value = city;
+        saleApartemanServerModel.cityId = cityIndex.toString();
       },
-      child: Obx(() => Padding(
-            padding: const EdgeInsets.only(left: 10.0, right: 10),
-            child: Container(
-              decoration: const BoxDecoration(
-                border: Border(
-                  bottom: BorderSide(
-                    color: Colors.grey, // رنگ خط زیرین
-                    width: 1.0, // عرض خط زیرین
-                  ),
+      child: Obx(
+        () => Padding(
+          padding: const EdgeInsets.only(left: 10.0, right: 10),
+          child: Container(
+            decoration: const BoxDecoration(
+              border: Border(
+                bottom: BorderSide(
+                  color: Colors.grey,
+                  width: 1.0,
                 ),
               ),
-              child: SwitchItem(
-                isSelected: widget.selectedCity.value == city, // بررسی انتخاب
-                item: city,
-                onTap: () {
-                  widget.selectedCity.value = city; // مدیریت انتخاب
-                  saleApartemanServerModel.cityId = city; // بروزرسانی در مدل
-                },
-              ),
             ),
-          )),
+            child: SwitchItem(
+              isSelected: widget.selectedCity.value == city,
+              item: city,
+              onTap: () {
+                widget.selectedCity.value = city;
+                final cityIndex = allCities.value.indexOf(city);
+                saleApartemanServerModel.cityId = cityIndex.toString();
+              },
+            ),
+          ),
+        ),
+      ),
     );
   }
 }

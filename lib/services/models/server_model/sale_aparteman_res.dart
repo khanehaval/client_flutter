@@ -8,9 +8,7 @@ class SaleApartemanRes {
   SaleApartemanRes({
     required this.status,
   });
-
   factory SaleApartemanRes.fromJson(Map<String, dynamic> json) =>
       _$SaleApartemanResFromJson(json);
-
   Map<String, dynamic> toJson() => _$SaleApartemanResToJson(this);
 }
