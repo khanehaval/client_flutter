@@ -20,7 +20,7 @@ class User {
 
   User(
       {required this.phoneNumber,
-       required this.userToken,
+      required this.userToken,
       this.userId = "",
-      this.userType = UserType.advisor});
+      this.userType = UserType.personal});
 }

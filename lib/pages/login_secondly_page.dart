@@ -1,12 +1,12 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/pages/category/pages/Advertisements/Advertisements.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/consultants.dart';
 import 'package:flutter_application_1/pages/educational_tour.dart';
 import 'package:flutter_application_1/pages/category/pages/home.dart';
-import 'package:flutter_application_1/pages/profile.dart';
 import 'package:flutter_application_1/pages/real_estate_agency.dart';
 import 'package:flutter_application_1/pages/private.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
 class LoginSecondlyPage extends StatelessWidget {
@@ -15,37 +15,17 @@ class LoginSecondlyPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // key: scaffoldKey(),
-      // drawer: Column(
-      //   children: [Text("darrrrrrrrrrrrrrrrta")],
-      // ),
       backgroundColor: Colors.white,
       appBar: AppBar(
+        backgroundColor: Colors.white,
         leading: IconButton(
-          icon: const Icon(Icons.close),
-          onPressed: () => Get.to(() => EducationalTour()),
-        ),
-        actions: [
-          GestureDetector(
-            onTap: () {
-              openProfile();
-            },
-            child: Padding(
-              padding: const EdgeInsets.only(right: 20),
-              child: Container(
-                  decoration: BoxDecoration(
-                      color: Colors.black12,
-                      borderRadius: BorderRadius.circular(60)),
-                  child: const Padding(
-                    padding: EdgeInsets.all(3),
-                    child: Icon(
-                      Icons.person_2_rounded,
-                      size: 30,
-                    ),
-                  )),
-            ),
+          icon: SvgPicture.asset(
+            'assets/images/Vector-47.svg',
+            width: 18,
+            height: 18,
           ),
-        ],
+          onPressed: () => Get.to(() => Advertisements()),
+        ),
       ),
       body: Center(
         child: Container(
@@ -58,15 +38,15 @@ class LoginSecondlyPage extends StatelessWidget {
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Image.asset(
-                    'assets/images/Rectangle 1.png',
+                  SvgPicture.asset(
+                    'assets/images/logo-farsi.svg',
+                    width: MediaQuery.of(context).size.width - 220,
                   ),
                   const SizedBox(
                     height: 30,
                   ),
                   const Text(
                     "نوع کاربری خود را انتخاب کنید",
-                    textAlign: TextAlign.justify,
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 17,
@@ -89,18 +69,33 @@ class LoginSecondlyPage extends StatelessWidget {
                 children: [
                   GestureDetector(
                     onTap: () {
-                      Get.to(() => Private());
+                      Get.to(() => Private(),
+                          transition: Transition.downToUp,
+                          duration: const Duration(milliseconds: 400));
                     },
                     child: Container(
-                      height: 65,
-                      decoration: buildShapeDecoration(),
-                      child: const Center(
-                        child: Text(
-                          'شخصی',
-                          style: TextStyle(
-                              fontSize: 16,
-                              fontFamily: MAIN_FONT_FAMILY,
-                              color: Colors.black),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          gradient:
+                              const LinearGradient(colors: GRADIANT_COLOR1)),
+                      child: Padding(
+                        padding: const EdgeInsets.all(1.2),
+                        child: Container(
+                          height: 65,
+                          decoration: const BoxDecoration(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(19)),
+                              color: Color.fromARGB(255, 255, 255, 255)),
+                          child: const Center(
+                            child: Text(
+                              'شخصی',
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontFamily: MAIN_FONT_FAMILY,
+                                color: Color.fromRGBO(48, 48, 48, 1),
+                              ),
+                            ),
+                          ),
                         ),
                       ),
                     ),
@@ -110,18 +105,32 @@ class LoginSecondlyPage extends StatelessWidget {
                   ),
                   GestureDetector(
                     onTap: () {
-                      Get.to(() => Consultants());
+                      Get.to(() => Consultants(),
+                          transition: Transition.downToUp,
+                          duration: const Duration(milliseconds: 400));
                     },
                     child: Container(
-                      height: 65,
-                      decoration: buildShapeDecoration(),
-                      child: const Center(
-                        child: Text(
-                          'مشاوران ',
-                          style: TextStyle(
-                              fontSize: 16,
-                              fontFamily: MAIN_FONT_FAMILY,
-                              color: Colors.black),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          gradient:
+                              const LinearGradient(colors: GRADIANT_COLOR1)),
+                      child: Padding(
+                        padding: const EdgeInsets.all(1.2),
+                        child: Container(
+                          height: 65,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(19),
+                              color: Colors.white),
+                          child: const Center(
+                            child: Text(
+                              'مشاوران',
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontFamily: MAIN_FONT_FAMILY,
+                                color: Color.fromRGBO(48, 48, 48, 1),
+                              ),
+                            ),
+                          ),
                         ),
                       ),
                     ),
@@ -131,31 +140,51 @@ class LoginSecondlyPage extends StatelessWidget {
                   ),
                   GestureDetector(
                     onTap: () {
-                      Get.to(() => const Realestateagency());
+                      Get.to(() => Realestateagency(),
+                          transition: Transition.downToUp,
+                          duration: const Duration(milliseconds: 400));
                     },
                     child: Container(
-                      height: 65,
-                      decoration: buildShapeDecoration(),
-                      child: const Center(
-                        child: Text(
-                          'آژانس املاک ',
-                          style: TextStyle(
-                              fontSize: 16,
-                              fontFamily: MAIN_FONT_FAMILY,
-                              color: Colors.black),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          gradient:
+                              const LinearGradient(colors: GRADIANT_COLOR1)),
+                      child: Padding(
+                        padding: const EdgeInsets.all(1.2),
+                        child: Container(
+                          height: 65,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(19),
+                              color: Colors.white),
+                          child: const Center(
+                            child: Text(
+                              'آژانس املاک',
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontFamily: MAIN_FONT_FAMILY,
+                                color: Color.fromRGBO(48, 48, 48, 1),
+                              ),
+                            ),
+                          ),
                         ),
                       ),
                     ),
-                  ),
+                  )
                 ],
               ),
               Row(
-                mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(30),
+                      boxShadow: [
+                        BoxShadow(
+                            color: Colors.grey.withOpacity(0.25),
+                            spreadRadius: 1,
+                            blurRadius: 5,
+                            offset: const Offset(0, 1)),
+                      ],
                       gradient: getGradient(),
                     ),
                     child: ElevatedButton(
@@ -168,31 +197,45 @@ class LoginSecondlyPage extends StatelessWidget {
                       child: const Text(
                         'بعدا یادآوری کن',
                         style: TextStyle(
-                            color: Colors.black,
+                            color: Color.fromRGBO(48, 48, 48, 1),
                             fontSize: 10,
                             fontWeight: FontWeight.bold,
                             fontFamily: MAIN_FONT_FAMILY),
                       ),
                     ),
                   ),
-                  Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(30),
-                      gradient: getGradient(),
-                    ),
-                    child: ElevatedButton(
-                      onPressed: () {
-                        Get.to(() => EducationalTour());
-                      },
-                      style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.transparent,
-                          shadowColor: Colors.transparent),
-                      child: const Text(
-                        'مشاهده تور آموزشی',
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 10,
-                            fontFamily: MAIN_FONT_FAMILY),
+                  const SizedBox(
+                    width: 25,
+                  ),
+                  Expanded(
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(30),
+                        boxShadow: [
+                          BoxShadow(
+                              color: Colors.grey.withOpacity(0.25),
+                              spreadRadius: 1,
+                              blurRadius: 5,
+                              offset: const Offset(0, 1)),
+                        ],
+                        gradient: getGradient(),
+                      ),
+                      child: ElevatedButton(
+                        onPressed: () {
+                          Get.to(() => EducationalTour(),
+                              transition: Transition.leftToRightWithFade,
+                              duration: const Duration(milliseconds: 400));
+                        },
+                        style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.transparent,
+                            shadowColor: Colors.transparent),
+                        child: const Text(
+                          'مشاهده تور آموزشی',
+                          style: TextStyle(
+                              color: Color.fromRGBO(48, 48, 48, 1),
+                              fontSize: 9,
+                              fontFamily: MAIN_FONT_FAMILY),
+                        ),
                       ),
                     ),
                   ),
@@ -220,15 +263,11 @@ class LoginSecondlyPage extends StatelessWidget {
       shape: RoundedRectangleBorder(
         side: const BorderSide(
           width: 1,
-          color: Color.fromARGB(255, 19, 122, 133),
         ),
         borderRadius: BorderRadius.circular(10),
       ),
     );
   }
 
-  LinearGradient getGradient() => const LinearGradient(colors: [
-        Color.fromARGB(255, 95, 173, 237),
-        Color.fromARGB(126, 118, 238, 146),
-      ]);
+  LinearGradient getGradient() => const LinearGradient(colors: GRADIANT_COLOR);
 }

@@ -1,28 +1,54 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/models/AdvInfoModel.dart';
 import 'package:flutter_application_1/pages/category/models/FacilitiesModel.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
-import 'package:flutter_application_1/pages/category/shared/date.dart';
 import 'package:flutter_application_1/pages/category/shared/facilities_selector.dart';
 import 'package:flutter_application_1/pages/category/shared/images_picker/images_picker.dart';
-import 'package:flutter_application_1/pages/category/shared/more_emkanat/sanad.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/Widget_NoeSanad.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/servises_wc.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_bazsazi.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_jenskaf.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_kabinet.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_sen_bana.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_system_garm.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_system_sarmayesh.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_tamin_abe_garm.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_tedad_aghsat.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_tedad_koletabagheh.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_tedad_vahed_dar%20tabagheh.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_time_aghsat.dart';
+import 'package:flutter_application_1/pages/category/shared/namayesh.dart';
 import 'package:flutter_application_1/pages/category/shared/number_piacker.dart';
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
 import 'package:flutter_application_1/pages/category/shared/twoItemInRow.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/route_widget.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/switachable.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:flutter_application_1/repo/account_repo.dart';
+import 'package:flutter_application_1/services/models/server_model/sale_old_house.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
+import 'package:get_it/get_it.dart';
+import 'package:gradient_icon/gradient_icon.dart';
 
 import '../../../../shared/adv_info/advInfo.dart';
 import '../../../../shared/more_emkanat/jahat_sakhteman.dart';
 import '../../../../shared/widget/text_field.dart';
 
-class KolangiAdvPage extends StatelessWidget {
+class KolangiAdvPage extends StatefulWidget {
+  KolangiAdvPage({super.key});
+
+  @override
+  State<KolangiAdvPage> createState() => _KolangiAdvPageState();
+}
+
+class _KolangiAdvPageState extends State<KolangiAdvPage> {
+  final _buttonIsPressed = false.obs;
+  final _accountRepo = GetIt.I.get<AccountRepo>();
+
+  SaleOldHouseServerModel saleOldHouseServerModel = SaleOldHouseServerModel();
   final aghsatType = "".obs;
   final onvan = "".obs;
-
+  final submit = false.obs;
   final hasAnbari = false.obs;
   final hasAsansor = false.obs;
   final _allPriceTextController = TextEditingController();
@@ -31,9 +57,9 @@ class KolangiAdvPage extends StatelessWidget {
   final _onePrice = 0.0.obs;
   final _advInfo = AdvInfoModel();
   final _facilities = <FacilitiesModel>[].obs;
-
   final _buildDirectionController = TextEditingController();
   final _buildUnitOfAnyFloorCountController = TextEditingController();
+  final _senBanaController = TextEditingController();
   final _buildFloorsCountController = TextEditingController();
   final _timeOfInstallmentsController = TextEditingController();
   final _buildDateController = TextEditingController();
@@ -43,58 +69,306 @@ class KolangiAdvPage extends StatelessWidget {
   final _buildAllFloorsCountController = TextEditingController();
   final _reBuildController = TextEditingController();
   final _countOfInstallmentsController = TextEditingController();
-  final _buildMaxCapacityController = TextEditingController();
-  final _buildRiteController = TextEditingController();
-  final _buildAnimalController = TextEditingController();
-  final _buildSmokingController = TextEditingController();
-  final _buildShoesController = TextEditingController();
-  final _buildDeprivationController = TextEditingController();
-  final _buildSleepServiceCountController = TextEditingController();
-  final _oneBedCountController = TextEditingController();
-  final _twoBedCountController = TextEditingController();
   final _floorMaterialController = TextEditingController();
   final _cabinetController = TextEditingController();
   final _coldTypeController = TextEditingController();
   final _heatTypeController = TextEditingController();
   final _heatWaterController = TextEditingController();
   final _wcController = TextEditingController();
+  final ValueNotifier<String> _persianWords = ValueNotifier<String>('');
   final _numberOfInstallmentsController = TextEditingController();
+  String numberToFarsiWords(int number) {
+    if (number == 0) return 'صفر';
 
-  KolangiAdvPage({super.key});
+    const ones = [
+      'صفر',
+      'یک',
+      'دو',
+      'سه',
+      'چهار',
+      'پنج',
+      'شش',
+      'هفت',
+      'هشت',
+      'نه'
+    ];
+    const teens = [
+      'ده',
+      'یازده',
+      'دوازده',
+      'سیزده',
+      'چهارده',
+      'پانزده',
+      'شانزده',
+      'هفده',
+      'هجده',
+      'نوزده'
+    ];
+    const tens = [
+      '',
+      '',
+      'بیست',
+      'سی',
+      'چهل',
+      'پنجاه',
+      'شصت',
+      'هفتاد',
+      'هشتاد',
+      'نود'
+    ];
+    const hundreds = [
+      '',
+      'صد',
+      'دویست',
+      'سیصد',
+      'چهارصد',
+      'پانصد',
+      'ششصد',
+      'هفتصد',
+      'هشتصد',
+      'نهصد'
+    ];
+    const thousands = ['', 'هزار', 'میلیون', 'میلیارد'];
+
+    String convertBelowThousand(int num) {
+      if (num == 0) return '';
+      if (num < 10) return ones[num];
+      if (num < 20) return teens[num - 10];
+      if (num < 100) {
+        int tenPart = num ~/ 10;
+        int onePart = num % 10;
+        return '${tens[tenPart]}${onePart > 0 ? ' و ${ones[onePart]}' : ''}';
+      } else {
+        int hundredPart = num ~/ 100;
+        int restPart = num % 100;
+        return '${hundreds[hundredPart]}${restPart > 0 ? ' و ${convertBelowThousand(restPart)}' : ''}';
+      }
+    }
+
+    String result = '';
+    int unit = 0;
+
+    while (number > 0) {
+      int chunk = number % 1000;
+      if (chunk > 0) {
+        String chunkText = convertBelowThousand(chunk);
+        result = '${chunkText} ${thousands[unit]} ${result}'.trim();
+      }
+      number ~/= 1000;
+      unit++;
+    }
+
+    return result.trim();
+  }
+
+  void _updatePersianWords() {
+    final text = _metragTextController.text;
+    if (text.isNotEmpty) {
+      final number = int.tryParse(text) ?? 0;
+      _persianWords.value = numberToFarsiWords(number);
+    } else {
+      _persianWords.value = '';
+    }
+  }
 
   @override
+  void initState() {
+    super.initState();
+    _metragTextController.addListener(_updatePersianWords);
+
+    _allPriceTextController.addListener(_checkFields);
+    _metragTextController.addListener(_checkFields);
+    _buildRoomsCountController.addListener(_checkFields);
+    _buildFloorController.addListener(_checkFields);
+  }
+
+  void _checkFields() {
+    if (_allPriceTextController.text.isNotEmpty &&
+        _metragTextController.text.isNotEmpty &&
+        _buildFloorController.text.isNotEmpty &&
+        _buildRoomsCountController.text.isNotEmpty) {
+      submit.value = true;
+    } else {
+      submit.value = false;
+    }
+  }
+
+  @override
+  void dispose() {
+    _allPriceTextController.dispose();
+    _metragTextController.dispose();
+    _buildFloorController.dispose();
+    _persianWords.dispose();
+
+    super.dispose();
+  }
+
+  Future<void> _saleOldHouse() async {
+    if (_allPriceTextController.text.isEmpty ||
+        _metragTextController.text.isEmpty ||
+        _buildFloorController.text.isEmpty ||
+        _buildRoomsCountController.text.isEmpty) {
+      Fluttertoast.showToast(
+        msg: "لطفا همه فیلدهای داری * را پر کنید",
+        toastLength: Toast.LENGTH_LONG,
+        gravity: ToastGravity.CENTER,
+        backgroundColor: Colors.red,
+        textColor: Colors.white,
+        fontSize: 16.0,
+      );
+      return;
+    }
+
+    _buttonIsPressed.value = true;
+    final success = await _accountRepo.saleOldHouse(
+        saleOldHouseData: saleOldHouseServerModel);
+    _buttonIsPressed.value = false;
+    if (success!) {
+      Fluttertoast.showToast(
+        msg: "اطلاعات با موفقیت ارسال شد",
+        toastLength: Toast.LENGTH_LONG,
+        gravity: ToastGravity.CENTER,
+        backgroundColor: Colors.green,
+        textColor: Colors.white,
+        fontSize: 16.0,
+      );
+    } else {
+      Fluttertoast.showToast(
+        msg: "خطا در ارسال اطلاعات",
+        toastLength: Toast.LENGTH_LONG,
+        gravity: ToastGravity.CENTER,
+        backgroundColor: Colors.red,
+        textColor: Colors.white,
+        fontSize: 16.0,
+      );
+    }
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Colors.white,
         appBar: buildaAppBar(),
         body: SingleChildScrollView(
+          scrollDirection: Axis.vertical,
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
             child: Column(children: [
-              route([
-                "ثبت آگهی اکونومی",
-                "فروش مسکونی",
-                "خرید و فروش خانه کلنگی"
-              ]),
+              route(
+                  ["ثبت آگهی اکونومی", "فروش مسکونی", "خرید و فروش آپارتمان"]),
               const SizedBox(
                 height: 30,
               ),
-              TwoItemInRow(
+              const Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Text(
+                    "*",
+                    style: TextStyle(
+                      fontSize: 20,
+                      color: Color.fromRGBO(156, 64, 64, 1),
+                      fontFamily: MAIN_FONT_FAMILY,
+                    ),
+                  ),
+                  SizedBox(
+                    width: 5,
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(right: 7),
+                    child: Text(
+                      "(تومان) قیمت کل",
+                      style: TextStyle(
+                        color: Color.fromRGBO(166, 166, 166, 1),
+                        fontFamily: MAIN_FONT_FAMILY,
+                      ),
+                      textAlign: TextAlign.start,
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: 50,
+                width: MediaQuery.of(context).size.width * 0.95,
+                child: TextField(
+                  onChanged: (_) {
+                    saleOldHouseServerModel.totalPrice = int.parse(_);
+                  },
+                  textAlign: TextAlign.right,
+                  controller: _metragTextController,
+                  keyboardType: TextInputType.number,
+                  decoration: InputDecoration(
+                    hintText: '120',
+                    hintStyle: const TextStyle(
+                      color: Color(0xFFA6A6A6),
+                    ),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      borderSide: const BorderSide(
+                        color: Color.fromRGBO(23, 102, 175, 1),
+                      ),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      borderSide: const BorderSide(
+                        color: Color.fromRGBO(23, 102, 175, 1),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 20),
+              Align(
+                alignment: Alignment.centerRight,
+                child: ValueListenableBuilder<String>(
+                  valueListenable: _persianWords,
+                  builder: (context, value, child) {
+                    return Text(
+                      "قیمت به حروف: $value  تومان",
+                      style: const TextStyle(
+                        fontSize: 14,
+                        fontFamily: MAIN_FONT_FAMILY,
+                        color: Color.fromRGBO(166, 166, 166, 1),
+                      ),
+                    );
+                  },
+                ),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              const Divider(
+                color: Color.fromRGBO(
+                  226,
+                  226,
+                  226,
+                  1,
+                ),
+                endIndent: 6,
+                indent: 6,
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              TwoItemInRow1(
                 label1: "قیمت هر متر مربع (تومان)",
-                label2: "قیمت کل (تومان)",
+                label2: "متراژ",
                 widget1: Obx(
                   () => Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
                       border: Border.all(
-                          width: 1, //
-                          color: Theme.of(context)
-                              .hintColor //  <--- border width here
-                          ),
+                        width: 1, //
+                        color: const Color(0xFFA6A6A6),
+                      ),
                     ),
                     height: 41,
                     width: getPageWidth(),
                     child: Center(
-                      child: Text(_onePrice.string),
+                      child: Text(
+                        _onePrice.string,
+                        style: const TextStyle(
+                          color: Color(0xFFA6A6A6),
+                        ),
+                      ),
                     ),
                   ),
                 ),
@@ -113,10 +387,22 @@ class KolangiAdvPage extends StatelessWidget {
                     decoration: InputDecoration(
                       hintText: "0",
                       hintStyle: const TextStyle(
+                        fontSize: 13,
+                        fontFamily: 'Iran Sans',
+                        fontWeight: FontWeight.w400,
                         color: Color(0xFFA6A6A6),
                       ),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
+                        borderSide: const BorderSide(
+                          color: Color.fromRGBO(23, 102, 175, 1),
+                        ),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                        borderSide: const BorderSide(
+                          color: Color.fromRGBO(23, 102, 175, 1),
+                        ),
                       ),
                     ),
                   ),
@@ -124,67 +410,6 @@ class KolangiAdvPage extends StatelessWidget {
               ),
               const SizedBox(
                 height: 20,
-              ),
-              const Align(
-                alignment: Alignment.centerRight,
-                child: Text(
-                  ":قیمت به حروف ",
-                  style: TextStyle(
-                      fontSize: 14,
-                      fontFamily: MAIN_FONT_FAMILY,
-                      color: Color.fromRGBO(166, 166, 166, 1)),
-                ),
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              const Divider(
-                endIndent: 20,
-                indent: 20,
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              const Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Text(
-                    "*",
-                    style: TextStyle(
-                        fontSize: 20,
-                        color: Color.fromRGBO(156, 64, 64, 1),
-                        fontFamily: MAIN_FONT_FAMILY),
-                  ),
-                  Text(
-                    " متراژ زمین",
-                    style: TextStyle(
-                        color: Color.fromRGBO(166, 166, 166, 1),
-                        fontFamily: MAIN_FONT_FAMILY),
-                    textAlign: TextAlign.start,
-                  ),
-                ],
-              ),
-              SizedBox(
-                height: 50,
-                child: TextField(
-                  textAlign: TextAlign.right,
-                  controller: _metragTextController,
-                  keyboardType: TextInputType.number,
-                  onChanged: (m) {
-                    _onePrice.value = m.isNotEmpty
-                        ? int.parse(_allPriceTextController.text) / int.parse(m)
-                        : 0;
-                  },
-                  decoration: InputDecoration(
-                    hintText: '120',
-                    hintStyle: const TextStyle(
-                      color: Color(0xFFA6A6A6),
-                    ),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                  ),
-                ),
               ),
               const SizedBox(
                 height: 20,
@@ -201,6 +426,9 @@ class KolangiAdvPage extends StatelessWidget {
                     decoration: InputDecoration(
                       hintText: "0",
                       hintStyle: const TextStyle(
+                        fontSize: 13,
+                        fontFamily: 'Iran Sans',
+                        fontWeight: FontWeight.w400,
                         color: Color(0xFFA6A6A6),
                       ),
                       border: OutlineInputBorder(
@@ -218,6 +446,9 @@ class KolangiAdvPage extends StatelessWidget {
                     decoration: InputDecoration(
                       hintText: "0",
                       hintStyle: const TextStyle(
+                        fontSize: 13,
+                        fontFamily: 'Iran Sans',
+                        fontWeight: FontWeight.w400,
                         color: Color(0xFFA6A6A6),
                       ),
                       border: OutlineInputBorder(
@@ -231,16 +462,34 @@ class KolangiAdvPage extends StatelessWidget {
                 height: 20,
               ),
               const Divider(
-                endIndent: 20,
-                indent: 20,
+                color: Color.fromRGBO(
+                  226,
+                  226,
+                  226,
+                  1,
+                ),
+                endIndent: 6,
+                indent: 6,
               ),
               const SizedBox(
                 height: 20,
               ),
               aghsatiForoshWidget(context),
+              const SizedBox(
+                height: 20,
+              ),
               const Divider(
-                endIndent: 20,
-                indent: 20,
+                color: Color.fromRGBO(
+                  226,
+                  226,
+                  226,
+                  1,
+                ),
+                endIndent: 6,
+                indent: 6,
+              ),
+              const SizedBox(
+                height: 20,
               ),
               melkByVamBanki(context),
               const SizedBox(
@@ -250,8 +499,17 @@ class KolangiAdvPage extends StatelessWidget {
                 height: 15,
               ),
               const Divider(
-                endIndent: 20,
-                indent: 20,
+                color: Color.fromRGBO(
+                  226,
+                  226,
+                  226,
+                  1,
+                ),
+                endIndent: 6,
+                indent: 6,
+              ),
+              const SizedBox(
+                height: 20,
               ),
               const Text(
                 "سایر ویژگی ها",
@@ -264,13 +522,13 @@ class KolangiAdvPage extends StatelessWidget {
                   label1: "تعداد کل طبقات",
                   label2: "نوع سند",
                   widget1: ReadOnlyTextField(_buildFloorsCountController, () {
-                    showNumberPicker((_) {
-                      _buildFloorsCountController.text = _;
+                    TedadKoleTabagheh((selectedOption) {
+                      _buildFloorsCountController.text = selectedOption;
                     });
                   }, width: getPageWidth()),
                   widget2: ReadOnlyTextField(_buildDocumentController, () {
-                    Sanad((_) {
-                      _buildDocumentController.text = _;
+                    NoeSanad((selectedOption) {
+                      _buildDocumentController.text = selectedOption;
                     });
                   }, width: getPageWidth())),
               const SizedBox(
@@ -283,8 +541,8 @@ class KolangiAdvPage extends StatelessWidget {
                       width: getPageWidth()),
                   widget2: ReadOnlyTextField(
                       _buildUnitOfAnyFloorCountController, () {
-                    showNumberPicker((_) {
-                      _buildUnitOfAnyFloorCountController.text = _;
+                    TedadVahedTabagheh((selectedOption) {
+                      _buildUnitOfAnyFloorCountController.text = selectedOption;
                     });
                   }, width: getPageWidth())),
               const SizedBox(
@@ -294,19 +552,30 @@ class KolangiAdvPage extends StatelessWidget {
                   label1: "بازسازی",
                   label2: "جهت ساختمان",
                   widget1: ReadOnlyTextField(_reBuildController, () {
-                    //todo
+                    BazSazi((selectedOption) {
+                      _reBuildController.text = selectedOption;
+                    });
                   }, width: getPageWidth()),
                   widget2: ReadOnlyTextField(_buildDirectionController, () {
-                    jahatSakhteman((_) {
-                      _buildDirectionController.text = _;
+                    jahatSakhteman((selectedOption) {
+                      _buildDirectionController.text = selectedOption;
                     });
                   }, width: getPageWidth())),
               const SizedBox(
                 height: 20,
               ),
               const Divider(
-                endIndent: 20,
-                indent: 20,
+                color: Color.fromRGBO(
+                  226,
+                  226,
+                  226,
+                  1,
+                ),
+                endIndent: 6,
+                indent: 6,
+              ),
+              const SizedBox(
+                height: 20,
               ),
               const Text(
                 "امکانات",
@@ -318,11 +587,15 @@ class KolangiAdvPage extends StatelessWidget {
               TwoItemInRow(
                 label1: "نوع کابینت",
                 label2: "جنس کف",
-                widget1: ReadOnlyTextField(_floorMaterialController, () {
-                  //todo
+                widget1: ReadOnlyTextField(_cabinetController, () {
+                  Kabinet((selectedOption) {
+                    _cabinetController.text = selectedOption;
+                  });
                 }, width: getPageWidth()),
-                widget2: ReadOnlyTextField(_cabinetController, () {
-                  //todo
+                widget2: ReadOnlyTextField(_floorMaterialController, () {
+                  JensKaf((selectedOption) {
+                    _floorMaterialController.text = selectedOption;
+                  });
                 }, width: getPageWidth()),
               ),
               const SizedBox(
@@ -332,10 +605,14 @@ class KolangiAdvPage extends StatelessWidget {
                 label1: "نوع سیستم گرمایش",
                 label2: "نوع سیستم سرمایش",
                 widget1: ReadOnlyTextField(_heatTypeController, () {
-                  //todo
+                  Garmayesh((selectedOption) {
+                    _heatTypeController.text = selectedOption;
+                  });
                 }, width: getPageWidth()),
                 widget2: ReadOnlyTextField(_coldTypeController, () {
-                  //todo
+                  Sarmayesh((selectedOption) {
+                    _coldTypeController.text = selectedOption;
+                  });
                 }, width: getPageWidth()),
               ),
               const SizedBox(
@@ -345,13 +622,17 @@ class KolangiAdvPage extends StatelessWidget {
                   label1: "سرویس بهداشتی",
                   label2: "تامین کننده آب گرم",
                   widget1: ReadOnlyTextField(_wcController, () {
-                    //todo
+                    Wc((selectedOption) {
+                      _wcController.text = selectedOption;
+                    });
                   }, width: getPageWidth()),
                   widget2: ReadOnlyTextField(_heatWaterController, () {
-                    //todo
+                    AbeGarm((selectedOption) {
+                      _heatWaterController.text = selectedOption;
+                    });
                   }, width: getPageWidth())),
               const SizedBox(
-                height: 20,
+                height: 40,
               ),
               FacilitiesSelectorWidget(
                 selectable: [
@@ -371,11 +652,17 @@ class KolangiAdvPage extends StatelessWidget {
                 selected: _facilities,
               ),
               const SizedBox(
-                height: 20,
+                height: 40,
               ),
               const Divider(
-                endIndent: 20,
-                indent: 20,
+                color: Color.fromRGBO(
+                  226,
+                  226,
+                  226,
+                  1,
+                ),
+                endIndent: 6,
+                indent: 6,
               ),
               const SizedBox(
                 height: 20,
@@ -383,8 +670,64 @@ class KolangiAdvPage extends StatelessWidget {
               ImagesPicker(
                 selectedImagesPath: _selectedImagesPath,
               ),
-              const Divider(),
-              AdvInfo(_advInfo)
+              const Divider(
+                color: Color.fromRGBO(
+                  226,
+                  226,
+                  226,
+                  1,
+                ),
+                endIndent: 6,
+                indent: 6,
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              AdvInfo(_advInfo),
+              const SizedBox(
+                height: 30,
+              ),
+              GestureDetector(
+                onTap: () {
+                  if (submit.value) {
+                    Get.to(() => NamayeshAgahi());
+                  }
+                },
+                child: Obx(() => Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Center(
+                          child: Text(
+                            "... تایید و ادامه",
+                            style: !submit.value
+                                ? const TextStyle(
+                                    fontSize: 20,
+                                    fontFamily: MAIN_FONT_FAMILY,
+                                    color: Colors.black38,
+                                  )
+                                : const TextStyle(
+                                    fontSize: 20, fontFamily: MAIN_FONT_FAMILY),
+                            textAlign: TextAlign.center,
+                          ),
+                        ),
+                        const SizedBox(
+                          width: 3,
+                        ),
+                        GradientIcon(
+                          icon: Icons.double_arrow,
+                          gradient: LinearGradient(
+                            colors: submit.value
+                                ? GRADIANT_COLOR1
+                                : BLACK_12_GRADIANT_COLOR,
+                            begin: Alignment.topLeft,
+                            end: Alignment.bottomRight,
+                          ),
+                          offset: const Offset(0, 0),
+                          size: 34,
+                        )
+                      ],
+                    )),
+              )
             ]),
           ),
         ));
@@ -401,25 +744,14 @@ class KolangiAdvPage extends StatelessWidget {
         Obx(() => isSwitched.isTrue
             ? Column(
                 children: [
-                  TwoItemInRow(
+                  TwoItemInRow2(
                     label1: "سن بنا ",
                     label2: "متراژ بنا ",
-                    widget1: SizedBox(
-                      height: 41,
-                      width: getPageWidth(),
-                      child: TextField(
-                        keyboardType: TextInputType.number,
-                        textAlign: TextAlign.right,
-                        decoration: InputDecoration(
-                          hintText: 'تایپ کنید', //todo
-                          hintStyle: const TextStyle(
-                              color: Color(0xFFA6A6A6), fontSize: 13),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                        ),
-                      ),
-                    ),
+                    widget1: ReadOnlyTextField(_senBanaController, () {
+                      SenBana((selectedOption) {
+                        _senBanaController.text = selectedOption;
+                      });
+                    }, width: getPageWidth()),
                     widget2: SizedBox(
                       height: 41,
                       width: getPageWidth(),
@@ -429,7 +761,11 @@ class KolangiAdvPage extends StatelessWidget {
                         decoration: InputDecoration(
                           hintText: 'تایپ کنید', //todo
                           hintStyle: const TextStyle(
-                              color: Color(0xFFA6A6A6), fontSize: 13),
+                            fontSize: 13,
+                            fontFamily: 'Iran Sans',
+                            fontWeight: FontWeight.w400,
+                            color: Color(0xFFA6A6A6),
+                          ),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10),
                           ),
@@ -442,12 +778,29 @@ class KolangiAdvPage extends StatelessWidget {
                   ),
                   const Align(
                     alignment: Alignment.centerRight,
-                    child: Text(
-                      "تعداد اتاق ",
-                      style: TextStyle(
-                          color: Color.fromRGBO(99, 99, 99, 1),
-                          fontFamily: MAIN_FONT_FAMILY),
-                      textAlign: TextAlign.start,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Text(
+                          "*",
+                          style: TextStyle(
+                              color: Color.fromRGBO(
+                                156,
+                                64,
+                                64,
+                                1,
+                              ),
+                              fontFamily: MAIN_FONT_FAMILY,
+                              fontSize: 16),
+                        ),
+                        Text(
+                          "تعداد اتاق ",
+                          style: TextStyle(
+                              color: Color.fromRGBO(99, 99, 99, 1),
+                              fontFamily: MAIN_FONT_FAMILY),
+                          textAlign: TextAlign.start,
+                        ),
+                      ],
                     ),
                   ),
                   ReadOnlyTextField(_buildRoomsCountController, () {
@@ -465,8 +818,7 @@ class KolangiAdvPage extends StatelessWidget {
     );
   }
 
-  double getPageWidth_2(BuildContext context) =>
-      getPageWidth();
+  double getPageWidth_2(BuildContext context) => getPageWidth();
 
   Widget aghsatiForoshWidget(BuildContext context) {
     final isSwitched = true.obs;
@@ -499,7 +851,11 @@ class KolangiAdvPage extends StatelessWidget {
                         decoration: InputDecoration(
                           hintText: ' را وارد کنید', //todo
                           hintStyle: const TextStyle(
-                              color: Color(0xFFA6A6A6), fontSize: 13),
+                            fontSize: 13,
+                            fontFamily: 'Iran Sans',
+                            fontWeight: FontWeight.w400,
+                            color: Color(0xFFA6A6A6),
+                          ),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10),
                           ),
@@ -515,7 +871,11 @@ class KolangiAdvPage extends StatelessWidget {
                         decoration: InputDecoration(
                           hintText: 'مبلغ را وارد کنید', //todo
                           hintStyle: const TextStyle(
-                              color: Color(0xFFA6A6A6), fontSize: 13),
+                            fontSize: 13,
+                            fontFamily: 'Iran Sans',
+                            fontWeight: FontWeight.w400,
+                            color: Color(0xFFA6A6A6),
+                          ),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10),
                           ),
@@ -531,18 +891,18 @@ class KolangiAdvPage extends StatelessWidget {
                       label2: "تعداد اقساط",
                       widget1:
                           ReadOnlyTextField(_timeOfInstallmentsController, () {
-                        persianDataPicker((date) {
-                          _timeOfInstallmentsController.text = date;
+                        TimeAghsat((selectedOption) {
+                          _timeOfInstallmentsController.text = selectedOption;
                         });
-                      }, width: getPageWidth(),fontSize: 13),
+                      }, width: getPageWidth(), fontSize: 13),
                       widget2:
                           ReadOnlyTextField(_countOfInstallmentsController, () {
-                        showNumberPicker((_) {
-                          _countOfInstallmentsController.text = _;
+                        TedadAghsat((selectedOption) {
+                          _countOfInstallmentsController.text = selectedOption;
                         });
                       }, width: getPageWidth())),
                   const SizedBox(
-                    height: 20,
+                    height: 40,
                   ),
                   const Text(
                     "قیمت نهایی ملک (پیش پرداخت + اقساط ) : 13.200.000.000 تومان",

@@ -12,7 +12,8 @@ class SakhVaSaz extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: bottomNavigation(),
+      backgroundColor: Colors.white,
+      bottomNavigationBar: bottomNavigationBar2(2),
       appBar: buildaAppBar(),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
@@ -31,7 +32,7 @@ class SakhVaSaz extends StatelessWidget {
             }),
           ]),
           const SizedBox(
-            height: 10,
+            height: 20,
           ),
           _buildItem('assets/images/Frame_sakht2.png', () {
             Get.to(FirstMapPage(onSelect: (_) {
@@ -53,25 +54,10 @@ class SakhVaSaz extends StatelessWidget {
         onTap();
       },
       child: SizedBox(
-          height: 90,
-          width: 140,
-          child: Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: Padding(
-              padding: const EdgeInsets.all(2.0),
-              child: Container(
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(10),
-                      border: Border.all(
-                        color: Colors.black12,
-                        width: 1.5,
-                      )),
-                  child: Image.asset(assetPath)),
-            ),
-          )),
+        height: 90,
+        width: 140,
+        child: Container(child: Image.asset(assetPath)),
+      ),
     );
   }
 }

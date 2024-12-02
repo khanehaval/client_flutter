@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/kota_modat_pages/ejara_km_vila_loation_page.dart';
 import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/kota_modat_pages/ejara_km_aparteman_location_page.dart';
+import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/category/shared/map_pages/first_map_page.dart';
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/adv_title_widget.dart';
@@ -10,14 +11,17 @@ class EjaraKotaModatPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: bottomNavigation(),
+      backgroundColor: Colors.white,
+      bottomNavigationBar: bottomNavigationBar2(2),
       appBar: buildaAppBar(),
       body: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             AdvTitleWidget(),
-            const SizedBox(height: 100,),
+            const SizedBox(
+              height: 80,
+            ),
             Column(
               children: [
                 _buildItem('assets/images/Frame_kota1.png', () {
@@ -27,7 +31,7 @@ class EjaraKotaModatPage extends StatelessWidget {
                       }));
                 }),
                 const SizedBox(
-                  height: 10,
+                  height: 20,
                 ),
                 _buildItem(
                   'assets/images/Frame_kota2.png',
@@ -48,27 +52,39 @@ class EjaraKotaModatPage extends StatelessWidget {
     Function onTap,
   ) {
     return GestureDetector(
-      onTap: () => onTap(),
-      child: SizedBox(
-          height: 90,
-          width: 140,
-          child: Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: Padding(
-              padding: const EdgeInsets.all(2.0),
-              child: Container(
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(10),
-                      border: Border.all(
-                        color: Colors.black12,
-                        width: 1.5,
-                      )),
-                  child: Image.asset(assetPath)),
-            ),
-          )),
-    );
+        onTap: () => onTap(),
+        child: SizedBox(
+            height: 90,
+            width: 140,
+            child: Container(
+              decoration: BoxDecoration(
+                  gradient: const LinearGradient(
+                    colors: GRADIANT_COLOR3,
+                  ),
+                  borderRadius: BorderRadius.circular(10)),
+              child: Padding(
+                  padding: const EdgeInsets.all(0.6),
+                  child: Container(
+                    width: 144,
+                    height: 96,
+                    decoration: ShapeDecoration(
+                        color: Colors.white,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        )),
+                    child: Padding(
+                      padding: const EdgeInsets.all(3.0),
+                      child: Container(
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(10.0),
+                            child: Image.asset(assetPath),
+                          )),
+                    ),
+                  )),
+            )));
   }
 }

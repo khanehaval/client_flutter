@@ -1,0 +1,162 @@
+import 'dart:io';
+import 'package:dotted_border/dotted_border.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:image_cropper/image_cropper.dart';
+
+class ProfileImagePicker extends StatelessWidget {
+  final RxString selectedImagePath = ''.obs;
+
+  @override
+  Widget build(BuildContext context) { 
+    return Column(
+      children: [
+        Obx(() => buildPhotoProfileVitrin(context)),
+      ],
+    );
+  }
+
+  Widget buildPhotoProfileVitrin(BuildContext context) {
+    return Container(
+      width: 300,
+      height: 140,
+      decoration: ShapeDecoration(
+        color: Colors.white,
+        shape: RoundedRectangleBorder(
+          side: const BorderSide(width: 1, color: Color(0xFFB7B7B7)),
+          borderRadius: BorderRadius.circular(10),
+        ),
+        shadows: const [
+          BoxShadow(
+            color: Color(0x11000000),
+            blurRadius: 3.40,
+            offset: Offset(-1, 1),
+            spreadRadius: 0,
+          )
+        ],
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          GestureDetector(
+            onTap: () => _showImageSourceActionSheet(context),
+            child: DottedBorder(
+              borderType: BorderType.RRect,
+              color: Colors.black26,
+              strokeWidth: 2,
+              radius: const Radius.circular(35),
+              child: SizedBox(
+                height: 80, // ارتفاع دکمه
+                width: 80,  // عرض دکمه
+                child: Obx(() {
+                  return selectedImagePath.value.isEmpty
+                      ? const Center(
+                          child: Icon(Icons.add, size: 30, color: Colors.black26),
+                        )
+                      : ClipRRect(
+                          borderRadius: BorderRadius.circular(35),
+                          child: Image.file(
+                            File(selectedImagePath.value),
+                            fit: BoxFit.cover,
+                          ),
+                        );
+                }),
+              ),
+            ),
+          ),
+          const Text.rich(
+            TextSpan(
+              children: [
+                TextSpan(
+                  text: 'تصویر پروفایل خود را انتخاب کنید\n',
+                  style: TextStyle(
+                    color: Color(0xFF626262),
+                    fontSize: 10,
+                    fontFamily: 'MAIN_FONT_FAMILY',
+                  ),
+                ),
+                TextSpan(
+                  text: 'فرمت JPEG - حداکثر 5MB ',
+                  style: TextStyle(
+                    color: Color(0xFFA5A5A5),
+                    fontSize: 8,
+                    fontFamily: 'MAIN_FONT_FAMILY_LIGHT',
+                  ),
+                ),
+              ],
+            ),
+            textAlign: TextAlign.center,
+          ),
+        ],
+      ),
+    );
+  }
+
+  Future<void> _showImageSourceActionSheet(BuildContext context) async {
+    showModalBottomSheet(
+      context: context,
+      builder: (BuildContext context) {
+        return SafeArea(
+          child: Wrap(
+            children: <Widget>[
+              ListTile(
+                leading: const Icon(Icons.photo_library),
+                title: const Text('گالری'),
+                onTap: () {
+                  _pickImage(ImageSource.gallery);
+                  Get.back();
+                },
+              ),
+              ListTile(
+                leading: const Icon(Icons.photo_camera),
+                title: const Text('دوربین'),
+                onTap: () {
+                  _pickImage(ImageSource.camera);
+                  Get.back();
+                },
+              ),
+            ],
+          ),
+        );
+      },
+    );
+  }
+
+  Future<void> _pickImage(ImageSource source) async {
+    try {
+      final pickedFile = await ImagePicker().pickImage(source: source);
+      if (pickedFile != null) {
+        final croppedFile = await _cropImage(pickedFile.path);
+        if (croppedFile != null) {
+          selectedImagePath.value = croppedFile.path;
+        }
+      }
+    } catch (e) {
+      Get.snackbar('خطا', 'مشکلی در انتخاب تصویر پیش آمد: $e');
+    }
+  }
+
+  Future<File?> _cropImage(String filePath) async {
+    return await ImageCropper().cropImage(
+      sourcePath: filePath,
+      aspectRatioPresets: [
+        CropAspectRatioPreset.square,
+        CropAspectRatioPreset.original,
+        CropAspectRatioPreset.ratio4x3,
+        CropAspectRatioPreset.ratio16x9,
+      ],
+      androidUiSettings: AndroidUiSettings(
+        toolbarTitle: 'برش تصویر',
+        toolbarColor: Colors.blue,
+        toolbarWidgetColor: Colors.white,
+        activeControlsWidgetColor: Colors.blue,
+        initAspectRatio: CropAspectRatioPreset.original,
+        lockAspectRatio: false,
+      ),
+      iosUiSettings: IOSUiSettings(
+        title: 'برش تصویر',
+      ),
+    );
+  }
+}

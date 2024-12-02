@@ -1,46 +1,46 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
+import 'package:flutter_application_1/pages/category/shared/widget/taeed_datepicker.dart';
 import 'package:flutter_linear_datepicker/flutter_datepicker.dart';
 import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 
 void persianDataPicker(Function(String) onDateSelected) {
   String selectedDate = "1400/03/03";
   Get.bottomSheet(Container(
     width: double.infinity,
-    decoration: BoxDecoration(
-      gradient: const LinearGradient(
+    decoration: const BoxDecoration(
+      gradient: LinearGradient(
         colors: GRADIANT_COLOR,
       ),
-      border: Border.all(
-        width: 1,
-      ),
-      borderRadius: const BorderRadius.only(
-          topLeft: Radius.circular(10), topRight: Radius.circular(10)),
+      borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(20), topRight: Radius.circular(20)),
     ),
     child: Padding(
-      padding: const EdgeInsets.all(2.0),
+      padding: const EdgeInsets.all(1.0),
       child: Container(
         decoration: const BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(10), topRight: Radius.circular(10)),
+              topLeft: Radius.circular(20), topRight: Radius.circular(20)),
         ),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
             SizedBox(
-              height: 250,
+              height: 300,
               child: LinearDatePicker(
                   startDate: "1370/01/01",
-                  endDate: "1440/03/0",
+                  endDate: "1440/03/01",
                   initialDate: selectedDate,
                   addLeadingZero: true,
-                  dateChangeListener: (date) => selectedDate = date,
+                  dateChangeListener: (date) {
+                    selectedDate = date;
+                  },
                   showDay: true,
                   labelStyle: const TextStyle(
                     fontFamily: MAIN_FONT_FAMILY,
-                    fontSize: 16.0,
+                    fontSize: 15.0,
                     color: Colors.black26,
                   ),
                   selectedRowStyle: const TextStyle(
@@ -61,25 +61,13 @@ void persianDataPicker(Function(String) onDateSelected) {
                   showMonthName: true,
                   isJalaali: true),
             ),
-            Padding(
-              padding: const EdgeInsets.only(bottom: 20),
-              child: Container(
-                decoration: BoxDecoration(
-                    gradient: const LinearGradient(colors: GRADIANT_COLOR),
-                    borderRadius: BorderRadius.circular(50)),
-                child: IconButton(
-                  icon: const Icon(
-                    CupertinoIcons.check_mark,
-                    color: Colors.white,
-                    weight: 20,
-                  ),
-                  onPressed: () {
-                    onDateSelected(selectedDate);
-                    Get.back();
-                  },
-                ),
-              ),
-            ),
+            TaeedDatePicker(onConfirm: () {
+              onDateSelected(selectedDate);
+              Get.back(); // Close the bottom sheet after confirming
+            }),
+            const SizedBox(
+              height: 20,
+            )
           ],
         ),
       ),

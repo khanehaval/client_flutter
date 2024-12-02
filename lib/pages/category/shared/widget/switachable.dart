@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:get/get.dart';
 
-Widget switchable(RxBool rValue, String title) {
+Widget switchable(RxBool rValue, String title, [Container? container]) {
+  //onchengade
+
   return Row(
     mainAxisAlignment: MainAxisAlignment.center,
     children: [

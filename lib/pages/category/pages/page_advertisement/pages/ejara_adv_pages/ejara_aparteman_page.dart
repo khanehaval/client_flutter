@@ -1,25 +1,43 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/models/AdvInfoModel.dart';
-import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/forosh_adv_pages/kolangi_adv_page.dart';
 import 'package:flutter_application_1/pages/category/shared/adv_info/advInfo.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/category/shared/date.dart';
 import 'package:flutter_application_1/pages/category/shared/facilities_selector.dart';
 import 'package:flutter_application_1/pages/category/shared/images_picker/images_picker.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/Widget_NoeSanad.dart';
 import 'package:flutter_application_1/pages/category/shared/more_emkanat/jahat_sakhteman.dart';
-import 'package:flutter_application_1/pages/category/shared/more_emkanat/sanad.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/servises_wc.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_bazsazi.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_jenskaf.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_kabinet.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_system_garm.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_system_sarmayesh.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_tamin_abe_garm.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_tedad_koletabagheh.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_tedad_vahed_dar%20tabagheh.dart';
+import 'package:flutter_application_1/pages/category/shared/namayesh.dart';
 import 'package:flutter_application_1/pages/category/shared/number_piacker.dart';
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
 import 'package:flutter_application_1/pages/category/shared/twoItemInRow.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/text_field.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:gradient_icon/gradient_icon.dart';
 
 import '../../../../models/FacilitiesModel.dart';
 
-class EjaraApartemanPage extends StatelessWidget {
+class EjaraApartemanPage extends StatefulWidget {
+  const EjaraApartemanPage({super.key});
+
+  @override
+  _EjaraApartemanPageState createState() => _EjaraApartemanPageState();
+}
+
+class _EjaraApartemanPageState extends State<EjaraApartemanPage> {
   final aghsatType = "".obs;
   final onvan = "".obs;
+  final submit = false.obs;
   int selectedIndex = 0;
   final hasAnbari = false.obs;
   final hasAsansor = false.obs;
@@ -29,47 +47,67 @@ class EjaraApartemanPage extends StatelessWidget {
   final _metragTextController = TextEditingController();
   final _selectedImagesPath = [].obs;
   final _facilities = <FacilitiesModel>[].obs;
-
   final _buildDirectionController = TextEditingController();
   final _buildUnitOfAnyFloorCountController = TextEditingController();
   final _buildFloorsCountController = TextEditingController();
-  final _timeOfInstallmentsController = TextEditingController();
-  final _buildDateController = TextEditingController();
+  final TextEditingController _buildDateController = TextEditingController();
   final _buildRoomsCountController = TextEditingController();
   final _buildDocumentController = TextEditingController();
-  final _buildFloorController = TextEditingController();
   final _buildAllFloorsCountController = TextEditingController();
   final _reBuildController = TextEditingController();
   final _countOfInstallmentsController = TextEditingController();
-  final _buildMaxCapacityController = TextEditingController();
-  final _buildRiteController = TextEditingController();
-  final _buildAnimalController = TextEditingController();
-  final _buildSmokingController = TextEditingController();
-  final _buildShoesController = TextEditingController();
-  final _buildDeprivationController = TextEditingController();
-  final _buildSleepServiceCountController = TextEditingController();
-  final _oneBedCountController = TextEditingController();
-  final _twoBedCountController = TextEditingController();
-  final _floorMaterialController = TextEditingController();
-  final _cabinetController = TextEditingController();
-  final _coldTypeController = TextEditingController();
-  final _heatTypeController = TextEditingController();
-  final _heatWaterController = TextEditingController();
-  final _wcController = TextEditingController();
-  final _numberOfInstallmentsController = TextEditingController();
-
   final _advInfo = AdvInfoModel();
+  final _formKey = GlobalKey<FormState>();
+  final TextEditingController _SarmayeshController = TextEditingController();
+  final TextEditingController _GarmController = TextEditingController();
+  final TextEditingController _JenskafController = TextEditingController();
+  final TextEditingController _kabinetController = TextEditingController();
+  final TextEditingController _WcController = TextEditingController();
+  final TextEditingController _AbeGarmController = TextEditingController();
+  final TextEditingController _BazSaziController = TextEditingController();
+  final TextEditingController _JahatSakhtemanController =
+      TextEditingController();
+  final TextEditingController _TedadVahedTabaghehController =
+      TextEditingController();
+  final TextEditingController _TedadKoleTabaghehController =
+      TextEditingController();
+  final TextEditingController _NoeSanadController = TextEditingController();
 
-  EjaraApartemanPage({super.key});
+  @override
+  void initState() {
+    super.initState();
+
+    // Add listeners to text controllers
+    _allPriceTextController.addListener(_checkFields);
+    _metragTextController.addListener(_checkFields);
+  }
+
+  void _checkFields() {
+    if (_allPriceTextController.text.isNotEmpty &&
+        _metragTextController.text.isNotEmpty) {
+      submit.value = true;
+    } else {
+      submit.value = false;
+    }
+  }
+
+  @override
+  void dispose() {
+    _allPriceTextController.dispose();
+    _metragTextController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: buildaAppBar(),
       body: SingleChildScrollView(
         child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-            child: Column(children: [
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+          child: Column(
+            children: [
               const Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -110,22 +148,35 @@ class EjaraApartemanPage extends StatelessWidget {
               const SizedBox(
                 height: 30,
               ),
-              TwoItemInRow(
+              TwoItemInRow1(
                 label1: "میزان اجاره (تومان)",
                 label2: "میزان رهن (تومان) ",
                 widget1: SizedBox(
                   height: 41,
                   width: getPageWidth(),
                   child: TextField(
+                    controller: _allPriceTextController,
                     textAlign: TextAlign.right,
                     keyboardType: TextInputType.number,
                     decoration: InputDecoration(
                       hintText: "0",
                       hintStyle: const TextStyle(
+                        fontSize: 13,
+                        fontFamily: 'Iran Sans',
+                        fontWeight: FontWeight.w400,
                         color: Color(0xFFA6A6A6),
                       ),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
+                        borderSide: const BorderSide(
+                          color: Color.fromRGBO(23, 102, 175, 1),
+                        ),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                        borderSide: const BorderSide(
+                          color: Color.fromRGBO(23, 102, 175, 1),
+                        ),
                       ),
                     ),
                   ),
@@ -139,10 +190,22 @@ class EjaraApartemanPage extends StatelessWidget {
                     decoration: InputDecoration(
                       hintText: "0",
                       hintStyle: const TextStyle(
+                        fontSize: 13,
+                        fontFamily: 'Iran Sans',
+                        fontWeight: FontWeight.w400,
                         color: Color(0xFFA6A6A6),
                       ),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
+                        borderSide: const BorderSide(
+                          color: Color.fromRGBO(23, 102, 175, 1),
+                        ),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                        borderSide: const BorderSide(
+                          color: Color.fromRGBO(23, 102, 175, 1),
+                        ),
                       ),
                     ),
                   ),
@@ -151,38 +214,75 @@ class EjaraApartemanPage extends StatelessWidget {
               const SizedBox(
                 height: 20,
               ),
-              const Text(
-                "برای ثبت آگهی با عنوان رهن کامل، اجاره را وارد نکنید",
-                style: TextStyle(
-                  fontSize: 12,
-                  fontFamily: MAIN_FONT_FAMILY,
+              RichText(
+                text: const TextSpan(
+                  children: [
+                    TextSpan(
+                      text: "برای ثبت آگهی با عنوان ",
+                      style: TextStyle(
+                        fontSize: 12,
+                        fontFamily: MAIN_FONT_FAMILY,
+                        color: Colors.black, // Default text color
+                      ),
+                    ),
+                    TextSpan(
+                      text: "رهن کامل",
+                      style: TextStyle(
+                        fontSize: 12,
+                        fontFamily: MAIN_FONT_FAMILY,
+                        color: Color.fromRGBO(
+                          156,
+                          64,
+                          64,
+                          1,
+                        ), // Red color for this specific text
+                      ),
+                    ),
+                    TextSpan(
+                      text: "، اجاره را وارد نکنید",
+                      style: TextStyle(
+                        fontSize: 12,
+                        fontFamily: MAIN_FONT_FAMILY,
+                        color: Colors.black, // Default text color
+                      ),
+                    ),
+                  ],
                 ),
               ),
               const SizedBox(
                 height: 20,
               ),
               aghsatiForoshWidget(context),
-              const Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Text(
-                    "*",
-                    style: TextStyle(
-                        fontSize: 20,
-                        color: Color.fromRGBO(156, 64, 64, 1),
-                        fontFamily: MAIN_FONT_FAMILY),
-                  ),
-                  Text(
-                    "متراژ",
-                    style: TextStyle(
-                        color: Color.fromRGBO(166, 166, 166, 1),
-                        fontFamily: MAIN_FONT_FAMILY),
-                    textAlign: TextAlign.start,
-                  ),
-                ],
+              const Padding(
+                padding: EdgeInsets.only(right: 5.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Text(
+                      "*",
+                      style: TextStyle(
+                          fontSize: 14,
+                          color: Color.fromRGBO(156, 64, 64, 1),
+                          fontFamily: MAIN_FONT_FAMILY),
+                    ),
+                    SizedBox(
+                      width: 5,
+                    ),
+                    Text(
+                      "متراژ",
+                      style: TextStyle(
+                          color: Color(0xff636363),
+                          fontFamily: MAIN_FONT_FAMILY),
+                      textAlign: TextAlign.start,
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(
+                height: 5,
               ),
               SizedBox(
-                height: 50,
+                height: 41,
                 width: MediaQuery.of(context).size.width * 0.95,
                 child: TextField(
                   textAlign: TextAlign.right,
@@ -196,25 +296,43 @@ class EjaraApartemanPage extends StatelessWidget {
                   decoration: InputDecoration(
                     hintText: '120',
                     hintStyle: const TextStyle(
+                      fontSize: 13,
+                      fontFamily: 'Iran Sans',
+                      fontWeight: FontWeight.w400,
                       color: Color(0xFFA6A6A6),
                     ),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
+                      borderSide: const BorderSide(
+                        color: Color.fromRGBO(23, 102, 175, 1),
+                      ),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      borderSide: const BorderSide(
+                        color: Color.fromRGBO(23, 102, 175, 1),
+                      ),
                     ),
                   ),
                 ),
               ),
               const SizedBox(
-                height: 20,
+                height: 30,
               ),
               const Divider(
-                endIndent: 20,
-                indent: 20,
+                color: Color.fromRGBO(
+                  226,
+                  226,
+                  226,
+                  1,
+                ),
+                endIndent: 6,
+                indent: 6,
               ),
               const SizedBox(
                 height: 20,
               ),
-              TwoItemInRow(
+              TwoItemInRow2(
                   label1: "تعداد اتاق ",
                   label2: "سن بنا ",
                   widget1: ReadOnlyTextField(_buildRoomsCountController, () {
@@ -225,7 +343,7 @@ class EjaraApartemanPage extends StatelessWidget {
                   widget2: ReadOnlyTextField(_buildDateController, () {
                     persianDataPicker(
                         (date) => _buildDateController.text = date);
-                  }, width: getPageWidth(),fontSize: 13)),
+                  }, width: getPageWidth(), fontSize: 13)),
               const SizedBox(
                 height: 20,
               ),
@@ -256,8 +374,12 @@ class EjaraApartemanPage extends StatelessWidget {
                   textAlign: TextAlign.right,
                   decoration: InputDecoration(
                     hintText: 'انتخاب نشده',
-                    hintStyle:
-                        const TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
+                    hintStyle: const TextStyle(
+                      fontSize: 13,
+                      fontFamily: 'Iran Sans',
+                      fontWeight: FontWeight.w400,
+                      color: Color(0xFFA6A6A6),
+                    ),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
@@ -273,7 +395,7 @@ class EjaraApartemanPage extends StatelessWidget {
                 ),
               ),
               const SizedBox(
-                height: 15,
+                height: 20,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -361,14 +483,20 @@ class EjaraApartemanPage extends StatelessWidget {
                 ],
               ),
               const SizedBox(
-                height: 10,
+                height: 20,
               ),
               const Divider(
-                endIndent: 20,
-                indent: 20,
+                color: Color.fromRGBO(
+                  226,
+                  226,
+                  226,
+                  1,
+                ),
+                endIndent: 6,
+                indent: 6,
               ),
               const SizedBox(
-                height: 10,
+                height: 20,
               ),
               const Text(
                 "سایر ویژگی ها",
@@ -384,18 +512,22 @@ class EjaraApartemanPage extends StatelessWidget {
                     height: 41,
                     width: getPageWidth(),
                     child: TextField(
+                      controller: _TedadKoleTabaghehController,
                       textAlign: TextAlign.right,
                       decoration: InputDecoration(
                         hintText: 'انتخاب نشده',
                         hintStyle: const TextStyle(
-                            color: Color(0xFFA6A6A6), fontSize: 13),
+                          fontFamily: 'Iran Sans',
+                          fontWeight: FontWeight.w400,
+                          color: Color(0xFFA6A6A6),
+                        ),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
                         prefixIcon:
-                            ReadOnlyTextField(_buildFloorsCountController, () {
-                          showNumberPicker((_) {
-                            _buildFloorsCountController.text = _;
+                            ReadOnlyTextField(_TedadKoleTabaghehController, () {
+                          TedadKoleTabagheh((selectedOption) {
+                            _TedadKoleTabaghehController.text = selectedOption;
                           });
                         }),
                       ),
@@ -408,55 +540,70 @@ class EjaraApartemanPage extends StatelessWidget {
                     decoration: InputDecoration(
                       hintText: 'انتخاب نشده',
                       hintStyle: const TextStyle(
-                          color: Color(0xFFA6A6A6), fontSize: 13),
+                        fontSize: 13,
+                        fontFamily: MAIN_FONT_FAMILY_LIGHT,
+                        color: Color(0xFFA6A6A6),
+                      ),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
-                      prefixIcon:
-                          ReadOnlyTextField(_buildDocumentController, () {
-                        Sanad((p0) => _buildDocumentController.text = p0);
+                      prefixIcon: ReadOnlyTextField(_NoeSanadController, () {
+                        NoeSanad((selectedOption) {
+                          _NoeSanadController.text = selectedOption;
+                        });
                       }),
                     ),
                   ),
                 ),
               ),
               const SizedBox(
-                height: 15,
+                height: 20,
               ),
               TwoItemInRow(
                   label1: "تعداد کل واحد ها",
                   label2: "تعداد واحد در طبقه",
                   widget1: InputTextField(_buildAllFloorsCountController,
                       width: getPageWidth()),
-                  widget2: ReadOnlyTextField(
-                      _buildUnitOfAnyFloorCountController, () {
-                    showNumberPicker((_) {
-                      _buildUnitOfAnyFloorCountController.text = _;
+                  widget2: ReadOnlyTextField(_TedadVahedTabaghehController, () {
+                    TedadVahedTabagheh((selectedOption) {
+                      _TedadVahedTabaghehController.text = selectedOption;
                     });
                   }, width: getPageWidth())),
               const SizedBox(
-                height: 15,
+                height: 20,
               ),
               TwoItemInRow(
                   label1: "بازسازی",
                   label2: "جهت ساختمان",
-                  widget1: ReadOnlyTextField(_reBuildController, () {
-                    //todo
-                  }, width: getPageWidth()),
-                  widget2: ReadOnlyTextField(_buildDirectionController, () {
-                    jahatSakhteman((_) {
-                      _buildDirectionController.text = _;
+                  widget1: ReadOnlyTextField(
+                    _BazSaziController,
+                    () {
+                      BazSazi((selectedOption) {
+                        _BazSaziController.text = selectedOption;
+                      });
+                    },
+                    width: getPageWidth(),
+                  ),
+                  widget2: ReadOnlyTextField(_JahatSakhtemanController, () {
+                    jahatSakhteman((selectedOption) {
+                      _JahatSakhtemanController.text = selectedOption;
                     });
                   }, width: getPageWidth())),
               const SizedBox(
                 height: 20,
               ),
               const Divider(
-                endIndent: 20,
-                indent: 20,
+                color: Color.fromRGBO(
+                  226,
+                  226,
+                  226,
+                  1,
+                ),
+                endIndent: 6,
+                indent: 6,
               ),
               const SizedBox(
-                height: 10,
+                height: 20,
               ),
               const Text(
                 "امکانات",
@@ -472,19 +619,26 @@ class EjaraApartemanPage extends StatelessWidget {
                   height: 41,
                   width: getPageWidth(),
                   child: TextField(
+                    controller: _kabinetController,
                     readOnly: true,
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
                         hintText: 'انتخاب نشده',
                         hintStyle: const TextStyle(
-                            color: Color(0xFFA6A6A6), fontSize: 13),
+                          fontSize: 13,
+                          fontFamily: 'Iran Sans',
+                          fontWeight: FontWeight.w400,
+                          color: Color(0xFFA6A6A6),
+                        ),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
                         prefixIcon: IconButton(
                           icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                           onPressed: () {
-                            // _show_item_1.value = !_show_item_1.isTrue;
+                            Kabinet((selectedOption) {
+                              _kabinetController.text = selectedOption;
+                            });
                           },
                         )),
                   ),
@@ -493,19 +647,26 @@ class EjaraApartemanPage extends StatelessWidget {
                   height: 41,
                   width: getPageWidth(),
                   child: TextField(
+                    controller: _JenskafController,
                     readOnly: true,
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
                       hintText: 'انتخاب نشده',
                       hintStyle: const TextStyle(
-                          color: Color(0xFFA6A6A6), fontSize: 13),
+                        fontSize: 13,
+                        fontFamily: 'Iran Sans',
+                        fontWeight: FontWeight.w400,
+                        color: Color(0xFFA6A6A6),
+                      ),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
                       prefixIcon: IconButton(
                         icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                         onPressed: () {
-                          // _show_item_1.value = !_show_item_1.isTrue;
+                          JensKaf((selectedOption) {
+                            _JenskafController.text = selectedOption;
+                          });
                         },
                       ),
                     ),
@@ -522,19 +683,27 @@ class EjaraApartemanPage extends StatelessWidget {
                   height: 41,
                   width: getPageWidth(),
                   child: TextField(
+                    controller: _GarmController,
                     readOnly: true,
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
                       hintText: 'انتخاب نشده',
-                      hintStyle:
-                          TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
+                      hintStyle: TextStyle(
+                        fontSize: 13,
+                        fontFamily: 'Iran Sans',
+                        fontWeight: FontWeight.w400,
+                        color: Color(0xFFA6A6A6),
+                      ),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
                       prefixIcon: IconButton(
                         icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                         onPressed: () {
-                          // _show_item_1.value = !_show_item_1.isTrue;
+                          Garmayesh((selectedOption) {
+                            // Update the TextField with the selected option
+                            _GarmController.text = selectedOption;
+                          });
                         },
                       ),
                     ),
@@ -544,19 +713,27 @@ class EjaraApartemanPage extends StatelessWidget {
                   height: 41,
                   width: getPageWidth(),
                   child: TextField(
+                    controller: _SarmayeshController,
                     readOnly: true,
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
                       hintText: 'انتخاب نشده',
                       hintStyle: const TextStyle(
-                          color: Color(0xFFA6A6A6), fontSize: 13),
+                        fontSize: 13,
+                        fontFamily: 'Iran Sans',
+                        fontWeight: FontWeight.w400,
+                        color: Color(0xFFA6A6A6),
+                      ),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
                       prefixIcon: IconButton(
                         icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                         onPressed: () {
-                          // _show_item_1.value = !_show_item_1.isTrue;
+                          Sarmayesh((selectedOption) {
+                            // Update the TextField with the selected option
+                            _SarmayeshController.text = selectedOption;
+                          });
                         },
                       ),
                     ),
@@ -573,19 +750,26 @@ class EjaraApartemanPage extends StatelessWidget {
                   height: 41,
                   width: getPageWidth(),
                   child: TextField(
+                    controller: _WcController,
                     readOnly: true,
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
                         hintText: 'انتخاب نشده',
-                        hintStyle:
-                            TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
+                        hintStyle: const TextStyle(
+                          fontSize: 13,
+                          fontFamily: 'Iran Sans',
+                          fontWeight: FontWeight.w400,
+                          color: Color(0xFFA6A6A6),
+                        ),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
                         prefixIcon: IconButton(
                           icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                           onPressed: () {
-                            // _show_item_1.value = !_show_item_1.isTrue;
+                            Wc((selectedOption) {
+                              _WcController.text = selectedOption;
+                            });
                           },
                         )),
                   ),
@@ -594,19 +778,26 @@ class EjaraApartemanPage extends StatelessWidget {
                   height: 41,
                   width: getPageWidth(),
                   child: TextField(
+                    controller: _AbeGarmController,
                     readOnly: true,
                     textAlign: TextAlign.right,
                     decoration: InputDecoration(
                       hintText: 'انتخاب نشده',
-                      hintStyle:
-                          TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
+                      hintStyle: const TextStyle(
+                        fontSize: 13,
+                        fontFamily: 'Iran Sans',
+                        fontWeight: FontWeight.w400,
+                        color: Color(0xFFA6A6A6),
+                      ),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
                       prefixIcon: IconButton(
                         icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                         onPressed: () {
-                          // _show_item_1.value = !_show_item_1.isTrue;
+                          AbeGarm((selectedOption) {
+                            _AbeGarmController.text = selectedOption;
+                          });
                         },
                       ),
                     ),
@@ -614,7 +805,7 @@ class EjaraApartemanPage extends StatelessWidget {
                 ),
               ),
               const SizedBox(
-                height: 20,
+                height: 50,
               ),
               FacilitiesSelectorWidget(
                 selectable: [
@@ -634,22 +825,83 @@ class EjaraApartemanPage extends StatelessWidget {
                 selected: _facilities,
               ),
               const SizedBox(
-                height: 20,
+                height: 40,
               ),
               const Divider(
-                endIndent: 20,
-                indent: 20,
+                color: Color.fromRGBO(
+                  226,
+                  226,
+                  226,
+                  1,
+                ),
+                endIndent: 6,
+                indent: 6,
               ),
               const SizedBox(
                 height: 20,
               ),
               ImagesPicker(selectedImagesPath: _selectedImagesPath),
-              const Divider(),
-              const SizedBox(
-                height: 15,
+              const Divider(
+                color: Color.fromRGBO(
+                  226,
+                  226,
+                  226,
+                  1,
+                ),
+                endIndent: 6,
+                indent: 6,
               ),
-              AdvInfo(_advInfo)
-            ])),
+              const SizedBox(
+                height: 20,
+              ),
+              AdvInfo(_advInfo),
+              const SizedBox(
+                height: 30,
+              ),
+              GestureDetector(
+                onTap: () {
+                  if (submit.value) {
+                    Get.to(() => NamayeshAgahi());
+                  }
+                },
+                child: Obx(() => Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Center(
+                          child: Text(
+                            "... تایید و ادامه",
+                            style: !submit.value
+                                ? const TextStyle(
+                                    fontSize: 20,
+                                    fontFamily: MAIN_FONT_FAMILY,
+                                    color: Colors.black38,
+                                  )
+                                : const TextStyle(
+                                    fontSize: 20, fontFamily: MAIN_FONT_FAMILY),
+                            textAlign: TextAlign.center,
+                          ),
+                        ),
+                        const SizedBox(
+                          width: 3,
+                        ),
+                        GradientIcon(
+                          icon: Icons.double_arrow,
+                          gradient: LinearGradient(
+                            colors: submit.value
+                                ? GRADIANT_COLOR1
+                                : BLACK_12_GRADIANT_COLOR,
+                            begin: Alignment.topLeft,
+                            end: Alignment.bottomRight,
+                          ),
+                          offset: const Offset(0, 0),
+                          size: 34,
+                        )
+                      ],
+                    )),
+              )
+            ],
+          ),
+        ),
       ),
     );
   }
@@ -687,7 +939,7 @@ Widget aghsatiForoshWidget(BuildContext context) {
             const SizedBox(
               height: 20,
             ),
-            TwoItemInRow(
+            TwoItemInRow2(
               label1: "میزان اجاره (تومان)",
               label2: "میزان رهن (تومان) ",
               widget1: SizedBox(
@@ -702,6 +954,15 @@ Widget aghsatiForoshWidget(BuildContext context) {
                         const TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
+                      borderSide: const BorderSide(
+                        color: Color.fromRGBO(23, 102, 175, 1),
+                      ),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      borderSide: const BorderSide(
+                        color: Color.fromRGBO(23, 102, 175, 1),
+                      ),
                     ),
                   ),
                 ),
@@ -718,6 +979,15 @@ Widget aghsatiForoshWidget(BuildContext context) {
                         const TextStyle(color: Color(0xFFA6A6A6), fontSize: 13),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
+                      borderSide: const BorderSide(
+                        color: Color.fromRGBO(23, 102, 175, 1),
+                      ),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      borderSide: const BorderSide(
+                        color: Color.fromRGBO(23, 102, 175, 1),
+                      ),
                     ),
                   ),
                 ),

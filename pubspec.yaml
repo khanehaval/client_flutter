@@ -51,7 +51,6 @@ dependencies:
   shared_preferences: 2.2.2
   permission_handler: 10.4.5
   circular_countdown_timer: 0.2.3
-  flutter_rating_stars: 1.0.3+4
   flutter_rating_bar: 4.0.1
   linear_progress_bar: 1.1.0
   hive: 2.2.3
@@ -61,15 +60,11 @@ dependencies:
   path_provider: 2.1.1
   json_serializable: 6.7.1
   curved_navigation_bar: 1.0.3
-  osm_flutter_hooks: 1.4.0
-  flutter_hooks: 0.18.6
-  flutter_osm_plugin: 0.60.5
   dotted_border: 2.1.0
   latlong2: 0.9.0
   dio: 5.3.3
   flutter_keyboard_visibility: 6.0.0
   dart_jsonwebtoken: 2.12.0
-  bcrypt: 1.1.3
   geocoding: 2.1.1
   syncfusion_flutter_sliders: 25.1.37
   geolocator: 10.1.0
@@ -79,8 +74,17 @@ dependencies:
   gradient_borders: 1.0.0
   flutter_svg: 2.0.9
   json_annotation: 4.8.1
-  persian_datetime_picker: 2.6.0
-  flutter_map: 6.1.0 
+  persian_datetime_picker: ^2.7.0
+  flutter_map: 6.1.0
+  badges: 3.1.2
+  animate_do: 2.1.0
+  loading_animation_widget: 1.2.1
+  draggable_home: 1.0.5
+  onboarding: 4.0.2
+  smooth_page_indicator: 1.1.0
+  sms_autofill: ^2.4.0
+  jalali_flutter_datepicker: ^1.0.9
+
   # mapir_raster: 0.0.1
 
 dev_dependencies:
@@ -113,6 +117,7 @@ flutter:
   assets:
     - assets/images/
     - assets/icons/
+    - assets/fonts/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
@@ -126,9 +131,28 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-    - family: Iran Sans Bold
+    - family: IRANSansWeb_Bold
       fonts:
-        - asset: assets/fonts/Iran Sans Bold.ttf
+        - asset: assets/fonts/IRANSansWeb_Bold.ttf
+          weight: 700
+    - family: IRANSansWeb_Medium
+      fonts:
+        - asset: assets/fonts/IRANSansWeb_Medium.ttf
+    - family: IRANSansWeb_Light
+      fonts:
+        - asset: assets/fonts/IRANSansWeb_Light.ttf
+          weight: 700
+    - family: IRANSansWeb_UltraLight
+      fonts:
+        - asset: assets/fonts/IRANSansWeb_UltraLight.ttf
+          weight: 700
+    - family: Aban Bold
+      fonts:
+        - asset: assets/fonts/Aban Bold.ttf
+          weight: 700 
+    - family: Aban Light
+      fonts:
+        - asset: assets/fonts/Aban Light.ttf
           weight: 700
           
     # - family: Trajan Pro

@@ -1,43 +1,29 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
 class SachtSaz extends StatelessWidget {
   final _show_item_1 = false.obs;
   final _show_item_2 = false.obs;
-
   SachtSaz({super.key});
-
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return ListView(
       children: [
-        const Divider(
-          endIndent: 20,
-          indent: 20,
+        const SizedBox(
+          height: 10,
         ),
+        dividerwidget(),
         Container(
           margin: const EdgeInsets.all(10),
           padding: const EdgeInsets.all(5),
           height: 153,
           width: 372,
-          decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(10),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.grey.withOpacity(0.2),
-                  spreadRadius: 1,
-                  blurRadius: 1,
-                ),
-              ]),
           child: Image.asset('assets/images/Group 722.png'),
         ),
-        const Divider(
-          endIndent: 20,
-          indent: 20,
-        ),
+        dividerwidget(),
         const SizedBox(
           height: 10,
         ),
@@ -45,95 +31,85 @@ class SachtSaz extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Container(
-              height: 90,
-              width: 180,
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(10),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey.withOpacity(.01),
-                  )
-                ],
-              ),
-              child: Image.asset(
-                'assets/images/Group 74.png',
-                fit: BoxFit.fill,
-              ),
-            ),
+                height: 90,
+                width: 170,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(10),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(.01),
+                    )
+                  ],
+                ),
+                child: SvgPicture.asset(
+                  'assets/images/Group pishforosh.svg',
+                )),
             Container(
-              height: 90,
-              width: 180,
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(10),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey.withOpacity(.01),
-                  )
-                ],
-              ),
-              child: Image.asset(
-                'assets/images/Group 75.png',
-                fit: BoxFit.fill,
-              ),
-            ),
+                height: 90,
+                width: 170,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: SvgPicture.asset(
+                  'assets/images/Group sakht.svg',
+                )),
           ],
         ),
         const SizedBox(
           height: 10,
         ),
-        const Divider(
-          endIndent: 20,
-          indent: 20,
-        ),
+        dividerwidget(),
         const SizedBox(
           height: 10,
         ),
         Padding(
-          padding: const EdgeInsets.only(left: 8, right: 8),
+          padding: const EdgeInsets.symmetric(horizontal: 15),
           child: Container(
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10), border: Border.all()),
-            child: Column(
-              children: [
-                Row(
+            decoration: const BoxDecoration(
+                borderRadius: BorderRadius.all(Radius.circular(10)),
+                gradient: LinearGradient(colors: GRADIANT_COLOR3)),
+            child: Padding(
+              padding: const EdgeInsets.all(1.2),
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Obx(
-                      () => IconButton(
-                        icon: _show_item_1.value
-                            ? const Icon(
-                                Icons.keyboard_double_arrow_down_outlined,
-                                size: 25,
-                              )
-                            : const Icon(CupertinoIcons.chevron_left_2),
-                        onPressed: () {
-                          _show_item_1.value = !_show_item_1.value;
-                        },
-                      ),
-                    ),
-                    const Divider(
-                      endIndent: 20,
-                      indent: 20,
-                    ),
+                    Obx(() => IconButton(
+                          icon: _show_item_1.value
+                              ? SvgPicture.asset('assets/images/down.svg')
+                              : SvgPicture.asset(
+                                  'assets/images/=.svg',
+                                ),
+                          style: const ButtonStyle(),
+                          onPressed: () {
+                            _show_item_1.value = !_show_item_1.value;
+                          },
+                        )),
                     const Padding(
-                      padding: EdgeInsets.all(8.0),
-                      child: Column(
-                        children: [
-                          Text(
-                            'فروش ویژه',
-                            style: TextStyle(
-                                fontSize: 16,
-                                color: Colors.black,
-                                fontFamily: MAIN_FONT_FAMILY),
-                          ),
-                        ],
+                      padding: EdgeInsets.only(right: 15.0),
+                      child: Text(
+                        'فروش ویژه',
+                        style: TextStyle(
+                            fontSize: 14,
+                            color: Color.fromRGBO(
+                              48,
+                              48,
+                              48,
+                              1,
+                            ),
+                            fontWeight: FontWeight.bold,
+                            fontFamily: MAIN_FONT_FAMILY),
                       ),
                     ),
                   ],
                 ),
-              ],
+              ),
             ),
           ),
         ),
@@ -141,67 +117,36 @@ class SachtSaz extends StatelessWidget {
         const SizedBox(
           height: 10,
         ),
+        dividerwidget(),
+        const SizedBox(
+          height: 10,
+        ),
         SingleChildScrollView(
-          reverse: true,
           scrollDirection: Axis.horizontal,
-          child: Row(
-            children: [
-              Container(
-                margin: EdgeInsets.all(10),
-                height: 90,
-                width: 147,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(10),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(.01),
-                    )
-                  ],
+          child: Padding(
+            padding: const EdgeInsets.only(left: 15, right: 5),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SizedBox(
+                  width: 170,
+                  child: SvgPicture.asset(
+                    'assets/images/moshaver_amlak.svg',
+                  ),
                 ),
-                child: Image.asset(
-                  'assets/images/Group 650.png',
-                  fit: BoxFit.fill,
+                const SizedBox(
+                  width: 15,
                 ),
-              ),
-              Container(
-                height: 90,
-                width: 147,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(10),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(.01),
-                    )
-                  ],
-                ),
-                child: Image.asset(
-                  'assets/images/Group 655.png',
-                  fit: BoxFit.fill,
-                ),
-              ),
-              Container(
-                margin: EdgeInsets.all(10),
-                height: 90,
-                width: 147,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(10),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(.01),
-                    )
-                  ],
-                ),
-                child: Image.asset(
-                  'assets/images/Group 654.png',
-                  fit: BoxFit.fill,
-                ),
-              ),
-            ],
+                SizedBox(
+                    width: 170,
+                    child: SvgPicture.asset('assets/images/axhans_amlak1.svg')),
+              ],
+            ),
           ),
         ),
+        const SizedBox(
+          height: 10,
+        )
       ],
     );
   }
@@ -210,51 +155,41 @@ class SachtSaz extends StatelessWidget {
     return Obx(() => _show_item_1.isTrue
         ? Column(
             children: [
-              Image.asset('assets/images/Group 778.png'),
+              const SizedBox(
+                height: 10,
+              ),
+              Image.asset(
+                'assets/images/Group project.png',
+                width: 370,
+                height: 111,
+              ),
               const SizedBox(
                 height: 10,
               ),
               Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
                 Container(
-                  height: 98,
-                  width: 180,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(10),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(.01),
-                      )
-                    ],
-                    border: Border.all(
-                      color: Colors.black45,
-                      width: 0.1,
-                    ),
-                  ),
-                  child: Image.asset('assets/images/Group 768.png'),
-                ),
+                    height: 90,
+                    width: 170,
+                    child: SvgPicture.asset(
+                      'assets/images/Group mehregan.svg',
+                    )),
                 Container(
-                  height: 98,
-                  width: 180,
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(10),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey.withOpacity(.01),
-                          spreadRadius: 1,
-                          blurRadius: 10,
-                        )
-                      ],
-                      border: Border.all(
-                        color: Colors.black45,
-                        width: 0.1,
-                      )),
-                  child: Image.asset('assets/images/Group 767.png'),
-                ),
+                    height: 90,
+                    width: 170,
+                    child: SvgPicture.asset(
+                      'assets/images/Group loshan.svg',
+                    )),
               ])
             ],
           )
         : const SizedBox.shrink());
+  }
+
+  Divider dividerwidget() {
+    return const Divider(
+      endIndent: 20,
+      indent: 20,
+      color: Color.fromRGBO(236, 236, 236, 1),
+    );
   }
 }

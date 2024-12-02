@@ -1,118 +1,139 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
+import 'package:flutter_application_1/pages/category/shared/widget/taeed_enseraf_numberpicker.dart';
 import 'package:get/get.dart';
+import 'package:gradient_icon/gradient_icon.dart';
 
 void jahatSakhteman(Function(String) onSelected) {
-  final selected = "".obs;
+  final RxInt index = 2.obs; // Default index set to "Not Selected"
+  final List<String> options = [
+    "شمالی",
+    "جنوبی",
+    "شرقی",
+    "غربی",
+    "انتخاب نشده"
+  ];
+  final FixedExtentScrollController scrollController =
+      FixedExtentScrollController(initialItem: index.value);
 
-  final values = ["شمالی", "جنوبی", "شرقی", "غربی"];
   Get.bottomSheet(
     Container(
-      width: double.infinity,
-      decoration: BoxDecoration(
-        gradient: const LinearGradient(
+      decoration: const BoxDecoration(
+        gradient: LinearGradient(
           colors: GRADIANT_COLOR,
         ),
-        border: Border.all(
-          width: 1,
-        ),
-        borderRadius: const BorderRadius.only(
-            topLeft: Radius.circular(10), topRight: Radius.circular(10)),
+        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
       ),
       child: Padding(
-          padding: const EdgeInsets.all(2.0),
-          child: Container(
-            decoration: const BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(10), topRight: Radius.circular(10)),
-            ),
-            child: Container(
-              decoration: const BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(20),
-                      topRight: Radius.circular(20))),
-              child: Padding(
-                padding: const EdgeInsets.symmetric(vertical: 30),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    ListView.builder(
-                      shrinkWrap: true,
-                      itemBuilder: (c, i) {
-                        String value = values[i];
-                        return GestureDetector(
-                          onTap: () {
-                            selected.value = value;
-                          },
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Center(
-                              child: Obx(() => Container(
-                                  width: 150,
-                                  height: 40,
-                                  decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    gradient: selected.value == value
-                                        ? const LinearGradient(
-                                            colors: GRADIANT_COLOR)
-                                        : const LinearGradient(colors: [
-                                            Colors.black,
-                                            Colors.black,
-                                            Colors.black
-                                          ]),
-                                    borderRadius: BorderRadius.circular(10),
-                                  ),
-                                  child: Padding(
-                                    padding: selected.value == value
-                                        ? const EdgeInsets.all(3.0)
-                                        : const EdgeInsets.all(1.0),
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                        color: Colors.white,
-                                        borderRadius: BorderRadius.circular(10),
-                                      ),
-                                      child: Center(
-                                        child: Text(value,
-                                            style: const TextStyle(
-                                                fontSize: 15,
-                                                fontFamily: MAIN_FONT_FAMILY)),
-                                      ),
-                                    ),
-                                  ))),
-                            ),
-                          ),
-                        );
-                      },
-                      itemCount: 4,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(bottom: 20, top: 30),
-                      child: Container(
-                        decoration: BoxDecoration(
-                            gradient:
-                                const LinearGradient(colors: GRADIANT_COLOR),
-                            borderRadius: BorderRadius.circular(50)),
-                        child: IconButton(
-                          icon: const Icon(
-                            CupertinoIcons.check_mark,
-                            color: Colors.white,
-                            weight: 20,
-                          ),
-                          onPressed: () {
-                            onSelected(selected.value);
-                            Get.back();
-                          },
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
+        padding: const EdgeInsets.only(top: 1.2, right: 1.2, left: 1.2),
+        child: Container(
+          height: 800,
+          decoration: const BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+          ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              _buildNavigationRow(index, options, scrollController),
+              const SizedBox(height: 130),
+              TaeedEnserafNumberPicker(
+                selectedNumber: index.value.toString(),
+                onConfirm: () {
+                  onSelected(options[index.value]);
+                  Get.back();
+                },
               ),
-            ),
-          )),
+            ],
+          ),
+        ),
+      ),
     ),
+  );
+}
+
+Widget _buildNavigationRow(RxInt index, List<String> options,
+    FixedExtentScrollController scrollController) {
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.center,
+    children: [
+      GestureDetector(
+        onTap: () {
+          if (index.value > 0) {
+            index.value--;
+            scrollController.animateToItem(
+              index.value,
+              duration: const Duration(milliseconds: 300),
+              curve: Curves.easeInOut,
+            );
+          }
+        },
+        child: const GradientIcon(
+          icon: Icons.keyboard_arrow_up,
+          gradient: LinearGradient(
+            colors: GRADIANT_COLOR1,
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+          ),
+          size: 50,
+        ),
+      ),
+      const SizedBox(width: 50),
+      SizedBox(
+        width: 130, // Fixed width for texts
+        height: 150, // Limit the height for scrollable view
+        child: ListWheelScrollView.useDelegate(
+          controller: scrollController,
+          itemExtent: 50, // Height of each item
+          physics: const FixedExtentScrollPhysics(),
+          onSelectedItemChanged: (selectedIndex) {
+            index.value = selectedIndex;
+          },
+          childDelegate: ListWheelChildBuilderDelegate(
+            builder: (context, i) {
+              return Center(
+                child: Obx(() {
+                  return Text(
+                    options[i],
+                    style: TextStyle(
+                      fontFamily: MAIN_FONT_FAMILY,
+                      fontSize: i == index.value ? 15 : 13,
+                      fontWeight: i == index.value
+                          ? FontWeight.bold
+                          : FontWeight.normal,
+                      color: i == index.value ? Colors.black : Colors.black38,
+                    ),
+                    textAlign: TextAlign.center,
+                  );
+                }),
+              );
+            },
+            childCount: options.length,
+          ),
+        ),
+      ),
+      const SizedBox(width: 50),
+      GestureDetector(
+        onTap: () {
+          if (index.value < options.length - 1) {
+            index.value++;
+            scrollController.animateToItem(
+              index.value,
+              duration: const Duration(milliseconds: 300),
+              curve: Curves.easeInOut,
+            );
+          }
+        },
+        child: const GradientIcon(
+          icon: Icons.keyboard_arrow_down,
+          gradient: LinearGradient(
+            colors: GRADIANT_COLOR1,
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+          ),
+          size: 50,
+        ),
+      ),
+    ],
   );
 }
