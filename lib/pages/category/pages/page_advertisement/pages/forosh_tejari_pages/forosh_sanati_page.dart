@@ -36,7 +36,7 @@ class ForoshSanatiPage extends StatefulWidget {
 
 class _ForoshSanatiPageState extends State<ForoshSanatiPage> {
   final aghsatType = "".obs;
-  final _buildFloorController = TextEditingController();
+  final _buildDocumentController = TextEditingController();
 
   final onvan = "".obs;
 
@@ -449,10 +449,12 @@ class _ForoshSanatiPageState extends State<ForoshSanatiPage> {
                   ],
                 ),
               ),
-              ReadOnlyTextField(_buildFloorController, () {
-                NoeSanad((selectedOption) {
-                  _buildFloorController.text = selectedOption;
-                });
+              ReadOnlyTextField(_buildDocumentController, () {
+                NoeSanad(
+                  (selectedKey, selectedLabel) {
+                    _buildDocumentController.text = selectedLabel;
+                  },
+                );
               }),
               const SizedBox(
                 height: 20,

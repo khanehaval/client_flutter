@@ -621,10 +621,11 @@ class _VilaAdvPageState extends State<VilaAdvPage> {
               ],
             ),
             ReadOnlyTextField(_buildDocumentController, () {
-              NoeSanad((selectedOption) {
-                _buildDocumentController.text = selectedOption;
-                saleVilaServerModel.docType = selectedOption;
-              });
+              NoeSanad(
+                (selectedKey, selectedLabel) {
+                  _buildDocumentController.text = selectedLabel;
+                },
+              );
             }),
             const SizedBox(
               height: 15,

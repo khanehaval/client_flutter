@@ -52,7 +52,6 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
   SaleApartemanServerModel saleApartemanServerModel =
       SaleApartemanServerModel();
   final Httpservice _httpService = Httpservice();
-
   final aghsatType = "".obs;
   final onvan = "".obs;
   int selectedIndex = 0;
@@ -217,7 +216,6 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
   }
 
   Future<void> _saveAdvertisement() async {
-    // چاپ مقادیر مدل برای بررسی
     print('CityId: ${saleApartemanServerModel.cityId}');
     print('BuildingType: ${saleApartemanServerModel.buildingType}');
     print('Images Path: ${saleApartemanServerModel.images}');
@@ -621,10 +619,9 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
                   fontSize: 12,
                   () {
                     NoeSanad(
-                      (selectedOption) {
-                        _buildDocumentController.text = selectedOption;
-                        saleApartemanServerModel.docType =
-                            _buildDocumentController.text;
+                      (selectedKey, selectedLabel) {
+                        _buildDocumentController.text = selectedLabel;
+                        saleApartemanServerModel.docType = selectedKey;
                       },
                     );
                   },
@@ -1012,7 +1009,7 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
                         },
                         textAlign: TextAlign.right,
                         decoration: InputDecoration(
-                          hintText: 'تایپ کنید', //todo
+                          hintText: 'تایپ کنید',
                           hintStyle: const TextStyle(
                             fontSize: 12,
                             fontFamily: MAIN_FONT_FAMILY_MEDIUM,
@@ -1186,7 +1183,7 @@ Widget melkByVamBanki(BuildContext context) {
                       keyboardType: TextInputType.number,
                       textAlign: TextAlign.right,
                       decoration: InputDecoration(
-                        hintText: 'تایپ کنید', //todo
+                        hintText: 'تایپ کنید',
                         hintStyle: const TextStyle(
                           fontSize: 13,
                           fontFamily: MAIN_FONT_FAMILY,
@@ -1221,7 +1218,7 @@ Widget melkByVamBanki(BuildContext context) {
                       keyboardType: TextInputType.number,
                       textAlign: TextAlign.right,
                       decoration: InputDecoration(
-                        hintText: 'تایپ کنید', //todo
+                        hintText: 'تایپ کنید',
                         hintStyle: const TextStyle(
                           fontSize: 13,
                           fontFamily: MAIN_FONT_FAMILY,
@@ -1315,7 +1312,7 @@ class CustomTrackShape extends RoundedRectSliderTrackShape {
 }
 
 class ImageController extends GetxController {
-  var sliderValue = 0.0.obs; // Initial dim value set to 50%
+  var sliderValue = 0.0.obs;
 
   void updateSliderValue(double value) {
     sliderValue.value = value;

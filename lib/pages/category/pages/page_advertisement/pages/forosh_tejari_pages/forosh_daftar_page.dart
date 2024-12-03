@@ -573,9 +573,11 @@ class _ForoshDaftarPageState extends State<ForoshDaftarPage> {
                       });
                     }, width: getPageWidth()),
                     widget2: ReadOnlyTextField(_buildDocumentController, () {
-                      NoeSanad((selectedOption) {
-                        _buildDocumentController.text = selectedOption;
-                      });
+                      NoeSanad(
+                        (selectedKey, selectedLabel) {
+                          _buildDocumentController.text = selectedLabel;
+                        },
+                      );
                     }, width: getPageWidth())),
                 const SizedBox(
                   height: 15,

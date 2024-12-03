@@ -7,7 +7,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
 void TedadKoleTabagheh(Function(String key, String label) onSelected) async {
-  final RxInt index = 2.obs; // Default index set to "Not Selected"
+  final RxInt index = 2.obs;
   final advertisementService = AdvertisementService();
   final Base? baseData = await advertisementService.fetchDataFromServer();
   final Data? totalFloors = baseData?.data?.firstWhere(

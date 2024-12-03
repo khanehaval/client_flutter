@@ -46,7 +46,7 @@ class _PartnerShipState extends State<PartnerShip> {
   final _allPriceTextController = TextEditingController();
 
   final _metragTextController = TextEditingController();
-  final _NoeSanadTextController = TextEditingController();
+  final _buildDocumentController = TextEditingController();
   final _SenBanaTextController = TextEditingController();
   final _TedadTabaghatController = TextEditingController();
   final _TakhribController = TextEditingController();
@@ -342,7 +342,7 @@ class _PartnerShipState extends State<PartnerShip> {
                 height: 41,
                 width: getPageWidth(),
                 child: TextField(
-                  controller: _NoeSanadTextController,
+                  controller: _buildDocumentController,
                   textAlign: TextAlign.right,
                   decoration: InputDecoration(
                       hintText: 'انتخاب نشده',
@@ -358,9 +358,11 @@ class _PartnerShipState extends State<PartnerShip> {
                       prefixIcon: IconButton(
                         icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                         onPressed: () {
-                          NoeSanad((selectedOption) {
-                            _NoeSanadTextController.text = selectedOption;
-                          });
+                          NoeSanad(
+                            (selectedKey, selectedLabel) {
+                              _buildDocumentController.text = selectedLabel;
+                            },
+                          );
                         },
                       )),
                 ),

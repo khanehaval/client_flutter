@@ -434,9 +434,11 @@ class _PresellState extends State<Presell> {
               ),
             ),
             ReadOnlyTextField(_buildDocumentController, () {
-              NoeSanad((selectedOption) {
-                _buildDocumentController.text = selectedOption;
-              });
+              NoeSanad(
+                (selectedKey, selectedLabel) {
+                  _buildDocumentController.text = selectedLabel;
+                },
+              );
             }, width: getPageWidth1()),
             const SizedBox(
               height: 20,

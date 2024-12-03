@@ -6,7 +6,7 @@ import 'package:flutter_application_1/services/models/server_model/sale_apartema
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
-void NoeSanad(Function(String) onSelected) async {
+void NoeSanad(Function(String key, String label) onSelected) async {
   final RxInt index = 2.obs;
   final advertisementService = AdvertisementService();
   final Base? baseData = await advertisementService.fetchDataFromServer();
@@ -44,7 +44,10 @@ void NoeSanad(Function(String) onSelected) async {
               TaeedEnserafNumberPicker(
                 selectedNumber: index.value.toString(),
                 onConfirm: () {
-                  onSelected(options[index.value]);
+                  final selectedItem = items?[index.value];
+                  final selectedKey = selectedItem?.value ?? '';
+                  final selectedLabel = selectedItem?.label ?? '';
+                  onSelected(selectedKey, selectedLabel);
                   Get.back();
                 },
               ),

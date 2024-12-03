@@ -549,9 +549,11 @@ class _EjaraApartemanPageState extends State<EjaraApartemanPage> {
                         borderRadius: BorderRadius.circular(10),
                       ),
                       prefixIcon: ReadOnlyTextField(_NoeSanadController, () {
-                        NoeSanad((selectedOption) {
-                          _NoeSanadController.text = selectedOption;
-                        });
+                        NoeSanad(
+                          (selectedKey, selectedLabel) {
+                            _buildDocumentController.text = selectedLabel;
+                          },
+                        );
                       }),
                     ),
                   ),
