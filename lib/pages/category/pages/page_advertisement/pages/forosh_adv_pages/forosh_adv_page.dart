@@ -56,7 +56,7 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
   final aghsatType = "".obs;
   final onvan = "".obs;
   int selectedIndex = 0;
-  final submit = false.obs;
+  final submit = true.obs;
   final hasAnbari = false.obs;
   final hasAsansor = false.obs;
   final hasParking = false.obs;
@@ -87,6 +87,9 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
   final _buttonIsPressed = false.obs;
   final _wcController = TextEditingController();
   final ValueNotifier<String> _persianWords = ValueNotifier<String>('');
+  bool _isValidNumber(String value) {
+    return int.tryParse(value) != null;
+  }
 
   final _advInfo = AdvInfoModel();
   String numberToFarsiWords(int number) {
@@ -214,32 +217,30 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
   }
 
   Future<void> _saveAdvertisement() async {
+    // چاپ مقادیر مدل برای بررسی
+    print('CityId: ${saleApartemanServerModel.cityId}');
+    print('BuildingType: ${saleApartemanServerModel.buildingType}');
+    print('Images Path: ${saleApartemanServerModel.images}');
+    print('WC: ${saleApartemanServerModel.wc}');
+    print('Floor Number: ${saleApartemanServerModel.floorNumber}');
+    print('Rooms: ${saleApartemanServerModel.room}');
+    print('Age: ${saleApartemanServerModel.age}');
+    print('Facilities:');
+    print('hasLobby: ${saleApartemanServerModel.hasLobby}');
+    print('hasBathTub: ${saleApartemanServerModel.hasBathTub}');
+    print('hasMasterRoom: ${saleApartemanServerModel.hasMasterRoom}');
+    print('hasBalcony: ${saleApartemanServerModel.hasBalcony}');
+    print('hasSwimmingPool: ${saleApartemanServerModel.hasSwimmingPool}');
+    print('hasRoofGarden: ${saleApartemanServerModel.hasRoofGarden}');
+    print('hasGamingRoom: ${saleApartemanServerModel.hasGamingRoom}');
+    print('hasGazebo: ${saleApartemanServerModel.hasGazebo}');
+    print('hasSportingHall: ${saleApartemanServerModel.hasSportingHall}');
+    print('hasConferenceHall: ${saleApartemanServerModel.hasConferenceHall}');
+    print('hasCentralAntenna: ${saleApartemanServerModel.hasCentralAntenna}');
+    print('hasSaunaJacuzzi: ${saleApartemanServerModel.hasSaunaJacuzzi}');
+
+    // سپس ارسال اطلاعات به سرور
     if (submit.value) {
-      if (saleApartemanServerModel.cityId == null ||
-          saleApartemanServerModel.cityId.isEmpty) {
-        Fluttertoast.showToast(
-          msg: "لطفا شهر را انتخاب کنید",
-          toastLength: Toast.LENGTH_LONG,
-          gravity: ToastGravity.CENTER,
-          backgroundColor: Colors.red,
-          textColor: Colors.white,
-          fontSize: 16.0,
-        );
-        return;
-      }
-      if (saleApartemanServerModel.buildingType == null ||
-          saleApartemanServerModel.buildingType!.isEmpty) {
-        Fluttertoast.showToast(
-          msg: "لطفا نوع ملک را انتخاب کنید",
-          toastLength: Toast.LENGTH_LONG,
-          gravity: ToastGravity.CENTER,
-          backgroundColor: Colors.red,
-          textColor: Colors.white,
-          fontSize: 16.0,
-        );
-        return;
-      }
-      _buttonIsPressed.value = true;
       try {
         final success = await _accountRepo.saleAparteman(
           saleApartemanData: saleApartemanServerModel,
@@ -408,8 +409,7 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
                       border: Border.all(
-                          width: 1, //
-                          color: Theme.of(context).hintColor),
+                          width: 1, color: Theme.of(context).hintColor),
                     ),
                     height: 41,
                     width: getPageWidth(),
@@ -430,10 +430,11 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
                     keyboardType: TextInputType.number,
                     controller: _allPriceTextController,
                     onChanged: (_) {
-                      _onePrice.value = _.isNotEmpty
-                          ? int.parse(_) / int.parse(_metragTextController.text)
-                          : 0;
-                      saleApartemanServerModel.meterage = int.parse(_);
+                      if (_isValidNumber(_)) {
+                        _onePrice.value = int.parse(_) /
+                            int.parse(_metragTextController.text);
+                        saleApartemanServerModel.meterage = int.parse(_);
+                      } else {}
                     },
                     decoration: InputDecoration(
                       hintText: "0",
@@ -515,12 +516,16 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
                     TedadOtagh((selectedKey, selectedLabel) {
                       _buildRoomsCountController.text = selectedLabel;
                       saleApartemanServerModel.room = selectedKey;
+                      print(
+                          "تعداد اتاق انتخابی: ${saleApartemanServerModel.room}"); // بررسی مقدار ذخیره شده
                     });
                   }, width: getPageWidth()),
                   widget2: ReadOnlyTextField(_SenBanaController, () {
                     SenBana((selectedOption) {
                       _SenBanaController.text = selectedOption;
                       saleApartemanServerModel.age = _SenBanaController.text;
+                      print(
+                          "سن بنا انتخابی: ${saleApartemanServerModel.age}"); // بررسی مقدار ذخیره شده
                     });
                   }, width: getPageWidth(), fontSize: 12)),
               const SizedBox(
@@ -600,68 +605,89 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
                 height: 15,
               ),
               TwoItemInRow(
-                  label1: "تعداد کل طبقات",
-                  label2: "نوع سند",
-                  widget1: ReadOnlyTextField(_buildFloorsCountController,
-                      fontSize: 12, () {
-                    TedadKoleTabagheh((selectedKey, selectedLabel) {
+                label1: "تعداد کل طبقات",
+                label2: "نوع سند",
+                widget1: ReadOnlyTextField(_buildFloorsCountController,
+                    fontSize: 12, () {
+                  TedadKoleTabagheh(
+                    (selectedKey, selectedLabel) {
                       _buildFloorController.text = selectedLabel;
                       saleApartemanServerModel.floorNumber = selectedKey;
-                    });
-                  }, width: getPageWidth()),
-                  widget2: ReadOnlyTextField(_buildDocumentController,
-                      fontSize: 12, () {
-                    NoeSanad((selectedOption) {
-                      _buildDocumentController.text = selectedOption;
-                      saleApartemanServerModel.docType =
-                          _buildDocumentController.text;
-                    });
-                  }, width: getPageWidth())),
-              const SizedBox(
-                height: 15,
-              ),
-              TwoItemInRow(
-                  label1: "تعداد کل واحد ها",
-                  label2: "تعداد واحد در طبقه",
-                  widget1: InputTextField(
-                    _buildAllFloorsCountController,
-                    width: getPageWidth(),
-                  ),
-                  widget2: ReadOnlyTextField(_TedadVahedTabaghehController,
-                      fontSize: 12, () {
-                    TedadVahedTabagheh((selectedKey, selectedLabel) {
-                      _TedadVahedTabaghehController.text = selectedLabel;
-                      saleApartemanServerModel.unitInFloor = selectedKey;
-                    });
-                  }, width: getPageWidth())),
-              const SizedBox(
-                height: 15,
-              ),
-              TwoItemInRow(
-                  label1: "بازسازی",
-                  label2: "جهت ساختمان",
-                  widget1: ReadOnlyTextField(
-                    _reBuildController,
-                    () {
-                      BazSazi((selectedKey, selectedLabel) {
-                        _reBuildController.text =
-                            selectedLabel; // ذخیره برچسب در کنترلر
-                        saleApartemanServerModel.reconstruct =
-                            selectedKey; // ذخیره کلید در مدل
-                      });
                     },
-                    width: getPageWidth(),
-                    fontSize: 11,
-                  ),
-                  widget2: ReadOnlyTextField(_buildingSideController,
-                      fontSize: 12, () {
-                    jahatSakhteman((selectedKey, selectedLabel) {
-                      _buildingSideController.text =
-                          selectedLabel; // نمایش برچسب در کنترلر
-                      saleApartemanServerModel.buildingSide =
-                          selectedKey; // ذخیره کلید در مدل
-                    });
-                  }, width: getPageWidth())),
+                  );
+                }, width: getPageWidth()),
+                widget2: ReadOnlyTextField(
+                  _buildDocumentController,
+                  fontSize: 12,
+                  () {
+                    NoeSanad(
+                      (selectedOption) {
+                        _buildDocumentController.text = selectedOption;
+                        saleApartemanServerModel.docType =
+                            _buildDocumentController.text;
+                      },
+                    );
+                  },
+                  width: getPageWidth(),
+                ),
+              ),
+              const SizedBox(
+                height: 15,
+              ),
+              TwoItemInRow(
+                label1: "تعداد کل واحد ها",
+                label2: "تعداد واحد در طبقه",
+                widget1: InputTextField(
+                  _buildAllFloorsCountController,
+                  width: getPageWidth(),
+                ),
+                widget2: ReadOnlyTextField(
+                  _TedadVahedTabaghehController,
+                  fontSize: 12,
+                  () {
+                    TedadVahedTabagheh(
+                      (selectedKey, selectedLabel) {
+                        _TedadVahedTabaghehController.text = selectedLabel;
+                        saleApartemanServerModel.unitInFloor = selectedKey;
+                      },
+                    );
+                  },
+                  width: getPageWidth(),
+                ),
+              ),
+              const SizedBox(
+                height: 15,
+              ),
+              TwoItemInRow(
+                label1: "بازسازی",
+                label2: "جهت ساختمان",
+                widget1: ReadOnlyTextField(
+                  _reBuildController,
+                  () {
+                    BazSazi(
+                      (selectedKey, selectedLabel) {
+                        _reBuildController.text = selectedLabel;
+                        saleApartemanServerModel.reconstruct = selectedKey;
+                      },
+                    );
+                  },
+                  width: getPageWidth(),
+                  fontSize: 11,
+                ),
+                widget2: ReadOnlyTextField(
+                  _buildingSideController,
+                  fontSize: 12,
+                  () {
+                    jahatSakhteman(
+                      (selectedKey, selectedLabel) {
+                        _buildingSideController.text = selectedLabel;
+                        saleApartemanServerModel.buildingSide = selectedKey;
+                      },
+                    );
+                  },
+                  width: getPageWidth(),
+                ),
+              ),
               const SizedBox(
                 height: 20,
               ),
@@ -712,19 +738,15 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
                 widget1: ReadOnlyTextField(_heatingSystemController,
                     fontSize: 12, () {
                   Garmayesh((selectedKey, selectedLabel) {
-                    _heatingSystemController.text =
-                        selectedLabel; // ذخیره برچسب در کنترلر
-                    saleApartemanServerModel.heatingSystemType =
-                        selectedKey; // ذخیره کلید در مدل
+                    _heatingSystemController.text = selectedLabel;
+                    saleApartemanServerModel.heatingSystemType = selectedKey;
                   });
                 }, width: getPageWidth()),
                 widget2: ReadOnlyTextField(_coolingSystemController,
                     fontSize: 12, () {
                   Sarmayesh((selectedKey, selectedLabel) {
-                    _coolingSystemController.text =
-                        selectedLabel; // ذخیره برچسب در کنترلر
-                    saleApartemanServerModel.coolingSystemType =
-                        selectedKey; // ذخیره کلید در مدل
+                    _coolingSystemController.text = selectedLabel;
+                    saleApartemanServerModel.coolingSystemType = selectedKey;
                   });
                 }, width: getPageWidth()),
               ),
@@ -812,6 +834,13 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
               GestureDetector(
                 onTap: () {
                   if (submit.value) {
+                    print('Has Lobby: ${_facilities.value.contains(Labi())}');
+                    print(
+                        'Has Bath Tub: ${_facilities.value.contains(Bathtub())}');
+                    print(
+                        'Has Master Room: ${_facilities.value.contains(MasterRoom())}');
+                    print(
+                        'Has Swimming Pool: ${_facilities.value.contains(SwimmingPool())}');
                     saleApartemanServerModel.images = selectedImagesPath.value;
                     saleApartemanServerModel.wc = _wcController.text;
                     saleApartemanServerModel.hasLobby =

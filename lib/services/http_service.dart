@@ -29,10 +29,8 @@ class Httpservice {
   }
 
   Future<String?> uploadFile(String address, String path) async {
-    // Synchronously check if the file exists at the specified path
     if (!File(path).existsSync()) {
-      print("⛔ فایل در مسیر مشخص شده یافت نشد: $path");
-      return null; // Exit if file does not exist
+      return null;
     }
 
     String fileName = path.split('/').last;

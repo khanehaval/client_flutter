@@ -5,15 +5,11 @@ import 'package:flutter_application_1/services/advertisment_service.dart';
 import 'package:flutter_application_1/services/models/server_model/sale_aparteman_Get/base_list.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:gradient_icon/gradient_icon.dart';
 
 void Sarmayesh(Function(String key, String label) onSelected) async {
-  final RxInt index = 2.obs; // Default index
+  final RxInt index = 2.obs;
   final advertisementService = AdvertisementService();
   final Base? baseData = await advertisementService.fetchDataFromServer();
-
-  // استخراج داده‌ها
   final Data? coolingData = baseData?.data?.firstWhere(
     (data) => data.key == "cooling_system",
     orElse: () => Data(list: []),
@@ -21,11 +17,8 @@ void Sarmayesh(Function(String key, String label) onSelected) async {
   final List<Item>? items = coolingData?.list;
   final List<String> options =
       items?.map((item) => item.label ?? '').toList() ?? [];
-
-  // کنترلر اسکرول
   final FixedExtentScrollController scrollController =
       FixedExtentScrollController(initialItem: index.value);
-
   Get.bottomSheet(
     Container(
       decoration: const BoxDecoration(
@@ -51,11 +44,9 @@ void Sarmayesh(Function(String key, String label) onSelected) async {
                 selectedNumber: index.value.toString(),
                 onConfirm: () {
                   final selectedItem = items?[index.value];
-                  final selectedKey =
-                      selectedItem?.value ?? ''; // کلید انتخاب‌شده
-                  final selectedLabel =
-                      selectedItem?.label ?? ''; // برچسب انتخاب‌شده
-                  onSelected(selectedKey, selectedLabel); // بازگرداندن مقادیر
+                  final selectedKey = selectedItem?.value ?? '';
+                  final selectedLabel = selectedItem?.label ?? '';
+                  onSelected(selectedKey, selectedLabel);
                   Get.back();
                 },
               ),
@@ -86,11 +77,11 @@ Widget _buildNavigationRow(RxInt index, List<String> options,
           child: SvgPicture.asset('assets/images/arrow-up.svg')),
       const SizedBox(width: 40),
       SizedBox(
-        width: 130, // Fixed width for texts
-        height: 200, // Limit the height for scrollable view
+        width: 130,
+        height: 200,
         child: ListWheelScrollView.useDelegate(
           controller: scrollController,
-          itemExtent: 50, // Height of each item
+          itemExtent: 50,
           physics: const FixedExtentScrollPhysics(),
           onSelectedItemChanged: (selectedIndex) {
             index.value = selectedIndex;

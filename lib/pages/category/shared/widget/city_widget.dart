@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/shared/map_pages/location_Info.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/switch_onr_item.dart';
+import 'package:flutter_application_1/pages/category/shared/widget/taeed_enseraf_filters.dart';
 import 'package:flutter_application_1/services/advertisment_service.dart';
 import 'package:flutter_application_1/services/models/server_model/sale_aparteman.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_rx/src/rx_types/rx_types.dart';
+import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:latlong2/latlong.dart';
-import 'taeed_enseraf_filters.dart';
 
 class CityWidget extends StatefulWidget {
   final Rx<String> selectedCity;
@@ -55,11 +58,8 @@ class _CityState extends State<CityWidget> {
           response.data!.list != null) {
         final cityList =
             response.data!.list!.map((item) => item.name ?? '').toList();
-        final cityIds =
-            response.data!.list!.map((item) => item.id ?? '').toList();
         allCities.value = cityList;
         filteredCity.value = cityList;
-
         return cityList;
       }
 
@@ -182,34 +182,30 @@ class _CityState extends State<CityWidget> {
   Widget cityRow(String city) {
     return GestureDetector(
       onTap: () {
-        final cityIndex = allCities.value.indexOf(city);
         widget.selectedCity.value = city;
-        saleApartemanServerModel.cityId = cityIndex.toString();
+        saleApartemanServerModel.cityId = city;
       },
-      child: Obx(
-        () => Padding(
-          padding: const EdgeInsets.only(left: 10.0, right: 10),
-          child: Container(
-            decoration: const BoxDecoration(
-              border: Border(
-                bottom: BorderSide(
-                  color: Colors.grey,
-                  width: 1.0,
+      child: Obx(() => Padding(
+            padding: const EdgeInsets.only(left: 10.0, right: 10),
+            child: Container(
+              decoration: const BoxDecoration(
+                border: Border(
+                  bottom: BorderSide(
+                    color: Colors.grey,
+                    width: 1.0,
+                  ),
                 ),
               ),
+              child: SwitchItem(
+                isSelected: widget.selectedCity.value == city,
+                item: city,
+                onTap: () {
+                  widget.selectedCity.value = city;
+                  saleApartemanServerModel.cityId = city;
+                },
+              ),
             ),
-            child: SwitchItem(
-              isSelected: widget.selectedCity.value == city,
-              item: city,
-              onTap: () {
-                widget.selectedCity.value = city;
-                final cityIndex = allCities.value.indexOf(city);
-                saleApartemanServerModel.cityId = cityIndex.toString();
-              },
-            ),
-          ),
-        ),
-      ),
+          )),
     );
   }
 }
