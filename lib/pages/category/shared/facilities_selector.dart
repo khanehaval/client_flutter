@@ -30,8 +30,7 @@ class FacilitiesSelectorWidget extends StatelessWidget {
           () {
             int rows = (selected.length / 3).ceil();
             return SizedBox(
-              height: 70.0 * rows +
-                  50, // Adjust the height based on the number of rows
+              height: 70.0 * rows + 50,
               child: Wrap(
                 spacing: 21,
                 runSpacing: 21,

@@ -30,12 +30,10 @@ import 'package:flutter_application_1/repo/account_repo.dart';
 import 'package:flutter_application_1/services/advertisment_service.dart';
 import 'package:flutter_application_1/services/http_service.dart';
 import 'package:flutter_application_1/services/models/server_model/sale_aparteman.dart';
-import 'package:flutter_application_1/services/models/server_model/sale_aparteman_res.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:get_it/get_it.dart';
 import 'package:gradient_icon/gradient_icon.dart';
-
 import '../../../../models/FacilitiesModel.dart';
 
 class ForoshAdvPage extends StatefulWidget {
@@ -93,7 +91,6 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
   final _advInfo = AdvInfoModel();
   String numberToFarsiWords(int number) {
     if (number == 0) return 'صفر';
-
     const ones = [
       'صفر',
       'یک',
@@ -216,28 +213,10 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
   }
 
   Future<void> _saveAdvertisement() async {
-    print('CityId: ${saleApartemanServerModel.cityId}');
-    print('BuildingType: ${saleApartemanServerModel.buildingType}');
-    print('Images Path: ${saleApartemanServerModel.images}');
-    print('WC: ${saleApartemanServerModel.wc}');
-    print('Floor Number: ${saleApartemanServerModel.floorNumber}');
-    print('Rooms: ${saleApartemanServerModel.room}');
-    print('Age: ${saleApartemanServerModel.age}');
-    print('Facilities:');
-    print('hasLobby: ${saleApartemanServerModel.hasLobby}');
-    print('hasBathTub: ${saleApartemanServerModel.hasBathTub}');
-    print('hasMasterRoom: ${saleApartemanServerModel.hasMasterRoom}');
-    print('hasBalcony: ${saleApartemanServerModel.hasBalcony}');
-    print('hasSwimmingPool: ${saleApartemanServerModel.hasSwimmingPool}');
-    print('hasRoofGarden: ${saleApartemanServerModel.hasRoofGarden}');
-    print('hasGamingRoom: ${saleApartemanServerModel.hasGamingRoom}');
-    print('hasGazebo: ${saleApartemanServerModel.hasGazebo}');
-    print('hasSportingHall: ${saleApartemanServerModel.hasSportingHall}');
-    print('hasConferenceHall: ${saleApartemanServerModel.hasConferenceHall}');
-    print('hasCentralAntenna: ${saleApartemanServerModel.hasCentralAntenna}');
-    print('hasSaunaJacuzzi: ${saleApartemanServerModel.hasSaunaJacuzzi}');
+    print('Total Price: ${saleApartemanServerModel.totalPrice}');
+    print('Meterage: ${saleApartemanServerModel.meterage}');
+    print('Sending data: ${saleApartemanServerModel.toJson()}');
 
-    // سپس ارسال اطلاعات به سرور
     if (submit.value) {
       try {
         final success = await _accountRepo.saleAparteman(
@@ -342,6 +321,8 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
                   controller: _metragTextController,
                   onChanged: (_) {
                     saleApartemanServerModel.totalPrice = int.tryParse(_) ?? 0;
+                    print(
+                        'Total Price: ${saleApartemanServerModel.totalPrice}');
                   },
                   keyboardType: TextInputType.number,
                   decoration: InputDecoration(
@@ -432,6 +413,7 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
                         _onePrice.value = int.parse(_) /
                             int.parse(_metragTextController.text);
                         saleApartemanServerModel.meterage = int.parse(_);
+                        print('Meterage: ${saleApartemanServerModel.meterage}');
                       } else {}
                     },
                     decoration: InputDecoration(
@@ -853,8 +835,6 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
                     saleApartemanServerModel.hasRoofGarden =
                         _facilities.value.contains(RoofGarden());
                     saleApartemanServerModel.hasGamingRoom =
-                        _facilities.value.contains(GameRoom());
-                    saleApartemanServerModel.hasGazebo =
                         _facilities.value.contains(AlAchiq());
                     saleApartemanServerModel.hasGamingRoom =
                         _facilities.value.contains(GameRoom());

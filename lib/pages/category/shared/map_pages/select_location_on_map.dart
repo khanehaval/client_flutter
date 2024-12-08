@@ -340,7 +340,7 @@ class _SelectLocationMapState extends State<SelectLocationMap> {
           GestureDetector(
             onTap: () async {
               var selectedCityValue =
-                  await Get.to(() => CityWidget(this.selectedCity));
+                  await Get.to(() => CityWidget(selectedCity));
               if (selectedCityValue != null && selectedCityValue.isNotEmpty) {
                 setState(() {
                   locationInfo.cityName = selectedCityValue;

@@ -15,7 +15,6 @@ void showSelectNoeMelk(Function(String label) onSelected) {
     {"key": "penthouse", "label": "پنت هاوس"},
     {"key": "suite", "label": "سوئیت"},
   ];
-
   Get.bottomSheet(
     Container(
       width: double.infinity,

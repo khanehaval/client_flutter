@@ -16,10 +16,8 @@ class ForshAdvLocationPage extends StatelessWidget {
   final TextEditingController _controller = TextEditingController();
   SaleApartemanServerModel saleApartemanServerModel =
       SaleApartemanServerModel();
-
   ForshAdvLocationPage({required this.locationInfo, super.key});
   final type = "".obs;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(

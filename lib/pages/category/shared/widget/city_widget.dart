@@ -4,11 +4,9 @@ import 'package:flutter_application_1/pages/category/shared/widget/switch_onr_it
 import 'package:flutter_application_1/pages/category/shared/widget/taeed_enseraf_filters.dart';
 import 'package:flutter_application_1/services/advertisment_service.dart';
 import 'package:flutter_application_1/services/models/server_model/sale_aparteman.dart';
+import 'package:flutter_application_1/services/models/server_model/sale_aparteman_Get/city_id.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_rx/src/rx_types/rx_types.dart';
-import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:latlong2/latlong.dart';
 
 class CityWidget extends StatefulWidget {
@@ -23,9 +21,9 @@ class CityWidget extends StatefulWidget {
 class _CityState extends State<CityWidget> {
   final advertisementService = AdvertisementService();
   final searchController = TextEditingController();
-  final filteredCity = <String>[].obs;
-  final allCities = <String>[].obs;
-  late Future<List<String>> citiesFuture;
+  final filteredCity = <Item>[].obs;
+  final allCities = <Item>[].obs;
+  late Future<List<Item>> citiesFuture;
   SaleApartemanServerModel saleApartemanServerModel =
       SaleApartemanServerModel();
   LocationInfo locationInfo = LocationInfo(
@@ -48,7 +46,7 @@ class _CityState extends State<CityWidget> {
     super.dispose();
   }
 
-  Future<List<String>> fetchCities() async {
+  Future<List<Item>> fetchCities() async {
     try {
       final response = await advertisementService.fetchCityFromServer();
 
@@ -56,8 +54,7 @@ class _CityState extends State<CityWidget> {
           response.status == true &&
           response.data != null &&
           response.data!.list != null) {
-        final cityList =
-            response.data!.list!.map((item) => item.name ?? '').toList();
+        final cityList = response.data!.list!;
         allCities.value = cityList;
         filteredCity.value = cityList;
         return cityList;
@@ -71,8 +68,9 @@ class _CityState extends State<CityWidget> {
 
   void _filterCity() {
     final query = searchController.text.toLowerCase();
-    filteredCity.value =
-        allCities.where((city) => city.toLowerCase().contains(query)).toList();
+    filteredCity.value = allCities
+        .where((city) => city.name!.toLowerCase().contains(query))
+        .toList();
   }
 
   @override
@@ -139,7 +137,7 @@ class _CityState extends State<CityWidget> {
                   color: Colors.white,
                   borderRadius: BorderRadius.all(Radius.circular(15)),
                 ),
-                child: FutureBuilder<List<String>>(
+                child: FutureBuilder<List<Item>>(
                   future: citiesFuture,
                   builder: (context, snapshot) {
                     if (snapshot.connectionState == ConnectionState.waiting) {
@@ -170,7 +168,16 @@ class _CityState extends State<CityWidget> {
             onTaeed: () {
               Get.back();
               if (widget.selectedCity.value.isNotEmpty) {
-                locationInfo.cityName = widget.selectedCity.value;
+                final selectedCityItem = filteredCity.value.firstWhere(
+                  (item) => item.name == widget.selectedCity.value,
+                  orElse: () => Item(),
+                );
+                saleApartemanServerModel.cityId = selectedCityItem.id!;
+                if (selectedCityItem.location != null &&
+                    selectedCityItem.location!.length == 2) {
+                  final latLng = LatLng(selectedCityItem.location![0],
+                      selectedCityItem.location![1]);
+                }
               }
             },
           ),
@@ -179,11 +186,11 @@ class _CityState extends State<CityWidget> {
     );
   }
 
-  Widget cityRow(String city) {
+  Widget cityRow(Item city) {
     return GestureDetector(
       onTap: () {
-        widget.selectedCity.value = city;
-        saleApartemanServerModel.cityId = city;
+        widget.selectedCity.value = city.name!;
+        saleApartemanServerModel.cityId = city.id!; // ارسال id به مدل
       },
       child: Obx(() => Padding(
             padding: const EdgeInsets.only(left: 10.0, right: 10),
@@ -197,11 +204,11 @@ class _CityState extends State<CityWidget> {
                 ),
               ),
               child: SwitchItem(
-                isSelected: widget.selectedCity.value == city,
-                item: city,
+                isSelected: widget.selectedCity.value == city.name,
+                item: city.name!,
                 onTap: () {
-                  widget.selectedCity.value = city;
-                  saleApartemanServerModel.cityId = city;
+                  widget.selectedCity.value = city.name!;
+                  saleApartemanServerModel.cityId = city.id!; // ارسال id به مدل
                 },
               ),
             ),
