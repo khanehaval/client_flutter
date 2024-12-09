@@ -12,7 +12,6 @@ import 'package:flutter_application_1/pages/category/shared/constant.dart';
 
 class ForshAdvLocationPage extends StatelessWidget {
   LocationInfo locationInfo;
-  Location location = const Location();
   final TextEditingController _controller = TextEditingController();
   SaleApartemanServerModel saleApartemanServerModel =
       SaleApartemanServerModel();

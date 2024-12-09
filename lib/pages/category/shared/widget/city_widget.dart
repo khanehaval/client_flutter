@@ -190,7 +190,7 @@ class _CityState extends State<CityWidget> {
     return GestureDetector(
       onTap: () {
         widget.selectedCity.value = city.name!;
-        saleApartemanServerModel.cityId = city.id!; // ارسال id به مدل
+        saleApartemanServerModel.cityId = city.id!;
       },
       child: Obx(() => Padding(
             padding: const EdgeInsets.only(left: 10.0, right: 10),
@@ -208,7 +208,7 @@ class _CityState extends State<CityWidget> {
                 item: city.name!,
                 onTap: () {
                   widget.selectedCity.value = city.name!;
-                  saleApartemanServerModel.cityId = city.id!; // ارسال id به مدل
+                  saleApartemanServerModel.cityId = city.id!;
                 },
               ),
             ),

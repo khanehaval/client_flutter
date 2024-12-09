@@ -30,6 +30,7 @@ import 'package:flutter_application_1/repo/account_repo.dart';
 import 'package:flutter_application_1/services/advertisment_service.dart';
 import 'package:flutter_application_1/services/http_service.dart';
 import 'package:flutter_application_1/services/models/server_model/sale_aparteman.dart';
+import 'package:flutter_application_1/services/models/server_model/sale_old_house.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:get_it/get_it.dart';
@@ -38,7 +39,7 @@ import '../../../../models/FacilitiesModel.dart';
 
 class ForoshAdvPage extends StatefulWidget {
   // Location location;
-  Location location = const Location();
+  Location location = Location();
   //todo
   @override
   State<ForoshAdvPage> createState() => _ForoshAdvPageState();
@@ -183,7 +184,7 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
   @override
   void initState() {
     // saleApartemanServerModel.location = widget.location;
-    saleApartemanServerModel.location = const Location();
+    saleApartemanServerModel.location = Location();
     super.initState();
     _metragTextController.addListener(_updatePersianWords);
     _allPriceTextController.addListener(_checkFields);
@@ -842,8 +843,7 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
                         _facilities.value.contains(Gym());
                     saleApartemanServerModel.hasConferenceHall =
                         _facilities.value.contains(ConferenceHall());
-                    saleApartemanServerModel.hasCentralAntenna =
-                        _facilities.value.contains(CenterAntenna());
+
                     saleApartemanServerModel.hasSaunaJacuzzi =
                         _facilities.value.contains(Sona());
                     _saveAdvertisement();
@@ -863,8 +863,6 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
                           saleApartemanServerModel.hasSportingHall,
                       'hasConferenceHall':
                           saleApartemanServerModel.hasConferenceHall,
-                      'hasCentralAntenna':
-                          saleApartemanServerModel.hasCentralAntenna,
                       'hasSaunaJacuzzi':
                           saleApartemanServerModel.hasSaunaJacuzzi,
                     });
