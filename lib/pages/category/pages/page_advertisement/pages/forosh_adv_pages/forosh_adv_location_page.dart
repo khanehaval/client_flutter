@@ -62,10 +62,12 @@ class ForshAdvLocationPage extends StatelessWidget {
                 child: Center(
                   child: TextField(
                     onTap: () {
-                      showSelectNoeMelk((selectedLabel) {
-                        _controller.text = selectedLabel;
-                        saleApartemanServerModel.buildingType = selectedLabel;
-                      });
+                      showSelectNoeMelk(
+                        (selectedLabel) {
+                          _controller.text = selectedLabel;
+                          saleApartemanServerModel.buildingType = selectedLabel;
+                        },
+                      );
                     },
                     controller: _controller,
                     readOnly: true,

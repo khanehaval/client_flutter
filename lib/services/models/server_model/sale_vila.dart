@@ -1,6 +1,3 @@
-import 'package:flutter_application_1/services/models/server_model/sale_aparteman.dart';
-import 'package:flutter_application_1/services/models/server_model/sale_old_house.dart';
-
 class SaleVilaServerModel {
   String? id;
   String? cityId;
@@ -229,6 +226,50 @@ class SaleVilaServerModel {
       'hasGamingRoom': hasGamingRoom,
       'hasSportingHall': hasSportingHall,
       'hasSaunaJacuzzi': hasSaunaJacuzzi,
+    };
+  }
+}
+
+class Location {
+  String? address;
+  LngLat? lngLat;
+
+  Location({this.address, this.lngLat});
+
+  factory Location.fromJson(Map<String, dynamic> json) {
+    return Location(
+      address: json['address'] as String?,
+      lngLat: json['lngLat'] != null
+          ? LngLat.fromJson(json['lngLat'] as Map<String, dynamic>)
+          : null,
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'address': address,
+      'lngLat': lngLat?.toJson(),
+    };
+  }
+}
+
+class LngLat {
+  double? lng;
+  double? lat;
+
+  LngLat({this.lng, this.lat});
+
+  factory LngLat.fromJson(Map<String, dynamic> json) {
+    return LngLat(
+      lng: json['lng']?.toDouble(),
+      lat: json['lat']?.toDouble(),
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'lng': lng,
+      'lat': lat,
     };
   }
 }

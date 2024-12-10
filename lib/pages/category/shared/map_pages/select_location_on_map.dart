@@ -84,14 +84,11 @@ class _SelectLocationMapState extends State<SelectLocationMap> {
         options: Options(headers: {"Api-Key": API_KEY}),
       );
       final data = response.data;
-
       setState(() {
         locationInfo.cityName = data["city"] ?? '';
         locationInfo.locationName =
             data["neighbourhood"] ?? data["place"] ?? data["route_name"] ?? '';
         locationInfo.formatted_address = data["formatted_address"] ?? '';
-
-        // به‌روزرسانی selectedCity با نام شهر جدید
         selectedCity.value = locationInfo.cityName;
       });
     } catch (_) {
@@ -339,12 +336,11 @@ class _SelectLocationMapState extends State<SelectLocationMap> {
         children: [
           GestureDetector(
             onTap: () async {
-              var selectedCityValue =
-                  await Get.to(() => CityWidget(selectedCity));
-              if (selectedCityValue != null && selectedCityValue.isNotEmpty) {
+              var selectedCityId = await Get.to(() => CityWidget(selectedCity));
+              if (selectedCityId != null && selectedCityId.isNotEmpty) {
                 setState(() {
-                  locationInfo.cityName = selectedCityValue;
-                  saleApartemanServerModel.cityId = selectedCityValue;
+                  locationInfo.cityName = selectedCityId;
+                  saleApartemanServerModel.cityId = selectedCityId;
                 });
               }
             },
@@ -370,7 +366,7 @@ class _SelectLocationMapState extends State<SelectLocationMap> {
                           () => Text(
                             selectedCity.value.isEmpty
                                 ? 'شهر را انتخاب کنید'
-                                : selectedCity.value, // استفاده از selectedCity
+                                : selectedCity.value,
                             style: const TextStyle(
                               fontFamily: 'Iran Sans Bold',
                               color: Color.fromRGBO(48, 48, 48, 1),

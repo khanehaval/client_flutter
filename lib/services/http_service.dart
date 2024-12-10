@@ -67,7 +67,6 @@ class Httpservice {
     } catch (e) {
       _logger.e("Unexpected error: $e");
     }
-
     return uploadedFilePaths;
   }
 }

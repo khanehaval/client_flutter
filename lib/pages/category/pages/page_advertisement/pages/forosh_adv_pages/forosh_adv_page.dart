@@ -30,7 +30,6 @@ import 'package:flutter_application_1/repo/account_repo.dart';
 import 'package:flutter_application_1/services/advertisment_service.dart';
 import 'package:flutter_application_1/services/http_service.dart';
 import 'package:flutter_application_1/services/models/server_model/sale_aparteman.dart';
-import 'package:flutter_application_1/services/models/server_model/sale_old_house.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:get_it/get_it.dart';
@@ -39,8 +38,8 @@ import '../../../../models/FacilitiesModel.dart';
 
 class ForoshAdvPage extends StatefulWidget {
   // Location location;
-  Location location = Location();
   //todo
+  late Location location;
   @override
   State<ForoshAdvPage> createState() => _ForoshAdvPageState();
 }
@@ -184,7 +183,6 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
   @override
   void initState() {
     // saleApartemanServerModel.location = widget.location;
-    saleApartemanServerModel.location = Location();
     super.initState();
     _metragTextController.addListener(_updatePersianWords);
     _allPriceTextController.addListener(_checkFields);
@@ -490,25 +488,26 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
                 height: 20,
               ),
               TwoItemInRow2(
-                  label1: "تعداد اتاق ",
-                  label2: "سن بنا",
-                  widget1: ReadOnlyTextField(_buildRoomsCountController,
-                      fontSize: 12, () {
-                    TedadOtagh((selectedKey, selectedLabel) {
-                      _buildRoomsCountController.text = selectedLabel;
-                      saleApartemanServerModel.room = selectedKey;
-                      print(
-                          "تعداد اتاق انتخابی: ${saleApartemanServerModel.room}"); // بررسی مقدار ذخیره شده
-                    });
-                  }, width: getPageWidth()),
-                  widget2: ReadOnlyTextField(_SenBanaController, () {
-                    SenBana((selectedOption) {
-                      _SenBanaController.text = selectedOption;
-                      saleApartemanServerModel.age = _SenBanaController.text;
-                      print(
-                          "سن بنا انتخابی: ${saleApartemanServerModel.age}"); // بررسی مقدار ذخیره شده
-                    });
-                  }, width: getPageWidth(), fontSize: 12)),
+                label1: "تعداد اتاق ",
+                label2: "سن بنا",
+                widget1: ReadOnlyTextField(_buildRoomsCountController,
+                    fontSize: 12, () {
+                  TedadOtagh((selectedKey, selectedLabel) {
+                    _buildRoomsCountController.text = selectedLabel;
+                    saleApartemanServerModel.room = selectedKey;
+                    print(
+                        "تعداد اتاق انتخابی: ${saleApartemanServerModel.room}"); // بررسی مقدار ذخیره شده
+                  });
+                }, width: getPageWidth()),
+                widget2: ReadOnlyTextField(_SenBanaController, () {
+                  SenBana((selectedOption) {
+                    _SenBanaController.text = selectedOption;
+                    saleApartemanServerModel.age = _SenBanaController.text;
+                    print(
+                        "سن بنا انتخابی: ${saleApartemanServerModel.age}"); // بررسی مقدار ذخیره شده
+                  });
+                }, width: getPageWidth(), fontSize: 12),
+              ),
               const SizedBox(
                 height: 20,
               ),

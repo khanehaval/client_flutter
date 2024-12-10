@@ -18,6 +18,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 class AdvertisementService {
   final _httpService = GetIt.I.get<Httpservice>();
   static const String _baseKey = 'base_model';
+
   Future<bool> saveSaleAparteman({
     required SaleApartemanServerModel saleAparteman,
   }) async {
@@ -168,7 +169,6 @@ class AdvertisementService {
   Future<List<String>> getOptionsFromDatabase() async {
     final prefs = await SharedPreferences.getInstance();
     final jsonString = prefs.getString(_baseKey);
-
     if (jsonString != null) {
       final jsonData = json.decode(jsonString);
       final Base baseModel = Base.fromJson(jsonData);
