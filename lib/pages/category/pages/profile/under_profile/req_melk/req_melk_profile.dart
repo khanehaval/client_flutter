@@ -17,52 +17,55 @@ class ReqMelkProfile extends StatelessWidget {
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
-          child: Column(
-            children: [
-              const SizedBox(
-                height: 20,
-              ),
-              const WidgetTitrReqMelk(),
-              const SizedBox(
-                height: 20,
-              ),
-              const Divider(
-                endIndent: 25,
-                indent: 25,
-                color: Color.fromRGBO(226, 226, 226, 1),
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              WidgetSerchReqMelk1(),
-              const SizedBox(
-                height: 20,
-              ),
-              const WidgetFilterReqMelk(),
-              const SizedBox(
-                height: 20,
-              ),
-              const WidgetReqMelkProfile(),
-              const SizedBox(
-                height: 20,
-              ),
-              const WidgetReqMelkProfile(),
-              const SizedBox(
-                height: 20,
-              ),
-              const WidgetReqMelkProfile(),
-              const SizedBox(
-                height: 20,
-              ),
-              const WidgetReqMelkProfile(),
-              const SizedBox(
-                height: 20,
-              ),
-              const WidgetReqMelkProfile(),
-              const SizedBox(
-                height: 50,
-              ),
-            ],
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              children: [
+                const SizedBox(
+                  height: 20,
+                ),
+                const WidgetTitrReqMelk(),
+                const SizedBox(
+                  height: 20,
+                ),
+                const Divider(
+                  endIndent: 25,
+                  indent: 25,
+                  color: Color.fromRGBO(226, 226, 226, 1),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                WidgetSerchReqMelk1(),
+                const SizedBox(
+                  height: 20,
+                ),
+                const WidgetFilterReqMelk(),
+                const SizedBox(
+                  height: 20,
+                ),
+                const WidgetReqMelkProfile(),
+                const SizedBox(
+                  height: 20,
+                ),
+                const WidgetReqMelkProfile(),
+                const SizedBox(
+                  height: 20,
+                ),
+                const WidgetReqMelkProfile(),
+                const SizedBox(
+                  height: 20,
+                ),
+                const WidgetReqMelkProfile(),
+                const SizedBox(
+                  height: 20,
+                ),
+                const WidgetReqMelkProfile(),
+                const SizedBox(
+                  height: 50,
+                ),
+              ],
+            ),
           ),
         ),
       ),

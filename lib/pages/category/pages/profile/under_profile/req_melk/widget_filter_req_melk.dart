@@ -10,7 +10,7 @@ class WidgetFilterReqMelk extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(right: 20.0, left: 20),
+      padding: const EdgeInsets.only(right: 15.0, left: 20),
       child: SingleChildScrollView(
         reverse: true,
         scrollDirection: Axis.horizontal,

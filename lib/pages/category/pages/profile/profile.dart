@@ -20,7 +20,6 @@ class _ProfilePageState extends State<ProfilePage>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<Offset> _offsetAnimation;
-
   @override
   void initState() {
     super.initState();
@@ -29,13 +28,11 @@ class _ProfilePageState extends State<ProfilePage>
       duration: const Duration(milliseconds: 500),
     );
 
-    // شروع انیمیشن از سمت راست و به سمت چپ
     _offsetAnimation =
         Tween<Offset>(begin: const Offset(1.0, 0.0), end: Offset.zero).animate(
       CurvedAnimation(parent: _controller, curve: Curves.easeInOut),
     );
 
-    // شروع انیمیشن پس از لود شدن صفحه
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _controller.forward();
     });
@@ -53,8 +50,6 @@ class _ProfilePageState extends State<ProfilePage>
       backgroundColor: Colors.white,
       body: Stack(
         children: [
-          // محتوای دیگر صفحه مثل تصویر زمینه
-          // اضافه کردن انیمیشن کشویی به کانتینر پروفایل
           SlideTransition(
             position: _offsetAnimation,
             child: openProfile(),
@@ -65,49 +60,53 @@ class _ProfilePageState extends State<ProfilePage>
   }
 
   Widget openProfile() {
-    return SingleChildScrollView(
-      child: Padding(
-        padding: const EdgeInsets.only(top: 2, right: 20),
-        child: Align(
-          alignment: Alignment.topRight,
-          child: Container(
-            decoration: const BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.all(Radius.circular(11)),
-              boxShadow: [BoxShadow(color: Colors.black12, blurRadius: 2)],
-            ),
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: SizedBox(
-                height: Get.height / 1.35,
-                width: Get.width / 1.8,
-                child: Material(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(10),
-                  child: Column(
-                    children: [
-                      const SizedBox(height: 10),
-                      GestureDetector(
-                        onTap: () {
-                          Get.back();
-                        },
-                        child: SvgPicture.asset(
-                          'assets/images/arrow right.svg',
-                          width: 50,
-                          height: 18,
+    return Padding(
+      padding: const EdgeInsets.only(top: 10.0),
+      child: SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.only(
+              top: MediaQuery.of(context).padding.top, right: 20),
+          child: Align(
+            alignment: Alignment.topRight,
+            child: Container(
+              decoration: const BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.all(Radius.circular(11)),
+                boxShadow: [BoxShadow(color: Colors.black12, blurRadius: 2)],
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: SizedBox(
+                  height: Get.height / 1.35,
+                  width: Get.width / 1.8,
+                  child: Material(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10),
+                    child: Column(
+                      children: [
+                        const SizedBox(height: 10),
+                        GestureDetector(
+                          onTap: () {
+                            Get.back();
+                          },
+                          child: SvgPicture.asset(
+                            'assets/images/arrow right.svg',
+                            width: 50,
+                            height: 18,
+                          ),
                         ),
-                      ),
-                      const SizedBox(height: 10),
-                      _profileHeader(),
-                      const SizedBox(height: 20),
-                      const Divider(color: Color.fromRGBO(226, 226, 226, 1)),
-                      Expanded(child: _buildMenuItems()),
-                      const SizedBox(height: 20),
-                      const Divider(color: Color.fromRGBO(226, 226, 226, 1)),
-                      const SizedBox(height: 20),
-                      _buildFooter(),
-                      const SizedBox(height: 20),
-                    ],
+                        const SizedBox(height: 10),
+                        _profileHeader(),
+                        const SizedBox(height: 20),
+                        const Divider(color: Color.fromRGBO(226, 226, 226, 1)),
+                        Expanded(child: _buildMenuItems()),
+                        const SizedBox(height: 20),
+                        const Divider(color: Color.fromRGBO(226, 226, 226, 1)),
+                        const SizedBox(height: 20),
+                        _buildFooter(),
+                        const SizedBox(height: 20),
+                      ],
+                    ),
                   ),
                 ),
               ),

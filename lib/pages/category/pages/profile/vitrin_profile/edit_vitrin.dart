@@ -27,207 +27,210 @@ class EditVitrin extends StatelessWidget {
       backgroundColor: Colors.white,
       body: Padding(
         padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
-        child: Column(
-          children: [
-            const SizedBox(
-              height: 20,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Container(
-                  width: Get.width / 2.15,
-                  height: 100,
-                  decoration: ShapeDecoration(
-                    color: Colors.white,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    shadows: const [
-                      BoxShadow(
-                        color: Color(0x26000000),
-                        blurRadius: 3,
-                      )
-                    ],
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      SvgPicture.asset(
-                        'assets/images/Group 1000004265.svg',
-                        width: 50,
-                        height: 50,
-                      ),
-                      const Padding(
-                        padding: EdgeInsets.only(right: 10.0),
-                        child: Column(
-                          children: [
-                            SizedBox(
-                              height: 10,
-                            ),
-                            Text(
-                              'شما هنوز ویـتـرین',
-                              textAlign: TextAlign.right,
-                              style: TextStyle(
-                                color: Color(0xFF626262),
-                                fontSize: 10,
-                                fontFamily: MAIN_FONT_FAMILY,
-                              ),
-                              textDirection: TextDirection.rtl,
-                            ),
-                            SizedBox(
-                              height: 5,
-                            ),
-                            Text(
-                              ' خود را کامل نکردید',
-                              textAlign: TextAlign.right,
-                              style: TextStyle(
-                                color: Color(0xFF626262),
-                                fontSize: 10,
-                                fontFamily: MAIN_FONT_FAMILY,
-                              ),
-                              textDirection: TextDirection.rtl,
-                            ),
-                            SizedBox(
-                              height: 5,
-                            ),
-                            Text(
-                              'آخرین بروزرسانی ',
-                              textAlign: TextAlign.right,
-                              style: TextStyle(
-                                color: Color(0xFF626262),
-                                fontSize: 10,
-                                fontFamily: MAIN_FONT_FAMILY,
-                              ),
-                              textDirection: TextDirection.rtl,
-                            ),
-                            SizedBox(
-                              height: 5,
-                            ),
-                            Text(
-                              '1403/04/15',
-                              textAlign: TextAlign.right,
-                              style: TextStyle(
-                                color: Color(0xFF626262),
-                                fontSize: 10,
-                                fontFamily: MAIN_FONT_FAMILY,
-                              ),
-                              textDirection: TextDirection.rtl,
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                Container(
-                  width: Get.width / 2.7,
-                  height: 100,
-                  decoration: ShapeDecoration(
-                    color: Colors.white,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    shadows: const [
-                      BoxShadow(
-                        color: Color(0x26000000),
-                        blurRadius: 3,
-                        offset: Offset(0, 0),
-                        spreadRadius: 0,
-                      )
-                    ],
-                  ),
-                  child: Column(
-                    children: [
-                      const SizedBox(
-                        height: 15,
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(
-                          left: 90.0,
-                        ),
-                        child: SvgPicture.asset(
-                          'assets/images/vitrin_profile_icon.svg',
-                          width: 24,
-                          height: 24,
-                        ),
-                      ),
-                      const Padding(
-                        padding: EdgeInsets.only(right: 15.0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            Text(
-                              'ویترین',
-                              style: TextStyle(
-                                color: Color(0xFF626262),
-                                fontSize: 18,
-                                fontFamily: 'Aban Light',
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      const Padding(
-                        padding: EdgeInsets.only(right: 15.0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            Text(
-                              'در ویترین دیده شوید',
-                              style: TextStyle(
-                                color: Color(0xFFA5A5A5),
-                                fontSize: 9,
-                                fontFamily: MAIN_FONT_FAMILY_LIGHT,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            const Divider(
-              endIndent: 25,
-              indent: 25,
-              color: Color.fromRGBO(226, 226, 226, 1),
-            ),
-            Expanded(
-              child: ListView(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            children: [
+              const SizedBox(
+                height: 20,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  WidgetInformationAxans(),
-                  const SizedBox(height: 20),
-                  WidgetExpertiseAndSkill(),
-                  const SizedBox(height: 20),
-                  WidgetMoarefiTargert(),
-                  const SizedBox(height: 20),
-                  WidgetAboutVitrin(),
-                  const SizedBox(height: 20),
-                  WidgetTheMainSlogan(),
-                  const SizedBox(height: 20),
-                  WidgetNameAxans(),
-                  const SizedBox(height: 20),
-                  WidgetLinkAddress(),
-                  // const SizedBox(height: 20),
-                  // WidgetShabakeVitrin(),
-                  const SizedBox(height: 20),
-                  WidgetPhotoProfileVitrin(),
-                  const SizedBox(height: 20),
-                  WidgetBackGroundVitrin(),
-                  const SizedBox(height: 20),
-                  WidgetUsersConsultants(),
-                  const SizedBox(height: 20),
-                  WidgetMaqalehAmozeshi(),
-                  const SizedBox(height: 20),
+                  Container(
+                    width: Get.width / 2.15,
+                    height: 100,
+                    decoration: ShapeDecoration(
+                      color: Colors.white,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      shadows: const [
+                        BoxShadow(
+                          color: Color(0x26000000),
+                          blurRadius: 3,
+                        )
+                      ],
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        SvgPicture.asset(
+                          'assets/images/Group 1000004265.svg',
+                          width: 50,
+                          height: 50,
+                        ),
+                        const Padding(
+                          padding: EdgeInsets.only(right: 10.0),
+                          child: Column(
+                            children: [
+                              SizedBox(
+                                height: 10,
+                              ),
+                              Text(
+                                'شما هنوز ویـتـرین',
+                                textAlign: TextAlign.right,
+                                style: TextStyle(
+                                  color: Color(0xFF626262),
+                                  fontSize: 10,
+                                  fontFamily: MAIN_FONT_FAMILY,
+                                ),
+                                textDirection: TextDirection.rtl,
+                              ),
+                              SizedBox(
+                                height: 5,
+                              ),
+                              Text(
+                                ' خود را کامل نکردید',
+                                textAlign: TextAlign.right,
+                                style: TextStyle(
+                                  color: Color(0xFF626262),
+                                  fontSize: 10,
+                                  fontFamily: MAIN_FONT_FAMILY,
+                                ),
+                                textDirection: TextDirection.rtl,
+                              ),
+                              SizedBox(
+                                height: 5,
+                              ),
+                              Text(
+                                'آخرین بروزرسانی ',
+                                textAlign: TextAlign.right,
+                                style: TextStyle(
+                                  color: Color(0xFF626262),
+                                  fontSize: 10,
+                                  fontFamily: MAIN_FONT_FAMILY,
+                                ),
+                                textDirection: TextDirection.rtl,
+                              ),
+                              SizedBox(
+                                height: 5,
+                              ),
+                              Text(
+                                '1403/04/15',
+                                textAlign: TextAlign.right,
+                                style: TextStyle(
+                                  color: Color(0xFF626262),
+                                  fontSize: 10,
+                                  fontFamily: MAIN_FONT_FAMILY,
+                                ),
+                                textDirection: TextDirection.rtl,
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    width: Get.width / 2.7,
+                    height: 100,
+                    decoration: ShapeDecoration(
+                      color: Colors.white,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      shadows: const [
+                        BoxShadow(
+                          color: Color(0x26000000),
+                          blurRadius: 3,
+                          offset: Offset(0, 0),
+                          spreadRadius: 0,
+                        )
+                      ],
+                    ),
+                    child: Column(
+                      children: [
+                        const SizedBox(
+                          height: 15,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(
+                            left: 90.0,
+                          ),
+                          child: SvgPicture.asset(
+                            'assets/images/vitrin_profile_icon.svg',
+                            width: 24,
+                            height: 24,
+                          ),
+                        ),
+                        const Padding(
+                          padding: EdgeInsets.only(right: 15.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              Text(
+                                'ویترین',
+                                style: TextStyle(
+                                  color: Color(0xFF626262),
+                                  fontSize: 18,
+                                  fontFamily: 'Aban Light',
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        const Padding(
+                          padding: EdgeInsets.only(right: 15.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              Text(
+                                'در ویترین دیده شوید',
+                                style: TextStyle(
+                                  color: Color(0xFFA5A5A5),
+                                  fontSize: 9,
+                                  fontFamily: MAIN_FONT_FAMILY_LIGHT,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
                 ],
               ),
-            ),
-          ],
+              const SizedBox(
+                height: 20,
+              ),
+              const Divider(
+                endIndent: 25,
+                indent: 25,
+                color: Color.fromRGBO(226, 226, 226, 1),
+              ),
+              Expanded(
+                child: ListView(
+                  children: [
+                    WidgetInformationAxans(),
+                    const SizedBox(height: 20),
+                    WidgetExpertiseAndSkill(),
+                    const SizedBox(height: 20),
+                    WidgetMoarefiTargert(),
+                    const SizedBox(height: 20),
+                    WidgetAboutVitrin(),
+                    const SizedBox(height: 20),
+                    WidgetTheMainSlogan(),
+                    const SizedBox(height: 20),
+                    WidgetNameAxans(),
+                    const SizedBox(height: 20),
+                    WidgetLinkAddress(),
+                    // const SizedBox(height: 20),
+                    // WidgetShabakeVitrin(),
+                    const SizedBox(height: 20),
+                    WidgetPhotoProfileVitrin(),
+                    const SizedBox(height: 20),
+                    WidgetBackGroundVitrin(),
+                    const SizedBox(height: 20),
+                    WidgetUsersConsultants(),
+                    const SizedBox(height: 20),
+                    WidgetMaqalehAmozeshi(),
+                    const SizedBox(height: 20),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

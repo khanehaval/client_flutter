@@ -7,7 +7,6 @@ import 'package:flutter_application_1/pages/category/pages/profile/widget_Collea
 import 'package:flutter_application_1/pages/category/pages/profile/widget_Colleagues_profile/widget_management_ad.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
-import 'package:flutter_inner_shadow/flutter_inner_shadow.dart';
 import 'package:get/get.dart';
 
 class ColleaguesProfile extends StatefulWidget {
@@ -28,51 +27,54 @@ class _ColleaguesProfileState extends State<ColleaguesProfile> {
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
-          child: const Column(
-            children: [
-              SizedBox(
-                height: 20,
-              ),
-              WidgetTitrColleagues(),
-              SizedBox(
-                height: 20,
-              ),
-              Divider(
-                endIndent: 25,
-                indent: 25,
-                color: Color.fromRGBO(226, 226, 226, 1),
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              WidgetColleaguess(),
-              SizedBox(
-                height: 20,
-              ),
-              WidgetColleaguess(),
-              SizedBox(
-                height: 20,
-              ),
-              WidgetColleaguess(),
-              SizedBox(
-                height: 20,
-              ),
-              WidgetColleaguess(),
-              SizedBox(
-                height: 20,
-              ),
-              WidgetColleaguess(),
-              SizedBox(
-                height: 20,
-              ),
-              WidgetColleaguess(),
-              SizedBox(
-                height: 20,
-              ),
-              SizedBox(
-                height: 50,
-              ),
-            ],
+          child: const Padding(
+            padding: EdgeInsets.all(10.0),
+            child: Column(
+              children: [
+                SizedBox(
+                  height: 20,
+                ),
+                WidgetTitrColleagues(),
+                SizedBox(
+                  height: 20,
+                ),
+                Divider(
+                  endIndent: 25,
+                  indent: 25,
+                  color: Color.fromRGBO(226, 226, 226, 1),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                WidgetColleaguess(),
+                SizedBox(
+                  height: 20,
+                ),
+                WidgetColleaguess(),
+                SizedBox(
+                  height: 20,
+                ),
+                WidgetColleaguess(),
+                SizedBox(
+                  height: 20,
+                ),
+                WidgetColleaguess(),
+                SizedBox(
+                  height: 20,
+                ),
+                WidgetColleaguess(),
+                SizedBox(
+                  height: 20,
+                ),
+                WidgetColleaguess(),
+                SizedBox(
+                  height: 20,
+                ),
+                SizedBox(
+                  height: 50,
+                ),
+              ],
+            ),
           ),
         ),
       ),

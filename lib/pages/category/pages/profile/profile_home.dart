@@ -21,45 +21,43 @@ class ProfileHome extends StatelessWidget {
     return Scaffold(
       bottomNavigationBar: bottomNavigationBar2(0),
       backgroundColor: Colors.white,
-      body: Column(
-        children: [
-          // بالای صفحه (قسمت پروفایل)
-          _buildProfileHeader(context),
-
-          const Divider(
-            endIndent: 25,
-            indent: 25,
-            color: Color.fromRGBO(226, 226, 226, 1),
-          ),
-
-          // اینجا از ListView استفاده کنید
-          Expanded(
-            child: ListView(
-              children: [
-                const WidgetProfileAdsAndMyDesk(),
-                const SizedBox(height: 20),
-                const WidgetProfileSeeAndSave(),
-                const SizedBox(height: 20),
-                const WidgetProfileHomeTourRington(),
-                const SizedBox(height: 20),
-                const WidgetProfileHomeMelkAndVitrin(),
-                const SizedBox(height: 20),
-                const WidgetProfileHomeAxansConsultants(),
-                const SizedBox(height: 20),
-                const WidgetProfileHomeSettingKhanehaval(),
-                const SizedBox(height: 50),
-                sabtAds(),
-                const SizedBox(height: 50),
-              ],
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          children: [
+            _buildProfileHeader(context),
+            const Divider(
+              endIndent: 25,
+              indent: 25,
+              color: Color.fromRGBO(226, 226, 226, 1),
             ),
-          ),
-        ],
+            Expanded(
+              child: ListView(
+                children: [
+                  const WidgetProfileAdsAndMyDesk(),
+                  const SizedBox(height: 20),
+                  const WidgetProfileSeeAndSave(),
+                  const SizedBox(height: 20),
+                  const WidgetProfileHomeTourRington(),
+                  const SizedBox(height: 20),
+                  const WidgetProfileHomeMelkAndVitrin(),
+                  const SizedBox(height: 20),
+                  const WidgetProfileHomeAxansConsultants(),
+                  const SizedBox(height: 20),
+                  const WidgetProfileHomeSettingKhanehaval(),
+                  const SizedBox(height: 50),
+                  sabtAds(),
+                  const SizedBox(height: 50),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
 
   Widget _buildProfileHeader(BuildContext context) {
-    // کد قسمت پروفایل را اینجا قرار دهید
     return Padding(
         padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
         child: Column(children: [
