@@ -6,7 +6,7 @@ class CustomOverlay {
   void showOverlay(
     BuildContext context,
     VoidCallback _startSelecting,
-    VoidCallback onDeleteAllChats, // پارامتر جدید
+    VoidCallback onDeleteAllChats,
   ) {
     final overlay = Overlay.of(context);
     _overlayEntry = OverlayEntry(
@@ -63,8 +63,8 @@ class CustomOverlay {
                   padding: const EdgeInsets.only(right: 30.0),
                   child: InkWell(
                     onTap: () {
-                      onDeleteAllChats(); // فراخوانی متد حذف کامل
-                      _removeOverlay(); // بستن Overlay
+                      onDeleteAllChats();
+                      _removeOverlay();
                     },
                     child: const Text(
                       'حذف کامل چت',

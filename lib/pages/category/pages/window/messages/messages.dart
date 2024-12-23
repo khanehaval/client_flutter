@@ -88,7 +88,7 @@ class _MessagesState extends State<Messages> {
       ),
       builder: (BuildContext context) {
         return FractionallySizedBox(
-          heightFactor: 0.8, // ارتفاع Bottom Sheet به 30% از صفحه محدود می‌شود
+          heightFactor: 0.8,
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [

@@ -43,8 +43,7 @@ class FirstPageMessages extends StatelessWidget {
                           decoration: InputDecoration(
                             hintText: 'جستجو',
                             hintStyle: const TextStyle(
-                              fontFamily:
-                                  'MAIN_FONT_FAMILY_MEDIUM', // تعریف فونت اصلی
+                              fontFamily: 'MAIN_FONT_FAMILY_MEDIUM',
                               fontSize: 12,
                               height: 2,
                             ),

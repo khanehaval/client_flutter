@@ -23,10 +23,7 @@ class AttachBottomSheet {
       builder: (context) {
         return Container(
           decoration: const BoxDecoration(
-            gradient: LinearGradient(colors: [
-              Colors.green,
-              Colors.blue
-            ]), // GRADIANT_COLOR1 جایگزین شده
+            gradient: LinearGradient(colors: [Colors.green, Colors.blue]),
             borderRadius: BorderRadius.only(
               topLeft: Radius.circular(20),
               topRight: Radius.circular(20),

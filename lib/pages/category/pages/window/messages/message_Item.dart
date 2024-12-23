@@ -3,14 +3,13 @@ import 'package:flutter_application_1/pages/category/pages/window/messages/messa
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 
 class MessageItem extends StatelessWidget {
   final String time;
   final String name;
   final String message;
   final int unreadCount;
-  final bool isSent; // New parameter to indicate if the message is sent
+  final bool isSent;
 
   const MessageItem({
     Key? key,
@@ -18,7 +17,7 @@ class MessageItem extends StatelessWidget {
     required this.name,
     required this.message,
     this.unreadCount = 0,
-    this.isSent = true, // Default is false (message not sent)
+    this.isSent = true,
   }) : super(key: key);
 
   @override
@@ -56,7 +55,6 @@ class MessageItem extends StatelessWidget {
     );
   }
 
-  /// Builds the column with the message time and either unread count or sent checkmark below it
   Widget _buildTimeColumn() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -69,18 +67,18 @@ class MessageItem extends StatelessWidget {
           time,
           style: const TextStyle(
             color: Color(0xFFA5A5A5),
-            fontSize: 10, // اندازه فونت کوچکتر
+            fontSize: 10,
             fontFamily: MAIN_FONT_FAMILY_MEDIUM,
           ),
         ),
         const SizedBox(height: 5),
-        if (isSent) // Show the checkmark icon when message is sent
+        if (isSent)
           const Icon(
-            Icons.check, // Checkmark icon
+            Icons.check,
             color: Color.fromRGBO(183, 183, 183, 1),
             size: 16,
           )
-        else if (unreadCount > 0) // Unread messages indicator
+        else if (unreadCount > 0)
           Container(
             width: 20,
             height: 20,
@@ -102,7 +100,6 @@ class MessageItem extends StatelessWidget {
     );
   }
 
-  /// Builds the column with the message sender's name and message preview
   Widget _buildMessageInfo() {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10.0),
@@ -134,7 +131,6 @@ class MessageItem extends StatelessWidget {
     );
   }
 
-  /// Builds the avatar widget with an online status indicator
   Widget _buildAvatar() {
     return Stack(
       children: [

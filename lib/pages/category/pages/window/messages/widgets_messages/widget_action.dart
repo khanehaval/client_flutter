@@ -6,7 +6,7 @@ class CustomActionBar extends StatelessWidget {
   final bool isSelecting;
   final bool isDeletingHistory;
   final Set<int> selectedMessages;
-  final List<dynamic> messages; // جایگزین کنید با مدل مناسب پیام‌ها
+  final List<dynamic> messages;
   final VoidCallback onToggleOverlay;
   final VoidCallback onDeleteSelectedMessages;
   final VoidCallback onCallPressed;
