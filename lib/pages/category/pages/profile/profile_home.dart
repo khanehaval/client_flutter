@@ -10,8 +10,6 @@ import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 class ProfileHome extends StatelessWidget {
   const ProfileHome({super.key});
@@ -29,26 +27,29 @@ class ProfileHome extends StatelessWidget {
             const Divider(
               endIndent: 25,
               indent: 25,
-              color: Color.fromRGBO(226, 226, 226, 1),
+              color: Color.fromRGBO(87, 56, 56, 1),
             ),
             Expanded(
-              child: ListView(
-                children: [
-                  const WidgetProfileAdsAndMyDesk(),
-                  const SizedBox(height: 20),
-                  const WidgetProfileSeeAndSave(),
-                  const SizedBox(height: 20),
-                  const WidgetProfileHomeTourRington(),
-                  const SizedBox(height: 20),
-                  const WidgetProfileHomeMelkAndVitrin(),
-                  const SizedBox(height: 20),
-                  const WidgetProfileHomeAxansConsultants(),
-                  const SizedBox(height: 20),
-                  const WidgetProfileHomeSettingKhanehaval(),
-                  const SizedBox(height: 50),
-                  sabtAds(),
-                  const SizedBox(height: 50),
-                ],
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: ListView(
+                  children: [
+                    const WidgetProfileAdsAndMyDesk(),
+                    const SizedBox(height: 20),
+                    const WidgetProfileSeeAndSave(),
+                    const SizedBox(height: 20),
+                    const WidgetProfileHomeTourRington(),
+                    const SizedBox(height: 20),
+                    const WidgetProfileHomeMelkAndVitrin(),
+                    const SizedBox(height: 20),
+                    const WidgetProfileHomeAxansConsultants(),
+                    const SizedBox(height: 20),
+                    const WidgetProfileHomeSettingKhanehaval(),
+                    const SizedBox(height: 50),
+                    sabtAds(),
+                    const SizedBox(height: 50),
+                  ],
+                ),
               ),
             ),
           ],
@@ -59,8 +60,9 @@ class ProfileHome extends StatelessWidget {
 
   Widget _buildProfileHeader(BuildContext context) {
     return Padding(
-        padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
-        child: Column(children: [
+      padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
+      child: Column(
+        children: [
           Padding(
             padding: const EdgeInsets.all(20.0),
             child: Row(
@@ -226,8 +228,10 @@ class ProfileHome extends StatelessWidget {
                 ),
               ],
             ),
-          )
-        ]));
+          ),
+        ],
+      ),
+    );
   }
 }
 
@@ -241,7 +245,7 @@ Widget sabtAds() {
       children: [
         Container(
           height: 60,
-          width: Get.width / 1.12,
+          width: Get.width / 1.15,
           decoration: ShapeDecoration(
             color: Colors.white,
             shape: RoundedRectangleBorder(

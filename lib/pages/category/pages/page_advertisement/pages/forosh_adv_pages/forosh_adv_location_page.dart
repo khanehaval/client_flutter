@@ -15,8 +15,9 @@ class ForshAdvLocationPage extends StatelessWidget {
   final TextEditingController _controller = TextEditingController();
   SaleApartemanServerModel saleApartemanServerModel =
       SaleApartemanServerModel();
+
   ForshAdvLocationPage({required this.locationInfo, super.key});
-  final type = "".obs;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -63,9 +64,10 @@ class ForshAdvLocationPage extends StatelessWidget {
                   child: TextField(
                     onTap: () {
                       showSelectNoeMelk(
-                        (selectedLabel) {
-                          _controller.text = selectedLabel;
-                          saleApartemanServerModel.buildingType = selectedLabel;
+                        (selectedLabel, selectedKey) {
+                          _controller.text = selectedLabel; // نمایش label
+                          saleApartemanServerModel.buildingType =
+                              selectedKey; // ذخیره key
                         },
                       );
                     },
@@ -95,10 +97,10 @@ class ForshAdvLocationPage extends StatelessWidget {
                       prefixIcon: IconButton(
                         icon: SvgPicture.asset("assets/images/Vector-20.svg"),
                         onPressed: () {
-                          showSelectNoeMelk((selectedLabel) {
-                            _controller.text = selectedLabel;
+                          showSelectNoeMelk((selectedLabel, selectedKey) {
+                            _controller.text = selectedLabel; // نمایش label
                             saleApartemanServerModel.buildingType =
-                                selectedLabel;
+                                selectedKey; // ذخیره key
                           });
                         },
                       ),

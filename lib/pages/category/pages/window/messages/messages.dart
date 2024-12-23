@@ -71,8 +71,120 @@ class _MessagesState extends State<Messages> {
     if (_overlayEntry != null) {
       _removeOverlay();
     } else {
-      customOverlay.showOverlay(context, _startSelecting);
+      customOverlay.showOverlay(
+        context,
+        _startSelecting,
+        _deleteAllMessages, // ارسال متد حذف کامل چت
+      );
     }
+  }
+
+  void _deleteAllMessages() {
+    showModalBottomSheet(
+      context: context,
+      backgroundColor: const Color.fromARGB(255, 255, 255, 255),
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+      ),
+      builder: (BuildContext context) {
+        return FractionallySizedBox(
+          heightFactor: 0.8, // ارتفاع Bottom Sheet به 30% از صفحه محدود می‌شود
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              const SizedBox(height: 150),
+              const Text(
+                'آیا از حذف کامل چت اطمینان دارید؟',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontFamily: MAIN_FONT_FAMILY,
+                  fontSize: 16,
+                  color: Colors.black54,
+                ),
+              ),
+              const SizedBox(height: 20),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  GestureDetector(
+                    onTap: () {
+                      Get.back();
+                    },
+                    child: Container(
+                      width: 81,
+                      height: 32,
+                      decoration: ShapeDecoration(
+                        color: Colors.white,
+                        shape: RoundedRectangleBorder(
+                          side: const BorderSide(
+                              width: 1, color: Color(0xFF9C4040)),
+                          borderRadius: BorderRadius.circular(15),
+                        ),
+                        shadows: const [
+                          BoxShadow(
+                            color: Color(0x7F9C4040),
+                            blurRadius: 7,
+                            offset: Offset(0, 1),
+                          ),
+                        ],
+                      ),
+                      child: const Center(
+                        child: Text(
+                          'انصراف',
+                          style: TextStyle(
+                            color: Color(0xFF636363),
+                            fontSize: 14,
+                            fontFamily: MAIN_FONT_FAMILY_MEDIUM,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(width: 20),
+                  GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        messages.clear();
+                      });
+                      Get.back();
+                    },
+                    child: Container(
+                      width: 81,
+                      height: 32,
+                      decoration: ShapeDecoration(
+                        color: Colors.white,
+                        shape: RoundedRectangleBorder(
+                          side: const BorderSide(
+                              width: 1, color: Color(0xFF4C8CED)),
+                          borderRadius: BorderRadius.circular(15),
+                        ),
+                        shadows: const [
+                          BoxShadow(
+                            color: Color(0x7F36D859),
+                            blurRadius: 7,
+                            offset: Offset(0, 1),
+                          ),
+                        ],
+                      ),
+                      child: const Center(
+                        child: Text(
+                          'تائید',
+                          style: TextStyle(
+                            color: Color(0xFF636363),
+                            fontSize: 14,
+                            fontFamily: MAIN_FONT_FAMILY_MEDIUM,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        );
+      },
+    );
   }
 
   void _deleteSelectedMessages() {

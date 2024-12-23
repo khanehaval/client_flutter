@@ -89,7 +89,7 @@ Widget hamkar() {
       children: [
         SingleChildScrollView(
           child: Container(
-            width: Get.width / 1.1,
+            width: Get.width / 1.2,
             height: 390,
             decoration: ShapeDecoration(
               gradient: const LinearGradient(colors: GRADIANT_COLOR_Colleagues),

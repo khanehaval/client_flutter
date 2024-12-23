@@ -412,6 +412,7 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
                         _onePrice.value = int.parse(_) /
                             int.parse(_metragTextController.text);
                         saleApartemanServerModel.meterage = int.parse(_);
+
                         print('Meterage: ${saleApartemanServerModel.meterage}');
                       } else {}
                     },
@@ -502,7 +503,7 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
                 widget2: ReadOnlyTextField(_SenBanaController, () {
                   SenBana((selectedOption) {
                     _SenBanaController.text = selectedOption;
-                    saleApartemanServerModel.age = _SenBanaController.text;
+                    saleApartemanServerModel.age = selectedOption;
                     print(
                         "سن بنا انتخابی: ${saleApartemanServerModel.age}"); // بررسی مقدار ذخیره شده
                   });

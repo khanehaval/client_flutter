@@ -15,7 +15,7 @@ class WidgetTitrColleagues extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.only(right: 20.0),
           child: Container(
-            width: Get.width / 2.4,
+            width: Get.width / 2.5,
             height: 100,
             decoration: ShapeDecoration(
               color: Colors.white,

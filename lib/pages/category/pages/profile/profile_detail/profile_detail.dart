@@ -39,12 +39,11 @@ class ProfileDetail extends StatelessWidget {
               const WidgetTitrDetail(), // تیتر ثابت
               const SizedBox(height: 20),
               const Divider(
-                endIndent: 25,
-                indent: 25,
+                endIndent: 20,
+                indent: 20,
                 color: Color.fromRGBO(226, 226, 226, 1),
               ),
               Expanded(
-                // استفاده از Expanded برای اسکرول کردن
                 child: ListView(
                   children: [
                     Padding(
@@ -54,7 +53,7 @@ class ProfileDetail extends StatelessWidget {
                         children: const [
                           Expanded(
                             child: Divider(
-                              indent: 25,
+                              indent: 15,
                               endIndent: 15,
                               color: Color.fromRGBO(226, 226, 226, 1),
                               thickness: 1,
@@ -94,7 +93,7 @@ class ProfileDetail extends StatelessWidget {
                         children: const [
                           Expanded(
                             child: Divider(
-                              indent: 25,
+                              indent: 15,
                               endIndent: 15,
                               color: Color.fromRGBO(226, 226, 226, 1),
                               thickness: 1,
@@ -128,7 +127,7 @@ class ProfileDetail extends StatelessWidget {
                     WidgetEmailWeb(),
                     SizedBox(height: 20),
                     WidgetAddressHome(),
-                    SizedBox(height: 20),
+                    SizedBox(height: 10),
                     WidgetCodePostiDetai(),
                     const SizedBox(height: 30),
                     Padding(
@@ -138,7 +137,7 @@ class ProfileDetail extends StatelessWidget {
                         children: const [
                           Expanded(
                             child: Divider(
-                              indent: 20,
+                              indent: 15,
                               endIndent: 15,
                               color: Color.fromRGBO(226, 226, 226, 1),
                               thickness: 1,
@@ -178,7 +177,7 @@ class ProfileDetail extends StatelessWidget {
                         children: const [
                           Expanded(
                             child: Divider(
-                              indent: 20,
+                              indent: 15,
                               endIndent: 15,
                               color: Color.fromRGBO(226, 226, 226, 1),
                               thickness: 1,
@@ -218,7 +217,7 @@ class ProfileDetail extends StatelessWidget {
                         children: const [
                           Expanded(
                             child: Divider(
-                              indent: 20,
+                              indent: 15,
                               endIndent: 15,
                               color: Color.fromRGBO(226, 226, 226, 1),
                               thickness: 1,

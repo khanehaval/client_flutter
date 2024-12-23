@@ -28,7 +28,7 @@ class EditVitrin extends StatelessWidget {
       body: Padding(
         padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
         child: Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(10.0),
           child: Column(
             children: [
               const SizedBox(
@@ -226,6 +226,37 @@ class EditVitrin extends StatelessWidget {
                     const SizedBox(height: 20),
                     WidgetMaqalehAmozeshi(),
                     const SizedBox(height: 20),
+                  ],
+                ),
+              ),
+              Container(
+                width: 119,
+                height: 32,
+                decoration: ShapeDecoration(
+                  color: Colors.white,
+                  shape: RoundedRectangleBorder(
+                    side: const BorderSide(width: 1, color: Color(0xFF4C8CED)),
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                  shadows: const [
+                    BoxShadow(
+                      color: Color(0x7F36D859),
+                      blurRadius: 7,
+                      offset: Offset(0, 1),
+                    ),
+                  ],
+                ),
+                child: const Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'ذخیره',
+                      style: TextStyle(
+                        color: Color(0xFF636363),
+                        fontSize: 13,
+                        fontFamily: MAIN_FONT_FAMILY,
+                      ),
+                    ),
                   ],
                 ),
               ),

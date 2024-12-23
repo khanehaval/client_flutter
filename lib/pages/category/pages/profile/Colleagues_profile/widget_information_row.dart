@@ -7,7 +7,7 @@ class WidgetInformationRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Padding(
-      padding: EdgeInsets.only(right: 20.0, left: 20),
+      padding: EdgeInsets.only(right: 30.0, left: 20),
       child: Column(children: [
         SizedBox(
           height: 10,
@@ -25,7 +25,7 @@ class WidgetInformationRow extends StatelessWidget {
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Color(0xFF303030),
-                    fontSize: 12,
+                    fontSize: 11,
                     fontFamily: MAIN_FONT_FAMILY_MEDIUM,
                   ),
                 ),
@@ -35,7 +35,7 @@ class WidgetInformationRow extends StatelessWidget {
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Color(0xFF303030),
-                    fontSize: 12,
+                    fontSize: 10,
                     fontFamily: MAIN_FONT_FAMILY_MEDIUM,
                   ),
                 ),
@@ -51,7 +51,7 @@ class WidgetInformationRow extends StatelessWidget {
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Color(0xFF303030),
-                    fontSize: 12,
+                    fontSize: 11,
                     fontFamily: MAIN_FONT_FAMILY_MEDIUM,
                   ),
                 ),
@@ -61,7 +61,7 @@ class WidgetInformationRow extends StatelessWidget {
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Color(0xFF303030),
-                    fontSize: 12,
+                    fontSize: 10,
                     fontFamily: MAIN_FONT_FAMILY_MEDIUM,
                   ),
                 ),
@@ -77,7 +77,7 @@ class WidgetInformationRow extends StatelessWidget {
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Color(0xFF303030),
-                    fontSize: 12,
+                    fontSize: 10,
                     fontFamily: MAIN_FONT_FAMILY_MEDIUM,
                   ),
                 ),
@@ -87,7 +87,7 @@ class WidgetInformationRow extends StatelessWidget {
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Color(0xFF303030),
-                    fontSize: 12,
+                    fontSize: 10,
                     fontFamily: MAIN_FONT_FAMILY_MEDIUM,
                   ),
                 ),
@@ -103,7 +103,7 @@ class WidgetInformationRow extends StatelessWidget {
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Color(0xFF303030),
-                    fontSize: 12,
+                    fontSize: 10,
                     fontFamily: MAIN_FONT_FAMILY_MEDIUM,
                   ),
                 ),
@@ -113,7 +113,7 @@ class WidgetInformationRow extends StatelessWidget {
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Color(0xFF303030),
-                    fontSize: 12,
+                    fontSize: 10,
                     fontFamily: MAIN_FONT_FAMILY_MEDIUM,
                   ),
                 ),

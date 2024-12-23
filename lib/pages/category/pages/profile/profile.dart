@@ -5,6 +5,7 @@ import 'package:flutter_application_1/pages/category/pages/profile/under_profile
 import 'package:flutter_application_1/pages/category/pages/profile/under_profile/widget_profile_my_desk/profile_my_desk.dart';
 import 'package:flutter_application_1/pages/category/pages/profile/under_profile/widget_profile_notification/Profile_Notification.dart';
 import 'package:flutter_application_1/pages/category/pages/profile/vitrin_profile/vitrin.dart';
+import 'package:flutter_application_1/pages/category/pages/window/messages/first_page_messages.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/register/register.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -61,7 +62,7 @@ class _ProfilePageState extends State<ProfilePage>
 
   Widget openProfile() {
     return Padding(
-      padding: const EdgeInsets.only(top: 10.0),
+      padding: const EdgeInsets.only(top: 5.0),
       child: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.only(
@@ -77,8 +78,8 @@ class _ProfilePageState extends State<ProfilePage>
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: SizedBox(
-                  height: Get.height / 1.35,
-                  width: Get.width / 1.8,
+                  height: Get.height / 1.40,
+                  width: Get.width / 1.7,
                   child: Material(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(10),
@@ -210,7 +211,12 @@ class _ProfilePageState extends State<ProfilePage>
           child: _item('assets/images/profile_category.svg', "میزکار"),
         ),
         const SizedBox(height: 10),
-        _item('assets/images/profile_message.svg', "پیام ها"),
+        InkWell(
+            onTap: () {
+              Get.to(() => FirstPageMessages(),
+                  transition: Transition.leftToRight);
+            },
+            child: _item('assets/images/profile_message.svg', "پیام ها")),
         const SizedBox(height: 10),
         Padding(
           padding: const EdgeInsets.only(right: 5.0),

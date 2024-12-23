@@ -18,7 +18,7 @@ class ReqMelkProfile extends StatelessWidget {
         child: Padding(
           padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
           child: Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(10.0),
             child: Column(
               children: [
                 const SizedBox(
@@ -29,8 +29,8 @@ class ReqMelkProfile extends StatelessWidget {
                   height: 20,
                 ),
                 const Divider(
-                  endIndent: 25,
-                  indent: 25,
+                  endIndent: 20,
+                  indent: 20,
                   color: Color.fromRGBO(226, 226, 226, 1),
                 ),
                 const SizedBox(

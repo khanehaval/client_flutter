@@ -336,6 +336,7 @@ class _SelectLocationMapState extends State<SelectLocationMap> {
         children: [
           GestureDetector(
             onTap: () async {
+              // در اینجا شناسه شهر انتخاب شده به تابع برگشت داده می‌شود
               var selectedCityId = await Get.to(() => CityWidget(selectedCity));
               if (selectedCityId != null && selectedCityId.isNotEmpty) {
                 setState(() {

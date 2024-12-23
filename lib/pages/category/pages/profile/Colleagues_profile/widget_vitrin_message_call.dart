@@ -18,8 +18,8 @@ class WidgetVitrinMessageCall extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.all(1.0),
             child: Container(
-              width: Get.width / 4,
-              height: 46,
+              width: Get.width / 5,
+              height: 40,
               padding: const EdgeInsets.symmetric(horizontal: 13, vertical: 5),
               decoration: BoxDecoration(
                 color: Colors.white,
@@ -40,14 +40,14 @@ class WidgetVitrinMessageCall extends StatelessWidget {
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: Color(0xFF626262),
-                      fontSize: 12,
+                      fontSize: 10,
                       fontFamily: MAIN_FONT_FAMILY,
                     ),
                   ),
                   SvgPicture.asset(
                     'assets/images/Call_icon_profile.svg',
-                    width: 22,
-                    height: 22,
+                    width: 18,
+                    height: 18,
                   ),
                 ],
               ),
@@ -61,8 +61,8 @@ class WidgetVitrinMessageCall extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.all(1.0),
             child: Container(
-              width: Get.width / 4,
-              height: 46,
+              width: Get.width / 5,
+              height: 40,
               padding: const EdgeInsets.symmetric(horizontal: 13, vertical: 5),
               decoration: BoxDecoration(
                 color: Colors.white,
@@ -83,14 +83,14 @@ class WidgetVitrinMessageCall extends StatelessWidget {
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: Color(0xFF626262),
-                      fontSize: 12,
+                      fontSize: 10,
                       fontFamily: MAIN_FONT_FAMILY,
                     ),
                   ),
                   SvgPicture.asset(
                     'assets/images/Message_icon_profile.svg',
-                    width: 22,
-                    height: 22,
+                    width: 18,
+                    height: 18,
                   ),
                 ],
               ),
@@ -104,9 +104,9 @@ class WidgetVitrinMessageCall extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.all(1.0),
             child: Container(
-              width: Get.width / 4,
-              height: 46,
-              padding: const EdgeInsets.symmetric(horizontal: 13, vertical: 5),
+              width: Get.width / 5,
+              height: 40,
+              padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(15),
@@ -119,21 +119,21 @@ class WidgetVitrinMessageCall extends StatelessWidget {
                 ],
               ),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   const Text(
                     'ویترین',
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: Color(0xFF626262),
-                      fontSize: 12,
+                      fontSize: 10,
                       fontFamily: MAIN_FONT_FAMILY,
                     ),
                   ),
                   SvgPicture.asset(
                     'assets/images/Vitrin_off_icon.svg',
-                    width: 22,
-                    height: 22,
+                    width: 18,
+                    height: 18,
                   ),
                 ],
               ),

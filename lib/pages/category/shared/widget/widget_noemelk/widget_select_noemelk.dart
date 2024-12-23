@@ -4,10 +4,10 @@ import 'package:flutter_application_1/pages/category/shared/widget/enseraf.dart'
 import 'package:flutter_application_1/pages/category/shared/widget/switchItem_location.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/taeed.dart';
 import 'package:get/get.dart';
-import 'dart:convert';
 
-void showSelectNoeMelk(Function(String label) onSelected) {
+void showSelectNoeMelk(Function(String label, String key) onSelected) {
   String? selectedLabel;
+  String? selectedKey;
 
   const items = [
     {"key": "apartment", "label": "آپارتمان"},
@@ -15,6 +15,7 @@ void showSelectNoeMelk(Function(String label) onSelected) {
     {"key": "penthouse", "label": "پنت هاوس"},
     {"key": "suite", "label": "سوئیت"},
   ];
+
   Get.bottomSheet(
     Container(
       width: double.infinity,
@@ -60,6 +61,9 @@ void showSelectNoeMelk(Function(String label) onSelected) {
                 onSelected: (selectedItems) {
                   if (selectedItems.isNotEmpty) {
                     selectedLabel = selectedItems.first;
+                    // پیدا کردن key مربوطه
+                    selectedKey = items.firstWhere(
+                        (item) => item['label'] == selectedLabel)['key'];
                   }
                 },
               ),
@@ -70,9 +74,9 @@ void showSelectNoeMelk(Function(String label) onSelected) {
                   Enseraf(),
                   taeed(
                     onPressed: () async {
-                      if (selectedLabel != null) {
-                        jsonEncode({"label": selectedLabel});
-                        onSelected(selectedLabel!);
+                      if (selectedLabel != null && selectedKey != null) {
+                        // ارسال label و key
+                        onSelected(selectedLabel!, selectedKey!);
                         Get.back();
                       } else {
                         Get.snackbar("خطا", "لطفاً یک مورد را انتخاب کنید");

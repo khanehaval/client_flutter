@@ -39,7 +39,7 @@ class _CategoryProfileState extends State<CategoryProfile> {
       body: Padding(
         padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
         child: Padding(
-          padding: const EdgeInsets.all(5.0),
+          padding: const EdgeInsets.all(10.0),
           child: Column(
             children: [
               SizedBox(

@@ -27,7 +27,7 @@ class _WidgetColleaguessState extends State<WidgetColleaguess> {
         child: Stack(
           children: [
             Container(
-              width: Get.width / 1.12,
+              width: Get.width / 1.18,
               height: 100,
               decoration: BoxDecoration(
                 boxShadow: const [

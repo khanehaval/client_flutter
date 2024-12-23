@@ -3,7 +3,11 @@ import 'package:flutter/material.dart';
 class CustomOverlay {
   OverlayEntry? _overlayEntry;
 
-  void showOverlay(BuildContext context, VoidCallback _startSelecting) {
+  void showOverlay(
+    BuildContext context,
+    VoidCallback _startSelecting,
+    VoidCallback onDeleteAllChats, // پارامتر جدید
+  ) {
     final overlay = Overlay.of(context);
     _overlayEntry = OverlayEntry(
       builder: (context) => Positioned(
@@ -59,7 +63,8 @@ class CustomOverlay {
                   padding: const EdgeInsets.only(right: 30.0),
                   child: InkWell(
                     onTap: () {
-                      _removeOverlay();
+                      onDeleteAllChats(); // فراخوانی متد حذف کامل
+                      _removeOverlay(); // بستن Overlay
                     },
                     child: const Text(
                       'حذف کامل چت',

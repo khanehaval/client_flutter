@@ -16,8 +16,8 @@ class _WidgetReqMelkProfileState extends State<WidgetReqMelkProfile> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: Get.width / 1.11,
-      padding: const EdgeInsets.symmetric(horizontal: 22, vertical: 12),
+      width: Get.width / 1.13,
+      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 12),
       decoration: ShapeDecoration(
         color: Colors.white,
         shape: RoundedRectangleBorder(
@@ -29,157 +29,155 @@ class _WidgetReqMelkProfileState extends State<WidgetReqMelkProfile> {
         children: [
           Column(
             children: [
-              Container(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Container(
-                      width: 30,
-                      height: 25,
-                      decoration: ShapeDecoration(
-                        shape: RoundedRectangleBorder(
-                          side: const BorderSide(
-                              width: 0.50, color: Color(0xFF296FE2)),
-                          borderRadius: BorderRadius.circular(5),
-                        ),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(3.0),
-                        child: SvgPicture.asset(
-                          'assets/images/Call_icon_profile.svg',
-                        ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Container(
+                    width: 30,
+                    height: 25,
+                    decoration: ShapeDecoration(
+                      shape: RoundedRectangleBorder(
+                        side: const BorderSide(
+                            width: 0.50, color: Color(0xFF296FE2)),
+                        borderRadius: BorderRadius.circular(5),
                       ),
                     ),
-                    const SizedBox(
-                      width: 5,
-                    ),
-                    Container(
-                      width: 30,
-                      height: 25,
-                      decoration: ShapeDecoration(
-                        shape: RoundedRectangleBorder(
-                          side: const BorderSide(
-                              width: 0.50, color: Color(0xFF00BD61)),
-                          borderRadius: BorderRadius.circular(5),
-                        ),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(3.0),
-                        child: SvgPicture.asset(
-                          'assets/images/Message_icon_profile.svg',
-                        ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(3.0),
+                      child: SvgPicture.asset(
+                        'assets/images/Call_icon_profile.svg',
                       ),
                     ),
-                    const SizedBox(
-                      width: 25,
+                  ),
+                  const SizedBox(
+                    width: 5,
+                  ),
+                  Container(
+                    width: 30,
+                    height: 25,
+                    decoration: ShapeDecoration(
+                      shape: RoundedRectangleBorder(
+                        side: const BorderSide(
+                            width: 0.50, color: Color(0xFF00BD61)),
+                        borderRadius: BorderRadius.circular(5),
+                      ),
                     ),
-                    Expanded(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Container(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 8, vertical: 5),
-                            decoration: ShapeDecoration(
-                              shape: RoundedRectangleBorder(
-                                side: const BorderSide(
-                                    width: 0.20, color: Color(0xFF303030)),
-                                borderRadius: BorderRadius.circular(5),
-                              ),
-                            ),
-                            child: const Text(
-                              '80 - 120',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                color: Color(0xFF636363),
-                                fontSize: 10,
-                                fontFamily: MAIN_FONT_FAMILY_MEDIUM,
-                              ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(3.0),
+                      child: SvgPicture.asset(
+                        'assets/images/Message_icon_profile.svg',
+                      ),
+                    ),
+                  ),
+                  const SizedBox(
+                    width: 25,
+                  ),
+                  Expanded(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Container(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 8, vertical: 5),
+                          decoration: ShapeDecoration(
+                            shape: RoundedRectangleBorder(
+                              side: const BorderSide(
+                                  width: 0.20, color: Color(0xFF303030)),
+                              borderRadius: BorderRadius.circular(5),
                             ),
                           ),
-                          const SizedBox(width: 5),
-                          Container(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 5, vertical: 5),
-                            decoration: ShapeDecoration(
-                              shape: RoundedRectangleBorder(
-                                side: const BorderSide(
-                                    width: 0.20, color: Color(0xFF303030)),
-                                borderRadius: BorderRadius.circular(5),
-                              ),
+                          child: const Text(
+                            '80 - 120',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              color: Color(0xFF636363),
+                              fontSize: 10,
+                              fontFamily: MAIN_FONT_FAMILY_MEDIUM,
                             ),
-                            child: const Column(
-                              mainAxisSize: MainAxisSize.min,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Text(
-                                  'جنت آباد ',
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                    color: Color(0xFF636363),
-                                    fontSize: 10,
-                                    fontFamily: MAIN_FONT_FAMILY_MEDIUM,
-                                  ),
+                          ),
+                        ),
+                        const SizedBox(width: 5),
+                        Container(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 5, vertical: 5),
+                          decoration: ShapeDecoration(
+                            shape: RoundedRectangleBorder(
+                              side: const BorderSide(
+                                  width: 0.20, color: Color(0xFF303030)),
+                              borderRadius: BorderRadius.circular(5),
+                            ),
+                          ),
+                          child: const Column(
+                            mainAxisSize: MainAxisSize.min,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Text(
+                                'جنت آباد ',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  color: Color(0xFF636363),
+                                  fontSize: 10,
+                                  fontFamily: MAIN_FONT_FAMILY_MEDIUM,
                                 ),
-                              ],
-                            ),
-                          ),
-                          const SizedBox(width: 5),
-                          Container(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 5, vertical: 5),
-                            decoration: ShapeDecoration(
-                              shape: RoundedRectangleBorder(
-                                side: const BorderSide(
-                                    width: 0.20, color: Color(0xFF303030)),
-                                borderRadius: BorderRadius.circular(5),
                               ),
-                            ),
-                            child: const Column(
-                              children: [
-                                Text(
-                                  'تهران',
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                    color: Color(0xFF636363),
-                                    fontSize: 10,
-                                    fontFamily: MAIN_FONT_FAMILY_MEDIUM,
-                                  ),
-                                ),
-                              ],
+                            ],
+                          ),
+                        ),
+                        const SizedBox(width: 5),
+                        Container(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 5, vertical: 5),
+                          decoration: ShapeDecoration(
+                            shape: RoundedRectangleBorder(
+                              side: const BorderSide(
+                                  width: 0.20, color: Color(0xFF303030)),
+                              borderRadius: BorderRadius.circular(5),
                             ),
                           ),
-                          const SizedBox(width: 5),
-                          Container(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 6, vertical: 5),
-                            decoration: ShapeDecoration(
-                              shape: RoundedRectangleBorder(
-                                side: const BorderSide(
-                                    width: 0.20, color: Color(0xFF303030)),
-                                borderRadius: BorderRadius.circular(5),
+                          child: const Column(
+                            children: [
+                              Text(
+                                'تهران',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  color: Color(0xFF636363),
+                                  fontSize: 10,
+                                  fontFamily: MAIN_FONT_FAMILY_MEDIUM,
+                                ),
                               ),
-                            ),
-                            child: const Column(
-                              children: [
-                                Text(
-                                  'آپارتمان',
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                    color: Color(0xFF636363),
-                                    fontSize: 10,
-                                    fontFamily: MAIN_FONT_FAMILY_MEDIUM,
-                                  ),
-                                ),
-                              ],
+                            ],
+                          ),
+                        ),
+                        const SizedBox(width: 5),
+                        Container(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 6, vertical: 5),
+                          decoration: ShapeDecoration(
+                            shape: RoundedRectangleBorder(
+                              side: const BorderSide(
+                                  width: 0.20, color: Color(0xFF303030)),
+                              borderRadius: BorderRadius.circular(5),
                             ),
                           ),
-                        ],
-                      ),
+                          child: const Column(
+                            children: [
+                              Text(
+                                'آپارتمان',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  color: Color(0xFF636363),
+                                  fontSize: 10,
+                                  fontFamily: MAIN_FONT_FAMILY_MEDIUM,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
               const SizedBox(
                 height: 15,

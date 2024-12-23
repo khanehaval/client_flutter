@@ -12,7 +12,7 @@ class WidgetNumberShaba extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         Container(
-          width: Get.width / 1.12,
+          width: Get.width / 1.14,
           height: 85,
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 15),
           decoration: ShapeDecoration(

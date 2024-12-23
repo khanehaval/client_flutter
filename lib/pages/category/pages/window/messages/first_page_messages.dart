@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/pages/window/messages/message_Item.dart';
 import 'package:flutter_application_1/pages/category/pages/window/messages/widgets_messages/widget_titr_messages.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 
 class FirstPageMessages extends StatelessWidget {
   final searchController = TextEditingController();
@@ -35,7 +36,7 @@ class FirstPageMessages extends StatelessWidget {
                       const SizedBox(width: 40),
                       SizedBox(
                         height: 38,
-                        width: 280,
+                        width: Get.width / 1.4,
                         child: TextField(
                           controller: searchController,
                           textAlign: TextAlign.end,
@@ -86,15 +87,14 @@ class FirstPageMessages extends StatelessWidget {
         ],
       ),
       floatingActionButton: Padding(
-        padding: const EdgeInsets.only(bottom: 80.0), // تنظیم فاصله از کناره‌ها
+        padding: const EdgeInsets.only(bottom: 80.0),
         child: Align(
-          alignment: Alignment.bottomRight, // موقعیت آیکون در پایین سمت راست
+          alignment: Alignment.bottomRight,
           child: FloatingActionButton(
             onPressed: () {},
-            backgroundColor: Colors.transparent, // حذف پس‌زمینه
+            backgroundColor: Colors.transparent,
             elevation: 0, // حذف سایه
-            child: SvgPicture.asset(
-                'assets/images/New message.svg'), // استفاده از آیکون
+            child: SvgPicture.asset('assets/images/New message.svg'),
           ),
         ),
       ),
