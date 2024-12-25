@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 class CustomOverlay {
   OverlayEntry? _overlayEntry;
-
   void showOverlay(
     BuildContext context,
     VoidCallback _startSelecting,
