@@ -225,38 +225,43 @@ class EditVitrin extends StatelessWidget {
                     WidgetUsersConsultants(),
                     const SizedBox(height: 20),
                     WidgetMaqalehAmozeshi(),
-                    const SizedBox(height: 20),
-                  ],
-                ),
-              ),
-              Container(
-                width: 119,
-                height: 32,
-                decoration: ShapeDecoration(
-                  color: Colors.white,
-                  shape: RoundedRectangleBorder(
-                    side: const BorderSide(width: 1, color: Color(0xFF4C8CED)),
-                    borderRadius: BorderRadius.circular(15),
-                  ),
-                  shadows: const [
-                    BoxShadow(
-                      color: Color(0x7F36D859),
-                      blurRadius: 7,
-                      offset: Offset(0, 1),
-                    ),
-                  ],
-                ),
-                child: const Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      'ذخیره',
-                      style: TextStyle(
-                        color: Color(0xFF636363),
-                        fontSize: 13,
-                        fontFamily: MAIN_FONT_FAMILY,
+                    const SizedBox(height: 40),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 110.0, right: 110),
+                      child: Container(
+                        width: 119,
+                        height: 32,
+                        decoration: ShapeDecoration(
+                          color: Colors.white,
+                          shape: RoundedRectangleBorder(
+                            side: const BorderSide(
+                                width: 1, color: Color(0xFF4C8CED)),
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                          shadows: const [
+                            BoxShadow(
+                              color: Color(0x7F36D859),
+                              blurRadius: 7,
+                              offset: Offset(0, 1),
+                            ),
+                          ],
+                        ),
+                        child: const Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              'ذخیره',
+                              style: TextStyle(
+                                color: Color(0xFF636363),
+                                fontSize: 13,
+                                fontFamily: MAIN_FONT_FAMILY,
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
+                    const SizedBox(height: 40),
                   ],
                 ),
               ),

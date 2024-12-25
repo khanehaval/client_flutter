@@ -22,8 +22,6 @@ class _WidgetUsersConsultantsState extends State<WidgetUsersConsultants> {
   @override
   void initState() {
     super.initState();
-
-    // لیسنر برای تشخیص شروع تایپ
     _textController.addListener(() {
       _isTyping.value = _textController.text.isNotEmpty;
     });
@@ -33,12 +31,10 @@ class _WidgetUsersConsultantsState extends State<WidgetUsersConsultants> {
   Widget build(BuildContext context) {
     return Obx(
       () => Padding(
-        padding: const EdgeInsets.only(left: 20.0, right: 20),
+        padding: const EdgeInsets.only(left: 15.0, right: 15),
         child: Container(
           width: double.infinity,
-          height: _About_me_1.value
-              ? 500
-              : 50, // تغییر ارتفاع باکس بر اساس باز یا بسته بودن
+          height: _About_me_1.value ? 500 : 50,
           decoration: BoxDecoration(
             color: const Color.fromRGBO(250, 250, 250, 1),
             border: Border.all(color: const Color.fromRGBO(166, 166, 166, 1)),
@@ -49,30 +45,24 @@ class _WidgetUsersConsultantsState extends State<WidgetUsersConsultants> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  // آیکون چک
                   IconButton(
                     icon: _isChecked.value
                         ? SvgPicture.asset(
-                            'assets/images/check_icon.svg', // آیکون تیک
+                            'assets/images/check_icon.svg',
                           )
                         : (_isTyping.value
                             ? SvgPicture.asset(
-                                'assets/images/check_icon.svg', // آیکون تیک وقتی تایپ شده
+                                'assets/images/check_icon.svg',
                               )
                             : SvgPicture.asset(
                                 _About_me_1.value
                                     ? 'assets/images/=gold.svg'
                                     : 'assets/images/Arrow_list_agency.svg',
-                                width: _About_me_1.value
-                                    ? 30
-                                    : 11, // سایز بزرگتر برای edit and ok
-                                height: _About_me_1.value
-                                    ? 10
-                                    : 14, // سایز بزرگتر برای edit and ok
+                                width: _About_me_1.value ? 30 : 11,
+                                height: _About_me_1.value ? 10 : 14,
                               )),
                     onPressed: () {
                       if (_isTyping.value) {
-                        // وقتی کاربر روی آیکون چک کلیک کرد و تایپ کرده بود، متن را ذخیره کن
                         _aboutMeText.value = _textController.text;
                         _isTyping.value = false; // ریست وضعیت تایپ
                         _isChecked.value = true; // نمایش آیکون چک
@@ -192,7 +182,7 @@ class _WidgetUsersConsultantsState extends State<WidgetUsersConsultants> {
           children: [
             Transform(
               transform: Matrix4.identity()
-                ..translate(20.0, 135.0)
+                ..translate(10.0, 135.0)
                 ..rotateZ(-1.57),
               child: Container(
                 width: 100,
@@ -354,7 +344,7 @@ class _WidgetUsersConsultantsState extends State<WidgetUsersConsultants> {
           children: [
             Transform(
               transform: Matrix4.identity()
-                ..translate(20.0, 135.0)
+                ..translate(10.0, 135.0)
                 ..rotateZ(-1.57),
               child: Container(
                 width: 100,
