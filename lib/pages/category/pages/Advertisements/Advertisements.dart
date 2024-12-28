@@ -7,7 +7,6 @@ import 'package:flutter_application_1/pages/category/pages/Advertisements/map/ad
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/Neighbourhood.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/city_controller.dart';
-import 'package:flutter_application_1/pages/category/shared/widget/city_widget.dart';
 import 'package:flutter_application_1/repo/advRepo.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:flutter_svg/svg.dart';
@@ -26,9 +25,8 @@ class Advertisements extends StatefulWidget {
 
 class _SelectLocationMapState extends State<Advertisements> {
   final _advRepo = GetIt.I.get<AdvRepo>();
-  final cityController = Get.put(CityController()); // پیدا کردن کنترلر
-  final neighborhoodController =
-      Get.put(NeighborhoodController()); // پیدا کردن کنترلر
+  final cityController = Get.put(CityController());
+  final neighborhoodController = Get.put(NeighborhoodController());
   final Rx<int> selectedNeighborhoodCount = 0.obs;
 
   MapController mapController = MapController();
@@ -136,9 +134,7 @@ class _SelectLocationMapState extends State<Advertisements> {
                             left: 0, right: 7, bottom: 15, top: 45),
                         padding: const EdgeInsets.all(1.2),
                         height: 98,
-                        width: titles[i] == "املاک"
-                            ? 80
-                            : 140, // عرض املاک برابر 60
+                        width: titles[i] == "املاک" ? 80 : 140,
                         decoration: BoxDecoration(
                           gradient: _currentIndex.value == i
                               ? const LinearGradient(colors: GRADIANT_COLOR)
@@ -157,17 +153,16 @@ class _SelectLocationMapState extends State<Advertisements> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Text(
-                                  items[i].title, // Display the title text
+                                  items[i].title,
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
                                     fontFamily: _currentIndex.value == i
-                                        ? MAIN_FONT_FAMILY_MEDIUM // فونت برای انتخاب شده
-                                        : MAIN_FONT_FAMILY_LIGHT, // فونت برای غیر انتخاب شده
-                                    fontSize: 12, // Set text size
+                                        ? MAIN_FONT_FAMILY_MEDIUM
+                                        : MAIN_FONT_FAMILY_LIGHT,
+                                    fontSize: 12,
                                     color: _currentIndex.value == i
                                         ? Colors.black
-                                        : Colors
-                                            .grey, // Change text color based on selection
+                                        : Colors.grey,
                                   ),
                                 ),
                               ],
@@ -419,15 +414,11 @@ class _SelectLocationMapState extends State<Advertisements> {
                             ),
                             child: SizedBox(
                               height: 32,
-                              width: _advRepo.filters.isNotEmpty
-                                  ? 130
-                                  : 100, // تغییر عرض
+                              width: _advRepo.filters.isNotEmpty ? 130 : 100,
                               child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.center, // مرکز چیدمان
+                                  mainAxisAlignment: MainAxisAlignment.center,
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
-                                    // دایره تنها زمانی نمایش داده می‌شود که فیلترها وجود داشته باشند
                                     if (_advRepo.filters.isNotEmpty) ...[
                                       Padding(
                                         padding: const EdgeInsets.symmetric(
@@ -450,10 +441,8 @@ class _SelectLocationMapState extends State<Advertisements> {
                                         ),
                                       ),
                                     ],
-                                    // متن فیلتر (همیشه نمایش داده می‌شود)
                                     const Padding(
-                                      padding: EdgeInsets.only(
-                                          left: 8.0), // فضای بین دایره و متن
+                                      padding: EdgeInsets.only(left: 8.0),
                                       child: Text(
                                         "فیلتر",
                                         textAlign: TextAlign.center,
@@ -464,7 +453,6 @@ class _SelectLocationMapState extends State<Advertisements> {
                                             fontSize: 12),
                                       ),
                                     ),
-                                    // آیکن فیلتر (همیشه نمایش داده می‌شود)
                                     Padding(
                                       padding: const EdgeInsets.only(left: 8),
                                       child: SvgPicture.asset(
@@ -519,12 +507,11 @@ class SubItemModel {
 }
 
 class AdvController extends GetxController {
-  var selectedCity = ''.obs; // شهر انتخاب‌شده به صورت واکنش‌گرا
-  var selectedCityCount = 0.obs; // تعداد شهرهای انتخاب‌شده
+  var selectedCity = ''.obs;
+  var selectedCityCount = 0.obs;
 
   void updateSelectedCity(String city) {
     selectedCity.value = city;
-    selectedCityCount.value =
-        city.length; // به‌روز رسانی تعداد شهرهای انتخاب‌شده
+    selectedCityCount.value = city.length;
   }
 }

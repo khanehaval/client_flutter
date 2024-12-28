@@ -2,7 +2,6 @@ import 'dart:async';
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/models/AdvertismentMoidel.dart';
-import 'package:flutter_application_1/pages/category/pages/Advertisements/consultants.dart/map_consultants.dart/advertismets_axans.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/widget_filter/aghahi.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/shared/methods.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/shared/methods_ejara.dart';
@@ -29,19 +28,16 @@ class _AdvMapState extends State<MapAxans> {
   late Stream<bool> _notificationStream;
   late StreamController<bool> _locationNotificationStreamController;
   late Stream<bool> _locationNotificationStream;
-  double _zoomLevel = 11; // مقدار اولیه برای زوم
-  bool _showNotification = true; // متغیر برای کنترل نمایش نوتیفیکیشن
-  bool _showLocationNotification =
-      true; // متغیر برای کنترل نمایش نوتیفیکیشن مکان
+  double _zoomLevel = 11;
+  bool _showNotification = true;
+  bool _showLocationNotification = true;
 
   Future<void> _loadNotificationPreferences() async {
     final prefs = await SharedPreferences.getInstance();
     setState(() {
-      _showNotification =
-          prefs.getBool('show_notification') ?? true; // وضعیت نوتیفیکیشن
-      _showLocationNotification = prefs.getBool('show_location_notification') ??
-          true; // وضعیت نوتیفیکیشن مکان
-
+      _showNotification = prefs.getBool('show_notification') ?? true;
+      _showLocationNotification =
+          prefs.getBool('show_location_notification') ?? true;
       if (!_showNotification) {
         _notificationStreamController.add(false);
       }
@@ -95,7 +91,6 @@ class _AdvMapState extends State<MapAxans> {
                 }
               },
             ),
-          // بررسی وضعیت نمایش نوتیفیکیشن مکان
           if (_showLocationNotification)
             StreamBuilder<bool>(
               stream: _locationNotificationStream,
@@ -149,15 +144,15 @@ class _AdvMapState extends State<MapAxans> {
         initialCenter: widget.advertisements.value.first.location,
         maxZoom: 20,
         keepAlive: true,
-        rotation: 0, // تنظیم چرخش اولیه به صفر
-        interactionOptions: InteractionOptions(
-          rotationThreshold: 1000.0, // غیرفعال کردن چرخش با تنظیم مقدار بالا
+        rotation: 0,
+        interactionOptions: const InteractionOptions(
+          rotationThreshold: 1000.0,
           enableMultiFingerGestureRace: true,
           enableScrollWheel: true,
         ),
         onPositionChanged: (position, hasGesture) {
           setState(() {
-            _zoomLevel = position.zoom!; // بروزرسانی سطح زوم
+            _zoomLevel = position.zoom!;
           });
         },
       ),
@@ -197,9 +192,7 @@ class _AdvMapState extends State<MapAxans> {
   }
 
   Widget _buildMarkerIcon(AdvertismentModel adv) {
-    String text = 'خانه اول'; // متنی که می‌خواهید نمایش دهید
-
-    // محاسبه عرض متن
+    String text = 'خانه اول';
     final textPainter = TextPainter(
       text: TextSpan(
         text: text,
@@ -211,18 +204,13 @@ class _AdvMapState extends State<MapAxans> {
       ),
       textDirection: TextDirection.ltr,
     );
-
-    textPainter.layout(); // انجام محاسبات لازم برای لایه‌بندی
-
-    double textWidth = textPainter.width; // عرض متن را می‌گیریم
-
-    // اگر زوم بیشتر یا مساوی ۱۶ باشد
+    textPainter.layout();
+    double textWidth = textPainter.width;
     if (_zoomLevel >= 16) {
       return Stack(
         alignment: Alignment.bottomCenter,
         clipBehavior: Clip.none,
         children: [
-          // کانتینر اصلی
           Container(
             decoration: const BoxDecoration(
                 borderRadius: BorderRadius.all(Radius.circular(12)),
@@ -230,11 +218,11 @@ class _AdvMapState extends State<MapAxans> {
             child: Padding(
               padding: const EdgeInsets.all(2.0),
               child: Container(
-                width: textWidth + 20, // اضافه کردن مقداری به عرض برای حاشیه
+                width: textWidth + 20,
                 height: 30,
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
-                  color: const Color.fromRGBO(255, 0, 0, 1), // رنگ کانتینر
+                  color: const Color.fromRGBO(255, 0, 0, 1),
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: Padding(
@@ -251,7 +239,6 @@ class _AdvMapState extends State<MapAxans> {
               ),
             ),
           ),
-          // اضافه کردن مثلث به پایین کانتینر
           Positioned(
               bottom: -12.9,
               child: SvgPicture.asset(
@@ -262,11 +249,10 @@ class _AdvMapState extends State<MapAxans> {
         ],
       );
     } else {
-      // نمایش آیکون پیش‌فرض زمانی که زوم کمتر از ۱۶ است
       const assetName = 'assets/images/axans_location.svg';
       return SvgPicture.asset(
         assetName,
-        width: _zoomLevel >= 13 ? 35 : 20, // تغییر اندازه آیکون بر اساس سطح زوم
+        width: _zoomLevel >= 13 ? 35 : 20,
         height: _zoomLevel >= 13 ? 35 : 20,
       );
     }
@@ -275,14 +261,6 @@ class _AdvMapState extends State<MapAxans> {
   Widget _buildMarkerTitle(AdvertismentModel adv) {
     return Container(
       padding: const EdgeInsets.only(bottom: 15, left: 30),
-      // child: Text(
-      //   adv.title,
-      //   style: const TextStyle(
-      //     fontFamily: MAIN_FONT_FAMILY,
-      //     color: Color.fromRGBO(48, 48, 48, 1),
-      //     fontSize: 10,
-      //   ),
-      // ),
     );
   }
 
@@ -312,8 +290,7 @@ class _AdvMapState extends State<MapAxans> {
           onPressed: () async {
             _notificationStreamController.add(false);
             final prefs = await SharedPreferences.getInstance();
-            await prefs.setBool(
-                'show_notification', false); // ذخیره وضعیت نوتیفیکیشن
+            await prefs.setBool('show_notification', false);
           },
           icon: SizedBox(
             height: 33,
@@ -334,8 +311,7 @@ class _AdvMapState extends State<MapAxans> {
           onPressed: () async {
             _locationNotificationStreamController.add(false);
             final prefs = await SharedPreferences.getInstance();
-            await prefs.setBool('show_location_notification',
-                false); // ذخیره وضعیت نوتیفیکیشن مکان
+            await prefs.setBool('show_location_notification', false);
           },
           icon: SizedBox(
             height: 80,
@@ -369,7 +345,6 @@ class _AdvMapState extends State<MapAxans> {
         onTap: () => _selectedModel.value = null,
         onBack: _onBack,
         onNext: _onNext,
-        // افزودن جزئیات خاص برای PERSONAL
       ),
     );
   }
@@ -381,7 +356,6 @@ class _AdvMapState extends State<MapAxans> {
         onTap: () => _selectedModel.value = null,
         onBack: _onBack,
         onNext: _onNext,
-        // افزودن جزئیات خاص برای AMALAK
       ),
     );
   }
@@ -393,20 +367,9 @@ class _AdvMapState extends State<MapAxans> {
         onTap: () => _selectedModel.value = null,
         onBack: _onBack,
         onNext: _onNext,
-        // افزودن جزئیات خاص برای REAL ESTATE
       ),
     );
   }
-  // Widget _buildAdvertismentOverlay() {
-  //   return Align(
-  //     child: showAdvertisment(
-  //       advertismentModel: _selectedModel.value!,
-  //       onTap: () => _selectedModel.value = null,
-  //       onBack: _onBack,
-  //       onNext: _onNext,
-  //     ),
-  //   );
-  // }
 
   void _onBack() {
     final int index =
@@ -435,9 +398,7 @@ class _AdvMapState extends State<MapAxans> {
         padding: const EdgeInsets.only(bottom: 77, left: 300),
         child: IconButton(
           onPressed: () {
-            Get.to(() => AdvertismetsAxans(),
-                duration: const Duration(microseconds: 900),
-                transition: Transition.rightToLeft);
+            Get.back();
           },
           icon: SizedBox(
             height: 55,
@@ -445,13 +406,6 @@ class _AdvMapState extends State<MapAxans> {
             child: Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(30),
-                // boxShadow: [
-                //   BoxShadow(
-                //     offset: const Offset(0, 0.5),
-                //     color: Colors.grey.withOpacity(0.10),
-                //     blurRadius: 1,
-                //   ),
-                // ],
               ),
               child: SvgPicture.asset(
                 "assets/images/list - consultant_axans.svg",
@@ -473,23 +427,20 @@ class _AdvMapState extends State<MapAxans> {
           controller: scrollController,
           child: Column(
             children: [
-              // باکس با بوردر و radius که خارج از بلور است
               Container(
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20), // radius برای بوردر
+                  borderRadius: BorderRadius.circular(20),
                   border: Border.all(
                     color: const Color.fromRGBO(166, 166, 166, 1),
-                    width: 1.0, // ضخامت بوردر
+                    width: 1.0,
                   ),
                 ),
                 child: ClipRRect(
-                  borderRadius: BorderRadius.circular(20), // هماهنگی radius
+                  borderRadius: BorderRadius.circular(20),
                   child: Stack(
-                    // استفاده از Stack برای لایه‌بندی
                     children: [
                       BackdropFilter(
-                        filter: ImageFilter.blur(
-                            sigmaX: 1.0, sigmaY: 1.0), // افکت بلور
+                        filter: ImageFilter.blur(sigmaX: 1.0, sigmaY: 1.0),
                         child: Container(
                           decoration: const BoxDecoration(
                             gradient: LinearGradient(
@@ -503,18 +454,14 @@ class _AdvMapState extends State<MapAxans> {
                           child: SingleChildScrollView(
                             child: Column(
                               children: [
-                                const SizedBox(
-                                    height:
-                                        40), // فضای خالی برای قرارگیری Divider در بالا
+                                const SizedBox(height: 40),
                                 SingleChildScrollView(
-                                    child:
-                                        _buildAdvertisementsList()), // محتوای لیست آگهی
+                                    child: _buildAdvertisementsList()),
                               ],
                             ),
                           ),
                         ),
                       ),
-                      // Divider در بالای بلور قرار می‌گیرد
                       Positioned(
                         top: 0,
                         left: 0,
@@ -539,8 +486,6 @@ class _AdvMapState extends State<MapAxans> {
         Padding(
           padding: const EdgeInsets.only(top: 15.0),
           child: SvgPicture.asset('assets/images/divider.svg',
-              // width: 5,
-              // height: 5,
               color: const Color.fromRGBO(166, 166, 166, 1)),
         )
       ],
@@ -555,21 +500,19 @@ class _AdvMapState extends State<MapAxans> {
 }
 
 class TrianglePainter extends CustomPainter {
-  final Color color; // رنگ مثلث
+  final Color color;
 
   TrianglePainter(this.color);
 
   @override
   void paint(Canvas canvas, Size size) {
     final paint = Paint()
-      ..color = color // تنظیم رنگ مثلث به رنگ کانتینر
+      ..color = color
       ..style = PaintingStyle.fill;
-
-    // رسم مثلث در وسط پایین کانتینر
     final path = Path()
-      ..moveTo(size.width / 2, 20) // نقطه وسط پایین مثلث
-      ..lineTo((size.width / 2) - 20, 0) // سمت چپ بالا
-      ..lineTo((size.width / 2) + 20, 0) // سمت راست بالا
+      ..moveTo(size.width / 2, 20)
+      ..lineTo((size.width / 2) - 20, 0)
+      ..lineTo((size.width / 2) + 20, 0)
       ..close();
 
     canvas.drawPath(path, paint);
