@@ -9,6 +9,7 @@ import 'package:flutter_application_1/db/entities/estate.dart';
 import 'package:flutter_application_1/db/entities/user.dart';
 import 'package:flutter_application_1/db/entities/user_type.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/advertisements.dart';
+import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/forosh_adv_pages/saleapartemancontroller.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/intro_screen.dart';
 import 'package:flutter_application_1/pages/register/register.dart';
@@ -53,6 +54,9 @@ void initServicesAndRepo() {
   GetIt.instance
       .registerSingleton<AdvertisementService>(AdvertisementService());
   GetIt.instance.registerSingleton<AccountRepo>(AccountRepo());
+
+  // Register SaleApartemanController globally
+  Get.put(SaleApartemanController());
 }
 
 class MyApp extends StatefulWidget {

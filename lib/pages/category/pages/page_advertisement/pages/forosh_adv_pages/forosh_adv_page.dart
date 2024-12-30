@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/models/AdvInfoModel.dart';
+import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/forosh_adv_pages/saleapartemancontroller.dart';
 import 'package:flutter_application_1/pages/category/shared/adv_info/advInfo.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/category/shared/facilities_selector.dart';
@@ -49,6 +50,9 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
   final ImageController imageController = Get.put(ImageController());
   SaleApartemanServerModel saleApartemanServerModel =
       SaleApartemanServerModel();
+  final SaleApartemanController controller =
+      Get.find<SaleApartemanController>();
+
   final Httpservice _httpService = Httpservice();
   final aghsatType = "".obs;
   final onvan = "".obs;
@@ -212,15 +216,13 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
   }
 
   Future<void> _saveAdvertisement() async {
-    print('Total Price: ${saleApartemanServerModel.totalPrice}');
-    print('Meterage: ${saleApartemanServerModel.meterage}');
-    print('Sending data: ${saleApartemanServerModel.toJson()}');
-
     if (submit.value) {
       try {
+        final saleApartemanData = controller.saleApartemanServerModel.value;
         final success = await _accountRepo.saleAparteman(
-          saleApartemanData: saleApartemanServerModel,
+          saleApartemanData: saleApartemanData,
         );
+
         if (success) {
           Fluttertoast.showToast(
             msg: "اطلاعات با موفقیت ارسال شد",
@@ -264,6 +266,55 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
       );
     }
   }
+  // Future<void> _saveAdvertisement() async {
+  //   if (submit.value) {
+  //     try {
+  //       final success = await _accountRepo.saleAparteman(
+  //         saleApartemanData: saleApartemanServerModel,
+  //       );
+  //       if (success) {
+  //         Fluttertoast.showToast(
+  //           msg: "اطلاعات با موفقیت ارسال شد",
+  //           toastLength: Toast.LENGTH_LONG,
+  //           gravity: ToastGravity.CENTER,
+  //           backgroundColor: Colors.green,
+  //           textColor: Colors.white,
+  //           fontSize: 16.0,
+  //         );
+  //       } else {
+  //         Fluttertoast.showToast(
+  //           msg: "خطا در ارسال اطلاعات",
+  //           toastLength: Toast.LENGTH_LONG,
+  //           gravity: ToastGravity.CENTER,
+  //           backgroundColor: Colors.red,
+  //           textColor: Colors.white,
+  //           fontSize: 16.0,
+  //         );
+  //       }
+  //     } catch (e) {
+  //       Fluttertoast.showToast(
+  //         msg: "خطا در ارتباط با سرور",
+  //         toastLength: Toast.LENGTH_LONG,
+  //         gravity: ToastGravity.CENTER,
+  //         backgroundColor: Colors.red,
+  //         textColor: Colors.white,
+  //         fontSize: 16.0,
+  //       );
+  //       print("Error during advertisement submission: $e");
+  //     } finally {
+  //       _buttonIsPressed.value = false;
+  //     }
+  //   } else {
+  //     Fluttertoast.showToast(
+  //       msg: "لطفا همه فیلدهای دارای * را پر کنید",
+  //       toastLength: Toast.LENGTH_LONG,
+  //       gravity: ToastGravity.CENTER,
+  //       backgroundColor: Colors.red,
+  //       textColor: Colors.white,
+  //       fontSize: 16.0,
+  //     );
+  //   }
+  // }
 
   String? firstImagePath;
   @override
@@ -814,6 +865,7 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
               GestureDetector(
                 onTap: () {
                   if (submit.value) {
+                    // چک کردن مقادیر
                     print('Has Lobby: ${_facilities.value.contains(Labi())}');
                     print(
                         'Has Bath Tub: ${_facilities.value.contains(Bathtub())}');
@@ -821,6 +873,7 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
                         'Has Master Room: ${_facilities.value.contains(MasterRoom())}');
                     print(
                         'Has Swimming Pool: ${_facilities.value.contains(SwimmingPool())}');
+                    // مقداردهی مدل
                     saleApartemanServerModel.images = selectedImagesPath.value;
                     saleApartemanServerModel.wc = _wcController.text;
                     saleApartemanServerModel.hasLobby =
@@ -843,10 +896,10 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
                         _facilities.value.contains(Gym());
                     saleApartemanServerModel.hasConferenceHall =
                         _facilities.value.contains(ConferenceHall());
-
                     saleApartemanServerModel.hasSaunaJacuzzi =
                         _facilities.value.contains(Sona());
                     _saveAdvertisement();
+                    // انتقال به صفحه نمایش آگهی
                     Get.to(() => NamayeshAgahi(), arguments: {
                       'images': saleApartemanServerModel.images,
                       'wc': saleApartemanServerModel.wc,
@@ -885,9 +938,7 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
                             textAlign: TextAlign.center,
                           ),
                         ),
-                        const SizedBox(
-                          width: 3,
-                        ),
+                        const SizedBox(width: 3),
                         GradientIcon(
                           icon: Icons.double_arrow,
                           gradient: LinearGradient(
@@ -900,9 +951,7 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
                           offset: const Offset(0, 0),
                           size: 34,
                         ),
-                        const SizedBox(
-                          height: 40,
-                        )
+                        const SizedBox(height: 40),
                       ],
                     )),
               )
