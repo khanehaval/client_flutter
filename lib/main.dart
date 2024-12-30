@@ -54,9 +54,6 @@ void initServicesAndRepo() {
   GetIt.instance
       .registerSingleton<AdvertisementService>(AdvertisementService());
   GetIt.instance.registerSingleton<AccountRepo>(AccountRepo());
-
-  // Register SaleApartemanController globally
-  Get.put(SaleApartemanController());
 }
 
 class MyApp extends StatefulWidget {
