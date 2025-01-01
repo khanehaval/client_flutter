@@ -16,10 +16,9 @@ class WidgetProfileNotification2 extends StatelessWidget {
         child: Padding(
           padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
           child: Column(
-            // Removed const from Column
             children: [
               const SizedBox(
-                height: 20,
+                height: 50,
               ),
               const WidgetTitrNoitificationProfile(),
               const SizedBox(
@@ -41,11 +40,11 @@ class WidgetProfileNotification2 extends StatelessWidget {
               const SizedBox(
                 height: 20,
               ),
-              const WidgetResultSerch(), // This remains const if it's Stateless
+              const WidgetResultSerch(),
               const SizedBox(
                 height: 20,
               ),
-              WidgetResultSerch2(), // Remove const here as it's now Stateful
+              WidgetResultSerch2(),
               const SizedBox(
                 height: 20,
               ),

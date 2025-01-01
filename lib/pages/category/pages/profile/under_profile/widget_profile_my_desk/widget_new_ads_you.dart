@@ -8,11 +8,11 @@ class WidgetNewAdsYou extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(right: 10.0, left: 5),
-      child: SingleChildScrollView(
-        scrollDirection: Axis.horizontal,
-        reverse: true,
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      reverse: true,
+      child: Padding(
+        padding: const EdgeInsets.all(14.0),
         child: Row(
           children: [
             Container(
@@ -405,7 +405,7 @@ class WidgetNewAdsYou extends StatelessWidget {
               ),
             ),
             const SizedBox(
-              width: 10,
+              width: 5,
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),

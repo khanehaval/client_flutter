@@ -42,7 +42,7 @@ class WidgetAdProfile extends StatelessWidget {
                       width: 65,
                       height: 13,
                       child: Padding(
-                        padding: const EdgeInsets.only(left: 5.0),
+                        padding: const EdgeInsets.only(left: 10.0),
                         child: Row(
                           children: [
                             Container(
@@ -75,23 +75,27 @@ class WidgetAdProfile extends StatelessWidget {
                       height: 13,
                       child: Row(
                         children: [
-                          Container(
-                            padding: const EdgeInsets.symmetric(horizontal: 5),
-                            decoration: ShapeDecoration(
-                              color: Colors.white,
-                              shape: RoundedRectangleBorder(
-                                side: const BorderSide(
-                                    width: 0.50, color: Color(0xFFA6A6A6)),
-                                borderRadius: BorderRadius.circular(5),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 5.0),
+                            child: Container(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 5),
+                              decoration: ShapeDecoration(
+                                color: Colors.white,
+                                shape: RoundedRectangleBorder(
+                                  side: const BorderSide(
+                                      width: 0.50, color: Color(0xFFA6A6A6)),
+                                  borderRadius: BorderRadius.circular(5),
+                                ),
                               ),
-                            ),
-                            child: const Text(
-                              'ویلا',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                color: Color(0xFF636363),
-                                fontSize: 8,
-                                fontFamily: MAIN_FONT_FAMILY_UltraLight,
+                              child: const Text(
+                                'ویلا',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  color: Color(0xFF636363),
+                                  fontSize: 8,
+                                  fontFamily: MAIN_FONT_FAMILY_UltraLight,
+                                ),
                               ),
                             ),
                           ),
@@ -113,7 +117,7 @@ class WidgetAdProfile extends StatelessWidget {
                 ),
                 const SizedBox(height: 5),
                 Padding(
-                  padding: const EdgeInsets.only(right: 5.0),
+                  padding: const EdgeInsets.only(right: 10.0),
                   child: Row(
                     children: [
                       Container(

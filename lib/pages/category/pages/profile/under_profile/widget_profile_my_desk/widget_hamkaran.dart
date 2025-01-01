@@ -14,7 +14,7 @@ class WidgetHamkaran extends StatelessWidget {
       child: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.all(5.0),
+            padding: const EdgeInsets.all(10.0),
             child: Row(
               children: [
                 Container(

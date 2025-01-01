@@ -26,8 +26,6 @@ class _WidgetInformationAxansState extends State<WidgetInformationAxans> {
   @override
   void initState() {
     super.initState();
-
-    // لیسنر برای تشخیص شروع تایپ
     _textController.addListener(() {
       _isTyping.value = _textController.text.isNotEmpty;
     });
@@ -176,7 +174,7 @@ class _WidgetInformationAxansState extends State<WidgetInformationAxans> {
         ),
         WidgetPhoneNumberAxans(),
         SizedBox(
-          height: 20,
+          height: 10,
         ),
         WidgetCityMahale(),
         SizedBox(

@@ -24,9 +24,7 @@ class _AdvInfoState extends State<AdvInfo> {
   @override
   void initState() {
     super.initState();
-    _titleController = TextEditingController(
-      text: "آپارتمان 120 متری به صورت اقساطی",
-    );
+    _titleController = TextEditingController();
     _descriptionController =
         TextEditingController(text: widget.advInfoModel.description);
   }
@@ -46,12 +44,11 @@ class _AdvInfoState extends State<AdvInfo> {
           "عنوان و توضیحات آگهی",
           style: TextStyle(fontFamily: MAIN_FONT_FAMILY),
         ),
-        const SizedBox(height: 20),
-        switchable(
-          proposalTitle,
-          "عنوان پیشنهادی خانه اول",
-        ),
-        const SizedBox(height: 20),
+        // switchable(
+        //   proposalTitle,
+        //   "عنوان پیشنهادی خانه اول",
+        // ),
+        const SizedBox(height: 10),
         Obx(() {
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -88,29 +85,29 @@ class _AdvInfoState extends State<AdvInfo> {
                     ),
                   ),
                 ),
-              Container(
-                height: 41,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                child: TextField(
-                  style: const TextStyle(fontSize: 13),
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                  ),
-                  textAlign: TextAlign.right,
-                  controller: _titleController,
-                  enabled: proposalTitle.value,
-                  onChanged: (value) {
-                    if (proposalTitle.value) {
-                      widget.advInfoModel.title = value;
-                      saleApartemanServerModel.title;
-                    }
-                  },
-                ),
-              ),
+              // Container(
+              //   height: 41,
+              //   decoration: BoxDecoration(
+              //     borderRadius: BorderRadius.circular(10),
+              //   ),
+              //   child: TextField(
+              //     style: const TextStyle(fontSize: 13),
+              //     decoration: InputDecoration(
+              //       border: OutlineInputBorder(
+              //         borderRadius: BorderRadius.circular(10),
+              //       ),
+              //     ),
+              //     textAlign: TextAlign.right,
+              //     controller: _titleController,
+              //     enabled: proposalTitle.value,
+              //     onChanged: (value) {
+              //       if (proposalTitle.value) {
+              //         widget.advInfoModel.title = value;
+              //         saleApartemanServerModel.title;
+              //       }
+              //     },
+              //   ),
+              // ),
               const SizedBox(height: 20),
               if (!proposalTitle.value) ...[
                 const Padding(

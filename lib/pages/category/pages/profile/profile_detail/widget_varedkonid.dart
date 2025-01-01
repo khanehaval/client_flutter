@@ -1,9 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/pages/category/pages/profile/profile_detail/widget_color_text.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 
 class WidgetVaredkonid extends StatelessWidget {
   const WidgetVaredkonid({super.key});
@@ -78,14 +77,14 @@ class WidgetVaredkonid extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Text(
-                  'D578ghe',
-                  textAlign: TextAlign.center,
+                GradientTextWidget(
+                  text: "D578ghe",
                   style: TextStyle(
-                      color: Color(0xFF00BD61),
-                      fontSize: 14,
-                      fontFamily: MAIN_FONT_FAMILY),
-                )
+                    fontSize: 14,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'YourFontFamily',
+                  ),
+                ),
               ],
             ),
           ),

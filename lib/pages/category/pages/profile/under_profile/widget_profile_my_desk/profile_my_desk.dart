@@ -55,9 +55,9 @@ class ProfileMyDesk extends StatelessWidget {
                   const WidgetRow(),
                   const SizedBox(height: 30),
                   const WidgetNemodar(),
-                  const SizedBox(height: 30),
+                  const SizedBox(height: 20),
                   const WidgetHamkaran(),
-                  const SizedBox(height: 30),
+                  const SizedBox(height: 10),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 10.0),
                     child: Container(
@@ -92,7 +92,7 @@ class ProfileMyDesk extends StatelessWidget {
                     ),
                   ),
                   const WidgetNewAdsYou(),
-                  const SizedBox(height: 30),
+                  const SizedBox(height: 20),
                 ],
               ),
             ),

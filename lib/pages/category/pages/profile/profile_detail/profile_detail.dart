@@ -36,7 +36,7 @@ class ProfileDetail extends StatelessWidget {
           child: Column(
             children: [
               const SizedBox(height: 20),
-              const WidgetTitrDetail(), // تیتر ثابت
+              const WidgetTitrDetail(),
               const SizedBox(height: 20),
               const Divider(
                 endIndent: 20,

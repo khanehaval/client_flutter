@@ -208,7 +208,6 @@ class _VilaAdvPageState extends State<VilaAdvPage> {
   void initState() {
     super.initState();
     _metragTextController.addListener(_updatePersianWords);
-
     _allPriceTextController.addListener(_checkFields);
     _metragTextController.addListener(_checkFields);
     _buildRoomsCountController.addListener(_checkFields);

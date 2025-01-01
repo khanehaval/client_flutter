@@ -53,7 +53,7 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
   final aghsatType = "".obs;
   final onvan = "".obs;
   int selectedIndex = 0;
-  final submit = true.obs;
+  final submit = false.obs;
   final hasAnbari = false.obs;
   final hasAsansor = false.obs;
   final hasParking = false.obs;
@@ -182,7 +182,6 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
 
   @override
   void initState() {
-    // saleApartemanServerModel.location = widget.location;
     super.initState();
     _metragTextController.addListener(_updatePersianWords);
     _allPriceTextController.addListener(_checkFields);
@@ -814,39 +813,6 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
               GestureDetector(
                 onTap: () {
                   if (submit.value) {
-                    print('Has Lobby: ${_facilities.value.contains(Labi())}');
-                    print(
-                        'Has Bath Tub: ${_facilities.value.contains(Bathtub())}');
-                    print(
-                        'Has Master Room: ${_facilities.value.contains(MasterRoom())}');
-                    print(
-                        'Has Swimming Pool: ${_facilities.value.contains(SwimmingPool())}');
-                    saleApartemanServerModel.images = selectedImagesPath.value;
-                    saleApartemanServerModel.wc = _wcController.text;
-                    saleApartemanServerModel.hasLobby =
-                        _facilities.value.contains(Labi());
-                    saleApartemanServerModel.hasBathTub =
-                        _facilities.value.contains(Bathtub());
-                    saleApartemanServerModel.hasMasterRoom =
-                        _facilities.value.contains(MasterRoom());
-                    saleApartemanServerModel.hasBalcony =
-                        _facilities.value.contains(Teras());
-                    saleApartemanServerModel.hasSwimmingPool =
-                        _facilities.value.contains(SwimmingPool());
-                    saleApartemanServerModel.hasRoofGarden =
-                        _facilities.value.contains(RoofGarden());
-                    saleApartemanServerModel.hasGamingRoom =
-                        _facilities.value.contains(AlAchiq());
-                    saleApartemanServerModel.hasGamingRoom =
-                        _facilities.value.contains(GameRoom());
-                    saleApartemanServerModel.hasSportingHall =
-                        _facilities.value.contains(Gym());
-                    saleApartemanServerModel.hasConferenceHall =
-                        _facilities.value.contains(ConferenceHall());
-
-                    saleApartemanServerModel.hasSaunaJacuzzi =
-                        _facilities.value.contains(Sona());
-                    _saveAdvertisement();
                     Get.to(() => NamayeshAgahi(), arguments: {
                       'images': saleApartemanServerModel.images,
                       'wc': saleApartemanServerModel.wc,
@@ -866,6 +832,14 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
                       'hasSaunaJacuzzi':
                           saleApartemanServerModel.hasSaunaJacuzzi,
                     });
+                  } else {
+                    Fluttertoast.showToast(
+                      msg: "لطفا همه فیلدهای الزامی را پر کنید",
+                      toastLength: Toast.LENGTH_SHORT,
+                      gravity: ToastGravity.CENTER,
+                      backgroundColor: Colors.red,
+                      textColor: Colors.white,
+                    );
                   }
                 },
                 child: Obx(() => Row(
@@ -874,14 +848,17 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
                         Center(
                           child: Text(
                             "... تایید و ادامه",
-                            style: !submit.value
+                            style: submit.value
                                 ? const TextStyle(
                                     fontSize: 20,
                                     fontFamily: MAIN_FONT_FAMILY,
-                                    color: Colors.black38,
+                                    color: Colors.black, // پررنگ
                                   )
                                 : const TextStyle(
-                                    fontSize: 20, fontFamily: MAIN_FONT_FAMILY),
+                                    fontSize: 20,
+                                    fontFamily: MAIN_FONT_FAMILY,
+                                    color: Colors.black38, // کم‌رنگ
+                                  ),
                             textAlign: TextAlign.center,
                           ),
                         ),
@@ -892,20 +869,17 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
                           icon: Icons.double_arrow,
                           gradient: LinearGradient(
                             colors: submit.value
-                                ? GRADIANT_COLOR1
-                                : BLACK_12_GRADIANT_COLOR,
+                                ? GRADIANT_COLOR1 // پررنگ
+                                : BLACK_12_GRADIANT_COLOR, // کم‌رنگ
                             begin: Alignment.topLeft,
                             end: Alignment.bottomRight,
                           ),
                           offset: const Offset(0, 0),
                           size: 34,
                         ),
-                        const SizedBox(
-                          height: 40,
-                        )
                       ],
                     )),
-              )
+              ),
             ]),
           ),
         ));
