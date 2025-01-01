@@ -8,13 +8,14 @@ class ListConsultants extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.white,
-        body: Padding(
-            padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
-            child: SingleChildScrollView(
-                child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(children: [
+      backgroundColor: Colors.white,
+      body: Padding(
+        padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Column(
+              children: [
                 SizedBox(
                   height: Get.height / 2.5,
                   width: 362,
@@ -58,7 +59,7 @@ class ListConsultants extends StatelessWidget {
                       child: Padding(
                         padding: const EdgeInsets.all(1.2),
                         child: Container(
-                          width: 170,
+                          width: Get.width / 2.3,
                           height: 31,
                           decoration: BoxDecoration(
                             color: Colors.white,
@@ -81,7 +82,7 @@ class ListConsultants extends StatelessWidget {
                 ),
                 const SizedBox(height: 30),
                 Padding(
-                  padding: const EdgeInsets.only(right: 15.0),
+                  padding: const EdgeInsets.only(right: 5.0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
@@ -120,9 +121,6 @@ class ListConsultants extends StatelessWidget {
                           ),
                         ],
                       ),
-                      const SizedBox(
-                        width: 5,
-                      ),
                       Container(
                         decoration: const BoxDecoration(
                             color: Color.fromRGBO(183, 183, 183, 1),
@@ -130,7 +128,7 @@ class ListConsultants extends StatelessWidget {
                         child: Padding(
                           padding: const EdgeInsets.all(1.0),
                           child: Container(
-                            width: 106,
+                            width: Get.width / 3.5,
                             height: 41,
                             decoration: BoxDecoration(
                               color: const Color.fromRGBO(41, 111, 226, 1),
@@ -159,7 +157,7 @@ class ListConsultants extends StatelessWidget {
                   children: [
                     Container(
                       height: 250,
-                      width: 165,
+                      width: Get.width / 2.3,
                       decoration: BoxDecoration(
                           boxShadow: const [
                             BoxShadow(
@@ -200,7 +198,7 @@ class ListConsultants extends StatelessWidget {
                     ),
                     Container(
                       height: 250,
-                      width: 165,
+                      width: Get.width / 2.3,
                       decoration: BoxDecoration(
                           boxShadow: const [
                             BoxShadow(
@@ -249,7 +247,7 @@ class ListConsultants extends StatelessWidget {
                   children: [
                     Container(
                       height: 250,
-                      width: 165,
+                      width: Get.width / 2.3,
                       decoration: BoxDecoration(
                           boxShadow: const [
                             BoxShadow(
@@ -290,7 +288,7 @@ class ListConsultants extends StatelessWidget {
                     ),
                     Container(
                       height: 250,
-                      width: 165,
+                      width: Get.width / 2.3,
                       decoration: BoxDecoration(
                           boxShadow: const [
                             BoxShadow(
@@ -339,7 +337,7 @@ class ListConsultants extends StatelessWidget {
                   children: [
                     Container(
                       height: 250,
-                      width: 165,
+                      width: Get.width / 2.3,
                       decoration: BoxDecoration(
                           boxShadow: const [
                             BoxShadow(
@@ -380,7 +378,7 @@ class ListConsultants extends StatelessWidget {
                     ),
                     Container(
                       height: 250,
-                      width: 165,
+                      width: Get.width / 2.3,
                       decoration: BoxDecoration(
                           boxShadow: const [
                             BoxShadow(
@@ -420,8 +418,15 @@ class ListConsultants extends StatelessWidget {
                       ),
                     ),
                   ],
+                ),
+                const SizedBox(
+                  height: 50,
                 )
-              ]),
-            ))));
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
   }
 }
