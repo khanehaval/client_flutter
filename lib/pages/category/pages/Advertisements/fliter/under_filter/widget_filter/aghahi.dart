@@ -13,7 +13,7 @@ class ViewAghahi extends StatefulWidget {
 }
 
 class _ViewAghahiState extends State<ViewAghahi> {
-  bool isFavorite = false; // متغیر برای ردیابی وضعیت مورد علاقه
+  bool isFavorite = false;
 
   @override
   Widget build(BuildContext context) {

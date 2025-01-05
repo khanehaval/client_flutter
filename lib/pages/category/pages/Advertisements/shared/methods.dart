@@ -16,19 +16,19 @@ Widget showAdvertisment(
     child: Column(
       children: [
         Transform.translate(
-          offset: const Offset(20, 110),
+          offset: const Offset(20, 100),
           child: Padding(
-            padding: const EdgeInsets.only(top: 110, right: 40, bottom: 70),
+            padding: const EdgeInsets.only(top: 90, right: 40, bottom: 100),
             child: Container(
               width: Get.width / 1.1,
-              height: Get.height / 2.25,
+              height: Get.height / 2.2,
               decoration:
                   const BoxDecoration(color: Color.fromRGBO(233, 10, 10, 0)),
               child: Stack(
                 children: [
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 30)
-                        .copyWith(top: 100, bottom: 30),
+                        .copyWith(top: 100, bottom: 15),
                     child: GestureDetector(
                       onTap: () {
                         Get.to(() => const NamayeshAgahi1());
@@ -55,28 +55,22 @@ Widget showAdvertisment(
                                     child: Stack(
                                       children: [
                                         Padding(
-                                          padding: const EdgeInsets.all(
-                                              2.0), // تنظیمات فاصله
+                                          padding: const EdgeInsets.all(1.0),
                                           child: ClipRRect(
                                             borderRadius: BorderRadius.circular(
                                                 8), // شعاع گوشه
                                             child: Container(
                                               constraints: const BoxConstraints(
-                                                maxWidth:
-                                                    300, // حداکثر عرض تصویر
-                                                maxHeight:
-                                                    200, // حداکثر ارتفاع تصویر
+                                                maxWidth: 300,
+                                                maxHeight: 200,
                                               ),
                                               child: Image.asset(
                                                 "assets/images/pic.png",
-                                                fit: BoxFit
-                                                    .cover, // تغییر حالت به cover برای حفظ نسبت تصویر
+                                                fit: BoxFit.cover,
                                               ),
                                             ),
                                           ),
                                         ),
-
-                                        // Text(advertismentModel.title),
                                         Align(
                                           alignment: Alignment.centerRight,
                                           child: Padding(
@@ -99,7 +93,10 @@ Widget showAdvertisment(
                                         ),
                                         Padding(
                                           padding: const EdgeInsets.only(
-                                              top: 105, right: 7),
+                                              top: 110,
+                                              right: 8,
+                                              bottom: 8,
+                                              left: 8),
                                           child: Align(
                                             alignment: Alignment.bottomRight,
                                             child: SvgPicture.asset(
@@ -132,7 +129,7 @@ Widget showAdvertisment(
                                           width: 30,
                                         ),
                                         const Padding(
-                                          padding: EdgeInsets.only(right: 5.0),
+                                          padding: EdgeInsets.all(5.0),
                                           child: Text(
                                             "...ویلا 100 متری در زمین 250 متری",
                                             style: TextStyle(
@@ -145,7 +142,7 @@ Widget showAdvertisment(
                                       ],
                                     ),
                                   ),
-                                  const SizedBox(height: 5),
+                                  const SizedBox(height: 10),
                                   Padding(
                                     padding: const EdgeInsets.only(left: 5.0),
                                     child: Row(
@@ -166,9 +163,7 @@ Widget showAdvertisment(
                                               color: Color.fromRGBO(
                                                   99, 99, 99, 1)),
                                         ),
-                                        const SizedBox(
-                                          width: 76,
-                                        ),
+                                        SizedBox(width: Get.width / 3.9),
                                         Row(
                                           children: [
                                             Container(
@@ -211,9 +206,7 @@ Widget showAdvertisment(
                                       ],
                                     ),
                                   ),
-                                  const SizedBox(
-                                    height: 5,
-                                  ),
+                                  const SizedBox(height: 10),
                                   Padding(
                                     padding: const EdgeInsets.only(left: 5.0),
                                     child: Row(
@@ -244,9 +237,7 @@ Widget showAdvertisment(
                                           "assets/images/SQM_metr.svg",
                                           height: 20,
                                         ),
-                                        const SizedBox(
-                                          width: 74,
-                                        ),
+                                        SizedBox(width: Get.width / 4.1),
                                         Container(
                                           width: 35,
                                           height: 19,
@@ -304,7 +295,7 @@ Widget showAdvertisment(
                                           decoration: ShapeDecoration(
                                             color: Colors.white,
                                             shape: RoundedRectangleBorder(
-                                              side: BorderSide(
+                                              side: const BorderSide(
                                                   width: 1,
                                                   color: Color(0xFFA5A5A5)),
                                               borderRadius:
@@ -314,12 +305,11 @@ Widget showAdvertisment(
                                           child: Center(
                                             child: RichText(
                                               textAlign: TextAlign.center,
-                                              textDirection: TextDirection
-                                                  .rtl, // Set direction to RTL
+                                              textDirection: TextDirection.rtl,
                                               text: const TextSpan(
                                                 children: [
                                                   TextSpan(
-                                                    text: '2', // Number first
+                                                    text: '2',
                                                     style: TextStyle(
                                                       color: Color.fromRGBO(
                                                           99, 99, 99, 1),
@@ -357,6 +347,7 @@ Widget showAdvertisment(
                   ),
                   Positioned(
                     left: 160,
+                    right: 160,
                     top: 90,
                     child: GestureDetector(
                       onTap: () {

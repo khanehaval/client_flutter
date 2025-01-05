@@ -433,9 +433,12 @@ class _AdvMapState extends State<AdvMap> {
 
   Widget _buildListButton() {
     return Align(
-      alignment: Alignment.bottomLeft,
+      alignment: Alignment.bottomRight,
       child: Padding(
-        padding: const EdgeInsets.only(bottom: 77, left: 300),
+        padding: const EdgeInsets.only(
+          right: 10,
+          bottom: 77,
+        ),
         child: IconButton(
           onPressed: () {
             Get.to(() => AdvertismetsAxans(),
@@ -448,16 +451,11 @@ class _AdvMapState extends State<AdvMap> {
             child: Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(30),
-                // boxShadow: [
-                //   BoxShadow(
-                //     offset: const Offset(0, 0.5),
-                //     color: Colors.grey.withOpacity(0.10),
-                //     blurRadius: 1,
-                //   ),
-                // ],
               ),
               child: SvgPicture.asset(
                 "assets/images/list - consultant.svg",
+                height: 55,
+                width: 55,
               ),
             ),
           ),
@@ -506,18 +504,14 @@ class _AdvMapState extends State<AdvMap> {
                           child: SingleChildScrollView(
                             child: Column(
                               children: [
-                                const SizedBox(
-                                    height:
-                                        40), // فضای خالی برای قرارگیری Divider در بالا
+                                const SizedBox(height: 40),
                                 SingleChildScrollView(
-                                    child:
-                                        _buildAdvertisementsList()), // محتوای لیست آگهی
+                                    child: _buildAdvertisementsList()),
                               ],
                             ),
                           ),
                         ),
                       ),
-                      // Divider در بالای بلور قرار می‌گیرد
                       Positioned(
                         top: 0,
                         left: 0,
@@ -542,8 +536,6 @@ class _AdvMapState extends State<AdvMap> {
         Padding(
           padding: const EdgeInsets.only(top: 15.0),
           child: SvgPicture.asset('assets/images/divider.svg',
-              // width: 5,
-              // height: 5,
               color: const Color.fromRGBO(166, 166, 166, 1)),
         )
       ],
@@ -558,21 +550,19 @@ class _AdvMapState extends State<AdvMap> {
 }
 
 class TrianglePainter extends CustomPainter {
-  final Color color; // رنگ مثلث
+  final Color color;
 
   TrianglePainter(this.color);
 
   @override
   void paint(Canvas canvas, Size size) {
     final paint = Paint()
-      ..color = color // تنظیم رنگ مثلث به رنگ کانتینر
+      ..color = color
       ..style = PaintingStyle.fill;
-
-    // رسم مثلث در وسط پایین کانتینر
     final path = Path()
-      ..moveTo(size.width / 2, 20) // نقطه وسط پایین مثلث
-      ..lineTo((size.width / 2) - 20, 0) // سمت چپ بالا
-      ..lineTo((size.width / 2) + 20, 0) // سمت راست بالا
+      ..moveTo(size.width / 2, 20)
+      ..lineTo((size.width / 2) - 20, 0)
+      ..lineTo((size.width / 2) + 20, 0)
       ..close();
 
     canvas.drawPath(path, paint);

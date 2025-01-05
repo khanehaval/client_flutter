@@ -24,7 +24,7 @@ class NamayeshAgahi1 extends StatelessWidget {
                         top: MediaQuery.of(context).padding.top),
                     child: Image.asset(
                       "assets/images/Pic One.png",
-                      height: 310,
+                      height: Get.height / 2.55,
                       fit: BoxFit.fitWidth,
                     ),
                   ),
@@ -223,13 +223,18 @@ class NamayeshAgahi1 extends StatelessWidget {
                                   child: SvgPicture.asset(
                                       'assets/images/facilit.svg'),
                                 ),
-                                const SizedBox(height: 20),
-                                const Text(
-                                  ' .........................................................  ویژگی های آگهی  ',
-                                  style: TextStyle(
-                                    fontFamily: MAIN_FONT_FAMILY,
-                                    fontSize: 12,
-                                    color: Color.fromRGBO(99, 99, 99, 1),
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                const Padding(
+                                  padding: EdgeInsets.all(8.0),
+                                  child: Text(
+                                    ' ....................................................  ویژگی های آگهی  ',
+                                    style: TextStyle(
+                                      fontFamily: MAIN_FONT_FAMILY,
+                                      fontSize: 12,
+                                      color: Color.fromRGBO(99, 99, 99, 1),
+                                    ),
                                   ),
                                 ),
                                 const SizedBox(height: 20),
@@ -239,13 +244,16 @@ class NamayeshAgahi1 extends StatelessWidget {
                                   child: SvgPicture.asset(
                                       'assets/images/detail2.svg'),
                                 ),
-                                const SizedBox(height: 30),
-                                const Text(
-                                  ' ............................................................  امکانات آگهی ',
-                                  style: TextStyle(
-                                    fontFamily: MAIN_FONT_FAMILY,
-                                    fontSize: 12,
-                                    color: Color.fromRGBO(99, 99, 99, 1),
+                                const SizedBox(height: 20),
+                                const Padding(
+                                  padding: EdgeInsets.all(8.0),
+                                  child: Text(
+                                    ' .........................................................  امکانات آگهی ',
+                                    style: TextStyle(
+                                      fontFamily: MAIN_FONT_FAMILY,
+                                      fontSize: 12,
+                                      color: Color.fromRGBO(99, 99, 99, 1),
+                                    ),
                                   ),
                                 ),
                                 const SizedBox(height: 30),
@@ -256,19 +264,23 @@ class NamayeshAgahi1 extends StatelessWidget {
                                       'assets/images/detail3.svg'),
                                 ),
                                 const SizedBox(height: 30),
-                                const Text(
-                                  ' .........................................................  توضیحات آگهی ',
-                                  style: TextStyle(
-                                    fontFamily: MAIN_FONT_FAMILY,
-                                    fontSize: 12,
-                                    color: Color.fromRGBO(99, 99, 99, 1),
+                                const Padding(
+                                  padding: EdgeInsets.all(8.0),
+                                  child: Text(
+                                    ' .....................................................  توضیحات آگهی ',
+                                    style: TextStyle(
+                                      fontFamily: MAIN_FONT_FAMILY,
+                                      fontSize: 12,
+                                      color: Color.fromRGBO(99, 99, 99, 1),
+                                    ),
                                   ),
                                 ),
                                 const SizedBox(height: 30),
                                 const Align(
                                   alignment: Alignment.centerRight,
                                   child: Padding(
-                                    padding: EdgeInsets.only(right: 20.0),
+                                    padding:
+                                        EdgeInsets.only(right: 20.0, left: 20),
                                     child: Text(
                                       'نورگیر عالی\nدر بهترین لوکیشن منطقه\nفاصله با دریا تنها 5 دقیقه\nنزدیک به سوپر مارکت و فروشگاه های بزرگ منطقه\nمحوطه ویلا درخت کاری شده\nاستخر با امکانات روز\nمعماری مدرن و بهترین متریال',
                                       textAlign: TextAlign.right,
@@ -306,7 +318,7 @@ class NamayeshAgahi1 extends StatelessWidget {
                                     GestureDetector(
                                         onTap: () {
                                           DetailCall((selectedMelk) {
-                                            selectedMelk; // Update TextField with selected option
+                                            selectedMelk;
                                           });
                                         },
                                         child: SvgPicture.asset(
@@ -315,104 +327,103 @@ class NamayeshAgahi1 extends StatelessWidget {
                                 ),
                                 const SizedBox(height: 30),
                                 Padding(
-                                    padding: const EdgeInsets.all(2.0),
-                                    child: Row(
-                                      children: [
-                                        Container(
-                                          height: 45,
-                                          width: 150,
-                                          decoration: ShapeDecoration(
-                                            color: Colors.white,
-                                            shape: RoundedRectangleBorder(
-                                              side: const BorderSide(
-                                                  width: 1,
-                                                  color: Color(0xFFB7B7B7)),
-                                              borderRadius:
-                                                  BorderRadius.circular(10),
-                                            ),
-                                          ),
-                                          child: Padding(
-                                            padding: const EdgeInsets.only(
-                                                right: 10.0),
-                                            child: Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.end,
-                                              children: [
-                                                SvgPicture.asset(
-                                                  'assets/images/left_icon.svg',
-                                                  width: 10,
-                                                  height: 15,
-                                                ),
-                                                const SizedBox(
-                                                  width: 15,
-                                                ),
-                                                const Text(
-                                                  'گزارش مشکل آگهی',
-                                                  style: TextStyle(
-                                                      fontFamily:
-                                                          MAIN_FONT_FAMILY,
-                                                      fontSize: 9),
-                                                ),
-                                                const SizedBox(
-                                                  width: 10,
-                                                ),
-                                                SvgPicture.asset(
-                                                  'assets/images/Vector-51.svg',
-                                                ),
-                                              ],
-                                            ),
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Row(
+                                    children: [
+                                      Container(
+                                        height: 45,
+                                        width: Get.width / 2.5,
+                                        decoration: ShapeDecoration(
+                                          color: Colors.white,
+                                          shape: RoundedRectangleBorder(
+                                            side: const BorderSide(
+                                                width: 1,
+                                                color: Color(0xFFB7B7B7)),
+                                            borderRadius:
+                                                BorderRadius.circular(10),
                                           ),
                                         ),
-                                        const SizedBox(
-                                          width: 20,
-                                        ),
-                                        Container(
-                                          height: 45,
-                                          width: 177,
-                                          decoration: ShapeDecoration(
-                                            color: Colors.white,
-                                            shape: RoundedRectangleBorder(
-                                              side: const BorderSide(
-                                                  width: 1,
-                                                  color: Color(0xFFB7B7B7)),
-                                              borderRadius:
-                                                  BorderRadius.circular(10),
-                                            ),
-                                          ),
-                                          child: Padding(
-                                            padding: const EdgeInsets.only(
-                                                right: 10.0),
-                                            child: Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.end,
-                                              children: [
-                                                SvgPicture.asset(
-                                                  'assets/images/left_icon.svg',
-                                                  width: 10,
-                                                  height: 15,
-                                                ),
-                                                const SizedBox(
-                                                  width: 10,
-                                                ),
-                                                const Text(
-                                                  'زنگ خطرهای قبل از معامله',
-                                                  style: TextStyle(
-                                                      fontFamily:
-                                                          MAIN_FONT_FAMILY,
-                                                      fontSize: 9),
-                                                ),
-                                                const SizedBox(
-                                                  width: 10,
-                                                ),
-                                                SvgPicture.asset(
-                                                  'assets/images/Alarm Icon.svg',
-                                                ),
-                                              ],
-                                            ),
+                                        child: Padding(
+                                          padding: const EdgeInsets.only(
+                                              right: 10.0),
+                                          child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.end,
+                                            children: [
+                                              SvgPicture.asset(
+                                                'assets/images/left_icon.svg',
+                                                width: 10,
+                                                height: 15,
+                                              ),
+                                              const SizedBox(
+                                                width: 15,
+                                              ),
+                                              const Text(
+                                                'گزارش مشکل آگهی',
+                                                style: TextStyle(
+                                                    fontFamily:
+                                                        MAIN_FONT_FAMILY,
+                                                    fontSize: 9),
+                                              ),
+                                              const SizedBox(
+                                                width: 10,
+                                              ),
+                                              SvgPicture.asset(
+                                                'assets/images/Vector-51.svg',
+                                              ),
+                                            ],
                                           ),
                                         ),
-                                      ],
-                                    )),
+                                      ),
+                                      const SizedBox(width: 10),
+                                      Container(
+                                        height: 45,
+                                        width: Get.width / 2.1,
+                                        decoration: ShapeDecoration(
+                                          color: Colors.white,
+                                          shape: RoundedRectangleBorder(
+                                            side: const BorderSide(
+                                                width: 1,
+                                                color: Color(0xFFB7B7B7)),
+                                            borderRadius:
+                                                BorderRadius.circular(10),
+                                          ),
+                                        ),
+                                        child: Padding(
+                                          padding: const EdgeInsets.only(
+                                              right: 10.0),
+                                          child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.end,
+                                            children: [
+                                              SvgPicture.asset(
+                                                'assets/images/left_icon.svg',
+                                                width: 10,
+                                                height: 15,
+                                              ),
+                                              const SizedBox(
+                                                width: 10,
+                                              ),
+                                              const Text(
+                                                'زنگ خطرهای قبل از معامله',
+                                                style: TextStyle(
+                                                    fontFamily:
+                                                        MAIN_FONT_FAMILY,
+                                                    fontSize: 9),
+                                              ),
+                                              const SizedBox(
+                                                width: 10,
+                                              ),
+                                              SvgPicture.asset(
+                                                'assets/images/Alarm Icon.svg',
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
                                 const SizedBox(height: 50),
                               ],
                             ),
