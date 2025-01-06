@@ -25,37 +25,40 @@ class SachtSaz extends StatelessWidget {
         ),
         dividerwidget(),
         const SizedBox(
-          height: 10,
+          height: 5,
         ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            Container(
-                height: 90,
-                width: 170,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(10),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(.01),
-                    )
-                  ],
-                ),
-                child: SvgPicture.asset(
-                  'assets/images/Group pishforosh.svg',
-                )),
-            Container(
-                height: 90,
-                width: 170,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                child: SvgPicture.asset(
-                  'assets/images/Group sakht.svg',
-                )),
-          ],
+        Padding(
+          padding: const EdgeInsets.all(14.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Container(
+                  height: 90,
+                  width: 170,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(.01),
+                      )
+                    ],
+                  ),
+                  child: SvgPicture.asset(
+                    'assets/images/Group pishforosh.svg',
+                  )),
+              Container(
+                  height: 90,
+                  width: 170,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: SvgPicture.asset(
+                    'assets/images/Group sakht.svg',
+                  )),
+            ],
+          ),
         ),
         const SizedBox(
           height: 10,

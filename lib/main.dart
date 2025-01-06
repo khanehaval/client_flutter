@@ -73,52 +73,27 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
         builder: (context, child) {
           return MediaQuery(
-            data: MediaQuery.of(context).copyWith(
-                textScaler: const TextScaler.linear(
-                    1.0)), // غیرفعال کردن تغییر اندازه فونت
-            child: child!,
-          );
+              data: MediaQuery.of(context)
+                  .copyWith(textScaler: const TextScaler.linear(1.0)),
+              child: child ?? Container());
         },
         debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-            textTheme: TextTheme(
-              bodyLarge: TextStyle(
-                fontSize: 16.0, // اندازه فونت ثابت
-                fontWeight: FontWeight.normal,
-                fontFamily: MAIN_FONT_FAMILY, // فونت ثابت
-              ),
-              bodyMedium: TextStyle(
-                fontSize: 14.0, // اندازه فونت ثابت
-                fontWeight: FontWeight.normal,
-                fontFamily: MAIN_FONT_FAMILY, // فونت ثابت
-              ),
-              displayLarge: TextStyle(
-                fontSize: 32.0, // اندازه فونت ثابت
-                fontWeight: FontWeight.bold,
-                fontFamily: MAIN_FONT_FAMILY, // فونت ثابت
-              ),
-              displayMedium: TextStyle(
-                fontSize: 28.0, // اندازه فونت ثابت
-                fontWeight: FontWeight.bold,
-                fontFamily: MAIN_FONT_FAMILY, // فونت ثابت
-              ),
-              // سایر استایل‌های متنی را نیز می‌توانید به همین شکل تنظیم کنید
-            ),
-            fontFamily: MAIN_FONT_FAMILY),
+        theme: ThemeData(fontFamily: MAIN_FONT_FAMILY),
         debugShowMaterialGrid: false,
         home: FutureBuilder<bool>(
-            future: _userRepo.isLogin(),
-            builder: (c, s) {
-              if (s.hasData && s.data != null && s.data!) {
-                return Advertisements();
-              } else {
-                if (s.connectionState == ConnectionState.active ||
-                    s.connectionState == ConnectionState.done) {
-                  return sliderWidget();
-                }
-                return Container();
+          future: _userRepo.isLogin(),
+          builder: (c, s) {
+            if (s.hasData && s.data != null && s.data!) {
+              return Advertisements();
+            } else {
+              if (s.connectionState == ConnectionState.active ||
+                  s.connectionState == ConnectionState.done) {
+                return sliderWidget();
               }
-            }));
+              return Container();
+            }
+          },
+        ));
   }
 
   Widget sliderWidget() {

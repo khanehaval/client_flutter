@@ -353,50 +353,59 @@ class _SelectLocationMapState extends State<SelectLocationMap> {
   }
 
   Widget _buildCitySelector() {
-    return Padding(
-      padding: const EdgeInsets.only(top: 20.0),
-      child: Column(
-        children: [
-          GestureDetector(
-            onTap: () async {
-              var selectedCityId = await Get.to(() => CityWidget(selectedCity));
-              if (selectedCityId != null && selectedCityId.isNotEmpty) {
-                setState(() {
-                  locationInfo.cityName = selectedCityId;
-                  saleApartemanServerModel.cityId = selectedCityId;
-                });
-              }
-            },
-            child: Container(
-              decoration: BoxDecoration(
-                color: Colors.white,
-                border: Border.all(
-                  color: const Color.fromARGB(255, 158, 147, 147),
-                ),
-                borderRadius: BorderRadius.circular(10),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.end,
+      children: [
+        const Padding(
+          padding: EdgeInsets.only(right: 10.0),
+          child: Text(
+            "انتخاب شهر",
+            style: TextStyle(
+              color: Color.fromRGBO(99, 99, 99, 1),
+              fontSize: 14,
+              fontFamily: MAIN_FONT_FAMILY,
+            ),
+          ),
+        ),
+        GestureDetector(
+          onTap: () async {
+            var selectedCityId = await Get.to(() => CityWidget(selectedCity));
+            if (selectedCityId != null && selectedCityId.isNotEmpty) {
+              setState(() {
+                locationInfo.cityName = selectedCityId;
+                saleApartemanServerModel.cityId = selectedCityId;
+              });
+            }
+          },
+          child: Container(
+            decoration: BoxDecoration(
+              color: Colors.white,
+              border: Border.all(
+                color: const Color.fromARGB(255, 158, 147, 147),
               ),
-              child: SizedBox(
-                height: 40,
-                width: getPageWidthlocation(),
-                child: Center(
-                  child: Padding(
-                    padding: const EdgeInsets.only(right: 10.0),
-                    child: Align(
-                      alignment: Alignment.centerRight,
-                      child: Padding(
-                        padding: const EdgeInsets.only(right: 5.0),
-                        child: Obx(
-                          () => Text(
-                            selectedCity.value.isEmpty
-                                ? 'شهر را انتخاب کنید'
-                                : selectedCity.value,
-                            style: const TextStyle(
-                              fontFamily: 'Iran Sans Bold',
-                              color: Color.fromRGBO(48, 48, 48, 1),
-                              fontWeight: FontWeight.w400,
-                            ),
-                            textAlign: TextAlign.center,
+              borderRadius: BorderRadius.circular(10),
+            ),
+            child: SizedBox(
+              height: 40,
+              width: getPageWidthlocation(),
+              child: Center(
+                child: Padding(
+                  padding: const EdgeInsets.only(right: 10.0),
+                  child: Align(
+                    alignment: Alignment.centerRight,
+                    child: Padding(
+                      padding: const EdgeInsets.only(right: 5.0),
+                      child: Obx(
+                        () => Text(
+                          selectedCity.value.isEmpty
+                              ? 'شهر را انتخاب کنید'
+                              : selectedCity.value,
+                          style: const TextStyle(
+                            fontFamily: 'Iran Sans Bold',
+                            color: Color.fromRGBO(48, 48, 48, 1),
+                            fontWeight: FontWeight.w400,
                           ),
+                          textAlign: TextAlign.center,
                         ),
                       ),
                     ),
@@ -405,8 +414,8 @@ class _SelectLocationMapState extends State<SelectLocationMap> {
               ),
             ),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 
