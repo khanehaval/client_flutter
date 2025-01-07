@@ -93,7 +93,7 @@ Widget showAdvertisment(
                                         ),
                                         Padding(
                                           padding: const EdgeInsets.only(
-                                              top: 110,
+                                              top: 100,
                                               right: 8,
                                               bottom: 8,
                                               left: 8),
@@ -163,7 +163,7 @@ Widget showAdvertisment(
                                               color: Color.fromRGBO(
                                                   99, 99, 99, 1)),
                                         ),
-                                        SizedBox(width: Get.width / 3.9),
+                                        SizedBox(width: Get.width / 4.6),
                                         Row(
                                           children: [
                                             Container(
@@ -237,7 +237,7 @@ Widget showAdvertisment(
                                           "assets/images/SQM_metr.svg",
                                           height: 20,
                                         ),
-                                        SizedBox(width: Get.width / 4.1),
+                                        SizedBox(width: Get.width / 5),
                                         Container(
                                           width: 35,
                                           height: 19,
@@ -255,12 +255,11 @@ Widget showAdvertisment(
                                           child: Center(
                                             child: RichText(
                                               textAlign: TextAlign.center,
-                                              textDirection: TextDirection
-                                                  .rtl, // Set direction to RTL
+                                              textDirection: TextDirection.rtl,
                                               text: const TextSpan(
                                                 children: [
                                                   TextSpan(
-                                                    text: '100', // Number first
+                                                    text: '100',
                                                     style: TextStyle(
                                                       color: Color.fromRGBO(
                                                           99, 99, 99, 1),
@@ -364,9 +363,6 @@ Widget showAdvertisment(
               ),
             ),
           ),
-        ),
-        const SizedBox(
-          height: 20,
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
