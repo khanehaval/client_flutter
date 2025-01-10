@@ -9,9 +9,7 @@ import 'package:flutter_application_1/db/entities/estate.dart';
 import 'package:flutter_application_1/db/entities/user.dart';
 import 'package:flutter_application_1/db/entities/user_type.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/advertisements.dart';
-import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/forosh_adv_pages/saleapartemancontroller.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
-import 'package:flutter_application_1/pages/intro_screen.dart';
 import 'package:flutter_application_1/pages/register/register.dart';
 import 'package:flutter_application_1/pages/screens/screen1.dart';
 import 'package:flutter_application_1/pages/screens/screen3.dart';
@@ -36,11 +34,7 @@ void main() async {
   Hive.registerAdapter(EstateAdapter());
   initServicesAndRepo();
 
-  runApp(
-    GetMaterialApp(
-      home: MyApp(),
-    ),
-  );
+  runApp(MyApp());
 }
 
 void initServicesAndRepo() {
@@ -70,121 +64,124 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        builder: (context, child) {
-          return MediaQuery(
-              data: MediaQuery.of(context)
-                  .copyWith(textScaler: const TextScaler.linear(1.0)),
-              child: child ?? Container());
+    return GetMaterialApp(
+      debugShowCheckedModeBanner: false,
+      builder: (context, child) {
+        // تنظیم textScaler برای کل اپلیکیشن
+        return MediaQuery(
+          data: MediaQuery.of(context).copyWith(
+            textScaler: const TextScaler.linear(1.0), // ثابت نگه داشتن اندازه فونت
+          ),
+          child: child ?? Container(),
+        );
+      },
+      theme: ThemeData(fontFamily: MAIN_FONT_FAMILY),
+      debugShowMaterialGrid: false,
+      home: FutureBuilder<bool>(
+        future: _userRepo.isLogin(),
+        builder: (c, s) {
+          if (s.connectionState == ConnectionState.waiting) {
+            return const Center(child: CircularProgressIndicator()); // نمایش loading
+          } else if (s.hasError) {
+            return Center(child: Text('خطا: ${s.error}')); // نمایش خطا
+          } else if (s.hasData) {
+            return s.data! ? Advertisements() : sliderWidget(); // بررسی مقدار s.data
+          } else {
+            return sliderWidget(); // حالت پیش‌فرض
+          }
         },
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData(fontFamily: MAIN_FONT_FAMILY),
-        debugShowMaterialGrid: false,
-        home: FutureBuilder<bool>(
-          future: _userRepo.isLogin(),
-          builder: (c, s) {
-            if (s.hasData && s.data != null && s.data!) {
-              return Advertisements();
-            } else {
-              if (s.connectionState == ConnectionState.active ||
-                  s.connectionState == ConnectionState.done) {
-                return sliderWidget();
-              }
-              return Container();
-            }
-          },
-        ));
+      ),
+    );
   }
 
   Widget sliderWidget() {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: FutureBuilder<bool>(
-          future: _userRepo.isLogin(),
-          builder: (context, snapshot) {
-            return Stack(
+      body: Stack(
+        children: [
+          PageView(
+            controller: pageController,
+            onPageChanged: (index) {
+              _sliderIndex.value = index;
+            },
+            children: const [Screen1(), Screen2(), Screen3()],
+          ),
+          Positioned(
+            bottom: 30,
+            left: 0,
+            right: 0,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                PageView(
+                SmoothPageIndicator(
                   controller: pageController,
-                  onPageChanged: (index) {
-                    _sliderIndex.value = index;
-                  },
-                  children: const [Screen1(), Screen2(), Screen3()],
-                ),
-                Positioned(
-                  bottom: 30,
-                  left: 0,
-                  right: 0,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      SmoothPageIndicator(
-                        controller: pageController,
-                        count: 3,
-                        effect: const WormEffect(
-                            dotWidth: 8.0,
-                            dotHeight: 8.0,
-                            dotColor: Color.fromARGB(255, 214, 213, 213),
-                            activeDotColor: Color.fromARGB(255, 7, 201, 69)),
-                      ),
-                      const SizedBox(height: 10),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Obx(() {
-                            return GestureDetector(
-                              onTap: () {
-                                if (_sliderIndex.value < 2) {
-                                  pageController.nextPage(
-                                    duration: const Duration(milliseconds: 500),
-                                    curve: Curves.decelerate,
-                                  );
-                                } else {
-                                  // Handle the start button action here
-                                  // For example, navigate to another screen
-                                  Get.off(() => const Register());
-                                }
-                              },
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(30),
-                                  gradient: GetGradient(),
-                                ),
-                                child: Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      vertical: 8, horizontal: 20),
-                                  child: Row(
-                                    children: [
-                                      Text(
-                                        _sliderIndex.value < 2
-                                            ? "بعدی"
-                                            : "شروع",
-                                        style: const TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 15,
-                                          fontFamily: MAIN_FONT_FAMILY,
-                                        ),
-                                      ),
-                                      const SizedBox(width: 8),
-                                      Image.asset(
-                                        'assets/images/arrow_right.png',
-                                        width: 17,
-                                        height: 17,
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            );
-                          }),
-                        ],
-                      ),
-                    ],
+                  count: 3,
+                  effect: const WormEffect(
+                    dotWidth: 8.0,
+                    dotHeight: 8.0,
+                    dotColor: Color.fromARGB(255, 214, 213, 213),
+                    activeDotColor: Color.fromARGB(255, 7, 201, 69),
                   ),
                 ),
+                const SizedBox(height: 10),
+                Obx(() {
+                  return GestureDetector(
+                    onTap: () {
+                      if (_sliderIndex.value < 2) {
+                        pageController.nextPage(
+                          duration: const Duration(milliseconds: 500),
+                          curve: Curves.decelerate,
+                        );
+                      } else {
+                        Get.off(() => const Register());
+                      }
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(30),
+                        gradient: GetGradient(),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                          vertical: 8,
+                          horizontal: 20,
+                        ),
+                        child: Row(
+                          children: [
+                            Text(
+                              _sliderIndex.value < 2 ? "بعدی" : "شروع",
+                              style: const TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 15,
+                                fontFamily: MAIN_FONT_FAMILY,
+                              ),
+                            ),
+                            const SizedBox(width: 8),
+                            Image.asset(
+                              'assets/images/arrow_right.png',
+                              width: 17,
+                              height: 17,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  );
+                }),
               ],
-            );
-          }),
+            ),
+          ),
+        ],
+      ),
     );
   }
+}
+
+// تابع GetGradient برای ایجاد گرادیانت
+LinearGradient GetGradient() {
+  return LinearGradient(
+    colors: [Colors.blue, Colors.green], // رنگ‌های گرادیانت
+    begin: Alignment.topLeft,
+    end: Alignment.bottomRight,
+  );
 }
