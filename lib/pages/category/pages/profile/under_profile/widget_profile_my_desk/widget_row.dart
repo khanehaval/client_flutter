@@ -9,7 +9,7 @@ class WidgetRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(right: 20.0),
+      padding: const EdgeInsets.only(right: 25.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
@@ -50,7 +50,7 @@ class WidgetRow extends StatelessWidget {
             ),
           ),
           const SizedBox(
-            width: 10,
+            width: 20,
           ),
           Container(
             decoration: BoxDecoration(
@@ -90,40 +90,6 @@ class WidgetRow extends StatelessWidget {
           ),
           const SizedBox(
             width: 10,
-          ),
-          Container(
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(11), color: Colors.grey),
-            child: Padding(
-              padding: const EdgeInsets.all(1.0),
-              child: Container(
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: Colors.white),
-                width: Get.width / 6.5,
-                height: 31,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    SvgPicture.asset(
-                      'assets/images/arrow_down.svg',
-                      width: 7,
-                      height: 7,
-                    ),
-                    const Text(
-                      'وضعیت ',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: Color(0xFF303030),
-                        fontSize: 9,
-                        fontFamily: MAIN_FONT_FAMILY_MEDIUM,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
           ),
           const SizedBox(
             width: 10,

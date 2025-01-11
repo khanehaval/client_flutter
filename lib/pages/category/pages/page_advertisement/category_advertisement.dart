@@ -30,55 +30,56 @@ class _CategoryAdvertisementState extends State<CategoryAdvertisement> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Column(
-              children: [
-                const Text(
-                  "انتخاب دسته بندی",
-                  style: TextStyle(
-                    fontFamily: MAIN_FONT_FAMILY,
-                    color: Color.fromRGBO(99, 99, 99, 1),
-                    fontSize: 25,
-                  ),
+        child: Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Column(
+            children: [
+              const Text(
+                "انتخاب دسته بندی",
+                style: TextStyle(
+                  fontFamily: MAIN_FONT_FAMILY,
+                  color: Color.fromRGBO(99, 99, 99, 1),
+                  fontSize: 25,
                 ),
-                const SizedBox(height: 20),
-                Image.asset(
-                  'assets/images/key and home1.png',
-                  height: Get.height / 4,
-                  width: Get.height / 4,
-                ),
-              ],
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 30),
-              child: Column(
-                children: [
-                  _buildRow([
-                    _buildItem('rentstore', 'assets/images/Frame_rentstore.png',
-                        EjaraAdv()),
-                    _buildItem('salehome', 'assets/images/Frame_salehome.png',
-                        const ForoshAdv()),
-                  ]),
-                  const SizedBox(height: 10),
-                  _buildRow([
-                    _buildItem('rent', 'assets/images/Frame_rent.png',
-                        EjaraTejariAdv()),
-                    _buildItem('salestore', 'assets/images/Frame_salestore.png',
-                        const ForoshTejariAdv()),
-                  ]),
-                  const SizedBox(height: 10),
-                  _buildRow([
-                    _buildItem('daily', 'assets/images/Frame_Daily.png',
-                        EjaraKotaModatPage()),
-                    _buildItem('construction',
-                        'assets/images/Frame_Construction.png', SakhVaSaz()),
-                  ]),
-                  const SizedBox(height: 7),
-                ],
               ),
-            ),
-          ],
+              const SizedBox(height: 10),
+              Image.asset(
+                'assets/images/key and home1.png',
+                height: Get.height / 4,
+                width: Get.height / 4,
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 20),
+                child: Column(
+                  children: [
+                    _buildRow([
+                      _buildItem('rentstore',
+                          'assets/images/Frame_rentstore.png', EjaraAdv()),
+                      _buildItem('salehome', 'assets/images/Frame_salehome.png',
+                          const ForoshAdv()),
+                    ]),
+                    const SizedBox(height: 10),
+                    _buildRow([
+                      _buildItem('rent', 'assets/images/Frame_rent.png',
+                          EjaraTejariAdv()),
+                      _buildItem(
+                          'salestore',
+                          'assets/images/Frame_salestore.png',
+                          const ForoshTejariAdv()),
+                    ]),
+                    const SizedBox(height: 10),
+                    _buildRow([
+                      _buildItem('daily', 'assets/images/Frame_Daily.png',
+                          EjaraKotaModatPage()),
+                      _buildItem('construction',
+                          'assets/images/Frame_Construction.png', SakhVaSaz()),
+                    ]),
+                    const SizedBox(height: 7),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

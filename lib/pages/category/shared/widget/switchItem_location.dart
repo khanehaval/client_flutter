@@ -37,7 +37,7 @@ class _SwitchItemsState extends State<SwitchItemsLocation> {
 
   Widget _buildRow(String item) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 125.0),
+      padding: const EdgeInsets.symmetric(horizontal: 120.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -48,7 +48,7 @@ class _SwitchItemsState extends State<SwitchItemsLocation> {
                     textAlign: TextAlign
                         .right, // این بخش متن را درون Text راست‌چین می‌کند
                     style: const TextStyle(
-                      fontSize: 13,
+                      fontSize: 12,
                       fontFamily: MAIN_FONT_FAMILY,
                     ))),
           ),

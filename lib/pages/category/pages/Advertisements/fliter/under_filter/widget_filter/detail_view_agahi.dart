@@ -159,7 +159,7 @@ class _DetailViewAgahiState extends State<DetailViewAgahi> {
                                       fontFamily: MAIN_FONT_FAMILY_MEDIUM,
                                       color: Color.fromRGBO(99, 99, 99, 1)),
                                 ),
-                                SizedBox(width: Get.width / 3.5),
+                                SizedBox(width: Get.width / 3.35),
                                 Flexible(
                                   child: Row(
                                     children: [

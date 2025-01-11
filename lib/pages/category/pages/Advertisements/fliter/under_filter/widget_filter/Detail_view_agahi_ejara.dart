@@ -164,7 +164,7 @@ class _DetailViewAgahiEjaraState extends State<DetailViewAgahiEjara> {
                                       fontFamily: MAIN_FONT_FAMILY_MEDIUM,
                                       color: Color.fromRGBO(99, 99, 99, 1)),
                                 ),
-                                SizedBox(width: Get.width / 3.9),
+                                SizedBox(width: Get.width / 3.65),
                                 Flexible(
                                   child: Row(
                                     children: [

@@ -112,10 +112,9 @@ class ForshAdvLocationPage extends StatelessWidget {
                   ),
                 ),
               ),
-              const SizedBox(height: 65),
+              const SizedBox(height: 20),
               GestureDetector(
                 onTap: () {
-                  // بررسی کنید که نوع ملک انتخاب شده است
                   if (saleApartemanServerModel.buildingType != null) {
                     Get.to(() => ForoshAdvPage());
                   } else {

@@ -25,9 +25,9 @@ class ProfileHome extends StatelessWidget {
           children: [
             _buildProfileHeader(context),
             const Divider(
-              endIndent: 25,
-              indent: 25,
-              color: Color.fromRGBO(87, 56, 56, 1),
+              endIndent: 20,
+              indent: 20,
+              color: Color.fromRGBO(226, 226, 226, 1),
             ),
             Expanded(
               child: Padding(
@@ -69,7 +69,7 @@ class ProfileHome extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Container(
-                  width: Get.width / 3.2,
+                  width: Get.width / 3.3,
                   height: 74,
                   decoration: ShapeDecoration(
                     color: Colors.white,
@@ -138,7 +138,7 @@ class ProfileHome extends StatelessWidget {
                     Get.to(() => const ProfileDetail());
                   },
                   child: Container(
-                    width: Get.width / 1.9,
+                    width: Get.width / 2.0,
                     height: 74,
                     decoration: ShapeDecoration(
                       color: Colors.white,

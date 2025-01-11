@@ -76,9 +76,9 @@ class _ProfilePageState extends State<ProfilePage>
                 boxShadow: [BoxShadow(color: Colors.black12, blurRadius: 2)],
               ),
               child: Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(10.0),
                 child: SizedBox(
-                  height: Get.height / 1.40,
+                  height: Get.height / 1.37,
                   width: Get.width / 1.7,
                   child: Material(
                     color: Colors.white,
@@ -96,16 +96,14 @@ class _ProfilePageState extends State<ProfilePage>
                             height: 18,
                           ),
                         ),
-                        const SizedBox(height: 10),
                         _profileHeader(),
-                        const SizedBox(height: 20),
-                        const Divider(color: Color.fromRGBO(226, 226, 226, 1)),
-                        Expanded(child: _buildMenuItems()),
-                        const SizedBox(height: 20),
-                        const Divider(color: Color.fromRGBO(226, 226, 226, 1)),
-                        const SizedBox(height: 20),
-                        _buildFooter(),
-                        const SizedBox(height: 20),
+                        const SizedBox(height: 10),
+                        const Divider(
+                          color: Color.fromRGBO(226, 226, 226, 1),
+                        ),
+                        Expanded(
+                          child: _buildMenuItems(),
+                        ),
                       ],
                     ),
                   ),
@@ -193,69 +191,77 @@ class _ProfilePageState extends State<ProfilePage>
   }
 
   Widget _buildMenuItems() {
-    return Column(
-      children: [
-        InkWell(
-          onTap: () {
-            Get.to(() => const ProfileHome(),
-                transition: Transition.leftToRight);
-          },
-          child: _item('assets/images/Home.svg', "خانه"),
-        ),
-        const SizedBox(height: 10),
-        InkWell(
-          onTap: () {
-            Get.to(() => const ProfileMyDesk(),
-                transition: Transition.leftToRight);
-          },
-          child: _item('assets/images/profile_category.svg', "میزکار"),
-        ),
-        const SizedBox(height: 10),
-        InkWell(
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Column(
+        children: [
+          const SizedBox(height: 10),
+          InkWell(
             onTap: () {
-              Get.to(() => FirstPageMessages(),
+              Get.to(() => const ProfileHome(),
                   transition: Transition.leftToRight);
             },
-            child: _item('assets/images/profile_message.svg', "پیام ها")),
-        const SizedBox(height: 10),
-        Padding(
-          padding: const EdgeInsets.only(right: 5.0),
-          child: InkWell(
-            onTap: () {
-              Get.to(() => ColleaguesProfile(),
-                  transition: Transition.leftToRight);
-            },
-            child: _item('assets/images/profile_moshavere.svg', "همکاران"),
+            child: _item('assets/images/Home.svg', "خانه"),
           ),
-        ),
-        const SizedBox(height: 10),
-        InkWell(
-          onTap: () {
-            Get.to(() => const Vitrin(), transition: Transition.leftToRight);
-          },
-          child: _item('assets/images/vitrin_profile_icon_off.svg', "ویترین"),
-        ),
-        const SizedBox(height: 10),
-        InkWell(
-          onTap: () {
-            Get.to(() => const CategoryProfile(index: 0),
-                transition: Transition.leftToRight);
-          },
-          child: _item(
-              'assets/images/Agahi_man_profile_home_off.svg', "آگهی های من"),
-        ),
-        const SizedBox(height: 10),
-        InkWell(
-          onTap: () {
-            Get.to(() => const ProfileNotification(),
-                transition: Transition.leftToRight);
-          },
-          child: Padding(
+          const SizedBox(height: 10),
+          InkWell(
+            onTap: () {
+              Get.to(() => const ProfileMyDesk(),
+                  transition: Transition.leftToRight);
+            },
+            child: _item('assets/images/profile_category.svg', "میزکار"),
+          ),
+          const SizedBox(height: 10),
+          InkWell(
+              onTap: () {
+                Get.to(() => FirstPageMessages(),
+                    transition: Transition.leftToRight);
+              },
+              child: _item('assets/images/profile_message.svg', "پیام ها")),
+          const SizedBox(height: 10),
+          Padding(
             padding: const EdgeInsets.only(right: 5.0),
-            child: _item('assets/images/rington_off.svg', "اطلاع رسانی"),
+            child: InkWell(
+              onTap: () {
+                Get.to(() => ColleaguesProfile(),
+                    transition: Transition.leftToRight);
+              },
+              child: _item('assets/images/profile_moshavere.svg', "همکاران"),
+            ),
           ),
-        ),
-      ],
+          const SizedBox(height: 10),
+          InkWell(
+            onTap: () {
+              Get.to(() => const Vitrin(), transition: Transition.leftToRight);
+            },
+            child: _item('assets/images/vitrin_profile_icon_off.svg', "ویترین"),
+          ),
+          const SizedBox(height: 10),
+          InkWell(
+            onTap: () {
+              Get.to(() => const CategoryProfile(index: 0),
+                  transition: Transition.leftToRight);
+            },
+            child: _item(
+                'assets/images/Agahi_man_profile_home_off.svg', "آگهی های من"),
+          ),
+          const SizedBox(height: 10),
+          InkWell(
+            onTap: () {
+              Get.to(() => const ProfileNotification(),
+                  transition: Transition.leftToRight);
+            },
+            child: Padding(
+              padding: const EdgeInsets.only(right: 5.0),
+              child: _item('assets/images/rington_off.svg', "اطلاع رسانی"),
+            ),
+          ),
+          const SizedBox(height: 40),
+          const Divider(color: Color.fromRGBO(226, 226, 226, 1)),
+          const SizedBox(height: 20),
+          _buildFooter(),
+        ],
+      ),
     );
   }
 
@@ -298,7 +304,7 @@ class _ProfilePageState extends State<ProfilePage>
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(10.0),
           child: Text(
             title,
             textAlign: TextAlign.right,

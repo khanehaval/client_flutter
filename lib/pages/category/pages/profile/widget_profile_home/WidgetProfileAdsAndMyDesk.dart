@@ -94,9 +94,12 @@ class WidgetProfileAdsAndMyDesk extends StatelessWidget {
             ),
           ),
         ),
+        const SizedBox(
+          width: 5,
+        ),
         GestureDetector(
           onTap: () {
-            Get.to(() => ProfileMyDesk(),
+            Get.to(() => const ProfileMyDesk(),
                 duration: const Duration(milliseconds: 100),
                 transition: Transition.leftToRight);
           },

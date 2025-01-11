@@ -85,6 +85,9 @@ class WidgetProfileHomeSettingKhanehaval extends StatelessWidget {
             ],
           ),
         ),
+        const SizedBox(
+          width: 5,
+        ),
         Container(
           width: Get.width / 2.4,
           height: 100,

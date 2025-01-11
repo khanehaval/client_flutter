@@ -93,6 +93,9 @@ class WidgetProfileSeeAndSave extends StatelessWidget {
             ),
           ),
         ),
+        const SizedBox(
+          width: 5,
+        ),
         GestureDetector(
           onTap: () {
             Get.to(() => MainCategoryProfile(

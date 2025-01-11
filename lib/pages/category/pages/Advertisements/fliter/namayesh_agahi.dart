@@ -229,7 +229,7 @@ class NamayeshAgahi1 extends StatelessWidget {
                                 const Padding(
                                   padding: EdgeInsets.all(8.0),
                                   child: Text(
-                                    ' ....................................................  ویژگی های آگهی  ',
+                                    ' ...............................................................  ویژگی های آگهی  ',
                                     style: TextStyle(
                                       fontFamily: MAIN_FONT_FAMILY,
                                       fontSize: 12,
@@ -248,7 +248,7 @@ class NamayeshAgahi1 extends StatelessWidget {
                                 const Padding(
                                   padding: EdgeInsets.all(8.0),
                                   child: Text(
-                                    ' .........................................................  امکانات آگهی ',
+                                    ' ...................................................................  امکانات آگهی ',
                                     style: TextStyle(
                                       fontFamily: MAIN_FONT_FAMILY,
                                       fontSize: 12,
@@ -267,7 +267,7 @@ class NamayeshAgahi1 extends StatelessWidget {
                                 const Padding(
                                   padding: EdgeInsets.all(8.0),
                                   child: Text(
-                                    ' .....................................................  توضیحات آگهی ',
+                                    ' ................................................................  توضیحات آگهی ',
                                     style: TextStyle(
                                       fontFamily: MAIN_FONT_FAMILY,
                                       fontSize: 12,

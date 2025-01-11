@@ -57,8 +57,8 @@ Widget showAdvertisment(
                                         Padding(
                                           padding: const EdgeInsets.all(1.0),
                                           child: ClipRRect(
-                                            borderRadius: BorderRadius.circular(
-                                                8), // شعاع گوشه
+                                            borderRadius:
+                                                BorderRadius.circular(8),
                                             child: Container(
                                               constraints: const BoxConstraints(
                                                 maxWidth: 300,
@@ -163,7 +163,7 @@ Widget showAdvertisment(
                                               color: Color.fromRGBO(
                                                   99, 99, 99, 1)),
                                         ),
-                                        SizedBox(width: Get.width / 4.6),
+                                        SizedBox(width: Get.width / 4.8),
                                         Row(
                                           children: [
                                             Container(

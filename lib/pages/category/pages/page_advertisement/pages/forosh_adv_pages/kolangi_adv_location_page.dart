@@ -109,7 +109,7 @@ class _SelectLocationOnMapState extends State<KolangiAdvLocationPage> {
                 ),
               ),
               const SizedBox(
-                height: 40,
+                height: 20,
               ),
               GestureDetector(
                   onTap: () {
