@@ -8,6 +8,7 @@ import 'package:flutter_application_1/pages/category/pages/profile/widget_Collea
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
 import 'package:get/get.dart';
+import 'package:jalali_flutter_datepicker/jalali_flutter_datepicker.dart';
 
 class ColleaguesProfile extends StatefulWidget {
   ColleaguesProfile({super.key});
@@ -82,101 +83,143 @@ class _ColleaguesProfileState extends State<ColleaguesProfile> {
   }
 }
 
-Widget hamkar() {
-  return SingleChildScrollView(
-    child: Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        SingleChildScrollView(
-          child: Container(
-            width: Get.width / 1.2,
-            height: 390,
-            decoration: ShapeDecoration(
-              gradient: const LinearGradient(colors: GRADIANT_COLOR_Colleagues),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10),
-              ),
-              shadows: const [
-                BoxShadow(
-                  color: Color(0x26000000),
-                  blurRadius: 3.0,
-                  offset: Offset(2, 2),
+class HamkarWidget extends StatefulWidget {
+  @override
+  _HamkarWidgetState createState() => _HamkarWidgetState();
+}
+
+class _HamkarWidgetState extends State<HamkarWidget> {
+  bool _showMessage = false; // وضعیت نمایش متن
+  String _buttonText = 'لغو همکاری'; // متن دکمه
+  bool _isRequestCancelled = false; // وضعیت تغییر border
+
+  @override
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          SingleChildScrollView(
+            child: Container(
+              width: Get.width / 1.2,
+              height: 390,
+              decoration: ShapeDecoration(
+                gradient:
+                    const LinearGradient(colors: GRADIANT_COLOR_Colleagues),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
                 ),
-              ],
-            ),
-            child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  const SizedBox(
-                    height: 10,
+                shadows: const [
+                  BoxShadow(
+                    color: Color(0x26000000),
+                    blurRadius: 3.0,
+                    offset: Offset(2, 2),
                   ),
-                  WidgetTaskManagementColleagues(),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  WidgetManagementAd(),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  const Divider(
-                    indent: 25,
-                    endIndent: 25,
-                    color: Color.fromRGBO(226, 226, 226, 1),
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  Container(
-                    width: Get.width / 2.3,
-                    height: Get.height / 24,
-                    decoration: ShapeDecoration(
-                      color: Colors.white,
-                      shape: RoundedRectangleBorder(
-                        side: const BorderSide(
-                            width: 1, color: Color(0xFF9C4040)),
-                        borderRadius: BorderRadius.circular(15),
-                      ),
-                      shadows: const [
-                        BoxShadow(
-                          color: Color(0x7F9C4040),
-                          blurRadius: 7,
-                          offset: Offset(0, 1),
-                        )
-                      ],
+                ],
+              ),
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    const SizedBox(height: 10),
+                    WidgetTaskManagementColleagues(),
+                    const SizedBox(height: 10),
+                    WidgetManagementAd(),
+                    const SizedBox(height: 20),
+                    const Divider(
+                      indent: 25,
+                      endIndent: 25,
+                      color: Color.fromRGBO(226, 226, 226, 1),
                     ),
-                    child: const Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          'لغو همکاری',
-                          style: TextStyle(
-                            color: Color(0xFF626262),
-                            fontSize: 12,
-                            fontFamily: MAIN_FONT_FAMILY,
+                    const SizedBox(height: 20),
+                    GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          if (_isRequestCancelled) {
+                            _showMessage = false;
+                            _buttonText = 'لغو همکاری';
+                            _isRequestCancelled = false;
+                          } else {
+                            _showMessage = true;
+                            _buttonText = 'لغو درخواست';
+                            _isRequestCancelled = true;
+                          }
+                        });
+                      },
+                      child: Container(
+                        width: Get.width / 2.3,
+                        height: Get.height / 24,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(15),
+                          border: _isRequestCancelled
+                              ? Border.all(
+                                  width: 1,
+                                  style: BorderStyle.solid,
+                                  color: const Color.fromRGBO(54, 216, 89, 1),
+                                )
+                              : Border.all(
+                                  width: 1,
+                                  color: const Color(0xFF9C4040),
+                                ),
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              _buttonText, // استفاده از متغیر _buttonText
+                              style: const TextStyle(
+                                color: Color(0xFF626262),
+                                fontSize: 12,
+                                fontFamily: MAIN_FONT_FAMILY,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 10),
+                    if (_showMessage) // نمایش متن اگر وضعیت true باشد
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 10),
+                        child: RichText(
+                          text: const TextSpan(
+                            children: [
+                              TextSpan(
+                                text: 'لغو همکاری',
+                                style: TextStyle(
+                                  color: Color.fromRGBO(169, 0, 0, 1), // قرمز
+                                  fontSize: 12,
+                                  fontFamily: MAIN_FONT_FAMILY,
+                                ),
+                              ),
+                              TextSpan(
+                                text:
+                                    ' با موفقیت ارسال شد، لطفا منتظر تائید باشید',
+                                style: TextStyle(
+                                  color: Colors.black, // سیاه
+                                  fontSize: 12,
+                                  fontFamily: MAIN_FONT_FAMILY,
+                                ),
+                              ),
+                            ],
                           ),
                         ),
-                      ],
+                      ),
+                    const Divider(
+                      indent: 25,
+                      endIndent: 25,
+                      color: Color.fromRGBO(226, 226, 226, 1),
                     ),
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  const Divider(
-                    indent: 25,
-                    endIndent: 25,
-                    color: Color.fromRGBO(226, 226, 226, 1),
-                  ),
-                  const WidgetInformationRow(),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  const WidgetVitrinMessageCall()
-                ],
+                    const WidgetInformationRow(),
+                    const SizedBox(height: 20),
+                    const WidgetVitrinMessageCall(),
+                  ],
+                ),
               ),
             ),
           ),
-        ),
-      ],
-    ),
-  );
+        ],
+      ),
+    );
+  }
 }

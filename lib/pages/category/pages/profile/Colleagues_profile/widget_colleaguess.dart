@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/pages/category/pages/profile/Colleagues_profile/Colleagues_profile.dart';
+import 'package:flutter_application_1/pages/category/pages/profile/Colleagues_profile/Colleagues_profile.dart'
+    as profile;
+import 'package:flutter_application_1/pages/category/pages/profile/widget_Colleagues_profile/widget_colleagues.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
@@ -113,7 +115,7 @@ class _WidgetColleaguessState extends State<WidgetColleaguess> {
         ),
       ),
       const SizedBox(height: 10),
-      if (_isContainerVisible) hamkar()
+      if (_isContainerVisible) profile.HamkarWidget()
     ]);
   }
 }
