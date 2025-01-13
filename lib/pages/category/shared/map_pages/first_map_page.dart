@@ -14,92 +14,89 @@ class FirstMapPage extends StatelessWidget {
     return Scaffold(
         backgroundColor: Colors.white,
         appBar: buildAppBar(),
-        body: SingleChildScrollView(
-            child: Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 40, vertical: 30),
-                child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      const Text(
-                        "ثبت آگهی اکونومی",
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 16,
-                            fontFamily: MAIN_FONT_FAMILY),
+        body: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 30),
+            child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  const Text(
+                    "ثبت آگهی اکونومی",
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 16,
+                        fontFamily: MAIN_FONT_FAMILY),
+                  ),
+                  const SizedBox(
+                    height: 50,
+                  ),
+                  SvgPicture.asset(
+                    'assets/images/map1.svg',
+                    width: 123,
+                    height: 63,
+                  ),
+                  const SizedBox(
+                    height: 40,
+                  ),
+                  const Text(
+                    'با ثبت موقعیت و یا محدوده ملک خود',
+                    style: TextStyle(
+                      fontFamily: MAIN_FONT_FAMILY,
+                      fontSize: 16,
+                      color: Color.fromRGBO(
+                        41,
+                        111,
+                        226,
+                        1,
                       ),
-                      const SizedBox(
-                        height: 70,
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  const Text(
+                    'به هوش مصنوعی اجازه دهید بهترین ها را برای شما رقم بزند',
+                    style: TextStyle(
+                      fontFamily: MAIN_FONT_FAMILY,
+                      fontSize: 11,
+                      color: Color.fromRGBO(99, 99, 99, 1),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 40,
+                  ),
+                  Container(
+                    width: 302,
+                    height: 300,
+                    decoration: ShapeDecoration(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
                       ),
-                      SvgPicture.asset(
-                        'assets/images/map1.svg',
-                        width: 123,
-                        height: 63,
-                      ),
-                      const SizedBox(
-                        height: 50,
-                      ),
-                      const Text(
-                        'با ثبت موقعیت و یا محدوده ملک خود',
-                        style: TextStyle(
-                          fontFamily: MAIN_FONT_FAMILY,
-                          fontSize: 16,
-                          color: Color.fromRGBO(
-                            41,
-                            111,
-                            226,
-                            1,
+                    ),
+                    child: GestureDetector(
+                      onTap: () {
+                        Get.to(
+                          () => SelectLocationMap(
+                            onSelect: (_) {
+                              Get.back();
+                              onSelect(_);
+                            },
                           ),
+                        );
+                      },
+                      child: Stack(children: [
+                        Image.asset(
+                          'assets/images/map22.png',
+                          fit: BoxFit.cover,
                         ),
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      const Text(
-                        'به هوش مصنوعی اجازه دهید بهترین ها را برای شما رقم بزند',
-                        style: TextStyle(
-                          fontFamily: MAIN_FONT_FAMILY,
-                          fontSize: 11,
-                          color: Color.fromRGBO(99, 99, 99, 1),
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 50,
-                      ),
-                      Container(
-                        width: 302,
-                        height: 300,
-                        decoration: ShapeDecoration(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                        ),
-                        child: GestureDetector(
-                          onTap: () {
-                            Get.to(
-                              () => SelectLocationMap(
-                                onSelect: (_) {
-                                  Get.back();
-                                  onSelect(_);
-                                },
-                              ),
-                            );
-                          },
-                          child: Stack(children: [
-                            Image.asset(
-                              'assets/images/map22.png',
-                              fit: BoxFit.cover,
-                            ),
-                            Align(
-                                alignment: Alignment.center,
-                                child:
-                                    SvgPicture.asset('assets/images/text.svg'))
-                          ]),
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      )
-                    ]))));
+                        Align(
+                            alignment: Alignment.center,
+                            child: SvgPicture.asset('assets/images/text.svg'))
+                      ]),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  )
+                ])));
   }
 }

@@ -535,7 +535,7 @@ class _ForoshAdvPageState extends State<ForoshAdvPage> {
                   ],
                 ),
               ),
-              ReadOnlyTextField(_buildFloorController, fontSize: 12, () {
+              ReadOnlyTextField(_buildFloorController, fontSize: 13, () {
                 TedadKoleTabagheh((selectedKey, selectedLabel) {
                   _buildFloorController.text = selectedLabel;
                   saleApartemanServerModel.floorNumber = selectedKey;

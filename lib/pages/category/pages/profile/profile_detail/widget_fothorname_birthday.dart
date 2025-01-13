@@ -24,7 +24,7 @@ class _WidgetFothornameBirthdayState extends State<WidgetFothornameBirthday> {
         Container(
           width: Get.width / 2.4,
           height: 85,
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 15),
+          padding: const EdgeInsets.symmetric(horizontal: 21, vertical: 15),
           decoration: ShapeDecoration(
             color: Colors.white,
             shape: RoundedRectangleBorder(
@@ -86,7 +86,7 @@ class _WidgetFothornameBirthdayState extends State<WidgetFothornameBirthday> {
               ),
               Expanded(
                   child: Container(
-                      width: 140,
+                      width: 120,
                       child: TextField(
                         controller:
                             _dateController, // Assign the controller to the TextField
@@ -116,7 +116,7 @@ class _WidgetFothornameBirthdayState extends State<WidgetFothornameBirthday> {
                                 },
                                 child: SvgPicture.asset(
                                   'assets/images/calender_birthday.svg',
-                                  width: 20,
+                                  width: 5,
                                 ),
                               ),
                             ),

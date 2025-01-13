@@ -409,13 +409,13 @@ class _MessagesState extends State<Messages> {
                                               : Colors.white,
                                           borderRadius: BorderRadius.only(
                                             topLeft: messages[index]['isMe']
-                                                ? const Radius.circular(10)
+                                                ? const Radius.circular(5)
                                                 : const Radius.circular(0),
                                             topRight: messages[index]['isMe']
                                                 ? const Radius.circular(0)
                                                 : const Radius.circular(5),
                                             bottomLeft: messages[index]['isMe']
-                                                ? const Radius.circular(10)
+                                                ? const Radius.circular(5)
                                                 : const Radius.circular(5),
                                             bottomRight: messages[index]['isMe']
                                                 ? const Radius.circular(5)

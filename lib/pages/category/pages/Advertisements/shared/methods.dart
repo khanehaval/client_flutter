@@ -1,14 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:flutter_application_1/pages/category/models/AdvertismentMoidel.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/namayesh_agahi.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
 Widget showAdvertisment(
-    {required advertismentModel,
+    {required BuildContext context,
+    required advertismentModel,
     required onTap,
     required Function onNext,
     required Function onBack}) {
@@ -16,14 +15,19 @@ Widget showAdvertisment(
     child: Column(
       children: [
         Transform.translate(
-          offset: const Offset(20, 100),
+          offset: const Offset(20, 60),
           child: Padding(
-            padding: const EdgeInsets.only(top: 90, right: 40, bottom: 100),
+            padding: EdgeInsets.only(
+              top: MediaQuery.of(context).size.height * 0.16,
+              right: MediaQuery.of(context).size.width * 0.1,
+              bottom: MediaQuery.of(context).size.height * 0.10,
+            ),
             child: Container(
               width: Get.width / 1.1,
               height: Get.height / 2.2,
-              decoration:
-                  const BoxDecoration(color: Color.fromRGBO(233, 10, 10, 0)),
+              decoration: const BoxDecoration(
+                color: Color.fromRGBO(233, 10, 10, 0),
+              ),
               child: Stack(
                 children: [
                   Padding(
@@ -51,7 +55,8 @@ Widget showAdvertisment(
                                 children: [
                                   Container(
                                     decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(5)),
+                                      borderRadius: BorderRadius.circular(5),
+                                    ),
                                     child: Stack(
                                       children: [
                                         Padding(
@@ -144,7 +149,9 @@ Widget showAdvertisment(
                                   ),
                                   const SizedBox(height: 10),
                                   Padding(
-                                    padding: const EdgeInsets.only(left: 5.0),
+                                    padding: const EdgeInsets.only(
+                                      left: 5,
+                                    ),
                                     child: Row(
                                       children: [
                                         SvgPicture.asset(
@@ -163,7 +170,14 @@ Widget showAdvertisment(
                                               color: Color.fromRGBO(
                                                   99, 99, 99, 1)),
                                         ),
-                                        SizedBox(width: Get.width / 4.8),
+                                        SizedBox(
+                                          width: MediaQuery.of(context)
+                                                      .size
+                                                      .width <
+                                                  400
+                                              ? 83
+                                              : 110, // برای دستگاه‌های کوچک 75، برای بزرگ‌ترها 105
+                                        ),
                                         Row(
                                           children: [
                                             Container(
@@ -209,131 +223,140 @@ Widget showAdvertisment(
                                   const SizedBox(height: 10),
                                   Padding(
                                     padding: const EdgeInsets.only(left: 5.0),
-                                    child: Row(
-                                      children: [
-                                        Align(
-                                          alignment: Alignment.centerLeft,
-                                          child: SvgPicture.asset(
-                                            "assets/images/toman_ads.svg",
-                                            height: 15,
-                                          ),
-                                        ),
-                                        const SizedBox(
-                                          width: 2,
-                                        ),
-                                        const Text(
-                                          '100.000.000',
-                                          style: TextStyle(
-                                              fontFamily:
-                                                  MAIN_FONT_FAMILY_MEDIUM,
-                                              fontSize: 12,
-                                              color: Color.fromRGBO(
-                                                  99, 99, 99, 1)),
-                                        ),
-                                        const SizedBox(
-                                          width: 2,
-                                        ),
-                                        SvgPicture.asset(
-                                          "assets/images/SQM_metr.svg",
-                                          height: 20,
-                                        ),
-                                        SizedBox(width: Get.width / 5),
-                                        Container(
-                                          width: 35,
-                                          height: 19,
-                                          clipBehavior: Clip.antiAlias,
-                                          decoration: ShapeDecoration(
-                                            color: Colors.white,
-                                            shape: RoundedRectangleBorder(
-                                              side: const BorderSide(
-                                                  width: 1,
-                                                  color: Color(0xFFA5A5A5)),
-                                              borderRadius:
-                                                  BorderRadius.circular(10),
+                                    child: Expanded(
+                                      child: Row(
+                                        children: [
+                                          Align(
+                                            alignment: Alignment.centerLeft,
+                                            child: SvgPicture.asset(
+                                              "assets/images/toman_ads.svg",
+                                              height: 15,
                                             ),
                                           ),
-                                          child: Center(
-                                            child: RichText(
-                                              textAlign: TextAlign.center,
-                                              textDirection: TextDirection.rtl,
-                                              text: const TextSpan(
-                                                children: [
-                                                  TextSpan(
-                                                    text: '100',
-                                                    style: TextStyle(
-                                                      color: Color.fromRGBO(
-                                                          99, 99, 99, 1),
-                                                      fontSize: 8,
-                                                      fontFamily:
-                                                          MAIN_FONT_FAMILY_MEDIUM,
+                                          const SizedBox(
+                                            width: 2,
+                                          ),
+                                          const Text(
+                                            '100.000.000',
+                                            style: TextStyle(
+                                                fontFamily:
+                                                    MAIN_FONT_FAMILY_MEDIUM,
+                                                fontSize: 12,
+                                                color: Color.fromRGBO(
+                                                    99, 99, 99, 1)),
+                                          ),
+                                          const SizedBox(
+                                            width: 2,
+                                          ),
+                                          SvgPicture.asset(
+                                            "assets/images/SQM_metr.svg",
+                                            height: 20,
+                                          ),
+                                          SizedBox(
+                                            width: MediaQuery.of(context)
+                                                        .size
+                                                        .width <
+                                                    400
+                                                ? 80
+                                                : 105,
+                                          ),
+                                          Container(
+                                            width: 35,
+                                            height: 19,
+                                            clipBehavior: Clip.antiAlias,
+                                            decoration: ShapeDecoration(
+                                              color: Colors.white,
+                                              shape: RoundedRectangleBorder(
+                                                side: const BorderSide(
+                                                    width: 1,
+                                                    color: Color(0xFFA5A5A5)),
+                                                borderRadius:
+                                                    BorderRadius.circular(10),
+                                              ),
+                                            ),
+                                            child: Center(
+                                              child: RichText(
+                                                textAlign: TextAlign.center,
+                                                textDirection:
+                                                    TextDirection.rtl,
+                                                text: const TextSpan(
+                                                  children: [
+                                                    TextSpan(
+                                                      text: '100',
+                                                      style: TextStyle(
+                                                        color: Color.fromRGBO(
+                                                            99, 99, 99, 1),
+                                                        fontSize: 8,
+                                                        fontFamily:
+                                                            MAIN_FONT_FAMILY_MEDIUM,
+                                                      ),
                                                     ),
-                                                  ),
-                                                  TextSpan(
-                                                    text:
-                                                        ' متر', // Then the text
-                                                    style: TextStyle(
-                                                      color: Color.fromRGBO(
-                                                          99, 99, 99, 1),
-                                                      fontSize: 8,
-                                                      fontFamily:
-                                                          MAIN_FONT_FAMILY_MEDIUM,
+                                                    TextSpan(
+                                                      text: ' متر',
+                                                      style: TextStyle(
+                                                        color: Color.fromRGBO(
+                                                            99, 99, 99, 1),
+                                                        fontSize: 8,
+                                                        fontFamily:
+                                                            MAIN_FONT_FAMILY_MEDIUM,
+                                                      ),
                                                     ),
-                                                  ),
-                                                ],
+                                                  ],
+                                                ),
                                               ),
                                             ),
                                           ),
-                                        ),
-                                        const SizedBox(
-                                          width: 5,
-                                        ),
-                                        Container(
-                                          width: 35,
-                                          height: 19,
-                                          clipBehavior: Clip.antiAlias,
-                                          decoration: ShapeDecoration(
-                                            color: Colors.white,
-                                            shape: RoundedRectangleBorder(
-                                              side: const BorderSide(
-                                                  width: 1,
-                                                  color: Color(0xFFA5A5A5)),
-                                              borderRadius:
-                                                  BorderRadius.circular(10),
-                                            ),
+                                          const SizedBox(
+                                            width: 5,
                                           ),
-                                          child: Center(
-                                            child: RichText(
-                                              textAlign: TextAlign.center,
-                                              textDirection: TextDirection.rtl,
-                                              text: const TextSpan(
-                                                children: [
-                                                  TextSpan(
-                                                    text: '2',
-                                                    style: TextStyle(
-                                                      color: Color.fromRGBO(
-                                                          99, 99, 99, 1),
-                                                      fontSize: 8,
-                                                      fontFamily:
-                                                          MAIN_FONT_FAMILY_MEDIUM,
-                                                    ),
-                                                  ),
-                                                  TextSpan(
-                                                    text:
-                                                        ' اتاق', // Then the text
-                                                    style: TextStyle(
-                                                      color: Color.fromRGBO(
-                                                          99, 99, 99, 1),
-                                                      fontSize: 8,
-                                                      fontFamily:
-                                                          MAIN_FONT_FAMILY_MEDIUM,
-                                                    ),
-                                                  ),
-                                                ],
+                                          Container(
+                                            width: 35,
+                                            height: 19,
+                                            clipBehavior: Clip.antiAlias,
+                                            decoration: ShapeDecoration(
+                                              color: Colors.white,
+                                              shape: RoundedRectangleBorder(
+                                                side: const BorderSide(
+                                                    width: 1,
+                                                    color: Color(0xFFA5A5A5)),
+                                                borderRadius:
+                                                    BorderRadius.circular(10),
                                               ),
                                             ),
-                                          ),
-                                        )
-                                      ],
+                                            child: Center(
+                                              child: RichText(
+                                                textAlign: TextAlign.center,
+                                                textDirection:
+                                                    TextDirection.rtl,
+                                                text: const TextSpan(
+                                                  children: [
+                                                    TextSpan(
+                                                      text: '2',
+                                                      style: TextStyle(
+                                                        color: Color.fromRGBO(
+                                                            99, 99, 99, 1),
+                                                        fontSize: 8,
+                                                        fontFamily:
+                                                            MAIN_FONT_FAMILY_MEDIUM,
+                                                      ),
+                                                    ),
+                                                    TextSpan(
+                                                      text: ' اتاق',
+                                                      style: TextStyle(
+                                                        color: Color.fromRGBO(
+                                                            99, 99, 99, 1),
+                                                        fontSize: 8,
+                                                        fontFamily:
+                                                            MAIN_FONT_FAMILY_MEDIUM,
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            ),
+                                          )
+                                        ],
+                                      ),
                                     ),
                                   )
                                 ],
@@ -344,98 +367,108 @@ Widget showAdvertisment(
                       ),
                     ),
                   ),
-                  Positioned(
-                    left: 160,
-                    right: 160,
-                    top: 90,
-                    child: GestureDetector(
-                      onTap: () {
-                        onTap();
-                      },
-                      child: SvgPicture.asset(
-                        "assets/images/delete.svg",
-                        width: 25,
-                        height: 25,
+                  Stack(
+                    children: [
+                      Positioned(
+                        // درست
+                        left: 160,
+                        right: 160,
+                        top: 90,
+                        child: GestureDetector(
+                          onTap: () {
+                            onTap();
+                          },
+                          child: SvgPicture.asset(
+                            "assets/images/delete.svg",
+                            width: 25,
+                            height: 25,
+                          ),
+                        ),
                       ),
-                    ),
+                    ],
                   ),
                 ],
               ),
             ),
           ),
         ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: GestureDetector(
-                onTap: () {
-                  onBack();
-                },
-                child: Container(
-                  width: 89,
-                  height: 35,
-                  decoration: const BoxDecoration(
+        Center(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              ConstrainedBox(
+                constraints: const BoxConstraints(
+                  minWidth: 89,
+                  maxWidth: 89,
+                  minHeight: 35,
+                  maxHeight: 35,
+                ),
+                child: GestureDetector(
+                  onTap: () {
+                    onBack();
+                  },
+                  child: Container(
+                    decoration: const BoxDecoration(
                       borderRadius: BorderRadius.all(Radius.circular(10)),
-                      color: Color.fromRGBO(0, 189, 97, 1)),
-                  child: const Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Icon(CupertinoIcons.back, color: Colors.white),
-                      Padding(
-                        padding: EdgeInsets.only(right: 10.0),
-                        child: Text(
-                          'قبلی',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontFamily: MAIN_FONT_FAMILY,
+                      color: Color.fromRGBO(0, 189, 97, 1),
+                    ),
+                    child: const Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Icon(CupertinoIcons.back, color: Colors.white),
+                        Padding(
+                          padding: EdgeInsets.only(right: 10.0),
+                          child: Text(
+                            'قبلی',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontFamily: MAIN_FONT_FAMILY,
+                            ),
                           ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
               ),
-            ),
-            const SizedBox(width: 10),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: GestureDetector(
-                onTap: () {
-                  onNext();
-                },
-                child: Container(
-                  width: 89,
-                  height: 35,
-                  decoration: const BoxDecoration(
+              const SizedBox(width: 20),
+              ConstrainedBox(
+                constraints: const BoxConstraints(
+                  minWidth: 89,
+                  maxWidth: 89,
+                  minHeight: 35,
+                  maxHeight: 35,
+                ),
+                child: GestureDetector(
+                  onTap: () {
+                    onNext();
+                  },
+                  child: Container(
+                    decoration: const BoxDecoration(
                       borderRadius: BorderRadius.all(Radius.circular(10)),
-                      color: Color.fromRGBO(
-                        23,
-                        102,
-                        175,
-                        1,
-                      )),
-                  child: const Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.only(left: 10.0),
-                        child: Text(
-                          'بعدی',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontFamily: MAIN_FONT_FAMILY,
+                      color: Color.fromRGBO(23, 102, 175, 1),
+                    ),
+                    child: const Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.only(left: 10.0),
+                          child: Text(
+                            'بعدی',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontFamily: MAIN_FONT_FAMILY,
+                            ),
                           ),
                         ),
-                      ),
-                      Icon(CupertinoIcons.forward, color: Colors.white),
-                    ],
+                        Icon(CupertinoIcons.forward, color: Colors.white),
+                      ],
+                    ),
                   ),
                 ),
               ),
-            )
-          ],
+            ],
+          ),
         ),
       ],
     ),

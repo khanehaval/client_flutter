@@ -9,6 +9,7 @@ import 'package:get/get.dart';
 
 Widget methodsejara(
     {required advertismentModel,
+    required BuildContext context,
     required onTap,
     required Function onNext,
     required Function onBack}) {
@@ -18,7 +19,11 @@ Widget methodsejara(
         Transform.translate(
           offset: const Offset(20, 100),
           child: Padding(
-            padding: const EdgeInsets.only(top: 110, right: 40, bottom: 70),
+            padding: EdgeInsets.only(
+              top: MediaQuery.of(context).size.height * 0.14,
+              right: MediaQuery.of(context).size.width * 0.1,
+              bottom: MediaQuery.of(context).size.height * 0.10,
+            ),
             child: Container(
               width: Get.width / 1.1,
               height: Get.height / 2.25,
@@ -163,8 +168,13 @@ Widget methodsejara(
                                               color: Color.fromRGBO(
                                                   99, 99, 99, 1)),
                                         ),
-                                        const SizedBox(
-                                          width: 75,
+                                        SizedBox(
+                                          width: MediaQuery.of(context)
+                                                      .size
+                                                      .width <
+                                                  400
+                                              ? 83
+                                              : 110, // برای دستگاه‌های کوچک 75، برای بزرگ‌ترها 105
                                         ),
                                         Row(
                                           children: [
@@ -241,8 +251,13 @@ Widget methodsejara(
                                           "assets/images/SQM_metr.svg",
                                           height: 20,
                                         ),
-                                        const SizedBox(
-                                          width: 74,
+                                        SizedBox(
+                                          width: MediaQuery.of(context)
+                                                      .size
+                                                      .width <
+                                                  400
+                                              ? 80
+                                              : 105,
                                         ),
                                         Container(
                                           width: 35,
@@ -301,7 +316,7 @@ Widget methodsejara(
                                           decoration: ShapeDecoration(
                                             color: Colors.white,
                                             shape: RoundedRectangleBorder(
-                                              side: BorderSide(
+                                              side: const BorderSide(
                                                   width: 1,
                                                   color: Color(0xFFA5A5A5)),
                                               borderRadius:
@@ -352,26 +367,32 @@ Widget methodsejara(
                       ),
                     ),
                   ),
-                  Positioned(
-                    left: 160,
-                    top: 90,
-                    child: GestureDetector(
-                      onTap: () {
-                        onTap();
-                      },
-                      child: SvgPicture.asset(
-                        "assets/images/delete.svg",
-                        width: 25,
-                        height: 25,
+                  Stack(
+                    children: [
+                      Positioned(
+                        // درست
+                        left: 160,
+                        right: 160,
+                        top: 90,
+                        child: GestureDetector(
+                          onTap: () {
+                            onTap();
+                          },
+                          child: SvgPicture.asset(
+                            "assets/images/delete.svg",
+                            width: 25,
+                            height: 25,
+                          ),
+                        ),
                       ),
-                    ),
+                    ],
                   ),
                 ],
               ),
             ),
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 20,
         ),
         Row(

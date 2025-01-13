@@ -98,7 +98,7 @@ class _WidgetColleaguessState extends State<WidgetColleaguess> {
                           height: 20,
                         ),
                         const SizedBox(
-                          width: 35,
+                          width: 28,
                         ),
                         const Text(
                           'تــهـران',

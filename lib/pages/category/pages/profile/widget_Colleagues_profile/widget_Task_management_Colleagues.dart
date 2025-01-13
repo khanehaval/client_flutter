@@ -122,11 +122,11 @@ class _WidgetTaskManagementColleaguesState
     if (_isDeleted.value) {
       return 'assets/images/edit_and_ok.svg'; // آیکون ادیت بعد از زدن چک
     } else if (_isChecked.value && selectedText.value.isNotEmpty) {
-      return 'assets/images/check_icon.svg'; // آیکون چک بعد از انتخاب آیتم
+      return 'assets/images/check_green.svg'; // آیکون چک بعد از انتخاب آیتم
     } else if (_isChecked.value && selectedText.value.isEmpty) {
-      return 'assets/images/=gold.svg'; // آیکون ویرایش زمانی که چک زده شده ولی متنی انتخاب نشده
+      return 'assets/images/=.svg'; // آیکون ویرایش زمانی که چک زده شده ولی متنی انتخاب نشده
     }
-    return 'assets/images/Arrow_list_agency.svg'; // آیکون فلش پایین در حالت عادی
+    return 'assets/images/down.svg'; // آیکون فلش پایین در حالت عادی
   }
 
   double _getIconSize() {

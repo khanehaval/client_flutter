@@ -341,6 +341,7 @@ class _AdvMapState extends State<MapAxans> {
   Widget _buildPersonalAdvertismentOverlay(AdvertismentModel ad) {
     return Align(
       child: showAdvertisment(
+        context: context,
         advertismentModel: ad,
         onTap: () => _selectedModel.value = null,
         onBack: _onBack,
@@ -356,6 +357,7 @@ class _AdvMapState extends State<MapAxans> {
         onTap: () => _selectedModel.value = null,
         onBack: _onBack,
         onNext: _onNext,
+        context: context,
       ),
     );
   }
@@ -363,6 +365,7 @@ class _AdvMapState extends State<MapAxans> {
   Widget _buildRealEstateAdvertismentOverlay(AdvertismentModel ad) {
     return Align(
       child: methodsejara(
+        context: context,
         advertismentModel: ad,
         onTap: () => _selectedModel.value = null,
         onBack: _onBack,

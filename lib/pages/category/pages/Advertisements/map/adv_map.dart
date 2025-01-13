@@ -371,7 +371,7 @@ class _AdvMapState extends State<AdvMap> {
         advertismentModel: ad,
         onTap: () => _selectedModel.value = null,
         onBack: _onBack,
-        onNext: _onNext,
+        onNext: _onNext, context: context,
         // افزودن جزئیات خاص برای PERSONAL
       ),
     );
@@ -383,7 +383,7 @@ class _AdvMapState extends State<AdvMap> {
         advertismentModel: ad,
         onTap: () => _selectedModel.value = null,
         onBack: _onBack,
-        onNext: _onNext,
+        onNext: _onNext, context: context,
         // افزودن جزئیات خاص برای AMALAK
       ),
     );
@@ -396,6 +396,7 @@ class _AdvMapState extends State<AdvMap> {
         onTap: () => _selectedModel.value = null,
         onBack: _onBack,
         onNext: _onNext,
+        context: context,
         // افزودن جزئیات خاص برای REAL ESTATE
       ),
     );
