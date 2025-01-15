@@ -31,7 +31,7 @@ class _WidgetUsersConsultantsState extends State<WidgetUsersConsultants> {
   Widget build(BuildContext context) {
     return Obx(
       () => Padding(
-        padding: const EdgeInsets.only(left: 15.0, right: 15),
+        padding: const EdgeInsets.only(left: 20.0, right: 20),
         child: Container(
           width: double.infinity,
           height: _About_me_1.value ? 500 : 50,
@@ -239,7 +239,7 @@ class _WidgetUsersConsultantsState extends State<WidgetUsersConsultants> {
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
             Container(
-              width: 250,
+              width: MediaQuery.of(context).size.width / 1.65,
               height: 85,
               margin: const EdgeInsets.symmetric(
                   horizontal: 20), // فاصله از کناره‌ها
@@ -316,7 +316,7 @@ class _WidgetUsersConsultantsState extends State<WidgetUsersConsultants> {
                           height: 20,
                         ),
                         const SizedBox(
-                          width: 12,
+                          width: 5,
                         ),
                         const Text(
                           'تـهـران',
@@ -401,7 +401,7 @@ class _WidgetUsersConsultantsState extends State<WidgetUsersConsultants> {
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
             Container(
-              width: 250,
+              width: MediaQuery.of(context).size.width / 1.65,
               height: 85,
               margin: const EdgeInsets.symmetric(
                   horizontal: 20), // فاصله از کناره‌ها
@@ -478,7 +478,7 @@ class _WidgetUsersConsultantsState extends State<WidgetUsersConsultants> {
                           height: 20,
                         ),
                         const SizedBox(
-                          width: 12,
+                          width: 5,
                         ),
                         const Text(
                           'تـهـران',
