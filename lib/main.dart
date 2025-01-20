@@ -23,6 +23,7 @@ import 'package:get/get.dart';
 import 'package:get_it/get_it.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart'; // اضافه کردن این خط برای استفاده از ScreenUtil
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -64,32 +65,40 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
-      debugShowCheckedModeBanner: false,
-      builder: (context, child) {
-        // تنظیم textScaler برای کل اپلیکیشن
-        return MediaQuery(
-          data: MediaQuery.of(context).copyWith(
-            textScaler: const TextScaler.linear(1.0), // ثابت نگه داشتن اندازه فونت
-          ),
-          child: child ?? Container(),
-        );
-      },
-      theme: ThemeData(fontFamily: MAIN_FONT_FAMILY),
-      debugShowMaterialGrid: false,
-      home: FutureBuilder<bool>(
-        future: _userRepo.isLogin(),
-        builder: (c, s) {
-          if (s.connectionState == ConnectionState.waiting) {
-            return const Center(child: CircularProgressIndicator()); // نمایش loading
-          } else if (s.hasError) {
-            return Center(child: Text('خطا: ${s.error}')); // نمایش خطا
-          } else if (s.hasData) {
-            return s.data! ? Advertisements() : sliderWidget(); // بررسی مقدار s.data
-          } else {
-            return sliderWidget(); // حالت پیش‌فرض
-          }
+    return ScreenUtilInit(
+      designSize: const Size(360, 690), // تنظیم اندازه صفحه طراحی
+      minTextAdapt: true,
+      splitScreenMode: true,
+      builder: (context, child) => GetMaterialApp(
+        debugShowCheckedModeBanner: false,
+        builder: (context, child) {
+          return MediaQuery(
+            data: MediaQuery.of(context).copyWith(
+              textScaler:
+                  const TextScaler.linear(1.0), // ثابت نگه داشتن اندازه فونت
+            ),
+            child: child ?? Container(),
+          );
         },
+        theme: ThemeData(fontFamily: MAIN_FONT_FAMILY),
+        debugShowMaterialGrid: false,
+        home: FutureBuilder<bool>(
+          future: _userRepo.isLogin(),
+          builder: (c, s) {
+            if (s.connectionState == ConnectionState.waiting) {
+              return const Center(
+                  child: CircularProgressIndicator()); // نمایش loading
+            } else if (s.hasError) {
+              return Center(child: Text('خطا: ${s.error}')); // نمایش خطا
+            } else if (s.hasData) {
+              return s.data!
+                  ? Advertisements()
+                  : sliderWidget(); // بررسی مقدار s.data
+            } else {
+              return sliderWidget(); // حالت پیش‌فرض
+            }
+          },
+        ),
       ),
     );
   }
@@ -107,7 +116,7 @@ class _MyAppState extends State<MyApp> {
             children: const [Screen1(), Screen2(), Screen3()],
           ),
           Positioned(
-            bottom: 30,
+            bottom: 30.h, // استفاده از ScreenUtil برای مقیاس‌بندی ارتفاع
             left: 0,
             right: 0,
             child: Row(
@@ -138,29 +147,35 @@ class _MyAppState extends State<MyApp> {
                     },
                     child: Container(
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(30),
+                        borderRadius: BorderRadius.circular(
+                            30.r), // استفاده از ScreenUtil برای رادیوس
                         gradient: GetGradient(),
                       ),
                       child: Padding(
-                        padding: const EdgeInsets.symmetric(
-                          vertical: 8,
-                          horizontal: 20,
+                        padding: EdgeInsets.symmetric(
+                          vertical: 8
+                              .h, // استفاده از ScreenUtil برای اندازه‌گیری مناسب
+                          horizontal: 20
+                              .w, // استفاده از ScreenUtil برای اندازه‌گیری مناسب
                         ),
                         child: Row(
                           children: [
                             Text(
                               _sliderIndex.value < 2 ? "بعدی" : "شروع",
-                              style: const TextStyle(
+                              style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                fontSize: 15,
+                                fontSize: 15
+                                    .sp, // استفاده از ScreenUtil برای اندازه فونت
                                 fontFamily: MAIN_FONT_FAMILY,
                               ),
                             ),
                             const SizedBox(width: 8),
                             Image.asset(
                               'assets/images/arrow_right.png',
-                              width: 17,
-                              height: 17,
+                              width: 17
+                                  .w, // استفاده از ScreenUtil برای اندازه‌گیری مناسب
+                              height: 17
+                                  .h, // استفاده از ScreenUtil برای اندازه‌گیری مناسب
                             ),
                           ],
                         ),

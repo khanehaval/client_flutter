@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/pages/profile/under_profile/category_Profile.dart';
 import 'package:flutter_application_1/pages/category/pages/profile/under_profile/widget_profile_my_desk/profile_my_desk.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -16,12 +17,10 @@ class WidgetProfileAdsAndMyDesk extends StatelessWidget {
       children: [
         GestureDetector(
           onTap: () {
-            Get.to(() => const CategoryProfile(
-                  index: 0,
-                ));
+            Get.to(() => const CategoryProfile(index: 0));
           },
           child: Container(
-            width: Get.width / 2.4,
+            width: 145.w,
             height: 100,
             decoration: ShapeDecoration(
               color: Colors.white,
@@ -38,52 +37,47 @@ class WidgetProfileAdsAndMyDesk extends StatelessWidget {
               ],
             ),
             child: Column(
+              crossAxisAlignment:
+                  CrossAxisAlignment.start, // متن‌ها از چپ تراز می‌شوند
               children: [
-                const SizedBox(
-                  height: 10,
+                Padding(
+                  padding: const EdgeInsets.only(
+                      right: 12.0, top: 12.0), // فاصله از راست و بالا
+                  child: Align(
+                    alignment:
+                        Alignment.topRight, // آیکون در سمت راست بالای کانتینر
+                    child: SvgPicture.asset(
+                      'assets/images/Agahi_man_profile_home.svg',
+                      width: 24.w, // اندازه آیکون
+                      height: 24.w,
+                    ),
+                  ),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(
-                    left: 100.0,
+                    right: 12.0,
                   ),
-                  child: SvgPicture.asset(
-                    'assets/images/Agahi_man_profile_home.svg',
-                    width: 24,
-                    height: 24,
-                  ),
-                ),
-                const SizedBox(
-                  height: 5,
-                ),
-                const Padding(
-                  padding: EdgeInsets.only(right: 20.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
-                      Text(
-                        'آگهی های من',
-                        style: TextStyle(
-                          color: Color(0xFF303030),
-                          fontSize: 18,
-                          fontFamily: 'Aban Light',
+                      Align(
+                        alignment: Alignment.centerRight,
+                        child: Text(
+                          'آگهی های من',
+                          style: TextStyle(
+                            color: const Color(0xFF303030),
+                            fontSize: 18.sp,
+                            fontFamily: 'Aban Light',
+                          ),
                         ),
                       ),
-                    ],
-                  ),
-                ),
-                const SizedBox(
-                  height: 5,
-                ),
-                const Padding(
-                  padding: EdgeInsets.only(right: 20.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
+                      const SizedBox(height: 4), // فاصله بین خطوط متن
                       Text(
                         'آگهی های ثبت شده',
                         style: TextStyle(
-                          color: Color(0xFFA5A5A5),
-                          fontSize: 12,
+                          color: const Color(0xFFA5A5A5),
+                          fontSize: 12.sp,
                           fontFamily: MAIN_FONT_FAMILY_LIGHT,
                         ),
                       ),
@@ -104,7 +98,7 @@ class WidgetProfileAdsAndMyDesk extends StatelessWidget {
                 transition: Transition.leftToRight);
           },
           child: Container(
-            width: Get.width / 2.4,
+            width: 145.w,
             height: 100,
             decoration: ShapeDecoration(
               color: Colors.white,
@@ -117,56 +111,46 @@ class WidgetProfileAdsAndMyDesk extends StatelessWidget {
                   blurRadius: 3,
                   offset: Offset(0, 0),
                   spreadRadius: 0,
-                )
+                ),
               ],
             ),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const SizedBox(
-                  height: 10,
+                Padding(
+                  padding: const EdgeInsets.only(right: 12.0, top: 12.0),
+                  child: Align(
+                    alignment: Alignment.topRight,
+                    child: SvgPicture.asset(
+                      'assets/images/miz_kar_profile.svg',
+                      width: 24.w,
+                      height: 24.w,
+                    ),
+                  ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(
-                    left: 100.0,
-                  ),
-                  child: SvgPicture.asset(
-                    'assets/images/miz_kar_profile.svg',
-                    width: 24,
-                    height: 24,
-                  ),
-                ),
-                const SizedBox(
-                  height: 5,
-                ),
-                const Padding(
-                  padding: EdgeInsets.only(right: 20.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
+                  padding: const EdgeInsets.only(right: 12.0),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
-                      Text(
-                        'میزکـار مـن',
-                        style: TextStyle(
-                          color: Color(0xFF303030),
-                          fontSize: 18,
-                          fontFamily: 'Aban Light',
+                      Align(
+                        alignment: Alignment.centerRight,
+                        child: Text(
+                          'میزکار من',
+                          style: TextStyle(
+                            color: const Color(0xFF303030),
+                            fontSize: 18.sp,
+                            fontFamily: 'Aban Light',
+                          ),
                         ),
                       ),
-                    ],
-                  ),
-                ),
-                const SizedBox(
-                  height: 5,
-                ),
-                const Padding(
-                  padding: EdgeInsets.only(right: 20.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
+                      const SizedBox(height: 4),
                       Text(
                         'توضیحات در ادامه',
                         style: TextStyle(
-                          color: Color(0xFFA5A5A5),
-                          fontSize: 12,
+                          color: const Color(0xFFA5A5A5),
+                          fontSize: 12.sp,
                           fontFamily: MAIN_FONT_FAMILY_LIGHT,
                         ),
                       ),

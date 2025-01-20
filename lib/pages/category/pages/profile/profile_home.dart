@@ -8,6 +8,7 @@ import 'package:flutter_application_1/pages/category/pages/profile/widget_profil
 import 'package:flutter_application_1/pages/category/pages/profile/widget_profile_home/widget_profile_home_tour_rington.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
@@ -69,7 +70,7 @@ class ProfileHome extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Container(
-                  width: Get.width / 3.3,
+                  width: 110.w,
                   height: 74,
                   decoration: ShapeDecoration(
                     color: Colors.white,
@@ -138,7 +139,7 @@ class ProfileHome extends StatelessWidget {
                     Get.to(() => const ProfileDetail());
                   },
                   child: Container(
-                    width: Get.width / 2.0,
+                    width: 180.w,
                     height: 74,
                     decoration: ShapeDecoration(
                       color: Colors.white,
@@ -245,7 +246,7 @@ Widget sabtAds() {
       children: [
         Container(
           height: 60,
-          width: Get.width / 1.15,
+          width: 315.w,
           decoration: ShapeDecoration(
             color: Colors.white,
             shape: RoundedRectangleBorder(

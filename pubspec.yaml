@@ -72,7 +72,7 @@ dependencies:
   country_picker: 2.0.23
   get: 4.6.6
   gradient_borders: 1.0.0
-  flutter_svg: 2.0.9
+  flutter_svg: ^2.0.17
   json_annotation: 4.8.1
   persian_datetime_picker: 2.6.0
   flutter_map: 6.1.0
@@ -89,6 +89,7 @@ dependencies:
   emoji_picker_flutter: ^2.1.1
   audioplayers: ^5.2.1
   file_picker: ^8.0.0+1
+  flutter_screenutil: ^5.9.3
   
   # mapir_raster: 0.0.1
 

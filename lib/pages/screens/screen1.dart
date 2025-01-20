@@ -69,7 +69,7 @@ class Screen1 extends StatelessWidget {
                           fontFamily: MAIN_FONT_FAMILY_UltraLight),
                       textDirection: TextDirection.rtl,
                       textAlign: TextAlign.justify,
-                    )
+                    ),
                   ],
                 ),
               ),

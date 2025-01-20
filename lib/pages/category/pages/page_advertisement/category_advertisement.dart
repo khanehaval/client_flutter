@@ -6,6 +6,7 @@ import 'package:flutter_application_1/pages/category/pages/page_advertisement/pa
 import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/kota_modat_pages/ejara_kota_modat_page.dart';
 import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/sakht_v_saz_pages/sakht_v_saz_adv.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 class CategoryAdvertisement extends StatefulWidget {
@@ -107,8 +108,8 @@ class _CategoryAdvertisementState extends State<CategoryAdvertisement> {
         child: Padding(
           padding: const EdgeInsets.all(0.7),
           child: Container(
-            width: 144,
-            height: 96,
+            width: 144.w,
+            height: 90.h,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(7),
               border: isSelected

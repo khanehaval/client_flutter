@@ -153,7 +153,7 @@ class Category extends StatelessWidget {
                         ),
                       ),
                       const Padding(
-                        padding: EdgeInsets.only(top: 40.0, left: 70),
+                        padding: EdgeInsets.only(top: 50.0, left: 70),
                         child: Text(
                           "فروش مسکونی",
                           style: TextStyle(
@@ -388,4 +388,4 @@ class Category extends StatelessWidget {
 }
 
 double _getHeight(BuildContext context) =>
-    min(MediaQuery.of(context).size.height, 800);
+    min(MediaQuery.of(context).size.height, 900);

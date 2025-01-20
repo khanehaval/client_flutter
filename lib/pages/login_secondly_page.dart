@@ -6,6 +6,7 @@ import 'package:flutter_application_1/pages/educational_tour.dart';
 import 'package:flutter_application_1/pages/category/pages/home.dart';
 import 'package:flutter_application_1/pages/real_estate_agency.dart';
 import 'package:flutter_application_1/pages/private.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
@@ -81,7 +82,7 @@ class LoginSecondlyPage extends StatelessWidget {
                       child: Padding(
                         padding: const EdgeInsets.all(1.2),
                         child: Container(
-                          height: 65,
+                          height: 65.h,
                           decoration: const BoxDecoration(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(19)),
@@ -117,7 +118,7 @@ class LoginSecondlyPage extends StatelessWidget {
                       child: Padding(
                         padding: const EdgeInsets.all(1.2),
                         child: Container(
-                          height: 65,
+                          height: 65.h,
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(19),
                               color: Colors.white),
@@ -152,7 +153,7 @@ class LoginSecondlyPage extends StatelessWidget {
                       child: Padding(
                         padding: const EdgeInsets.all(1.2),
                         child: Container(
-                          height: 65,
+                          height: 65.h,
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(19),
                               color: Colors.white),
@@ -207,35 +208,34 @@ class LoginSecondlyPage extends StatelessWidget {
                   const SizedBox(
                     width: 25,
                   ),
-                  Expanded(
-                    child: Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(30),
-                        boxShadow: [
-                          BoxShadow(
-                              color: Colors.grey.withOpacity(0.25),
-                              spreadRadius: 1,
-                              blurRadius: 5,
-                              offset: const Offset(0, 1)),
-                        ],
-                        gradient: getGradient(),
-                      ),
-                      child: ElevatedButton(
-                        onPressed: () {
-                          Get.to(() => EducationalTour(),
-                              transition: Transition.leftToRightWithFade,
-                              duration: const Duration(milliseconds: 400));
-                        },
-                        style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.transparent,
-                            shadowColor: Colors.transparent),
-                        child: const Text(
-                          'مشاهده تور آموزشی',
-                          style: TextStyle(
-                              color: Color.fromRGBO(48, 48, 48, 1),
-                              fontSize: 9,
-                              fontFamily: MAIN_FONT_FAMILY),
-                        ),
+                  Container(
+                    width: MediaQuery.of(context).size.width * 0.34,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(30),
+                      boxShadow: [
+                        BoxShadow(
+                            color: Colors.grey.withOpacity(0.25),
+                            spreadRadius: 1,
+                            blurRadius: 5,
+                            offset: const Offset(0, 1)),
+                      ],
+                      gradient: getGradient(),
+                    ),
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Get.to(() => EducationalTour(),
+                            transition: Transition.leftToRightWithFade,
+                            duration: const Duration(milliseconds: 400));
+                      },
+                      style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.transparent,
+                          shadowColor: Colors.transparent),
+                      child: const Text(
+                        'مشاهده تور آموزشی',
+                        style: TextStyle(
+                            color: Color.fromRGBO(48, 48, 48, 1),
+                            fontSize: 9,
+                            fontFamily: MAIN_FONT_FAMILY),
                       ),
                     ),
                   ),

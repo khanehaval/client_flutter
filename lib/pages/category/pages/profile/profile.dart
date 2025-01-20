@@ -6,10 +6,9 @@ import 'package:flutter_application_1/pages/category/pages/profile/under_profile
 import 'package:flutter_application_1/pages/category/pages/profile/under_profile/widget_profile_notification/Profile_Notification.dart';
 import 'package:flutter_application_1/pages/category/pages/profile/vitrin_profile/vitrin.dart';
 import 'package:flutter_application_1/pages/category/pages/window/messages/first_page_messages.dart';
-import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/register/register.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -21,6 +20,7 @@ class _ProfilePageState extends State<ProfilePage>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<Offset> _offsetAnimation;
+
   @override
   void initState() {
     super.initState();
@@ -29,14 +29,12 @@ class _ProfilePageState extends State<ProfilePage>
       duration: const Duration(milliseconds: 500),
     );
 
-    _offsetAnimation =
-        Tween<Offset>(begin: const Offset(1.0, 0.0), end: Offset.zero).animate(
-      CurvedAnimation(parent: _controller, curve: Curves.easeInOut),
-    );
+    _offsetAnimation = Tween<Offset>(
+      begin: const Offset(1.0, 0.0),
+      end: Offset.zero,
+    ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeInOut));
 
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      _controller.forward();
-    });
+    _controller.forward(); // شروع انیمیشن
   }
 
   @override
@@ -47,65 +45,65 @@ class _ProfilePageState extends State<ProfilePage>
 
   @override
   Widget build(BuildContext context) {
+    ScreenUtil.init(context,
+        designSize: const Size(360, 900)); // تنظیم اندازه طراحی
+
     return Scaffold(
       backgroundColor: Colors.white,
       body: Stack(
         children: [
           SlideTransition(
             position: _offsetAnimation,
-            child: openProfile(),
+            child: _buildProfileContent(),
           ),
         ],
       ),
     );
   }
 
-  Widget openProfile() {
+  Widget _buildProfileContent() {
     return Padding(
-      padding: const EdgeInsets.only(top: 5.0),
+      padding: EdgeInsets.only(top: 20.h),
       child: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.only(
-              top: MediaQuery.of(context).padding.top, right: 20),
+            top: MediaQuery.of(context).padding.top,
+            right: 20.w,
+          ),
           child: Align(
             alignment: Alignment.topRight,
             child: Container(
-              decoration: const BoxDecoration(
+              height: 0.8.sh,
+              width: 0.7.sw,
+              decoration: BoxDecoration(
                 color: Colors.white,
-                borderRadius: BorderRadius.all(Radius.circular(11)),
-                boxShadow: [BoxShadow(color: Colors.black12, blurRadius: 2)],
+                borderRadius: BorderRadius.circular(11),
+                boxShadow: const [
+                  BoxShadow(color: Colors.black12, blurRadius: 2)
+                ],
               ),
               child: Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: SizedBox(
-                  height: Get.height / 1.37,
-                  width: Get.width / 1.7,
-                  child: Material(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(10),
-                    child: Column(
-                      children: [
-                        const SizedBox(height: 10),
-                        GestureDetector(
-                          onTap: () {
-                            Get.back();
-                          },
-                          child: SvgPicture.asset(
-                            'assets/images/arrow right.svg',
-                            width: 50,
-                            height: 18,
-                          ),
+                padding: EdgeInsets.all(10.w),
+                child: Material(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(10),
+                  child: Column(
+                    children: [
+                      SizedBox(height: 10.h),
+                      GestureDetector(
+                        onTap: () => Get.back(),
+                        child: SvgPicture.asset(
+                          'assets/images/arrow right.svg',
+                          width: 50.w,
+                          height: 18.h,
                         ),
-                        _profileHeader(),
-                        const SizedBox(height: 10),
-                        const Divider(
-                          color: Color.fromRGBO(226, 226, 226, 1),
-                        ),
-                        Expanded(
-                          child: _buildMenuItems(),
-                        ),
-                      ],
-                    ),
+                      ),
+                      SizedBox(height: 10.h),
+                      _buildProfileHeader(),
+                      SizedBox(height: 10.h),
+                      const Divider(color: Color.fromRGBO(226, 226, 226, 1)),
+                      Expanded(child: _buildMenuItems()),
+                    ],
                   ),
                 ),
               ),
@@ -116,9 +114,9 @@ class _ProfilePageState extends State<ProfilePage>
     );
   }
 
-  Widget _profileHeader() {
+  Widget _buildProfileHeader() {
     return Padding(
-      padding: const EdgeInsets.only(left: 20.0),
+      padding: EdgeInsets.only(left: 20.w),
       child: Column(
         children: [
           Align(
@@ -131,53 +129,52 @@ class _ProfilePageState extends State<ProfilePage>
                     Text(
                       "آژانش املاک",
                       style: TextStyle(
-                          fontSize: 15,
-                          fontFamily: MAIN_FONT_FAMILY,
-                          color: Colors.black54),
+                        fontSize: 15,
+                        fontFamily: 'MAIN_FONT_FAMILY',
+                        color: Colors.black54,
+                      ),
                     ),
                     Row(
                       children: [
-                        Icon(
-                          Icons.verified,
-                          color: Colors.blue,
-                        ),
+                        Icon(Icons.verified, color: Colors.blue),
                         Text(
                           "خانه اول",
                           style: TextStyle(
-                              fontSize: 16, fontFamily: MAIN_FONT_FAMILY),
+                            fontSize: 16,
+                            fontFamily: 'MAIN_FONT_FAMILY',
+                          ),
                         ),
                       ],
                     ),
                   ],
                 ),
-                const SizedBox(width: 40),
+                SizedBox(width: 40.w),
                 Stack(
                   children: [
                     Container(
-                      width: 60,
-                      height: 60,
+                      width: 60.w,
+                      height: 60.h,
                       decoration: BoxDecoration(
                         border: Border.all(
-                            width: 2,
-                            color: const Color.fromRGBO(229, 222, 41, 1)),
+                          width: 2,
+                          color: const Color.fromRGBO(229, 222, 41, 1),
+                        ),
                         shape: BoxShape.circle,
                       ),
                       child: Padding(
-                        padding: const EdgeInsets.all(5.0),
+                        padding: EdgeInsets.all(5.w),
                         child: Image.asset(
                           'assets/images/logo-fa-photoshop.png',
-                          width: 65,
-                          height: 65,
                           fit: BoxFit.contain,
                         ),
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(left: 40.0),
+                      padding: EdgeInsets.only(left: 40.w),
                       child: SvgPicture.asset(
                         'assets/images/edit_icon_profile.svg',
-                        width: 50,
-                        height: 20,
+                        width: 50.w,
+                        height: 20.h,
                       ),
                     ),
                   ],
@@ -192,77 +189,62 @@ class _ProfilePageState extends State<ProfilePage>
 
   Widget _buildMenuItems() {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: EdgeInsets.all(8.w),
       child: Column(
         children: [
-          const SizedBox(height: 10),
-          InkWell(
-            onTap: () {
-              Get.to(() => const ProfileHome(),
-                  transition: Transition.leftToRight);
-            },
-            child: _item('assets/images/Home.svg', "خانه"),
+          SizedBox(height: 10.h),
+          ProfileMenuItem(
+            assetPath: 'assets/images/Home.svg',
+            title: "خانه",
+            onTap: () => _navigateTo(const ProfileHome()),
           ),
-          const SizedBox(height: 10),
-          InkWell(
-            onTap: () {
-              Get.to(() => const ProfileMyDesk(),
-                  transition: Transition.leftToRight);
-            },
-            child: _item('assets/images/profile_category.svg', "میزکار"),
+          SizedBox(height: 10.h),
+          ProfileMenuItem(
+            assetPath: 'assets/images/profile_category.svg',
+            title: "میزکار",
+            onTap: () => _navigateTo(const ProfileMyDesk()),
           ),
-          const SizedBox(height: 10),
-          InkWell(
-              onTap: () {
-                Get.to(() => FirstPageMessages(),
-                    transition: Transition.leftToRight);
-              },
-              child: _item('assets/images/profile_message.svg', "پیام ها")),
-          const SizedBox(height: 10),
-          Padding(
-            padding: const EdgeInsets.only(right: 5.0),
-            child: InkWell(
-              onTap: () {
-                Get.to(() => ColleaguesProfile(),
-                    transition: Transition.leftToRight);
-              },
-              child: _item('assets/images/profile_moshavere.svg', "همکاران"),
-            ),
+          SizedBox(height: 10.h),
+          ProfileMenuItem(
+            assetPath: 'assets/images/profile_message.svg',
+            title: "پیام ها",
+            onTap: () => _navigateTo(FirstPageMessages()),
           ),
-          const SizedBox(height: 10),
-          InkWell(
-            onTap: () {
-              Get.to(() => const Vitrin(), transition: Transition.leftToRight);
-            },
-            child: _item('assets/images/vitrin_profile_icon_off.svg', "ویترین"),
+          SizedBox(height: 10.h),
+          ProfileMenuItem(
+            assetPath: 'assets/images/profile_moshavere.svg',
+            title: "همکاران",
+            onTap: () => _navigateTo(ColleaguesProfile()),
           ),
-          const SizedBox(height: 10),
-          InkWell(
-            onTap: () {
-              Get.to(() => const CategoryProfile(index: 0),
-                  transition: Transition.leftToRight);
-            },
-            child: _item(
-                'assets/images/Agahi_man_profile_home_off.svg', "آگهی های من"),
+          SizedBox(height: 10.h),
+          ProfileMenuItem(
+            assetPath: 'assets/images/vitrin_profile_icon_off.svg',
+            title: "ویترین",
+            onTap: () => _navigateTo(const Vitrin()),
           ),
-          const SizedBox(height: 10),
-          InkWell(
-            onTap: () {
-              Get.to(() => const ProfileNotification(),
-                  transition: Transition.leftToRight);
-            },
-            child: Padding(
-              padding: const EdgeInsets.only(right: 5.0),
-              child: _item('assets/images/rington_off.svg', "اطلاع رسانی"),
-            ),
+          SizedBox(height: 10.h),
+          ProfileMenuItem(
+            assetPath: 'assets/images/Agahi_man_profile_home_off.svg',
+            title: "آگهی های من",
+            onTap: () => _navigateTo(const CategoryProfile(index: 0)),
           ),
-          const SizedBox(height: 40),
+          SizedBox(height: 10.h),
+          ProfileMenuItem(
+            assetPath: 'assets/images/rington_off.svg',
+            title: "اطلاع رسانی",
+            onTap: () => _navigateTo(const ProfileNotification()),
+          ),
+          SizedBox(height: 20.h),
           const Divider(color: Color.fromRGBO(226, 226, 226, 1)),
-          const SizedBox(height: 20),
+          SizedBox(height: 40.h),
           _buildFooter(),
         ],
       ),
     );
+  }
+
+  void _navigateTo(Widget page) {
+    Get.to(() => page, transition: Transition.leftToRight);
   }
 
   Widget _buildFooter() {
@@ -270,56 +252,76 @@ class _ProfilePageState extends State<ProfilePage>
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Container(
-          width: 35,
-          height: 35,
+          width: 35.w,
+          height: 35.h,
           decoration: ShapeDecoration(
             color: Colors.white,
             shape: RoundedRectangleBorder(
               side: const BorderSide(
-                  width: 1, color: Color.fromRGBO(166, 166, 166, 1)),
+                width: 1,
+                color: Color.fromRGBO(166, 166, 166, 1),
+              ),
               borderRadius: BorderRadius.circular(10),
             ),
           ),
-          child: const Icon(Icons.add_circle_outline,
-              color: Color.fromRGBO(99, 99, 99, 1)),
+          child: const Icon(
+            Icons.add_circle_outline,
+            color: Color.fromRGBO(99, 99, 99, 1),
+          ),
         ),
-        const SizedBox(width: 20),
+        SizedBox(width: 20.w),
         GestureDetector(
-          onTap: () {
-            Get.offAll(() => const Register());
-          },
+          onTap: () => Get.offAll(() => const Register()),
           child: SvgPicture.asset(
             "assets/images/exit.svg",
-            width: 30,
-            height: 37,
+            width: 30.w,
+            height: 37.h,
           ),
         ),
       ],
     );
   }
+}
 
-  Widget _item(String assetPath, String title) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.end,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: Text(
-            title,
-            textAlign: TextAlign.right,
-            textDirection: TextDirection.rtl,
-            style: const TextStyle(
-                fontFamily: MAIN_FONT_FAMILY_MEDIUM, fontSize: 12),
+class ProfileMenuItem extends StatelessWidget {
+  final String assetPath;
+  final String title;
+  final VoidCallback onTap;
+
+  const ProfileMenuItem({
+    required this.assetPath,
+    required this.title,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: onTap,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.end,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Padding(
+            padding: EdgeInsets.all(10.w),
+            child: Text(
+              title,
+              textAlign: TextAlign.right,
+              textDirection: TextDirection.rtl,
+              style: TextStyle(
+                fontFamily: 'MAIN_FONT_FAMILY_MEDIUM',
+                fontSize: 12.sp,
+              ),
+            ),
           ),
-        ),
-        const SizedBox(width: 20),
-        SvgPicture.asset(
-          assetPath,
-          width: 25,
-          height: 25,
-        ),
-      ],
+          SizedBox(width: 5.w),
+          SvgPicture.asset(
+            assetPath,
+            width: 25.w,
+            height: 25.h,
+          ),
+        ],
+      ),
     );
   }
 }

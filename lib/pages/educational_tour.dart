@@ -46,42 +46,15 @@ class _EducationalTourState extends State<EducationalTour> {
   Widget build(BuildContext context) {
     return Obx(() => Scaffold(
           backgroundColor: Colors.white,
-          appBar: (currentPageIndex.value == 1 || currentPageIndex.value == 4)
+          appBar: (currentPageIndex.value == 0 ||
+                  currentPageIndex.value ==
+                      4) // فقط برای صفحه Home اپ بار نمایش داده نشود
               ? null
               : buildAppBar(),
           body: Stack(
             children: [
               Obx(() => showEducation.value
-                  ? Center(
-                      child: Column(
-                        children: [
-                          const SizedBox(
-                            height: 30,
-                          ),
-                          SvgPicture.asset(
-                            'assets/images/Personal user panel.svg',
-                            width: Get.width / 1.3,
-                          ),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(20.0),
-                            child: SvgPicture.asset(
-                              'assets/images/Consultants user panel.svg',
-                              width: Get.width / 1.3,
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          SvgPicture.asset(
-                            'assets/images/Real estate agency user panel.svg',
-                            width: Get.width / 1.3,
-                          ),
-                        ],
-                      ),
-                    )
+                  ? _buildEducationalTour()
                   : pages[currentPageIndex.value]),
               Align(
                 alignment: Alignment.bottomCenter,
@@ -90,6 +63,33 @@ class _EducationalTourState extends State<EducationalTour> {
             ],
           ),
         ));
+  }
+
+  Widget _buildEducationalTour() {
+    return Center(
+      child: Column(
+        children: [
+          const SizedBox(height: 30),
+          SvgPicture.asset(
+            'assets/images/Personal user panel.svg',
+            width: Get.width / 1.3,
+          ),
+          const SizedBox(height: 10),
+          Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: SvgPicture.asset(
+              'assets/images/Consultants user panel.svg',
+              width: Get.width / 1.3,
+            ),
+          ),
+          const SizedBox(height: 10),
+          SvgPicture.asset(
+            'assets/images/Real estate agency user panel.svg',
+            width: Get.width / 1.3,
+          ),
+        ],
+      ),
+    );
   }
 
   Widget bottomNavigationBar1() {
@@ -102,7 +102,7 @@ class _EducationalTourState extends State<EducationalTour> {
             color: Colors.black.withOpacity(0.15),
             spreadRadius: 0,
             blurRadius: 5,
-            offset: const Offset(-1, 0), // changes position of shadow
+            offset: const Offset(-1, 0),
           ),
         ],
       ),
@@ -112,139 +112,84 @@ class _EducationalTourState extends State<EducationalTour> {
           topRight: Radius.circular(20),
         ),
         child: Obx(
-          () => Container(
-            child: BottomNavigationBar(
-              showSelectedLabels: true,
-              selectedItemColor: Colors.black,
-              selectedFontSize: 11,
-              unselectedFontSize: 9,
-              selectedLabelStyle: const TextStyle(
-                  fontFamily: MAIN_FONT_FAMILY, color: Colors.black),
-              unselectedLabelStyle: const TextStyle(
-                  fontFamily: MAIN_FONT_FAMILY_MEDIUM,
-                  color: Color.fromRGBO(166, 166, 166, 1)),
-              type: BottomNavigationBarType.fixed,
-              backgroundColor: Colors.white,
-              onTap: (int index) {
-                currentPageIndex.value = index;
-                showEducation.value = false;
-              },
-              currentIndex: currentPageIndex.value,
-              items: <BottomNavigationBarItem>[
-                BottomNavigationBarItem(
-                  backgroundColor: Colors.white,
-                  icon: Center(
-                    child: Padding(
-                      padding: const EdgeInsets.only(top: 3.0, bottom: 5),
-                      child: SvgPicture.asset(
-                        "assets/images/navigation11.svg",
-                        width: 33,
-                        height: 33,
-                      ),
-                    ),
-                  ),
-                  label: 'پروفایل',
-                  activeIcon: Center(
-                    child: Padding(
-                      padding: const EdgeInsets.only(top: 3.0, bottom: 5),
-                      child: SvgPicture.asset(
-                        "assets/images/navigation11-active.svg",
-                        width: 33,
-                        height: 33,
-                      ),
-                    ),
-                  ),
-                ),
-                BottomNavigationBarItem(
-                  icon: Center(
-                    child: Padding(
-                      padding: const EdgeInsets.only(top: 3.0, bottom: 5),
-                      child: SvgPicture.asset(
-                        "assets/images/navigation22.svg",
-                        width: 33,
-                        height: 33,
-                      ),
-                    ),
-                  ),
-                  label: 'پیام',
-                  activeIcon: Center(
-                    child: Padding(
-                      padding: const EdgeInsets.only(top: 3.0, bottom: 5),
-                      child: SvgPicture.asset(
-                        "assets/images/navigation22-active.svg",
-                        width: 33,
-                        height: 33,
-                      ),
-                    ),
-                  ),
-                ),
-                BottomNavigationBarItem(
-                  icon: Center(
-                    child: SvgPicture.asset(
-                      "assets/images/navigation33.svg",
-                      width: 44,
-                      height: 44,
-                    ),
-                  ),
-                  label: 'ثبت آگهی',
-                  activeIcon: Center(
-                    child: SvgPicture.asset(
-                      "assets/images/navigation33-active.svg",
-                      width: 44,
-                      height: 44,
-                    ),
-                  ),
-                ),
-                BottomNavigationBarItem(
-                  icon: Center(
-                    child: Center(
-                      child: Padding(
-                        padding: const EdgeInsets.only(top: 3.0, bottom: 5),
-                        child: SvgPicture.asset(
-                          "assets/images/navigation44.svg",
-                          width: 33,
-                          height: 33,
-                        ),
-                      ),
-                    ),
-                  ),
-                  label: 'دسته بندی',
-                  activeIcon: Center(
-                    child: Padding(
-                      padding: const EdgeInsets.only(top: 3.0, bottom: 5),
-                      child: SvgPicture.asset(
-                        "assets/images/navigation44-active.svg",
-                        width: 33,
-                        height: 33,
-                      ),
-                    ),
-                  ),
-                ),
-                BottomNavigationBarItem(
-                  icon: Center(
-                    child: Padding(
-                      padding: const EdgeInsets.only(top: 3.0, bottom: 5),
-                      child: SvgPicture.asset(
-                        "assets/images/navigation55.svg",
-                        width: 33,
-                        height: 33,
-                      ),
-                    ),
-                  ),
-                  label: 'نقشه',
-                  activeIcon: Center(
-                    child: Padding(
-                      padding: const EdgeInsets.only(top: 3.0, bottom: 5),
-                      child: SvgPicture.asset(
-                        "assets/images/navigation55-active.svg",
-                        width: 33,
-                        height: 33,
-                      ),
-                    ),
-                  ),
-                ),
-              ],
+          () => BottomNavigationBar(
+            elevation: 5,
+            showSelectedLabels: true,
+            selectedItemColor: Colors.black,
+            selectedFontSize: 11,
+            unselectedFontSize: 9,
+            selectedLabelStyle: const TextStyle(
+              fontFamily: MAIN_FONT_FAMILY,
+              color: Colors.black,
             ),
+            unselectedLabelStyle: const TextStyle(
+              fontFamily: MAIN_FONT_FAMILY_MEDIUM,
+              color: Color.fromRGBO(166, 166, 166, 1),
+            ),
+            type: BottomNavigationBarType.fixed,
+            backgroundColor: Colors.white,
+            onTap: (int index) {
+              currentPageIndex.value = index;
+              showEducation.value = false;
+            },
+            currentIndex: currentPageIndex.value,
+            items: [
+              _buildBottomNavItem(
+                "assets/images/navigation11.svg",
+                "assets/images/navigation11-active.svg",
+                'پروفایل',
+              ),
+              _buildBottomNavItem(
+                "assets/images/navigation22.svg",
+                "assets/images/navigation22-active.svg",
+                'پیام',
+              ),
+              _buildBottomNavItem(
+                "assets/images/navigation33.svg",
+                "assets/images/navigation33-active.svg",
+                'ثبت آگهی',
+              ),
+              _buildBottomNavItem(
+                "assets/images/navigation44.svg",
+                "assets/images/navigation44-active.svg",
+                'دسته بندی',
+              ),
+              _buildBottomNavItem(
+                "assets/images/navigation55.svg",
+                "assets/images/navigation55-active.svg",
+                'نقشه',
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  BottomNavigationBarItem _buildBottomNavItem(
+    String iconPath,
+    String activeIconPath,
+    String label,
+  ) {
+    return BottomNavigationBarItem(
+      icon: Center(
+        child: Padding(
+          padding: const EdgeInsets.only(top: 3.0, bottom: 5),
+          child: SvgPicture.asset(
+            iconPath,
+            width: 33,
+            height: 33,
+          ),
+        ),
+      ),
+      label: label,
+      activeIcon: Center(
+        child: Padding(
+          padding: const EdgeInsets.only(top: 3.0, bottom: 5),
+          child: SvgPicture.asset(
+            activeIconPath,
+            width: 33,
+            height: 33,
           ),
         ),
       ),

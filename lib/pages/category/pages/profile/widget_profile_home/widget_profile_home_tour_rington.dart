@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/pages/profile/under_profile/widget_profile_notification/Profile_Notification.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
@@ -14,12 +15,14 @@ class WidgetProfileHomeTourRington extends StatelessWidget {
       children: [
         GestureDetector(
           onTap: () {
-            Get.to(() => const ProfileNotification(),
-                duration: const Duration(milliseconds: 100),
-                transition: Transition.leftToRight);
+            Get.to(
+              () => const ProfileNotification(),
+              duration: const Duration(milliseconds: 100),
+              transition: Transition.leftToRight,
+            );
           },
           child: Container(
-            width: Get.width / 2.4,
+            width: 145.w,
             height: 100,
             decoration: ShapeDecoration(
               color: Colors.white,
@@ -32,56 +35,46 @@ class WidgetProfileHomeTourRington extends StatelessWidget {
                   blurRadius: 3,
                   offset: Offset(0, 0),
                   spreadRadius: 0,
-                )
+                ),
               ],
             ),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const SizedBox(
-                  height: 10,
+                Padding(
+                  padding: const EdgeInsets.only(right: 12.0, top: 12.0),
+                  child: Align(
+                    alignment: Alignment.topRight,
+                    child: SvgPicture.asset(
+                      'assets/images/rington.svg',
+                      width: 24.w,
+                      height: 24.w,
+                    ),
+                  ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(
-                    left: 100.0,
-                  ),
-                  child: SvgPicture.asset(
-                    'assets/images/rington.svg',
-                    width: 24,
-                    height: 24,
-                  ),
-                ),
-                const SizedBox(
-                  height: 5,
-                ),
-                const Padding(
-                  padding: EdgeInsets.only(right: 15.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
+                  padding: const EdgeInsets.only(right: 12.0),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
-                      Text(
-                        'اطلاع رسانی',
-                        style: TextStyle(
-                          color: Color(0xFF303030),
-                          fontSize: 18,
-                          fontFamily: 'Aban Light',
+                      Align(
+                        alignment: Alignment.centerRight,
+                        child: Text(
+                          'اطلاع رسانی',
+                          style: TextStyle(
+                            color: const Color(0xFF303030),
+                            fontSize: 18.sp,
+                            fontFamily: 'Aban Light',
+                          ),
                         ),
                       ),
-                    ],
-                  ),
-                ),
-                const SizedBox(
-                  height: 5,
-                ),
-                const Padding(
-                  padding: EdgeInsets.only(right: 15.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
+                      const SizedBox(height: 4),
                       Text(
-                        'جستجو و اطلاع رسانی ',
+                        'جستجو و اطلاع رسانی',
                         style: TextStyle(
-                          color: Color(0xFFA5A5A5),
-                          fontSize: 12,
+                          color: const Color(0xFFA5A5A5),
+                          fontSize: 12.sp,
                           fontFamily: MAIN_FONT_FAMILY_LIGHT,
                         ),
                       ),
@@ -96,7 +89,7 @@ class WidgetProfileHomeTourRington extends StatelessWidget {
           width: 5,
         ),
         Container(
-          width: Get.width / 2.4,
+          width: 145.w,
           height: 100,
           decoration: ShapeDecoration(
             color: Colors.white,
@@ -109,56 +102,46 @@ class WidgetProfileHomeTourRington extends StatelessWidget {
                 blurRadius: 3,
                 offset: Offset(0, 0),
                 spreadRadius: 0,
-              )
+              ),
             ],
           ),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const SizedBox(
-                height: 10,
+              Padding(
+                padding: const EdgeInsets.only(right: 12.0, top: 12.0),
+                child: Align(
+                  alignment: Alignment.topRight,
+                  child: SvgPicture.asset(
+                    'assets/images/tour_profile.svg',
+                    width: 24.w,
+                    height: 24.w,
+                  ),
+                ),
               ),
               Padding(
-                padding: const EdgeInsets.only(
-                  left: 100.0,
-                ),
-                child: SvgPicture.asset(
-                  'assets/images/tour_profile.svg',
-                  width: 24,
-                  height: 24,
-                ),
-              ),
-              const SizedBox(
-                height: 5,
-              ),
-              const Padding(
-                padding: EdgeInsets.only(right: 20.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
+                padding: const EdgeInsets.only(right: 12.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
-                    Text(
-                      'تورها',
-                      style: TextStyle(
-                        color: Color(0xFF303030),
-                        fontSize: 18,
-                        fontFamily: 'Aban Light',
+                    Align(
+                      alignment: Alignment.centerRight,
+                      child: Text(
+                        'تورها',
+                        style: TextStyle(
+                          color: const Color(0xFF303030),
+                          fontSize: 18.sp,
+                          fontFamily: 'Aban Light',
+                        ),
                       ),
                     ),
-                  ],
-                ),
-              ),
-              const SizedBox(
-                height: 5,
-              ),
-              const Padding(
-                padding: EdgeInsets.only(right: 20.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
+                    const SizedBox(height: 4),
                     Text(
                       'تور آموزشی خانه اول',
                       style: TextStyle(
-                        color: Color(0xFFA5A5A5),
-                        fontSize: 12,
+                        color: const Color(0xFFA5A5A5),
+                        fontSize: 12.sp,
                         fontFamily: MAIN_FONT_FAMILY_LIGHT,
                       ),
                     ),

@@ -7,6 +7,7 @@ import 'package:flutter_application_1/pages/intro_screen.dart';
 import 'package:flutter_application_1/pages/login_secondly_page.dart';
 import 'package:flutter_application_1/repo/account_repo.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
@@ -14,6 +15,7 @@ import 'package:get_it/get_it.dart';
 
 class Register extends StatefulWidget {
   const Register({super.key});
+
   @override
   State<Register> createState() => _RegisterState();
 }
@@ -23,19 +25,9 @@ class _RegisterState extends State<Register> {
   final _time = 60.obs;
   final _phoneNumberSended = false.obs;
   final _buttonIsPressed = false.obs;
-  final _keyboardVisibility = false.obs;
-  final _keyboardVisibilityController = KeyboardVisibilityController();
   final _accountRepo = GetIt.I.get<AccountRepo>();
   final _phoneNumberTextField = TextEditingController();
   final _codeTextField = TextEditingController();
-
-  @override
-  void initState() {
-    super.initState();
-    _keyboardVisibilityController.onChange.listen((visible) {
-      _keyboardVisibility.value = visible;
-    });
-  }
 
   @override
   void dispose() {
@@ -93,7 +85,7 @@ class _RegisterState extends State<Register> {
       gravity: ToastGravity.TOP_RIGHT,
       backgroundColor: Colors.green,
       textColor: Colors.white,
-      fontSize: 16.0,
+      fontSize: 16.sp,
     );
   }
 
@@ -103,7 +95,7 @@ class _RegisterState extends State<Register> {
       backgroundColor: Colors.white,
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: EdgeInsets.all(8.w),
         child: Obx(
           () => _buttonIsPressed.value
               ? const CircularProgressIndicator()
@@ -111,38 +103,38 @@ class _RegisterState extends State<Register> {
         ),
       ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 10),
+        padding: EdgeInsets.symmetric(horizontal: 10.w),
         child: SingleChildScrollView(
           child: Column(
             children: [
-              SizedBox(height: _keyboardVisibility.isTrue ? 65 : 80),
+              SizedBox(height: 70.h),
               SvgPicture.asset(
                 'assets/images/logo-farsi.svg',
-                width: MediaQuery.of(context).size.width - 240,
+                width: 120.w,
               ),
-              SizedBox(height: _keyboardVisibility.isTrue ? 20 : 50),
+              SizedBox(height: 35.h),
               Obx(
                 () => Text(
                   _phoneNumberSended.value
                       ? 'کد تایید ارسال شده را وارد کنید'
                       : 'شماره تلفن همراه خود را وارد کنید',
-                  style: const TextStyle(
-                    fontSize: 17,
+                  style: TextStyle(
+                    fontSize: 17.sp,
                     fontFamily: MAIN_FONT_FAMILY,
                   ),
                 ),
               ),
-              SizedBox(height: _keyboardVisibility.isTrue ? 20 : 40),
+              SizedBox(height: 35.h),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 60),
+                padding: EdgeInsets.symmetric(horizontal: 60.w),
                 child: _buildPhoneNumberField(),
               ),
               Obx(
                 () => _phoneNumberSended.value
                     ? Padding(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 80,
-                          vertical: 20,
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 80.w,
+                          vertical: 10.h,
                         ),
                         child: _buildVerificationCodeField(),
                       )
@@ -157,25 +149,24 @@ class _RegisterState extends State<Register> {
 
   Widget _buildPhoneNumberField() {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+      padding: EdgeInsets.symmetric(horizontal: 16.w),
       child: SizedBox(
-        height: 50,
+        height: 50.h,
         child: TextFormField(
-          textAlign: TextAlign.center,
+          textAlign: TextAlign.center, // متن را در مرکز قرار می‌دهد
           keyboardType: TextInputType.number,
           controller: _phoneNumberTextField,
           onChanged: (_) => _phoneNumberSended.value = false,
           onFieldSubmitted: (_) => _sendPhoneNumber(),
-          style: const TextStyle(fontSize: 14, fontFamily: MAIN_FONT_FAMILY),
+          style: TextStyle(fontSize: 13.sp, fontFamily: MAIN_FONT_FAMILY),
           inputFormatters: [FilteringTextInputFormatter.digitsOnly],
           decoration: InputDecoration(
-            contentPadding: const EdgeInsets.symmetric(
-                horizontal: 50, vertical: 10), // فاصله داخلی برای زیبایی بیشتر
-            hintText: "۰۹۱۲   ۱۲۳   ۴۵۶۷", // شماره پیش‌فرض به فارسی
-            hintStyle: const TextStyle(
-              color: Color.fromRGBO(222, 222, 222, 1),
+            contentPadding: EdgeInsets.symmetric(horizontal: 30.w),
+            hintText: "۰۹۱۲   ۱۲۳   ۴۵۶۷",
+            hintStyle: TextStyle(
+              color: const Color.fromRGBO(222, 222, 222, 1),
               fontFamily: MAIN_FONT_FAMILY,
-              fontSize: 12,
+              fontSize: 12.sp,
             ),
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(15),
@@ -189,6 +180,7 @@ class _RegisterState extends State<Register> {
                 color: Color.fromRGBO(99, 99, 99, 1),
               ),
             ),
+
             // آیکون در سمت راست داخل فیلد
             suffixIcon: Obx(
               () => _phoneNumberSended.value
