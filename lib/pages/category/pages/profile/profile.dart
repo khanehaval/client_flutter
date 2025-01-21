@@ -67,14 +67,12 @@ class _ProfilePageState extends State<ProfilePage>
       child: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.only(
-            top: MediaQuery.of(context).padding.top,
-            right: 20.w,
-          ),
+              top: MediaQuery.of(context).padding.top, right: 10.w),
           child: Align(
             alignment: Alignment.topRight,
             child: Container(
               height: 0.8.sh,
-              width: 0.7.sw,
+              width: 0.6.sw,
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(11),

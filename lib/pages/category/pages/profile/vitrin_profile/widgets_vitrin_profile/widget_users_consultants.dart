@@ -1,6 +1,7 @@
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/get_core.dart';
@@ -33,7 +34,7 @@ class _WidgetUsersConsultantsState extends State<WidgetUsersConsultants> {
       () => Padding(
         padding: const EdgeInsets.only(left: 20.0, right: 20),
         child: Container(
-          width: double.infinity,
+          width: double.infinity.w,
           height: _About_me_1.value ? 500 : 50,
           decoration: BoxDecoration(
             color: const Color.fromRGBO(250, 250, 250, 1),
@@ -239,7 +240,7 @@ class _WidgetUsersConsultantsState extends State<WidgetUsersConsultants> {
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
             Container(
-              width: MediaQuery.of(context).size.width / 1.65,
+              width: 220.w,
               height: 85,
               margin: const EdgeInsets.symmetric(
                   horizontal: 20), // فاصله از کناره‌ها
@@ -315,9 +316,7 @@ class _WidgetUsersConsultantsState extends State<WidgetUsersConsultants> {
                           width: 20,
                           height: 20,
                         ),
-                        const SizedBox(
-                          width: 5,
-                        ),
+                        SizedBox(width: 12.w),
                         const Text(
                           'تـهـران',
                           style: TextStyle(
@@ -401,7 +400,7 @@ class _WidgetUsersConsultantsState extends State<WidgetUsersConsultants> {
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
             Container(
-              width: MediaQuery.of(context).size.width / 1.65,
+              width: 220.w,
               height: 85,
               margin: const EdgeInsets.symmetric(
                   horizontal: 20), // فاصله از کناره‌ها
@@ -477,9 +476,7 @@ class _WidgetUsersConsultantsState extends State<WidgetUsersConsultants> {
                           width: 20,
                           height: 20,
                         ),
-                        const SizedBox(
-                          width: 5,
-                        ),
+                        SizedBox(width: 12.w),
                         const Text(
                           'تـهـران',
                           style: TextStyle(

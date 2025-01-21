@@ -68,8 +68,8 @@ class _EducationalTourState extends State<EducationalTour> {
   Widget _buildEducationalTour() {
     return Center(
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const SizedBox(height: 30),
           SvgPicture.asset(
             'assets/images/Personal user panel.svg',
             width: Get.width / 1.3,

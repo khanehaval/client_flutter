@@ -49,26 +49,26 @@ class _WidgetMoarefiTargertState extends State<WidgetMoarefiTargert> {
                   IconButton(
                     icon: _isChecked.value
                         ? SvgPicture.asset(
-                            'assets/images/edit and ok.svg') // آیکون ویرایش
+                            'assets/images/edit and ok.svg', // آیکون ویرایش
+                          )
                         : (_isTyping.value
                             ? SvgPicture.asset(
                                 'assets/images/check_icon.svg') // آیکون چک
-                            : (_isExpanded.value
-                                ? SvgPicture.asset(
-                                    'assets/images/=gold.svg') // آیکون =
-                                : SvgPicture.asset(
-                                    'assets/images/Arrow_list_agency.svg', // آیکون فلش پایین
-                                    width: 11,
-                                    height: 14,
-                                  ))),
+                            : SvgPicture.asset(
+                                _isExpanded.value
+                                    ? 'assets/images/=gold.svg'
+                                    : 'assets/images/Arrow_list_agency.svg',
+                                width: _isExpanded.value ? 25 : 11,
+                                height: _isExpanded.value ? 10 : 14,
+                              )),
                     onPressed: () {
                       if (_isTyping.value) {
-                        // وقتی کاربر تایپ کرده و روی چک کلیک کرده
+                        _typedText.value = _textController.text;
                         _isTyping.value = false;
                         _isChecked.value = true;
+                        _isExpanded.value = false;
                       } else {
-                        _isExpanded.value =
-                            !_isExpanded.value; // تغییر وضعیت باز یا بسته
+                        _isExpanded.value = !_isExpanded.value;
                         _isChecked.value = false;
                       }
                     },

@@ -3,6 +3,7 @@ import 'package:flutter_application_1/pages/category/pages/profile/profile_detai
 import 'package:flutter_application_1/pages/category/pages/profile/vitrin_profile/edit_vitrin.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
@@ -28,57 +29,53 @@ class Vitrin extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.only(right: 20, left: 20),
+                      padding: EdgeInsets.symmetric(horizontal: 20.w),
                       child: Container(
-                        width: Get.width / 2.5,
+                        width: 135.w,
                         height: 100,
                         decoration: ShapeDecoration(
                           color: Colors.white,
                           shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10),
+                            borderRadius: BorderRadius.circular(10.r),
                           ),
-                          shadows: const [
+                          shadows: [
                             BoxShadow(
                               color: Color(0x26000000),
-                              blurRadius: 3,
+                              blurRadius: 3.r,
                               offset: Offset(0, 0),
                               spreadRadius: 0,
-                            )
+                            ),
                           ],
                         ),
                         child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.end,
                           children: [
-                            const SizedBox(
-                              height: 15,
-                            ),
+                            SizedBox(height: 15.h),
                             Padding(
-                              padding: const EdgeInsets.only(
-                                left: 110.0,
-                              ),
+                              padding: EdgeInsets.only(right: 10.w),
                               child: SvgPicture.asset(
                                 'assets/images/vitrin_profile_icon.svg',
-                                width: 24,
-                                height: 24,
+                                width: 24.w,
+                                height: 24.h,
                               ),
                             ),
-                            const Padding(
-                              padding: EdgeInsets.only(right: 10.0),
+                            Padding(
+                              padding: EdgeInsets.only(right: 10.w),
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.end,
                                 children: [
                                   Text(
                                     'ویترین',
                                     style: TextStyle(
-                                      color: Color(0xFF626262),
-                                      fontSize: 18,
-                                      fontFamily: 'Aban Light',
+                                      color: const Color(0xFF626262),
+                                      fontSize: 17.sp,
                                     ),
                                   ),
                                 ],
                               ),
                             ),
-                            const Padding(
-                              padding: EdgeInsets.only(right: 10.0),
+                            Padding(
+                              padding: EdgeInsets.only(right: 10.w),
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.end,
                                 children: [
@@ -86,8 +83,7 @@ class Vitrin extends StatelessWidget {
                                     'در ویترین دیده شوید',
                                     style: TextStyle(
                                       color: Color(0xFFA5A5A5),
-                                      fontSize: 9,
-                                      fontFamily: MAIN_FONT_FAMILY_LIGHT,
+                                      fontSize: 9.sp,
                                     ),
                                   ),
                                 ],

@@ -51,7 +51,7 @@ class _WidgetMaqalehAmozeshiState extends State<WidgetMaqalehAmozeshi> {
                   IconButton(
                     icon: _isChecked.value
                         ? SvgPicture.asset(
-                            'assets/images/check_icon.svg', // آیکون تیک
+                            'assets/images/edit and ok.svg', // آیکون تیک
                           )
                         : (_isTyping.value
                             ? SvgPicture.asset(
@@ -59,13 +59,13 @@ class _WidgetMaqalehAmozeshiState extends State<WidgetMaqalehAmozeshi> {
                               )
                             : SvgPicture.asset(
                                 _About_me_1.value
-                                    ? 'assets/images/edit and ok.svg'
+                                    ? 'assets/images/=gold.svg'
                                     : 'assets/images/Arrow_list_agency.svg',
                                 width: _About_me_1.value
                                     ? 30
                                     : 11, // سایز بزرگتر برای edit and ok
                                 height: _About_me_1.value
-                                    ? 25
+                                    ? 10
                                     : 14, // سایز بزرگتر برای edit and ok
                               )),
                     onPressed: () {
