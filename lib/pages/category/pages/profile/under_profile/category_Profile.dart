@@ -8,6 +8,7 @@ import 'package:flutter_application_1/pages/category/pages/window/window_pages/e
 import 'package:flutter_application_1/pages/category/pages/window/window_pages/forosh_maskoni.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/category/shared/shated_widget.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
@@ -25,6 +26,7 @@ class CategoryProfile extends StatefulWidget {
 class _CategoryProfileState extends State<CategoryProfile> {
   final _controller = ItemScrollController();
   final _currentIndex = 0.obs;
+
   @override
   void initState() {
     _currentIndex.value = widget.index;
@@ -39,11 +41,11 @@ class _CategoryProfileState extends State<CategoryProfile> {
       body: Padding(
         padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
         child: Padding(
-          padding: const EdgeInsets.all(10.0),
+          padding: EdgeInsets.all(10.w),
           child: Column(
             children: [
               SizedBox(
-                height: 120,
+                height: Get.height / 6,
                 child: ScrollablePositionedList.builder(
                   itemScrollController: _controller,
                   itemCount: items.length,
@@ -54,25 +56,25 @@ class _CategoryProfileState extends State<CategoryProfile> {
                       _controller.scrollTo(
                         index: i,
                         duration: const Duration(milliseconds: 100),
-                        alignment: 0.0, // Align to the start of the list
+                        alignment: 0.0,
                       );
                       _currentIndex.value = i;
                     },
                     child: Obx(
                       () => Container(
-                        margin: const EdgeInsets.symmetric(
-                            horizontal: 15, vertical: 7),
-                        padding: const EdgeInsets.all(1.0),
-                        height: 120,
+                        margin: EdgeInsets.symmetric(
+                            horizontal: 7.w, vertical: 20.h),
+                        padding: EdgeInsets.all(1.0.w),
+                        height: 120.h,
                         width: Get.width / 2.2,
                         decoration: BoxDecoration(
                           color: const Color.fromRGBO(225, 225, 225, 1),
-                          borderRadius: BorderRadius.circular(10),
+                          borderRadius: BorderRadius.circular(10.r),
                         ),
                         child: Stack(
                           children: [
                             Container(
-                              height: 120,
+                              height: 120.h,
                               width: Get.width / 2.2,
                               decoration: BoxDecoration(
                                 boxShadow: const [
@@ -82,7 +84,7 @@ class _CategoryProfileState extends State<CategoryProfile> {
                                       blurRadius: 3),
                                 ],
                                 color: Colors.white,
-                                borderRadius: BorderRadius.circular(10),
+                                borderRadius: BorderRadius.circular(10.r),
                               ),
                               child: items[i](_currentIndex.value == i, i),
                             ),
@@ -124,41 +126,32 @@ final List<Widget Function(bool, int)> items = [
       isSelected,
       index),
 ];
+
 Widget _buildImageWithText(
     String assetPath, String text1, String text2, bool isSelected, int index) {
-  // Define gradient colors for each item
   final List<List<Color>> selectedGradients = [
-    [
-      const Color.fromRGBO(0, 199, 187, 1),
-      const Color.fromRGBO(255, 0, 0, 1)
-    ], // Gradient for first item when selected
-    [
-      const Color.fromRGBO(184, 13, 13, 1),
-      const Color.fromRGBO(48, 48, 48, 1)
-    ], // Gradient for second item when selected
-    [
-      const Color.fromRGBO(0, 189, 97, 1),
-      const Color.fromRGBO(48, 48, 48, 1)
-    ], // Gradient for third item when selected
+    [const Color.fromRGBO(0, 199, 187, 1), const Color.fromRGBO(255, 0, 0, 1)],
+    [const Color.fromRGBO(184, 13, 13, 1), const Color.fromRGBO(48, 48, 48, 1)],
+    [const Color.fromRGBO(0, 189, 97, 1), const Color.fromRGBO(48, 48, 48, 1)],
   ];
 
   final List<List<Color>> unselectedGradients = [
     [
-      Color.fromRGBO(99, 99, 99, 1),
-      Color.fromRGBO(150, 150, 150, 1)
-    ], // Gradient for first item when unselected
+      const Color.fromRGBO(99, 99, 99, 1),
+      const Color.fromRGBO(150, 150, 150, 1)
+    ],
     [
-      Color.fromRGBO(150, 150, 150, 1),
-      Color.fromRGBO(200, 200, 200, 1)
-    ], // Gradient for second item when unselected
+      const Color.fromRGBO(150, 150, 150, 1),
+      const Color.fromRGBO(200, 200, 200, 1)
+    ],
     [
-      Color.fromRGBO(189, 189, 189, 1),
-      Color.fromRGBO(238, 238, 238, 1)
-    ], // Gradient for third item when unselected
+      const Color.fromRGBO(189, 189, 189, 1),
+      const Color.fromRGBO(238, 238, 238, 1)
+    ],
   ];
 
   return Padding(
-    padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 12),
+    padding: EdgeInsets.symmetric(vertical: 15.h, horizontal: 10.w),
     child: Column(
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
@@ -169,27 +162,30 @@ Widget _buildImageWithText(
               shaderCallback: (bounds) {
                 return LinearGradient(
                   colors: isSelected
-                      ? selectedGradients[index] // Gradient when selected
-                      : unselectedGradients[index], // Gradient when unselected
+                      ? selectedGradients[index]
+                      : unselectedGradients[index],
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
                 ).createShader(bounds);
               },
-              child: SvgPicture.asset(
-                assetPath,
-                color: Colors.white, // This will be overridden by the gradient
-                width: 30,
-                height: 30,
+              child: Padding(
+                padding: EdgeInsets.only(right: 7.0.w),
+                child: SvgPicture.asset(
+                  assetPath,
+                  color: Colors.white,
+                  width: 30.w,
+                  height: 30.h,
+                ),
               ),
             ),
           ],
         ),
-        const SizedBox(height: 10),
+        SizedBox(height: 10.h),
         Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
             Padding(
-              padding: const EdgeInsets.only(right: 10.0),
+              padding: EdgeInsets.only(right: 10.0.w),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
@@ -197,7 +193,7 @@ Widget _buildImageWithText(
                     text1,
                     style: TextStyle(
                       fontFamily: MAIN_FONT_FAMILY,
-                      fontSize: 12,
+                      fontSize: 12.sp, // استفاده از ScreenUtil برای فونت
                       color: isSelected
                           ? Colors.black
                           : const Color.fromARGB(255, 129, 128, 128),
@@ -206,10 +202,10 @@ Widget _buildImageWithText(
                   if (text2.isNotEmpty)
                     Text(
                       text2,
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontFamily: MAIN_FONT_FAMILY,
-                        fontSize: 8,
-                        color: Color.fromARGB(255, 128, 128, 128), // Gray color
+                        fontSize: 8.sp,
+                        color: const Color.fromARGB(255, 128, 128, 128),
                       ),
                     ),
                 ],
