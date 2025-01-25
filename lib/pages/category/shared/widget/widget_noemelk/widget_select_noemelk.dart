@@ -3,6 +3,7 @@ import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/enseraf.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/switchItem_location.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/taeed.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart'; // اضافه کردن ScreenUtil
 import 'package:get/get.dart';
 
 void showSelectNoeMelk(Function(String label, String key) onSelected) {
@@ -29,7 +30,7 @@ void showSelectNoeMelk(Function(String label, String key) onSelected) {
         ),
       ),
       child: Padding(
-        padding: const EdgeInsets.all(1.0),
+        padding: EdgeInsets.all(1.w), // استفاده از واحد w برای padding
         child: Container(
           decoration: const BoxDecoration(
             color: Colors.white,
@@ -39,25 +40,28 @@ void showSelectNoeMelk(Function(String label, String key) onSelected) {
             ),
           ),
           child: Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: EdgeInsets.all(16.w), // استفاده از واحد w برای padding
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                const SizedBox(height: 20),
-                const Text(
+                SizedBox(height: 20.h), // استفاده از واحد h برای ارتفاع
+                Text(
                   "نوع مـلـک شمــا",
-                  style: TextStyle(fontFamily: MAIN_FONT_FAMILY, fontSize: 16),
+                  style: TextStyle(
+                    fontFamily: MAIN_FONT_FAMILY,
+                    fontSize: 16.sp, // استفاده از واحد sp برای فونت
+                  ),
                 ),
-                const SizedBox(height: 10),
-                const Text(
+                SizedBox(height: 10.h), // استفاده از واحد h برای ارتفاع
+                Text(
                   "یک مورد را انتخاب کنید",
                   style: TextStyle(
                     fontFamily: MAIN_FONT_FAMILY,
-                    fontSize: 12,
-                    color: Color.fromRGBO(156, 64, 64, 1),
+                    fontSize: 12.sp, // استفاده از واحد sp برای فونت
+                    color: const Color.fromRGBO(156, 64, 64, 1),
                   ),
                 ),
-                const SizedBox(height: 20),
+                SizedBox(height: 20.h), // استفاده از واحد h برای ارتفاع
                 SwitchItemsLocation(
                   items: items.map((e) => e['label'] as String).toList(),
                   onSelected: (selectedItems) {
@@ -69,7 +73,7 @@ void showSelectNoeMelk(Function(String label, String key) onSelected) {
                     }
                   },
                 ),
-                const SizedBox(height: 20),
+                SizedBox(height: 20.h), // استفاده از واحد h برای ارتفاع
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [

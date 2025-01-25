@@ -3,6 +3,7 @@ import 'package:flutter_application_1/pages/category/pages/profile/Colleagues_pr
     as profile;
 import 'package:flutter_application_1/pages/category/pages/profile/widget_Colleagues_profile/widget_colleagues.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
@@ -97,8 +98,8 @@ class _WidgetColleaguessState extends State<WidgetColleaguess> {
                           width: 20,
                           height: 20,
                         ),
-                        const SizedBox(
-                          width: 28,
+                        SizedBox(
+                          width: 35.w,
                         ),
                         const Text(
                           'تــهـران',

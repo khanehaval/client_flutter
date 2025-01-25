@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:image/image.dart' as img;
+import 'package:flutter_screenutil/flutter_screenutil.dart'; // اضافه کردن ScreenUtil
 
 class ImagesPicker extends StatelessWidget {
   final RxList<dynamic> selectedImagesPath;
@@ -19,13 +20,13 @@ class ImagesPicker extends StatelessWidget {
     return Column(
       children: [
         Padding(
-          padding: const EdgeInsets.all(20.0),
+          padding: EdgeInsets.all(20.w), // استفاده از w برای padding
           child: SvgPicture.asset(
             'assets/images/Group 1223.svg',
             fit: BoxFit.fitWidth,
           ),
         ),
-        const SizedBox(height: 20),
+        SizedBox(height: 20.h), // استفاده از h برای ارتفاع
         Obx(() => _buildImagePicker(context)),
       ],
     );
@@ -35,7 +36,7 @@ class ImagesPicker extends StatelessWidget {
     return Column(
       children: [
         _buildImageGridRow(context, 0, 3),
-        const SizedBox(height: 20),
+        SizedBox(height: 20.h), // استفاده از h برای ارتفاع
         _buildImageGridRow(context, 3, 6),
       ],
     );
@@ -60,14 +61,14 @@ class ImagesPicker extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         border: Border.all(color: Colors.black12),
-        borderRadius: BorderRadius.circular(10),
+        borderRadius: BorderRadius.circular(10.r), // استفاده از r برای شعاع
       ),
       child: Stack(
         children: [
           Image.file(
             File(selectedImagesPath[index]),
-            height: 70,
-            width: 100,
+            height: 60.h, // استفاده از h برای ارتفاع
+            width: 100.w, // استفاده از w برای عرض
             fit: BoxFit.cover,
           ),
           Align(
@@ -81,12 +82,13 @@ class ImagesPicker extends StatelessWidget {
 
   Widget _buildRemoveIcon(String path, {double size = 40}) {
     return Padding(
-      padding: const EdgeInsets.only(left: 27.0, top: 10),
+      padding: EdgeInsets.only(
+          left: 27.w, top: 10.h), // استفاده از w و h برای padding
       child: IconButton(
         icon: SvgPicture.asset(
           'assets/images/Vector-43.svg',
-          width: 30,
-          height: 30,
+          width: 30.w, // استفاده از w برای عرض
+          height: 30.h, // استفاده از h برای ارتفاع
         ),
         onPressed: () {
           selectedImagesPath..value.remove(path);
@@ -104,12 +106,14 @@ class ImagesPicker extends StatelessWidget {
         borderType: BorderType.RRect,
         color: Colors.black26,
         strokeWidth: 2,
-        radius: const Radius.circular(10),
+        radius: Radius.circular(10.r), // استفاده از r برای شعاع
         child: SizedBox(
-          height: isMain ? 70 : 70,
-          width: isMain ? 100 : 100,
-          child: const Center(
-            child: Icon(Icons.add, size: 30, color: Colors.black26),
+          height: isMain ? 60.h : 60.h, // استفاده از h برای ارتفاع
+          width: isMain ? 95.w : 95.w, // استفاده از w برای عرض
+          child: Center(
+            child: Icon(Icons.add,
+                size: 30.sp,
+                color: Colors.black26), // استفاده از sp برای اندازه
           ),
         ),
       ),
@@ -124,8 +128,11 @@ class ImagesPicker extends StatelessWidget {
           child: Wrap(
             children: <Widget>[
               ListTile(
-                leading: const Icon(Icons.photo_library),
-                title: const Text('Photo Library'),
+                leading: Icon(Icons.photo_library,
+                    size: 24.sp), // استفاده از sp برای اندازه
+                title: Text('Photo Library',
+                    style:
+                        TextStyle(fontSize: 14.sp)), // استفاده از sp برای فونت
                 onTap: () {
                   _pickImage(ImageSource.gallery);
                   Get.back();
@@ -133,8 +140,11 @@ class ImagesPicker extends StatelessWidget {
                 },
               ),
               ListTile(
-                leading: const Icon(Icons.photo_camera),
-                title: const Text('Camera'),
+                leading: Icon(Icons.photo_camera,
+                    size: 24.sp), // استفاده از sp برای اندازه
+                title: Text('Camera',
+                    style:
+                        TextStyle(fontSize: 14.sp)), // استفاده از sp برای فونت
                 onTap: () {
                   _pickImage(ImageSource.camera);
                   Get.back();

@@ -62,6 +62,11 @@ class ForshAdvLocationPage extends StatelessWidget {
                 height: 41,
                 child: Center(
                   child: TextField(
+                    style: const TextStyle(
+                      fontFamily: MAIN_FONT_FAMILY_MEDIUM,
+                      color: Color.fromRGBO(99, 99, 99, 1),
+                      fontSize: 13,
+                    ),
                     onTap: () {
                       showSelectNoeMelk(
                         (selectedLabel, selectedKey) {

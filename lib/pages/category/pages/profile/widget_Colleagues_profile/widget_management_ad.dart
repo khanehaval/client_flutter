@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/pages/profile/widget_Colleagues_profile/Widget_Switchitems_location_management_ad.dart';
-import 'package:flutter_application_1/pages/category/pages/profile/widget_Colleagues_profile/widget_SwitchItemsLocation_Colleagues.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
@@ -78,29 +77,31 @@ class _WidgetManagementAdState extends State<WidgetManagementAd> {
             height: _getIconSize(),
           ),
           onPressed: () {
-            // مدیریت وضعیت آیکون و باکس
             if (!_isChecked.value && !_isDeleted.value) {
-              _isChecked.value = true; // نمایش آیکون چک
-              _isExpanded.value = true; // باز کردن باکس
+              _isExpanded.value = !_isExpanded.value;
             } else if (_isChecked.value && !_isDeleted.value) {
-              _isDeleted.value = true; // نمایش آیکون delete
-              _isExpanded.value = false; // بستن باکس
+              _isDeleted.value = true;
+              _isChecked.value = false;
+              _isExpanded.value = false;
             } else if (_isDeleted.value) {
-              _resetState(); // بازگشت به حالت اولیه
+              _resetState();
             }
           },
         ),
-        Padding(
-          padding: const EdgeInsets.only(right: 10.0),
-          child: Text(
-            selectedText.value.isNotEmpty
-                ? selectedText.value // نمایش متن انتخاب شده
-                : 'مدیریت آگهی',
-            textAlign: TextAlign.right,
-            style: const TextStyle(
-              color: Color(0xFF303030),
-              fontSize: 12,
-              fontFamily: MAIN_FONT_FAMILY,
+        Expanded(
+          child: Padding(
+            padding: const EdgeInsets.only(right: 10.0),
+            child: Text(
+              selectedText.value.isNotEmpty
+                  ? selectedText.value // نمایش متن انتخاب شده
+                  : 'مدیریت آگهی',
+              textAlign: TextAlign.right,
+              overflow: TextOverflow.ellipsis, // اضافه کردن این ویژگی
+              style: const TextStyle(
+                color: Color(0xFF303030),
+                fontSize: 12,
+                fontFamily: MAIN_FONT_FAMILY,
+              ),
             ),
           ),
         ),
@@ -109,42 +110,45 @@ class _WidgetManagementAdState extends State<WidgetManagementAd> {
   }
 
   void _resetState() {
-    // بازگشت به حالت اولیه
-    _isChecked.value = false; // آیکون چک را غیرفعال می‌کند
-    _isDeleted.value = false; // آیکون حذف را غیرفعال می‌کند
-    selectedText.value = ''; // متن انتخاب شده را پاک می‌کند
-    _isExpanded.value = false; // باکس را می‌بندد
+    _isChecked.value = false;
+    _isDeleted.value = false;
+    selectedText.value = '';
+    _isExpanded.value = false;
   }
 
   String _getIconAsset() {
-    // تغییر آیکون بر اساس وضعیت
     if (_isDeleted.value) {
-      return 'assets/images/edit_and_ok.svg'; // آیکون ادیت بعد از زدن چک
-    } else if (_isChecked.value && selectedText.value.isNotEmpty) {
-      return 'assets/images/check_green.svg'; // آیکون چک بعد از انتخاب آیتم
-    } else if (_isChecked.value && selectedText.value.isEmpty) {
-      return 'assets/images/=.svg'; // آیکون ویرایش زمانی که چک زده شده ولی متنی انتخاب نشده
+      return 'assets/images/delete.svg';
+    } else if (_isChecked.value) {
+      return 'assets/images/check_green.svg';
+    } else if (_isExpanded.value) {
+      return 'assets/images/=.svg';
     }
-    return 'assets/images/down.svg'; // آیکون فلش پایین در حالت عادی
+    return 'assets/images/down.svg';
   }
 
   double _getIconSize() {
     if (_isDeleted.value) {
       return 15;
+    } else if (_isChecked.value) {
+      return 15;
+    } else if (_isExpanded.value) {
+      return 10;
     }
-    if (_isChecked.value) {
-      return selectedText.value.isNotEmpty
-          ? 15
-          : 10; // اندازه برای چک یا ویرایش
-    }
-    return 15; // اندازه پیش فرض برای حالت عادی
+    return 15;
   }
 
   Widget buildMahaleh(BuildContext context) {
     return WidgetSwitchitemsLocationManagementAd(
       onSelected: (selectedItems) {
         if (selectedItems.isNotEmpty) {
-          selectedText.value = selectedItems.first; // ذخیره متن انتخاب شده
+          // اگر تعداد گزینه‌ها بیشتر از ۲ تا بود، ... به ابتدای متن اضافه می‌شود
+          if (selectedItems.length > 2) {
+            selectedText.value =
+                "...، " + selectedItems.sublist(0, 2).join("، ");
+          } else {
+            selectedText.value = selectedItems.join("، ");
+          }
           _isChecked.value = true; // نمایش آیکون چک
           _isDeleted.value = false; // اطمینان از عدم نمایش delete در این حالت
         } else {

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:get/get.dart';
 
 Widget ReadOnlyTextField(TextEditingController controller, Function onTap,
     {double? width, double? fontSize}) {

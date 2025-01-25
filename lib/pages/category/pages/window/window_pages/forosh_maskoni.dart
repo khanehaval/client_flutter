@@ -6,6 +6,7 @@ import 'package:flutter_application_1/pages/category/pages/Advertisements/consul
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ForoshMaskoni extends StatelessWidget {
   final _show_item_1 = false.obs;
@@ -16,190 +17,196 @@ class ForoshMaskoni extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      children: [
-        dividerwidget(),
-        Container(
-          margin: const EdgeInsets.all(10),
-          padding: const EdgeInsets.all(5),
-          height: 149,
-          width: Get.width / 1.1,
-          child: Image.asset('assets/images/Group 667.png'),
-        ),
-        dividerwidget(),
-        const SizedBox(
-          height: 10,
-        ),
-        SingleChildScrollView(
-          reverse: true,
-          scrollDirection: Axis.horizontal,
-          child: Padding(
-            padding: const EdgeInsets.only(right: 10.0, left: 10),
-            child: Row(
-              children: [
-                Container(
-                    height: 90,
-                    width: Get.width / 2.3,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: SvgPicture.asset(
-                      'assets/images/Group 759.svg',
-                      width: Get.width / 2.1,
-                    )),
-                const SizedBox(
-                  height: 10,
-                ),
-                Container(
-                    height: 90,
-                    width: Get.width / 2.3,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: SvgPicture.asset(
-                      'assets/images/Group 758.svg',
-                      width: Get.width / 2.1,
-                    )),
-                Container(
-                    height: 90,
-                    width: Get.width / 2.3,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: SvgPicture.asset(
-                      'assets/images/Group 757.svg',
-                      width: Get.width / 2.1,
-                    )),
-              ],
+    return ScreenUtilInit(
+      designSize: const Size(
+          360, 690), // اندازه طراحی شما (مثلاً اندازه یک دستگاه موبایل)
+      builder: (context, child) {
+        return ListView(
+          children: [
+            dividerwidget(),
+            Container(
+              margin: EdgeInsets.all(10.w),
+              padding: EdgeInsets.all(5.w),
+              height: 149.h,
+              width: Get.width / 1.1,
+              child: Image.asset('assets/images/Group 667.png'),
             ),
-          ),
-        ),
-        const SizedBox(
-          height: 10,
-        ),
-        dividerwidget(),
-        const SizedBox(
-          height: 10,
-        ),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15.0),
-          child: Container(
-            decoration: const BoxDecoration(
-                borderRadius: BorderRadius.all(Radius.circular(11)),
-                gradient: LinearGradient(colors: GRADIANT_COLOR3)),
-            child: Padding(
-              padding: const EdgeInsets.all(1.2),
-              child: Container(
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(10),
-                ),
+            dividerwidget(),
+            SizedBox(
+              height: 10.h,
+            ),
+            SingleChildScrollView(
+              reverse: true,
+              scrollDirection: Axis.horizontal,
+              child: Padding(
+                padding: EdgeInsets.only(right: 10.0.w, left: 10.w),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Obx(() => IconButton(
-                          icon: _show_item_1.value
-                              ? SvgPicture.asset('assets/images/down.svg')
-                              : SvgPicture.asset(
-                                  'assets/images/=.svg',
-                                ),
-                          style: const ButtonStyle(),
-                          onPressed: () {
-                            _show_item_1.value = !_show_item_1.value;
-                          },
+                    Container(
+                        height: 90.h,
+                        width: 130.w,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(10.r),
+                        ),
+                        child: SvgPicture.asset(
+                          'assets/images/Group 759.svg',
+                          width: Get.width / 2.1,
                         )),
-                    const Padding(
-                      padding: EdgeInsets.only(right: 15.0),
-                      child: Text(
-                        'فروش آپارتمان بر اساس قیمت',
-                        style: TextStyle(
-                            fontSize: 14,
-                            color: Color.fromRGBO(
-                              48,
-                              48,
-                              48,
-                              1,
-                            ),
-                            fontWeight: FontWeight.bold,
-                            fontFamily: MAIN_FONT_FAMILY),
-                      ),
+                    SizedBox(
+                      width: 10.w,
                     ),
+                    Container(
+                        height: 90.h,
+                        width: 130.w,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(10.r),
+                        ),
+                        child: SvgPicture.asset(
+                          'assets/images/Group 758.svg',
+                          width: Get.width / 2.1,
+                        )),
+                    Container(
+                        height: 90.h,
+                        width: 130.w,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(10.r),
+                        ),
+                        child: SvgPicture.asset(
+                          'assets/images/Group 757.svg',
+                          width: Get.width / 2.1,
+                        )),
                   ],
                 ),
               ),
             ),
-          ),
-        ),
-        buildItem1(),
-        const SizedBox(
-          height: 10,
-        ),
-        dividerwidget(),
-        const SizedBox(
-          height: 10,
-        ),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15),
-          child: Container(
-            decoration: const BoxDecoration(
-                borderRadius: BorderRadius.all(Radius.circular(10)),
-                gradient: LinearGradient(colors: GRADIANT_COLOR3)),
-            child: Padding(
-              padding: const EdgeInsets.all(1.2),
+            SizedBox(
+              height: 10.h,
+            ),
+            dividerwidget(),
+            SizedBox(
+              height: 10.h,
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 15.0.w),
               child: Container(
                 decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Obx(() => IconButton(
-                          icon: _show_item_2.value
-                              ? SvgPicture.asset('assets/images/down.svg')
-                              : SvgPicture.asset(
-                                  'assets/images/=.svg',
-                                ),
-                          style: const ButtonStyle(),
-                          onPressed: () {
-                            _show_item_2.value = !_show_item_2.value;
-                          },
-                        )),
-                    const Padding(
-                      padding: EdgeInsets.only(right: 15.0),
-                      child: Text(
-                        'خرید ویلا در شمال',
-                        style: TextStyle(
-                            fontSize: 14,
-                            color: Color.fromRGBO(
-                              48,
-                              48,
-                              48,
-                              1,
-                            ),
-                            fontWeight: FontWeight.bold,
-                            fontFamily: MAIN_FONT_FAMILY),
-                      ),
+                    borderRadius: BorderRadius.all(Radius.circular(11.r)),
+                    gradient: const LinearGradient(colors: GRADIANT_COLOR3)),
+                child: Padding(
+                  padding: EdgeInsets.all(1.2.w),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(10.r),
                     ),
-                  ],
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Obx(() => IconButton(
+                              icon: _show_item_1.value
+                                  ? SvgPicture.asset('assets/images/down.svg')
+                                  : SvgPicture.asset(
+                                      'assets/images/=.svg',
+                                    ),
+                              style: const ButtonStyle(),
+                              onPressed: () {
+                                _show_item_1.value = !_show_item_1.value;
+                              },
+                            )),
+                        Padding(
+                          padding: EdgeInsets.only(right: 15.0.w),
+                          child: Text(
+                            'فروش آپارتمان بر اساس قیمت',
+                            style: TextStyle(
+                                fontSize: 14.sp,
+                                color: const Color.fromRGBO(
+                                  48,
+                                  48,
+                                  48,
+                                  1,
+                                ),
+                                fontWeight: FontWeight.bold,
+                                fontFamily: MAIN_FONT_FAMILY),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
                 ),
               ),
             ),
-          ),
-        ),
-        _buildItem2(),
-        const SizedBox(
-          height: 10,
-        ),
-        dividerwidget(),
-        const SizedBox(
-          height: 10,
-        ),
-        _buildItem3(),
-      ],
+            buildItem1(),
+            SizedBox(
+              height: 10.h,
+            ),
+            dividerwidget(),
+            SizedBox(
+              height: 10.h,
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 15.w),
+              child: Container(
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(10.r)),
+                    gradient: const LinearGradient(colors: GRADIANT_COLOR3)),
+                child: Padding(
+                  padding: EdgeInsets.all(1.2.w),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(10.r),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Obx(() => IconButton(
+                              icon: _show_item_2.value
+                                  ? SvgPicture.asset('assets/images/down.svg')
+                                  : SvgPicture.asset(
+                                      'assets/images/=.svg',
+                                    ),
+                              style: const ButtonStyle(),
+                              onPressed: () {
+                                _show_item_2.value = !_show_item_2.value;
+                              },
+                            )),
+                        Padding(
+                          padding: EdgeInsets.only(right: 15.0.w),
+                          child: Text(
+                            'خرید ویلا در شمال',
+                            style: TextStyle(
+                                fontSize: 14.sp,
+                                color: const Color.fromRGBO(
+                                  48,
+                                  48,
+                                  48,
+                                  1,
+                                ),
+                                fontWeight: FontWeight.bold,
+                                fontFamily: MAIN_FONT_FAMILY),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            _buildItem2(),
+            SizedBox(
+              height: 10.h,
+            ),
+            dividerwidget(),
+            SizedBox(
+              height: 10.h,
+            ),
+            _buildItem3(),
+          ],
+        );
+      },
     );
   }
 
@@ -207,10 +214,10 @@ class ForoshMaskoni extends StatelessWidget {
     return Obx(
       () => _show_item_1.isTrue
           ? Padding(
-              padding: const EdgeInsets.all(10),
+              padding: EdgeInsets.all(10.w),
               child: Column(children: [
-                const SizedBox(
-                  height: 10,
+                SizedBox(
+                  height: 10.h,
                 ),
                 GestureDetector(
                   onTap: () {},
@@ -218,49 +225,49 @@ class ForoshMaskoni extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       Container(
-                        height: 57,
+                        height: 57.h,
                         width: Get.width / 2.3,
                         decoration: BoxDecoration(
                             color: Colors.white,
-                            borderRadius: BorderRadius.circular(10),
+                            borderRadius: BorderRadius.circular(10.r),
                             border: Border.all(
                               color: Colors.black45,
-                              width: 0.3,
+                              width: 0.3.w,
                             )),
-                        child: const Text(
+                        child: Text(
                           'تا ۵۰۰ میلیون تومان',
                           textAlign: TextAlign.center,
                           style: TextStyle(
-                            color: Color(0xFF303030),
-                            fontSize: 14,
+                            color: const Color(0xFF303030),
+                            fontSize: 14.sp,
                             fontFamily: MAIN_FONT_FAMILY,
                             fontWeight: FontWeight.w300,
-                            height: 4,
+                            height: 4.h,
                           ),
                         ),
                       ),
-                      const SizedBox(
-                        width: 2,
+                      SizedBox(
+                        width: 2.w,
                       ),
                       Container(
-                        height: 57,
+                        height: 57.h,
                         width: Get.width / 2.3,
                         decoration: BoxDecoration(
                             color: Colors.white,
-                            borderRadius: BorderRadius.circular(10),
+                            borderRadius: BorderRadius.circular(10.r),
                             border: Border.all(
                               color: Colors.black45,
-                              width: 0.3,
+                              width: 0.3.w,
                             )),
-                        child: const Text(
+                        child: Text(
                           'تا ۱۰۰ میلیون تومان',
                           textAlign: TextAlign.center,
                           style: TextStyle(
-                            color: Color(0xFF303030),
-                            fontSize: 14,
+                            color: const Color(0xFF303030),
+                            fontSize: 14.sp,
                             fontFamily: MAIN_FONT_FAMILY,
                             fontWeight: FontWeight.w300,
-                            height: 4,
+                            height: 4.h,
                           ),
                         ),
                       )
@@ -268,111 +275,111 @@ class ForoshMaskoni extends StatelessWidget {
                   ),
                 ),
                 SizedBox(
-                  height: 20,
+                  height: 20.h,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Container(
-                      height: 57,
+                      height: 57.h,
                       width: Get.width / 2.3,
                       decoration: BoxDecoration(
                           color: Colors.white,
-                          borderRadius: BorderRadius.circular(10),
+                          borderRadius: BorderRadius.circular(10.r),
                           border: Border.all(
                             color: Colors.black45,
-                            width: 0.3,
+                            width: 0.3.w,
                           )),
-                      child: const Text(
+                      child: Text(
                         'تا ۲ میلیارد تومان',
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                          color: Color(0xFF303030),
-                          fontSize: 14,
+                          color: const Color(0xFF303030),
+                          fontSize: 14.sp,
                           fontFamily: MAIN_FONT_FAMILY,
                           fontWeight: FontWeight.w300,
-                          height: 4,
+                          height: 4.h,
                         ),
                       ),
                     ),
-                    const SizedBox(
-                      width: 2,
+                    SizedBox(
+                      width: 2.w,
                     ),
                     Container(
-                      height: 57,
+                      height: 57.h,
                       width: Get.width / 2.3,
                       decoration: BoxDecoration(
                           color: Colors.white,
-                          borderRadius: BorderRadius.circular(10),
+                          borderRadius: BorderRadius.circular(10.r),
                           border: Border.all(
                             color: Colors.black45,
-                            width: 0.3,
+                            width: 0.3.w,
                           )),
-                      child: const Text(
+                      child: Text(
                         'تا ۱ میلیارد تومان',
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                          color: Color(0xFF303030),
-                          fontSize: 14,
+                          color: const Color(0xFF303030),
+                          fontSize: 14.sp,
                           fontFamily: MAIN_FONT_FAMILY,
                           fontWeight: FontWeight.w300,
-                          height: 4,
+                          height: 4.h,
                         ),
                       ),
                     ),
                   ],
                 ),
-                const SizedBox(
-                  height: 20,
+                SizedBox(
+                  height: 20.h,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Container(
-                      height: 57,
+                      height: 57.h,
                       width: Get.width / 2.3,
                       decoration: BoxDecoration(
                           color: Colors.white,
-                          borderRadius: BorderRadius.circular(10),
+                          borderRadius: BorderRadius.circular(10.r),
                           border: Border.all(
                             color: Colors.black45,
-                            width: 0.3,
+                            width: 0.3.w,
                           )),
-                      child: const Text(
+                      child: Text(
                         'تا ۴ میلیارد تومان',
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                          color: Color(0xFF303030),
-                          fontSize: 14,
+                          color: const Color(0xFF303030),
+                          fontSize: 14.sp,
                           fontFamily: MAIN_FONT_FAMILY,
                           fontWeight: FontWeight.w300,
-                          height: 4,
+                          height: 4.h,
                         ),
                       ),
                     ),
-                    const SizedBox(
-                      width: 2,
+                    SizedBox(
+                      width: 2.w,
                     ),
                     Container(
-                      height: 57,
+                      height: 57.h,
                       width: Get.width / 2.3,
                       decoration: BoxDecoration(
                           color: Colors.white,
-                          borderRadius: BorderRadius.circular(10),
+                          borderRadius: BorderRadius.circular(10.r),
                           border: Border.all(
                             color: Colors.black45,
-                            width: 0.3,
+                            width: 0.3.w,
                           )),
-                      child: const Text(
+                      child: Text(
                         'تا ۳ میلیارد تومان',
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                          color: Color(0xFF303030),
-                          fontSize: 14,
+                          color: const Color(0xFF303030),
+                          fontSize: 14.sp,
                           fontFamily: MAIN_FONT_FAMILY,
                           fontWeight: FontWeight.w300,
-                          height: 4,
+                          height: 4.h,
                         ),
                       ),
                     ),
@@ -386,24 +393,24 @@ class ForoshMaskoni extends StatelessWidget {
 
   Widget _buidText(String text) {
     return Container(
-      height: 57,
+      height: 57.h,
       width: Get.width / 2.3,
       decoration: BoxDecoration(
           color: Colors.white,
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(10.r),
           border: Border.all(
             color: Colors.black45,
-            width: 0.3,
+            width: 0.3.w,
           )),
       child: Text(
         text,
         textAlign: TextAlign.center,
-        style: const TextStyle(
-          color: Color(0xFF303030),
-          fontSize: 14,
+        style: TextStyle(
+          color: const Color(0xFF303030),
+          fontSize: 14.sp,
           fontFamily: MAIN_FONT_FAMILY,
           fontWeight: FontWeight.w300,
-          height: 4,
+          height: 4.h,
         ),
       ),
     );
@@ -412,11 +419,11 @@ class ForoshMaskoni extends StatelessWidget {
   Obx _buildItem2() {
     return Obx(() => _show_item_2.isTrue
         ? Padding(
-            padding: const EdgeInsets.all(10.0),
+            padding: EdgeInsets.all(10.0.w),
             child: Column(
               children: [
-                const SizedBox(
-                  height: 10,
+                SizedBox(
+                  height: 10.h,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -425,8 +432,8 @@ class ForoshMaskoni extends StatelessWidget {
                     _buidText('تا ۶۰ متر مربع'),
                   ],
                 ),
-                const SizedBox(
-                  height: 20,
+                SizedBox(
+                  height: 20.h,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -435,8 +442,8 @@ class ForoshMaskoni extends StatelessWidget {
                     _buidText('تا ۷۰ متر مربع'),
                   ],
                 ),
-                const SizedBox(
-                  height: 20,
+                SizedBox(
+                  height: 20.h,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -453,7 +460,7 @@ class ForoshMaskoni extends StatelessWidget {
 
   _buildItem3() {
     return Padding(
-      padding: const EdgeInsets.only(left: 10.0, right: 10),
+      padding: EdgeInsets.only(left: 10.0.w, right: 10.w),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
@@ -495,7 +502,7 @@ class ForoshMaskoni extends StatelessWidget {
 
 Padding _buildRowItem(String asset) {
   return Padding(
-      padding: const EdgeInsets.all(5),
+      padding: EdgeInsets.all(5.w),
       child: SvgPicture.asset(
         asset,
       ));

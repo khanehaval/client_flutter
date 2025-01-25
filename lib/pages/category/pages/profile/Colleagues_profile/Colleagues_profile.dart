@@ -181,28 +181,44 @@ class _HamkarWidgetState extends State<HamkarWidget> {
                     if (_showMessage) // نمایش متن اگر وضعیت true باشد
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 10),
-                        child: RichText(
-                          text: const TextSpan(
-                            children: [
-                              TextSpan(
-                                text: 'لغو همکاری',
-                                style: TextStyle(
-                                  color: Color.fromRGBO(169, 0, 0, 1), // قرمز
-                                  fontSize: 12,
-                                  fontFamily: MAIN_FONT_FAMILY,
-                                ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment
+                              .center, // متن‌ها را در وسط قرار دهید
+                          children: [
+                            RichText(
+                              text: const TextSpan(
+                                children: [
+                                  TextSpan(
+                                    text: 'لغو همکاری', // فقط این بخش قرمز
+                                    style: TextStyle(
+                                      color:
+                                          Color.fromRGBO(169, 0, 0, 1), // قرمز
+                                      fontSize: 12,
+                                      fontFamily: MAIN_FONT_FAMILY,
+                                    ),
+                                  ),
+                                  TextSpan(
+                                    text:
+                                        ' با موفقیت ارسال شد', // بقیه متن در کنار آن
+                                    style: TextStyle(
+                                      color: Colors.black, // سیاه
+                                      fontSize: 12,
+                                      fontFamily: MAIN_FONT_FAMILY,
+                                    ),
+                                  ),
+                                ],
                               ),
-                              TextSpan(
-                                text:
-                                    ' با موفقیت ارسال شد، لطفا منتظر تائید باشید',
-                                style: TextStyle(
-                                  color: Colors.black, // سیاه
-                                  fontSize: 12,
-                                  fontFamily: MAIN_FONT_FAMILY,
-                                ),
+                            ),
+                            const SizedBox(height: 4), // فاصله بین دو متن
+                            const Text(
+                              'لطفا منتظر تائید باشید', // متن دوم
+                              style: TextStyle(
+                                color: Colors.black, // سیاه
+                                fontSize: 12,
+                                fontFamily: MAIN_FONT_FAMILY,
                               ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
                       ),
                     const Divider(
@@ -213,6 +229,7 @@ class _HamkarWidgetState extends State<HamkarWidget> {
                     const WidgetInformationRow(),
                     const SizedBox(height: 20),
                     const WidgetVitrinMessageCall(),
+                    const SizedBox(height: 20),
                   ],
                 ),
               ),

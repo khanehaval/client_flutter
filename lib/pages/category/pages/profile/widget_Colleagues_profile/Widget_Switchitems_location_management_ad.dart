@@ -7,9 +7,11 @@ class WidgetSwitchitemsLocationManagementAd extends StatefulWidget {
   final Function(List<String>) onSelected;
   final List<String> items;
 
-  const WidgetSwitchitemsLocationManagementAd(
-      {required this.onSelected, required this.items, Key? key})
-      : super(key: key);
+  const WidgetSwitchitemsLocationManagementAd({
+    required this.onSelected,
+    required this.items,
+    Key? key,
+  }) : super(key: key);
 
   @override
   _WidgetSwitchitemsLocationManagementAdState createState() =>
@@ -22,35 +24,42 @@ class _WidgetSwitchitemsLocationManagementAdState
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        buildMelkTypeItem(),
-      ],
-    );
+    return _buildMelkTypeItem();
   }
 
-  Widget buildMelkTypeItem() {
+  Widget _buildMelkTypeItem() {
     return Padding(
       padding: const EdgeInsets.all(20.0),
       child: Container(
-        height: Get.height / 4,
+        height: 265,
         decoration: BoxDecoration(
           border: Border.all(width: 1, color: Colors.black54), // تعریف بُردر
           borderRadius: BorderRadius.circular(10),
         ),
         child: Column(
           children: [
-            ListView.builder(
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-              itemCount: widget.items.length + 1,
-              itemBuilder: (context, index) {
-                if (index == 0) {
-                  return const Column();
-                } else {
-                  return _buildRow(widget.items[index - 1]);
-                }
-              },
+            Expanded(
+              child: ListView.builder(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                itemCount: widget.items.length + 1,
+                itemBuilder: (context, index) {
+                  if (index == 0) {
+                    return Column(
+                      children: [
+                        _buildRow("همه آگهی های من"),
+                        const Divider(
+                          indent: 10,
+                          endIndent: 10,
+                          color: Color.fromRGBO(226, 226, 226, 1),
+                        ),
+                      ],
+                    );
+                  } else {
+                    return _buildRow(widget.items[index - 1]);
+                  }
+                },
+              ),
             ),
           ],
         ),
@@ -58,56 +67,54 @@ class _WidgetSwitchitemsLocationManagementAdState
     );
   }
 
-  Widget _buildRow(String item) {
+  Widget _buildRow(String itemName) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Padding(
-          padding: const EdgeInsets.only(left: 20.0),
-          child: IconButton(
-            onPressed: () {
-              setState(() {
-                if (selectedItems.value.contains(item)) {
-                  selectedItems.value
-                      .clear(); // Clear the selection if the item is already selected
-                } else {
-                  selectedItems
-                    ..value.clear() // Clear previous selections
-                    ..add(item); // Add the newly selected item
-                }
-              });
-              widget.onSelected(selectedItems.value.toList());
-            },
-            icon: Obx(() => Container(
-                  width: 25,
-                  height: 25,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    border: Border.all(width: 1, color: Colors.black54),
-                  ),
-                  child: selectedItems.value.contains(item)
-                      ? Padding(
-                          padding: const EdgeInsets.all(5.0),
-                          child: SvgPicture.asset(
-                            'assets/images/check.svg',
-                            width: 10,
-                            height: 10,
-                          ),
-                        )
-                      : const SizedBox.shrink(),
-                )),
+        IconButton(
+          onPressed: () {
+            setState(() {
+              // مدیریت انتخاب یا لغو انتخاب آیتم
+              if (selectedItems.value.contains(itemName)) {
+                selectedItems.value.remove(itemName); // لغو انتخاب آیتم
+              } else {
+                selectedItems.add(itemName); // اضافه کردن آیتم
+              }
+            });
+            widget.onSelected(selectedItems.value.toList());
+          },
+          icon: Obx(
+            () => Container(
+              width: 25,
+              height: 25,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                border: Border.all(width: 1, color: Colors.black54),
+              ),
+              child: selectedItems.value.contains(itemName)
+                  ? Padding(
+                      padding: const EdgeInsets.all(5.0),
+                      child: SvgPicture.asset(
+                        'assets/images/check.svg', // نمایش آیکون چک
+                        width: 10,
+                        height: 10,
+                      ),
+                    )
+                  : const SizedBox.shrink(), // بدون آیکون
+            ),
           ),
         ),
         Padding(
-          padding: const EdgeInsets.only(right: 20.0),
-          child: Text(item,
-              textAlign:
-                  TextAlign.right, // این بخش متن را درون Text راست‌چین می‌کند
-              style: const TextStyle(
-                fontSize: 10,
-                fontFamily: MAIN_FONT_FAMILY,
-              )),
-        )
+          padding: const EdgeInsets.only(right: 10.0),
+          child: Text(
+            itemName,
+            textAlign: TextAlign.right,
+            style: const TextStyle(
+              fontSize: 10,
+              fontFamily: MAIN_FONT_FAMILY,
+            ),
+          ),
+        ),
       ],
     );
   }

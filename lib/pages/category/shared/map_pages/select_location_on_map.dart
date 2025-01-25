@@ -11,6 +11,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 import 'package:latlong2/latlong.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart'; // اضافه کردن ScreenUtil
 
 const double INITIAL_ZOOM = 16;
 const String API_KEY = "service.c70494317e644c12a395c53e83f440d8";
@@ -118,120 +119,104 @@ class _SelectLocationMapState extends State<SelectLocationMap> {
     }
   }
 
-  // void _getLocationInfo() async {
-  //   try {
-  //     final response = await Dio().get(
-  //       '$API_URL?lat=${locationInfo.location.latitude}&lng=${locationInfo.location.longitude}',
-  //       options: Options(headers: {"Api-Key": API_KEY}),
-  //     );
-  //     final data = response.data;
-  //     setState(() {
-  //       locationInfo.cityName = data["city"] ?? '';
-  //       locationInfo.locationName =
-  //           data["neighbourhood"] ?? data["place"] ?? data["route_name"] ?? '';
-  //       locationInfo.formatted_address = data["formatted_address"] ?? '';
-  //       selectedCity.value = locationInfo.cityName;
-  //     });
-  //   } catch (_) {
-  //     Fluttertoast.showToast(
-  //       msg: "خطا در ارزیابی آدرس، دوباره تلاش کنید، اینترنت خود را بررسی کنید",
-  //       toastLength: Toast.LENGTH_LONG,
-  //       gravity: ToastGravity.CENTER,
-  //       backgroundColor: Colors.red,
-  //       textColor: Colors.white,
-  //       fontSize: 16.0,
-  //     );
-  //   }
-  // }
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Stack(
-        children: [
-          FlutterMap(
-            mapController: mapController,
-            options: MapOptions(
-              center: locationInfo.location,
-              zoom: initZoom,
-              maxZoom: 18,
-              keepAlive: true,
-              onPositionChanged: (position, hasGesture) {
-                if (position.center != null) {
-                  setState(() {
-                    locationInfo.location = LatLng(
-                      position.center!.latitude,
-                      position.center!.longitude,
-                    );
-                  });
-                }
-              },
-              interactionOptions: const InteractionOptions(
-                enableMultiFingerGestureRace: true,
-                enableScrollWheel: true,
-              ),
-              onTap: (tapPosition, point) {
-                Fluttertoast.showToast(
-                  msg: "برای انتخاب محدوده پیوسته فشار دهید",
-                  toastLength: Toast.LENGTH_SHORT,
-                  gravity: ToastGravity.CENTER,
-                  backgroundColor: Colors.red,
-                  textColor: Colors.white,
-                  fontSize: 16.0,
-                );
-              },
-              onLongPress: (tapPosition, point) {
-                setState(() {
-                  locationInfo.location =
-                      LatLng(point.latitude, point.longitude);
-                  _getLocationInfo();
-                });
-              },
-            ),
+    return ScreenUtilInit(
+      designSize: const Size(412, 915),
+      builder: (context, child) {
+        return Scaffold(
+          body: Stack(
             children: [
-              TileLayer(
-                urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
-                userAgentPackageName: 'com.example.app',
-              ),
-              Obx(
-                () => showLimit.value
-                    ? CircleLayer(
-                        circles: [
-                          CircleMarker(
-                            point: locationInfo.location,
-                            radius: 70,
-                            borderStrokeWidth: 3,
-                            borderColor: Colors.blueAccent,
-                            color: Colors.white54,
-                          ),
-                        ],
-                      )
-                    : const SizedBox.shrink(),
-              ),
-              MarkerLayer(
-                markers: [
-                  Marker(
-                    point: locationInfo.location,
-                    width: 45,
-                    height: 45,
-                    child: Obx(
-                      () => showLimit.isTrue
-                          ? const Icon(
-                              Icons.circle,
-                              color: Colors.blue,
-                            )
-                          : Image.asset("assets/images/Group 1279.png"),
-                    ),
+              FlutterMap(
+                mapController: mapController,
+                options: MapOptions(
+                  center: locationInfo.location,
+                  zoom: initZoom,
+                  maxZoom: 18,
+                  keepAlive: true,
+                  onPositionChanged: (position, hasGesture) {
+                    if (position.center != null) {
+                      setState(() {
+                        locationInfo.location = LatLng(
+                          position.center!.latitude,
+                          position.center!.longitude,
+                        );
+                      });
+                    }
+                  },
+                  interactionOptions: const InteractionOptions(
+                    enableMultiFingerGestureRace: true,
+                    enableScrollWheel: true,
+                  ),
+                  onTap: (tapPosition, point) {
+                    Fluttertoast.showToast(
+                      msg: "برای انتخاب محدوده پیوسته فشار دهید",
+                      toastLength: Toast.LENGTH_SHORT,
+                      gravity: ToastGravity.CENTER,
+                      backgroundColor: Colors.red,
+                      textColor: Colors.white,
+                      fontSize: 16.0,
+                    );
+                  },
+                  onLongPress: (tapPosition, point) {
+                    setState(() {
+                      locationInfo.location =
+                          LatLng(point.latitude, point.longitude);
+                      _getLocationInfo();
+                    });
+                  },
+                ),
+                children: [
+                  TileLayer(
+                    urlTemplate:
+                        'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+                    userAgentPackageName: 'com.example.app',
+                  ),
+                  Obx(
+                    () => showLimit.value
+                        ? CircleLayer(
+                            circles: [
+                              CircleMarker(
+                                point: locationInfo.location,
+                                radius: 70.w,
+                                borderStrokeWidth: 3.w,
+                                borderColor: Colors.blueAccent,
+                                color: Colors.white54,
+                              ),
+                            ],
+                          )
+                        : const SizedBox.shrink(),
+                  ),
+                  MarkerLayer(
+                    markers: [
+                      Marker(
+                        point: locationInfo.location,
+                        width: 45.w,
+                        height: 45.h,
+                        child: Obx(
+                          () => showLimit.isTrue
+                              ? const Icon(
+                                  Icons.circle,
+                                  color: Colors.blue,
+                                )
+                              : Image.asset("assets/images/Group 1279.png"),
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               ),
+              _buildTopLeftIconButton(),
+              _buildBottomRightSwitch(),
+              _buildLocationSelection(),
+              Padding(
+                padding: const EdgeInsets.only(bottom: 15.0),
+                child: _buildZoomControls(),
+              ),
             ],
           ),
-          _buildTopLeftIconButton(),
-          _buildBottomRightSwitch(),
-          _buildLocationSelection(),
-          _buildZoomControls(),
-        ],
-      ),
+        );
+      },
     );
   }
 
@@ -239,7 +224,7 @@ class _SelectLocationMapState extends State<SelectLocationMap> {
     return Align(
       alignment: Alignment.topLeft,
       child: Padding(
-        padding: const EdgeInsets.only(top: 30, left: 10),
+        padding: EdgeInsets.only(top: 30.h, left: 10.w),
         child: IconButton(
           icon: SvgPicture.asset('assets/images/left_icon.svg'),
           onPressed: () => Get.back(),
@@ -252,29 +237,30 @@ class _SelectLocationMapState extends State<SelectLocationMap> {
     return Align(
       alignment: Alignment.bottomRight,
       child: Padding(
-        padding: const EdgeInsets.all(20.0),
+        padding: EdgeInsets.all(20.w), // واکنش‌گرا
         child: Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            const Text("محدوده ملک را نشان بده",
-                style: TextStyle(
-                  fontFamily: MAIN_FONT_FAMILY,
-                  fontSize: 12,
-                  color: Color.fromRGBO(99, 99, 99, 1),
-                ),
-                textDirection: TextDirection.rtl,
-                textAlign: TextAlign.center),
-            Container(
-              child: Transform.scale(
-                scale: 0.90,
-                child: Obx(
-                  () => Switch(
-                      onChanged: (_) => showLimit.value = _,
-                      value: showLimit.value,
-                      activeColor: Colors.white,
-                      activeTrackColor: Color.fromRGBO(54, 216, 89, 1),
-                      inactiveThumbColor: Color.fromRGBO(11, 8, 8, 0.2),
-                      inactiveTrackColor: Color.fromRGBO(255, 255, 255, 1)),
+            Text(
+              "محدوده ملک را نشان بده",
+              style: TextStyle(
+                fontFamily: MAIN_FONT_FAMILY,
+                fontSize: 12.sp, // واکنش‌گرا
+                color: const Color.fromRGBO(99, 99, 99, 1),
+              ),
+              textDirection: TextDirection.rtl,
+              textAlign: TextAlign.center,
+            ),
+            Transform.scale(
+              scale: 0.90,
+              child: Obx(
+                () => Switch(
+                  onChanged: (_) => showLimit.value = _,
+                  value: showLimit.value,
+                  activeColor: Colors.white,
+                  activeTrackColor: const Color.fromRGBO(54, 216, 89, 1),
+                  inactiveThumbColor: const Color.fromRGBO(11, 8, 8, 0.2),
+                  inactiveTrackColor: const Color.fromRGBO(255, 255, 255, 1),
                 ),
               ),
             ),
@@ -286,7 +272,7 @@ class _SelectLocationMapState extends State<SelectLocationMap> {
 
   Widget _buildLocationSelection() {
     return Padding(
-      padding: const EdgeInsets.only(top: 80, left: 20, right: 20),
+      padding: EdgeInsets.only(top: 60.h, left: 20.w, right: 20.w), // واکنش‌گرا
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -301,13 +287,13 @@ class _SelectLocationMapState extends State<SelectLocationMap> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
-        const Padding(
-          padding: EdgeInsets.only(right: 10.0),
+        Padding(
+          padding: EdgeInsets.only(right: 10.w), // واکنش‌گرا
           child: Text(
-            "انتخاب محله ",
+            "انتخاب محله",
             style: TextStyle(
-              color: Color.fromRGBO(99, 99, 99, 1),
-              fontSize: 14,
+              color: const Color.fromRGBO(99, 99, 99, 1),
+              fontSize: 14.sp, // واکنش‌گرا
               fontFamily: MAIN_FONT_FAMILY,
             ),
           ),
@@ -320,24 +306,25 @@ class _SelectLocationMapState extends State<SelectLocationMap> {
               border: Border.all(
                 color: const Color.fromARGB(255, 158, 147, 147),
               ),
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(10.r), // واکنش‌گرا
             ),
             child: SizedBox(
               width: getPageWidthlocation(),
-              height: 40,
+              height: 35.h, // واکنش‌گرا
               child: Center(
                 child: Padding(
-                  padding: const EdgeInsets.only(right: 10.0),
+                  padding: EdgeInsets.only(right: 10.w), // واکنش‌گرا
                   child: Align(
                     alignment: Alignment.centerRight,
                     child: Padding(
-                      padding: const EdgeInsets.only(right: 5.0),
+                      padding: EdgeInsets.only(right: 5.w), // واکنش‌گرا
                       child: Text(
                         locationInfo.locationName,
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontFamily: 'Iran Sans',
-                          color: Color.fromRGBO(48, 48, 48, 1),
+                          color: const Color.fromRGBO(48, 48, 48, 1),
                           fontWeight: FontWeight.w400,
+                          fontSize: 12.sp, // واکنش‌گرا
                         ),
                         textAlign: TextAlign.right,
                       ),
@@ -356,13 +343,13 @@ class _SelectLocationMapState extends State<SelectLocationMap> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
-        const Padding(
-          padding: EdgeInsets.only(right: 10.0),
+        Padding(
+          padding: EdgeInsets.only(right: 10.w), // واکنش‌گرا
           child: Text(
             "انتخاب شهر",
             style: TextStyle(
-              color: Color.fromRGBO(99, 99, 99, 1),
-              fontSize: 14,
+              color: const Color.fromRGBO(99, 99, 99, 1),
+              fontSize: 14.sp, // واکنش‌گرا
               fontFamily: MAIN_FONT_FAMILY,
             ),
           ),
@@ -383,27 +370,28 @@ class _SelectLocationMapState extends State<SelectLocationMap> {
               border: Border.all(
                 color: const Color.fromARGB(255, 158, 147, 147),
               ),
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(10.r), // واکنش‌گرا
             ),
             child: SizedBox(
-              height: 40,
+              height: 35.h, // واکنش‌گرا
               width: getPageWidthlocation(),
               child: Center(
                 child: Padding(
-                  padding: const EdgeInsets.only(right: 10.0),
+                  padding: EdgeInsets.only(right: 10.w), // واکنش‌گرا
                   child: Align(
                     alignment: Alignment.centerRight,
                     child: Padding(
-                      padding: const EdgeInsets.only(right: 5.0),
+                      padding: EdgeInsets.only(right: 5.w), // واکنش‌گرا
                       child: Obx(
                         () => Text(
                           selectedCity.value.isEmpty
                               ? 'شهر را انتخاب کنید'
                               : selectedCity.value,
-                          style: const TextStyle(
+                          style: TextStyle(
                             fontFamily: 'Iran Sans Bold',
-                            color: Color.fromRGBO(48, 48, 48, 1),
+                            color: const Color.fromRGBO(48, 48, 48, 1),
                             fontWeight: FontWeight.w400,
+                            fontSize: 12.sp, // واکنش‌گرا
                           ),
                           textAlign: TextAlign.center,
                         ),
@@ -423,7 +411,7 @@ class _SelectLocationMapState extends State<SelectLocationMap> {
     return Align(
       alignment: Alignment.bottomLeft,
       child: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: EdgeInsets.all(8.w), // واکنش‌گرا
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -434,8 +422,8 @@ class _SelectLocationMapState extends State<SelectLocationMap> {
                     getUserCurrentLocation();
                   },
                   icon: SizedBox(
-                    height: 50,
-                    width: 50,
+                    height: 45.h, // واکنش‌گرا
+                    width: 45.w, // واکنش‌گرا
                     child: SvgPicture.asset("assets/images/icon zoom.svg"),
                   ),
                 ),
@@ -444,8 +432,8 @@ class _SelectLocationMapState extends State<SelectLocationMap> {
                     widget.onSelect(locationInfo);
                   },
                   icon: SizedBox(
-                    height: 65,
-                    width: 65,
+                    height: 55.h, // واکنش‌گرا
+                    width: 55.w, // واکنش‌گرا
                     child: SvgPicture.asset("assets/images/Ok.svg"),
                   ),
                 ),
@@ -458,8 +446,8 @@ class _SelectLocationMapState extends State<SelectLocationMap> {
                     zoomOut();
                   },
                   icon: SizedBox(
-                    width: 50,
-                    height: 50,
+                    width: 45.w, // واکنش‌گرا
+                    height: 45.h, // واکنش‌گرا
                     child: SvgPicture.asset("assets/images/icon -.svg"),
                   ),
                 ),
@@ -468,8 +456,8 @@ class _SelectLocationMapState extends State<SelectLocationMap> {
                     zoomIn();
                   },
                   icon: SizedBox(
-                    width: 50,
-                    height: 50,
+                    width: 45.w, // واکنش‌گرا
+                    height: 45.h, // واکنش‌گرا
                     child: SvgPicture.asset("assets/images/icon +.svg"),
                   ),
                 ),

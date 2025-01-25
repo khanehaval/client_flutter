@@ -1,6 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
@@ -28,13 +28,13 @@ class SachtSaz extends StatelessWidget {
           height: 5,
         ),
         Padding(
-          padding: const EdgeInsets.all(14.0),
+          padding: const EdgeInsets.all(10.0),
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Container(
-                  height: 90,
-                  width: 170,
+                  height: 90.h,
+                  width: 150.w,
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(10),
@@ -48,8 +48,8 @@ class SachtSaz extends StatelessWidget {
                     'assets/images/Group pishforosh.svg',
                   )),
               Container(
-                  height: 90,
-                  width: 170,
+                  height: 90.h,
+                  width: 150.w,
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(10),
