@@ -86,11 +86,9 @@ dependencies:
   jalali_flutter_datepicker: ^1.0.9
   flutter_inner_shadow: ^0.0.1
   image: ^4.3.0
-  emoji_picker_flutter: ^2.1.1
   audioplayers: ^5.2.1
   file_picker: ^8.0.0+1
   flutter_screenutil: ^5.9.3
-  
   # mapir_raster: 0.0.1
 
 dev_dependencies:

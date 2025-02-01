@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/namayesh_agahi.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:jalali_flutter_datepicker/jalali_flutter_datepicker.dart';
 
 class DetailViewAgahi extends StatefulWidget {
   const DetailViewAgahi({super.key});
@@ -16,6 +17,9 @@ class _DetailViewAgahiState extends State<DetailViewAgahi> {
 
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
+
     return Transform.translate(
       offset: const Offset(0, 20),
       child: Container(
@@ -32,8 +36,8 @@ class _DetailViewAgahiState extends State<DetailViewAgahi> {
                     Get.to(const NamayeshAgahi1());
                   },
                   child: Container(
-                    width: Get.width,
-                    height: Get.height / 2.25,
+                    width: width,
+                    height: height / 2.25,
                     decoration: ShapeDecoration(
                       color: Colors.white,
                       shape: RoundedRectangleBorder(
@@ -50,7 +54,7 @@ class _DetailViewAgahiState extends State<DetailViewAgahi> {
                             children: [
                               SizedBox(
                                 height: 210,
-                                width: 377,
+                                width: width - 20,
                                 child: ClipRRect(
                                   borderRadius: BorderRadius.circular(10.0),
                                   child: Image.asset(
@@ -86,14 +90,13 @@ class _DetailViewAgahiState extends State<DetailViewAgahi> {
                                   child: GestureDetector(
                                     onTap: () {
                                       setState(() {
-                                        isFavorite =
-                                            !isFavorite; // تغییر وضعیت مورد علاقه
+                                        isFavorite = !isFavorite;
                                       });
                                     },
                                     child: SvgPicture.asset(
                                       isFavorite
-                                          ? "assets/images/save.svg" // آیکون قلب قرمز
-                                          : "assets/images/save_withe.svg", // آیکون قلب سفید
+                                          ? "assets/images/save.svg"
+                                          : "assets/images/save_withe.svg",
                                       width: 35,
                                       height: 35,
                                     ),
@@ -106,7 +109,7 @@ class _DetailViewAgahiState extends State<DetailViewAgahi> {
                                 child: Align(
                                   alignment: Alignment.bottomLeft,
                                   child: SvgPicture.asset(
-                                    "assets/images/loc and cam.svg", // آیکون مکان و دوربین
+                                    "assets/images/loc and cam.svg",
                                     width: 35,
                                     height: 35,
                                   ),
@@ -159,7 +162,7 @@ class _DetailViewAgahiState extends State<DetailViewAgahi> {
                                       fontFamily: MAIN_FONT_FAMILY_MEDIUM,
                                       color: Color.fromRGBO(99, 99, 99, 1)),
                                 ),
-                                SizedBox(width: Get.width / 3.35),
+                                SizedBox(width: width / 3.35),
                                 Flexible(
                                   child: Row(
                                     children: [
@@ -232,7 +235,7 @@ class _DetailViewAgahiState extends State<DetailViewAgahi> {
                                   "assets/images/SQM_metr.svg",
                                   height: 25,
                                 ),
-                                SizedBox(width: Get.width / 3.6),
+                                SizedBox(width: width / 3.6),
                                 Flexible(
                                   child: Container(
                                     width: 44,
@@ -253,7 +256,7 @@ class _DetailViewAgahiState extends State<DetailViewAgahi> {
                                         text: const TextSpan(
                                           children: [
                                             TextSpan(
-                                              text: '100', // Number first
+                                              text: '100',
                                               style: TextStyle(
                                                 color: Color.fromRGBO(
                                                     99, 99, 99, 1),
@@ -263,7 +266,7 @@ class _DetailViewAgahiState extends State<DetailViewAgahi> {
                                               ),
                                             ),
                                             TextSpan(
-                                              text: ' متر', // Then the text
+                                              text: ' متر',
                                               style: TextStyle(
                                                 color: Color.fromRGBO(
                                                     99, 99, 99, 1),
@@ -311,7 +314,7 @@ class _DetailViewAgahiState extends State<DetailViewAgahi> {
                                               ),
                                             ),
                                             TextSpan(
-                                              text: ' اتاق', // Then the text
+                                              text: 'اتاق',
                                               style: TextStyle(
                                                 color: Color.fromRGBO(
                                                     99, 99, 99, 1),
@@ -325,7 +328,7 @@ class _DetailViewAgahiState extends State<DetailViewAgahi> {
                                       ),
                                     ),
                                   ),
-                                )
+                                ),
                               ],
                             ),
                           )
