@@ -5,12 +5,10 @@ import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter
 import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/filters_widgets/emkanat_filter_widget.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/filters_widgets/mahaleh_filter_widget.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
-import 'package:flutter_application_1/pages/intro_screen.dart';
 import 'package:flutter_application_1/repo/advRepo.dart';
 import 'package:flutter_application_1/services/models/filterModel.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:get/state_manager.dart';
 import 'package:get_it/get_it.dart';
 
 class AmlakFilter extends StatefulWidget {

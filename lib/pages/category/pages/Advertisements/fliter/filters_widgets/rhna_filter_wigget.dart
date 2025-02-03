@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/filters_widgets/component_filter/showMizanRahnLowBottomSheet.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/filters_widgets/component_filter/showMizanRahnMaxBottomSheet.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
-import 'package:flutter_application_1/pages/category/shared/number_piacker.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart'; // اضافه کردن ScreenUtil
 
 class RahnFilterWidget extends StatefulWidget {
   @override
@@ -13,41 +13,39 @@ class RahnFilterWidget extends StatefulWidget {
 
 class _RahnFilterWidgetState extends State<RahnFilterWidget> {
   final _buildRoomsCountController = TextEditingController();
-
   final TextEditingController _customAmountController = TextEditingController();
   final TextEditingController _MaxAmountController = TextEditingController();
-
   bool _isFieldEnabled = false;
-  // وضعیت برای تعیین اینکه آیا فیلد فعال است یا خیر
+
   final _show_item_mizanrahn = false.obs;
 
   @override
   Widget build(BuildContext context) {
     return Obx(() => Container(
-          height: _show_item_mizanrahn.isTrue ? 230 : 50,
+          height: _show_item_mizanrahn.isTrue ? 230.h : 40.h,
           decoration: BoxDecoration(
               color: const Color.fromRGBO(250, 250, 250, 1),
               border: Border.all(color: const Color.fromRGBO(166, 166, 166, 1)),
-              borderRadius: BorderRadius.circular(15)),
+              borderRadius: BorderRadius.circular(15.r)),
           child: Column(
             children: [
               Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
                 IconButton(
                   icon: _show_item_mizanrahn.value
-                      ? SvgPicture.asset(
-                          'assets/images/=.svg',
-                        )
+                      ? SvgPicture.asset('assets/images/=.svg')
                       : SvgPicture.asset('assets/images/down.svg'),
                   onPressed: () {
                     _show_item_mizanrahn.value = !_show_item_mizanrahn.value;
                   },
                 ),
-                const Padding(
-                  padding: EdgeInsets.only(right: 20),
-                  child: Text(
+                Padding(
+                  padding: EdgeInsets.only(right: 20.w),
+                  child: const Text(
                     "میزان رهن",
-                    style:
-                        TextStyle(fontFamily: MAIN_FONT_FAMILY, fontSize: 12),
+                    style: TextStyle(
+                      fontFamily: MAIN_FONT_FAMILY,
+                      fontSize: 12,
+                    ),
                   ),
                 ),
               ]),
@@ -55,9 +53,7 @@ class _RahnFilterWidgetState extends State<RahnFilterWidget> {
                 Column(
                   children: [
                     rahn(context),
-                    const SizedBox(
-                      height: 25,
-                    ),
+                    SizedBox(height: 25.h),
                     rahn2(context),
                   ],
                 ),
@@ -69,26 +65,27 @@ class _RahnFilterWidgetState extends State<RahnFilterWidget> {
   Widget rahn(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-          color: const Color.fromRGBO(183, 183, 183, 1),
-          borderRadius: BorderRadius.circular(16)),
+        color: const Color.fromRGBO(183, 183, 183, 1),
+        borderRadius: BorderRadius.circular(16.r),
+      ),
       child: Padding(
-        padding: const EdgeInsets.all(1.1),
+        padding: EdgeInsets.all(1.1.w),
         child: Container(
-          height: 55,
-          width: MediaQuery.of(context).size.width / 1.23,
+          height: 55.h,
+          width: MediaQuery.of(context).size.width / 1.25,
           decoration: BoxDecoration(
             color: const Color.fromARGB(255, 225, 225, 225),
-            borderRadius: BorderRadius.circular(15),
+            borderRadius: BorderRadius.circular(15.r),
           ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Container(
-                width: 250,
-                height: 35,
+                width: 225.w,
+                height: 35.h,
                 decoration: BoxDecoration(
                   color: Colors.white,
-                  borderRadius: BorderRadius.circular(9),
+                  borderRadius: BorderRadius.circular(9.r),
                   border: Border.all(color: Colors.grey),
                 ),
                 child: Row(
@@ -98,46 +95,44 @@ class _RahnFilterWidgetState extends State<RahnFilterWidget> {
                         showMizanRahnLowBottomSheet((selectedAmount) {
                           setState(() {
                             if (selectedAmount == 'وارد کردن مبلغ دلخواه') {
-                              _isFieldEnabled = true; // فعال کردن فیلد
-                              _customAmountController.text =
-                                  ''; // خالی کردن فیلد
+                              _isFieldEnabled = true;
+                              _customAmountController.text = '';
                             } else {
-                              _isFieldEnabled = false; // غیرفعال کردن فیلد
-                              _customAmountController.text =
-                                  selectedAmount; // تنظیم متن انتخابی
+                              _isFieldEnabled = false;
+                              _customAmountController.text = selectedAmount;
                             }
                           });
                         });
                       },
                       icon: SvgPicture.asset(
                         "assets/images/arrow_down.svg",
-                        width: 10,
-                        height: 10,
+                        width: 10.w,
+                        height: 10.h,
                         color: const Color.fromRGBO(48, 48, 48, 1),
                       ),
                     ),
                     Expanded(
                       child: TextField(
-                        style: const TextStyle(
-                            fontFamily: MAIN_FONT_FAMILY_MEDIUM,
-                            color: Color.fromRGBO(99, 99, 99, 1),
-                            fontSize: 12),
+                        style: TextStyle(
+                          fontFamily: MAIN_FONT_FAMILY_MEDIUM,
+                          color: const Color.fromRGBO(99, 99, 99, 1),
+                          fontSize: 12.sp,
+                        ),
                         controller: _customAmountController,
-                        enabled: _isFieldEnabled, // فعال بودن یا نبودن فیلد
+                        enabled: _isFieldEnabled,
                         textDirection: TextDirection.rtl,
-                        decoration: const InputDecoration(
+                        decoration: InputDecoration(
                           hintText: 'انتخاب کنید (به تومان)',
-                          hintStyle: TextStyle(fontSize: 12),
+                          hintStyle: TextStyle(fontSize: 12.sp),
                           border: InputBorder.none,
                           contentPadding: EdgeInsets.symmetric(
-                              vertical: 10.0, horizontal: 30.0),
+                              vertical: 10.h, horizontal: 30.w),
                         ),
                         keyboardType: TextInputType.number,
                         onChanged: (value) {
-                          // اگر مقدار وارد شده خالی است، فیلد را غیرفعال کن
                           if (value.isNotEmpty) {
                             setState(() {
-                              _isFieldEnabled = false; // غیرفعال کردن فیلد
+                              _isFieldEnabled = false;
                             });
                           }
                         },
@@ -146,12 +141,12 @@ class _RahnFilterWidgetState extends State<RahnFilterWidget> {
                   ],
                 ),
               ),
-              const Text(
+              Text(
                 "حداقل",
                 style: TextStyle(
                   fontFamily: MAIN_FONT_FAMILY,
-                  fontSize: 11,
-                  color: Color.fromRGBO(99, 99, 99, 1),
+                  fontSize: 11.sp,
+                  color: const Color.fromRGBO(99, 99, 99, 1),
                 ),
               ),
             ],
@@ -164,26 +159,27 @@ class _RahnFilterWidgetState extends State<RahnFilterWidget> {
   Widget rahn2(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-          color: const Color.fromRGBO(183, 183, 183, 1),
-          borderRadius: BorderRadius.circular(16)),
+        color: const Color.fromRGBO(183, 183, 183, 1),
+        borderRadius: BorderRadius.circular(16.r),
+      ),
       child: Padding(
-        padding: const EdgeInsets.all(1.1),
+        padding: EdgeInsets.all(1.1.w),
         child: Container(
-          height: 55,
-          width: MediaQuery.of(context).size.width / 1.23,
+          height: 55.h,
+          width: MediaQuery.of(context).size.width / 1.25,
           decoration: BoxDecoration(
             color: const Color.fromARGB(255, 225, 225, 225),
-            borderRadius: BorderRadius.circular(15),
+            borderRadius: BorderRadius.circular(15.r),
           ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Container(
-                width: 250,
-                height: 35,
+                width: 225.w,
+                height: 35.h,
                 decoration: BoxDecoration(
                   color: Colors.white,
-                  borderRadius: BorderRadius.circular(9),
+                  borderRadius: BorderRadius.circular(9.r),
                   border: Border.all(color: Colors.grey),
                 ),
                 child: Row(
@@ -193,45 +189,44 @@ class _RahnFilterWidgetState extends State<RahnFilterWidget> {
                         showMizanRahnMaxBottomSheet((selectedAmount) {
                           setState(() {
                             if (selectedAmount == 'وارد کردن مبلغ دلخواه') {
-                              _isFieldEnabled = true; // فعال کردن فیلد
-                              _MaxAmountController.text = ''; // خالی کردن فیلد
+                              _isFieldEnabled = true;
+                              _MaxAmountController.text = '';
                             } else {
-                              _isFieldEnabled = false; // غیرفعال کردن فیلد
-                              _MaxAmountController.text =
-                                  selectedAmount; // تنظیم متن انتخابی
+                              _isFieldEnabled = false;
+                              _MaxAmountController.text = selectedAmount;
                             }
                           });
                         });
                       },
                       icon: SvgPicture.asset(
                         "assets/images/arrow_down.svg",
-                        width: 10,
-                        height: 10,
+                        width: 10.w,
+                        height: 10.h,
                         color: const Color.fromRGBO(48, 48, 48, 1),
                       ),
                     ),
                     Expanded(
                       child: TextField(
-                        style: const TextStyle(
-                            fontFamily: MAIN_FONT_FAMILY_MEDIUM,
-                            color: Color.fromRGBO(99, 99, 99, 1),
-                            fontSize: 12),
+                        style: TextStyle(
+                          fontFamily: MAIN_FONT_FAMILY_MEDIUM,
+                          color: const Color.fromRGBO(99, 99, 99, 1),
+                          fontSize: 12.sp,
+                        ),
                         controller: _MaxAmountController,
-                        enabled: _isFieldEnabled, // فعال بودن یا نبودن فیلد
+                        enabled: _isFieldEnabled,
                         textDirection: TextDirection.rtl,
-                        decoration: const InputDecoration(
+                        decoration: InputDecoration(
                           hintText: 'انتخاب کنید (به تومان)',
-                          hintStyle: TextStyle(fontSize: 12),
+                          hintStyle: TextStyle(fontSize: 12.sp),
                           border: InputBorder.none,
                           contentPadding: EdgeInsets.symmetric(
-                              vertical: 10.0, horizontal: 30.0),
+                              vertical: 10.h, horizontal: 30.w),
                         ),
                         keyboardType: TextInputType.number,
                         onChanged: (value) {
-                          // اگر مقدار وارد شده خالی است، فیلد را غیرفعال کن
                           if (value.isNotEmpty) {
                             setState(() {
-                              _isFieldEnabled = false; // غیرفعال کردن فیلد
+                              _isFieldEnabled = false;
                             });
                           }
                         },
@@ -240,12 +235,12 @@ class _RahnFilterWidgetState extends State<RahnFilterWidget> {
                   ],
                 ),
               ),
-              const Text(
+              Text(
                 "حداقل",
                 style: TextStyle(
                   fontFamily: MAIN_FONT_FAMILY,
-                  fontSize: 11,
-                  color: Color.fromRGBO(99, 99, 99, 1),
+                  fontSize: 11.sp,
+                  color: const Color.fromRGBO(99, 99, 99, 1),
                 ),
               ),
             ],

@@ -5,6 +5,7 @@ import 'package:flutter_application_1/services/models/filterModel.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:get_it/get_it.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart'; // اضافه کردن پکیج ScreenUtil
 
 class AgahiDahandaFilterWidget extends StatefulWidget {
   Function(AdvretismentFilter) onChange;
@@ -18,11 +19,8 @@ class AgahiDahandaFilterWidget extends StatefulWidget {
 class _AgahiDahandaFilterWidgetState extends State<AgahiDahandaFilterWidget> {
   final _advRepo = GetIt.I.get<AdvRepo>();
   final shakhsi = false.obs;
-
   final amlak = false.obs;
-
   final moshaver = false.obs;
-
   final _show_item_agahidahandeh_1 = false.obs;
 
   @override
@@ -32,7 +30,6 @@ class _AgahiDahandaFilterWidgetState extends State<AgahiDahandaFilterWidget> {
     moshaver.value = _advRepo.filters.keys.contains("mnoshaver");
     _show_item_agahidahandeh_1.value =
         shakhsi.value || amlak.value || moshaver.value;
-
     super.initState();
   }
 
@@ -42,12 +39,15 @@ class _AgahiDahandaFilterWidgetState extends State<AgahiDahandaFilterWidget> {
       children: [
         Obx(
           () => Container(
-            height: _show_item_agahidahandeh_1.isTrue ? 200 : 50,
+            height: _show_item_agahidahandeh_1.isTrue
+                ? 200.h
+                : 40.h, // مقیاس‌دهی ارتفاع
             decoration: BoxDecoration(
-                color: const Color.fromRGBO(250, 250, 250, 1),
-                border:
-                    Border.all(color: const Color.fromRGBO(166, 166, 166, 1)),
-                borderRadius: BorderRadius.circular(15)),
+              color: const Color.fromRGBO(250, 250, 250, 1),
+              border: Border.all(color: const Color.fromRGBO(166, 166, 166, 1)),
+              borderRadius:
+                  BorderRadius.circular(15.r), // مقیاس‌دهی شعاع گوشه‌ها
+            ),
             child: Column(
               children: [
                 Row(
@@ -64,14 +64,16 @@ class _AgahiDahandaFilterWidgetState extends State<AgahiDahandaFilterWidget> {
                             !_show_item_agahidahandeh_1.value;
                       },
                     ),
-                    const Padding(
-                      padding: EdgeInsets.only(right: 20),
+                    Padding(
+                      padding:
+                          EdgeInsets.only(right: 20.w), // مقیاس‌دهی فاصله‌ها
                       child: Text(
                         "آگهی دهنده",
                         style: TextStyle(
-                            fontFamily: MAIN_FONT_FAMILY,
-                            color: Color.fromRGBO(48, 48, 48, 1),
-                            fontSize: 12),
+                          fontFamily: MAIN_FONT_FAMILY,
+                          color: const Color.fromRGBO(48, 48, 48, 1),
+                          fontSize: 12.sp, // مقیاس‌دهی اندازه فونت
+                        ),
                       ),
                     ),
                   ],
@@ -86,100 +88,120 @@ class _AgahiDahandaFilterWidgetState extends State<AgahiDahandaFilterWidget> {
   }
 
   Obx buildagahidahandeh() {
-    return Obx(() => _show_item_agahidahandeh_1.value
-        ? Column(children: [
-            SingleChildScrollView(
-              scrollDirection: Axis.vertical,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Transform.scale(
-                    scale: 0.6,
-                    child: Obx(
-                      () => Switch(
+    return Obx(
+      () => _show_item_agahidahandeh_1.value
+          ? Column(
+              children: [
+                SingleChildScrollView(
+                  scrollDirection: Axis.vertical,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Transform.scale(
+                        scale: 0.6,
+                        child: Obx(
+                          () => Switch(
+                            onChanged: (_) {
+                              shakhsi.value = _;
+                              widget.onChange(ShakhsiFilter());
+                            },
+                            value: shakhsi.value,
+                            activeColor: Colors.white,
+                            activeTrackColor:
+                                const Color.fromRGBO(54, 216, 89, 1),
+                            inactiveThumbColor:
+                                const Color.fromRGBO(11, 8, 8, 0.2),
+                            inactiveTrackColor:
+                                const Color.fromRGBO(255, 255, 255, 1),
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding:
+                            EdgeInsets.only(right: 20.w), // مقیاس‌دهی فاصله‌ها
+                        child: Text(
+                          "شخصی",
+                          style: TextStyle(
+                            fontFamily: MAIN_FONT_FAMILY,
+                            fontSize: 12.sp, // مقیاس‌دهی اندازه فونت
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Transform.scale(
+                      scale: 0.60,
+                      child: Obx(
+                        () => Switch(
                           onChanged: (_) {
-                            shakhsi.value = _;
-                            widget.onChange(ShakhsiFilter());
+                            amlak.value = _;
+                            widget.onChange(AmlakFilter());
                           },
-                          value: shakhsi.value,
+                          value: amlak.value,
+                          activeTrackColor:
+                              const Color.fromRGBO(54, 216, 89, 1),
+                          inactiveThumbColor:
+                              const Color.fromRGBO(11, 8, 8, 0.2),
+                          inactiveTrackColor:
+                              const Color.fromRGBO(255, 255, 255, 1),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding:
+                          EdgeInsets.only(right: 20.w), // مقیاس‌دهی فاصله‌ها
+                      child: Text(
+                        "آژانس املاک",
+                        style: TextStyle(
+                          fontFamily: MAIN_FONT_FAMILY,
+                          fontSize: 12.sp, // مقیاس‌دهی اندازه فونت
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Transform.scale(
+                      scale: 0.60,
+                      child: Obx(
+                        () => Switch(
+                          onChanged: (_) {
+                            moshaver.value = _;
+                            widget.onChange(MoshaverFilter());
+                          },
+                          value: moshaver.value,
                           activeColor: Colors.white,
                           activeTrackColor:
                               const Color.fromRGBO(54, 216, 89, 1),
                           inactiveThumbColor:
                               const Color.fromRGBO(11, 8, 8, 0.2),
                           inactiveTrackColor:
-                              const Color.fromRGBO(255, 255, 255, 1)),
+                              const Color.fromRGBO(255, 255, 255, 1),
+                        ),
+                      ),
                     ),
-                  ),
-                  const Padding(
-                    padding: EdgeInsets.only(right: 20),
-                    child: Text(
-                      "شخصی",
-                      style:
-                          TextStyle(fontFamily: MAIN_FONT_FAMILY, fontSize: 12),
+                    Padding(
+                      padding:
+                          EdgeInsets.only(right: 20.w), // مقیاس‌دهی فاصله‌ها
+                      child: Text(
+                        "مشاورین املاک",
+                        style: TextStyle(
+                          fontFamily: MAIN_FONT_FAMILY,
+                          fontSize: 12.sp, // مقیاس‌دهی اندازه فونت
+                        ),
+                      ),
                     ),
-                  ),
-                ],
-              ),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Transform.scale(
-                  scale: 0.60,
-                  child: Obx(
-                    () => Switch(
-                        onChanged: (_) {
-                          amlak.value = _;
-                          widget.onChange(AmlakFilter());
-                        },
-                        value: amlak.value,
-                        activeTrackColor: const Color.fromRGBO(54, 216, 89, 1),
-                        inactiveThumbColor: const Color.fromRGBO(11, 8, 8, 0.2),
-                        inactiveTrackColor:
-                            const Color.fromRGBO(255, 255, 255, 1)),
-                  ),
-                ),
-                const Padding(
-                  padding: EdgeInsets.only(right: 20),
-                  child: Text(
-                    "آژانس املاک",
-                    style:
-                        TextStyle(fontFamily: MAIN_FONT_FAMILY, fontSize: 12),
-                  ),
-                ),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Transform.scale(
-                  scale: 0.60,
-                  child: Obx(
-                    () => Switch(
-                        onChanged: (_) {
-                          moshaver.value = _;
-                          widget.onChange(MoshaverFilter());
-                        },
-                        value: moshaver.value,
-                        activeColor: Colors.white,
-                        activeTrackColor: const Color.fromRGBO(54, 216, 89, 1),
-                        inactiveThumbColor: const Color.fromRGBO(11, 8, 8, 0.2),
-                        inactiveTrackColor:
-                            const Color.fromRGBO(255, 255, 255, 1)),
-                  ),
-                ),
-                const Padding(
-                  padding: EdgeInsets.only(right: 20),
-                  child: Text(
-                    "مشاورین املاک",
-                    style:
-                        TextStyle(fontFamily: MAIN_FONT_FAMILY, fontSize: 12),
-                  ),
-                ),
+                  ],
+                )
               ],
             )
-          ])
-        : const SizedBox.shrink());
+          : const SizedBox.shrink(),
+    );
   }
 }

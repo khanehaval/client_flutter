@@ -1,29 +1,27 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/widget_filter/otagh.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_tedad_Otagh.dart';
-import 'package:flutter_application_1/pages/category/shared/number_piacker.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class TedadotaghFilterWidget extends StatelessWidget {
   TedadotaghFilterWidget({super.key});
 
   final _showItemOtagh = false.obs;
-  final _selectedItemText =
-      "انتخاب کنید".obs; // Observable for selected item text
+  final _selectedItemText = "انتخاب کنید".obs;
   final _buildRoomsCountController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Obx(
       () => Container(
-        height: _showItemOtagh.isTrue ? 110 : 50,
+        height: _showItemOtagh.isTrue ? 110.h : 40.h,
         decoration: BoxDecoration(
-            color: const Color.fromRGBO(250, 250, 250, 1),
-            border: Border.all(color: const Color.fromRGBO(166, 166, 166, 1)),
-            borderRadius: BorderRadius.circular(15)),
+          color: const Color.fromRGBO(250, 250, 250, 1),
+          border: Border.all(color: const Color.fromRGBO(166, 166, 166, 1)),
+          borderRadius: BorderRadius.circular(15.r),
+        ),
         child: Column(
           children: [
             Row(
@@ -37,9 +35,9 @@ class TedadotaghFilterWidget extends StatelessWidget {
                     _showItemOtagh.value = !_showItemOtagh.value;
                   },
                 ),
-                const Padding(
-                  padding: EdgeInsets.only(right: 20),
-                  child: Text(
+                Padding(
+                  padding: EdgeInsets.only(right: 20.w),
+                  child: const Text(
                     "تعداد اتاق",
                     style:
                         TextStyle(fontFamily: MAIN_FONT_FAMILY, fontSize: 12),
@@ -58,20 +56,23 @@ class TedadotaghFilterWidget extends StatelessWidget {
     return Obx(() => _showItemOtagh.value
         ? Column(
             children: [
+              const SizedBox(
+                height: 5,
+              ),
               Container(
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(11),
-                  color: Color.fromRGBO(183, 183, 183, 1),
+                  borderRadius: BorderRadius.circular(11.r),
+                  color: const Color.fromRGBO(183, 183, 183, 1),
                 ),
                 child: Padding(
-                  padding: const EdgeInsets.all(1.1),
+                  padding: EdgeInsets.all(1.1.w),
                   child: Container(
-                    width: 315,
-                    height: 35,
+                    width: 285.w,
+                    height: 35.h,
                     decoration: ShapeDecoration(
                       color: Colors.white,
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
+                        borderRadius: BorderRadius.circular(10.r),
                       ),
                     ),
                     child: Row(
@@ -80,26 +81,24 @@ class TedadotaghFilterWidget extends StatelessWidget {
                         IconButton(
                           onPressed: () {
                             TedadOtagh((selectedKey, selectedLabel) {
-                              _buildRoomsCountController.text =
-                                  selectedLabel; // Set the label as the text in the controller
+                              _buildRoomsCountController.text = selectedLabel;
                             });
                           },
                           icon: SvgPicture.asset(
                             "assets/images/arrow_down.svg",
-                            width: 10,
-                            height: 10,
+                            width: 10.w,
+                            height: 10.h,
                             color: const Color.fromRGBO(48, 48, 48, 1),
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(right: 15.0),
+                          padding: EdgeInsets.only(right: 15.w),
                           child: Text(
-                            _selectedItemText
-                                .value, // Display selected item text
-                            style: const TextStyle(
+                            _selectedItemText.value,
+                            style: TextStyle(
                               fontFamily: MAIN_FONT_FAMILY_LIGHT,
-                              fontSize: 12,
-                              color: Color.fromRGBO(99, 99, 99, 1),
+                              fontSize: 12.sp,
+                              color: const Color.fromRGBO(99, 99, 99, 1),
                             ),
                           ),
                         ),

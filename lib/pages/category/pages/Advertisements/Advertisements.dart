@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/models/AdvertismentMoidel.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/filter.dart';
@@ -115,23 +114,28 @@ class _SelectLocationMapState extends State<Advertisements> {
                 child: ScrollablePositionedList.builder(
                   reverse: true,
                   itemScrollController: _controller,
-                  itemCount: 7,
+                  itemCount: items.length,
                   scrollDirection: Axis.horizontal,
                   initialScrollIndex: widget.index,
                   itemBuilder: (context, i) => GestureDetector(
                     onTap: () {
                       _controller.scrollTo(
                         index: i,
-                        duration: const Duration(microseconds: 100),
-                        opacityAnimationWeights: [10, 30, 10],
+                        duration: const Duration(milliseconds: 300),
                         alignment: 0.5,
                       );
                       _currentIndex.value = i;
                     },
                     child: Obx(
-                      () => Container(
-                        margin: const EdgeInsets.only(
-                            left: 0, right: 7, bottom: 15, top: 45),
+                      () => AnimatedContainer(
+                        duration: const Duration(milliseconds: 300),
+                        margin: EdgeInsets.only(
+                            left: _currentIndex.value == i
+                                ? 20
+                                : 0, // شیفت به راست
+                            right: 7,
+                            bottom: 15,
+                            top: 45),
                         padding: const EdgeInsets.all(1.2),
                         height: 98,
                         width: titles[i] == "املاک" ? 80 : 140,
@@ -180,262 +184,148 @@ class _SelectLocationMapState extends State<Advertisements> {
               child: SingleChildScrollView(
                   reverse: true,
                   scrollDirection: Axis.horizontal,
-                  child: Row(children: [
-                    Container(
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                            color: const Color.fromRGBO(166, 166, 166, 1)),
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: const SizedBox(
-                        height: 32,
-                        width: 100,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Stack(children: [
-                              Text(
-                                "تعداد اتاق",
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  fontSize: 11,
-                                  fontFamily: MAIN_FONT_FAMILY_LIGHT,
-                                  color: Color.fromRGBO(166, 166, 166, 1),
-                                ),
-                              ),
-                              SizedBox(
-                                width: 15,
-                              ),
-                            ]),
-                          ],
-                        ),
-                      ),
-                    ),
-                    const SizedBox(
-                      width: 7,
-                    ),
-                    Container(
-                      decoration: BoxDecoration(
+                  child: Row(
+                    children: [
+                      Container(
+                        decoration: BoxDecoration(
                           border: Border.all(
                               color: const Color.fromRGBO(166, 166, 166, 1)),
                           color: Colors.white,
-                          borderRadius: BorderRadius.circular(10)),
-                      child: const SizedBox(
-                        height: 32,
-                        width: 100,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Stack(children: [
-                              Text(
-                                "محدوده متراژ",
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  fontSize: 11,
-                                  fontFamily: MAIN_FONT_FAMILY_LIGHT,
-                                  color: Color.fromRGBO(166, 166, 166, 1),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: const SizedBox(
+                          height: 32,
+                          width: 100,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Stack(children: [
+                                Text(
+                                  "تعداد اتاق",
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    fontSize: 11,
+                                    fontFamily: MAIN_FONT_FAMILY_LIGHT,
+                                    color: Color.fromRGBO(166, 166, 166, 1),
+                                  ),
                                 ),
-                              ),
-                              SizedBox(
-                                width: 15,
-                              ),
-                            ]),
-                          ],
+                                SizedBox(
+                                  width: 15,
+                                ),
+                              ]),
+                            ],
+                          ),
                         ),
                       ),
-                    ),
-                    const SizedBox(
-                      width: 7,
-                    ),
-                    Container(
-                      decoration: BoxDecoration(
-                          border: Border.all(
-                              color: const Color.fromRGBO(166, 166, 166, 1)),
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(10)),
-                      child: const SizedBox(
-                        height: 32,
-                        width: 100,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Stack(children: [
-                              Text(
-                                "محدوده قیمت",
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  fontSize: 11,
-                                  fontFamily: MAIN_FONT_FAMILY_LIGHT,
-                                  color: Color.fromRGBO(166, 166, 166, 1),
+                      const SizedBox(
+                        width: 7,
+                      ),
+                      Container(
+                        decoration: BoxDecoration(
+                            border: Border.all(
+                                color: const Color.fromRGBO(166, 166, 166, 1)),
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(10)),
+                        child: const SizedBox(
+                          height: 32,
+                          width: 100,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Stack(children: [
+                                Text(
+                                  "محدوده متراژ",
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    fontSize: 11,
+                                    fontFamily: MAIN_FONT_FAMILY_LIGHT,
+                                    color: Color.fromRGBO(166, 166, 166, 1),
+                                  ),
                                 ),
-                              ),
-                              SizedBox(
-                                width: 15,
-                              ),
-                            ]),
-                          ],
+                                SizedBox(
+                                  width: 15,
+                                ),
+                              ]),
+                            ],
+                          ),
                         ),
                       ),
-                    ),
-                    const SizedBox(
-                      width: 7,
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        Get.to(() => Neighbourhood(),
-                            transition: Transition.leftToRight);
-                      },
-                      child: Obx(() => Container(
-                            decoration: BoxDecoration(
-                              border: Border.all(
-                                color: const Color.fromRGBO(166, 166, 166, 1),
-                              ),
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            child: SizedBox(
-                              height: 32,
-                              width: _advRepo.filters.isNotEmpty ? 130 : 100,
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  if (_advRepo.filters1.isNotEmpty) ...[
-                                    Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                          horizontal: 6),
-                                      child: Container(
-                                        width: 25,
-                                        height: 25,
-                                        decoration: const BoxDecoration(
-                                          color: Colors.green,
-                                          shape: BoxShape.circle,
-                                        ),
-                                        child: Center(
-                                          child: Text(
-                                            _advRepo.filters1.length.toString(),
-                                            style: const TextStyle(
-                                              fontFamily:
-                                                  MAIN_FONT_FAMILY_MEDIUM,
-                                              color: Colors.white,
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                  const Padding(
-                                    padding: EdgeInsets.only(left: 8.0),
-                                    child: Text(
-                                      "انتخاب محله",
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                        fontFamily: MAIN_FONT_FAMILY_LIGHT,
-                                        color: const Color.fromRGBO(
-                                            166, 166, 166, 1),
-                                        fontSize: 10,
-                                      ),
-                                    ),
+                      const SizedBox(
+                        width: 7,
+                      ),
+                      Container(
+                        decoration: BoxDecoration(
+                            border: Border.all(
+                                color: const Color.fromRGBO(166, 166, 166, 1)),
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(10)),
+                        child: const SizedBox(
+                          height: 32,
+                          width: 100,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Stack(children: [
+                                Text(
+                                  "محدوده قیمت",
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    fontSize: 11,
+                                    fontFamily: MAIN_FONT_FAMILY_LIGHT,
+                                    color: Color.fromRGBO(166, 166, 166, 1),
                                   ),
-                                ],
+                                ),
+                                SizedBox(
+                                  width: 15,
+                                ),
+                              ]),
+                            ],
+                          ),
+                        ),
+                      ),
+                      const SizedBox(
+                        width: 7,
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          Get.to(() => Neighbourhood(),
+                              transition: Transition.leftToRight);
+                        },
+                        child: Obx(() => Container(
+                              decoration: BoxDecoration(
+                                border: Border.all(
+                                  color: const Color.fromRGBO(166, 166, 166, 1),
+                                ),
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(10),
                               ),
-                            ),
-                          )),
-                    ),
-                    const SizedBox(
-                      width: 7,
-                    ),
-                    GestureDetector(
-                      onTap: () {},
-                      child: Obx(() => Container(
-                            decoration: BoxDecoration(
-                              border: Border.all(
-                                  color:
-                                      const Color.fromRGBO(166, 166, 166, 1)),
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            child: SizedBox(
-                              height: 32,
-                              width: _advRepo.filters.isNotEmpty ? 130 : 100,
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsets.only(left: 10.0),
-                                    child: Text(
-                                      cityController
-                                              .selectedCity.value.isNotEmpty
-                                          ? cityController.selectedCity.value
-                                          : "انتخاب شهر",
-                                      textAlign: TextAlign.center,
-                                      style: const TextStyle(
-                                        fontFamily: MAIN_FONT_FAMILY_LIGHT,
-                                        color: const Color.fromRGBO(
-                                            166, 166, 166, 1),
-                                        fontSize: 10,
-                                      ),
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(left: 8),
-                                    child: SvgPicture.asset(
-                                      'assets/images/location1.svg',
-                                      width: 15,
-                                      height: 15,
-                                      color: const Color.fromRGBO(
-                                          166, 166, 166, 1),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          )),
-                    ),
-                    const SizedBox(
-                      width: 7,
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        Get.to(
-                          () => Filter(index: 0),
-                          transition: Transition.leftToRight,
-                        );
-                      },
-                      child: Obx(() => Container(
-                            decoration: BoxDecoration(
-                              border: Border.all(
-                                  color:
-                                      const Color.fromRGBO(166, 166, 166, 1)),
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            child: SizedBox(
-                              height: 32,
-                              width: _advRepo.filters.isNotEmpty ? 130 : 100,
-                              child: Row(
+                              child: SizedBox(
+                                height: 32,
+                                width: _advRepo.filters.isNotEmpty ? 130 : 100,
+                                child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
-                                    if (_advRepo.filters.isNotEmpty) ...[
+                                    if (_advRepo.filters1.isNotEmpty) ...[
                                       Padding(
                                         padding: const EdgeInsets.symmetric(
                                             horizontal: 6),
                                         child: Container(
                                           width: 25,
+                                          height: 25,
                                           decoration: const BoxDecoration(
-                                              color: Colors.green,
-                                              shape: BoxShape.circle),
+                                            color: Colors.green,
+                                            shape: BoxShape.circle,
+                                          ),
                                           child: Center(
                                             child: Text(
-                                              _advRepo.filters.keys.length
+                                              _advRepo.filters1.length
                                                   .toString(),
                                               style: const TextStyle(
-                                                  fontFamily:
-                                                      MAIN_FONT_FAMILY_MEDIUM,
-                                                  color: Colors.white),
+                                                fontFamily:
+                                                    MAIN_FONT_FAMILY_MEDIUM,
+                                                color: Colors.white,
+                                              ),
                                             ),
                                           ),
                                         ),
@@ -444,31 +334,150 @@ class _SelectLocationMapState extends State<Advertisements> {
                                     const Padding(
                                       padding: EdgeInsets.only(left: 8.0),
                                       child: Text(
-                                        "فیلتر",
+                                        "انتخاب محله",
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
-                                            fontFamily: MAIN_FONT_FAMILY,
-                                            color:
-                                                Color.fromRGBO(99, 99, 99, 1),
-                                            fontSize: 12),
+                                          fontFamily: MAIN_FONT_FAMILY_LIGHT,
+                                          color: const Color.fromRGBO(
+                                              166, 166, 166, 1),
+                                          fontSize: 10,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            )),
+                      ),
+                      const SizedBox(
+                        width: 7,
+                      ),
+                      GestureDetector(
+                        onTap: () {},
+                        child: Obx(() => Container(
+                              decoration: BoxDecoration(
+                                border: Border.all(
+                                    color:
+                                        const Color.fromRGBO(166, 166, 166, 1)),
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              child: SizedBox(
+                                height: 32,
+                                width: _advRepo.filters.isNotEmpty ? 130 : 100,
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    Padding(
+                                      padding:
+                                          const EdgeInsets.only(left: 10.0),
+                                      child: Text(
+                                        cityController
+                                                .selectedCity.value.isNotEmpty
+                                            ? cityController.selectedCity.value
+                                            : "انتخاب شهر",
+                                        textAlign: TextAlign.center,
+                                        style: const TextStyle(
+                                          fontFamily: MAIN_FONT_FAMILY_LIGHT,
+                                          color:
+                                              Color.fromRGBO(166, 166, 166, 1),
+                                          fontSize: 10,
+                                        ),
                                       ),
                                     ),
                                     Padding(
                                       padding: const EdgeInsets.only(left: 8),
                                       child: SvgPicture.asset(
-                                        "assets/images/filter.svg",
-                                        width: 20,
-                                        height: 20,
+                                        'assets/images/location1.svg',
+                                        width: 15,
+                                        height: 15,
+                                        color: const Color.fromRGBO(
+                                            166, 166, 166, 1),
                                       ),
                                     ),
-                                  ]),
-                            ),
-                          )),
-                    ),
-                    const SizedBox(
-                      width: 7,
-                    ),
-                  ])),
+                                  ],
+                                ),
+                              ),
+                            )),
+                      ),
+                      const SizedBox(
+                        width: 7,
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          Get.to(
+                            () => Filter(index: 0),
+                            transition: Transition.leftToRight,
+                          );
+                        },
+                        child: Obx(() => Container(
+                              decoration: BoxDecoration(
+                                border: Border.all(
+                                    color:
+                                        const Color.fromRGBO(166, 166, 166, 1)),
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              child: SizedBox(
+                                height: 32,
+                                width: _advRepo.filters.isNotEmpty ? 130 : 100,
+                                child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      if (_advRepo.filters.isNotEmpty) ...[
+                                        Padding(
+                                          padding: const EdgeInsets.symmetric(
+                                              horizontal: 6),
+                                          child: Container(
+                                            width: 25,
+                                            decoration: const BoxDecoration(
+                                                color: Colors.green,
+                                                shape: BoxShape.circle),
+                                            child: Center(
+                                              child: Text(
+                                                _advRepo.filters.keys.length
+                                                    .toString(),
+                                                style: const TextStyle(
+                                                    fontFamily:
+                                                        MAIN_FONT_FAMILY_MEDIUM,
+                                                    color: Colors.white),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                      const Padding(
+                                        padding: EdgeInsets.only(left: 8.0),
+                                        child: Text(
+                                          "فیلتر",
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                              fontFamily: MAIN_FONT_FAMILY,
+                                              color:
+                                                  Color.fromRGBO(99, 99, 99, 1),
+                                              fontSize: 12),
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.only(left: 8),
+                                        child: SvgPicture.asset(
+                                          "assets/images/filter.svg",
+                                          width: 20,
+                                          height: 20,
+                                        ),
+                                      ),
+                                    ]),
+                              ),
+                            )),
+                      ),
+                      const SizedBox(
+                        width: 7,
+                      ),
+                    ],
+                  )),
             )
           ],
         ),

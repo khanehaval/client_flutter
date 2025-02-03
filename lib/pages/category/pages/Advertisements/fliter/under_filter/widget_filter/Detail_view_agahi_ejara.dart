@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/namayesh_agahi.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 
 class DetailViewAgahiEjara extends StatefulWidget {
   const DetailViewAgahiEjara({super.key});
@@ -13,7 +13,7 @@ class DetailViewAgahiEjara extends StatefulWidget {
 }
 
 class _DetailViewAgahiEjaraState extends State<DetailViewAgahiEjara> {
-  bool isFavorite = false; // متغیر برای ردیابی وضعیت مورد علاقه
+  bool isFavorite = false; // Variable for tracking favorite status
 
   @override
   Widget build(BuildContext context) {
@@ -88,13 +88,13 @@ class _DetailViewAgahiEjaraState extends State<DetailViewAgahiEjara> {
                                     onTap: () {
                                       setState(() {
                                         isFavorite =
-                                            !isFavorite; // تغییر وضعیت مورد علاقه
+                                            !isFavorite; // Toggle favorite status
                                       });
                                     },
                                     child: SvgPicture.asset(
                                       isFavorite
-                                          ? "assets/images/save.svg" // آیکون قلب قرمز
-                                          : "assets/images/save_withe.svg", // آیکون قلب سفید
+                                          ? "assets/images/save.svg" // Red heart icon
+                                          : "assets/images/save_withe.svg", // White heart icon
                                       width: 35,
                                       height: 35,
                                     ),
@@ -107,7 +107,7 @@ class _DetailViewAgahiEjaraState extends State<DetailViewAgahiEjara> {
                                 child: Align(
                                   alignment: Alignment.bottomLeft,
                                   child: SvgPicture.asset(
-                                    "assets/images/loc and cam.svg",
+                                    "assets/images/loc_and_cam.svg", // Corrected the name
                                     width: 35,
                                     height: 35,
                                   ),
@@ -119,16 +119,12 @@ class _DetailViewAgahiEjaraState extends State<DetailViewAgahiEjara> {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              SizedBox(
-                                child: SvgPicture.asset(
-                                  "assets/images/mizan_rahn.svg",
-                                  width: 15,
-                                  height: 15,
-                                ),
+                              SvgPicture.asset(
+                                "assets/images/mizan_rahn.svg",
+                                width: 15,
+                                height: 15,
                               ),
-                              const SizedBox(
-                                width: 30,
-                              ),
+                              const SizedBox(width: 30),
                               const Padding(
                                 padding: EdgeInsets.all(8.0),
                                 child: Text(
@@ -141,12 +137,7 @@ class _DetailViewAgahiEjaraState extends State<DetailViewAgahiEjara> {
                               ),
                             ],
                           ),
-                          const SizedBox(
-                            width: 50,
-                          ),
-                          const SizedBox(
-                            height: 5,
-                          ),
+                          const SizedBox(height: 5),
                           Padding(
                             padding: const EdgeInsets.only(left: 2.0),
                             child: Row(
@@ -155,34 +146,33 @@ class _DetailViewAgahiEjaraState extends State<DetailViewAgahiEjara> {
                                   "assets/images/toman_ads.svg",
                                   height: 20,
                                 ),
-                                const SizedBox(
-                                  width: 2,
-                                ),
+                                const SizedBox(width: 2),
                                 const Text(
                                   '700.000.000.000',
                                   style: TextStyle(
                                       fontFamily: MAIN_FONT_FAMILY_MEDIUM,
                                       color: Color.fromRGBO(99, 99, 99, 1)),
                                 ),
-                                SizedBox(width: Get.width / 3.65),
+                                SizedBox(width: 95.w),
                                 Flexible(
                                   child: Row(
                                     children: [
                                       Container(
-                                        width: 110,
-                                        height: 19,
+                                        width: 110.w,
+                                        height: 19.h,
                                         clipBehavior: Clip.antiAlias,
                                         decoration: ShapeDecoration(
                                           color: Colors.white,
                                           shape: RoundedRectangleBorder(
                                             side: const BorderSide(
-                                                width: 1,
-                                                color: Color(0xFFA5A5A5)),
+                                              width: 1,
+                                              color: Color(0xFFA5A5A5),
+                                            ),
                                             borderRadius:
-                                                BorderRadius.circular(10),
+                                                BorderRadius.circular(10.r),
                                           ),
                                         ),
-                                        child: const Column(
+                                        child: Column(
                                           mainAxisSize: MainAxisSize.min,
                                           mainAxisAlignment:
                                               MainAxisAlignment.center,
@@ -193,9 +183,9 @@ class _DetailViewAgahiEjaraState extends State<DetailViewAgahiEjara> {
                                               'سیستان و بلوچستان',
                                               textAlign: TextAlign.center,
                                               style: TextStyle(
-                                                color: Color.fromRGBO(
+                                                color: const Color.fromRGBO(
                                                     99, 99, 99, 1),
-                                                fontSize: 10,
+                                                fontSize: 10.sp,
                                                 fontFamily:
                                                     MAIN_FONT_FAMILY_MEDIUM,
                                               ),
@@ -205,135 +195,129 @@ class _DetailViewAgahiEjaraState extends State<DetailViewAgahiEjara> {
                                       ),
                                     ],
                                   ),
-                                )
+                                ),
                               ],
                             ),
                           ),
                           const SizedBox(height: 10),
                           Padding(
                             padding: const EdgeInsets.only(left: 2.0),
-                            child: Flexible(
-                              child: Row(
-                                children: [
-                                  Align(
-                                    alignment: Alignment.centerLeft,
-                                    child: SvgPicture.asset(
-                                      "assets/images/toman_ads.svg",
-                                      height: 20,
-                                    ),
+                            child: Row(
+                              children: [
+                                Align(
+                                  alignment: Alignment.centerLeft,
+                                  child: SvgPicture.asset(
+                                    "assets/images/toman_ads.svg",
+                                    height: 20,
                                   ),
-                                  const SizedBox(
-                                    width: 2,
-                                  ),
-                                  const Text(
-                                    '10.000.000',
-                                    style: TextStyle(
-                                        fontFamily: MAIN_FONT_FAMILY_MEDIUM,
-                                        color: Color.fromRGBO(99, 99, 99, 1)),
-                                  ),
-                                  const SizedBox(
-                                    width: 2,
-                                  ),
-                                  SvgPicture.asset(
-                                    "assets/images/mizan_ejara.svg",
-                                    height: 15,
-                                  ),
-                                  SizedBox(width: Get.width / 3.8),
-                                  Container(
-                                    width: 44,
-                                    height: 19,
-                                    clipBehavior: Clip.antiAlias,
-                                    decoration: ShapeDecoration(
-                                      color: Colors.white,
-                                      shape: RoundedRectangleBorder(
-                                        side: const BorderSide(
-                                            width: 1, color: Color(0xFFA5A5A5)),
-                                        borderRadius: BorderRadius.circular(10),
+                                ),
+                                const SizedBox(width: 2),
+                                const Text(
+                                  '10.000.000',
+                                  style: TextStyle(
+                                      fontFamily: MAIN_FONT_FAMILY_MEDIUM,
+                                      color: Color.fromRGBO(99, 99, 99, 1)),
+                                ),
+                                const SizedBox(width: 2),
+                                SvgPicture.asset(
+                                  "assets/images/mizan_ejara.svg",
+                                  height: 15,
+                                ),
+                                SizedBox(width: Get.width / 3.8),
+                                Container(
+                                  width: 44.w,
+                                  height: 19.h,
+                                  clipBehavior: Clip.antiAlias,
+                                  decoration: ShapeDecoration(
+                                    color: Colors.white,
+                                    shape: RoundedRectangleBorder(
+                                      side: const BorderSide(
+                                        width: 1,
+                                        color: Color(0xFFA5A5A5),
                                       ),
+                                      borderRadius: BorderRadius.circular(10.r),
                                     ),
-                                    child: Center(
-                                      child: RichText(
-                                        textAlign: TextAlign.center,
-                                        textDirection: TextDirection
-                                            .rtl, // Set direction to RTL
-                                        text: const TextSpan(
-                                          children: [
-                                            TextSpan(
-                                              text: '100', // Number first
-                                              style: TextStyle(
-                                                color: Color.fromRGBO(
-                                                    99, 99, 99, 1),
-                                                fontSize: 10,
-                                                fontFamily:
-                                                    MAIN_FONT_FAMILY_MEDIUM,
-                                              ),
+                                  ),
+                                  child: Center(
+                                    child: RichText(
+                                      textAlign: TextAlign.center,
+                                      textDirection: TextDirection.rtl,
+                                      text: TextSpan(
+                                        children: [
+                                          TextSpan(
+                                            text: '100',
+                                            style: TextStyle(
+                                              color: const Color.fromRGBO(
+                                                  99, 99, 99, 1),
+                                              fontSize: 10.sp,
+                                              fontFamily:
+                                                  MAIN_FONT_FAMILY_MEDIUM,
                                             ),
-                                            TextSpan(
-                                              text: ' متر', // Then the text
-                                              style: TextStyle(
-                                                color: Color.fromRGBO(
-                                                    99, 99, 99, 1),
-                                                fontSize: 10,
-                                                fontFamily:
-                                                    MAIN_FONT_FAMILY_MEDIUM,
-                                              ),
+                                          ),
+                                          TextSpan(
+                                            text: ' متر',
+                                            style: TextStyle(
+                                              color: const Color.fromRGBO(
+                                                  99, 99, 99, 1),
+                                              fontSize: 10.sp,
+                                              fontFamily:
+                                                  MAIN_FONT_FAMILY_MEDIUM,
                                             ),
-                                          ],
-                                        ),
+                                          ),
+                                        ],
                                       ),
                                     ),
                                   ),
-                                  const SizedBox(
-                                    width: 5,
+                                ),
+                                const SizedBox(width: 5),
+                                Container(
+                                  width: 44.w,
+                                  height: 19.h,
+                                  clipBehavior: Clip.antiAlias,
+                                  decoration: ShapeDecoration(
+                                    color: Colors.white,
+                                    shape: RoundedRectangleBorder(
+                                      side: const BorderSide(
+                                        width: 1,
+                                        color: Color(0xFFA5A5A5),
+                                      ),
+                                      borderRadius: BorderRadius.circular(10.r),
+                                    ),
                                   ),
-                                  Container(
-                                    width: 44,
-                                    height: 19,
-                                    clipBehavior: Clip.antiAlias,
-                                    decoration: ShapeDecoration(
-                                      color: Colors.white,
-                                      shape: RoundedRectangleBorder(
-                                        side: const BorderSide(
-                                            width: 1, color: Color(0xFFA5A5A5)),
-                                        borderRadius: BorderRadius.circular(10),
+                                  child: Center(
+                                    child: RichText(
+                                      textAlign: TextAlign.center,
+                                      textDirection: TextDirection.rtl,
+                                      text: TextSpan(
+                                        children: [
+                                          TextSpan(
+                                            text: '2',
+                                            style: TextStyle(
+                                              color: const Color.fromRGBO(
+                                                  99, 99, 99, 1),
+                                              fontSize: 10.sp,
+                                              fontFamily:
+                                                  MAIN_FONT_FAMILY_MEDIUM,
+                                            ),
+                                          ),
+                                          TextSpan(
+                                            text: ' اتاق',
+                                            style: TextStyle(
+                                              color: const Color.fromRGBO(
+                                                  99, 99, 99, 1),
+                                              fontSize: 10.sp,
+                                              fontFamily:
+                                                  MAIN_FONT_FAMILY_MEDIUM,
+                                            ),
+                                          ),
+                                        ],
                                       ),
                                     ),
-                                    child: Center(
-                                      child: RichText(
-                                        textAlign: TextAlign.center,
-                                        textDirection: TextDirection
-                                            .rtl, // Set direction to RTL
-                                        text: const TextSpan(
-                                          children: [
-                                            TextSpan(
-                                              text: '2', // Number first
-                                              style: TextStyle(
-                                                color: Color.fromRGBO(
-                                                    99, 99, 99, 1),
-                                                fontSize: 10,
-                                                fontFamily:
-                                                    MAIN_FONT_FAMILY_MEDIUM,
-                                              ),
-                                            ),
-                                            TextSpan(
-                                              text: ' اتاق', // Then the text
-                                              style: TextStyle(
-                                                color: Color.fromRGBO(
-                                                    99, 99, 99, 1),
-                                                fontSize: 10,
-                                                fontFamily:
-                                                    MAIN_FONT_FAMILY_MEDIUM,
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                  )
-                                ],
-                              ),
+                                  ),
+                                ),
+                              ],
                             ),
-                          )
+                          ),
                         ],
                       ),
                     ),

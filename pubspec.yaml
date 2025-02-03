@@ -89,6 +89,7 @@ dependencies:
   audioplayers: ^5.2.1
   file_picker: ^8.0.0+1
   flutter_screenutil: ^5.9.3
+  test: ^1.16.0
   # mapir_raster: 0.0.1
 
 dev_dependencies:

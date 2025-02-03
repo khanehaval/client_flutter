@@ -130,9 +130,12 @@ class EjaraFilter extends StatelessWidget {
                 ),
                 AghahiforiFilterWidget(),
                 const SizedBox(
-                  height: 30,
+                  height: 50,
                 ),
-                taeedvaemalefilter()
+                const taeedvaemalefilter(),
+                const SizedBox(
+                  height: 50,
+                ),
               ],
             ),
           ),

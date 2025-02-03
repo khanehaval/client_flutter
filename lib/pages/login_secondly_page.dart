@@ -12,7 +12,6 @@ import 'package:get/get.dart';
 
 class LoginSecondlyPage extends StatelessWidget {
   const LoginSecondlyPage({super.key});
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -82,7 +81,7 @@ class LoginSecondlyPage extends StatelessWidget {
                       child: Padding(
                         padding: const EdgeInsets.all(1.2),
                         child: Container(
-                          height: 65.h,
+                          height: 55.h,
                           decoration: const BoxDecoration(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(19)),
@@ -118,7 +117,7 @@ class LoginSecondlyPage extends StatelessWidget {
                       child: Padding(
                         padding: const EdgeInsets.all(1.2),
                         child: Container(
-                          height: 65.h,
+                          height: 55.h,
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(19),
                               color: Colors.white),
@@ -153,7 +152,7 @@ class LoginSecondlyPage extends StatelessWidget {
                       child: Padding(
                         padding: const EdgeInsets.all(1.2),
                         child: Container(
-                          height: 65.h,
+                          height: 55.h,
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(19),
                               color: Colors.white),
@@ -174,50 +173,56 @@ class LoginSecondlyPage extends StatelessWidget {
                 ],
               ),
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   Container(
+                    width: MediaQuery.of(context).size.width * 0.3,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(30),
                       boxShadow: [
                         BoxShadow(
-                            color: Colors.grey.withOpacity(0.25),
-                            spreadRadius: 1,
-                            blurRadius: 5,
-                            offset: const Offset(0, 1)),
+                          color: Colors.grey.withOpacity(0.25),
+                          spreadRadius: 1,
+                          blurRadius: 5,
+                          offset: const Offset(0, 1),
+                        ),
                       ],
                       gradient: getGradient(),
                     ),
                     child: ElevatedButton(
                       onPressed: () {
-                        Get.to(() => Home());
+                        Get.to(() => Advertisements());
                       },
                       style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.transparent,
-                          shadowColor: Colors.transparent),
-                      child: const Text(
+                        backgroundColor: Colors.transparent,
+                        shadowColor: Colors.transparent,
+                        padding: EdgeInsets.symmetric(vertical: 12.h),
+                      ),
+                      child: Text(
                         'بعدا یادآوری کن',
                         style: TextStyle(
-                            color: Color.fromRGBO(48, 48, 48, 1),
-                            fontSize: 10,
-                            fontWeight: FontWeight.bold,
-                            fontFamily: MAIN_FONT_FAMILY),
+                          color: const Color.fromRGBO(48, 48, 48, 1),
+                          fontSize: 12.sp,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: MAIN_FONT_FAMILY,
+                        ),
                       ),
                     ),
                   ),
                   const SizedBox(
-                    width: 25,
+                    width: 5,
                   ),
                   Container(
-                    width: MediaQuery.of(context).size.width * 0.34,
+                    width: MediaQuery.of(context).size.width * 0.35,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(30),
                       boxShadow: [
                         BoxShadow(
-                            color: Colors.grey.withOpacity(0.25),
-                            spreadRadius: 1,
-                            blurRadius: 5,
-                            offset: const Offset(0, 1)),
+                          color: Colors.grey.withOpacity(0.25),
+                          spreadRadius: 1,
+                          blurRadius: 5,
+                          offset: const Offset(0, 1),
+                        ),
                       ],
                       gradient: getGradient(),
                     ),
@@ -228,14 +233,18 @@ class LoginSecondlyPage extends StatelessWidget {
                             duration: const Duration(milliseconds: 400));
                       },
                       style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.transparent,
-                          shadowColor: Colors.transparent),
-                      child: const Text(
+                        backgroundColor: Colors.transparent,
+                        shadowColor: Colors.transparent,
+                        padding: EdgeInsets.symmetric(vertical: 12.h),
+                      ),
+                      child: Text(
                         'مشاهده تور آموزشی',
+                        textAlign: TextAlign.center,
                         style: TextStyle(
-                            color: Color.fromRGBO(48, 48, 48, 1),
-                            fontSize: 9,
-                            fontFamily: MAIN_FONT_FAMILY),
+                          color: const Color.fromRGBO(48, 48, 48, 1),
+                          fontSize: 11.sp,
+                          fontFamily: MAIN_FONT_FAMILY,
+                        ),
                       ),
                     ),
                   ),

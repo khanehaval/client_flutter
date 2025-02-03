@@ -149,59 +149,66 @@ class _RegisterState extends State<Register> {
 
   Widget _buildPhoneNumberField() {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 16.w),
-      child: SizedBox(
-        height: 50.h,
-        child: TextFormField(
-          textAlign: TextAlign.center, // متن را در مرکز قرار می‌دهد
-          keyboardType: TextInputType.number,
-          controller: _phoneNumberTextField,
-          onChanged: (_) => _phoneNumberSended.value = false,
-          onFieldSubmitted: (_) => _sendPhoneNumber(),
-          style: TextStyle(fontSize: 13.sp, fontFamily: MAIN_FONT_FAMILY),
-          inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-          decoration: InputDecoration(
-            contentPadding: EdgeInsets.symmetric(horizontal: 30.w),
-            hintText: "۰۹۱۲   ۱۲۳   ۴۵۶۷",
-            hintStyle: TextStyle(
-              color: const Color.fromRGBO(222, 222, 222, 1),
-              fontFamily: MAIN_FONT_FAMILY,
-              fontSize: 12.sp,
-            ),
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(15),
-              borderSide: const BorderSide(
-                color: Color.fromRGBO(99, 99, 99, 1),
+      padding: EdgeInsets.symmetric(horizontal: 10.w), // پادینگ افقی
+      child: Container(
+        height: 45.h, // ارتفاع کانتینر
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(15), // گوشه‌های گرد
+          border: Border.all(
+            color: const Color.fromRGBO(99, 99, 99, 1), // رنگ حاشیه
+          ),
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween, // فضا بین عناصر
+          children: [
+            SizedBox(width: 10.w), // فاصله از سمت چپ
+            Expanded(
+              child: TextFormField(
+                textAlign: TextAlign.center, // متن در وسط
+                keyboardType: TextInputType.number, // کیبورد عددی
+                controller: _phoneNumberTextField,
+                onChanged: (_) => _phoneNumberSended.value = false,
+                onFieldSubmitted: (_) => _sendPhoneNumber(),
+                style: TextStyle(
+                  fontSize: 14.sp, // اندازه فونت
+                  fontFamily: MAIN_FONT_FAMILY,
+                ),
+                inputFormatters: [
+                  FilteringTextInputFormatter.digitsOnly
+                ], // فقط اعداد
+                decoration: InputDecoration(
+                  hintText: "۰۹۱۲   ۱۲۳   ۴۵۶۷", // متن راهنما
+                  hintStyle: TextStyle(
+                    color: const Color.fromRGBO(
+                        222, 222, 222, 1), // رنگ متن راهنما
+                    fontFamily: MAIN_FONT_FAMILY,
+                    fontSize: 13.sp, // اندازه فونت متن راهنما
+                  ),
+                  border: InputBorder.none, // حذف مرز داخلی
+                ),
               ),
             ),
-            focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(15),
-              borderSide: const BorderSide(
-                color: Color.fromRGBO(99, 99, 99, 1),
-              ),
-            ),
-
-            // آیکون در سمت راست داخل فیلد
-            suffixIcon: Obx(
+            Obx(
               () => _phoneNumberSended.value
                   ? GestureDetector(
                       onTap: () => _phoneNumberSended.value = false,
                       child: Padding(
-                        padding: const EdgeInsets.only(
-                            right: 5.0,
-                            left: 10,
-                            top: 10,
-                            bottom: 15), // فاصله آیکون
+                        padding: EdgeInsets.only(
+                          right: 5.w,
+                          left: 10.w,
+                          top: 10.h,
+                          bottom: 10.h,
+                        ),
                         child: SvgPicture.asset(
-                          'assets/images/edit.svg',
-                          height: 20,
-                          width: 20,
+                          'assets/images/edit.svg', // آیکون ویرایش
+                          height: 20.h,
+                          width: 20.w,
                         ),
                       ),
                     )
-                  : const SizedBox.shrink(),
+                  : const SizedBox.shrink(), // بدون آیکون اگر شماره ارسال نشده
             ),
-          ),
+          ],
         ),
       ),
     );
