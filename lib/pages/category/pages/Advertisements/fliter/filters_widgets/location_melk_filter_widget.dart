@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/filters_widgets/component_filter/showLocationMelkBottomSheet.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/widget_filter/location_melk.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
@@ -31,8 +32,8 @@ class _LocationMelkFilterWidgetState extends State<LocationMelkFilterWidget> {
   Widget build(BuildContext context) {
     return Obx(
       () => Container(
-          height: _show_item_locationmelk.isTrue ? 130 : 50,
-          width: 370,
+          height: _show_item_locationmelk.isTrue ? 100.h : 50,
+          width: 370.w,
           decoration: BoxDecoration(
               color: const Color.fromRGBO(250, 250, 250, 1),
               border: Border.all(color: const Color.fromRGBO(166, 166, 166, 1)),
@@ -50,11 +51,12 @@ class _LocationMelkFilterWidgetState extends State<LocationMelkFilterWidget> {
                       !_show_item_locationmelk.value;
                 },
               ),
-              const Padding(
+              Padding(
                 padding: EdgeInsets.only(right: 20),
                 child: Text(
                   "موقعیت ملک",
-                  style: TextStyle(fontFamily: MAIN_FONT_FAMILY, fontSize: 12),
+                  style:
+                      TextStyle(fontFamily: MAIN_FONT_FAMILY, fontSize: 12.sp),
                 ),
               ),
             ]),
@@ -71,8 +73,9 @@ class _LocationMelkFilterWidgetState extends State<LocationMelkFilterWidget> {
       children: [
         Container(
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(11),
-              color: Color.fromRGBO(183, 183, 183, 1)),
+            borderRadius: BorderRadius.circular(11),
+            color: const Color.fromARGB(255, 225, 225, 225),
+          ),
           child: Padding(
             padding: const EdgeInsets.all(1.1),
             child: Container(

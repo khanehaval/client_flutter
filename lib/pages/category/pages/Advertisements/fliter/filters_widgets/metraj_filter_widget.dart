@@ -28,7 +28,7 @@ class _MetrajFilterWidgetState extends State<MetrajFilterWidget> {
   Widget build(BuildContext context) {
     return Obx(
       () => Container(
-        height: _showItemMizanMetraj.isTrue ? 230.h : 40.h,
+        height: _showItemMizanMetraj.isTrue ? 230.h : 50,
         decoration: BoxDecoration(
           color: const Color.fromRGBO(250, 250, 250, 1),
           border: Border.all(color: const Color.fromRGBO(166, 166, 166, 1)),
@@ -49,10 +49,10 @@ class _MetrajFilterWidgetState extends State<MetrajFilterWidget> {
                 ),
                 Padding(
                   padding: EdgeInsets.only(right: 20.w),
-                  child: const Text(
+                  child: Text(
                     "متراژ",
-                    style:
-                        TextStyle(fontFamily: MAIN_FONT_FAMILY, fontSize: 12),
+                    style: TextStyle(
+                        fontFamily: MAIN_FONT_FAMILY, fontSize: 12.sp),
                   ),
                 ),
               ],
@@ -82,13 +82,13 @@ class _MetrajFilterWidgetState extends State<MetrajFilterWidget> {
       TextEditingController controller) {
     return Container(
       decoration: BoxDecoration(
-        color: const Color.fromRGBO(183, 183, 183, 1),
+        color: const Color.fromARGB(255, 225, 225, 225),
         borderRadius: BorderRadius.circular(16.r),
       ),
       child: Padding(
         padding: EdgeInsets.all(1.1.w),
         child: Container(
-          height: 55.h,
+          height: 50.h,
           width: MediaQuery.of(context).size.width / 1.23,
           decoration: BoxDecoration(
             color: const Color.fromARGB(255, 225, 225, 225),
@@ -110,8 +110,8 @@ class _MetrajFilterWidgetState extends State<MetrajFilterWidget> {
                   child: Padding(
                     padding: EdgeInsets.all(1.1.w),
                     child: Container(
-                      width: 230.w,
-                      height: 35.h,
+                      width: 225.w,
+                      height: 30.h,
                       decoration: ShapeDecoration(
                         color: Colors.white,
                         shape: RoundedRectangleBorder(
@@ -145,9 +145,9 @@ class _MetrajFilterWidgetState extends State<MetrajFilterWidget> {
                             child: Obx(
                               () => Text(
                                 selectedAmount.value,
-                                style: const TextStyle(
+                                style: TextStyle(
                                   fontFamily: MAIN_FONT_FAMILY_LIGHT,
-                                  fontSize: 12,
+                                  fontSize: 12.sp,
                                   color: Color.fromRGBO(99, 99, 99, 1),
                                 ),
                               ),
@@ -163,7 +163,7 @@ class _MetrajFilterWidgetState extends State<MetrajFilterWidget> {
                 label,
                 style: TextStyle(
                   fontFamily: MAIN_FONT_FAMILY,
-                  fontSize: 11.sp,
+                  fontSize: 12.sp,
                   color: const Color.fromRGBO(99, 99, 99, 1),
                 ),
               ),

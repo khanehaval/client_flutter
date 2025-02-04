@@ -12,7 +12,7 @@ class AghahiforiFilterWidget extends StatelessWidget {
     return Column(
       children: [
         Container(
-          height: 40.h, // مقیاس‌دهی ارتفاع
+          height: 50, // مقیاس‌دهی ارتفاع
           width: 370.w, // مقیاس‌دهی عرض
           decoration: BoxDecoration(
             color: const Color.fromRGBO(250, 250, 250, 1),

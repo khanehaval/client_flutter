@@ -68,7 +68,7 @@ class DaftarKarFilter extends StatelessWidget {
           const SizedBox(
             height: 20,
           ),
-          SenBanaFilterWidhget(),
+          SenBanaFilterWidget(),
           const SizedBox(
             height: 20,
           ),

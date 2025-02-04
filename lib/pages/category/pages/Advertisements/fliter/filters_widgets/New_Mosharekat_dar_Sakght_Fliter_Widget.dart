@@ -4,6 +4,7 @@ import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter
 import 'package:flutter_application_1/pages/category/pages/page_advertisement/pages/sakht_v_saz_pages/partnership.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/services/models/filterModel.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
@@ -20,7 +21,7 @@ class NewMosharekatdarSakghtFliterWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Obx(
       () => Container(
-        height: _show_item_otheremkanatagahi_1.isTrue ? 200 : 50,
+        height: _show_item_otheremkanatagahi_1.isTrue ? 200.h : 50,
         decoration: BoxDecoration(
             color: const Color.fromRGBO(250, 250, 250, 1),
             border: Border.all(color: const Color.fromRGBO(166, 166, 166, 1)),
@@ -39,11 +40,12 @@ class NewMosharekatdarSakghtFliterWidget extends StatelessWidget {
                       !_show_item_otheremkanatagahi_1.value;
                 },
               ),
-              const Padding(
+              Padding(
                 padding: EdgeInsets.only(right: 20),
                 child: Text(
                   "مشارکت در ساخت (ساختمان جدید)",
-                  style: TextStyle(fontFamily: MAIN_FONT_FAMILY, fontSize: 12),
+                  style:
+                      TextStyle(fontFamily: MAIN_FONT_FAMILY, fontSize: 12.sp),
                 ),
               ),
             ]),
@@ -79,12 +81,12 @@ class NewMosharekatdarSakghtFliterWidget extends StatelessWidget {
                               const Color.fromRGBO(255, 255, 255, 1)),
                     ),
                   ),
-                  const Padding(
+                  Padding(
                     padding: EdgeInsets.only(right: 20),
                     child: Text(
                       "آپارتمان",
-                      style:
-                          TextStyle(fontFamily: MAIN_FONT_FAMILY, fontSize: 12),
+                      style: TextStyle(
+                          fontFamily: MAIN_FONT_FAMILY, fontSize: 12.sp),
                     ),
                   ),
                 ],
@@ -108,12 +110,12 @@ class NewMosharekatdarSakghtFliterWidget extends StatelessWidget {
                             const Color.fromRGBO(255, 255, 255, 1)),
                   ),
                 ),
-                const Padding(
+                Padding(
                   padding: EdgeInsets.only(right: 20),
                   child: Text(
                     "شهرک ویلایی",
-                    style:
-                        TextStyle(fontFamily: MAIN_FONT_FAMILY, fontSize: 12),
+                    style: TextStyle(
+                        fontFamily: MAIN_FONT_FAMILY, fontSize: 12.sp),
                   ),
                 ),
               ],
@@ -136,12 +138,12 @@ class NewMosharekatdarSakghtFliterWidget extends StatelessWidget {
                             const Color.fromRGBO(255, 255, 255, 1)),
                   ),
                 ),
-                const Padding(
+                Padding(
                   padding: EdgeInsets.only(right: 20),
                   child: Text(
                     "مجتمع تجاری و اد اری",
-                    style:
-                        TextStyle(fontFamily: MAIN_FONT_FAMILY, fontSize: 12),
+                    style: TextStyle(
+                        fontFamily: MAIN_FONT_FAMILY, fontSize: 12.sp),
                   ),
                 ),
               ],

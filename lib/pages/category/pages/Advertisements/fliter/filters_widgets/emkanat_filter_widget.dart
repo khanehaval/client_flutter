@@ -25,7 +25,7 @@ class _EmkanatFilterWidgetState extends State<EmkanatFilterWidget> {
           () => Container(
             height: _show_item_emkanatagahi_1.isTrue
                 ? 160.h
-                : 40.h, // مقیاس‌دهی ارتفاع
+                : 50, // مقیاس‌دهی ارتفاع
             decoration: BoxDecoration(
               color: const Color.fromRGBO(250, 250, 250, 1),
               border: Border.all(color: const Color.fromRGBO(166, 166, 166, 1)),

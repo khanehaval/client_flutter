@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
@@ -11,7 +12,7 @@ class MarhalehSakhtFilterWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Obx(
       () => Container(
-          height: _show_item_mahaleh_1.isTrue ? 130 : 50,
+          height: _show_item_mahaleh_1.isTrue ? 130.h : 50,
           decoration: BoxDecoration(
               color: const Color.fromRGBO(250, 250, 250, 1),
               border: Border.all(color: const Color.fromRGBO(166, 166, 166, 1)),
@@ -28,14 +29,14 @@ class MarhalehSakhtFilterWidget extends StatelessWidget {
                   _show_item_mahaleh_1.value = !_show_item_mahaleh_1.value;
                 },
               ),
-              const Padding(
+              Padding(
                 padding: EdgeInsets.only(left: 10, right: 20),
                 child: Text(
                   'مرحله ساخت',
                   style: TextStyle(
                       fontFamily: MAIN_FONT_FAMILY,
                       color: Color.fromRGBO(48, 48, 48, 1),
-                      fontSize: 12),
+                      fontSize: 12.sp),
                 ),
               ),
             ]),
@@ -54,13 +55,14 @@ class MarhalehSakhtFilterWidget extends StatelessWidget {
               children: [
                 Container(
                   decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(11),
-                      color: const Color.fromRGBO(183, 183, 183, 1)),
+                    borderRadius: BorderRadius.circular(11),
+                    color: const Color.fromARGB(183, 183, 183, 183),
+                  ),
                   child: Padding(
                     padding: const EdgeInsets.all(1.1),
                     child: Container(
-                      width: 315,
-                      height: 35,
+                      width: 295.w,
+                      height: 35.h,
                       decoration: ShapeDecoration(
                         color: Colors.white,
                         shape: RoundedRectangleBorder(
@@ -84,14 +86,15 @@ class MarhalehSakhtFilterWidget extends StatelessWidget {
                               ),
                             ),
                           ),
-                          const Padding(
-                            padding: EdgeInsets.only(right: 10.0),
+                          Padding(
+                            padding: const EdgeInsets.only(right: 10.0),
                             child: Text(
                               'انتخاب کنید',
                               style: TextStyle(
                                   fontFamily: MAIN_FONT_FAMILY_LIGHT,
-                                  fontSize: 12,
-                                  color: Color.fromRGBO(166, 166, 166, 1)),
+                                  fontSize: 12.sp,
+                                  color:
+                                      const Color.fromRGBO(166, 166, 166, 1)),
                             ),
                           ),
                         ],

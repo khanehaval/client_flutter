@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/filters_widgets/component_filter/show_qematKol_low_BottomSheet.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/filters_widgets/component_filter/show_qematKol_max_BottomSheet.dart';
-import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/widget_filter/qemat_kol.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class QematKoleFilterWidget extends StatefulWidget {
   QematKoleFilterWidget({super.key});
@@ -26,72 +26,82 @@ class _QematKoleFilterWidgetState extends State<QematKoleFilterWidget> {
   Widget build(BuildContext context) {
     return Obx(
       () => Container(
-          height: _showItemQematKol.isTrue ? 230 : 50,
-          width: 370,
-          decoration: BoxDecoration(
-              color: const Color.fromRGBO(250, 250, 250, 1),
-              border: Border.all(color: const Color.fromRGBO(166, 166, 166, 1)),
-              borderRadius: BorderRadius.circular(15)),
-          child: Column(children: [
-            Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-              IconButton(
-                icon: _showItemQematKol.value
-                    ? SvgPicture.asset('assets/images/=.svg')
-                    : SvgPicture.asset('assets/images/down.svg'),
-                onPressed: () {
-                  _showItemQematKol.value = !_showItemQematKol.value;
-                },
-              ),
-              const Padding(
-                padding: EdgeInsets.only(right: 20),
-                child: Text(
-                  "قیمت کل",
-                  style: TextStyle(fontFamily: MAIN_FONT_FAMILY, fontSize: 12),
+        height: _showItemQematKol.isTrue ? 230.h : 50,
+        width: 370.w,
+        decoration: BoxDecoration(
+          color: const Color.fromRGBO(250, 250, 250, 1),
+          border: Border.all(color: const Color.fromRGBO(166, 166, 166, 1)),
+          borderRadius: BorderRadius.circular(15.r),
+        ),
+        child: Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                IconButton(
+                  icon: _showItemQematKol.value
+                      ? SvgPicture.asset('assets/images/=.svg')
+                      : SvgPicture.asset('assets/images/down.svg'),
+                  onPressed: () {
+                    _showItemQematKol.value = !_showItemQematKol.value;
+                  },
                 ),
-              ),
-            ]),
+                Padding(
+                  padding: EdgeInsets.only(right: 20.w),
+                  child: Text(
+                    "قیمت کل",
+                    style: TextStyle(
+                        fontFamily: MAIN_FONT_FAMILY, fontSize: 12.sp),
+                  ),
+                ),
+              ],
+            ),
             if (_showItemQematKol.isTrue)
               Column(
                 children: [
                   qematKol(context),
-                  const SizedBox(height: 20),
+                  SizedBox(height: 20.h),
                   qematKol2(context),
                 ],
               ),
-          ])),
+          ],
+        ),
+      ),
     );
   }
 
   Widget qematKol(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-          color: const Color.fromRGBO(183, 183, 183, 1),
-          borderRadius: BorderRadius.circular(16)),
+        color: const Color.fromARGB(255, 225, 225, 225),
+        borderRadius: BorderRadius.circular(16.r),
+      ),
       child: Padding(
-        padding: const EdgeInsets.all(1.1),
+        padding: EdgeInsets.all(1.1.w),
         child: Container(
-          height: 55,
+          height: 50.h,
           width: MediaQuery.of(context).size.width / 1.23,
           decoration: BoxDecoration(
             color: const Color.fromARGB(255, 225, 225, 225),
-            borderRadius: BorderRadius.circular(15),
+            borderRadius: BorderRadius.circular(15.r),
           ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Container(
                 decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: const Color.fromRGBO(183, 183, 183, 1)),
+                  borderRadius: BorderRadius.circular(10.r),
+                  color: const Color.fromRGBO(183, 183, 183, 1),
+                ),
                 child: Padding(
-                  padding: const EdgeInsets.all(1.1),
+                  padding: EdgeInsets.all(1.1.w),
                   child: Container(
-                    width: 250,
-                    height: 35,
+                    width: 230.w,
+                    height: 30.h,
                     decoration: ShapeDecoration(
                       color: Colors.white,
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(9),
+                        borderRadius: BorderRadius.circular(9.r),
                       ),
                     ),
                     child: Row(
@@ -111,19 +121,20 @@ class _QematKoleFilterWidgetState extends State<QematKoleFilterWidget> {
                           },
                           icon: SvgPicture.asset(
                             "assets/images/arrow_down.svg",
-                            width: 10,
-                            height: 10,
+                            width: 10.w,
+                            height: 10.h,
                             color: const Color.fromRGBO(48, 48, 48, 1),
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(right: 10.0),
+                          padding: EdgeInsets.only(right: 10.w),
                           child: Text(
                             selectedMinAmount.value,
-                            style: const TextStyle(
-                                fontFamily: MAIN_FONT_FAMILY_LIGHT,
-                                fontSize: 12,
-                                color: Color.fromRGBO(99, 99, 99, 1)),
+                            style: TextStyle(
+                              fontFamily: MAIN_FONT_FAMILY_LIGHT,
+                              fontSize: 12.sp,
+                              color: Color.fromRGBO(99, 99, 99, 1),
+                            ),
                           ),
                         ),
                       ],
@@ -131,12 +142,12 @@ class _QematKoleFilterWidgetState extends State<QematKoleFilterWidget> {
                   ),
                 ),
               ),
-              const Text(
+              Text(
                 "حداقل",
                 style: TextStyle(
                   fontFamily: MAIN_FONT_FAMILY,
-                  fontSize: 11,
-                  color: Color.fromRGBO(99, 99, 99, 1),
+                  fontSize: 11.sp,
+                  color: const Color.fromRGBO(99, 99, 99, 1),
                 ),
               ),
             ],
@@ -149,33 +160,35 @@ class _QematKoleFilterWidgetState extends State<QematKoleFilterWidget> {
   Widget qematKol2(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-          color: const Color.fromRGBO(183, 183, 183, 1),
-          borderRadius: BorderRadius.circular(16)),
+        color: const Color.fromARGB(255, 225, 225, 225),
+        borderRadius: BorderRadius.circular(16.r),
+      ),
       child: Padding(
-        padding: const EdgeInsets.all(1.1),
+        padding: EdgeInsets.all(1.1.w),
         child: Container(
-          height: 55,
+          height: 50.h,
           width: MediaQuery.of(context).size.width / 1.23,
           decoration: BoxDecoration(
             color: const Color.fromARGB(255, 225, 225, 225),
-            borderRadius: BorderRadius.circular(15),
+            borderRadius: BorderRadius.circular(15.r),
           ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Container(
                 decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(9),
-                    color: const Color.fromRGBO(183, 183, 183, 1)),
+                  borderRadius: BorderRadius.circular(9.r),
+                  color: const Color.fromRGBO(183, 183, 183, 1),
+                ),
                 child: Padding(
-                  padding: const EdgeInsets.all(1.1),
+                  padding: EdgeInsets.all(1.1.w),
                   child: Container(
-                    width: 250,
-                    height: 35,
+                    width: 230.w,
+                    height: 30.h,
                     decoration: ShapeDecoration(
                       color: Colors.white,
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(9),
+                        borderRadius: BorderRadius.circular(9.r),
                       ),
                     ),
                     child: Row(
@@ -192,19 +205,20 @@ class _QematKoleFilterWidgetState extends State<QematKoleFilterWidget> {
                           },
                           icon: SvgPicture.asset(
                             "assets/images/arrow_down.svg",
-                            width: 10,
-                            height: 10,
+                            width: 10.w,
+                            height: 10.h,
                             color: const Color.fromRGBO(48, 48, 48, 1),
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(right: 10.0),
+                          padding: EdgeInsets.only(right: 10.w),
                           child: Text(
                             selectedMaxAmount.value,
-                            style: const TextStyle(
-                                fontFamily: MAIN_FONT_FAMILY_LIGHT,
-                                fontSize: 12,
-                                color: Color.fromRGBO(99, 99, 99, 1)),
+                            style: TextStyle(
+                              fontFamily: MAIN_FONT_FAMILY_LIGHT,
+                              fontSize: 12.sp,
+                              color: Color.fromRGBO(99, 99, 99, 1),
+                            ),
                           ),
                         ),
                       ],
@@ -212,12 +226,12 @@ class _QematKoleFilterWidgetState extends State<QematKoleFilterWidget> {
                   ),
                 ),
               ),
-              const Text(
+              Text(
                 "حداکثر",
                 style: TextStyle(
                   fontFamily: MAIN_FONT_FAMILY,
-                  fontSize: 11,
-                  color: Color.fromRGBO(99, 99, 99, 1),
+                  fontSize: 11.sp,
+                  color: const Color.fromRGBO(99, 99, 99, 1),
                 ),
               ),
             ],

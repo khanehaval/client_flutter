@@ -16,7 +16,7 @@ class TedadotaghFilterWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Obx(
       () => Container(
-        height: _showItemOtagh.isTrue ? 110.h : 40.h,
+        height: _showItemOtagh.isTrue ? 110.h : 50,
         decoration: BoxDecoration(
           color: const Color.fromRGBO(250, 250, 250, 1),
           border: Border.all(color: const Color.fromRGBO(166, 166, 166, 1)),
@@ -37,10 +37,10 @@ class TedadotaghFilterWidget extends StatelessWidget {
                 ),
                 Padding(
                   padding: EdgeInsets.only(right: 20.w),
-                  child: const Text(
+                  child: Text(
                     "تعداد اتاق",
-                    style:
-                        TextStyle(fontFamily: MAIN_FONT_FAMILY, fontSize: 12),
+                    style: TextStyle(
+                        fontFamily: MAIN_FONT_FAMILY, fontSize: 12.sp),
                   ),
                 ),
               ],

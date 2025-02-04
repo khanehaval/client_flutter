@@ -22,7 +22,7 @@ class _RahnFilterWidgetState extends State<RahnFilterWidget> {
   @override
   Widget build(BuildContext context) {
     return Obx(() => Container(
-          height: _show_item_mizanrahn.isTrue ? 230.h : 40.h,
+          height: _show_item_mizanrahn.isTrue ? 230.h : 50,
           decoration: BoxDecoration(
               color: const Color.fromRGBO(250, 250, 250, 1),
               border: Border.all(color: const Color.fromRGBO(166, 166, 166, 1)),
@@ -40,11 +40,11 @@ class _RahnFilterWidgetState extends State<RahnFilterWidget> {
                 ),
                 Padding(
                   padding: EdgeInsets.only(right: 20.w),
-                  child: const Text(
+                  child: Text(
                     "میزان رهن",
                     style: TextStyle(
                       fontFamily: MAIN_FONT_FAMILY,
-                      fontSize: 12,
+                      fontSize: 12.sp,
                     ),
                   ),
                 ),
@@ -65,13 +65,13 @@ class _RahnFilterWidgetState extends State<RahnFilterWidget> {
   Widget rahn(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: const Color.fromRGBO(183, 183, 183, 1),
+        color: const Color.fromARGB(255, 225, 225, 225),
         borderRadius: BorderRadius.circular(16.r),
       ),
       child: Padding(
         padding: EdgeInsets.all(1.1.w),
         child: Container(
-          height: 55.h,
+          height: 50.h,
           width: MediaQuery.of(context).size.width / 1.25,
           decoration: BoxDecoration(
             color: const Color.fromARGB(255, 225, 225, 225),
@@ -159,7 +159,7 @@ class _RahnFilterWidgetState extends State<RahnFilterWidget> {
   Widget rahn2(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: const Color.fromRGBO(183, 183, 183, 1),
+        color: const Color.fromARGB(255, 225, 225, 225),
         borderRadius: BorderRadius.circular(16.r),
       ),
       child: Padding(

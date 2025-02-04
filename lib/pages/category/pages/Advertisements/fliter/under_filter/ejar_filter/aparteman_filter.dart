@@ -18,12 +18,10 @@ import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter
 import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/filters_widgets/tamin_abegarm_filter_widget.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/filters_widgets/tedad_koletabaghat_filter.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/filters_widgets/tedat_vahed_filter_widget.dart';
-import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/widget_filter/taeedvaemalefilter.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/repo/advRepo.dart';
 import 'package:flutter_application_1/services/models/filterModel.dart';
 import 'package:get/get.dart';
-import 'package:get/state_manager.dart';
 import 'package:get_it/get_it.dart';
 
 class EjaraApartemanFilter extends StatefulWidget {
@@ -95,11 +93,11 @@ class _EjaraApartemanFilterState extends State<EjaraApartemanFilter> {
           const SizedBox(
             height: 20,
           ),
-          TedatVahedFilterWidget(),
+          const TedatVahedFilterWidget(),
           const SizedBox(
             height: 20,
           ),
-          SenBanaFilterWidhget(),
+          SenBanaFilterWidget(),
           const SizedBox(
             height: 20,
           ),
@@ -149,7 +147,7 @@ class _EjaraApartemanFilterState extends State<EjaraApartemanFilter> {
           ),
           JensKafFilterWidget(),
           const SizedBox(
-            height: 30,
+            height: 50,
           ),
           Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
             Container(
@@ -161,7 +159,7 @@ class _EjaraApartemanFilterState extends State<EjaraApartemanFilter> {
                       color: Color(0x7F296FE2),
                       blurRadius: 7,
                       offset: Offset(0, 1),
-                    )
+                    ),
                   ],
                   color: Colors.white),
               child: Container(
@@ -232,7 +230,10 @@ class _EjaraApartemanFilterState extends State<EjaraApartemanFilter> {
                 ),
               ),
             ),
-          ])
+          ]),
+          const SizedBox(
+            height: 50,
+          ),
         ]),
       ),
     );

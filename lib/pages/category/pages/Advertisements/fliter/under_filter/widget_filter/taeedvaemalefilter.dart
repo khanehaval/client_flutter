@@ -1,12 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
-import 'package:flutter_application_1/pages/category/shared/widget/AdvretismentFilter.dart';
-import 'package:flutter_application_1/pages/intro_screen.dart';
-import 'package:flutter_application_1/repo/advRepo.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get_it/get_it.dart';
 
 class taeedvaemalefilter extends StatefulWidget {
   const taeedvaemalefilter({super.key});
@@ -16,9 +10,6 @@ class taeedvaemalefilter extends StatefulWidget {
 }
 
 class _taeedvaemalefilterState extends State<taeedvaemalefilter> {
-  final _advRepo = GetIt.I.get<AdvRepo>();
-  List<AdvretismentFilter> _filters = [];
-
   @override
   Widget build(BuildContext context) {
     return Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [

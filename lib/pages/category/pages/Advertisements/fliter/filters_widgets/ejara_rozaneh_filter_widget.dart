@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
@@ -12,8 +13,8 @@ class EjaraRozanehFilterWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Obx(
       () => Container(
-        height: _show_item_ejararozaneh.isTrue ? 230 : 50,
-        width: 370,
+        height: _show_item_ejararozaneh.isTrue ? 230.h : 50,
+        width: 370.w,
         decoration: BoxDecoration(
             color: const Color.fromRGBO(250, 250, 250, 1),
             border: Border.all(color: const Color.fromRGBO(166, 166, 166, 1)),
@@ -32,11 +33,12 @@ class EjaraRozanehFilterWidget extends StatelessWidget {
                       !_show_item_ejararozaneh.value;
                 },
               ),
-              const Padding(
-                padding: EdgeInsets.only(right: 20),
+              Padding(
+                padding: const EdgeInsets.only(right: 20),
                 child: Text(
                   "اجاره روزانه",
-                  style: TextStyle(fontFamily: MAIN_FONT_FAMILY, fontSize: 12),
+                  style:
+                      TextStyle(fontFamily: MAIN_FONT_FAMILY, fontSize: 12.sp),
                 ),
               ),
             ]),
@@ -59,12 +61,12 @@ class EjaraRozanehFilterWidget extends StatelessWidget {
   Widget ejararozaneh(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-          color: const Color.fromRGBO(183, 183, 183, 1),
+          color: const Color.fromARGB(255, 225, 225, 225),
           borderRadius: BorderRadius.circular(16)),
       child: Padding(
         padding: const EdgeInsets.all(1.1),
         child: Container(
-          height: 55,
+          height: 50.h,
           width: MediaQuery.of(context).size.width / 1.23,
           decoration: BoxDecoration(
             color: const Color.fromARGB(255, 225, 225, 225),
@@ -84,13 +86,13 @@ class EjaraRozanehFilterWidget extends StatelessWidget {
                     )),
                 child: Container(
                   decoration: BoxDecoration(
-                      color: const Color.fromRGBO(183, 183, 183, 1),
+                      color: const Color.fromARGB(255, 225, 225, 225),
                       borderRadius: BorderRadius.circular(16)),
                   child: Padding(
                     padding: const EdgeInsets.all(1.1),
                     child: Container(
-                      width: 250,
-                      height: 35,
+                      width: 225.w,
+                      height: 30.h,
                       decoration: ShapeDecoration(
                         color: Colors.white,
                         shape: RoundedRectangleBorder(
@@ -114,13 +116,13 @@ class EjaraRozanehFilterWidget extends StatelessWidget {
                               ),
                             ),
                           ),
-                          const Padding(
+                          Padding(
                             padding: EdgeInsets.only(right: 10.0),
                             child: Text(
                               'انتخاب کنید',
                               style: TextStyle(
                                   fontFamily: MAIN_FONT_FAMILY_LIGHT,
-                                  fontSize: 12,
+                                  fontSize: 12.h,
                                   color: Color.fromRGBO(166, 166, 166, 1)),
                             ),
                           ),
@@ -130,11 +132,11 @@ class EjaraRozanehFilterWidget extends StatelessWidget {
                   ),
                 ),
               ),
-              const Text(
+              Text(
                 "حداقل",
                 style: TextStyle(
                   fontFamily: MAIN_FONT_FAMILY,
-                  fontSize: 11,
+                  fontSize: 12.h,
                   color: Color.fromRGBO(99, 99, 99, 1),
                 ),
               ),
@@ -148,12 +150,12 @@ class EjaraRozanehFilterWidget extends StatelessWidget {
   Widget ejararozaneh2(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-          color: const Color.fromRGBO(183, 183, 183, 1),
+          color: const Color.fromARGB(255, 225, 225, 225),
           borderRadius: BorderRadius.circular(16)),
       child: Padding(
         padding: const EdgeInsets.all(1.1),
         child: Container(
-          height: 55,
+          height: 50.h,
           width: MediaQuery.of(context).size.width / 1.23,
           decoration: BoxDecoration(
             color: const Color.fromARGB(255, 225, 225, 225),
@@ -178,8 +180,8 @@ class EjaraRozanehFilterWidget extends StatelessWidget {
                   child: Padding(
                     padding: const EdgeInsets.all(1.1),
                     child: Container(
-                      width: 250,
-                      height: 35,
+                      width: 225.w,
+                      height: 30.h,
                       decoration: ShapeDecoration(
                         color: Colors.white,
                         shape: RoundedRectangleBorder(
@@ -203,13 +205,13 @@ class EjaraRozanehFilterWidget extends StatelessWidget {
                               ),
                             ),
                           ),
-                          const Padding(
+                          Padding(
                             padding: EdgeInsets.only(right: 10.0),
                             child: Text(
                               'انتخاب کنید',
                               style: TextStyle(
                                   fontFamily: MAIN_FONT_FAMILY_LIGHT,
-                                  fontSize: 12,
+                                  fontSize: 12.sp,
                                   color: Color.fromRGBO(166, 166, 166, 1)),
                             ),
                           ),
@@ -219,11 +221,11 @@ class EjaraRozanehFilterWidget extends StatelessWidget {
                   ),
                 ),
               ),
-              const Text(
+              Text(
                 "حداکثر",
                 style: TextStyle(
                   fontFamily: MAIN_FONT_FAMILY,
-                  fontSize: 11,
+                  fontSize: 12.sp,
                   color: Color.fromRGBO(99, 99, 99, 1),
                 ),
               ),

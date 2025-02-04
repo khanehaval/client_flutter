@@ -15,7 +15,7 @@ class MahalehFilterWidget extends StatelessWidget {
       () => Container(
         height: _show_item_mahaleh_1.isTrue
             ? 130.h
-            : 40.h, // استفاده از .h برای مقیاس‌دهی ارتفاع
+            : 50, // استفاده از .h برای مقیاس‌دهی ارتفاع
         decoration: BoxDecoration(
           color: const Color.fromRGBO(250, 250, 250, 1),
           border: Border.all(color: const Color.fromRGBO(166, 166, 166, 1)),
@@ -72,14 +72,19 @@ class MahalehFilterWidget extends StatelessWidget {
               children: [
                 Container(
                   decoration: BoxDecoration(
-                    borderRadius:
-                        BorderRadius.circular(11.r), // مقیاس‌دهی شعاع گوشه‌ها
-                    color: const Color.fromRGBO(183, 183, 183, 1),
-                  ),
+                      borderRadius:
+                          BorderRadius.circular(11.r), // مقیاس‌دهی شعاع گوشه‌ها
+                      color: const Color.fromRGBO(
+                        183,
+                        183,
+                        183,
+                        1,
+                      )),
                   child: Padding(
                     padding: EdgeInsets.all(1.1.w), // مقیاس‌دهی Padding
                     child: Container(
-                      width: 300.w, // مقیاس‌دهی عرض
+                      width: MediaQuery.of(context).size.width / 1.25,
+
                       height: 35.h, // مقیاس‌دهی ارتفاع
                       decoration: ShapeDecoration(
                         color: Colors.white,

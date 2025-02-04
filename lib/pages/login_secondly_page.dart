@@ -3,7 +3,6 @@ import 'package:flutter_application_1/pages/category/pages/Advertisements/advert
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/consultants.dart';
 import 'package:flutter_application_1/pages/educational_tour.dart';
-import 'package:flutter_application_1/pages/category/pages/home.dart';
 import 'package:flutter_application_1/pages/real_estate_agency.dart';
 import 'package:flutter_application_1/pages/private.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
