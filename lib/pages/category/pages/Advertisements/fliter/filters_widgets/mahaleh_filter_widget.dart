@@ -3,7 +3,7 @@ import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/category/shared/widget/Neighbourhood.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart'; // اضافه کردن پکیج ScreenUtil
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class MahalehFilterWidget extends StatelessWidget {
   MahalehFilterWidget({super.key});
@@ -13,13 +13,11 @@ class MahalehFilterWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Obx(
       () => Container(
-        height: _show_item_mahaleh_1.isTrue
-            ? 130.h
-            : 50, // استفاده از .h برای مقیاس‌دهی ارتفاع
+        height: _show_item_mahaleh_1.isTrue ? 130.h : 50,
         decoration: BoxDecoration(
           color: const Color.fromRGBO(250, 250, 250, 1),
           border: Border.all(color: const Color.fromRGBO(166, 166, 166, 1)),
-          borderRadius: BorderRadius.circular(15.r), // مقیاس‌دهی شعاع گوشه‌ها
+          borderRadius: BorderRadius.circular(15.r),
         ),
         child: Column(
           children: [

@@ -121,18 +121,16 @@ class _SelectLocationMapState extends State<Advertisements> {
                     onTap: () {
                       _controller.scrollTo(
                         index: i,
-                        duration: const Duration(milliseconds: 300),
+                        duration: const Duration(milliseconds: 100),
                         alignment: 0.5,
                       );
                       _currentIndex.value = i;
                     },
                     child: Obx(
                       () => AnimatedContainer(
-                        duration: const Duration(milliseconds: 300),
+                        duration: const Duration(milliseconds: 100),
                         margin: EdgeInsets.only(
-                            left: _currentIndex.value == i
-                                ? 20
-                                : 0, // شیفت به راست
+                            left: _currentIndex.value == i ? 20 : 0,
                             right: 7,
                             bottom: 15,
                             top: 45),
@@ -338,8 +336,8 @@ class _SelectLocationMapState extends State<Advertisements> {
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
                                           fontFamily: MAIN_FONT_FAMILY_LIGHT,
-                                          color: const Color.fromRGBO(
-                                              166, 166, 166, 1),
+                                          color:
+                                              Color.fromRGBO(166, 166, 166, 1),
                                           fontSize: 10,
                                         ),
                                       ),
@@ -414,8 +412,8 @@ class _SelectLocationMapState extends State<Advertisements> {
                         child: Obx(() => Container(
                               decoration: BoxDecoration(
                                 border: Border.all(
-                                    color:
-                                        const Color.fromRGBO(166, 166, 166, 1)),
+                                  color: const Color.fromRGBO(166, 166, 166, 1),
+                                ),
                                 color: Colors.white,
                                 borderRadius: BorderRadius.circular(10),
                               ),

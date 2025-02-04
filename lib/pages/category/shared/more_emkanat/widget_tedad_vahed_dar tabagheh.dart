@@ -7,7 +7,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
 void TedadVahedTabagheh(Function(String key, String label) onSelected) async {
-  final RxInt index = 2.obs; // Default index set to "Not Selected"
+  final RxInt index = 2.obs;
   final advertisementService = AdvertisementService();
   final Base? baseData = await advertisementService.fetchDataFromServer();
   final Data? unitInFloor = baseData?.data?.firstWhere(
@@ -79,11 +79,11 @@ Widget _buildNavigationRow(RxInt index, List<String> options,
           child: SvgPicture.asset('assets/images/arrow-up.svg')),
       const SizedBox(width: 40),
       SizedBox(
-        width: 130, // Fixed width for texts
-        height: 200, // Limit the height for scrollable view
+        width: 130,
+        height: 200,
         child: ListWheelScrollView.useDelegate(
           controller: scrollController,
-          itemExtent: 50, // Height of each item
+          itemExtent: 50,
           physics: const FixedExtentScrollPhysics(),
           onSelectedItemChanged: (selectedIndex) {
             index.value = selectedIndex;

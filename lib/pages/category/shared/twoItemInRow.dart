@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class TwoItemInRow extends StatelessWidget {
   String label1;
@@ -201,9 +202,9 @@ class TwoItemInRow2 extends StatelessWidget {
                       ),
                       TextSpan(
                         text: label1,
-                        style: const TextStyle(
+                        style: TextStyle(
                             fontFamily: MAIN_FONT_FAMILY,
-                            fontSize: 13,
+                            fontSize: 13.sp,
                             color: Color.fromRGBO(
                               99,
                               99,
@@ -246,15 +247,16 @@ class TwoItemInRow2 extends StatelessWidget {
                       ),
                       TextSpan(
                         text: label2,
-                        style: const TextStyle(
-                            fontFamily: MAIN_FONT_FAMILY,
-                            fontSize: 13,
-                            color: Color.fromRGBO(
-                              99,
-                              99,
-                              99,
-                              1,
-                            )),
+                        style: TextStyle(
+                          fontFamily: MAIN_FONT_FAMILY,
+                          fontSize: 13.sp,
+                          color: const Color.fromRGBO(
+                            99,
+                            99,
+                            99,
+                            1,
+                          ),
+                        ),
                       ),
                     ],
                   ),

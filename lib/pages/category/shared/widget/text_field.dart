@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 Widget ReadOnlyTextField(TextEditingController controller, Function onTap,
@@ -57,11 +58,11 @@ Widget InputTextField(TextEditingController controller, {double? width}) {
       textAlign: TextAlign.right,
       decoration: InputDecoration(
         hintText: 'تایپ کنید',
-        hintStyle: const TextStyle(
+        hintStyle: TextStyle(
             fontFamily: MAIN_FONT_FAMILY_LIGHT,
             fontWeight: FontWeight.w400,
-            color: Color(0xFFA6A6A6),
-            fontSize: 11),
+            color: const Color(0xFFA6A6A6),
+            fontSize: 13.sp),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
           borderSide: const BorderSide(

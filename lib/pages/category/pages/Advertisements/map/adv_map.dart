@@ -39,10 +39,9 @@ class _AdvMapState extends State<AdvMap> {
   Future<void> _loadNotificationPreferences() async {
     final prefs = await SharedPreferences.getInstance();
     setState(() {
-      _showNotification =
-          prefs.getBool('show_notification') ?? true; // وضعیت نوتیفیکیشن
-      _showLocationNotification = prefs.getBool('show_location_notification') ??
-          true; // وضعیت نوتیفیکیشن مکان
+      _showNotification = prefs.getBool('show_notification') ?? true;
+      _showLocationNotification =
+          prefs.getBool('show_location_notification') ?? true;
 
       if (!_showNotification) {
         _notificationStreamController.add(false);
@@ -98,7 +97,6 @@ class _AdvMapState extends State<AdvMap> {
                 }
               },
             ),
-          // بررسی وضعیت نمایش نوتیفیکیشن مکان
           if (_showLocationNotification)
             StreamBuilder<bool>(
               stream: _locationNotificationStream,
@@ -152,15 +150,15 @@ class _AdvMapState extends State<AdvMap> {
         initialCenter: widget.advertisements.value.first.location,
         maxZoom: 20,
         keepAlive: true,
-        rotation: 0, // تنظیم چرخش اولیه به صفر
+        rotation: 0,
         interactionOptions: const InteractionOptions(
-          rotationThreshold: 1000.0, // غیرفعال کردن چرخش با تنظیم مقدار بالا
+          rotationThreshold: 1000.0,
           enableMultiFingerGestureRace: true,
           enableScrollWheel: true,
         ),
         onPositionChanged: (position, hasGesture) {
           setState(() {
-            _zoomLevel = position.zoom!; // بروزرسانی سطح زوم
+            _zoomLevel = position.zoom!;
           });
         },
       ),
@@ -200,9 +198,7 @@ class _AdvMapState extends State<AdvMap> {
   }
 
   Widget _buildMarkerIcon(AdvertismentModel adv) {
-    String text = 'علیرضا احمدی'; // متنی که می‌خواهید نمایش دهید
-
-    // محاسبه عرض متن
+    String text = 'علیرضا احمدی';
     final textPainter = TextPainter(
       text: TextSpan(
         text: text,
@@ -315,8 +311,7 @@ class _AdvMapState extends State<AdvMap> {
           onPressed: () async {
             _notificationStreamController.add(false);
             final prefs = await SharedPreferences.getInstance();
-            await prefs.setBool(
-                'show_notification', false); // ذخیره وضعیت نوتیفیکیشن
+            await prefs.setBool('show_notification', false);
           },
           icon: SizedBox(
             height: 33,

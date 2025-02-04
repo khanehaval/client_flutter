@@ -96,14 +96,13 @@ Widget _buildNavigationRow(RxInt index, List<String> labels,
                   return Text(
                     labels[i],
                     style: TextStyle(
-                      fontFamily: MAIN_FONT_FAMILY,
-                      fontSize: i == index.value ? 18 : 12,
-                      fontWeight: i == index.value
-                          ? FontWeight.bold
-                          : FontWeight.normal,
+                      fontFamily: MAIN_FONT_FAMILY_MEDIUM,
+                      fontSize: i == index.value ? 20 : 18,
+                      fontWeight:
+                          i == index.value ? FontWeight.bold : FontWeight.w100,
                       color: i == index.value
                           ? Colors.black
-                          : const Color.fromARGB(255, 200, 199, 199),
+                          : const Color.fromARGB(166, 166, 166, 166),
                     ),
                     textAlign: TextAlign.center,
                   );
