@@ -40,25 +40,30 @@ class _AgahiDahandaFilterWidgetState extends State<AgahiDahandaFilterWidget> {
   @override
   Widget build(BuildContext context) {
     return Obx(
-      () => Container(
-        decoration: BoxDecoration(
-          color: const Color.fromRGBO(166, 166, 166, 1),
-          borderRadius: BorderRadius.circular(16.r),
-        ),
-        child: Padding(
-          padding: const EdgeInsets.all(1.0),
-          child: Container(
-            width: Get.width / 1.1,
-            height: _isExpanded.value ? 200.h : 50,
-            decoration: BoxDecoration(
-              color: const Color.fromRGBO(253, 253, 253, 1),
-              borderRadius: BorderRadius.circular(15.r),
-            ),
-            child: Column(
-              children: [
-                buildHeader(),
-                if (_isExpanded.value) buildAgahiDahandehContent(),
-              ],
+      () => GestureDetector(
+        onTap: () {
+          _isExpanded.value = !_isExpanded.value;
+        },
+        child: Container(
+          decoration: BoxDecoration(
+            color: const Color.fromRGBO(166, 166, 166, 1),
+            borderRadius: BorderRadius.circular(16.r),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(1.0),
+            child: Container(
+              width: Get.width / 1.1,
+              height: _isExpanded.value ? 200.h : 50,
+              decoration: BoxDecoration(
+                color: const Color.fromRGBO(253, 253, 253, 1),
+                borderRadius: BorderRadius.circular(15.r),
+              ),
+              child: Column(
+                children: [
+                  buildHeader(),
+                  if (_isExpanded.value) buildAgahiDahandehContent(),
+                ],
+              ),
             ),
           ),
         ),
@@ -80,13 +85,18 @@ class _AgahiDahandaFilterWidgetState extends State<AgahiDahandaFilterWidget> {
         ),
         Padding(
           padding: EdgeInsets.only(right: 10.w),
-          child: Text(
-            selectedText.value.isNotEmpty ? selectedText.value : 'آگهی دهنده',
-            textAlign: TextAlign.right,
-            style: TextStyle(
-              color: const Color(0xFF303030),
-              fontSize: 12.sp,
-              fontFamily: MAIN_FONT_FAMILY,
+          child: GestureDetector(
+            onTap: () {
+              _isExpanded.value = true;
+            },
+            child: Text(
+              selectedText.value.isNotEmpty ? selectedText.value : 'آگهی دهنده',
+              textAlign: TextAlign.right,
+              style: TextStyle(
+                color: const Color(0xFF303030),
+                fontSize: 12.sp,
+                fontFamily: MAIN_FONT_FAMILY,
+              ),
             ),
           ),
         ),
@@ -107,6 +117,10 @@ class _AgahiDahandaFilterWidgetState extends State<AgahiDahandaFilterWidget> {
   }
 
   void _resetState() {
+    // بازنشانی وضعیت فیلترها
+    shakhsi.value = false;
+    amlak.value = false;
+    moshaver.value = false;
     _isChecked.value = false;
     _isDeleted.value = false;
     selectedText.value = '';
@@ -190,10 +204,13 @@ class _AgahiDahandaFilterWidgetState extends State<AgahiDahandaFilterWidget> {
     if (moshaver.value) selectedItems.add("مشاورین املاک");
 
     if (selectedItems.isNotEmpty) {
-      if (selectedItems.length > 2) {
-        selectedText.value = "...، " + selectedItems.sublist(0, 2).join("، ");
+      if (selectedItems.length == 1) {
+        selectedText.value = selectedItems.first;
+      } else if (selectedItems.length == 2) {
+        selectedText.value = "${selectedItems[0]} و یک مورد دیگر";
       } else {
-        selectedText.value = selectedItems.join("، ");
+        selectedText.value =
+            "${selectedItems[0]} و ${selectedItems.length - 1} مورد دیگر";
       }
       _isChecked.value = true;
       _isDeleted.value = false;

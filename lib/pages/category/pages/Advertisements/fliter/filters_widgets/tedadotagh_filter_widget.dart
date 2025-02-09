@@ -56,9 +56,7 @@ class TedadotaghFilterWidget extends StatelessWidget {
     return Obx(() => _showItemOtagh.value
         ? Column(
             children: [
-              const SizedBox(
-                height: 5,
-              ),
+              const SizedBox(height: 5),
               Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(11.r),
@@ -81,7 +79,8 @@ class TedadotaghFilterWidget extends StatelessWidget {
                         IconButton(
                           onPressed: () {
                             TedadOtagh((selectedKey, selectedLabel) {
-                              _buildRoomsCountController.text = selectedLabel;
+                              // به‌روزرسانی متن انتخاب‌شده
+                              _selectedItemText.value = selectedLabel;
                             });
                           },
                           icon: SvgPicture.asset(
@@ -94,7 +93,7 @@ class TedadotaghFilterWidget extends StatelessWidget {
                         Padding(
                           padding: EdgeInsets.only(right: 15.w),
                           child: Text(
-                            _selectedItemText.value,
+                            _selectedItemText.value, // نمایش متن انتخاب‌شده
                             style: TextStyle(
                               fontFamily: MAIN_FONT_FAMILY_LIGHT,
                               fontSize: 12.sp,

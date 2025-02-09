@@ -7,65 +7,132 @@ import 'package:get/get.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class EjaraFilterWidget extends StatefulWidget {
-  EjaraFilterWidget({super.key});
+  const EjaraFilterWidget({super.key});
 
   @override
   State<EjaraFilterWidget> createState() => _EjaraFilterWidgetState();
 }
 
 class _EjaraFilterWidgetState extends State<EjaraFilterWidget> {
-  final _show_item_mizanejara = false.obs;
-  final TextEditingController _customAmountController = TextEditingController();
-  final TextEditingController _MaxAmountController = TextEditingController();
+  final RxBool _isExpanded = false.obs;
+  final RxBool _isChecked = false.obs;
+  final RxBool _isDeleted = false.obs;
 
+  final TextEditingController _customAmountController = TextEditingController();
   bool _isFieldEnabled = false;
-  final _show_item_mizanrahn = false.obs;
 
   final RxString _selectedMinAmount = 'انتخاب کنید'.obs;
   final RxString _selectedMaxAmount = 'انتخاب کنید'.obs;
+  final RxString _headerText = 'میزان اجاره'.obs;
 
   @override
   Widget build(BuildContext context) {
     return Obx(
-      () => Container(
-        height: _show_item_mizanejara.isTrue ? 230.h : 50,
-        decoration: BoxDecoration(
-          color: const Color.fromRGBO(250, 250, 250, 1),
-          border: Border.all(color: const Color.fromRGBO(166, 166, 166, 1)),
-          borderRadius: BorderRadius.circular(15.r),
-        ),
-        child: Column(
-          children: [
-            Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-              IconButton(
-                icon: _show_item_mizanejara.value
-                    ? SvgPicture.asset('assets/images/=.svg')
-                    : SvgPicture.asset('assets/images/down.svg'),
-                onPressed: () {
-                  _show_item_mizanejara.value = !_show_item_mizanejara.value;
-                },
-              ),
-              Padding(
-                padding: EdgeInsets.only(right: 20.w),
-                child: Text(
-                  "میزان اجاره",
-                  style:
-                      TextStyle(fontFamily: MAIN_FONT_FAMILY, fontSize: 12.sp),
-                ),
-              ),
-            ]),
-            if (_show_item_mizanejara.isTrue)
-              Column(
+      () => GestureDetector(
+        onTap: () {
+          if (!_isChecked.value && !_isDeleted.value) {
+            _isExpanded.value = !_isExpanded.value;
+          } else if (_isChecked.value && !_isDeleted.value) {
+            _isDeleted.value = true;
+            _isChecked.value = false;
+            _isExpanded.value = false;
+          } else if (_isDeleted.value) {
+            _resetState();
+          }
+        },
+        child: Container(
+          decoration: BoxDecoration(
+            color: const Color.fromRGBO(250, 250, 250, 1),
+            border: Border.all(color: const Color.fromRGBO(166, 166, 166, 1)),
+            borderRadius: BorderRadius.circular(15.r),
+          ),
+          child: Column(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  ejara(context),
-                  SizedBox(height: 25.h),
-                  ejara2(context),
+                  IconButton(
+                    icon: SvgPicture.asset(
+                      _getIconAsset(),
+                      width: _getIconSize(),
+                      height: _getIconSize(),
+                    ),
+                    onPressed: () {
+                      if (!_isChecked.value && !_isDeleted.value) {
+                        _isExpanded.value = !_isExpanded.value;
+                      } else if (_isChecked.value && !_isDeleted.value) {
+                        _isDeleted.value = true;
+                        _isChecked.value = false;
+                        _isExpanded.value = false;
+                      } else if (_isDeleted.value) {
+                        _resetState();
+                      }
+                    },
+                  ),
+                  // متن قابل کلیک
+                  GestureDetector(
+                    onTap: () {
+                      if (_headerText.value != 'میزان اجاره') {
+                        _isExpanded.value = true; // کانتینر باز می‌شود
+                      }
+                    },
+                    child: Padding(
+                      padding: EdgeInsets.only(right: 20.w),
+                      child: Text(
+                        _headerText.value,
+                        style: TextStyle(
+                          fontFamily: MAIN_FONT_FAMILY,
+                          fontSize: 12.sp,
+                        ),
+                      ),
+                    ),
+                  ),
                 ],
               ),
-          ],
+              if (_isExpanded.value)
+                Column(
+                  children: [
+                    ejara(context),
+                    SizedBox(height: 25.h),
+                    ejara2(context),
+                  ],
+                ),
+            ],
+          ),
         ),
       ),
     );
+  }
+
+  void _resetState() {
+    _isExpanded.value = false;
+    _isChecked.value = false;
+    _isDeleted.value = false;
+    _selectedMinAmount.value = 'انتخاب کنید';
+    _selectedMaxAmount.value = 'انتخاب کنید';
+    _headerText.value = 'میزان اجاره';
+  }
+
+  String _getIconAsset() {
+    if (_isDeleted.value) {
+      return 'assets/images/delete.svg';
+    } else if (_isChecked.value) {
+      return 'assets/images/check_green.svg';
+    } else if (_isExpanded.value) {
+      return 'assets/images/=.svg';
+    }
+    return 'assets/images/down.svg';
+  }
+
+  double _getIconSize() {
+    if (_isDeleted.value) {
+      return 15.w;
+    } else if (_isChecked.value) {
+      return 17.w;
+    } else if (_isExpanded.value) {
+      return 10.w;
+    }
+    return 15.w;
   }
 
   Widget ejara(BuildContext context) {
@@ -117,6 +184,7 @@ class _EjaraFilterWidgetState extends State<EjaraFilterWidget> {
                                   _customAmountController.text = selectedAmount;
                                 }
                                 _selectedMaxAmount.value = selectedAmount;
+                                _updateHeaderText();
                               });
                             });
                           },
@@ -207,6 +275,7 @@ class _EjaraFilterWidgetState extends State<EjaraFilterWidget> {
                                   _customAmountController.text = selectedAmount;
                                 }
                                 _selectedMinAmount.value = selectedAmount;
+                                _updateHeaderText();
                               });
                             });
                           },
@@ -246,5 +315,29 @@ class _EjaraFilterWidgetState extends State<EjaraFilterWidget> {
         ),
       ),
     );
+  }
+
+  void _updateHeaderText() {
+    final selectedItems = <String>[];
+
+    if (_selectedMinAmount.value != 'انتخاب کنید') {
+      selectedItems.add(_selectedMinAmount.value);
+    }
+    if (_selectedMaxAmount.value != 'انتخاب کنید') {
+      selectedItems.add(_selectedMaxAmount.value);
+    }
+
+    if (selectedItems.isNotEmpty) {
+      if (selectedItems.length == 1) {
+        _headerText.value = selectedItems.first;
+      } else if (selectedItems.length == 2) {
+        _headerText.value = "${selectedItems[0]} و 1 مورد دیگر";
+      }
+      _isChecked.value = true;
+      _isDeleted.value = false;
+    } else {
+      _headerText.value = 'میزان اجاره';
+      _isChecked.value = false;
+    }
   }
 }

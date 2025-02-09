@@ -14,6 +14,7 @@ void TedadOtagh(Function(String, String) onSelected) async {
   final FixedExtentScrollController scrollController =
       FixedExtentScrollController(initialItem: selectedIndex.value);
 
+  // استخراج داده‌ها از سرور
   final Data? roomsData = baseData?.data?.firstWhere(
     (data) => data.key == "rooms",
     orElse: () => Data(key: "", list: []),
@@ -41,18 +42,19 @@ void TedadOtagh(Function(String, String) onSelected) async {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              const SizedBox(height: 20),
               _buildNavigationRow(selectedIndex, options, scrollController),
               const SizedBox(height: 50),
               TaeedEnserafNumberPicker(
-                selectedNumber: options[selectedIndex.value], // نمایش label
+                selectedNumber: options.isNotEmpty
+                    ? options[selectedIndex.value]
+                    : 'انتخاب نشده',
                 onConfirm: () {
-                  final selectedItem =
-                      items?[selectedIndex.value]; // دسترسی به داده‌ها
-                  final selectedKey = selectedItem?.value ?? ''; // گرفتن key
-                  final selectedLabel =
-                      selectedItem?.label ?? ''; // گرفتن label
-
-                  onSelected(selectedKey, selectedLabel); // ارسال key و label
+                  final selectedItem = items?[selectedIndex.value];
+                  final selectedKey = selectedItem?.value ?? '';
+                  final selectedLabel = selectedItem?.label ?? '';
+                  onSelected(
+                      selectedKey, selectedLabel); // ارسال مقدار انتخاب‌شده
                   Get.back();
                 },
               ),

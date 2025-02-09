@@ -16,59 +16,148 @@ class MetrajFilterWidget extends StatefulWidget {
 }
 
 class _MetrajFilterWidgetState extends State<MetrajFilterWidget> {
-  final _showItemMizanMetraj = false.obs;
+  final RxBool _showItemMizanMetraj = false.obs;
+  final RxBool _isChecked = false.obs;
+  final RxBool _isDeleted = false.obs;
+  bool _isFieldEnabled = false;
+
   final TextEditingController _customAmountController = TextEditingController();
   final TextEditingController _maxAmountController = TextEditingController();
-
-  bool _isFieldEnabled = false;
   final RxString selectedMinAmount = 'انتخاب کنید'.obs;
   final RxString selectedMaxAmount = 'انتخاب کنید'.obs;
+  final RxString headerText = 'متراژ'.obs;
+
+  void resetState() {
+    _showItemMizanMetraj.value = false;
+    _isChecked.value = false;
+    _isDeleted.value = false;
+    selectedMinAmount.value = 'انتخاب کنید';
+    selectedMaxAmount.value = 'انتخاب کنید';
+    headerText.value = 'متراژ';
+  }
+
+  void _updateHeaderText() {
+    final selectedItems = [];
+    if (selectedMinAmount.value != 'انتخاب کنید') {
+      selectedItems.add(selectedMinAmount.value);
+    }
+    if (selectedMaxAmount.value != 'انتخاب کنید') {
+      selectedItems.add(selectedMaxAmount.value);
+    }
+    if (selectedItems.isNotEmpty) {
+      if (selectedItems.length == 1) {
+        headerText.value = selectedItems.first;
+      } else if (selectedItems.length == 2) {
+        headerText.value = "${selectedItems[0]} و 1 مورد دیگر";
+      }
+      _isChecked.value = true;
+      _isDeleted.value = false;
+    } else {
+      headerText.value = 'متراژ';
+      _isChecked.value = false;
+    }
+  }
+
+  String _getIconAsset() {
+    if (_isDeleted.value) {
+      return 'assets/images/delete.svg';
+    } else if (_isChecked.value) {
+      return 'assets/images/check_green.svg';
+    } else if (_showItemMizanMetraj.value) {
+      return 'assets/images/=.svg';
+    }
+    return 'assets/images/down.svg';
+  }
+
+  double _getIconSize() {
+    if (_isDeleted.value) {
+      return 15.w;
+    } else if (_isChecked.value) {
+      return 17.w;
+    } else if (_showItemMizanMetraj.value) {
+      return 10.w;
+    }
+    return 15.w;
+  }
 
   @override
   Widget build(BuildContext context) {
     return Obx(
-      () => Container(
-        height: _showItemMizanMetraj.isTrue ? 230.h : 50,
-        decoration: BoxDecoration(
-          color: const Color.fromRGBO(250, 250, 250, 1),
-          border: Border.all(color: const Color.fromRGBO(166, 166, 166, 1)),
-          borderRadius: BorderRadius.circular(15.r),
-        ),
-        child: Column(
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                IconButton(
-                  icon: _showItemMizanMetraj.value
-                      ? SvgPicture.asset('assets/images/=.svg')
-                      : SvgPicture.asset('assets/images/down.svg'),
-                  onPressed: () {
-                    _showItemMizanMetraj.value = !_showItemMizanMetraj.value;
-                  },
-                ),
-                Padding(
-                  padding: EdgeInsets.only(right: 20.w),
-                  child: Text(
-                    "متراژ",
-                    style: TextStyle(
-                        fontFamily: MAIN_FONT_FAMILY, fontSize: 12.sp),
-                  ),
-                ),
-              ],
-            ),
-            if (_showItemMizanMetraj.isTrue)
-              Column(
+      () => GestureDetector(
+        onTap: () {
+          if (!_isChecked.value && !_isDeleted.value) {
+            _showItemMizanMetraj.value = !_showItemMizanMetraj.value;
+          } else if (_isChecked.value && !_isDeleted.value) {
+            _isDeleted.value = true;
+            _isChecked.value = false;
+            _showItemMizanMetraj.value = false;
+          } else if (_isDeleted.value) {
+            resetState();
+          }
+        },
+        child: Container(
+          height: _showItemMizanMetraj.isTrue ? 230.h : 50,
+          decoration: BoxDecoration(
+            color: const Color.fromRGBO(250, 250, 250, 1),
+            border: Border.all(color: const Color.fromRGBO(166, 166, 166, 1)),
+            borderRadius: BorderRadius.circular(15.r),
+          ),
+          child: Column(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  SizedBox(height: 10.h),
-                  metrajWidget(context, "حداقل", showMetrajlowBottomSheet,
-                      selectedMinAmount, _customAmountController),
-                  SizedBox(height: 25.h),
-                  metrajWidget(context, "حداکثر", showMetrajMaxBottomSheet,
-                      selectedMaxAmount, _maxAmountController),
+                  IconButton(
+                    icon: SvgPicture.asset(
+                      _getIconAsset(),
+                      width: _getIconSize(),
+                      height: _getIconSize(),
+                    ),
+                    onPressed: () {
+                      if (!_isChecked.value && !_isDeleted.value) {
+                        _showItemMizanMetraj.value =
+                            !_showItemMizanMetraj.value;
+                      } else if (_isChecked.value && !_isDeleted.value) {
+                        _isDeleted.value = true;
+                        _isChecked.value = false;
+                        _showItemMizanMetraj.value = false;
+                      } else if (_isDeleted.value) {
+                        resetState();
+                      }
+                    },
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      if (headerText.value != 'متراژ') {
+                        _showItemMizanMetraj.value = true;
+                      }
+                    },
+                    child: Padding(
+                      padding: EdgeInsets.only(right: 20.w),
+                      child: Text(
+                        headerText.value,
+                        style: TextStyle(
+                          fontFamily: MAIN_FONT_FAMILY,
+                          fontSize: 12.sp,
+                        ),
+                      ),
+                    ),
+                  ),
                 ],
               ),
-          ],
+              if (_showItemMizanMetraj.isTrue)
+                Column(
+                  children: [
+                    SizedBox(height: 10.h),
+                    metrajWidget(context, "حداقل", showMetrajlowBottomSheet,
+                        selectedMinAmount, _customAmountController),
+                    SizedBox(height: 25.h),
+                    metrajWidget(context, "حداکثر", showMetrajMaxBottomSheet,
+                        selectedMaxAmount, _maxAmountController),
+                  ],
+                ),
+            ],
+          ),
         ),
       ),
     );
@@ -130,6 +219,7 @@ class _MetrajFilterWidgetState extends State<MetrajFilterWidget> {
                                       selected == 'وارد کردن مبلغ دلخواه';
                                   controller.text =
                                       _isFieldEnabled ? '' : selected;
+                                  _updateHeaderText();
                                 });
                               });
                             },

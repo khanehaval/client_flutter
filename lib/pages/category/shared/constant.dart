@@ -1,5 +1,4 @@
 import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -62,9 +61,6 @@ const GRADIANT_call = [
 double getPageWidth() => Get.width * 0.42;
 double getPageWidthlocation() => Get.width * 0.40;
 double getProfileWidth() => Get.width * 0.42;
-
 scaffoldKey() => GlobalKey<ScaffoldState>();
-
 //db key
-
 String SHARED_TOKEN_KEY = "SHARED_TOKEN_KEY";
