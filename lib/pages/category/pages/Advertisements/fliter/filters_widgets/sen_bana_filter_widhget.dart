@@ -11,17 +11,19 @@ class SenBanaFilterWidget extends StatefulWidget {
   SenBanaFilterWidget({super.key});
 
   @override
-  State<SenBanaFilterWidget> createState() => _SenBanaFilterWidhgetState();
+  State<SenBanaFilterWidget> createState() => _SenBanaFilterWidgetState();
 }
 
-class _SenBanaFilterWidhgetState extends State<SenBanaFilterWidget> {
+class _SenBanaFilterWidgetState extends State<SenBanaFilterWidget> {
   final _showItemSenbana = false.obs;
-
+  final RxBool _isChecked = false.obs;
+  final RxBool _isDeleted = false.obs;
   final _senBanaMaxTextController = TextEditingController();
   final _senBanaLowTextController = TextEditingController();
 
   String _selectedOption = 'انتخاب کنید';
   String _selectedOptionLow = 'انتخاب کنید';
+  String _headerText = "سن بنا";
 
   @override
   Widget build(BuildContext context) {
@@ -35,21 +37,32 @@ class _SenBanaFilterWidhgetState extends State<SenBanaFilterWidget> {
           child: Column(children: [
             Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
               IconButton(
-                icon: _showItemSenbana.value
-                    ? SvgPicture.asset(
-                        'assets/images/=.svg',
-                      )
-                    : SvgPicture.asset('assets/images/down.svg'),
+                icon: _getIconAsset(),
                 onPressed: () {
-                  _showItemSenbana.value = !_showItemSenbana.value;
+                  if (!_isChecked.value && !_isDeleted.value) {
+                    _showItemSenbana.value = !_showItemSenbana.value;
+                  } else if (_isChecked.value && !_isDeleted.value) {
+                    _isDeleted.value = true;
+                    _isChecked.value = false;
+                    _showItemSenbana.value = false;
+                  } else if (_isDeleted.value) {
+                    _resetState();
+                  }
                 },
               ),
-              Padding(
-                padding: EdgeInsets.only(right: 20.w),
-                child: Text(
-                  "سن بنا",
-                  style:
-                      TextStyle(fontFamily: MAIN_FONT_FAMILY, fontSize: 12.sp),
+              GestureDetector(
+                onTap: () {
+                  if (_headerText != 'سن بنا') {
+                    _showItemSenbana.value = true;
+                  }
+                },
+                child: Padding(
+                  padding: EdgeInsets.only(right: 20.w),
+                  child: Text(
+                    _headerText,
+                    style: TextStyle(
+                        fontFamily: MAIN_FONT_FAMILY, fontSize: 12.sp),
+                  ),
                 ),
               ),
             ]),
@@ -107,6 +120,7 @@ class _SenBanaFilterWidhgetState extends State<SenBanaFilterWidget> {
                                 _selectedOptionLow = selectedOption;
                                 _senBanaLowTextController.text =
                                     _selectedOptionLow;
+                                _updateHeaderText();
                               });
                             });
                           },
@@ -190,6 +204,7 @@ class _SenBanaFilterWidhgetState extends State<SenBanaFilterWidget> {
                               setState(() {
                                 _selectedOption = selectedOption;
                                 _senBanaMaxTextController.text = selectedOption;
+                                _updateHeaderText();
                               });
                             });
                           },
@@ -229,5 +244,50 @@ class _SenBanaFilterWidhgetState extends State<SenBanaFilterWidget> {
         ),
       ),
     );
+  }
+
+  void _updateHeaderText() {
+    final selectedItems = <String>[];
+
+    if (_selectedOptionLow != 'انتخاب کنید') {
+      selectedItems.add(_selectedOptionLow);
+    }
+    if (_selectedOption != 'انتخاب کنید') {
+      selectedItems.add(_selectedOption);
+    }
+
+    if (selectedItems.isNotEmpty) {
+      if (selectedItems.length == 1) {
+        _headerText = selectedItems.first;
+      } else if (selectedItems.length == 2) {
+        _headerText = "${selectedItems[0]} و 1 مورد دیگر";
+      }
+      _isChecked.value = true;
+      _isDeleted.value = false;
+    } else {
+      _headerText = 'سن بنا';
+      _isChecked.value = false;
+    }
+  }
+
+  void _resetState() {
+    _showItemSenbana.value = false;
+    _isChecked.value = false;
+    _isDeleted.value = false;
+    _selectedOption = 'انتخاب کنید';
+    _selectedOptionLow = 'انتخاب کنید';
+    _headerText = 'سن بنا';
+  }
+
+  Widget _getIconAsset() {
+    if (_isDeleted.value) {
+      return SvgPicture.asset('assets/images/delete.svg',
+          width: 14.w, height: 14.h);
+    } else if (_isChecked.value) {
+      return SvgPicture.asset('assets/images/check_green.svg');
+    } else if (_showItemSenbana.value) {
+      return SvgPicture.asset('assets/images/=.svg');
+    }
+    return SvgPicture.asset('assets/images/down.svg');
   }
 }

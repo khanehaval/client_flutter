@@ -70,7 +70,9 @@ class MosharekatDarSakhtFilter extends StatelessWidget {
           const SizedBox(
             height: 10,
           ),
-          EmkanatFilterWidget(),
+          EmkanatFilterWidget(
+            onChange: (selectedText) {},
+          ),
           const SizedBox(
             height: 10,
           ),

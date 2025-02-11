@@ -63,7 +63,12 @@ class EjaraTejariFilter extends StatelessWidget {
               const SizedBox(
                 height: 20,
               ),
-              TedadotaghFilterWidget(),
+              TedadotaghFilterWidget(
+                onChange: (selectedItems) {
+                  // نمایش آیتم‌های انتخابی در کنسول
+                  print('Selected Items: $selectedItems');
+                },
+              ),
               const SizedBox(
                 height: 20,
               ),
@@ -79,7 +84,9 @@ class EjaraTejariFilter extends StatelessWidget {
               const SizedBox(
                 height: 20,
               ),
-              EmkanatFilterWidget(),
+              EmkanatFilterWidget(
+                onChange: (selectedText) {},
+              ),
               const SizedBox(
                 height: 20,
               ),

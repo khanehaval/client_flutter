@@ -60,7 +60,12 @@ class EjaraKotaVila extends StatelessWidget {
           const SizedBox(
             height: 10,
           ),
-          TedadotaghFilterWidget(),
+          TedadotaghFilterWidget(
+            onChange: (selectedItems) {
+              // نمایش آیتم‌های انتخابی در کنسول
+              print('Selected Items: $selectedItems');
+            },
+          ),
           const SizedBox(
             height: 10,
           ),
@@ -84,11 +89,15 @@ class EjaraKotaVila extends StatelessWidget {
           const SizedBox(
             height: 10,
           ),
-          EmkanatFilterWidget(),
+          EmkanatFilterWidget(
+            onChange: (selectedText) {},
+          ),
           const SizedBox(
             height: 10,
           ),
-          OtherEmkanatFilterWidget(),
+          OtherEmkanatFilterWidget(
+            onChange: (selectedText) {},
+          ),
           const SizedBox(
             height: 10,
           ),

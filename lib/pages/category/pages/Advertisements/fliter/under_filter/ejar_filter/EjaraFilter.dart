@@ -13,6 +13,7 @@ import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter
 import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/widget_filter/agahidahandeh.dart';
 import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/widget_filter/taeedvaemalefilter.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:get/state_manager.dart';
@@ -64,7 +65,12 @@ class EjaraFilter extends StatelessWidget {
                 const SizedBox(
                   height: 10,
                 ),
-                TedadotaghFilterWidget(),
+                TedadotaghFilterWidget(
+                  onChange: (selectedItems) {
+                    // نمایش آیتم‌های انتخابی در کنسول
+                    print('Selected Items: $selectedItems');
+                  },
+                ),
                 const SizedBox(
                   height: 10,
                 ),
@@ -93,14 +99,13 @@ class EjaraFilter extends StatelessWidget {
                                       !_show_item_agahidahandeh_1.value;
                                 },
                               ),
-                              const Padding(
+                              Padding(
                                 padding: EdgeInsets.only(right: 20),
-                                child: Text(
-                                  "آگهی دهنده",
-                                  style: TextStyle(
+                                child: Text("آگهی دهنده",
+                                    style: TextStyle(
                                       fontFamily: MAIN_FONT_FAMILY,
-                                      fontSize: 12),
-                                ),
+                                      fontSize: 12.sp,
+                                    )),
                               ),
                             ]),
                         if (_show_item_agahidahandeh_1.isTrue)
@@ -115,7 +120,9 @@ class EjaraFilter extends StatelessWidget {
                 const SizedBox(
                   height: 10,
                 ),
-                EmkanatFilterWidget(),
+                EmkanatFilterWidget(
+                  onChange: (selectedText) {},
+                ),
                 const SizedBox(
                   height: 10,
                 ),

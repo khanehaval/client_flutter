@@ -15,65 +15,98 @@ class TedatVahedFilterWidget extends StatefulWidget {
 
 class _TedatVahedFilterWidgetState extends State<TedatVahedFilterWidget> {
   final _showItem = false.obs;
-  String _selectedMinValue = "انتخاب کنید";
-  String _selectedMaxValue = "انتخاب کنید";
+  final RxBool _isChecked = false.obs;
+  final RxBool _isDeleted = false.obs;
+
+  final RxString _selectedMinValue = 'انتخاب کنید'.obs;
+  final RxString _selectedMaxValue = 'انتخاب کنید'.obs;
+  final RxString _headerText = 'تعداد واحد در طبقه'.obs;
 
   @override
   Widget build(BuildContext context) {
-    return Obx(() => Container(
-          height: _showItem.isTrue ? 230.h : 50,
-          decoration: BoxDecoration(
-              color: const Color.fromRGBO(250, 250, 250, 1),
-              border: Border.all(color: const Color.fromRGBO(166, 166, 166, 1)),
-              borderRadius: BorderRadius.circular(15.r)),
-          child: Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  IconButton(
-                    icon: _showItem.value
-                        ? SvgPicture.asset('assets/images/=.svg')
-                        : SvgPicture.asset('assets/images/down.svg'),
-                    onPressed: () {
-                      _showItem.value = !_showItem.value;
-                    },
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(right: 20.w),
-                    child: Text(
-                      "تعداد واحد در طبقه",
-                      style: TextStyle(
-                          fontFamily: MAIN_FONT_FAMILY, fontSize: 12.sp),
-                    ),
-                  ),
-                ],
-              ),
-              if (_showItem.isTrue)
-                Column(
+    return Obx(() => GestureDetector(
+          onTap: () {
+            if (!_isChecked.value && !_isDeleted.value) {
+              _showItem.value = !_showItem.value;
+            } else if (_isChecked.value && !_isDeleted.value) {
+              _isDeleted.value = true;
+              _isChecked.value = false;
+              _showItem.value = false;
+            } else if (_isDeleted.value) {
+              _resetState();
+            }
+          },
+          child: Container(
+            height: _showItem.isTrue ? 230.h : 50,
+            decoration: BoxDecoration(
+                color: const Color.fromRGBO(250, 250, 250, 1),
+                border:
+                    Border.all(color: const Color.fromRGBO(166, 166, 166, 1)),
+                borderRadius: BorderRadius.circular(15.r)),
+            child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    buildFilterRow(
-                      "حداقل",
-                      _selectedMinValue,
-                      () => showNumberPicker((selectedNumber) {
-                        setState(() {
-                          _selectedMinValue = selectedNumber;
-                        });
-                      }),
+                    IconButton(
+                      icon: _getIconAsset(),
+                      onPressed: () {
+                        if (!_isChecked.value && !_isDeleted.value) {
+                          _showItem.value = !_showItem.value;
+                        } else if (_isChecked.value && !_isDeleted.value) {
+                          _isDeleted.value = true;
+                          _isChecked.value = false;
+                          _showItem.value = false;
+                        } else if (_isDeleted.value) {
+                          _resetState();
+                        }
+                      },
                     ),
-                    SizedBox(height: 21.h),
-                    buildFilterRow(
-                      "حداکثر",
-                      _selectedMaxValue,
-                      () => showNumberPicker((selectedNumber) {
-                        setState(() {
-                          _selectedMaxValue = selectedNumber;
-                        });
-                      }),
+                    GestureDetector(
+                      onTap: () {
+                        if (_headerText.value != 'تعداد واحد در طبقه') {
+                          _showItem.value = true;
+                        }
+                      },
+                      child: Padding(
+                        padding: EdgeInsets.only(right: 20.w),
+                        child: Text(
+                          _headerText.value,
+                          style: TextStyle(
+                              fontFamily: MAIN_FONT_FAMILY, fontSize: 12.sp),
+                        ),
+                      ),
                     ),
                   ],
                 ),
-            ],
+                if (_showItem.isTrue)
+                  Column(
+                    children: [
+                      buildFilterRow(
+                        "حداقل",
+                        _selectedMinValue.value,
+                        () => showNumberPicker((selectedNumber) {
+                          setState(() {
+                            _selectedMinValue.value = selectedNumber;
+                            _updateHeaderText();
+                          });
+                        }),
+                      ),
+                      SizedBox(height: 21.h),
+                      buildFilterRow(
+                        "حداکثر",
+                        _selectedMaxValue.value,
+                        () => showNumberPicker((selectedNumber) {
+                          setState(() {
+                            _selectedMaxValue.value = selectedNumber;
+                            _updateHeaderText();
+                          });
+                        }),
+                      ),
+                    ],
+                  ),
+              ],
+            ),
           ),
         ));
   }
@@ -150,5 +183,50 @@ class _TedatVahedFilterWidgetState extends State<TedatVahedFilterWidget> {
         ],
       ),
     );
+  }
+
+  void _updateHeaderText() {
+    final selectedItems = <String>[];
+
+    if (_selectedMinValue.value != 'انتخاب کنید') {
+      selectedItems.add(_selectedMinValue.value);
+    }
+    if (_selectedMaxValue.value != 'انتخاب کنید') {
+      selectedItems.add(_selectedMaxValue.value);
+    }
+
+    if (selectedItems.isNotEmpty) {
+      if (selectedItems.length == 1) {
+        _headerText.value = selectedItems.first;
+      } else if (selectedItems.length == 2) {
+        _headerText.value = "${selectedItems[0]} و 1 مورد دیگر";
+      }
+      _isChecked.value = true;
+      _isDeleted.value = false;
+    } else {
+      _headerText.value = 'تعداد واحد در طبقه';
+      _isChecked.value = false;
+    }
+  }
+
+  void _resetState() {
+    _showItem.value = false;
+    _isChecked.value = false;
+    _isDeleted.value = false;
+    _selectedMinValue.value = 'انتخاب کنید';
+    _selectedMaxValue.value = 'انتخاب کنید';
+    _headerText.value = 'تعداد واحد در طبقه';
+  }
+
+  Widget _getIconAsset() {
+    if (_isDeleted.value) {
+      return SvgPicture.asset('assets/images/delete.svg',
+          width: 14.w, height: 14.h);
+    } else if (_isChecked.value) {
+      return SvgPicture.asset('assets/images/check_green.svg');
+    } else if (_showItem.value) {
+      return SvgPicture.asset('assets/images/=.svg');
+    }
+    return SvgPicture.asset('assets/images/down.svg');
   }
 }

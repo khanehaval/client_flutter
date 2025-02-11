@@ -1,79 +1,140 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
 import 'package:flutter_application_1/pages/category/shared/number_piacker.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class TabaghehFilterWidget extends StatefulWidget {
-  TabaghehFilterWidget({super.key});
+  const TabaghehFilterWidget({super.key});
 
   @override
   State<TabaghehFilterWidget> createState() => _TabaghehFilterWidgetState();
 }
 
 class _TabaghehFilterWidgetState extends State<TabaghehFilterWidget> {
-  final _show_item_tabagheh_1 = false.obs;
+  final RxBool _isExpanded = false.obs;
+  final RxBool _isChecked = false.obs;
+  final RxBool _isDeleted = false.obs;
 
-  final _countOfInstallmentsController = false.obs;
-  final _countOfInstallmentsMaxController = false.obs;
+  final RxString _selectedMinAmount = 'انتخاب کنید'.obs;
+  final RxString _selectedMaxAmount = 'انتخاب کنید'.obs;
+  final RxString _headerText = 'طبقه'.obs;
 
-  String _selectedOptionlow = "انتخاب کنید";
-  String _selectedOptionMax = "انتخاب کنید";
   @override
   Widget build(BuildContext context) {
-    return Obx(() => Container(
-          height: _show_item_tabagheh_1.isTrue ? 230.h : 50,
+    return Obx(
+      () => GestureDetector(
+        onTap: () {
+          if (!_isChecked.value && !_isDeleted.value) {
+            _isExpanded.value = !_isExpanded.value;
+          } else if (_isChecked.value && !_isDeleted.value) {
+            _isDeleted.value = true;
+            _isChecked.value = false;
+            _isExpanded.value = false;
+          } else if (_isDeleted.value) {
+            _resetState();
+          }
+        },
+        child: Container(
+          height: _isExpanded.value ? 200.h : 50,
           decoration: BoxDecoration(
-              color: const Color.fromRGBO(250, 250, 250, 1),
-              border: Border.all(color: const Color.fromRGBO(166, 166, 166, 1)),
-              borderRadius: BorderRadius.circular(15.r)),
-          child: Column(children: [
-            Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-              IconButton(
-                icon: _show_item_tabagheh_1.value
-                    ? SvgPicture.asset(
-                        'assets/images/=.svg',
-                        width: 7.w,
-                        height: 7.h,
-                      )
-                    : SvgPicture.asset('assets/images/down.svg',
-                        width: 11.w, height: 11.h),
-                onPressed: () {
-                  _show_item_tabagheh_1.value = !_show_item_tabagheh_1.value;
-                },
-              ),
-              Padding(
-                padding: EdgeInsets.only(right: 20.w),
-                child: Text(
-                  "طبقه",
-                  style:
-                      TextStyle(fontFamily: MAIN_FONT_FAMILY, fontSize: 12.sp),
-                ),
-              ),
-            ]),
-            if (_show_item_tabagheh_1.isTrue)
-              Column(
+            color: const Color.fromRGBO(250, 250, 250, 1),
+            border: Border.all(color: const Color.fromRGBO(166, 166, 166, 1)),
+            borderRadius: BorderRadius.circular(15.r),
+          ),
+          child: Column(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  SizedBox(
-                    height: 5.h,
+                  IconButton(
+                    icon: SvgPicture.asset(
+                      _getIconAsset(),
+                      width: _getIconSize(),
+                      height: _getIconSize(),
+                    ),
+                    onPressed: () {
+                      if (!_isChecked.value && !_isDeleted.value) {
+                        _isExpanded.value = !_isExpanded.value;
+                      } else if (_isChecked.value && !_isDeleted.value) {
+                        _isDeleted.value = true;
+                        _isChecked.value = false;
+                        _isExpanded.value = false;
+                      } else if (_isDeleted.value) {
+                        _resetState();
+                      }
+                    },
                   ),
-                  tabagheh(context),
-                  SizedBox(
-                    height: 21.h,
+                  GestureDetector(
+                    onTap: () {
+                      if (_headerText.value != 'طبقه') {
+                        _isExpanded.value = true; // کانتینر باز می‌شود
+                      }
+                    },
+                    child: Padding(
+                      padding: EdgeInsets.only(right: 20.w),
+                      child: Text(
+                        _headerText.value,
+                        style: TextStyle(
+                          fontFamily: MAIN_FONT_FAMILY,
+                          fontSize: 12.sp,
+                        ),
+                      ),
+                    ),
                   ),
-                  tabagheh2(context),
                 ],
               ),
-          ]),
-        ));
+              if (_isExpanded.value)
+                Column(
+                  children: [
+                    _buildMinAmountWidget(context),
+                    SizedBox(height: 25.h),
+                    _buildMaxAmountWidget(context),
+                  ],
+                ),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 
-  Widget tabagheh(BuildContext context) {
+  void _resetState() {
+    _isExpanded.value = false;
+    _isChecked.value = false;
+    _isDeleted.value = false;
+    _selectedMinAmount.value = 'انتخاب کنید';
+    _selectedMaxAmount.value = 'انتخاب کنید';
+    _headerText.value = 'طبقه';
+  }
+
+  String _getIconAsset() {
+    if (_isDeleted.value) {
+      return 'assets/images/delete.svg';
+    } else if (_isChecked.value) {
+      return 'assets/images/check_green.svg';
+    } else if (_isExpanded.value) {
+      return 'assets/images/=.svg';
+    }
+    return 'assets/images/down.svg';
+  }
+
+  double _getIconSize() {
+    if (_isDeleted.value) {
+      return 15.w;
+    } else if (_isChecked.value) {
+      return 17.w;
+    } else if (_isExpanded.value) {
+      return 10.w;
+    }
+    return 15.w;
+  }
+
+  Widget _buildMinAmountWidget(BuildContext context) {
     return Container(
       height: 50.h,
-      width: MediaQuery.of(context).size.width / 1.23,
+      width: MediaQuery.of(context).size.width / 1.25,
       decoration: BoxDecoration(
         color: const Color.fromARGB(255, 225, 225, 225),
         borderRadius: BorderRadius.circular(15.r),
@@ -83,75 +144,60 @@ class _TabaghehFilterWidgetState extends State<TabaghehFilterWidget> {
         children: [
           Container(
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10.r),
-                color: const Color.fromRGBO(
-                  183,
-                  183,
-                  183,
-                  1,
-                )),
-            child: Container(
-              width: 225.w,
-              height: 30.h,
-              decoration: ShapeDecoration(
-                color: Colors.white,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10.r),
+              borderRadius: BorderRadius.circular(10.r),
+              color: const Color.fromRGBO(183, 183, 183, 1),
+            ),
+            child: Padding(
+              padding: EdgeInsets.all(1.1.w),
+              child: Container(
+                width: 225.w,
+                height: 35.h,
+                decoration: ShapeDecoration(
+                  color: Colors.white,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(9.r),
+                  ),
                 ),
-                shadows: const [
-                  BoxShadow(
-                    color: Color(0x11000000),
-                    blurRadius: 7,
-                    offset: Offset(0, 5),
-                    spreadRadius: 2,
-                  ),
-                ],
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  IconButton(
-                    onPressed: () {
-                      showNumberPicker((selectedNumber) {
-                        setState(() {
-                          _selectedOptionlow =
-                              selectedNumber; // Update the selected number
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    IconButton(
+                      onPressed: () {
+                        showNumberPicker((selectedAmount) {
+                          setState(() {
+                            _selectedMinAmount.value = selectedAmount;
+                            _updateHeaderText();
+                          });
                         });
-                      });
-                    },
-                    icon: SvgPicture.asset(
-                      "assets/images/arrow_down.svg",
-                      width: 10.w,
-                      height: 10.h,
-                      color: const Color.fromRGBO(
-                        48,
-                        48,
-                        48,
-                        1,
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(right: 15.w),
-                    child: Text(
-                      _selectedOptionlow, // Display selected number
-                      style: TextStyle(
-                        fontFamily: MAIN_FONT_FAMILY_LIGHT,
-                        fontSize: 14.sp,
+                      },
+                      icon: SvgPicture.asset(
+                        "assets/images/arrow_down.svg",
+                        width: 10.w,
+                        height: 10.h,
                         color: const Color.fromRGBO(48, 48, 48, 1),
                       ),
                     ),
-                  ),
-                ],
+                    Padding(
+                      padding: EdgeInsets.only(right: 10.w),
+                      child: Obx(() => Text(
+                            _selectedMinAmount.value,
+                            style: const TextStyle(
+                              fontFamily: MAIN_FONT_FAMILY_LIGHT,
+                              color: Color.fromRGBO(99, 99, 99, 1),
+                            ),
+                          )),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
-          const Text(
+          Text(
             "حداقل",
             style: TextStyle(
               fontFamily: MAIN_FONT_FAMILY,
-              fontSize: 11,
-              color: Color.fromRGBO(99, 99, 99, 1),
+              fontSize: 11.sp,
+              color: const Color.fromRGBO(99, 99, 99, 1),
             ),
           ),
         ],
@@ -159,10 +205,10 @@ class _TabaghehFilterWidgetState extends State<TabaghehFilterWidget> {
     );
   }
 
-  Widget tabagheh2(BuildContext context) {
+  Widget _buildMaxAmountWidget(BuildContext context) {
     return Container(
       height: 50.h,
-      width: MediaQuery.of(context).size.width / 1.23,
+      width: MediaQuery.of(context).size.width / 1.25,
       decoration: BoxDecoration(
         color: const Color.fromARGB(255, 225, 225, 225),
         borderRadius: BorderRadius.circular(15.r),
@@ -172,79 +218,89 @@ class _TabaghehFilterWidgetState extends State<TabaghehFilterWidget> {
         children: [
           Container(
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10.r),
-                color: const Color.fromRGBO(
-                  183,
-                  183,
-                  183,
-                  1,
-                )),
-            child: Container(
-              width: 225.w,
-              height: 30.h,
-              decoration: ShapeDecoration(
-                color: Colors.white,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10.r),
+              borderRadius: BorderRadius.circular(10.r),
+              color: const Color.fromRGBO(183, 183, 183, 1),
+            ),
+            child: Padding(
+              padding: EdgeInsets.all(1.1.w),
+              child: Container(
+                width: 225.w,
+                height: 35.h,
+                decoration: ShapeDecoration(
+                  color: Colors.white,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(9.r),
+                  ),
                 ),
-                shadows: const [
-                  BoxShadow(
-                    color: Color(0x11000000),
-                    blurRadius: 7,
-                    offset: Offset(0, 5),
-                    spreadRadius: 2,
-                  ),
-                ],
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  IconButton(
-                    onPressed: () {
-                      showNumberPicker((selectedNumber) {
-                        setState(() {
-                          _selectedOptionlow =
-                              selectedNumber; // Update the selected number
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    IconButton(
+                      onPressed: () {
+                        showNumberPicker((selectedAmount) {
+                          setState(() {
+                            _selectedMaxAmount.value = selectedAmount;
+                            _updateHeaderText();
+                          });
                         });
-                      });
-                    },
-                    icon: SvgPicture.asset(
-                      "assets/images/arrow_down.svg",
-                      width: 10.w,
-                      height: 10.h,
-                      color: const Color.fromRGBO(
-                        48,
-                        48,
-                        48,
-                        1,
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(right: 15.w),
-                    child: Text(
-                      _selectedOptionlow, // Display selected number
-                      style: TextStyle(
-                        fontFamily: MAIN_FONT_FAMILY_LIGHT,
-                        fontSize: 14.sp,
+                      },
+                      icon: SvgPicture.asset(
+                        "assets/images/arrow_down.svg",
+                        width: 10.w,
+                        height: 10.h,
                         color: const Color.fromRGBO(48, 48, 48, 1),
                       ),
                     ),
-                  ),
-                ],
+                    Padding(
+                      padding: EdgeInsets.only(right: 10.w),
+                      child: Obx(() => Text(
+                            _selectedMaxAmount.value,
+                            style: TextStyle(
+                              fontFamily: MAIN_FONT_FAMILY_LIGHT,
+                              fontSize: 12.sp,
+                              color: const Color.fromRGBO(99, 99, 99, 1),
+                            ),
+                          )),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
-          const Text(
+          Text(
             "حداکثر",
             style: TextStyle(
               fontFamily: MAIN_FONT_FAMILY,
-              fontSize: 11,
-              color: Color.fromRGBO(99, 99, 99, 1),
+              fontSize: 11.sp,
+              color: const Color.fromRGBO(99, 99, 99, 1),
             ),
           ),
         ],
       ),
     );
+  }
+
+  void _updateHeaderText() {
+    final selectedItems = <String>[];
+
+    if (_selectedMinAmount.value != 'انتخاب کنید') {
+      selectedItems.add(_selectedMinAmount.value);
+    }
+    if (_selectedMaxAmount.value != 'انتخاب کنید') {
+      selectedItems.add(_selectedMaxAmount.value);
+    }
+
+    if (selectedItems.isNotEmpty) {
+      if (selectedItems.length == 1) {
+        _headerText.value = selectedItems.first;
+      } else if (selectedItems.length == 2) {
+        _headerText.value = "${selectedItems[0]} و 1 مورد دیگر";
+      }
+      _isChecked.value = true;
+      _isDeleted.value = false;
+    } else {
+      _headerText.value = 'طبقه';
+      _isChecked.value = false;
+    }
   }
 }

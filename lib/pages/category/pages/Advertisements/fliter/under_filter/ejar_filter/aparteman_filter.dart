@@ -113,11 +113,15 @@ class _EjaraApartemanFilterState extends State<EjaraApartemanFilter> {
           const SizedBox(
             height: 20,
           ),
-          OtherEmkanatFilterWidget(),
+          OtherEmkanatFilterWidget(
+            onChange: (selectedText) {},
+          ),
           const SizedBox(
             height: 20,
           ),
-          EmkanatFilterWidget(),
+          EmkanatFilterWidget(
+            onChange: (selectedText) {},
+          ),
           const SizedBox(
             height: 20,
           ),

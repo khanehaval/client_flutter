@@ -60,7 +60,12 @@ class DaftarKarFilter extends StatelessWidget {
           const SizedBox(
             height: 20,
           ),
-          TedadotaghFilterWidget(),
+          TedadotaghFilterWidget(
+            onChange: (selectedItems) {
+              // نمایش آیتم‌های انتخابی در کنسول
+              print('Selected Items: $selectedItems');
+            },
+          ),
           const SizedBox(
             height: 20,
           ),
@@ -84,11 +89,15 @@ class DaftarKarFilter extends StatelessWidget {
           const SizedBox(
             height: 20,
           ),
-          OtherEmkanatFilterWidget(),
+          OtherEmkanatFilterWidget(
+            onChange: (selectedText) {},
+          ),
           const SizedBox(
             height: 20,
           ),
-          EmkanatFilterWidget(),
+          EmkanatFilterWidget(
+            onChange: (selectedText) {},
+          ),
           const SizedBox(
             height: 20,
           ),

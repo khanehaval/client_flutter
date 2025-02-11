@@ -41,6 +41,7 @@ class _EjaraFilterWidgetState extends State<EjaraFilterWidget> {
           }
         },
         child: Container(
+          height: _isExpanded.value ? 200.h : 50,
           decoration: BoxDecoration(
             color: const Color.fromRGBO(250, 250, 250, 1),
             border: Border.all(color: const Color.fromRGBO(166, 166, 166, 1)),

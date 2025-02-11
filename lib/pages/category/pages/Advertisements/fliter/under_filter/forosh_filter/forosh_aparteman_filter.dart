@@ -85,11 +85,15 @@ class ForoshApartemanFilter extends StatelessWidget {
           const SizedBox(
             height: 20,
           ),
-          OtherEmkanatFilterWidget(),
+          OtherEmkanatFilterWidget(
+            onChange: (selectedText) {},
+          ),
           const SizedBox(
             height: 20,
           ),
-          EmkanatFilterWidget(),
+          EmkanatFilterWidget(
+            onChange: (selectedText) {},
+          ),
           const SizedBox(
             height: 20,
           ),

@@ -65,7 +65,9 @@ class ForoshKolangi extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
-            EmkanatFilterWidget(),
+            EmkanatFilterWidget(
+              onChange: (selectedText) {},
+            ),
             const SizedBox(
               height: 20,
             ),

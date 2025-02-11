@@ -86,7 +86,9 @@ class _AmlakFilterState extends State<AmlakFilter> {
                   const SizedBox(
                     height: 20,
                   ),
-                  EmkanatFilterWidget(),
+                  EmkanatFilterWidget(
+                    onChange: (selectedOptions) {},
+                  ),
                   const SizedBox(
                     height: 20,
                   ),
