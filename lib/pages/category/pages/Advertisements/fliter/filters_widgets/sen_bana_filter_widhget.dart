@@ -29,12 +29,13 @@ class _SenBanaFilterWidgetState extends State<SenBanaFilterWidget> {
   Widget build(BuildContext context) {
     return Obx(
       () => Container(
-          height: _showItemSenbana.isTrue ? 230.h : 50,
-          decoration: BoxDecoration(
-              color: const Color.fromRGBO(250, 250, 250, 1),
-              border: Border.all(color: const Color.fromRGBO(166, 166, 166, 1)),
-              borderRadius: BorderRadius.circular(15.r)),
-          child: Column(children: [
+        height: _showItemSenbana.isTrue ? 230.h : 50,
+        decoration: BoxDecoration(
+            color: const Color.fromRGBO(250, 250, 250, 1),
+            border: Border.all(color: const Color.fromRGBO(166, 166, 166, 1)),
+            borderRadius: BorderRadius.circular(15.r)),
+        child: Column(
+          children: [
             Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
               IconButton(
                 icon: _getIconAsset(),
@@ -74,7 +75,9 @@ class _SenBanaFilterWidgetState extends State<SenBanaFilterWidget> {
                   _buildSenBanaMaxSelector(context)
                 ],
               ),
-          ])),
+          ],
+        ),
+      ),
     );
   }
 

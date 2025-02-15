@@ -77,7 +77,7 @@ class _EjaraApartemanFilterState extends State<EjaraApartemanFilter> {
           const SizedBox(
             height: 20,
           ),
-          EjaraFilterWidget(),
+          const EjaraFilterWidget(),
           const SizedBox(
             height: 20,
           ),
@@ -85,7 +85,7 @@ class _EjaraApartemanFilterState extends State<EjaraApartemanFilter> {
           const SizedBox(
             height: 20,
           ),
-          TabaghehFilterWidget(),
+          const TabaghehFilterWidget(),
           const SizedBox(
             height: 20,
           ),
@@ -129,7 +129,7 @@ class _EjaraApartemanFilterState extends State<EjaraApartemanFilter> {
           const SizedBox(
             height: 20,
           ),
-          JahatSakhtemanFilterWidget(),
+          const JahatSakhtemanFilterWidget(),
           const SizedBox(
             height: 20,
           ),
@@ -141,7 +141,7 @@ class _EjaraApartemanFilterState extends State<EjaraApartemanFilter> {
           const SizedBox(
             height: 20,
           ),
-          Noesystemsardayeshfilterwidget(),
+          NoeSystemSarmayeshFilterWidget(),
           const SizedBox(
             height: 20,
           ),

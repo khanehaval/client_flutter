@@ -68,10 +68,7 @@ class EjaraVilaFilter extends StatelessWidget {
             height: 20,
           ),
           TedadotaghFilterWidget(
-            onChange: (selectedItems) {
-              // نمایش آیتم‌های انتخابی در کنسول
-              print('Selected Items: $selectedItems');
-            },
+            onChange: (selectedItems) {},
           ),
           const SizedBox(
             height: 20,
@@ -124,7 +121,7 @@ class EjaraVilaFilter extends StatelessWidget {
           const SizedBox(
             height: 20,
           ),
-          Noesystemsardayeshfilterwidget(),
+          NoeSystemSarmayeshFilterWidget(),
           const SizedBox(
             height: 20,
           ),

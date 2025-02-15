@@ -587,8 +587,7 @@ class _EjaraApartemanPageState extends State<EjaraApartemanPage> {
                   ),
                   widget2: ReadOnlyTextField(_buildingSideController, () {
                     jahatSakhteman((selectedKey, selectedLabel) {
-                      _buildingSideController.text =
-                          selectedLabel; // نمایش برچسب در کنترلر
+                      _buildingSideController.text = selectedLabel;
                     });
                   }, width: getPageWidth())),
               const SizedBox(

@@ -109,7 +109,7 @@ class EjaraKotaVila extends StatelessWidget {
           const SizedBox(
             height: 10,
           ),
-          Noesystemsardayeshfilterwidget(),
+          NoeSystemSarmayeshFilterWidget(),
           const SizedBox(
             height: 10,
           ),

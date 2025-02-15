@@ -57,7 +57,7 @@ class ForoshVilaFilter extends StatelessWidget {
           const SizedBox(
             height: 20,
           ),
-          EjaraFilterWidget(),
+          const EjaraFilterWidget(),
           const SizedBox(
             height: 20,
           ),
@@ -126,7 +126,7 @@ class ForoshVilaFilter extends StatelessWidget {
           const SizedBox(
             height: 20,
           ),
-          Noesystemsardayeshfilterwidget(),
+          NoeSystemSarmayeshFilterWidget(),
           const SizedBox(
             height: 20,
           ),

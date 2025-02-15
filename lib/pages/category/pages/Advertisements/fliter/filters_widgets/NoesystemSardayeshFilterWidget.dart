@@ -1,121 +1,178 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/pages/category/pages/Advertisements/fliter/under_filter/widget_filter/taminabegarm.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
-import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_tamin_abe_garm.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_system_sarmayesh.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class Noesystemsardayeshfilterwidget extends StatelessWidget {
-  Noesystemsardayeshfilterwidget({super.key});
+class NoeSystemSarmayeshFilterWidget extends StatelessWidget {
+  NoeSystemSarmayeshFilterWidget({super.key});
 
-  final _showItemTaminAbeGarm = false.obs;
+  final RxBool _showItemSarmayesh = false.obs;
   final RxString _selectedOption = "انتخاب کنید".obs;
+  final RxBool _isChecked = false.obs;
+  final RxBool _isDeleted = false.obs;
+  final RxString _headerText = "نوع سیستم سرمایش".obs;
 
   @override
   Widget build(BuildContext context) {
-    return Obx(() => Container(
-          height: _showItemTaminAbeGarm.isTrue ? 130.h : 50,
-          decoration: BoxDecoration(
-            color: const Color.fromRGBO(250, 250, 250, 1),
-            border: Border.all(color: const Color.fromRGBO(166, 166, 166, 1)),
-            borderRadius: BorderRadius.circular(15.r),
-          ),
-          child: Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  IconButton(
-                    icon: _showItemTaminAbeGarm.value
-                        ? SvgPicture.asset(
-                            'assets/images/=.svg',
-                            width: 8.w,
-                            height: 8.h,
-                          )
-                        : SvgPicture.asset(
-                            'assets/images/down.svg',
-                            width: 12.w,
-                            height: 12.h,
-                          ),
-                    onPressed: () {
-                      _showItemTaminAbeGarm.value =
-                          !_showItemTaminAbeGarm.value;
-                    },
+    return Obx(
+      () => Container(
+        height: _showItemSarmayesh.isTrue ? 130.h : 50,
+        decoration: BoxDecoration(
+          color: const Color.fromRGBO(250, 250, 250, 1),
+          border: Border.all(color: const Color.fromRGBO(166, 166, 166, 1)),
+          borderRadius: BorderRadius.circular(15.r),
+        ),
+        child: Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                IconButton(
+                  icon: SvgPicture.asset(
+                    _getIconAsset(),
+                    width: _getIconSize(),
+                    height: _getIconSize(),
                   ),
-                  Padding(
+                  onPressed: () {
+                    if (!_isChecked.value && !_isDeleted.value) {
+                      _showItemSarmayesh.value = !_showItemSarmayesh.value;
+                    } else if (_isChecked.value && !_isDeleted.value) {
+                      _isDeleted.value = true;
+                      _isChecked.value = false;
+                      _showItemSarmayesh.value = false;
+                    } else if (_isDeleted.value) {
+                      _resetState();
+                    }
+                  },
+                ),
+                GestureDetector(
+                  onTap: () {
+                    if (_headerText.value != "نوع سیستم سرمایش") {
+                      _showItemSarmayesh.value = true;
+                    }
+                  },
+                  child: Padding(
                     padding: EdgeInsets.only(right: 20.w),
                     child: Text(
-                      "نوع سیستم سرمایش",
+                      _headerText.value,
                       style: TextStyle(
                         fontFamily: MAIN_FONT_FAMILY,
                         fontSize: 12.sp,
                       ),
                     ),
                   ),
-                ],
-              ),
-              if (_showItemTaminAbeGarm.isTrue)
-                Column(
-                  children: [taminAbeGarm(context)],
                 ),
-            ],
-          ),
-        ));
+              ],
+            ),
+            if (_showItemSarmayesh.isTrue)
+              Column(
+                children: [_buildSystemSarmayeshSelector()],
+              ),
+          ],
+        ),
+      ),
+    );
   }
 
-  Widget taminAbeGarm(BuildContext context) {
-    return Column(
-      children: [
-        Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(11.r),
-            color: const Color.fromRGBO(183, 183, 183, 1),
-          ),
-          child: Padding(
-            padding: EdgeInsets.all(1.1.r),
-            child: Container(
-              width: 295.w,
-              height: 35.h,
-              decoration: ShapeDecoration(
-                color: Colors.white,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10.r),
-                ),
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  IconButton(
-                    onPressed: () {
-                      AbeGarm((selectedOption) {
-                        _selectedOption.value = selectedOption;
-                      } as Function(String key, String label));
-                    },
-                    icon: SvgPicture.asset(
-                      "assets/images/arrow_down.svg",
-                      width: 10.w,
-                      height: 10.h,
-                      color: const Color.fromRGBO(48, 48, 48, 1),
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(right: 10.w),
-                    child: Obx(() => Text(
-                          _selectedOption.value,
-                          style: TextStyle(
-                            fontFamily: MAIN_FONT_FAMILY_LIGHT,
-                            fontSize: 12.sp,
-                            color: const Color.fromRGBO(99, 99, 99, 1),
-                          ),
-                        )),
-                  ),
-                ],
-              ),
+  /// تابع برای تغییر آیکون بر اساس وضعیت
+  String _getIconAsset() {
+    if (_isDeleted.value) {
+      return 'assets/images/delete.svg';
+    } else if (_isChecked.value) {
+      return 'assets/images/check_green.svg';
+    } else if (_showItemSarmayesh.value) {
+      return 'assets/images/=.svg';
+    }
+    return 'assets/images/down.svg';
+  }
+
+  /// تابع برای تعیین سایز آیکون
+  double _getIconSize() {
+    if (_isDeleted.value) {
+      return 15.w;
+    } else if (_isChecked.value) {
+      return 17.w;
+    } else if (_showItemSarmayesh.value) {
+      return 10.w;
+    }
+    return 15.w;
+  }
+
+  /// ویجت انتخاب نوع سیستم سرمایش
+  Widget _buildSystemSarmayeshSelector() {
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(11.r),
+        color: const Color.fromRGBO(183, 183, 183, 1),
+      ),
+      child: Padding(
+        padding: EdgeInsets.all(1.1.r),
+        child: Container(
+          width: 295.w,
+          height: 35.h,
+          decoration: ShapeDecoration(
+            color: Colors.white,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10.r),
             ),
           ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              IconButton(
+                onPressed: () {
+                  Sarmayesh((selectedKey, selectedLabel) {
+                    _selectedOption.value = selectedLabel;
+                    _updateHeaderText();
+                  });
+                },
+                icon: SvgPicture.asset(
+                  "assets/images/arrow_down.svg",
+                  width: 10.w,
+                  height: 10.h,
+                  color: const Color.fromRGBO(48, 48, 48, 1),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.only(right: 10.w),
+                child: Obx(
+                  () => Text(
+                    _selectedOption.value,
+                    style: TextStyle(
+                      fontFamily: MAIN_FONT_FAMILY_LIGHT,
+                      fontSize: 12.sp,
+                      color: const Color.fromRGBO(99, 99, 99, 1),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
-      ],
+      ),
     );
+  }
+
+  /// تابع برای بروزرسانی عنوان هدر
+  void _updateHeaderText() {
+    if (_selectedOption.value != "انتخاب کنید") {
+      _headerText.value = _selectedOption.value;
+      _isChecked.value = true;
+      _isDeleted.value = false;
+    } else {
+      _headerText.value = "نوع سیستم سرمایش";
+      _isChecked.value = false;
+    }
+  }
+
+  /// تابع برای ریست کردن وضعیت
+  void _resetState() {
+    _showItemSarmayesh.value = false;
+    _isChecked.value = false;
+    _isDeleted.value = false;
+    _selectedOption.value = "انتخاب کنید";
+    _headerText.value = "نوع سیستم سرمایش";
   }
 }

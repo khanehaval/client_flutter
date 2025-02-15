@@ -547,7 +547,7 @@ class _PartnerShipState extends State<PartnerShip> {
             const SizedBox(
               height: 25,
             ),
-            Text(
+            const Text(
               "میزان سهم مشارکت در ساخت",
               style: TextStyle(fontFamily: MAIN_FONT_FAMILY),
             ),

@@ -138,7 +138,7 @@ class EjaraDaftarKarFilter extends StatelessWidget {
           const SizedBox(
             height: 20,
           ),
-          Noesystemsardayeshfilterwidget(),
+          NoeSystemSarmayeshFilterWidget(),
           const SizedBox(
             height: 20,
           ),

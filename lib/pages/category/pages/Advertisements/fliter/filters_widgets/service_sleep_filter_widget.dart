@@ -1,57 +1,88 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/category/shared/constant.dart';
+import 'package:flutter_application_1/pages/category/shared/more_emkanat/widget_service_sleep.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
-class ServiceSleepFilterWidget extends StatelessWidget {
+class ServiceSleepFilterWidget extends StatefulWidget {
   ServiceSleepFilterWidget({super.key});
-  final _show_item_tabagheh_1 = false.obs;
+  @override
+  State<ServiceSleepFilterWidget> createState() =>
+      _ServiceSleepFilterWidgetState();
+}
+
+class _ServiceSleepFilterWidgetState extends State<ServiceSleepFilterWidget> {
+  final _showItemTabagheh = false.obs;
+  final _isChecked = false.obs; // برای نشان دادن حالت انتخاب
+  final _isDeleted = false.obs; // برای نشان دادن حالت حذف
+  final RxString selectedMinAmount = 'انتخاب کنید'.obs;
+  final RxString selectedMaxAmount = 'انتخاب کنید'.obs;
+  String headerText = "تعداد سرویس خواب";
+  final _showItemSenbana = false.obs;
+  String _headerText = "تعداد سرویس خواب";
+  String _selectedOptionLow = 'انتخاب کنید';
+  String _selectedOption = 'انتخاب کنید';
+  final _senBanaMaxTextController = TextEditingController();
+  final _senBanaLowTextController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    return Obx(() => Container(
-          height: _show_item_tabagheh_1.isTrue ? 230.h : 50,
-          decoration: BoxDecoration(
-              color: const Color.fromRGBO(250, 250, 250, 1),
-              border: Border.all(color: const Color.fromRGBO(166, 166, 166, 1)),
-              borderRadius: BorderRadius.circular(15)),
-          child: Column(children: [
+    return Obx(
+      () => Container(
+        height: _showItemSenbana.isTrue ? 230.h : 50,
+        decoration: BoxDecoration(
+            color: const Color.fromRGBO(250, 250, 250, 1),
+            border: Border.all(color: const Color.fromRGBO(166, 166, 166, 1)),
+            borderRadius: BorderRadius.circular(15.r)),
+        child: Column(
+          children: [
             Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
               IconButton(
-                icon: _show_item_tabagheh_1.value
-                    ? SvgPicture.asset(
-                        'assets/images/=.svg',
-                      )
-                    : SvgPicture.asset('assets/images/down.svg'),
+                icon: _getIconAsset(),
                 onPressed: () {
-                  _show_item_tabagheh_1.value = !_show_item_tabagheh_1.value;
+                  if (!_isChecked.value && !_isDeleted.value) {
+                    _showItemSenbana.value = !_showItemSenbana.value;
+                  } else if (_isChecked.value && !_isDeleted.value) {
+                    _isDeleted.value = true;
+                    _isChecked.value = false;
+                    _showItemSenbana.value = false;
+                  } else if (_isDeleted.value) {
+                    _resetState();
+                  }
                 },
               ),
-              Padding(
-                padding: EdgeInsets.only(right: 20),
-                child: Text(
-                  "تعداد سرویس خواب",
-                  style:
-                      TextStyle(fontFamily: MAIN_FONT_FAMILY, fontSize: 12.sp),
+              GestureDetector(
+                onTap: () {
+                  if (_headerText != 'تعداد سرویس خواب') {
+                    _showItemSenbana.value = true;
+                  }
+                },
+                child: Padding(
+                  padding: EdgeInsets.only(right: 20.w),
+                  child: Text(
+                    _headerText,
+                    style: TextStyle(
+                        fontFamily: MAIN_FONT_FAMILY, fontSize: 12.sp),
+                  ),
                 ),
               ),
-            ]),
-            if (_show_item_tabagheh_1.isTrue)
+            ]), // The header row displaying the text
+            if (_showItemSenbana.isTrue)
               Column(
                 children: [
-                  servicekhab(context),
-                  const SizedBox(
-                    height: 21,
-                  ),
-                  servicekhab2(context),
+                  _buildMinAmountSelector(context),
+                  SizedBox(height: 21.h),
+                  _buildMaxAmountSelector(context)
                 ],
               ),
-          ]),
-        ));
+          ],
+        ),
+      ),
+    );
   }
 
-  Widget servicekhab(BuildContext context) {
+  Widget _buildMinAmountSelector(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
           color: const Color.fromARGB(255, 225, 225, 225),
@@ -70,13 +101,8 @@ class ServiceSleepFilterWidget extends StatelessWidget {
             children: [
               Container(
                 decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: const Color.fromRGBO(
-                      183,
-                      183,
-                      183,
-                      1,
-                    )),
+                    borderRadius: BorderRadius.circular(9),
+                    color: const Color.fromRGBO(183, 183, 183, 1)),
                 child: Container(
                   decoration: BoxDecoration(
                       color: const Color.fromRGBO(183, 183, 183, 1),
@@ -96,23 +122,30 @@ class ServiceSleepFilterWidget extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           IconButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              ServiceSleep((selectedOption) {
+                                setState(() {
+                                  selectedMinAmount.value = selectedOption;
+                                  _selectedOptionLow =
+                                      selectedOption; // Update the selected minimum option
+                                  _senBanaLowTextController.text =
+                                      selectedOption;
+                                  _updateHeaderText();
+                                });
+                              });
+                            },
                             icon: SvgPicture.asset(
                               "assets/images/arrow_down.svg",
                               width: 10,
                               height: 10,
-                              color: const Color.fromRGBO(
-                                48,
-                                48,
-                                48,
-                                1,
-                              ),
+                              color: const Color.fromRGBO(48, 48, 48, 1),
                             ),
                           ),
                           Padding(
                             padding: const EdgeInsets.only(right: 10.0),
                             child: Text(
-                              'انتخاب کنید',
+                              selectedMinAmount
+                                  .value, // Display the selected minimum value
                               style: TextStyle(
                                   fontFamily: MAIN_FONT_FAMILY_LIGHT,
                                   fontSize: 12.sp,
@@ -141,7 +174,7 @@ class ServiceSleepFilterWidget extends StatelessWidget {
     );
   }
 
-  Widget servicekhab2(BuildContext context) {
+  Widget _buildMaxAmountSelector(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
           color: const Color.fromARGB(255, 225, 225, 225),
@@ -161,12 +194,7 @@ class ServiceSleepFilterWidget extends StatelessWidget {
               Container(
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(9),
-                    color: const Color.fromRGBO(
-                      183,
-                      183,
-                      183,
-                      1,
-                    )),
+                    color: const Color.fromRGBO(183, 183, 183, 1)),
                 child: Container(
                   decoration: BoxDecoration(
                       color: Color.fromRGBO(183, 183, 183, 1),
@@ -186,23 +214,30 @@ class ServiceSleepFilterWidget extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           IconButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              ServiceSleep((selectedOption) {
+                                setState(() {
+                                  selectedMaxAmount.value = selectedOption;
+                                  _selectedOption =
+                                      selectedOption; // Update the selected maximum option
+                                  _senBanaMaxTextController.text =
+                                      selectedOption;
+                                  _updateHeaderText();
+                                });
+                              });
+                            },
                             icon: SvgPicture.asset(
                               "assets/images/arrow_down.svg",
                               width: 10,
                               height: 10,
-                              color: const Color.fromRGBO(
-                                48,
-                                48,
-                                48,
-                                1,
-                              ),
+                              color: const Color.fromRGBO(48, 48, 48, 1),
                             ),
                           ),
                           Padding(
                             padding: const EdgeInsets.only(right: 10.0),
                             child: Text(
-                              'انتخاب کنید',
+                              selectedMaxAmount
+                                  .value, // Display the selected maximum value
                               style: TextStyle(
                                   fontFamily: MAIN_FONT_FAMILY_LIGHT,
                                   fontSize: 12.sp,
@@ -229,5 +264,50 @@ class ServiceSleepFilterWidget extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  void _updateHeaderText() {
+    final selectedItems = <String>[];
+
+    if (_selectedOptionLow != 'انتخاب کنید') {
+      selectedItems.add(_selectedOptionLow);
+    }
+    if (_selectedOption != 'انتخاب کنید') {
+      selectedItems.add(_selectedOption);
+    }
+
+    if (selectedItems.isNotEmpty) {
+      if (selectedItems.length == 1) {
+        _headerText = selectedItems.first;
+      } else if (selectedItems.length == 2) {
+        _headerText = "${selectedItems[0]} و 1 مورد دیگر";
+      }
+      _isChecked.value = true;
+      _isDeleted.value = false;
+    } else {
+      _headerText = ' تعداد سرویس خواب';
+      _isChecked.value = false;
+    }
+  }
+
+  void _resetState() {
+    _showItemSenbana.value = false;
+    _isChecked.value = false;
+    _isDeleted.value = false;
+    _selectedOption = 'انتخاب کنید';
+    _selectedOptionLow = 'انتخاب کنید';
+    _headerText = 'تعداد سرویس خواب';
+  }
+
+  Widget _getIconAsset() {
+    if (_isDeleted.value) {
+      return SvgPicture.asset('assets/images/delete.svg',
+          width: 14.w, height: 14.h);
+    } else if (_isChecked.value) {
+      return SvgPicture.asset('assets/images/check_green.svg');
+    } else if (_showItemSenbana.value) {
+      return SvgPicture.asset('assets/images/=.svg');
+    }
+    return SvgPicture.asset('assets/images/down.svg');
   }
 }

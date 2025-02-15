@@ -62,10 +62,7 @@ class PishForoshFilter extends StatelessWidget {
             height: 10,
           ),
           TedadotaghFilterWidget(
-            onChange: (selectedItems) {
-              // نمایش آیتم‌های انتخابی در کنسول
-              print('Selected Items: $selectedItems');
-            },
+            onChange: (selectedItems) {},
           ),
           const SizedBox(
             height: 10,
